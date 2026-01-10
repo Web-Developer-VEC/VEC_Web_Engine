@@ -141,15 +141,15 @@ async function studentlogin(req, res) {
             department: student.department,
             batch: student.batch
           }
-        });
-      } else {
-        // Genuinely active session
-        return res.status(403).json({
-          success: false,
-          code: "ALREADY_LOGGED_IN",
-          message: "You are already attending the exam. Multiple logins are not allowed."
-        });
-      }
+        });}
+      //  else {
+      //   // Genuinely active session
+      //   return res.status(403).json({
+      //     success: false,
+      //     code: "ALREADY_LOGGED_IN",
+      //     message: "You are already attending the exam. Multiple logins are not allowed."
+      //   });
+      // }
     }
 
     const blockedSession = await sessionCol.findOne({

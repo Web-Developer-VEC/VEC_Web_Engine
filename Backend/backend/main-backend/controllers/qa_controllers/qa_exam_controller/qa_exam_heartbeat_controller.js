@@ -47,7 +47,7 @@ async function heartbeat(req, res) {
 //     });
 //   }
 
-  const HEARTBEAT_TIMEOUT = 30 * 1000; // 20 seconds
+  const HEARTBEAT_TIMEOUT = 120 * 1000; // 20 seconds
 
   if (
     session.lastSeenAt &&

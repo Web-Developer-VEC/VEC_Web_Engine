@@ -17,7 +17,7 @@ const alertBox = (title, text, icon = "info") => {
 const checkRealInternet = async () => {
   try {
     await axios.get("/api/main-backend/qa/session/ping", {
-      timeout: 5000,
+      timeout: 10000,
       headers: { "Cache-Control": "no-cache" }
     });
     return true;
