@@ -10,7 +10,10 @@ async function viewExamCode(req, res) {
     const collection = db.collection("qa_schedule");
 
     // Server-side date (YYYY-MM-DD)
-    const today = new Date().toISOString().slice(0, 10);
+   const now = new Date();
+    const istOffset = 5.5 * 60 * 60 * 1000; // IST offset in ms
+    const istDate = new Date(now.getTime() + istOffset);
+    const today = istDate.toISOString().slice(0, 10);
 
     const exams = await collection
       .find({ date: today })
