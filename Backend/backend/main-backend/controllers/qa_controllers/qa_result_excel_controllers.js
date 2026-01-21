@@ -446,10 +446,10 @@ async function generateSingleDepartmentExcel(examDoc, students, department, sche
   });
 
   const headers = [
-    "Roll No",
-    "REG NO.",
+    "S No",
+    "Reg No",
     "NAME (BLOCK LETTERS)",
-    "BRANCH"
+    "Branch"
   ];
   
   if (firstSectionCount > 0 && firstSectionLabel) {

@@ -115,7 +115,7 @@ async function studentlogin(req, res) {
       const lastSeenAt = new Date(activeSession.lastSeenAt);
       const timeSinceLastSeen = Date.now() - lastSeenAt.getTime();
       
-      if (timeSinceLastSeen > 6000000) {
+      if (timeSinceLastSeen >  60 * 60 * 1000) {
         // Zombie session - auto cleanup
         await sessionCol.updateOne(
           { _id: activeSession._id },
@@ -141,15 +141,15 @@ async function studentlogin(req, res) {
             department: student.department,
             batch: student.batch
           }
-        });
-      } else {
-        // Genuinely active session
-        return res.status(403).json({
-          success: false,
-          code: "ALREADY_LOGGED_IN",
-          message: "You are already attending the exam. Multiple logins are not allowed."
-        });
-      }
+        });}
+      //  else {
+      //   // Genuinely active session
+      //   return res.status(403).json({
+      //     success: false,
+      //     code: "ALREADY_LOGGED_IN",
+      //     message: "You are already attending the exam. Multiple logins are not allowed."
+      //   });
+      // }
     }
 
     const blockedSession = await sessionCol.findOne({

@@ -17,7 +17,7 @@ const alertBox = (title, text, icon = "info") => {
 const checkRealInternet = async () => {
   try {
     await axios.get("/api/main-backend/qa/session/ping", {
-      timeout: 5000,
+      timeout: 10000,
       headers: { "Cache-Control": "no-cache" }
     });
     return true;
@@ -586,6 +586,11 @@ const QuestionPage = () => {
       await submitCurrentAnswer();
     }
 
+    if (!selected[current]) {
+      alertBox("Required", "Please select an option before continuing.", "info");
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -606,7 +611,7 @@ const QuestionPage = () => {
             <p><b>Year:</b> ${batch}</p>
             <hr/>
             <h3 style="text-align:center;color:#16a34a">
-              Total Marks: ${totalMarks}
+              Total Marks: ${totalMarks}/50
             </h3>
           </div>
         `,
