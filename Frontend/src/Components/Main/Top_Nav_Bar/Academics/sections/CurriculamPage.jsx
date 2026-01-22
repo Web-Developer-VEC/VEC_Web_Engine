@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import './CurriculumPage.css';
-import LoadComp from '../../../LoadComp';
+import "./CurriculumPage.css";
+import LoadComp from "../../../LoadComp";
 
 const CurriculumPage = ({ data }) => {
-  const curriculam = data?.find((item) => item.category === "curriculum")?.content || [];
+  const [openKey, setOpenKey] = useState(null);
+
+  const curriculum =
+    data?.find((item) => item.category === "curriculum")?.content || [];
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    if (!path) return "#";
+    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   const handleViewClick = (pdfUrl) => {
@@ -21,7 +25,7 @@ const CurriculumPage = ({ data }) => {
 
   if (!data) {
     return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+      <div className="h-screen flex items-center justify-center">
         <LoadComp />
       </div>
     );
@@ -29,49 +33,94 @@ const CurriculumPage = ({ data }) => {
 
   return (
     <div className="containers mt-5">
-      {curriculam?.length > 0 ? (
+      {curriculum.length > 0 ? (
         <div className="row">
-          {/* Left Column: Curriculum and PSOs */}
           <div className="col-md-6">
-            {curriculam?.map((req, i) => (
-              <div
-                className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]"
-                key={i}
-              >
-                <h2 className="text-bold text-[24px] text-brwn dark:text-drkt mb-8">
-                  {req?.heading}
-                </h2>
+            {curriculum.map((section, sectionIndex) => {
+              const isUG = sectionIndex === 0; // ✅ FIX
+              const isPG = sectionIndex > 0;  // ✅ FIX
 
-                {/* Regulation Rows */}
-                {req?.syllabus?.map((data, index) => (
-                  <div
-                    className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks"
-                    key={index}
-                  >
-                    <p>
-                      <div className="R-years">{data?.year}</div>
-                      <div className="options-container">
+              return (
+                <div
+                  key={sectionIndex}
+                  className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] mb-10"
+                >
+                  <h2 className="text-bold text-[24px] text-brwn dark:text-drkt mb-8">
+                    {section.heading}
+                  </h2>
+
+                  {section?.syllabus?.map((item, itemIndex) => {
+                    const key = `${sectionIndex}-${itemIndex}`;
+
+                    // ======== UG (GRID) ========
+                    if (isUG) {
+                      const docs = item.docs?.length
+                        ? item.docs
+                        : [
+                            {
+                              name: "View",
+                              pdf_path: item.pdf_path,
+                              isView: true,
+                            },
+                          ];
+
+                      return (
+                        <div
+                          key={key}
+                          className="row-item dark:bg-drkp border-0 dark:hover:bg-drks flex flex-col mb-4"
+                        >
+                          <div className="R-years self-start">
+                            {item.year}
+                          </div>
+
+                          <div className="overflow-hidden w-[90%] mx-auto grid grid-cols-3 gap-6 text-center mt-4">
+                            {docs.map((doc, docIndex) => (
+                              <a
+                                key={docIndex}
+                                href={UrlParser(doc.pdf_path)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="no-underline text-inherit bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded flex items-center justify-center gap-2"
+                              >
+                                {doc.isView && (
+                                  <FontAwesomeIcon icon={faEye} />
+                                )}
+                                {doc.name}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    // ======== PG (BUTTON) ========
+                    return (
+                      <div
+                        key={key}
+                        className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks flex flex-row justify-between items-center mt-6"
+                      >
+                        <div className="R-years">{item.year}</div>
+
                         <button
-                          className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim
-                            dark:hover:bg-brwn"
-                          onClick={() => handleViewClick(data?.pdf_path)}
+                          className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-brwn"
+                          onClick={() => handleViewClick(item.pdf_path)}
                         >
                           <FontAwesomeIcon
                             icon={faEye}
-                            style={{ marginRight: "5px" }}
+                            style={{ marginRight: "6px" }}
                           />
                           View
                         </button>
                       </div>
-                    </p>
-                  </div>
-                ))}
-              </div>
-            ))}
+                    );
+                  })}
+                </div>
+              );
+            })}
           </div>
         </div>
       ) : (
-        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <div className="h-screen flex items-center justify-center">
           <LoadComp />
         </div>
       )}

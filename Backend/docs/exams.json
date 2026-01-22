@@ -265,7 +265,20 @@
         {
           "name": "Application Form - Transcript Certificate",
           "pdf_path": "/static/pdfs/all_forms/Application-for-Transcripts_VEC_UPDATED_03-07-2023.pdf"
+        },
+        {
+          "name": "Application Form - Break of study",
+          "pdf_path": "/static/pdfs/all_forms/Application for break of study_March 2025.pdf"
+        },
+        {
+          "name": "Rank list for 2022-2023",
+          "pdf_path": "/static/pdfs/all_forms/Rank Holders_B.E._B.Tech. & MBA - 2022-2023.pdf"
+        },
+        {
+          "name": "Rank list for 2023-2024",
+          "pdf_path": "/static/pdfs/all_forms/Rank Holders_B.E._B.Tech. & MBA - 2023-2024.pdf"
         }
+       
       ]
     },
     {
