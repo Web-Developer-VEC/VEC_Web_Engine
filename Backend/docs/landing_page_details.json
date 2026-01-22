@@ -216,11 +216,10 @@
        {
         "unique_id": "announcement_6",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028",
-        "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028) - updated (1).pdf",
+        "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028).pdf",
         "date": "2025-07-28",
         "status": "active"
       },
-      
       {
         "unique_id": "announcement_7",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026",
@@ -277,95 +276,6 @@
   {
     "type": "events",
     "data": [
-      {
-        "start_date": "16 JUL",
-        "end_date": "22 JUL, 2025",
-        "date": "16-07-2025",
-        "title": "PySpark",
-        "department": "Artificial Intelligence & Data Science",
-        "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
-        "brochure_path": "/static/images/events/PySpark.webp",
-        "link": "",
-        "status": "True"
-      },
-
-      {
-        "start_date": "18 JUL",
-        "end_date": "18 JUL, 2025",
-        "date": "18-07-2025",
-        "title": "Empowering Smart Grids: THe Innovative Role of Power Electronics",
-        "department": "Electrical & Electronics Engineering",
-        "content": "A power-packed guest lecture on Smart Grids and Power Electronics—discover how innovation is electrifying the future of energy!",
-        "brochure_path": "/static/images/events/Smart_Grids.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "25 JUL",
-        "end_date": "25 JUL, 2025",
-        "date": "25-07-2025",
-        "title": "Math Quiz",
-        "department": "Mathematics",
-        "content": "Celebrate excellence and test your math skills! Join us for the 2024–25 prize distribution and a fun Math Quiz for II-year students.",
-        "brochure_path": "/static/images/events/M_Quiz.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "25 JUL",
-        "end_date": "25 JUL, 2025",
-        "date": "25-07-2025",
-        "title": "Server-Side Scripting - Node.JS",
-        "department": "Computer Science & Engineering",
-        "content": "Level up your backend skills! Don't miss the expert talk on Server-Side Scripting with Node.js for III-year CSE students.",
-        "brochure_path": "/static/images/events/NodeJs.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "28 JUL",
-        "end_date": "28 JUL, 2025",
-        "date": "28-07-2025",
-        "title": "10 Steps to Become a Successful Entrepreneur",
-        "department": "Automobile Engineering",
-        "content": "Dreaming of your own startup? Learn 10 steps to become a successful entrepreneur with expert guidance and funding insights.",
-        "brochure_path": "/static/images/events/Successful_Entrepreneur.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "30 JUL",
-        "end_date": "30 JUL, 2025",
-        "date": "30-07-2025",
-        "title": "Innovation/Prototype Validation - Converting Innovation into a Start-up",
-        "department": "Electronics & Communication Engineering",
-        "content": "Got an idea? Learn how to turn it into a real business in our Innovation/Prototype to Start-up session by an ECE alumnus from Accenture.",
-        "brochure_path": "/static/images/events/Innovation_2_startup.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "2 AUG",
-        "end_date": "2 AUG, 2025",
-        "date": "02-08-2025",
-        "title": "NOCTIVUS",
-        "department": "Computer Science Engineering (Cyber Security)",
-        "content": "A national symposium on Cyber Security with tech contests, fun events, and a hacking workshop.",
-        "brochure_path": "/static/images/events/noctivus.webp",
-        "link": "http://www.noctivus.pro/",
-        "status": "True"
-      },
-      {
-        "start_date": "09 AUG",
-        "end_date": "09 AUG, 2025",
-        "date": "09-08-2025",
-        "title": "CLOUDSCAPE",
-        "department": "Computer Science Engineering",
-        "content": "",
-        "brochure_path": "/static/images/events/cloudscape.webp",
-        "link": "",
-        "status": "True"
-      },
       {
         "start_date": "09 AUG",
         "end_date": "09 AUG, 2025",

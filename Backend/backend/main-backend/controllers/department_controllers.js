@@ -9,6 +9,7 @@ function DeptMiddleware(allowedTypes, ALLOWED_DEPARTMENTS) {
       const { type, department_id } = req.body;
 
       // Validate type
+      
       if (!type || typeof type !== 'string') {
         return res.status(400).json({ error: 'Missing or invalid "type" in request body' });
       }
