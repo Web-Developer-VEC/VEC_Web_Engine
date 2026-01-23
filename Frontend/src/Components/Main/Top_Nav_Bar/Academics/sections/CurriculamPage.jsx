@@ -37,8 +37,8 @@ const CurriculumPage = ({ data }) => {
         <div className="row">
           <div className="col-md-6">
             {curriculum.map((section, sectionIndex) => {
-              const isUG = sectionIndex === 0; // ✅ FIX
-              const isPG = sectionIndex > 0;  // ✅ FIX
+              const isUG = sectionIndex === 0;
+              // const isPG = sectionIndex > 0;
 
               return (
                 <div
@@ -52,7 +52,6 @@ const CurriculumPage = ({ data }) => {
                   {section?.syllabus?.map((item, itemIndex) => {
                     const key = `${sectionIndex}-${itemIndex}`;
 
-                    // ======== UG (GRID) ========
                     if (isUG) {
                       const docs = item.docs?.length
                         ? item.docs
@@ -69,22 +68,34 @@ const CurriculumPage = ({ data }) => {
                           key={key}
                           className="row-item dark:bg-drkp border-0 dark:hover:bg-drks flex flex-col mb-4"
                         >
-                          <div className="R-years self-start">
-                            {item.year}
-                          </div>
+                          <div className="R-years self-start">{item.year}</div>
 
                           <div className="overflow-hidden w-[90%] mx-auto grid grid-cols-3 gap-6 text-center mt-4">
                             {docs.map((doc, docIndex) => (
                               <a
                                 key={docIndex}
-                                href={UrlParser(doc.pdf_path)}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="no-underline text-inherit bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded flex items-center justify-center gap-2"
+                                href={
+                                  doc.pdf_path
+                                    ? UrlParser(doc.pdf_path)
+                                    : undefined
+                                }
+                                target={doc.pdf_path ? "_blank" : undefined}
+                                rel={
+                                  doc.pdf_path
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
+                                onClick={(e) => {
+                                  if (!doc.pdf_path) e.preventDefault();
+                                }}
+                                className={`no-underline text-inherit px-3 py-2 rounded flex items-center justify-center gap-2
+    ${
+      "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
+       
+    }
+  `}
                               >
-                                {doc.isView && (
-                                  <FontAwesomeIcon icon={faEye} />
-                                )}
+                                {doc.isView && <FontAwesomeIcon icon={faEye} />}
                                 {doc.name}
                               </a>
                             ))}
@@ -93,7 +104,6 @@ const CurriculumPage = ({ data }) => {
                       );
                     }
 
-                    // ======== PG (BUTTON) ========
                     return (
                       <div
                         key={key}
