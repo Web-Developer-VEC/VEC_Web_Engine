@@ -7,6 +7,8 @@ import { useNavigate } from "react-router";
 import { FaPlus, FaPaperPlane } from "react-icons/fa";
 import { MdUndo } from "react-icons/md";
 import { Trash2, Pencil } from "lucide-react"; // Import Pencil icon
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
+import { toast } from "react-toastify";
 
 // Confirmation Modal Component
 const ConfirmModal = ({
@@ -71,11 +73,12 @@ const EditableCard = ({
     const file = e.target.files?.[0];
     if (!file) return;
     const url = URL.createObjectURL(file);
-    onChange({ ...data, imageFile: file, image: url });
+    // set both imageFile (for upload) and image_path (for preview consistency)
+    onChange({ ...data, imageFile: file, image_path: url });
   };
 
   // If image exists and isn't just a placeholder, show "Replace Photo", else "Upload Photo"
-  const showReplace = !!data.image && !["", "https://via.placeholder.com/150"].includes(data.image);
+  const showReplace = !!data.image_path && !["", "https://via.placeholder.com/150"].includes(data.image_path);
 
   return (
     <div
@@ -91,7 +94,7 @@ const EditableCard = ({
         />
       )}
       <img
-        src={data.image || "https://via.placeholder.com/150"}
+        src={data.image_path || "https://via.placeholder.com/150"}
         alt={data.name || "Profile"}
         className="admin-card-image rounded-md"
       />
@@ -118,7 +121,7 @@ const EditableCard = ({
 };
 
 const Card = ({
-  image,
+  image_path,
   name,
   designation,
   isMain,
@@ -138,7 +141,7 @@ const Card = ({
         title="Select"
       />
     )}
-    <img src={image} alt={name} className="admin-card-image rounded-md" />
+    <img src={image_path} alt={name} className="admin-card-image rounded-md" />
     <h3 className="admin-card-name text-accn dark:text-drkt mt-2 font-[poppins] text-center">{name}</h3>
     <p className="admin-card-designation font-[poppins] text-gray-600 dark:text-drka text-center">{designation}</p>
   </div>
@@ -155,8 +158,8 @@ const AddCard = ({ label, onAdd }) => (
 );
 
 const AdminCardPage = ({ theme, toggle }) => {
-  const [adminData, setAdminData] = useState([]);
-  const [tempData, setTempData] = useState([]);
+  const [adminData, setAdminData] = useState([]); // original from backend
+  const [tempData, setTempData] = useState({ admin: [], staff: [] }); // editing buffer
   const [lastSavedData, setLastSavedData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -173,23 +176,31 @@ const AdminCardPage = ({ theme, toggle }) => {
   const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  // Robust UrlParser: preserve absolute URLs, blobs, data URLs; otherwise prefix BASE_URL if provided
   const UrlParser = (path) => {
     if (!path) return "";
-    if (typeof path === "string" && (path.startsWith("http") || path.startsWith("blob:") || path.startsWith("data:"))) {
-      return path;
-    }
-    return `${BASE_URL || ""}${path}`;
+    if (typeof path !== "string") return String(path);
+    if (path.startsWith("http") || path.startsWith("blob:") || path.startsWith("data:")) return path;
+    const base = BASE_URL ? String(BASE_URL).replace(/\/$/, "") : "";
+    if (!base) return path;
+    return `${base}${path.startsWith("/") ? "" : "/"}${path}`;
   };
 
   const deepClone = (obj) => JSON.parse(JSON.stringify(obj));
+
+  const { sendRequest, loading: reqLoading } = useAdminRequest();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.post(`/api/main-backend/administration`, { type: "admin_office" });
-        const formatted = (res.data?.data || []).map((d, i) => ({
+        // res.data.data is expected to be an array of admin office members
+        const dataArr = res.data?.data || [];
+        // map to consistent shape using image_path (matches JSON key)
+        const formatted = dataArr.map((d, i) => ({
           id: d.id ?? i,
-          image: UrlParser(d.photo_path),
+          image_path: UrlParser(d.image_path || d.photo_path || d.photo || d.image || ""),
           name: d.name || "",
           designation: d.designation || "",
         }));
@@ -203,6 +214,8 @@ const AdminCardPage = ({ theme, toggle }) => {
       } catch (error) {
         if (error?.response?.data?.status === 429) {
           navigate("/ratelimit", { state: { msg: error.response.data.message } });
+        } else {
+          console.error("Failed fetching administration:", error);
         }
       } finally {
         setLoading(false);
@@ -227,20 +240,20 @@ const AdminCardPage = ({ theme, toggle }) => {
   };
 
   const startEditMode = () => {
-    setTempData(deepClone(lastSavedData));
+    setTempData(deepClone(lastSavedData || { admin: [], staff: [] }));
     setEditMode(true);
     setDeletedHistory([]);
     setSelectedIds([]);
   };
 
   const handleAddMember = () => {
-    setTempData((prev) => ({
+    setTempData((prev) => (({
       ...prev,
       staff: [
         ...prev.staff,
-        { id: Date.now(), image: "", name: "", designation: "", _new: true },
+        { id: Date.now(), image_path: "", name: "", designation: "", _new: true },
       ],
-    }));
+    })));
     setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
   };
 
@@ -316,6 +329,7 @@ const AdminCardPage = ({ theme, toggle }) => {
     const mergedData = [...(tempData.admin || []), ...(tempData.staff || [])];
     for (const m of mergedData) {
       if (!m.name?.trim() || !m.designation?.trim()) {
+        toast.error("Name and designation are required for all members.");
         return;
       }
     }
@@ -329,6 +343,7 @@ const AdminCardPage = ({ theme, toggle }) => {
     setIsSaved(true);
     setEditMode(false);
     setSelectedIds([]);
+    toast.success("Changes saved locally. Submit request to apply.");
   };
 
   const handleDiscardAll = () => setShowDiscardModal(true);
@@ -363,7 +378,7 @@ const AdminCardPage = ({ theme, toggle }) => {
         const fieldsChanged = [];
         if ((o.name || "") !== (m.name || "")) fieldsChanged.push("name");
         if ((o.designation || "") !== (m.designation || "")) fieldsChanged.push("designation");
-        if ((o.image || "") !== (m.image || "")) fieldsChanged.push("photo");
+        if (m.imageFile || (o.image_path || "") !== (m.image_path || "")) fieldsChanged.push("photo");
         if (fieldsChanged.length) {
           changes.push({
             type: "Updated",
@@ -434,41 +449,157 @@ const AdminCardPage = ({ theme, toggle }) => {
     }
   };
 
+  const makeSafeFileName = (file) => {
+    if (!file) return "";
+    const ts = Date.now();
+    const name = file.name.replace(/\s+/g, "_");
+    return `${ts}_${name}`;
+  };
+
+  const buildEntriesAndFiles = () => {
+    const entries = [];
+    const filesToSend = [];
+    const mergedTemp = [...(lastSavedData?.admin || tempData.admin || []), ...(lastSavedData?.staff || tempData.staff || [])];
+    
+    const mergedSubmitted = [...(tempData.admin || []), ...(tempData.staff || [])];
+    const originalById = new Map(adminData.map(m => [m.id, m]));
+
+  
+    mergedSubmitted.forEach((m, idx) => {
+      const orig = originalById.get(m.id);
+   
+      if (!orig || m._new) {
+        let meta = { name: m.name || "", designation: m.designation || "" };
+        if (m.imageFile) {
+          const safe = makeSafeFileName(m.imageFile);
+          meta.image_path = `/static/images/admin_office/${safe}`;
+          const renamed = new File([m.imageFile], safe, { type: m.imageFile.type });
+          filesToSend.push(renamed);
+        } else {
+          meta.image_path = m.image_path || "";
+        }
+
+        entries.push({
+          collectionName: "administration",
+          collection_type: "admin_office",
+          action: "add",
+          title: `Add Admin Office Member - ${m.name || ""}`,
+          category: "administration",
+          meta_data: meta,
+          original_data: {}
+        });
+      } else {
+        // Possibly updated
+        const fieldsChanged = [];
+        if ((orig.name || "") !== (m.name || "")) fieldsChanged.push("name");
+        if ((orig.designation || "") !== (m.designation || "")) fieldsChanged.push("designation");
+        if (m.imageFile || ((orig.image_path || "") !== (m.image_path || ""))) fieldsChanged.push("photo");
+
+        if (fieldsChanged.length) {
+          let meta = {};
+          if (fieldsChanged.includes("name")) meta.name = m.name || "";
+          if (fieldsChanged.includes("designation")) meta.designation = m.designation || "";
+          if (fieldsChanged.includes("photo")) {
+            if (m.imageFile) {
+              const safe = makeSafeFileName(m.imageFile);
+              meta.image_path = `/static/images/admin_office/${safe}`;
+              const renamed = new File([m.imageFile], safe, { type: m.imageFile.type });
+              filesToSend.push(renamed);
+            } else {
+              meta.image_path = m.image_path || "";
+            }
+          }
+          entries.push({
+            collectionName: "administration",
+            collection_type: "admin_office",
+            action: "update",
+            title: `Update Admin Office Member - ${m.name || ""}`,
+            category: "administration",
+            meta_data: meta,
+            original_data: {
+              id: orig.id,
+              name: orig.name || "",
+              designation: orig.designation || "",
+              image_path: orig.image_path || ""
+            }
+          });
+        }
+      }
+    });
+
+    const submittedIds = new Set(mergedSubmitted.map(m => m.id));
+    adminData.forEach((orig) => {
+      if (!submittedIds.has(orig.id)) {
+        // Deleted
+        entries.push({
+          collectionName: "administration",
+          collection_type: "admin_office",
+          action: "delete",
+          title: `Delete Admin Office Member - ${orig.name || ""}`,
+          category: "administration",
+          meta_data: { id: orig.id, name: orig.name || "", designation: orig.designation || "" },
+          original_data: { id: orig.id, name: orig.name || "", designation: orig.designation || "", image_path: orig.image_path || "" }
+        });
+      }
+    });
+
+    return { entries, filesToSend };
+  };
+
   const handleRequest = async () => {
     try {
-      if (getChanges().length === 0) {
+      const { entries, filesToSend } = buildEntriesAndFiles();
+
+      if (!entries.length) {
+        toast.info("No changes to request.");
         setShowConfirmModal(false);
         return;
       }
-      const formData = new FormData();
-      formData.append("type", "admin_office");
-      const mergedData = [...tempData.admin, ...tempData.staff];
-      mergedData.forEach((m, i) => {
-        formData.append(`members[${i}][id]`, m.id ?? "");
-        formData.append(`members[${i}][name]`, m.name ?? "");
-        formData.append(`members[${i}][designation]`, m.designation ?? "");
-        formData.append(`members[${i}][_new]`, m._new ? "1" : "0");
-        if (m.imageFile) {
-          formData.append(`members[${i}][photo]`, m.imageFile);
-        } else {
-          formData.append(`members[${i}][photo_path]`, m.image ?? "");
+
+      const result = await sendRequest(entries, filesToSend.length ? filesToSend : null);
+
+      if (result?.success) {
+        const mergedSubmitted = [...(tempData.admin || []), ...(tempData.staff || [])];
+
+        const updatedAdminData = mergedSubmitted.map((m) => {
+          if (m.imageFile) {
+            const safe = makeSafeFileName(m.imageFile);
+            return {
+              id: m.id,
+              name: m.name,
+              designation: m.designation,
+              image_path: `/static/images/admin_office/${safe}`
+            };
+          }
+          return {
+            id: m.id,
+            name: m.name,
+            designation: m.designation,
+            image_path: m.image_path || ""
+          };
+        });
+
+        setAdminData(updatedAdminData);
+        const snapshot = {
+          admin: updatedAdminData.slice(0, 2),
+          staff: updatedAdminData.slice(2),
+        };
+        setLastSavedData(deepClone(snapshot));
+        setDeletedHistory([]);
+        setSelectedIds([]);
+        setIsSaved(false);
+        setShowConfirmModal(false);
+        toast.success("Request submitted successfully.");
+      } else {
+        if (result?.status === 429 || result?.data?.status === 429) {
+          navigate('/ratelimit', { state: { msg: result?.message || result?.data?.message || "Rate limit exceeded" }});
+          return;
         }
-      });
-
-      await axios.put(`/api/main-backend/update-admin-office`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      setAdminData(mergedData);
-      setLastSavedData({
-        admin: mergedData.slice(0, 2),
-        staff: mergedData.slice(2),
-      });
-      setDeletedHistory([]);
-      setShowConfirmModal(false);
-      setIsSaved(false);
+        toast.error(result?.message || "Failed to submit request.");
+      }
     } catch (err) {
-      // no toast
+      console.error("Failed to submit admin request", err);
+      toast.error("Request failed.");
     }
   };
 
@@ -544,13 +675,13 @@ const AdminCardPage = ({ theme, toggle }) => {
               <AddCard
                 label="Add Superior"
                 onAdd={() =>
-                  setTempData((prev) => ({
+                  setTempData((prev) => (({
                     ...prev,
                     admin: [
                       ...prev.admin,
-                      { id: Date.now(), image: "", name: "", designation: "", _new: true },
+                      { id: Date.now(), image_path: "", name: "", designation: "", _new: true },
                     ],
-                  }))
+                  })))
                 }
               />
             )}
@@ -594,7 +725,7 @@ const AdminCardPage = ({ theme, toggle }) => {
                 </button>
               </div>
             )}
-            <div className="flex gap-3">
+            <div className="flex gap-3 mt-5 mr-5">
               {editMode && (
                 <>
                   <button
@@ -616,8 +747,8 @@ const AdminCardPage = ({ theme, toggle }) => {
               {isSaved && !editMode && (
                 <>
                   <button
-                    onClick={handleDiscardAll}
-                    className="px-4 py-2 bg-brwn text-white font-[poppins] rounded hover:text-brown-500"
+                    onClick={confirmDiscardAll}
+                    className="px-4 py-2 mt-bg-brwn text-white font-[poppins] rounded hover:text-brown-500"
                   >
                     Discard All Changes
                   </button>
@@ -715,8 +846,9 @@ const AdminCardPage = ({ theme, toggle }) => {
               <button
                 onClick={handleRequest}
                 className="px-4 py-2 bg-yellow-400 text-black rounded flex items-center gap-2 hover:bg-yellow-500"
+                disabled={reqLoading}
               >
-                <FaPaperPlane /> Confirm Request
+                <FaPaperPlane /> {reqLoading ? "Processing..." : "Confirm Request"}
               </button>
             </div>
           </div>

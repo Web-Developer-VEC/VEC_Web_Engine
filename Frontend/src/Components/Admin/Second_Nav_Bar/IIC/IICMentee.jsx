@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Pencil, Trash2, Plus, Save, Send, X } from "lucide-react";
+import { Pencil, Trash2, Plus, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
-const IICMentee = ({ title, data }) => {
+const IICMentee = ({ title, data, collectionType = "mentee" }) => {
   const [rows, setRows] = useState([]);
   const [committedRows, setCommittedRows] = useState([]);
   const [pendingRows, setPendingRows] = useState(null);
@@ -18,6 +19,8 @@ const IICMentee = ({ title, data }) => {
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const { sendRequest, loading: requestLoading, error } = useAdminRequest();
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -42,7 +45,8 @@ const IICMentee = ({ title, data }) => {
   }, [data]);
 
   const handleStartEdit = () => {
-    setRows(deepCopy(committedRows));
+    const baseData = pendingRows ? deepCopy(pendingRows) : deepCopy(committedRows);
+    setRows(baseData);
     setIsEditing(true);
     setIsDirty(false);
     setIsSaved(false);
@@ -102,24 +106,23 @@ const IICMentee = ({ title, data }) => {
     setIsDirty(true);
   };
 
-const handleCancel = () => {
-  if (pendingRows) {
-    // ✅ Draft exists → revert only current edits, keep the draft
-    setRows(deepCopy(pendingRows));
-    toast.info("Cancelled edits. Draft preserved!");
-  } else {
-    // ❌ No draft yet → revert back to committed/original data
-    setRows(deepCopy(committedRows));
-    toast.info("Cancelled. Reverted to original data!");
-  }
+  const handleCancel = () => {
+    if (pendingRows) {
+      // ✅ Draft exists → revert only current edits, keep the draft
+      setRows(deepCopy(pendingRows));
+      toast.info("Cancelled edits. Draft preserved!");
+    } else {
+      // ❌ No draft yet → revert back to committed/original data
+      setRows(deepCopy(committedRows));
+      toast.info("Cancelled. Reverted to original data!");
+    }
 
-  setIsEditing(false);
-  setIsDirty(false);
-  setSelectedRows([]);
-  setSelectAll(false);
-  setIsSaved(!!pendingRows); // show Discard/Request buttons if draft exists
-};
-
+    setIsEditing(false);
+    setIsDirty(false);
+    setSelectedRows([]);
+    setSelectAll(false);
+    setIsSaved(!!pendingRows); // show Discard/Request buttons if draft exists
+  };
 
   const handleSave = () => {
     // Check for empty fields
@@ -158,86 +161,174 @@ const handleCancel = () => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingRows) return;
-    setCommittedRows(deepCopy(pendingRows));
-    setRows(deepCopy(pendingRows));
-    setPendingRows(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Final request submitted!");
+  const buildPayload = () => {
+    if (!pendingRows) return [];
+    
+    const payload = [];
+    const committedMap = new Map(committedRows.map(r => [r.id, r]));
+    const pendingMap = new Map(pendingRows.map(r => [r.id, r]));
+
+    // Check for deleted rows
+    committedRows.forEach(oldRow => {
+      if (!pendingMap.has(oldRow.id)) {
+        payload.push({
+          collectionName: "iic",
+          collection_type: collectionType,
+          action: "delete",
+          title: `Delete ${oldRow.mentee_institute}`,
+          category: oldRow.mentee_institute,
+          meta_data: {
+            mentee_institute: oldRow.mentee_institute,
+            State: oldRow.State,
+            Zone: oldRow.Zone
+          }
+        });
+      }
+    });
+
+    // Check for added and updated rows
+    pendingRows.forEach(newRow => {
+      if (!committedMap.has(newRow.id)) {
+        // New row (insert)
+        payload.push({
+          collectionName: "iic",
+          collection_type: collectionType,
+          action: "insert",
+          title: `Insert ${newRow.mentee_institute}`,
+          category: newRow.mentee_institute,
+          meta_data: {
+            mentee_institute: newRow.mentee_institute,
+            State: newRow.State,
+            Zone: newRow.Zone
+          }
+        });
+      } else {
+        const oldRow = committedMap.get(newRow.id);
+        // Check if row was updated
+        if (
+          oldRow.mentee_institute !== newRow.mentee_institute ||
+          oldRow.State !== newRow.State ||
+          oldRow.Zone !== newRow.Zone
+        ) {
+          payload.push({
+            collectionName: "iic",
+            collection_type: collectionType,
+            action: "update",
+            title: `Update ${newRow.mentee_institute}`,
+            category: newRow.mentee_institute,
+            meta_data: {
+              mentee_institute: newRow.mentee_institute,
+              State: newRow.State,
+              Zone: newRow.Zone
+            },
+            original_data: {
+              mentee_institute: oldRow.mentee_institute,
+              State: oldRow.State,
+              Zone: oldRow.Zone
+            }
+          });
+        }
+      }
+    });
+
+    return payload;
   };
 
-const revertChange = (rowId) => {
-  if (!pendingRows) return;
+  const handleFinalRequestConfirm = async () => {
+    if (!pendingRows) return;
+    
+    const payload = buildPayload();
+    
+    if (payload.length === 0) {
+      toast.error("No changes to submit!");
+      return;
+    }
 
-  const committedRow = committedRows.find(r => r.id === rowId);
-  let updated;
-
-  if (!committedRow) {
-    // Row was newly added → remove it
-    updated = pendingRows.filter(r => r.id !== rowId);
-  } else if (!pendingRows.find(r => r.id === rowId)) {
-    // Row was deleted → restore it
-    updated = [...pendingRows, deepCopy(committedRow)];
-  } else {
-    // Row was edited → reset to committed version
-    updated = pendingRows.map(r => r.id === rowId ? deepCopy(committedRow) : r);
-  }
-
-  setPendingRows(updated);
-  setRows(deepCopy(updated));
-};
-
-
-const getChanges = () => {
-  if (!pendingRows) return [];
-  const changes = [];
-
-  const committedMap = new Map(committedRows.map(r => [r.id, r]));
-  const pendingMap = new Map(pendingRows.map(r => [r.id, r]));
-
-  // Check for deleted and edited rows
-  committedMap.forEach((oldRow, id) => {
-    if (!pendingMap.has(id)) {
-      changes.push({
-        action: "Deleted",
-        section: "Mentee Details",
-        changes: `Row with Institute: ${oldRow.mentee_institute}`,
-        rowId: id
-      });
+    console.log("Submitting mentee payload:", payload);
+    
+    const result = await sendRequest(payload, []);
+    
+    if (result) {
+      // Update committed rows with pending rows
+      setCommittedRows(deepCopy(pendingRows));
+      setRows(deepCopy(pendingRows));
+      setPendingRows(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+      toast.success("Final request submitted successfully!");
     } else {
-      const newRow = pendingMap.get(id);
-      if (
-        oldRow.mentee_institute !== newRow.mentee_institute ||
-        oldRow.State !== newRow.State ||
-        oldRow.Zone !== newRow.Zone
-      ) {
+      toast.error("Failed to submit request. Please check console for details.");
+    }
+  };
+
+  const revertChange = (rowId) => {
+    if (!pendingRows) return;
+
+    const committedRow = committedRows.find(r => r.id === rowId);
+    let updated;
+
+    if (!committedRow) {
+      // Row was newly added → remove it
+      updated = pendingRows.filter(r => r.id !== rowId);
+    } else if (!pendingRows.find(r => r.id === rowId)) {
+      // Row was deleted → restore it
+      updated = [...pendingRows, deepCopy(committedRow)];
+    } else {
+      // Row was edited → reset to committed version
+      updated = pendingRows.map(r => r.id === rowId ? deepCopy(committedRow) : r);
+    }
+
+    setPendingRows(updated);
+    setRows(deepCopy(updated));
+  };
+
+  const getChanges = () => {
+    if (!pendingRows) return [];
+    const changes = [];
+
+    const committedMap = new Map(committedRows.map(r => [r.id, r]));
+    const pendingMap = new Map(pendingRows.map(r => [r.id, r]));
+
+    // Check for deleted and edited rows
+    committedMap.forEach((oldRow, id) => {
+      if (!pendingMap.has(id)) {
         changes.push({
-          action: "Edited",
+          action: "Deleted",
           section: "Mentee Details",
           changes: `Row with Institute: ${oldRow.mentee_institute}`,
           rowId: id
         });
+      } else {
+        const newRow = pendingMap.get(id);
+        if (
+          oldRow.mentee_institute !== newRow.mentee_institute ||
+          oldRow.State !== newRow.State ||
+          oldRow.Zone !== newRow.Zone
+        ) {
+          changes.push({
+            action: "Edited",
+            section: "Mentee Details",
+            changes: `Row with Institute: ${oldRow.mentee_institute}`,
+            rowId: id
+          });
+        }
       }
-    }
-  });
+    });
 
-  // Check for newly added rows
-  pendingMap.forEach((newRow, id) => {
-    if (!committedMap.has(id)) {
-      changes.push({
-        action: "Added",
-        section: "Mentee Details",
-        changes: `Row with Institute: ${newRow.mentee_institute || "New"}`,
-        rowId: id
-      });
-    }
-  });
+    // Check for newly added rows
+    pendingMap.forEach((newRow, id) => {
+      if (!committedMap.has(id)) {
+        changes.push({
+          action: "Added",
+          section: "Mentee Details",
+          changes: `Row with Institute: ${newRow.mentee_institute || "New"}`,
+          rowId: id
+        });
+      }
+    });
 
-  return changes;
-};
-
+    return changes;
+  };
 
   const capitalizeWords = (str) => {
     if (!str) return "";
@@ -261,38 +352,36 @@ const getChanges = () => {
     <>
       <div className="ic-table-container m-4 relative">
         {/* Header */}
-<div className="relative mb-4">
-  {/* Title centered */}
-  <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">
-    {title || "Mentee Institution"}
-  </h2>
-
-  {/* Edit button on right */}
-  {!isEditing && (
-    <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
-      <button
-        onClick={handleStartEdit}
-        className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
-      >
-        <Pencil size={18} />
-        Edit
-      </button>
-    </div>
-  )}
-</div>
-
+        <div className="relative mb-4">
+          {/* Title centered */}
+          <h2 className="text-4xl text-brwn dark:text-drkt p-2 text-center font-bold">
+            {title || "Mentee Institution"}
+          </h2>
+          {/* Edit button on right */}
+          {!isEditing && !isSaved && (
+            <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+              <button
+                onClick={handleStartEdit}
+                className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+              >
+                <Pencil size={18} />
+                Edit
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="ic-data-table">
+          <table className="min-w-full table-auto border border-black text-[16px]">
             <thead>
-              <tr>
-                <th className="ic-table-head border-2 border-text dark:border-prim">SL No</th>
-                <th className="ic-table-head border-2 border-text dark:border-prim">Mentee Institute</th>
-                <th className="ic-table-head border-2 border-text dark:border-prim">State</th>
-                <th className="ic-table-head border-2 border-text dark:border-prim">Zone</th>
+              <tr className="bg-gry">
+                <th className="ic-table-head border-2 border-text dark:border-prim px-4 py-3">SL No</th>
+                <th className="ic-table-head border-2 border-text dark:border-prim px-4 py-3">Mentee Institute</th>
+                <th className="ic-table-head border-2 border-text dark:border-prim px-4 py-3">State</th>
+                <th className="ic-table-head border-2 border-text dark:border-prim px-4 py-3">Zone</th>
                 {isEditing && (
-                  <th className="ic-table-head border-2 border-text dark:border-prim text-center">
+                  <th className="ic-table-head border-2 border-text dark:border-prim px-3 py-2">
                     <input
                       type="checkbox"
                       checked={selectAll}
@@ -306,8 +395,8 @@ const getChanges = () => {
             <tbody>
               {rows.map((item, i) => (
                 <tr key={item.id || i} className={item.selected ? "bg-blue-50 dark:bg-blue-900/20" : ""}>
-                  <td className="ic-table-data text-center">{i + 1}</td>
-                  <td className="ic-table-data text-left">
+                  <td className="ic-table-data px-4 py-3 border-2 border-text dark:border-prim">{i + 1}</td>
+                  <td className="ic-table-data text-left px-4 py-3 border-2 border-text dark:border-prim">
                     {isEditing ? (
                       <input
                         className="border p-1 w-full"
@@ -319,7 +408,7 @@ const getChanges = () => {
                       capitalizeWords(item.mentee_institute || "")
                     )}
                   </td>
-                  <td className="ic-table-data text-center">
+                  <td className="ic-table-data text-center px-4 py-3 border-2 border-text dark:border-prim">
                     {isEditing ? (
                       <input
                         className="border p-1 w-full text-center"
@@ -331,7 +420,7 @@ const getChanges = () => {
                       item.State
                     )}
                   </td>
-                  <td className="ic-table-data text-center">
+                  <td className="ic-table-data text-center px-4 py-3 border-2 border-text dark:border-prim">
                     {isEditing ? (
                       <input
                         className="border p-1 w-full text-center"
@@ -344,7 +433,7 @@ const getChanges = () => {
                     )}
                   </td>
                   {isEditing && (
-                    <td className="ic-table-data text-center">
+                    <td className="ic-table-head border-2 border-text dark:border-prim px-3 py-2">
                       <input
                         type="checkbox"
                         checked={item.selected || false}
@@ -360,7 +449,7 @@ const getChanges = () => {
                   <td colSpan={isEditing ? 5 : 4} className="ic-table-data text-center">
                     <button
                       onClick={handleAddRow}
-                      className="flex items-center justify-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim mx-auto"
+                      className="flex items-center justify-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim mx-auto mt-2 mb-2"
                     >
                       <Plus size={18} /> Add Row
                     </button>
@@ -372,43 +461,41 @@ const getChanges = () => {
         </div>
 
         {/* Footer Buttons */}
-{isEditing && (
-  <>
-    {/* Delete Selected Button - Centered */}
-    {selectedRows.length > 0 && (
-      <div className="flex justify-center my-4">
-        <button
-          onClick={() => setShowDeleteModal(true)}
-          className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600"
-        >
-          <Trash2 size={18} /> Delete Selected ({selectedRows.length})
-        </button>
-      </div>
-    )}
+        {isEditing && (
+          <>
+            {/* Delete Selected Button - Centered */}
+            {selectedRows.length > 0 && (
+              <div className="flex justify-center my-4">
+                <button
+                  onClick={() => setShowDeleteModal(true)}
+                  className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600"
+                >
+                  <Trash2 size={18} /> Delete Selected ({selectedRows.length})
+                </button>
+              </div>
+            )}
 
-    {/* Cancel & Save Buttons - Right aligned */}
-    <div className="flex justify-end items-center gap-3 mt-6">
-      <button
-        onClick={handleCancel}
-        className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
-      >
-        Cancel
-      </button>
+            {/* Cancel & Save Buttons - Right aligned */}
+            <div className="flex justify-end items-center gap-3 mt-6">
+              <button
+                onClick={handleCancel}
+                className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+              >
+                Cancel
+              </button>
 
-      {isDirty && (
-        <button
-          onClick={handleSave}
-          className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-        >
-           Save
-        </button>
-      )}
-    </div>
-  </>
-)}
-
-
-
+              {isDirty && (
+                <button
+                  onClick={handleSave}
+                  className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                >
+                  Save
+                </button>
+              )}
+            </div>
+          </>
+        )}
+        
         {isSaved && (
           <div className="flex justify-end gap-3 mt-6">
             <button onClick={handleDiscard} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500">
@@ -444,38 +531,42 @@ const getChanges = () => {
                     </tr>
                   </thead>
                   <tbody>
-{changes.map((ch, i) => (
-  <tr key={i}>
-    <td className="border p-2 text-blue-600">{ch.action}</td>
-    <td className="border p-2">{ch.section}</td>
-    <td className="border p-2">{ch.changes}</td>
-    <td className="border p-2">
-      <button
-        onClick={() => revertChange(ch.rowId)}
-        className="p-1 rounded hover:bg-gray-100"
-        title="Revert this change"
-      >
-        <X size={16} className="text-red-500" />
-      </button>
-    </td>
-  </tr>
-))}
-
+                    {changes.map((ch, i) => (
+                      <tr key={i}>
+                        <td className="border p-2 text-blue-600">{ch.action}</td>
+                        <td className="border p-2">{ch.section}</td>
+                        <td className="border p-2">{ch.changes}</td>
+                        <td className="border p-2">
+                          <button
+                            onClick={() => revertChange(ch.rowId)}
+                            className="p-1 rounded hover:bg-gray-100"
+                            title="Revert this change"
+                          >
+                            <X size={16} className="text-red-500" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               ) : (
                 <p className="text-gray-600">No changes detected.</p>
               )}
               <div className="flex justify-end gap-2 mt-6">
-                <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-prim">
+                <button 
+                  onClick={() => setShowRequestModal(false)} 
+                  className="px-4 py-2 rounded bg-gray-400 text-prim"
+                  disabled={requestLoading}
+                >
                   Cancel
                 </button>
                 {changes.length > 0 && (
                   <button
                     onClick={handleFinalRequestConfirm}
-                    className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                    className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim ${requestLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    disabled={requestLoading}
                   >
-                    Final Request
+                    {requestLoading ? "Processing..." : "Final Request"}
                   </button>
                 )}
               </div>

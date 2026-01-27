@@ -202,8 +202,6 @@ const App = () => {
                                         />
                                     }
                                 />
-                                <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme} />} />
-                                <Route path="/abt-yr" drk element={<Aishe toggle={toggle} theme={theme} />} />
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme} />} />
                                 <Route path="/trust" drk element={<NewTrust toggle={toggle} theme={theme} />} />
                                 <Route path="/v_m" drk element={<Collegevisionmission toggle={toggle} theme={theme} />} />
