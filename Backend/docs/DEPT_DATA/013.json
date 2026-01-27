@@ -545,39 +545,39 @@
                   "docs":[
                     {
                     "name":"I Semester",
-                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER I.pdf"
+                      "pdf_path": ""
                   },
                     {
                     "name":"II Semester",
-                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER II.pdf"
+                      "pdf_path": ""
                   },
                     {
                     "name":"III Semester",
-                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER III.pdf"
+                      "pdf_path": ""
                   },
                     {
                     "name":"IV Semester",
-                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER IV.pdf"
+                      "pdf_path": ""
                   },
                     {
                     "name":"V Semester",
-                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER V.pdf"
+                      "pdf_path": ""
                   },
                     {
                     "name":"VI Semester",
-                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER VI.pdf"
+                      "pdf_path": ""
                   },
                     {
                     "name":"VII Semester",
-                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER VII.pdf"
+                      "pdf_path": ""
                   },
                     {
                     "name":"VIII Semester",
-                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER VIII.pdf"
+                      "pdf_path": ""
                   },
                     {
                     "name":"Elective Courses",
-                      "pdf_path": "/static/pdfs/curriculum/013/PROFESSIONAL ELECTIVES , MANDATORY COURSES ,MINOR DEGREE COURSES , OPEN ELECTIVE COURSES"
+                      "pdf_path": ""
                   }
                 ]
                 },
