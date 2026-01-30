@@ -2,75 +2,39 @@
   {
     "action": "insert",
     "collectionName": "placement",
-    "title": "about_placement_test_insert",
-    "collection_type": "about_placement",
+    "title": "placement_team_test_insert",
+    "collection_type": "placement_team",
     "meta_data": {
-      "Training_Placement_Department": [
-        "focus on Machine Learning & Cloud Computing upskilling."
-      ],
-      "phone": [
-        "9900112233"
-      ]
+      "name": "dinesh",
+      "designation": "Campus Placement Coordinator",
+      "qualification": "MBA (HR)"
     }
   },
   {
-    "action": "insert",
+    "action": "update",
     "collectionName": "placement",
     "title": "placement_team_test_insert",
     "collection_type": "placement_team",
     "meta_data": {
-      "name": "(TEST)",
+      "name": "hari",
       "designation": "Campus Placement Coordinator",
-      "qualification": "MBA (HR)",
-      "photo_path": "/static/images/placement_members/leodas_test.webp"
+      "qualification": "MBA (HR)"
+    },
+    "original_data": {
+      "name": "dinesh",
+      "designation": "Campus Placement Coordinator",
+      "qualification": "MBA (HR)"
     }
   },
   {
-    "action": "insert",
+    "action": "delete",
     "collectionName": "placement",
-    "title": "placement_details_test_insert",
-    "collection_type": "placement_details",
+    "title": "placement_team_test_insert",
+    "collection_type": "placement_team",
     "meta_data": {
-      "statistics": {
-        "years": [
-          {
-            "year": "2025-29",
-            "values": [
-              "320",
-              "610",
-              "590",
-              "910",
-              "97.12",
-              "5.50 LPA"
-            ]
-          }
-        ]
-      },
-      "department_wise": {
-        "years": [
-          {
-            "year": "2025-29",
-            "values": [
-              "105",
-              "98",
-              "92",
-              "86",
-              "93",
-              "89",
-              "82",
-              "78",
-              "-",
-              "91"
-            ]
-          }
-        ]
-      },
-      "year_wise_pdfs": [
-        {
-          "year": "2025-26",
-          "pdf_path": "/static/pdfs/placement_docs/placements_25-26_test.pdf"
-        }
-      ]
+      "name": "hari",
+      "designation": "Campus Placement Coordinator",
+      "qualification": "MBA (HR)"
     }
   },
   {
@@ -92,83 +56,25 @@
     "collectionName": "placement",
     "title": "about_placement_test_update",
     "collection_type": "about_placement",
-    "original_data": {
-      "section": "about"
-    },
     "meta_data": {
-      "Our_Vision": "To be the leading placement cell enabling industry-ready graduates.",
-      "Our_Mission": "Equip students with practical skills and corporate readiness.",
-      "email": "placements_test@velammal.edu.in",
-      "phone": [
-        "9887766554",
-        "9900223344"
-      ]
-    }
-  },
-  {
-    "action": "update",
-    "collectionName": "placement",
-    "title": "placement_team_test_update_role",
-    "collection_type": "placement_team",
-    "original_data": {
-      "name": "LEO DAS"
+      "Training_Placement_Department": [
+        "The Training & Placement Department is committed "
+      ],
+      "Our_Vision": "dinesh",
+      "Our_Mission": "hari",
+      "email": "dinesh@velammal.edu.in",
+      "phone": ["9940127839", "9444008233", "6369627212"]
     },
-    "meta_data": {
-      "designation": "Senior Soft Skills Trainer (Test)",
-      "qualification": "M.Sc., M.B.A. (Testing)",
-      "photo_path": "/static/images/placement_members/leodas_updated_test.webp"
-    }
-  },
-  {
-    "action": "update",
-    "collectionName": "placement",
-    "title": "placement_team_test_update_name",
-    "collection_type": "placement_team",
     "original_data": {
-      "name": "LEO DAS"
-    },
-    "meta_data": {
-      "name": "Parthiban (Test)",
-      "designation": "Senior Soft Skills Trainer",
-      "qualification": "M.Sc., M.B.A., P.G.D.C.I (Test)",
-      "photo_path": "/static/images/placement_members/parthiban_test.webp"
-    }
-  },
-  {
-    "action": "update",
-    "collectionName": "placement",
-    "title": "placement_details_test_update_dept",
-    "collection_type": "placement_details",
-    "original_data": {
-      "section": "department_wise",
-      "year": "2025-29"
-    },
-    "meta_data": {
-      "values": [
-        "21",
-        "31",
-        "505",
-        "705",
-        "86.00",
-        "6.25",
-        "28",
-        "35",
-        "46",
-        "11"
-      ]
-    }
-  },
-  {
-    "action": "update",
-    "collectionName": "placement",
-    "title": "placement_details_test_update_pdf",
-    "collection_type": "placement_details",
-    "original_data": {
-      "section": "year_wise_pdfs",
-      "year": "2025-26"
-    },
-    "meta_data": {
-      "pdf_path": "/static/pdfs/placement_docs/placements_23-24_v2_test.pdf"
+      "Training_Placement_Department": [
+        "The Training & Placement Department is committed to bridging the gap between academic learning and industry expectations. Our primary objective is to equip students with the right skills and opportunities to secure engineering jobs and pursue higher education globally.",
+        "Training is seamlessly integrated into the curriculum from the second year onwards, ensuring a structured and progressive learning experience. Our program focuses on technical expertise, equipping students with industry-relevant engineering skills, soft skills and communication, fostering professionalism and leadership, and foreign languages, enhancing global career prospects. This holistic approach prepares students to excel in both placements and higher education opportunities.",
+        "Our industry-aligned methodology includes expert-led sessions, real-world projects, mock interviews, and technical assessments. More than 300+ reputed National and Multinational companies visit our institution for campus recruitment annually. As a result, our graduates consistently secure top placements in reputed engineering firms and excel in competitive exams for higher studies."
+      ],
+      "Our_Vision": "Department of Training & Placement aims to educate, advise, and connect students to opportunities for their career growth in order to foster their intellectual, social, and personal transformations.",
+      "Our_Mission": "The department focuses on bringing the most relevant professional opportunities for the learners through various initiatives and activities.",
+      "email": "placement@velammal.edu.in",
+      "phone": ["9940127839", "9444008233"]
     }
   },
   {
@@ -193,42 +99,198 @@
     }
   },
   {
-    "action": "delete",
+    "action": "insert",
     "collectionName": "placement",
-    "title": "placement_details_test_delete_pdf",
+    "title": "insert details",
     "collection_type": "placement_details",
     "meta_data": {
-      "key": "year_wise_pdfs",
-      "year": "2025-26"
+      "statistics": {
+        "years": [{ "year": "2027", "values": ["14", "15"] }]
+      }
+    }
+  },
+  {
+    "action": "insert",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "meta_data": {
+      "department_wise": {
+        "years": [{ "year": "2026", "values": ["11", "12"] }]
+      }
+    }
+  },
+  {
+    "action": "insert",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "meta_data": {
+      "year_wise_pdfs": [{ "year": "2028", "url": "2028.pdf" }]
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "original_data": {
+      "section": "statistics",
+      "year": "2019-23"
+    },
+    "meta_data": {
+      "values": ["210", "540", "500", "700", "93.00", "6.30 LPA"]
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "original_data": {
+      "section": "statistics",
+      "year": "2019-23"
+    },
+    "meta_data": {
+      "values": ["210", "540", "500", "700", "93.00", "6.30 LPA"]
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "original_data": {
+      "section": "department_wise",
+      "year": "2020-24"
+    },
+    "meta_data": {
+      "values": [
+        "91.00",
+        "80.00",
+        "89.00",
+        "90.00",
+        "78.00",
+        "79.00",
+        "100",
+        "80.00",
+        "84.00",
+        "85.00"
+      ]
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "original_data": {
+      "section": "year_wise_pdfs",
+      "year": "2023-24"
+    },
+    "meta_data": {
+      "pdf_path": "/static/pdfs/placement_docs/placements_23-24_v2.pdf"
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "original_data": {
+      "particulars": [
+        "Number of Companies Visited",
+        "Number of Students registered for Placements",
+        "Number of Students Placed",
+        "Total Number of Offers",
+        "Placement Percentage",
+        "Average Salary"
+      ]
+    },
+    "meta_data": {
+      "particulars": [
+        "Number of Companies Visited",
+        "Number of Students registered for Placements",
+        "Number of Students Placed",
+        "Total Number of Offers",
+        "Average Salary",
+        "dinesh"
+      ]
+    }
+  },
+  {
+    "action": "update",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "original_data": {
+      "departments": [
+        "CSE",
+        "ECE",
+        "EEE",
+        "MECH",
+        "IT",
+        "EIE",
+        "CIVIL",
+        "AUTO",
+        "AI & DS",
+        "Over All"
+      ]
+    },
+    "meta_data": {
+      "departments": [
+        "CSE",
+        "ECE",
+        "EEE",
+        "MECH",
+        "IT",
+        "EIE",
+        "CIVIL",
+        "AUTO",
+        "AI & DS",
+        "Over All",
+        "Hello"
+      ]
     }
   },
   {
     "action": "delete",
     "collectionName": "placement",
-    "title": "placement_details_test_delete_dept",
-    "collection_type": "placement_details",
-    "meta_data": {
-      "key": "department_wise",
-      "year": "2025-29"
-    }
-  },
-  {
-    "action": "delete",
-    "collectionName": "placement",
-    "title": "placement_details_test_delete_stats",
+    "title": "insert details",
     "collection_type": "placement_details",
     "meta_data": {
       "key": "statistics",
-      "year": "2025-29"
+      "year": "2019-23"
     }
   },
   {
     "action": "delete",
     "collectionName": "placement",
-    "title": "placement_team_test_delete_member",
-    "collection_type": "placement_team",
+    "title": "insert details",
+    "collection_type": "placement_details",
     "meta_data": {
-      "name": "Parthiban"
+      "key": "statistics",
+      "year": "2019-23"
+    }
+  },
+  {
+    "action": "delete",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "meta_data": {
+      "key": "department_wise",
+      "year": "2020-24"
+    }
+  },
+  {
+    "action": "delete",
+    "collectionName": "placement",
+    "title": "insert details",
+    "collection_type": "placement_details",
+    "meta_data": {
+      "key": "year_wise_pdfs",
+      "year": "2023-24"
     }
   }
 ]
