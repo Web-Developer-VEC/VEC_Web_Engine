@@ -1,5 +1,6 @@
 const { s3, bucketName } = require("../../../config/s3");
 const { PutObjectCommand } = require("@aws-sdk/client-s3");
+const path = require("path");
 
 async function placementHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
@@ -20,17 +21,25 @@ async function placementHandler(fileStream, docs, req, cb, filename, mimetype) {
 
     const collection_type = docs[0]?.collection_type;
     let s3Key 
+    let ext;
 
     if (collection_type === "placement_team") {
       const name = docs[0].meta_data.name;
-      const folder = `temp/static/images/placement_members/${name}`;
+      ext = path.extname(realFilename)||".jpg";
+      const folder = `temp/static/images/placement_members/${name}${ext}`;
+      s3Key = folder;
+    }
+    if (collection_type === "alumini") {
+      ext = path.extname(realFilename)||".jpg";
+      const folder = `temp/static/images/placement_members/${realFilename}`;
       s3Key = folder;
     }
 
     if (collection_type === "placement_details") {
         const meta_data=docs[0].meta_data;
       const year = docs[0].meta_data.year_wise_pdfs[0].year;
-      const folder = `temp/static/pdfs/placement_docs/placements_${year}`;
+      ext = path.extname(realFilename)||".pdf";
+      const folder = `temp/static/pdfs/placement_docs/placements_${year}${ext}`;
       s3Key = folder;
      docs[0].meta_data.year_wise_pdfs[0].pdf_path = `/${s3Key}`;
      const { pdf_path, ...restMeta } = meta_data;
