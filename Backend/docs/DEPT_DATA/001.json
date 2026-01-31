@@ -535,7 +535,44 @@
                 "syllabus":[
                 {
                   "year": "R - 2023",
-                  "pdf_path": "/static/pdfs/curriculum/001/reg_23.pdf"
+                  "docs":[
+                    {
+                    "name":"I Semester",
+                      "pdf_path": ""
+                  },
+                    {
+                    "name":"II Semester",
+                      "pdf_path": ""
+                  },
+                    {
+                    "name":"III Semester",
+                      "pdf_path": ""
+                  },
+                    {
+                    "name":"IV Semester",
+                      "pdf_path": ""
+                  },
+                    {
+                    "name":"V Semester",
+                      "pdf_path": ""
+                  },
+                    {
+                    "name":"VI Semester",
+                      "pdf_path": ""
+                  },
+                    {
+                    "name":"VII Semester",
+                      "pdf_path": ""
+                  },
+                    {
+                    "name":"VIII Semester",
+                      "pdf_path": ""
+                  },
+                    {
+                    "name":"Elective Courses",
+                      "pdf_path": ""
+                  }
+                ]
                 },
                 {
                     "year":"R - 2019 A (Students admitted during 2021 and 2022)",
@@ -543,8 +580,7 @@
                 }
               ]
               }
-            ]
-          
+            ]  
       }
     ]
   },
