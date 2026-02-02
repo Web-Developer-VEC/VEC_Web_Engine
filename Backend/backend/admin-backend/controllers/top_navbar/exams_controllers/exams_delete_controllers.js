@@ -44,6 +44,16 @@ async function deleteData(tempDoc, mainCollection) {
         throw new Error("Category not found");
       }
 
+      if (typeof meta_data === "object" &&
+    Object.keys(meta_data).length === 0) {
+    await mainCollection.updateOne(
+      { type: collection_type },
+      { $pull: { data: { category } } }
+    );
+
+    return { message: "Category deleted successfully" };
+  }
+
       const content = collection_type ===  "COE"? categoryExists.members:collection_type === "regulation"? categoryExists.links:categoryExists.content;
 
       const isEqual = (obj1, obj2) => {

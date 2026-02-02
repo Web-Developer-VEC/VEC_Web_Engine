@@ -11,23 +11,27 @@ async function admissionsHandler(fileStream, docs, req, cb, filename, mimetype) 
 
     const effectiveMime = mimetype || filename?.mimeType || "image/jpeg";
 
-    console.log("Uploading  file:", { realFilename, effectiveMime });
+    console.log("Uploading file:", { realFilename, effectiveMime });
 
     // ✅ Allow only image formats
-    if (!(effectiveMime.startsWith("image/") )) {
+    if (!(effectiveMime.startsWith("image/"))) {
       fileStream.resume();
-      return cb(new Error("Only images  are allowed"));
+      return cb(new Error("Only images are allowed"));
     }
 
     const collection_type = docs[0]?.collection_type;
     const meta_data = docs[0]?.meta_data;
     let s3Key = realFilename; // default to just filename
-    ext = path.extname(realFilename) || "";
+    const ext = path.extname(realFilename) || "";
 
     if (collection_type === "admission_team") {
+      if (!meta_data?.name) {
+        return cb(new Error("Name required for admission_team upload"));
+      }
       const folder = `temp/static/images/admission_team/${meta_data.name}${ext}`;
-      s3Key = folder ; // add trailing slash
+      s3Key = folder; // add trailing slash if needed
     }
+
     // Buffer the stream
     const chunks = [];
     for await (const chunk of fileStream) {
@@ -55,6 +59,7 @@ async function admissionsHandler(fileStream, docs, req, cb, filename, mimetype) 
 
     cb(null, data);
   } catch (err) {
+    console.error("Upload error:", err);
     cb(err);
   }
 }

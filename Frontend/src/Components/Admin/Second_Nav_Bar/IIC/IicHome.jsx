@@ -3,6 +3,7 @@ import LoadComp from "../../LoadComp";
 import { Pencil, Save, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
@@ -14,6 +15,8 @@ function IicHome({ data }) {
   const [isDirty, setIsDirty] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+
+  const { sendRequest, loading, error } = useAdminRequest();
 
   // Initialize data
   useEffect(() => {
@@ -56,7 +59,7 @@ function IicHome({ data }) {
       toast.error("You need at least one paragraph!");
       return;
     }
-    
+
     const updatedContent = aboutContent.filter((_, i) => i !== index);
     setAboutContent(updatedContent);
     setIsDirty(true);
@@ -78,8 +81,8 @@ function IicHome({ data }) {
 
   const handleSave = () => {
     // Check for empty paragraphs
-    const emptyParagraph = aboutContent.find(p => !p.trim());
-    
+    const emptyParagraph = aboutContent.find((p) => !p.trim());
+
     if (emptyParagraph) {
       toast.error("Please fill all paragraphs before saving!");
       return;
@@ -104,15 +107,42 @@ function IicHome({ data }) {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
+  const handleFinalRequestConfirm = async () => {
     if (!pendingContent) return;
-    
-    setCommittedContent(deepCopy(pendingContent));
-    setAboutContent(deepCopy(pendingContent));
-    setPendingContent(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Final request submitted!");
+
+    // Build payload in the format you provided
+    const payload = [
+      {
+        collectionName: "iic",
+        collection_type: "home",
+        action: "update",
+        title: "Update about_iic",
+        meta_data: {
+          about_iic: deepCopy(pendingContent),
+        },
+        original_data: {
+          about_iic: deepCopy(committedContent || []),
+        },
+      },
+    ];
+
+    try {
+      const result = await sendRequest(payload, []); // no files for this page
+      if (result) {
+        // commit locally
+        setCommittedContent(deepCopy(pendingContent));
+        setAboutContent(deepCopy(pendingContent));
+        setPendingContent(null);
+        setIsSaved(false);
+        setShowRequestModal(false);
+        toast.success("Final request submitted!");
+      } else {
+        toast.error("Request failed. See console for details.");
+      }
+    } catch (err) {
+      console.error("IIC final request error:", err);
+      toast.error("An error occurred while sending final request.");
+    }
   };
 
   const revertChange = () => {
@@ -120,24 +150,25 @@ function IicHome({ data }) {
     setPendingContent(null);
     setIsSaved(false);
     setShowRequestModal(false);
+    toast.info("Reverted to committed content");
   };
 
   const getChanges = () => {
     if (!pendingContent) return [];
-    
+
     const changes = [];
-    
+
     // Check if content has changed
     const hasChanges = JSON.stringify(committedContent) !== JSON.stringify(pendingContent);
-    
+
     if (hasChanges) {
       changes.push({
         action: "Edited",
         section: "About IIC",
-        changes: "Content has been modified"
+        changes: "Content has been modified",
       });
     }
-    
+
     return changes;
   };
 
@@ -154,30 +185,30 @@ function IicHome({ data }) {
   return (
     <div className="relative">
       <ToastContainer position="bottom-right" autoClose={3000} />
-      
+
       {/* Header */}
-      <div className="flex justify-between items-center mb-4 mr-8">
-        <h1 className="text-accn dark:text-drkt text-[32px] font-bold"></h1>
-        
-        {/* Edit button on right */}
-        {!isEditing && (
-          <button
-            onClick={handleStartEdit}
-            className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim mt-3"
-          >
-            <Pencil size={18} />
-            Edit
-          </button>
-        )}
+      <div className="grid grid-cols-3 items-center mb-4 mr-8">
+        <div></div>
+
+        <h1 className="text-accn dark:text-drkt text-[32px] mt-4 mb-4 font-bold text-center">Home</h1>
+
+        <div className="flex justify-end">
+          {!isEditing && (
+            <button
+              onClick={handleStartEdit}
+              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+            >
+              <Pencil size={18} />
+              Edit
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="naac-info-panel border-l-4 border-secd dark:border-drks dark:bg-drkb iic-box m-auto text-sm md:text-base">
-        <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">
-          About IIC
-        </h2>
-        
-        {isEditing ?
-         (
+        <h2 className="text-[24px] text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 naac-about">About IIC</h2>
+
+        {isEditing ? (
           // Edit Mode
           <div className="text-text dark:text-drkt mt-4 mr-4">
             {aboutContent.map((paragraph, index) => (
@@ -188,7 +219,8 @@ function IicHome({ data }) {
                   className="w-full p-2 border rounded min-h-[100px]"
                   placeholder="Enter paragraph content"
                 />
-                {/* {aboutContent.length > 1 && (
+                {/* Uncomment to allow removal of paragraphs
+                {aboutContent.length > 1 && (
                   <button
                     onClick={() => handleRemoveParagraph(index)}
                     className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded hover:bg-red-600"
@@ -199,23 +231,21 @@ function IicHome({ data }) {
                 )} */}
               </div>
             ))}
-            
+
             <div className="flex flex-col sm:flex-row gap-3 mt-4">
-              {/* <button
+              {/* Uncomment to allow adding paragraphs
+              <button
                 onClick={handleAddParagraph}
                 className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
               >
                 Add Paragraph
               </button> */}
-              
+
               <div className="flex gap-3 ml-auto">
-                <button
-                  onClick={handleCancel}
-                  className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
-                >
+                <button onClick={handleCancel} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500">
                   Cancel
                 </button>
-                
+
                 {isDirty && (
                   <button
                     onClick={handleSave}
@@ -235,14 +265,11 @@ function IicHome({ data }) {
                 {paragraph}
               </p>
             ))}
-            
+
             {/* Discard/Request buttons when saved */}
             {isSaved && (
               <div className="flex justify-end gap-3 mt-6">
-                <button 
-                  onClick={handleDiscard} 
-                  className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
-                >
+                <button onClick={handleDiscard} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500">
                   Discard Changes
                 </button>
                 {changes.length > 0 && (
@@ -257,9 +284,7 @@ function IicHome({ data }) {
             )}
           </div>
         )}
-      
       </div>
-      
 
       {/* Final Request Modal */}
       {showRequestModal && (
@@ -286,11 +311,7 @@ function IicHome({ data }) {
                       <td className="border p-2">{ch.section}</td>
                       <td className="border p-2">{ch.changes}</td>
                       <td className="border p-2">
-                        <button
-                          onClick={revertChange}
-                          className="p-1 rounded hover:bg-gray-100"
-                          title="Revert all changes"
-                        >
+                        <button onClick={revertChange} className="p-1 rounded hover:bg-gray-100" title="Revert all changes">
                           <X size={16} className="text-red-500" />
                         </button>
                       </td>
@@ -309,8 +330,9 @@ function IicHome({ data }) {
                 <button
                   onClick={handleFinalRequestConfirm}
                   className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  disabled={loading}
                 >
-                  Final Request
+                  {loading ? "Processing..." : "Final Request"}
                 </button>
               )}
             </div>

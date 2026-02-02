@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import LoadComp from "../../LoadComp";
 import { Pencil, Plus, Send, Trash2, X } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
+import { useAdminRequest } from "../../../hooks/useAdminRequest"; // <-- adjust path if needed
 
 /* --- count-up hook --- */
 function useCountUp(target, duration = 1500) {
@@ -24,7 +25,9 @@ export function StatCard({ number, label, color, isEditing, onDelete, onChange }
   return (
     <>
       {isEditing ? (
-        <div className={`${color} text-white relative rounded shadow-lg w-52 h-32 flex flex-col justify-center items-center gap-2`}>
+        <div
+          className={`${color} text-white relative rounded shadow-lg w-52 h-32 flex flex-col justify-center items-center gap-2`}
+        >
           <input
             type="number"
             value={number ?? ""}
@@ -46,7 +49,9 @@ export function StatCard({ number, label, color, isEditing, onDelete, onChange }
           </button>
         </div>
       ) : (
-        <div className={`${color} text-white rounded relative shadow-lg w-52 h-32 flex flex-col justify-center items-center`}>
+        <div
+          className={`${color} text-white rounded relative shadow-lg w-52 h-32 flex flex-col justify-center items-center`}
+        >
           <div className="text-4xl font-bold">{count}</div>
           <div className="text-sm">{label}</div>
         </div>
@@ -58,6 +63,8 @@ const colors = ["bg-blue-700", "bg-green-600", "bg-green-700"];
 
 /* --- Main Component --- */
 export default function Projects({ data }) {
+  const { sendRequest, loading: requestLoading } = useAdminRequest();
+
   const [projects, setProjects] = useState([]);
   const [deletedProjects, setDeletedProjects] = useState([]);
   const [mode, setMode] = useState("view");
@@ -68,7 +75,7 @@ export default function Projects({ data }) {
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [finalPopupOpen, setFinalPopupOpen] = useState(false);
 
-  // NEW: refs for scrolling/focusing
+  // refs for scrolling/focusing
   const containerRef = useRef(null);
   const lastAddedKeyRef = useRef(null);
   const projectRefs = useRef({});
@@ -90,6 +97,7 @@ export default function Projects({ data }) {
     setDeletedProjects([]);
     setSelectedRows(new Set());
     setMode("view");
+    setUnsavedChanges(false);
   }, [data]);
 
   const handleUndoChange = (change) => {
@@ -123,7 +131,6 @@ export default function Projects({ data }) {
     setUnsavedChanges(savedStr !== curStr || deletedProjects.length > 0);
   }, [projects, deletedProjects]);
 
-  /* --- CRUD Handlers --- */
   const handleEdit = () => setMode("editing");
   const handleCancel = () => {
     setProjects(deepClone(savedRef.current));
@@ -132,11 +139,14 @@ export default function Projects({ data }) {
     const hasSavedChanges = JSON.stringify(savedRef.current) !== JSON.stringify(originalRef.current);
     setMode(hasSavedChanges ? "postSave" : "view");
   };
+
   const handleSave = () => {
     setUnsavedChanges(false);
     setMode("postSave");
   };
+
   const handleRequest = () => setFinalPopupOpen(true);
+
   const handleDiscardAll = () => {
     setProjects(deepClone(originalRef.current));
     savedRef.current = deepClone(originalRef.current);
@@ -144,23 +154,27 @@ export default function Projects({ data }) {
     setUnsavedChanges(false);
     setMode("view");
   };
+
   const handleCheckboxToggle = (i) => {
     const newSet = new Set(selectedRows);
     newSet.has(i) ? newSet.delete(i) : newSet.add(i);
     setSelectedRows(newSet);
   };
+
   const handleStatChange = (sectionIndex, statIndex, field, value) => {
     const updated = deepClone(projects);
     updated[sectionIndex].content[statIndex][field] = value;
     setProjects(updated);
     setUnsavedChanges(true);
   };
+
   const handleStatDelete = (sectionIndex, statIndex) => {
     const updated = deepClone(projects);
     updated[sectionIndex].content.splice(statIndex, 1);
     setProjects(updated);
     setUnsavedChanges(true);
   };
+
   const handleAddCard = (sectionIndex) => {
     const updated = deepClone(projects);
     const content = updated[sectionIndex].content || [];
@@ -187,25 +201,6 @@ export default function Projects({ data }) {
     setSelectedRows(new Set());
     setDeleteConfirmOpen(false);
     setUnsavedChanges(true);
-  };
-
-  const handleFinalSubmit = () => {
-    const newKeys = projects.filter((p) => p.isNew).map((p) => p.__key);
-    const finalized = projects.map((p) => ({ ...p, isNew: false }));
-    const reordered = [
-      ...finalized.filter((p) => newKeys.includes(p.__key)),
-      ...finalized.filter((p) => !newKeys.includes(p.__key)),
-    ];
-
-    savedRef.current = deepClone(reordered);
-    originalRef.current = deepClone(reordered);
-    setProjects(reordered);
-    setDeletedProjects([]);
-    setFinalPopupOpen(false);
-    setMode("view");
-    setUnsavedChanges(false);
-    setSelectedRows(new Set());
-    lastAddedKeyRef.current = null;
   };
 
   useEffect(() => {
@@ -264,6 +259,130 @@ export default function Projects({ data }) {
     return changes;
   };
 
+ 
+  const normalizeStat = (stat) => ({
+    number: stat?.number ?? "",
+    label: stat?.label ?? "",
+  });
+
+  const buildProjectsPayloads = () => {
+    const payloads = [];
+
+    const savedMap = new Map(savedRef.current.map((p) => [p.__key, p]));
+    projects.forEach((proj) => {
+      const orig = savedMap.get(proj.__key);
+      const maxLen = Math.max(orig?.content?.length || 0, proj?.content?.length || 0);
+
+      if (!orig) {
+        (proj.content || []).forEach((card) => {
+          payloads.push({
+            collectionName: "incubation",
+            collection_type: "projects",
+            action: "insert",
+            title: "insert in projects",
+            category: proj.category || "",
+            meta_data: normalizeStat(card),
+          });
+        });
+        return;
+      }
+
+      const categoryChanged = (proj.category || "") !== (orig.category || "");
+
+      for (let i = 0; i < maxLen; i++) {
+        const oldCard = orig.content?.[i];
+        const newCard = proj.content?.[i];
+
+        if (oldCard && !newCard) {
+          payloads.push({
+            collectionName: "incubation",
+            collection_type: "projects",
+            action: "delete",
+            title: "delete in projects",
+            category: orig.category || "",
+            meta_data: normalizeStat(oldCard),
+          });
+          continue;
+        }
+
+        if (!oldCard && newCard) {
+          payloads.push({
+            collectionName: "incubation",
+            collection_type: "projects",
+            action: "insert",
+            title: "insert in projects",
+            category: proj.category || "",
+            meta_data: normalizeStat(newCard),
+          });
+          continue;
+        }
+
+        if (oldCard && newCard) {
+          const changed =
+            categoryChanged ||
+            (oldCard.label ?? "") !== (newCard.label ?? "") ||
+            (oldCard.number ?? null) !== (newCard.number ?? null);
+
+          if (changed) {
+            payloads.push({
+              collectionName: "incubation",
+              collection_type: "projects",
+              action: "update",
+              title: "update in projects",
+              category: proj.category || "",
+              original_data: normalizeStat(oldCard),
+              meta_data: normalizeStat(newCard),
+            });
+          }
+        }
+      }
+    });
+
+    deletedProjects.forEach((proj) => {
+      (proj.content || []).forEach((card) => {
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "projects",
+          action: "delete",
+          title: "delete in projects",
+          category: proj.category || "",
+          meta_data: normalizeStat(card),
+        });
+      });
+    });
+
+    return payloads;
+  };
+
+  const handleFinalSubmit = async () => {
+    const payloads = buildProjectsPayloads();
+
+    if (payloads.length === 0) {
+      // nothing to submit
+      setFinalPopupOpen(false);
+      return;
+    }
+
+    const res = await sendRequest(payloads);
+    if (!res) return;
+    const newKeys = projects.filter((p) => p.isNew).map((p) => p.__key);
+    const finalized = projects.map((p) => ({ ...p, isNew: false }));
+    const reordered = [
+      ...finalized.filter((p) => newKeys.includes(p.__key)),
+      ...finalized.filter((p) => !newKeys.includes(p.__key)),
+    ];
+
+    savedRef.current = deepClone(reordered);
+    originalRef.current = deepClone(reordered);
+    setProjects(reordered);
+    setDeletedProjects([]);
+    setFinalPopupOpen(false);
+    setMode("view");
+    setUnsavedChanges(false);
+    setSelectedRows(new Set());
+    lastAddedKeyRef.current = null;
+  };
+
   return (
     <>
       {projects.length === 0 ? (
@@ -301,6 +420,7 @@ export default function Projects({ data }) {
                         const updated = deepClone(projects);
                         updated[i].category = e.target.value;
                         setProjects(updated);
+                        setUnsavedChanges(true);
                       }}
                       className="flex m-auto my-4 w-[400px] px-1 text-center border-2 border-text text-lg font-bold"
                     />
@@ -353,7 +473,10 @@ export default function Projects({ data }) {
             )}
 
             {mode !== "view" && selectedRows.size > 0 && (
-              <button className="bg-red-500 text-prim p-2 flex m-auto flex-row mt-4 rounded" onClick={() => setDeleteConfirmOpen(true)}>
+              <button
+                className="bg-red-500 text-prim p-2 flex m-auto flex-row mt-4 rounded"
+                onClick={() => setDeleteConfirmOpen(true)}
+              >
                 <Trash2 /> Delete Selected
               </button>
             )}
@@ -362,14 +485,28 @@ export default function Projects({ data }) {
           <div className="py-4 mt-4 flex justify-end gap-4 mr-8">
             {mode === "editing" && (
               <>
-                <button className="bg-gray-500 px-3 py-2 rounded text-white" onClick={handleCancel}>Cancel</button>
-                {unsavedChanges && <button className="bg-secd px-3 py-2 rounded-lg text-text" onClick={handleSave}>Save</button>}
+                <button className="bg-gray-500 px-3 py-2 rounded text-white" onClick={handleCancel}>
+                  Cancel
+                </button>
+                {unsavedChanges && (
+                  <button className="bg-secd px-3 py-2 rounded-lg text-text" onClick={handleSave}>
+                    Save
+                  </button>
+                )}
               </>
             )}
             {mode === "postSave" && (
               <>
-                <button className="bg-red-500 px-3 py-2 rounded text-prim" onClick={handleDiscardAll}>Discard All</button>
-                <button className="bg-secd text-text px-3 py-2 flex flex-row rounded" onClick={handleRequest}><Send className="mr-2" /> Request</button>
+                <button className="bg-red-500 px-3 py-2 rounded text-prim" onClick={handleDiscardAll}>
+                  Discard All
+                </button>
+                <button
+                  className="bg-secd text-text px-3 py-2 flex flex-row rounded"
+                  onClick={handleRequest}
+                  disabled={requestLoading}
+                >
+                  <Send className="mr-2" /> Request
+                </button>
               </>
             )}
           </div>
@@ -381,11 +518,17 @@ export default function Projects({ data }) {
           <div className="bg-white rounded-xl w-[380px] p-6 shadow-lg text-center">
             <h3 className="text-lg font-semibold mb-2">Confirm Delete</h3>
             <p className="text-sm mb-4">
-              {selectedRows.size > 1 ? "Are you sure you want to delete selected projects?" : "Are you sure you want to delete this project?"}
+              {selectedRows.size > 1
+                ? "Are you sure you want to delete selected projects?"
+                : "Are you sure you want to delete this project?"}
             </p>
             <div className="flex justify-center gap-4">
-              <button className="bg-gray-400 px-4 py-2 rounded text-white" onClick={() => setDeleteConfirmOpen(false)}>Cancel</button>
-              <button className="bg-red-600 px-4 py-2 rounded text-white" onClick={handleDeleteSelected}>Delete</button>
+              <button className="bg-gray-400 px-4 py-2 rounded text-white" onClick={() => setDeleteConfirmOpen(false)}>
+                Cancel
+              </button>
+              <button className="bg-red-600 px-4 py-2 rounded text-white" onClick={handleDeleteSelected}>
+                Delete
+              </button>
             </div>
           </div>
         </div>
@@ -419,7 +562,11 @@ export default function Projects({ data }) {
                       <td className="py-2 px-3 border text-blue-600">{c.type}</td>
                       <td className="py-2 px-3 border">{c.project.category || "-"}</td>
                       <td className="py-2 px-3 border">
-                        {c.type === "Edited" ? c.fields.join(", ") : c.type === "Added" ? "New project added" : "Project deleted"}
+                        {c.type === "Edited"
+                          ? (c.fields?.length ? c.fields.join(", ") : "Project updated")
+                          : c.type === "Added"
+                            ? "New project added"
+                            : "Project deleted"}
                       </td>
                       <td className="py-2 px-3 border text-center">
                         <button className="text-red-500" onClick={() => handleUndoChange(c)}>
@@ -433,8 +580,20 @@ export default function Projects({ data }) {
             </table>
 
             <div className="flex justify-end gap-2 mt-6">
-              <button className="px-4 py-2 rounded bg-gray-400 text-prim" onClick={() => setFinalPopupOpen(false)}>Cancel</button>
-              <button className="px-4 py-2 rounded bg-secd text-text" onClick={handleFinalSubmit}>Final Request</button>
+              <button
+                className="px-4 py-2 rounded bg-gray-400 text-prim"
+                onClick={() => setFinalPopupOpen(false)}
+                disabled={requestLoading}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 rounded bg-secd text-text"
+                onClick={handleFinalSubmit}
+                disabled={requestLoading}
+              >
+                {requestLoading ? "Submitting..." : "Final Request"}
+              </button>
             </div>
           </div>
         </div>
