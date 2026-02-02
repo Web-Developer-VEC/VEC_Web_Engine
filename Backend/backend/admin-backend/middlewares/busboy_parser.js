@@ -2,9 +2,9 @@ const Busboy = require("busboy");
 const busboyModels = require("../models/busboymap_models");
 
 function tempstoreBusboy(req, res, next) {
+  
   if (
-    req.method !== "POST" ||
-    !req.headers["content-type"]?.includes("multipart/form-data")
+    req.method !== "POST" || !req.headers["content-type"]?.includes("multipart/form-data")
   ) {
     return next();
   }

@@ -48,10 +48,34 @@ async function insertData(tempDoc, mainCollection) {
 
                 return { message: "Data inserted successfully into existing category" };
             }else{
-                await mainCollection.insertOne(
-                    {type:collection_type},
-                    { $push: { data: { category, ...meta_data } } }
-                )
+                let newCategoryObject;
+
+if (collection_type === "COE") {
+  newCategoryObject = {
+    category,
+    members: meta_data.members || []
+  };
+} else if (collection_type === "regulation") {
+  newCategoryObject = {
+    category,
+    links: meta_data.links || []
+  };
+} else {
+  newCategoryObject = {
+    category,
+    content: meta_data.content || []
+  };
+}
+
+await mainCollection.updateOne(
+  { type: collection_type },
+  {
+    $push: {
+      data: newCategoryObject
+    }
+  }
+);
+
             }
         }
 

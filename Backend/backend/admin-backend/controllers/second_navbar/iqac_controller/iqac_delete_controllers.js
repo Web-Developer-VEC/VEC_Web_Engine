@@ -7,8 +7,11 @@ async function deleteData(tempDoc, mainCollection) {
       return { success: false, error: "collection_type is required" };
     }
 
-    // Define types
+    /* -------------------------------------------------
+       TYPE GROUPS
+    ------------------------------------------------- */
     const singleObjectTypes = ["objectives"];
+
     const multiDocTypes = [
       "coordinator",
       "strategic_plan",
@@ -19,13 +22,15 @@ async function deleteData(tempDoc, mainCollection) {
       "best_practices",
       "minutes_of_meetings",
     ];
+
     const categoryBasedTypes = ["members", "gallery"];
     const departmentBasedTypes = ["academic_admin_audit"];
 
-    // ⿡ Single-doc → clear all data or specific array items
+    /* -------------------------------------------------
+       1️⃣ SINGLE OBJECT TYPES
+    ------------------------------------------------- */
     if (singleObjectTypes.includes(collection_type)) {
       const doc = await mainCollection.findOne({ type: collection_type });
-
       if (!doc || !doc.data) {
         return { success: false, error: "Document not found for this type" };
       }
@@ -51,7 +56,9 @@ async function deleteData(tempDoc, mainCollection) {
       };
     }
 
-    // ⿢ Multi-doc → delete object by key(s)
+    /* -------------------------------------------------
+       2️⃣ MULTI DOC TYPES
+    ------------------------------------------------- */
     if (multiDocTypes.includes(collection_type)) {
       if (!meta_data || Object.keys(meta_data).length === 0) {
         return {
@@ -60,10 +67,14 @@ async function deleteData(tempDoc, mainCollection) {
         };
       }
 
-      await mainCollection.updateOne(
+      const result = await mainCollection.updateOne(
         { type: collection_type },
         { $pull: { data: meta_data } }
       );
+
+      if (result.modifiedCount === 0) {
+        return { success: false, error: "No matching item found to delete" };
+      }
 
       return {
         success: true,
@@ -72,7 +83,9 @@ async function deleteData(tempDoc, mainCollection) {
       };
     }
 
-    // ⿣ Category-based → delete by category or content
+    /* -------------------------------------------------
+       3️⃣ CATEGORY BASED (MEMBERS / GALLERY)
+    ------------------------------------------------- */
     if (categoryBasedTypes.includes(collection_type)) {
       if (!category) {
         return { success: false, error: "category is required" };
@@ -80,6 +93,7 @@ async function deleteData(tempDoc, mainCollection) {
 
       const doc = await mainCollection.findOne({ type: collection_type });
       const categoryExists = doc?.data?.find((c) => c.category === category);
+
       if (!categoryExists) {
         return {
           success: false,
@@ -87,19 +101,10 @@ async function deleteData(tempDoc, mainCollection) {
         };
       }
 
-      // Members
+      /* -------- MEMBERS -------- */
       if (collection_type === "members") {
-        if (!category)
-          return { success: false, error: "Category required for members" };
-
-        if (!doc) {
-          return { success: false, error: "Document not found" };
-        }
-
-        if (
-          !meta_data ||
-          (Object.keys(meta_data).length === 0 && !Array.isArray(meta_data))
-        ) {
+        if (!meta_data || !Array.isArray(meta_data.members)) {
+          // delete entire category
           await mainCollection.updateOne(
             { type: collection_type },
             { $pull: { data: { category } } }
@@ -107,50 +112,68 @@ async function deleteData(tempDoc, mainCollection) {
           return { success: true, message: "Category deleted successfully" };
         }
 
-        const itemsToDelete = Array.isArray(meta_data) ? meta_data : [meta_data];
-        const namesToDelete = itemsToDelete.map((item) => item.name);
+        const namesToDelete = meta_data.members.map((m) => m.name);
 
-        await mainCollection.updateOne(
+        const result = await mainCollection.updateOne(
           { type: collection_type, "data.category": category },
-          { $pull: { "data.$.members": { name: { $in: namesToDelete } } } }
+          {
+            $pull: {
+              "data.$.members": { name: { $in: namesToDelete } },
+            },
+          }
         );
+
+        if (result.modifiedCount === 0) {
+          return { success: false, error: "No members deleted" };
+        }
 
         return { success: true, message: "Member(s) deleted successfully" };
       }
 
-      // Gallery
-      else if (collection_type === "gallery") {
-        if (!meta_data || (Array.isArray(meta_data.paths) && meta_data.paths.length === 0)) {
+      /* -------- GALLERY -------- */
+      if (collection_type === "gallery") {
+        if (!meta_data || !Array.isArray(meta_data.image_path)) {
           await mainCollection.updateOne(
             { type: collection_type },
             { $pull: { data: { category } } }
           );
-        } else {
-          const itemsToDelete = Array.isArray(meta_data.paths)
-            ? meta_data.paths
-            : [meta_data];
-
-          await mainCollection.updateOne(
-            { type: collection_type, "data.category": category },
-            { $pull: { "data.$.paths": { $in: itemsToDelete } } }
-          );
+          return { success: true, message: "Gallery category deleted" };
         }
+
+        const result = await mainCollection.updateOne(
+          { type: collection_type, "data.category": category },
+          {
+            $pull: {
+              "data.$.image_path": { $in: meta_data.image_path },
+            },
+          }
+        );
+
+        if (result.modifiedCount === 0) {
+          return { success: false, error: "No images deleted" };
+        }
+
         return {
           success: true,
-          message: `Delete successful for ${collection_type} - category ${category}`,
-          data: meta_data,
+          message: `Images deleted from ${category}`,
         };
       }
     }
 
-    // ⿤ Department-based → delete by department or content
+    /* -------------------------------------------------
+       4️⃣ DEPARTMENT BASED (ACADEMIC ADMIN AUDIT)
+    ------------------------------------------------- */
     if (departmentBasedTypes.includes(collection_type)) {
       if (!department_name) {
         return { success: false, error: "Department name is required" };
       }
 
       const doc = await mainCollection.findOne({ type: collection_type });
-      const departmentExists = doc?.data?.find(
+      if (!doc || !Array.isArray(doc.data)) {
+        return { success: false, error: "Document not found" };
+      }
+
+      const departmentExists = doc.data.find(
         (d) => d.department_name === department_name
       );
 
@@ -161,48 +184,64 @@ async function deleteData(tempDoc, mainCollection) {
         };
       }
 
-      const yearsArray = Array.isArray(departmentExists.year)
-        ? departmentExists.year
-        : [];
-      const pathsArray = Array.isArray(departmentExists.path)
-        ? departmentExists.path
-        : [];
-
-      if (!meta_data || !meta_data.year || meta_data.year.length === 0) {
-        await mainCollection.updateOne(
+      /* ---- CASE 1: year empty → delete whole department ---- */
+      if (!meta_data.year || meta_data.year.length === 0) {
+        const result = await mainCollection.updateOne(
           { type: collection_type },
           { $pull: { data: { department_name } } }
         );
-      } else {
-        const yearsToDelete = Array.isArray(meta_data.year)
-          ? meta_data.year
-          : [meta_data.year];
-        const updatedYears = [];
-        const updatedPaths = [];
 
-        for (let i = 0; i < yearsArray.length; i++) {
-          if (!yearsToDelete.includes(yearsArray[i])) {
-            updatedYears.push(yearsArray[i]);
-            updatedPaths.push(pathsArray[i]);
-          }
+        if (result.modifiedCount === 0) {
+          return {
+            success: false,
+            error: "No department deleted",
+          };
         }
 
-        await mainCollection.updateOne(
-          { type: collection_type, "data.department_name": department_name },
-          { $set: { "data.$.year": updatedYears, "data.$.path": updatedPaths } }
-        );
+        return {
+          success: true,
+          message: `Department ${department_name} deleted successfully`,
+        };
+      }
+
+      /* ---- CASE 2: delete specific years ---- */
+      const yearsToDelete = Array.isArray(meta_data.year)
+        ? meta_data.year
+        : [meta_data.year];
+
+      const updatedYears = [];
+      const updatedPdfPaths = [];
+
+      for (let i = 0; i < departmentExists.year.length; i++) {
+        if (!yearsToDelete.includes(departmentExists.year[i])) {
+          updatedYears.push(departmentExists.year[i]);
+          updatedPdfPaths.push(departmentExists.pdf_path[i]);
+        }
+      }
+
+      const result = await mainCollection.updateOne(
+        { type: collection_type, "data.department_name": department_name },
+        {
+          $set: {
+            "data.$.year": updatedYears,
+            "data.$.pdf_path": updatedPdfPaths,
+          },
+        }
+      );
+
+      if (result.modifiedCount === 0) {
+        return { success: false, error: "No data deleted" };
       }
 
       return {
         success: true,
-        message: `Delete successful for ${collection_type} - department ${department_name}`,
-        data: meta_data,
+        message: `Deleted specified years for ${department_name}`,
       };
     }
 
     return { success: false, error: "Invalid delete request" };
   } catch (error) {
-    console.error("Error deleting data:", error);
+    console.error("❌ Error deleting data:", error);
     return {
       success: false,
       error: "Internal server error",

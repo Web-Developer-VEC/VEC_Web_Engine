@@ -1,5 +1,3 @@
-
-
 async function updateData(tempDoc, mainCollection) {
   try {
     const { collection_type, meta_data, original_data, category } = tempDoc;
@@ -12,6 +10,14 @@ async function updateData(tempDoc, mainCollection) {
     if (meta_data?.filePaths) {
       meta_data.image_path = meta_data.filePaths;
       delete meta_data.filePaths;
+    }
+    if (meta_data?.photo_path) {
+      meta_data.image_path = meta_data.photo_path;
+      delete meta_data.photo_path;
+    }
+    if (original_data?.photo_path) {
+      original_data.image_path = original_data.photo_path;
+      delete original_data.photo_path;
     }
 
     const doc = await mainCollection.findOne({ type: collection_type });
@@ -56,6 +62,16 @@ async function updateData(tempDoc, mainCollection) {
 
       if (!data || data.year !== year || (arrayKey && !Array.isArray(data[arrayKey]))) {
         throw new Error("Admissions year or structure not found");
+      }
+
+      // Validate department names
+      if (arrayKey && meta_data.data[arrayKey]) {
+        meta_data.data[arrayKey].forEach(obj => {
+          const name = Object.keys(obj)[0];
+          if (!name || name.length < 3) {
+            throw new Error(`Invalid department name: ${name}`);
+          }
+        });
       }
 
       // Map and update items in the array (UG/PG/MBA)
@@ -167,7 +183,7 @@ async function updateData(tempDoc, mainCollection) {
 
     throw new Error("Invalid collection type or data to update not found");
   } catch (error) {
-    console.error(error);
+    console.error("Update error:", error);
     throw error;
   }
 }
