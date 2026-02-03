@@ -77,7 +77,6 @@ async function updateData(tempDoc, mainCollection) {
 
       if (
         collection_type === "placement_details" &&
-        action === "update" &&
         meta_data?.particulars
       ) {
         await mainCollection.updateOne(
@@ -97,7 +96,6 @@ async function updateData(tempDoc, mainCollection) {
       }
       if (
         collection_type === "placement_details" &&
-        action === "update" &&
         meta_data?.departments
       ) {
         await mainCollection.updateOne(
