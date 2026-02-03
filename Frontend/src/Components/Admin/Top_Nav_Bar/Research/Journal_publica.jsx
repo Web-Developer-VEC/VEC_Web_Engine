@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { Eye, Pencil, Plus, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function AdminJournal({ theme, toggle }) {
   const [journal, setJournal] = useState([]);
@@ -37,6 +38,7 @@ export default function AdminJournal({ theme, toggle }) {
 
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
 
   // -------------------- Fetch --------------------
   useEffect(() => {
@@ -238,17 +240,92 @@ export default function AdminJournal({ theme, toggle }) {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    console.log("FINAL REQUEST SUBMITTED", { allChanges, journal });
-    toast.success("Final request submitted");
-    setShowRequestModal(false);
-    setAllChanges([]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(false);
-    originalRef.current = JSON.parse(JSON.stringify(journal));
-    savedDataRef.current = JSON.parse(JSON.stringify(journal));
-  };
+const handleFinalRequestConfirm = async () => {
+  if (!allChanges.length) {
+    toast.info("No changes to submit.");
+    return;
+  }
+
+  const payload = [];
+  const filesToUpload = [];
+
+  for (const change of allChanges) {
+    if (change.action === "add") {
+      const entry = change.changes;
+
+      payload.push({
+        action: "insert",
+        collectionName: "research",
+        title: "Journal Publication",
+        collection_type: "Journal Publication",
+        meta_data: {
+          year: entry.year.new,
+          pdf_path: `/static/pdfs/overall_research/${entry.year.new}/${entry.pdf_path.new}`
+        }
+      });
+
+      if (newPdf instanceof File) {
+        filesToUpload.push(newPdf);
+      }
+    }
+
+    if (change.action === "edit") {
+      const entry = change.changes;
+
+      payload.push({
+        action: "update",
+        collectionName: "research",
+        title: "Journal Publication",
+        collection_type: "Journal Publication",
+        original_data: {
+          year: entry.year.old,
+          pdf_path: entry.pdf_path.old
+        },
+        meta_data: {
+          year: entry.year.new,
+          pdf_path: `/static/pdfs/overall_research/${entry.year.new}/${entry.pdf_path.new}`
+        }
+      });
+
+      if (newPdf instanceof File) {
+        filesToUpload.push(newPdf);
+      }
+    }
+
+    if (change.action === "delete") {
+      payload.push({
+        action: "delete",
+        collectionName: "research",
+        title: "Journal Publication",
+        collection_type: "Journal Publication",
+        meta_data: {
+          year: change.key
+        }
+      });
+    }
+  }
+
+  try {
+    const result = await sendRequest(payload, filesToUpload);
+
+    if (result) {
+      toast.success("Final request submitted successfully");
+
+      setShowRequestModal(false);
+      setAllChanges([]);
+      setSessionChanges([]);
+      setIsEditing(false);
+      setIsSavedOnce(false);
+
+      originalRef.current = JSON.parse(JSON.stringify(journal));
+      savedDataRef.current = JSON.parse(JSON.stringify(journal));
+    }
+  } catch (err) {
+    toast.error("Request submission failed");
+    console.error(err);
+  }
+};
+
 
 const handleUndoChange = (idx) => {
   setAllChanges((prev) => {

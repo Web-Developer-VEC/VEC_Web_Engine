@@ -31,21 +31,21 @@ async function deleteData(tempDoc, mainCollection) {
     // ---------- PLACEMENT DETAILS ----------
     if (collection_type === "placement_details") 
           {
-            if (meta_data.key === "statistics") {
+            if (meta_data.section === "statistics") {
               const index = doc.data.statistics.years.findIndex(
                 (item) => item.year === meta_data.year
               );
               if (index === -1) throw new Error("Year not found in statistics");
               doc.data.statistics.years.splice(index, 1);
 
-            } else if (meta_data.key === "department_wise") {
+            } else if (meta_data.section === "department_wise") {
               const index = doc.data.department_wise.years.findIndex(
                 (item) => item.year === meta_data.year
               );
               if (index === -1) throw new Error("Year not found in department_wise");
               doc.data.department_wise.years.splice(index, 1);
 
-            } else if (meta_data.key === "year_wise_pdfs") {
+            } else if (meta_data.section === "year_wise_pdfs") {
               const index = doc.data.year_wise_pdfs.findIndex(
                 (item) => item.year === meta_data.year
               );

@@ -55,7 +55,7 @@ async function deleteData(deletetemp, mainCollection) {
     if (collection_type === "admin_office" || collection_type === "committee") {
       await mainCollection.updateOne(
             { type: collection_type},
-            { $pull: { "data.$.members": { name: meta_data.name } } }
+            { $pull: { "data": { name: meta_data.name } } }
           );
 
       return { message: `The data is updated into the ${collection_type}` };

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { Eye, Pencil, Plus, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function AdminPolicies({ theme, toggle }) {
   const [policies, setPolicies] = useState([]);
@@ -39,6 +40,7 @@ export default function AdminPolicies({ theme, toggle }) {
   // refs to keep original/saved data
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
   
 
   // -------------------- Fetch --------------------
@@ -80,7 +82,7 @@ export default function AdminPolicies({ theme, toggle }) {
 
   const pushSessionChange = (changeObj) => {
     setSessionChanges((prev) => [...prev, changeObj]);
-  };
+  }
 
   // Save from popup (add or edit)
   // IMPORTANT: for edits we allow keeping existing pdf if user doesn't replace it
@@ -256,18 +258,105 @@ export default function AdminPolicies({ theme, toggle }) {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    // here you would send `allChanges` to backend for approval
-    console.log("FINAL REQUEST SUBMITTED", { allChanges, policies });
-    toast.success("Final request submitted");
-    setShowRequestModal(false);
-    setAllChanges([]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(false);
-    originalRef.current = JSON.parse(JSON.stringify(policies));
-    savedDataRef.current = JSON.parse(JSON.stringify(policies));
-  };
+  const handleFinalRequestConfirm = async () => {
+  if (!allChanges.length) {
+    toast.info("No changes to submit.");
+    return;
+  }
+
+  const payload = [];
+  const filesToUpload = [];
+
+  for (const change of allChanges) {
+
+    // ---------- INSERT ----------
+    if (change.action === "add") {
+      const { name, pdf_path } = change.changes;
+
+      const finalPath = `/static/pdfs/overall_research/${name.new}/${pdf_path.new}`;
+
+      payload.push({
+        action: "insert",
+        collectionName: "research",
+        title: "Policy",
+        collection_type: "Policy",
+        meta_data: {
+          name: name.new,
+          pdf_path: finalPath
+        }
+      });
+
+      if (pdf_path.new instanceof File) {
+        filesToUpload.push(pdf_path.new);
+      }
+    }
+
+    // ---------- UPDATE ----------
+    if (change.action === "edit") {
+      const { name, pdf_path } = change.changes;
+
+      const finalPath = `/static/pdfs/overall_research/${name.new}/${pdf_path.new}`;
+
+      payload.push({
+        action: "update",
+        collectionName: "research",
+        title: "Policy",
+        collection_type: "Policy",
+        original_data: {
+          name: name.old,
+          pdf_path: pdf_path.old
+        },
+        meta_data: {
+          name: name.new,
+          pdf_path: finalPath
+        }
+      });
+
+      if (pdf_path.new instanceof File) {
+        filesToUpload.push(pdf_path.new);
+      }
+    }
+
+    // ---------- DELETE ----------
+    if (change.action === "delete") {
+      payload.push({
+        action: "delete",
+        collectionName: "research",
+        title: "Policy",
+        collection_type: "Policy",
+        meta_data: {
+          name: change.key
+        }
+      });
+    }
+  }
+
+  try {
+    const result = await sendRequest(payload, filesToUpload);
+
+    if (result) {
+  console.log("FINAL REQUEST SUBMITTED", { payload });
+
+  toast.success("Final request submitted");
+
+  setShowRequestModal(false);
+  setAllChanges([]);
+  setSessionChanges([]);
+  setIsEditing(false);
+  setIsSavedOnce(false);
+
+  // update saved references with current policies
+  originalRef.current = JSON.parse(JSON.stringify(policies));
+  savedDataRef.current = JSON.parse(JSON.stringify(policies));
+}
+
+  } catch (err) {
+    console.error("Final request failed:", err);
+    toast.error("Request submission failed");
+  }
+};
+
+
 
 const handleUndoChange = (idx) => {
   setAllChanges((prev) => {

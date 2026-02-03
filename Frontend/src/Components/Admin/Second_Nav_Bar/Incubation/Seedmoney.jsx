@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaUserEdit } from "react-icons/fa";
 import LoadComp from "../../LoadComp";
-import { Send, Save, Plus, Trash2, ArrowDown, Pencil } from "lucide-react";
+import { Send, Plus, Trash2, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest"; 
 
 export default function Seedmoney({ data }) {
+  const { sendRequest, loading: requestLoading } = useAdminRequest();
+
   const [isEditing, setIsEditing] = useState(false);
   const [isSavedOnce, setIsSavedOnce] = useState(false);
   const [editableData, setEditableData] = useState([]);
@@ -18,14 +20,21 @@ export default function Seedmoney({ data }) {
   const [indexToDelete, setIndexToDelete] = useState(null);
 
   const originalRef = useRef([]);
-  const savedDataRef = useRef([]);
+  const sessionBaseRef = useRef([]);
 
   useEffect(() => {
     if (Array.isArray(data)) {
-      const safeData = data.map((d) => ({
+      const safeData = data.map((d, idx) => ({
         ...d,
+        __id: d.__id ?? `${Date.now()}-${Math.random()}-${idx}`,
+        slNo: d.slNo ?? idx + 1,
+        name: d.name ?? "",
         funds: Array.isArray(d.funds)
-          ? d.funds
+          ? d.funds.map((f) => ({
+              amount_in_rupees: f.amount_in_rupees ?? "",
+              organization: f.organization ?? "",
+              year: f.year ?? "",
+            }))
           : [
               {
                 amount_in_rupees: "",
@@ -34,11 +43,25 @@ export default function Seedmoney({ data }) {
               },
             ],
       }));
+
       originalRef.current = JSON.parse(JSON.stringify(safeData));
-      savedDataRef.current = JSON.parse(JSON.stringify(safeData));
+      sessionBaseRef.current = JSON.parse(JSON.stringify(safeData));
       setEditableData(JSON.parse(JSON.stringify(safeData)));
+
+      setSelectedRows(new Set());
+      setSessionChanges([]);
+      setAllChanges([]);
+      setIsEditing(false);
+      setIsSavedOnce(false);
     }
   }, [data]);
+
+  const startEditSession = () => {
+    sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
+    setSessionChanges([]);
+    setSelectedRows(new Set());
+    setIsEditing(true);
+  };
 
   const toggleSelectRow = (index) => {
     const nxt = new Set(selectedRows);
@@ -49,6 +72,7 @@ export default function Seedmoney({ data }) {
 
   const handleAddRow = () => {
     const newRow = {
+      __id: `${Date.now()}-${Math.random()}`,
       slNo: editableData.length + 1,
       name: "",
       funds: [
@@ -60,10 +84,7 @@ export default function Seedmoney({ data }) {
       ],
     };
     setEditableData((p) => [...p, newRow]);
-    setSessionChanges((p) => [
-      ...p,
-      { index: editableData.length, action: "add", changes: {} },
-    ]);
+    setSessionChanges((p) => [...p, { index: editableData.length, action: "add", changes: {} }]);
   };
 
   const handleFieldChange = (rowIndex, field, value, fundIndex = null) => {
@@ -81,31 +102,23 @@ export default function Seedmoney({ data }) {
 
     setSessionChanges((prev) => {
       const cp = [...prev];
-      const existingIndex = cp.findIndex(
-        (c) => c.index === rowIndex && c.action !== "delete"
-      );
+      const existingIndex = cp.findIndex((c) => c.index === rowIndex && c.action !== "delete");
+      const key = fundIndex !== null ? `${field}_${fundIndex}` : field;
+
       if (existingIndex >= 0) {
         cp[existingIndex] = {
           ...cp[existingIndex],
           action: cp[existingIndex].action === "add" ? "add" : "edit",
           changes: {
             ...cp[existingIndex].changes,
-            [fundIndex !== null ? `${field}_${fundIndex}` : field]: {
-              old: oldVal,
-              new: value,
-            },
+            [key]: { old: oldVal, new: value },
           },
         };
       } else {
         cp.push({
           index: rowIndex,
-          action: savedDataRef.current[rowIndex] ? "edit" : "add",
-          changes: {
-            [fundIndex !== null ? `${field}_${fundIndex}` : field]: {
-              old: oldVal,
-              new: value,
-            },
-          },
+          action: sessionBaseRef.current[rowIndex] ? "edit" : "add",
+          changes: { [key]: { old: oldVal, new: value } },
         });
       }
       return cp;
@@ -117,7 +130,6 @@ export default function Seedmoney({ data }) {
       toast.info("No changes to save.");
       return;
     }
-    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
     setAllChanges((p) => [...p, ...sessionChanges]);
     setSessionChanges([]);
     setIsEditing(false);
@@ -126,7 +138,7 @@ export default function Seedmoney({ data }) {
   };
 
   const handleCancelSession = () => {
-    setEditableData(JSON.parse(JSON.stringify(savedDataRef.current)));
+    setEditableData(JSON.parse(JSON.stringify(sessionBaseRef.current)));
     setSessionChanges([]);
     setIsEditing(false);
     toast.info("Session changes discarded. Previous saves preserved.");
@@ -134,7 +146,7 @@ export default function Seedmoney({ data }) {
 
   const handleDiscardAll = () => {
     setEditableData(JSON.parse(JSON.stringify(originalRef.current)));
-    savedDataRef.current = JSON.parse(JSON.stringify(originalRef.current));
+    sessionBaseRef.current = JSON.parse(JSON.stringify(originalRef.current));
     setSessionChanges([]);
     setAllChanges([]);
     setIsEditing(false);
@@ -142,53 +154,115 @@ export default function Seedmoney({ data }) {
     toast.info("All changes discarded and data reset.");
   };
 
+  const getChangesForRequest = () => [...allChanges, ...sessionChanges];
+
   const handleRequest = () => {
-    if (allChanges.length === 0) {
+    if (getChangesForRequest().length === 0) {
       toast.info("No changes to request.");
       return;
     }
     setShowRequestModal(true);
   };
 
-  // Add this function inside your Seedmoney component
-const handleUndoChange = (change) => {
-  const newEditable = [...editableData];
+  const handleUndoChange = (change) => {
+    const newEditable = [...editableData];
 
-  if (change.action === "add") {
-    // Remove newly added row
-    newEditable.splice(change.index, 1);
-  } else if (change.action === "edit") {
-    // Revert edited row
-    newEditable[change.index] = JSON.parse(JSON.stringify(savedDataRef.current[change.index]));
-  } else if (change.action === "delete") {
-    // Restore deleted row at its original index
-    if (change.deletedItem) {
-      newEditable.splice(change.index, 0, change.deletedItem);
+    if (change.action === "add") {
+      newEditable.splice(change.index, 1);
+    } else if (change.action === "edit") {
+      newEditable[change.index] = JSON.parse(JSON.stringify(sessionBaseRef.current[change.index]));
+    } else if (change.action === "delete") {
+      if (change.deletedItem) {
+        newEditable.splice(change.index, 0, change.deletedItem);
+      }
     }
-  }
 
-  // Recalculate slNo
-  newEditable.forEach((r, i) => (r.slNo = i + 1));
+    newEditable.forEach((r, i) => (r.slNo = i + 1));
 
-  // Remove this change from allChanges and sessionChanges
-  const newAllChanges = allChanges.filter((c) => c !== change);
-  const newSessionChanges = sessionChanges.filter((c) => c !== change);
+    setEditableData(newEditable);
+    setAllChanges((prev) => prev.filter((c) => c !== change));
+    setSessionChanges((prev) => prev.filter((c) => c !== change));
+  };
+  
+  const normalizeSeedRow = (row) => ({
+    name: row?.name ?? "",
+    funds: Array.isArray(row?.funds)
+      ? row.funds.map((f) => ({
+          amount_in_rupees:
+            f?.amount_in_rupees === "" ? "" : Number(f?.amount_in_rupees),
+          organization: f?.organization ?? "",
+          year: f?.year ?? "",
+        }))
+      : [],
+  });
 
-  setEditableData(newEditable);
-  setAllChanges(newAllChanges);
-  setSessionChanges(newSessionChanges);
-};
+  const buildSeedMoneyPayloads = () => {
+    const changes = getChangesForRequest();
+    const payloads = [];
 
-  const handleFinalRequestConfirm = () => {
-    console.log("FINAL REQUEST SUBMITTED:", { allChanges, editableData });
-    toast.success("Final request submitted");
+    for (const ch of changes) {
+      if (ch.action === "delete") {
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "seed_money",
+          action: "delete",
+          title: "delete in seed_money",
+          meta_data: normalizeSeedRow(ch.deletedItem),
+        });
+        continue;
+      }
+
+      const currentRow = editableData[ch.index];
+      if (!currentRow) continue;
+
+      if (ch.action === "add") {
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "seed_money",
+          action: "insert",
+          title: "insert in seed_money",
+          meta_data: normalizeSeedRow(currentRow),
+        });
+        continue;
+      }
+
+      if (ch.action === "edit") {
+        const originalRow = sessionBaseRef.current?.[ch.index];
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "seed_money",
+          action: "update",
+          title: "update in seed_money",
+          original_data: normalizeSeedRow(originalRow),
+          meta_data: normalizeSeedRow(currentRow),
+        });
+      }
+    }
+
+    return payloads;
+  };
+
+  const handleFinalRequestConfirm = async () => {
+    const payloads = buildSeedMoneyPayloads();
+
+    if (payloads.length === 0) {
+      toast.info("No changes to submit.");
+      return;
+    }
+
+    const res = await sendRequest(payloads);
+    if (!res) return;
+
+    toast.success(res.message || "Final request submitted");
     setShowRequestModal(false);
+
     setAllChanges([]);
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
+
     originalRef.current = JSON.parse(JSON.stringify(editableData));
-    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
+    sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
   };
 
   const openDeleteMultiple = () => {
@@ -244,7 +318,7 @@ const handleUndoChange = (change) => {
         <div className="flex justify-end pr-8 mt-10">
           <button
             className="flex items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim"
-            onClick={() => setIsEditing(true)}
+            onClick={startEditSession}
           >
             <Pencil className="mr-2" /> Edit
           </button>
@@ -269,10 +343,12 @@ const handleUndoChange = (change) => {
           <tbody>
             {editableData.map((row, i) =>
               (row.funds || []).map((fund, j) => (
-                <tr key={`${i}-${j}`}>
+                <tr key={`${row.__id}-${j}`}>
                   {j === 0 && (
                     <>
-                      <td rowSpan={row.funds.length} className="ic-table-data">{row.slNo ?? i + 1}</td>
+                      <td rowSpan={row.funds.length} className="ic-table-data">
+                        {row.slNo ?? i + 1}
+                      </td>
                       <td rowSpan={row.funds.length} className="ic-table-data">
                         {isEditing ? (
                           <input
@@ -292,23 +368,29 @@ const handleUndoChange = (change) => {
                       <input
                         className="border px-0 py-1 w-full"
                         value={fund.amount_in_rupees ?? ""}
-                        onChange={(e) => handleFieldChange(i, "amount_in_rupees", e.target.value, j)}
+                        onChange={(e) =>
+                          handleFieldChange(i, "amount_in_rupees", e.target.value, j)
+                        }
                       />
                     ) : (
                       fund.amount_in_rupees || "-"
                     )}
                   </td>
+
                   <td className="ic-table-data">
                     {isEditing ? (
                       <input
                         className="border px-0 py-1 w-full"
                         value={fund.organization ?? ""}
-                        onChange={(e) => handleFieldChange(i, "organization", e.target.value, j)}
+                        onChange={(e) =>
+                          handleFieldChange(i, "organization", e.target.value, j)
+                        }
                       />
                     ) : (
                       fund.organization || "-"
                     )}
                   </td>
+
                   <td className="ic-table-data">
                     {isEditing ? (
                       <input
@@ -364,7 +446,10 @@ const handleUndoChange = (change) => {
               Cancel
             </button>
             {sessionChanges.length > 0 && (
-              <button className="bg-secd hoverbg-brwn text-text hover:text-prim  px-3 py-2 rounded-lg" onClick={handleSave}>
+              <button
+                className="bg-secd hoverbg-brwn text-text hover:text-prim  px-3 py-2 rounded-lg"
+                onClick={handleSave}
+              >
                 Save
               </button>
             )}
@@ -376,80 +461,78 @@ const handleUndoChange = (change) => {
             <button className="bg-red-500 px-3 py-2 rounded text-prim" onClick={handleDiscardAll}>
               Discard All
             </button>
-            <button className="bg-secd text-text px-3 py-2 flex flex-row rounded  hover:bg-brwn hover:text-prim " onClick={handleRequest}>
+            <button
+              className="bg-secd text-text px-3 py-2 flex flex-row rounded hover:bg-brwn hover:text-prim"
+              onClick={handleRequest}
+              disabled={requestLoading}
+            >
               <Send className="mr-2" /> Request
             </button>
           </div>
         )}
       </div>
 
-      {/* Final Request Modal */}
-{showRequestModal && (
-  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
-    <div className="bg-white p-6 rounded-xl w-[700px] max-h-[80vh] overflow-y-auto shadow-lg">
-      <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">Request</h2>
-      <p className="text-sm text-red-500 mb-4 text-center">
-        Note: Your changes will stay pending until approved by the superior
-        admin. Once approved will go live.
-      </p>
+      {/* Request Modal */}
+      {showRequestModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
+          <div className="bg-white p-6 rounded-xl w-[700px] max-h-[80vh] overflow-y-auto shadow-lg">
+            <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">Request</h2>
+            <p className="text-sm text-red-500 mb-4 text-center">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+            </p>
 
-      <table className="w-full border text-sm">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="py-2 px-3 border">Action</th>
-            <th className="py-2 px-3 border">Row</th>
-            <th className="py-2 px-3 border">Changed Field</th>
-            <th className="py-2 px-3 border">Undo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allChanges.map((c, idx) => (
-            <tr key={idx} className="even:bg-white odd:bg-gray-50">
-              <td className="py-2 px-3 border text-blue-600">
-                {c.action === "edit" ? "Edited" : c.action === "add" ? "Added" : "Deleted"}
-              </td>
-              <td className="py-2 px-3 border">{c.index + 1}</td>
-              <td className="py-2 px-3 border text-[13px]">
-                {c.action === "edit"
-                  ? Object.keys(c.changes).join(", ")
-                  : c.action === "add"
-                  ? "New row added"
-                  : "Row deleted"}
-              </td>
-              <td className="py-2 px-3 border text-center">
-               <td className="py-2 px-3  text-center">
-                <button
-                  className="text-red-500"
-                  onClick={() => handleUndoChange(c)}
-                >
-                  X
-                </button>
-              </td>
+            <table className="w-full border text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="py-2 px-3 border">Action</th>
+                  <th className="py-2 px-3 border">Row</th>
+                  <th className="py-2 px-3 border">Changed Field</th>
+                  <th className="py-2 px-3 border">Undo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {getChangesForRequest().map((c, idx) => (
+                  <tr key={idx} className="even:bg-white odd:bg-gray-50">
+                    <td className="py-2 px-3 border text-blue-600">
+                      {c.action === "edit" ? "Edited" : c.action === "add" ? "Added" : "Deleted"}
+                    </td>
+                    <td className="py-2 px-3 border">{c.index + 1}</td>
+                    <td className="py-2 px-3 border text-[13px]">
+                      {c.action === "edit"
+                        ? Object.keys(c.changes || {}).join(", ")
+                        : c.action === "add"
+                          ? "New row added"
+                          : "Row deleted"}
+                    </td>
+                    <td className="py-2 px-3 border text-center">
+                      <button className="text-red-500" onClick={() => handleUndoChange(c)}>
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
 
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <div className="flex justify-end gap-2 mt-6">
-        <button
-          className="px-4 py-2 rounded bg-gray-400 text-white"
-          onClick={() => setShowRequestModal(false)}
-        >
-          Cancel
-        </button>
-        <button
-          className="px-4 py-2 rounded bg-secd text-text"
-          onClick={handleFinalRequestConfirm}
-        >
-          Final Request
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
+            <div className="flex justify-end gap-2 mt-6">
+              <button
+                className="px-4 py-2 rounded bg-gray-400 text-white"
+                onClick={() => setShowRequestModal(false)}
+                disabled={requestLoading}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 rounded bg-secd text-text"
+                onClick={handleFinalRequestConfirm}
+                disabled={requestLoading}
+              >
+                {requestLoading ? "Submitting..." : "Final Request"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Delete Confirmation Modal */}
       {deleteConfirmOpen && (

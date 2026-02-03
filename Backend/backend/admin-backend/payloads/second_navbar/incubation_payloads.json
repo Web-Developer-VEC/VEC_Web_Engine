@@ -104,7 +104,7 @@
         "title":"insert in incubation_committee",
         "meta_data":{
         "name": "Dr.dinesh",
-        "image": "",
+        "image_path": "",
         "Designation": "MBA Head",
         "position": "Incubation Head"
       }
@@ -116,13 +116,13 @@
         "title":"update in incubation_committee",
         "original_data":{
         "name": "Dr.dinesh",
-        "image": "",
+        "image_path": "",
         "Designation": "MBA Head",
         "position": "Incubation Head"
       },
         "meta_data":{
         "name": "Dr.hari",
-        "image": "",
+        "image_path": "",
         "Designation": "MBA Head",
         "position": "Incubation Head"
       }
@@ -134,7 +134,7 @@
         "title":"delete in incubation_committee",
         "meta_data":{
         "name": "Dr.hari",
-        "image": "",
+        "image_path": "",
         "Designation": "MBA Head",
         "position": "Incubation Head"
       }
@@ -146,7 +146,7 @@
         "title":"insert in facilities",
         "meta_data":{
         "name": "dinesh",
-        "image": "/static/images/incubation/1.webp"
+        "image_path": "/static/image_paths/incubation/1.webp"
       }
     },
     {
@@ -156,11 +156,11 @@
         "title":"update in facilities",
         "original_data":{
         "name": "dinesh",
-        "image": "/static/images/incubation/1.webp"
+        "image_path": "/static/image_paths/incubation/1.webp"
       },
         "meta_data":{
         "name": "hari",
-        "image": "/static/images/incubation/1.webp"
+        "image_path": "/static/image_paths/incubation/1.webp"
       }
     },
     {
@@ -170,7 +170,7 @@
         "title":"delete in facilities",
         "meta_data":{
         "name": "hari",
-        "image": "/static/images/incubation/1.webp"
+        "image_path": "/static/image_paths/incubation/1.webp"
       }
     },
     {
@@ -245,7 +245,7 @@
         "Patent_Filed_Date": "03-07-2018"
       },
         "original_data":{
-        "Sl_No": 1001,
+        "Sl_No": 49,
         "Patent_Application_No": "201841024729",
         "Status_of_Patent": "Published",
         "Inventor_Name": ["Dr. dinesh"],

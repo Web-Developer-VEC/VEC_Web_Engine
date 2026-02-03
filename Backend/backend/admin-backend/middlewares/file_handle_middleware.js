@@ -75,6 +75,7 @@ async function insertFile(tempDoc, tempCollection) {
           }
           return p;
         }
+        return p;
     })
   );
 
