@@ -16,7 +16,7 @@ async function updateData(tempDoc, mainCollection) {
     if (!doc) throw new Error(`Type '${collection_type}' does not exist. Cannot insert to non-existent collection.`);
 
     // Block HRHandBook and organization_chart insert
-    if (collection_type.includes(update)) {
+    if (update.includes(collection_type)) {
       await mainCollection.updateOne(
         {type:collection_type},
         {$set:{data:meta_data}}

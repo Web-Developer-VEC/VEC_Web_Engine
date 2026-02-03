@@ -94,7 +94,7 @@ function findMatchingItem(container, original, excludeKey) {
         // ✅ Use all uploaded files (no docIndex filter)
         const allFiles = req.uploadedFiles || [];
 
-        const skipPdfFor = ["placement_details", "nirf", "nba","regulation","all_forms","COE"];
+        const skipPdfFor = ["AISHE","ug","mba","placement_details", "nirf", "nba","regulation","all_forms","COE"];
 
         const skipImageFor = ["warden","members","library_services","team","achivements"];
 

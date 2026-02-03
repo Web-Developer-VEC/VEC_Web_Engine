@@ -7,39 +7,100 @@ async function admissionsHandler(fileStream, docs, req, cb, filename, mimetype) 
     const realFilename =
       typeof filename === "string"
         ? filename
-        : filename?.filename || "image.jpg";
+        : filename?.filename || "file";
 
-    const effectiveMime = mimetype || filename?.mimeType || "image/jpeg";
-
-    console.log("Uploading file:", { realFilename, effectiveMime });
-
-    // ✅ Allow only image formats
-    if (!(effectiveMime.startsWith("image/"))) {
-      fileStream.resume();
-      return cb(new Error("Only images are allowed"));
-    }
+    const effectiveMime =
+      mimetype || filename?.mimeType || "application/octet-stream";
 
     const collection_type = docs[0]?.collection_type;
     const meta_data = docs[0]?.meta_data;
-    let s3Key = realFilename; // default to just filename
-    const ext = path.extname(realFilename) || "";
 
-    if (collection_type === "admission_team") {
+    const ext = path.extname(realFilename);
+    let s3Key;
+
+    /* ===============================
+       VALIDATION
+    =============================== */
+
+    const isImage = effectiveMime.startsWith("image/");
+    const isPDF = effectiveMime === "application/pdf";
+
+    if (!isImage && !isPDF) {
+      fileStream.resume();
+      return cb(new Error("Only image and PDF files are allowed"));
+    }
+
+    /* ===============================
+       IMAGE HANDLING
+    =============================== */
+    if (isImage) {
+      if (collection_type !== "admission_team") {
+        return cb(new Error("Images are allowed only for admission_team"));
+      }
+
       if (!meta_data?.name) {
         return cb(new Error("Name required for admission_team upload"));
       }
-      const folder = `temp/static/images/admission_team/${meta_data.name}${ext}`;
-      s3Key = folder; // add trailing slash if needed
+
+      s3Key = `temp/static/images/admission_team/${meta_data.name}${ext}`;
     }
 
-    // Buffer the stream
+    /* ===============================
+       PDF HANDLING
+    =============================== */
+   /* ===============================
+   PDF HANDLING
+=============================== */
+if (isPDF) {
+  if (!["ug", "mba"].includes(collection_type)) {
+    return cb(new Error("PDF uploads not allowed for this collection type"));
+  }
+
+  let quotaKey = null;
+
+  if (collection_type === "ug") {
+    quotaKey = meta_data?.BE_Government
+      ? "BE_Government"
+      : meta_data?.BE_Management
+      ? "BE_Management"
+      : null;
+  }
+
+  if (collection_type === "mba") {
+    quotaKey = meta_data?.MBA_Government
+      ? "MBA_Government"
+      : meta_data?.MBA_Management
+      ? "MBA_Management"
+      : null;
+  }
+
+  if (!quotaKey) {
+    return cb(new Error("Invalid admission quota structure"));
+  }
+
+  const ext = path.extname(realFilename) || ".pdf";
+  s3Key = `temp/static/pdfs/admission/${realFilename}`;
+
+  // ✅ Inject pdf_path INSIDE quota object (like placement_details)
+  meta_data[quotaKey].pdf_path = `/${s3Key}`;
+
+  // ✅ Remove wrong root-level pdf_path if exists
+  delete meta_data.pdf_path;
+}
+
+
+    /* ===============================
+       BUFFER STREAM
+    =============================== */
     const chunks = [];
     for await (const chunk of fileStream) {
       chunks.push(chunk);
     }
     const fileBuffer = Buffer.concat(chunks);
 
-    // Upload to S3
+    /* ===============================
+       S3 UPLOAD
+    =============================== */
     const command = new PutObjectCommand({
       Bucket: bucketName,
       Key: s3Key,
@@ -49,11 +110,13 @@ async function admissionsHandler(fileStream, docs, req, cb, filename, mimetype) 
 
     const data = await s3.send(command);
 
-    // Track uploaded files
+    /* ===============================
+       TRACK UPLOADS
+    =============================== */
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
       key: s3Key,
-      location: `/${s3Key}`, // replace with full S3 URL if needed
+      location: `/${s3Key}`,
       mimetype: effectiveMime,
     });
 
