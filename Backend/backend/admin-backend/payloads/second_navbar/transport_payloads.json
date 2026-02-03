@@ -5,7 +5,7 @@
   "title": "Update Transport PDF",
   "category": "transport",
   "meta_data": {
-    "pdf_path": "/static/pdfs/transport/VELAMMAL_BUS_ROUTES_2025.pdf"
+    "pdf_path": ""
   },
   "original_data": {
     "pdf_path": "/static/pdfs/transport/VELAMMAL_BUS_ROUTES 2024 - 25.pdf"
