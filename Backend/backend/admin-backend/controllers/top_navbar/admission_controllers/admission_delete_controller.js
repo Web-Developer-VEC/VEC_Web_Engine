@@ -1,4 +1,3 @@
-
 async function deleteData(tempDoc, mainCollection) {
   try {
     const { collection_type, meta_data } = tempDoc;
@@ -110,6 +109,10 @@ async function deleteData(tempDoc, mainCollection) {
       for (const key of keysForType) {
         if (meta_data[key] && Array.isArray(meta_data[key])) {
           const toDelete = meta_data[key].map(obj => Object.keys(obj)[0]);
+          // Validate department names (basic check for typos)
+          if (toDelete.some(name => !name || name.length < 3)) {
+            throw new Error(`Invalid department name in delete for ${key}`);
+          }
           // Defensive: ensure existingArr is always an array
           const docUG = await mainCollection.findOne({ type: collection_type, "data.year": meta_data.year });
           if (!docUG || !docUG.data) continue;
@@ -222,7 +225,7 @@ async function deleteData(tempDoc, mainCollection) {
 
     throw new Error("Invalid collection type or delete criteria");
   } catch (error) {
-    console.error(error);
+    console.error("Delete error:", error);
     throw error;
   }
 }

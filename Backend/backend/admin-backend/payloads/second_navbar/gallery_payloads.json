@@ -6,9 +6,8 @@
   "category": "Destiny 28",
   "meta_data": {
         "image_path": [
-          "/static/images/gallery/destiny_28/1.webp",
+           "/static/images/gallery/destiny_28/1.webp",
           "/static/images/gallery/destiny_28/2.webp",
-          "/static/images/gallery/destiny_28/3.webp",
           "/static/images/gallery/destiny_28/4.webp",
           "/static/images/gallery/destiny_28/5.webp",
           "/static/images/gallery/destiny_28/6.webp",
@@ -46,19 +45,9 @@
   "collection_type": "gallery",
   "action": "insert",
   "title": "insertion of gallery",
-  "category":"Destiny 28",
+  "category":"Hira 2025",
   "meta_data": {
         "image_path": [
-          "/static/images/gallery/destiny_28/1.webp",
-          "/static/images/gallery/destiny_28/2.webp",
-          "/static/images/gallery/destiny_28/3.webp",
-          "/static/images/gallery/destiny_28/4.webp",
-          "/static/images/gallery/destiny_28/5.webp",
-          "/static/images/gallery/destiny_28/6.webp",
-          "/static/images/gallery/destiny_28/7.webp",
-          "/static/images/gallery/destiny_28/8.webp",
-          "/static/images/gallery/destiny_28/9.webp",
-          "/static/images/gallery/destiny_28/10.webp"
         ]   
   },
   "original_data": null

@@ -2,9 +2,9 @@ const Busboy = require("busboy");
 const busboyModels = require("../models/busboymap_models");
 
 function tempstoreBusboy(req, res, next) {
+  
   if (
-    req.method !== "POST" ||
-    !req.headers["content-type"]?.includes("multipart/form-data")
+    req.method !== "POST" || !req.headers["content-type"]?.includes("multipart/form-data")
   ) {
     return next();
   }
@@ -20,12 +20,22 @@ function tempstoreBusboy(req, res, next) {
         const parsed = JSON.parse(val);
         req.docsFromBusboy = Array.isArray(parsed) ? parsed : [parsed];
       } catch (err) {
-        return res.status(400).json({ error: "Invalid JSON in docs" });
+        hasError = true;
+
+        if (!res.headersSent) {
+          res.status(400).json({
+            error: "Invalid JSON format in docs"
+          });
+        }
+
+        // 🔥 STOP BUSBOY COMPLETELY
+        busboy.removeAllListeners();
+        req.unpipe(busboy);
       }
     }
   });
 
-  busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
+  busboy.on("file", (fieldname, file, filename, mimetype) => {
     if (fieldname !== "files") {
       file.resume();
       return;
