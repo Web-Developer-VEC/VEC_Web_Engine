@@ -1,12 +1,31 @@
 import { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import api from "../api/api";
+import axios from "axios";
+import { m } from "framer-motion";
 
 /* -------------------------------- helpers -------------------------------- */
 
-const getFileNameFromPath = (path = "") => {
-  if (!path) return null;
-  return path.split("/").pop();
+const extractFileNames = (meta = {}) => {
+  const paths = [];
+
+  // PDF paths
+  if (Array.isArray(meta.pdf_path)) {
+    paths.push(...meta.pdf_path);
+  } else if (typeof meta.pdf_path === "string") {
+    paths.push(meta.pdf_path);
+  }
+
+  // Image paths
+  if (Array.isArray(meta.image_path)) {
+    paths.push(...meta.image_path);
+  } else if (typeof meta.image_path === "string") {
+    paths.push(meta.image_path);
+  }
+
+  return paths
+    .filter(Boolean)
+    .map((p) => p.split("/").pop());
 };
 
 const normalizeRequests = (payload, files) => {
@@ -14,12 +33,15 @@ const normalizeRequests = (payload, files) => {
   const fileList = Array.isArray(files) ? files : files ? [files] : [];
 
   return docs.map((doc) => {
-    const fileName = getFileNameFromPath(doc.meta_data?.path);
-    const matchedFile = fileList.find((f) => f.name === fileName);
+    const fileNames = extractFileNames(doc.meta_data);
+
+    const matchedFiles = fileList.filter((f) =>
+      fileNames.includes(f.name)
+    );
 
     return {
       doc,
-      file: matchedFile || null,
+      files: matchedFiles, // 🔥 ARRAY of files for ONE doc
     };
   });
 };
@@ -45,15 +67,19 @@ export function useAdminRequest() {
     try {
       const normalized = normalizeRequests(payload, files);
 
-      for (const { doc, file } of normalized) {
+      for (const { doc, files } of normalized) {
+        console.log("Admin Request", doc, files);
+        
         const formData = new FormData();
         formData.append("docs", JSON.stringify([doc]));
 
-        if (file) {
-          formData.append("files", file);
+        if (files) {
+          files.forEach((file) => {
+            formData.append("files", file);
+          });
         }
 
-        await api.post(
+        const data = await api.post(
           "/admin-backend/temp",
           formData,
           {
@@ -70,9 +96,9 @@ export function useAdminRequest() {
       }
 
       toast.success("Request submitted successfully");
-      return true;
+      return { success: true };
     } catch (err) {
-      if (api.isCancel(err)) {
+      if (axios.isCancel(err)) {
         console.warn("Request cancelled");
       } else {
         console.error("Admin request failed:", err);

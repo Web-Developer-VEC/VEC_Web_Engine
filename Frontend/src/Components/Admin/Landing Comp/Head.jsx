@@ -30,8 +30,6 @@ const Head = () => {
 
                 const data = responce.data.data;
                 setHrHandbook(data);
-                console.log(responce.data);
-                
             }
             catch (error) {
             if (error.response?.data?.status === 429) {
