@@ -39,14 +39,14 @@
     "action": "update",
     "title": "Update Admission Team Member",
     "meta_data": {
-      "name": "Mrs. SHEEBA JOSEPH",
-      "designation": "Chief Admission Counselor",
-      "photo_path": "/static/images/admission_team/Sheeba_joseph.webp"
+      "name": "Ms. SRIVIDHYA C",
+      "designation": "Senior Admission Co-Ordinator",
+      "image_path": "/static/images/admission_team/Srividhya.webp"
     },
     "original_data": {
-      "name": "Mrs. SHEEBA JOSEPH",
-      "designation": "Senior Student Admission Counselor",
-      "photo_path": "/static/images/admission_team/Sheeba_joseph.webp"
+      "name": "Ms. SRIVIDHYA C",
+      "designation": "Admission Co-Ordinator",
+      "image_path": "/static/images/admission_team/Srividhya.webp"
     }
   },
   {
@@ -59,10 +59,10 @@
         "year": "2024-2025",
         "UG": [
           {
-            "B.E Computer Science & Engineering": {
-              "Government Quota Intakes": "160",
-              "Management Quota Intakes": "80",
-              "Total Intakes": "240"
+            "B.Tech Artificial Intelligence & Data Science": {
+              "Government Quota Intakes": "80",
+              "Management Quota Intakes": "40",
+              "Total Intakes": "120"
             }
           }
         ]
@@ -73,10 +73,10 @@
         "year": "2024-2025",
         "UG": [
           {
-            "B.E Computer Science & Engineering": {
-              "Government Quota Intakes": "156",
-              "Management Quota Intakes": "84",
-              "Total Intakes": "240"
+            "B.Tech Artificial Intelligence & Data Science": {
+              "Government Quota Intakes": "78",
+              "Management Quota Intakes": "42",
+              "Total Intakes": "120"
             }
           }
         ]
@@ -121,7 +121,7 @@
     "meta_data": {
       "name": "Mr. ARUN PRASAD K",
       "designation": "Student Admission Counselor",
-      "photo_path": "/static/images/admission_team/Arun_Prasad.webp"
+      "image_path": "/static/images/admission_team/Arun_Prasad.webp"
     }
   },
   {
@@ -151,10 +151,10 @@
       "year": "2024-2025",
       "UG_Lateral": [
         {
-          "B.E Valorant": {
-            "Government Quota Intakes": "10",
-            "Management Quota Intakes": "5",
-            "Total Intakes": "15"
+          "B.E Automobile Engineering": {
+            "Government Quota Intakes": "03",
+            "Management Quota Intakes": "00",
+            "Total Intakes": "03"
           }
         }
       ]
@@ -169,7 +169,7 @@
       "year": "2024-2025",
       "UG_Lateral": [
         {
-          "B.E Mechanical Engineering": {}
+          "B.E Civil Engineering": {}
         }
       ]
     }
@@ -200,7 +200,7 @@
       "year": "2024-2025",
       "PG": [
         {
-          "M.E Computer Science & Engineering": {}
+          "M.E Power System Engineering": {}
         }
       ]
     }
@@ -211,7 +211,7 @@
     "action": "delete",
     "title": "Delete admission team member",
     "meta_data": {
-      "name": "Mrs. SHEEBA JOSEPH"
+      "name": "Mrs. Muthulakshmi"
     }
   },
   {
@@ -235,7 +235,7 @@
     "title": "Delete photo_path for admission team member",
     "meta_data": {
       "name": "Mrs. JENEFER ASHA JEYARANI M",
-      "photo_path": "/static/images/admission_team/Jenefer.webp"
+      "image_path": "/static/images/admission_team/Jenefer.webp"
     }
   },
   {
@@ -246,24 +246,5 @@
     "meta_data": {
       "name": "Mrs. JENEFER ASHA JEYARANI M"
     }
-  },
-  {
-  "collectionName": "admissions",
-  "collection_type": "ug",
-  "action": "update",
-  "title": "Update UG Government Quota PDF",
-  "meta_data": {
-    "BE_Government": {
-      "BE_Government_link_name": "* FIRST YEAR B.E/B.Tech – Government Quota (Through TNEA counselling 2026)",
-      "pdf_path": ""
-    }
-  },
-  "original_data": {
-    "BE_Government": {
-      "BE_Management_link_name":"* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
-        "pdf_path": "/static/pdfs/admission/B.E_B.TECH-25-26.pdf" 
-    }
   }
-}
-
 ]
