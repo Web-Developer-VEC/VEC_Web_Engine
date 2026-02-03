@@ -328,39 +328,39 @@
                   "docs":[
                     {
                     "name":"I Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/006/B.E(CSE-CS) WITH TW AND SDG-SEM 1.pdf"
                   },
                     {
                     "name":"II Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/006/B.E(CSE-CS) WITH TW AND SDG-SEM 2.pdf"
                   },
                     {
                     "name":"III Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/006/B.E(CSE-CS) WITH TW AND SDG-SEM 3.pdf"
                   },
                     {
                     "name":"IV Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/006/B.E(CSE-CS) WITH TW AND SDG-SEM 4.pdf"
                   },
                     {
                     "name":"V Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/006/B.E(CSE-CS) WITH TW AND SDG-SEM 5.pdf"
                   },
                     {
                     "name":"VI Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/006/B.E(CSE-CS) WITH TW AND SDG-SEM 6.pdf"
                   },
                     {
                     "name":"VII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/006/B.E(CSE-CS) WITH TW AND SDG-SEM 7.pdf"
                   },
                     {
                     "name":"VIII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/006/B.E(CSE-CS) WITH TW AND SDG-SEM 8.pdf"
                   },
                     {
                     "name":"Elective Courses",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/006/B.E(CSE-CS) ELECTIVE COURSES WITH TW AND SDG.pdf"
                   }
                 ]
                 },
