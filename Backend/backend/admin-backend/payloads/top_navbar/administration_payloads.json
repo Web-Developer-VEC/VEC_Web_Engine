@@ -60,7 +60,7 @@
             "name": "Dr. hari",
             "type": "Dean",
             "designation": "Prof & Head - Civil Engineering",
-            "image_path": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+            "image_path": "",
             "unique_id": "VEC-001-01-001"
           }
   },
@@ -74,7 +74,7 @@
             "name": "Dr. hari",
             "type": "Dean",
             "designation": "Prof & Head - Civil Engineering",
-            "image_path": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+            "image_path": "",
             "unique_id": "VEC-001-01-001"
           }
   },
@@ -91,14 +91,14 @@
             "name": "Dr. JEBAMALAR A",
             "type": "Dean",
             "designation": "Prof & Head - Civil Engineering",
-            "image_path": "/static/images/dean_and_associates/dr_a_jebamalar.webp",
+            "image_path": "",
             "unique_id": "VEC-001-01-001"
           },
           {
             "name": "Dr. AROCKIA JASWIN M",
             "type": "Associate Dean",
             "designation": "Prof. Mechanical Engineering.",
-            "image_path": "/static/images/dean_and_associates/dr_m_arockia_jaswin.webp",
+            "image_path": "",
             "unique_id": "VEC-001-01-001"
           }
         ]
@@ -111,8 +111,8 @@
     "title": "insert admin_office",
     "meta_data":{
         "name": "DR. DINESH V",
-        "designation": "Administrative Officer & Professor, CSE  ",
-        "image_path": "/static/images/admin_office/Jeyabalraj.webp"
+        "designation": "Administrative Officer & Professor, CSE",
+        "image_path": ""
       }
   },
   {
@@ -128,7 +128,7 @@
     "meta_data":{
         "name": "DR. HARI V",
         "designation": "Administrative Officer & Professor, CSE  ",
-        "image_path": "/static/images/admin_office/Jeyabalraj.webp"
+        "image_path": ""
       }
   },
   {
@@ -139,7 +139,7 @@
     "meta_data":{
         "name": "DR. HARI V",
         "designation": "Administrative Officer & Professor, CSE  ",
-        "image_path": "/static/images/admin_office/Jeyabalraj.webp"
+        "image_path": ""
       }
   },
   {
@@ -149,7 +149,7 @@
     "title": "insert committee",
     "meta_data":{
         "name": "DINESH",
-        "pdf_path": "/static/pdfs/committee/academic_council.pdf"
+        "pdf_path": ""
       }
   },
   {
@@ -163,7 +163,7 @@
       },
     "meta_data":{
         "name": "HARI",
-        "pdf_path": "/static/pdfs/committee/academic_council.pdf"
+        "pdf_path": ""
       }
   },
   {
@@ -173,7 +173,7 @@
     "title": "delete committee",
     "meta_data":{
         "name": "HARI",
-        "pdf_path": "/static/pdfs/committee/academic_council.pdf"
+        "pdf_path": ""
       }
   },
   {
@@ -183,7 +183,7 @@
     "title": "insert HandBook",
     "meta_data":{
         "year": "2026-2027",
-        "pdf_path": "/static/pdfs/handbook/Handbook-18-19.pdf"
+        "pdf_path": ""
       }
   },
   {
@@ -207,7 +207,7 @@
     "title": "delete HandBook",
     "meta_data":{
        "year": "2026-2027",
-        "pdf_path": "static/pdfs/handbook/HandBook-2026-2027.pdf"
+        "pdf_path": ""
       }
   },
   {
@@ -228,7 +228,7 @@
     "action": "update",
     "title": "update organization_chart",
     "meta_data": {
-      "image_path": "/static/images/orgchart/dinesh.webp"
+      "image_path": ""
     },
     "original_data": {
       "image_path": "/static/images/orgchart/chart.webp"

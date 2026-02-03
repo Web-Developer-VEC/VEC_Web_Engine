@@ -10,7 +10,7 @@ const { deleteData } = require("../../controllers/top_navbar/research_controller
 
 router.post(
   "/researchadmin",
-  checkRole(["research_admin"]), 
+  checkRole(["research_admin","super_admin"]), 
   handleTempApproval,
   handleTempAction( insertData , updateData , deleteData )
 );
