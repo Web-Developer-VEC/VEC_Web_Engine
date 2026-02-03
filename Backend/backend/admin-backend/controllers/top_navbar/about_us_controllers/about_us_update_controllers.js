@@ -3,9 +3,7 @@ async function updatedData(tempDoc, mainCollection) {
     const { collection_type, category, meta_data, original_data } = tempDoc;
 
     if (!collection_type || !meta_data || !original_data) {
-      throw new Error(
-        "Missing required fields: collection_type, category, original_data or meta_data"
-      );
+      throw new Error("Missing required fields");
     }
 
     const doc = await mainCollection.findOne({ type: collection_type });
@@ -23,55 +21,75 @@ async function updatedData(tempDoc, mainCollection) {
       throw new Error(`Document with type ${collection_type} not found`);
     }
 
-    if(collection_type === "about_vec"){
-
-      await mainCollection.updateOne(
-        {type:"about_vec"},
-        {$set:{"data.$.about_us_pdf.$[elem]":meta_data}},
-        {arrayFilters:[{"elem.name":original_data.name}]}
+    // ---------- ABOUT VEC ----------
+    if (collection_type === "about_vec") {
+      const result = await mainCollection.updateOne(
+        {
+          type: "about_vec",
+          "data.about_us_pdf.name": original_data.name,
+        },
+        {
+          $set: {
+            "data.about_us_pdf.$": meta_data,
+          },
+        }
       );
 
-       return{message:"The data is updated into about_vec pdf links"}
+      if (result.matchedCount === 0) {
+        throw new Error(`PDF "${original_data.name}" not found`);
+      }
+
+      return { message: "about_vec PDF updated successfully" };
     }
+
+    // ---------- SINGLE DOC TYPES ----------
     if (singleDocTypes.includes(collection_type)) {
+      const updateFields = {};
+      Object.keys(meta_data).forEach(key => {
+        updateFields[`data.${key}`] = meta_data[key];
+      });
+
       await mainCollection.updateOne(
         { type: collection_type },
-        { $set: { data: meta_data } }
+        { $set: updateFields }
       );
-      return { message: `Updated data in ${collection_type}` };
-    } else if (categoryBasedtypes.includes(collection_type)) {
+
+      return { message: `Updated ${collection_type}` };
+    }
+
+    // ---------- AISHE (FIXED) ----------
+    if (categoryBasedtypes.includes(collection_type)) {
       if (!category) {
-        throw new Error("Category is required for this collection type");
+        throw new Error("Category is required for AISHE");
       }
-      const categoryExists = doc.data.find((c) => c.category === category);
-      if (!categoryExists)
-        throw new Error(`Category ${category} not found`);
-    if (categoryExists) {
 
-        const content = categoryExists.content;
+      const result = await mainCollection.updateOne(
+        {
+          type: "AISHE",
+          "data.category": category,
+          "data.content.name": original_data.name,
+        },
+        {
+          $set: {
+            "data.$[cat].content.$[item]": {
+              ...original_data,
+              ...meta_data,
+            },
+          },
+        },
+        {
+          arrayFilters: [
+            { "cat.category": category },
+            { "item.name": original_data.name },
+          ],
+        }
+      );
 
-      const isEqual = (obj1, obj2) =>
-          Object.keys(obj1).every((key) => obj2[key] === obj1[key]);
-
-        const updatedArray = (Array.isArray(content) ? content : []
-        ).map((item) =>
-          isEqual(item, original_data) ? { ...item, ...meta_data } : item
-        );
-        const upd = Array.isArray(updatedArray) ? updatedArray : updatedArray;
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $set: { "data.$[elem].content": upd } },
-          { arrayFilters: [{ "elem.category": category }] }
-        );
-      } else {
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $addToSet: { data: { category, content: meta_data } } }
-        );
-        return {
-          message: `update data into existing category ${category} in ${collection_type}`,
-        };
+      if (result.matchedCount === 0) {
+        throw new Error("AISHE item not found for update");
       }
+
+      return { message: `AISHE item updated in ${category}` };
     }
   } catch (error) {
     throw new Error(`Error updating data: ${error.message}`);

@@ -1,4 +1,3 @@
-
 const allowedTypes = ["ug", "pg", "mba", "phd", "admission_team"];
 const insertAllowed = ["ug", "pg", "admission_team"];
 
@@ -39,6 +38,12 @@ async function insertData(tempDoc, mainCollection) {
       let staffToInsert = Array.isArray(meta_data)
         ? meta_data.flat(Infinity).filter(item => typeof item === "object" && !Array.isArray(item))
         : [meta_data];
+      // Validate: ensure name and image_path exist
+      staffToInsert.forEach(member => {
+        if (!member.name || !member.image_path) {
+          throw new Error("Admission team member must have name and image_path");
+        }
+      });
       if (doc) {
         await mainCollection.updateOne(
           { type: collection_type },
@@ -74,6 +79,13 @@ async function insertData(tempDoc, mainCollection) {
           function mergeDeptArray(existingArr, newArr) {
             const existingNames = new Set(existingArr.map(obj => Object.keys(obj)[0]));
             const toAdd = newArr.filter(obj => !existingNames.has(Object.keys(obj)[0]));
+            // Validate department names
+            toAdd.forEach(obj => {
+              const name = Object.keys(obj)[0];
+              if (!name || name.length < 3) {
+                throw new Error(`Invalid department name: ${name}`);
+              }
+            });
             return existingArr.concat(toAdd);
           }
 
@@ -101,6 +113,17 @@ async function insertData(tempDoc, mainCollection) {
         }
       } else {
         // Only insert if truly no doc exists for this type
+        // Validate department names
+        for (const key of keysForType) {
+          if (meta_data[key] && Array.isArray(meta_data[key])) {
+            meta_data[key].forEach(obj => {
+              const name = Object.keys(obj)[0];
+              if (!name || name.length < 3) {
+                throw new Error(`Invalid department name: ${name}`);
+              }
+            });
+          }
+        }
         await mainCollection.insertOne({
           type: collection_type,
           data: meta_data,
@@ -113,7 +136,7 @@ async function insertData(tempDoc, mainCollection) {
     return { success: false, message: "Unknown error in insert controller." };
 
   } catch (error) {
-    console.error(error);
+    console.error("Insert error:", error);
     throw error;
   }
 }
