@@ -3,90 +3,65 @@ async function deleteData(tempDoc, mainCollection) {
     const { collection_type, category, meta_data } = tempDoc;
 
     if (!collection_type || !meta_data) {
-      throw new Error(
-        "Missing required fields: collection_type, category, or meta_data"
-      );
+      throw new Error("Missing required fields");
     }
 
     const doc = await mainCollection.findOne({ type: collection_type });
-
-    const categoryBasedtypes = ["AISHE"];
-
     if (!doc) {
       throw new Error(`Document with type ${collection_type} not found`);
     }
 
-     if(collection_type === "about_vec"){
+    const categoryBasedtypes = ["AISHE"];
 
-      await mainCollection.updateOne(
-        {type:"about_vec"},
-        {$pull:{"data.$.about_us_pdf":meta_data}}
+    // ---------- ABOUT VEC ----------
+    if (collection_type === "about_vec") {
+      const result = await mainCollection.updateOne(
+        { type: "about_vec" },
+        { $pull: { "data.about_us_pdf": { name: meta_data.name } } }
       );
 
-       return{message:"The data is deleted in about_vec pdf links"}
+      if (result.matchedCount === 0) {
+        throw new Error(`PDF "${meta_data.name}" not found`);
+      }
+
+      return { message: "about_vec PDF deleted successfully" };
     }
 
+    // ---------- AISHE (FIXED) ----------
     if (categoryBasedtypes.includes(collection_type)) {
       if (!category) {
-        throw new Error("Category is required for this collection type");
+        throw new Error("Category is required for AISHE");
       }
 
-      const existingCategory = doc.data.find((c) => c.category === category);
-      console.log("Ext",existingCategory);
-      
-      if (!existingCategory) {
-        throw new Error(`Category ${category} not found`);
+      // ✅ Delete entire category
+      if (meta_data.category === category) {
+        await mainCollection.updateOne(
+          { type: "AISHE" },
+          { $pull: { data: { category } } }
+        );
+
+        return { message: `AISHE category ${category} deleted` };
       }
 
-      const content = existingCategory.content;
-      if(meta_data.category === category){
-
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $pull: { data: { category: category } } }
-        );
-        return {
-          message: `Deleted  ${category} in ${collection_type}`,
-        };
-
-
-      } else {
-        const isEqual = (obj1, obj2) => {
-          console.log("Ajith",obj1,obj2);
-          
-          return (
-            Object.keys(obj1).length === Object.keys(obj2).length &&
-            Object.keys(obj1).every((key) => obj2[key] === obj1[key])
-          );
-        };
-
-        // ✅ Use filter instead of map to remove matching item
-        const updatedContent = (Array.isArray(content) ? content : []).filter(
-          (item) => !isEqual(item, meta_data)
-        );
-
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $set: { "data.$[elem].content": updatedContent } },
-          { arrayFilters: [{ "elem.category": category }] }
-        );
-        return {
-          message: `Deleted item from ${category} in ${collection_type}`,
-        };
-      } 
-    } else {
-      // Fallback: clear content if not objects
-
-      await mainCollection.updateOne(
-        { type: collection_type },
-        { $pull: { data: { category: category } } }
+      // ✅ Delete single item by name
+      const result = await mainCollection.updateOne(
+        { type: "AISHE", "data.category": category },
+        {
+          $pull: {
+            "data.$.content": { name: meta_data.name },
+          },
+        }
       );
-      return {
-        message: `Cleared content in ${category} of ${collection_type}`,
-      };
+
+      if (result.matchedCount === 0) {
+        throw new Error(`AISHE item not found in ${category}`);
+      }
+
+      return { message: `AISHE item deleted from ${category}` };
     }
   } catch (error) {
     throw new Error(`Error deleting data: ${error.message}`);
   }
 }
+
 module.exports = { deleteData };
