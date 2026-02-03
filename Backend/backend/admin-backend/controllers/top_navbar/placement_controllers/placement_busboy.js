@@ -4,56 +4,111 @@ const path = require("path");
 
 async function placementHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
+    // ---------- BASIC SAFETY ----------
+    if (!docs || !docs.length) {
+      throw new Error("No document metadata received");
+    }
+
+    if (!fileStream) {
+      throw new Error("No file stream received");
+    }
+
     const realFilename =
       typeof filename === "string"
         ? filename
-        : filename?.filename || "image.jpg";
+        : filename?.filename || "file";
 
-    const effectiveMime = mimetype || filename?.mimeType || "image/jpeg";
+    const effectiveMime =
+      mimetype || filename?.mimeType || "application/octet-stream";
 
-    console.log("Uploading incubation facilities images:", { realFilename, effectiveMime });
+    console.log("Uploading placement file:", {
+      realFilename,
+      effectiveMime,
+    });
 
-    // ✅ Allow only image formats
-    if (!(effectiveMime.startsWith("image/") || effectiveMime === "application/pdf")) {
+    // ---------- FILE TYPE VALIDATION ----------
+    if (
+      !(
+        effectiveMime.startsWith("image/") ||
+        effectiveMime === "application/pdf"
+      )
+    ) {
       fileStream.resume();
       return cb(new Error("Only images or PDFs are allowed"));
     }
 
-    const collection_type = docs[0]?.collection_type;
-    let s3Key 
-    let ext;
+    const doc = docs[0];
+    const collection_type = doc.collection_type;
 
+    let s3Key;
+    let ext = path.extname(realFilename);
+
+    // ---------- PLACEMENT TEAM ----------
     if (collection_type === "placement_team") {
-      const name = docs[0].meta_data.name;
-      ext = path.extname(realFilename)||".jpg";
-      const folder = `temp/static/images/placement_members/${name}${ext}`;
-      s3Key = folder;
-    }
-    if (collection_type === "alumini") {
-      ext = path.extname(realFilename)||".jpg";
-      const folder = `temp/static/images/placement_members/${realFilename}`;
-      s3Key = folder;
+      const name = doc.meta_data?.name;
+      if (!name) {
+        throw new Error("Placement team name missing");
+      }
+
+      ext = ext || ".jpg";
+      s3Key = `temp/static/images/placement_members/${name}${ext}`;
     }
 
-    if (collection_type === "placement_details") {
-        const meta_data=docs[0].meta_data;
-      const year = docs[0].meta_data.year_wise_pdfs[0].year;
-      ext = path.extname(realFilename)||".pdf";
-      const folder = `temp/static/pdfs/placement_docs/placements_${year}${ext}`;
-      s3Key = folder;
-     docs[0].meta_data.year_wise_pdfs[0].pdf_path = `/${s3Key}`;
-     const { pdf_path, ...restMeta } = meta_data;
-  docs[0].meta_data = restMeta;
+    // ---------- ALUMNI ----------
+    else if (collection_type === "alumini") {
+      ext = ext || ".jpg";
+      s3Key = `temp/static/images/placement_members/${realFilename}`;
     }
 
-    // Buffer the stream
+    // ---------- PLACEMENT DETAILS (PDF UPLOAD) ----------
+    else if (collection_type === "placement_details") {
+      const meta_data = doc.meta_data;
+
+      // 🔒 Strict validation
+      if (
+        meta_data?.section !== "year_wise_pdfs" ||
+        !meta_data?.year
+      ) {
+        throw new Error(
+          "Invalid payload for placement_details PDF upload"
+        );
+      }
+
+      // Clean year (remove * if present)
+      const year = meta_data.year.replace(/\*/g, "");
+      ext = ext || ".pdf";
+
+      s3Key = `temp/static/pdfs/placement_docs/placements_${year}${ext}`;
+
+      // ✅ Normalize meta_data into DB-ready structure
+      doc.meta_data = {
+        year_wise_pdfs: [
+          {
+            year: meta_data.year,
+            pdf_path: `/${s3Key}`,
+          },
+        ],
+      };
+    }
+
+    // ---------- UNKNOWN COLLECTION ----------
+    else {
+      throw new Error(`Unsupported collection type: ${collection_type}`);
+    }
+
+    // ---------- BUFFER FILE ----------
     const chunks = [];
     for await (const chunk of fileStream) {
       chunks.push(chunk);
     }
+
+    if (!chunks.length) {
+      throw new Error("Uploaded file is empty");
+    }
+
     const fileBuffer = Buffer.concat(chunks);
 
-    // Upload to S3
+    // ---------- UPLOAD TO S3 ----------
     const command = new PutObjectCommand({
       Bucket: bucketName,
       Key: s3Key,
@@ -63,16 +118,17 @@ async function placementHandler(fileStream, docs, req, cb, filename, mimetype) {
 
     const data = await s3.send(command);
 
-    // Track uploaded files
+    // ---------- TRACK UPLOAD ----------
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
       key: s3Key,
-      location: `/${s3Key}`, // replace with full S3 URL if needed
+      location: `/${s3Key}`,
       mimetype: effectiveMime,
     });
 
     cb(null, data);
   } catch (err) {
+    console.error("Placement upload error:", err.message);
     cb(err);
   }
 }
