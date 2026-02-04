@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import LoadComp from "../../LoadComp";
 import { Plus, Trash2, Send, Save, Pencil } from "lucide-react";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
+import { ToastContainer, toast } from "react-toastify";
 
 const Others = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -9,13 +11,13 @@ const Others = ({ data }) => {
   const [tempOthers, setTempOthers] = useState([]);
   const [editOthers, setEditOthers] = useState(false);
   const [selected, setSelected] = useState([]);
-
+  const { sendRequest, loading: loadings, error } = useAdminRequest();
   // Modal states
   const [showRequestButtons, setShowRequestButtons] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [showDiscardModal, setShowDiscardModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-   const [changes, setChanges] = useState([]);
+  const [changes, setChanges] = useState([]);
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
@@ -36,8 +38,16 @@ const Others = ({ data }) => {
 
     const formattedData = data.map((item, index) => ({
       id: index + 1,
+
+      // 🟢 UI editable
       text: item?.title || "No Title",
+
+      // 🔴 DB snapshot (never changes)
+      original_text: item?.title || "No Title",
+
+      image_path: item?.image_path,
       image: UrlParser(item?.image_path),
+      newFile: null,
     }));
 
     setOthers(formattedData);
@@ -55,7 +65,9 @@ const Others = ({ data }) => {
 
   const handlePrev = () => {
     if (others.length === 0) return;
-    setActiveIndex((prevIndex) => (prevIndex - 1 + others.length) % others.length);
+    setActiveIndex(
+      (prevIndex) => (prevIndex - 1 + others.length) % others.length,
+    );
   };
 
   const handleNext = () => {
@@ -63,120 +75,228 @@ const Others = ({ data }) => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % others.length);
   };
 
-const handleInputChange = (id, field, value) => {
-  setTempOthers((prev) =>
-    prev.map((item) => (item.id === id ? { ...item, [field]: value } : item))
-  );
+  const handleInputChange = (id, field, value) => {
+    setTempOthers((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, [field]: value } : item)),
+    );
+    const originalItem = others.find((o) => o.id === id);
+    if (!originalItem || originalItem.original_text === value) return;
 
-  const originalItem = others.find((o) => o.id === id);
-  if (originalItem && originalItem[field] !== value) {
     setChanges((prev) => {
-      const existing = prev.find((c) => c.id === id && c.field === field);
-      if (existing) {
-        return prev.map((c) =>
-          c.id === id && c.field === field ? { ...c, newValue: value } : c
-        );
-      }
-      return [
-        ...prev,
-        { id, action: "Edited", field:`image - ${id}`, oldValue: originalItem[field], newValue: value },
-      ];
-    });
-  } else {
-    setChanges((prev) => prev.filter((c) => !(c.id === id && c.field === field)));
-  }
-};
+      const existing = prev.find((c) => c.id === id && c.action === "Edited");
 
-const handleImageUpload = (id, file) => {
-  const imageUrl = URL.createObjectURL(file);
-  setTempOthers((prev) =>
-    prev.map((item) =>
-      item.id === id ? { ...item, image: imageUrl, newFile: file } : item
-    )
-  );
-
-  const originalItem = others.find((o) => o.id === id);
-  if (originalItem && originalItem.image !== imageUrl) {
-    setChanges((prev) => {
-      const existing = prev.find((c) => c.id === id && c.field === "image");
       if (existing) {
-        return prev.map((c) =>
-          c.id === id && c.field === "image" ? { ...c, newValue: imageUrl } : c
-        );
+        // store old value only once
+        if (!(field in existing.fields)) {
+          existing.fields[field] = originalItem[field];
+        }
+        return [...prev];
       }
+
       return [
         ...prev,
         {
           id,
           action: "Edited",
-          field: "image",
-          oldValue: originalItem.image,
-          newValue: imageUrl,
+          fields: {
+            [field]: originalItem[field],
+          },
         },
       ];
     });
-  }
+  };
+  const buildOthersAchievementsPayload = ({ action, newData, oldData }) => {
+    // 🟢 INSERT
+    if (action === "Added") {
+      return {
+        collectionName: "sports",
+        collection_type: "achivements",
+        action: "insert",
+        title: "Insertion of Achievements",
+        category: "others",
+        meta_data: {
+          title: newData.text,
+          image_path: newData.image_path,
+        },
+        original_data: null,
+      };
+    }
+
+    // 🔵 UPDATE
+    if (action === "Edited") {
+      return {
+        collectionName: "sports",
+        collection_type: "achivements",
+        action: "update",
+        title: "Updation of Achievements",
+        category: "others",
+        meta_data: {
+          title: newData.text,
+          image_path: newData.image_path,
+        },
+        original_data: {
+          title: oldData.text,
+          image_path: oldData.image_path,
+        },
+      };
+    }
+
+    // 🔴 DELETE
+    if (action === "Deleted") {
+      return {
+        collectionName: "sports",
+        collection_type: "achivements",
+        action: "delete",
+        title: "Deletion of Achievements",
+        category: "others",
+        meta_data: {
+          title: oldData.text,
+          image_path: oldData.image_path,
+        },
+        original_data: null,
+      };
+    }
+
+    return null;
+  };
+
+  const handleImageUpload = (id, file) => {
+  const previewUrl = URL.createObjectURL(file);
+
+  setTempOthers(prev =>
+    prev.map(item =>
+      item.id === id
+        ? {
+            ...item,
+            image: previewUrl,   // UI preview
+            newFile: file,       // actual upload
+          }
+        : item
+    )
+  );
+
+  setChanges(prev => {
+    const existing = prev.find(c => c.id === id && c.action === "Edited");
+    const originalItem = others.find(o => o.id === id);
+
+    if (!originalItem) return prev;
+
+    // already marked as edited → do nothing
+    if (existing) return prev;
+
+    return [
+      ...prev,
+      {
+        id,
+        action: "Edited",
+        fields: {
+          image_path: originalItem.image_path, // DB snapshot
+        },
+      },
+    ];
+  });
 };
 
-const handleAddRow = () => {
-  const newId = tempOthers.length
-    ? Math.max(...tempOthers.map((a) => a.id)) + 1
-    : 1;
-  const newRow = { id: newId, text: "", image: "", newFile: null };
-  setTempOthers((prev) => [...prev, newRow]);
+  const applyRevert = (data, change) => {
+    if (change.action === "Edited") {
+      return data.map((item) => {
+        if (item.id !== change.id) return item;
 
-  setChanges((prev) => [
-    ...prev,
-    { id: newId, action: "Added", field: `image - ${newId}`, oldValue: null, newValue: newRow },
-  ]);
-};
+        // 🔥 revoke blob image if exists
+        if (item.newFile && item.image?.startsWith("blob:")) {
+          URL.revokeObjectURL(item.image);
+        }
+
+        return {
+          ...item,
+          ...change.fields,
+          newFile: null,
+        };
+      });
+    }
+
+    if (change.action === "Added") {
+      return data.filter((item) => item.id !== change.id);
+    }
+
+    if (change.action === "Deleted") {
+      return [...data, change.oldValue].sort((a, b) => a.id - b.id);
+    }
+
+    return data;
+  };
+
+  const handleAddRow = () => {
+    const newId = tempOthers.length
+      ? Math.max(...tempOthers.map((a) => a.id)) + 1
+      : 1;
+    const newRow = { id: newId, text: "", image: "", newFile: null };
+    setTempOthers((prev) => [...prev, newRow]);
+
+    setChanges((prev) => [
+      ...prev,
+      {
+        id: newId,
+        action: "Added",
+        field: "image",
+        original_text: null, // ✅ FIX
+        oldValue: null,
+        newValue: newRow,
+      },
+    ]);
+  };
 
   const toggleSelect = (id) => {
     setSelected((prev) =>
-      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id],
     );
   };
 
-const handleDeleteSelected = () => {
-  const deletedItems = tempOthers.filter((item) => selected.includes(item.id));
-  setTempOthers((prev) => prev.filter((item) => !selected.includes(item.id)));
-
-  deletedItems.forEach((item) => {
-    setChanges((prev) => [
-      ...prev,
-      { id: item.id, action: "Deleted", field: `image - ${item.id}`, oldValue: item, newValue: null },
-    ]);
-  });
-
-  setSelected([]);
-  setShowDeleteModal(false);
-};
-const handleRevertChange = (index) => {
-  const change = changes[index];
-
-  if (change.action === "Edited") {
-    setTempOthers((prev) =>
-      prev.map((item) =>
-        item.id === change.id ? { ...item, [change.field]: change.oldValue } : item
-      )
+  const handleDeleteSelected = () => {
+    const deletedItems = tempOthers.filter((item) =>
+      selected.includes(item.id),
     );
-  }
 
-  if (change.action === "Added") {
-    setTempOthers((prev) => prev.filter((item) => item.id !== change.id));
-  }
+    // remove rows from temp data
+    setTempOthers((prev) => prev.filter((item) => !selected.includes(item.id)));
 
-  if (change.action === "Deleted") {
-    setTempOthers((prev) => [...prev, change.oldValue]);
-  }
+    setChanges((prev) => {
+      let updated = [...prev];
 
-  setChanges((prev) => prev.filter((_, i) => i !== index));
-};
+      deletedItems.forEach((item) => {
+        // ❌ remove ANY existing changes for this item
+        updated = updated.filter((c) => c.id !== item.id);
+
+        // ✅ add ONLY delete action
+        updated.push({
+          id: item.id,
+          action: "Deleted",
+          fields: {
+            image: item.image,
+            text: item.text,
+          },
+          oldValue: item,
+        });
+      });
+
+      return updated;
+    });
+
+    setSelected([]);
+    setShowDeleteModal(false);
+  };
+
+  const handleRevertChange = (index) => {
+    const change = changes[index];
+
+    setTempOthers((prev) => applyRevert(prev, change));
+    setOthers((prev) => applyRevert(prev, change)); // 🔥 THIS WAS MISSING
+
+    setChanges((prev) => prev.filter((_, i) => i !== index));
+  };
 
   const handleSave = () => {
-    const invalid = tempOthers.some(
-      (item) => !item.text.trim() || !item.image
-    );
+    const invalid = tempOthers.some((item) => !item.text.trim() || !item.image);
     if (invalid) {
       alert("All fields (Description and Image) are mandatory!");
       return;
@@ -192,11 +312,15 @@ const handleRevertChange = (index) => {
   };
 
   const handleDiscardChanges = () => {
-    const formattedData = data?.map((item, index) => ({
-      id: index + 1,
-      text: item?.title || "No Title",
-      image: UrlParser(item?.image_path),
-    })) || [];
+    const formattedData =
+      data?.map((item, index) => ({
+        id: index + 1,
+        text: item?.title || "No Title",
+        original_text: item?.title || "No Title",
+        image_path: item?.image_path,
+        image: UrlParser(item?.image_path),
+        newFile: null,
+      })) || [];
 
     setOthers(formattedData);
     setTempOthers(formattedData);
@@ -216,8 +340,79 @@ const handleRevertChange = (index) => {
   const [formData, setFormData] = useState({});
   const [originalData] = useState({ title: "Old Title", image: "old.png" });
 
-  const handleRequestConfirm = () => {
-    alert("Request submitted!");
+  const handleFinalRequestConfirm = async () => {
+    if (!changes.length) {
+       toast.error("Failed to send request: No changes detected.");
+      return;
+    }
+
+    const payload = [];
+    const files = [];
+
+    changes.forEach((change) => {
+      // 🔎 current & original rows
+      const currentItem = tempOthers.find((i) => i.id === change.id);
+      const originalItem = others.find((i) => i.id === change.id);
+
+      // 🆕 ADD
+      if (change.action === "Added") {
+        const imagePath = currentItem.newFile
+          ? `/static/images/sports/others/${currentItem.newFile.name}`
+          : currentItem.image_path; // ✅ DB value
+
+        const req = buildOthersAchievementsPayload({
+          action: "Added",
+          newData: {
+            text: currentItem.text,
+            image_path: imagePath,
+          },
+        });
+
+        payload.push(req);
+        if (currentItem.newFile) files.push(currentItem.newFile);
+      }
+
+      // ✏️ EDIT
+      if (change.action === "Edited") {
+        const imagePath = currentItem.newFile
+          ? `/static/images/sports/others/${currentItem.newFile.name}`
+          : currentItem.image_path;
+
+        const req = buildOthersAchievementsPayload({
+          action: "Edited",
+          newData: {
+            text: currentItem.text,
+            image_path: imagePath,
+          },
+          oldData: {
+            text: originalItem.original_text, // ✅ DB snapshot
+            image_path: originalItem.image_path,
+          },
+        });
+
+        payload.push(req);
+        if (currentItem.newFile) files.push(currentItem.newFile);
+      }
+
+      // ❌ DELETE
+      if (change.action === "Deleted") {
+        const req = buildOthersAchievementsPayload({
+          action: "Deleted",
+          oldData: {
+            text: change.oldValue.original_text, // ✅ DB snapshot
+            image_path: change.oldValue.image_path,
+          },
+        });
+
+        payload.push(req);
+      }
+    });
+
+    console.log("📦 OTHERS ACHIEVEMENTS PAYLOAD:", payload);
+    console.log("🖼 FILES:", files);
+
+    await sendRequest(payload, files);
+    toast.success("Request submitted successfully!");
     setShowRequestModal(false);
   };
 
@@ -234,7 +429,9 @@ const handleRevertChange = (index) => {
           </h2>
         )}
         <div>{children}</div>
-        {actions && <div className="flex justify-end gap-2 mt-4">{actions}</div>}
+        {actions && (
+          <div className="flex justify-end gap-2 mt-4">{actions}</div>
+        )}
       </div>
     </div>
   );
@@ -243,15 +440,15 @@ const handleRevertChange = (index) => {
     <>
       {/* Edit Button */}
       <div className="admin-controls-ug flex justify-end mb-2">
-        {!editOthers &&  (
+        {!editOthers && (
           <button
             className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20"
-            onClick={() =>{ setEditOthers(true);
-             setShowRequestButtons(true);
-            }
-          }
+            onClick={() => {
+              setEditOthers(true);
+              setShowRequestButtons(true);
+            }}
           >
-            <Pencil size={16}/>
+            <Pencil size={16} />
             Edit
           </button>
         )}
@@ -460,7 +657,7 @@ const handleRevertChange = (index) => {
                 className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded flex items-center gap-2"
                 onClick={() => setShowRequestModal(true)}
               >
-                <Send size={16} /> Request 
+                <Send size={16} /> Request
               </button>
             </div>
           )}
@@ -513,17 +710,21 @@ const handleRevertChange = (index) => {
                 Cancel
               </button>
               <button
-                onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-yellow-500 text-black font-medium"
+                onClick={handleFinalRequestConfirm}
+                 disabled={loadings}
+                className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
+                            loadings ? "cursor-progress" : "hover:bg-[#800000]"
+                        }`}
               >
-                Final Request
+                {loadings ? "Processing..." : "Final Request"}
               </button>
             </>
           }
         >
           <p className="text-sm text-red-600 mb-4">
-            Note: Your changes will stay pending until approved by the superior admin.  
-            Once approved, they will be applied automatically to the live site.
+            Note: Your changes will stay pending until approved by the superior
+            admin. Once approved, they will be applied automatically to the live
+            site.
           </p>
 
           <table className="w-full text-sm text-text dark:text-drkt border">
@@ -535,7 +736,7 @@ const handleRevertChange = (index) => {
                 <th className="py-2 border">undo</th>
               </tr>
             </thead>
-           <tbody>
+            <tbody>
               {changes.map((change, index) => (
                 <tr key={index} className="border text-center">
                   <td
@@ -549,7 +750,9 @@ const handleRevertChange = (index) => {
                   <td className="py-2 border">Other Achievements</td>
                   <td className="py-2 border">
                     <span className="px-2 py-1 bg-yellow-100 text-black rounded-md">
-                      {change.field}
+                      {change.action === "Deleted"
+                        ? `image-${change.id}`
+                        : `image-${change.id}`}
                     </span>
                   </td>
                   <td className="py-2 border">
@@ -566,7 +769,6 @@ const handleRevertChange = (index) => {
           </table>
         </Modal>
       )}
-
     </>
   );
 };
