@@ -21,17 +21,17 @@ const examHandler = require("../controllers/top_navbar/exams_controllers/exams_b
 const facultyHandler = require("../controllers/top_navbar/academics_controllers/faculty_controllers/faculties_busboy");
 const hodHandler = require("../controllers/top_navbar/academics_controllers/hod_controllers/hod_busboy");
 const admissionsHandler = require("../controllers/top_navbar/admission_controllers/admission_busboy")
-
+const otherFacilitiesHandler = require("../controllers/second_navbar/other_facilities_controllers/other_facilties_busboy")
 const busboyModels = {
   // Testing Complete
- about_us: aboutusHandler,
- administration: administrationHandler,
- transport: transportHandler,
- admissions: admissionsHandler,
+  about_us: aboutusHandler,
+  administration: administrationHandler,
+  transport: transportHandler,
+  admissions: admissionsHandler,
 
   // Testing Incomplete
- 
-  
+
+
   gallery: galleryHandler,
   iqac: iqacHandler,
   landing_page_details: landingpageHandler,
@@ -49,6 +49,7 @@ const busboyModels = {
   research: researchHandler,
   placement: placementHandler,
   exams: examHandler,
+  other_facilities: otherFacilitiesHandler,
   facultyHandler,
   hodHandler,
 };
