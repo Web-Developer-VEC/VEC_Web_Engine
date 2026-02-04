@@ -3,6 +3,7 @@ import LoadComp from "../../LoadComp";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function IqaQar({ iqacData }) {
   const [editableData, setEditableData] = useState([]);
@@ -14,6 +15,7 @@ export default function IqaQar({ iqacData }) {
   const [selectedRows, setSelectedRows] = useState([]);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [changesLog, setChangesLog] = useState([]); // 🔹 track all changes
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -23,10 +25,24 @@ export default function IqaQar({ iqacData }) {
     return path.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
+  // Helper function to deep clone data
+  const deepClone = (data) => {
+    return data.map((row) => ({
+      ...row,
+    }));
+  };
+
   useEffect(() => {
     if (iqacData && Array.isArray(iqacData)) {
-      setEditableData([...iqacData]);
-      setOriginalData([...iqacData]);
+      // Add a unique _id to each row for tracking
+      const withIds = iqacData.map((row, idx) => ({
+        _id: row._id || Date.now() + idx,
+        ...row,
+        year: row.year || "",
+        pdf_path: row.pdf_path || "",
+      }));
+      setEditableData(deepClone(withIds));
+      setOriginalData(deepClone(withIds));
     }
   }, [iqacData]);
 
@@ -77,12 +93,17 @@ export default function IqaQar({ iqacData }) {
         ...prev,
         [index]: { file, fileURL },
       }));
-      handleInputChange(index, "path", file.name);
+      handleInputChange(index, "pdf_path", file.name);
     }
   };
 
   const handleAddRow = () => {
-    const newRow = { year: "", path: "" };
+    const newRow = {
+      _id: Date.now(),
+      year: "",
+      pdf_path: "",
+      _isNew: true,
+    };
     setEditableData([...editableData, newRow]);
     setHasChanges(true);
     logChange("Insert", editableData.length, newRow);
@@ -106,11 +127,12 @@ export default function IqaQar({ iqacData }) {
 
   const handleSave = () => {
     setEditMode(false);
+    // Don't update originalData here - keep it for comparison in buildPayload
     toast.success("Changes saved. Submit request for approval.");
   };
 
   const handleCancel = () => {
-    setEditableData([...originalData]);
+    setEditableData(deepClone(originalData));
     setUploadedFiles({});
     setHasChanges(false);
     setEditMode(false);
@@ -119,19 +141,90 @@ export default function IqaQar({ iqacData }) {
   };
 
   const handleDiscard = () => {
-    setEditableData([...originalData]);
+    setEditableData(deepClone(originalData));
     setUploadedFiles({});
     setHasChanges(false);
     setChangesLog([]);
     toast.info("Changes discarded.");
   };
 
-  const handleRequestConfirm = () => {
-    console.log("Submitting request with changes:", changesLog);
-    toast.success("Request submitted successfully!");
-    setShowRequestModal(false);
-    setHasChanges(false);
-    setChangesLog([]);
+  const buildPayload = (originalData, editableData, uploadedFiles) => {
+    const payload = [];
+    const files = [];
+
+    // Deletions & Updates
+    originalData.forEach((orig) => {
+      const match = editableData.find((ed) => ed._id === orig._id);
+
+      if (!match) {
+        // Deletion
+        const { _id, _isNew, ...cleanData } = orig;
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "aqar",
+          action: "delete",
+          title: "deletion of AQAR",
+          category: "AQAR",
+          meta_data: { ...cleanData },
+          original_data: null,
+        });
+      } else if (JSON.stringify(match) !== JSON.stringify(orig)) {
+        // Update
+        const { _id, _isNew, ...cleanMatch } = match;
+        const { _id: origId, _isNew: origIsNew, ...cleanOrig } = orig;
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "aqar",
+          action: "update",
+          title: "updation of AQAR",
+          category: "AQAR",
+          meta_data: { ...cleanMatch },
+          original_data: { ...cleanOrig },
+        });
+      }
+    });
+
+    // Insertions
+    editableData.forEach((ed) => {
+      if (ed._isNew) {
+        const { _id, _isNew, ...cleanData } = ed;
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "aqar",
+          action: "insert",
+          title: "insertion of AQAR",
+          category: "AQAR",
+          meta_data: { ...cleanData },
+          original_data: null,
+        });
+      }
+    });
+
+    // Collect files
+    Object.values(uploadedFiles).forEach(({ file }) => {
+      if (file) files.push(file);
+    });
+
+    return { payload, files };
+  };
+
+  const handleRequestConfirm = async () => {
+    const { payload, files } = buildPayload(
+      originalData,
+      editableData,
+      uploadedFiles
+    );
+    console.log("Final request payload:", payload);
+    console.log("Files to upload:", files);
+
+    const response = await sendRequest(payload, files);
+    if (response) {
+      setShowRequestModal(false);
+      setHasChanges(false);
+      setOriginalData(deepClone(editableData));
+      setChangesLog([]);
+      setUploadedFiles({});
+    }
   };
 
   const handleUndoChange = (id) => {
@@ -206,7 +299,7 @@ export default function IqaQar({ iqacData }) {
                         {editMode ? (
                           <>
                             <label className="px-3 py-1 bg-secd text-text hover:bg-brwn hover:text-prim rounded cursor-pointer">
-                              {item.path ? "Replace PDF" : "Upload PDF"}
+                              {item.pdf_path ? "Replace PDF" : "Upload PDF"}
                               <input
                                 type="file"
                                 accept="application/pdf"
@@ -216,10 +309,10 @@ export default function IqaQar({ iqacData }) {
                                 }
                               />
                             </label>
-                            {(uploadedFiles[index] || item.path) && (
+                            {(uploadedFiles[index] || item.pdf_path) && (
                               <a
                                 href={
-                                  uploadedFiles[index]?.fileURL || UrlParser(item.path)
+                                  uploadedFiles[index]?.fileURL || UrlParser(item.pdf_path)
                                 }
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -231,7 +324,7 @@ export default function IqaQar({ iqacData }) {
                           </>
                         ) : (
                           <a
-                            href={UrlParser(item.path) || "#"}
+                            href={UrlParser(item.pdf_path) || "#"}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 underline"
