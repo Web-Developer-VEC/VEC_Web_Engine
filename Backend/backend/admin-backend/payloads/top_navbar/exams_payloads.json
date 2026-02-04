@@ -15,7 +15,7 @@
       "name": "Dr. SRINATH S",
       "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
       "position": "Controller of Examinations",
-      "image_path": ""
+      "image_path": "/static/images/coe/srinath.webp"
     }
   },
   {
@@ -106,10 +106,10 @@
     "title": "delete",
     "category": "COE Staffs",
     "meta_data": {
-      "name": "Mr. VIJAYAKALIDASAN R",
-      "qualification": "DECE",
-      "position": "Technical Assistant",
-      "image_path": "/static/images/coe/vijayakalidasan.webp"
+      "name": "Mrs. MEENAKSHI P",
+      "qualification": "B.C.A",
+      "position": "Data Entry Operator",
+      "image_path": "/static/images/coe/meenakshi.webp"
     }
   },
   {

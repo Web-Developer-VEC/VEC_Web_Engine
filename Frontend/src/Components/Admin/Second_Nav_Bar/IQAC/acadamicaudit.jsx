@@ -25,15 +25,26 @@ export default function IqaAud({ iqacData }) {
     return path.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
+  // Helper function to deep clone data
+  const deepClone = (data) => {
+    return data.map((row) => ({
+      ...row,
+      year: Array.isArray(row.year) ? [...row.year] : [],
+      pdf_path: Array.isArray(row.pdf_path) ? [...row.pdf_path] : [],
+    }));
+  };
+
   useEffect(() => {
     if (iqacData && Array.isArray(iqacData)) {
       // Add a unique _id to each row for tracking
       const withIds = iqacData.map((row, idx) => ({
         _id: row._id || Date.now() + idx,
         ...row,
+        year: Array.isArray(row.year) ? [...row.year] : [],
+        pdf_path: Array.isArray(row.pdf_path) ? [...row.pdf_path] : [],
       }));
-      setEditableData([...withIds]);
-      setOriginalData([...withIds]);
+      setEditableData(deepClone(withIds));
+      setOriginalData(deepClone(withIds));
     }
   }, [iqacData]);
 
@@ -75,7 +86,7 @@ export default function IqaAud({ iqacData }) {
       _id: Date.now(),
       department_name: "",
       year: [""],
-      path: [""],
+      pdf_path: [""],
       _isNew: true,
     };
     setEditableData([...editableData, newRow]);
@@ -110,9 +121,9 @@ export default function IqaAud({ iqacData }) {
         [`${deptIndex}-${yearIndex}`]: { file, fileURL },
       }));
       const newData = [...editableData];
-      const paths = [...newData[deptIndex].path];
+      const paths = [...newData[deptIndex].pdf_path];
       paths[yearIndex] = file.name;
-      newData[deptIndex].path = paths;
+      newData[deptIndex].pdf_path = paths;
       setEditableData(newData);
       setHasChanges(true);
 
@@ -138,7 +149,7 @@ export default function IqaAud({ iqacData }) {
   const handleAddYear = (deptIndex) => {
     const newData = [...editableData];
     newData[deptIndex].year.push("");
-    newData[deptIndex].path.push("");
+    newData[deptIndex].pdf_path.push("");
     setEditableData(newData);
     setHasChanges(true);
     logChange("Edit", deptIndex, newData[deptIndex]);
@@ -149,7 +160,7 @@ export default function IqaAud({ iqacData }) {
     newData[deptIndex].year = newData[deptIndex].year.filter(
       (_, i) => i !== yearIndex
     );
-    newData[deptIndex].path = newData[deptIndex].path.filter(
+    newData[deptIndex].pdf_path = newData[deptIndex].pdf_path.filter(
       (_, i) => i !== yearIndex
     );
     setEditableData(newData);
@@ -159,22 +170,23 @@ export default function IqaAud({ iqacData }) {
 
   const handleSave = () => {
     setIsEditMode(false);
-    setOriginalData([...editableData]);
+    // Don't update originalData here - keep it for comparison in buildPayload
     toast.success("Changes saved. You can now request approval or discard.");
   };
 
   const handleCancel = () => {
-    setEditableData([...originalData]);
+    setEditableData(deepClone(originalData));
     setSelectedRows([]);
     setHasChanges(false);
     setIsEditMode(false);
   };
 
   const handleDiscardChanges = () => {
-    setEditableData([...originalData]);
+    setEditableData(deepClone(originalData));
     setUploadedFiles({});
     setSelectedRows([]);
     setHasChanges(false);
+    setChangesLog([]);
     toast.info("All changes discarded.");
   };
 
@@ -244,12 +256,11 @@ export default function IqaAud({ iqacData }) {
     if (response) {
       setShowRequestModal(false);
       setHasChanges(false);
-      setOriginalData([...editableData]);
+      setOriginalData(deepClone(editableData));
+      setChangesLog([]);
+      setUploadedFiles({});
     }
   };
-
-  console.log(changesLog);
-  
 
   return (
     <>
@@ -326,7 +337,7 @@ export default function IqaAud({ iqacData }) {
                                   className="w-[120px] px-2 py-1 border rounded text-center"
                                 />
                                 <label className="px-3 py-1 bg-secd text-text hover:bg-brwn hover:text-prim rounded cursor-pointer">
-                                  {dept.path[yearIndex]
+                                  {dept.pdf_path[yearIndex]
                                     ? "Replace PDF"
                                     : "Upload PDF"}
                                   <input
@@ -343,12 +354,12 @@ export default function IqaAud({ iqacData }) {
                                   />
                                 </label>
                                 {(uploadedFiles[`${deptIndex}-${yearIndex}`] ||
-                                  dept.path[yearIndex]) && (
+                                  dept.pdf_path[yearIndex]) && (
                                   <a
                                     href={
                                       uploadedFiles[`${deptIndex}-${yearIndex}`]
                                         ?.fileURL ||
-                                      UrlParser(dept.path[yearIndex])
+                                      UrlParser(dept.pdf_path[yearIndex])
                                     }
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -429,7 +440,7 @@ export default function IqaAud({ iqacData }) {
                               dept.year?.map((yr, yrIndex) => (
                                 <li key={yrIndex}>
                                   <a
-                                    href={UrlParser(dept.path[yrIndex])}
+                                    href={UrlParser(dept.pdf_path[yrIndex])}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-blue-600 underline"

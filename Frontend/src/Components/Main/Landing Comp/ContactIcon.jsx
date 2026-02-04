@@ -63,8 +63,8 @@ const ContactIcon = ({ data }) => {
                         {/* <a href="tel:+1234567899" className='font-popp'>1234567899</a> */}
                     </p>
                     <p className='bg-secd dark:bg-drks'>🎓 For Admission:  
-                        <a href={`tel:${data?.admission_contact[0]}`} className='font-popp'> {data?.admission_contact[0]} </a> | 
-                        <a href={`tel:${data?.admission_contact[1]}`} className='font-popp'> {data?.admission_contact[1]} </a>
+                        <a href={`tel:${data?.addmission_contact[0]}`} className='font-popp'> {data?.addmission_contact[0]} </a> | 
+                        <a href={`tel:${data?.addmission_contact[1]}`} className='font-popp'> {data?.addmission_contact[1]} </a>
                     </p>
                 </div>
             )}
