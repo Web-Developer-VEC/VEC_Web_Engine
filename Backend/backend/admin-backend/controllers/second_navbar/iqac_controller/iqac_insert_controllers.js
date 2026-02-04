@@ -134,38 +134,61 @@ async function insertData(tempDoc, mainCollection) {
     }
 
     // Gallery insertion
-    if (collection_type === "gallery") {
-      const categories = Array.isArray(meta_data) ? meta_data : [meta_data];
+    // Gallery insertion
+if (collection_type === "gallery") {
+  const categories = Array.isArray(meta_data) ? meta_data : [meta_data];
 
-      if (doc) {
-        for (const newCategory of categories) {
-          const existingCategory = doc.data.find(
-            (cat) => cat.category === newCategory.category
+  if (doc) {
+    for (const newCategory of categories) {
+      const existingCategory = doc.data.find(
+        (cat) => cat.category === newCategory.category
+      );
+
+      const newImages = Array.isArray(newCategory.image_path)
+        ? newCategory.image_path
+        : [];
+
+      if (existingCategory) {
+        const existingImages = Array.isArray(existingCategory.image_path)
+          ? existingCategory.image_path
+          : [];
+
+        const imagesToInsert = newImages.filter(
+          (img) => !existingImages.includes(img)
+        );
+
+        if (imagesToInsert.length > 0) {
+          await mainCollection.updateOne(
+            { type: collection_type, "data.category": newCategory.category },
+            { $push: { "data.$.image_path": { $each: imagesToInsert } } }
           );
-
-          if (existingCategory) {
-            const newPaths = newCategory.paths.filter(
-              (p) => !existingCategory.paths.includes(p)
-            );
-            if (newPaths.length > 0) {
-              await mainCollection.updateOne(
-                { type: collection_type, "data.category": newCategory.category },
-                { $push: { "data.$.paths": { $each: newPaths } } }
-              );
-            }
-          } else {
-            await mainCollection.updateOne(
-              { type: collection_type },
-              { $push: { data: { category: newCategory.category, paths: newCategory.paths } } }
-            );
-          }
         }
       } else {
-        await mainCollection.insertOne({ type: collection_type, data: categories });
+        await mainCollection.updateOne(
+          { type: collection_type },
+          {
+            $push: {
+              data: {
+                category: newCategory.category,
+                image_path: newImages,
+              },
+            },
+          }
+        );
       }
-
-      return { success: true, message: "Insert successful for Gallery" };
     }
+  } else {
+    await mainCollection.insertOne({
+      type: collection_type,
+      data: categories.map((c) => ({
+        category: c.category,
+        image_path: Array.isArray(c.image_path) ? c.image_path : [],
+      })),
+    });
+  }
+
+  return { success: true, message: "Insert successful for Gallery" };
+}
 
     // Best Practices insertion
     if (collection_type === "best_practices") {

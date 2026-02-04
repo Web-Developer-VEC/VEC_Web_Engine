@@ -1,151 +1,172 @@
 [
-    {
-      "action":"insert",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Journal Publication",
-      "meta_data": 
-        {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Journal Publication.pdf"
-        }
-    },
-    {
-      "action":"insert",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Funded Projects",
-      "meta_data": 
-        {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Funded Projects.pdf"
-        }
-    },
-    {
-      "action":"insert",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Consultancy",
-      "meta_data": 
-        {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Consultancy.pdf"
-        }
-    },
-    {
-      "action":"insert",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Books and Book chapters",
-      "meta_data": 
-        {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Books and Book chapters.pdf"
-        }
-    },
-    {
-      "action":"update",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Consultancy",
-      "original_data": 
-      {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - consultancy.pdf"
-      },
-      "meta_data": 
-      {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Consultancy(updated).pdf"
-      }
-    },
-    {
-      "action":"update",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Books and Book chapters",
-      "original_data": 
-      {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Books and Book Chapters.pdf"
-      },
-      "meta_data": 
-      {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Books and Book Chapters(updated).pdf"
-      }
-    },
-    {
-      "action":"update",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Funded Projects",
-      "original_data": 
-      {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Funded projects.pdf"
-      },
-      "meta_data": 
-      {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Fundedprojects(updated).pdf"
-      }
-    },
-    {
-      "action":"update",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Journal Publication",
-      "original_data": 
-      {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Journal Publications.pdf"
-      },
-      "meta_data": 
-      {
-            "year": "2029-2030",
-            "pdf_path": "/static/pdfs/overall_research/2025-2026/2029-30 - Journal Publications(updated).pdf"
-      }
-    },
-    {
-      "action":"delete",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Journal Publication",
-      "meta_data": 
-      {
-            "year": "2029-2030"
-      }
-    },
-    {
-      "action":"delete",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Funded Projects",
-      "meta_data": 
-      {
-            "year": "2029-2030"
-      }
-    },
-    {
-      "action":"delete",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Consultancy",
-      "meta_data": 
-      {
-            "year": "2029-2030"
-      }
-    },
-    {
-      "action":"delete",
-      "collectionName":"research",
-      "title":"master",
-      "collection_type":"Books and Book chapters",
-      "meta_data": 
-      {
-            "year": "2029-2030"
-      }
+  {
+    "collectionName": "research",
+    "collection_type": "Journal Publication",
+    "action": "insert",
+    "title": "Insert Journal Publication 2024-2025",
+    "meta_data": {
+      "year": "2024-2025",
+      "pdf_path": ""
     }
-
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Journal Publication",
+    "action": "update",
+    "title": "Update Journal Publication 2022-2023",
+    "meta_data": {
+      "year": "2028-2029",
+      "pdf_path": ""
+    },
+    "original_data": {
+      "year": "2024-2025",
+      "pdf_path": "/static/pdfs/overall_research/2024-2025/2024-2025 - Journal Publication.pdf"
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Journal Publication",
+    "action": "delete",
+    "title": "Delete Journal Publication 2023-2024",
+    "meta_data": {
+      "year": "2024-2025",
+      "pdf_path": "/static/pdfs/overall_research/2024-2025/2024-2025 - Journal Publication.pdf"
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Funded Projects",
+    "action": "insert",
+    "title": "Insert Funded Projects 2024-2025",
+    "meta_data": {
+      "year": "2024-2025",
+      "pdf_path": ""
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Funded Projects",
+    "action": "update",
+    "title": "Update Funded Projects 2024-2025",
+    "meta_data": {
+      "year": "2027-2028",
+      "pdf_path": ""
+    },
+    "original_data": {
+      "year": "2024-2025",
+      "pdf_path": "/static/pdfs/Projects/2024-2025.pdf"
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Funded Projects",
+    "action": "delete",
+    "title": "Delete Funded Projects 2023-2024",
+    "meta_data": {
+      "year": "2024-2025",
+      "pdf_path": "/static/pdfs/Projects/2024-2025.pdf"
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Consultancy",
+    "action": "insert",
+    "title": "Insert Consultancy 2024-2025",
+    "meta_data": {
+      "year": "2024-2025",
+      "pdf_path": ""
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Consultancy",
+    "action": "update",
+    "title": "Update Consultancy 2022-2023",
+    "meta_data": {
+      "year": "2022-2023",
+      "pdf_path": ""
+    },
+    "original_data": {
+      "year": "2024-2025",
+      "pdf_path": "/static/pdfs/Consultancy/2024-2025.pdf"
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Consultancy",
+    "action": "delete",
+    "title": "Delete Consultancy 2023-2024",
+    "meta_data": {
+      "year": "2024-2025",
+      "pdf_path": "/static/pdfs/Consultancy/2024-2025.pdf"
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Books and Book chapters",
+    "action": "insert",
+    "title": "Insert Books and Book Chapters 2024-2025",
+    "meta_data": {
+      "year": "2024-2025",
+      "pdf_path": ""
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Books and Book chapters",
+    "action": "update",
+    "title": "Update Books and Book Chapters 2023-2024",
+    "meta_data": {
+      "year": "2025-2026",
+      "pdf_path": ""
+    },
+    "original_data": {
+      "year": "2024-2025",
+      "pdf_path": "/static/pdfs/overall_research/2024-2025/2024-2025 Books & Book chapters.pdf"
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Books and Book chapters",
+    "action": "delete",
+    "title": "Delete Books and Book Chapters 2022-2023",
+    "meta_data": {
+      "year": "2024-2025",
+      "pdf_path": "/static/pdfs/overall_research/2024-2025/2024-2025 Books & Book chapters.pdf"
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Policy",
+    "action": "insert",
+    "title": "Insert Innovation Policy",
+    "meta_data": {
+      "name": "Innovation and Startup Policy",
+      "pdf_path": ""
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Policy",
+    "action": "update",
+    "title": "Update Research Policy",
+    "meta_data": {
+      "name": "Research Policy",
+      "pdf_path": ""
+    },
+    "original_data": {
+      "name": "Innovation and Startup Policy",
+      "pdf_path": "/static/pdfs/overall_research/Innovation and Startup Policy.pdf"
+    }
+  },
+  {
+    "collectionName": "research",
+    "collection_type": "Policy",
+    "action": "delete",
+    "title": "Delete IPR Policy",
+    "meta_data": {
+      "name": "Research Policy",
+      "pdf_path": "/static/pdfs/overall_research/Research Policy.pdf"
+    }
+  }
 ]

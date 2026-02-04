@@ -3,7 +3,6 @@ const { PutObjectCommand } = require("@aws-sdk/client-s3");
 
 async function academiccalendarHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
-
     const realpdfname =
       typeof filename === "string"
         ? filename
@@ -12,15 +11,27 @@ async function academiccalendarHandler(fileStream, docs, req, cb, filename, mime
     const effectivepdfMime =
       mimetype || filename?.mimeType || "application/pdf";
 
-    
-          if (!effectivepdfMime.startsWith("application/pdf")) {
-            fileStream.resume();
-            return cb(new Error("Only PDFs are allowed"));
-        }
-
+    if (!effectivepdfMime.startsWith("application/pdf")) {
+      fileStream.resume();
+      return cb(new Error("Only PDFs are allowed"));
+    }
 
     const collection_type = docs[0]?.collection_type;
     const meta_data = docs[0]?.meta_data;
+
+    if (collection_type !== "academic_calendar") {
+      return cb(new Error("Unsupported collection type"));
+    }
+
+    if (!meta_data?.year || !meta_data.year.startsWith("Academic Year")) {
+      return cb(new Error("Invalid or missing year in meta_data"));
+    }
+
+    // Validate year format (e.g., "Academic Year YYYY-YYYY")
+    const yearRegex = /^Academic Year \d{4}-\d{4}$/;
+    if (!yearRegex.test(meta_data.year)) {
+      return cb(new Error("Year must be in format 'Academic Year YYYY-YYYY'"));
+    }
 
     // Buffer the stream
     const chunks = [];
@@ -29,17 +40,10 @@ async function academiccalendarHandler(fileStream, docs, req, cb, filename, mime
     }
     const fileBuffer = Buffer.concat(chunks);
 
-    let folder, s3Key, command;
-    if (collection_type === "academic_calendar") {
-        folder = `temp/static/pdfs/${meta_data.year}/${realpdfname}`;
-    } 
-    else {
-      return cb(new Error("Unsupported collection type"));
-    }
+    const folder = `temp/static/pdfs/${meta_data.year}/${realpdfname}`;
+    const s3Key = folder;
 
-    s3Key = folder;
-
-    command = new PutObjectCommand({
+    const command = new PutObjectCommand({
       Bucket: bucketName,
       Key: s3Key,
       Body: fileBuffer,
@@ -58,6 +62,7 @@ async function academiccalendarHandler(fileStream, docs, req, cb, filename, mime
 
     cb(null, data);
   } catch (err) {
+    console.error("Upload error:", err);
     cb(err);
   }
 }

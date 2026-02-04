@@ -1,5 +1,3 @@
-
-
 async function updateData(tempDoc, mainCollection) {
   try {
     const { collection_type, meta_data, original_data, category } = tempDoc;
@@ -8,23 +6,92 @@ async function updateData(tempDoc, mainCollection) {
       throw new Error("Type, newData and originalData required");
     }
 
-    // Handle image path normalization
+    // ---------- IMAGE PATH NORMALIZATION ----------
     if (meta_data?.filePaths) {
       meta_data.image_path = meta_data.filePaths;
       delete meta_data.filePaths;
     }
 
+    if (meta_data?.photo_path) {
+      meta_data.image_path = meta_data.photo_path;
+      delete meta_data.photo_path;
+    }
+
+    if (original_data?.photo_path) {
+      original_data.image_path = original_data.photo_path;
+      delete original_data.photo_path;
+    }
+
     const doc = await mainCollection.findOne({ type: collection_type });
     if (!doc) throw new Error("Type not found");
 
-    // ---------- ADMISSIONS (UG/PG/MBA) ----------
-    if (
-      ["ug", "pg", "mba", "admissions", "addmissions"].includes(collection_type)
-    ) {
-      // The actual data is inside doc.data, and is an object with { year, UG/PG/MBA: [...] }
+    // =================================================
+    // ========== ADMISSIONS (UG / PG / MBA) ===========
+    // =================================================
+    if (["ug", "pg", "mba", "admissions", "addmissions"].includes(collection_type)) {
       const { data } = doc;
 
-      // --- [NEW]: Allow updating just the year field ---
+      // -------------------------------------------------
+      // ADMISSIONS PDF UPDATE (ONLY UG & MBA)
+      // -------------------------------------------------
+      if (
+        !meta_data?.data &&
+        (
+          meta_data?.BE_Government ||
+          meta_data?.BE_Management ||
+          meta_data?.MBA_Government ||
+          meta_data?.MBA_Management
+        )
+      ) {
+        let quotaKey = null;
+
+        if (collection_type === "ug") {
+          quotaKey = meta_data.BE_Government
+            ? "BE_Government"
+            : meta_data.BE_Management
+            ? "BE_Management"
+            : null;
+        }
+
+        if (collection_type === "mba") {
+          quotaKey = meta_data.MBA_Government
+            ? "MBA_Government"
+            : meta_data.MBA_Management
+            ? "MBA_Management"
+            : null;
+        }
+
+        if (!quotaKey) {
+          throw new Error("PDF updates are allowed only for UG and MBA");
+        }
+
+        const tempPdfPath = meta_data[quotaKey].pdf_path;
+        if (!tempPdfPath) {
+          throw new Error("PDF path missing in meta_data");
+        }
+
+        // Move /temp → /static
+        const finalPdfPath = tempPdfPath.replace(/^\/temp/, "");
+
+        await mainCollection.updateOne(
+          { type: collection_type },
+          {
+            $set: {
+              [`data.${quotaKey}.pdf_path`]: finalPdfPath,
+            },
+          }
+        );
+
+        return {
+          success: true,
+          message: `${collection_type.toUpperCase()} ${quotaKey} PDF updated successfully`,
+          data: { pdf_path: finalPdfPath },
+        };
+      }
+
+      // -------------------------------------------------
+      // ADMISSIONS YEAR-ONLY UPDATE
+      // -------------------------------------------------
       if (
         meta_data?.data &&
         Object.keys(meta_data.data).length === 1 &&
@@ -36,13 +103,20 @@ async function updateData(tempDoc, mainCollection) {
           { type: collection_type, "data.year": original_data.data.year },
           { $set: { "data.year": meta_data.data.year } }
         );
+
         return {
           success: true,
           message: "Admissions year updated successfully",
-          data: { year: meta_data.data.year }
+          data: { year: meta_data.data.year },
         };
       }
-      // --- [END NEW] ---
+
+      // -------------------------------------------------
+      // ADMISSIONS INTAKE UPDATE (UG / PG / MBA)
+      // -------------------------------------------------
+      if (!meta_data?.data) {
+        throw new Error("Admissions data block missing");
+      }
 
       const { year } = meta_data.data;
       let arrayKey = null;
@@ -58,52 +132,57 @@ async function updateData(tempDoc, mainCollection) {
         throw new Error("Admissions year or structure not found");
       }
 
-      // Map and update items in the array (UG/PG/MBA)
-      if (arrayKey) {
-        let updatedArr = data[arrayKey].map((item) => {
-          const key = Object.keys(item)[0];
-
-          // Find a match in updated data from meta_data
-          const updateObj = (meta_data.data[arrayKey] || []).find(
-            (uObj) => Object.keys(uObj)[0] === key
-          );
-          if (!updateObj) return item;
-          return {
-            [key]: {
-              ...item[key],
-              ...updateObj[key],
-            },
-          };
-        });
-
-        // Optionally add new departments present in meta_data but not in existing data
-        (meta_data.data[arrayKey] || []).forEach((uObj) => {
-          const key = Object.keys(uObj)[0];
-          if (!updatedArr.some((item) => Object.keys(item)[0] === key)) {
-            updatedArr.push(uObj);
+      // Validate department names
+      if (arrayKey && meta_data.data[arrayKey]) {
+        meta_data.data[arrayKey].forEach(obj => {
+          const name = Object.keys(obj)[0];
+          if (!name || name.length < 3) {
+            throw new Error(`Invalid department name: ${name}`);
           }
         });
-
-        await mainCollection.updateOne(
-          { type: collection_type, "data.year": year },
-          { $set: { [`data.${arrayKey}`]: updatedArr } }
-        );
-
-        return {
-          success: true,
-          message: `Admissions ${arrayKey} data updated successfully`,
-          data: { year, [arrayKey]: updatedArr },
-        };
-      } else {
-        // Only year present, handled above; otherwise, nothing to do
-        throw new Error("Admissions structure not found");
       }
+
+      // Merge updates
+      let updatedArr = data[arrayKey].map(item => {
+        const key = Object.keys(item)[0];
+        const updateObj = (meta_data.data[arrayKey] || []).find(
+          uObj => Object.keys(uObj)[0] === key
+        );
+        if (!updateObj) return item;
+        return {
+          [key]: {
+            ...item[key],
+            ...updateObj[key],
+          },
+        };
+      });
+
+      // Add new departments
+      (meta_data.data[arrayKey] || []).forEach(uObj => {
+        const key = Object.keys(uObj)[0];
+        if (!updatedArr.some(item => Object.keys(item)[0] === key)) {
+          updatedArr.push(uObj);
+        }
+      });
+
+      await mainCollection.updateOne(
+        { type: collection_type, "data.year": year },
+        { $set: { [`data.${arrayKey}`]: updatedArr } }
+      );
+
+      return {
+        success: true,
+        message: `Admissions ${arrayKey} data updated successfully`,
+        data: { year, [arrayKey]: updatedArr },
+      };
     }
 
-    // ---------- ADMISSION TEAM ----------
+    // =================================================
+    // ========== ADMISSION TEAM =======================
+    // =================================================
     if (collection_type === "admission_team") {
-      const index = doc.data.findIndex((item) =>
-        Object.keys(original_data).every((k) => item[k] === original_data[k])
+      const index = doc.data.findIndex(item =>
+        Object.keys(original_data).every(k => item[k] === original_data[k])
       );
 
       if (index === -1) throw new Error("Admission team member not found");
@@ -115,34 +194,46 @@ async function updateData(tempDoc, mainCollection) {
         { $set: { data: doc.data } }
       );
 
-      return { success: true, message: "Admission team member updated successfully", data: doc.data[index] };
+      return {
+        success: true,
+        message: "Admission team member updated successfully",
+        data: doc.data[index],
+      };
     }
 
-    // ---------- PHD ----------
+    // =================================================
+    // ========== PHD ==================================
+    // =================================================
     if (collection_type === "phd") {
-      // Only one object in data; just update fields that match original_data
       if (
         doc.data &&
-        Object.keys(original_data).every((k) => doc.data[k] === original_data[k])
+        Object.keys(original_data).every(k => doc.data[k] === original_data[k])
       ) {
         doc.data = { ...doc.data, ...meta_data };
+
         await mainCollection.updateOne(
           { type: "phd" },
           { $set: { data: doc.data } }
         );
-        return { success: true, message: "PhD data updated successfully", data: doc.data };
+
+        return {
+          success: true,
+          message: "PhD data updated successfully",
+          data: doc.data,
+        };
       } else {
         throw new Error("PhD data not found");
       }
     }
 
-    // ---------- GENERIC FALLBACK: Map by all fields ----------
-    // For any other collection, attempt to deeply match and update any object in doc.data or doc.data[]
-    // Handles both object and array of objects
+    // =================================================
+    // ========== GENERIC FALLBACK =====================
+    // =================================================
     let updated = false;
+
     if (Array.isArray(doc.data)) {
-      const index = doc.data.findIndex((item) =>
-        Object.keys(original_data).every((k) => item[k] === original_data[k])
+      const index = doc.data.findIndex(item =>
+        Object.keys(original_data).every(k => item[k] === original_data[k])
       );
       if (index !== -1) {
         doc.data[index] = { ...doc.data[index], ...meta_data };
@@ -150,24 +241,28 @@ async function updateData(tempDoc, mainCollection) {
       }
     } else if (typeof doc.data === "object") {
       const allKeysMatch = Object.keys(original_data).every(
-        (k) => doc.data[k] === original_data[k]
+        k => doc.data[k] === original_data[k]
       );
       if (allKeysMatch) {
         doc.data = { ...doc.data, ...meta_data };
         updated = true;
       }
     }
+
     if (updated) {
       await mainCollection.updateOne(
         { type: collection_type },
         { $set: { data: doc.data } }
       );
-      return { success: true, message: "Data updated successfully (generic handler)" };
+      return {
+        success: true,
+        message: "Data updated successfully (generic handler)",
+      };
     }
 
     throw new Error("Invalid collection type or data to update not found");
   } catch (error) {
-    console.error(error);
+    console.error("Update error:", error);
     throw error;
   }
 }

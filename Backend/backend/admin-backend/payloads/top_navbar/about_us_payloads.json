@@ -1,77 +1,64 @@
 [
-
   {
     "collectionName": "about_us",
     "collection_type": "about_vec",
     "action": "insert",
     "title": "insert about vec",
     "meta_data": {
-      "name":"AICTE Approval",
-      "pdf_path":""
+      "name": "AICTE Approval",
+      "pdf_path": ""
     }
   },
-
-
   {
     "collectionName": "about_us",
     "collection_type": "about_vec",
     "action": "update",
     "title": "update",
     "meta_data": {
-          "name": "AICTE",
-          "pdf_path":  ""  
+      "name": "AICTE dn",
+      "pdf_path": "/static/pdfs/about_vec/AICTE Approval.pdff"
     },
     "original_data": {
-          "name": "AICTE Approval",
-          "pdf_path": "uploads/2025/07/EOA_Report_2025-2026.pdf"     
+      "name": "AICTE Approval",
+      "pdf_path": "/static/pdfs/about_vec/AICTE Approval.pdf"
     }
   },
-
-
   {
     "collectionName": "about_us",
     "collection_type": "about_vec",
     "action": "delete",
     "title": "delete",
-    "meta_data":
-        {
-          "name": "AICTE Approval",
-          "pdf_path": "uploads/2025/07/EOA_Report_2025-2026.pdf"
-        }
+    "meta_data": {
+      "name": "AICTE Approval",
+      "pdf_path": "uploads/2025/07/EOA_Report_2025-2026.pdf"
+    }
   },
-
-
   {
     "collectionName": "about_us",
     "collection_type": "AISHE",
     "action": "insert",
     "title": "insert ",
     "category": "2025-2026",
-    "meta_data": 
-        {
-          "name": "Certificate",
-          "pdf_path": ""
-        }
-
-      },
+    "meta_data": {
+      "name": "Certificate",
+      "pdf_path": ""
+    }
+  },
   {
     "collectionName": "about_us",
     "collection_type": "AISHE",
     "action": "update",
     "title": "update",
-    "category": "2022-2023",
+    "category": "2025-2026",
     "meta_data": {
-      "name": "Certificate",
-      "pdf_path": ""
+      "name": "Certificate 2",
+      "pdf_path": "/static/pdfs/about_vec/AISHE/2025-2026/AISHE 2025-2026 Certificate.pdf"
     },
     "original_data": {
       "name": "Certificate",
-      "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Certificate.pdf"
+      "pdf_path": "/static/pdfs/about_vec/AISHE/2025-2026/AISHE 2025-2026 Certificate.pdf"
     }
   },
-
-
-
   {
     "collectionName": "about_us",
     "collection_type": "AISHE",
@@ -83,8 +70,6 @@
       "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2021-2022 Certificate.pdf"
     }
   },
-
-
   {
     "collectionName": "about_us",
     "collection_type": "AISHE",
@@ -92,21 +77,228 @@
     "title": "delete ",
     "category": "2022-2023",
     "meta_data": {
-        "category": "2021-2022",
-        "content": [
-          {
-            "name": "Certificate",
-            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
-          },
-          {
-            "name": "Data Capture Format",
-            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "
-          },
-          {
-            "name": "Teaching Staff Details",
-            "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
-          }
-        ]
+      "category": "2021-2022",
+      "content": [
+        {
+          "name": "Certificate",
+          "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Certificate.pdf"
+        },
+        {
+          "name": "Data Capture Format",
+          "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format .pdf "
+        },
+        {
+          "name": "Teaching Staff Details",
+          "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Teaching Staff Details.pdf"
+        }
+      ]
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update about trust",
+    "collection_type": "about_trust",
+    "meta_data": {
+      "velammal": {
+        "image_path": "/static/images/trust/velammal.webp",
+        "content": "Philosophy was quite simple, She used to say,\"You take care of the society and the society will reciprocate. You are not in isolation nor is your family. It is all a part of the society and the growth is interdependent.\""
       }
+    },
+    "original_data": {
+      "velammal": {
+        "image_path": "/static/images/trust/velammal.webp",
+        "content": "Her Philosophy was quite simple, She used to say,\"You take care of the society and the society will reciprocate. You are not in isolation nor is your family. It is all a part of the society and the growth is interdependent.\""
+      }
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update about trust",
+    "collection_type": "about_trust",
+    "meta_data": {
+      "Velammal_Educational_Trust": [
+        "1986... Smt.Velammal had sown the seed of social consciousness in the mind of her son Shri. M.V Muthuramalingam, Founder Chairman of Velammal Educational Trust, at his impressionable age, which started germinating and sprouting the outcome - establishing Velammal Matriculation School at Chennai with a strength of only 183 students and 13 staff members.",
+        "School at Mogappair in Chennai, to an established educational brand of Tamilnadu. The Velammal Group of institutions has spread to the districts of Tiruvallur, Kancheepuram, Sivagangai, Madurai, Theni, Karur, Tiruvannamalai, Thanjavur, and Vellore. Now this group holds more than a lakh students and around 12000 staff members under its umbrella."
+      ]
+    },
+    "original_data": {
+      "Velammal_Educational_Trust": [
+        "In the year 1986... Smt.Velammal had sown the seed of social consciousness in the mind of her son Shri. M.V Muthuramalingam, Founder Chairman of Velammal Educational Trust, at his impressionable age, which started germinating and sprouting the outcome - establishing Velammal Matriculation School at Chennai with a strength of only 183 students and 13 staff members.",
+        "From a small school at Mogappair in Chennai, to an established educational brand of Tamilnadu. The Velammal Group of institutions has spread to the districts of Tiruvallur, Kancheepuram, Sivagangai, Madurai, Theni, Karur, Tiruvannamalai, Thanjavur, and Vellore. Now this group holds more than a lakh students and around 12000 staff members under its umbrella."
+      ]
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update vision_and_mission",
+    "collection_type": "vision_and_mission",
+    "meta_data": {
+      "vision": " educate the student community both by theory and practice to fit in with society and to conquer tomorrow’s technology at a global level with human values through our dedicated team."
+    },
+    "original_data": {
+      "vision": "To educate the student community both by theory and practice to fit in with society and to conquer tomorrow’s technology at a global level with human values through our dedicated team."
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update vision_and_mission",
+    "collection_type": "vision_and_mission",
+    "meta_data": {
+      "mission": "provide world-class education in engineering, technology and management to foster research & development, to encourage creativity and promote innovation, to build leadership, intrapreneurship and entrepreneurship to nurture teamwork and achieve stakeholder’s delight."
+    },
+    "original_data": {
+      "mission": "To provide world-class education in engineering, technology and management to foster research & development, to encourage creativity and promote innovation, to build leadership, intrapreneurship and entrepreneurship to nurture teamwork and achieve stakeholder’s delight."
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update vision_and_mission",
+    "collection_type": "vision_and_mission",
+    "meta_data": {
+      "image_path": "/static/images/visionandmission/VM.webp"
+    },
+    "original_data": {
+      "image_path": "/static/images/visionandmission/VM.webp"
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update Management",
+    "collection_type": "Management",
+    "meta_data": {
+      "message": [
+        "At Vel Engineering College, our vision is to nurture forward-thinking professionals who excel in technical expertise while embodying integrity, innovation, and global responsibility. Since our establishment in 1995-96, we have remained steadfast in our commitment to academic excellence, bridging the gap between knowledge and real-world application. In an era of rapid technological change, we ensure our students are industry-ready through a curriculum that blends theory with hands-on learning. Beyond academics, we emphasize holistic development, fostering critical thinking, creativity, and a global perspective. As you embark on this transformative journey, embrace the opportunities ahead and strive for excellence in all endeavors.",
+        "At Vel Engineering College, we empower students to innovate, lead, and excel in a dynamic global environment. Our approach integrates academic rigor with practical insights, fostering critical thinking and adaptability. We are committed to continuous learning and technological advancement, shaping professionals who are prepared for the future. Our institution nurtures a culture of resilience, ethics, and innovation, ensuring every individual thrives. With industry collaborations and experiential learning opportunities, we prepare our students to meet the demands of a competitive world. Join us in our pursuit of transformative education and a future driven by excellence.",
+        "Dear Students, Faculty, and Visitors,",
+        "It is my pleasure to welcome you to Velammal Engineering College, a hub of learning, innovation, and excellence. Our mission is to equip students with technical expertise, leadership skills, and adaptability to excel in today’s evolving technological landscape. Through close industry collaborations, we offer a curriculum that provides hands-on experience, internships, and research opportunities. Our dedicated faculty, state-of-the-art infrastructure, and student-focused approach create an ecosystem where knowledge meets application. Whether you are an aspiring engineer or an academic enthusiast, you will find an environment that fosters creativity and success. Together, let us build a future where technology drives progress and innovation serves humanity."
+      ]
+    },
+    "original_data": {
+      "message": [
+        "At Velammal Engineering College, our vision is to nurture forward-thinking professionals who excel in technical expertise while embodying integrity, innovation, and global responsibility. Since our establishment in 1995-96, we have remained steadfast in our commitment to academic excellence, bridging the gap between knowledge and real-world application. In an era of rapid technological change, we ensure our students are industry-ready through a curriculum that blends theory with hands-on learning. Beyond academics, we emphasize holistic development, fostering critical thinking, creativity, and a global perspective. As you embark on this transformative journey, embrace the opportunities ahead and strive for excellence in all endeavors.",
+        "At Velammal Engineering College, we empower students to innovate, lead, and excel in a dynamic global environment. Our approach integrates academic rigor with practical insights, fostering critical thinking and adaptability. We are committed to continuous learning and technological advancement, shaping professionals who are prepared for the future. Our institution nurtures a culture of resilience, ethics, and innovation, ensuring every individual thrives. With industry collaborations and experiential learning opportunities, we prepare our students to meet the demands of a competitive world. Join us in our pursuit of transformative education and a future driven by excellence.",
+        "Dear Students, Faculty, and Visitors,",
+        "It is my pleasure to welcome you to Velammal Engineering College, a hub of learning, innovation, and excellence. Our mission is to equip students with technical expertise, leadership skills, and adaptability to excel in today’s evolving technological landscape. Through close industry collaborations, we offer a curriculum that provides hands-on experience, internships, and research opportunities. Our dedicated faculty, state-of-the-art infrastructure, and student-focused approach create an ecosystem where knowledge meets application. Whether you are an aspiring engineer or an academic enthusiast, you will find an environment that fosters creativity and success. Together, let us build a future where technology drives progress and innovation serves humanity."
+      ]
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update Management",
+    "collection_type": "Management",
+    "meta_data": {
+      "designation": [
+        "Chatman",
+        "Executive Officer",
+        "Deputy CEO"
+      ]
+    },
+    "original_data": {
+      "designation": [
+        "Chairman",
+        "Chief Executive Officer",
+        "Deputy CEO"
+      ]
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update Management",
+    "collection_type": "Management",
+    "meta_data": {
+      "name": [
+        "Shri. M.V.Dhinesh",
+        "VELMURUGAN",
+        "Shri. V. KARTHIK MUTHURAMALINGAM"
+      ]
+    },
+    "original_data": {
+      "name": [
+        "Shri. M.V. MUTHURAMALINGAM",
+        "Shri. M.V.M. VELMURUGAN",
+        "Shri. V. KARTHIK MUTHURAMALINGAM"
+      ]
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update contact_us",
+    "collection_type": "contact_us",
+    "meta_data": {
+      "contact": "785 – 26590758"
+    },
+    "original_data": {
+      "contact": "044 – 26590758"
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update contact_us",
+    "collection_type": "contact_us",
+    "meta_data": {
+      "Student Affair": "000 - 26591771"
+    },
+    "original_data": {
+      "Student Affair": "044 - 26591771"
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "action": "update",
+    "title": "update contact_us",
+    "collection_type": "contact_us",
+    "meta_data": {
+      "For Admissions": "9123547566 , 8939221127"
+    },
+    "original_data": {
+      "For Admissions": "9123547550 , 8939221120"
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "collection_type": "AISHE",
+    "action": "update",
+    "title": "Update AISHE Teaching Staff Details 2022-2023",
+    "category": "2022-2023",
+    "meta_data": {
+      "name": "Teaching Staff Details",
+      "pdf_path": ""
+    },
+    "original_data": {
+      "name": "Teaching Staff Details",
+      "pdf_path": "/static/pdfs/about_vec/AISHE/2022-2023/AISHE 2022-2023 Data Capture Format.pdf"
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "collection_type": "AISHE",
+    "action": "insert",
+    "title": "Insert AISHE Certificate 2025-2026",
+    "category": "2025-2026",
+    "meta_data": {
+      "name": "Certificate",
+      "pdf_path": ""
+    }
+  },
+  {
+    "collectionName": "about_us",
+    "collection_type": "AISHE",
+    "action": "delete",
+    "title": "Delete AISHE Teaching Staff Details 2023-2024",
+    "category": "2023-2024",
+    "meta_data": {
+      "name": "Teaching Staff Details",
+      "pdf_path": "/static/pdfs/about_vec/AISHE/2023-2024/AISHE 2023-2024 Teaching Staff Details.pdf"
+    }
   }
 ]

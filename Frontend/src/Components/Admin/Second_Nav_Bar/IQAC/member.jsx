@@ -12,12 +12,13 @@ function IqaMem({ iqacData }) {
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const { sendRequest, loading, error } = useAdminRequest();
+  const cloneDeep = (obj) => JSON.parse(JSON.stringify(obj));
 
   // 🔹 track all changes separately
   const [changes, setChanges] = useState([]);
 
   useEffect(() => {
-    setData(iqacData || []);
+    setData(cloneDeep(iqacData) || []);
   }, [iqacData]);
 
   /** ✅ Refactored trackChange */
@@ -32,6 +33,20 @@ function IqaMem({ iqacData }) {
           c.category === category &&
           c.memberIdx === memberIdx
       );
+
+      const existingAdd = prev.find(
+        (c) =>
+          c.action === "added" &&
+          c.category === category &&
+          c.memberIdx === memberIdx
+      );
+
+      // ✅ If member is newly added, just update its newData
+      if (existingAdd) {
+        return prev.map((c) =>
+          c === existingAdd ? { ...c, newData } : c
+        );
+      }
 
       if (action === "updated") {
         if (existingUpdate) {
@@ -168,17 +183,20 @@ function IqaMem({ iqacData }) {
     
     if (result) {
       setConfirmPopup(false);
+      setData(cloneDeep(iqacData) || []);
       setChanges([]);
       setShowRequest(false);
       setHasChanges(false);
+      setIsEditing(false);
     }
   };
 
   const handleDiscard = () => {
-    setData(iqacData || []);
+    setData(cloneDeep(iqacData) || []);
     setChanges([]);
     setShowRequest(false);
     setHasChanges(false);
+    setIsEditing(false);
     toast.info("All changes discarded.");
   };
 
