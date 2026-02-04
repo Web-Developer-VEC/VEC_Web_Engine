@@ -2,97 +2,109 @@ const path = require("path");
 const { s3, bucketName } = require("../../../config/s3");
 const { PutObjectCommand } = require("@aws-sdk/client-s3");
 
-
 async function examHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
-
-    const realimagename =
+    const realName =
       typeof filename === "string"
         ? filename
-        : filename?.filename || "image.jpg";
+        : filename?.filename || "file";
 
-    const effectiveimageMime =
-      mimetype || filename?.mimeType || "image/jpeg";
+    const ext = path.extname(realName).toLowerCase();
+    const isPdf = ext === ".pdf";
+    const isImage = [".jpg", ".jpeg", ".png", ".webp"].includes(ext);
 
-    const realpdfname =
-      typeof filename === "string"
-        ? filename
-        : filename?.filename || "file.pdf";
-
-    const effectivepdfMime =
-      mimetype || filename?.mimeType || "application/pdf";
-
-     const extname = path.extname(
-          typeof filename === "string" ? filename : filename?.filename || ""
-        ).toLowerCase();
-    
-    
-        if (extname === ".pdf") {
-          if (!effectivepdfMime.startsWith("application/pdf")) {
-            fileStream.resume();
-            return cb(new Error("Only PDFs are allowed"));
-          }
-        } else {
-          if (!effectiveimageMime.startsWith("image/")) {
-            fileStream.resume();
-            return cb(new Error("Only images are allowed"));
-          }
-        }
+    const pdfMime = mimetype || "application/pdf";
+    const imageMime = mimetype || "image/jpeg";
 
     const collection_type = docs[0]?.collection_type;
-    const meta_data = docs[0]?.meta_data;
     const category = docs[0]?.category;
+    const meta_data = docs[0]?.meta_data || {};
 
-    // Buffer the stream
-    const chunks = [];
-    for await (const chunk of fileStream) {
-      chunks.push(chunk);
+    const safeName =
+      meta_data.name ||
+      path.basename(realName, ext).replace(/\s+/g, "_");
+
+    /* ---------- NO FILE TYPES ---------- */
+    if (collection_type === "exam_curriculum") {
+      return cb(null, null);
     }
-    const fileBuffer = Buffer.concat(chunks);
 
-    let last, folder, s3Key, command, type,mimeType;
-    let ext;
-    if (collection_type === "COE"&& category === "COE" || category === "Deputy COE" || category === "Co-ordinator – Internal Examinations" || category === "COE Staffs") {
-        ext = path.extname(realimagename) || ".jpg";
-        mimeType = effectiveimageMime;
-        type = "images";
-        last =`COE/${ meta_data?.name}`;
-    } else if (collection_type === "regulation") {
-      mimeType = effectivepdfMime;
-        ext = path.extname(realpdfname) || ".pdf";
-        type = "pdfs"
-        last = `regulation_docs/${category}_${meta_data.name}`;
-    } else if (collection_type === "all_forms" && category === "student" || category === "faculty") {
-      mimeType = effectivepdfMime;
-        ext = path.extname(realpdfname) || ".pdf";
-        type = "pdfs"
-        last = `all_forms/${meta_data.name}`;
-    } 
+    /* ---------- VALIDATION ---------- */
+    if (isPdf && !pdfMime.startsWith("application/pdf")) {
+      fileStream.resume();
+      return cb(new Error("Only PDF files are allowed"));
+    }
+
+    if (isImage && !imageMime.startsWith("image/")) {
+      fileStream.resume();
+      return cb(new Error("Only image files are allowed"));
+    }
+
+    /* ---------- BUFFER FILE ---------- */
+    const chunks = [];
+    for await (const chunk of fileStream) chunks.push(chunk);
+    const buffer = Buffer.concat(chunks);
+
+    let s3Key;
+    let contentType;
+
+    /* ---------- ROUTING ---------- */
+
+    if (
+      collection_type === "COE" &&
+      ["COE", "Deputy COE", "Co-ordinator – Internal Examinations", "COE Staffs"]
+        .includes(category)
+    ) {
+      contentType = imageMime;
+      s3Key = `temp/static/images/coe/${safeName}${ext}`;
+    }
+
+    else if (collection_type === "regulation") {
+      contentType = pdfMime;
+      s3Key = `temp/static/pdfs/regulation_docs/${category}_${safeName}${ext}`;
+    }
+
+    else if (
+      collection_type === "all_forms" &&
+      ["student", "faculty"].includes(category)
+    ) {
+      contentType = pdfMime;
+      s3Key = `temp/static/pdfs/all_forms/${safeName}${ext}`;
+    }
+
+    else if (collection_type === "rankholder") {
+      contentType = pdfMime;
+      s3Key = `temp/static/pdfs/rank_holder/${category}_${safeName}${ext}`;
+    }
+
     else {
       return cb(new Error("Unsupported collection type"));
     }
 
-    folder = `temp/static/${type}/${last}${ext}`;
-    s3Key = folder;
+    /* ---------- UPLOAD ---------- */
+    await s3.send(
+      new PutObjectCommand({
+        Bucket: bucketName,
+        Key: s3Key,
+        Body: buffer,
+        ContentType: contentType,
+      })
+    );
 
-    command = new PutObjectCommand({
-      Bucket: bucketName,
-      Key: s3Key,
-      Body: fileBuffer,
-      ContentType: mimeType,
-    });
-
-    const data = await s3.send(command);
-
-    // Track uploaded files
+    /* ---------- TRACK FILE ---------- */
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
       key: s3Key,
       location: `/${s3Key}`,
-      mimetype: command.input.ContentType,
+      mimetype: contentType,
     });
 
-    cb(null, data);
+    /* 🔥 REGULATION FIX: inject pdf_path directly */
+    if (collection_type === "regulation") {
+      meta_data.pdf_path = `/${s3Key}`;
+    }
+
+    cb(null, { key: s3Key });
   } catch (err) {
     cb(err);
   }
