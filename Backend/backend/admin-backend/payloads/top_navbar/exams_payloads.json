@@ -12,23 +12,104 @@
       "image_path": ""
     },
     "original_data": {
-            "name": "Dr. SRINATH S",
-            "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
-            "position": "Controller of Examinations",
-            "image_path": "/static/images/coe/srinath.webp"
-          }
+      "name": "Dr. SRINATH S",
+      "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
+      "position": "Controller of Examinations",
+      "image_path": "/static/images/coe/srinath.webp"
+    }
   },
-
-
+  {
+    "collectionName": "exams",
+    "collection_type": "COE",
+    "action": "update",
+    "title": "update",
+    "category": "Deputy COE",
+    "original_data": {
+      "name": "Dr. ANGALA PARAMESWARI G",
+      "qualification": "M.E., Ph.D",
+      "position": "Deputy Controller of Examinations",
+      "image_path": "/static/images/coe/angala.webp"
+    },
+    "meta_data": {
+      "name": "Dr. ANGALA PARAMESWARI G",
+      "qualification": "B.Tech, M.E., Ph.D., M.A(Hindi)",
+      "position": "Deputy Controller of Examinations",
+      "image_path": "/static/images/coe/angala.webp"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "COE",
+    "action": "update",
+    "title": "update",
+    "category": "Co-ordinator – Internal Examinations",
+    "original_data": {
+      "name": "Dr. GURUSAMY P",
+      "qualification": "M.Sc.,M.Phil.,B.Ed.,Ph.D",
+      "position": "Co-ordinator – Internal Examinations",
+      "image_path": "/static/images/coe/gurusamy.webp"
+    },
+    "meta_data": {
+      "name": "Dr. PONUSAMY P",
+      "qualification": "M.Sc.,M.Phil.,B.Ed.,Ph.D",
+      "position": "Co-ordinator – Internal Examinations",
+      "image_path": "/static/images/coe/gurusamy.webp"
+    }
+  },
   {
     "collectionName": "exams",
     "collection_type": "regulation",
     "action": "insert",
     "title": "insert",
-    "category": "2023",
+    "category": "2025",
     "meta_data": {
       "name": "lg - B.E / B.Tech",
       "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "COE",
+    "action": "insert",
+    "title": "insert",
+    "category": "COE Staffs",
+    "meta_data": {
+      "name": "Mrs. MANJULA U",
+      "qualification": "B.Com",
+      "position": "Data Entry Operator",
+      "image_path": "/static/images/coe/manjula.webp"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "COE",
+    "action": "update",
+    "title": "update",
+    "category": "COE Staffs",
+    "original_data": {
+      "name": "Mrs. MANJULA U",
+      "qualification": "B.Com",
+      "position": "Data Entry Operator",
+      "image_path": "/static/images/coe/manjula.webp"
+    },
+    "meta_data": {
+      "name": "Mrs. MANJU P",
+      "qualification": "B.Com",
+      "position": "Data Entry Operator",
+      "image_path": "/static/images/coe/manjula.webp"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "COE",
+    "action": "delete",
+    "title": "delete",
+    "category": "COE Staffs",
+    "meta_data": {
+      "name": "Mrs. MEENAKSHI P",
+      "qualification": "B.C.A",
+      "position": "Data Entry Operator",
+      "image_path": "/static/images/coe/meenakshi.webp"
     }
   },
   {
@@ -38,32 +119,8 @@
     "title": "insert",
     "category": "student",
     "meta_data": {
-      "name": "dinesh Course Registration form for credit transfer",
+      "name": "hari Course Registration form for credit transfer",
       "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
-    }
-  },
-  {
-    "collectionName": "exams",
-    "collection_type": "exam_curriculum",
-    "action": "insert",
-    "title": "insert",
-    "meta_data": {
-      "department": "dinesh",
-      "deptid": "018"
-    }
-  },
-  {
-    "collectionName": "exams",
-    "collection_type": "exam_curriculum",
-    "action": "update",
-    "title": "update",
-    "meta_data": {
-      "department": "hari",
-      "deptid": "018"
-    },
-    "original_data": {
-      "department": "dinesh",
-      "deptid": "018"
     }
   },
   {
@@ -77,7 +134,7 @@
       "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
     },
     "original_data": {
-      "name": "NPTEL Course Registration form for credit transfer",
+      "name": "dinesh Course Registration form for credit transfer",
       "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
     }
   },
@@ -86,18 +143,16 @@
     "collection_type": "regulation",
     "action": "update",
     "title": "update",
-    "category": "2023",
+    "category": "Regulation 2023",
     "meta_data": {
       "name": " B.E / B.Tech",
       "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
     },
     "original_data": {
-      "name": "UG - B.E / B.Tech",
+      "name": "lg - B.E / B.Tech",
       "pdf_path": "/static/pdfs/regulation_docs/2023_be.pdf"
     }
   },
-  
-  
   {
     "collectionName": "exams",
     "collection_type": "regulation",
@@ -111,23 +166,50 @@
   },
   {
     "collectionName": "exams",
-    "collection_type": "exam_curriculum",
-    "action": "delete",
-    "title": "delete",
-    "meta_data": {
-      "department": "B.E Automobile Engineering",
-      "deptid": "002"
-    }
-  },
-  {
-    "collectionName": "exams",
     "collection_type": "all_forms",
     "action": "delete",
     "title": "delete",
     "category": "student",
     "meta_data": {
-      "name": "Application Form - NPTEL Credit Transfer",
-      "pdf_path": "/static/pdfs/all_forms/Applicationform-NPTEL_Credit_transfer.pdf"
+      "name": "hari Course Registration form for credit transfer",
+      "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "rankholder",
+    "action": "insert",
+    "title": "insert",
+    "category": "2025-2026",
+    "meta_data": {
+      "name": "B.E / B.Tech",
+      "pdf_path": "/static/pdfs/rank_holder/Rank Holders_B.E._B.Tech. & MBA - 2022-2023.pdf"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "rankholder",
+    "action": "update",
+    "title": "update",
+    "category": "2024-2025",
+    "meta_data": {
+      "name": "MBAAA",
+      "pdf_path": "/static/pdfs/rank_holder/Rank List_MBA._2023-2025 batch.pdf"
+    },
+    "original_data": {
+      "name": "MBA",
+      "pdf_path": "/static/pdfs/rank_holder/Rank List_MBA._2023-2025 batch.pdf"
+    }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "rankholder",
+    "action": "delete",
+    "title": "delete",
+    "category": "2024-2025",
+    "meta_data": {
+      "name": "B.E / B.Tech",
+      "pdf_path": "/static/pdfs/rank_holder/REVISED_Rank List_B.E._B.Tech._2021-2025 batch.pdf"
     }
   }
 ]

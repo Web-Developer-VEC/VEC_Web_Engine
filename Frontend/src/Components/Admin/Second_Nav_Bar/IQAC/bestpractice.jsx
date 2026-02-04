@@ -1,8 +1,9 @@
-import { Edit, Trash2, Plus, Save, Send, Eye, Pencil, X } from "lucide-react";
+import { Trash2, Plus, Send, Eye, Pencil, X } from "lucide-react";
 import LoadComp from "../../LoadComp";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function IqaPra({ iqacData }) {
   const [editableData, setEditableData] = useState([]);
@@ -14,19 +15,36 @@ export default function IqaPra({ iqacData }) {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [changesLog, setChangesLog] = useState([]);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
     if (typeof path !== "string") return "";
     if (!path) return "";
-    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path.startsWith("http") ? path : path.startsWith("blob") ? path : `${BASE_URL}${path}`;
+  };
+
+  // Helper function to deep clone data
+  const deepClone = (data) => {
+    return data.map((row) => ({
+      ...row,
+      title: Array.isArray(row.title) ? [...row.title] : [],
+    }));
   };
 
   useEffect(() => {
     if (iqacData && Array.isArray(iqacData)) {
-      setEditableData([...iqacData]);
-      setOriginalData([...iqacData]);
+      // Add a unique _id to each row for tracking
+      const withIds = iqacData.map((row, idx) => ({
+        _id: row._id || Date.now() + idx,
+        ...row,
+        year: row.year || "",
+        title: Array.isArray(row.title) ? [...row.title] : [],
+        pdf_path: row.pdf_path || "",
+      }));
+      setEditableData(deepClone(withIds));
+      setOriginalData(deepClone(withIds));
     }
   }, [iqacData]);
 
@@ -83,19 +101,32 @@ export default function IqaPra({ iqacData }) {
         ...prev,
         [index]: { file, fileURL },
       }));
-      handleInputChange(index, "path", file.name);
+      handleInputChange(index, "pdf_path", file.name);
     }
   };
 
   // Add new row
   const handleAddRow = () => {
-    const newRow = { year: "", title: [""], path: "" };
+    const newRow = {
+      _id: Date.now(),
+      year: "",
+      title: [""],
+      pdf_path: "",
+      _isNew: true,
+    };
     setEditableData([...editableData, newRow]);
     setHasChanges(true);
+    logChange("Insert", editableData.length, newRow);
   };
 
   // Delete selected rows
   const handleDeleteSelected = () => {
+    const deletedRows = editableData.filter((_, i) =>
+      selectedRows.includes(i)
+    );
+    deletedRows.forEach((row, i) => {
+      logChange("Delete", i, row);
+    });
     const newData = editableData.filter((_, i) => !selectedRows.includes(i));
     setEditableData(newData);
     setSelectedRows([]);
@@ -131,14 +162,13 @@ export default function IqaPra({ iqacData }) {
   // Save changes
   const handleSave = () => {
     setIsEditMode(false);
-    setOriginalData([...editableData]); // ✅ update reference snapshot
-    // setHasChanges(false);
+    // Don't update originalData here - keep it for comparison in buildPayload
     toast.success("Changes saved. You can now request approval or discard.");
   };
 
   // Cancel edit mode
   const handleCancel = () => {
-    setEditableData([...originalData]);
+    setEditableData(deepClone(originalData));
     setSelectedRows([]);
     setHasChanges(false);
     setIsEditMode(false);
@@ -146,20 +176,91 @@ export default function IqaPra({ iqacData }) {
 
   // Discard changes
   const handleDiscardChanges = () => {
-    setEditableData([...originalData]);
+    setEditableData(deepClone(originalData));
     setUploadedFiles({});
     setSelectedRows([]);
     setHasChanges(false);
+    setChangesLog([]);
     toast.info("All changes discarded.");
   };
 
-  // Request approval
-  const handleRequestConfirm = () => {
-    console.log("Final request submitted:", editableData, uploadedFiles);
-    toast.success("Request submitted successfully!");
-    setShowRequestModal(false);
-    setHasChanges(false);
-    setOriginalData([...editableData]); // update reference
+  const buildPayload = (originalData, editableData, uploadedFiles) => {
+    const payload = [];
+    const files = [];
+
+    // Deletions & Updates
+    originalData.forEach((orig) => {
+      const match = editableData.find((ed) => ed._id === orig._id);
+
+      if (!match) {
+        // Deletion
+        const { _id, _isNew, ...cleanData } = orig;
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "best_practices",
+          action: "delete",
+          title: "deletion of best practices",
+          category: "Best Practices",
+          meta_data: { ...cleanData },
+          original_data: null,
+        });
+      } else if (JSON.stringify(match) !== JSON.stringify(orig)) {
+        // Update
+        const { _id, _isNew, ...cleanMatch } = match;
+        const { _id: origId, _isNew: origIsNew, ...cleanOrig } = orig;
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "best_practices",
+          action: "update",
+          title: "updation of best practices",
+          category: "Best Practices",
+          meta_data: { ...cleanMatch },
+          original_data: { ...cleanOrig },
+        });
+      }
+    });
+
+    // Insertions
+    editableData.forEach((ed) => {
+      if (ed._isNew) {
+        const { _id, _isNew, ...cleanData } = ed;
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "best_practices",
+          action: "insert",
+          title: "insertion of best practices",
+          category: "Best Practices",
+          meta_data: { ...cleanData },
+          original_data: null,
+        });
+      }
+    });
+
+    // Collect files
+    Object.values(uploadedFiles).forEach(({ file }) => {
+      if (file) files.push(file);
+    });
+
+    return { payload, files };
+  };
+
+  const handleRequestConfirm = async () => {
+    const { payload, files } = buildPayload(
+      originalData,
+      editableData,
+      uploadedFiles
+    );
+    console.log("Final request payload:", payload);
+    console.log("Files to upload:", files);
+
+    const response = await sendRequest(payload, files);
+    if (response) {
+      setShowRequestModal(false);
+      setHasChanges(false);
+      setOriginalData(deepClone(editableData));
+      setChangesLog([]);
+      setUploadedFiles({});
+    }
   };
 
   return (
@@ -243,7 +344,7 @@ export default function IqaPra({ iqacData }) {
                         <td className="text-center px-2 py-2">
                           <div className="flex gap-2 items-center justify-center">
                             <label className="px-3 py-1 bg-secd text-text hover:bg-brwn hover:text-prim rounded cursor-pointer">
-                              {item.path ? "Replace PDF" : "Upload PDF"}
+                              {item.pdf_path ? "Replace PDF" : "Upload PDF"}
                               <input
                                 type="file"
                                 accept="application/pdf"
@@ -253,11 +354,11 @@ export default function IqaPra({ iqacData }) {
                                 className="hidden"
                               />
                             </label>
-                            {(uploadedFiles[index] || item.path) && (
+                            {(uploadedFiles[index] || item.pdf_path) && (
                               <a
                                 href={
                                   uploadedFiles[index]?.fileURL ||
-                                  UrlParser(item.path)
+                                  UrlParser(item.pdf_path)
                                 }
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -322,8 +423,8 @@ export default function IqaPra({ iqacData }) {
                               dept?.title?.map((title, repIndex) => (
                                 <li key={repIndex}>
                                   <a
-                                    href={UrlParser(dept?.path) || "#"}
-                                    target={dept?.path ? "_blank" : ""}
+                                    href={UrlParser(dept?.pdf_path) || "#"}
+                                    target={dept?.pdf_path ? "_blank" : ""}
                                     rel="noopener noreferrer"
                                     className="text-blue-600 underline cursor-pointer"
                                   >
