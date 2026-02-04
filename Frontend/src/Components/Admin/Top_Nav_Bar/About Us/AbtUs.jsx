@@ -580,11 +580,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
                         <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                       </div>
                     )}
-                    {editMode && (
-                      <span className="absolute top-2 right-2 bg-secd text-black text-xs font-bold px-2 py-1 rounded shadow z-20">
-                        {i + 1}
-                      </span>
-                    )}
                     <img
                       className={`absolute w-full h-full object-cover transition-opacity duration-500 ${loading[`img${i + 1}`] ? "opacity-0" : "opacity-100"}`}
                       src={
@@ -598,24 +593,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
                   </div>
                 ))}
 
-                {editMode && (
-                  <div className="absolute bottom-[-4rem] left-1/2 -translate-x-1/2 flex justify-center gap-8">
-                    {[0, 1, 2].map((index) => (
-                      <div key={index} className="flex flex-col items-center">
-                        <span className="mb-1 text-sm font-bold">Image {index + 1}</span>
-                        <label className="bg-secd hover:bg-yellow-500 text-black px-3 py-1 border-text cursor-pointer">
-                          Replace
-                          <input
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={(e) => handleImageChange(index, e.target.files[0])}
-                          />
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -630,7 +607,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
                     setChanged(true);
                     setSavedChanges(false);
                   }}
-                  className="w-full h-40 p-2 border border-gray-400 rounded"
+                  className="w-full h-40 p-2 border border-black rounded"
                 />
               ) : (
                 <p className="text-[16px] lg:text-[16px] text-justify font-[Poppins] leading-relaxed tracking-wide">
