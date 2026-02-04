@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Regulation.css";
 import axios from "axios";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import { Plus, Send, Pencil, Eye, X } from "lucide-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest"; 
 
 const AdminREGULATION = ({ theme, toggle }) => {
+  const { sendRequest, loading: requestLoading, error: requestError } = useAdminRequest();
+
   const [regulationData, setRegulationData] = useState([]);
-  const [originalData, setOriginalData] = useState([]);
-  const [initialData, setInitialData] = useState([]); // 🔑 first baseline
-  const [sessionBackup, setSessionBackup] = useState([]); // 🔑 snapshot for current edit session
+  const [initialData, setInitialData] = useState([]); 
+  const initialMapRef = useRef(new Map()); 
+
   const [hasChanges, setHasChanges] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isLoading, setLoading] = useState(true);
-  const [deletedRegs, setDeletedRegs] = useState([]);
 
   // UI states
   const [isEditing, setIsEditing] = useState(false);
@@ -28,11 +32,12 @@ const AdminREGULATION = ({ theme, toggle }) => {
     { name: "PG - ME", pdf_path: "" },
     { name: "PG - MBA", pdf_path: "" },
   ]);
+  const [newFiles, setNewFiles] = useState([null, null, null]); // File | null per link index
   const [isEditingItem, setIsEditingItem] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
 
   // Checkbox delete states
-  const [selectedRegs, setSelectedRegs] = useState([]);
+  const [selectedRegs, setSelectedRegs] = useState([]); // indexes
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   // Request modal states
@@ -59,6 +64,24 @@ const AdminREGULATION = ({ theme, toggle }) => {
     };
   }, []);
 
+  const normalizeReg = (reg) => ({
+    category: reg?.category ?? "",
+    links: Array.isArray(reg?.links)
+      ? reg.links.map((l) => ({
+          name: l?.name ?? "",
+          pdf_path: l?.pdf_path ?? "",
+        }))
+      : [],
+  });
+
+  const buildMapByCategory = (arr) => {
+    const map = new Map();
+    (arr || []).forEach((r) => {
+      map.set(r?.category ?? "", normalizeReg(r));
+    });
+    return map;
+  };
+
   // Fetch regulation data
   useEffect(() => {
     const fetchData = async () => {
@@ -67,12 +90,15 @@ const AdminREGULATION = ({ theme, toggle }) => {
           type: "regulation",
         });
         const data = response.data.data || [];
+
         setRegulationData(data);
-        setOriginalData(data);
-        setInitialData(data); // 🔑 keep very first baseline
+        setInitialData(data);
+
+        initialMapRef.current = buildMapByCategory(data);
+
         setLoading(false);
       } catch (error) {
-        console.error("Error Fetching Regulation data");
+        console.error("Error Fetching Regulation data", error);
         if (error.response?.data?.status === 429) {
           navigate("/ratelimit", {
             state: { msg: error.response.data.message },
@@ -84,23 +110,43 @@ const AdminREGULATION = ({ theme, toggle }) => {
     fetchData();
   }, [navigate]);
 
-  // Track changes relative to sessionBackup
+  // Detect changes vs baseline
   useEffect(() => {
-    setHasChanges(
-      JSON.stringify(regulationData) !== JSON.stringify(sessionBackup)
-    );
-  }, [regulationData, sessionBackup]);
+    const baseMap = initialMapRef.current;
+    const curMap = buildMapByCategory(regulationData);
+
+    let changed = false;
+
+    // insert/update
+    for (const [cat, cur] of curMap.entries()) {
+      const base = baseMap.get(cat);
+      if (!base || JSON.stringify(base) !== JSON.stringify(cur)) {
+        changed = true;
+        break;
+      }
+    }
+
+    // delete
+    if (!changed) {
+      for (const [cat] of baseMap.entries()) {
+        if (!curMap.has(cat)) {
+          changed = true;
+          break;
+        }
+      }
+    }
+
+    setHasChanges(changed);
+  }, [regulationData]);
 
   // Checkbox selection
   const handleCheckboxChange = (index) => {
     setSelectedRegs((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index]
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
 
-  // Add or update regulation
+  // Add or update regulation (UI only)
   const handleAddOrUpdateRegulation = (newReg, index = null) => {
     if (index !== null) {
       setRegulationData((prev) => {
@@ -113,28 +159,27 @@ const AdminREGULATION = ({ theme, toggle }) => {
     }
   };
 
-  // Start editing session
-  const handleStartEditing = () => {
-    setSessionBackup(JSON.parse(JSON.stringify(regulationData))); // deep copy snapshot
-    setIsEditing(true);
-  };
+  // Start editing
+  const handleStartEditing = () => setIsEditing(true);
 
-  // Cancel editing (restore snapshot of current session)
+  // Cancel editing (exit edit mode only)
   const handleCancel = () => {
-    setRegulationData(sessionBackup);
     setIsEditing(false);
     setSelectedRegs([]);
   };
 
-  // Save changes (commit this session’s edits as new baseline)
+  // Save changes (stage for request)
   const handleSave = () => {
-    setOriginalData(regulationData);
-    setHasChanges(false);
+    if (!hasChanges) {
+      toast.info("No changes to save.");
+      return;
+    }
     setIsEditing(false);
     setIsDone(true);
+    toast.success("Saved. Now click Request to send for approval.");
   };
 
-  // Discard all changes (reset to very first fetch state)
+  // Discard changes (reset to baseline)
   const handleDiscardChanges = () => {
     const clonedData = initialData.map((reg) => ({
       category: reg.category,
@@ -142,10 +187,29 @@ const AdminREGULATION = ({ theme, toggle }) => {
     }));
 
     setRegulationData(clonedData);
-    setOriginalData(clonedData);
     setIsEditing(false);
     setIsDone(false);
+
     setShowPopup(false);
+    setIsEditingItem(false);
+    setEditIndex(null);
+
+    setNewYear("");
+    setNewLinks([
+      { name: "UG - B.E / B.Tech", pdf_path: "" },
+      { name: "PG - ME", pdf_path: "" },
+      { name: "PG - MBA", pdf_path: "" },
+    ]);
+    setNewFiles([null, null, null]);
+
+    setSelectedRegs([]);
+    setShowDeleteConfirm(false);
+
+    toast.info("Discarded all changes.");
+  };
+
+  // Add popup
+  const handleAddNew = () => {
     setIsEditingItem(false);
     setEditIndex(null);
     setNewYear("");
@@ -154,48 +218,149 @@ const AdminREGULATION = ({ theme, toggle }) => {
       { name: "PG - ME", pdf_path: "" },
       { name: "PG - MBA", pdf_path: "" },
     ]);
-    setHasChanges(false);
-    setSelectedRegs([]);
-    setDeletedRegs([]);
-  };
-
-  // Undo a change for Request Modal
-  const undoChange = (index) => {
-  const cloned = [...regulationData];
-  cloned[index] = { ...initialData[index] };  // 🔑 revert to very first baseline
-  setRegulationData(cloned);
-  if (selectedRegs.includes(index)) {
-    setSelectedRegs(selectedRegs.filter(i => i !== index));
-  }
-};
-
-
-  // Final submission from Request Changes modal
-  const handleRequest = () => {
-    console.log("Final submitted data:", regulationData);
-    setIsDone(false);
-  };
-
-  // Add new popup
-  const handleAddNew = () => {
-    setIsEditingItem(false);
-    setNewYear("");
-    setNewLinks([
-      { name: "UG - B.E / B.Tech", pdf_path: "" },
-      { name: "PG - ME", pdf_path: "" },
-      { name: "PG - MBA", pdf_path: "" },
-    ]);
+    setNewFiles([null, null, null]);
     setShowPopup(true);
   };
 
-  // Edit existing popup
+  // Edit popup
   const handleEditRegulation = (index) => {
     const item = regulationData[index];
     setIsEditingItem(true);
     setEditIndex(index);
     setNewYear(item.category);
     setNewLinks(item.links.map((l) => ({ ...l })));
+    setNewFiles([null, null, null]); // only new uploads will be sent
     setShowPopup(true);
+  };
+
+  // Confirm delete selection
+  const confirmDeleteSelected = () => {
+    if (selectedRegs.length === 0) return;
+    setRegulationData((prev) => prev.filter((_, idx) => !selectedRegs.includes(idx)));
+    setSelectedRegs([]);
+    setShowDeleteConfirm(false);
+    toast.success("Selected items removed (pending request).");
+  };
+
+  // -----------------------------
+  // Request changes (Inserted/Updated/Deleted) based on category key
+  // -----------------------------
+  const requestChanges = useMemo(() => {
+    const baseMap = initialMapRef.current;
+    const curMap = buildMapByCategory(regulationData);
+
+    const changes = [];
+
+    // insert/update
+    for (const [cat, cur] of curMap.entries()) {
+      const base = baseMap.get(cat);
+      if (!base) {
+        changes.push({ type: "Inserted", category: cat, current: cur, original: null });
+      } else if (JSON.stringify(base) !== JSON.stringify(cur)) {
+        changes.push({ type: "Updated", category: cat, current: cur, original: base });
+      }
+    }
+
+    // delete
+    for (const [cat, base] of baseMap.entries()) {
+      if (!curMap.has(cat)) {
+        changes.push({ type: "Deleted", category: cat, current: null, original: base });
+      }
+    }
+
+    return changes;
+  }, [regulationData]);
+
+  const undoRequestChange = (change) => {
+    const baseMap = initialMapRef.current;
+
+    if (change.type === "Inserted") {
+      setRegulationData((prev) => prev.filter((r) => r.category !== change.category));
+      return;
+    }
+
+    if (change.type === "Updated") {
+      const baseline = baseMap.get(change.category);
+      if (!baseline) return;
+      setRegulationData((prev) => prev.map((r) => (r.category === change.category ? baseline : r)));
+      return;
+    }
+
+    if (change.type === "Deleted") {
+      const baseline = baseMap.get(change.category);
+      if (!baseline) return;
+      setRegulationData((prev) => [baseline, ...prev]);
+    }
+  };
+
+  // -----------------------------
+  // Payload generation for /api/admin-backend/temp (useAdminRequest)
+  // IMPORTANT: useAdminRequest sends {docs: JSON.stringify(payload)} as FormData
+  // So payload must be an ARRAY of docs.
+  // -----------------------------
+  const buildPayloads = () => {
+    return requestChanges.map((c) => {
+      if (c.type === "Inserted") {
+        return {
+          collectionName: "exams",
+          collection_type: "regulation",
+          action: "insert",
+          title: "insert in regulation",
+          meta_data: c.current,
+        };
+      }
+      if (c.type === "Updated") {
+        return {
+          collectionName: "exams",
+          collection_type: "regulation",
+          action: "update",
+          title: "update in regulation",
+          original_data: c.original,
+          meta_data: c.current,
+        };
+      }
+      // Deleted
+      return {
+        collectionName: "exams",
+        collection_type: "regulation",
+        action: "delete",
+        title: "delete in regulation",
+        meta_data: c.original,
+      };
+    });
+  };
+
+  const handleConfirmRequest = async () => {
+    // Gate: must have changes
+    if (requestChanges.length === 0) {
+      toast.info("No changes to request.");
+      return;
+    }
+
+    const payloads = buildPayloads();
+    const filesToSend = newFiles.filter(Boolean);
+
+    console.log("REGULATION PAYLOADS:", payloads);
+    console.log("FILES:", filesToSend);
+
+    const res = await sendRequest(payloads, filesToSend);
+
+    if (!res) {
+      // useAdminRequest already shows toast "Request failed". Add a helpful hint:
+      toast.error(
+        "Request failed. Check console Network tab: /api/admin-backend/temp. Also confirm token/cookies are valid."
+      );
+      return;
+    }
+
+    // After success: set new baseline to current
+    setInitialData(JSON.parse(JSON.stringify(regulationData)));
+    initialMapRef.current = buildMapByCategory(regulationData);
+
+    setIsDone(false);
+    setShowRequestModal(false);
+    setNewFiles([null, null, null]);
+    toast.success("Request submitted successfully.");
   };
 
   if (!isOnline) {
@@ -222,7 +387,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
         </div>
       ) : (
         <div className="regulation-container mt-10">
-          {/* Top Edit Button */}
           {!isEditing && (
             <div className="flex justify-end pr-8 my-0 mr-10">
               <button
@@ -238,7 +402,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
           <div className="regulation-grid">
             {regulationData?.map((reg, index) => (
-              <div key={index} className="regulation-card relative">
+              <div key={reg.category || index} className="regulation-card relative">
                 <div className="flex items-center justify-between">
                   <h2 className="regulation-year text-brwn dark:text-drkt text-md border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">
                     {reg.category}
@@ -295,7 +459,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
             )}
           </div>
 
-          {/* Buttons */}
           <div className="flex gap-3 justify-end items-center pr-8 my-8 mr-10">
             {isEditing && (
               <>
@@ -329,6 +492,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
                 <button
                   className="px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] flex items-center gap-2 hover:text-prim"
                   onClick={() => setShowRequestModal(true)}
+                  disabled={requestLoading}
                 >
                   <Send size={16} className="mr-1" /> Request
                 </button>
@@ -336,15 +500,13 @@ const AdminREGULATION = ({ theme, toggle }) => {
             )}
           </div>
 
-          {/* Static Bottom-Center Delete Button */}
           {selectedRegs.length > 0 && (
             <div className="w-full flex justify-center mt-8">
               <button
                 className="px-6 py-3 bg-red-600 text-white rounded hover:bg-red-700 font-semibold"
                 onClick={() => setShowDeleteConfirm(true)}
               >
-                Delete {selectedRegs.length} Item
-                {selectedRegs.length !== 1 ? "s" : ""}
+                Delete {selectedRegs.length} Item{selectedRegs.length !== 1 ? "s" : ""}
               </button>
             </div>
           )}
@@ -370,14 +532,13 @@ const AdminREGULATION = ({ theme, toggle }) => {
             {newLinks.map((link, idx) => (
               <div key={idx} className="flex justify-between items-center mb-2">
                 <span className="font-medium">{link.name}</span>
+
                 <div className="flex gap-2 items-center">
                   <button
                     className="px-2 py-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
-                    onClick={() =>
-                      document.getElementById(`file-${idx}`).click()
-                    }
+                    onClick={() => document.getElementById(`file-${idx}`).click()}
                   >
-                    Replace
+                    {link.pdf_path ? "Replace" : "Upload"}
                   </button>
 
                   {link.pdf_path && (
@@ -396,12 +557,21 @@ const AdminREGULATION = ({ theme, toggle }) => {
                     id={`file-${idx}`}
                     className="hidden"
                     onChange={(e) => {
-                      const file = e.target.files[0];
+                      const file = e.target.files?.[0];
                       if (file) {
+                        // keep file for backend upload
+                        setNewFiles((prev) => {
+                          const nxt = [...prev];
+                          nxt[idx] = file;
+                          return nxt;
+                        });
+
+                        // UI preview
                         const updatedLinks = [...newLinks];
                         updatedLinks[idx].pdf_path = URL.createObjectURL(file);
                         setNewLinks(updatedLinks);
                       }
+                      e.target.value = "";
                     }}
                   />
                 </div>
@@ -412,11 +582,14 @@ const AdminREGULATION = ({ theme, toggle }) => {
               <button
                 className="px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
                 onClick={() => {
-                  const newReg = { category: newYear, links: newLinks };
-                  handleAddOrUpdateRegulation(
-                    newReg,
-                    isEditingItem ? editIndex : null
-                  );
+                  if (!newYear.trim()) {
+                    toast.error("Please enter regulation year/category");
+                    return;
+                  }
+
+                  const newReg = { category: newYear.trim(), links: newLinks };
+                  handleAddOrUpdateRegulation(newReg, isEditingItem ? editIndex : null);
+
                   setShowPopup(false);
                   setNewYear("");
                   setNewLinks([
@@ -424,6 +597,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
                     { name: "PG - ME", pdf_path: "" },
                     { name: "PG - MBA", pdf_path: "" },
                   ]);
+                  setNewFiles([null, null, null]);
                   setIsEditingItem(false);
                   setEditIndex(null);
                 }}
@@ -446,23 +620,14 @@ const AdminREGULATION = ({ theme, toggle }) => {
       {showDeleteConfirm && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-[400px]">
-            <h2 className="text-lg font-semibold mb-4 text-center">
-              Confirm Deletion
-            </h2>
+            <h2 className="text-lg font-semibold mb-4 text-center">Confirm Deletion</h2>
             <p className="text-center mb-4">
-              Are you sure you want to delete {selectedRegs.length} selected item(s)?
+              Are you sure you want to delete selected item(s)?
             </p>
             <div className="flex justify-center gap-4">
               <button
                 className="px-6 py-3 bg-red-600 text-white rounded hover:bg-red-700 font-semibold"
-                onClick={() => {
-                  setDeletedRegs(selectedRegs);
-                  setRegulationData((prev) =>
-                    prev.filter((_, idx) => !selectedRegs.includes(idx))
-                  );
-                  setSelectedRegs([]);
-                  setShowDeleteConfirm(false);
-                }}
+                onClick={confirmDeleteSelected}
               >
                 Yes, Delete
               </button>
@@ -482,9 +647,9 @@ const AdminREGULATION = ({ theme, toggle }) => {
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">Request </h2>
+            <h2 className="text-xl font-bold mb-4 text-gray-800">Request</h2>
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin.Once approved will go live.
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
             </p>
 
             <table className="w-full border border-gray-300 text-sm text-center">
@@ -497,56 +662,40 @@ const AdminREGULATION = ({ theme, toggle }) => {
                 </tr>
               </thead>
               <tbody>
-                {regulationData.map((reg, index) => {
-                  const original = initialData[index] || { category: "", links: [] };
-                  if (JSON.stringify(reg) !== JSON.stringify(original)) {
-                    return (
-                      <tr key={index}>
-                        <td className="border p-2 text-blue-600">Updated</td>
-                        <td className="border p-2">{reg.category}</td>
-                        <td className="border p-2">
-                          {reg.links.map(l => l.name).join(", ")}
-                        </td>
-                        <td className="border p-2">
-                          <button
-                            onClick={() => undoChange(index)}
-                            className="p-1 rounded hover:bg-gray-100"
-                          >
-                            <X size={16} className="text-red-500" />
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  }
-                  return null;
-                })}
-
-                {deletedRegs.map((idx) => {
-                  const reg = originalData[idx];
-                  return (
-                    <tr key={`deleted-${idx}`}>
-                      <td className="border p-2 text-red-600">Deleted</td>
-                      <td className="border p-2">{reg.category}</td>
+                {requestChanges.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="border p-4">No changes detected</td>
+                  </tr>
+                ) : (
+                  requestChanges.map((c) => (
+                    <tr key={`${c.type}-${c.category}`}>
+                      <td
+                        className={`border p-2 ${
+                          c.type === "Deleted"
+                            ? "text-red-600"
+                            : c.type === "Inserted"
+                              ? "text-green-600"
+                              : "text-blue-600"
+                        }`}
+                      >
+                        {c.type}
+                      </td>
+                      <td className="border p-2">{c.category}</td>
                       <td className="border p-2">
-                        {reg.links.map(l => l.name).join(", ")}
+                        {(c.current?.links || c.original?.links || []).map((l) => l.name).join(", ")}
                       </td>
                       <td className="border p-2">
                         <button
-                          onClick={() => {
-                            const restored = [...regulationData];
-                            restored.splice(idx, 0, reg);
-                            setRegulationData(restored);
-                            setDeletedRegs(deletedRegs.filter(i => i !== idx));
-                          }}
+                          onClick={() => undoRequestChange(c)}
                           className="p-1 rounded hover:bg-gray-100"
-                          title="Restore deleted item"
+                          title="Undo"
                         >
-                          <X size={16} className="text-green-500" />
+                          <X size={16} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
-                  );
-                })}
+                  ))
+                )}
               </tbody>
             </table>
 
@@ -554,22 +703,29 @@ const AdminREGULATION = ({ theme, toggle }) => {
               <button
                 onClick={() => setShowRequestModal(false)}
                 className="px-4 py-2 rounded bg-gray-400 text-white"
+                disabled={requestLoading}
               >
                 Cancel
               </button>
               <button
-                onClick={() => {
-                  handleRequest();
-                  setShowRequestModal(false);
-                }}
+                onClick={handleConfirmRequest}
                 className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000] flex items-center gap-2"
+                disabled={requestLoading}
               >
-                Confirm Request
+                {requestLoading ? "Submitting..." : "Confirm Request"}
               </button>
             </div>
+
+            {requestError && (
+              <p className="mt-3 text-sm text-red-600">
+                Error: {String(requestError?.message || requestError)}
+              </p>
+            )}
           </div>
         </div>
       )}
+
+      <ToastContainer position="bottom-right" autoClose={2500} />
     </>
   );
 };
