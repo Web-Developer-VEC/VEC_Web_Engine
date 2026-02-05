@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import LoadComp from '../../LoadComp';
 import '../sports/admin_Sportshod.css';
 import {
@@ -15,13 +15,14 @@ import {
 } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 import { input } from 'framer-motion/m';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
+const UrlParser = (path) => {
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+};
 const Sportsfaculties = ({ data: initialData }) => {
   const [editFac, setEditFac] = useState(false);
   const [facultyData, setFacultyData] = useState([]);
@@ -34,8 +35,9 @@ const Sportsfaculties = ({ data: initialData }) => {
   const [changeList, setChangeList] = useState([]);
   const [imagePreviews, setImagePreviews] = useState({});
 
-  console.log("Ajay",changeList);
-  
+  const { sendRequest, loading, error } = useAdminRequest();
+  console.log("Ajay", changeList);
+
 
   const generateId = () => Date.now() + Math.floor(Math.random() * 1000);
 
@@ -53,73 +55,146 @@ const Sportsfaculties = ({ data: initialData }) => {
       isChecked ? [...prev, id] : prev.filter((itemId) => itemId !== id)
     );
   };
-const trackChange = (index, field, value) => {
-  setFacultyData((prev) => {
-    const updated = [...prev];
-    if (field === "name") value = value.toUpperCase();
-    updated[index] = { ...updated[index], [field]: value };
+  const trackChange = (index, field, value) => {
+    setFacultyData(prev => {
+      const updated = [...prev];
 
-    const faculty = updated[index];
-    setChangeList((prevChanges) => {
-    return prevChanges.map((c) => {
-      // Only update the section name for new entries
-      if (c.type === "added" && c.data.id === faculty.id && field === "name") {
-        return { ...c, section: value || "New Faculty" };
-      }
-      return c;
-    });
-  });
+      updated[index] = { ...updated[index], [field]: value };
+      const faculty = updated[index];
 
-    // If this is a new card and untouched, don't track yet
-    if (faculty.isNew) return updated;
+      console.log("✏️ Editing faculty ID:", faculty.id);
 
-    const original = originalData.find((o) => o.id === faculty.id) || {};
-    const editedFields = {};
+      const original = originalData.find(o => o.id === faculty.id);
 
-    ["name", "qualification", "designation", "image_path"].forEach((key) => {
-      if (faculty[key] !== original[key]) {
-        editedFields[key] = {
-          before: original[key] || "",
-          after: faculty[key] || "",
-        };
-      }
-    });
+      console.log("📦 Current faculty:", faculty);
+      console.log("🗂️ Original faculty:", original);
 
-    setChangeList((prevChanges) => {
-      const existingIndex = prevChanges.findIndex(
-        (c) => c.data?.id === faculty.id && c.type === "edited"
-      );
-
-      if (Object.keys(editedFields).length === 0) {
-        if (existingIndex >= 0) {
-          return prevChanges.filter((_, i) => i !== existingIndex);
+      // 🔴 Block edit if already deleted
+      setChangeList(prevChanges => {
+        const existingAction = prevChanges.find(c => c.data.id === faculty.id);
+        if (existingAction?.type === "deleted") {
+          console.warn("⛔ Attempted edit on deleted card");
+          return prevChanges;
         }
         return prevChanges;
-      }
+      });
 
-      const newChange = {
-        type: "edited",
-        section: faculty.name || "Faculty",
-        fields: editedFields,
-        data: faculty,
-      };
+      const isBackToOriginal =
+        original &&
+        faculty.name === original.name &&
+        faculty.qualification === original.qualification &&
+        faculty.designation === original.designation &&
+        faculty.image_path === original.image_path;
 
-      if (existingIndex >= 0) {
-        const updatedChanges = [...prevChanges];
-        updatedChanges[existingIndex] = newChange;
-        return updatedChanges;
-      } else {
+      console.log("🔄 Back to original?", isBackToOriginal);
+
+      setChangeList(prevChanges => {
+        console.log("🧾 Before changeList:", prevChanges);
+
+        let newChanges = [...prevChanges];
+
+        // 🧹 Remove edited entry if fully reverted
+        if (isBackToOriginal) {
+          newChanges = newChanges.filter(
+            c => !(c.type === "edited" && c.data.id === faculty.id)
+          );
+        }
+
+        console.log("🧾 After changeList:", newChanges);
+        return newChanges;
+      });
+
+      // 🟡 NEW CARD → keep as added only
+      if (faculty.isNew) return updated;
+
+      const editedFields = {};
+
+      ["name", "qualification", "designation", "image_path"].forEach(key => {
+        if (faculty[key] !== original?.[key]) {
+          editedFields[key] = {
+            before: original?.[key] || "",
+            after: faculty[key] || ""
+          };
+        }
+      });
+
+      setChangeList(prevChanges => {
+        const existingIndex = prevChanges.findIndex(
+          c => c.type === "edited" && c.data.id === faculty.id
+        );
+
+        if (Object.keys(editedFields).length === 0) {
+          if (existingIndex >= 0) {
+            console.log("🧹 Removing stale edited record");
+            return prevChanges.filter((_, i) => i !== existingIndex);
+          }
+          return prevChanges;
+        }
+
+        const newChange = {
+          type: "edited",
+          section: faculty.name || "Faculty",
+          fields: editedFields,
+          data: faculty
+        };
+
+        if (existingIndex >= 0) {
+          const next = [...prevChanges];
+          next[existingIndex] = newChange;
+          return next;
+        }
+
         return [...prevChanges, newChange];
-      }
+      });
+
+      return updated;
+    });
+  };
+
+
+
+  const handleFacultyImageChange = (e, index, facultyId) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // UI preview
+    const previewUrl = URL.createObjectURL(file);
+    setImagePreviews(prev => ({ ...prev, [facultyId]: previewUrl }));
+
+    const finalPath = `/static/images/sports/faculty/${file.name}`;
+
+    // 🧠 1) Update facultyData with file
+    setFacultyData(prev => {
+      const updated = [...prev];
+      updated[index] = {
+        ...updated[index],
+        image_path: finalPath,
+        image_file: file
+      };
+      return updated;
     });
 
-    return updated;
-  });
-};
+    // 🧠 2) ALSO inject file into changeList immediately
+    setChangeList(prev =>
+      prev.map(change =>
+        change.data.id === facultyId
+          ? { ...change, data: { ...change.data, image_path: finalPath, image_file: file } }
+          : change
+      )
+    );
+
+    // 🧠 3) Track path change
+    trackChange(index, "image_path", finalPath);
+  };
 
 
 
-const handleSave = () => {
+  const getFacultyAction = (id) => {
+    const change = changeList.find(c => c.data.id === id);
+    return change?.type || null;  // "added" | "edited" | "deleted" | null
+  };
+
+  const handleSave = () => {
     const invalid = facultyData.some(
       (f) => !f.name || !f.qualification || !f.designation || !f.image_path
     );
@@ -169,6 +244,15 @@ const handleSave = () => {
   };
 
   const handleDeleteSelected = () => {
+    const locked = selectedItems.filter(id => {
+      const action = getFacultyAction(id);
+      return action === "added" || action === "edited";
+    });
+
+    if (locked.length) {
+      toast.error("Finish editing selected faculties before deleting.");
+      return;
+    }
     if (selectedItems.length === 0) {
       toast.info("No faculty selected.");
       return;
@@ -188,53 +272,162 @@ const handleSave = () => {
     toast.success("Selected faculties deleted.");
   };
 
-const revertField = (changeIdx) => {
-  setChangeList((prevChanges) => {
-    const change = prevChanges[changeIdx];
-    if (!change) return prevChanges;
+  const revertField = (changeIdx) => {
+    setChangeList((prevChanges) => {
+      const change = prevChanges[changeIdx];
+      if (!change) return prevChanges;
 
-    if (change.type === "added") {
-      // Remove the newly added card
-      setFacultyData((prev) => prev.filter((f) => f.id !== change.data.id));
-      return prevChanges.filter((_, i) => i !== changeIdx);
-    }
+      if (change.type === "added") {
+        const id = change.data.id;
 
-    if (change.type === "deleted") {
-      // Restore the deleted item
-      setFacultyData((prev) => [...prev, change.data]);
-      return prevChanges.filter((_, i) => i !== changeIdx);
-    }
+        setFacultyData((prev) => prev.filter((f) => f.id !== id));
 
-    if (change.type === "edited") {
-      // Revert all edited fields
-      setFacultyData((prev) => {
-        const updated = [...prev];
-        const idxF = updated.findIndex((f) => f.id === change.data.id);
-        if (idxF >= 0) {
-          Object.keys(change.fields).forEach((field) => {
-            updated[idxF][field] =
-              originalData.find((o) => o.id === change.data.id)?.[field] || "";
-          });
-        }
-        return updated;
-      });
+        setImagePreviews(prev => {
+          const next = { ...prev };
+          delete next[id];
+          return next;
+        });
 
-      // Remove this change from the list since we reverted all
-      return prevChanges.filter((_, i) => i !== changeIdx);
-    }
-
-    return prevChanges;
-  });
-};
+        return prevChanges.filter((_, i) => i !== changeIdx);
+      }
 
 
-  const handleRequestConfirm = () => {
-    toast.success("Your changes have been requested for approval!");
-    setShowRequestModal(false);
-    setEditFac(false);
-    setShowRequestButtons(false);
-    setChangeList([]);
+      if (change.type === "deleted") {
+        setFacultyData((prev) => [...prev, change.data]);
+        return prevChanges.filter((_, i) => i !== changeIdx);
+      }
+
+      if (change.type === "edited") {
+        const id = change.data.id;
+
+        setFacultyData((prev) => {
+          const updated = [...prev];
+          const idxF = updated.findIndex((f) => f.id === id);
+          if (idxF >= 0) {
+            const original = originalData.find(o => o.id === id);
+            if (original) {
+              updated[idxF] = { ...original }; // restore original row
+            }
+          }
+          return updated;
+        });
+
+        // 🔥 IMPORTANT: clear preview cache so UI updates
+        setImagePreviews(prev => {
+          const next = { ...prev };
+          delete next[id];
+          return next;
+        });
+
+        // remove this change entry
+        return prevChanges.filter((_, i) => i !== changeIdx);
+      }
+
+      return prevChanges;
+    });
   };
+
+
+  const handleRequestConfirm = async () => {
+
+    if (!changeList.length) {
+      toast.info("No changes to submit.");
+      return;
+    }
+
+    // 1️⃣ Build payload
+    const payload = changeList.map(change => {
+
+      const faculty = change.data;
+      const originalFaculty = originalData.find(o => o.id === faculty.id);
+
+      if (change.type === "added") {
+        return {
+          collectionName: "sports",
+          collection_type: "faculty",
+          action: "insert",
+          title: "Insertion of Faculty Member",
+          meta_data: {
+            name: faculty.name,
+            qualification: faculty.qualification,
+            designation: faculty.designation,
+            image_path: faculty.image_path
+          },
+          original_data: null
+        };
+      }
+
+      if (change.type === "edited") {
+        return {
+          collectionName: "sports",
+          collection_type: "faculty",
+          action: "update",
+          title: "Updation of Faculty Member",
+          meta_data: {
+            name: faculty.name,
+            qualification: faculty.qualification,
+            designation: faculty.designation,
+            image_path: faculty.image_path
+          },
+          original_data: {
+            name: originalFaculty?.name,
+            qualification: originalFaculty?.qualification,
+            designation: originalFaculty?.designation,
+            image_path: originalFaculty?.image_path
+          }
+        };
+      }
+
+      if (change.type === "deleted") {
+        return {
+          collectionName: "sports",
+          collection_type: "faculty",
+          action: "delete",
+          title: "Deletion of Faculty Member",
+          meta_data: {
+            name: faculty.name,
+            qualification: faculty.qualification,
+            designation: faculty.designation,
+            image_path: faculty.image_path
+          },
+          original_data: null
+        };
+      }
+
+    }).filter(Boolean);
+
+    // 2️⃣ Collect files (if any image is File)
+    const filesToUpload = [];
+
+    changeList.forEach(change => {
+      if (change.data.image_file) {
+        filesToUpload.push(change.data.image_file);
+      }
+    });
+
+
+
+    console.log("🚀 Sending payload:", payload);
+    console.log("filesToUpload:", filesToUpload);
+    // 3️⃣ Send request
+    try {
+      const result = await sendRequest(payload, filesToUpload);
+
+      if (result) {
+        console.log("REQUEST SUBMITTED", payload);
+        toast.success("Final request submitted");
+
+        setShowRequestModal(false);
+        setChangeList([]);
+        setShowRequestButtons(false);
+        setEditFac(false);
+      }
+    } catch (err) {
+      console.error("Request failed:", err);
+      toast.error("Request submission failed");
+    }
+  };
+
 
   return (
     <section className="px-4 py-6 flex flex-col">
@@ -242,8 +435,8 @@ const revertField = (changeIdx) => {
       <div className="flex justify-end mb-2">
         {!editFac && (
           <button
-            onClick={() => {setEditFac(true); setShowRequestButtons(false);}}
-            className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
+            onClick={() => { setEditFac(true); setShowRequestButtons(false); }}
+            className="flex items-center gap-2 px-4 py-2 mr-3 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
           >
             <Pencil size={16} /> Edit
           </button>
@@ -269,18 +462,12 @@ const revertField = (changeIdx) => {
                 <>
                   <div className="mb-2">
                     <label className="bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
-                    <span>{faculty.image_path ? "Replace" : "Upload"}</span>
+                      <span>{faculty.image_path ? "Replace" : "Upload"}</span>
                       <input
                         type="file"
                         className="hidden"
-                       accept="image/*"
-                        onChange={(e) => {
-                          if (e.target.files[0]) {
-                            const url = URL.createObjectURL(e.target.files[0]);
-                            setImagePreviews((prev) => ({ ...prev, [faculty.id]: url }));
-                            trackChange(index, "image_path", url);
-                          }
-                        }}
+                        accept="image/*"
+                        onChange={(e) => handleFacultyImageChange(e, index, faculty.id)}
                       />
                     </label>
                   </div>
@@ -308,6 +495,7 @@ const revertField = (changeIdx) => {
                   <div className="absolute top-2 right-2">
                     <input
                       type="checkbox"
+                      disabled={["added", "edited"].includes(getFacultyAction(faculty.id))}
                       checked={selectedItems.includes(faculty.id)}
                       onChange={(e) => handleSelect(faculty.id, e.target.checked)}
                       className="w-5 h-5 accent-blue-500 cursor-pointer"
@@ -360,7 +548,7 @@ const revertField = (changeIdx) => {
             className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
             onClick={handleSave}
           >
-           Save
+            Save
           </button>
         </div>
       )}
@@ -370,7 +558,7 @@ const revertField = (changeIdx) => {
         <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
           <button
             className="px-4 py-2 bg-gray-500 text-white rounded"
-            onClick={() =>{ 
+            onClick={() => {
               handleDiscard()
             }}
           >
@@ -409,7 +597,7 @@ const revertField = (changeIdx) => {
         </div>
       )}
       {/* Request Changes Modal */}
-      {showRequestModal  && (
+      {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4 text-gray-800">Request Changes</h2>
@@ -443,14 +631,14 @@ const revertField = (changeIdx) => {
                       <td className="border p-2">Sports Faculty</td>
                       <td className='border'>{change.data.name || change.section}</td>
                       <td className='border'>
-                              <button
-                                onClick={() => revertField(idx)}
-                                className="p-1 rounded hover:bg-gray-100"
-                                title={change.type === "added" ? "Remove" : "Revert all"}
-                              >
-                                <X />
-                              </button>
-                         </td>
+                        <button
+                          onClick={() => revertField(idx)}
+                          className="p-1 rounded hover:bg-gray-100"
+                          title={change.type === "added" ? "Remove" : "Revert all"}
+                        >
+                          <X />
+                        </button>
+                      </td>
                     </tr>
                   ))
                 )}
@@ -489,6 +677,10 @@ const SportsHOD = ({ data }) => {
   const [hasChanges, setHasChanges] = useState(false);
   const [formData, setFormData] = useState({ ...data?.[0] });
   const [originalData, setOriginalData] = useState({ ...data?.[0] });
+  const { sendRequest, loading, error } = useAdminRequest();
+  const [hodPreview, setHodPreview] = useState(null);
+  const [hodImageFile, setHodImageFile] = useState(null);
+
 
   useEffect(() => {
     if (data?.[0]) {
@@ -532,20 +724,94 @@ const SportsHOD = ({ data }) => {
 
   const handleDiscardChanges = () => {
     setFormData({ ...originalData });
+
+    // 🔥 Ensure preview + file are cleared
+    setHodPreview(null);
+    setHodImageFile(null);
+
     setIsEditing(false);
     setShowRequest(false);
+    setHasChanges(false);
+    setShowRequestModal(false);
+
     toast.info("Changes discarded");
   };
 
-  const handleRequestConfirm = () => {
-    console.log("Final Sports HOD request submitted with data:", formData);
-    setOriginalData({ ...formData });
-    setShowRequestModal(false);
-    setShowRequest(false);
-    setIsEditing(false);
-    setHasChanges(false);
-    toast.success("Request submitted successfully!");
+
+
+  const handleHodImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const previewUrl = URL.createObjectURL(file);
+    console.log("Preview URL:", previewUrl); // 🔎 must log blob:...
+
+    setHodPreview(previewUrl);
+
+    const finalPath = `/static/images/sports/hod/${file.name}`;
+
+    setFormData(prev => ({
+      ...prev,
+      image_path: finalPath,
+      image_file: file
+    }));
+
+    setHodImageFile(file);
+    setHasChanges(true);
   };
+
+
+  const handleRequestConfirm = async () => {
+
+    const payload = {
+      collectionName: "sports",
+      collection_type: "hod",
+      action: "update",
+      title: "Updation of HOD",
+
+      meta_data: {
+        name: formData.name,
+        designation: formData.designation,
+        qualification: formData.qualification,
+        message: formData.message,
+        image_path: formData.image_path
+      },
+
+      original_data: {
+        name: originalData.name,
+        designation: originalData.designation,
+        qualification: originalData.qualification,
+        message: originalData.message,
+        image_path: originalData.image_path
+      }
+    };
+    const filesToUpload = [];
+    if (hodImageFile) {
+      filesToUpload.push(hodImageFile);
+    }
+    console.log("Final Sports HOD request submitted with payload:", payload);
+    console.log("filesToUpload:", filesToUpload);
+
+    try {
+      const result = await sendRequest([payload], filesToUpload);
+
+
+      if (result) {
+        console.log("INTRAMURAL REQUEST SUBMITTED", payload);
+        toast.success("Final request submitted");
+
+        setShowRequestModal(false);
+        setShowRequest(false);
+        setIsEditing(false);
+        setHasChanges(false);
+        ;
+      }
+    } catch (err) {
+      console.error("Request failed:", err);
+      toast.error("Request submission failed");
+    }
+  };
+
 
   if (!data) {
     return (
@@ -556,15 +822,15 @@ const SportsHOD = ({ data }) => {
   }
 
   return (
-    <article className="relative flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center font-[Poppins]">
+    <article className="relative flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center font-[Poppins] mt-6">
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* Edit Button */}
       {!isEditing && (showRequest || !isEditing) && (
-        <div className="absolute top-7 right-10">
+        <div className="absolute top-1 right-10">
           <button
             onClick={() => setIsEditing(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim  rounded-xl shadow-md "
+            className="flex items-center gap-2 px-4 py-2 mt-2 bg-secd text-text hover:bg-brwn hover:text-prim  rounded-xl shadow-md "
           >
             <Pencil size={18} />
             <span>Edit</span>
@@ -574,37 +840,25 @@ const SportsHOD = ({ data }) => {
 
       {/* Image */}
       <div className="w-full md:w-1/8 flex flex-col justify-center items-center gap-2">
-        {isEditing ? (
-          <>
-            <img
-              className="w-auto h-60 rounded-lg"
-              alt="Sports HoD"
-              src={UrlParser(formData?.image_path)}
+        <img
+          className="w-auto h-60 rounded-lg"
+          alt="Sports HoD"
+          src={hodPreview || UrlParser(formData?.image_path)}
+        />
+
+        {isEditing && (
+          <label className="bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer mt-2">
+            <span>Replace</span>
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleHodImageChange}
             />
-            <label className="bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer mt-2">
-           <span>Repalce</span>
-              <input
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  if (file) {
-                    const previewUrl = URL.createObjectURL(file);
-                    setFormData((prev) => ({ ...prev, image_path: previewUrl }));
-                  }
-                }}
-              />
-            </label>
-          </>
-        ) : (
-          <img
-            className="w-auto h-60 rounded-lg"
-            alt="Sports HoD"
-            src={UrlParser(formData?.image_path)}
-          />
+          </label>
         )}
       </div>
+
 
       {/* Editable Info */}
       <div className="flex flex-col px-4 w-full">
@@ -627,20 +881,20 @@ const SportsHOD = ({ data }) => {
           </h2>
         )}
         {isEditing ? (
-            <input
-              type="text"
-              value={formData?.designation || ""}
-              onChange={(e) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  designation: e.target.value,
-                }))
-              }
-              className="text-2xl font-semibold border p-1 rounded mb-2 w-full"
-            />
-          ) : (
-            <p className="text-2xl font-semibold mb-2">{formData?.designation}</p>
-          )}
+          <input
+            type="text"
+            value={formData?.designation || ""}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                designation: e.target.value,
+              }))
+            }
+            className="text-2xl font-semibold border p-1 rounded mb-2 w-full"
+          />
+        ) : (
+          <p className="text-2xl font-semibold mb-2">{formData?.designation}</p>
+        )}
         {isEditing ? (
           <input
             type="text"
@@ -745,13 +999,13 @@ const SportsHOD = ({ data }) => {
                 onClick={() => setShowDiscardModal(false)}
                 className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 text-black"
               >
-               cancel
+                cancel
               </button>
               <button
                 onClick={handleDiscardChanges}
                 className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white"
               >
-                 Discard
+                Discard
               </button>
             </div>
           </div>
@@ -779,37 +1033,45 @@ const SportsHOD = ({ data }) => {
                 </tr>
               </thead>
               <tbody>
-                {changes.map((change, index) => (
-                  <tr key={index} className="border text-center">
-                    <td className="py-2 text-blue-600 font-semibold">Edited</td>
-                    <td className="py-2">Sports HoD</td>
-                    <td className="py-2 flex items-center justify-center gap-2">
-                      <span className="px-2 py-1 bg-yellow-100 text-black rounded-md">
-                        {change.field === "name"
-                          ? "Name"
-                          : change.field === "designation"
-                          ? "Designation"
-                          : change.field === "qualification"
-                          ? "Qualification"
-                          : change.field === "message"
-                          ? "Message"
-                          : change.field}
-                      </span>
-                      <button
-                        onClick={() => {
-                          setFormData((prev) => ({
-                            ...prev,
-                            [change.field]: originalData[change.field],
-                          }));
-                          setChanges((prev) => prev.filter((_, i) => i !== index));
-                        }}
-                        className="text-red-500 hover:text-red-700 font-bold"
-                      >
-                        ✕
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {changes
+                  .filter(change => change.field !== "image_file") // 🔥 REMOVE
+                  .map((change, index) => (
+                    <tr key={index} className="border text-center">
+                      <td className="py-2 text-blue-600 font-semibold">Edited</td>
+                      <td className="py-2">Sports HoD</td>
+                      <td className="py-2 flex items-center justify-center gap-2">
+                        <span className="px-2 py-1 bg-yellow-100 text-black rounded-md">
+                          {change.field === "name" ? "Name" :
+                            change.field === "designation" ? "Designation" :
+                              change.field === "qualification" ? "Qualification" :
+                                change.field === "message" ? "Message" :
+                                  change.field === "image_path" ? "Image" :
+                                    change.field === "image_file" ? null :
+                                      change.field}
+                        </span>
+                        <button
+                          onClick={() => {
+                            setFormData((prev) => ({
+                              ...prev,
+                              [change.field]: originalData[change.field],
+                            }));
+
+                            // 🔥 If undoing image, clear preview + file
+                            if (change.field === "image_path") {
+                              setHodPreview(null);
+                              setHodImageFile(null);
+                            }
+
+                            setChanges((prev) => prev.filter((_, i) => i !== index));
+                          }}
+                          className="text-red-500 hover:text-red-700 font-bold"
+                        >
+                          ✕
+                        </button>
+
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
 
@@ -821,6 +1083,7 @@ const SportsHOD = ({ data }) => {
                 Cancel
               </button>
               <button
+              disabled={loading}
                 onClick={handleRequestConfirm}
                 className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-yellow-500 text-black font-medium"
               >

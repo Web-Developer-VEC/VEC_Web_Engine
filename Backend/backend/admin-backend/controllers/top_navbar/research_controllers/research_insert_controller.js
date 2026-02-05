@@ -8,83 +8,25 @@ async function insertData(tempDoc, mainCollection) {
     }
 
     let doc = await mainCollection.findOne({ type: collection_type });
-
+    const collections = ["Journal Publication", "Funded Projects", "Consultancy", "Books and Book chapters", "Policy"]
     // ---------- JOURNAL PUBLICATION ----------
-    if (collection_type === "Journal Publication") {
+    if (collections.includes(collection_type)) {
       if (doc) {
         await mainCollection.updateOne(
-          { type: "Journal Publication" },
+          { type: collection_type },
           { $push: { data: meta_data } }
         );
       } else {
         await mainCollection.insertOne({
-          type: "Journal Publication",
+          type: collection_type,
           data: [meta_data],
         });
       }
       return {
         success: true,
-        message: "Journal Publication data inserted successfully",
+        message: `${collection_type} data inserted successfully`,
       };
     }
-
-    // ---------- FUNDED PROJECTS ----------
-    if (collection_type === "Funded Projects") {
-      if (doc) {
-        await mainCollection.updateOne(
-          { type: "Funded Projects" },
-          { $push: { data: meta_data } }
-        );
-      } else {
-        await mainCollection.insertOne({
-          type: "Funded Projects",
-          data: [meta_data],
-        });
-      }
-      return {
-        success: true,
-        message: "Funded Projects data inserted successfully",
-      };
-    }
-
-    // ---------- CONSULTANCY ----------
-    if (collection_type === "Consultancy") {
-      if (doc) {
-        await mainCollection.updateOne(
-          { type: "Consultancy" },
-          { $push: { data: meta_data } }
-        );
-      } else {
-        await mainCollection.insertOne({
-          type: "Consultancy",
-          data: [meta_data],
-        });
-      }
-      return {
-        success: true,
-        message: "Consultancy data inserted successfully",
-      };
-    }
-
-    // ---------- BOOKS AND BOOK CHAPTERS ----------
-    if (collection_type === "Books and Book chapters") {
-      if (doc) {
-        await mainCollection.updateOne(
-          { type: "Books and Book chapters" },
-          { $push: { data: meta_data } }
-        );
-      } else {
-        await mainCollection.insertOne({
-          type: "Books and Book chapters",
-          data: [meta_data],
-        });
-      }
-      return {
-        success: true,
-        message: "Books and Book chapters data inserted successfully",
-      };
-    }
-
     throw new Error("Invalid collection type");
   } catch (error) {
     console.error(error);

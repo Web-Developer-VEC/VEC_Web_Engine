@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import LoadComp from "../../LoadComp";
 import { Plus, Trash2, Send } from "lucide-react";
+import { toast, ToastContainer } from "react-toastify";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-const  AdminWinnerSlider = ({ data }) => {
+const AdminWinnerSlider = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [winners, setWinners] = useState([]);
   const [tempWinners, setTempWinners] = useState([]);
   const [editWinners, setEditWinners] = useState(false);
   const [selected, setSelected] = useState([]);
+  const { sendRequest, loading, error } = useAdminRequest();
+  const [initialSnapshot, setInitialSnapshot] = useState([]);
+
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,33 +27,38 @@ const  AdminWinnerSlider = ({ data }) => {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
- // Load and format data
+  // Load and format data
   useEffect(() => {
     if (!data) {
       setWinners([]);
       setTempWinners([]);
+      setInitialSnapshot([]);
       return;
     }
 
     const formattedData = data.map((item, index) => ({
       id: index + 1,
       title: item?.title || "No Title",
-      image: UrlParser(item?.image_path),
+      image: UrlParser(item?.image_path), // existing backend image
+      image_path: item?.image_path || "", // keep raw path
     }));
+
 
     setWinners(formattedData);
     setTempWinners(formattedData);
+    setInitialSnapshot(JSON.parse(JSON.stringify(formattedData))); // ✅ baseline
   }, [data]);
+
 
   // Auto-slide carousel
   useEffect(() => {
     if (isHovered || winners.length === 0) return;
     const interval = setInterval(() => {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % winners.length);
-         }, 3000);
+      setActiveIndex((prevIndex) => (prevIndex + 1) % winners.length);
+    }, 3000);
 
     return () => clearInterval(interval);
-    }, [isHovered, winners]);
+  }, [isHovered, winners]);
 
   const handlePrev = () => {
     if (winners.length === 0) return;
@@ -67,11 +77,23 @@ const  AdminWinnerSlider = ({ data }) => {
   };
 
   const handleImageUpload = (id, file) => {
-    const imageUrl = URL.createObjectURL(file);
-    setTempWinners((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, image: imageUrl, newFile: file } : item))
+    const previewUrl = URL.createObjectURL(file);
+    const serverPath = `/static/images/sports/zonal/${file.name}`;
+
+    setTempWinners(prev =>
+      prev.map(item =>
+        item.id === id
+          ? {
+            ...item,
+            image: previewUrl,       // for UI preview
+            image_path: serverPath,  // ✅ what backend expects
+            newFile: file
+          }
+          : item
+      )
     );
   };
+
 
   const handleAddRow = () => {
     const newId = tempWinners.length ? Math.max(...tempWinners.map(a => a.id)) + 1 : 1;
@@ -89,19 +111,167 @@ const  AdminWinnerSlider = ({ data }) => {
   };
 
   const handleSave = () => {
-    const invalid = tempWinners.some(item => !item.title.trim() || !item.image);
-    if (invalid) {
-      alert("All fields (Title and Image) are mandatory!");
-      return;
-    }
-    setWinners(tempWinners);
+    const deepCopy = tempWinners.map(item => ({
+      ...item,
+      newFile: item.newFile || null   // ✅ preserve file
+    }));
+
+    setWinners(deepCopy);
+    setTempWinners(deepCopy);
     setEditWinners(false);
     setShowRequestButtons(true);
   };
 
+
   const handleCancel = () => {
     setTempWinners(winners);
     setEditWinners(false);
+  };
+
+  const handleFinalRequest = async () => {
+    const payloads = [];
+    const files = [];
+
+    tempWinners.forEach(item => {
+      const original = initialSnapshot.find(o => o.id === item.id);
+
+      // ➕ ADD
+      if (!original) {
+        payloads.push({
+          collectionName: "sports",
+          collection_type: "achivements",
+          action: "insert",
+          title: "Insertion of Achievements",
+          category: "zone_winner",
+          meta_data: {
+            title: item.title,
+            image_path: item.image_path, // ✅ static path
+          },
+          original_data: null,
+        });
+
+        // ✅ PUSH FILE ONLY IF EXISTS
+        if (item.newFile) {
+          files.push(item.newFile);
+        }
+
+        return;
+      }
+
+      // ✏️ UPDATE
+      if (
+        original.title !== item.title ||
+        original.image !== item.image
+      ) {
+        console.log("Preparing update for:", item);
+        payloads.push({
+          collectionName: "sports",
+          collection_type: "achivements",
+          action: "update",
+          title: "Updation of Achievements",
+          category: "zone_winner",
+          meta_data: {
+            title: item.title,
+            image_path: item.image_path,
+          },
+          original_data: {
+            title: original.title,
+            image_path: original.image_path,
+          },
+        });
+
+        // ✅ ONLY IF IMAGE WAS REPLACED
+        if (item.newFile) {
+          files.push(item.newFile);
+        }
+      }
+    });
+
+
+    /* ---------------- DELETE ---------------- */
+    initialSnapshot.forEach(item => {
+      const tempMap = new Map(tempWinners.map(item => [item.id, item]));
+      if (!tempMap.has(item.id)) {
+        payloads.push({
+          collectionName: "sports",
+          collection_type: "achivements",
+          action: "delete",
+          title: "Deletion of Achievements",
+          category: "zone_winner",
+          meta_data: {
+            title: item.title,
+            image_path: item.image_path,
+          },
+          original_data: null,
+        });
+      }
+    });
+
+    /* ---------------- GUARD ---------------- */
+    if (!payloads.length) {
+      toast.warn("No changes to submit");
+      return;
+    }
+
+    try {
+      await sendRequest(payloads, files);
+      console.log("Request sent:", payloads);
+      console.log("file:", files)
+
+      toast.success("Winners request submitted");
+
+      const deepCopy = JSON.parse(JSON.stringify(tempWinners));
+
+      // ✅ reset baseline
+      setWinners(deepCopy);
+      setTempWinners(deepCopy);
+      setInitialSnapshot(deepCopy);
+
+      // ✅ reset UI
+      setShowRequestModal(false);
+      setShowRequestButtons(false);
+      setEditWinners(false);
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to submit request");
+    }
+  };
+  const handleUndo = ({ type, id }) => {
+    if (type === "added") {
+      setTempWinners(prev => prev.filter(w => w.id !== id));
+      setWinners(prev => prev.filter(w => w.id !== id));
+      return;
+    }
+
+    if (type === "updated") {
+      const original = initialSnapshot.find(o => o.id === id);
+      if (!original) return;
+
+      setTempWinners(prev =>
+        prev.map(w => (w.id === id ? { ...original } : w))
+      );
+      setWinners(prev =>
+        prev.map(w => (w.id === id ? { ...original } : w))
+      );
+      return;
+    }
+
+    if (type === "deleted") {
+      const original = initialSnapshot.find(o => o.id === id);
+      const originalIndex = initialSnapshot.findIndex(o => o.id === id);
+
+      setTempWinners(prev => {
+        const next = [...prev];
+        next.splice(originalIndex, 0, original);
+        return next;
+      });
+
+      setWinners(prev => {
+        const next = [...prev];
+        next.splice(originalIndex, 0, original);
+        return next;
+      });
+    }
   };
 
   // ---- Discard Changes Handler ----
@@ -120,6 +290,58 @@ const  AdminWinnerSlider = ({ data }) => {
     setShowDiscardModal(false);
     setEditWinners(false);
   };
+  const requestRows = [];
+
+  // ADDED & UPDATED
+  tempWinners.forEach(item => {
+    const original = initialSnapshot.find(o => o.id === item.id);
+
+    if (!original) {
+      requestRows.push({ type: "added", id: item.id });
+      return;
+    }
+
+    if (
+      original.title !== item.title ||
+      original.image !== item.image
+    ) {
+      requestRows.push({ type: "updated", id: item.id });
+    }
+  });
+
+  // DELETED (ignore add → delete)
+  initialSnapshot.forEach(item => {
+    const stillExists = tempWinners.some(t => t.id === item.id);
+
+    if (!stillExists) {
+      requestRows.push({ type: "deleted", id: item.id });
+    }
+  });
+
+
+  const getChangeType = (id) => {
+    const original = initialSnapshot.find(o => o.id === id);
+    const current = tempWinners.find(t => t.id === id);
+
+    if (!original && current) return "added";
+    if (original && !current) return "deleted";
+
+    if (
+      original &&
+      current &&
+      (
+        original.title !== current.title ||
+        original.image_path !== current.image_path
+      )
+    ) {
+      return "updated";
+    }
+
+    return null; // no change
+  };
+
+
+
 
   // ---- Pagination Logic ----
   const indexOfLastRow = currentPage * rowsPerPage;
@@ -132,12 +354,14 @@ const  AdminWinnerSlider = ({ data }) => {
       {/* Edit Button */}
       <div className="admin-controls-ug flex justify-end mb-2">
         {!editWinners && !showRequestButtons && (
-          <button className="admin-edit-ug flex gap-1" onClick={() => setEditWinners(true)}>
+          <button
+            className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20"
+            onClick={() => setEditWinners(true)}>
             Edit
           </button>
         )}
       </div>
-
+      <ToastContainer position="bottom-right" autoClose={3000} />
       {data ? (
         <div className="relative w-full max-w-4xl mx-auto mb-10 mt-10">
           <h2 className="text-center text-accn dark:text-drkt text-3xl font-bold mb-4">
@@ -243,6 +467,7 @@ const  AdminWinnerSlider = ({ data }) => {
                         <input
                           type="checkbox"
                           checked={selected.includes(item.id)}
+                          disabled={!!getChangeType(item.id)}
                           onChange={() => toggleSelect(item.id)}
                         />
                       </td>
@@ -306,7 +531,7 @@ const  AdminWinnerSlider = ({ data }) => {
                 </button>
               </div>
             </div>
-             )}
+          )}
 
           {/* ---- Request Buttons ---- */}
           {showRequestButtons && !editWinners && (
@@ -331,7 +556,7 @@ const  AdminWinnerSlider = ({ data }) => {
           <LoadComp />
         </div>
       )}
-        {/* ---- Request Modal ---- */}
+      {/* ---- Request Modal ---- */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[530px]">
@@ -341,26 +566,55 @@ const  AdminWinnerSlider = ({ data }) => {
               Once approved, they will be applied automatically to the live site.
             </p>
             <div className="max-h-[200px] overflow-y-auto mb-4">
-              <table className="w-full text-center text-black dark:text-white">
-                <thead>
+              <table className="w-full text-center text-sm border">
+                <thead className="bg-gray-200">
                   <tr>
-                    <th className="py-1">Action</th>
-                    <th className="py-1">Section</th>
-                    <th className="py-1 text-center">Changes</th>
+                    <th className="border p-2">Action</th>
+                    <th className="border p-2">Section</th>
+                    <th className="border p-2">Title</th>
+                    <th className="border p-2">Undo</th>
                   </tr>
                 </thead>
+
                 <tbody>
-                  <tr>
-                    <td className="py-1 text-blue-600">✎ Edited</td>
-                    <td className="py-1">Winners</td>
-                    <td className="py-1 text-[12px]">Updated winners list</td>
-                  </tr>
+                  {requestRows.map((row) => (
+                    <tr key={`${row.type}-${row.id}`}>
+                      <td className="border p-2 font-semibold">
+                        {row.type === "added"
+                          ? "Added"
+                          : row.type === "updated"
+                            ? "Edited"
+                            : "Deleted"}
+                      </td>
+
+                      <td className="border p-2">Winners</td>
+
+                      <td className="border p-2">
+                        {
+                          row.type === "deleted"
+                            ? initialSnapshot.find(i => i.id === row.id)?.title
+                            : tempWinners.find(i => i.id === row.id)?.title
+                        }
+                      </td>
+
+                      <td className="border p-2">
+                        <button
+                          onClick={() => handleUndo(row)}
+                          className="text-red-500 font-bold"
+                        >
+                          ✕
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
+
               </table>
+
             </div>
             <div className="flex justify-end gap-2">
               <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-white">Cancel</button>
-              <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white">Final Request</button>
+              <button disabled={loading} onClick={handleFinalRequest} className="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white">Final Request</button>
             </div>
           </div>
         </div>
@@ -368,7 +622,7 @@ const  AdminWinnerSlider = ({ data }) => {
 
       {/* ---- Discard Modal ---- */}
       {showDiscardModal && (
-         <div className="fixed inset-0 flex items-center justify-center bg-white/40 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-white/40 z-50">
           <div className="bg-white p-6 rounded shadow-lg w-[350px]">
             <h2 className="font-semibold mb-4">Discard Changes?</h2>
             <p>All your unsaved changes will be lost.</p>
@@ -379,6 +633,34 @@ const  AdminWinnerSlider = ({ data }) => {
           </div>
         </div>
       )}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded shadow-lg w-[350px]">
+            <h2 className="font-semibold mb-4">Confirm Delete</h2>
+            <p>Are you sure you want to delete selected items?</p>
+
+            <div className="flex justify-end gap-3 mt-4">
+              <button
+                className="px-4 py-2 bg-gray-300 rounded"
+                onClick={() => setShowDeleteModal(false)}
+              >
+                Cancel
+              </button>
+
+              <button
+                className="px-4 py-2 bg-red-600 text-white rounded"
+                onClick={() => {
+                  handleDeleteSelected();
+                  setShowDeleteModal(false);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </>
   );
 };
