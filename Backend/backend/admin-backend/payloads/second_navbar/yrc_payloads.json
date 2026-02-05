@@ -4,12 +4,14 @@
     "collection_type": "about",
     "action": "update",
     "title": "update about ",
-    "original_data": {
-        "about_us":[ "The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals.",
-        "hello everyone"]
-      },
-    "meta_data":{
-        "about_us":"The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals."
+    "original_data": 
+      {
+        "about_us": "Thoiasjdiooaohdidse Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals."
+      }
+    ,
+    "meta_data":
+      {
+        "about_us": "The Youth Red Cross (YRC) is an integral part of the Indian Red Cross Society, dedicated to fostering humanitarian values among young individuals."
       }
   },
   {
@@ -20,8 +22,7 @@
     "original_data":  [
       "1. College Fest 2025 will be held on March 25th.",
       "2. We have successfully completed Eco-Nomics 3.0, a 100-day tree plantation initiative by YRC volunteers.",
-      "3. The annual sports meet is scheduled for April 10th.",
-      "hello everyone"
+      "3. The annual sports meet is scheduled for April 10th."
     ],
     "meta_data":  [
       "1. College Fest 2025 will be held on March 25th.",
@@ -36,7 +37,7 @@
     "action": "insert",
     "title": "Add events",
     "meta_data": {
-        "image_path": "static/images/ncc/navy/events09.webp",
+        "image_path": "",
         "title": "INTERNATIONAL dinesh DAY 2015",
         "description": "30 Cadets participated in dinesh DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College",
         "date": "30-09-2025"
@@ -48,13 +49,13 @@
     "action": "update",
     "title": "update in events",
     "original_data": {
-        "image_path": "static/images/ncc/navy/events09.webp",
+        "image_path": "/static/images/yrc/event/INTERNATIONAL dinesh DAY 2015.jpeg",
         "title": "INTERNATIONAL dinesh DAY 2015",
         "description": "30 Cadets participated in dinesh DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College",
         "date": "30-09-2025"
       },
       "meta_data": {
-        "image_path": "static/images/ncc/navy/events09.webp",
+        "image_path": "",
         "title": "INTERNATIONAL hari DAY 2015",
         "description": "30 Cadets participated in hari DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College",
         "date": "30-09-2025"
@@ -66,7 +67,7 @@
     "action": "delete",
     "title": "delete events",
     "meta_data": {
-        "image_path": "static/images/ncc/navy/events09.webp",
+        "image_path": "/static/images/yrc/event/INTERNATIONAL hari DAY 2015.jpeg",
         "title": "INTERNATIONAL hari DAY 2015",
         "description": "30 Cadets participated in hari DAY event on 21st JUNE 2015. VENUE: Wilma Rudolph Indoor Studium,Velammal Engineering College",
         "date": "30-09-2025"
@@ -75,60 +76,19 @@
   {
     "collectionName": "yrc",
     "collection_type": "team",
-    "action": "insert",
-    "category": "faculty_coordinators",
-    "title": "Add Faculty Member",
-    "meta_data": {
-            "name": "Sub. LT dinesh R",
-            "designation": "NCC Navy Coordinator",
-            "image_path": "/static/images/ncc/navy/chairman.webp"
-          }
-  },
-  {
-    "collectionName": "yrc",
-    "collection_type": "team",
     "action": "update",
-    "category": "faculty_coordinators",
+    "category": "faculty_coordinator",
     "title": "update Faculty Member",
     "original_data": {
-            "name": "Sub. LT dinesh R",
-            "designation": "NCC Navy Coordinator",
-            "image_path": "/static/images/ncc/navy/chairman.webp"
+            "name": "Dr. V.Ramesh Kumar",
+            "designation": "Programme Officer",
+            "image_path": "/static/images/yrc/head.webp"
           },
     "meta_data": {
             "name": "Sub. LT hari R",
             "designation": "NCC Navy Coordinator",
-            "image_path": "/static/images/ncc/navy/chairman.webp"
+            "image_path": ""
           }
-  },
-  {
-    "collectionName": "yrc",
-    "collection_type": "team",
-    "action": "delete",
-    "category": "faculty_coordinators",
-    "title": "delete Faculty Member",
-    "original_data": {
-            "name": "Sub. LT dinesh R",
-            "designation": "NCC Navy Coordinator",
-            "image_path": "/static/images/ncc/navy/chairman.webp"
-          }
-  },
-  {
-    "collectionName": "yrc",
-    "collection_type": "team",
-    "action": "delete",
-    "category": "faculty_coordinators",
-    "title": "delete Faculty Member",
-    "original_data": {
-        "category": "faculty_coordinator",
-        "members": [
-          {
-            "name": "Dr. V.Ramesh Kumar",
-            "designation": "Programme Officer",
-            "image_path": "/static/images/yrc/head.webp"
-          }
-        ]
-      }
   },
   {
     "collectionName": "yrc",
@@ -137,7 +97,7 @@
     "title": "insert awards",
     "meta_data": {
       "title":"hello",
-        "image_path": "static/images/ncc/navy/stud.webp",
+        "image_path": "",
         "description": "LT. S.K. dinesh Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
       }
   },
@@ -148,12 +108,12 @@
     "title": "update awards",
     "meta_data":  {
       "title":"hello everyone",
-        "image_path": "static/images/ncc/navy/stud.webp",
+        "image_path": "",
         "description": "LT. S.K. hari Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
       },
     "original_data":  {
       "title":"hello",
-        "image_path": "static/images/ncc/navy/stud.webp",
+        "image_path": "/static/images/yrc/award/hello.jpeg",
         "description": "LT. S.K. dinesh Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
       }
   },
@@ -164,7 +124,7 @@
     "title": "delete awards",
     "meta_data": {
       "title":"hello everyone",
-        "image_path": "static/images/ncc/navy/stud.webp",
+        "image_path": "/static/images/yrc/award/hello_everyone.jpeg",
         "description": "LT. S.K. hari Dept. Of Automobile Engineering has secured the AIR (All India Rank) 15 at OTA Chennai, in the, Now he is posted at OTA GAYA"
       }
   }
