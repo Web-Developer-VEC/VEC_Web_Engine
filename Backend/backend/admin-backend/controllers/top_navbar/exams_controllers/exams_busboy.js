@@ -95,12 +95,12 @@ async function examHandler(fileStream, docs, req, cb, filename, mimetype) {
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
       key: s3Key,
-      location: `/${s3Key}`,
+      location: `${s3Key}`,
       mimetype: contentType,
     });
 
     /* 🔥 REGULATION FIX: inject pdf_path directly */
-    if (collection_type === "regulation") {
+    if (["regulation", "all_forms"].includes(collection_type)) {
       meta_data.pdf_path = `/${s3Key}`;
     }
 
