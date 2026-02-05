@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LoadComp from "../../LoadComp";
-import { Plus, Trash2, Send } from "lucide-react";
+import { Plus, Trash2, Send,Pencil} from "lucide-react";
 
 const  AdminWinnerSlider = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -132,8 +132,8 @@ const  AdminWinnerSlider = ({ data }) => {
       {/* Edit Button */}
       <div className="admin-controls-ug flex justify-end mb-2">
         {!editWinners && !showRequestButtons && (
-          <button className="admin-edit-ug flex gap-1" onClick={() => setEditWinners(true)}>
-            Edit
+          <button className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20 mt-4" onClick={() => setEditWinners(true)}>
+           <Pencil size={16} />  Edit
           </button>
         )}
       </div>

@@ -98,7 +98,7 @@ const AdminSportsPage = ({theme, toggle}) => {
             "Intra Mural": "intramural"
         }
         const fetchData = async () => {
-            setSportsData(null); // <- Reset to avoid mismatch
+            setSportsData(null); 
         try {
             const response = await axios.post('/api/main-backend/sportsdata', {
                 type: typeMap[spt]

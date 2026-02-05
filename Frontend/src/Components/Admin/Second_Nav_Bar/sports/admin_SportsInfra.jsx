@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./admin_SportsInfra.css";
 import { Plus, Pencil, Trash2, Save, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 const SportsInfra = ({ data: initialData }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -20,6 +20,8 @@ const SportsInfra = ({ data: initialData }) => {
   const [showRequestButtons, setShowRequestButtons] = useState(false);
   const [imagePreviews, setImagePreviews] = useState({});
   const [changes, setChanges] = useState([]);
+  const { sendRequest, loading, error } = useAdminRequest();
+  const filesRef = useRef([]);
 
   console.log('====================================');
   console.log("Ajith",changes);
@@ -62,6 +64,72 @@ const SportsInfra = ({ data: initialData }) => {
     ]);
   };
 
+const buildSportsInfrastructurePayload = ({
+  action,
+  newData = {},
+  oldData = {},
+}) => {
+
+  /* -------------------- INSERT -------------------- */
+  if (action === "Added") {
+    return {
+      collectionName: "sports",
+      collection_type: "infrastructure",
+      action: "insert",
+      title: "Insertion of Infrastructure",
+
+      meta_data: {
+        title: newData.title,
+        description: newData.description,
+        image_path: newData.image_path,
+      },
+
+      original_data: null,
+    };
+  }
+
+  /* -------------------- UPDATE -------------------- */
+  if (action === "Edited") {
+    return {
+      collectionName: "sports",
+      collection_type: "infrastructure",
+      action: "update",
+      title: "Updation of Infrastructure",
+
+      meta_data: {
+        title: newData.title,
+        description: newData.description,
+        image_path: newData.image_path,
+      },
+
+      original_data: {
+        title: oldData.title,
+        description: oldData.description,
+        image_path: oldData.image_path,
+      },
+    };
+  }
+
+  /* -------------------- DELETE -------------------- */
+  if (action === "Deleted") {
+    return {
+      collectionName: "sports",
+      collection_type: "infrastructure",
+      action: "delete",
+      title: "Deletion of Infrastructure",
+
+      meta_data: {
+        title: oldData.title,
+        description: oldData.description,
+        image_path: oldData.image_path,
+      },
+
+      original_data: null,
+    };
+  }
+
+  return null;
+};
 
 
   const handleDeleteSelected = () => {
@@ -75,36 +143,42 @@ const SportsInfra = ({ data: initialData }) => {
     setSportsData((prev) =>
       prev.filter((item) => !selectedItems.includes(item.id))
     );
-    setChanges((prev) => [
-      ...prev,
-      ...deletedItems.map((d) => ({
-        type: "deleted",
-        section: d.title || "Untitled",
-        fields: ["Deleted item"],
-      })),
-    ]);
+  setChanges((prev) => [
+  ...prev,
+  ...deletedItems.map((d) => ({
+    id: d.id,
+    type: "deleted",
+    section: d.title || "Untitled",
+    data: d, // ✅ REQUIRED
+  })),
+]);
     setSelectedItems([]);
     setShowDeleteModal(false);
     toast.success("Selected items deleted.");
   };
 
   // -------------------- SAVE --------------------
-  const handleSave = () => {
-    setOriginalData(sportsData);
-    setEditMode(false);
-    toast.success("Changes saved! Now you can request or discard.");
-    setShowRequestButtons(true);
-  };
+const handleSave = () => {
+  setOriginalData(sportsData);
+  setEditMode(false);
+
+  // ❗ DO NOT re-track changes after save
+  setShowRequestButtons(true);
+
+  toast.success("Changes saved! Now you can request or discard.");
+};
 
   // -------------------- DISCARD --------------------
-  const handleDiscard = () => {
-    setSportsData(initialSnapshot);
-    setSelectedItems([]);
-    setShowRequestButtons(false);
-    setChanges([]);
-    setImagePreviews({});
-    toast.info("All changes discarded. Page reset to initial data.");
-  };
+const handleDiscard = () => {
+  setSportsData(initialSnapshot);
+  setSelectedItems([]);
+  setShowRequestButtons(false);
+  setChanges([]);
+  setImagePreviews({});
+  filesRef.current = []; // ✅ reset files
+  toast.info("All changes discarded. Page reset to initial data.");
+};
+
   const confirmDiscard = () => {
     handleDiscard();
     setShowDiscardModal(false);
@@ -158,12 +232,64 @@ const SportsInfra = ({ data: initialData }) => {
     setShowRequestModal(true);
   };
 
-  const handleRequestConfirm = () => {
-    toast.success("Your changes have been requested for approval!");
-    setShowRequestModal(false);
-    setShowRequestButtons(false);
-    setChanges([]);
-  };
+const handleFinalRequest = async () => {
+  if (!changes.length) {
+    toast.warn("No changes to submit");
+    return;
+  }
+
+  const payloads = [];
+  const files = [];
+
+  changes.forEach((change) => {
+    /* ---------------- INSERT ---------------- */
+    if (change.type === "added") {
+      payloads.push(
+        buildSportsInfrastructurePayload({
+          action: "Added",
+          newData: change.data,
+        })
+      );
+    }
+
+    /* ---------------- UPDATE ---------------- */
+    if (change.type === "updated") {
+      const oldItem = originalData.find(
+        (o) => o.id === change.id // ✅ FIX
+      );
+
+      if (!oldItem) return;
+
+      payloads.push(
+        buildSportsInfrastructurePayload({
+          action: "Edited",
+          newData: change.data,
+          oldData: oldItem,
+        })
+      );
+    }
+
+    /* ---------------- DELETE ---------------- */
+    if (change.type === "deleted") {
+      payloads.push(
+        buildSportsInfrastructurePayload({
+          action: "Deleted",
+          oldData: change.data,
+        })
+      );
+    }
+  });
+
+  console.log("FINAL PAYLOADS:", payloads);
+
+  await sendRequest(payloads, files);
+
+  toast.success("Sports Infrastructure request submitted!");
+  setShowRequestModal(false);
+  setChanges([]);
+};
+
+
 
   const handleRevertChange = (index) => {
     const changeToRevert = changes[index];
@@ -203,7 +329,6 @@ const SportsInfra = ({ data: initialData }) => {
   };
 
 const handleInputChange = (id, index, field, value) => {
-  // Update card in sportsData
   setSportsData((prev) =>
     prev.map((item, idx) =>
       idx === index ? { ...item, [field]: value } : item
@@ -212,64 +337,103 @@ const handleInputChange = (id, index, field, value) => {
 
   const updatedCard = { ...sportsData[index], [field]: value };
 
+  // 🟡 NEW CARD → stay as "added"
   if (updatedCard.isNew) {
-    // 🟡 For new cards: always keep them as "added"
     setChanges((prev) =>
-      prev.map((change) =>
-        change.type === "added" && change.data.id === id
-          ? {
-              ...change,
-              section: updatedCard.title || "Untitled",
-              data: updatedCard,
-            }
-          : change
+      prev.map((c) =>
+        c.type === "added" && c.data.id === id
+          ? { ...c, section: updatedCard.title || "Untitled", data: updatedCard }
+          : c
       )
     );
-    return; // exit early so the rest only runs for existing cards
+    return;
   }
 
-  // 🟢 For existing cards: mark as updated
+  // 🟢 EXISTING CARD → ONE update entry per card
   setChanges((prev) => {
-    const existingIndex = prev.findIndex(
-      (c) => c.id === id && c.fields?.includes(field)
+    const existing = prev.find(
+      (c) => c.type === "updated" && c.id === id
     );
 
-    // Add your logic for updating "updated" changes here
-    // Example: simply add a new change if not found
-    if (existingIndex === -1) {
-      return [
-        ...prev,
-        {
-          id,
-          type: "updated",
-          section: updatedCard.title || "Untitled",
-          fields: [field],
-        },
-      ];
+    if (existing) {
+      return prev.map((c) =>
+        c.id === id
+          ? {
+              ...c,
+              section: updatedCard.title || "Untitled",
+              fields: Array.from(new Set([...c.fields, field])),
+              data: updatedCard,
+            }
+          : c
+      );
     }
 
-    // Otherwise, update the existing change
-    const next = [...prev];
-    next[existingIndex].fields.push(field);
-    return next;
+    return [
+      ...prev,
+      {
+        id,
+        type: "updated",
+        section: updatedCard.title || "Untitled",
+        fields: [field],
+        data: updatedCard,
+      },
+    ];
   });
 };
 
-  const handleImageChange = (index, file) => {
-    const url = URL.createObjectURL(file);
-    const updated = [...sportsData];
-    updated[index].image_path = url;
-    setSportsData(updated);
-    setImagePreviews((prev) => ({ ...prev, [updated[index].id]: url }));
-    setChanges((prev) => [
+const handleImageChange = (index, file) => {
+  const previewUrl = URL.createObjectURL(file);
+  const serverPath = `/static/images/sports/infrastructure/${file.name}`;
+  const card = sportsData[index];
+
+  setSportsData((prev) =>
+    prev.map((item, i) =>
+      i === index ? { ...item, image_path: serverPath } : item
+    )
+  );
+
+  setImagePreviews((prev) => ({
+    ...prev,
+    [card.id]: previewUrl,
+  }));
+
+  // ✅ TRACK IMAGE UPDATE
+  setChanges((prev) => {
+    const existing = prev.find(
+      (c) => c.type === "updated" && c.id === card.id
+    );
+
+    if (existing) {
+      return prev.map((c) =>
+        c.id === card.id
+          ? {
+              ...c,
+              fields: Array.from(new Set([...c.fields, "Image"])),
+              data: { ...card, image_path: serverPath },
+            }
+          : c
+      );
+    }
+
+    return [
       ...prev,
       {
+        id: card.id,
         type: "updated",
-        section: updated[index].title || "Untitled",
+        section: card.title || "Untitled",
         fields: ["Image"],
+        data: { ...card, image_path: serverPath },
       },
-    ]);
-  };
+    ];
+  });
+
+  filesRef.current.push({
+    field: "sports_infra_image",
+    file,
+  });
+};
+
+
 
   const formatAction = (type) => {
     if (!type) return "";
@@ -514,7 +678,7 @@ const handleInputChange = (id, index, field, value) => {
               </button>
               {changes.length > 0 && (
                 <button
-                  onClick={handleRequestConfirm}
+                  onClick={handleFinalRequest}
                   className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white"
                 >
                   Final Request
