@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./admin_SportsInfra.css";
 import { Plus, Pencil, Trash2, Save, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 const SportsInfra = ({ data: initialData }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -20,20 +20,24 @@ const SportsInfra = ({ data: initialData }) => {
   const [showRequestButtons, setShowRequestButtons] = useState(false);
   const [imagePreviews, setImagePreviews] = useState({});
   const [changes, setChanges] = useState([]);
+  const { sendRequest, loading, error } = useAdminRequest();
+  const filesRef = useRef([]);
 
   console.log('====================================');
-  console.log("Ajith",changes);
+  console.log("Ajith", changes);
   console.log('====================================');
 
   useEffect(() => {
-    const dataWithId = (initialData || []).map((item) => ({
+    const dataWithId = (initialData || []).map(item => ({
       ...item,
       id: item.id || Date.now() + Math.random(),
     }));
+
     setSportsData(dataWithId);
-    setOriginalData(dataWithId);
-    setInitialSnapshot(dataWithId);
+    setOriginalData(JSON.parse(JSON.stringify(dataWithId))); // deep copy
+    setInitialSnapshot(JSON.parse(JSON.stringify(dataWithId)));
   }, [initialData]);
+
 
   const handleSelect = (id, isChecked) => {
     setSelectedItems((prev) =>
@@ -48,228 +52,557 @@ const SportsInfra = ({ data: initialData }) => {
       isNew: true,
     };
 
-    // Add to sportsData
-    setSportsData((prev) => [...prev, newCard]);
+    setSportsData((prev) => {
+      const next = [...prev, newCard];
 
-    // Add to changes immediately as "Added"
-    setChanges((prev) => [
-      ...prev,
-      {
-        type: "added",
-        section: "Untitled",
-        data: newCard,
-      },
-    ]);
+      // 🧷 Register the change using the same state update
+      setChanges((prevChanges) => [
+        ...prevChanges,
+        {
+          id: newCard.id,
+          type: "added",
+          section: "Untitled",
+          data: newCard,
+          originalIndex: sportsData.length,   // 🧷 insertion point
+        }
+
+      ]);
+
+      return next;
+    });
+  };
+
+  const getCardAction = (id) => {
+    const change = changes.find(c => c.id === id);
+    return change?.type || null;  // "added" | "updated" | "deleted" | null
+  };
+
+  const buildSportsInfrastructurePayload = ({
+    action,
+    newData = {},
+    oldData = {},
+  }) => {
+
+    /* -------------------- INSERT -------------------- */
+    if (action === "Added") {
+      return {
+        collectionName: "sports",
+        collection_type: "infrastructure",
+        action: "insert",
+        title: "Insertion of Infrastructure",
+
+        meta_data: {
+          title: newData.title,
+          description: newData.description,
+          image_path: newData.image_path,
+        },
+
+        original_data: null,
+      };
+    }
+
+    /* -------------------- UPDATE -------------------- */
+    if (action === "Edited") {
+      return {
+        collectionName: "sports",
+        collection_type: "infrastructure",
+        action: "update",
+        title: "Updation of Infrastructure",
+
+        meta_data: {
+          title: newData.title,
+          description: newData.description,
+          image_path: newData.image_path,
+        },
+
+        original_data: {
+          title: oldData.original_data?.title || oldData.meta_data?.title || oldData.title,
+          description: oldData.original_data?.description || oldData.meta_data?.description || oldData.description,
+          image_path: oldData.original_data?.image_path || oldData.meta_data?.image_path || oldData.image_path,
+        },
+      };
+    }
+
+    /* -------------------- DELETE -------------------- */
+    if (action === "Deleted") {
+      return {
+        collectionName: "sports",
+        collection_type: "infrastructure",
+        action: "delete",
+        title: "Deletion of Infrastructure",
+
+        meta_data: {
+          title: oldData.original_data?.title || oldData.meta_data?.title || oldData.title,
+          description: oldData.original_data?.description || oldData.meta_data?.description || oldData.description,
+          image_path: oldData.original_data?.image_path || oldData.meta_data?.image_path || oldData.image_path,
+        },
+
+        original_data: null,
+      };
+    }
+
+    return null;
   };
 
 
-
   const handleDeleteSelected = () => {
+
+    // 🚫 Block delete if card is already being edited or newly added
+    const locked = selectedItems.filter(id => {
+      const action = getCardAction(id);
+      return action === "added" || action === "updated";
+    });
+
+    if (locked.length) {
+      toast.error("Finish editing the selected cards before deleting them.");
+      return;
+    }
+
     if (selectedItems.length === 0) {
       toast.info("No items selected to delete.");
       return;
     }
-    const deletedItems = sportsData.filter((item) =>
+
+    const deletedItems = sportsData.filter(item =>
       selectedItems.includes(item.id)
     );
-    setSportsData((prev) =>
-      prev.filter((item) => !selectedItems.includes(item.id))
+
+    setSportsData(prev =>
+      prev.filter(item => !selectedItems.includes(item.id))
     );
-    setChanges((prev) => [
+
+    setChanges(prev => [
       ...prev,
-      ...deletedItems.map((d) => ({
-        type: "deleted",
-        section: d.title || "Untitled",
-        fields: ["Deleted item"],
-      })),
+      ...deletedItems.map(d => {
+        const originalIndex = sportsData.findIndex(item => item.id === d.id);
+        return {
+          id: d.id,
+          type: "deleted",
+          section: d.title || "Untitled",
+          data: d,
+          originalIndex
+        };
+      })
     ]);
+
     setSelectedItems([]);
     setShowDeleteModal(false);
     toast.success("Selected items deleted.");
   };
 
+
   // -------------------- SAVE --------------------
   const handleSave = () => {
-    setOriginalData(sportsData);
+    const invalidNewCards = sportsData.filter(c => c.isNew && !isCardValid(c));
+    if (invalidNewCards.length) {
+      toast.error("Fill all fields before saving");
+      return;
+    }
+
+    // Update baseline for next edits
+    setOriginalData(JSON.parse(JSON.stringify(sportsData.map(c => ({ ...c, isNew: false })))));
+
     setEditMode(false);
-    toast.success("Changes saved! Now you can request or discard.");
     setShowRequestButtons(true);
+    setChanges([]);
+
+    toast.success("Changes saved!");
   };
 
   // -------------------- DISCARD --------------------
   const handleDiscard = () => {
     setSportsData(initialSnapshot);
+    setOriginalData(initialSnapshot);
     setSelectedItems([]);
-    setShowRequestButtons(false);
     setChanges([]);
     setImagePreviews({});
-    toast.info("All changes discarded. Page reset to initial data.");
+    filesRef.current = [];
+    setEditMode(false);
+    setShowRequestButtons(false);
+    toast.info("All changes since page load were discarded.");
   };
-  const confirmDiscard = () => {
-    handleDiscard();
-    setShowDiscardModal(false);
-  };
-  const handleRequestChanges = () => {
-    const newChanges = [];
 
-    const currentMap = new Map(sportsData.map((item) => [item.id, item]));
-    const originalMap = new Map(originalData.map((item) => [item.id, item]));
-    sportsData.forEach((item) => {
-      if (!originalMap.has(item.id)) {
-        newChanges.push({
-          type: "added",
-          section: item.title || "Untitled",
-          fields: ["New item added"],
-        });
+  // const confirmDiscard = () => {
+  //   handleDiscard();
+  //   setShowDiscardModal(false);
+  // };
+  // const handleRequestChanges = () => {
+  //   const newChanges = [];
+
+  //   const currentMap = new Map(sportsData.map((item) => [item.id, item]));
+  //   const originalMap = new Map(originalData.map((item) => [item.id, item]));
+  //   sportsData.forEach((item) => {
+  //     if (!originalMap.has(item.id)) {
+  //       newChanges.push({
+  //         type: "added",
+  //         section: item.title || "Untitled",
+  //         fields: ["New item added"],
+  //       });
+  //     }
+  //   });
+
+  //   originalData.forEach((item) => {
+  //     if (!currentMap.has(item.id)) {
+  //       newChanges.push({
+  //         type: "deleted",
+  //         section: item.title || "Untitled",
+  //         fields: ["Deleted item"],
+  //       });
+  //     }
+  //   });
+
+  //   // Updated
+  //   sportsData.forEach((item) => {
+  //     const orig = originalMap.get(item.id);
+  //     if (orig) {
+  //       const changedFields = [];
+  //       if (orig.title !== item.title) changedFields.push("Title");
+  //       if (orig.description !== item.description)
+  //         changedFields.push("Description");
+  //       if (orig.image_path !== item.image_path) changedFields.push("Image");
+
+  //       if (changedFields.length > 0) {
+  //         newChanges.push({
+  //           type: "updated",
+  //           section: item.title || "Untitled",
+  //           fields: changedFields,
+  //         });
+  //       }
+  //     }
+  //   });
+
+  //   setChanges(newChanges);
+  //   setShowRequestModal(true);
+  // };
+
+  const isCardValid = (card) => {
+    return (
+      card.title?.trim() &&
+      card.description?.trim() &&
+      card.image_path
+    );
+  };
+
+
+  const generatePayloadsAuto = () => {
+    const payloads = [];
+
+    // UPDATE & ADD
+    sportsData.forEach(item => {
+      const original = initialSnapshot.find(o => o.id === item.id);
+
+      // ADD
+      if (!original) {
+        payloads.push(
+          buildSportsInfrastructurePayload({
+            action: "Added",
+            newData: item,
+          })
+        );
+        return;
+      }
+
+      // UPDATE
+      if (
+        item.title !== original.title ||
+        item.description !== original.description ||
+        item.image_path !== original.image_path
+      ) {
+        payloads.push(
+          buildSportsInfrastructurePayload({
+            action: "Edited",
+            newData: item,
+            oldData: original,
+          })
+        );
       }
     });
 
-    originalData.forEach((item) => {
-      if (!currentMap.has(item.id)) {
-        newChanges.push({
-          type: "deleted",
-          section: item.title || "Untitled",
-          fields: ["Deleted item"],
-        });
+    // DELETE
+    initialSnapshot.forEach(orig => {
+      if (!sportsData.find(s => s.id === orig.id)) {
+        payloads.push(
+          buildSportsInfrastructurePayload({
+            action: "Deleted",
+            oldData: orig,
+          })
+        );
       }
     });
 
-    // Updated
-    sportsData.forEach((item) => {
-      const orig = originalMap.get(item.id);
-      if (orig) {
-        const changedFields = [];
-        if (orig.title !== item.title) changedFields.push("Title");
-        if (orig.description !== item.description)
-          changedFields.push("Description");
-        if (orig.image_path !== item.image_path) changedFields.push("Image");
-
-        if (changedFields.length > 0) {
-          newChanges.push({
-            type: "updated",
-            section: item.title || "Untitled",
-            fields: changedFields,
-          });
-        }
-      }
-    });
-
-    setChanges(newChanges);
-    setShowRequestModal(true);
+    return payloads;
   };
 
-  const handleRequestConfirm = () => {
-    toast.success("Your changes have been requested for approval!");
+  //   const map = new Map();
+
+  //   for (const ch of changes) {
+  //     const prev = map.get(ch.id);
+
+  //     // First time seen
+  //     if (!prev) {
+  //       map.set(ch.id, ch);
+  //       continue;
+  //     }
+
+  //     // ADD ➜ DELETE  → remove completely
+  //     if (prev.type === "added" && ch.type === "deleted") {
+  //       map.delete(ch.id);
+  //       continue;
+  //     }
+
+  //     // UPDATE ➜ DELETE → keep DELETE
+  //     if (prev.type === "updated" && ch.type === "deleted") {
+  //       map.set(ch.id, ch);
+  //       continue;
+  //     }
+
+  //     // ADD ➜ UPDATE → keep ADD with latest data
+  //     if (prev.type === "added" && ch.type === "updated") {
+  //       map.set(ch.id, { ...prev, data: ch.data });
+  //       continue;
+  //     }
+
+  //     // UPDATE ➜ UPDATE → keep latest
+  //     if (prev.type === "updated" && ch.type === "updated") {
+  //       map.set(ch.id, ch);
+  //       continue;
+  //     }
+
+  //     // Otherwise latest action wins
+  //     map.set(ch.id, ch);
+  //   }
+
+  //   return Array.from(map.values());
+  // };
+  const handleFinalRequest = async () => {
+    const payloads = generatePayloadsAuto();
+    const files = [];
+
+    sportsData.forEach(item => {
+      if (item.image_file) {
+        files.push(item.image_file);
+      }
+    });
+
+    if (!payloads.length) {
+      toast.warn("No changes to submit");
+      return;
+    }
+
+    console.log("FINAL PAYLOADS:", payloads);
+    console.log("FILES:", files);
+
+    await sendRequest(payloads, files);
+
+    toast.success("Sports Infrastructure request submitted!");
+
+    // ✅ Mark current state as new baseline
+    setInitialSnapshot(JSON.parse(JSON.stringify(sportsData)));
+    setOriginalData(JSON.parse(JSON.stringify(sportsData)));
+
+    // ✅ Clear UI states
     setShowRequestModal(false);
     setShowRequestButtons(false);
     setChanges([]);
+    filesRef.current = [];
+
   };
+
+
+
 
   const handleRevertChange = (index) => {
-    const changeToRevert = changes[index];
-    if (!changeToRevert) return;
+    setChanges(prevChanges => {
+      const change = prevChanges[index];
+      if (!change) return prevChanges;
 
-    if (changeToRevert.type === "updated") {
-      const itemToUpdate = sportsData.find(
-        (item) => item.title === changeToRevert.section
-      );
-      const originalItem = originalData.find(
-        (item) => item.title === changeToRevert.section
-      );
-      if (itemToUpdate && originalItem) {
-        const updatedItem = { ...itemToUpdate };
-        changeToRevert.fields.forEach((field) => {
-          if (field === "Title") updatedItem.title = originalItem.title;
-          if (field === "Description")
-            updatedItem.description = originalItem.description;
-          if (field === "Image") updatedItem.image_path = originalItem.image_path;
-        });
-        setSportsData((prev) =>
-          prev.map((item) => (item.id === updatedItem.id ? updatedItem : item))
-        );
-      }
-    } else if (changeToRevert.type === "deleted") {
-      const originalItem = originalData.find(
-        (item) => item.title === changeToRevert.section
-      );
-      if (originalItem) setSportsData((prev) => [...prev, originalItem]);
-    } else if (changeToRevert.type === "added") {
-      setSportsData((prev) =>
-        prev.filter((item) => item.title !== changeToRevert.section)
-      );
-    }
+      setSportsData(prevData => {
+        let data = [...prevData];
 
-    setChanges((prev) => prev.filter((_, i) => i !== index));
+        // 🔴 Undo ADD → remove new card
+        if (change.type === "added") {
+          return data.filter(item => item.id !== change.id);
+        }
+
+        // 🔵 Undo UPDATE → replace edited with original
+        if (change.type === "updated") {
+          return data.map(item =>
+            item.id === change.id ? { ...change.original } : item
+          );
+        }
+
+        // ⚫ Undo DELETE → restore in correct position
+        if (change.type === "deleted") {
+          const before = data.slice(0, change.originalIndex);
+          const after = data.slice(change.originalIndex);
+          return [...before, change.data, ...after];
+        }
+
+        return data;
+      });
+
+      return prevChanges.filter((_, i) => i !== index);
+    });
   };
 
-const handleInputChange = (id, index, field, value) => {
-  // Update card in sportsData
-  setSportsData((prev) =>
-    prev.map((item, idx) =>
-      idx === index ? { ...item, [field]: value } : item
-    )
-  );
+  const handleInputChange = (id, index, field, value) => {
 
-  const updatedCard = { ...sportsData[index], [field]: value };
-
-  if (updatedCard.isNew) {
-    // 🟡 For new cards: always keep them as "added"
-    setChanges((prev) =>
-      prev.map((change) =>
-        change.type === "added" && change.data.id === id
-          ? {
-              ...change,
-              section: updatedCard.title || "Untitled",
-              data: updatedCard,
-            }
-          : change
-      )
-    );
-    return; // exit early so the rest only runs for existing cards
-  }
-
-  // 🟢 For existing cards: mark as updated
-  setChanges((prev) => {
-    const existingIndex = prev.findIndex(
-      (c) => c.id === id && c.fields?.includes(field)
-    );
-
-    // Add your logic for updating "updated" changes here
-    // Example: simply add a new change if not found
-    if (existingIndex === -1) {
-      return [
-        ...prev,
-        {
-          id,
-          type: "updated",
-          section: updatedCard.title || "Untitled",
-          fields: [field],
-        },
-      ];
+    const action = getCardAction(id);
+    if (action === "deleted") {
+      toast.warn("Undo delete before editing this card.");
+      return;
     }
 
-    // Otherwise, update the existing change
-    const next = [...prev];
-    next[existingIndex].fields.push(field);
-    return next;
-  });
-};
+    setSportsData(prev => {
+      const next = prev.map((item, i) =>
+        i === index ? { ...item, [field]: value } : item
+      );
+
+      const updatedCard = next[index];
+      const originalItem = originalData.find(o => o.id === id);
+
+      setChanges(prevChanges => {
+
+        // 🟡 NEW CARD — always keep it "added"
+        if (updatedCard.isNew) {
+          return prevChanges.map(c =>
+            c.type === "added" && c.id === id
+              ? { ...c, section: updatedCard.title || "Untitled", data: updatedCard }
+              : c
+          );
+        }
+
+        // 🧹 AUTO-REMOVE UPDATE IF BACK TO ORIGINAL
+        if (
+          updatedCard.title === originalItem.title &&
+          updatedCard.description === originalItem.description &&
+          updatedCard.image_path === originalItem.image_path
+        ) {
+          return prevChanges.filter(c => !(c.type === "updated" && c.id === id));
+        }
+
+        const existing = prevChanges.find(c => c.type === "updated" && c.id === id);
+
+        if (existing) {
+          return prevChanges.map(c =>
+            c.id === id
+              ? {
+                ...c,
+                section: updatedCard.title || "Untitled",
+                fields: Array.from(new Set([...c.fields, field])),
+                data: updatedCard,
+                original: c.original || { ...originalItem }
+              }
+              : c
+          );
+        }
+
+        return [
+          ...prevChanges,
+          {
+            id,
+            type: "updated",
+            section: updatedCard.title || "Untitled",
+            fields: [field],
+            data: updatedCard,
+            original: { ...originalItem }
+          }
+        ];
+      });
+
+      return next;
+    });
+  };
+  const handleCancel = () => {
+    setSportsData(originalData);
+    setSelectedItems([]);
+    setChanges([]);
+    setImagePreviews({});
+    filesRef.current = [];
+    setEditMode(false);
+    setShowRequestButtons(false);
+    toast.info("Changes since last save were cancelled.");
+  };
 
   const handleImageChange = (index, file) => {
-    const url = URL.createObjectURL(file);
-    const updated = [...sportsData];
-    updated[index].image_path = url;
-    setSportsData(updated);
-    setImagePreviews((prev) => ({ ...prev, [updated[index].id]: url }));
-    setChanges((prev) => [
-      ...prev,
-      {
-        type: "updated",
-        section: updated[index].title || "Untitled",
-        fields: ["Image"],
-      },
-    ]);
+
+    const id = sportsData[index].id;
+    const action = getCardAction(id);
+
+    if (action === "deleted") {
+      toast.warn("Undo delete before editing this card.");
+      return;
+    }
+    const previewUrl = URL.createObjectURL(file);
+    const serverPath = `/static/images/sports/infrastructure/${file.name}`;
+
+    setSportsData((prev) => {
+      const next = prev.map((item, i) =>
+        i === index
+          ? {
+            ...item,
+            image_path: serverPath,
+            image_file: file   // ⭐ ADD THIS LINE
+          }
+          : item
+      );
+
+      const updatedCard = next[index];
+
+      setImagePreviews((prevImg) => ({
+        ...prevImg,
+        [updatedCard.id]: previewUrl,
+      }));
+
+      setChanges((prevChanges) => {
+        // 🟡 NEW CARD
+        if (updatedCard.isNew) {
+          return prevChanges.map((c) =>
+            c.type === "added" && c.id === updatedCard.id
+              ? { ...c, data: updatedCard }
+              : c
+          );
+        }
+        // 🟢 EXISTING CARD
+        const originalItem = originalData.find((o) => o.id === updatedCard.id);
+        const existing = prevChanges.find(
+          (c) => c.type === "updated" && c.id === updatedCard.id
+        );
+
+        if (existing) {
+          return prevChanges.map((c) =>
+            c.id === updatedCard.id
+              ? {
+                ...c,
+                fields: Array.from(new Set([...c.fields, "Image"])),
+                data: updatedCard,
+                original: c.original || { ...originalItem },
+              }
+              : c
+          );
+        }
+
+        return [
+          ...prevChanges,
+          {
+            id: updatedCard.id,
+            type: "updated",
+            section: updatedCard.title || "Untitled",
+            fields: ["Image"],
+            data: updatedCard,
+            original: { ...originalItem },
+          },
+        ];
+      });
+
+      return next;
+    });
+
+    filesRef.current.push({ field: "sports_infra_image", file });
   };
+
+
+
 
   const formatAction = (type) => {
     if (!type) return "";
@@ -285,8 +618,9 @@ const handleInputChange = (id, index, field, value) => {
       <div className="admin-controls-ug flex justify-end mb-2">
         {!editMode && (
           <button
-            className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20"
-            onClick={() => {setEditMode(true);
+            className="flex items-center gap-2 px-4 py-2 mt-4 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20"
+            onClick={() => {
+              setEditMode(true);
               setShowRequestButtons(false)
             }}
           >
@@ -332,27 +666,27 @@ const handleInputChange = (id, index, field, value) => {
                         <input
                           type="text"
                           value={card.title}
-                         onChange={(e) =>
-                                  handleInputChange(card.id, index + i, "title", e.target.value.toUpperCase())
-                                }
+                          onChange={(e) =>
+                            handleInputChange(card.id, index + i, "title", e.target.value.toUpperCase())
+                          }
                           className="w-full border p-2 rounded mt-2"
                         />
                         <textarea
                           value={card.description}
                           onChange={(e) =>
-                          handleInputChange(card.id, index + i, "description", e.target.value)
-                        }
+                            handleInputChange(card.id, index + i, "description", e.target.value)
+                          }
                           className="w-full border p-2 rounded mt-2"
                         />
                         <div className="absolute top-2 right-2 flex gap-2">
                           <input
                             type="checkbox"
+                            disabled={["added", "updated"].includes(getCardAction(card.id))}
                             checked={selectedItems.includes(card.id)}
-                            onChange={(e) =>
-                              handleSelect(card.id, e.target.checked)
-                            }
+                            onChange={(e) => handleSelect(card.id, e.target.checked)}
                             className="w-6 h-8 accent-blue-500 cursor-pointer"
                           />
+
                         </div>
                       </>
                     ) : (
@@ -399,7 +733,7 @@ const handleInputChange = (id, index, field, value) => {
         <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
           <button
             className="px-4 py-2 bg-gray-400 text-white rounded"
-            onClick={() => setShowDiscardModal(true)}
+            onClick={handleCancel}
           >
             Cancel
           </button>
@@ -416,17 +750,33 @@ const handleInputChange = (id, index, field, value) => {
         <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
           <button
             className="px-4 py-2 bg-gray-500 text-white rounded"
-            onClick={() =>handleDiscard()}
+            onClick={() => handleDiscard()}
           >
             Discard Changes
           </button>
           <button
             className="px-4 py-2 bg-[#FDCC03] text-white rounded flex items-center gap-2"
-            onClick={() => setShowRequestModal(true)
-            }
+            onClick={() => {
+              const payloads = generatePayloadsAuto();
+
+              const autoChanges = payloads.map((p, i) => ({
+                id: i,
+                type:
+                  p.action === "insert" ? "added" :
+                    p.action === "update" ? "updated" :
+                      "deleted",
+                data: p.meta_data,
+                original: p.original_data,
+                originalIndex: i
+              }));
+
+              setChanges(autoChanges);
+              setShowRequestModal(true);
+            }}
           >
             <Send size={16} /> Request
           </button>
+
         </div>
       )}
 
@@ -457,73 +807,85 @@ const handleInputChange = (id, index, field, value) => {
       )}
 
       {/* REQUEST MODAL */}
-      {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-xl text-center font-bold mb-4 text-gray-800">
-              Final Request
-            </h2>
-            <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior
-              admin. Once approved, they will go live.
-            </p>
+      {showRequestModal && (() => {
+        const payloads = generatePayloadsAuto();
+        return (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+            <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+              <h2 className="text-xl text-center font-bold mb-4 text-gray-800">
+                Final Request
+              </h2>
+              <p className="text-sm text-red-500 mb-4">
+                Note: Your changes will stay pending until approved by the superior
+                admin. Once approved, they will go live.
+              </p>
 
-            {changes.length > 0 ? (
-              <table className="w-full text-center text-sm border">
-                <thead className="bg-gray-200">
-                  <tr>
-                    <th className="border p-2">Action</th>
-                    <th className="border p-2">Section</th>
-                    <th className="border p-2"> Changed</th>
-                    <th className="border p-2">Undo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {changes.map((ch, i) => (
-                    <tr key={i}>
-                      <td className="border p-2 text-blue-600">
-                        {formatAction(ch.type)}
-                      </td>
-                      <td className="border p-2">Infrastructure</td>
-                      <td className="border p-2">
-                       {ch.section }
-                      </td>
-                      <td className="border p-2">
-                        <button
-                          onClick={() => handleRevertChange(i)}
-                          className="p-1 rounded hover:bg-gray-100"
-                          title="Revert this change"
-                        >
-                          <X size={16} className="text-red-500" />
-                        </button>
-                      </td>
+              {changes.length > 0 ? (
+                <table className="w-full text-center text-sm border">
+                  <thead className="bg-gray-200">
+                    <tr>
+                      <th className="border p-2">Action</th>
+                      <th className="border p-2">Section</th>
+                      <th className="border p-2">Title</th>
+                      <th className="border p-2">Undo</th> {/* ✅ ADD */}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <p className="text-gray-600">No changes detected.</p>
-            )}
+                  </thead>
+                  <tbody>
+                    {changes.map((change, i) => (
+                      <tr key={i}>
+                        <td className="border p-2 font-semibold">
+                          {change.type === "added"
+                            ? "Added"
+                            : change.type === "updated"
+                              ? "Edited"
+                              : "Deleted"}
+                        </td>
 
-            <div className="flex justify-end gap-2 mt-6">
-              <button
-                onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
-              >
-                Cancel
-              </button>
-              {changes.length > 0 && (
-                <button
-                  onClick={handleRequestConfirm}
-                  className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white"
-                >
-                  Final Request
-                </button>
+                        <td className="border p-2">Infrastructure</td>
+
+                        <td className="border p-2">
+                          {change.data?.title || "Untitled"}
+                        </td>
+
+                        {/* ✅ UNDO BUTTON */}
+                        <td className="border p-2">
+                          <button
+                            onClick={() => handleRevertChange(i)}
+                            className="text-red-500 hover:text-red-700 font-bold"
+                          >
+                            ✕
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-gray-600">No changes detected.</p>
               )}
+
+
+              <div className="flex justify-end gap-2 mt-6">
+                <button
+                  onClick={() => setShowRequestModal(false)}
+                  className="px-4 py-2 rounded bg-gray-400 text-white"
+                >
+                  Cancel
+                </button>
+                {changes.length > 0 && (
+                  <button
+                  disabled={loading}
+                    onClick={handleFinalRequest}
+                    className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white"
+                  >
+                    Final Request
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       <ToastContainer position="bottom-right" autoClose={3000} />
     </>

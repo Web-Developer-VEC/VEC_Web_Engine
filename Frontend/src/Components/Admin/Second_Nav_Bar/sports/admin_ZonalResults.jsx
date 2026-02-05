@@ -3,6 +3,9 @@ import LoadComp from "../../LoadComp";
 import { Pencil, Trash2, Send, Plus, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
+import { nanoid } from "nanoid";
+
 
 const ZonalResults = ({ data, year: initialYear }) => {
   const [editMode, setEditMode] = useState(false);
@@ -11,20 +14,24 @@ const ZonalResults = ({ data, year: initialYear }) => {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [showDiscardModal, setShowDiscardModal] = useState(false);
   const [showRequestButtons, setShowRequestButtons] = useState(false);
+  const [originalYear] = useState(initialYear);
   const [changes, setChanges] = useState([]);
-  
-  
+  const { sendRequest, loading, error } = useAdminRequest();
+
+
   const [results, setResults] = useState(
     Array.isArray(data)
-    ? data.map((item) => ({
-      game: item?.game || "",
-      position: item?.position || "",
-      selected: false,
-    }))
-    : []
+      ? data.map((item) => ({
+        id: nanoid(),          // ✅ stable id
+        game: item?.game || "",
+        position: item?.position || "",
+        selected: false,
+      }))
+      : []
   );
+
   const [originalResults, setOriginalResults] = useState(results);
-    const positionOptions = ["Winner", "Runner", "Third"];
+  const positionOptions = ["Winner", "Runner", "Third"];
 
   if (!data) {
     return (
@@ -33,63 +40,102 @@ const ZonalResults = ({ data, year: initialYear }) => {
       </div>
     );
   }
-
+  console.log("Zonal Results Data:", data);
+  console.log("results state:", results);
   // Split results into pairs for desktop view
   const resultPairs = [];
   for (let i = 0; i < results.length; i += 2) {
     resultPairs.push([results[i], results[i + 1]]);
   }
 
- const handleInputChange = (index, field, value) => {
-  const updatedResults = [...results];
-  updatedResults[index][field] = value;
-  setResults(updatedResults);
+  const handleInputChange = (index, field, value) => {
+    const updatedResults = [...results];
+    updatedResults[index] = {
+      ...updatedResults[index],
+      [field]: value,
+    };
+    setResults(updatedResults);
 
-  const originalItem = originalResults[index];
-  if (originalItem && originalItem[field] !== value) {
+    // 🔥 IF THIS IS A NEW ROW → UPDATE "added" CHANGE ONLY
+    if (updatedResults[index].isNew) {
+      setChanges((prev) =>
+        prev.map((c) =>
+          c.type === "added" && c.data === results[index]
+            ? {
+              ...c,
+              data: {
+                ...updatedResults[index],
+              },
+            }
+            : c
+        )
+      );
+      return;
+    }
+
+    // ⬇️ EXISTING LOGIC FOR OLD ROWS
+    const originalItem = originalResults[index];
+    if (!originalItem || originalItem[field] === value) return;
+
     setChanges((prev) => {
-      const exists = prev.find(
+      const existing = prev.find(
         (c) => c.type === "updated" && c.index === index
       );
-      if (exists) {
+
+      if (existing) {
         return prev.map((c) =>
           c.index === index
-            ? { ...c, fields: [...new Set([...c.fields, field])] }
+            ? {
+              ...c,
+              meta_data: {
+                ...c.meta_data,
+                [field]: value,
+              },
+            }
             : c
         );
       }
+
       return [
         ...prev,
         {
           type: "updated",
           section: "Zonal Results",
           index,
-          fields: [field],
+          meta_data: {
+            game: updatedResults[index].game,
+            position: updatedResults[index].position,
+          },
+          original_data: {
+            game: originalItem.game,
+            position: originalItem.position,
+          },
         },
       ];
     });
-  }
-};
-const handleRevertChange = (index) => {
-  const change = changes[index];
-  if (!change) return;
+  };
 
-  if (change.type === "added") {
-    setResults((prev) => prev.filter((r) => r !== change.data));
-  } else if (change.type === "deleted") {
-    // Restore deleted row
-    setResults((prev) => [...prev, { game: "", position: "", selected: false }]);
-  } else if (change.type === "updated") {
-    const orig = originalResults[change.index];
-    if (orig) {
-      setResults((prev) =>
-        prev.map((r, i) => (i === change.index ? orig : r))
-      );
+
+  const handleRevertChange = (index) => {
+    const change = changes[index];
+    if (!change) return;
+
+    if (change.type === "added") {
+      setResults((prev) => prev.filter((r) => r !== change.data));
+    } else if (change.type === "deleted") {
+      // Restore deleted row
+      setResults((prev) => [...prev, { game: "", position: "", selected: false }]);
+    } else if (change.type === "updated") {
+      const orig = originalResults[change.index];
+      if (orig) {
+        setResults((prev) =>
+          prev.map((r, i) => (i === change.index ? orig : r))
+        );
+      }
     }
-  }
 
-  setChanges((prev) => prev.filter((_, i) => i !== index));
-};
+    setChanges((prev) => prev.filter((_, i) => i !== index));
+  };
 
   const handleSelectRow = (index) => {
     const updatedResults = [...results];
@@ -108,50 +154,169 @@ const handleRevertChange = (index) => {
       toast.error("Year is mandatory!");
       return;
     }
+    if (currentYear !== originalYear) {
+      setChanges((prev) => [
+        ...prev,
+        {
+          type: "year_updated",
+          section: "Zonal Results",
+          original_data: {
+            year: originalYear,
+          },
+          meta_data: {
+            year: currentYear,
+          },
+        },
+      ]);
+    }
+
     setEditMode(false);
     setShowRequestButtons(true);
     toast.success("Changes saved successfully!");
   };
 
- const handleDeleteSelected = () => {
-  const deletedItems = results.filter((r) => r.selected);
-  setResults(results.filter((r) => !r.selected));
-  setChanges((prev) => [
-    ...prev,
-    ...deletedItems.map((d) => ({
-      type: "deleted",
-      section: "Zonal Results",
-      fields: [`Game: ${d.game}, Position: ${d.position}`],
-    }))
-  ]);
-  setShowDeleteModal(false);
-  toast.success("Selected rows deleted successfully!");
-};
+  const handleDeleteSelected = () => {
+    const deletedItems = results.filter((r) => r.selected);
+    setResults(results.filter((r) => !r.selected));
+    setChanges((prev) => [
+      ...prev,
+      ...deletedItems.map((d) => ({
+        type: "deleted",
+        section: "Zonal Results",
+        fields: [`Game: ${d.game}, Position: ${d.position}`],
+      }))
+    ]);
+    setShowDeleteModal(false);
+    toast.success("Selected rows deleted successfully!");
+  };
 
 
-const handleAddRow = () => {
-  const newRow = { game: "", position: "", selected: false, isNew: true };
-  setResults([...results, newRow]);
-  setChanges((prev) => [
-    ...prev,
-    { type: "added", section: "Zonal Results", data: newRow }
-  ]);
-};
+  const handleAddRow = () => {
+    const newRow = {
+      id: nanoid(),      // ✅ unique id
+      game: "",
+      position: "",
+      selected: false,
+      isNew: true,
+    };
 
+    setResults((prev) => [...prev, newRow]);
+
+    setChanges((prev) => [
+      ...prev,
+      {
+        type: "added",
+        section: "Zonal Results",
+        rowId: newRow.id,   // ✅ store id, not index
+      },
+    ]);
+  };
+
+  const handleFinalRequest = async () => {
+    try {
+      if (changes.length === 0) {
+        toast.error("No changes to request.");
+        return;
+      }
+
+      const payloads = changes.map((ch) => {
+        // INSERT
+        if (ch.type === "added") {
+          const row = results.find((r) => r.id === ch.rowId);
+
+          if (!row) return null; // safety
+
+          return {
+            collectionName: "sports",
+            collection_type: "achivements",
+            action: "insert",
+            title: "Insertion of Achievements",
+            category: "zonal_table",
+            meta_data: {
+              game: row.game,
+              position: row.position,
+            },
+            original_data: null,
+          };
+        }
+
+
+        // UPDATE
+        if (ch.type === "updated") {
+          return {
+            collectionName: "sports",
+            collection_type: "achivements",
+            action: "update",
+            title: "Updation of Achievements",
+            category: "zonal_table",
+            meta_data: ch.meta_data,
+            original_data: ch.original_data,
+          };
+        }
+
+        // DELETE
+        if (ch.type === "deleted") {
+          return {
+            collectionName: "sports",
+            collection_type: "achivements",
+            action: "delete",
+            title: "Deletion of Achievements",
+            category: "zonal_table",
+            meta_data: {
+              game: ch.fields?.[0]?.split("Game: ")[1]?.split(",")[0] || "",
+              position: ch.fields?.[0]?.split("Position: ")[1] || "",
+            },
+            original_data: null,
+          };
+        }
+        if (ch.type === "year_updated") {
+          return {
+            collectionName: "sports",
+            collection_type: "achivements",
+            action: "update",
+            title: "Updation of Zonal Results Year",
+            category: "zonal_table",
+            meta_data: {
+              year: ch.meta_data.year,
+            },
+            original_data: {
+              year: ch.original_data.year,
+            },
+          };
+        }
+
+        return null;
+      }).filter(Boolean);
+
+      await sendRequest(payloads);
+
+      toast.success("Request sent successfully!");
+      setChanges([]);
+      setShowRequestModal(false);
+      setShowRequestButtons(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send request.");
+    }
+  };
 
   const confirmDiscard = () => {
-    setResults(
-      Array.isArray(data)
-        ? data.map((item) => ({
-            game: item?.game || "",
-            position: item?.position || "",
-            selected: false,
-          }))
-        : []
-    );
+    const resetResults = Array.isArray(data)
+      ? data.map((item) => ({
+        game: item?.game || "",
+        position: item?.position || "",
+        selected: false,
+      }))
+      : [];
+
+    setResults(resetResults);
+    setOriginalResults(resetResults);
+    setChanges([]);            // 🔥 clears discarded changes
     setCurrentYear(initialYear);
     setShowRequestButtons(false);
     setShowDiscardModal(false);
+    setShowRequestModal(false);
+
     toast.info("Changes discarded!");
   };
 
@@ -164,7 +329,8 @@ const handleAddRow = () => {
         {!editMode && (
           <button
             className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20"
-            onClick={() =>{ setEditMode(true);
+            onClick={() => {
+              setEditMode(true);
               setShowRequestButtons(true)
             }}
           >
@@ -174,19 +340,19 @@ const handleAddRow = () => {
       </div>
 
       {/* Year Header */}
-        <h1 className="md:text-4xl text-2xl font-bold text-accn dark:text-drkt text-center mb-4 sm:mb-6">
-            {editMode ? (
-              <input
-                type="text"
-                value={currentYear}
-                onChange={(e) => setCurrentYear(e.target.value)}
-                className="border px-2 py-1 rounded text-center w-25"
-                placeholder="YYYY-YYYY"
-              />
-            ) : (
-              `Zonal Results ${currentYear}`
-            )}
-        </h1>
+      <h1 className="md:text-4xl text-2xl font-bold text-accn dark:text-drkt text-center mb-4 sm:mb-6">
+        {editMode ? (
+          <input
+            type="text"
+            value={currentYear}
+            onChange={(e) => setCurrentYear(e.target.value)}
+            className="border px-2 py-1 rounded text-center w-25"
+            placeholder="YYYY-YYYY"
+          />
+        ) : (
+          `Zonal Results ${currentYear}`
+        )}
+      </h1>
       {/* Table */}
       {!editMode ? (
         <div className="hidden sm:block overflow-x-auto shadow-md rounded-lg">
@@ -250,7 +416,7 @@ const handleAddRow = () => {
                       placeholder="Game"
                     />
                   </td>
-                   <td className="py-3 px-4 text-left">
+                  <td className="py-3 px-4 text-left">
                     <select
                       value={item.position}
                       onChange={(e) =>
@@ -276,25 +442,25 @@ const handleAddRow = () => {
                 </tr>
               ))}
               <tr>
-             <td colSpan={3} className="text-center py-3">
-                <div className="flex items-center justify-center gap-4">
-                  <button
-                    onClick={handleAddRow}
-                    className="px-4 py-2 bg-yellow-400 text-white rounded flex items-center gap-2"
-                  >
-                    <Plus size={16} /> Add New Row
-                  </button>
-
-                  {selectedCount > 0 && (
+                <td colSpan={3} className="text-center py-3">
+                  <div className="flex items-center justify-center gap-4">
                     <button
-                      onClick={() => setShowDeleteModal(true)}
-                      className="px-4 py-2 bg-red-600 text-white rounded flex items-center gap-2"
+                      onClick={handleAddRow}
+                      className="px-4 py-2 bg-yellow-400 text-white rounded flex items-center gap-2"
                     >
-                      <Trash2 size={16} /> Delete ({selectedCount})
+                      <Plus size={16} /> Add New Row
                     </button>
-                  )}
-                </div>
-             </td>
+
+                    {selectedCount > 0 && (
+                      <button
+                        onClick={() => setShowDeleteModal(true)}
+                        className="px-4 py-2 bg-red-600 text-white rounded flex items-center gap-2"
+                      >
+                        <Trash2 size={16} /> Delete ({selectedCount})
+                      </button>
+                    )}
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -361,56 +527,64 @@ const handleAddRow = () => {
       )}
 
       {showRequestModal && (
-       <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl text-center font-bold mb-4 text-gray-800">
               Final Request
             </h2>
             <p className="text-sm text-red-500 mb-4">
-                 Note: Your changes will stay pending until approved by the superior
+              Note: Your changes will stay pending until approved by the superior
               admin. Once approved, they will go live.
             </p>
             <div className="max-h-[200px] overflow-y-auto mb-4">
-             {changes.length > 0 ? (
-                  <table className="w-full text-center text-sm border">
-                    <thead className="bg-gray-200">
-                      <tr>
-                        <th className="p-2 border">Action</th>
-                        <th className="p-2 border">Section</th>
-                        <th className="p-2 border">Changed</th>
-                        <th className="p-2 border">Undo</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {changes.map((ch, i) => (
-                        <tr key={i}>
-                          <td
-                            className={`p-2 border font-semibold
+              {changes.length > 0 ? (
+                <table className="w-full text-center text-sm border">
+                  <thead className="bg-gray-200">
+                    <tr>
+                      <th className="p-2 border">Action</th>
+                      <th className="p-2 border">Section</th>
+                      <th className="p-2 border">Changed</th>
+                      <th className="p-2 border">Undo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {changes.map((ch, i) => (
+                      <tr key={i}>
+                        <td
+                          className={`p-2 border font-semibold
                               ${ch.type === "added" ? "text-green-600" : ""}
                               ${ch.type === "updated" ? "text-blue-600" : ""}
                               ${ch.type === "deleted" ? "text-red-600" : ""}`}
+                        >
+                          {ch.type}
+                        </td>
+                        <td className="p-2 border">{ch.section}</td>
+                        <td className="p-2 border">
+                          {ch.type === "year_updated"
+                            ? `Year: ${ch.original_data.year} → ${ch.meta_data.year}`
+                            : ch.type === "added"
+                              ? `Game: ${results.find(r => r.id === ch.rowId)?.game || "-"},
+       Position: ${results.find(r => r.id === ch.rowId)?.position || "-"}`
+                              : ch.fields
+                                ? ch.fields.join(", ")
+                                : "—"}
+                        </td>
+
+                        <td className="p-2 border">
+                          <button
+                            onClick={() => handleRevertChange(i)}
+                            className="p-1 rounded hover:bg-gray-100"
                           >
-                            {ch.type}
-                          </td>
-                          <td className="p-2 border">{ch.section}</td>
-                          <td className="p-2 border">
-                            {ch.fields ? ch.fields.join(", ") : "New Row"}
-                          </td>
-                          <td className="p-2 border">
-                            <button
-                              onClick={() => handleRevertChange(i)}
-                              className="p-1 rounded hover:bg-gray-100"
-                            >
-                              <X size={16} className="text-red-500" />
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                ) : (
-                  <p className="text-gray-600">No changes detected.</p>
-                )}
+                            <X size={16} className="text-red-500" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-gray-600">No changes detected.</p>
+              )}
             </div>
             <div className="flex justify-end gap-2">
               <button
@@ -420,7 +594,8 @@ const handleAddRow = () => {
                 Cancel
               </button>
               <button
-                onClick={() => setShowRequestModal(false)}
+                disabled={loading}
+                onClick={handleFinalRequest}
                 className="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white"
               >
                 Final Request
