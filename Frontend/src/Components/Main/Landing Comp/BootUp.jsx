@@ -167,19 +167,19 @@ const Boot = (props) => {
                         className='font-rome text-center text-accn dark:text-drks p-0 -mb-[0.75vmax] text-[0]
                         overflow-hidden'>
                         {"VELAMMAL".split("").map((ltr, i) => (
-                            <span className={`animate-[bam_0.4s_ease_forwards]`}
+                            <span key={i} className={`animate-[bam_0.4s_ease_forwards]`}
                                   style={{animationDelay: `${(i + delay) * 0.15}s`}}>{ltr}</span>
                         ))}
                     </div>
                     <div className='font-rome text-center text-[0] text-text dark:text-drkt p-0 -mb-[0.75vmax] overflow-hidden'>
                         {"ENGINEERING COLLEGE".split("").map((ltr, i) => (
-                            <span className={`animate-[bom_0.4s_ease_forwards]`}
+                            <span key={i} className={`animate-[bom_0.4s_ease_forwards]`}
                                   style={{animationDelay: `${(i + delay * 4) * 0.05}s`}}>{ltr}</span>
                         ))}
                     </div>
                     <div className='font-rome text-center text-[0] text-accn dark:text-drks p-0 mt-4 -mb-[0.75vmax] overflow-hidden'>
                         {"Wheel of Knowledge rolls on".split("").map((ltr, i) => (
-                            <span className={`animate-[bem_0.4s_ease_forwards]`}
+                            <span key={i} className={`animate-[bem_0.4s_ease_forwards]`}
                                   style={{animationDelay: `${(i + delay * 2) * 0.04}s`}}>{ltr}</span>
                         ))}
                     </div>

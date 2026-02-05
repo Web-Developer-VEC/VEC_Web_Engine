@@ -83,7 +83,7 @@ export default function IqaMet({ iqacData }) {
         ...prev,
         [editableData[index]._id]: { file, fileURL },
       }));
-      handleInputChange(index, "path", file.name);
+      handleInputChange(index, "pdf_path", file.name);
     }
   };
 
@@ -91,7 +91,7 @@ export default function IqaMet({ iqacData }) {
     const newRow = {
       _id: `${Date.now()}-${Math.random()}`,
       year: "",
-      path: "",
+      pdf_path: "",
       type: "",
       conducted_on: "",
     };
@@ -173,7 +173,7 @@ export default function IqaMet({ iqacData }) {
         title,
         meta_data: {
           year: yearWithType,
-          path: row?.path || "",
+          pdf_path: row?.pdf_path || "",
           type: row?.type || "",
           conducted_on: row?.conducted_on || "",
         },
@@ -181,7 +181,7 @@ export default function IqaMet({ iqacData }) {
           actionType === "update"
             ? {
                 year: oldRow?.year && oldRow?.type ? `${oldRow.year} (${oldRow.type})` : oldRow?.year,
-                path: oldRow?.path || "",
+                pdf_path: oldRow?.pdf_path || "",
                 type: oldRow?.type || "",
                 conducted_on: oldRow?.conducted_on || "",
               }
@@ -330,7 +330,7 @@ export default function IqaMet({ iqacData }) {
                         {editMode ? (
                           <>
                             <label className="px-3 py-1 bg-secd text-text hover:bg-brwn hover:text-prim rounded cursor-pointer">
-                              {item.path ? "Replace PDF" : "Upload PDF"}
+                              {item.pdf_path ? "Replace PDF" : "Upload PDF"}
                               <input
                                 type="file"
                                 accept="application/pdf"
@@ -340,11 +340,11 @@ export default function IqaMet({ iqacData }) {
                                 }
                               />
                             </label>
-                            {(uploadedFiles[item._id] || item.path) && (
+                            {(uploadedFiles[item._id] || item.pdf_path) && (
                               <a
                                 href={
                                   uploadedFiles[item._id]?.fileURL ||
-                                  UrlParser(item.path)
+                                  UrlParser(item.pdf_path)
                                 }
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -356,7 +356,7 @@ export default function IqaMet({ iqacData }) {
                           </>
                         ) : (
                           <a
-                            href={UrlParser(item.path) || "#"}
+                            href={UrlParser(item.pdf_path) || "#"}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 underline"

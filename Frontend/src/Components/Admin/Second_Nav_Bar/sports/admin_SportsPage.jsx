@@ -4,12 +4,12 @@ import Banner from '../../Banner';
 import SportsActionPlan from './admin_SportsActionPlan';
 import SportsInfra from './admin_SportsInfra';
 import { Sportsfaculties, SportsHOD } from './admin_sports_faculties';
-import Achievements1 from './admin_Achivements2';
 import axios from 'axios';
 import SideNav from "../SideNav";
 import Intramural from './admin_intramural';
 import LoadComp from '../../LoadComp';
 import { useNavigate } from "react-router";
+import Achievements from './admin_achivements';
 
 const SPTIntro = ({ data }) => {
   if (!Array.isArray(data)) return null;
@@ -82,7 +82,7 @@ const AdminSportsPage = ({theme, toggle}) => {
         "Faculty": <Sportsfaculties data={sportData}/>,
         "Action Plan": <SportsActionPlan data={sportData}/>,
         "Infrastructure": <SportsInfra data={sportData}/>,
-        "Achievements": <Achievements1 data={sportData}/>,
+        "Achievements": <Achievements data={sportData}/>,
         "Intra Mural": <Intramural data={sportData}/>,
     };
 
