@@ -11,7 +11,7 @@ const { deleteData } = require ("../../controllers/second_navbar/nss_controllers
 const { checkRole } = require("../../middlewares/role_middleware");
 
 router.post("/nssadmin",
-    checkRole(["super_admin"]),
+    // checkRole(["super_admin"]),
     handleTempApproval,
     handleTempAction(insertData , updateData , deleteData));
 
