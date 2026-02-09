@@ -37,7 +37,7 @@
 
 /* Table Styles */
 .table-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -112,7 +112,7 @@
 }
 
                     
-.admin-ugin{
+.admin-uggin{
   border: 2px solid #ccc;
   border-radius: 12px;
   padding: 8px;
@@ -120,7 +120,7 @@
   background-color: #f9f9f9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.101);
   transition: all 0.3s ease;
-  width: 120px;
+  width: 200px;
 }
 .admin-newugin{
   border: 2px solid #ccc;
@@ -249,7 +249,7 @@
 }
 
 .admin-nlugin{
-     border: 2px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 12px;
   padding: 8px;
   margin: 12px 0;
@@ -260,7 +260,7 @@
 
 }
 .admin-govtlugin{
-     border: 2px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 12px;
   padding: 8px;
   margin: 12px 0;
