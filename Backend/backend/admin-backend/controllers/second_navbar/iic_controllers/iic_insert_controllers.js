@@ -76,22 +76,8 @@ async function insertData( tempDoc, mainCollection) {
             { $set: { "data.$.content": merged } }
           );
         } else if (Array.isArray(content) && typeof content[0] === "object" || Array.isArray(members) && typeof members[0] === "object") {
-          // Array of objects → dynamic key-based deduplication
-
-          // Pick the key field from the first object (e.g., "name", "id", etc.)
-          // const keyField = Object.keys(content[0])[0];
-
+    
           const newItems = Array.isArray(meta_data?.content)? meta_data.content: meta_data; // Ensure newItems is an array
-
-          // newItems.forEach((newItem) => {
-          //   const isDuplicate = content.some(
-          //     (existingItem) =>
-          //       existingItem[keyField] === newItem[keyField]
-          //   );
-          //   if (!isDuplicate) {
-          //     content.push(newItem);
-          //   }
-          // });
 
           const updateField =
             collection_type === "student_representation"
