@@ -1,5 +1,10 @@
 import { lazy } from 'react';
 import DepartmentRoute from "./deptRoute.js"; // Keep this eager if it's not a component or used differently? It's used as 'admin: DepartmentRoute'. Let's check.
+// import NewTrust from './Components/Admin/Top_Nav_Bar/About Us/Trust.jsx';
+// import Collegevisionmission from './Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx';
+// import Management from './Components/Main/Top_Nav_Bar/About Us/Management.jsx';
+// import ExecutiveCommittee from './Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx';
+// import CollegeOrgChart from './Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx';
 
 // Lazy load components
 const Admingallerydetails = lazy(() => import("./Components/Admin/Second_Nav_Bar/Gallery/detailpage"));
@@ -43,6 +48,15 @@ const PhdAdmission = lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/
 const AdminPhdAdmission = lazy(() => import("./Components/Admin/Top_Nav_Bar/Admission/admin_PhdAdmission.jsx"));
 const Aboutplacement = lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/Aboutplacement.jsx"));
 const AdminAboutplacement = lazy(() => import("./Components/Admin/Top_Nav_Bar/Placements/Aboutplacement.jsx"));
+const AdminAbtUs = lazy(() => import("./Components/Admin/Top_Nav_Bar/About Us/AbtUs.jsx"))
+const NewTrust = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Trust.jsx"))
+const Collegevisionmission = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx"))
+const Management = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Management.jsx"))
+const ExecutiveCommittee = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx"))
+const CollegeOrgChart = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx"))
+const AbtUs = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx"))
+const AdminAishe = lazy(() => import("./Components/Admin/Top_Nav_Bar/About Us/Aishe.jsx"))
+const Aishe = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Aishe.jsx"))
 
 // Named imports handling
 const PlacementTeam = lazy(() => import("./Components/Main/Top_Nav_Bar/Placements/PlacementTeam.jsx").then(module => ({ default: module.PlacementTeam })));
@@ -104,6 +118,14 @@ export const routeConfig = {
   // --------------------------------------------------
 
   // About us Routes
+  "/abt-us": { normal: AbtUs, admin: AdminAbtUs },
+  "/abt-yr": { normal: Aishe, admin: AdminAishe},
+  "/trust": { normal: NewTrust, admin: NewTrust },
+  "/v_m": { normal: Collegevisionmission, admin: Collegevisionmission },
+  "/management": { normal: Management, admin: Management },
+  "/committees": { normal: ExecutiveCommittee, admin: ExecutiveCommittee},
+  "/clg-org": { normal: CollegeOrgChart, admin: CollegeOrgChart },
+
   // Administrator Routes
   "/principal": { normal: Princ, admin: AdminPrinc },
   "/dean": { normal: Dean, admin: AdminDean },

@@ -33,14 +33,14 @@ async function researchHandler(fileStream, docs, req, cb, filename, mimetype) {
     const ext = path.extname(realpdfname) || ".pdf";
 
     if (collection_type === "Journal Publication") {
-      last =`overall_research/${ meta_data?.year} - Journal Publication`;
+      last =`overall_research/${meta_data?.year}/${ meta_data?.year} - Journal Publication`;
     } else if (collection_type === "Funded Projects") {
       last = `Projects/${meta_data.year}`;
     } else if (collection_type === "Consultancy") {
       last = `Consultancy/${meta_data.year}`;
     } else if(collection_type === "Books and Book chapters"){
 
-        last =`overall_research/${ meta_data?.year} Books & Book chapters`;
+        last =`overall_research/${ meta_data?.year}/${ meta_data?.year} Books & Book chapters`;
     }else if(collection_type === "Policy"){
 
         last =`overall_research/${ meta_data?.name}`;

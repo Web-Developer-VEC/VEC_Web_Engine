@@ -31,7 +31,8 @@ async function updateData(tempDoc, mainCollection) {
       const index = doc.data.findIndex(
         (item) => item.name === original_data.name
       );
-      if (index === -1) throw new Error("Team member not found in Placement Team");
+      if (index === -1)
+        throw new Error("Team member not found in Placement Team");
 
       doc.data[index] = { ...doc.data[index], ...meta_data };
 
@@ -54,7 +55,8 @@ async function updateData(tempDoc, mainCollection) {
         const index = doc.data.statistics.years.findIndex(
           (item) => item.year === original_data.year
         );
-        if (index === -1) throw new Error("Year not found in Placement Statistics");
+        if (index === -1)
+          throw new Error("Year not found in Placement Statistics");
 
         doc.data.statistics.years[index] = {
           ...doc.data.statistics.years[index],
@@ -73,12 +75,52 @@ async function updateData(tempDoc, mainCollection) {
         };
       }
 
+      if (
+        collection_type === "placement_details" &&
+        meta_data?.particulars
+      ) {
+        await mainCollection.updateOne(
+          { type: "placement_details" },
+          {
+            $set: {
+              "data.statistics.particulars": meta_data.particulars,
+            },
+          }
+        );
+
+        return {
+          success: true,
+          message: "Statistics particulars overwritten successfully",
+          data: meta_data.particulars,
+        };
+      }
+      if (
+        collection_type === "placement_details" &&
+        meta_data?.departments
+      ) {
+        await mainCollection.updateOne(
+          { type: "placement_details" },
+          {
+            $set: {
+              "data.department_wise.departments": meta_data.departments,
+            },
+          }
+        );
+
+        return {
+          success: true,
+          message: "Departments overwritten successfully",
+          data: meta_data.departments,
+        };
+      }
+
       // Update department-wise -> years
       if (original_data.section === "department_wise") {
         const index = doc.data.department_wise.years.findIndex(
           (item) => item.year === original_data.year
         );
-        if (index === -1) throw new Error("Year not found in Department Wise Placement");
+        if (index === -1)
+          throw new Error("Year not found in Department Wise Placement");
 
         doc.data.department_wise.years[index] = {
           ...doc.data.department_wise.years[index],
@@ -102,7 +144,8 @@ async function updateData(tempDoc, mainCollection) {
         const index = doc.data.year_wise_pdfs.findIndex(
           (item) => item.year === original_data.year
         );
-        if (index === -1) throw new Error("PDF Year not found in Year Wise PDFs");
+        if (index === -1)
+          throw new Error("PDF Year not found in Year Wise PDFs");
 
         doc.data.year_wise_pdfs[index] = {
           ...doc.data.year_wise_pdfs[index],

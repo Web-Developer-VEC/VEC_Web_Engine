@@ -7,6 +7,7 @@ import { FaUserEdit } from "react-icons/fa";
 import { Send, Trash2, Eye, Pencil, X, Plus } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function AdminConsultancy({ theme, toggle }) {
   const [acadamicRes, setAcadamicRes] = useState([]);
@@ -36,6 +37,7 @@ export default function AdminConsultancy({ theme, toggle }) {
 
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
 
   // Admin quick toggles (kept for compatibility with existing behavior)
   const [isContentEditable, setIsContentEditable] = useState(true);
@@ -246,19 +248,105 @@ export default function AdminConsultancy({ theme, toggle }) {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    console.log("FINAL REQUEST SUBMITTED", { allChanges, acadamicRes });
-    toast.success("Final request submitted");
-    setShowRequestModal(false);
-    setAllChanges([]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(false);
-    originalRef.current = JSON.parse(JSON.stringify(acadamicRes));
-    savedDataRef.current = JSON.parse(JSON.stringify(acadamicRes));
-    setIsContentEditable(true);
-    setIsDoneClicked(false);
-  };
+ const handleFinalRequestConfirm = async () => {
+  if (!allChanges.length) {
+    toast.info("No changes to submit.");
+    return;
+  }
+
+  const payload = [];
+  const filesToUpload = [];
+
+  for (const change of allChanges) {
+
+    // ---------- INSERT ----------
+    if (change.action === "add") {
+      const { year, pdf_path } = change.changes;
+
+      const finalPath = `/static/pdfs/overall_research/${year.new}/${pdf_path.new}`;
+
+      payload.push({
+        action: "insert",
+        collectionName: "research",
+        title: "consultancy",
+        collection_type: "Consultancy",
+        meta_data: {
+          year: year.new,
+          pdf_path: finalPath
+        }
+      });
+
+      if (pdf_path.new instanceof File) {
+        filesToUpload.push(pdf_path.new);
+      }
+    }
+
+    // ---------- UPDATE ----------
+    if (change.action === "edit") {
+      const { year, pdf_path } = change.changes;
+
+      const finalPath = `/static/pdfs/overall_research/${year.new}/${pdf_path.new}`;
+
+      payload.push({
+        action: "update",
+        collectionName: "research",
+        title: "consultancy",
+        collection_type: "Consultancy",
+        original_data: {
+          year: year.old,
+          pdf_path: pdf_path.old
+        },
+        meta_data: {
+          year: year.new,
+          pdf_path: finalPath
+        }
+      });
+
+      if (pdf_path.new instanceof File) {
+        filesToUpload.push(pdf_path.new);
+      }
+    }
+
+    // ---------- DELETE ----------
+    if (change.action === "delete") {
+      payload.push({
+        action: "delete",
+        collectionName: "research",
+        title: "consultancy",
+        collection_type: "Consultancy",
+        meta_data: {
+          year: change.key
+        }
+      });
+    }
+  }
+
+  try {
+    const result = await sendRequest(payload, filesToUpload);
+
+    if (result) {
+      console.log("FINAL REQUEST SUBMITTED", { payload, acadamicRes });
+
+      toast.success("Final request submitted");
+
+      setShowRequestModal(false);
+      setAllChanges([]);
+      setSessionChanges([]);
+      setIsEditing(false);
+      setIsSavedOnce(false);
+
+      originalRef.current = JSON.parse(JSON.stringify(acadamicRes));
+      savedDataRef.current = JSON.parse(JSON.stringify(acadamicRes));
+
+      setIsContentEditable(true);
+      setIsDoneClicked(false);
+    }
+  } catch (err) {
+    console.error("Final request failed:", err);
+    toast.error("Request submission failed");
+  }
+};
+
 
 const handleUndoChange = (idx) => {
   setAllChanges((prev) => {

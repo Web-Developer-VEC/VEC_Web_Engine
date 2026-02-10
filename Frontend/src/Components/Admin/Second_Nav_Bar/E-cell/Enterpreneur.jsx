@@ -5,6 +5,7 @@ import { FaUserEdit } from "react-icons/fa";
 import { Edit, Save, Send, Plus, Trash2, ArrowDown, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function EnterpreN({ enterpreneur }) {
   const itemsPerPage = 20;
@@ -28,7 +29,7 @@ export default function EnterpreN({ enterpreneur }) {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
+  const { sendRequest, loading, error } = useAdminRequest();
   const handleNext = () => {
     if (currentPage < totalPages - 1) setCurrentPage((prev) => prev + 1);
   };
@@ -82,15 +83,29 @@ export default function EnterpreN({ enterpreneur }) {
 
 
   // Add row
-  const handleAddRow = () => {
-    const newRow = { name: "", year: "", business_name: "" };
-    setEditableData((p) => [...p, newRow]);
-    setSessionChanges((p) => [
-      ...p,
-      { index: editableData.length, action: "add", changes: {} },
-    ]);
-    setIsEditing(true);
+const handleAddRow = () => {
+  const newRow = {
+    _tempId: Date.now(),   // 🔑 unique id
+    name: "",
+    year: "",
+    business_name: "",
   };
+
+  setEditableData((p) => [...p, newRow]);
+
+  setSessionChanges((p) => [
+    ...p,
+    {
+      tempId: newRow._tempId,
+      action: "add",
+      data: newRow,       // ✅ STORE FULL DATA
+      changes: {},
+    },
+  ]);
+
+  setIsEditing(true);
+};
+
 
   // Field change
   const handleFieldChange = (index, field, value) => {
@@ -99,41 +114,70 @@ export default function EnterpreN({ enterpreneur }) {
     newData[index] = { ...newData[index], [field]: value };
     setEditableData(newData);
 
-    setSessionChanges((prev) => {
-      const cp = [...prev];
-      const existingIndex = cp.findIndex(
-        (c) => c.index === index && c.action !== "delete"
-      );
-      if (existingIndex >= 0) {
-        cp[existingIndex] = {
-          ...cp[existingIndex],
-          action: cp[existingIndex].action === "add" ? "add" : "edit",
-          changes: { ...cp[existingIndex].changes, [field]: { old: oldVal, new: value } },
-        };
-      } else {
-        cp.push({
-          index,
-          action: savedDataRef.current[index] ? "edit" : "add",
-          changes: { [field]: { old: oldVal, new: value } },
-        });
-      }
-      return cp;
+setSessionChanges((prev) => {
+  const cp = [...prev];
+  const row = newData[index];
+
+  const existingIndex = cp.findIndex(
+    (c) =>
+      (c.tempId && c.tempId === row._tempId) ||
+      (c.index === index && c.action !== "delete")
+  );
+
+  if (existingIndex >= 0) {
+    cp[existingIndex] = {
+      ...cp[existingIndex],
+      action: cp[existingIndex].action === "add" ? "add" : "edit",
+      data: row, // ✅ keep updated snapshot
+      changes: {
+        ...(cp[existingIndex].changes || {}),
+        [field]: { old: oldVal, new: value },
+      },
+    };
+  } else {
+    cp.push({
+      index,
+      action: savedDataRef.current[index] ? "edit" : "add",
+      data: row,
+      changes: { [field]: { old: oldVal, new: value } },
     });
+  }
+
+  return cp;
+});
+
   };
 
   // Save session
-  const handleSave = () => {
-    if (sessionChanges.length === 0) {
-      toast.info("No changes to save.");
-      return;
-    }
-    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
-    setAllChanges((p) => [...p, ...sessionChanges]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(true);
-    toast.success("Changes saved. Now you can Request or Edit again.");
-  };
+const handleSave = () => {
+  if (sessionChanges.length === 0) {
+    toast.info("No changes to save.");
+    return;
+  }
+
+  // 🚫 Block save if any required field is empty
+  const hasEmptyFields = editableData.some(
+    (row) =>
+      !row.name?.trim() ||
+      !row.year?.trim() ||
+      !row.business_name?.trim()
+  );
+
+  if (hasEmptyFields) {
+    toast.warning("Please fill all fields before saving.");
+    return; // ⛔ STOP SAVE
+  }
+
+  // ✅ Save allowed
+  savedDataRef.current = JSON.parse(JSON.stringify(editableData));
+  setAllChanges((prev) => [...prev, ...sessionChanges]);
+  setSessionChanges([]);
+  setIsEditing(false);
+  setIsSavedOnce(true);
+
+  toast.success("Changes saved successfully.");
+};
+
 
   // Cancel session
   const handleCancelSession = () => {
@@ -163,19 +207,111 @@ export default function EnterpreN({ enterpreneur }) {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    console.log("FINAL REQUEST SUBMITTED:", { allChanges, editableData });
-    toast.success("Final request submitted");
+const handleFinalRequestConfirm = async () => {
+  if (allChanges.length === 0) {
+    toast.info("No changes to submit");
+    return;
+  }
+
+  const payload = allChanges
+    .map((change) => {
+
+      /* ========== INSERT ========== */
+      if (change.action === "add") {
+        const row = change.data;
+        if (!row) return null;
+
+        if (!row.name || !row.year || !row.business_name) {
+          toast.warning("Empty fields found. Cannot submit.");
+          return null;
+        }
+
+        return {
+          action: "insert",
+          collectionName: "ecell",
+          title: "Entrepreneur Insert",
+          collection_type: "enterpreneur",
+          meta_data: {
+            name: row.name,
+            business_name: row.business_name,
+            year: row.year,
+          },
+        };
+      }
+
+      /* ========== UPDATE ========== */
+      if (change.action === "edit") {
+        const original = originalRef.current[change.index];
+        if (!original) return null;
+
+        const updatedFields = {};
+        Object.entries(change.changes || {}).forEach(([k, v]) => {
+          if (v.old !== v.new) updatedFields[k] = v.new;
+        });
+
+        if (!Object.keys(updatedFields).length) return null;
+
+        return {
+          action: "update",
+          collectionName: "ecell",
+          title: "Entrepreneur Update",
+          collection_type: "enterpreneur",
+          original_data: {
+            name: original.name,
+            business_name: original.business_name,
+            year: original.year,
+          },
+          meta_data: updatedFields,
+        };
+      }
+
+      /* ========== DELETE ========== */
+      if (change.action === "delete") {
+        const member = change.deletedItem;
+        if (!member) return null;
+
+        return {
+          action: "delete",
+          collectionName: "ecell",
+          title: "Entrepreneur Delete",
+          collection_type: "enterpreneur",
+          meta_data: {
+            name: member.name,
+            business_name: member.business_name,
+            year: member.year,
+          },
+        };
+      }
+
+      return null;
+    })
+    .filter(Boolean);
+
+  if (!payload.length) {
+    toast.info("No valid changes to submit");
+    return;
+  }
+
+  try {
+    await sendRequest(payload);
+    toast.success("Request sent for admin approval");
+
     setShowRequestModal(false);
     setAllChanges([]);
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
-    originalRef.current = JSON.parse(JSON.stringify(editableData));
-    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
-  };
 
-  // Delete
+    originalRef.current = structuredClone(editableData);
+    savedDataRef.current = structuredClone(editableData);
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to submit request");
+  }
+};
+
+
+
   const openDeleteMultiple = () => {
     if (selectedRows.size === 0) {
       toast.info("No rows selected for delete");
@@ -185,30 +321,43 @@ export default function EnterpreN({ enterpreneur }) {
     setDeleteConfirmOpen(true);
   };
 
-  const confirmDelete = () => {
-    let newData = [...editableData];
-    let newChanges = [...sessionChanges];
+const confirmDelete = () => {
+  let newData = [...editableData];
+  let newChanges = [...sessionChanges];
 
-    if (indexToDelete === "multiple") {
-      const toDelete = Array.from(selectedRows).sort((a, b) => b - a);
-      for (const idx of toDelete) {
-        newChanges.push({ index: idx, action: "delete", deletedItem: newData[idx] });
-        newData.splice(idx, 1);
-      }
-    } else if (typeof indexToDelete === "number") {
-      const idx = indexToDelete;
-      newChanges.push({ index: idx, action: "delete", deletedItem: newData[idx] });
-      newData.splice(idx, 1);
+  const deleteRow = (idx) => {
+    // ❌ Remove ALL previous changes for this row (add/edit)
+    newChanges = newChanges.filter((c) => c.index !== idx);
+
+    // ✅ If row existed originally, track delete
+    if (savedDataRef.current[idx]) {
+      newChanges.push({
+        index: idx,
+        action: "delete",
+        deletedItem: newData[idx],
+      });
     }
 
-    newData.forEach((r, i) => r.s_no && (r.s_no = i + 1));
-    setEditableData(newData);
-    setSessionChanges(newChanges);
-    setSelectedRows(new Set());
-    setDeleteConfirmOpen(false);
-    setIndexToDelete(null);
-    toast.success("Rows deleted in this session.");
+    // Remove from UI
+    newData.splice(idx, 1);
   };
+
+  if (indexToDelete === "multiple") {
+    [...selectedRows].sort((a, b) => b - a).forEach(deleteRow);
+  } else if (typeof indexToDelete === "number") {
+    deleteRow(indexToDelete);
+  }
+
+  setEditableData(newData);
+  setSessionChanges(newChanges);
+  setSelectedRows(new Set());
+  setDeleteConfirmOpen(false);
+  setIndexToDelete(null);
+
+  toast.success("Row deleted.");
+};
+
+
 
   const cancelDelete = () => {
     setDeleteConfirmOpen(false);
@@ -333,7 +482,7 @@ export default function EnterpreN({ enterpreneur }) {
           onClick={handlePrev}
           disabled={currentPage === 0}
           className={`px-4 py-2 rounded ${
-            currentPage === 0 ? "bg-gray-300 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600 text-white"
+            currentPage === 0 ? "bg-gray-300 cursor-not-allowed" : "px-4 py-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim"
           }`}
         >
           Previous
@@ -347,7 +496,7 @@ export default function EnterpreN({ enterpreneur }) {
           className={`px-4 py-2 rounded ${
             currentPage === totalPages - 1
               ? "bg-gray-300 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-600 text-white"
+              : "px-4 py-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim"
           }`}
         >
           Next

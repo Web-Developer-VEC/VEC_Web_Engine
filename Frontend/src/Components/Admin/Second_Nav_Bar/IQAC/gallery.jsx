@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import LoadComp from "../../LoadComp";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -11,26 +12,41 @@ const UrlParser = (path) => {
     // Handle cases where path might be empty or undefined
     if (!path) return '';
     
-    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path.startsWith("http") ? path : path.startsWith("blob") ? path : `${BASE_URL}${path}`;
 };
 
 export default function IqaGal({ iqacData}) {
   const [galleryData, setGalleryData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
+  const [savedData, setSavedData] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const { sendRequest, loading, error } = useAdminRequest();
 
-    useEffect(() => {
+  const deepClone = (data) =>
+    data.map((item) => ({
+      ...item,
+      image_path: Array.isArray(item.image_path) ? [...item.image_path] : [],
+    }));
+
+  useEffect(() => {
     if (iqacData) {
-        setGalleryData(Array.isArray(iqacData) ? iqacData : [iqacData]);
+      const normalized = Array.isArray(iqacData) ? iqacData : [iqacData];
+      const cloned = deepClone(normalized);
+      setGalleryData(cloned);
+      setOriginalData(cloned);
+      setSavedData(cloned);
     }
-    }, [iqacData]);
+  }, [iqacData]);
 
   // Create the "OVERALL" category dynamically
-  const overallPaths = Array.isArray(galleryData)
-  ? galleryData.flatMap(item => item?.paths || [])
+  const displayData = isEditing ? galleryData : savedData;
+  const overallPaths = Array.isArray(displayData)
+  ? displayData.flatMap(item => item?.image_path || [])
   : [];
 
   const galleryWithOverall = [
-    { category: "OVERALL", paths: overallPaths },
-    ...galleryData
+    { category: "OVERALL", image_path: overallPaths },
+    ...displayData
   ];
 
   // State
@@ -48,21 +64,17 @@ export default function IqaGal({ iqacData}) {
   // Find the object matching the selectedCategory
   const selectedItem = galleryWithOverall.find(item => item?.category === selectedCategory);
 
+  // Check if there are unsaved changes
+  const hasChanges = JSON.stringify(savedData) !== JSON.stringify(originalData);
+
   console.log("Selected images",selectedItem);
   
 
   // Handle delete
-// Handle delete
 const handleDelete = () => {
   if (deleteConfirm?.type === "category") {
     // Remove category from UI
     setGalleryData(prev => prev.filter(item => item.category !== deleteConfirm.category));
-
-    // Track in newGallery
-    setNewGallery(prev => [
-      ...prev,
-      { action: "delete", category: deleteConfirm.category, files: [], links: [] }
-    ]);
   }
 
   if (deleteConfirm?.type === "image") {
@@ -70,16 +82,10 @@ const handleDelete = () => {
     setGalleryData(prev =>
       prev.map(item =>
         item.category === deleteConfirm.category
-          ? { ...item, paths: item.paths.filter(path => path !== deleteConfirm.path) }
+          ? { ...item, image_path: item.image_path.filter(path => path !== deleteConfirm.path) }
           : item
       )
     );
-
-    // Track in newGallery
-    setNewGallery(prev => [
-      ...prev,
-      { action: "delete", category: deleteConfirm.category, files: [deleteConfirm.path], links: [] }
-    ]);
   }
 
   setDeleteConfirm(null);
@@ -91,16 +97,10 @@ const handleAddCategory = () => {
 
   const fileArray = Array.from(newFiles);
 
-  // Update UI (optimistic update)
+  // Update UI
   setGalleryData(prev => [
     ...prev,
-    { category: newCategory, paths: fileArray.map(f => URL.createObjectURL(f)) }
-  ]);
-
-  // Track change for backend
-  setNewGallery(prev => [
-    ...prev,
-    { action: "insert", category: newCategory, files: fileArray, links: [] }
+    { category: newCategory, image_path: fileArray.map(f => URL.createObjectURL(f)), _files: fileArray }
   ]);
 
   setNewCategory("");
@@ -109,7 +109,6 @@ const handleAddCategory = () => {
 };
 
   // Handle adding images to an existing category
-// Handle adding images to an existing category
 const handleAddImagesToCategory = (category, files) => {
   if (!files.length) return;
   const fileArray = Array.from(files);
@@ -118,24 +117,132 @@ const handleAddImagesToCategory = (category, files) => {
   setGalleryData(prev =>
     prev.map(item =>
       item.category === category
-        ? { ...item, paths: [...(item.paths || []), ...fileArray.map(f => URL.createObjectURL(f))] }
+        ? { 
+            ...item, 
+            image_path: [...(item.image_path || []), ...fileArray.map(f => URL.createObjectURL(f))],
+            _newFiles: [...(item._newFiles || []), ...fileArray]
+          }
         : item
     )
   );
-
-  // Track change for backend
-  setNewGallery(prev => [
-    ...prev,
-    { action: "insert", category, files: fileArray, links: [] }
-  ]);
 };
 
+  const handleSave = () => {
+    setSavedData(deepClone(galleryData));
+    setIsEditing(false);
+  };
+
+  const handleCancel = () => {
+    setGalleryData(deepClone(savedData));
+    setIsEditing(false);
+    setNewCategory("");
+    setNewFiles([]);
+  };
+
+  const handleDiscard = () => {
+    setSavedData(deepClone(originalData));
+    setGalleryData(deepClone(originalData));
+  };
+
+  const buildPayload = (saved, originals) => {
+    const payload = [];
+    const files = [];
+
+    const originalByCategory = new Map(
+      originals.map((item) => [item.category, item.image_path || []])
+    );
+
+    const savedByCategory = new Map(
+      saved.map((item) => [item.category, item])
+    );
+
+    // Check for deletions
+    originals.forEach((orig) => {
+      if (!savedByCategory.has(orig.category)) {
+        // Entire category deleted
+        payload.push({
+          collectionName: "iqac",
+          collection_type: "gallery",
+          action: "delete",
+          title: "deletion of gallery images",
+          category: orig.category,
+          meta_data: { image_path: orig.image_path },
+          original_data: null,
+        });
+      } else {
+        // Check for individual image deletions
+        const savedItem = savedByCategory.get(orig.category);
+        const deletedImages = orig.image_path.filter(
+          (path) => !savedItem.image_path.some(p => p === path || p.startsWith('blob:'))
+        );
+        if (deletedImages.length > 0) {
+          payload.push({
+            collectionName: "iqac",
+            collection_type: "gallery",
+            action: "delete",
+            title: "deletion of gallery images",
+            category: orig.category,
+            meta_data: { image_path: deletedImages },
+            original_data: null,
+          });
+        }
+      }
+    });
+
+    // Check for insertions and updates
+    saved.forEach((savedItem) => {
+      const originalItem = originals.find(o => o.category === savedItem.category);
+      
+      if (!originalItem) {
+        // New category inserted
+        const newFiles = savedItem._files || [];
+        if (newFiles.length > 0) {
+          payload.push({
+            collectionName: "iqac",
+            collection_type: "gallery",
+            action: "insert",
+            title: "insertion of gallery images",
+            category: savedItem.category,
+            meta_data: { image_path: newFiles.map(f => f.name) },
+            original_data: null,
+          });
+          files.push(...newFiles);
+        }
+      } else {
+        // Check for new images in existing category
+        const newFiles = savedItem._newFiles || [];
+        if (newFiles.length > 0) {
+          payload.push({
+            collectionName: "iqac",
+            collection_type: "gallery",
+            action: "update",
+            title: "updation of gallery images",
+            category: savedItem.category,
+            meta_data: { image_path: newFiles.map(f => f.name) },
+            original_data: { image_path: originalItem.image_path },
+          });
+          files.push(...newFiles);
+        }
+      }
+    });
+
+    return { payload, files };
+  };
+
   // Confirm final request
-  const handleConfirmRequest = () => {
-    console.log("Final request changes:", newGallery);
-    // TODO: send `newGallery` to backend
-    setConfirmPopup(false);
-    setNewGallery([]);
+  const handleConfirmRequest = async () => {
+    const { payload, files } = buildPayload(savedData, originalData);
+    if (payload.length === 0) {
+      setConfirmPopup(false);
+      return;
+    }
+
+    const response = await sendRequest(payload, files);
+    if (response) {
+      setConfirmPopup(false);
+      setOriginalData(deepClone(savedData));
+      setGalleryData(deepClone(savedData));
+    }
   };
 
   return (
@@ -146,7 +253,17 @@ const handleAddImagesToCategory = (category, files) => {
         </div>
       ) : (
         <div className="mr-4">
-          <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
+          <div className="flex justify-between items-center mt-[15px] px-6">
+            <h2 className="basis-full text-brwn dark:text-drkt text-center text-[24px]">Gallery</h2>
+            {!isEditing && (
+              <button
+                onClick={() => setIsEditing(true)}
+                className="flex items-center gap-1 px-3 py-1 bg-secd text-text hover:bg-brwn hover:text-prim rounded"
+              >
+                Edit
+              </button>
+            )}
+          </div>
 
           {/* Category Buttons */}
           <div className="flex flex-wrap gap-2 justify-center mb-4">
@@ -163,7 +280,7 @@ const handleAddImagesToCategory = (category, files) => {
                 >
                   {category}
                 </button>
-                {category !== "OVERALL" && (
+                {category !== "OVERALL" && isEditing && (
                   <button
                     type="button"
                     onClick={() => setDeleteConfirm({ type: "category", category })}
@@ -178,7 +295,7 @@ const handleAddImagesToCategory = (category, files) => {
 
           {/* Images */}
           <div className="columns-xs mb-12 relative">
-            {selectedItem?.paths?.map((imagePath, index) => (
+            {selectedItem?.image_path?.map((imagePath, index) => (
               <div key={imagePath} className="relative inline-block m-2">
                 <img
                   src={UrlParser(imagePath)}
@@ -186,7 +303,7 @@ const handleAddImagesToCategory = (category, files) => {
                   className="size-0 block box-border animate-[fadBorn_1s_ease_forwards]"
                   style={{ animationDelay: `${100 * index}ms` }}
                 />
-                {selectedCategory !== "OVERALL" && (
+                {selectedCategory !== "OVERALL" && isEditing && (
                   <button
                     onClick={() =>
                       setDeleteConfirm({ type: "image", category: selectedCategory, path: imagePath })
@@ -200,11 +317,12 @@ const handleAddImagesToCategory = (category, files) => {
             ))}
 
             {/* Add new images (for specific category) */}
-            {selectedCategory !== "OVERALL" && (
+            {selectedCategory !== "OVERALL" && isEditing && (
               <label className="m-2 w-40 h-40 border-2 border-dashed border-gray-400 flex items-center justify-center cursor-pointer rounded-lg">
                 <Plus size={32} />
                 <input
                   type="file"
+                  accept="image/*"
                   multiple
                   className="hidden"
                   onChange={e => handleAddImagesToCategory(selectedCategory, e.target.files)}
@@ -213,7 +331,7 @@ const handleAddImagesToCategory = (category, files) => {
             )}
 
             {/* Add new category (only in OVERALL) */}
-            {selectedCategory === "OVERALL" && (
+            {selectedCategory === "OVERALL" && isEditing && (
               <label
                 className="m-2 w-40 h-40 border-2 border-dashed border-gray-400 flex items-center justify-center cursor-pointer rounded-lg"
                 onClick={() => setAddPopup(true)}
@@ -223,14 +341,38 @@ const handleAddImagesToCategory = (category, files) => {
             )}
           </div>
 
-          {/* Request Changes Button */}
-          {newGallery.length > 0 && (
-            <div className="flex justify-center mb-6">
+          {/* Save + Cancel Buttons */}
+          {isEditing && (
+            <div className="flex justify-end gap-4 mb-6">
+              <button
+                onClick={handleCancel}
+                className="px-4 py-2 rounded bg-gray-400 text-white"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSave}
+                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+              >
+                Save
+              </button>
+            </div>
+          )}
+
+          {/* Discard + Request Buttons */}
+          {!isEditing && hasChanges && (
+            <div className="flex justify-end gap-4 mb-6">
+              <button
+                onClick={handleDiscard}
+                className="px-4 py-2 rounded bg-gray-400 text-white"
+              >
+                Discard Changes
+              </button>
               <button
                 onClick={() => setConfirmPopup(true)}
-                className="px-6 py-2 rounded bg-accn text-white hover:bg-[#800000]"
+                className="flex items-center gap-2 px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
               >
-                Request Changes
+                Request
               </button>
             </div>
           )}
@@ -277,34 +419,93 @@ const handleAddImagesToCategory = (category, files) => {
 
       {/* Add Category Popup */}
       {addPopup && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[450px]">
-            <h3 className="text-lg font-bold mb-4 text-text dark:text-drkt">Add New Category</h3>
-            <input
-              type="text"
-              value={newCategory}
-              onChange={e => setNewCategory(e.target.value)}
-              placeholder="Enter category name"
-              className="w-full p-2 rounded mb-4 border"
-            />
-            <input
-              type="file"
-              multiple
-              onChange={e => setNewFiles(e.target.files)}
-              className="mb-4"
-            />
-            <div className="flex justify-end gap-2">
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] backdrop-blur-sm">
+          <div className="bg-prim dark:bg-drkp p-8 rounded-2xl w-[520px] shadow-2xl border border-gray-200 dark:border-gray-700">
+            <h3 className="text-2xl font-bold mb-6 text-brwn dark:text-drkt text-center">
+              Add New Gallery Category
+            </h3>
+            
+            {/* Category Name Input */}
+            <div className="mb-6">
+              <label className="block text-sm font-semibold mb-2 text-text dark:text-drkt">
+                Category Name
+              </label>
+              <input
+                type="text"
+                value={newCategory}
+                onChange={e => setNewCategory(e.target.value)}
+                placeholder="e.g., 24-25 FIRST MEETING"
+                className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-text dark:text-drkt placeholder-gray-400 focus:border-accn focus:ring-2 focus:ring-accn/20 transition-all outline-none"
+              />
+            </div>
+
+            {/* File Upload Section */}
+            <div className="mb-6">
+              <label className="block text-sm font-semibold mb-2 text-text dark:text-drkt">
+                Upload Images
+              </label>
+              <div className="relative">
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={e => setNewFiles(e.target.files)}
+                  className="hidden"
+                  id="gallery-file-input"
+                />
+                <label
+                  htmlFor="gallery-file-input"
+                  className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:border-accn hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
+                >
+                  <Plus size={32} className="text-gray-400 mb-2" />
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {newFiles.length > 0 
+                      ? `${newFiles.length} image${newFiles.length > 1 ? 's' : ''} selected` 
+                      : 'Click to select images'}
+                  </span>
+                  <span className="text-xs text-gray-400 mt-1">
+                    Supports multiple images
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            {/* Preview Selected Files */}
+            {newFiles.length > 0 && (
+              <div className="mb-4 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Selected Files:</p>
+                <div className="max-h-24 overflow-y-auto space-y-1">
+                  {Array.from(newFiles).map((file, idx) => (
+                    <div key={idx} className="text-xs text-gray-700 dark:text-gray-300 truncate">
+                      • {file.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Action Buttons */}
+            <div className="flex justify-end gap-3 mt-6">
               <button
-                onClick={() => setAddPopup(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                onClick={() => {
+                  setAddPopup(false);
+                  setNewCategory("");
+                  setNewFiles([]);
+                }}
+                className="px-5 py-2.5 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition-colors font-medium"
               >
                 Cancel
               </button>
               <button
                 onClick={handleAddCategory}
-                className="px-4 py-2 bg-green-600 text-white rounded"
+                disabled={!newCategory || newFiles.length === 0}
+                className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
+                  newCategory && newFiles.length > 0
+                    ? 'bg-secd text-text hover:bg-[#800000] hover:text-drkt shadow-md hover:shadow-lg'
+                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                }`}
               >
-                Add
+                Add Category
               </button>
             </div>
           </div>
@@ -324,57 +525,25 @@ const handleAddImagesToCategory = (category, files) => {
             </p>
 
             <div className="max-h-[200px] overflow-y-auto mb-4">
-              {newGallery.length > 0 ? (
-                <table className="w-full text-left text-text dark:text-drkt">
-                  <thead>
-                    <tr>
-                      <th className="py-1">Action</th>
-                      <th className="py-1">Section</th>
-                      <th className="py-1">Changes</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {newGallery.map((g, i) => (
-                      <tr key={i}>
-                        <td className="py-1">
-                          {g.action === "insert" && (
-                            <span className="text-green-600">+ Added</span>
-                          )}
-                          {g.action === "update" && (
-                            <span className="text-blue-600">✎ Edited</span>
-                          )}
-                          {g.action === "delete" && (
-                            <span className="text-red-600 flex items-center gap-1">
-                              <Trash2 size={14} /> Delete
-                            </span>
-                          )}
-                        </td>
-                        <td className="py-1">{g.category}</td>
-                        <td className="py-1">
-                          {g.files.length > 0 ? `${g.files.length} images` : ""}
-                          {g.links.length > 0 ? `, ${g.links.length} links` : ""}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              ) : (
-                <p className="text-gray-400">No gallery changes found.</p>
-              )}
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                Gallery changes will be submitted for approval.
+              </p>
             </div>
 
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setConfirmPopup(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
+                disabled={loading}
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmRequest}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+                className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${loading ? "cursor-progress" : ""}`}
+                disabled={loading}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>

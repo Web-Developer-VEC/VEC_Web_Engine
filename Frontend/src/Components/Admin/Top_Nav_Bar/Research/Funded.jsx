@@ -9,6 +9,7 @@ import { Eye, Pencil, Plus, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function AdminFunded({ theme, toggle }) {
   const [funded, setFunded] = useState([]);
@@ -38,6 +39,7 @@ export default function AdminFunded({ theme, toggle }) {
 
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
+   const { sendRequest, loading: loadings , error } = useAdminRequest();
 
   // -------------------- Fetch --------------------
   useEffect(() => {
@@ -238,17 +240,102 @@ export default function AdminFunded({ theme, toggle }) {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    console.log("FINAL REQUEST SUBMITTED", { allChanges, funded });
-    toast.success("Final request submitted");
-    setShowRequestModal(false);
-    setAllChanges([]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(false);
-    originalRef.current = JSON.parse(JSON.stringify(funded));
-    savedDataRef.current = JSON.parse(JSON.stringify(funded));
-  };
+const handleFinalRequestConfirm = async () => {
+  if (!allChanges.length) {
+    toast.info("No changes to submit.");
+    return;
+  }
+
+  const payload = [];
+  const filesToUpload = [];
+
+  for (const change of allChanges) {
+
+    // ---------- INSERT ----------
+    if (change.action === "add") {
+      const { year, pdf_path } = change.changes;
+
+      const finalPath = `/static/pdfs/overall_research/${year.new}/${pdf_path.new}`;
+
+      payload.push({
+        action: "insert",
+        collectionName: "research",
+        title: "Funded Projects",
+        collection_type: "Funded Projects",
+        meta_data: {
+          year: year.new,
+          pdf_path: finalPath
+        }
+      });
+
+      if (pdf_path.new instanceof File) {
+        filesToUpload.push(pdf_path.new);
+      }
+    }
+
+    // ---------- UPDATE ----------
+    if (change.action === "edit") {
+      const { year, pdf_path } = change.changes;
+
+      const finalPath = `/static/pdfs/overall_research/${year.new}/${pdf_path.new}`;
+
+      payload.push({
+        action: "update",
+        collectionName: "research",
+        title: "Funded Projects",
+        collection_type: "Funded Projects",
+        original_data: {
+          year: year.old,
+          pdf_path: pdf_path.old
+        },
+        meta_data: {
+          year: year.new,
+          pdf_path: finalPath
+        }
+      });
+
+      if (pdf_path.new instanceof File) {
+        filesToUpload.push(pdf_path.new);
+      }
+    }
+
+    // ---------- DELETE ----------
+    if (change.action === "delete") {
+      payload.push({
+        action: "delete",
+        collectionName: "research",
+        title: "Funded Projects",
+        collection_type: "Funded Projects",
+        meta_data: {
+          year: change.key
+        }
+      });
+    }
+  }
+
+  try {
+    const result = await sendRequest(payload, filesToUpload);
+
+    if (result) {
+      console.log("FINAL REQUEST SUBMITTED", { payload, funded });
+
+      toast.success("Final request submitted");
+
+      setShowRequestModal(false);
+      setAllChanges([]);
+      setSessionChanges([]);
+      setIsEditing(false);
+      setIsSavedOnce(false);
+
+      originalRef.current = JSON.parse(JSON.stringify(funded));
+      savedDataRef.current = JSON.parse(JSON.stringify(funded));
+    }
+  } catch (err) {
+    console.error("Final request failed:", err);
+    toast.error("Request submission failed");
+  }
+};
+
 
 const handleUndoChange = (idx) => {
   setAllChanges((prev) => {

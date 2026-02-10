@@ -2,19 +2,6 @@
   {
     "collectionName": "iic",
     "collection_type": "home",
-    "action": "insert",
-    "title": "Insert about_iic",
-    "meta_data": {
-      "about_iic": [
-        "The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to foster the culture of Innovation in HEIs.",
-        "MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A network of these IICs will be established to promote innovation in the Institutions through multitudinous modes leading to an innovation promotion eco-system in the campuses.",
-        "IICs are established to promote innovation in institutions through multiple modes."
-      ]
-    }
-  },
-  {
-    "collectionName": "iic",
-    "collection_type": "home",
     "action": "update",
     "title": "Update about_iic",
     "meta_data": {
@@ -29,34 +16,6 @@
         "The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to foster the culture of Innovation in HEIs.",
         "MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A network of these IICs will be established to promote innovation in the Institutions through multitudinous modes leading to an innovation promotion eco-system in the campuses.",
         "IICs are established to promote innovation in institutions through multiple modes."
-      ]
-    }
-  },
-  {
-    "collectionName": "iic",
-    "collection_type": "home",
-    "action": "delete",
-    "title": "Delete about_iic",
-    "meta_data": {
-      "about_iic": [
-        "The Ministry of Education (MoE), Govt. of India has established 'MoE's Innovation Cell (MIC)' to foster the culture of Innovation in HEIs.",
-        "MIC has envisioned encouraging creation of 'Institution's Innovation Council (IICs)' across selected HEIs. A network of these IICs will be established to promote innovation in the Institutions through multitudinous modes leading to an innovation promotion eco-system in the campuses.",
-        "IICs are established to promote innovation in institutions through multiple modes."
-      ]
-    }
-  },
-
-  {
-    "collectionName": "iic",
-    "collection_type": "establishment",
-    "action": "insert",
-    "title": "Insert majorfocus - establishment",
-    "category": "majorfocus",
-    "meta_data": {
-      "content": [
-        "To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.",
-        "To establish a Function Ecosystem for Scouting Ideas and Pre-incubation of Ideas.",
-        "To develop better Cognitive Ability for Technology Students."
       ]
     }
   },
@@ -82,21 +41,64 @@
       ]
     }
   },
-  {
-    "collectionName": "iic",
-    "collection_type": "establishment",
-    "action": "delete",
-    "title": "Delete majorfocus - establishment",
-    "category": "majorfocus",
-    "meta_data": {
-      "content": [
-        "To create a vibrant local innovation ecosystem, Start-up supporting Mechanism in HEIs, IIC should prepare the institution for ATAL Ranking of Institutions on Innovation Achievements Framework.",
-        "To establish a Function Ecosystem for Scouting Ideas and Pre-incubation of Ideas.",
-        "To develop better Cognitive Ability for Technology Students."
-      ]
-    }
+{
+  "collectionName": "iic",
+  "collection_type": "establishment",
+  "action": "update",
+  "title": "Update vision - establishment",
+  "category": "vision",
+  "meta_data": {
+    "content": [
+      "Updated: To create a strong innovation-driven ecosystem that bridges academia, industry, and society."
+    ]
   },
-
+  "original_data": {
+    "content": [
+      "To facilitate a conducive environment with the intention of making innovation reach society and industries for national development."
+    ]
+  }
+},
+{
+  "collectionName": "iic",
+  "collection_type": "establishment",
+  "action": "update",
+  "title": "Update mission - establishment",
+  "category": "mission",
+  "meta_data": {
+    "content": [
+      "Updated: To empower students and faculty to convert innovative ideas into sustainable start-ups and enterprises."
+    ]
+  },
+  "original_data": {
+    "content": [
+      "To enable students and faculty to establish start-ups and market innovative products through enhanced coordination and planning."
+    ]
+  }
+},
+{
+  "collectionName": "iic",
+  "collection_type": "establishment",
+  "action": "update",
+  "title": "Update function - establishment",
+  "category": "function",
+  "meta_data": {
+    "content": [
+      "Updated: To conduct structured innovation programs aligned with MIC guidelines.",
+      "To strengthen mentoring and industry interactions.",
+      "To enhance visibility of innovation activities through digital platforms."
+    ]
+  },
+  "original_data": {
+    "content": [
+      "To conduct innovation and entrepreneurship activities prescribed by MIC.",
+      "To identify and reward innovations and share success stories.",
+      "To organize workshops, seminars, and mentoring sessions.",
+      "To network with national entrepreneurship organizations.",
+      "To create an institutional innovation portal.",
+      "To organize hackathons and idea competitions."
+    ]
+  }
+},
   {
     "collectionName": "iic",
     "collection_type": "faculty",
@@ -130,8 +132,99 @@
       "name": "DR. NIRMAL RAJ A",
       "designation": "President"
     }
-  }
-    ,
+  },
+
+  {
+    "collectionName": "iic",
+    "collection_type": "expert_representation",
+    "action": "insert",
+    "title": "Insert DR. NIRMAL RAJ A",
+    "meta_data": {
+      "name": "DR. NIRMAL RAJ A",
+      "designation": "President"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "expert_representation",
+    "action": "update",
+    "title": "Update DR. NIRMAL RAJ A",
+    "meta_data": {
+      "name": "DR. NIRMAL RAJ A",
+      "designation": "President (updated)"
+    },
+    "original_data": {
+      "name": "DR. NIRMAL RAJ A",
+      "designation": "President"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type": "expert_representation",
+    "action": "delete",
+    "title": "Delete DR. NIRMAL RAJ A",
+    "meta_data": {
+      "name": "DR. NIRMAL RAJ A",
+      "designation": "President (updated)"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type":  "student_representation",
+    "action": "insert",
+    "title": "Insert TARAKESHWARAN S - IIC",
+    "category": "IIC",
+    "meta_data": {
+      "name": "Priyan S",
+      "mail_id": "tarakeshwaran. sampath@gmail.com",
+      "phone": "8870982120",
+      "sex": "Male",
+      "year": "IV Year",
+      "dept":  "CSE",
+      "responsibility": "Student President"
+    }
+  },
+  {
+    "collectionName": "iic",
+    "collection_type":  "student_representation",
+    "action": "update",
+    "title": "Update TARAKESHWARAN S - IIC",
+    "category": "IIC",
+    "meta_data": {
+      "name": "DINESH S",
+      "mail_id": "tarakeshwaran.sampath@gmail.com",
+      "phone":  "8870982121",
+      "sex": "Male",
+      "year": "IV Year",
+      "dept": "CSE",
+      "responsibility":  "Student President"
+    },
+    "original_data": {
+      "name": "Priyan S",
+      "mail_id": "tarakeshwaran.sampath@gmail. com",
+      "phone": "8870982120",
+      "sex": "Male",
+      "year": "IV Year",
+      "dept": "CSE",
+      "responsibility": "Student President"
+    }
+  },
+  {
+    "collectionName":  "iic",
+    "collection_type": "student_representation",
+    "action": "delete",
+    "title": "Delete TARAKESHWARAN S - IIC",
+    "category": "IIC",
+    "meta_data": {
+      "name":  "TARAKESHWARAN S",
+      "mail_id":  "tarakeshwaran.sampath@gmail.com",
+      "phone": "8870982120",
+      "sex": "Male",
+      "year": "IV Year",
+      "dept": "CSE",
+      "responsibility":  "Student President"
+    }
+  },
   {
     "collectionName": "iic",
     "collection_type": "iic3",
@@ -407,12 +500,8 @@
     "action": "insert",
     "title": "Insert yukti registration_statistics",
     "category": "registration_statistics",
-    "meta_data": {
-      "content": [
-        { "name": "Total Individuals Registered", "count": "2270" },
-        { "name": "Total Ideas Submitted", "count": "369" }
-      ]
-    }
+    "meta_data":
+        { "name": "Total Individuals Registered", "count": "2270" }
   },
   {
     "collectionName": "iic",
@@ -420,31 +509,22 @@
     "action": "update",
     "title": "Update yukti registration_statistics",
     "category": "registration_statistics",
-    "meta_data": {
-      "content": [
+    "meta_data": 
         { "name": "Total Individuals Registered", "count": "2271" },
-        { "name": "Total Ideas Submitted", "count": "369" }
-      ]
+    "original_data": 
+        { "name": "Total Individuals Registered", "count": "2270" }
     },
-    "original_data": {
-      "content": [
-        { "name": "Total Individuals Registered", "count": "2270" },
-        { "name": "Total Ideas Submitted", "count": "369" }
-      ]
-    }
-  },
   {
     "collectionName": "iic",
     "collection_type": "yukti",
     "action": "delete",
     "title": "Delete yukti registration_statistics",
-    "category": "registration_statistics",
-    "meta_data": {
-      "content": [
-        { "name": "Total Individuals Registered", "count": "2270" },
-        { "name": "Total Ideas Submitted", "count": "369" }
-      ]
-    }
+    "category": "innovation_metrics",
+    "meta_data":
+       {
+          "name": "Startups Incubated",
+          "count": 32
+        }
   },
 
   {
@@ -517,19 +597,6 @@
       "path": "/static/pdfs/iic/policy/National-Innovation-and-Startup-Policy.pdf"
     }
   },
-
-  {
-    "collectionName": "iic",
-    "collection_type": "contact",
-    "action": "insert",
-    "title": "Insert contact item",
-    "meta_data": {
-      "name": "Mr.M.Yuvaraj",
-      "designation": "IIC Convener",
-      "phone": 9750426069,
-      "gmail": "iic@velammal.ed.in"
-    }
-  },
   {
     "collectionName": "iic",
     "collection_type": "contact",
@@ -542,18 +609,6 @@
       "gmail": "iic@velammal.ed.in"
     },
     "original_data": {
-      "name": "Mr.M.Yuvaraj",
-      "designation": "IIC Convener",
-      "phone": 9750426069,
-      "gmail": "iic@velammal.ed.in"
-    }
-  },
-  {
-    "collectionName": "iic",
-    "collection_type": "contact",
-    "action": "delete",
-    "title": "Delete contact item",
-    "meta_data": {
       "name": "Mr.M.Yuvaraj",
       "designation": "IIC Convener",
       "phone": 9750426069,

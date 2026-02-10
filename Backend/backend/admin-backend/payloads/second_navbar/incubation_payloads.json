@@ -2,23 +2,6 @@
     {
         "collectionName":"incubation",
         "collection_type":"home",
-        "action":"insert",
-        "title":"insert in home",
-        "meta_data":{
-        "about_us": "The objective of the scheme is to promote and support untapped creativity and to promote adoption of latest technologies in MSMEs that seek the validation of their ideas at the proof-of-concept level. The scheme also supports engagement with enablers who will advise such MSMEs in expanding the business by supporting them in design, strategy and execution.",
-        "vision": "To be a premier institution fostering innovation and entrepreneurship through quality education and industry collaboration",
-        "activities": [
-          "Promote innovative thinking among students",
-          "Facilitate industry-academia partnerships",
-          "Support startup incubation",
-          "Enhance research capabilities",
-          "hello everyone"
-        ]
-      }
-    },
-    {
-        "collectionName":"incubation",
-        "collection_type":"home",
         "action":"update",
         "title":"update in home",
         "original_data":{
@@ -28,8 +11,7 @@
           "Promote innovative thinking among students",
           "Facilitate industry-academia partnerships",
           "Support startup incubation",
-          "Enhance research capabilities",
-          "hello everyone"
+          "Enhance research capabilities"
         ]
       },
         "meta_data":{
@@ -39,7 +21,8 @@
           "Promote innovative thinking among students",
           "Facilitate industry-academia partnerships",
           "Support startup incubation",
-          "Enhance research capabilities"
+          "Enhance research capabilities",
+          "hello"
         ]
       }
     },
@@ -104,7 +87,7 @@
         "title":"insert in incubation_committee",
         "meta_data":{
         "name": "Dr.dinesh",
-        "image": "",
+        "image_path": "",
         "Designation": "MBA Head",
         "position": "Incubation Head"
       }
@@ -116,13 +99,13 @@
         "title":"update in incubation_committee",
         "original_data":{
         "name": "Dr.dinesh",
-        "image": "",
+        "image_path": "",
         "Designation": "MBA Head",
         "position": "Incubation Head"
       },
         "meta_data":{
         "name": "Dr.hari",
-        "image": "",
+        "image_path": "",
         "Designation": "MBA Head",
         "position": "Incubation Head"
       }
@@ -132,12 +115,12 @@
         "collection_type":"incubation_committee",
         "action":"delete",
         "title":"delete in incubation_committee",
-        "meta_data":{
-        "name": "Dr.hari",
-        "image": "",
-        "Designation": "MBA Head",
-        "position": "Incubation Head"
-      }
+        "meta_data": {
+      "name": "Dr.hari",
+      "image_path": "/static/images/incubation/commitee/Dr.hari",
+      "Designation": "MBA Head",
+      "position": "Incubation Head"
+    }
     },
     {
         "collectionName":"incubation",
@@ -145,8 +128,7 @@
         "action":"insert",
         "title":"insert in facilities",
         "meta_data":{
-        "name": "dinesh",
-        "image": "/static/images/incubation/1.webp"
+        "name": "dinesh"
       }
     },
     {
@@ -156,11 +138,10 @@
         "title":"update in facilities",
         "original_data":{
         "name": "dinesh",
-        "image": "/static/images/incubation/1.webp"
+        "image_path": "/static/images/incubation/dinesh"
       },
         "meta_data":{
-        "name": "hari",
-        "image": "/static/images/incubation/1.webp"
+        "name": "hari"
       }
     },
     {
@@ -170,7 +151,7 @@
         "title":"delete in facilities",
         "meta_data":{
         "name": "hari",
-        "image": "/static/images/incubation/1.webp"
+        "image_path": "/static/images/incubation/hari"
       }
     },
     {
@@ -178,7 +159,7 @@
         "collection_type":"projects",
         "action":"insert",
         "title":"insert in projects",
-        "category":"MSME IDEA HACKATHON 5.0",
+        "category":"MSME IDEA HACKATHON 4.0",
         "meta_data":
           {
             "number": "hari",
@@ -190,7 +171,7 @@
         "collection_type":"projects",
         "action":"update",
         "title":"update in projects",
-        "category":"MSME IDEA HACKATHON 5.0",
+        "category":"MSME IDEA HACKATHON 4.0",
         "original_data":
           {
             "number": "hari",
@@ -207,7 +188,7 @@
         "collection_type":"projects",
         "action":"delete",
         "title":"delete in projects",
-        "category":"MSME IDEA HACKATHON 5.0",
+        "category":"MSME IDEA HACKATHON 4.0",
         "meta_data":
           {
             "number": "dinesh",

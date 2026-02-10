@@ -202,18 +202,7 @@ const App = () => {
                                         />
                                     }
                                 />
-                                <Route path="/abt-us" drk element={<AbtUs toggle={toggle} theme={theme} />} />
-                                <Route path="/abt-yr" drk element={<Aishe toggle={toggle} theme={theme} />} />
-                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme} />} />
-                                <Route path="/trust" drk element={<NewTrust toggle={toggle} theme={theme} />} />
-                                <Route path="/v_m" drk element={<Collegevisionmission toggle={toggle} theme={theme} />} />
-                                <Route path="/management" drk element={<Management toggle={toggle} theme={theme} />} />
-                                <Route path="/committee" drk element={<ExecutiveCommittee toggle={toggle} theme={theme} />} />
-                                <Route path="/clg-org" drk element={<CollegeOrgChart toggle={toggle} theme={theme} />} />
-
-                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme} />}></Route>
-
-                                <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme} />} />
+                            
                                 {/* <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme} />} /> */}
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme} />} />
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />} />
@@ -229,6 +218,9 @@ const App = () => {
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 <Route path="/admin_auth" drk element={<AuthPage toggle={toggle} theme={theme} />} />
+                                <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme} />} />
+                                <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme} />} />
+                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme} />}></Route>
 
                                 {/* Admin based route */}
                                 {Object.keys(routeConfig).map((path) => (
