@@ -11,6 +11,7 @@ const roleAccessMap = {
   admissions: ["super_admin"],
   administration: ["super_admin"],
   academics: ["super_admin"],
+  AIDS_001:["super_admin"],
 
   //Second Nav Bar
   gallery: ["super_admin", "gallery_admin"],

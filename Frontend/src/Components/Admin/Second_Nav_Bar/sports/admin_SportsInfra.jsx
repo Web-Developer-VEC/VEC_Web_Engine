@@ -23,10 +23,6 @@ const SportsInfra = ({ data: initialData }) => {
   const { sendRequest, loading, error } = useAdminRequest();
   const filesRef = useRef([]);
 
-  console.log('====================================');
-  console.log("Ajith", changes);
-  console.log('====================================');
-
   useEffect(() => {
     const dataWithId = (initialData || []).map(item => ({
       ...item,
@@ -83,67 +79,66 @@ const SportsInfra = ({ data: initialData }) => {
     oldData = {},
   }) => {
 
-    /* -------------------- INSERT -------------------- */
-    if (action === "Added") {
-      return {
-        collectionName: "sports",
-        collection_type: "infrastructure",
-        action: "insert",
-        title: "Insertion of Infrastructure",
+  /* -------------------- INSERT -------------------- */
+  if (action === "Added") {
+    return {
+      collectionName: "sports",
+      collection_type: "infrastructure",
+      action: "insert",
+      title: "Insertion of Infrastructure",
 
-        meta_data: {
-          title: newData.title,
-          description: newData.description,
-          image_path: newData.image_path,
-        },
+      meta_data: {
+        title: newData.title,
+        description: newData.description,
+        image_path: newData.image_path,
+      },
 
-        original_data: null,
-      };
-    }
+      original_data: null,
+    };
+  }
 
-    /* -------------------- UPDATE -------------------- */
-    if (action === "Edited") {
-      return {
-        collectionName: "sports",
-        collection_type: "infrastructure",
-        action: "update",
-        title: "Updation of Infrastructure",
+  /* -------------------- UPDATE -------------------- */
+  if (action === "Edited") {
+    return {
+      collectionName: "sports",
+      collection_type: "infrastructure",
+      action: "update",
+      title: "Updation of Infrastructure",
 
-        meta_data: {
-          title: newData.title,
-          description: newData.description,
-          image_path: newData.image_path,
-        },
+      meta_data: {
+        title: newData.title,
+        description: newData.description,
+        image_path: newData.image_path,
+      },
 
-        original_data: {
-          title: oldData.original_data?.title || oldData.meta_data?.title || oldData.title,
-          description: oldData.original_data?.description || oldData.meta_data?.description || oldData.description,
-          image_path: oldData.original_data?.image_path || oldData.meta_data?.image_path || oldData.image_path,
-        },
-      };
-    }
+      original_data: {
+        title: oldData.title,
+        description: oldData.description,
+        image_path: oldData.image_path,
+      },
+    };
+  }
 
-    /* -------------------- DELETE -------------------- */
-    if (action === "Deleted") {
-      return {
-        collectionName: "sports",
-        collection_type: "infrastructure",
-        action: "delete",
-        title: "Deletion of Infrastructure",
+  /* -------------------- DELETE -------------------- */
+  if (action === "Deleted") {
+    return {
+      collectionName: "sports",
+      collection_type: "infrastructure",
+      action: "delete",
+      title: "Deletion of Infrastructure",
 
-        meta_data: {
-          title: oldData.original_data?.title || oldData.meta_data?.title || oldData.title,
-          description: oldData.original_data?.description || oldData.meta_data?.description || oldData.description,
-          image_path: oldData.original_data?.image_path || oldData.meta_data?.image_path || oldData.image_path,
-        },
+      meta_data: {
+        title: oldData.title,
+        description: oldData.description,
+        image_path: oldData.image_path,
+      },
 
-        original_data: null,
-      };
-    }
+      original_data: null,
+    };
+  }
 
-    return null;
-  };
-
+  return null;
+};
 
   const handleDeleteSelected = () => {
 

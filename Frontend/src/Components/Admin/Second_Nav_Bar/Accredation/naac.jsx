@@ -13,12 +13,13 @@ import { motion } from "framer-motion";
 import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const Naac = ({ data }) => {
   const [openSection, setOpenSection] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const lastSavedStateRef = useRef([]); // keep track of last saved state
-
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
   // Workflow states
   const [editMode, setEditMode] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
@@ -104,6 +105,10 @@ const Naac = ({ data }) => {
     }
     setEditMode(false);
   };
+   const getOriginalItem = (sectionIndex, itemIndex) => {
+      return lastSavedStateRef.current?.[sectionIndex]?.content?.[itemIndex] || {};
+    };
+
 
   const handleSaveClick = () => {
     const copy = JSON.parse(JSON.stringify(editableData));
@@ -123,39 +128,143 @@ const Naac = ({ data }) => {
     setChangeLog([]);
     toast.info("All changes discarded.");
   };
+ 
+ const handleRequestConfirm = async () => {
+  const changes = getChanges();
 
-  const handleRequestConfirm = () => {
-    // Build payload with section "NAAC" and list of change descriptions
-    const payload = {
-      section: "NAAC",
-      timestamp: new Date().toISOString(),
-      changes: getChanges().map((c) => {
-        // create human readable description for each change
-        const desc = describeChange(c);
-        return {
-          id: c.id,
-          action: c.action,
-          raw: c,
-          description: desc,
-        };
-      }),
-    };
+  if (changes.length === 0) {
+    toast.warn("No changes to submit");
+    return;
+  }
 
-    // Replace with your API call to send `payload`
-    console.log("Submitting request payload:", payload);
+  // 1️⃣ Build payload
+  const payload = changes
+    .map(buildNaacPayload)
+    .filter(Boolean);
 
+  // 2️⃣ Collect PDF files
+  const files = collectNaacFiles();
+
+  console.log("📦 NAAC PAYLOAD:", payload);
+  console.log("📄 NAAC FILES:", files);
+
+  // 3️⃣ Send payload + files
+  const result = await sendRequest(payload, files);
+
+  if (result) {
     setShowRequestModal(false);
-    setSavedChanges([]); // clear saved changes
-    setChangeLog([]); // clear log after sending
-    setEditMode(false); // exit edit mode
+    setSavedChanges([]);
+    setChangeLog([]);
+    setEditMode(false);
     setHasChanges(false);
     toast.success("Request submitted successfully!");
-  };
+  }
+};
 
-  // ---- Change Log Handlers ----
-  const pushChangeLog = (entry) => {
-    setChangeLog((prev) => [...prev, { id: uid("chg_"), ...entry }]);
-  };
+    const collectNaacFiles = () => {
+  const files = [];
+
+  editableData.forEach((section) => {
+    if (!Array.isArray(section.content)) return;
+
+    section.content.forEach((item) => {
+      if (item?.file instanceof File) {
+        files.push(item.file);
+      }
+    });
+  });
+
+  return files;
+};
+
+
+      // ---- Change Log Handlers ----
+    const pushChangeLog = (entry) => {
+        setChangeLog((prev) => [...prev, { id: uid("chg_"), ...entry }]);
+      };
+      // --- Payload -----  
+   const buildNaacPayload = (change) => {
+        const { action, sectionIndex, itemIndex, sectionName } = change;
+
+        const getNewPdfPath = (item) =>
+          item?.file?.name
+            ? `/static/pdfs/naac/${item.file.name}`
+            : item?.pdf_path || "";
+
+        // 🟢 INSERT (no original_data)
+        if (action === "Added") {
+          const item = change.data;
+
+          return {
+            collectionName: "accreditations_and_ranking",
+            collection_type: "naac",
+            action: "insert",
+            title: "Insert in NAAC",
+            category: sectionName,
+            meta_data: {
+              name: item?.name || "",
+              pdf_path: getNewPdfPath(item),
+            },
+          };
+        }
+
+        // 🔵 UPDATE (original_data = old, meta_data = new)
+        if (action === "Edited") {
+            const editedItem = editableData?.[sectionIndex]?.content?.[itemIndex];
+
+            const oldName = change.prevData?.name || "";
+            const oldPdf = change.prevData?.pdf_path || "";
+
+            const newName = editedItem?.name || "";
+            const newPdf = editedItem?.file
+              ? `/static/pdfs/naac/${editedItem.file.name}`
+              : editedItem?.pdf_path || "";
+
+            // ⛔ Skip fake updates
+            if (oldName === newName && oldPdf === newPdf) {
+              return null;
+            }
+
+            return {
+              collectionName: "accreditations_and_ranking",
+              collection_type: "naac",
+              action: "update",
+              title: "Update in NAAC",
+              category: sectionName,
+
+              // ✅ TRUE ORIGINAL (from changeLog)
+              original_data: {
+                name: oldName,
+                pdf_path: oldPdf,
+              },
+
+              // ✅ TRUE NEW
+              meta_data: {
+                name: newName,
+                pdf_path: newPdf,
+              },
+            };
+          }
+
+        // 🔴 DELETE (delete existing record)
+        if (action === "Deleted") {
+          const item = change.data;
+          const originalItem = getOriginalItem(sectionIndex, itemIndex);
+          return {
+            collectionName: "accreditations_and_ranking",
+            collection_type: "naac",
+            action: "delete",
+            title: "Delete in NAAC",
+            category: sectionName,
+            original_data: {
+              name: originalItem?.name || "",
+              pdf_path: originalItem?.pdf_path || "",
+            },
+          };
+        }
+
+        return null;
+      };
 
   const handleRevertChange = (change) => {
     // Revert the change in the editableData depending on type
@@ -279,7 +388,7 @@ const Naac = ({ data }) => {
     }
     return `${change.action}: ${fileName || sectionName || JSON.stringify(change.data || {})}`;
   };
-
+  
   // ---- Data Editing Handlers ----
   const handleSectionNameChange = (index, value) => {
     const updated = [...editableData];
@@ -325,29 +434,40 @@ const Naac = ({ data }) => {
     });
   };
 
-  const handleFileChange = (sectionIndex, itemIndex, file) => {
-    const updated = [...editableData];
-    const fileURL = URL.createObjectURL(file);
+const handleFileChange = (sectionIndex, itemIndex, file) => {
+  if (!file) return;
 
-    // capture prev
-    const prevItem = updated[sectionIndex]?.content?.[itemIndex] || {};
-    const prevData = { pdf_path: prevItem.pdf_path, file: prevItem.file };
+  const updated = [...editableData];
+  const prevItem = updated[sectionIndex].content[itemIndex];
 
-    updated[sectionIndex].content[itemIndex].pdf_path = fileURL;
-    updated[sectionIndex].content[itemIndex].file = file;
-    setEditableData(updated);
-    setHasChanges(true);
-
-    pushChangeLog({
-      action: "Edited",
-      type: "fileReplace",
-      sectionIndex,
-      itemIndex,
-      sectionName: updated[sectionIndex]?.category,
-      prevData,
-      data: { name: updated[sectionIndex].content[itemIndex].name },
-    });
+  const prevData = {
+    name: prevItem.name,
+    pdf_path: prevItem.pdf_path, // ✅ OLD PDF STORED HERE
   };
+
+  const newPdfPath = `/static/pdfs/naac/${file.name}`;
+
+  updated[sectionIndex].content[itemIndex].pdf_path = newPdfPath;
+  updated[sectionIndex].content[itemIndex].file = file;
+
+  setEditableData(updated);
+  setHasChanges(true);
+
+  pushChangeLog({
+    action: "Edited",
+    type: "fileReplace",
+    sectionIndex,
+    itemIndex,
+    sectionName: updated[sectionIndex]?.category,
+    prevData, // 🔒 ORIGINAL PDF
+    data: {
+      name: prevItem.name,
+      pdf_path: newPdfPath,
+    },
+  });
+};
+
+
 
   const handleItemNameChange = (sectionIndex, itemIndex, value) => {
     const updated = [...editableData];
@@ -798,9 +918,10 @@ const Naac = ({ data }) => {
                   </button>
                   <button
                     onClick={handleRequestConfirm}
+                    disabled={loadings}
                     className="px-4 py-2 rounded-lg bg-[#fdcc03] hover:bg-[#800000] text-text hover:text-prim"
                   >
-                    Final Request
+                    {loadings ? "Submitting..." : "Final Request"}
                   </button>
                 </div>
               </div>
