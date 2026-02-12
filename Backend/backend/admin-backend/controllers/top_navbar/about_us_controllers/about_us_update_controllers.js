@@ -1,9 +1,7 @@
 async function updatedData(tempDoc, mainCollection) {
   try {
     const { collection_type, category, meta_data, original_data } = tempDoc;
-    console.log(collection_type, category, meta_data, original_data );
-    
-
+  
     if (!collection_type || !meta_data || !original_data) {
       throw new Error("Missing required fields");
     }
@@ -25,8 +23,6 @@ async function updatedData(tempDoc, mainCollection) {
 
     // ---------- ABOUT VEC ----------
     if (collection_type === "about_vec") {
-      console.log("hello");
-      
       const result = await mainCollection.updateOne(
         {
           type: "about_vec",
