@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminME = ({ theme, toggle }) => {
   const [pgData, setpgData] = useState([]);
@@ -26,7 +27,8 @@ const AdminME = ({ theme, toggle }) => {
   const navigate = useNavigate();
   const [originalData, setOriginalData] = useState(null);
   const [hasChanges, setHasChanges] = useState(false);
-   const [showDeleteModal,setShowDeleteModal]= useState();
+  const [showDeleteModal, setShowDeleteModal] = useState();
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const [pgedit, setpgEdit] = useState(false);
   const [savedOnce, setSavedOnce] = useState(false);
@@ -35,34 +37,200 @@ const AdminME = ({ theme, toggle }) => {
   // Popup & changes state
   const [showPopup, setShowPopup] = useState(false);
   const [changeList, setChangeList] = useState([]);
+  const buildPgAdmissionPayloadConfirm = ({
+    change,
+    pendingData,
+    committedData,
+  }) => {
+    const year = pendingData.year;
+
+    /* ===========================
+     INSERT (Add new PG course)
+     =========================== */
+    if (change.type === "added") {
+      const row = pendingData.PG.find(
+        (r) => Object.keys(r)[0] === Object.keys(change.row)[0],
+      );
+      if (!row) return null;
+
+      const [course, d] = Object.entries(row)[0];
+
+      return {
+        collectionName: "admissions",
+        collection_type: "pg",
+        action: "insert",
+        title: "Insert new PG department",
+        meta_data: {
+          year,
+          PG: [
+            {
+              [course]: {
+                "Government Quota Intakes": String(
+                  d["Government Quota Intakes"],
+                ),
+                "Management Quota Intakes": String(
+                  d["Management Quota Intakes"],
+                ),
+                "Total Intakes": String(d["Total Intakes"]),
+              },
+            },
+          ],
+        },
+      };
+    }
+
+    /* ===========================
+     UPDATE (Edit intake / rename)
+     =========================== */
+    if (change.type === "Edited" || change.type === "edited") {
+      const course = change.type === "Edited" ? change.to : change.courseName;
+
+      const newRow = pendingData.PG.find((r) => Object.keys(r)[0] === course);
+
+      const oldRow = committedData.PG.find(
+        (r) =>
+          Object.keys(r)[0] ===
+          (change.type === "Edited" ? change.from : course),
+      );
+
+      if (!newRow || !oldRow) return null;
+
+      const [_, newData] = Object.entries(newRow)[0];
+      const [__, oldData] = Object.entries(oldRow)[0];
+
+      return {
+        collectionName: "admissions",
+        collection_type: "pg",
+        action: "update",
+        title: "Update PG Intake",
+        meta_data: {
+          data: {
+            year,
+            PG: [
+              {
+                [course]: {
+                  "Government Quota Intakes": String(
+                    newData["Government Quota Intakes"],
+                  ),
+                  "Management Quota Intakes": String(
+                    newData["Management Quota Intakes"],
+                  ),
+                  "Total Intakes": String(newData["Total Intakes"]),
+                },
+              },
+            ],
+          },
+        },
+        original_data: {
+          data: {
+            year,
+            PG: [
+              {
+                [Object.keys(oldRow)[0]]: {
+                  "Government Quota Intakes": String(
+                    oldData["Government Quota Intakes"],
+                  ),
+                  "Management Quota Intakes": String(
+                    oldData["Management Quota Intakes"],
+                  ),
+                  "Total Intakes": String(oldData["Total Intakes"]),
+                },
+              },
+            ],
+          },
+        },
+      };
+    }
+
+    /* ===========================
+     DELETE (Remove PG course)
+     =========================== */
+    if (change.type === "deleted") {
+      return {
+        collectionName: "admissions",
+        collection_type: "pg",
+        action: "delete",
+        title: "Delete program from PG",
+        meta_data: {
+          year,
+          PG: [
+            {
+              [Object.keys(change.row)[0]]: {},
+            },
+          ],
+        },
+      };
+    }
+
+    /* ===========================
+     YEAR UPDATE
+     =========================== */
+    if (change.type === "YearEdited") {
+      return {
+        collectionName: "admissions",
+        collection_type: "pg",
+        action: "update",
+        title: "Update Year",
+        meta_data: {
+          data: { year: pendingData.year },
+        },
+        original_data: {
+          data: { year: committedData.year },
+        },
+      };
+    }
+
+    return null;
+  };
 
   // Refactored helper for logging changes
   const logChange = (type, section, details) => {
     setChangeList((prev) => {
-      // Create a new change object.
       const newChange = { type, section, ...details };
 
-      // Find if a similar change already exists.
-      const existingIndex = prev.findIndex(c => {
-        // For 'added' or 'deleted' changes, check by the row's key.
-        if (["added", "deleted"].includes(c.type) && c.row && newChange.row) {
-          return Object.keys(c.row)[0] === Object.keys(newChange.row)[0];
-        }
-        // For 'edited' changes, check by the course name and field.
-        if (c.type === "edited" && c.courseName === newChange.courseName) {
+      const index = prev.findIndex((c) => {
+        // Year: only ONE entry
+        if (type === "YearEdited" && c.type === "YearEdited") return true;
+
+        // Rename: only ONE per original course
+        if (
+          type === "Edited" &&
+          c.type === "Edited" &&
+          c.from === newChange.from
+        ) {
           return true;
         }
+
+        // Edited intake: only ONE per course
+        if (
+          type === "edited" &&
+          c.type === "edited" &&
+          c.courseName === newChange.courseName
+        ) {
+          return true;
+        }
+
+        // Added / Deleted
+        if (
+          ["added", "deleted"].includes(type) &&
+          c.type === type &&
+          c.row &&
+          newChange.row &&
+          Object.keys(c.row)[0] === Object.keys(newChange.row)[0]
+        ) {
+          return true;
+        }
+
         return false;
       });
 
-      // If an existing change is found, update it. Otherwise, add the new change.
-      if (existingIndex !== -1) {
-        const updatedList = [...prev];
-        updatedList[existingIndex] = newChange;
-        return updatedList;
-      } else {
-        return [...prev, newChange];
+      if (index !== -1) {
+        const updated = [...prev];
+        updated[index] = { ...prev[index], ...newChange };
+        return updated;
       }
+
+      return [...prev, newChange];
     });
   };
 
@@ -74,7 +242,7 @@ const AdminME = ({ theme, toggle }) => {
           type: "pg",
         });
         setpgData(response.data.data);
-         setOriginalData(response.data.data);
+        setOriginalData(JSON.parse(JSON.stringify(response.data.data)));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -88,42 +256,40 @@ const AdminME = ({ theme, toggle }) => {
     };
     fetchData();
   }, [navigate]);
-   const handleDiscardChanges = () => {
+  const handleDiscardChanges = () => {
     if (!originalData) return;
 
     setpgData(JSON.parse(JSON.stringify(originalData))); // Deep copy
-    setChangeList([]);          // Clear change logs
-    setSelectedRows([]);        // Clear selected rows
-    setHasChanges(false);       // Reset flag
-    setpgEdit(false);           // Exit edit mode
-    setSavedOnce(false);        // Reset save flag
-    setShowDeleteModal(false);  // Close delete modal if open
+    setChangeList([]); // Clear change logs
+    setSelectedRows([]); // Clear selected rows
+    setHasChanges(false); // Reset flag
+    setpgEdit(false); // Exit edit mode
+    setSavedOnce(false); // Reset save flag
+    setShowDeleteModal(false); // Close delete modal if open
 
     toast.info("All changes discarded and original data restored.");
   };
-const handleAddNewRow = () => {
-  const newRow = {
-    "New Course": { 
-      "Government Quota Intakes": 0,
-      "Management Quota Intakes": 0,
-      "Total Intakes": 0,
-    },
+  const handleAddNewRow = () => {
+    const newRow = {
+      "New Course": {
+        "Government Quota Intakes": 0,
+        "Management Quota Intakes": 0,
+        "Total Intakes": 0,
+      },
+    };
+
+    setpgData({ ...pgData, PG: [...pg, newRow] });
+
+    // Save rowIndex in change log for reference
+    logChange("added", "PG", { row: newRow, rowIndex: pg.length });
   };
 
-  setpgData({ ...pgData, PG: [...pg, newRow] });
-
-  // Save rowIndex in change log for reference
-  logChange("added", "PG", { row: newRow, rowIndex: pg.length });
-};
-
-
-
   const handleDeleteSelected = () => {
-  if (selectedRows.length === 0) {
-    toast.error("No rows selected to delete.");
-    setShowDeleteModal(false);
-    return;
-  }
+    if (selectedRows.length === 0) {
+      toast.error("No rows selected to delete.");
+      setShowDeleteModal(false);
+      return;
+    }
 
     const dataCopy = { ...pgData };
     let pgArray = [...dataCopy.PG];
@@ -144,86 +310,84 @@ const handleAddNewRow = () => {
     // Clear selection
     setSelectedRows([]);
 
-    setShowDeleteModal(false)
+    setShowDeleteModal(false);
 
     toast.info("Selected rows deleted. They will be removed on final request.");
-};
-
+  };
 
   // ✅ Delete row
   const handleDeleteRow = (rowIndex) => {
-      const dataCopy = { ...pgData };
-      const pgArray = [...dataCopy.PG];
-      const removedRow = pgArray[rowIndex];
-      pgArray.splice(rowIndex, 1);
-      setpgData({ ...pgData, PG: pgArray });
-      logChange("deleted", "PG", { row: removedRow });
-      toast.info("Row deleted. It will be removed on final request.");
-      setShowDeleteModal(false);
+    const dataCopy = { ...pgData };
+    const pgArray = [...dataCopy.PG];
+    const removedRow = pgArray[rowIndex];
+    pgArray.splice(rowIndex, 1);
+    setpgData({ ...pgData, PG: pgArray });
+    logChange("deleted", "PG", { row: removedRow });
+    toast.info("Row deleted. It will be removed on final request.");
+    setShowDeleteModal(false);
+  };
+  const handleCourseNameChange = (rowIndex, newName) => {
+    const dataCopy = { ...pgData };
+    const pgArray = [...dataCopy.PG];
+
+    if (!pgArray[rowIndex]) return;
+
+    const [oldName, details] = Object.entries(pgArray[rowIndex])[0];
+
+    // Update UI
+    pgArray[rowIndex] = { [newName]: details };
+    setpgData({ ...dataCopy, PG: pgArray });
+
+    // 🚫 DO NOT LOG RENAME FOR NEWLY ADDED ROWS
+    const isAdded = changeList.some(
+      (c) => c.type === "added" && c.rowIndex === rowIndex,
+    );
+    if (isAdded) return;
+
+    // ✅ LOG RENAME ONLY ONCE
+    logChange("Edited", "PG", {
+      from: Object.keys(originalData.PG[rowIndex])[0],
+      to: newName,
+    });
   };
 
-const handleCourseNameChange = (rowIndex, newName) => {
-  const dataCopy = { ...pgData };
-  const pgArray = [...dataCopy.PG];
+  const handleInputChange = (rowIndex, field, value) => {
+    const updatedData = { ...pgData };
+    const pgArray = [...updatedData.PG];
+    const [courseName, details] = Object.entries(pgArray[rowIndex])[0];
 
-  if (!pgArray[rowIndex]) return;
+    const oldValue = details[field];
 
-  const [oldName, details] = Object.entries(pgArray[rowIndex])[0];
+    details[field] = value;
 
-  // Update table row
-  pgArray[rowIndex] = { [newName]: details };
-  setpgData({ ...dataCopy, PG: pgArray });
+    const gov = parseInt(details["Government Quota Intakes"] || 0, 10);
+    const mgmt = parseInt(details["Management Quota Intakes"] || 0, 10);
+    details["Total Intakes"] = gov + mgmt;
 
-  // Update "added" change in changeList to reflect typed name
-  setChangeList((prev) => 
-    prev.map((change) => {
-      if (change.type === "added" && change.rowIndex === rowIndex) {
-        return { ...change, row: { [newName]: details } };
-      }
-      return change;
-    })
-  );
-};
+    pgArray[rowIndex] = { [courseName]: details };
+    setpgData({ ...updatedData, PG: pgArray });
 
+    const isAdded = changeList.some(
+      (c) => c.type === "added" && c.course === courseName,
+    );
 
-  // ✅ Edit intake values
-const handleInputChange = (rowIndex, field, value) => {
-  const updatedData = { ...pgData };
-  const pgArray = [...updatedData.PG];
-  const [courseName, details] = Object.entries(pgArray[rowIndex])[0];
-
-  const oldValue = details[field];
-  
-  // Keep it as string but convert safely to number only for calculations
-  details[field] = value;
-
-  // Recalculate total as number
-  const gov = parseInt(details["Government Quota Intakes"] || 0, 10);
-  const mgmt = parseInt(details["Management Quota Intakes"] || 0, 10);
-
-  details["Total Intakes"] = gov + mgmt;
-
-  pgArray[rowIndex] = { [courseName]: details };
-  setpgData({ ...updatedData, PG: pgArray });
-
-  // Log change only if not newly added
-  const isAdded = changeList.some(
-    (c) => c.type === "added" && c.rowIndex === rowIndex
-  );
-  if (!isAdded) {
-    logChange("edited", "PG", { courseName, field, from: oldValue, to: value });
-  }
-};
-
+    if (!isAdded) {
+      logChange("edited", "PG", {
+        courseName,
+        field,
+        from: oldValue,
+        to: value,
+      });
+    }
+  };
 
   const handleCheckboxChange = (rowIndex, checked) => {
-  setSelectedRows((prev) =>
-    checked ? [...prev, rowIndex] : prev.filter((i) => i !== rowIndex)
-  );
+    setSelectedRows((prev) =>
+      checked ? [...prev, rowIndex] : prev.filter((i) => i !== rowIndex),
+    );
 
-  setHasChanges(true); // 🔥 mark changes
-};
-
+    setHasChanges(true); // 🔥 mark changes
+  };
 
   // ✅ Undo change (restores state)
   const handleUndoChange = (idx) => {
@@ -233,11 +397,11 @@ const handleInputChange = (rowIndex, field, value) => {
 
     if (change.type === "added") {
       updatedData.PG = pgArray.filter(
-        (row) => Object.keys(row)[0] !== Object.keys(change.row)[0]
+        (row) => Object.keys(row)[0] !== Object.keys(change.row)[0],
       );
     } else if (change.type === "deleted") {
       updatedData.PG = [...pgArray, change.row];
-    } else if (change.type === "renamed") {
+    } else if (change.type === "Edited") {
       pgArray.forEach((row, i) => {
         if (Object.keys(row)[0] === change.to) {
           const details = Object.values(row)[0];
@@ -250,7 +414,9 @@ const handleInputChange = (rowIndex, field, value) => {
         if (Object.keys(row)[0] === change.courseName) {
           const details = Object.values(row)[0];
           details[change.field] = change.from;
-          details["Total Intakes"] = (details["Government Quota Intakes"] || 0) + (details["Management Quota Intakes"] || 0);
+          details["Total Intakes"] =
+            (details["Government Quota Intakes"] || 0) +
+            (details["Management Quota Intakes"] || 0);
         }
       });
       updatedData.PG = pgArray;
@@ -260,30 +426,48 @@ const handleInputChange = (rowIndex, field, value) => {
     setChangeList((prev) => prev.filter((_, i) => i !== idx));
     toast.info("Change undone");
   };
+  const handleFinalRequestConfirm = async () => {
+    if (changeList.length === 0) {
+      toast.warn("No changes to submit");
+      return;
+    }
 
-  // ✅ Final request
-  const handleFinalRequest = async () => {
+    const payload = changeList
+      .map((change) =>
+        buildPgAdmissionPayloadConfirm({
+          change,
+          pendingData: pgData,
+          committedData: originalData,
+        }),
+      )
+      .filter(Boolean);
+
+    console.log("📦 FINAL PAYLOAD:", payload);
+
     try {
-      await axios.post("/api/admin/request-changes", {
-        changes: changeList,
-        data: pgData,
-      });
-      toast.success("Request submitted for approval!");
+      // 🔥 Send as array (preferred)
+      await sendRequest(payload);
+
+      toast.success("PG Admission request submitted successfully!");
+
+      // reset states
+      setOriginalData(JSON.parse(JSON.stringify(pgData)));
       setChangeList([]);
+      setSavedOnce(false);
       setShowPopup(false);
-      setSavedOnce(false); // reset after request
-    } catch (err) {
-      toast.error("Failed to submit request!");
+    } catch (error) {
+      toast.error("Failed to submit request");
     }
   };
-const handleCancel = () => {
-    setpgData(originalData);     // restore the original fetched data
-    setChangeList([]);           // clear change logs
-    setSelectedRows([]);         // clear any selected checkboxes
-    setpgEdit(false);            // exit edit mode
-    setSavedOnce(false);         // reset save flag
+
+  const handleCancel = () => {
+    setpgData(originalData); // restore the original fetched data
+    setChangeList([]); // clear change logs
+    setSelectedRows([]); // clear any selected checkboxes
+    setpgEdit(false); // exit edit mode
+    setSavedOnce(false); // reset save flag
     toast.info("All changes discarded.");
-};
+  };
 
   // ✅ Online/offline detection
   useEffect(() => {
@@ -329,7 +513,7 @@ const handleCancel = () => {
       </div>
     );
   }
-console.log("new",pg.year);
+  console.log("new", pg.year);
 
   return (
     <>
@@ -394,16 +578,16 @@ console.log("new",pg.year);
                 Consortium of Self –Financing Professional, Arts and Science
                 Colleges in Tamil Nadu
               </p>
-             {!pgedit && (
-                  <div className="flex justify-end">
-                    <button
-                      className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mt-4 mr-10"
-                      onClick={() => setpgEdit(true)}
-                    >
-                      <Pencil size={16} /> Edit
-                    </button>
-                  </div>
-                )}
+              {!pgedit && (
+                <div className="flex justify-end">
+                  <button
+                    className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mt-4 mr-10"
+                    onClick={() => setpgEdit(true)}
+                  >
+                    <Pencil size={16} /> Edit
+                  </button>
+                </div>
+              )}
             </div>
             <div className="me-container">
               <center>
@@ -411,22 +595,24 @@ console.log("new",pg.year);
                   {pgedit ? (
                     <>
                       {"M.E - Total Intake "}
-                     <input
+                      <input
                         type="text"
                         className="admin-mbain w-20 inline-block text-center"
                         value={pgData.year || ""}
+                        /* UI updates while typing */
                         onChange={(e) => {
-                          const oldYear = pgData.year || "";
+                          setpgData({ ...pgData, year: e.target.value });
+                        }}
+                        /* 🔥 LOG ONLY ON FINISH (ONE TIME) */
+                        onBlur={(e) => {
                           const newYear = e.target.value;
 
-                          setpgData({ ...pgData, year: newYear });
-
-                          // log the year change
-                          logChange("edited", "year", {
-                            
-                            changes: "year",
-                            to: newYear,
-                          });
+                          if (newYear !== originalData.year) {
+                            logChange("YearEdited", "year", {
+                              from: originalData.year,
+                              to: newYear,
+                            });
+                          }
                         }}
                       />
                     </>
@@ -435,7 +621,6 @@ console.log("new",pg.year);
                   )}
                 </h4>
               </center>
-              
 
               <table className="intake-table">
                 <thead>
@@ -457,10 +642,21 @@ console.log("new",pg.year);
                             <input
                               type="text"
                               value={courseName}
-                              className="admin-nlugin"
-                              onChange={(e) =>
+                              className="admin-mein"
+                              onBlur={(e) =>
                                 handleCourseNameChange(rowIndex, e.target.value)
                               }
+                              onChange={(e) => {
+                                const dataCopy = { ...pgData };
+                                const pgArray = [...dataCopy.PG];
+                                const [, details] = Object.entries(
+                                  pgArray[rowIndex],
+                                )[0];
+                                pgArray[rowIndex] = {
+                                  [e.target.value]: details,
+                                };
+                                setpgData({ ...dataCopy, PG: pgArray });
+                              }}
                             />
                           ) : (
                             courseName
@@ -477,7 +673,7 @@ console.log("new",pg.year);
                                 handleInputChange(
                                   rowIndex,
                                   "Government Quota Intakes",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                               className="admin-ugin"
@@ -497,7 +693,7 @@ console.log("new",pg.year);
                                 handleInputChange(
                                   rowIndex,
                                   "Management Quota Intakes",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                               className="admin-ugin"
@@ -507,47 +703,52 @@ console.log("new",pg.year);
                           )}
                         </td>
                         <td>{courseDetails["Total Intakes"]}</td>
-                     {pgedit && (
-                      <td className="text-center">
-                        <input
-                          type="checkbox"
-                          checked={selectedRows?.includes(rowIndex)}
-                          onChange={(e) => {
-                            if (e.target.checked) {
-                              setSelectedRows((prev) => [...prev, rowIndex]);
-                            } else {
-                              setSelectedRows((prev) => prev.filter((i) => i !== rowIndex));
-                            }
-                          }}
-                        />
-                      </td>
-                     )}
+                        {pgedit && (
+                          <td className="text-center">
+                            <input
+                              type="checkbox"
+                              checked={selectedRows?.includes(rowIndex)}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  setSelectedRows((prev) => [
+                                    ...prev,
+                                    rowIndex,
+                                  ]);
+                                } else {
+                                  setSelectedRows((prev) =>
+                                    prev.filter((i) => i !== rowIndex),
+                                  );
+                                }
+                              }}
+                            />
+                          </td>
+                        )}
                       </tr>
                     );
                   })}
-                    {pgedit && (
-                        <tr>
-                          <td colSpan={5}>
-                            <div className="flex justify-center items-center gap-2">
-                              <button
-                                onClick={handleAddNewRow}
-                                className="flex items-center gap-1 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-                              >
-                                <Plus size={16} /> Add
-                              </button>
+                  {pgedit && (
+                    <tr>
+                      <td colSpan={5}>
+                        <div className="flex justify-center items-center gap-2">
+                          <button
+                            onClick={handleAddNewRow}
+                            className="flex items-center gap-1 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                          >
+                            <Plus size={16} /> Add
+                          </button>
 
-                              {selectedRows.length > 0 && (
-                                <button
-                                  onClick={() => setShowDeleteModal(true)} 
-                                  className="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                                >
-                                  <Trash2 size={16} /> Delete 
-                                </button>
-                              )}
-                            </div>
-                          </td>
-                        </tr>
-                      )}
+                          {selectedRows.length > 0 && (
+                            <button
+                              onClick={() => setShowDeleteModal(true)}
+                              className="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                            >
+                              <Trash2 size={16} /> Delete
+                            </button>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -557,13 +758,15 @@ console.log("new",pg.year);
           {pgedit && (
             <div className="flex gap-2 mt-4 justify-end mr-12">
               <button
-                  onClick={handleCancel}
+                onClick={handleCancel}
                 className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
               >
                 Cancel
               </button>
               <button
-               onClick={() => { handleSaveClick(); }}
+                onClick={() => {
+                  handleSaveClick();
+                }}
                 className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-black rounded-lg shadow-md hover:bg-yellow-500 transition "
               >
                 Save
@@ -573,18 +776,20 @@ console.log("new",pg.year);
 
           {/* ✅ Request Changes button only after Save */}
           {!pgedit && savedOnce && (
-           <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
+            <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
               <button
                 className="px-4 py-2 bg-gray-500 text-white rounded"
-         onClick={() => handleDiscardChanges()}
+                onClick={() => handleDiscardChanges()}
               >
                 Discard Changes
               </button>
               <button
                 className="px-4 py-2 bg-[#FDCC03] text-white rounded flex items-center gap-2"
-                onClick={() => {setShowPopup(true);}}
+                onClick={() => {
+                  setShowPopup(true);
+                }}
               >
-                <Send size={16} /> Request 
+                <Send size={16} /> Request
               </button>
             </div>
           )}
@@ -592,7 +797,7 @@ console.log("new",pg.year);
           <ToastContainer position="bottom-right" autoClose={3000} />
         </div>
       )}
-       {showDeleteModal && (
+      {showDeleteModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
           <div className="bg-white p-6 rounded shadow-lg w-[350px]">
             <h2 className="font-semibold mb-4">Confirm Delete</h2>
@@ -606,7 +811,7 @@ console.log("new",pg.year);
               </button>
               <button
                 className="px-4 py-2 bg-red-600 text-white rounded"
-                onClick={handleDeleteSelected }
+                onClick={handleDeleteSelected}
               >
                 Delete
               </button>
@@ -618,9 +823,7 @@ console.log("new",pg.year);
       {showPopup && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-lg font-semibold mb-4">
-              Final Request 
-            </h2>
+            <h2 className="text-lg font-semibold mb-4">Final Request</h2>
             <p className="text-red-600 mb-4">
               <span className="font-medium">Note:</span> Your changes will stay
               pending until approved by the superior admin. Once approved, they
@@ -646,32 +849,38 @@ console.log("new",pg.year);
                 ) : (
                   changeList.map((req, idx) => (
                     <tr key={idx} className=" p-2 border-b">
-                      <td className="p-2 capitalize  border">{req.type}</td>                    
+                      <td className="p-2 capitalize  border">{req.type}</td>
                       <td className="border ">M.E</td>
                       <td className="p-2 border ">
                         {req.type === "edited" ? (
                           <>
                             <b>{req.courseName} </b>
                           </>
-                        ) : req.type === "renamed" ? (
-                            <> <b>{req.from}</b> </>
+                        ) : req.type === "Edited" ? (
+                          <>
+                            {" "}
+                            <b>{req.from}</b>{" "}
+                          </>
                         ) : req.type === "added" ? (
                           <>
                             <b>{Object.keys(req.row)[0]}</b>
                           </>
                         ) : req.type === "deleted" ? (
                           <>
-                             <b>{Object.keys(req.row)[0]}</b>
+                            <b>{Object.keys(req.row)[0]}</b>
                           </>
                         ) : null}
                       </td>
-                      
+
                       <td className="p-2 border">
                         <button
                           className=" border flex items-center gap-1"
                           onClick={() => handleUndoChange(idx)}
                         >
-                          <X size={16} className="text-red-500 hover:text-red-700" />
+                          <X
+                            size={16}
+                            className="text-red-500 hover:text-red-700"
+                          />
                         </button>
                       </td>
                     </tr>
@@ -688,10 +897,13 @@ console.log("new",pg.year);
                 Cancel
               </button>
               <button
-                className="px-4 py-2 bg-blue-600 text-white rounded-md flex items-center"
-                onClick={handleFinalRequest}
+                className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
+                  loading ? "cursor-progress" : "hover:bg-[#800000]"
+                }`}
+                onClick={handleFinalRequestConfirm}
+                disabled={loading}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>

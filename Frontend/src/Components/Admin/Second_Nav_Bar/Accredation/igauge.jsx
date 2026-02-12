@@ -5,6 +5,7 @@ import "./admin_igauge.css";
 import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function IQGauge({ data }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -13,13 +14,16 @@ export default function IQGauge({ data }) {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [changes, setChanges] = useState([]);
-
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
   const UrlParser = (path) => {
     if (typeof path === "string") {
       return path.startsWith("http") ? path : `${BASE_URL}${path}`;
     }
     return "";
   };
+
+  console.log(loadings);
+  
 
   const oldpath = Array.isArray(data) && data[0]?.pdf_path?.split("/");
 
@@ -39,17 +43,50 @@ export default function IQGauge({ data }) {
     setChanges((prev) => [...prev, change]);
   };
 
-  const handleRequestConfirm = () => {
-    if (changes.length === 0) {
-      toast.info("No changes to submit");
-      return;
-    }
+  const handleRequestConfirm = async () => {
+  if (!uploadedFile) {
+    toast.info("No file selected");
+    return;
+  }
+
+  const oldPdfPath = Array.isArray(data) ? data[0]?.pdf_path : null;
+  const newPdfPath = `/static/pdfs/qs+rating/${uploadedFile.file.name}`;
+
+  const payload = [
+    {
+      collectionName: "accreditations_and_ranking",
+      collection_type: "qs_rating",
+      action: oldPdfPath ? "update" : "insert",
+      title: oldPdfPath
+        ? "Update QS I-GAUGE Certificate"
+        : "Insert QS I-GAUGE Certificate",
+      meta_data: {
+        pdf_path: [newPdfPath],
+      },
+      ...(oldPdfPath && {
+        original_data: {
+          pdf_path: [oldPdfPath],
+        },
+      }),
+    },
+  ];
+
+  // ✅ SEND FILE AS ARRAY
+  const files = [uploadedFile.file];
+
+  const result = await sendRequest(payload, files);
+ console.log("appu",files);
+ 
+  if (result) {
     toast.success("Request submitted successfully!");
     setShowRequestModal(false);
     setIsEditing(false);
     setChanges([]);
     setUploadedFile(null);
-  };
+  }
+};
+
+
 
   const handleRevertChange = (change) => {
     setChanges((prev) => prev.filter((c) => c.id !== change.id));
@@ -60,22 +97,7 @@ export default function IQGauge({ data }) {
 
   const getChanges = () => changes;
 
-  const describeChange = (change) => {
-    return (
-      <div className="flex flex-col items-center">
-        <span className="text-xs">{change.oldValue}</span>
-        <ArrowDown size={14} />
-        <a
-          href={change.fileURL}
-          className="cursor-pointer text-blue-600 text-xs"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {change.newValue}
-        </a>
-      </div>
-    );
-  };
+
 
   if (!data || !Array.isArray(data)) {
     return (
@@ -159,88 +181,110 @@ export default function IQGauge({ data }) {
 
       <ToastContainer position="bottom-right" autoClose={3000} />
 
-      {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[650px] max-w-[95vw]">
-            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-              Request
-            </h2>
-            <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
-            </p>
+ {showRequestModal && (
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+    <div className="bg-white dark:bg-drkp p-6 rounded-2xl w-[700px] max-w-[95vw] shadow-2xl">
+      {/* Header */}
+      <h2 className="text-xl font-bold mb-2 text-text dark:text-drkt">
+        Request
+      </h2>
 
-            <div className="max-h-[320px] overflow-y-auto mb-4">
-              <table className="w-full text-center text-text dark:text-drkt border">
-                <thead>
-                  <tr className="bg-gray-200 dark:bg-drka">
-                    <th className="py-2">Action</th>
-                    <th className="py-2">Section</th>
-                    <th className="py-2 text-center">Changes</th>
-                    <th className="py-2">Undo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {getChanges().map((change) => (
-                    <tr key={change.id} className="border-t">
-                      <td
-                        className={`py-2 ${
-                          change.action === "Added"
-                            ? "text-green-600"
-                            : change.action === "Deleted"
-                            ? "text-red-600"
-                            : "text-blue-600"
-                        }`}
-                      >
-                        {change.action}
-                      </td>
+      <p className="text-sm text-red-500 mb-4">
+        Note: Your changes will stay pending until approved by the superior admin.
+        Once approved they will go live.
+      </p>
 
-                      <td className="py-2">{change.section}</td>
+      {/* Table */}
+      <div className="max-h-[320px] overflow-y-auto border rounded-lg">
+        <table className="w-full text-sm text-center text-text dark:text-drkt">
+          <thead className="sticky top-0 bg-gray-100 dark:bg-drka z-10">
+            <tr>
+              <th className="py-2 border">Action</th>
+              <th className="py-2 border">Section</th>
+              <th className="py-2 border">Changes</th>
+              <th className="py-2 border w-[80px]">Undo</th>
+            </tr>
+          </thead>
 
-                      <td className="py-2 text-[13px]">
-                        <div className="flex items-center justify-center gap-2">
-                          <span>{describeChange(change)}</span>
-                        </div>
-                      </td>
-
-                      <td className="py-2">
-                        <button
-                          onClick={() => handleRevertChange(change)}
-                          className="text-red-500 hover:text-red-700 font-bold"
-                          title="Revert this change"
-                        >
-                          <X size={16} />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                  {getChanges().length === 0 && (
-                    <tr>
-                      <td colSpan={4} className="py-6 text-sm text-gray-500">
-                        No pending changes
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="flex justify-end gap-2">
-              <button
-                onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+          <tbody>
+            {getChanges().map((change) => (
+              <tr
+                key={change.id}
+                className="border-t hover:bg-gray-50 dark:hover:bg-gray-700 transition"
               >
-                Cancel
-              </button>
-              <button
-                onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
-              >
-                Final Request
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+                {/* Action */}
+                <td className="py-2">
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs font-semibold
+                      ${
+                        change.action === "Added"
+                          ? "bg-green-100 text-green-700"
+                          : change.action === "Deleted"
+                          ? "bg-red-100 text-red-700"
+                          : " text-blue-700"
+                      }`}
+                  >
+                    {change.action}
+                  </span>
+                </td>
+
+                {/* Section */}
+                <td className="py-2 border font-medium">
+                  QS Rating
+                </td>
+
+                {/* Change Description */}
+                <td className="py-2 border text-[13px]">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md ">
+                    PDF Replaced
+                  </span>
+                </td>
+
+                {/* Undo */}
+                <td className="py-2 border">
+                  <button
+                    onClick={() => handleRevertChange(change)}
+                    className="inline-flex items-center justify-center p-1 rounded hover:bg-red-100 text-red-500 hover:text-red-700 transition"
+                    title="Undo change"
+                  >
+                    <X size={16} />
+                  </button>
+                </td>
+              </tr>
+            ))}
+
+            {getChanges().length === 0 && (
+              <tr>
+                <td colSpan={4} className="py-6 text-sm text-gray-500">
+                  No pending changes
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Footer */}
+      <div className="flex justify-end gap-3 mt-5">
+        <button
+          onClick={() => setShowRequestModal(false)}
+          className="px-4 py-2 rounded-md bg-gray-400 hover:bg-gray-500 text-white transition"
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={handleRequestConfirm}
+          disabled={loadings}
+          className="px-5 py-2 rounded-md bg-[#fdcc03] hover:bg-[#800000] text-text hover:text-prim font-medium transition disabled:opacity-60"
+        >
+          {loadings ? "Submitting..." : "Final Request"}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
