@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
-
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const UrlParser = (path) => {
@@ -22,29 +22,48 @@ const LIBFacl = ({ faculty }) => {
   const [showRequestBtn, setShowRequestBtn] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
-
+  const { sendRequest, loading, error } = useAdminRequest();
   const [selectedForDelete, setSelectedForDelete] = useState([]);
   const [showBulkDeleteConfirm, setShowBulkDeleteConfirm] = useState(false);
 
   useEffect(() => {
     if (Array.isArray(faculty)) {
-      setFacultyList(faculty);
-      setOriginalList(faculty);
+      const normalized = faculty.map((f, index) => ({
+        ...f,
+        _uid: f._id || f.id || `srv_${index}`,
+        image: f.image_path,
+      }));
+
+      setFacultyList(normalized);
+      setOriginalList(JSON.parse(JSON.stringify(normalized)));
     }
   }, [faculty]);
 
   const handleChange = (index, field, value) => {
     setTempList((prev) =>
-      prev.map((f, i) => (i === index ? { ...f, [field]: value } : f))
+      prev.map((f, i) => (i === index ? { ...f, [field]: value } : f)),
     );
     setHasChanges(true);
   };
 
   const handleImageChange = (index, file) => {
-    const imageURL = URL.createObjectURL(file);
+    if (!file) return;
+
+    const imagePath = `/static/images/library/faculty/${file.name}`;
+
     setTempList((prev) =>
-      prev.map((f, i) => (i === index ? { ...f, image: imageURL } : f))
+      prev.map((f, i) =>
+        i === index
+          ? {
+              ...f,
+              image: URL.createObjectURL(file), // preview
+              image_path: imagePath, // backend path
+              imageFile: file, // 🔥 REQUIRED
+            }
+          : f,
+      ),
     );
+
     setHasChanges(true);
   };
 
@@ -53,21 +72,83 @@ const LIBFacl = ({ faculty }) => {
     setIsEditing(true);
     setHasChanges(false);
   };
-
   const handleSave = () => {
     for (let f of tempList) {
-      if (!f.name || !f.educational_qualification || !f.designation || !f.image) {
-        return; // no toast, just prevent saving
+      if (
+        !f.name?.trim() ||
+        !f.educational_qualification?.trim() ||
+        !f.designation?.trim() ||
+        (!f.image && !f.image_path && !f.imageFile)
+      ) {
+        toast.error("Please enter all fields");
+        return;
       }
     }
-    setFacultyList(tempList);
+
+    setFacultyList([...tempList]);
     setIsEditing(false);
     setShowRequestBtn(true);
     setHasChanges(false);
     setSelectedForDelete([]);
   };
+  const buildFacultyPayload = ({ action, newData, oldData }) => {
+    if (action === "Added") {
+      return {
+        collectionName: "library",
+        collection_type: "Faculty_Staff",
+        action: "insert",
+        title: "Add faculty info",
+        meta_data: {
+          name: newData.name,
+          designation: newData.designation,
+          educational_qualification: newData.educational_qualification,
+          image_path: newData.image_path || "",
+        },
+      };
+    }
+
+    if (action === "Edited") {
+      return {
+        collectionName: "library",
+        collection_type: "Faculty_Staff",
+        action: "update",
+        title: "Update faculty info",
+
+        // ✅ ONLY NEW DATA
+        meta_data: {
+          name: newData.name,
+          designation: newData.designation,
+          educational_qualification: newData.educational_qualification,
+          image_path: newData.image_path || "",
+        },
+
+        // ✅ REAL ORIGINAL DATA
+        original_data: {
+          name: oldData.name,
+          designation: oldData.designation,
+          educational_qualification: oldData.educational_qualification,
+          image_path: oldData.image_path || "",
+        },
+      };
+    }
+
+    if (action === "Deleted") {
+      return {
+        collectionName: "library",
+        collection_type: "Faculty_Staff",
+        action: "delete",
+        title: "Delete faculty info",
+        meta_data: {
+          name: newData.name,
+        },
+      };
+    }
+
+    return null;
+  };
 
   const handleCancel = () => {
+    setTempList(JSON.parse(JSON.stringify(facultyList)));
     setIsEditing(false);
     setHasChanges(false);
     setSelectedForDelete([]);
@@ -75,20 +156,51 @@ const LIBFacl = ({ faculty }) => {
 
   const handleAddNewBox = () => {
     const newBox = {
+      _uid: `new_${Date.now()}`, // ✅ TEMP ID
       name: "",
       educational_qualification: "",
       designation: "",
       image: "",
+      image_path: "",
     };
+
     setTempList((prev) => [...prev, newBox]);
     setHasChanges(true);
   };
 
-  const handleRequestConfirm = () => {
+  const handleRequestConfirm = async () => {
+    const changes = getChanges();
+
+    if (!changes.length) {
+      toast.warn("No changes to submit");
+      return;
+    }
+
+    // 1️⃣ BUILD PAYLOAD FIRST
+    const payload = changes
+      .map((change) =>
+        buildFacultyPayload({
+          action: change.action,
+          newData: change.data,
+          oldData: change.oldData,
+        }),
+      )
+      .filter(Boolean);
+
+    // 2️⃣ COLLECT IMAGE FILES AFTER PAYLOAD
+    const files = changes
+      .map((change) => change.data?.imageFile)
+      .filter(Boolean);
+
+    console.log("PAYLOAD:", payload);
+    console.log("FILES:", files);
+
+    // 3️⃣ SEND TO BACKEND
+    await sendRequest(payload, files);
+
     toast.success("Request submitted successfully!");
-    setShowRequestBtn(false);
     setShowRequestModal(false);
-    setOriginalList(facultyList);
+    setShowRequestBtn(false);
   };
 
   const handleDiscardChanges = () => {
@@ -99,22 +211,25 @@ const LIBFacl = ({ faculty }) => {
   const getChanges = () => {
     const changes = [];
 
+    // 🟢 ADDED
     facultyList.forEach((f) => {
-      if (!originalList.find((o) => o.name === f.name)) {
+      if (!originalList.find((o) => o._uid === f._uid)) {
         changes.push({ action: "Added", data: f });
       }
     });
 
+    // 🔴 DELETED
     originalList.forEach((o) => {
-      if (!facultyList.find((f) => f.name === o.name)) {
+      if (!facultyList.find((f) => f._uid === o._uid)) {
         changes.push({ action: "Deleted", data: o });
       }
     });
 
+    // 🔵 EDITED
     facultyList.forEach((f) => {
-      const old = originalList.find((o) => o.name === f.name);
+      const old = originalList.find((o) => o._uid === f._uid);
       if (old && JSON.stringify(f) !== JSON.stringify(old)) {
-        changes.push({ action: "Edited", data: f });
+        changes.push({ action: "Edited", data: f, oldData: old });
       }
     });
 
@@ -137,7 +252,7 @@ const LIBFacl = ({ faculty }) => {
       const original = originalList.find((o) => o.name === change.data.name);
       if (original) {
         setFacultyList((prev) =>
-          prev.map((f) => (f.name === change.data.name ? original : f))
+          prev.map((f) => (f.name === change.data.name ? original : f)),
         );
       }
     }
@@ -188,7 +303,7 @@ const LIBFacl = ({ faculty }) => {
                         setSelectedForDelete((prev) => [...prev, fac]);
                       } else {
                         setSelectedForDelete((prev) =>
-                          prev.filter((f) => f !== fac)
+                          prev.filter((f) => f !== fac),
                         );
                       }
                     }}
@@ -197,7 +312,7 @@ const LIBFacl = ({ faculty }) => {
 
                 <div className="flex flex-col items-center">
                   <img
-                    src={UrlParser(fac?.image)}
+                    src={UrlParser(fac.image || fac.image_path)}
                     alt={fac.name}
                     className="w-[55%] mt-4 h-44 m-auto object-cover filter brightness-90 rounded-xl"
                   />
@@ -215,9 +330,11 @@ const LIBFacl = ({ faculty }) => {
                       <label
                         htmlFor={`file-upload-${index}`}
                         className="px-6 py-2 text-text rounded-md shadow-md cursor-pointer 
-                        bg-[#fdcc03] transition  hover:bg-[#800000] hover:text-prim"
+                        bg-[#fdcc03] transition hover:bg-[#800000] hover:text-prim"
                       >
-                        Upload Image
+                        {fac.image_path || fac.image
+                          ? "Replace Image"
+                          : "Upload Image"}
                       </label>
                     </div>
                   )}
@@ -245,7 +362,7 @@ const LIBFacl = ({ faculty }) => {
                         handleChange(
                           index,
                           "educational_qualification",
-                          e.target.value
+                          e.target.value,
                         )
                       }
                       className="mt-2 text-center border-b border-gray-400 focus:outline-none bg-transparent"
@@ -313,10 +430,9 @@ const LIBFacl = ({ faculty }) => {
                   className="flex items-center gap-2 px-6 py-2 rounded-md bg-[#fdcc03] text-text shadow-md hover:bg-[#800000] transition hover:text-prim"
                   onClick={handleSave}
                 >
-                 Save
+                  Save
                 </button>
               )}
-              
             </div>
           )}
 
@@ -357,16 +473,14 @@ const LIBFacl = ({ faculty }) => {
             </h3>
             <p className="mb-6">
               Are you sure you want to delete{" "}
-              <span className="font-semibold">
-                {selectedForDelete.length}
-              </span>{" "}
+              <span className="font-semibold">{selectedForDelete.length}</span>{" "}
               selected faculty member(s)?
             </p>
             <div className="flex justify-center space-x-4">
               <button
                 onClick={() => {
                   setTempList((prev) =>
-                    prev.filter((f) => !selectedForDelete.includes(f))
+                    prev.filter((f) => !selectedForDelete.includes(f)),
                   );
                   setSelectedForDelete([]);
                   setShowBulkDeleteConfirm(false);
@@ -388,84 +502,84 @@ const LIBFacl = ({ faculty }) => {
       )}
 
       {/* Final Request Modal */}
-{showRequestModal && (
-  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-    <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
-      <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-        Request
-      </h2>
-      <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin.
-        Once approved will go live.
-      </p>
+      {showRequestModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
+            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
+              Request
+            </h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the
+              superior admin. Once approved will go live.
+            </p>
 
-      <div className="max-h-[250px] overflow-y-auto mb-4">
-        <table className="w-full text-center text-text dark:text-drkt border">
-          <thead>
-            <tr className="bg-gray-200 dark:bg-drka">
-              <th className="py-1">Action</th>
-              <th className="py-1">Section</th>
-              <th className="py-1 text-center">Changes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {getChanges().map((change, idx) => (
-              <tr key={idx} className="border-t">
-                {/* Action */}
-                <td
-                  className={`py-1 ${
-                    change.action === "Added"
-                      ? "text-green-600"
-                      : change.action === "Deleted"
-                      ? "text-red-600"
-                      : "text-blue-600"
-                  }`}
-                >
-                  {change.action}
-                </td>
+            <div className="max-h-[250px] overflow-y-auto mb-4">
+              <table className="w-full text-center text-text dark:text-drkt border">
+                <thead>
+                  <tr className="bg-gray-200 dark:bg-drka">
+                    <th className="py-1">Action</th>
+                    <th className="py-1">Section</th>
+                    <th className="py-1 text-center">Changes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {getChanges().map((change, idx) => (
+                    <tr key={idx} className="border-t">
+                      {/* Action */}
+                      <td
+                        className={`py-1 ${
+                          change.action === "Added"
+                            ? "text-green-600"
+                            : change.action === "Deleted"
+                              ? "text-red-600"
+                              : "text-blue-600"
+                        }`}
+                      >
+                        {change.action}
+                      </td>
 
-                {/* Section */}
-                <td className="py-1">
-                  {change.section || "Library Faculty"}
-                </td>
+                      {/* Section */}
+                      <td className="py-1">
+                        {change.section || "Library Faculty"}
+                      </td>
 
-                {/* Faculty Name + X button */}
-                <td className="py-1 text-[12px]">
-                  <div className="flex items-center justify-center gap-2">
-                    <span>{change.data?.name || "Unnamed Faculty"}</span>
-                    <button
-                      onClick={() => handleRevertChange(change)}
-                      className="text-red-500 hover:text-red-700 font-bold"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                      {/* Faculty Name + X button */}
+                      <td className="py-1 text-[12px]">
+                        <div className="flex items-center justify-center gap-2">
+                          <span>{change.data?.name || "Unnamed Faculty"}</span>
+                          <button
+                            onClick={() => handleRevertChange(change)}
+                            className="text-red-500 hover:text-red-700 font-bold"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-      {/* Footer */}
-      <div className="flex justify-end gap-2">
-        <button
-          onClick={() => setShowRequestModal(false)}
-          className="px-4 py-2 rounded bg-gray-400 text-white"
-        >
-          Cancel
-        </button>
-        <button
-          onClick={handleRequestConfirm}
-          className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
-        >
-          Final Request
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
+            {/* Footer */}
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowRequestModal(false)}
+                className="px-4 py-2 rounded bg-gray-400 text-white"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleRequestConfirm}
+                disabled={loading}
+                className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
+              >
+                {loading ? "Submitting..." : "Final Request"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

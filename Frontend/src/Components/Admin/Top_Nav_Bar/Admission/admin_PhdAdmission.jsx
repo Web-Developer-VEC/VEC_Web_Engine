@@ -7,8 +7,7 @@ import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const AdminPhdAdmission = ({theme, toggle}) => {
-
+const AdminPhdAdmission = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
@@ -19,31 +18,35 @@ const AdminPhdAdmission = ({theme, toggle}) => {
     window.addEventListener("offline", handleOffline);
 
     return () => {
-        window.removeEventListener("online", handleOnline);
-        window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
     };
-}, []);
+  }, []);
 
-if (!isOnline) {
+  if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
         <LoadComp txt={"You are offline"} />
       </div>
     );
-}
+  }
 
   return (
     <>
-      <Banner toggle={toggle} theme={theme}
+      <Banner
+        toggle={toggle}
+        theme={theme}
         backgroundImage="./Banners/admissionbanner.webp"
         headerText="Phd admission"
         subHeaderText="Empowering the next generation of leaders through access to world-class education and opportunities."
       />
       <div class="phd">
         <div className="contain">
-          <div className="p-4 left1 border-l-4 border-[#fdcc03] dark:border-drks rounded-xl
+          <div
+            className="p-4 left1 border-l-4 border-[#fdcc03] dark:border-drks rounded-xl
             bg-[color-mix(in_srgb,theme(colors.secd)_10%,white)]
-            dark:bg-drkb">
+            dark:bg-drkb"
+          >
             <h1 className="phd-h1 text-brwn dark:text-drkt">
               In Velammal Engineering College the following departments are
               recognized research centers of Anna University, Chennai
@@ -74,21 +77,21 @@ if (!isOnline) {
                 Physics
               </p>
               <p>
-            <span className="ml-[8px]">
+                <span className="ml-[8px]">
                   (Visit{" "}
-                  <a href="https://cfr.annauniv.edu/research/academics/index.php" target="_blank" className="dark:text-drka">
-                  https://cfr.annauniv.edu/research/academics/index.php
+                  <a
+                    href="https://cfr.annauniv.edu/research/academics/index.php"
+                    target="_blank"
+                    className="dark:text-drka"
+                  >
+                    https://cfr.annauniv.edu/research/academics/index.php
                   </a>
                   )
                 </span>
-                </p>
+              </p>
             </span>
-          
           </div>
-
-         
         </div>
-       
       </div>
     </>
   );
