@@ -135,60 +135,60 @@ async function insertData(tempDoc, mainCollection) {
 
     // Gallery insertion
     // Gallery insertion
-if (collection_type === "gallery") {
-  const categories = Array.isArray(meta_data) ? meta_data : [meta_data];
+    if (collection_type === "gallery") {
+      const categories = Array.isArray(meta_data) ? meta_data : [meta_data];
 
-  if (doc) {
-    for (const newCategory of categories) {
-      const existingCategory = doc.data.find(
-        (cat) => cat.category === newCategory.category
-      );
-
-      const newImages = Array.isArray(newCategory.image_path)
-        ? newCategory.image_path
-        : [];
-
-      if (existingCategory) {
-        const existingImages = Array.isArray(existingCategory.image_path)
-          ? existingCategory.image_path
-          : [];
-
-        const imagesToInsert = newImages.filter(
-          (img) => !existingImages.includes(img)
-        );
-
-        if (imagesToInsert.length > 0) {
-          await mainCollection.updateOne(
-            { type: collection_type, "data.category": newCategory.category },
-            { $push: { "data.$.image_path": { $each: imagesToInsert } } }
+      if (doc) {
+        for (const newCategory of categories) {
+          const existingCategory = doc.data.find(
+            (cat) => cat.category === newCategory.category
           );
+
+          const newImages = Array.isArray(newCategory.image_path)
+            ? newCategory.image_path
+            : [];
+
+          if (existingCategory) {
+            const existingImages = Array.isArray(existingCategory.image_path)
+              ? existingCategory.image_path
+              : [];
+
+            const imagesToInsert = newImages.filter(
+              (img) => !existingImages.includes(img)
+            );
+
+            if (imagesToInsert.length > 0) {
+              await mainCollection.updateOne(
+                { type: collection_type, "data.category": newCategory.category },
+                { $push: { "data.$.image_path": { $each: imagesToInsert } } }
+              );
+            }
+          } else {
+            await mainCollection.updateOne(
+              { type: collection_type },
+              {
+                $push: {
+                  data: {
+                    category: newCategory.category,
+                    image_path: newImages,
+                  },
+                },
+              }
+            );
+          }
         }
       } else {
-        await mainCollection.updateOne(
-          { type: collection_type },
-          {
-            $push: {
-              data: {
-                category: newCategory.category,
-                image_path: newImages,
-              },
-            },
-          }
-        );
+        await mainCollection.insertOne({
+          type: collection_type,
+          data: categories.map((c) => ({
+            category: c.category,
+            image_path: Array.isArray(c.image_path) ? c.image_path : [],
+          })),
+        });
       }
-    }
-  } else {
-    await mainCollection.insertOne({
-      type: collection_type,
-      data: categories.map((c) => ({
-        category: c.category,
-        image_path: Array.isArray(c.image_path) ? c.image_path : [],
-      })),
-    });
-  }
 
-  return { success: true, message: "Insert successful for Gallery" };
-}
+      return { success: true, message: "Insert successful for Gallery" };
+    }
 
     // Best Practices insertion
     if (collection_type === "best_practices") {
@@ -200,7 +200,7 @@ if (collection_type === "gallery") {
           if (existingYear) {
             await mainCollection.updateOne(
               { type: collection_type, "data.year": entry.year },
-              { $set: { "data.$.path": entry.path } }
+              { $set: { "data.$.pdf_path": entry.pdf_path } }
             );
           } else {
             await mainCollection.updateOne({ type: collection_type }, { $push: { data: entry } });

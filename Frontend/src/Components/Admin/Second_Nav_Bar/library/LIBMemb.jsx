@@ -3,17 +3,22 @@ import { Pencil, Plus, Save, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
-
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
 const LIBMemb = ({ data }) => {
-  const members = data.find((sec) => sec.category === "Member Details")?.content || [];
-  const books = data.find((sec) => sec.category === "no_of_books")?.content || [];
-  const cds = data.find((sec) => sec.category === "periodical_back_volumes_cd")?.content || [];
+  const members =
+    data.find((sec) => sec.category === "Member Details")?.content || [];
+  const books =
+    data.find((sec) => sec.category === "no_of_books")?.content || [];
+  const cds =
+    data.find((sec) => sec.category === "periodical_back_volumes_cd")
+      ?.content || [];
 
   const [rows, setRows] = useState([]);
   const [committedRows, setCommittedRows] = useState([]);
   const [pendingRows, setPendingRows] = useState(null);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -23,14 +28,15 @@ const LIBMemb = ({ data }) => {
 
   useEffect(() => {
     const merged = members.map((m, idx) => ({
+      id: crypto.randomUUID(), // ⭐ IMPORTANT
       member: m || "",
       book: books[idx] || "",
       cd: cds[idx] || "",
       checked: false,
     }));
-    const copy = deepCopy(merged);
-    setCommittedRows(copy);
-    setRows(deepCopy(copy));
+
+    setCommittedRows(deepCopy(merged));
+    setRows(deepCopy(merged));
     setPendingRows(null);
     setIsEditing(false);
     setIsDirty(false);
@@ -57,15 +63,23 @@ const LIBMemb = ({ data }) => {
       value = value.replace(/\D/g, ""); // remove non-digit characters
     }
 
-    const updated = rows.map((r, i) => (i === idx ? { ...r, [field]: value } : r));
+    const updated = rows.map((r, i) =>
+      i === idx ? { ...r, [field]: value } : r,
+    );
     setRows(updated);
     setIsDirty(true);
   };
 
   const handleAddRow = () => {
     setRows((prev) => [
-      ...prev.map((r) => ({ ...r })),
-      { member: "", book: "", cd: "", checked: false },
+      ...prev,
+      {
+        id: crypto.randomUUID(), // ⭐ REQUIRED
+        member: "",
+        book: "",
+        cd: "",
+        checked: false,
+      },
     ]);
     setIsDirty(true);
   };
@@ -75,6 +89,90 @@ const LIBMemb = ({ data }) => {
     setRows(updated);
     setShowDeleteConfirm(false);
     setIsDirty(true);
+  };
+  const buildMembershipPayload = ({ action, newData, oldData }) => {
+    // 🟢 INSERT
+    if (action === "Added") {
+      return {
+        collectionName: "library",
+        collection_type: "membership_details",
+        action: "insert",
+        title: "Insert member types",
+        category: "Member Details",
+        meta_data: {
+          content: newData, // full updated array
+        },
+      };
+    }
+
+    // 🔵 UPDATE
+    if (action === "Edited") {
+      return {
+        collectionName: "library",
+        collection_type: "membership_details",
+        action: "update",
+        title: "Update member types",
+        category: "Member Details",
+        meta_data: {
+          content: newData, // updated list
+        },
+        original_data: {
+          content: oldData, // previous list
+        },
+      };
+    }
+
+    // 🔴 DELETE
+    if (action === "Deleted") {
+      return {
+        collectionName: "library",
+        collection_type: "membership_details",
+        action: "delete",
+        title: "Delete member types",
+        category: "Member Details",
+        meta_data: {},
+      };
+    }
+
+    return null;
+  };
+
+  const getMembershipChanges = (originalRows, currentRows) => {
+    const originalContent = originalRows.map((r) => r.member);
+    const newContent = currentRows.map((r) => r.member);
+
+    // 🟢 INSERT
+    if (originalContent.length === 0 && newContent.length > 0) {
+      return [
+        {
+          action: "Added",
+          newData: newContent,
+        },
+      ];
+    }
+
+    // 🔴 DELETE
+    if (newContent.length === 0 && originalContent.length > 0) {
+      return [
+        {
+          action: "Deleted",
+          oldData: originalContent,
+        },
+      ];
+    }
+
+    // 🔵 UPDATE
+    if (JSON.stringify(originalContent) !== JSON.stringify(newContent)) {
+      return [
+        {
+          action: "Edited",
+          newData: newContent,
+          oldData: originalContent,
+        },
+      ];
+    }
+
+    return [];
   };
 
   const handleCancel = () => {
@@ -115,15 +213,30 @@ const LIBMemb = ({ data }) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingRows) return;
-    // Finalize pending changes
-    setCommittedRows(deepCopy(pendingRows));
-    setRows(deepCopy(pendingRows));
-    setPendingRows(null);
-    setIsSaved(false);
+  const handleFinalRequestConfirm = async () => {
+    const changes = getMembershipChanges(committedRows, pendingRows);
+
+    if (changes.length === 0) {
+      toast.warn("No changes to submit");
+      return;
+    }
+
+    const payload = changes
+      .map((change) =>
+        buildMembershipPayload({
+          action: change.action,
+          newData: change.newData,
+          oldData: change.oldData,
+        }),
+      )
+      .filter(Boolean);
+
+    console.log("📦 FINAL MEMBERSHIP PAYLOAD:", payload);
+
+    await sendRequest(payload);
+
+    toast.success("Request submitted successfully!");
     setShowRequestModal(false);
-    toast.success("Final request submitted!");
   };
 
   const revertChange = (rowIndex) => {
@@ -155,41 +268,63 @@ const LIBMemb = ({ data }) => {
       setShowRequestModal(false);
     }
   };
-
   const getChanges = () => {
     if (!pendingRows) return [];
+
     const changes = [];
-    const maxLen = Math.max(committedRows.length, pendingRows.length);
 
-    for (let i = 0; i < maxLen; i++) {
-      const oldRow = committedRows[i];
-      const newRow = pendingRows[i];
+    const committedMap = new Map(
+      committedRows.map((row, index) => [row.id, { row, index }]),
+    );
 
-      if (oldRow && !newRow) {
+    const pendingMap = new Map(
+      pendingRows.map((row, index) => [row.id, { row, index }]),
+    );
+
+    // 🔴 Deleted
+    committedMap.forEach(({ row, index }, id) => {
+      if (!pendingMap.has(id)) {
         changes.push({
           action: "Deleted",
           section: "Membership Details",
-          changes: `Row ${i + 1}`,
-          rowIndex: i,
+          changes: `Row ${index + 1}`,
+          rowIndex: index,
         });
-      } else if (!oldRow && newRow) {
+      }
+    });
+
+    // 🟢 Added
+    pendingMap.forEach(({ row, index }, id) => {
+      if (!committedMap.has(id)) {
         changes.push({
           action: "Added",
           section: "Membership Details",
-          changes: `Row ${i + 1}`,
-          rowIndex: i,
+          changes: `Row ${index + 1}`,
+          rowIndex: index,
         });
-      } else if (oldRow && newRow) {
-        if (oldRow.member !== newRow.member || oldRow.book !== newRow.book || oldRow.cd !== newRow.cd) {
+      }
+    });
+
+    // 🔵 Edited
+    pendingMap.forEach(({ row: newRow, index }, id) => {
+      if (committedMap.has(id)) {
+        const { row: oldRow } = committedMap.get(id);
+
+        if (
+          oldRow.member !== newRow.member ||
+          oldRow.book !== newRow.book ||
+          oldRow.cd !== newRow.cd
+        ) {
           changes.push({
             action: "Edited",
             section: "Membership Details",
-            changes: `Row ${i + 1}`,
-            rowIndex: i,
+            changes: `Row ${index + 1}`,
+            rowIndex: index,
           });
         }
       }
-    }
+    });
+
     return changes;
   };
 
@@ -360,71 +495,78 @@ const LIBMemb = ({ data }) => {
           )}
 
           {showRequestModal && (
-  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-    <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
-      <h2 className="text-xl font-bold mb-4 text-gray-800">Request</h2>
-      <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
-      </p>
+            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+              <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+                <h2 className="text-xl font-bold mb-4 text-gray-800">
+                  Request
+                </h2>
+                <p className="text-sm text-red-500 mb-4">
+                  Note: Your changes will stay pending until approved by the
+                  superior admin. Once approved will go live.
+                </p>
 
-      {changes.length > 0 ? (
-        <table className="w-full text-center text-sm border">
-          <thead className="bg-gray-200">
-            <tr>
-              <th className="border p-2">Action</th>
-              <th className="border p-2">Section</th>
-              <th className="border p-2">Changes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Render only rows that have changes */}
-            {changes.map((ch, i) => (
-              <tr key={i}>
-                <td className="border p-2 text-blue-600">{ch.action}</td>
-                <td className="border p-2">{ch.section}</td>
-                <td className="border p-2 flex items-center justify-center gap-2">
-                  {ch.changes}
+                {changes.length > 0 ? (
+                  <table className="w-full text-center text-sm border">
+                    <thead className="bg-gray-200">
+                      <tr>
+                        <th className="border p-2">Action</th>
+                        <th className="border p-2">Section</th>
+                        <th className="border p-2">Changes</th>
+                        <th className="border p-2">Undo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {changes.map((ch, i) => (
+                        <tr key={i}>
+                          <td className="border p-2 font-semibold text-blue-600">
+                            {ch.action}
+                          </td>
+                          <td className="border p-2">{ch.section}</td>
+                          <td className="border p-2">{ch.changes}</td>
+                          <td className="border p-2">
+                            <button
+                              onClick={() => revertChange(ch.rowIndex)}
+                              className="p-1 rounded hover:bg-gray-100"
+                              title="Undo change"
+                            >
+                              <X size={16} className="text-red-500" />
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                ) : (
+                  <p className="text-gray-600">No changes detected.</p>
+                )}
+
+                <div className="flex justify-end gap-2 mt-6">
                   <button
-                    onClick={() => revertChange(ch.rowIndex)}
-                    className="ml-2 p-1 rounded hover:bg-gray-100"
-                    title="Revert this change"
+                    onClick={() => setShowRequestModal(false)}
+                    className="px-4 py-2 rounded bg-gray-400 text-white"
                   >
-                    <X size={16} className="text-red-500" />
+                    Cancel
                   </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p className="text-gray-600">No changes detected.</p>
-      )}
-
-      <div className="flex justify-end gap-2 mt-6">
-        <button
-          onClick={() => setShowRequestModal(false)}
-          className="px-4 py-2 rounded bg-gray-400 text-white"
-        >
-          Cancel
-        </button>
-        {changes.length > 0 && (
-          <button
-            onClick={handleFinalRequestConfirm}
-            className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000]"
-          >
-            Final Request
-          </button>
-        )}
-      </div>
-    </div>
-  </div>
-)}
-
+                  {changes.length > 0 && (
+                    <button
+                      onClick={handleFinalRequestConfirm}
+                      disabled={loading}
+                      className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000]"
+                    >
+                      {loading ? "Submitting..." : "Final Request"}
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Delete Confirmation */}
           {showDeleteConfirm && (
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                            bg-white p-6 rounded-lg shadow-lg border z-50 w-[90%] max-w-md">
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                            bg-white p-6 rounded-lg shadow-lg border z-50 w-[90%] max-w-md"
+            >
               <h3 className="text-lg font-semibold mb-4 text-gray-800">
                 Confirm Delete
               </h3>
