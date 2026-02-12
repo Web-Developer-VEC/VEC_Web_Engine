@@ -5,8 +5,10 @@ import { Pencil, Trash2, Plus, Save, Send, X, PlusCircle } from "lucide-react";
 import { FaUpload, FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+
+const deepCopy = (v) => structuredClone(v);
 
 const NCCNCarousel = ({ data }) => {
   const [items, setItems] = useState([]);
@@ -21,6 +23,12 @@ const NCCNCarousel = ({ data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [uploadFiles, setUploadFiles] = useState([]);
+
+  const [imageFiles, setImageFiles] = useState({});
+
+ const { sendRequest, loading, error } = useAdminRequest();
+
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -46,6 +54,7 @@ const NCCNCarousel = ({ data }) => {
       const copy = deepCopy(formattedData);
       setCommittedItems(copy);
       setItems(deepCopy(copy));
+      setPendingItems(deepCopy(items));
       setPendingItems(null);
       setIsEditing(false);
       setIsDirty(false);
@@ -199,16 +208,117 @@ const NCCNCarousel = ({ data }) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingItems) return;
+  const buildImagePath = (fileOrPath) => {
+  if (!fileOrPath) return "";
+
+  // already stored path
+  if (typeof fileOrPath === "string" && !fileOrPath.startsWith("data:")) {
+    return fileOrPath.startsWith("/")
+      ? fileOrPath
+      : `/static/images/ncc/navy/${fileOrPath}`;
+  }
+
+  // base64 or preview → filename fallback
+  return "";
+};
+
+
+const handleFinalRequestConfirm = async () => {
+  if (!pendingItems) return;
+
+  const payload = [];
+
+  const committedMap = new Map(committedItems.map(i => [i.id, i]));
+  const pendingMap = new Map(pendingItems.map(i => [i.id, i]));
+
+  // -------- DELETED ITEMS ----------
+  committedMap.forEach((oldItem, id) => {
+    if (!pendingMap.has(id)) {
+      payload.push({
+        collectionName: "ncc_navy",
+        collection_type: "events",
+        action: "delete",
+        title: "delete events",
+        meta_data: {
+          image_path: oldItem.image_path,
+          title: oldItem.title,
+          description: oldItem.description,
+        },
+      });
+    }
+  });
+
+  // -------- INSERT & UPDATE ----------
+  pendingMap.forEach((item, id) => {
+    const oldItem = committedMap.get(id);
+
+    const imagePath =
+      item._file
+        ? `/static/images/ncc/navy/${item._file.name}`
+        : item.image_path;
+
+    const metaData = {
+      image_path: imagePath,
+      title: item.title,
+      description: item.description,
+    };
+
+    // INSERT
+    if (!oldItem) {
+      payload.push({
+        collectionName: "ncc_navy",
+        collection_type: "events",
+        action: "insert",
+        title: "Add events",
+        meta_data: metaData,
+      });
+    }
+
+    // UPDATE
+    else if (
+      oldItem.title !== item.title ||
+      oldItem.description !== item.description ||
+      oldItem.image_path !== imagePath
+    ) {
+      payload.push({
+        collectionName: "ncc_navy",
+        collection_type: "events",
+        action: "update",
+        title: "update events",
+        original_data: {
+          image_path: oldItem.image_path,
+          title: oldItem.title,
+          description: oldItem.description,
+        },
+        meta_data: metaData,
+      });
+    }
+  });
+
+  if (payload.length === 0) {
+    toast.info("No changes to submit");
+    return;
+  }
+
+  // Collect all uploaded files
+  const files = pendingItems
+    .filter(i => i._file)
+    .map(i => i._file);
+
+    console.log("files",files);
     
+  const result = await sendRequest(payload, files);
+
+  if (result) {
     setCommittedItems(deepCopy(pendingItems));
     setItems(deepCopy(pendingItems));
     setPendingItems(null);
     setIsSaved(false);
     setShowRequestModal(false);
-    toast.success("Final request submitted!");
-  };
+    toast.success("Request submitted successfully!");
+  }
+};
+
 
   const revertChange = (itemId) => {
     if (!pendingItems) return;
@@ -228,19 +338,28 @@ const NCCNCarousel = ({ data }) => {
     setItems(deepCopy(updated));
   };
 
-  const handleImageUpload = (e, index) => {
-    const file = e.target.files[0];
-    if (!file) return;
+const handleImageUpload = (e, index) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const updatedItems = [...items];
-      updatedItems[index] = { ...updatedItems[index], image_path: event.target.result };
-      setItems(updatedItems);
-      setIsDirty(true);
-    };
-    reader.readAsDataURL(file);
-  };
+  const previewUrl = URL.createObjectURL(file);
+
+  setItems(prev =>
+    prev.map((item, i) =>
+      i === index
+        ? {
+            ...item,
+            _file: file, // actual file for uploading
+            image_path: `/static/images/ncc/navy/${file.name}`, // final path saved in DB
+            preview_url: previewUrl, // temporary preview in UI
+          }
+        : item
+    )
+  );
+
+  setIsDirty(true);
+};
+
 
   const getChanges = () => {
     if (!pendingItems) return [];
@@ -353,7 +472,13 @@ const NCCNCarousel = ({ data }) => {
                         <div className="flex flex-col items-center gap-2">
                           {item.image_path && (
                             <img
-                              src={item.image_path.startsWith("data:") ? item.image_path : UrlParser(item.image_path)}
+                              src={
+                                item.preview_url
+                                  ? item.preview_url
+                                  : item.image_path
+                                  ? UrlParser(item.image_path)
+                                  : "/placeholder.jpg"
+                              }
                               alt={item.title || "Event Image"}
                               className="w-24 h-24 object-cover rounded border"
                             />
@@ -450,7 +575,8 @@ const NCCNCarousel = ({ data }) => {
             <div className="ncc-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
               {items.map((slide, index) => (
                 <div className="ncc-carousel-slide" key={index}>
-                  <img src={UrlParser(slide.image_path)} alt={slide.title} />
+                  <img 
+                   alt={slide.title} />
                   <div className="ncc-carousel-text">
                     <h3>{slide.title}</h3>
                     <p>{slide.description}</p>
