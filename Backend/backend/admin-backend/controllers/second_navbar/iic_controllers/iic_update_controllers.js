@@ -10,15 +10,7 @@ async function updateData(tempDoc, mainCollection) {
     // 2️⃣ Fetch the document for this collection_type
     const doc = await mainCollection.findOne({ type: collection_type });
     if (!doc) throw new Error("Document not found");
-    if (!doc.data) throw new Error("Document has no data field");
-
-    // Debug
-    console.log("🔎 Incoming update request:", {
-      collection_type,
-      category,
-      original_data,
-      meta_data,
-    });
+    if (!doc.data) throw new Error("Document has no data field")
 
     // 3️⃣ Define type categories
     const singleDocTypes = ["home", "contact"];
@@ -66,24 +58,12 @@ async function updateData(tempDoc, mainCollection) {
       if (Array.isArray(content) && typeof content[0] === "string") {
         if (!original_data) throw new Error("original_data required");
 
-        // Unwrap { content: [...] } if present
-        const originalArray = Array.isArray(original_data?.content)
-          ? original_data.content
-          : Array.isArray(original_data)
-          ? original_data
-          : [original_data];
 
         const metaArray = Array.isArray(meta_data?.content)
           ? meta_data.content
           : Array.isArray(meta_data)
           ? meta_data
           : [meta_data];
-
-        // const updated = content.map((item) =>
-        //   originalArray.includes(item)
-        //     ? metaArray[originalArray.indexOf(item)] || item
-        //     : item
-        // );
 
         await mainCollection.updateOne(
           { type: collection_type, "data.category": category }, // ✅ find by type + category

@@ -5,12 +5,12 @@ import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Pencil, Send, Trash2, X } from "lucide-react";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL ?? "";
 
-  const UrlParser = (path) =>
-    encodeURI(path?.startsWith("http") ? path : `${BASE_URL}${path || ""}`);
+const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
 
   const [expandedId, setExpandedId] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -39,6 +39,7 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     imageURL: ""
   });
   const [tempId, setTempId] = useState(null);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   // Initialize when hostelData arrives
   useEffect(() => {
@@ -188,32 +189,65 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     });
   };
 
-  const handleImageChange = (index, file) => {
-    if (!file) return;
-    const updated = [...facilitiesData];
+const handleImageChange = (index, file) => {
+  if (!file) return;
+
+  setFacilitiesData(prev => {
+    const updated = [...prev];
     updated[index] = {
       ...updated[index],
-      image_path: URL.createObjectURL(file)
+      image_path: URL.createObjectURL(file), // UI preview
+      imageFile: file,                       // 🔥 REAL FILE
     };
-    setFacilitiesData(updated);
-    setHasChanges(true);
-    toast.info("Image updated (unsaved)");
-  };
+    return updated;
+  });
+};
 
-  const confirmMultiDelete = () => {
-    if (selectedItems.length === 0) {
-      setShowMultiDeleteConfirm(false);
-      return;
-    }
-    const deleted = facilitiesData.filter((f) => selectedItems.includes(f.id));
-    const remaining = facilitiesData.filter((f) => !selectedItems.includes(f.id));
-    setFacilitiesData(remaining);
-    setDeletedFacilities((prev) => [...prev, ...deleted]);
-    setSelectedItems([]);
+const confirmMultiDelete = () => {
+  if (selectedItems.length === 0) {
     setShowMultiDeleteConfirm(false);
-    setHasChanges(true);
-    toast.info(`Deleted ${deleted.length} item(s) (unsaved)`);
-  };
+    return;
+  }
+
+  // Items the user selected to delete
+  const deleted = facilitiesData.filter((f) => selectedItems.includes(f.id));
+  // Remaining items after deletion
+  const remaining = facilitiesData.filter((f) => !selectedItems.includes(f.id));
+
+  // Only keep *non-temp* records for deletedFacilities (temp -> ignore)
+  const actuallyDeleted = deleted.filter(
+    (d) => !(d && (d.__isTemp === true || (typeof d.id === "string" && d.id.startsWith("temp-"))))
+  );
+
+  // Update UI immediately
+  setFacilitiesData(remaining);
+
+  // If there are real items to mark deleted, add them to deletedFacilities
+  if (actuallyDeleted.length > 0) {
+    const newDeletedFacilities = [...deletedFacilities, ...actuallyDeleted];
+    setDeletedFacilities(newDeletedFacilities);
+
+    // recompute hasChanges using the new state (we use local vars to compute synchronously)
+    const detected = computeChanges(remaining, originalData, newDeletedFacilities);
+    const hasRealChanges =
+      detected.added.length > 0 || detected.modified.length > 0 || detected.deleted.length > 0;
+    setHasChanges(hasRealChanges);
+
+    toast.info(`Deleted ${actuallyDeleted.length} item(s) (unsaved)`);
+  } else {
+    // nothing real got marked deleted (it was just a temp placeholder)
+    const detected = computeChanges(remaining, originalData, deletedFacilities);
+    const hasRealChanges =
+      detected.added.length > 0 || detected.modified.length > 0 || detected.deleted.length > 0;
+    setHasChanges(hasRealChanges);
+
+    toast.info(`Removed ${deleted.length} temporary item(s)`);
+  }
+
+  setSelectedItems([]);
+  setShowMultiDeleteConfirm(false);
+};
+
 
   const handleEdit = (index, field, value) => {
     const updated = [...facilitiesData];
@@ -223,49 +257,54 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
   };
 
   // computeChanges: returns object with added/modified/deleted arrays
-  const computeChanges = (current = [], original = [], deletedList = []) => {
-    const changesDetected = { modified: [], added: [], deleted: [] };
+const computeChanges = (current = [], original = [], deletedList = []) => {
+  const changesDetected = { modified: [], added: [], deleted: [] };
 
-    const origById = {};
-    (original || []).forEach((o) => (origById[o.id] = o));
+  const origById = {};
+  (original || []).forEach((o) => (origById[o.id] = o));
 
-    // Deleted: from deletedList (these are full objects)
-    (deletedList || []).forEach((d) => {
-      changesDetected.deleted.push({ id: d.id, title: d.title || "Untitled" });
-    });
+  // Deleted: only include deletions of items that were present on server (ignore temp placeholders)
+  (deletedList || []).forEach((d) => {
+    // skip temp placeholders
+    if (d && (d.__isTemp === true || (typeof d.id === "string" && d.id.startsWith("temp-")))) {
+      return;
+    }
+    changesDetected.deleted.push({ id: d.id, title: d.title || "Untitled" });
+  });
 
-    // Added: any current item not present in original (by id) OR items marked __isTemp
-    (current || []).forEach((f) => {
-      const existsInOriginal = !!origById[f.id];
-      if (!existsInOriginal || f.__isTemp) {
-        changesDetected.added.push({ id: f.id, title: f.title || "Untitled" });
+  // Added: any current item not present in original (by id) OR items explicitly marked __isTemp
+  (current || []).forEach((f) => {
+    const existsInOriginal = !!origById[f.id];
+    if (!existsInOriginal || f.__isTemp) {
+      changesDetected.added.push({ id: f.id, title: f.title || "Untitled" });
+    }
+  });
+
+  // Modified: items that are in both current & original but with differences
+  (current || []).forEach((f) => {
+    const orig = origById[f.id];
+    if (orig) {
+      const titleChanged = (f.title || "") !== (orig.title || "");
+      const descChanged = (f.description || "") !== (orig.description || "");
+      const imageChanged = (f.image_path || "") !== (orig.image_path || "");
+      if (titleChanged || descChanged || imageChanged) {
+        const parts = [];
+        if (titleChanged) parts.push("title");
+        if (descChanged) parts.push("description");
+        if (imageChanged) parts.push("image");
+        changesDetected.modified.push({
+          id: f.id,
+          oldTitle: orig.title || "Untitled",
+          newTitle: f.title || "Untitled",
+          changes: parts
+        });
       }
-    });
+    }
+  });
 
-    // Modified: items that are in both current & original but with differences
-    (current || []).forEach((f) => {
-      const orig = origById[f.id];
-      if (orig) {
-        const titleChanged = (f.title || "") !== (orig.title || "");
-        const descChanged = (f.description || "") !== (orig.description || "");
-        const imageChanged = (f.image_path || "") !== (orig.image_path || "");
-        if (titleChanged || descChanged || imageChanged) {
-          const parts = [];
-          if (titleChanged) parts.push("title");
-          if (descChanged) parts.push("description");
-          if (imageChanged) parts.push("image");
-          changesDetected.modified.push({
-            id: f.id,
-            oldTitle: orig.title || "Untitled",
-            newTitle: f.title || "Untitled",
-            changes: parts
-          });
-        }
-      }
-    });
+  return changesDetected;
+};
 
-    return changesDetected;
-  };
 
   // returns list of rows for popup in required format
   const buildChangeRows = () => {
@@ -364,6 +403,47 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     }
   };
 
+  // returns { ok: boolean, missing: Array<{id, missingFields: string[]}> }
+const validateChangesBeforeSave = () => {
+  const detected = computeChanges(facilitiesData, originalData, deletedFacilities);
+  const problems = [];
+
+  // helper to check a facility object
+  const check = (fac) => {
+    const missing = [];
+    if (!fac.title || !fac.title.toString().trim()) missing.push("title");
+    if (!fac.description || !fac.description.toString().trim()) missing.push("description");
+    // require image for new/changed items — remove image check if not required
+    if (!fac.image_path || fac.image_path.toString().trim() === "") missing.push("image");
+    return missing;
+  };
+
+  // check added items
+  (detected.added || []).forEach((a) => {
+    const f = facilitiesData.find((x) => x.id === a.id);
+    if (!f) return;
+    const missing = check(f);
+    if (missing.length) problems.push({ id: f.id, missingFields: missing });
+  });
+
+  // check modified items — ensure we check the current item
+  (detected.modified || []).forEach((m) => {
+    const f = facilitiesData.find((x) => x.id === m.id);
+    if (!f) return;
+    const missing = check(f);
+    if (missing.length) problems.push({ id: f.id, missingFields: missing });
+  });
+
+  return { ok: problems.length === 0, missing: problems };
+};
+
+// optional: compute array of invalid ids to use in the render for red borders
+const invalidIds = (() => {
+  const res = validateChangesBeforeSave();
+  return res.missing.map((p) => p.id);
+})();
+
+
   // Save = create a draft snapshot of changes but DO NOT overwrite originalData
   const handleSave = () => {
     const detected = computeChanges(facilitiesData, originalData, deletedFacilities);
@@ -385,27 +465,128 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
     toast.success("Changes saved (pending request)");
   };
 
+const findFileFromBlobURL = (blobUrl) => {
+  // Only works if you still have access to file objects
+  // Recommended improvement: store File along with image_path when uploading
+  return null;
+};
+
   // Final Request = simulate sending request and APPLY the changes (update originalData)
-  const handleRequestConfirm = () => {
-    const finalChanges = computeChanges(facilitiesData, originalData, deletedFacilities);
-    console.log("Request sent:", { facilities: facilitiesData, changes: finalChanges });
+const handleRequestConfirm = async () => {
+  const detected = computeChanges(facilitiesData, originalData, deletedFacilities);
 
-    // Success feedback
-    toast.success("Request submitted successfully!");
+  const payloads = [];
+  const files = [];
 
-    // Apply the changes locally by updating originalData snapshot to current
-    // (If you want to wait for admin approval instead, remove this update.)
-    setOriginalData(JSON.parse(JSON.stringify(facilitiesData)));
+  const buildImagePath = (facility) =>
+    facility.imageFile
+      ? `/static/images/hostel/${Date.now()}_${facility.imageFile.name}`
+      : facility.image_path || "";
 
-    // Clear pending state
-    setShowRequestModal(false);
-    setChangesSaved(false);
-    setChanges({ modified: [], added: [], deleted: [] });
-    setHasChanges(false);
-    setDeletedFacilities([]); // applied -> clear deleted listing
-    setSelectedItems([]);
-    setEditMode(false);
-  };
+  // ---------- INSERT ----------
+  detected.added.forEach(item => {
+    const facility = facilitiesData.find(f => f.id === item.id);
+    if (!facility) return;
+
+    const imagePath = buildImagePath(facility);
+
+    payloads.push({
+      action: "insert",
+      collectionName: "hostel_details",
+      collection_type: "hostel_facilities",
+      category: null,
+      title: "Powerhouse",
+      meta_data: {
+        title: facility.title,
+        description: facility.description,
+        image_path: imagePath,
+      },
+    });
+
+    if (facility.imageFile) {
+      files.push(facility.imageFile); // ✅ REAL FILE
+    }
+  });
+
+  // ---------- UPDATE (SEND FULL DATA) ----------
+  detected.modified.forEach(item => {
+    const current = facilitiesData.find(f => f.id === item.id);
+    const original = originalData.find(o => o.id === item.id);
+    if (!current || !original) return;
+
+    const imagePath =
+      current.imageFile
+        ? `/static/images/hostel/${Date.now()}_${current.imageFile.name}`
+        : original.image_path;
+
+    payloads.push({
+      action: "update",
+      collectionName: "hostel_details",
+      collection_type: "hostel_facilities",
+      category: null,
+      title: "Powerhouse",
+      original_data: {
+        title: original.title,
+        description: original.description,
+        image_path: original.image_path,
+      },
+      meta_data: {
+        title: current.title,
+        description: current.description,
+        image_path: imagePath,
+      },
+    });
+
+    if (current.imageFile) {
+      files.push(current.imageFile);
+    }
+  });
+
+  // ---------- DELETE ----------
+// ---------- DELETE ----------
+detected.deleted.forEach(item => {
+  const original = originalData.find(o => o.id === item.id);
+  if (!original) return;
+
+  // 🔥 NORMALIZE image_path (array → string)
+  const imagePath = Array.isArray(original.image_path)
+    ? original.image_path[original.image_path.length - 1] // take latest
+    : original.image_path;
+
+  payloads.push({
+    action: "delete",
+    collectionName: "hostel_details",
+    collection_type: "hostel_facilities",
+    category: null,
+    title: "Powerhouse",
+    meta_data: {
+      title: original.title,
+      description: original.description,
+      image_path: imagePath, // ✅ ALWAYS STRING
+    },
+  });
+});
+
+
+  if (payloads.length === 0) {
+    toast.info("No changes to submit");
+    return;
+  }
+console.log("files",files);
+  // 🔥 SINGLE REQUEST (FILES + PAYLOADS)
+  await sendRequest(payloads, files);
+
+  toast.success("Request submitted successfully!");
+
+  setShowRequestModal(false);
+  setChangesSaved(false);
+  setChanges({ modified: [], added: [], deleted: [] });
+  setDeletedFacilities([]);
+  setSelectedItems([]);
+  setEditMode(false);
+};
+
+
 
   const handleDiscardAll = () => {
     if (!initialSnapshot) return;
@@ -472,7 +653,7 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
         <div className="hos-top-buttons" style={{ display: "flex", justifyContent: "flex-end" }}>
           {!editMode && !isPageView && (
             <button
-              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim mr-9"
               onClick={() => {
                 setEditMode(true);
                 setIsPageView(false);
@@ -538,7 +719,7 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
                     />
                     <img
                       className="hos-facility-image"
-                      src={UrlParser(facility.image_path)}
+                      src={facility.image_path?.startsWith("blob:")? facility.image_path: UrlParser(facility.image_path)}
                       alt={facility.title || "placeholder"}
                       onLoad={() => handleImageLoad(index)}
                     />
@@ -601,7 +782,7 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
         </div>
 
         {editMode && (
-          <div className="hos-action-buttons flex gap-2 items-center mt-6 justify-end">
+          <div className="hos-action-buttons flex gap-2 items-center mt-6 justify-end mr-9">
             <button
               onClick={handleCancel}
               className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
@@ -610,18 +791,27 @@ export default function HostelFacilities({ hostelData, addFlow = "inline" }) {
             </button>
 
             {hasChanges && (
-              <button
-                onClick={handleSave}
-                className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-              >
-                Save
-              </button>
-            )}
+  <button
+    onClick={() => {
+      const validation = validateChangesBeforeSave();
+      if (!validation.ok) {
+        toast.error("Please fill title, description and upload image for changed items");
+        return;
+      }
+      handleSave();
+    }}
+    // disabled={!hasChanges || !validateChangesBeforeSave().ok}
+    className={`flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim ${(!hasChanges || !validateChangesBeforeSave().ok) ? "opacity-60 cursor-not-allowed" : ""}`}
+  >
+    Save
+  </button>
+)}
+
           </div>
         )}
 
         {!editMode && changesSaved && (
-          <div className="hos-action-buttons flex gap-2 items-center mt-6 justify-end">
+          <div className="hos-action-buttons flex gap-2 items-center mt-6 justify-end mr-9">
             <button
               onClick={handleDiscardAll}
               className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"

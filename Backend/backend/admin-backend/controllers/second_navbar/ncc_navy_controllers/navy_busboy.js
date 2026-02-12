@@ -8,6 +8,15 @@ const uploadCounters = {};
 
 async function navyHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
+    // ---------- BASIC SAFETY ----------
+    if (!docs || !docs.length) {
+      throw new Error("No document metadata received");
+    }
+
+    if (!fileStream) {
+      throw new Error("No file stream received");
+    }
+
     const realimagename =
       typeof filename === "string"
         ? filename
@@ -20,70 +29,92 @@ async function navyHandler(fileStream, docs, req, cb, filename, mimetype) {
       return cb(new Error("Only images are allowed"));
     }
 
-    const collection_type = docs[0]?.collection_type;
-    const collectionName = docs[0]?.collectionName;
-    const meta_data = docs[0]?.meta_data;
+    const doc = docs[0];
+    const collection_type = doc.collection_type;
+    const collectionName = doc.collectionName;
+    const meta_data = doc.meta_data || {};
+
     let nextIndex = null;
 
+    // ---------- DB COUNTER LOGIC ----------
     const db = getDb();
     const mainCollection = db.collection(collectionName);
 
-    // Initialize counter if not set
-    if(collection_type === "events" || collection_type === "awards"){
-        
-        if (!uploadCounters[collection_type]) {
-          const existingDoc = await mainCollection.findOne({ type: collection_type });
-          const Data = existingDoc?.data || [];
-          uploadCounters[collection_type] = Data.length; // set base count from DB
-        }
-        // Increment counter for this request
-        uploadCounters[collection_type] += 1;
-        nextIndex = uploadCounters[collection_type];
+    if (collection_type === "events" || collection_type === "awards") {
+      if (!uploadCounters[collection_type]) {
+        const existingDoc = await mainCollection.findOne({ type: collection_type });
+        const Data = existingDoc?.data || [];
+        uploadCounters[collection_type] = Data.length; // base count from DB
+      }
+      uploadCounters[collection_type] += 1;
+      nextIndex = uploadCounters[collection_type];
     }
 
-
-    // Buffer the stream
+    // ---------- BUFFER FILE ----------
     const chunks = [];
     for await (const chunk of fileStream) {
       chunks.push(chunk);
     }
     const fileBuffer = Buffer.concat(chunks);
 
-    let last, folder, s3Key, command;
+    if (!fileBuffer.length) {
+      throw new Error("Uploaded file is empty");
+    }
+
+    // ---------- FILE NAME LOGIC ----------
     const ext = path.extname(realimagename) || ".jpg";
+    let last;
 
     if (collection_type === "team") {
-      last = meta_data?.name;
+      if (!meta_data?.name) {
+        throw new Error("meta_data.name is required for team upload");
+      }
+      last = meta_data.name
+        .trim()
+        .replace(/\s+/g, "_")
+        .replace(/[^a-zA-Z0-9_]/g, "");
     } else if (collection_type === "events") {
       last = `events${String(nextIndex).padStart(2, "0")}`;
     } else if (collection_type === "awards") {
       last = `stud_achieve${String(nextIndex).padStart(2, "0")}`;
     } else {
-      return cb(new Error("Unsupported collection type"));
+      throw new Error("Unsupported collection type");
     }
 
-    folder = `temp/static/images/ncc/navy/${last}${ext}`;
-    s3Key = folder;
+    // ---------- S3 KEY ----------
+    const s3Key = `temp/static/images/ncc/navy/${last}${ext}`;
 
-    command = new PutObjectCommand({
+    // ---------- UPLOAD TO S3 ----------
+    const command = new PutObjectCommand({
       Bucket: bucketName,
       Key: s3Key,
       Body: fileBuffer,
       ContentType: effectiveimageMime,
+      ContentLength: fileBuffer.length,
+      CacheControl: "no-cache",
     });
 
     const data = await s3.send(command);
 
-    // Track uploaded files
+    // ---------- MUTATE DOC FOR MONGO (LIKE placementHandler) ----------
+    doc.meta_data = {
+      ...(doc.meta_data || {}),
+      image_path: `/${s3Key}`,   // 👈 this will be written to Mongo by temp-store middleware
+    };
+
+    // ---------- TRACK UPLOAD ----------
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
       key: s3Key,
       location: `/${s3Key}`,
-      mimetype: command.input.ContentType,
+      mimetype: effectiveimageMime,
+      size: fileBuffer.length,
+      originalName: realimagename,
     });
 
     cb(null, data);
   } catch (err) {
+    console.error("❌ Navy upload failed:", err.message);
     cb(err);
   }
 }
