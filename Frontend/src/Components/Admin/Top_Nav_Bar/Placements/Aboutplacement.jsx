@@ -112,40 +112,59 @@ const AdminAboutplacement = ({ theme, toggle }) => {
     setEditedData(JSON.parse(JSON.stringify(base || {})));
     setEditMode(true);
   };
-  const buildPlacementPayload = () => {
-    if (!pendingData) return null;
+ const buildPlacementPayload = () => {
+  if (!pendingData) return null;
 
-    const isInsert = !placementData || Object.keys(placementData).length === 0;
+  const isInsert =
+    !placementData || Object.keys(placementData).length === 0;
 
-    if (isInsert) {
-      // 🔹 INSERT PAYLOAD
-      return {
+  /* -------------------- INSERT -------------------- */
+  if (isInsert) {
+    return [
+      {
         action: "insert",
         collectionName: "placement",
         title: "about_placement_insert_request",
         collection_type: "about_placement",
-        meta_data: {
-          ...pendingData,
-        },
-      };
-    }
+        meta_data: { ...pendingData },
+      },
+    ];
+  }
 
-    // 🔹 UPDATE PAYLOAD
-    return {
+  /* -------------------- UPDATE -------------------- */
+  const payloads = [];
+
+  const allKeys = new Set([
+    ...Object.keys(placementData || {}),
+    ...Object.keys(pendingData || {}),
+  ]);
+
+  allKeys.forEach((key) => {
+    const oldValue = placementData?.[key];
+    const newValue = pendingData?.[key];
+
+    // skip if no change
+    if (JSON.stringify(oldValue) === JSON.stringify(newValue)) return;
+
+    payloads.push({
       action: "update",
       collectionName: "placement",
-      title: "about_placement_update_request",
+      title: "about_placement_update",
       collection_type: "about_placement",
 
-      original_data: {
-        section: "about",
+      meta_data: {
+        [key]: newValue,
       },
 
-      meta_data: {
-        ...pendingData,
+      original_data: {
+        [key]: oldValue,
       },
-    };
-  };
+    });
+  });
+
+  return payloads;
+};
+
 
   const cancelEdit = () => {
     const base = pendingData ?? placementData;
