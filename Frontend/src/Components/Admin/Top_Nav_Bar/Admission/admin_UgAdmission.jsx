@@ -32,25 +32,21 @@ const AdminUgAdmission = ({ theme, toggle }) => {
         action: "update",
         title: "Update BE Government Link",
         category: null,
-
         meta_data: {
-          data: {
             year: String(year),
             BE_Government: {
               BE_Government_link_name: newData.link_name,
               pdf_path: newData.pdf_path,
             },
-          },
         },
 
         original_data: {
-          data: {
+
             year: String(year),
             BE_Government: {
               BE_Government_link_name: oldData.link_name,
               pdf_path: oldData.pdf_path,
             },
-          },
         },
 
         admin: {
@@ -1213,63 +1209,70 @@ const AdminUgAdmission = ({ theme, toggle }) => {
 
     /* -------------------- PDF UPDATES -------------------- */
 
-    // if (beGovLinkFile) {
-    //   payloads.push({
-    //     collectionName: "admissions",
-    //     collection_type: "ug",
-    //     action: "update",
-    //     title: "Update BE Government PDF",
-    //     category: null,
+   if (beGovLinkFile) {
+  payloads.push({
+    collectionName: "admissions",
+    collection_type: "ug",
+    action: "update",
+    title: "Update BE Government PDF",
+    category: null,
 
-    //     // ✅ NEW DATA
-    //     meta_data: {
-    //       type: "BE_Government",
-    //       link_name: beGovLinkName,
-    //       pdf_path: `/static/images/admission_team/${beGovLinkFile.name}`,
-    //     },
+    meta_data: {
+        year: String(editableYearUG),
+        BE_Government: {
+          BE_Government_link_name: beGovLinkName || "",
+          pdf_path: `/static/pdfs/admission/${beGovLinkFile.name}`,
+        },
+    },
 
-    //     // ✅ OLD DATA
-    //     original_data: {
-    //       type: "BE_Government",
-    //       link_name:
-    //         originalRef.current?.BE_Government?.BE_Government_link_name || "",
-    //       pdf_path: originalRef.current?.BE_Government?.pdf_path || "",
-    //     },
+    original_data: {
+        year: String(originalRef.current?.year || editableYearUG),
+        BE_Government: {
+          BE_Government_link_name:
+            originalRef.current?.BE_Government
+              ?.BE_Government_link_name || "",
+          pdf_path:
+            originalRef.current?.BE_Government?.pdf_path || "",
+        },
+    },
 
-    //     admin: {
-    //       status: "pending",
-    //     },
-    //   });
-    // }
+    admin: {
+      status: "pending",
+    },
+  });
+}
+if (beMgmtLinkFile) {
+  payloads.push({
+    collectionName: "admissions",
+    collection_type: "ug",
+    action: "update",
+    title: "Update BE Management PDF",
+    category: null,
 
-    // if (beMgmtLinkFile) {
-    //   payloads.push({
-    //     collectionName: "admissions",
-    //     collection_type: "ug",
-    //     action: "update",
-    //     title: "Update BE Management PDF",
-    //     category: null,
+    meta_data: {
+        year: String(editableYearUG),
+        BE_Management: {
+          BE_Management_link_name: beMgmtLinkName || "",
+          pdf_path: `/static/pdfs/admission/${beMgmtLinkFile.name}`,
+        },
+    },
 
-    //     // ✅ NEW DATA
-    //     meta_data: {
-    //       type: "BE_Management",
-    //       link_name: beMgmtLinkName,
-    //       pdf_path: `/static/images/admission_team/${beMgmtLinkFile.name}`,
-    //     },
+    original_data: {
+        year: String(originalRef.current?.year || editableYearUG),
+        BE_Management: {
+          BE_Management_link_name:
+            originalRef.current?.BE_Management
+              ?.BE_Management_link_name || "",
+          pdf_path:
+            originalRef.current?.BE_Management?.pdf_path || "",
+        },
+    },
 
-    //     // ✅ OLD DATA
-    //     original_data: {
-    //       type: "BE_Management",
-    //       link_name:
-    //         originalRef.current?.BE_Management?.BE_Management_link_name || "",
-    //       pdf_path: originalRef.current?.BE_Management?.pdf_path || "",
-    //     },
-
-    //     admin: {
-    //       status: "pending",
-    //     },
-    //   });
-    // }
+    admin: {
+      status: "pending",
+    },
+  });
+}
 
     /* -------------------- UG / LATERAL CHANGES -------------------- */
 
@@ -1408,6 +1411,58 @@ const AdminUgAdmission = ({ theme, toggle }) => {
         }),
       );
     }
+    // BE GOVERNMENT
+if (
+  beGovLinkFile ||
+  beGovLinkName !==
+    originalRef.current?.BE_Government?.BE_Government_link_name
+) {
+  payloads.push(
+    buildUgAdmissionPayload({
+      action: "Update_BE_Government",
+      year: editableYearUG,
+      newData: {
+        link_name: beGovLinkName,
+        pdf_path: beGovLinkFile
+          ? `/static/pdfs/admission/${beGovLinkFile.name}`
+          : originalRef.current?.BE_Government?.pdf_path,
+      },
+      oldData: {
+        link_name:
+          originalRef.current?.BE_Government?.BE_Government_link_name || "",
+        pdf_path:
+          originalRef.current?.BE_Government?.pdf_path || "",
+      },
+    }),
+  );
+}
+
+// BE MANAGEMENT
+if (
+  beMgmtLinkFile ||
+  beMgmtLinkName !==
+    originalRef.current?.BE_Management?.BE_Management_link_name
+) {
+  payloads.push(
+    buildUgAdmissionPayload({
+      action: "Update_BE_Management",
+      year: editableYearUG,
+      newData: {
+        link_name: beMgmtLinkName,
+        pdf_path: beMgmtLinkFile
+          ? `/static/pdfs/admission/${beMgmtLinkFile.name}`
+          : originalRef.current?.BE_Management?.pdf_path,
+      },
+      oldData: {
+        link_name:
+          originalRef.current?.BE_Management?.BE_Management_link_name || "",
+        pdf_path:
+          originalRef.current?.BE_Management?.pdf_path || "",
+      },
+    }),
+  );
+}
+
 
     /* -------------------- FILES -------------------- */
 
@@ -1417,7 +1472,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
 
     console.log("app", payloads, files);
   try {
-  await sendRequest(payloads, files);
+    await sendRequest(payloads, files);
 
   // ✅ BUILD FINAL DATA FROM EDITABLE STATE
   const committedData = {
