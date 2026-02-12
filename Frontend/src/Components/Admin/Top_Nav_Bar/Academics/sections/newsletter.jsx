@@ -3,6 +3,7 @@ import { Send, Trash2, Plus, X, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../../LoadComp";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
@@ -11,6 +12,45 @@ const deepCopy = (v) => JSON.parse(JSON.stringify(v));
  * Key fix: stable item `id` is created once and never mutated.
  */
 export default function Newsletter({ data }) {
+  // Payload & file handling
+  const { sendRequest } = useAdminRequest();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const deepCopyWithFiles = (arr) => {
+    return arr.map((item) => {
+      const file = item._file; // Preserve File object
+      const copy = JSON.parse(JSON.stringify(item)); // Deep copy everything else
+      if (file) copy._file = file; // Restore File object
+      return copy;
+    });
+  };
+
+  // Department mapping (001-018)
+  const deptMap = {
+    "001": "AIDS_001",
+    "002": "MECH_002",
+    "003": "ECE_003",
+    "004": "CIVIL_004",
+    "005": "CSE_005",
+    "006": "EEE_006",
+    "007": "CHEM_007",
+    "008": "AUTO_008",
+    "009": "AERO_009",
+    "010": "PROD_010",
+    "011": "BIO_011",
+    "012": "TEXTILE_012",
+    "013": "APPAREL_013",
+    "014": "CIVIL_INFRA_014",
+    "015": "FOOD_015",
+    "016": "BIOTECH_016",
+    "017": "AGRI_017",
+    "018": "PS_018"
+  };
+
+  // Extract deptId from data/banner
+  const deptId = data?.find((item) => item.category === "banner")?.deptId || "005";
+  const collectionName = deptMap[deptId] || "CSE_005";
+
   // UI / state
   const [activeYear, setActiveYear] = useState(null);
   const [tempData, setTempData] = useState([]); // current working copy
@@ -36,6 +76,185 @@ useEffect(() => {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
+
+  // Convert blob URL to filename, or get filename from static path
+  const getFilenameFromPath = (pdfPath) => {
+    if (!pdfPath) return "";
+    // If it's a blob URL, extract the filename from the File object
+    if (pdfPath.startsWith("blob:")) {
+      return ""; // Will be handled via _file property
+    }
+    // If it's a static path, extract filename
+    return pdfPath.split("/").pop() || "";
+  };
+
+  // Build payload from changes - WITHOUT blob URLs, only with proper filenames
+  const buildPayload = () => {
+    if (!pendingData) return [];
+    
+    const payload = [];
+    const originalMap = new Map(originalData.map((it) => [it.id, it]));
+    const pendingMap = new Map(pendingData.map((it) => [it.id, it]));
+    const processedIds = new Set();
+
+    // INSERT: items in pending but not in original
+    for (const [id, newItem] of pendingMap.entries()) {
+      if (!originalMap.has(id)) {
+        processedIds.add(id);
+        // For new items with files, use the filename from _file or path
+        const filename = newItem._file ? newItem._file.name : getFilenameFromPath(newItem.pdf_path);
+        const staticPath = filename ? `/static/pdfs/newsletter/${deptId}/${filename}` : "";
+        
+        payload.push({
+          collectionName,
+          collection_type: "newsletter",
+          action: "insert",
+          title: "insert for newsletter",
+          category: "newsletter",
+          meta_data: {
+            year: newItem.year,
+            pdf_path: staticPath ? [staticPath] : []
+          },
+          original_data: null
+        });
+      }
+    }
+
+    // UPDATE: items present in both but with changes
+    for (const [id, newItem] of pendingMap.entries()) {
+      if (processedIds.has(id)) continue;
+      
+      const oldItem = originalMap.get(id);
+      if (oldItem) {
+        // Check if any field changed (excluding _file which is internal tracking)
+        const fieldsChanged = 
+          oldItem.year !== newItem.year ||
+          oldItem.name !== newItem.name ||
+          newItem._file !== undefined; // File was explicitly selected/changed
+        
+        // Also check if pdf_path changed (but ignore if it's a blob URL - that's just a preview)
+        let pdfPathChanged = false;
+        const newPdfIsBlob = newItem.pdf_path?.startsWith("blob:");
+        const oldPdfIsBlob = oldItem.pdf_path?.startsWith("blob:");
+        
+        // Only count pdf_path as changed if:
+        // 1. It's no longer a blob (user uploaded new file) 
+        // 2. Or it changed to something other than blob URL
+        if (!newPdfIsBlob && oldItem.pdf_path !== newItem.pdf_path) {
+          pdfPathChanged = true;
+        }
+
+        if (fieldsChanged || pdfPathChanged) {
+          processedIds.add(id);
+          
+          // For updated items, use new filename if file changed, otherwise keep old
+          const newFilename = newItem._file ? newItem._file.name : getFilenameFromPath(newItem.pdf_path);
+          const oldFilename = getFilenameFromPath(oldItem.pdf_path);
+          
+          const newStaticPath = newFilename ? `/static/pdfs/newsletter/${deptId}/${newFilename}` : oldStaticPath;
+          const oldStaticPath = oldFilename ? `/static/pdfs/newsletter/${deptId}/${oldFilename}` : "";
+          
+          payload.push({
+            collectionName,
+            collection_type: "newsletter",
+            action: "update",
+            title: "update for newsletter",
+            category: "newsletter",
+            meta_data: {
+              year: newItem.year,
+              pdf_path: newStaticPath ? [newStaticPath] : []
+            },
+            original_data: {
+              year: oldItem.year,
+              pdf_path: oldStaticPath ? [oldStaticPath] : []
+            }
+          });
+        }
+      }
+    }
+
+    // DELETE: items in original but not in pending
+    for (const [id, oldItem] of originalMap.entries()) {
+      if (!pendingMap.has(id)) {
+        const oldFilename = getFilenameFromPath(oldItem.pdf_path);
+        const oldStaticPath = oldFilename ? `/static/pdfs/newsletter/${deptId}/${oldFilename}` : "";
+        
+        payload.push({
+          collectionName,
+          collection_type: "newsletter",
+          action: "delete",
+          title: "delete for newsletter",
+          category: "newsletter",
+          meta_data: {
+            year: oldItem.year,
+            pdf_path: oldStaticPath ? [oldStaticPath] : []
+          },
+          original_data: null
+        });
+      }
+    }
+
+    return payload;
+  };
+
+  // Collect File objects from pendingData (for upload)
+  const collectFiles = () => {
+    const files = [];
+    if (!pendingData) {
+      console.log("collectFiles: pendingData is empty");
+      return files;
+    }
+    
+    for (const item of pendingData) {
+      // Only collect new File objects (from blob URLs)
+      if (item._file && item._file instanceof File) {
+        console.log("collectFiles: Found file -", item._file.name);
+        files.push(item._file);
+      }
+    }
+    
+    console.log("collectFiles: Total files collected -", files.length);
+    return files;
+  };
+
+  // Submit request to admin hook
+  const handleRequestConfirm = async () => {
+    if (!pendingData || changes.length === 0) {
+      toast.error("No changes to submit");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      const payload = buildPayload();
+      const files = collectFiles();
+
+      console.log("=== PAYLOAD DEBUG ===");
+      console.log("Original Data:", originalData);
+      console.log("Pending Data:", pendingData);
+      console.log("Payload:", payload);
+      console.log("Files:", files);
+      console.log("=== END DEBUG ===");
+
+      const result = await sendRequest(payload, files.length > 0 ? files : null);
+
+      if (result.success) {
+        toast.success("Newsletter request submitted successfully!");
+        setOriginalData(deepCopy(pendingData));
+        setTempData(deepCopyWithFiles(pendingData));
+        setPendingData(null);
+        setIsSaved(false);
+        setShowRequestModal(false);
+      } else {
+        toast.error(result.message || "Failed to submit request");
+      }
+    } catch (error) {
+      console.error("Error submitting request:", error);
+      toast.error("Error submitting request");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const capitalizeWords = (str) => {
     if (!str) return "";
@@ -122,7 +341,7 @@ useEffect(() => {
     }
 
     // Save as pending draft
-    setPendingData(deepCopy(tempData));
+    setPendingData(deepCopyWithFiles(tempData));
     setIsSaved(true);
     setIsEditing(false);
     setIsDirty(false);
@@ -133,7 +352,7 @@ useEffect(() => {
 
   const handleCancel = () => {
     if (pendingData) {
-      setTempData(deepCopy(pendingData));
+      setTempData(deepCopyWithFiles(pendingData));
       toast.info("Cancelled edits. Draft preserved!");
     } else {
       setTempData(deepCopy(originalData));
@@ -158,16 +377,6 @@ useEffect(() => {
 
   const handleRequest = () => setShowRequestModal(true);
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingData) return;
-    setOriginalData(deepCopy(pendingData));
-    setTempData(deepCopy(pendingData));
-    setPendingData(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Final request submitted!");
-  };
-
   // Change single field on an item (by stable id)
   const handleChange = (id, key, value) => {
     setTempData((prev) => {
@@ -177,10 +386,10 @@ useEffect(() => {
     setIsDirty(true);
   };
 
-  // File change: set a blob URL (you can replace with upload flow)
+  // File change: set a blob URL and track File object
   const handleFileChange = (id, file) => {
     const fakePath = URL.createObjectURL(file);
-    setTempData((prev) => prev.map((it) => (it.id === id ? { ...it, pdf_path: fakePath } : it)));
+    setTempData((prev) => prev.map((it) => (it.id === id ? { ...it, pdf_path: fakePath, _file: file } : it)));
     setIsDirty(true);
   };
 
@@ -466,7 +675,7 @@ const revertChange = (rowId) => {
 
         {!isEditing && (
           <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
-            <button onClick={handleEdit} className="flex items-center gap-2 px-4 py-2 bg-secd dark:bg-drks text-text dark:text-prim rounded hover:bg-accn hover:text-prim dark:hover:bg-brwn">
+            <button onClick={handleEdit} className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition">
               <Pencil size={18} /> Edit
             </button>
           </div>
@@ -528,7 +737,7 @@ const revertChange = (rowId) => {
 
         {/* Add Year UI */}
         {isEditing && !addingYear && (
-          <button onClick={() => setAddingYear(true)} className="flex items-center justify-center gap-2 px-4 py-3 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim">
+          <button onClick={() => setAddingYear(true)} className="flex items-center justify-center gap-2 px-4 py-3 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition">
             <Plus size={18} /> Add Year
           </button>
         )}
@@ -542,7 +751,7 @@ const revertChange = (rowId) => {
               placeholder="Enter year"
               className="px-2 py-1 border rounded"
             />
-            <button onClick={handleAddYear} className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-3 py-1 rounded">
+            <button onClick={handleAddYear} className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-3 py-1 rounded transition">
               Add
             </button>
             <button
@@ -550,7 +759,7 @@ const revertChange = (rowId) => {
                 setAddingYear(false);
                 setNewYearInput("");
               }}
-              className="bg-gray-400 text-white px-3 py-1 rounded"
+              className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-600 transition"
             >
               Cancel
             </button>
@@ -575,8 +784,8 @@ const revertChange = (rowId) => {
 
                 {isEditing && (
                   <div className="mb-4 text-center">
-                    <label className="bg-[#fdcc03] text-text px-3 py-2 rounded cursor-pointer hover:bg-[#800000] hover:text-prim">
-                      Change Newsletter
+                    <label className="bg-[#fdcc03] text-text px-3 py-2 rounded cursor-pointer hover:bg-[#800000] hover:text-prim transition">
+                      {pdf.pdf_path ? "Change Newsletter" : "Upload Newsletter"}
                       <input
                         type="file"
                         accept="application/pdf"
@@ -630,9 +839,9 @@ const revertChange = (rowId) => {
       {/* Save / Cancel */}
       {isEditing && (
         <div className="flex justify-end gap-3 mt-6">
-          <button onClick={handleCancel} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500">Cancel</button>
+          <button onClick={handleCancel} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition">Cancel</button>
           {isDirty && (
-            <button onClick={handleSave} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim">
+            <button onClick={handleSave} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition">
               Save
             </button>
           )}
@@ -642,9 +851,9 @@ const revertChange = (rowId) => {
       {/* Saved draft actions */}
       {isSaved && (
         <div className="flex justify-end gap-3 mt-6">
-          <button onClick={handleDiscard} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500">Discard Changes</button>
+          <button onClick={handleDiscard} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition">Discard Changes</button>
           {changes.length > 0 && (
-            <button onClick={handleRequest} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim">
+            <button onClick={handleRequest} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition">
               <Send size={18} /> Request
             </button>
           )}
@@ -696,16 +905,17 @@ const revertChange = (rowId) => {
       <div className="flex justify-end gap-2 mt-6">
         <button
           onClick={() => setShowRequestModal(false)}
-          className="px-4 py-2 rounded bg-gray-400 text-prim"
+          className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
         >
           Cancel
         </button>
         {changes.length > 0 && (
           <button
-            onClick={handleFinalRequestConfirm}
-            className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+            onClick={handleRequestConfirm}
+            disabled={isSubmitting}
+            className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim disabled:opacity-50 disabled:cursor-not-allowed transition"
           >
-            Final Request
+            {isSubmitting ? "Processing..." : "Confirm Request"}
           </button>
         )}
       </div>
@@ -724,8 +934,8 @@ const revertChange = (rowId) => {
               {deleteType === "year" ? (selectedYears.size > 1 ? "s" : "") : (selectedNewsletters.size > 1 ? "s" : "")}?
             </p>
             <div className="flex justify-end gap-3">
-              <button onClick={() => setShowDeleteModal(false)} className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">Cancel</button>
-              <button onClick={confirmDelete} className="px-4 py-2 bg-red-600 text-prim rounded-lg hover:bg-red-700">Delete</button>
+              <button onClick={() => setShowDeleteModal(false)} className="px-4 py-2 bg-gray-400 rounded-lg hover:bg-gray-600 transition">Cancel</button>
+              <button onClick={confirmDelete} className="px-4 py-2 bg-red-600 text-prim rounded-lg hover:bg-red-700 transition">Delete</button>
             </div>
           </div>
         </div>
