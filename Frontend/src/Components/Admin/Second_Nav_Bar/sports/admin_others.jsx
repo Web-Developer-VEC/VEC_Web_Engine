@@ -18,6 +18,7 @@ const Others = ({ data }) => {
   const [showDiscardModal, setShowDiscardModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [changes, setChanges] = useState([]);
+  const hasChanges=changes.length>0
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
@@ -632,12 +633,12 @@ const Others = ({ data }) => {
                 >
                   Cancel
                 </button>
-                <button
+                {hasChanges && (<button
                   onClick={handleSave}
                   className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
                 >
                   Save
-                </button>
+                </button>)}
               </div>
             </div>
           )}
@@ -648,7 +649,7 @@ const Others = ({ data }) => {
               <button
                 className="px-4 py-2 bg-gray-500 text-white rounded"
                 onClick={() => {
-                  handleDiscardChanges(true);
+                  setShowDiscardModal(true);
                 }}
               >
                 Discard Changes
@@ -693,6 +694,18 @@ const Others = ({ data }) => {
         >
           <p>Are you sure you want to delete the selected items?</p>
         </Modal>
+      )}
+        {showDiscardModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-white/40 z-50">
+          <div className="bg-white p-6 rounded shadow-lg w-[350px]">
+            <h2 className="font-semibold mb-4">Discard Changes?</h2>
+            <p>All your unsaved changes will be lost.</p>
+            <div className="flex justify-end gap-3 mt-4">
+              <button className="px-4 py-2 bg-gray-300 rounded" onClick={() => setShowDiscardModal(false)}>Cancel</button>
+              <button className="px-4 py-2 bg-red-600 text-white rounded" onClick={handleDiscardChanges}>Discard</button>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Request Modal */}

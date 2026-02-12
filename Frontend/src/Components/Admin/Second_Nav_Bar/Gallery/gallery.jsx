@@ -504,7 +504,7 @@ const Admingallery = ({ toggle, theme }) => {
               Final Request for the Changes
             </h2>
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the
+              Note: Your changes will stay pending until approved by the 
               superior admin. Once approved, they will be applied automatically
               to the live site.
             </p>
