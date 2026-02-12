@@ -5,8 +5,9 @@ import { Pencil, Trash2, Plus, Save, Send, X, PlusCircle } from "lucide-react";
 import { FaUpload } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+const deepCopy = (v) => structuredClone(v);
 
 const AlumniSlider1 = ({ data }) => {
   const [items, setItems] = useState([]);
@@ -21,6 +22,7 @@ const AlumniSlider1 = ({ data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const { sendRequest, loading, error } = useAdminRequest();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -195,16 +197,126 @@ const AlumniSlider1 = ({ data }) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingItems) return;
-    
+const handleImageUpload = (e, index) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const previewUrl = URL.createObjectURL(file);
+
+  setItems(prev =>
+    prev.map((item, i) =>
+      i === index
+        ? {
+            ...item,
+            _file: file, // actual file for uploading
+            image_path: `/static/images/ncc/navy/${file.name}`, // final path saved in DB
+            preview_url: previewUrl, // temporary preview in UI
+          }
+        : item
+    )
+  );
+
+  setIsDirty(true);
+};
+
+
+  
+const handleFinalRequestConfirm = async () => {
+  if (!pendingItems) return;
+
+  const payload = [];
+
+  const committedMap = new Map(committedItems.map(i => [i.id, i]));
+  const pendingMap = new Map(pendingItems.map(i => [i.id, i]));
+
+  // -------- DELETED ITEMS ----------
+  committedMap.forEach((oldItem, id) => {
+    if (!pendingMap.has(id)) {
+      payload.push({
+        collectionName: "ncc_navy",
+        collection_type: "awards",
+        action: "delete",
+        title: "delete awards",
+        meta_data: {
+          image_path: oldItem.image_path,
+          title: oldItem.title,
+          description: oldItem.description,
+        },
+      });
+    }
+  });
+
+  // -------- INSERT & UPDATE ----------
+  pendingMap.forEach((item, id) => {
+    const oldItem = committedMap.get(id);
+
+    const imagePath =
+      item._file
+        ? `/static/images/ncc/navy/${item._file.name}`
+        : item.image_path;
+
+    const metaData = {
+      image_path: imagePath,
+      title: item.title,
+      description: item.description,
+    };
+
+    // INSERT
+    if (!oldItem) {
+      payload.push({
+        collectionName: "ncc_navy",
+        collection_type: "awards",
+        action: "insert",
+        title: "Add awards",
+        meta_data: metaData,
+      });
+    }
+
+    // UPDATE
+    else if (
+      oldItem.title !== item.title ||
+      oldItem.description !== item.description ||
+      oldItem.image_path !== imagePath
+    ) {
+      payload.push({
+        collectionName: "ncc_navy",
+        collection_type: "awards",
+        action: "update",
+        title: "update awards",
+        original_data: {
+          image_path: oldItem.image_path,
+          title: oldItem.title,
+          description: oldItem.description,
+        },
+        meta_data: metaData,
+      });
+    }
+  });
+
+  if (payload.length === 0) {
+    toast.info("No changes to submit");
+    return;
+  }
+
+  // Collect all uploaded files
+  const files = pendingItems
+    .filter(i => i._file)
+    .map(i => i._file);
+console.log("files",files);
+
+  const result = await sendRequest(payload, files);
+
+  if (result) {
     setCommittedItems(deepCopy(pendingItems));
     setItems(deepCopy(pendingItems));
     setPendingItems(null);
     setIsSaved(false);
     setShowRequestModal(false);
-    toast.success("Final request submitted!");
-  };
+    toast.success("Request submitted successfully!");
+  }
+};
+
+
 
   const revertChange = (itemId) => {
     if (!pendingItems) return;
@@ -224,19 +336,8 @@ const AlumniSlider1 = ({ data }) => {
     setItems(deepCopy(updated));
   };
 
-  const handleImageUpload = (e, index) => {
-    const file = e.target.files[0];
-    if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const updatedItems = [...items];
-      updatedItems[index] = { ...updatedItems[index], image_path: event.target.result };
-      setItems(updatedItems);
-      setIsDirty(true);
-    };
-    reader.readAsDataURL(file);
-  };
+
 
   const getChanges = () => {
     if (!pendingItems) return [];
@@ -347,7 +448,13 @@ const AlumniSlider1 = ({ data }) => {
                         <div className="flex flex-col items-center gap-2">
                           {item.image_path && (
                             <img
-                              src={item.image_path.startsWith("data:") ? item.image_path : UrlParser(item.image_path)}
+                                src={
+                                item.preview_url
+                                  ? item.preview_url
+                                  : item.image_path
+                                  ? UrlParser(item.image_path)
+                                  : "/placeholder.jpg"
+                              }
                               alt={item.description || "Award Image"}
                               className="w-24 h-24 object-contain rounded border"
                             />
@@ -451,7 +558,13 @@ const AlumniSlider1 = ({ data }) => {
                     }}
                   >
                     <img
-                      src={UrlParser(item.image_path)}
+                                                    src={
+                                item.preview_url
+                                  ? item.preview_url
+                                  : item.image_path
+                                  ? UrlParser(item.image_path)
+                                  : "/placeholder.jpg"
+                              }
                       alt={`Award ${index + 1}`}
                       className="w-full h-80 object-contain rounded-t-lg"
                     />

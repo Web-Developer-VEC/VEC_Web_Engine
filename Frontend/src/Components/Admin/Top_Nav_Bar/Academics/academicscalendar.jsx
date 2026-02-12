@@ -32,6 +32,53 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
       : `${BASE_URL}${path}`;
   };
 
+const getChanges = () => {
+  const changes = [];
+
+  const origMap = new Map(originalData.map(r => [r.__uid, r]));
+  const editMap = new Map(editedData.map(r => [r.__uid, r]));
+
+  // Added or Edited
+  editedData.forEach((item) => {
+    if (!origMap.has(item.__uid)) {
+      changes.push({
+        type: "add",
+        year: item.year
+      });
+    } else {
+      const orig = origMap.get(item.__uid);
+
+      if (orig.year !== item.year) {
+        changes.push({
+          type: "year",
+          year: item.year
+        });
+      }
+
+      if (item.oddFile) {
+        changes.push({ type: "odd", year: item.year });
+      }
+
+      if (item.evenFile) {
+        changes.push({ type: "even", year: item.year });
+      }
+    }
+  });
+
+  // Deleted
+  originalData.forEach((item) => {
+    if (!editMap.has(item.__uid)) {
+      changes.push({
+        type: "delete",
+        year: item.year
+      });
+    }
+  });
+
+  return changes;
+};
+
+
   // Fetch academic calendar data
   const fetchData = async () => {
     try {
@@ -40,8 +87,17 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
       });
       const data = response.data.data;
       setAcademicData(data);
-      setEditedData(JSON.parse(JSON.stringify(data)));
-      setOriginalData(JSON.parse(JSON.stringify(data)));
+const addUid = (arr) =>
+  arr.map((item) => ({
+    ...item,
+    __uid: item.__uid || `${Date.now()}_${Math.random()}`
+  }));
+
+const withUid = addUid(data);
+
+setEditedData(JSON.parse(JSON.stringify(withUid)));
+setOriginalData(JSON.parse(JSON.stringify(withUid)));
+
     } catch (error) {
       console.error("Error fetching Calendar Data", error);
     }
@@ -50,6 +106,13 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+  const detectedChanges = getChanges();
+  setChanges(detectedChanges);
+  setHasChanges(detectedChanges.length > 0);
+}, [editedData]);
+
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -157,28 +220,19 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
   };
 
   // ✅ Delete selected cards
-  const handleDeleteSelected = () => {
-    const updated = editedData.filter((_, i) => !selected.includes(i));
+const handleDeleteSelected = () => {
+  const updated = editedData.filter((_, i) => !selected.includes(i));
 
-    // Track deleted changes
-    const newDeletions = selected.map((i) => ({
-      index: i,
-      type: "delete",
-      newValue: `Row ${i + 1} deleted`,
-    }));
+  setEditedData(updated);
+  setSelected([]);
+  setShowDeleteConfirm(false);
 
-    setEditedData(updated);
-    setSelected([]);
-    setShowDeleteConfirm(false);
-    setChanges((prev) => [...prev, ...newDeletions]);
+  setIsEditing(true);
+  setIsSaved(false);
 
-    // ✅ Same as after save flow
-    setIsSaved(true);
-    setIsEditing(false);
-    setHasChanges(false);
+  toast.success("Selected items deleted!");
+};
 
-    toast.success("Selected items deleted!");
-  };
 
   return (
     <>
@@ -371,6 +425,18 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
         </div>
       )}
 
+{selected.length > 0 && (
+  <div className="w-full flex justify-center my-4">
+    <button
+      onClick={() => setShowDeleteConfirm(true)}
+      className="px-5 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition flex items-center gap-2"
+    >
+      <Trash2 size={18} /> Delete ({selected.length})
+    </button>
+  </div>
+)}
+
+
       {/* Action Buttons */}
       {isEditing && (
         <div className="w-full flex justify-end pr-6 pb-6 gap-4">
@@ -386,14 +452,7 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
             Cancel
           </button>
 
-          {selected.length > 0 && (
-            <button
-              onClick={() => setShowDeleteConfirm(true)}
-              className="px-5 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition flex items-center gap-2"
-            >
-              <Trash2 size={18} /> Delete ({selected.length})
-            </button>
-          )}
+
 
           {hasChanges && (
             <button
@@ -479,7 +538,10 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
                     <td className="py-2 text-blue-600 font-semibold">
                       {change.type === "delete" ? "Deleted" : "Edited"}
                     </td>
-                    <td className="py-2">{`Row ${change.index + 1}`}</td>
+<td className="py-2">
+  Academic Year {change.year}
+</td>
+
                     <td className="py-2 flex items-center justify-center gap-2">
                       <span className="px-2 py-1 bg-yellow-100 text-black rounded-md">
                         {change.type === "year"
