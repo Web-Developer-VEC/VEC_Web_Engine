@@ -4,6 +4,7 @@ import LoadComp from "../../LoadComp";
 import { Pencil, Eye, Plus, Trash2, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const NIRF = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -22,7 +23,7 @@ const NIRF = ({ data }) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [requestSent, setRequestSent] = useState(false);
   const [lastSavedState, setLastSavedState] = useState(null); // Track last saved state
-
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
   // changeLog state
   const [changeLog, setChangeLog] = useState([]);
 
@@ -69,9 +70,92 @@ const NIRF = ({ data }) => {
   const pushChangeLog = (entry) => {
     setChangeLog((prev) => [...prev, { id: uid("chg_"), ...entry }]);
   };
+  const getNirfPdfPath = (doc) => {
+      if (doc?.file?.name) {
+        return `/static/pdfs/nirf/${doc.file.name}`;
+      }
+      return doc?.pdf_path || "";
+    };
+  const getOriginalYear = (yearId) => {
+    return originalData.find((y) => y.__id === yearId) || null;
+   };
+  const buildNirfPayload = (change) => {
+      const { action, yearId, data } = change;
 
-  // upsertEdited: first try to find a matching Added entry (tempId/yearId) and update it.
-  // If no Added exists, coalesce into an Edited entry (update existing Edited if present).
+      const originalYear = getOriginalYear(yearId);
+      const editedYear = editableData.find((y) => y.__id === yearId);
+
+      const category = `NIRF ${editedYear?.year || originalYear?.year || ""}`;
+
+      // 🟢 INSERT (New Year or New Document)
+      if (action === "Added") {
+        const year = editedYear || data;
+
+        return {
+          collectionName: "accreditations_and_ranking",
+          collection_type: "nirf",
+          action: "insert",
+          title: "insert in nirf",
+          category,
+          meta_data: {
+            year: year?.year || "",
+            content: (year?.content || []).map((doc) => ({
+              name: doc?.name || "",
+              pdf_path: getNirfPdfPath(doc),
+            })),
+          },
+        };
+      }
+
+      // 🔵 UPDATE (Year rename / doc rename / file replace)
+      if (action === "Edited" && originalYear && editedYear) {
+        return {
+          collectionName: "accreditations_and_ranking",
+          collection_type: "nirf",
+          action: "update",
+          title: "update in nirf",
+          category,
+
+          original_data: {
+            year: originalYear?.year || "",
+            content: (originalYear?.content || []).map((doc) => ({
+              name: doc?.name || "",
+              pdf_path: doc?.pdf_path || "",
+            })),
+          },
+
+          meta_data: {
+            year: editedYear?.year || "",
+            content: (editedYear?.content || []).map((doc) => ({
+              name: doc?.name || "",
+              pdf_path: getNirfPdfPath(doc),
+            })),
+          },
+        };
+      }
+
+      // 🔴 DELETE (Year or Document delete)
+      if (action === "Deleted") {
+        const year = originalYear || data;
+
+        return {
+          collectionName: "accreditations_and_ranking",
+          collection_type: "nirf",
+          action: "delete",
+          title: "delete in nirf",
+          category: `NIRF ${year?.year || ""}`,
+          meta_data: {
+            year: year?.year || "",
+            content: (year?.content || []).map((doc) => ({
+              name: doc?.name || "",
+              pdf_path: doc?.pdf_path || "",
+            })),
+          },
+        };
+      }
+
+      return null;
+    };
   const upsertEditedLog = (matchPredicate, newEntry) => {
     setChangeLog((prev) => {
       const clone = [...prev];
@@ -203,6 +287,7 @@ const NIRF = ({ data }) => {
     // set new file
     updated[yearIndex].content[docIndex].pdf_path = fileURL;
     updated[yearIndex].content[docIndex].file = file;
+    
     setEditableData(updated);
     setHasChanges(true);
 
@@ -305,7 +390,7 @@ const NIRF = ({ data }) => {
       toast.success("Year deleted");
     }
   };
-
+ 
   const handleDeleteSelected = () => {
     if (selectedItems.length === 0) return;
     const toDelete = [...selectedItems].sort((a, b) => a - b);
@@ -416,6 +501,21 @@ const NIRF = ({ data }) => {
     setRequestSent(false);
     toast.success("Changes saved successfully!");
   };
+  const collectNirfFiles = () => {
+  const files = [];
+
+  editableData.forEach((year) => {
+    if (!Array.isArray(year.content)) return;
+
+    year.content.forEach((doc) => {
+      if (doc?.file instanceof File) {
+        files.push(doc.file);
+      }
+    });
+  });
+
+  return files;
+};
 
   const handleDiscardAll = () => {
     setEditableData(JSON.parse(JSON.stringify(originalData)));
@@ -433,25 +533,34 @@ const NIRF = ({ data }) => {
     setShowRequestModal(true);
   };
 
-  const handleRequestConfirm = () => {
-    const payload = {
-      section: "NIRF",
-      timestamp: new Date().toISOString(),
-      changes: getChanges().map((c) => ({
-        id: c.id,
-        action: c.action,
-        raw: c,
-        description: describeChange(c),
-      })),
-    };
+  const handleRequestConfirm = async () => {
+      const changes = getChanges();
 
-    console.log("Submitting request payload:", payload);
-    setShowRequestModal(false);
-    setRequestSent(true);
-    setChangeLog([]);
-    setSavedChanges(null);
-    toast.success("Final request submitted!");
-  };
+      if (changes.length === 0) {
+        toast.warn("No changes to submit");
+        return;
+      }
+
+      // 1️⃣ Build payload
+      const payload = changes
+        .map(buildNirfPayload)
+        .filter(Boolean);
+
+      // 2️⃣ Collect PDF files
+      const files = collectNirfFiles();
+
+      console.log("📦 NIRF PAYLOAD:", payload);
+      console.log("📄 NIRF FILES:", files);
+
+      // 3️⃣ Send payload + files
+      await sendRequest(payload, files);
+
+      setShowRequestModal(false);
+      setRequestSent(true);
+      setChangeLog([]);
+      setSavedChanges(null);
+      toast.success("Final request submitted!");
+    };
 
   const toggleItemSelection = (yearIndex) => {
     const index = selectedItems.indexOf(yearIndex);
@@ -882,9 +991,10 @@ const NIRF = ({ data }) => {
               </button>
               <button
                 onClick={handleRequestConfirm}
+                disabled={loadings}
                 className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
               >
-                Final Request
+                 {loadings ? "Submitting..." : "Final Request"}
               </button>
             </div>
           </div>

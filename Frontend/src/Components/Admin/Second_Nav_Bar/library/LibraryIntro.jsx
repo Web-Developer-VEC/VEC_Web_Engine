@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { motion } from "framer-motion";
 import LoadComp from "../../LoadComp";
-import { ArrowDown, Pencil, Send, Save } from "lucide-react"; 
-import { ToastContainer, toast } from "react-toastify"; 
-import "react-toastify/dist/ReactToastify.css"; 
+import { ArrowDown, Pencil, Send, Save } from "lucide-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const LibraryIntro = ({ about }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-
+  const { sendRequest, loading, error } = useAdminRequest();
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
@@ -38,22 +39,156 @@ const LibraryIntro = ({ about }) => {
     }
   }, [about]);
 
-  const isChanged =
-    JSON.stringify(formData) !== JSON.stringify(originalData);
+  const isChanged = JSON.stringify(formData) !== JSON.stringify(originalData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  const buildLibraryPayload = ({
+    action,
+    formData,
+    originalData,
+    generalInstructions,
+  }) => {
+    // 🟢 INSERT
+    if (action === "insert") {
+      return {
+        collectionName: "library",
+        collection_type: "about_the_library",
+        action: "insert",
+        title: "update about library",
+        meta_data: {
+          Area: formData.Area,
+          no_of_books: formData.no_of_books,
+          vision: formData.vision,
+          mission: formData.mission,
+          general_instructions: generalInstructions || [],
+        },
+      };
+    }
 
-  const handleRequestConfirm = () => {
-    console.log("Final request submitted with data:", formData);
-    setShowRequestModal(false);
-    setShowRequest(false);
-    toast.success(" Final request submitted for admin approval!", {
-      position: "bottom-right",
-      autoClose: 3000,
+    // 🔵 UPDATE
+    if (action === "update") {
+      const meta_data = {};
+      Object.keys(formData).forEach((key) => {
+        if (formData[key] !== originalData[key]) {
+          meta_data[key] = formData[key];
+        }
+      });
+
+      return {
+        collectionName: "library",
+        collection_type: "about_the_library",
+        action: "update",
+        title: "update about library",
+        meta_data,
+        original_data: {
+          Area: originalData.Area,
+          no_of_books: originalData.no_of_books,
+          vision: originalData.vision,
+          mission: originalData.mission,
+          general_instructions: generalInstructions || [],
+        },
+      };
+    }
+
+    // 🔴 DELETE (optional – future use)
+    if (action === "delete") {
+      return {
+        collectionName: "library",
+        collection_type: "about_the_library",
+        action: "delete",
+        title: "delete about library",
+        meta_data: {
+          Area: formData.Area,
+          no_of_books: formData.no_of_books,
+          vision: formData.vision,
+          mission: formData.mission,
+        },
+      };
+    }
+
+    return null;
+  };
+
+  const SECTION_FIELD_MAP = {
+    "About Library": [
+      "Area",
+      "no_of_books",
+      "no_of_titles",
+      "no_of_journals",
+      "no_of_online_journals",
+    ],
+    Vision: ["vision"],
+    Mission: ["mission"],
+  };
+  const handleRevertSection = (sectionLabel) => {
+    if (!originalData) return;
+
+    const fields = SECTION_FIELD_MAP[sectionLabel];
+
+    setFormData((prev) => {
+      const updated = { ...prev };
+      fields.forEach((field) => {
+        updated[field] = originalData[field];
+      });
+      return updated;
     });
+
+    toast.info(`${sectionLabel} changes reverted`);
+  };
+
+  const changeList = React.useMemo(() => {
+    if (!formData || !originalData) return [];
+
+    return Object.entries(SECTION_FIELD_MAP)
+      .filter(([_, fields]) =>
+        fields.some((field) => formData[field] !== originalData[field]),
+      )
+      .map(([sectionName]) => ({
+        action: "edit",
+        section: "library-about",
+        label: sectionName,
+      }));
+  }, [formData, originalData]);
+  const hasLibraryChanges = changeList.length > 0;
+
+  const handleRequestConfirm = async () => {
+    let action = "update";
+
+    // If originalData is missing → INSERT
+    if (!originalData) {
+      action = "insert";
+    }
+
+    const payload = buildLibraryPayload({
+      action,
+      formData,
+      originalData,
+      generalInstructions: about?.[0]?.general_instructions,
+    });
+
+    if (!payload) {
+      toast.warn("No changes to submit");
+      return;
+    }
+
+    console.log("📦 Final Library Payload:", payload);
+
+    try {
+      // 🔥 THIS WAS MISSING
+      const result = await sendRequest([payload]);
+
+      if (result) {
+        setShowRequestModal(false);
+        setShowRequest(false);
+        toast.success("Request submitted successfully!");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to submit request");
+    }
   };
 
   const handleDiscardConfirm = () => {
@@ -117,8 +252,7 @@ const LibraryIntro = ({ about }) => {
                   {formData.Area}
                 </span>
               )}
-              , it is a spacious, well-ventilated space. Our library houses
-              over{" "}
+              , it is a spacious, well-ventilated space. Our library houses over{" "}
               {isEditing ? (
                 <input
                   type="text"
@@ -178,8 +312,8 @@ const LibraryIntro = ({ about }) => {
                   {formData.no_of_online_journals} online journals
                 </span>
               )}
-              . The library follows the Universal Decimal Classification
-              Scheme and operates on an Open Access System.
+              . The library follows the Universal Decimal Classification Scheme
+              and operates on an Open Access System.
             </p>
           </div>
 
@@ -187,7 +321,7 @@ const LibraryIntro = ({ about }) => {
           <div className="w-full md:w-1/2">
             <img
               src={UrlParser(
-                "/static/images/library/library_images/Library+front+pic.webp"
+                "/static/images/library/library_images/Library+front+pic.webp",
               )}
               className="w-full h-64 sm:h-80 md:h-full object-cover"
               alt="Library"
@@ -309,78 +443,75 @@ const LibraryIntro = ({ about }) => {
           </div>
         </div>
       </div>
-
-      {/* ✅ Request Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[600px]">
-            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-               Request
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[650px]">
+            <h2 className="text-lg font-semibold mb-2 dark:text-drkt">
+              Final Request
             </h2>
 
-            <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin.
-              Once approved will go on live.
+            <p className="text-red-600 text-sm mb-4">
+              <span className="font-medium">Note:</span> Your changes will stay
+              pending until approved by the superior admin.
             </p>
 
-            {/* Changes Table */}
-            <div className="max-h-[250px] overflow-y-auto mb-4">
-              <table className="w-full text-sm border">
-                <thead>
-                  <tr className="bg-gray-100 dark:bg-gray-800">
-                    <th className="p-2 text-left">Action</th>
-                    <th className="p-2 text-left">Section</th>
-                    <th className="p-2 text-left">Changes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.keys(formData).map((key) => {
-                    if (formData[key] !== originalData[key]) {
-                      return (
-                        <tr key={key} className="border-b">
-                          <td className="p-2 text-blue-600">✎ Edited</td>
-                          <td className="p-2 font-semibold">{key}</td>
-                          <td className="p-2">
-                            <div className="flex items-center gap-2">
-                              <span className="text-gray-600 line-through">
-                                {originalData[key] || "-"}
-                              </span>
-                              <ArrowDown size={16} className="text-gray-500" />
-                              <span className="text-green-600">{formData[key] || "-"}</span>
-                              <button
-                                className="text-red-500 hover:text-red-700 ml-2"
-                                onClick={() =>
-                                  setFormData((prev) => ({
-                                    ...prev,
-                                    [key]: originalData[key],
-                                  }))
-                                }
-                              >
-                                ❌
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      );
-                    }
-                    return null;
-                  })}
-                </tbody>
-              </table>
-            </div>
+            <table className="w-full text-sm border">
+              <thead>
+                <tr className="bg-gray-100 dark:bg-gray-800">
+                  <th className="border p-2">Action</th>
+                  <th className="border p-2">Section</th>
+                  <th className="border p-2">Changes</th>
+                  <th className="border p-2">Undo</th>
+                </tr>
+              </thead>
 
-            <div className="flex justify-end gap-2">
+              <tbody>
+                {changeList.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="text-center p-4">
+                      No pending changes
+                    </td>
+                  </tr>
+                ) : (
+                  changeList.map((item, idx) => (
+                    <tr key={idx} className="border-b">
+                      <td className="p-2 text-blue-600 capitalize">
+                        {item.action}
+                      </td>
+
+                      <td className="p-2">{item.section}</td>
+
+                      <td className="p-2 font-medium">{item.label}</td>
+
+                      <td className="p-2 text-center">
+                        <button
+                          onClick={() => handleRevertSection(item.label)}
+                          className="text-red-600 hover:text-red-800"
+                          title="Undo all library changes"
+                        >
+                          ❌
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+
+            <div className="flex justify-end gap-3 mt-4">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-prim"
+                className="px-4 py-2 bg-gray-300 rounded-md"
               >
                 Cancel
               </button>
+
               <button
                 onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-[#800000] text-text hover:text-prim"
+                disabled={loading || !hasLibraryChanges}
+                className="px-4 py-2 bg-[#FDCC03] hover:bg-[#800000] text-text hover:text-prim rounded-md"
               >
-                Final Request
+                {loading ? "Submitting..." : "Final Request"}
               </button>
             </div>
           </div>
@@ -395,7 +526,8 @@ const LibraryIntro = ({ about }) => {
               Discard Changes?
             </h2>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-              Are you sure you want to discard all unsaved changes? This action cannot be undone.
+              Are you sure you want to discard all unsaved changes? This action
+              cannot be undone.
             </p>
             <div className="flex justify-end gap-2">
               <button

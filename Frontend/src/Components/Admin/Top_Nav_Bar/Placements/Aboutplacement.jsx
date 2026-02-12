@@ -7,8 +7,15 @@ import { useNavigate } from "react-router";
 import { Pencil, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-const ContentEditable = ({ html, onChange, tagName = "p", className, editable }) => {
+const ContentEditable = ({
+  html,
+  onChange,
+  tagName = "p",
+  className,
+  editable,
+}) => {
   const ref = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -39,7 +46,7 @@ const ContentEditable = ({ html, onChange, tagName = "p", className, editable })
         onChange && onChange(e.currentTarget.innerText);
       },
     },
-    null
+    null,
   );
 };
 
@@ -54,6 +61,7 @@ const AdminAboutplacement = ({ theme, toggle }) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [showMultiDeleteConfirm, setShowMultiDeleteConfirm] = useState(false);
   const navigate = useNavigate();
+  const { sendRequest, loading, error } = useAdminRequest();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -92,7 +100,9 @@ const AdminAboutplacement = ({ theme, toggle }) => {
   }, [placementData, editedData]);
 
   const getHasUnsavedLocalChanges = () => {
-    const base = editMode ? backupData || (pendingData ?? placementData) : (pendingData ?? placementData);
+    const base = editMode
+      ? backupData || (pendingData ?? placementData)
+      : (pendingData ?? placementData);
     return JSON.stringify(editedData) !== JSON.stringify(base);
   };
 
@@ -101,6 +111,40 @@ const AdminAboutplacement = ({ theme, toggle }) => {
     setBackupData(JSON.parse(JSON.stringify(base || {})));
     setEditedData(JSON.parse(JSON.stringify(base || {})));
     setEditMode(true);
+  };
+  const buildPlacementPayload = () => {
+    if (!pendingData) return null;
+
+    const isInsert = !placementData || Object.keys(placementData).length === 0;
+
+    if (isInsert) {
+      // 🔹 INSERT PAYLOAD
+      return {
+        action: "insert",
+        collectionName: "placement",
+        title: "about_placement_insert_request",
+        collection_type: "about_placement",
+        meta_data: {
+          ...pendingData,
+        },
+      };
+    }
+
+    // 🔹 UPDATE PAYLOAD
+    return {
+      action: "update",
+      collectionName: "placement",
+      title: "about_placement_update_request",
+      collection_type: "about_placement",
+
+      original_data: {
+        section: "about",
+      },
+
+      meta_data: {
+        ...pendingData,
+      },
+    };
   };
 
   const cancelEdit = () => {
@@ -116,9 +160,11 @@ const AdminAboutplacement = ({ theme, toggle }) => {
 
   const discardAllPending = () => {
     setPendingData(null);
-    setEditedData(placementData ? JSON.parse(JSON.stringify(placementData)) : null);
+    setEditedData(
+      placementData ? JSON.parse(JSON.stringify(placementData)) : null,
+    );
     setEditMode(false);
-toast.error("Change has been reverted");
+    toast.error("Change has been reverted");
   };
 
   const handleChange = (field, value, index = null) => {
@@ -168,17 +214,12 @@ toast.error("Change has been reverted");
     phone: "Contact Placement Cell",
   };
 
-  /**
-   * Build change rows for the modal.
-   * - Section column will always be "About Placement Department"
-   * - Changes column will show only the card title (e.g. "Our Vision")
-   * - If multiple keys map to the same card (e.g. phone + email -> Contact Placement Cell),
-   *   they are grouped into a single change row per card title.
-   */
   const getChangesForModal = () => {
     const base = placementData || {};
     const pending = pendingData || {};
-    const keys = Array.from(new Set([...Object.keys(base), ...Object.keys(pending)]));
+    const keys = Array.from(
+      new Set([...Object.keys(base), ...Object.keys(pending)]),
+    );
     // Temporary map keyed by card title to group changes
     const grouped = new Map();
 
@@ -187,8 +228,10 @@ toast.error("Change has been reverted");
       const b = pending[k];
       if (JSON.stringify(a) !== JSON.stringify(b)) {
         let action = "Edited";
-        if (b === undefined || b === "" || (Array.isArray(b) && b.length === 0)) action = "Deleted";
-        if (a === undefined || a === "" || (Array.isArray(a) && a.length === 0)) action = "Added";
+        if (b === undefined || b === "" || (Array.isArray(b) && b.length === 0))
+          action = "Deleted";
+        if (a === undefined || a === "" || (Array.isArray(a) && a.length === 0))
+          action = "Added";
 
         const title = fieldKeyToTitle[k] || formatFieldName(k);
         // use the title as grouping key
@@ -224,14 +267,6 @@ toast.error("Change has been reverted");
     return rows;
   };
 
-  /**
-   * Returns the array used by the modal (changeLog).
-   * Each item contains:
-   *  - action: "Edited" | "Added" | "Deleted"
-   *  - section: "About Placement Department" (fixed)
-   *  - title: card title to display in Changes column
-   *  - keys: array of field keys that were changed for this card
-   */
   const getChanges = () => {
     const rows = getChangesForModal();
     return rows.map((r) => ({
@@ -268,21 +303,36 @@ toast.error("Change has been reverted");
 
   const handleRequestConfirm = async () => {
     if (!pendingData) {
+      toast.warn("No changes to submit");
       return;
     }
-           try {
-             setShowRequestModal(false);
-              setPendingData(null); 
-             toast.success("Request submitted successfully!");
-           } catch (err) {
-             console.error(err);
-             toast.error("Request failed. Please try again.");
-           }
+
+    const payload = buildPlacementPayload();
+
+    console.log("📦 FINAL PLACEMENT PAYLOAD:", payload);
+
+    try {
+      // ✅ CORRECT: use the hook function directly
+      await sendRequest(payload);
+
+      toast.success("✅ Request submitted successfully!");
+      setShowRequestModal(false);
+      setPendingData(null);
+
+      // commit locally (optional)
+      setPlacementData((prev) => ({
+        ...prev,
+        ...payload.meta_data,
+      }));
+    } catch (err) {
+      console.error("❌ REQUEST ERROR:", err);
+      toast.error("❌ Failed to submit request");
+    }
   };
 
   const toggleSelectItem = (idx) => {
     setSelectedItems((prev) =>
-      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx],
     );
   };
 
@@ -290,7 +340,9 @@ toast.error("Change has been reverted");
     if (!editMode) return;
     const arrField = "Training_Placement_Department";
     if (!Array.isArray(editedData?.[arrField])) return;
-    const filtered = editedData[arrField].filter((_, idx) => !selectedItems.includes(idx));
+    const filtered = editedData[arrField].filter(
+      (_, idx) => !selectedItems.includes(idx),
+    );
     setEditedData((prev) => ({ ...prev, [arrField]: filtered }));
     setSelectedItems([]);
     setShowMultiDeleteConfirm(false);
@@ -327,7 +379,7 @@ toast.error("Change has been reverted");
       />
 
       <div className="Admin-AP-main-container relative ">
-<ToastContainer position="bottom-right" autoClose={3000} />
+        <ToastContainer position="bottom-right" autoClose={3000} />
         {!editMode && (
           <button
             onClick={enterEditMode}
@@ -351,7 +403,9 @@ toast.error("Change has been reverted");
                     html={line}
                     editable={editMode}
                     className={`AP-card-text font-[poppins] ${editMode ? "editable-active" : ""}`}
-                    onChange={(val) => handleChange("Training_Placement_Department", val, i)}
+                    onChange={(val) =>
+                      handleChange("Training_Placement_Department", val, i)
+                    }
                   />
                 </div>
               ))}
@@ -392,7 +446,9 @@ toast.error("Change has been reverted");
                 Contact Placement Cell
               </h2>
               <br />
-              <h3 className="AP-contact-name font-[poppins] ">Head of Placement and Training</h3>
+              <h3 className="AP-contact-name font-[poppins] ">
+                Head of Placement and Training
+              </h3>
               <br />
               <ContentEditable
                 html={editedData ? `✉️Email: ${editedData.email}` : "✉️Email:"}
@@ -401,7 +457,11 @@ toast.error("Change has been reverted");
                 onChange={(val) => handleChange("email", val)}
               />
               <ContentEditable
-                html={editedData ? `📞Phone: ${editedData.phone?.join(" / ")}` : "📞Phone:"}
+                html={
+                  editedData
+                    ? `📞Phone: ${editedData.phone?.join(" / ")}`
+                    : "📞Phone:"
+                }
                 editable={editMode}
                 className={`AP-card-text font-[poppins] ${editMode ? "editable-active" : ""}`}
                 onChange={(val) => handleChange("phone", val)}
@@ -452,7 +512,7 @@ toast.error("Change has been reverted");
                 onClick={() => setShowRequestModal(true)}
                 className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
               >
-               <Send size={16}/> Request
+                <Send size={16} /> Request
               </button>
             </>
           )}
@@ -463,7 +523,9 @@ toast.error("Change has been reverted");
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded shadow-md w-[400px]">
             <h3 className="font-bold mb-3">Confirm Delete</h3>
-            <p className="mb-4">Delete {selectedItems.length} selected items?</p>
+            <p className="mb-4">
+              Delete {selectedItems.length} selected items?
+            </p>
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowMultiDeleteConfirm(false)}
@@ -486,9 +548,12 @@ toast.error("Change has been reverted");
       {showRequestModal && (
         <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
           <div className="bg-prim p-6 rounded-xl w-[40%] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">Final Request</h2>
+            <h2 className="text-xl font-bold mb-4 text-gray-800">
+              Final Request
+            </h2>
             <p className="text-sm text-red-500 mb-4">
-              Your changes will stay pending until approved by the superior admin. Once approved they will go live.
+              Your changes will stay pending until approved by the superior
+              admin. Once approved they will go live.
             </p>
 
             {changeLog.length > 0 ? (
@@ -505,9 +570,7 @@ toast.error("Change has been reverted");
                   {changeLog.map((ch, i) => (
                     <tr key={i}>
                       <td className="border p-2 text-blue-600">{ch.action}</td>
-                      {/* Always "About Placement Department" */}
                       <td className="border p-2">{ch.section}</td>
-                      {/* Show only the card title (e.g. "Our Vision") */}
                       <td className="border p-2 text-left whitespace-pre-wrap">
                         <p>{ch.title || ch.data?.name || "Unnamed"}</p>
                       </td>
@@ -538,9 +601,12 @@ toast.error("Change has been reverted");
               {changeLog.length > 0 && (
                 <button
                   onClick={handleRequestConfirm}
-                  className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  disabled={loading}
+                  className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
+                    loading ? "cursor-progress" : "hover:bg-[#800000]"
+                  }`}
                 >
-                  Final Request
+                  {loading ? "Processing..." : "Final Request"}
                 </button>
               )}
             </div>

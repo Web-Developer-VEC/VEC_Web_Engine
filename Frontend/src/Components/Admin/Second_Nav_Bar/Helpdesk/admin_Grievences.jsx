@@ -7,6 +7,7 @@ import { SaveAll, SquarePen, CircleX, Send, Pencil, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./admin_Grievences.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminGrievanceForm = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -24,7 +25,7 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
   const [loading, setLoading] = useState(false);
   const [gredit, setgrEdit] = useState(false);
   const [savedOnce, setSavedOnce] = useState(false);
-
+  const { sendRequest, error } = useAdminRequest();
   // States for admin functionality
   const [grievanceData, setGrievanceData] = useState(null);
   const [editableData, setEditableData] = useState(null);
@@ -63,19 +64,19 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
     };
     fetchGrievanceData();
   }, []);
-const handleDiscardChanges = () => {
-  setEditableData(grievanceData);   // Restore from original fetched data
-  setChangeList([]);                // Clear change list
-  setSavedOnce(false);              // Reset saved state
-  setgrEdit(false);                 // Exit edit mode
-  toast.info("All changes discarded. Original data restored.");
-};
-const handleCancel = () => {
-  setEditableData([...editableData]); // Keep the current saved data
-  setChangeList([]);                  // Clear pending edits
-  setgrEdit(false);                   // Exit edit mode
-  toast.info("Edit cancelled. Kept last saved changes.");
-};
+  const handleDiscardChanges = () => {
+    setEditableData(grievanceData); // Restore from original fetched data
+    setChangeList([]); // Clear change list
+    setSavedOnce(false); // Reset saved state
+    setgrEdit(false); // Exit edit mode
+    toast.info("All changes discarded. Original data restored.");
+  };
+  const handleCancel = () => {
+    setEditableData([...editableData]); // Keep the current saved data
+    setChangeList([]); // Clear pending edits
+    setgrEdit(false); // Exit edit mode
+    toast.info("Edit cancelled. Kept last saved changes.");
+  };
   // Check if data is loaded before accessing its properties
   const section =
     grievanceData?.find((item) => item.category === "section & level")
@@ -97,6 +98,54 @@ const handleCancel = () => {
   function generateCaptcha() {
     return Math.floor(1000 + Math.random() * 9000);
   }
+  const buildHelpDeskPayload = ({ category, newData, oldData }) => {
+    const titleMap = {
+      "section & level": "Update Section & Level",
+      level1: "Update Level 1",
+      level2: "Update Level 2",
+      level3: "Update Level 3",
+      level4: "Update Level 4",
+      level5: "Update Level 5",
+      another: "Update Another Section",
+    };
+
+    return {
+      collectionName: "help_desk",
+      collection_type: "Help desk",
+      action: "update",
+      title: titleMap[category] || "Update Help Desk",
+      category,
+      meta_data: newData,
+      original_data: oldData,
+    };
+  };
+  const buildHelpDeskPayloads = ({
+    changeList,
+    grievanceData,
+    editableData,
+  }) => {
+    return changeList
+      .map((change) => {
+        const category = change.category;
+
+        const originalItem = grievanceData.find(
+          (item) => item.category === category,
+        );
+
+        const editedItem = editableData.find(
+          (item) => item.category === category,
+        );
+
+        if (!originalItem || !editedItem) return null;
+
+        return buildHelpDeskPayload({
+          category,
+          newData: editedItem.content,
+          oldData: originalItem.content,
+        });
+      })
+      .filter(Boolean);
+  };
 
   const phoneCheck = (value) => {
     const phonePattern = /^[0-9]{10}$/;
@@ -196,14 +245,15 @@ const handleCancel = () => {
 
   const handleSaveClick = () => {
     if (!validateMandatoryFields()) {
-    toast.error("All fields are mandatory!");
-    return;    }                 
+      toast.error("All fields are mandatory!");
+      return;
+    }
     setSavedOnce(true);
     const changes = [];
 
     editableData.forEach((editableItem) => {
       const originalItem = grievanceData.find(
-        (item) => item.category === editableItem.category
+        (item) => item.category === editableItem.category,
       );
 
       if (originalItem) {
@@ -211,7 +261,9 @@ const handleCancel = () => {
         const editableContent = editableItem.content;
 
         // Check for changes in content
-        if (JSON.stringify(editableContent) !== JSON.stringify(originalContent)) {
+        if (
+          JSON.stringify(editableContent) !== JSON.stringify(originalContent)
+        ) {
           let action = "";
           let details = {};
 
@@ -220,7 +272,7 @@ const handleCancel = () => {
             details = { from: originalContent, to: editableContent };
           } else {
             const changedFields = Object.keys(editableContent).filter(
-              (key) => editableContent[key] !== originalContent[key]
+              (key) => editableContent[key] !== originalContent[key],
             );
 
             if (changedFields.length > 0) {
@@ -252,21 +304,20 @@ const handleCancel = () => {
     toast.success("Changes saved locally! Click 'Request changes' to submit.");
   };
   const validateMandatoryFields = () => {
-  for (let item of editableData) {
-    if (Array.isArray(item.content)) {
-      for (let val of item.content) {
-        if (!val || val.toString().trim() === "") return false;
-      }
-    } else {
-      for (let key in item.content) {
-        if (!item.content[key] || item.content[key].toString().trim() === "")
-          return false;
+    for (let item of editableData) {
+      if (Array.isArray(item.content)) {
+        for (let val of item.content) {
+          if (!val || val.toString().trim() === "") return false;
+        }
+      } else {
+        for (let key in item.content) {
+          if (!item.content[key] || item.content[key].toString().trim() === "")
+            return false;
+        }
       }
     }
-  }
-  return true;
-};
-
+    return true;
+  };
 
   const handleUndoChange = (idx) => {
     const newList = [...changeList];
@@ -286,23 +337,28 @@ const handleCancel = () => {
   };
 
   const handleFinalRequest = async () => {
-    if (changeList.length === 0) {
-      toast.error("No changes to submit!");
+    if (!changeList.length) {
+      toast.warn("No changes to submit");
       return;
     }
+
+    const payloads = buildHelpDeskPayloads({
+      changeList,
+      grievanceData,
+      editableData,
+    });
+
+    console.log("HELP DESK PAYLOADS:", payloads);
+
     try {
-      await axios.post("/api/admin/request-changes", {
-        changes: changeList,
-        data: editableData,
-      });
-      toast.success("Request submitted for approval!");
+      await sendRequest(payloads); // same hook you already use
+      toast.success("Help Desk request submitted successfully!");
       setChangeList([]);
       setShowPopup(false);
       setSavedOnce(false);
-      // Reset the original data to the new saved data
-      setGrievanceData(editableData);
+      setGrievanceData(editableData); // sync originals
     } catch (err) {
-      toast.error("Failed to submit request!");
+      toast.error("Failed to submit request");
     }
   };
 
@@ -351,7 +407,8 @@ const handleCancel = () => {
                 Have a Query or Grievance?
               </h2>
               <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                We value your feedback and concerns. Please fill in your details and our team will reach out to you shortly.
+                We value your feedback and concerns. Please fill in your details
+                and our team will reach out to you shortly.
               </p>
             </div>
 
@@ -360,7 +417,9 @@ const handleCancel = () => {
               className="bg-prim dark:bg-drkp shadow-xl rounded-3xl px-8 py-10 space-y-6 border-t-8 border-brwn dark:border-drks"
             >
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Full Name</label>
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                  Full Name
+                </label>
                 <input
                   type="text"
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
@@ -371,7 +430,9 @@ const handleCancel = () => {
               </div>
 
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Contact Number</label>
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                  Contact Number
+                </label>
                 <input
                   type="number"
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
@@ -382,7 +443,9 @@ const handleCancel = () => {
               </div>
 
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Email Address</label>
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                  Email Address
+                </label>
                 <input
                   type="email"
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
@@ -394,7 +457,9 @@ const handleCancel = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Query About</label>
+                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    Query About
+                  </label>
                   <select
                     className="p-3 rounded-lg border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none bg-prim dark:bg-drkp text-text dark:text-prim appearance-none"
                     onChange={(e) => setQueryAbout(e.target.value)}
@@ -411,7 +476,9 @@ const handleCancel = () => {
                 </div>
 
                 <div className="flex flex-col space-y-1">
-                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Category</label>
+                  <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    Category
+                  </label>
                   <select
                     className="p-3 rounded-lg border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none bg-prim dark:bg-drkp text-text dark:text-prim appearance-none"
                     onChange={(e) => setCategory(e.target.value)}
@@ -429,7 +496,9 @@ const handleCancel = () => {
               </div>
 
               <div className="flex flex-col space-y-1">
-                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Your Message</label>
+                <label className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                  Your Message
+                </label>
                 <textarea
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
                   rows="4"
@@ -440,7 +509,9 @@ const handleCancel = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 items-center">
-                <div className="bg-prim dark:bg-drkts rounded-lg py-3 text-center font-extrabold text-xl tracking-widest text-[#800000]">{captcha}</div>
+                <div className="bg-prim dark:bg-drkts rounded-lg py-3 text-center font-extrabold text-xl tracking-widest text-[#800000]">
+                  {captcha}
+                </div>
                 <input
                   type="text"
                   className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] dark:border-gray-600 dark:focus:border-[#800000] focus:outline-none py-2 px-1 text-text dark:text-prim"
@@ -472,247 +543,318 @@ const handleCancel = () => {
         <div className="admin-controls-gr flex justify-end mb-2">
           <button
             className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20"
-            onClick={() => { setgrEdit(!gredit);
+            onClick={() => {
+              setgrEdit(!gredit);
               setSavedOnce(false); // Reset saved status on edit/cancel
               setChangeList([]); // Clear pending changes
-              setEditableData(grievanceData);  }}
+              setEditableData(grievanceData);
+            }}
           >
             <Pencil size={16} /> Edit
           </button>
         </div>
 
         <div className="overflow-x-auto">
-        {grievanceData && grievanceData.length > 0 ? (
-          <table className="w-full border border-gray-300 text-center">
-            <thead className="bg-[#808080] text-white">
-              <tr>
-                <th className="p-2 border">Section & Level</th>
-                {section.map((header, idx) => (
-                  <th key={idx} className="p-2 border">{header}</th>
+          {grievanceData && grievanceData.length > 0 ? (
+            <table className="w-full border border-gray-300 text-center">
+              <thead className="bg-[#808080] text-white">
+                <tr>
+                  <th className="p-2 border">Section & Level</th>
+                  {section.map((header, idx) => (
+                    <th key={idx} className="p-2 border">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {/* Level 1 */}
+                <tr>
+                  <td className="p-2 border">Level 1</td>
+                  <td
+                    colSpan={editableSection.length}
+                    className="p-2 border text-center"
+                  >
+                    {gredit ? (
+                      <div className="flex flex-col gap-2">
+                        <input
+                          type="text"
+                          value={editableLevel1.Administrative_Officer}
+                          onChange={(e) =>
+                            handleEditChange(
+                              "level1",
+                              "Administrative_Officer",
+                              e.target.value,
+                            )
+                          }
+                          className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
+                          placeholder="Administrative Officer"
+                          required
+                        />
+                        <input
+                          type="text"
+                          value={editableLevel1.ph}
+                          onChange={(e) =>
+                            handleEditChange("level1", "ph", e.target.value)
+                          }
+                          className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
+                          placeholder="Phone Number"
+                          required
+                        />
+                        <input
+                          type="text"
+                          value={editableLevel1.email_id}
+                          onChange={(e) =>
+                            handleEditChange(
+                              "level1",
+                              "email_id",
+                              e.target.value,
+                            )
+                          }
+                          className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
+                          placeholder="Email ID"
+                        />
+                        <input
+                          type="text"
+                          value={editableLevel1.Online_Help_desk}
+                          onChange={(e) =>
+                            handleEditChange(
+                              "level1",
+                              "Online_Help_desk",
+                              e.target.value,
+                            )
+                          }
+                          className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
+                          placeholder="Online Help Desk"
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <span>{editableLevel1.Administrative_Officer}</span>
+                        <br />
+                        <span>ph: {editableLevel1.ph || "-"}</span>
+                        <br />
+                        <a
+                          href={`mailto:${editableLevel1.email_id}`}
+                          className="dark:text-drka"
+                        >
+                          Email ID: {editableLevel1.email_id || "-"}
+                        </a>
+                        <span>, Online Help desk: </span>
+                        <a
+                          href={`https://${editableLevel1.Online_Help_desk}`}
+                          className="dark:text-drka"
+                        >
+                          {editableLevel1.Online_Help_desk || "-"}
+                        </a>
+                      </>
+                    )}
+                  </td>
+                </tr>
+
+                {/* Levels 2, 3, 4 */}
+                {[
+                  { level: "level2", data: editableLevel2 },
+                  { level: "level3", data: editableLevel3 },
+                  { level: "level4", data: editableLevel4 },
+                ].map((levelItem, idx) => (
+                  <tr key={idx}>
+                    <td className="p-2 border">Level {idx + 2}</td>
+                    {editableSection.map((sec, i) => {
+                      const key = sec.toLowerCase().replace(/\s|&/g, "");
+                      return (
+                        <td key={i} className="p-2 border">
+                          {gredit ? (
+                            <input
+                              type="text"
+                              value={levelItem.data[key] || ""}
+                              onChange={(e) =>
+                                handleEditChange(
+                                  levelItem.level,
+                                  key,
+                                  e.target.value,
+                                )
+                              }
+                              className="w-full text-center bg-transparent border-b-2 border-gray-300 focus:border-[#800000]"
+                            />
+                          ) : (
+                            levelItem.data[key] || "-"
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
                 ))}
-              </tr>
-            </thead>
-            <tbody>
-              {/* Level 1 */}
-              <tr>
-                <td className="p-2 border">Level 1</td>
-                <td colSpan={editableSection.length} className="p-2 border text-center">
-                  {gredit ? (
-                    <div className="flex flex-col gap-2">
-                      <input
-                        type="text"
-                        value={editableLevel1.Administrative_Officer}
-                        onChange={(e) => handleEditChange("level1", "Administrative_Officer", e.target.value)}
-                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
-                        placeholder="Administrative Officer"
-                        required
-                      />
-                      <input
-                        type="text"
-                        value={editableLevel1.ph}
-                        onChange={(e) => handleEditChange("level1", "ph", e.target.value)}
-                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
-                        placeholder="Phone Number"
-                        required
-                      />
-                      <input
-                        type="text"
-                        value={editableLevel1.email_id}
-                        onChange={(e) => handleEditChange("level1", "email_id", e.target.value)}
-                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
-                        placeholder="Email ID"
-                      />
-                      <input
-                        type="text"
-                        value={editableLevel1.Online_Help_desk}
-                        onChange={(e) => handleEditChange("level1", "Online_Help_desk", e.target.value)}
-                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full"
-                        placeholder="Online Help Desk"
-                      />
-                    </div>
-                  ) : (
-                    <>
-                      <span>{editableLevel1.Administrative_Officer}</span><br />
-                      <span>ph: {editableLevel1.ph || "-"}</span><br />
-                      <a href={`mailto:${editableLevel1.email_id}`} className="dark:text-drka">
-                        Email ID: {editableLevel1.email_id || "-"}
-                      </a>
-                      <span>, Online Help desk: </span>
-                      <a href={`https://${editableLevel1.Online_Help_desk}`} className="dark:text-drka">
-                        {editableLevel1.Online_Help_desk || "-"}
-                      </a>
-                    </>
-                  )}
-                </td>
-              </tr>
 
-              {/* Levels 2, 3, 4 */}
-              {[
-                { level: "level2", data: editableLevel2 },
-                { level: "level3", data: editableLevel3 },
-                { level: "level4", data: editableLevel4 },
-              ].map((levelItem, idx) => (
-                <tr key={idx}>
-                  <td className="p-2 border">Level {idx + 2}</td>
-                  {editableSection.map((sec, i) => {
-                    const key = sec.toLowerCase().replace(/\s|&/g, "");
-                    return (
-                      <td key={i} className="p-2 border">
-                        {gredit ? (
-                          <input
-                            type="text"
-                            value={levelItem.data[key] || ""}
-                            onChange={(e) => handleEditChange(levelItem.level, key, e.target.value)}
-                            className="w-full text-center bg-transparent border-b-2 border-gray-300 focus:border-[#800000]"
-                          />
-                        ) : (
-                          levelItem.data[key] || "-"
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
+                {/* Level 5 */}
+                {editableLevel5 && (
+                  <tr>
+                    <td className="p-2 border">Level 5</td>
+                    <td colSpan={editableSection.length} className="p-2 border">
+                      {gredit ? (
+                        <textarea
+                          value={editableLevel5[0] || ""}
+                          onChange={(e) =>
+                            handleEditChange("level5", null, e.target.value, 0)
+                          }
+                          className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full resize-y"
+                          rows="2"
+                        />
+                      ) : (
+                        editableLevel5[0]
+                      )}
+                    </td>
+                  </tr>
+                )}
 
-              {/* Level 5 */}
-              {editableLevel5 && (
-                <tr>
-                  <td className="p-2 border">Level 5</td>
-                  <td colSpan={editableSection.length} className="p-2 border">
-                    {gredit ? (
-                      <textarea
-                        value={editableLevel5[0] || ""}
-                        onChange={(e) => handleEditChange("level5", null, e.target.value, 0)}
-                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full resize-y"
-                        rows="2"
-                      />
-                    ) : (
-                      editableLevel5[0]
-                    )}
-                  </td>
-                </tr>
-              )}
+                {/* Another section */}
+                {editableAnother && editableAnother.length > 0 && (
+                  <tr>
+                    <td
+                      className="p-3 border"
+                      colSpan={Math.ceil(editableSection.length / 2) + 1}
+                    >
+                      {gredit ? (
+                        <textarea
+                          value={editableAnother[0] || ""}
+                          onChange={(e) =>
+                            handleEditChange("another", null, e.target.value, 0)
+                          }
+                          className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full resize-y"
+                          rows="2"
+                        />
+                      ) : (
+                        editableAnother[0]
+                      )}
+                    </td>
+                    <td
+                      colSpan={Math.floor(editableSection.length / 2)}
+                      className="p-3 border"
+                    >
+                      {gredit ? (
+                        <textarea
+                          value={editableAnother[1] || ""}
+                          onChange={(e) =>
+                            handleEditChange("another", null, e.target.value, 1)
+                          }
+                          className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full resize-y"
+                          rows="2"
+                        />
+                      ) : (
+                        editableAnother[1]
+                      )}
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          ) : (
+            <p>Loading grievance table...</p>
+          )}
+        </div>
 
-              {/* Another section */}
-              {editableAnother && editableAnother.length > 0 && (
-                <tr>
-                  <td className="p-3 border" colSpan={Math.ceil(editableSection.length / 2) + 1}>
-                    {gredit ? (
-                      <textarea
-                        value={editableAnother[0] || ""}
-                        onChange={(e) => handleEditChange("another", null, e.target.value, 0)}
-                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full resize-y"
-                        rows="2"
-                      />
-                    ) : (
-                      editableAnother[0]
-                    )}
-                  </td>
-                  <td colSpan={Math.floor(editableSection.length / 2)} className="p-3 border">
-                    {gredit ? (
-                      <textarea
-                        value={editableAnother[1] || ""}
-                        onChange={(e) => handleEditChange("another", null, e.target.value, 1)}
-                        className="bg-transparent border-b-2 border-gray-300 focus:border-[#800000] w-full resize-y"
-                        rows="2"
-                      />
-                    ) : (
-                      editableAnother[1]
-                    )}
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        ) : (
-          <p>Loading grievance table...</p>
+        {gredit && (
+          <div className="flex justify-end gap-2 mt-4">
+            <button
+              className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => handleSaveClick(true)}
+              className="px-4 py-1 bg-[#800000] text-white rounded"
+            >
+              Save
+            </button>
+          </div>
         )}
+        {!gredit && savedOnce && (
+          <div className="flex justify-end gap-3 mt-6 mb-4">
+            <button
+              className="px-4 py-2 bg-gray-500 text-white rounded"
+              onClick={handleDiscardChanges}
+            >
+              Discard Changes
+            </button>
+            <button
+              className="px-4 py-2 bg-yellow-400 text-black rounded flex items-center gap-2"
+              onClick={() => setShowPopup(true)}
+            >
+              <Send size={16} /> Request
+            </button>
+          </div>
+        )}
+        <ToastContainer position="bottom-right" autoClose={3000} />
       </div>
 
-             {gredit && (
-                <div className="flex justify-end gap-2 mt-4">
-                  <button 
-                    className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
-                    onClick={handleCancel}
-                  >
-                    Cancel
-                  </button>
-                  <button 
-                    onClick={() => handleSaveClick(true)} 
-                    className="px-4 py-1 bg-[#800000] text-white rounded"
-                  >
-                    Save
-                  </button>
-                </div>
-              )}
-             {!gredit && savedOnce && (
-                    <div className="flex justify-end gap-3 mt-6 mb-4">
-                      <button 
-                        className="px-4 py-2 bg-gray-500 text-white rounded"
-                        onClick={handleDiscardChanges}
-                      >
-                        Discard Changes
-                      </button>
-                      <button 
-                        className="px-4 py-2 bg-yellow-400 text-black rounded flex items-center gap-2" 
-                        onClick={() => setShowPopup(true)}
-                      >
-                        <Send size={16} /> Request
-                      </button>
-                    </div>
-                  )}
-              <ToastContainer position="bottom-right" autoClose={3000} />
-            </div>
+      {/* Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-lg font-semibold mb-4">
+              Final Request for the Changes
+            </h2>
+            <p className="text-red-600 mb-4">
+              <span className="font-medium">Note:</span> Your changes will stay
+              pending until approved by the superior admin. Once approved, they
+              will be applied automatically to the live site.
+            </p>
 
-            {/* Modal */}
-            {showPopup && (
-              <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
-                  <h2 className="text-lg font-semibold mb-4">Final Request for the Changes</h2>
-                  <p className="text-red-600 mb-4">
-                    <span className="font-medium">Note:</span> Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.
-                  </p>
-
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b">
-                        <th className="border p-2">Action</th>
-                        <th className="border p-2">Section</th>
-                        <th className="p-2 border">changes</th>
-                        <th className="border p-2">Undo</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {changeList.length === 0 ? (
-                        <tr>
-                          <td className="p-2" colSpan={3}>No pending changes.</td>
-                        </tr>
-                      ) : (
-                        changeList.map((req, idx) => (
-                          <tr key={idx} className="border-b">
-                            <td className="p-2 border">Edited</td>
-                            <td className="p-2 border capitalize">Help Desk</td>
-                            <td className="p-2 border">
-                              {req.action}
-                            </td>
-                            <td className="p-2 py-2 border">
-                              <button className="" onClick={() => handleUndoChange(idx)}>
-                                <X size={16} className="text-red-500 hover:text-red-700" />
-                              </button>
-                            </td>
-                          </tr>
-                        ))
-                      )}
-                    </tbody>
-                  </table>
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b">
+                  <th className="border p-2">Action</th>
+                  <th className="border p-2">Section</th>
+                  <th className="p-2 border">changes</th>
+                  <th className="border p-2">Undo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {changeList.length === 0 ? (
+                  <tr>
+                    <td className="p-2" colSpan={3}>
+                      No pending changes.
+                    </td>
+                  </tr>
+                ) : (
+                  changeList.map((req, idx) => (
+                    <tr key={idx} className="border-b">
+                      <td className="p-2 border">Edited</td>
+                      <td className="p-2 border capitalize">Help Desk</td>
+                      <td className="p-2 border">{req.action}</td>
+                      <td className="p-2 py-2 border">
+                        <button
+                          className=""
+                          onClick={() => handleUndoChange(idx)}
+                        >
+                          <X
+                            size={16}
+                            className="text-red-500 hover:text-red-700"
+                          />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
 
             <div className="flex justify-end gap-3 mt-4">
-              <button className="px-4 py-2 bg-gray-300 rounded-md" onClick={() => setShowPopup(false)}>Cancel</button>
               <button
-                className="px-4 py-2 bg-blue-600 text-white rounded-md flex items-center"
+                className="px-4 py-2 bg-gray-300 rounded-md"
+                onClick={() => setShowPopup(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
+                  loading ? "cursor-progress" : "hover:bg-[#800000]"
+                }`}
+                disabled={loading}
                 onClick={handleFinalRequest}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>

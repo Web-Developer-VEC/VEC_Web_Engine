@@ -15,9 +15,11 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { Eye, Pencil, Trash2, X } from "lucide-react";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 import "./activitiestile.css";
 
 const Activities = ({ data }) => {
+  const [deptId, setDeptId] = useState("");
   const [originalData, setOriginalData] = useState([]);
   const [departmentActivities, setDepartmentActivities] = useState([]);
 
@@ -35,6 +37,29 @@ const Activities = ({ data }) => {
   const [addingYear, setAddingYear] = useState(false);
   const [newYearInput, setNewYearInput] = useState("");
 
+  const { sendRequest, loading } = useAdminRequest();
+
+  const deptMap = {
+    "001": "AIDS_001",
+    "002": "AUTO_002",
+    "003": "CHEMISTRY_003",
+    "004": "CIVIL_004",
+    "005": "CSE_005",
+    "006": "CSECS_006",
+    "007": "EEE_007",
+    "008": "EIE_008",
+    "009": "ECE_009",
+    "010": "ENGLISH_010",
+    "011": "IT_011",
+    "012": "MATHS_012",
+    "013": "MECH_013",
+    "014": "TAMIL_014",
+    "015": "PHYSICS_015",
+    "016": "MECSE_016",
+    "017": "MBA_017",
+    "018": "PS_018"
+  };
+
   const defaultActivities = [
     "Guest Lecture",
     "Seminar",
@@ -48,12 +73,17 @@ const Activities = ({ data }) => {
 
   // Load initial data
   useEffect(() => {
+    const bannerData = data?.find((item) => item.category === "banner_name_and_image")?.content?.[0];
+    if (bannerData?.dept_id) {
+      setDeptId(bannerData.dept_id);
+    }
+
     const depActs =
       data?.find((item) => item.category === "department_activities")?.content ||
       [];
 
-    setOriginalData(depActs); // backup
-    setDepartmentActivities(depActs.map((item) => ({ ...item }))); // working copy
+    setOriginalData(depActs.map((item) => JSON.parse(JSON.stringify(item)))); // deep clone backup
+    setDepartmentActivities(depActs.map((item) => JSON.parse(JSON.stringify(item)))); // deep clone working copy
     setYears(depActs.map((item) => item.year));
     if (depActs.length > 0 && !selectedYear) {
       setSelectedYear(depActs[0].year);
@@ -110,10 +140,135 @@ const Activities = ({ data }) => {
   };
 
   // Confirm request
-  const handleRequestConfirm = () => {
-    alert("Request submitted with changes!");
-    setShowRequestModal(false);
-    setChangesLog([]);
+  const buildPayload = () => {
+    const payload = [];
+    const collectionName = deptMap[deptId] || "UNKNOWN";
+
+    const getPdfPath = (activity) => {
+      if (!activity.pdf_path) return "";
+      if (activity.pdf_path.startsWith("blob:") && activity._file) {
+        const fileName = activity._file.name;
+        return `/static/pdfs/dept_activities/${deptId}/${activity.year || "misc"}/${fileName}`;
+      }
+      return activity.pdf_path;
+    };
+
+    const processedYears = new Set();
+    const originalByYear = new Map(originalData.map((item) => [item.year, item]));
+    const editedByYear = new Map(departmentActivities.map((item) => [item.year, item]));
+
+    // Check each edited year
+    departmentActivities.forEach((editedYear) => {
+      processedYears.add(editedYear.year);
+      const originalYear = originalByYear.get(editedYear.year);
+
+      if (!originalYear) {
+        // NEW YEAR - Insert action
+        payload.push({
+          collectionName,
+          collection_type: "activities",
+          action: "insert",
+          title: "insert in department_activities",
+          category: "department_activities",
+          meta_data: {
+            year: editedYear.year,
+            activities_tile: (editedYear.activities_tile || []).map((act) => ({
+              name: act.name,
+              pdf_path: getPdfPath({ ...act, year: editedYear.year })
+            }))
+          },
+          original_data: null
+        });
+      } else {
+        // EXISTING YEAR - Check if anything changed
+        const hasChanges =
+          JSON.stringify(originalYear.activities_tile) !==
+          JSON.stringify(editedYear.activities_tile);
+
+        if (hasChanges) {
+          payload.push({
+            collectionName,
+            collection_type: "activities",
+            action: "update",
+            title: "update in department_activities",
+            category: "department_activities",
+            original_data: {
+              year: originalYear.year,
+              activities_tile: (originalYear.activities_tile || []).map((act) => ({
+                name: act.name,
+                pdf_path: act.pdf_path
+              }))
+            },
+            meta_data: {
+              year: editedYear.year,
+              activities_tile: (editedYear.activities_tile || []).map((act) => ({
+                name: act.name,
+                pdf_path: getPdfPath({ ...act, year: editedYear.year })
+              }))
+            }
+          });
+        }
+      }
+    });
+
+    // Check for deleted years
+    originalData.forEach((originalYear) => {
+      if (!editedByYear.has(originalYear.year)) {
+        // DELETED YEAR - Delete action
+        payload.push({
+          collectionName,
+          collection_type: "activities",
+          action: "delete",
+          title: "delete in department_activities",
+          category: "department_activities",
+          meta_data: {
+            year: originalYear.year,
+            activities_tile: (originalYear.activities_tile || []).map((act) => ({
+              name: act.name,
+              pdf_path: act.pdf_path
+            }))
+          },
+          original_data: null
+        });
+      }
+    });
+
+    return payload;
+  };
+
+  const handleRequestConfirm = async () => {
+    const payload = buildPayload();
+
+    if (payload.length === 0) {
+      alert("No changes to submit!");
+      return;
+    }
+
+    // Collect files from departmentActivities
+    const files = [];
+    departmentActivities.forEach((yearData) => {
+      if (yearData.activities_tile) {
+        yearData.activities_tile.forEach((activity) => {
+          if (activity.pdf_path && activity.pdf_path.startsWith("blob:") && activity._file) {
+            files.push(activity._file);
+          }
+        });
+      }
+    });
+
+    console.log("Payload:", payload);
+    console.log("Files:", files);
+
+    const result = await sendRequest(payload, files.length > 0 ? files : null);
+
+    if (result) {
+      setShowRequestModal(false);
+      setIsEditing(false);
+      setHasChanges(false);
+      setSelectedYears([]);
+      setShowSaveOptions(false);
+      setChangesLog([]);
+    }
   };
 
   // Discard changes
@@ -140,7 +295,7 @@ const Activities = ({ data }) => {
       <div className="flex justify-end">
         {!isEditing && (
           <button
-            className="bg-secd text-text hover:bg-brwn hover:text-prim flex gap-2 px-3 py-1 rounded mr-4"
+            className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex gap-2 px-3 py-1 rounded mr-4 transition"
             onClick={() => setIsEditing(true)}
           >
             <Pencil size={16} /> Edit
@@ -163,7 +318,7 @@ const Activities = ({ data }) => {
               className={`relative px-4 py-2 rounded deptevent-year-button ${
                 selectedYear === year
                   ? "bg-accn text-prim"
-                  : "bg-secd text-text dark:bg-drks"
+                  : "bg-[#fdcc03] text-text dark:bg-drks"
               }`}
             >
               {year}
@@ -185,7 +340,7 @@ const Activities = ({ data }) => {
         {/* Add Year Button */}
         {isEditing && !addingYear && (
           <button
-            className="flex items-center gap-2 px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim"
+            className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition"
             onClick={() => setAddingYear(true)}
           >
             <FontAwesomeIcon icon={faPlus} /> New Year
@@ -203,7 +358,7 @@ const Activities = ({ data }) => {
             />
             <button
               onClick={handleAddYear}
-              className="bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded"
+              className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-3 py-1 rounded transition"
             >
               Add
             </button>
@@ -212,7 +367,7 @@ const Activities = ({ data }) => {
                 setAddingYear(false);
                 setNewYearInput("");
               }}
-              className="bg-gray-400 text-white px-3 py-1 rounded"
+              className="bg-gray-400 text-white hover:bg-gray-600 px-3 py-1 rounded transition"
             >
               Cancel
             </button>
@@ -237,7 +392,7 @@ const Activities = ({ data }) => {
       {isEditing && selectedYears.length > 0 && (
         <div className="bottom-0 left-0 w-full p-4 flex justify-center border-t">
           <button
-            className="bg-red-600 text-white px-6 py-2 rounded flex items-center gap-2"
+            className="bg-red-600 text-white hover:bg-red-700 px-6 py-2 rounded flex items-center gap-2 transition"
             onClick={() => setShowDeleteModal(true)}
           >
             <Trash2 /> Delete Selection
@@ -249,7 +404,7 @@ const Activities = ({ data }) => {
       {isEditing && !showSaveOptions && (
         <div className="bottom-0 left-0 w-full p-4 flex justify-end gap-4 border-t">
           <button
-            className="bg-gray-400 text-white px-4 py-2 rounded"
+            className="bg-gray-400 text-white hover:bg-gray-600 px-4 py-2 rounded transition"
             onClick={() => {
               setIsEditing(false);
               setHasChanges(false);
@@ -260,7 +415,7 @@ const Activities = ({ data }) => {
           </button>
           {hasChanges && (
             <button
-              className="bg-secd text-text hover:bg-brwn hover:text-prim px-4 py-2 rounded"
+              className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-4 py-2 rounded transition"
               onClick={() => {
                 setShowSaveOptions(true);
                 setIsEditing(false);
@@ -276,13 +431,13 @@ const Activities = ({ data }) => {
       {showSaveOptions && (
         <div className="bottom-0 left-0 w-full p-4 flex justify-end gap-4 border-t">
           <button
-            className="bg-red-500 text-white px-4 py-2 rounded"
+            className="bg-gray-400 text-white hover:bg-gray-600 px-4 py-2 rounded transition"
             onClick={handleDiscardChanges}
           >
             Discard Changes
           </button>
           <button
-            className="bg-secd text-text hover:bg-brwn hover:text-prim px-4 py-2 rounded"
+            className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-4 py-2 rounded transition"
             onClick={() => setShowRequestModal(true)}
           >
             Request
@@ -334,16 +489,17 @@ const Activities = ({ data }) => {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-600 transition"
               >
                 Cancel
               </button>
               {changesLog.length > 0 && (
                 <button
                   onClick={handleRequestConfirm}
-                  className="px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim"
+                  disabled={loading}
+                  className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex items-center gap-2 transition ${loading ? 'cursor-progress' : ''}`}
                 >
-                  Confirm Request
+                  <X size={16} /> {loading ? "Processing..." : "Confirm Request"}
                 </button>
               )}
             </div>
@@ -364,13 +520,13 @@ const Activities = ({ data }) => {
             </p>
             <div className="flex justify-end gap-3">
               <button
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-600 transition"
                 onClick={() => setShowDeleteModal(false)}
               >
                 Cancel
               </button>
               <button
-                className="px-4 py-2 rounded bg-red-600 text-white"
+                className="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700 transition"
                 onClick={() => {
                   // Remove selected years
                   const updated = departmentActivities.filter(
@@ -450,7 +606,11 @@ const Activitiestile = ({
                 ...yearItem,
                 activities_tile: yearItem.activities_tile.map((act) =>
                   act.name === itemName
-                    ? { ...act, pdf_path: URL.createObjectURL(file) }
+                    ? { 
+                        ...act, 
+                        pdf_path: URL.createObjectURL(file),
+                        _file: file 
+                      }
                     : act
                 ),
               }
@@ -522,7 +682,7 @@ const Activitiestile = ({
                   {isEditing && (
                     <div className="flex gap-2 ml-4">
                       {/* Upload PDF */}
-                      <label className="cursor-pointer bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded">
+                      <label className="cursor-pointer bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-3 py-1 rounded transition">
                         {item?.pdf_path ? "Replace PDF" : "Upload PDF"}
                         <input
                           type="file"
@@ -546,7 +706,7 @@ const Activitiestile = ({
                             className="px-2 py-1 rounded text-red-500"
                             onClick={() => handleRemovePdf(item?.name)}
                           >
-                            <X />
+                            <Trash2 size={16} />
                           </button>
                         </>
                       )}
