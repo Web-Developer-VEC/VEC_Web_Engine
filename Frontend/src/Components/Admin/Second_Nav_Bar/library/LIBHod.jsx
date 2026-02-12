@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Pencil, Save, Send } from "lucide-react";
-
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const UrlParser = (path) => {
@@ -17,10 +17,15 @@ const LIBHod = ({ data }) => {
   const [showRequest, setShowRequest] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [showDiscardModal, setShowDiscardModal] = useState(false);
-
+  const { sendRequest, loading, error } = useAdminRequest();
   const [formData, setFormData] = useState({ ...data?.[0] });
   const [originalData, setOriginalData] = useState({ ...data?.[0] });
   const [editBackup, setEditBackup] = useState(null); // ✅ backup for current edit session
+  const [hodPic, setHodPic] = useState(null);
+  console.log("Hod Pic", hodPic);
+  const [changeList, setChangeList] = useState([]);
+  const [imagePreview, setImagePreview] = useState(null);
+
 
   useEffect(() => {
     if (data?.[0]) {
@@ -30,8 +35,7 @@ const LIBHod = ({ data }) => {
   }, [data]);
 
   // ✅ detect if changed compared to original
-  const isChanged =
-    JSON.stringify(formData) !== JSON.stringify(originalData);
+  const isChanged = JSON.stringify(formData) !== JSON.stringify(originalData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,14 +69,82 @@ const LIBHod = ({ data }) => {
   };
 
   // ✅ confirm final request
-  const handleRequestConfirm = () => {
-    console.log("Final request submitted with data:", formData);
-    setOriginalData({ ...formData }); // commit
-    setShowRequestModal(false);
-    setShowRequest(false);
-    setIsEditing(false);
-    toast.success("✅ Request submitted successfully!");
+  const handleRequestConfirm = async () => {
+    const changes = detectChanges();
+
+    if (changes.length === 0) {
+      toast.warn("No changes to submit");
+      return;
+    }
+
+    const payload = {
+      collectionName: "library",
+      collection_type: "HOD",
+      action: "update",
+      title: "update in hod",
+
+      original_data: {
+        name: originalData.name,
+        image_path: originalData.image_path,
+        designation: originalData.designation,
+        education_qualification: originalData.education_qualification,
+        message: originalData.message,
+      },
+
+      meta_data: {
+        name: formData.name,
+         image_path: newImagePath,
+        designation: formData.designation,
+        education_qualification: formData.education_qualification,
+        message: formData.message,
+      },
+    };
+
+    console.log("📦 FINAL HOD PAYLOAD:", payload);
+
+    try {
+      await sendRequest(payload, hodPic);
+
+      toast.success("✅ Request submitted successfully!");
+      setShowRequestModal(false);
+      setShowRequest(false);
+      setIsEditing(false);
+      setOriginalData(formData); // commit local state
+    } catch (err) {
+      toast.error("❌ Failed to submit request");
+    }
   };
+  const buildHodChangeList = (formData, originalData) => {
+    const fieldLabels = {
+      name: "Name",
+      designation: "Designation",
+      education_qualification: "Education Qualification",
+      message: "Message",
+      image_path: "Profile Image",
+    };
+
+    return Object.keys(fieldLabels)
+      .filter((key) => formData[key] !== originalData[key])
+      .map((key) => ({
+        key,
+        action: "Edit",
+        section: "Library HOD",
+        label: `${fieldLabels[key]}`,
+        oldValue: originalData[key],
+        newValue: formData[key],
+      }));
+  };
+const newImagePath = hodPic
+  ? `/static/images/library/hod/${hodPic.name}`
+  : originalData.image_path;
+
+  useEffect(() => {
+    if (showRequestModal && changeList.length === 0) {
+      setShowRequestModal(false);
+      setShowRequest(false);
+      toast.info("All changes reverted");
+    }
+  }, [changeList]);
 
   if (!data) {
     return (
@@ -110,27 +182,26 @@ const LIBHod = ({ data }) => {
       <div className="w-full md:w-1/8 flex flex-col justify-center items-center gap-2">
         {isEditing ? (
           <>
-            <img
-              className="w-auto h-60 rounded-lg"
-              alt="Library HoD"
-              src={UrlParser(formData?.image_path)}
-            />
+           <img
+  className="w-auto h-60 rounded-lg"
+  alt="Library HoD"
+  src={imagePreview || UrlParser(formData?.image_path)}
+/>
+
             <label className="bg-[#FDCC03] text-text px-3 py-1 rounded cursor-pointer mt-2 hover:bg-[#800000] hover:text-prim">
-              Upload
+              Replace
               <input
                 type="file"
                 accept="image/*"
                 className="hidden"
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  if (file) {
+               onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+
                     const previewUrl = URL.createObjectURL(file);
-                    setFormData((prev) => ({
-                      ...prev,
-                      image_path: previewUrl,
-                    }));
-                  }
-                }}
+                    setImagePreview(previewUrl);   // ✅ only for UI
+                    setHodPic(file);               // ✅ actual file
+                  }}
               />
             </label>
           </>
@@ -223,11 +294,14 @@ const LIBHod = ({ data }) => {
               {isChanged && (
                 <button
                   onClick={() => {
-                    const diff = detectChanges();
-                    if (diff.length === 0) {
-                      toast.error("⚠️ No changes detected.");
+                    const changes = buildHodChangeList(formData, originalData);
+
+                    if (changes.length === 0) {
+                      toast.warn("No changes detected");
                       return;
                     }
+
+                    setChangeList(changes); // 🔒 freeze changes
                     setIsEditing(false);
                     setShowRequest(true);
                   }}
@@ -290,64 +364,89 @@ const LIBHod = ({ data }) => {
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-              Request
-            </h2>
-            <p className="text-sm text-red-600 mb-4">
-              Note: Your changes will stay pending until approved by the
-              superior admin. Once approved will go on live.
+            {/* Header */}
+            <h2 className="text-xl font-bold mb-2">Final Request</h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will remain pending until approved by the
+              superior admin.
             </p>
 
-            <table className="w-full text-sm text-text dark:text-drkt border">
-              <thead className="bg-gray-100 dark:bg-gray-800 text-center">
+            {/* Table */}
+            <table className="w-full text-sm border">
+              <thead className="bg-gray-100 dark:bg-gray-800">
                 <tr>
-                  <th className="py-2 border">Action</th>
-                  <th className="py-2 border">Section</th>
-                  <th className="py-2 border">Changes</th>
+                  <th className="p-2 border">Action</th>
+                  <th className="p-2 border">Section</th>
+                  <th className="p-2 border">Changes</th>
+                  <th className="p-2 border">Undo</th>
                 </tr>
               </thead>
+
               <tbody>
-                {detectChanges().map((change, index) => (
-                  <tr key={index} className="border text-center">
-                    <td className="py-2 text-blue-600 font-semibold">Edited</td>
-                    <td className="py-2">{change.field}</td>
-                    <td className="py-2 flex items-center justify-center gap-2">
-                      <span className="line-through text-gray-500">
-                        {change.oldValue || "-"}
-                      </span>
-                      →
-                      <span className="text-green-600 font-medium">
-                        {change.newValue || "-"}
-                      </span>
-                      <button
-                        onClick={() => {
-                          setFormData((prev) => ({
-                            ...prev,
-                            [change.field]: originalData[change.field],
-                          }));
-                        }}
-                        className="text-red-500 hover:text-red-700 font-bold"
-                      >
-                        ✕
-                      </button>
+                {changeList.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="p-4 text-center text-gray-500">
+                      No pending changes
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  changeList.map((item, index) => (
+                    <tr key={index} className="border-b">
+                      <td className="p-2 border text-blue-600 font-semibold text-center">
+                        {item.action}
+                      </td>
+
+                      <td className="p-2 border text-center">{item.section}</td>
+
+                      <td className="p-2 border text-center font-medium">
+                        {item.label}
+                      </td>
+
+                      <td className="p-2 border text-center">
+                        <button
+                          className="text-red-500 hover:text-red-700 text-lg"
+                          onClick={() => {
+                            // 🔹 revert form data
+                            setFormData((prev) => ({
+                              ...prev,
+                              [item.key]: originalData[item.key],
+                            }));
+
+                            // 🔹 remove from table
+                            setChangeList((prev) =>
+                              prev.filter((change) => change.key !== item.key),
+                            );
+                          }}
+                        >
+                          ❌
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
 
-            <div className="flex justify-end gap-2 mt-4">
+            {/* Footer Buttons */}
+            <div className="flex justify-end gap-3 mt-4">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-500 text-white"
+                className="px-4 py-2 rounded bg-gray-400 text-white"
               >
                 Cancel
               </button>
+
               <button
                 onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-[#800000] text-text font-medium hover:text-prim"
+                disabled={changeList.length === 0}
+                className={`px-4 py-2 rounded flex items-center gap-2
+            ${
+              changeList.length === 0
+                ? "bg-gray-300 cursor-not-allowed"
+                : "bg-[#FDCC03] hover:bg-[#800000] text-text hover:text-white"
+            }`}
               >
-                Final Request
+                <Send size={16} /> Final Request
               </button>
             </div>
           </div>
