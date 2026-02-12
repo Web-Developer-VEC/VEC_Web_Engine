@@ -1,0 +1,113 @@
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.header {
+  position: relative;
+  width: 75vw;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Card content */
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.cardText {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Inputs */
+.textInput {
+  border: 1px dashed #cbd5e0;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-family: inherit;
+}
+
+.textInput:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Buttons */
+.editButton {
+  background-color: #fdcc03;
+  color: #000;
+  border-radius: 6px;
+  transition: 0.2s;
+  padding-right: 21vw;
+}
+
+.editButton:hover {
+  background-color: #800000;
+  color: #fff;
+}
+
+/* Food section */
+.foodTimetable {
+  margin-top: 30px;
+}
+
+.foodTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.foodTable th,
+.foodTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.foodTable th {
+  background: #808080;
+  color: white;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  .foodTable {
+    display: block;
+    overflow-x: auto;
+    font-size: 14px;
+  }
+}
+

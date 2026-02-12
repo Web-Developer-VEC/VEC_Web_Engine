@@ -170,8 +170,14 @@ const handleFinalRequest = async () => {
 
   console.log("FINAL PAYLOAD 👉", payload);
 
+  const files = tempData
+  .filter(item => item.pdf_file instanceof File)
+  .map(item => item.pdf_file);
+
+console.log("PDF FILES 👉", files);
   try {
-    await sendRequest(payload);
+    await sendRequest(payload, files);
+
 
     toast.success("📩 Request sent for admin approval");
 

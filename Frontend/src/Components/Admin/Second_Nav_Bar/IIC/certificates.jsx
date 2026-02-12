@@ -3,8 +3,14 @@ import { Send, Trash2, Plus, Save, X, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+const deepCopy = (arr) =>
+  arr.map((item) => ({
+    ...item,
+    file: item.file ?? null, // ✅ preserve File reference
+  }));
+
 
 export default function IicFacCertificate({ data }) {
     const [activePdf, setActivePdf] = useState(null);
@@ -17,6 +23,7 @@ export default function IicFacCertificate({ data }) {
     const [selectedRows, setSelectedRows] = useState(new Set());
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [pendingData, setPendingData] = useState(null);
+    const { sendRequest, loading: loadings , error } = useAdminRequest();
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -126,15 +133,115 @@ const handleCancel = () => {
 
     const handleRequest = () => setShowRequestModal(true);
 
-    const handleFinalRequestConfirm = () => {
-        if (!pendingData) return;
-        setOriginalData(deepCopy(pendingData));
-        setTempData(deepCopy(pendingData));
-        setPendingData(null);
-        setIsSaved(false);
-        setShowRequestModal(false);
-        toast.success("Final request submitted!");
-    };
+    const buildCertificatePayload = () => {
+  if (!pendingData) return { payload: [], files: [] };
+
+  const payload = [];
+  const files = [];
+
+  const originalMap = new Map(originalData.map((i) => [i.id, i]));
+  const pendingMap = new Map(pendingData.map((i) => [i.id, i]));
+
+  // INSERT & UPDATE
+  for (const [id, newItem] of pendingMap.entries()) {
+    const oldItem = originalMap.get(id);
+
+    const serverPath = `/static/images/iic/certificate/${
+      newItem.file?.name || newItem.pdf_path?.split("/").pop()
+    }`;
+
+    // INSERT
+    if (!oldItem) {
+      payload.push({
+        collectionName: "iic",
+        collection_type: "certificate",
+        action: "insert",
+        title: "Insert certificate item",
+        meta_data: {
+          year: newItem.name,
+          image_path: serverPath,
+        },
+      });
+
+      if (newItem.file) files.push(newItem.file);
+    }
+
+    // UPDATE
+    else if (
+      oldItem.name !== newItem.name ||
+      oldItem.pdf_path !== newItem.pdf_path
+    ) {
+      payload.push({
+        collectionName: "iic",
+        collection_type: "certificate",
+        action: "update",
+        title: "Update certificate item",
+        meta_data: {
+          year: newItem.name,
+          image_path: serverPath,
+        },
+        original_data: {
+          year: oldItem.name,
+          image_path: oldItem.pdf_path,
+        },
+      });
+
+      if (newItem.file) files.push(newItem.file);
+    }
+  }
+
+  // DELETE
+  for (const [id, oldItem] of originalMap.entries()) {
+    if (!pendingMap.has(id)) {
+      payload.push({
+        collectionName: "iic",
+        collection_type: "certificate",
+        action: "delete",
+        title: "Delete certificate item",
+        meta_data: {
+          year: oldItem.name,
+          image_path: oldItem.pdf_path,
+        },
+      });
+    }
+  }
+
+  return { payload, files };
+};
+
+
+const handleFinalRequestConfirm = async () => {
+  if (!pendingData) return;
+
+  const { payload, files } = buildCertificatePayload();
+
+  if (payload.length === 0) {
+    toast.info("No changes to submit!");
+    return;
+  }
+
+  console.log("📦 Certificate Payload:", payload);
+  console.log("📁 Certificate Files:", files);
+
+  files.forEach((f, i) => {
+    console.log(`File ${i}:`, f instanceof File, f?.name);
+  });
+
+  try {
+    const result = await sendRequest(payload, files);
+
+    if (result) {
+      setOriginalData(deepCopy(pendingData));
+      setTempData(deepCopy(pendingData));
+      setPendingData(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+      toast.success("Certificate request sent for approval!");
+    }
+  } catch {
+    toast.error("Failed to submit certificate request");
+  }
+};
 
 
   const handleChange = (index, key, value) => {
@@ -146,23 +253,48 @@ const handleCancel = () => {
     });
     setIsDirty(true);
   };
-    const handleFileChange = (index, file) => {
-        const fakePath = URL.createObjectURL(file);
-        setTempData((prev) => {
-            const updated = [...prev];
-            updated[index] = { ...updated[index], pdf_path: fakePath };
-            return updated;
-        });
-        setIsDirty(true);
-    };
+const handleFileChange = (index, file) => {
+  const previewUrl = URL.createObjectURL(file);
 
-    const handleAddPdf = () => {
-        setTempData((prev) => [
-            ...prev,
-            { id: Date.now(), name: "New Certificate", pdf_path: "", selected: false },
-        ]);
-        setIsDirty(true);
+  setTempData((prev) => {
+    const updated = [...prev];
+    updated[index] = {
+      ...updated[index],
+      pdf_path: previewUrl, // preview only
+      file: file,           // ✅ THIS WAS MISSING
     };
+    return updated;
+  });
+
+  setIsDirty(true);
+};
+const hasRealChanges = (current, original) => {
+  if (current.length !== original.length) return true;
+
+  const map = new Map(original.map((i) => [i.id, i]));
+
+  return current.some((item) => {
+    const old = map.get(item.id);
+    if (!old) return true;
+
+    return (
+      old.name !== item.name ||
+      old.pdf_path !== item.pdf_path
+    );
+  });
+};
+
+
+const handleAddPdf = () => {
+  const updated = [
+    ...tempData,
+    { id: Date.now(), name: "New Certificate", pdf_path: "", selected: false },
+  ];
+
+  setTempData(updated);
+  setIsDirty(hasRealChanges(updated, originalData));
+};
+
 
     const toggleSelectRow = (index) => {
         const nxt = new Set(selectedRows);
@@ -171,18 +303,24 @@ const handleCancel = () => {
         setSelectedRows(nxt);
     };
 
-    const confirmDelete = () => {
-        setTempData((prev) => {
-            const updated = prev.filter((_, i) => !selectedRows.has(i));
-            if (activePdf && !updated.some((item) => item.id === activePdf.id)) {
-                setActivePdf(null);
-            }
-            return updated;
-        });
-        setSelectedRows(new Set());
-        setShowDeleteModal(false);
-        setIsDirty(true);
-    };
+const confirmDelete = () => {
+  setTempData((prev) => {
+    const updated = prev.filter((_, i) => !selectedRows.has(i));
+
+    if (activePdf && !updated.some((item) => item.id === activePdf.id)) {
+      setActivePdf(null);
+    }
+
+    // ✅ recompute dirty correctly
+    setIsDirty(hasRealChanges(updated, originalData));
+
+    return updated;
+  });
+
+  setSelectedRows(new Set());
+  setShowDeleteModal(false);
+};
+
 
     const getChanges = () => {
         if (!pendingData) return [];
@@ -321,20 +459,27 @@ const handleCancel = () => {
                         <div className="mb-4 text-center">
                             <label className="bg-[#fdcc03] text-text px-3 py-2 rounded cursor-pointer hover:bg-[#800000] hover:text-prim">
                                 Change Certificate
-                                <input
-                                    type="file"
-                                    accept="application/pdf"
-                                    className="hidden"
-                                    onChange={(e) => {
-                                        const file = e.target.files[0];
-                                        if (file) {
-                                            const index = tempData.findIndex((x) => x.id === activePdf.id);
-                                            if (index !== -1) {
-                                                handleFileChange(index, file);
-                                            }
-                                        }
-                                    }}
-                                />
+                            <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => {
+                                const file = e.target.files[0];
+                                if (!file) return;
+
+                                // Optional safety check
+                                if (!file.type.startsWith("image/")) {
+                                toast.error("Please upload an image file");
+                                return;
+                                }
+
+                                const index = tempData.findIndex((x) => x.id === activePdf.id);
+                                if (index !== -1) {
+                                handleFileChange(index, file);
+                                }
+                            }}
+                            />
+
                             </label>
                         </div>
                     )}
@@ -457,11 +602,16 @@ const handleCancel = () => {
                                 Cancel
                             </button>
                             {changes.length > 0 && (
-                                <button
-                                    onClick={handleFinalRequestConfirm}
-                                    className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                               <button
+                                onClick={handleFinalRequestConfirm}
+                                disabled={loadings}
+                                className={`px-4 py-2 rounded ${
+                                    loadings
+                                    ? "bg-gray-400 cursor-not-allowed text-white"
+                                    : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                                }`}
                                 >
-                                    Final Request
+                                {loadings ? "Processing..." : "Final Request"}
                                 </button>
                             )}
                         </div>
