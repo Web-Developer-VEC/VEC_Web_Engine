@@ -65,7 +65,8 @@ const YRCCoord = ({ data }) => {
     }
   }, [data]);
 
-  const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+  const deepCopy = (v) => structuredClone(v);
+
 
   const handleStartEdit = () => {
     const baseFaculty = pendingFaculty ? deepCopy(pendingFaculty) : deepCopy(committedFaculty);
@@ -406,6 +407,7 @@ if (
   }
 
   try {
+        console.log("files",files);
     await sendRequest(payload, files);
 
     setCommittedFaculty(deepCopy(pendingFaculty));
