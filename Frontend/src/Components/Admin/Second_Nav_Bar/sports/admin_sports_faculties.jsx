@@ -213,6 +213,7 @@ const Sportsfaculties = ({ data: initialData }) => {
     setSelectedItems([]);
     setChangeList([]);
     setImagePreviews({});
+    setEditFac(false)
     toast.info("Current edits cancelled, reverted to last saved data.");
   };
 
@@ -277,6 +278,8 @@ const Sportsfaculties = ({ data: initialData }) => {
       const change = prevChanges[changeIdx];
       if (!change) return prevChanges;
 
+      let nextChanges = [...prevChanges];
+
       if (change.type === "added") {
         const id = change.data.id;
 
@@ -288,16 +291,15 @@ const Sportsfaculties = ({ data: initialData }) => {
           return next;
         });
 
-        return prevChanges.filter((_, i) => i !== changeIdx);
+        nextChanges = prevChanges.filter((_, i) => i !== changeIdx);
       }
 
-
-      if (change.type === "deleted") {
+      else if (change.type === "deleted") {
         setFacultyData((prev) => [...prev, change.data]);
-        return prevChanges.filter((_, i) => i !== changeIdx);
+        nextChanges = prevChanges.filter((_, i) => i !== changeIdx);
       }
 
-      if (change.type === "edited") {
+      else if (change.type === "edited") {
         const id = change.data.id;
 
         setFacultyData((prev) => {
@@ -306,24 +308,30 @@ const Sportsfaculties = ({ data: initialData }) => {
           if (idxF >= 0) {
             const original = originalData.find(o => o.id === id);
             if (original) {
-              updated[idxF] = { ...original }; // restore original row
+              updated[idxF] = { ...original };
             }
           }
           return updated;
         });
 
-        // 🔥 IMPORTANT: clear preview cache so UI updates
         setImagePreviews(prev => {
           const next = { ...prev };
           delete next[id];
           return next;
         });
 
-        // remove this change entry
-        return prevChanges.filter((_, i) => i !== changeIdx);
+        nextChanges = prevChanges.filter((_, i) => i !== changeIdx);
       }
 
-      return prevChanges;
+      // 🧠 If after undo there are NO changes left → exit request mode
+      if (nextChanges.length === 0) {
+        setShowRequestModal(false);    // close request popup
+        setShowRequestButtons(false);  // hide request/discard buttons
+        setEditFac(false);             // back to normal view (Edit button shows)
+        toast.info("All changes reverted.");
+      }
+
+      return nextChanges;
     });
   };
 
@@ -544,23 +552,26 @@ const Sportsfaculties = ({ data: initialData }) => {
           >
             Cancel
           </button>
-          <button
-            className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
-            onClick={handleSave}
-          >
-            Save
-          </button>
+
+          {changeList.length > 0 && (   // 👈 ONLY show Save if there are changes
+            <button
+              className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
+              onClick={handleSave}
+            >
+              Save
+            </button>
+          )}
         </div>
       )}
+
+
 
       {/* Request / Discard */}
       {showRequestButtons && (
         <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
           <button
             className="px-4 py-2 bg-gray-500 text-white rounded"
-            onClick={() => {
-              handleDiscard()
-            }}
+            onClick={() => setShowDiscardModal(true)}   // 👈 open popup
           >
             Discard Changes
           </button>
@@ -572,6 +583,36 @@ const Sportsfaculties = ({ data: initialData }) => {
           </button>
         </div>
       )}
+      {showDiscardModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[400px]">
+            <h2 className="text-lg font-semibold mb-4">Discard Changes?</h2>
+            <p className="text-sm text-gray-600 dark:text-drkt mb-6">
+              Are you sure you want to discard all your changes? This action cannot be undone.
+            </p>
+
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowDiscardModal(false)}
+                className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 text-black"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  handleDiscard();          // 👈 actually discard
+                  setShowDiscardModal(false);
+                }}
+                className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white"
+              >
+                Discard
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
@@ -733,6 +774,7 @@ const SportsHOD = ({ data }) => {
     setShowRequest(false);
     setHasChanges(false);
     setShowRequestModal(false);
+    setShowDiscardModal(false);
 
     toast.info("Changes discarded");
   };
@@ -1051,24 +1093,38 @@ const SportsHOD = ({ data }) => {
                         </span>
                         <button
                           onClick={() => {
+                            // Revert field value
                             setFormData((prev) => ({
                               ...prev,
                               [change.field]: originalData[change.field],
                             }));
 
-                            // 🔥 If undoing image, clear preview + file
+                            // If undoing image, clear preview + file
                             if (change.field === "image_path") {
                               setHodPreview(null);
                               setHodImageFile(null);
                             }
 
-                            setChanges((prev) => prev.filter((_, i) => i !== index));
+                            // Update changes list and auto-exit if empty
+                            setChanges((prev) => {
+                              const next = prev.filter((_, i) => i !== index);
+
+                              if (next.length === 0) {
+                                // 🔥 No more pending changes → exit request mode
+                                setShowRequestModal(false);
+                                setShowRequest(false);
+                                setIsEditing(false);
+                                setHasChanges(false);
+                                toast.info("All changes reverted.");
+                              }
+
+                              return next;
+                            });
                           }}
                           className="text-red-500 hover:text-red-700 font-bold"
                         >
                           ✕
-                        </button>
-
+                        </button> 
                       </td>
                     </tr>
                   ))}
@@ -1083,7 +1139,7 @@ const SportsHOD = ({ data }) => {
                 Cancel
               </button>
               <button
-              disabled={loading}
+                disabled={loading}
                 onClick={handleRequestConfirm}
                 className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-yellow-500 text-black font-medium"
               >
