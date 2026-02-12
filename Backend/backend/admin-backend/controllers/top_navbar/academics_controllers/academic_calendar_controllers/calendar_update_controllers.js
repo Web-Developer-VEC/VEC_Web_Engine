@@ -11,65 +11,47 @@ async function updateData(tempDoc, mainCollection) {
     }
 
     const { year: newYear, pdf_path: newPdfPaths } = meta_data;
-    const { year: origYear, pdf_path: origPdfPaths } = original_data;
+    const { year: origYear } = original_data;
 
-    if (!newYear || !Array.isArray(newPdfPaths) || !origYear || !Array.isArray(origPdfPaths)) {
-      throw new Error("Year and pdf_path arrays are required in meta_data and original_data");
+    if (!newYear || !origYear || !Array.isArray(newPdfPaths)) {
+      throw new Error("year and pdf_path array are required");
     }
 
-    // Validate year formats
     const yearRegex = /^Academic Year \d{4}-\d{4}$/;
     if (!yearRegex.test(newYear) || !yearRegex.test(origYear)) {
-      throw new Error("Years must be in format 'Academic Year YYYY-YYYY'");
+      throw new Error("Invalid year format");
     }
 
-    // Validate PDF paths
-    newPdfPaths.forEach(path => {
-      if (typeof path !== "string" || !path.startsWith("/static/pdfs/")) {
-        throw new Error(`Invalid PDF path in meta_data: ${path}`);
-      }
-    });
-    origPdfPaths.forEach(path => {
-      if (typeof path !== "string" || !path.startsWith("/static/pdfs/")) {
-        throw new Error(`Invalid PDF path in original_data: ${path}`);
+    newPdfPaths.forEach(p => {
+      if (typeof p !== "string" || !p.startsWith("/static/pdfs/")) {
+        throw new Error(`Invalid PDF path: ${p}`);
       }
     });
 
-    // Fetch main collection document
-    const mainDoc = await mainCollection.findOne({ type: "academic_calendar" });
-    if (!mainDoc) throw new Error("Main collection document not found");
-
-    const yearEntry = mainDoc.data.find(d => d.year === origYear);
-    if (!yearEntry) throw new Error(`Original year ${origYear} not found`);
-
-    // Map and update PDFs: Replace matching originals with new ones
-    let updatedPdfPaths = [...yearEntry.pdf_path];
-    origPdfPaths.forEach((origPdf, index) => {
-      const matchIndex = updatedPdfPaths.indexOf(origPdf);
-      if (matchIndex !== -1 && newPdfPaths[index]) {
-        updatedPdfPaths[matchIndex] = newPdfPaths[index];
+    const result = await mainCollection.updateOne(
+      {
+        type: "academic_calendar",
+        "data.year": origYear
+      },
+      {
+        $set: {
+          "data.$.year": newYear,
+          "data.$.pdf_path": newPdfPaths
+        }
       }
-    });
-
-    // Prepare update fields
-    const updateFields = {};
-    if (origYear !== newYear) {
-      updateFields["data.$[elem].year"] = newYear;
-    }
-    updateFields["data.$[elem].pdf_path"] = updatedPdfPaths;
-
-    await mainCollection.updateOne(
-      { type: "academic_calendar" },
-      { $set: updateFields },
-      { arrayFilters: [{ "elem.year": origYear }] }
     );
+
+    if (result.matchedCount === 0) {
+      throw new Error(`Academic year ${origYear} not found`);
+    }
 
     return { success: true, message: "Academic calendar updated successfully" };
 
   } catch (error) {
     console.error("Update error:", error);
-    throw new Error(error.message || "Internal server error");
+    throw new Error(error.message);
   }
 }
+
 
 module.exports = { updateData };

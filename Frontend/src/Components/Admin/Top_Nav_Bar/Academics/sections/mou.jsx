@@ -3,6 +3,7 @@ import "./admin-mou.css";
 import LoadComp from "../../../LoadComp";
 import { Pencil, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 import "react-toastify/dist/ReactToastify.css";
 
 const generateUid = () =>
@@ -15,6 +16,7 @@ const MOU = ({ data }) => {
   const initialDetails =
     data?.find((item) => item.category === "mous_details")?.content || [];
 
+  const [deptId, setDeptId] = useState("");
   const [approvedDetails, setApprovedDetails] = useState(addUids(initialDetails));
   const [mousDetails, setMousDetails] = useState(addUids(initialDetails));
   const [editMode, setEditMode] = useState(false);
@@ -25,6 +27,36 @@ const MOU = ({ data }) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [showMultiDeleteConfirm, setShowMultiDeleteConfirm] = useState(false);
   const [savedOnce, setSavedOnce] = useState(false);
+  const { sendRequest, loading } = useAdminRequest();
+
+  const deptMap = {
+    "001": "AIDS_001",
+    "002": "AUTO_002",
+    "003": "CHEMISTRY_003",
+    "004": "CIVIL_004",
+    "005": "CSE_005",
+    "006": "CSECS_006",
+    "007": "EEE_007",
+    "008": "EIE_008",
+    "009": "ECE_009",
+    "010": "ENGLISH_010",
+    "011": "IT_011",
+    "012": "MATHS_012",
+    "013": "MECH_013",
+    "014": "TAMIL_014",
+    "015": "PHYSICS_015",
+    "016": "MECSE_016",
+    "017": "MBA_017",
+    "018": "PS_018"
+  };
+
+  // Extract dept_id from banner data
+  useEffect(() => {
+    const bannerData = data?.find((item) => item.category === "banner_name_and_image")?.content?.[0];
+    if (bannerData?.dept_id) {
+      setDeptId(bannerData.dept_id);
+    }
+  }, [data]);
 
   // Keep local states in sync if data prop changes
   useEffect(() => {
@@ -155,36 +187,96 @@ const MOU = ({ data }) => {
     return changes;
   };
 
-  const handleRequestConfirm = () => {
-    // In real app: send the changes to server for approval.
-    // For now, just simulate request submitted
+  const handleRequestConfirm = async () => {
+    const payload = buildPayload();
 
-    setShowRequestModal(false);
-    setEditMode(false);
-    setHasChanges(false);
-    setSelectedItems([]);
+    if (payload.length === 0) {
+      toast.error("No changes to submit!");
+      return;
+    }
 
-    // IMPORTANT: hide Discard + Request buttons by clearing savedOnce
-    setSavedOnce(false);
+    console.log("Payload:", payload);
 
-    // toast success
-    toast.success("Request submitted successfully!");
+    const result = await sendRequest(payload, null);
+
+    if (result) {
+      setShowRequestModal(false);
+      setEditMode(false);
+      setHasChanges(false);
+      setSelectedItems([]);
+      setSavedOnce(false);
+      toast.success("Request submitted successfully!");
+    }
   };
 
-  // Allow removing a single change from the modal view (user clicked ✕)
+  const buildPayload = () => {
+    const payload = [];
+    const collectionName = deptMap[deptId] || "UNKNOWN";
+    const changes = getChanges();
+
+    for (const change of changes) {
+      if (change.action === "Added") {
+        payload.push({
+          collectionName,
+          collection_type: "mous",
+          action: "insert",
+          title: "Insertion of MOU",
+          category: "mous_details",
+          meta_data: {
+            ORGANISATION_NAME: change.data?.ORGANISATION_NAME || "",
+            MONTH_AND_YEAR: change.data?.MONTH_AND_YEAR || "",
+            VALIDITY: change.data?.VALIDITY || ""
+          },
+          original_data: null
+        });
+      } else if (change.action === "Edited") {
+        payload.push({
+          collectionName,
+          collection_type: "mous",
+          action: "update",
+          title: "Updation of MOU",
+          category: "mous_details",
+          meta_data: {
+            ORGANISATION_NAME: change.data?.after?.ORGANISATION_NAME || "",
+            MONTH_AND_YEAR: change.data?.after?.MONTH_AND_YEAR || "",
+            VALIDITY: change.data?.after?.VALIDITY || ""
+          },
+          original_data: {
+            ORGANISATION_NAME: change.data?.before?.ORGANISATION_NAME || "",
+            MONTH_AND_YEAR: change.data?.before?.MONTH_AND_YEAR || "",
+            VALIDITY: change.data?.before?.VALIDITY || ""
+          }
+        });
+      } else if (change.action === "Deleted") {
+        payload.push({
+          collectionName,
+          collection_type: "mous",
+          action: "delete",
+          title: "Deletion of MOU",
+          category: "mous_details",
+          meta_data: {
+            ORGANISATION_NAME: change.data?.ORGANISATION_NAME || "",
+            MONTH_AND_YEAR: change.data?.MONTH_AND_YEAR || "",
+            VALIDITY: change.data?.VALIDITY || ""
+          },
+          original_data: null
+        });
+      }
+    }
+
+    return payload;
+  };
+
   const removeChangeEntry = (idx) => {
     const changes = getChanges();
     const entry = changes[idx];
     if (!entry) return;
 
     if (entry.action === "Added") {
-      // remove from tempDetails by uid
       setTempDetails((prev) => prev.filter((r) => r.__uid !== entry.data.__uid));
     } else if (entry.action === "Deleted") {
-      // restore deleted row into tempDetails (put at end)
       setTempDetails((prev) => [...prev, entry.data]);
     } else if (entry.action === "Edited") {
-      // revert that particular row in tempDetails to approved state
       const uid = entry.data.before.__uid;
       setTempDetails((prev) => prev.map((r) => (r.__uid === uid ? entry.data.before : r)));
     }
@@ -455,9 +547,10 @@ const MOU = ({ data }) => {
                   </button>
                   <button
                     onClick={handleRequestConfirm}
-                    className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
+                    disabled={loading}
+                    className={`px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim inline-flex items-center gap-2 ${loading ? 'cursor-progress' : ''}`}
                   >
-                    Final Request
+                    <Send size={16} /> {loading ? "Processing..." : "Final Request"}
                   </button>
                 </div>
               </div>

@@ -246,5 +246,93 @@
     "meta_data": {
       "name": "Mrs. JENEFER ASHA JEYARANI M"
     }
+  },
+  {
+  "collectionName": "admissions",
+  "collection_type": "ug",
+  "action": "update",
+  "title": "Update BE Government Link",
+  "meta_data": {
+    "data": {
+      "year": "2024-2025",
+      "BE_Government": {
+        "BE_Government_link_name": "* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2026)",
+        "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota_2026.pdf"
+      }
+    }
+  },
+  "original_data": {
+    "data": {
+      "year": "2024-2025",
+      "BE_Government": {
+        "BE_Government_link_name": "* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)",
+        "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota.pdf"
+      }
+    }
   }
+},
+{
+  "collectionName": "admissions",
+  "collection_type": "mba",
+  "action": "update",
+  "title": "Update MBA Government Link",
+  "meta_data": {
+    "year": "2024-2025",
+    "MBA_Government": {
+      "MBA_Government_link_name": "* FIRST YEAR MBA - Government Quota (Through TANCET 2026)",
+      "pdf_path": "/static/pdfs/admission/GQ-MBA-2026.pdf"
+    }
+  },
+  "original_data": {
+    "year": "2024-2025",
+    "MBA_Government": {
+      "MBA_Government_link_name": "* FIRST YEAR MBA - Government Quota (Through TANCET 2025)",
+      "pdf_path": "/static/pdfs/admission/GQ-MBA-2025.pdf"
+    }
+  }
+},
+{
+  "collectionName": "admissions",
+  "collection_type": "mba",
+  "action": "update",
+  "title": "Update MBA Management Link",
+  "meta_data": {
+    "year": "2024-2025",
+    "MBA_Management": {
+      "MBA_Management_link_name": "* FIRST YEAR MBA - Management Quota 2026",
+      "pdf_path": "/static/pdfs/admission/MQ-MBA-2026.pdf"
+    }
+  },
+  "original_data": {
+    "year": "2024-2025",
+    "MBA_Management": {
+      "MBA_Management_link_name": "* FIRST YEAR MBA - MANAGEMENT QUOTA",
+      "pdf_path": "/static/pdfs/admission/MQ-MBA-2025.pdf"
+    }
+  }
+},
+{
+  "collectionName": "admissions",
+  "collection_type": "ug",
+  "action": "update",
+  "title": "Update BE Management Link",
+  "meta_data": {
+    "data": {
+      "year": "2024-2025",
+      "BE_Management": {
+        "BE_Management_link_name": "* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA 2026",
+        "pdf_path": "/static/pdfs/admission/B.E_B.TECH-26-27.pdf"
+      }
+    }
+  },
+  "original_data": {
+    "data": {
+      "year": "2024-2025",
+      "BE_Management": {
+        "BE_Management_link_name": "* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
+        "pdf_path": "/static/pdfs/admission/B.E_B.TECH-25-26.pdf"
+      }
+    }
+  }
+}
 ]

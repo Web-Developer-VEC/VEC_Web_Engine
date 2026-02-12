@@ -31,7 +31,7 @@ async function libraryHandler(fileStream, docs, req, cb, filename, mimetype) {
     let last, folder, s3Key, command;
     const ext = path.extname(realimagename) || ".jpg";
 
-    if (collection_type === "hod") {
+    if (collection_type === "HOD") {
       last = `${collection_type}/${meta_data?.name}`;
     } else if (collection_type === "Faculty_Staff") {
       last = `faculty/${meta_data?.name}`;
