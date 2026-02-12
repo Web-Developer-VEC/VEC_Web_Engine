@@ -52,8 +52,6 @@ async function hostelHandler(fileStream, docs, req, cb, filename, mimetype) {
       s3Key = `temp/static/images/warden_profile_photos/${name}${ext}`;
     }
 
-    console.log("S3 Key:", s3Key);
-
     // 🔹 Buffer stream
     const chunks = [];
     for await (const chunk of fileStream) {

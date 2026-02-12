@@ -121,9 +121,9 @@ export const routeConfig = {
   "/abt-us": { normal: AbtUs, admin: AdminAbtUs },
   "/abt-yr": { normal: Aishe, admin: AdminAishe},
   "/trust": { normal: NewTrust, admin: NewTrust },
-  "/v_m": { normal: Collegevisionmission, admin: Collegevisionmission },
+  "/vm": { normal: Collegevisionmission, admin: Collegevisionmission },
   "/management": { normal: Management, admin: Management },
-  "/committees": { normal: ExecutiveCommittee, admin: ExecutiveCommittee},
+  "/committee": { normal: ExecutiveCommittee, admin: ExecutiveCommittee},
   "/clg-org": { normal: CollegeOrgChart, admin: CollegeOrgChart },
 
   // Administrator Routes
