@@ -1,20 +1,20 @@
 [
-    {
-  "collectionName": "CSE_005",
+  {
+  "collectionName": "AIDS_001",
   "collection_type": "vision_and_mission",
   "action": "insert",
   "title": "Insert Vision and Mission",
   "category": "programme_educational_objectives",
   "meta_data": 
       {
-       
-          "header":"PEO 6",
+          "header":"PEO 4",
           "content":"new one "
         
     }
   },
-    {
-  "collectionName": "CSE_005",
+
+  {
+  "collectionName": "AIDS_001",
   "collection_type": "vision_and_mission",
   "action": "update",
   "title": "update Vision and Mission",
@@ -27,13 +27,28 @@
       },
       "original_data": 
             {
-          "header":"PEO 5",
-          "content":"Graduates should have the ability to apply modern computing technology for the development of the society and ethical values with integrity."
+          "header":"PEO 3",
+          "content":"Demonstrate professional growth and adaptability by contributing to technological advancements and continuous learning in AI and Data Science"
         }
         
 },
+
 {
-  "collectionName": "CSE_005",
+  "collectionName": "AIDS_001",
+  "collection_type": "vision_and_mission",
+  "action": "delete",
+  "title": "delete Vision and Mission",
+  "category": "programme_educational_objectives",
+  "meta_data": {
+
+          "header":"PEO 2",
+          "content":"Excel in higher education, research, or entrepreneurship while upholding strong ethical and social values."
+    }
+},
+
+
+{
+  "collectionName": "AIDS_001",
   "collection_type": "vision_and_mission",
   "action": "update",
   "title": "update Vision and Mission",
@@ -43,31 +58,50 @@
         "Graduates should have the ability to analyze engineering problems "
        ],
     "original_data":  [
-          "Established in 1995, the Department of Computer Science and Engineering at our institution has been dedicated to providing high-quality education to 240 students. Our mission is to equip young minds with the knowledge and skills necessary to excel in the field of IT and drive organizational success.To achieve this, we offer a comprehensive curriculum that incorporates the latest technologies, collaborative projects, research associations, and hands-on training through semester-long internships and live industry problem-solving. Our program also features flexible electives, open electives, honors, and minor degrees, promoting an interdisciplinary approach that prepares students to thrive in a rapidly evolving tech landscape. "
+          " Department of Artificial Intelligence aims to produce computing graduates with high potency, apply, design and develop systems to pertain and to integrate both software and hardware devices, utilize modern approaches in programming and problem solving techniques.",
+          " The Department was established in the year 2020 with the main objective of providing quality education in the field of Engineering and Technology.",
+          " It is recognized as nodal center under Anna University. The Department has proved to be a center of excellence in Academic, Sponsored research and Continuing Education Programme."     
         ]
     },
+    
+
+  {
+  "collectionName": "AIDS_001",
+  "collection_type": "vision_and_mission",
+  "action": "update",
+  "title": "update Vision and Mission",
+  "category": "department_vision",
+  "meta_data": 
+      [
+        "Graduates should have the ability to analyze engineering problems "
+       ],
+    "original_data":  [
+          "To develop AI & Data Science professionals with strong ethical values, innovative thinking, and research acumen, enabling them to address global challenges and drive technological advancements in the industry."
+       ]
+    },
+
+
     {
-  "collectionName": "CSE_005",
+  "collectionName": "AIDS_001",
   "collection_type": "vision_and_mission",
-  "action": "delete",
-  "title": "delete Vision and Mission",
-  "category": "programme_educational_objectives",
-  "meta_data": {
-
-          "header":"PEO 2",
-          "content":"Graduates should have the ability to analyze engineering problems "
-
-    }
-},
-  
- {
-  "collectionName": "CSE_005",
-  "collection_type": "vision_and_mission",
-  "action": "delete",
-  "title": "delete Vision and Mission",
-  "category": "about_the_department",
-  "meta_data":[
-          "Established in 1995, the Department of Computer Science and Engineering at our institution has been dedicated to providing high-quality education to 240 students. Our mission is to equip young minds with the knowledge and skills necessary to excel in the field of IT and drive organizational success.To achieve this, we offer a comprehensive curriculum that incorporates the latest technologies, collaborative projects, research associations, and hands-on training through semester-long internships and live industry problem-solving. Our program also features flexible electives, open electives, honors, and minor degrees, promoting an interdisciplinary approach that prepares students to thrive in a rapidly evolving tech landscape. "
+  "action": "update",
+  "title": "update Vision and Mission",
+  "category": "department_mission",
+  "meta_data": 
+      [
+        "Graduates should have the ability to analyze engineering problems",
+         "To foster industry collaboration, career readiness, and leadership skills among students.",
+        "To develop ethical professionals who contribute positively to society through responsible AI and Data Science applications."
+       ],
+    "original_data":  [
+           "To equip students with core competencies to solve real-world problems using Artificial Intelligence.",
+            "To nurture technically proficient engineers through innovation and research in Data Science.",
+            "To foster industry collaboration, career readiness, and leadership skills among students.",
+            "To develop ethical professionals who contribute positively to society through responsible AI and Data Science applications."
         ]
-}
+    }
+    
+    
+  
+ 
 ]

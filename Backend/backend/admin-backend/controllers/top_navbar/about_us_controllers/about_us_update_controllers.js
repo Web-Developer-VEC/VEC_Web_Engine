@@ -20,26 +20,39 @@ async function updatedData(tempDoc, mainCollection) {
     if (!doc) {
       throw new Error(`Document with type ${collection_type} not found`);
     }
-
     // ---------- ABOUT VEC ----------
     if (collection_type === "about_vec") {
-      const result = await mainCollection.updateOne(
-        {
-          type: "about_vec",
-          "data.about_us_pdf.name": original_data.name,
-        },
-        {
-          $set: {
-            "data.about_us_pdf.$": meta_data,
-          },
-        }
-      );
+      // ---------- CONTENT ----------
+      if (category === "content") {
 
-      if (result.matchedCount === 0) {
-        throw new Error(`PDF "${original_data.name}" not found`);
+        await mainCollection.updateOne(
+          { type: "about_vec" },
+          { $set: { "data.content": meta_data } }
+        );
+
+        return { message: "Content updated successfully" };
       }
 
-      return { message: "about_vec PDF updated successfully" };
+      // ---------- PDF ----------
+      if (category === "about_us_pdf") {
+
+        const result = await mainCollection.updateOne(
+          {
+            type: "about_vec",
+            "data.about_us_pdf.name": original_data.name,
+          },
+          {
+            $set: {
+              "data.about_us_pdf.$": meta_data,
+            },
+          }
+        );
+
+        if (result.matchedCount === 0) {
+          throw new Error(`PDF "${original_data.name}" not found`);
+        }
+        return { message: "PDF updated successfully" };
+      }
     }
 
     // ---------- SINGLE DOC TYPES ----------
