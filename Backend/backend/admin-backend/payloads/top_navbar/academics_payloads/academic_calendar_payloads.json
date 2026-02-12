@@ -1,150 +1,51 @@
-[
-    {
+[{
   "collectionName": "academics",
   "collection_type": "academic_calendar",
   "action": "insert",
-  "title": "Append PDF to existing year",
+  "title": "insert academic calendar",
   "meta_data": {
-    "year": "Academic Year 2025-2026"
+    "year": "Academic Year 2026-2027",
+    "pdf_path": []
   }
-},
-{
-  "collectionName": "academics",
-  "collection_type": "academic_calendar",
-  "action": "insert",
-  "title": "Insert new academic year",
-  "meta_data": {
-    "year": "Academic Year 2028-2029"
-  }
-},
-    {
+},{
   "collectionName": "academics",
   "collection_type": "academic_calendar",
   "action": "update",
-  "title": "Update first PDF",
-  "original_data": {
-    "year": "Academic Year 2028-2029",
-    "pdf_path": [
-      "static/pdfs/Academic Year 2028-2029/VEC-017-04-632.pdf"
-    ]
-  },
-  "meta_data": {
-    "year": "Academic Year 2028-2029"
-  }
-},
-{
-  "collectionName": "academics",
-  "collection_type": "academic_calendar",
-  "action": "update",
-  "title": "Update second PDF",
-  "original_data": {
-    "year": "Academic Year 2028-2029",
-    "pdf_path": [
-      "/static/pdfs/calendar/2027-2028/even.pdf"
-    ]
-  },
-  "meta_data": {
-    "year": "Academic Year 2027-2028"
-  }
-},
-{
-  "collectionName": "academics",
-  "collection_type": "academic_calendar",
-  "action": "update",
-  "title": "Update both PDFs",
-  "meta_data": {
-    "year": "Academic Year 2028-2029"
-  },
-  "original_data": {
-      "year": "Academic Year 2028-2029",
-      "pdf_path": [
-        "static/pdfs/Academic Year 2028-2029/VEC-010-04-606.pdf",
-        "static/pdfs/Academic Year 2028-2029/VEC-017-04-632.pdf"
-      ]
-    }
-},
-{
-  "collectionName": "academics",
-  "collection_type": "academic_calendar",
-  "action": "update",
-  "title": "Change academic year only",
-  "original_data": {
-      "year": "Academic Year 2028-2029",
-      "pdf_path": [
-        "static/pdfs/Academic Year 2028-2029/VEC-017-04-633.pdf",
-        "static/pdfs/Academic Year 2028-2029/Resume_vishall.pdf"
-      ]
-    },
-  "meta_data": {
-      "year": "Academic Year 2029-2030",
-      "pdf_path": [
-        "static/pdfs/Academic Year 2028-2029/VEC-017-04-633.pdf",
-        "static/pdfs/Academic Year 2028-2029/Resume_vishall.pdf"
-      ]
-    }
-},
-{
-  "collectionName": "academics",
-  "collection_type": "academic_calendar",
-  "action": "update",
-  "title": "Change academic year and pdf path",
-  "original_data": {
-      "year": "Academic Year 2028-2029",
-      "pdf_path": [
-        "static/pdfs/Academic Year 2028-2029/VEC-017-04-633.pdf",
-        "static/pdfs/Academic Year 2028-2029/Resume_vishall.pdf"
-      ]
-    },
-  "meta_data": {
-      "year": "Academic Year 2029-2030",
-      "pdf_path": [
-        "static/pdfs/Academic Year 2028-2029/VEC-017-04-633.pdf",
-        "static/pdfs/Academic Year 2028-2029/Resume_vishall.pdf"
-      ]
-    }
-},
-    {
-        "collectionName":"academics",
-  "collection_type": "academic_calendar",
-  "action":"delete",
-  "title":"delete entire year",
-  "meta_data": {
-    "year": "Academic Year 2029-2030"
-  }
-},
-{
-  "collectionName":"academics",
-  "collection_type": "academic_calendar",
-  "action":"delete",
-  "title":"delete entire pdf_path",
+  "title": "update academic calendar",
   "meta_data": {
     "year": "Academic Year 2025-2026",
-    "pdf_path": ""
-  }
-},
-{
-  "collectionName":"academics",
-  "collection_type": "academic_calendar",
-  "action":"delete",
-  "title":"delete particular pdf path",
-  "meta_data": {
-    "year": "Academic Year 2023-2024",
+    "pdf_path": []
+  },
+  "original_data": {
+    "year": "Academic Year 2025-2026",
     "pdf_path": [
-      "/static/pdfs/calendar/2023-2024/even.pdf"
+      "/static/pdfs/Academic Year 2026-2027/VELAMMAL_BUS_ROUTES 2024 - 2.pdf",
+      "/static/pdfs/Academic Year 2026-2027/VELAMMAL_BUS_ROUTES 2024 - 25.pdf"
     ]
   }
+},{
+  "collectionName": "academics",
+  "collection_type": "academic_calendar",
+  "action": "delete",
+  "title": "delete academic year",
+  "meta_data": {
+    "year": "Academic Year 2023-2024"
+  }
 },
 {
-  "collectionName":"academics",
+  "collectionName": "academics",
   "collection_type": "academic_calendar",
-  "action":"delete",
-  "title":"delete particular pdf path",
+  "action": "delete",
+  "title": "delete academic calendar pdf",
   "meta_data": {
-    "year": "Academic Year 2022-2023",
+    "year": "Academic Year 2024-2025",
     "pdf_path": [
-      "/static/pdfs/calendar/2022-2023/odd.pdf"
+      "/static/pdfs/calendar/2024-2025/odd.pdf"
     ]
   }
 }
+
+
+
 
 ]
