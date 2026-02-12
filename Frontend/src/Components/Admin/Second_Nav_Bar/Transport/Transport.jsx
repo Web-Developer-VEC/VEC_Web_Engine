@@ -97,6 +97,7 @@ const AdminTransport = ({ theme, toggle }) => {
         
         const result = await sendRequest(payload, selectedPdf.file);
 
+    console.log(" Payload", payload);
         if (result) {
             setConfirmPopup(false);
             setSelectedPdf(null);

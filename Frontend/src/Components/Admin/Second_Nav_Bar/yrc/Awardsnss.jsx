@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+const deepCopy = (v) => structuredClone(v);
 
 const Awardsnss = ({ data }) => {
   const [items, setItems] = useState([]);
@@ -336,6 +336,8 @@ const handleFinalRequestConfirm = async () => {
   }
 
   try {
+    console.log("files",files);
+    
     await sendRequest(payload, files);
 
     setCommittedItems(deepCopy(pendingItems));

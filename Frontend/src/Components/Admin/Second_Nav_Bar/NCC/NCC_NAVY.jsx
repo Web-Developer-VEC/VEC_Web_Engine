@@ -11,10 +11,13 @@ import Banner from "../../Banner";
 import { useNavigate } from "react-router";
 import { Pencil, X, Trash2, Send, Plus } from "lucide-react";
 import AutoResizeTextarea from "../AutoResizeTextarea";
+import { ToastContainer, toast } from "react-toastify";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 // NCCAbout Component with Edit Functionality
 function NCCAbout({ data, isEditing, onUpdate, onStartEdit }) {
   const [localData, setLocalData] = useState(data || []);
+
 
   useEffect(() => {
     setLocalData(data || []);
@@ -369,6 +372,7 @@ const NCC_NAVY = ({ toggle, theme }) => {
   const [isDirty, setIsDirty] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+    const { sendRequest, loading: loadings , error } = useAdminRequest();
   const navigate = useNavigate();
 
 const handleDataUpdate = (newData) => {
@@ -450,15 +454,35 @@ const handleDataUpdate = (newData) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingData) return;
+const handleFinalRequestConfirm = async () => {
+  if (!pendingData || !committedData) return;
 
+  const payload = {
+    collectionName: "ncc_navy",
+    collection_type: "about",
+    action: "update",
+    title: "update about",
+    original_data: committedData[0],
+    meta_data: pendingData[0],
+  };
+
+  try {
+    await sendRequest(payload);
+
+    toast.success("Request sent for admin approval");
+
+    // Update local states AFTER successful request
     setCommittedData(JSON.parse(JSON.stringify(pendingData)));
     setnavdata(JSON.parse(JSON.stringify(pendingData)));
     setPendingData(null);
     setIsSaved(false);
     setShowRequestModal(false);
-  };
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to send request");
+  }
+};
+
 
   const revertChange = (field) => {
     if (!pendingData || !committedData) return;
@@ -640,7 +664,7 @@ const handleDataUpdate = (newData) => {
         cls=""
         backButton={true}
       />
-
+<ToastContainer position="bottom-right" autoClose={3000} />
       {/* Final Request Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
