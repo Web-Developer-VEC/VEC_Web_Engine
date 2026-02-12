@@ -1,69 +1,73 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./Dean.css";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
-import { Pencil, X, Plus, Trash } from "lucide-react";
-import { FaPaperPlane } from "react-icons/fa";
-import { MdUndo } from "react-icons/md";
+import { Pencil, Trash2, Plus, Save, Send, X, PlusCircle, XCircle, Edit2 } from "lucide-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-const defaultData = [
-  { heading: "Academics" },
-  { heading: "Planning and Development" },
-  { heading: "Student Development and Welfare" },
-  { heading: "Faculty Development and Welfare" },
-  { heading: "Research and Development" },
-  { heading: "Accreditations and Ranking" },
-  { heading: "Corporate Relations and Higher Studies" },
-];
+const deepCopy = (v) => structuredClone(v);
 
-const AdminDean = ({ theme, toggle }) => {
+
+const Dean = ({ theme, toggle }) => {
   const [deanData, setDeanData] = useState([]);
-  const [tempData, setTempData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [editMode, setEditMode] = useState(false);
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const [data] = useState(defaultData);
-  const [showCancelModal, setShowCancelModal] = useState(false);
+  const [committedData, setCommittedData] = useState([]);
+  const [pendingData, setPendingData] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  const [deletedHistory, setDeletedHistory] = useState([]);
-  const [editedData, setEditedData] = useState(null);
+  const [selectedItems, setSelectedItems] = useState({});
+  const [showRequestModal, setShowRequestModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [previewImgs, setPreviewImgs] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [fieldErrors, setFieldErrors] = useState({}); // Changed from categoryErrors to fieldErrors
 
-  const bottomRef = useRef(null);
   const navigate = useNavigate();
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const { sendRequest, loading: requestLoading, error } = useAdminRequest();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+
   const UrlParser = (path) => {
-    if (!path) return "";
-    if (
-      typeof path === "string" &&
-      (path.startsWith("http") || path.startsWith("blob:") || path.startsWith("data:"))
-    ) {
-      return path;
-    }
-    return `${BASE_URL || ""}${path}`;
+    if (!path) return "/placeholder.jpg";
+    return path?.startsWith("http") || path?.startsWith("blob") || path?.startsWith("data:") 
+      ? path 
+      : `${BASE_URL}${path}`;
   };
 
+  // Fetch initial data
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.post(`/api/main-backend/administration`, {
-          type: "dean_and_association",
+          type: "dean_and_association"
         });
-        setDeanData(response.data.data || []);
-        setTempData(response.data.data || []);
-      } catch (error) {
-        console.error("Error fetching data:", error?.message);
-        if (error?.response?.data?.status === 429) {
-          navigate("/ratelimit", {
-            state: { msg: error.response.data.message },
-          });
-        }
-        // stop spinner even on error
-      } finally {
+
+        const data = Array.isArray(response.data.data) ? response.data.data : [];
+        
+        // Add stable IDs to each member
+        const dataWithIds = data.map(category => ({
+          ...category,
+          selected: false,
+          members: category.members?.map((member, idx) => ({
+            ...member,
+            id: member?.id !== undefined ? String(member.id) : `gen-${Date.now()}-${idx}`,
+            selected: false
+          })) || []
+        }));
+
+        setDeanData(deepCopy(dataWithIds));
+        setCommittedData(deepCopy(dataWithIds));
         setLoading(false);
+      } catch (error) {
+        if (error.response?.data?.status === 429) {
+          navigate('/ratelimit', { state: { msg: error.response.data.message } });
+        }
+        setLoading(true);
       }
     };
     fetchData();
@@ -72,228 +76,614 @@ const AdminDean = ({ theme, toggle }) => {
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
+
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
+
     return () => {
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
 
-  const handleChange = (e, position, field) => {
-    const value = e.target.value;
-    const updated = tempData.map((item) =>
-      item.Position === position ? { ...item, [field]: value } : item
-    );
-    setTempData(updated);
-  };
+  const validateBeforeRequest = () => {
+    const errors = {};
+    let hasError = false;
 
-  const handleFileChange = (e, position, key) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+deanData.forEach((category, catIdx) => {
+  category.members.forEach((member, memIdx) => {
+    // Name
+    if (!member.name?.trim()) {
+      errors[`name_${catIdx}_${memIdx}`] = "Name is required";
+      hasError = true;
+    }
 
-    const previewUrl = URL.createObjectURL(file);
+    // Type
+    if (!member.type?.trim()) {
+      errors[`type_${catIdx}_${memIdx}`] = "Type is required";
+      hasError = true;
+    }
 
-    const updated = tempData.map((section) =>
-      section.Position === position
-        ? {
-            ...section,
-            [key]: previewUrl, // show immediate preview
-            [`${key}_file`]: file, // keep file for upload
+    // Designation
+    if (!member.designation?.trim()) {
+      errors[`designation_${catIdx}_${memIdx}`] = "Designation is required";
+      hasError = true;
+    }
+
+    // ✅ IMAGE (new OR existing)
+    const hasExistingImage =
+      typeof member.image_path === "string" &&
+      member.image_path.trim() !== "" &&
+      !member.image_path.startsWith("blob:");
+
+    const hasNewImage = member.image_file instanceof File;
+
+    if (!hasExistingImage && !hasNewImage) {
+      errors[`image_${catIdx}_${memIdx}`] = "Image is required";
+      hasError = true;
+    }
+  });
+});
+
+
+    setFieldErrors(errors);
+    
+    // If there are errors, show toast and scroll to first error
+    if (hasError) {
+      toast.error("Please fill all required fields (marked in red)");
+      
+      // Scroll to first error field after a short delay
+      setTimeout(() => {
+        const firstErrorKey = Object.keys(errors)[0];
+        if (firstErrorKey) {
+          const [_, catIdx, memIdx] = firstErrorKey.split('_');
+          const element = document.querySelector(`[data-error-field="${firstErrorKey}"]`);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            element.focus();
           }
-        : section
-    );
-
-    setTempData(updated);
+        }
+      }, 100);
+    }
+    
+    return !hasError;
   };
 
-  const handleDeleteRole = (position, role) => {
-    const updated = tempData.map((item) =>
-      item.Position === position
-        ? {
-            ...item,
-            [role]: undefined,
-            [`${role}_Image`]: undefined,
-            [`${role}_Type`]: undefined,
-            [`${role}_Designation`]: undefined,
-            // clear file placeholders too
-            [`${role}_Image_file`]: undefined,
-          }
-        : item
-    );
-    setTempData(updated);
+   const handleSave = () => {
+    const changes = getChanges();
+
+    if (changes.length === 0) {
+      toast.info("No changes to save");
+      return;
+    }
+
+    // Validate before saving
+    const isValid = validateBeforeRequest();
+    if (!isValid) {
+      return;
+    }
+
+    setPendingData(deepCopy(deanData));
+    setIsSaved(true);
+    setIsEditing(false);
+    setIsDirty(false);
+    setSelectedItems({});
+    setFieldErrors({}); // Clear errors after successful save
+    toast.success("Changes saved as draft!");
   };
 
-  const handleAddNewSection = () => {
-    const newEntry = {
-      Position: `New Section ${tempData.length + 1}`,
-      Dean: "",
-      Dean_Image: "",
-      Dean_Type: "",
-      Dean_Designation: "",
-      Associate_Dean: "",
-      Associate_Dean_Image: "",
-      Ass_Dean_Type: "",
-      Associate_Dean_Designation: "",
-    };
-    setTempData((prev) => [...prev, newEntry]);
-    setTimeout(
-      () => bottomRef.current?.scrollIntoView({ behavior: "smooth" }),
-      100
-    );
-  };
 
-  const handleSave = () => {
-  if (getChanges().length === 0) {
-    setEditMode(false);
+  const handleStartEdit = () => {
+    const baseData = pendingData.length > 0 ? deepCopy(pendingData) : deepCopy(committedData);
+    setDeanData(deepCopy(baseData));
+    setIsEditing(true);
+    setIsDirty(false);
     setIsSaved(false);
-    return;
-  }
-  setIsSaved(true);
-  setEditMode(false);
-};
+    setSelectedItems({});
+    setPreviewImgs({});
+    setFieldErrors({}); // Clear errors when starting edit
+  };
 
-  const handleDeleteSection = (index) => {
-  const sectionToDelete = tempData[index];
-  setTempData((prev) => prev.filter((_, i) => i !== index));
+  const handleChangeMember = (categoryIndex, memberIndex, key, value) => {
+    const updatedData = deanData.map((category, catIdx) => {
+      if (catIdx !== categoryIndex) return category;
+      
+      return {
+        ...category,
+        members: category.members.map((member, memIdx) => {
+          if (memIdx !== memberIndex) return member;
+          return { ...member, [key]: value };
+        })
+      };
+    });
+    
+    setDeanData(updatedData);
+    setIsDirty(true);
+    
+    // Clear error for this field when user starts typing
+    const errorKey = `${key}_${categoryIndex}_${memberIndex}`;
+    if (fieldErrors[errorKey]) {
+      setFieldErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[errorKey];
+        return newErrors;
+      });
+    }
+  };
 
-  setDeletedHistory((prev) => [...prev, { section: sectionToDelete, index }]);
-};
+  const handleImageChange = (categoryIndex, memberIndex, file) => {
+    if (!file) return;
+    
+    const previewUrl = URL.createObjectURL(file);
+    const key = `${categoryIndex}-${memberIndex}`;
+    
+    setPreviewImgs(prev => ({ ...prev, [key]: previewUrl }));
+    
+    const updatedData = deanData.map((category, catIdx) => {
+      if (catIdx !== categoryIndex) return category;
+      
+      return {
+        ...category,
+        members: category.members.map((member, memIdx) => {
+          if (memIdx !== memberIndex) return member;
+          return { 
+            ...member, 
+            image_file: file,
+            image_path: `/static/images/deans/${file.name}`
+          };
+        })
+      };
+    });
+    
+    setDeanData(updatedData);
+    setIsDirty(true);
+  };
 
+  const handleAddMember = (categoryIndex) => {
+    const category = deanData[categoryIndex];
+
+    // 🚫 Limit reached
+    if (category.members.length >= 2) {
+      toast.warning("Only 2 members are allowed per category");
+      return;
+    }
+
+    const newMember = {
+      id: String(Date.now()),
+      name: "",
+      type: "",
+      designation: "",
+      image_path: "",
+      image_file: null,
+      selected: false
+    };
+
+    const updatedData = deanData.map((cat, idx) => {
+      if (idx !== categoryIndex) return cat;
+      return {
+        ...cat,
+        members: [...cat.members, newMember]
+      };
+    });
+
+    setDeanData(updatedData);
+    setIsDirty(true);
+  };
+
+  const handleItemSelect = (categoryIndex, memberIndex) => {
+    const key = `${categoryIndex}-${memberIndex}`;
+    
+    const updatedData = deanData.map((category, catIdx) => {
+      if (catIdx !== categoryIndex) return category;
+      
+      return {
+        ...category,
+        members: category.members.map((member, memIdx) => {
+          if (memIdx !== memberIndex) {
+            return { ...member, selected: member.selected };
+          }
+          return { ...member, selected: !member.selected };
+        })
+      };
+    });
+    
+    setDeanData(updatedData);
+    
+    setSelectedItems(prev => {
+      const newSelected = { ...prev };
+      if (newSelected[key]) {
+        delete newSelected[key];
+      } else {
+        newSelected[key] = { categoryIndex, memberIndex };
+      }
+      return newSelected;
+    });
+  };
+
+  const confirmDelete = () => {
+    let updatedData = [...deanData];
+    
+    // First, remove selected members from categories
+    updatedData = updatedData.map(category => ({
+      ...category,
+      members: category.members.filter(member => !member.selected)
+    }));
+    
+    // Then remove empty categories AND categories that are selected
+    updatedData = updatedData.filter(category => 
+      !category.selected && category.members.length > 0
+    );
+    
+    setDeanData(updatedData);
+    setSelectedItems({});
+    setShowDeleteModal(false);
+    setIsDirty(true);
+  };
 
   const handleCancel = () => {
-  setShowCancelModal(true); 
-};
-
-
-  const handleRequest = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("type", "dean_and_association");
-
-      tempData.forEach((section, index) => {
-        Object.keys(section).forEach((key) => {
-          if (key.endsWith("_file") && section[key]) {
-            // files: keep field name stable and index-suffixed
-            // e.g., Dean_Image_file_0
-            formData.append(`${key}_${index}`, section[key]);
-          } else if (!key.endsWith("_file")) {
-            formData.append(`${key}_${index}`, section[key] ?? "");
-          }
-        });
-      });
-
-      await axios.put(`/api/main-backend/update-dean`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      setDeanData(tempData);
-      setShowConfirmModal(false);
-      setEditMode(false);
-      alert("Request sent successfully!");
-    } catch (error) {
-      console.error("Error sending request:", error?.message);
-      alert("Failed to send request!");
+    if (pendingData.length > 0) {
+      setDeanData(deepCopy(pendingData));
+      toast.info("Cancelled edits. Draft preserved!");
+      setIsSaved(true);
+    } else {
+      setDeanData(deepCopy(committedData));
+      toast.info("Cancelled. Reverted to original data!");
+      setIsSaved(false);
     }
+    
+    setIsEditing(false);
+    setIsDirty(false);
+    setSelectedItems({});
+    setPreviewImgs({});
+    setFieldErrors({}); // Clear errors on cancel
+  };
+
+ 
+
+
+  const handleDiscard = () => {
+    setDeanData(deepCopy(committedData));
+    setPendingData([]);
+    setIsSaved(false);
+    setIsDirty(false);
+    setSelectedItems({});
+    setPreviewImgs({});
+    setFieldErrors({}); // Clear errors
+    toast.info("Changes discarded!");
+  };
+
+  const handleRequest = () => {
+    setShowRequestModal(true);
+  };
+
+
+
+  
+
+  const cleanImageFields = (obj) => {
+    if (!obj) return obj;
+    const cleaned = { ...obj };
+    delete cleaned.image_file;
+    delete cleaned.selected;
+    
+    if (cleaned.image_path?.startsWith("blob:")) {
+      cleaned.image_path = undefined;
+    }
+    
+    return cleaned;
   };
 
   const getChanges = () => {
     const changes = [];
-
-    const originalByPos = new Map((deanData || []).map((s) => [s.Position, s]));
-    const currentByPos = new Map((tempData || []).map((s) => [s.Position, s]));
-
-    // Added or updated
-    (tempData || []).forEach((section) => {
-      const original = originalByPos.get(section.Position);
-      if (!original) {
-        changes.push({ action: "Added", section: section.Position });
-        return;
-      }
-
-      // Dean changes
-      if (
-        section.Dean !== original.Dean ||
-        section.Dean_Type !== original.Dean_Type ||
-        section.Dean_Designation !== original.Dean_Designation ||
-        section.Dean_Image !== original.Dean_Image
-      ) {
-        changes.push({
-          action: section.Dean ? "Updated Dean" : "Removed Dean",
-          section: section.Position,
-        });
-      }
-
-      // Associate Dean changes
-      if (
-        section.Associate_Dean !== original.Associate_Dean ||
-        section.Ass_Dean_Type !== original.Ass_Dean_Type ||
-        section.Associate_Dean_Designation !== original.Associate_Dean_Designation ||
-        section.Associate_Dean_Image !== original.Associate_Dean_Image
-      ) {
-        changes.push({
-          action: section.Associate_Dean ? "Updated Associate Dean" : "Removed Associate Dean",
-          section: section.Position,
+    
+    // Create maps for easier lookup by ID or category name
+    const committedCategoryMap = new Map();
+    committedData.forEach(cat => {
+      committedCategoryMap.set(cat.category, cat);
+    });
+    
+    const pendingCategoryMap = new Map();
+    (pendingData.length ? pendingData : deanData).forEach(cat => {
+      pendingCategoryMap.set(cat.category, cat);
+    });
+    
+    // Find deleted categories (in committed but not in current)
+    committedData.forEach((committedCategory, catIdx) => {
+      if (!pendingCategoryMap.has(committedCategory.category)) {
+        // Entire category was deleted
+        committedCategory.members.forEach((member, memIdx) => {
+          changes.push({
+            action: "Deleted",
+            section: committedCategory.category,
+            changes: `${member.type}: ${member.name || "Member"}`,
+            itemId: member.id,
+            categoryIndex: catIdx,
+            memberIndex: memIdx
+          });
         });
       }
     });
-
-    // Deleted
-    (deanData || []).forEach((section) => {
-      if (!currentByPos.has(section.Position)) {
-        changes.push({ action: "Deleted", section: section.Position });
+    
+    // Find added categories and modified categories
+    (pendingData.length ? pendingData : deanData).forEach((currentCategory, catIdx) => {
+      const committedCategory = committedCategoryMap.get(currentCategory.category);
+      
+      if (!committedCategory) {
+        // Entire category was added
+        currentCategory.members.forEach((member, memIdx) => {
+          changes.push({
+            action: "Added",
+            section: currentCategory.category,
+            changes: `${member.type}: ${member.name || "New Member"}`,
+            itemId: member.id,
+            categoryIndex: catIdx,
+            memberIndex: memIdx
+          });
+        });
+      } else {
+        // Compare members within existing category
+        const committedMemberMap = new Map(committedCategory.members.map(m => [m.id, m]));
+        const currentMemberMap = new Map(currentCategory.members.map(m => [m.id, m]));
+        
+        // Find deleted members (in committed but not in current)
+        committedCategory.members.forEach((member, memIdx) => {
+          if (!currentMemberMap.has(member.id)) {
+            changes.push({
+              action: "Deleted",
+              section: currentCategory.category,
+              changes: `${member.type}: ${member.name || "Member"}`,
+              itemId: member.id,
+              categoryIndex: catIdx,
+              memberIndex: memIdx
+            });
+          }
+        });
+        
+        // Find added and edited members
+        currentCategory.members.forEach((member, memIdx) => {
+          const committedMember = committedMemberMap.get(member.id);
+          
+          if (!committedMember) {
+            // New member
+            changes.push({
+              action: "Added",
+              section: currentCategory.category,
+              changes: `${member.type}: ${member.name || "New Member"}`,
+              itemId: member.id,
+              categoryIndex: catIdx,
+              memberIndex: memIdx
+            });
+          } else {
+            // Check if member was edited
+            const isEdited = 
+              committedMember.name !== member.name ||
+              committedMember.designation !== member.designation ||
+              committedMember.type !== member.type ||
+              committedMember.image_path !== member.image_path;
+            
+            if (isEdited) {
+              changes.push({
+                action: "Edited",
+                section: currentCategory.category,
+                changes: `${member.type}: ${member.name || "Member"}`,
+                itemId: member.id,
+                categoryIndex: catIdx,
+                memberIndex: memIdx
+              });
+            }
+          }
+        });
       }
     });
-
+    
     return changes;
   };
-  
-  const handleUndo = (change) => {
-    let updated = [...tempData];
 
+const buildPayload = () => {
+  const changes = getChanges();
+
+  return changes.map(change => {
+    const category = deanData[change.categoryIndex];
+    const member = category.members[change.memberIndex];
+    const committedMember = committedData[change.categoryIndex]?.members
+      ?.find(m => m.id === change.itemId);
+
+    const actionMap = {
+      Added: "insert",
+      Edited: "update",
+      Deleted: "delete"
+    };
+
+    // 🔑 Final image path resolution
+    const resolveImagePath = (m) => {
+      if (!m) return "";
+      if (m.image_file instanceof File) {
+        return `/static/images/dean_and_associates/${m.image_file.name}`;
+      }
+      return m.image_path || "";
+    };
+
+    const basePayload = {
+      collectionName: "administration",
+      collection_type: "dean_and_association",
+      action: actionMap[change.action],
+      title: `${actionMap[change.action]} dean_and_association`,
+      category: category.category
+    };
+
+    // 🟢 INSERT
     if (change.action === "Added") {
-      updated = updated.filter((s) => s.Position !== change.section);
-    } else if (change.action === "Deleted") {
-  const original = deanData.find((s) => s.Position === change.section);
-  if (original) {
-    const deletedEntry = deletedHistory.find((h) => h.section.Position === change.section);
-    const insertIndex = deletedEntry?.index ?? updated.length;
-    updated.splice(insertIndex, 0, original);
-  }
-}
-
-else if (change.action.includes("Dean")) {
-      const original = deanData.find((s) => s.Position === change.section);
-      updated = updated.map((s) =>
-        s.Position === change.section
-          ? {
-              ...s,
-              Dean: original?.Dean,
-              Dean_Image: original?.Dean_Image,
-              Dean_Type: original?.Dean_Type,
-              Dean_Designation: original?.Dean_Designation,
-              Dean_Image_file: undefined,
-            }
-          : s
-      );
-    } else if (change.action.includes("Associate Dean")) {
-      const original = deanData.find((s) => s.Position === change.section);
-      updated = updated.map((s) =>
-        s.Position === change.section
-          ? {
-              ...s,
-              Associate_Dean: original?.Associate_Dean,
-              Associate_Dean_Image: original?.Associate_Dean_Image,
-              Ass_Dean_Type: original?.Ass_Dean_Type,
-              Associate_Dean_Designation: original?.Associate_Dean_Designation,
-              Associate_Dean_Image_file: undefined,
-            }
-          : s
-      );
+      return {
+        ...basePayload,
+        meta_data: {
+          name: member.name,
+          type: member.type,
+          designation: member.designation,
+          image_path: resolveImagePath(member),
+          unique_id: member.unique_id
+        }
+      };
     }
 
-    setTempData(updated);
+    // 🟡 UPDATE
+    if (change.action === "Edited") {
+      return {
+        ...basePayload,
+        original_data: {
+          name: committedMember.name,
+          type: committedMember.type,
+          designation: committedMember.designation,
+          image_path: committedMember.image_path,
+          unique_id: committedMember.unique_id
+        },
+        meta_data: {
+          name: member.name,
+          type: member.type,
+          designation: member.designation,
+          image_path: resolveImagePath(member),
+          unique_id: member.unique_id
+        }
+      };
+    }
+
+    // 🔴 DELETE (ONLY ONE MEMBER)
+    if (change.action === "Deleted") {
+      return {
+        ...basePayload,
+        meta_data: {
+          unique_id: committedMember.unique_id
+        }
+      };
+    }
+
+    return null;
+  }).filter(Boolean);
+};
+
+
+const handleFinalRequestConfirm = async () => {
+  if (pendingData.length === 0) return;
+
+  // 🚫 validate again
+  const isValid = validateBeforeRequest();
+  if (!isValid) {
+    toast.error("Fix validation errors before submitting");
+    return;
+  }
+
+  const payload = buildPayload();
+  const files = [];
+
+  deanData.forEach(category => {
+    category.members.forEach(member => {
+      if (
+        member.image_file &&
+        member.image_file.name &&
+        member.image_file.size
+      ) {
+        files.push(member.image_file);
+      }
+    });
+  });
+
+
+
+  try {
+    await sendRequest(payload, files);
+
+    toast.success("Request sent successfully!");
+
+    setCommittedData(deepCopy(pendingData));
+    setPendingData([]);
+    setIsSaved(false);
+    setShowRequestModal(false);
+    setFieldErrors({});
+  } catch (err) {
+    toast.error("Failed to submit request");
+  }
+};
+
+
+
+  const revertChange = (itemId) => {
+    // Find and revert the specific change
+    const changes = getChanges();
+    const changeToRevert = changes.find(c => c.itemId === itemId);
+    
+    if (!changeToRevert) return;
+    
+    if (changeToRevert.action === "Added") {
+      // Remove added member
+      const updatedPendingData = pendingData.map((category, catIdx) => {
+        if (catIdx !== changeToRevert.categoryIndex) return category;
+        return {
+          ...category,
+          members: category.members.filter(m => m.id !== itemId)
+        };
+      });
+      setPendingData(updatedPendingData);
+      setDeanData(updatedPendingData);
+    } else if (changeToRevert.action === "Deleted") {
+      // Restore deleted member from committed
+      const committedMember = committedData[changeToRevert.categoryIndex]
+        ?.members?.find(m => m.id === itemId);
+      
+      if (committedMember) {
+        const updatedPendingData = pendingData.map((category, catIdx) => {
+          if (catIdx !== changeToRevert.categoryIndex) return category;
+          
+          // Check if already exists
+          if (category.members.some(m => m.id === itemId)) return category;
+          
+          return {
+            ...category,
+            members: [...category.members, deepCopy(committedMember)]
+          };
+        });
+        setPendingData(updatedPendingData);
+        setDeanData(updatedPendingData);
+      }
+    } else if (changeToRevert.action === "Edited") {
+      // Revert to original
+      const committedMember = committedData[changeToRevert.categoryIndex]
+        ?.members?.find(m => m.id === itemId);
+      
+      if (committedMember) {
+        const updatedPendingData = pendingData.map((category, catIdx) => {
+          if (catIdx !== changeToRevert.categoryIndex) return category;
+          
+          return {
+            ...category,
+            members: category.members.map(m => 
+              m.id === itemId ? deepCopy(committedMember) : m
+            )
+          };
+        });
+        setPendingData(updatedPendingData);
+        setDeanData(updatedPendingData);
+      }
+    }
+    
+    // If no changes left, clear pending data
+    const remainingChanges = getChanges();
+    if (remainingChanges.length === 0) {
+      setPendingData([]);
+      setIsSaved(false);
+    }
+    
+    // Clear any errors related to this item
+    setFieldErrors(prev => {
+      const newErrors = { ...prev };
+      Object.keys(newErrors).forEach(key => {
+        if (key.includes(itemId)) {
+          delete newErrors[key];
+        }
+      });
+      return newErrors;
+    });
   };
+
+  const changes = getChanges();
 
   if (!isOnline) {
     return (
@@ -302,6 +692,67 @@ else if (change.action.includes("Dean")) {
       </div>
     );
   }
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+        <LoadComp txt={""} />
+      </div>
+    );
+  }
+  
+  const handleAddCategory = () => {
+    const newCategory = {
+      category: `New Category ${deanData.length + 1}`,
+      selected: false,
+      members: []
+    };
+
+    setDeanData(prev => [...prev, newCategory]);
+    setIsDirty(true);
+
+    toast.success("New category added");
+  };
+
+  const handleCategorySelect = (categoryIndex) => {
+    setDeanData(prev =>
+      prev.map((cat, idx) => {
+        if (idx !== categoryIndex) return cat;
+
+        const newSelected = !cat.selected;
+
+        return {
+          ...cat,
+          selected: newSelected,
+          members: cat.members.map(m => ({
+            ...m,
+            selected: newSelected
+          }))
+        };
+      })
+    );
+    
+    // Update selectedItems to reflect the change
+    setSelectedItems(prev => {
+      const newSelected = { ...prev };
+      const category = deanData[categoryIndex];
+      
+      // Remove all members of this category if category is being deselected
+      // Or add all members if category is being selected
+      category.members.forEach((_, memIdx) => {
+        const key = `${categoryIndex}-${memIdx}`;
+        if (category.selected) {
+          // Category was already selected, now deselecting
+          delete newSelected[key];
+        } else {
+          // Category wasn't selected, now selecting
+          newSelected[key] = { categoryIndex, memberIndex: memIdx };
+        }
+      });
+      
+      return newSelected;
+    });
+  };
 
   return (
     <>
@@ -312,462 +763,384 @@ else if (change.action.includes("Dean")) {
         headerText="Deans & Associate Deans"
         subHeaderText="Shaping the future through leadership, collaboration, and academic excellence."
       />
-      {loading ? (
-        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
-          <LoadComp txt={""} />
-        </div>
-      ) : (
-        <div className="deancontainer px-10">
-          {/* --- Top Buttons (Edit / Add / Cancel) --- */}
-          <div className="flex justify-end gap-3 pt-4">
-            {!editMode ? (
+      
+      <ToastContainer position="bottom-right" autoClose={3000} />
+      
+      <div className="deancontainer">
+        {/* Edit Button (only when not editing) */}
+        {!isEditing && (
+          <div className="flex justify-end gap-3 pt-4 pr-10">
+            <button
+              onClick={handleStartEdit}
+              className="flex items-center gap-2 px-4 py-2 bg-secd dark:bg-drks text-text dark:text-prim rounded hover:bg-accn hover:text-prim dark:hover:bg-brwn"
+            >
+              <Pencil size={18} /> Edit
+            </button>
+          </div>
+        )}
+        
+        <div className="de-container font-[poppins]">
+          {deanData.map((categoryBlock, categoryIndex) => (
+            <div
+              key={categoryIndex}
+              className={`
+                de-box min-w-[20vw] relative
+                bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
+                dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]
+                ${Object.keys(fieldErrors).some(key => key.includes(`_${categoryIndex}_`)) ? "border-2 border-red-500 shake" : ""}
+              `}
+            >
+              {isEditing && (
+                <input
+                  type="checkbox"
+                  checked={categoryBlock.selected || false}
+                  onChange={() => handleCategorySelect(categoryIndex)}
+                  className="absolute top-3 left-3 w-5 h-5 z-10"
+                />
+              )}
+              
+              {isEditing ? (
+                <input
+                  type="text"
+                  value={categoryBlock.category}
+                  onChange={(e) =>
+                    setDeanData(prev =>
+                      prev.map((cat, idx) =>
+                        idx === categoryIndex
+                          ? { ...cat, category: e.target.value }
+                          : cat
+                      )
+                    )
+                  }
+                  className="de-heading w-full bg-transparent border-b border-gray-400 outline-none"
+                  placeholder="Category name"
+                />
+              ) : (
+                <h1 className="de-heading text-accn dark:text-drkt font-[poppins]">
+                  {categoryBlock.category}
+                </h1>
+              )}
+
+              {/* Add Member Button (only in edit mode) */}
+              {isEditing && (
+                <button
+                  onClick={() => handleAddMember(categoryIndex)}
+                  disabled={categoryBlock.members.length >= 2}
+                  className={`
+                    absolute top-4 right-4 flex items-center gap-1 px-3 py-1 rounded
+                    ${
+                      categoryBlock.members.length >= 2
+                        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        : "bg-secd dark:bg-drks text-text dark:text-prim hover:bg-accn hover:text-prim dark:hover:bg-brwn"
+                    }
+                  `}
+                >
+                  <Plus size={16} />
+                  Add
+                </button>
+              )}
+
+              {/* Profiles Section */}
+              <div className="de-content">
+                {categoryBlock.members?.length > 0 && (
+                  <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full font-[poppins]">
+                    {categoryBlock.members.map((member, memberIndex) => (
+                      <div
+                        key={memberIndex}
+                        className="relative font-[poppins] de-profile bg-prim dark:bg-drkp w-full lg:w-[26vw] border-2 border-secd dark:border-drks"
+                      >
+                        {/* Selection Checkbox (only in edit mode) */}
+                        {isEditing && (
+                          <input
+                            type="checkbox"
+                            checked={member.selected || false}
+                            onChange={() => handleItemSelect(categoryIndex, memberIndex)}
+                            className="absolute top-2 left-2 z-10 w-5 h-5"
+                          />
+                        )}
+                        
+                        <div className="">
+                          <div className="">
+                            <img
+                              src={
+                                previewImgs[`${categoryIndex}-${memberIndex}`]
+                                  ? previewImgs[`${categoryIndex}-${memberIndex}`]
+                                  : member?.image_path
+                                  ? UrlParser(member.image_path)
+                                  : "/placeholder-image.jpg"
+                              }
+                              alt={member.name}
+                              className="w-full h-[260px] object-cover border border-gray-300 dark:border-drks"
+                            />
+                          </div>
+
+                          {/* Image Upload (only in edit mode) */}
+                          {isEditing && (
+                            <label className="gap-1 px-3 py-1 bg-secd dark:bg-drks text-text dark:text-prim rounded hover:bg-accn hover:text-prim dark:hover:bg-brwn mt-2 cursor-pointer inline-block">
+                              {member?.image_path ? "Replace" : "Upload"}
+                              <input
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                onChange={(e) =>
+                                  handleImageChange(
+                                    categoryIndex,
+                                    memberIndex,
+                                    e.target.files?.[0]
+                                  )
+                                }
+                              />
+                            </label>
+                          )}
+                        </div>
+
+                        {/* Member Details */}
+                        <div className="de-profile-details font-[poppins]">
+                          {isEditing ? (
+                            <>
+                              <input
+                                type="text"
+                                value={member.name || ""}
+                                onChange={(e) => 
+                                  handleChangeMember(categoryIndex, memberIndex, "name", e.target.value)
+                                }
+                                className={`w-full p-1 mb-1 border rounded ${fieldErrors[`name_${categoryIndex}_${memberIndex}`] ? 'border-red-500 bg-red-50' : ''}`}
+                                placeholder="Name"
+                                data-error-field={`name_${categoryIndex}_${memberIndex}`}
+                              />
+                              {fieldErrors[`name_${categoryIndex}_${memberIndex}`] && (
+                                <p className="text-red-500 text-xs mb-1">{fieldErrors[`name_${categoryIndex}_${memberIndex}`]}</p>
+                              )}
+                              
+                              <input
+                                type="text"
+                                value={member.type || ""}
+                                onChange={(e) => 
+                                  handleChangeMember(categoryIndex, memberIndex, "type", e.target.value)
+                                }
+                                className={`w-full p-1 mb-1 border rounded ${fieldErrors[`type_${categoryIndex}_${memberIndex}`] ? 'border-red-500 bg-red-50' : ''}`}
+                                placeholder="Type (e.g., Dean, Associate Dean)"
+                                data-error-field={`type_${categoryIndex}_${memberIndex}`}
+                              />
+                              {fieldErrors[`type_${categoryIndex}_${memberIndex}`] && (
+                                <p className="text-red-500 text-xs mb-1">{fieldErrors[`type_${categoryIndex}_${memberIndex}`]}</p>
+                              )}
+                              
+                              <input
+                                type="text"
+                                value={member.designation || ""}
+                                onChange={(e) => 
+                                  handleChangeMember(categoryIndex, memberIndex, "designation", e.target.value)
+                                }
+                                className={`w-full p-1 border rounded ${fieldErrors[`designation_${categoryIndex}_${memberIndex}`] ? 'border-red-500 bg-red-50' : ''}`}
+                                placeholder="Designation"
+                                data-error-field={`designation_${categoryIndex}_${memberIndex}`}
+                              />
+                              {fieldErrors[`designation_${categoryIndex}_${memberIndex}`] && (
+                                <p className="text-red-500 text-xs mt-1">{fieldErrors[`designation_${categoryIndex}_${memberIndex}`]}</p>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              <strong>{member.name}</strong>
+                              <br />
+                              <span>{member.type}</span>
+                              <br />
+                              <span className="text-text dark:text-drka">
+                                {member.designation}
+                              </span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+          
+          {isEditing && (
+            <div className="flex justify-center mt-8">
               <button
-                onClick={() => setEditMode(true)}
-                className="px-4 py-2 mr-2 bg-yellow-400 p-2 rounded shadow-md hover:bg-yellow-500"
+                onClick={handleAddCategory}
+                className="
+                  flex items-center gap-2
+                  px-5 py-2
+                  rounded-lg
+                  bg-secd dark:bg-drks
+                  text-text dark:text-prim
+                  hover:bg-accn hover:text-prim
+                  dark:hover:bg-brwn
+                  transition
+                "
               >
-                Edit
+                <PlusCircle size={18} />
+                Add New Category
               </button>
-            ) : (
-              <>
-                <button
-                  onClick={handleAddNewSection}
-                  className="hover:text-brwn text-gray-100  bg-brwn rounded-full p-2 hover:bg-secd"
-                >
-                  <Plus />
-                </button>
-                <button
-                  onClick={handleCancel}
-                  className="px-4 py-2 bg-brwn hover:text-brwn text-gray-100 font-poppi p-2 rounded shadow-md hover:bg-secd hover:text-black-100"
-                >
-                  Cancel
-                </button>
-              </>
+            </div>
+          )}
+        </div>
+        
+        {/* Action Delete Buttons */}
+        {isEditing && (
+          <div className="flex justify-center gap-4 mt-8">          
+            {deanData.reduce(
+              (count, cat) =>
+                count +
+                (cat.selected ? 1 : cat.members.filter(m => m.selected).length),
+              0
+            ) > 0 && (
+              <button
+                onClick={() => setShowDeleteModal(true)}
+                className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center gap-2"
+              >
+                <Trash2 size={18} />
+                Delete Selected ({deanData.reduce(
+                  (count, cat) =>
+                    count +
+                    (cat.selected ? 1 : cat.members.filter(m => m.selected).length),
+                  0
+                )})
+              </button>
             )}
           </div>
-
-          {/* --- Sections --- */}
-          <div className="de-container font-[poppins]">
-            {tempData.map((section, index) => {
-              const headingValue = section.Position || section.heading || data[index]?.heading || "";
-              return (
-                <div
-                  className="de-box min-w-[20vw] bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] 
-                              dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] relative"
-                  key={headingValue + index}
-                >
-                  {/* Heading */}
-                  {editMode ? (
-                    <div className="relative">
-                      <input
-                  type="text"
-                  value={section.Position ?? ""}
-                  onChange={(e) => {
-                    const updated = [...tempData];
-                    updated[index] = { ...updated[index], Position: e.target.value };
-                    setTempData(updated);
-                  }}
-                  className="de-heading text-accn dark:text-drkt font-[poppins] bg-transparent 
-                            border-b border-gray-400 outline-none w-full"
-                  placeholder="Enter Section Heading"
-                />
-
-    </div>
-  ) : (
-    <h1 className="de-heading text-accn dark:text-drkt font-[poppins]">
-      {headingValue}
-    </h1>
-  )}
-
-  {/* Section Delete Button (always top-right in edit mode) */}
-  {editMode && (
-    <button
-      onClick={() => handleDeleteSection(index)}
-      className="absolute top-3 right-3 p-2 rounded-full hover:bg-red-200"
-      title="Delete section"
-    >
-      <Trash size={16} className="text-red-600" />
-    </button>
-  )}
-                  {/* Profiles */}
-                  <div className="de-content">
-                    {section && (
-                      <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full font-[poppins]">
-                        {/* Dean Profile */}
-                        {section?.Dean !== undefined && (
-                          <div
-                            className="de-profile bg-prim dark:bg-drkp w-full lg:w-[26vw] 
-                                    border-2 border-secd dark:border-drks relative"
-                          >
-                            {editMode && (
-                              <label className="absolute top-2 right-2 bg-secd text-black text-xs px-2 py-1 cursor-pointer shadow-md hover:bg-brwn hover:text-prime">
-                                Upload
-                                <input
-                                  type="file"
-                                  accept="image/*"
-                                  onChange={(e) =>
-                                    handleFileChange(e, section.Position, "Dean_Image")
-                                  }
-                                  className="hidden"
-                                />
-                              </label>
-                            )}
-
-                            <img
-                              src={
-                                UrlParser(section.Dean_Image) 
-                              }
-                              alt={section.Dean || "Dean"}
-                            />
-                            <div className="de-profile-details">
-                              {editMode ? (
-                                <>
-                                  <input
-                                    value={section.Dean ?? ""}
-                                    onChange={(e) =>
-                                      handleChange(e, section.Position, "Dean")
-                                    }
-                                    placeholder="Name"
-                                  />
-                                  <input
-                                    value={section.Dean_Type ?? ""}
-                                    onChange={(e) =>
-                                      handleChange(e, section.Position, "Dean_Type")
-                                    }
-                                    placeholder="Type"
-                                  />
-                                  <input
-                                    value={section.Dean_Designation ?? ""}
-                                    onChange={(e) =>
-                                      handleChange(e, section.Position, "Dean_Designation")
-                                    }
-                                    placeholder="Designation"
-                                  />
-
-                                  <div className="absolute bottom-2 right-2 flex gap-2">
-                                    <button
-                                      onClick={() =>
-                                        handleDeleteRole(section.Position, "Dean")
-                                      }
-                                    >
-                                      <Trash className="text-red-600" size={16} />
-                                    </button>
-                                  </div>
-                                </>
-                              ) : (
-                                <>
-                                  <strong>{section.Dean}</strong>
-                                  <br />
-                                  <span>{section.Dean_Type}</span>
-                                  <br />
-                                  <span className="text-text dark:text-drka">
-                                    {section.Dean_Designation}
-                                  </span>
-                                </>
-                              )}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Associate Dean Profile */}
-                        {section?.Associate_Dean !== undefined && (
-                          <div
-                            className="de-profile bg-prim dark:bg-drkp w-full lg:w-[26vw] 
-                                        border-2 border-secd dark:border-drks relative"
-                          >
-                            {editMode && (
-                              <>
-                                <input
-                                  id={`associate-dean-file-${section.Position}`}
-                                  type="file"
-                                  accept="image/*"
-                                  onChange={(e) =>
-                                    handleFileChange(
-                                      e,
-                                      section.Position,
-                                      "Associate_Dean_Image"
-                                    )
-                                  }
-                                  className="hidden"
-                                />
-                                <label
-                                  htmlFor={`associate-dean-file-${section.Position}`}
-                                  className="absolute top-2 right-2 bg-secd text-black text-xs px-2 py-1 cursor-pointer shadow-md hover:bg-brwn hover:text-prime"
-                                >
-                                  Upload
-                                </label>
-                              </>
-                            )}
-
-                            <img
-                              src={
-                                UrlParser(section.Associate_Dean_Image) 
-                              }
-                              alt={section.Associate_Dean || "Associate Dean"}
-                            />
-                            <div className="de-profile-details">
-                              {editMode ? (
-                                <>
-                                  <input
-                                    value={section.Associate_Dean ?? ""}
-                                    onChange={(e) =>
-                                      handleChange(e, section.Position, "Associate_Dean")
-                                    }
-                                    placeholder="Name"
-                                  />
-                                  <input
-                                    value={section.Ass_Dean_Type ?? ""}
-                                    onChange={(e) =>
-                                      handleChange(e, section.Position, "Ass_Dean_Type")
-                                    }
-                                    placeholder="Type"
-                                  />
-                                  <input
-                                    value={section.Associate_Dean_Designation ?? ""}
-                                    onChange={(e) =>
-                                      handleChange(
-                                        e,
-                                        section.Position,
-                                        "Associate_Dean_Designation"
-                                      )
-                                    }
-                                    placeholder="Designation"
-                                  />
-
-                                  <div className="absolute bottom-2 right-2 flex gap-2">
-                                    <button
-                                      onClick={() =>
-                                        handleDeleteRole(section.Position, "Associate_Dean")
-                                      }
-                                    >
-                                      <Trash className="text-red-600" size={16} />
-                                    </button>
-                                  </div>
-                                </>
-                              ) : (
-                                <>
-                                  <strong>{section.Associate_Dean}</strong>
-                                  <br />
-                                  <span>{section.Ass_Dean_Type}</span>
-                                  <br />
-                                  <span className="text-text dark:text-drka">
-                                    {section.Associate_Dean_Designation}
-                                  </span>
-                                </>
-                              )}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* If neither exists → add both */}
-                  {editMode &&
-                    section.Dean === undefined &&
-                    section.Associate_Dean === undefined && (
-                      <div className="absolute bottom-2 right-2">
-                        <button
-                          onClick={() => {
-                            const updated = [...tempData];
-                            updated[index].Dean = "";
-                            updated[index].Dean_Image = "";
-                            updated[index].Dean_Type = "";
-                            updated[index].Dean_Designation = "";
-                            updated[index].Associate_Dean = "";
-                            updated[index].Associate_Dean_Image = "";
-                            updated[index].Ass_Dean_Type = "";
-                            updated[index].Associate_Dean_Designation = "";
-                            setTempData(updated);
-                          }}
-                          className=" px-2 py-2 bg-secd rounded-full hover:bg-brwn hover:text-secd text-brwn flex items-center gap-1"
-                          title="Add profiles"
-                        >
-                          <Plus size={16} />
-                        </button>
-                      </div>
-                    )}
-
-                  {/* If only Dean exists → add Associate Dean */}
-                  {editMode &&
-                    section.Dean !== undefined &&
-                    section.Associate_Dean === undefined && (
-                      <div className="absolute bottom-2 right-2">
-                        <button
-                          onClick={() => {
-                            const updated = [...tempData];
-                            updated[index].Associate_Dean = "";
-                            updated[index].Associate_Dean_Image = "";
-                            updated[index].Ass_Dean_Type = "";
-                            updated[index].Associate_Dean_Designation = "";
-                            setTempData(updated);
-                          }}
-                          className="absolute bottom-1 right-2 px-2 py-2 bg-secd rounded-full 
-                  hover:bg-brwn hover:text-secd text-brwn flex items-center"
-                          title="Add Associate Dean"
-                        >
-                          <Plus size={16} />
-                        </button>
-                      </div>
-                    )}
-
-                  {/* If only Associate Dean exists → add Dean */}
-                  {editMode &&
-                    section.Dean === undefined &&
-                    section.Associate_Dean !== undefined && (
-                      <div className="absolute bottom-2 right-2">
-                        <button
-                          onClick={() => {
-                            const updated = [...tempData];
-                            updated[index].Dean = "";
-                            updated[index].Dean_Image = "";
-                            updated[index].Dean_Type = "";
-                            updated[index].Dean_Designation = "";
-                            setTempData(updated);
-                          }}
-                          className="px-3 py-1 bg-blue-100 rounded-full hover:bg-blue-200 text-blue-600 flex items-center gap-1"
-                          title="Add Dean"
-                        >
-                          <Plus size={16} />
-                        </button>
-                      </div>
-                    )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* --- Request Button --- */}
-  
-          {editMode && (
-            <div className="flex justify-end">
+        )}
+        
+        {/* Action Buttons */}
+        {isEditing && (
+          <div className="flex justify-end gap-4 m-8 pr-9">
+            <button
+              onClick={handleCancel}
+              className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+            >
+              Cancel
+            </button>
+            {getChanges().length > 0 && (
               <button
                 onClick={handleSave}
-                className="px-3 py-2 mb-3 bg-secd font-[poppins] rounded flex items-center gap-2 hover:bg-yellow-500"
+                className="px-6 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex items-center gap-2"
               >
+                <Save size={18} />
                 Save
               </button>
-            </div>
-          )}
-
-          {/* After Save: show Back to Edit + Request */}
-          {isSaved && !editMode && getChanges().length > 0 && (
-              <div className="flex justify-end gap-3">
-                <button
-                  onClick={() => {
-                    setIsSaved(false);
-                    setEditMode(true);
-                  }}
-                  className="px-3 py-2 mb-3 bg-brwn text-white font-[poppins] rounded flex items-center gap-2 hover:bg-brwn-500"
-                >
-                  Back to Edit
-                </button>
-                <button
-                  onClick={() => {
-                    setEditedData(tempData);
-                    setShowConfirmModal(true);
-                  }}
-                  className="px-3 py-2 mb-3 bg-yellow-400 text-black font-[poppins] rounded flex items-center gap-2 hover:bg-yellow-500"
-                >
-                  <FaPaperPlane /> Request
-                </button>
-            </div>
-          )}
-
-
-          <div ref={bottomRef}></div>
-        </div>
-      )}
-
-      {/* --- Cancel Confirm Modal --- */}
-      {showCancelModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[400px]">
-            <h2 className="text-lg font-bold mb-4">Discard Changes?</h2>
-            <p className="text-red-600 mb-4">
-              <span className="font-semibold">Note:</span> All unsaved changes will be lost if you cancel.
-            </p>
-            <div className="flex justify-between">
-              <button
-                onClick={() => setShowCancelModal(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
-              >
-                No
-              </button>
-              <button
-                onClick={() => {
-                  setTempData(deanData); // reset
-                  setEditMode(false);
-                  setIsSaved(false);
-                  setShowCancelModal(false);
-                }}
-                className="px-4 py-2 bg-brwn text-white rounded hover:bg-red-600"
-              >
-                Yes, Cancel
-              </button>
-            </div>
+            )}
           </div>
-        </div>
-      )}
-
-
-      {/* --- Confirm Modal --- */}
-      {showConfirmModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[450px]">
-            <h2 className="text-lg font-bold mb-4">Final Request for the Changes</h2>
-
-            <p className="text-red-600 mb-4">
-              <span className="font-semibold">Note:</span> Your changes will stay pending
-              until approved by the superior admin. Once approved, they will be applied
-              automatically to the live site.
+        )}
+        
+        {isSaved && !isEditing && (
+          <div className="flex justify-end gap-4 m-8 pr-9">
+            <button
+              onClick={handleDiscard}
+              className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+            >
+              Discard Changes
+            </button>
+            
+            {changes.length > 0 && (
+              <button
+                onClick={handleRequest}
+                className="px-6 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex items-center gap-2"
+              >
+                <Send size={18} />
+                Request
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+      
+      {/* Request Modal */}
+      {showRequestModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-gray-800">Final Request</h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
             </p>
-
-            <table className="w-full border-collapse mb-6">
-              <thead>
-                <tr className="text-left border-b">
-                  <th className="pb-2">Action</th>
-                  <th className="pb-2">Section</th>
-                  <th className="pb-2">Undo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {getChanges().length > 0 ? (
-                  getChanges().map((change, idx) => (
-                    <tr key={`${change.action}-${change.section}-${idx}`} className="border-b">
-                      <td className="py-2">{change.action}</td>
-                      <td className="py-2">{change.section}</td>
-                      <td className="py-2">
+            {changes.length > 0 ? (
+              <table className="w-full text-center text-sm border">
+                <thead className="bg-gray-200">
+                  <tr>
+                    <th className="border p-2">Action</th>
+                    <th className="border p-2">Section</th>
+                    <th className="border p-2">Changes</th>
+                    <th className="border p-2">Undo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {changes.map((ch, i) => (
+                    <tr key={i}>
+                      <td className="border p-2 text-blue-600">{ch.action}</td>
+                      <td className="border p-2">{ch.section}</td>
+                      <td className="border p-2">{ch.changes}</td>
+                      <td className="border p-2">
                         <button
-                          onClick={() => handleUndo(change)}
-                          className="px-3 py-1 bg-yellow-400 text-black rounded hover:bg-yellow-500 flex items-center gap-1"
+                          onClick={() => revertChange(ch.itemId)}
+                          className="p-1 rounded hover:bg-gray-100"
+                          title="Revert this change"
                         >
-                          <MdUndo /> Undo
+                          <X size={16} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={3} className="text-center py-4 text-gray-500">
-                      No changes detected.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-
-            <div className="flex justify-between">
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="text-gray-600">No changes detected.</p>
+            )}
+            <div className="flex justify-end gap-2 mt-6">
+              <button 
+                onClick={() => setShowRequestModal(false)} 
+                className="px-4 py-2 rounded bg-gray-400 text-white"
+              >
+                Cancel
+              </button>
+              {changes.length > 0 && (
+                <button
+                  onClick={handleFinalRequestConfirm}
+                  className="px-6 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex items-center gap-2"
+                  disabled={requestLoading}
+                >
+                  <Send size={18} /> {requestLoading ? "Sending..." : "Final Request"}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg border w-[90%] max-w-md">
+            <h3 className="text-lg font-semibold mb-4 text-gray-800">Confirm Delete</h3>
+            <p className="text-gray-600 mb-6">
+              Are you sure you want to delete {deanData.reduce(
+                (count, cat) =>
+                  count +
+                  (cat.selected ? 1 : cat.members.filter(m => m.selected).length),
+                0
+              )} selected member{deanData.reduce(
+                (count, cat) =>
+                  count +
+                  (cat.selected ? 1 : cat.members.filter(m => m.selected).length),
+                0
+              ) > 1 ? 's' : ''}?
+            </p>
+            <div className="flex justify-end gap-3">
               <button
-                onClick={() => setShowConfirmModal(false)}
-                className="px-4 py-2 bg-gray-400 text-white font-[poppins] rounded hover:bg-gray-500"
+                onClick={() => setShowDeleteModal(false)}
+                className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
               >
                 Cancel
               </button>
               <button
-                onClick={handleRequest}
-                className="px-4 py-2 bg-yellow-400 text-black rounded font-[poppins] flex items-center gap-2 hover:bg-yellow-500"
+                onClick={confirmDelete}
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
               >
-                <FaPaperPlane /> Confirm Request
+                Delete
               </button>
             </div>
           </div>
@@ -777,4 +1150,4 @@ else if (change.action.includes("Dean")) {
   );
 };
 
-export default AdminDean;
+export default Dean;

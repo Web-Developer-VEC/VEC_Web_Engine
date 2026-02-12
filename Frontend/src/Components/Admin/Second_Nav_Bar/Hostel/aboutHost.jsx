@@ -4,6 +4,7 @@ import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Pencil, Send, X } from "lucide-react";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function AboutHostel({ hostelData, theme, toggle }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -24,6 +25,8 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
 
   // New: detailed change log used for the final request modal with undo
   const [changeLog, setChangeLog] = useState([]);
+
+  const { sendRequest, loading, error } = useAdminRequest();
 
   let data;
   if (hostelData) {
@@ -187,32 +190,53 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
   };
 
   // When user confirms the final request
-  const handleRequestConfirm = () => {
-    // Simulate sending request to backend
-    console.log("Request submitted:", {
-      about_us: originalData?.about_us,
-      image: uploadedFile ? uploadedFile.file.name : "No image change",
-      changeLog,
-    });
+const handleRequestConfirm = async () => {
+  if (!originalData) return;
 
+  // OLD values (before change)
+  const oldAbout = initialSnapshot?.about_us || "";
+  const oldImagePath = initialSnapshot?.image_path || "";
+
+  // NEW image path (only if image changed)
+
+  const newImagePath = `/static/images/hostel/${uploadedFile.file.name}`;
+  console.log(newImagePath);
+
+  const payload = [
+    {
+      action: "update",
+      collectionName: "hostel_details",
+      collection_type: "about",
+      title: "Hostel About",
+      category: null,
+
+      original_data: {
+        about_us: oldAbout,
+        image_path: oldImagePath,
+      },
+
+      meta_data: {
+        about_us: originalData.about_us,
+        image_path: newImagePath,
+      },
+    },
+  ];
+
+  
+  const result = await sendRequest(payload, uploadedFile?.file || null);
+
+  if (result) {
     toast.success("Request submitted successfully!");
 
-    // CLOSE the modal
     setShowRequestModal(false);
-
-    // hide Discard & Request buttons by clearing the "changesSaved" flag
-    // Also clear the changes list since request has been sent
     setChangesSaved(false);
-    setChanges({ modified: [], added: [], deleted: [] });
-
-    // Clear change log and uploaded/temp files
     setChangeLog([]);
     setUploadedFile(null);
     setTempImageFile(null);
     setHasChanges(false);
+  }
+};
 
-    // Optionally keep 'originalData' as-is (we left it updated on save)
-  };
 
   // Toggle Page View (kept for compatibility; this toggles editing appropriately)
   const togglePageView = () => {
@@ -304,7 +328,7 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
           {!isEditing && (
             <button
               onClick={() => setIsEditing(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim mr-9"
             >
               <Pencil size={16} /> Edit
             </button>
@@ -399,7 +423,7 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
 
         {/* Optional Page View / Save bar (kept for compatibility with your earlier logic) */}
         {hasChanges && !isEditing && (
-          <div className="page-view-button-container fixed bottom-20 right-4 z-[50]">
+          <div className="page-view-button-container fixed bottom-20 right-4 z-[50] mr-9">
             {!isPageView ? (
               <button className="page-view-btn px-4 py-2 rounded bg-[#fdcc03] text-text" onClick={togglePageView}>
                 Save (open editor)
@@ -485,7 +509,7 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
               <p className="text-gray-600">No changes detected.</p>
             )}
 
-            <div className="flex justify-end gap-2 mt-6">
+            <div className="flex justify-end gap-2 mt-6 mr-9">
               <button
                 onClick={() => setShowRequestModal(false)}
                 className="px-4 py-2 rounded bg-gray-400 text-prim"
