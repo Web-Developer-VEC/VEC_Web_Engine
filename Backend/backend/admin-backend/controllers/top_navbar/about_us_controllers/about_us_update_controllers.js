@@ -1,7 +1,7 @@
 async function updatedData(tempDoc, mainCollection) {
   try {
     const { collection_type, category, meta_data, original_data } = tempDoc;
-
+  
     if (!collection_type || !meta_data || !original_data) {
       throw new Error("Missing required fields");
     }

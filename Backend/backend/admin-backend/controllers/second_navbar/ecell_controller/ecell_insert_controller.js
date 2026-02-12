@@ -15,28 +15,6 @@ async function insertData(tempDoc, mainCollection) {
 
     let doc = await mainCollection.findOne({ type: collection_type });
 
-    // ---------- ABOUT ----------
-    if (collection_type === "about") {
-      if (meta_data.mission) {
-        // add new mission statement
-        doc.data[0].mission.push(meta_data.mission);
-      }
-      if (meta_data.about) {
-        doc.data[0].about = meta_data.about;
-      }
-      if (meta_data.vision) {
-        doc.data[0].vision = meta_data.vision;
-      }
-
-      await mainCollection.updateOne(
-        { type: "about" },
-        { $set: { data: doc.data } }
-      );
-
-      return { success: true, message: "About data inserted successfully", data: doc.data };
-    }
-    
-
     // ---------- COMMITTEE ----------
     if (collection_type === "committee") {
       if (!doc) {
@@ -47,7 +25,7 @@ async function insertData(tempDoc, mainCollection) {
       } else {
         await mainCollection.updateOne(
           { type: collection_type },
-          { $push: { data: meta_data } }
+          { $push: { data: meta_data } },
         );
       }
       return { success: true, message: "Committee data inserted successfully" };
@@ -63,7 +41,7 @@ async function insertData(tempDoc, mainCollection) {
       } else {
         await mainCollection.updateOne(
           { type: collection_type },
-          { $push: { data: meta_data } }
+          { $push: { data: meta_data } },
         );
       }
       return {
@@ -85,7 +63,7 @@ async function insertData(tempDoc, mainCollection) {
       } else {
         await mainCollection.updateOne(
           { type: collection_type },
-          { $push: { data: meta_data } }
+          { $push: { data: meta_data } },
         );
       }
       return { success: true, message: "Activity data inserted successfully" };
@@ -93,35 +71,32 @@ async function insertData(tempDoc, mainCollection) {
 
     // ---------- GALLERY ----------
     if (collection_type === "gallery") {
-    if (!meta_data.image_path) throw new Error("Image path required");
+      if (
+        !meta_data ||
+        !Array.isArray(meta_data.image_path) ||
+        meta_data.image_path.length === 0
+      ) {
+        throw new Error("meta_data.image_path must be a non-empty array");
+      }
 
-    if (!doc) {
-    // No document yet, create object structure
-    await mainCollection.insertOne({
-      type: collection_type,
-      data: { image_path: meta_data.image_path },
-    });
-    } else {
-    // Document exists, append new images
-    if (!doc.data || typeof doc.data !== "object") {
-      doc.data = { image_path: [] };
+      const result = await mainCollection.updateOne(
+        { type: "gallery" },
+        {
+          $push: {
+            data: { $each: meta_data.image_path },
+          },
+        },
+        {
+          upsert: true,
+        },
+      );
+
+      return {
+        success: true,
+        message: "Gallery images added successfully",
+        added_images: meta_data.image_path,
+      };
     }
-    if (!Array.isArray(doc.data.image_path)) {
-      doc.data.image_path = [];
-    }
-
-    // Append new images
-    doc.data.image_path.push(...meta_data.image_path);
-
-    await mainCollection.updateOne(
-      { type: collection_type },
-      { $set: { data: doc.data } }
-    );
-    }
-
-    return { success: true, message: "Gallery images updated successfully", data: doc ? doc.data : meta_data };
-    }
-
 
     throw new Error("Invalid collection type");
   } catch (error) {

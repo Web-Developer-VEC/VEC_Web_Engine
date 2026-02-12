@@ -13,6 +13,17 @@ const AdminWinnerSlider = ({ data }) => {
   const [selected, setSelected] = useState([]);
   const { sendRequest, loading, error } = useAdminRequest();
   const [initialSnapshot, setInitialSnapshot] = useState([]);
+  const normalizeWinners = (arr) =>
+    arr.map(({ id, title, image_path }) => ({
+      id,
+      title,
+      image_path,
+    }));
+  const hasChanges =
+    JSON.stringify(normalizeWinners(tempWinners)) !==
+    JSON.stringify(normalizeWinners(winners));
+
+
 
 
   // Pagination states
@@ -523,12 +534,14 @@ const AdminWinnerSlider = ({ data }) => {
                 >
                   Cancel
                 </button>
-                <button
-                  onClick={handleSave}
-                  className="px-4 py-1 bg-[#800000] text-white rounded"
-                >
-                  Save
-                </button>
+                {hasChanges && (
+                  <button
+                    onClick={handleSave}
+                    className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
+                  >
+                    Save
+                  </button>
+                )}
               </div>
             </div>
           )}
