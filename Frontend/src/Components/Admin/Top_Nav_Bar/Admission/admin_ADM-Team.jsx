@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { Pencil, Plus, Trash2, PlusCircle, SquarePen, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminADMteam = ({ theme, toggle }) => {
   const [admissionteamData, setAdmissionteamData] = useState([]);
@@ -18,6 +19,8 @@ const AdminADMteam = ({ theme, toggle }) => {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const { sendRequest, loading, error } = useAdminRequest();
+  const [imageFiles, setImageFiles] = useState({});
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
@@ -71,23 +74,20 @@ const AdminADMteam = ({ theme, toggle }) => {
     setAdmissionteamData((prev) => {
       const updated = [...prev];
       if (field === "name") value = value.toUpperCase();
+
       updated[index] = { ...updated[index], [field]: value };
       const item = updated[index];
 
-      // Update change list for added items
-      setChangeList((prevChanges) =>
-        prevChanges.map((c) =>
-          c.type === "added" && c.data.id === item.id && field === "name"
-            ? { ...c, section: value || "New Team Member" }
-            : c
-        )
-      );
+      // ✅ If item is NEW → just update state, nothing else
+      if (item.isNew) {
+        return updated;
+      }
 
-      if (item.isNew) return updated;
-
+      // 🔁 EXISTING item → track edits
       const original = originalData.find((o) => o.id === item.id) || {};
       const editedFields = {};
-      ["name", "designation", "photo_path"].forEach((key) => {
+
+      ["name", "designation", "image_path", "imageFile"].forEach((key) => {
         if (item[key] !== original[key]) {
           editedFields[key] = {
             before: original[key] || "",
@@ -98,36 +98,110 @@ const AdminADMteam = ({ theme, toggle }) => {
 
       setChangeList((prevChanges) => {
         const existingIndex = prevChanges.findIndex(
-          (c) => c.data?.id === item.id && c.type === "edited"
+          (c) => c.data?.id === item.id && c.type === "edited",
         );
+
         if (Object.keys(editedFields).length === 0) {
-          if (existingIndex >= 0)
-            return prevChanges.filter((_, i) => i !== existingIndex);
-          return prevChanges;
+          return existingIndex >= 0
+            ? prevChanges.filter((_, i) => i !== existingIndex)
+            : prevChanges;
         }
+
         const newChange = {
           type: "edited",
           section: item.name || "Team Member",
           fields: editedFields,
           data: item,
         };
+
         if (existingIndex >= 0) {
           const updatedChanges = [...prevChanges];
           updatedChanges[existingIndex] = newChange;
           return updatedChanges;
-        } else {
-          return [...prevChanges, newChange];
         }
+
+        return [...prevChanges, newChange];
       });
 
       return updated;
     });
   };
 
+  const buildAdmissionTeamPayload = ({
+    action,
+    newData,
+    oldData,
+    deleteImageOnly = false,
+  }) => {
+    /* -------- INSERT -------- */
+    if (action === "insert") {
+      return {
+        collectionName: "admissions",
+        collection_type: "admission_team",
+        action: "insert",
+        title: "Insert single admission team member",
+        meta_data: {
+          name: newData.name,
+          designation: newData.designation,
+          image_path: newData.image_path || "",
+        },
+      };
+    }
+
+    /* -------- UPDATE -------- */
+    if (action === "update") {
+      return {
+        collectionName: "admissions",
+        collection_type: "admission_team",
+        action: "update",
+        title: "Update Admission Team Member",
+        meta_data: {
+          name: newData.name,
+          designation: newData.designation,
+          image_path: newData.image_path || "",
+        },
+        original_data: {
+          name: oldData.name,
+          designation: oldData.designation,
+          image_path: oldData.image_path || "",
+        },
+      };
+    }
+
+    /* -------- DELETE IMAGE ONLY -------- */
+    if (action === "delete" && deleteImageOnly) {
+      return {
+        collectionName: "admissions",
+        collection_type: "admission_team",
+        action: "delete",
+        title: "Delete photo_path for admission team member",
+        meta_data: {
+          name: newData.name,
+          image_path: newData.image_path,
+        },
+      };
+    }
+
+    /* -------- DELETE MEMBER -------- */
+    if (action === "delete") {
+      return {
+        collectionName: "admissions",
+        collection_type: "admission_team",
+        action: "delete",
+        title: "Delete admission team member",
+        meta_data: {
+          name: newData.name,
+        },
+      };
+    }
+
+    return null;
+  };
+
   // Selection
   const handleSelect = (id, isChecked) => {
     setSelectedItems((prev) =>
-      isChecked ? [...prev, id] : prev.filter((itemId) => itemId !== id)
+      isChecked ? [...prev, id] : prev.filter((itemId) => itemId !== id),
     );
   };
 
@@ -137,15 +211,17 @@ const AdminADMteam = ({ theme, toggle }) => {
       id: generateId(),
       name: "",
       designation: "",
-      photo_path: "",
+      image_path: "",
       isNew: true,
     };
+
     setAdmissionteamData((prev) => [...prev, newMember]);
+
     setChangeList((prev) => [
       ...prev,
       {
         type: "added",
-        section: newMember.name || "New Team Member",
+        section: "New Team Member",
         fields: {},
         data: newMember,
       },
@@ -159,10 +235,10 @@ const AdminADMteam = ({ theme, toggle }) => {
       return;
     }
     const deletedItems = admissionteamData.filter((item) =>
-      selectedItems.includes(item.id)
+      selectedItems.includes(item.id),
     );
     setAdmissionteamData((prev) =>
-      prev.filter((item) => !selectedItems.includes(item.id))
+      prev.filter((item) => !selectedItems.includes(item.id)),
     );
     setChangeList((prev) => [
       ...prev,
@@ -185,7 +261,7 @@ const AdminADMteam = ({ theme, toggle }) => {
 
       if (change.type === "added") {
         setAdmissionteamData((prev) =>
-          prev.filter((f) => f.id !== change.data.id)
+          prev.filter((f) => f.id !== change.data.id),
         );
         return prevChanges.filter((_, i) => i !== changeIdx);
       }
@@ -202,7 +278,8 @@ const AdminADMteam = ({ theme, toggle }) => {
           if (idxF >= 0) {
             Object.keys(change.fields).forEach((field) => {
               updated[idxF][field] =
-                originalData.find((o) => o.id === change.data.id)?.[field] || "";
+                originalData.find((o) => o.id === change.data.id)?.[field] ||
+                "";
             });
           }
           return updated;
@@ -217,13 +294,14 @@ const AdminADMteam = ({ theme, toggle }) => {
   // Save changes
   const handleSave = () => {
     const invalid = admissionteamData.some(
-      (f) => !f.name || !f.designation || !f.photo_path
+      (f) => !f.name?.trim() || !f.designation?.trim(),
     );
+
     if (invalid) {
-      toast.error("All fields are mandatory.");
+      toast.error("Name and designation are required");
       return;
     }
-    toast.success("Changes saved! You can request or discard now.");
+
     setShowRequestButtons(true);
     setTeamCardEdit(false);
   };
@@ -242,17 +320,82 @@ const AdminADMteam = ({ theme, toggle }) => {
   // Request approval
   const handleRequestConfirm = async () => {
     try {
-      await axios.post("/api/admin/request-changes", {
-        changes: changeList,
-        data: admissionteamData,
-      });
-      toast.success("Request submitted for approval!");
+      if (!changeList || changeList.length === 0) {
+        toast.warn("No changes to submit");
+        return;
+      }
+
+      // Map through changeList and find the CURRENT state of those items from admissionteamData
+      const requests = changeList
+        .map((change) => {
+          const current = admissionteamData.find(
+            (m) => m.id === change.data.id,
+          );
+          const original = originalData.find((o) => o.id === change.data.id);
+
+          /* 🟢 INSERT */
+          if (change.type === "added" && current) {
+            return buildAdmissionTeamPayload({
+              action: "insert",
+              newData: current,
+            });
+          }
+
+          /* 🔵 UPDATE */
+          if (change.type === "edited" && current && original) {
+            return buildAdmissionTeamPayload({
+              action: "update",
+              newData: current,
+              oldData: original,
+            });
+          }
+
+          /* 🔴 DELETE IMAGE ONLY */
+          if (
+            change.type === "edited" &&
+            change.fields?.image_path &&
+            !current.image_path
+          ) {
+            return buildAdmissionTeamPayload({
+              action: "delete",
+              deleteImageOnly: true,
+              newData: original,
+            });
+          }
+
+          /* 🔴 DELETE MEMBER */
+          if (change.type === "deleted") {
+            return buildAdmissionTeamPayload({
+              action: "delete",
+              newData: change.data,
+            });
+          }
+
+          return null;
+        })
+        .filter(Boolean);
+
+      if (requests.length === 0) {
+        toast.error("Could not process changes. Please try again.");
+        return;
+      }
+      console.log("gfdg", imageFiles);
+
+      console.log("🚀 SENDING PAYLOAD:", { requests, imageFiles });
+
+      await sendRequest(requests);
+
+      toast.success("Request submitted successfully!");
+
+      // Reset all states
+      setOriginalData([...admissionteamData]); // Sync original with new changes
       setChangeList([]);
       setShowRequestModal(false);
       setShowRequestButtons(false);
       setTeamCardEdit(false);
     } catch (err) {
-      toast.error("Failed to submit request!");
+      console.error("❌ REQUEST FAILED:", err.response?.data || err);
+      toast.error(err.response?.data?.message || "Failed to submit request");
     }
   };
 
@@ -311,6 +454,7 @@ const AdminADMteam = ({ theme, toggle }) => {
                 trackChange={trackChange}
                 imagePreviews={imagePreviews}
                 setImagePreviews={setImagePreviews}
+                setImageFiles={setImageFiles}
                 UrlParser={UrlParser}
               />
             ))}
@@ -322,13 +466,14 @@ const AdminADMteam = ({ theme, toggle }) => {
               <TeamCard
                 key={member.id}
                 member={member}
-                index={index + 2}
+                index={index + 1}
                 teamCardEdit={teamCardEdit}
                 selectedItems={selectedItems}
                 handleSelect={handleSelect}
                 trackChange={trackChange}
                 imagePreviews={imagePreviews}
                 setImagePreviews={setImagePreviews}
+                setImageFiles={setImageFiles}
                 UrlParser={UrlParser}
               />
             ))}
@@ -376,7 +521,7 @@ const AdminADMteam = ({ theme, toggle }) => {
                 className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
                 onClick={handleSave}
               >
-                Save 
+                Save
               </button>
             </div>
           )}
@@ -388,6 +533,7 @@ const AdminADMteam = ({ theme, toggle }) => {
               revertField={revertField}
               handleRequestConfirm={handleRequestConfirm}
               closeModal={() => setShowRequestModal(false)}
+              loading={loading}
             />
           )}
 
@@ -404,7 +550,7 @@ const AdminADMteam = ({ theme, toggle }) => {
                 className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded flex items-center gap-2"
                 onClick={() => setShowRequestModal(true)}
               >
-                Request 
+                Request
               </button>
             </div>
           )}
@@ -425,38 +571,39 @@ const TeamCard = ({
   trackChange,
   imagePreviews,
   setImagePreviews,
+  setImageFiles,
   UrlParser,
 }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
+    if (!file) return;
 
-      // Revoke old object URL to prevent memory leaks
-      if (imagePreviews[member.id]) {
-        URL.revokeObjectURL(imagePreviews[member.id]);
-      }
+    // Preview
+    const previewUrl = URL.createObjectURL(file);
+    setImagePreviews((prev) => ({
+      ...prev,
+      [member.id]: previewUrl,
+    }));
 
-      setImagePreviews((prev) => ({
-        ...prev,
-        [member.id]: url,
-      }));
+    // Static backend path
+    const imagePath = `/static/images/admission_team/${file.name}`;
 
-      trackChange(index, "photo_path", url);
-    }
+    // 🔥 Store BOTH path and file
+    trackChange(index, "image_path", imagePath);
+    trackChange(index, "imageFile", file);
   };
 
   return (
     <div className="relative border-2 border-secd dark:border-drks rounded-md flex flex-col items-center p-4 w-60 bg-prim dark:bg-drkp shadow hover:shadow-lg transition-shadow">
       <img
-        src={imagePreviews[member.id] || UrlParser(member.photo_path)}
+        src={imagePreviews[member.id] || UrlParser(member.image_path)}
         alt={member.name}
         className="rounded-md w-36 h-44 object-cover mb-2"
       />
       {teamCardEdit ? (
         <>
           <label className="bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer mb-2">
-            <span>{member.photo_path ? "Replace" : "Upload"}</span>
+            <span>{member.image_path ? "Replace" : "Upload"}</span>
             <input
               type="file"
               accept="image/*"
@@ -502,12 +649,20 @@ const TeamCard = ({
 };
 
 // RequestModal Component
-const RequestModal = ({ changeList, revertField, handleRequestConfirm, closeModal }) => (
+const RequestModal = ({
+  changeList,
+  revertField,
+  handleRequestConfirm,
+  closeModal,
+  loading,
+}) => (
   <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
     <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
-      <h2 className="text-xl font-bold mb-4 text-gray-800"> Request  Changes</h2>
+      <h2 className="text-xl font-bold mb-4 text-gray-800"> Request Changes</h2>
       <p className="text-red-600 mb-4">
-        <span className="font-medium">Note:</span> Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.
+        <span className="font-medium">Note:</span> Your changes will stay
+        pending until approved by the superior admin. Once approved, they will
+        be applied automatically to the live site.
       </p>
       <table className="w-full text-sm">
         <thead>
@@ -522,21 +677,19 @@ const RequestModal = ({ changeList, revertField, handleRequestConfirm, closeModa
           {changeList.map((c, idx) => (
             <tr key={idx} className="border-b">
               <td className=" border p-2">
-                {c.type === "added"  }
-                {c.type === "deleted" }
-                {c.type === "edited" }
+                {c.type === "added"}
+                {c.type === "deleted"}
+                {c.type === "edited"}
                 <span className="capitalize ml-1">{c.type}</span>
               </td>
               <td className="p-2 border">Admin-team</td>
-              <td>
-                {c.section}
-              </td>
+              <td>{c.section}</td>
               <td className="p-2 border">
                 <button
                   className=" p-1 rounded hover:bg-gray-100"
                   onClick={() => revertField(idx)}
                 >
-                 <X/>
+                  <X />
                 </button>
               </td>
             </tr>
@@ -544,11 +697,20 @@ const RequestModal = ({ changeList, revertField, handleRequestConfirm, closeModa
         </tbody>
       </table>
       <div className="flex justify-end gap-3 mt-4">
-        <button className="px-4 py-2 bg-gray-300 rounded-md" onClick={closeModal}>
+        <button
+          className="px-4 py-2 bg-gray-300 rounded-md"
+          onClick={closeModal}
+        >
           Cancel
         </button>
-        <button className="px-4 py-2 bg-blue-600 text-white rounded-md" onClick={handleRequestConfirm}>
-          Final Request
+        <button
+          disabled={loading}
+          className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
+            loading ? "cursor-progress" : "hover:bg-[#800000]"
+          }`}
+          onClick={handleRequestConfirm}
+        >
+          {loading ? "Processing..." : "Final Request"}
         </button>
       </div>
     </div>
