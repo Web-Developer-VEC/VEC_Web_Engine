@@ -670,83 +670,80 @@ const handleRevertChange = (change) => {
   )}
 
   {/* Input for Adding Year */}
-{addingYear && (
-  <div className="flex items-center gap-2">
-    <input
-      type="text"
-      value={newYearInput}
-      onChange={(e) => setNewYearInput(e.target.value.toUpperCase())} // force caps
-      placeholder="Enter title"
-      className="px-2 py-1 border rounded uppercase" // CSS ensures text shows as uppercase
-    />
-    <button
-      onClick={handleAddYear}
-      className="bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded"
-    >
-      Add
-    </button>
-    <button
-      onClick={cancelAddYear}
-      className="bg-gray-400 text-white px-3 py-1 rounded"
-    >
-      Cancel
-    </button>
+  {addingYear && (
+    <div className="flex items-center gap-2">
+      <input
+        type="text"
+        value={newYearInput}
+        onChange={(e) => setNewYearInput(e.target.value.toUpperCase())} // force caps
+        placeholder="Enter title"
+        className="px-2 py-1 border rounded uppercase" // CSS ensures text shows as uppercase
+      />
+      <button
+        onClick={handleAddYear}
+        className="bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded"
+      >
+        Add
+      </button>
+      <button
+        onClick={cancelAddYear}
+        className="bg-gray-400 text-white px-3 py-1 rounded"
+      >
+        Cancel
+      </button>
+    </div>
+  )}
+
   </div>
-)}
-
-</div>
-
 
         {/* Year Content */}
-{activeYear && (
-  <div className="mb-6">
-{/* <h3 className="text-xl font-semibold mb-4 text-center flex items-center justify-center gap-2">
-  {editingYearIndex !== null ? (
-    <input
-      type="text"
-      value={tempData[editingYearIndex]?.year || ""}
-      placeholder="Enter year name"
-      onChange={(e) => {
-        const updated = [...tempData];
-        updated[editingYearIndex].year = e.target.value; // keep whatever user types
-        setTempData(updated);
+          {activeYear && (
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-4 text-center flex items-center justify-center gap-2">
+                {editingYearIndex !== null ? (
+                  <input
+                    type="text"
+                    value={tempData[editingYearIndex]?.year || ""}
+                    placeholder="Enter year name"
+                    onChange={(e) => {
+                      const updated = [...tempData];
+                      updated[editingYearIndex].year = e.target.value; // keep whatever user types
+                      setTempData(updated);
 
-        // Keep activeYear in sync even if empty
-        setActiveYear(updated[editingYearIndex].year || ""); 
-        setIsDirty(true);
-      }}
-      onBlur={() => {
-        const updated = [...tempData];
-        // Provide a fallback if completely empty
-        if (!updated[editingYearIndex].year.trim()) {
-          updated[editingYearIndex].year = "NEW YEAR";
-        }
-        setTempData(updated);
-        setActiveYear(updated[editingYearIndex].year); // update activeYear
-        setEditingYearIndex(null);
-      }}
-      className="px-2 py-1 border rounded text-center"
-      autoFocus
-    />
-  ) : (
-    <>
-      {activeYear || "NEW YEAR"}
-      {isEditing && (
-        <button
-          onClick={() => {
-            const idx = tempData.findIndex((y) => y.year === activeYear);
-            setEditingYearIndex(idx);
-          }}
-          className="ml-2 text-gray-600 hover:text-blue-600"
-        >
-          <Pencil size={18} />
-        </button>
-      )}
-    </>
-  )}
-</h3> */}
-
-
+                      // Keep activeYear in sync even if empty
+                      setActiveYear(updated[editingYearIndex].year || ""); 
+                      setIsDirty(true);
+                    }}
+                    onBlur={() => {
+                      const updated = [...tempData];
+                      // Provide a fallback if completely empty
+                      if (!updated[editingYearIndex].year.trim()) {
+                        updated[editingYearIndex].year = "NEW YEAR";
+                      }
+                      setTempData(updated);
+                      setActiveYear(updated[editingYearIndex].year); // update activeYear
+                      setEditingYearIndex(null);
+                    }}
+                    className="px-2 py-1 border rounded text-center"
+                    autoFocus
+                  />
+                ) : (
+                  <>
+                    {activeYear || "NEW YEAR"}
+                    {isEditing && (
+                      <button
+                        onClick={() => {
+                          const idx = tempData.findIndex((y) => y.year === activeYear);
+                          setEditingYearIndex(idx);
+                        }}
+                        className="ml-2 text-gray-600 hover:text-blue-600"
+                      >
+                        <Pencil size={18} />
+                      </button>
+                    )}
+                  </>
+                )}
+              </h3>
             
             {/* PDF Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-8 place-items-center">
