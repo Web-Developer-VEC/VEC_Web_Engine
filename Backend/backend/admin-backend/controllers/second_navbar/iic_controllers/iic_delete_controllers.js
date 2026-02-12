@@ -64,7 +64,7 @@ async function deleteData(tempDoc, mainCollection) {
       if (!categoryExists)
         return { status:200, message: `Category ${category} not found` };
 
-      const content = categoryExists.content;
+      const content = collection_type === "student_representation" ? categoryExists.members: categoryExists.content;
 
       if (
         !meta_data ||
@@ -80,33 +80,28 @@ async function deleteData(tempDoc, mainCollection) {
           { $pull: { data: { category } } }
         );
       } 
-    //   else if (Array.isArray(content) && typeof content[0] === "string") {
-    //     // Delete string items
-    //     const itemsToDelete = Array.isArray(meta_data.content)
-    //       ? meta_data.content
-    //       : [meta_data];
-    //     await mainCollection.updateOne(
-    //       { type: collection_type, "data.category": category },
-    //       { $pull: { "data.$.content": { $in: itemsToDelete } } }
-    //     );
-    //   } 
       else if (Array.isArray(content) && typeof content[0] === "object") {
-        // Delete object(s) by title (or other unique key)
-        const itemsToDelete = Array.isArray(meta_data.content)
-          ? meta_data.content
-          : [meta_data];
 
-        const titlesToDelete = itemsToDelete.map((item) => item.title);
+        const categorydata = collection_type === "student_representation" ? "data.$.members": "data.$.content";
+        const pullCondition = {};
+
+        for (const [key, value] of Object.entries(meta_data)) {
+          pullCondition[key] = value;
+        }
 
         await mainCollection.updateOne(
           { type: collection_type, "data.category": category },
-          { $pull: { "data.$.content": { title: { $in: titlesToDelete } } } }
+          {
+            $pull: {
+              [categorydata]: pullCondition
+            }
+          }
         );
       } else {
         // Fallback: clear content
         await mainCollection.updateOne(
           { type: collection_type, "data.category": category },
-          { $set: { "data.$.content": [] } }
+          { $set: { "data.$.members": [] } }
         );
       }
 

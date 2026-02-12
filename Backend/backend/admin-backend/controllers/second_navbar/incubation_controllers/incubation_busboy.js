@@ -19,12 +19,19 @@ async function incubationHandler(fileStream, docs, req, cb, filename, mimetype) 
     }
 
     const collection_type = docs[0]?.collection_type;
-    let s3Key 
+    let s3Key;
+    let name;
+    let folder;
 
     if (collection_type === "facilities") {
-      const name = docs[0].meta_data.name;
-      const folder = `temp/static/images/hostel/${name}`;
+      name = docs[0].meta_data.name;
+      folder = `temp/static/images/incubation/${name}`;
       s3Key = folder;
+    }else if(collection_type === "incubation_committee"){
+      name = docs[0].meta_data.name;
+      folder = `temp/static/images/incubation/commitee/${name}`;
+      s3Key = folder;
+
     }
 
     // Buffer the stream

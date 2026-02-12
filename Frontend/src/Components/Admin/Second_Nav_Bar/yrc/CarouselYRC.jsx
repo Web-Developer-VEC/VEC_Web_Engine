@@ -7,7 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 import "./CarouselYRC.css";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+const deepCopy = (v) => structuredClone(v);
+
 
 const CarouselYRC = ({ data }) => {
   const [items, setItems] = useState([]);
@@ -51,6 +52,7 @@ const CarouselYRC = ({ data }) => {
       
       const copy = deepCopy(formattedData);
       setCommittedItems(copy);
+      setPendingItems(deepCopy(items)); 
       setItems(deepCopy(copy));
       setPendingItems(null);
       setIsEditing(false);
@@ -298,7 +300,10 @@ const handleFinalRequestConfirm = async () => {
         },
       });
 
-      if (pItem.image_file) files.push(pItem.image_file);
+      if (pItem.image_file instanceof File) {
+  files.push(pItem.image_file);
+}
+
     }
   });
 
@@ -327,6 +332,8 @@ const handleFinalRequestConfirm = async () => {
   }
 
   try {
+    console.log("files",files);
+    
     // send payload and files together
     await sendRequest(payload, files);
 
