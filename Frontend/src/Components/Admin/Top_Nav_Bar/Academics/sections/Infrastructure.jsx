@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./infrastructure.css";
 import LoadComp from "../../../LoadComp";
-import { Pencil, Plus, Send, X } from "lucide-react";
+import { Pencil, Plus, Send, X, Trash2 } from "lucide-react";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Infrastructure = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -12,20 +15,93 @@ const Infrastructure = ({ data }) => {
   const infrastructure_images =
     data?.find((item) => item.category === "infrastructure_images")?.content || [];
 
+    const attachUids = (images) =>
+      images.map((image, index) => ({
+        ...image,
+        _uid: image._uid || `${image.image_path || "img"}::${index}`
+      }));
+
+    const initialImages = attachUids(infrastructure_images);
+
+  const [deptId, setDeptId] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
-  const [editMode, setEditMode] = useState(false); // first edit session
-  const [postSaveMode, setPostSaveMode] = useState(false); // after first save
-  const [secondEditMode, setSecondEditMode] = useState(false); // second edit session
-  const [secondEditHasChanges, setSecondEditHasChanges] = useState(false); // changes during second edit
-  const [editedImages, setEditedImages] = useState(infrastructure_images);
-  const [originalImages, setOriginalImages] = useState(infrastructure_images);
+  const [editMode, setEditMode] = useState(false);
+  const [postSaveMode, setPostSaveMode] = useState(false);
+  const [secondEditMode, setSecondEditMode] = useState(false);
+  const [secondEditHasChanges, setSecondEditHasChanges] = useState(false);
+  const [editedImages, setEditedImages] = useState(initialImages);
+  const [originalImages, setOriginalImages] = useState(initialImages);
   const [savedChanges, setSavedChanges] = useState(null);
   const [hasChanges, setHasChanges] = useState(false);
   const [newCardData, setNewCardData] = useState({ image_name: "", image_path: "" });
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const [selectedCards, setSelectedCards] = useState([]);
+  const { sendRequest, loading, error } = useAdminRequest();
+
+  const deptMap = {
+    "001": "AIDS_001",
+    "002": "AUTO_002",
+    "003": "CHEMISTRY_003",
+    "004": "CIVIL_004",
+    "005": "CSE_005",
+    "006": "CSECS_006",
+    "007": "EEE_007",
+    "008": "EIE_008",
+    "009": "ECE_009",
+    "010": "ENGLISH_010",
+    "011": "IT_011",
+    "012": "MATHS_012",
+    "013": "MECH_013",
+    "014": "TAMIL_014",
+    "015": "PHYSICS_015",
+    "016": "MECSE_016",
+    "017": "MBA_017",
+    "018": "PS_018"
+  };
+
+  useEffect(() => {
+    const bannerData = data?.find((item) => item.category === "banner_name_and_image")?.content?.[0];
+    if (bannerData?.dept_id) {
+      setDeptId(bannerData.dept_id);
+    }
+  }, [data]);
+
+    useEffect(() => {
+      if (!editMode && !secondEditMode && !postSaveMode) {
+        const synced = attachUids(infrastructure_images);
+        setEditedImages(synced);
+        setOriginalImages(synced);
+      }
+    }, [infrastructure_images, editMode, secondEditMode, postSaveMode]);
 
   const handleCardClick = (index) => {
     if (!editMode && !secondEditMode) setSelectedCard(selectedCard === index ? null : index);
+  };
+
+    const toggleCardSelection = (index) => {
+      if (selectedCards.includes(index)) {
+        setSelectedCards(selectedCards.filter(i => i !== index));
+      } else {
+        setSelectedCards([...selectedCards, index]);
+      }
+    };
+
+    const handleDeleteSelected = () => {
+      const updated = editedImages.filter((_, i) => !selectedCards.includes(i));
+      setEditedImages(updated);
+      setSelectedCards([]);
+      if (editMode) setHasChanges(true);
+      if (secondEditMode) setSecondEditHasChanges(true);
+    };
+
+  const getActionType = (card) => {
+    const original = originalImages.find((image) => image._uid === card._uid);
+    if (!original) return "Insert";
+    if (original.image_name !== card.image_name || 
+        original.image_path !== card.image_path) {
+      return "Update";
+    }
+    return null;
   };
 
   const handleEditClick = () => {
@@ -36,7 +112,7 @@ const Infrastructure = ({ data }) => {
     } else {
       // First edit session
       setEditMode(true);
-      setOriginalImages(editedImages);
+      setOriginalImages(editedImages.map((image) => ({ ...image })));
       setHasChanges(false);
     }
   };
@@ -49,11 +125,12 @@ const Infrastructure = ({ data }) => {
       setEditedImages(savedChanges); // restore last saved state
     } else {
       // Cancel during first edit → discard unsaved changes
-      setEditedImages(originalImages);
+      setEditedImages(originalImages.map((image) => ({ ...image })));
       setEditMode(false);
       setHasChanges(false);
     }
     setNewCardData({ image_name: "", image_path: "" });
+      setSelectedCards([]);
   };
 
   const handleSave = () => {
@@ -71,12 +148,14 @@ const Infrastructure = ({ data }) => {
       setPostSaveMode(true); // show Edit + Discard/Request
     }
     setNewCardData({ image_name: "", image_path: "" });
+      setSelectedCards([]);
   };
 
   const handleDiscard = () => {
-    setEditedImages(originalImages);
+    setEditedImages(originalImages.map((image) => ({ ...image })));
     setSavedChanges(null);
     setPostSaveMode(false);
+      setSelectedCards([]);
   };
 
   const handleRequest = () => {
@@ -116,29 +195,155 @@ const Infrastructure = ({ data }) => {
 
   const handleAddNewCard = () => {
     if (!newCardData.image_name || !newCardData.image_path) return;
-    setEditedImages([...editedImages, newCardData]);
+    const newCard = {
+      ...newCardData,
+      _uid: `new-${Date.now()}-${Math.random().toString(36).slice(2)}`
+    };
+    setEditedImages([...editedImages, newCard]);
     setNewCardData({ image_name: "", image_path: "" });
     if (editMode) setHasChanges(true);
     if (secondEditMode) setSecondEditHasChanges(true);
   };
 
-  const undoChange = (index) => {
-  const original = originalImages[index];
+  const undoChange = (card, index) => {
+    const original = originalImages.find((image) => image._uid === card._uid);
 
-  if (original) {
-    // Existing card → revert values
-    const updated = [...editedImages];
-    updated[index] = original;
-    setEditedImages(updated);
-  } else {
-    // New card → remove it entirely
-    const updated = editedImages.filter((_, i) => i !== index);
-    setEditedImages(updated);
-  }
+    if (original) {
+      // Existing card → revert values
+      const updated = [...editedImages];
+      updated[index] = original;
+      setEditedImages(updated);
+    } else {
+      // New card → remove it entirely
+      const updated = editedImages.filter((_, i) => i !== index);
+      setEditedImages(updated);
+    }
 
-  if (editMode) setHasChanges(true);
-  if (secondEditMode) setSecondEditHasChanges(true);
-};
+    if (editMode) setHasChanges(true);
+    if (secondEditMode) setSecondEditHasChanges(true);
+  };
+
+  const buildPayload = () => {
+    const payload = [];
+    const collectionName = deptMap[deptId] || "UNKNOWN";
+
+    // Helper function to get proper image path
+    const getImagePath = (image) => {
+      if (!image.image_path) return "";
+      
+      // If it's a blob URL (newly uploaded file), generate the static path
+      if (image.image_path.startsWith("blob:") && image.newFile) {
+        // Extract filename from the file object
+        const fileName = image.newFile.name;
+        return `/static/images/infrastructure/${deptId}/${fileName}`;
+      }
+      
+      // Otherwise, use the existing path from database
+      return image.image_path;
+    };
+
+    const originalById = new Map(originalImages.map((image) => [image._uid, image]));
+    const editedById = new Map(editedImages.map((image) => [image._uid, image]));
+
+    // Check each edited image
+    editedImages.forEach((editedImage) => {
+      const originalImage = originalById.get(editedImage._uid);
+
+      if (!originalImage) {
+        // NEW CARD - Insert action
+        if (editedImage.image_name && editedImage.image_path) {
+          payload.push({
+            collectionName,
+            collection_type: "infrastructure",
+            action: "insert",
+            title: `Insert Infrastructure Image`,
+            category: "infrastructure_images",
+            meta_data: {
+              image_name: editedImage.image_name,
+              image_path: getImagePath(editedImage)
+            },
+            original_data: null
+          });
+        }
+      } else {
+        // EXISTING CARD - Check if anything changed
+        const hasNameChange = editedImage.image_name !== originalImage.image_name;
+        const hasImageChange = editedImage.image_path !== originalImage.image_path;
+
+        if (hasNameChange || hasImageChange) {
+          payload.push({
+            collectionName,
+            collection_type: "infrastructure",
+            action: "update",
+            title: `Update Infrastructure Image`,
+            category: "infrastructure_images",
+            meta_data: {
+              image_name: editedImage.image_name,
+              image_path: getImagePath(editedImage)
+            },
+            original_data: {
+              image_name: originalImage.image_name,
+              image_path: originalImage.image_path
+            }
+          });
+        }
+      }
+    });
+
+    // Check for deleted cards
+    originalImages.forEach((originalImage) => {
+      if (!editedById.has(originalImage._uid)) {
+        // DELETED CARD - Delete action
+        payload.push({
+          collectionName,
+          collection_type: "infrastructure",
+          action: "delete",
+          title: `Delete Infrastructure Image`,
+          category: "infrastructure_images",
+          meta_data: {
+            image_name: originalImage.image_name,
+            image_path: originalImage.image_path
+          },
+          original_data: null
+        });
+      }
+    });
+
+    return payload;
+  };
+
+  const handleRequestConfirm = async () => {
+    const payload = buildPayload();
+
+    if (payload.length === 0) {
+      alert("No changes to submit!");
+      return;
+    }
+
+    // Collect files from editedImages
+    const files = [];
+    editedImages.forEach((image) => {
+      if (image.image_path && image.image_path.startsWith("blob:") && image.newFile) {
+        files.push(image.newFile);
+      }
+    });
+
+    console.log(payload, files);
+    
+
+    const result = await sendRequest(payload, files.length > 0 ? files : null);
+
+    if (result) {
+      setShowRequestModal(false);
+      setEditMode(false);
+      setSecondEditMode(false);
+      setPostSaveMode(false);
+      setHasChanges(false);
+      setSecondEditHasChanges(false);
+      setSavedChanges([...editedImages]);
+      setNewCardData({ image_name: "", image_path: "" });
+    }
+  };
 
 
   return (
@@ -163,7 +368,15 @@ const Infrastructure = ({ data }) => {
 
           <main className="page-content flex flex-wrap gap-6">
             {editedImages.map((card, index) => (
-              <div key={index} className="flex flex-col items-center">
+                <div key={index} className="flex flex-col items-center relative">
+                  {(editMode || secondEditMode) && (
+                    <input
+                      type="checkbox"
+                      checked={selectedCards.includes(index)}
+                      onChange={() => toggleCardSelection(index)}
+                      className="absolute top-2 left-2 w-5 h-5 z-10 cursor-pointer"
+                    />
+                  )}
                 <div
                   className={`card_infa ${selectedCard === index ? "active" : ""}`}
                   style={{
@@ -174,7 +387,23 @@ const Infrastructure = ({ data }) => {
                   onClick={() => handleCardClick(index)}
                 >
                   <div className="content">
-                    <h1 className="infra_title">{card.image_name}</h1>
+                    {(editMode || secondEditMode) ? (
+                      <input
+                        type="text"
+                        className="infra_title bg-black/50 text-white px-2 py-1 rounded border-0"
+                        value={card.image_name}
+                        onChange={(e) => {
+                          const updated = [...editedImages];
+                          updated[index] = { ...updated[index], image_name: e.target.value };
+                          setEditedImages(updated);
+                          if (editMode) setHasChanges(true);
+                          if (secondEditMode) setSecondEditHasChanges(true);
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                    ) : (
+                      <h1 className="infra_title">{card.image_name}</h1>
+                    )}
                   </div>
                 </div>
 
@@ -249,6 +478,18 @@ const Infrastructure = ({ data }) => {
             )}
           </main>
 
+            {/* Delete Selected Button */}
+            {(editMode || secondEditMode) && selectedCards.length > 0 && (
+              <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-8 flex justify-center">
+                <button
+                  className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition flex items-center gap-2"
+                  onClick={handleDeleteSelected}
+                >
+                  <Trash2 size={18} /> Delete Selected ({selectedCards.length})
+                </button>
+              </div>
+            )}
+
           {/* Bottom Buttons */}
           <div className="absolute -bottom-8 right-8 flex gap-4">
             {(editMode || secondEditMode) && (
@@ -317,31 +558,58 @@ const Infrastructure = ({ data }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {editedImages.map((card, index) => {
-                      const original = originalImages[index] || { image_name: "", image_path: "" };
-                      if (
-                        card.image_name !== original.image_name ||
-                        card.image_path !== original.image_path
-                      ) {
-                        return (
-                          <tr key={index}>
-                            <td className="border p-2 text-blue-600">Edited</td>
-                            <td className="border p-2">Infrastructure</td>
-                            <td className="border p-2">{card.image_name || "New Card"}</td>
-                            <td className="border p-2">
-                            <button
-                              onClick={() => undoChange(index)}
-                              className="p-1 rounded hover:bg-gray-100"
-                              title="Revert this change"
-                            >
-                              <X size={16} className="text-red-500" />
-                            </button>
-                          </td>
-                          </tr>
-                        );
-                      }
-                      return null;
-                    })}
+                    {(() => {
+                      const editedById = new Map(editedImages.map((image) => [image._uid, image]));
+                      const deletedItems = originalImages.filter((image) => !editedById.has(image._uid));
+
+                      return (
+                        <>
+                          {editedImages.map((card, index) => {
+                            const actionType = getActionType(card);
+                            if (actionType) {
+                              const actionColor = actionType === "Insert" ? "text-green-600" : "text-blue-600";
+                              return (
+                                <tr key={`edit-${card._uid || index}`}>
+                                  <td className={`border p-2 ${actionColor}`}>{actionType}</td>
+                                  <td className="border p-2">Infrastructure</td>
+                                  <td className="border p-2">{card.image_name || "New Card"}</td>
+                                  <td className="border p-2">
+                                    <button
+                                      onClick={() => undoChange(card, index)}
+                                      className="p-1 rounded hover:bg-gray-100"
+                                      title="Revert this change"
+                                    >
+                                      <X size={16} className="text-red-500" />
+                                    </button>
+                                  </td>
+                                </tr>
+                              );
+                            }
+                            return null;
+                          })}
+                          {deletedItems.map((card, index) => (
+                            <tr key={`del-${card._uid || index}`}>
+                              <td className="border p-2 text-red-600">Delete</td>
+                              <td className="border p-2">Infrastructure</td>
+                              <td className="border p-2">{card.image_name || "Deleted Card"}</td>
+                              <td className="border p-2">
+                                <button
+                                  onClick={() => {
+                                    setEditedImages([...editedImages, card]);
+                                    if (editMode) setHasChanges(true);
+                                    if (secondEditMode) setSecondEditHasChanges(true);
+                                  }}
+                                  className="p-1 rounded hover:bg-gray-100"
+                                  title="Restore this item"
+                                >
+                                  <X size={16} className="text-red-500" />
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </>
+                      );
+                    })()}
                   </tbody>
                 </table>
 
@@ -353,10 +621,11 @@ const Infrastructure = ({ data }) => {
                     Cancel
                   </button>
                   <button
-                    onClick={handleRequest} // final submission
-                    className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000] flex items-center gap-2"
+                    onClick={handleRequestConfirm}
+                    className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] transition flex items-center gap-2 hover:text-prim ${loading ? 'cursor-progress' : ''}`}
+                    disabled={loading}
                   >
-                     Confirm Request
+                    <Send size={16} /> {loading ? "Processing..." : "Confirm Request"}
                   </button>
                 </div>
               </div>
@@ -368,6 +637,8 @@ const Infrastructure = ({ data }) => {
           <LoadComp />
         </div>
       )}
+
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </div>
   );
 };
