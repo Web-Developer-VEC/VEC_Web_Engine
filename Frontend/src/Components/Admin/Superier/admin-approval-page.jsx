@@ -82,7 +82,8 @@ export default function AdminApprovalPage() {
     }
 
     const endpointMap = {
-      gallery: "galleryadmin"
+      gallery: "galleryadmin",
+      about_us: "aboutusadmin",
     }
 
     try {
