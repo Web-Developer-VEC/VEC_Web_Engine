@@ -13,10 +13,14 @@ import {
   faCodeBranch,
 } from "@fortawesome/free-solid-svg-icons";
 import { Eye, Pencil, Trash2, X } from "lucide-react";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Research = ({ data }) => {
   const [originalData, setOriginalData] = useState([]);
   const [departmentResearch, setDepartmentResearch] = useState([]);
+  const [deptId, setDeptId] = useState("");
 
   const [years, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState("");
@@ -31,6 +35,31 @@ const Research = ({ data }) => {
 
   const [addingYear, setAddingYear] = useState(false);
   const [newYearInput, setNewYearInput] = useState("");
+  const [showDeletePdfModal, setShowDeletePdfModal] = useState(false);
+  const [pdfToDelete, setPdfToDelete] = useState(null);
+
+  const { sendRequest, loading, error } = useAdminRequest();
+
+  const deptMap = {
+    "001": "AIDS_001",
+    "002": "AUTO_002",
+    "003": "CHEMISTRY_003",
+    "004": "CIVIL_004",
+    "005": "CSE_005",
+    "006": "CSECS_006",
+    "007": "EEE_007",
+    "008": "EIE_008",
+    "009": "ECE_009",
+    "010": "ENGLISH_010",
+    "011": "IT_011",
+    "012": "MATHS_012",
+    "013": "MECH_013",
+    "014": "TAMIL_014",
+    "015": "PHYSICS_015",
+    "016": "MECSE_016",
+    "017": "MBA_017",
+    "018": "PS_018"
+  };
 
   const defaultResearch = [
     "Book",
@@ -49,6 +78,11 @@ const Research = ({ data }) => {
     const depResearch =
       data?.find((item) => item.category === "department_research")?.content ||
       [];
+    
+    const bannerData = data?.find((item) => item.category === "banner_name_and_image")?.content?.[0];
+    if (bannerData?.dept_id) {
+      setDeptId(bannerData.dept_id);
+    }
 
     setOriginalData(depResearch);
     setDepartmentResearch(depResearch.map((item) => ({ ...item })));
@@ -147,10 +181,148 @@ const Research = ({ data }) => {
     setChangesLog((prev) => prev.filter((c) => c.id !== id));
   };
 
-  const handleRequestConfirm = () => {
-    alert("Request submitted with changes!");
-    setShowRequestModal(false);
-    setChangesLog([]);
+  const buildPayload = () => {
+    const payload = [];
+    const collectionName = deptMap[deptId] || "UNKNOWN";
+
+    // Helper function to get proper PDF path
+    const getPdfPath = (research, year) => {
+      if (!research.pdf_path) return "";
+      
+      // If it's a blob URL (newly uploaded file), generate the static path
+      if (research.pdf_path.startsWith("blob:") && research._file) {
+        // Convert year "2024 - 2025" to "2425"
+        const yearShort = year.replace(/\s/g, "").replace("-", "").slice(2);
+        return `/static/pdfs/research/${deptId}/${yearShort}/${research._file.name}`;
+      }
+      
+      // Otherwise, use the existing path from database
+      return research.pdf_path;
+    };
+
+    // Track which years are processed
+    const processedYears = new Set();
+
+    // Check each year in current departmentResearch
+    departmentResearch.forEach((currentYear) => {
+      processedYears.add(currentYear.year);
+      const originalYear = originalData.find(y => y.year === currentYear.year);
+
+      if (!originalYear) {
+        // NEW YEAR - Insert action
+        const researchWithPdf = currentYear.research.filter(r => r.pdf_path);
+        if (researchWithPdf.length > 0) {
+          payload.push({
+            collectionName,
+            collection_type: "research",
+            action: "insert",
+            title: `Insert Research ${currentYear.year}`,
+            category: "department_research",
+            meta_data: {
+              year: currentYear.year,
+              research: researchWithPdf.map(r => ({
+                name: r.name,
+                pdf_path: getPdfPath(r, currentYear.year)
+              }))
+            },
+            original_data: null
+          });
+        }
+      } else {
+        // EXISTING YEAR - Check if anything changed (Update action)
+        const currentResearch = currentYear.research.filter(r => r.pdf_path);
+        const originalResearch = originalYear.research;
+
+        // Check if there are any changes
+        const hasChanges = 
+          currentResearch.length !== originalResearch.length ||
+          currentResearch.some((current) => {
+            const original = originalResearch.find(o => o.name === current.name);
+            return !original || original.pdf_path !== current.pdf_path;
+          }) ||
+          originalResearch.some((original) => {
+            const current = currentResearch.find(c => c.name === original.name);
+            return !current;
+          });
+
+        if (hasChanges) {
+          payload.push({
+            collectionName,
+            collection_type: "research",
+            action: "update",
+            title: `Update Research ${currentYear.year}`,
+            category: "department_research",
+            meta_data: {
+              year: currentYear.year,
+              research: currentResearch.map(r => ({
+                name: r.name,
+                pdf_path: getPdfPath(r, currentYear.year)
+              }))
+            },
+            original_data: {
+              year: originalYear.year,
+              research: originalResearch.map(r => ({
+                name: r.name,
+                pdf_path: r.pdf_path // Original always has proper path
+              }))
+            }
+          });
+        }
+      }
+    });
+
+    // Check for deleted years (in original but not in current) - Delete action
+    originalData.forEach((originalYear) => {
+      if (!processedYears.has(originalYear.year)) {
+        // DELETED WHOLE YEAR - delete entire year
+        payload.push({
+          collectionName,
+          collection_type: "research",
+          action: "delete",
+          title: `Delete Whole Research ${originalYear.year}`,
+          category: "department_research",
+          meta_data: {
+            year: originalYear.year,
+            research: originalYear.research.map(r => ({
+              name: r.name,
+              pdf_path: r.pdf_path
+            }))
+          },
+          original_data: null
+        });
+      }
+    });
+
+    return payload;
+  };
+
+  const handleRequestConfirm = async () => {
+    const payload = buildPayload();
+
+    if (payload.length === 0) {
+      alert("No changes to submit!");
+      return;
+    }
+
+    // Collect files from departmentResearch
+    const files = [];
+    departmentResearch.forEach((yearData) => {
+      yearData.research.forEach((item) => {
+        if (item.pdf_path && item.pdf_path.startsWith("blob:")) {
+          // This is a new file upload
+          files.push(item._file);
+        }
+      });
+    });
+
+    const result = await sendRequest(payload, files.length > 0 ? files : null);
+
+    if (result) {
+      setShowRequestModal(false);
+      setChangesLog([]);
+      setHasChanges(false);
+      setShowSaveOptions(false);
+    }
   };
 
   const handleDiscardChanges = () => {
@@ -338,7 +510,7 @@ const Research = ({ data }) => {
       {/* Request Popup */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
-          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[900px] max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4 text-center">Request Changes</h2>
             <p className="text-sm text-red-500 mb-4 text-center">
               Note: Changes stay pending until approved by the superior admin.
@@ -386,9 +558,10 @@ const Research = ({ data }) => {
               {changesLog.length > 0 && (
                 <button
                   onClick={handleRequestConfirm}
-                  className="px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim"
+                  className={`px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim ${loading ? 'cursor-progress' : ''}`}
+                  disabled={loading}
                 >
-                  Confirm Request
+                  {loading ? "Processing..." : "Confirm Request"}
                 </button>
               )}
             </div>
@@ -445,6 +618,8 @@ const Research = ({ data }) => {
           </div>
         </div>
       )}
+
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 };
@@ -459,6 +634,8 @@ const ResearchTile = ({
   selectedYear,
 }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const [showDeletePdfModal, setShowDeletePdfModal] = useState(false);
+  const [pdfToDelete, setPdfToDelete] = useState(null);
 
   const UrlParser = (path) => {
     return path?.startsWith("http") || path?.startsWith("blob")
@@ -470,12 +647,16 @@ const ResearchTile = ({
     "Book",
     "Funded Proposal",
     "Journal Publications",
+    "Publication",
     "Patent",
     "International and National Conferences",
     "Consultancy",
     "Internship",
     "Product Development",
     "Startup and Technology Transfer",
+    "Book And Book Chapter",
+    "Sponsored Research",
+    "Conference"
   ];
 
   const actionIcons = {
@@ -513,10 +694,11 @@ const ResearchTile = ({
             ? {
                 ...yearItem,
                 research: yearItem.research
-                  .filter((r) => r.name !== itemName) // remove old version if exists
+                  .filter((r) => r.name !== itemName)
                   .concat({
                     name: itemName,
                     pdf_path: URL.createObjectURL(file),
+                    _file: file
                   }),
               }
             : yearItem
@@ -535,7 +717,19 @@ const ResearchTile = ({
     }
   };
 
-  const handleRemovePdf = (itemName) => {
+  const confirmRemovePdf = (itemName) => {
+    setPdfToDelete(itemName);
+    setShowDeletePdfModal(true);
+  };
+
+  const handleRemovePdf = () => {
+    const itemName = pdfToDelete;
+    
+    // Get the current item to check if it's a blob URL
+    const currentYear = departmentResearch.find(y => y.year === selectedYear);
+    const currentItem = currentYear?.research.find(r => r.name === itemName);
+    const isNewUpload = currentItem?.pdf_path?.startsWith("blob:");
+
     setHasChanges(true);
 
     setDepartmentResearch((prev) =>
@@ -551,15 +745,27 @@ const ResearchTile = ({
       )
     );
 
-    setChangesLog((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        action: "Remove PDF",
-        section: "Research",
-        title: itemName,
-      },
-    ]);
+    if (isNewUpload) {
+      // If it's a blob URL (newly uploaded), remove the corresponding upload log entry
+      // This way: upload + immediate remove = no net change
+      setChangesLog((prev) =>
+        prev.filter(log => !(log.title === itemName && log.action === "Upload/Replace PDF"))
+      );
+    } else {
+      // If it's an existing PDF from database, log the removal
+      setChangesLog((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          action: "Remove PDF",
+          section: "Research",
+          title: itemName,
+        },
+      ]);
+    }
+
+    setShowDeletePdfModal(false);
+    setPdfToDelete(null);
   };
 
   return (
@@ -603,13 +809,13 @@ const ResearchTile = ({
                           className="px-2 py-1 rounded text-blue-300"
                           onClick={() => handlePdfOpen(item?.pdf_path)}
                         >
-                          <Eye />
+                          <Eye size={16}/>
                         </button>
                         <button
-                          className="px-2 py-1 rounded text-red-400"
-                          onClick={() => handleRemovePdf(item?.name)}
+                          className="px-2 py-1 rounded text-red-400 hover:text-red-600"
+                          onClick={() => confirmRemovePdf(item?.name)}
                         >
-                          <X size={16} />
+                          <Trash2 size={16} />
                         </button>
                       </>
                     )}
@@ -620,6 +826,37 @@ const ResearchTile = ({
           </div>
         </div>
       </div>
+
+      {/* Delete PDF Confirmation Modal */}
+      {showDeletePdfModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[2000]">
+          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[400px]">
+            <h2 className="text-lg font-bold mb-4 text-center text-red-600">
+              Confirm Delete PDF
+            </h2>
+            <p className="text-center mb-6">
+              Are you sure you want to remove the PDF for <span className="font-semibold">{pdfToDelete}</span>?
+            </p>
+            <div className="flex justify-end gap-3">
+              <button
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+                onClick={() => {
+                  setShowDeletePdfModal(false);
+                  setPdfToDelete(null);
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700"
+                onClick={handleRemovePdf}
+              >
+                Yes, Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

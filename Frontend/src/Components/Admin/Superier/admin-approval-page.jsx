@@ -82,7 +82,30 @@ export default function AdminApprovalPage() {
     }
 
     const endpointMap = {
-      gallery: "galleryadmin"
+      about_us: "aboutusadmin",
+      administration: "administrationadmin",
+      admissions: "admissionadmin",
+      exams: "examsadmin" , 
+      placement: "placementadmin",
+      research: "researchadmin",
+      accreditations_and_ranking: "accreditations_and_ranking_admin",
+      ecell: "ecelladmin",
+      gallery: "galleryadmin",
+      help_desk: "helpdeskadmin",
+      hostel_details: "hosteladmin",
+      iic: "iicadmin",
+      incubation: "incubationadmin",
+      iqac: "iqacadmin",
+      library: "libraryadmin",
+      ncc_army: "armyadmin",
+      ncc_navy: "navyadmin",
+      nss: "nssadmin",
+      other_facilities: "other_facilities_admin",
+      sports: "sportsadmin",
+      transport: "transportadmin",
+      yrc: "yrcadmin",
+      landing_page_details: "landingpageadmin",
+      academics: "calendaradmin" ,
     }
 
     try {
