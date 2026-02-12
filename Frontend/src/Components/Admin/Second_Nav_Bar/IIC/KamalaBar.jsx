@@ -4,8 +4,14 @@ import { Send, Trash2, Plus, Save, X, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+const deepCopy = (arr) =>
+  arr.map((item) => ({
+    ...item,
+    file: item.file || null, // ✅ preserve File reference
+  }));
+
 
 const KapilaPage = ({ data, title = "Kapila PDFs" }) => {
   const [activePdf, setActivePdf] = useState(null);
@@ -18,6 +24,7 @@ const KapilaPage = ({ data, title = "Kapila PDFs" }) => {
   const [selectedRows, setSelectedRows] = useState(new Set());
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [pendingData, setPendingData] = useState(null);
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -65,14 +72,14 @@ const KapilaPage = ({ data, title = "Kapila PDFs" }) => {
   };
 
 const handleSave = () => {
-  if (!isDirty) {
-    toast.info("No changes to save!");
-    return;
-  }
+  const invalidItem = tempData.find(
+    (item) =>
+      !item.name?.trim() ||
+      (!item.pdf_path?.trim() && !item.file)
+  );
 
-  const invalidItem = tempData.find((item) => !item.name?.trim() || !item.pdf_path?.trim());
   if (invalidItem) {
-    toast.error("Please fill all PDF names and upload files before saving!");
+    toast.error("Please upload a PDF file for all items before saving!");
     return;
   }
 
@@ -83,6 +90,7 @@ const handleSave = () => {
   setSelectedRows(new Set());
   toast.success("Changes saved as draft!");
 };
+
 
 
 const handleCancel = () => {
@@ -128,15 +136,114 @@ const handleCancel = () => {
 
   const handleRequest = () => setShowRequestModal(true);
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingData) return;
-    setOriginalData(deepCopy(pendingData));
-    setTempData(deepCopy(pendingData));
-    setPendingData(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Final request submitted!");
-  };
+const buildKapilaPayload = () => {
+  if (!pendingData) return { payload: [], files: [] };
+
+  const payload = [];
+  const files = [];
+
+  const originalMap = new Map(originalData.map((i) => [i.id, i]));
+  const pendingMap = new Map(pendingData.map((i) => [i.id, i]));
+
+  // INSERT & UPDATE
+  for (const [id, newItem] of pendingMap.entries()) {
+    const oldItem = originalMap.get(id);
+
+    // final server path
+    const serverPath = `/static/pdfs/iic/kapila/${newItem.file?.name || newItem.pdf_path?.split("/").pop()}`;
+
+    // INSERT
+    if (!oldItem) {
+      payload.push({
+        collectionName: "iic",
+        collection_type: "kapila",
+        action: "insert",
+        title: "Insert kapila item",
+        meta_data: {
+          name: newItem.name,
+          pdf_path: serverPath,
+        },
+      });
+
+      if (newItem.file) files.push(newItem.file);
+    }
+
+    // UPDATE
+    else if (
+      oldItem.name !== newItem.name ||
+      oldItem.pdf_path !== newItem.pdf_path
+    ) {
+      payload.push({
+        collectionName: "iic",
+        collection_type: "kapila",
+        action: "update",
+        title: "Update kapila item",
+        meta_data: {
+          name: newItem.name,
+          pdf_path: serverPath,
+        },
+        original_data: {
+          name: oldItem.name,
+          path: oldItem.pdf_path,
+        },
+      });
+
+      if (newItem.file) files.push(newItem.file);
+    }
+  }
+
+  // DELETE
+  for (const [id, oldItem] of originalMap.entries()) {
+    if (!pendingMap.has(id)) {
+      payload.push({
+        collectionName: "iic",
+        collection_type: "kapila",
+        action: "delete",
+        title: "Delete kapila item",
+        meta_data: {
+          name: oldItem.name,
+          path: oldItem.pdf_path,
+        },
+      });
+    }
+  }
+
+  return { payload, files };
+};
+
+
+const handleFinalRequestConfirm = async () => {
+  if (!pendingData) return;
+
+  const { payload, files } = buildKapilaPayload();
+
+  if (payload.length === 0) {
+    toast.info("No changes to submit!");
+    return;
+  }
+
+  console.log("📦 Payload:", payload);
+  console.log("📁 Files:", files);
+files.forEach((f, i) => {
+  console.log(`File ${i}:`, f instanceof File, f?.name);
+});
+
+  try {
+    const result = await sendRequest(payload, files);
+
+    if (result) {
+      setOriginalData(deepCopy(pendingData));
+      setTempData(deepCopy(pendingData));
+      setPendingData(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+      toast.success("Kapila request sent for approval!");
+    }
+  } catch (err) {
+    toast.error("Failed to submit request");
+  }
+};
+
 
   const handleChange = (index, key, value) => {
     setTempData((prev) => {
@@ -148,23 +255,32 @@ const handleCancel = () => {
     setIsDirty(true);
   };
 
-  const handleFileChange = (index, file) => {
-    const fakePath = URL.createObjectURL(file);
-    setTempData((prev) => {
-      const updated = [...prev];
-      updated[index] = { ...updated[index], pdf_path: fakePath };
-      return updated;
-    });
-    setIsDirty(true);
-  };
+const handleFileChange = (index, file) => {
+  const previewUrl = URL.createObjectURL(file);
 
-  const handleAddPdf = () => {
-    setTempData((prev) => [
-      ...prev,
-      { id: Date.now(), name: "New pdf", pdf_path: "", selected: false },
-    ]);
-    setIsDirty(true);
-  };
+  setTempData((prev) => {
+    const updated = [...prev];
+    updated[index] = {
+      ...updated[index],
+      pdf_path: previewUrl, // preview only
+      file: file,           // ✅ REAL FILE
+    };
+    return updated;
+  });
+
+  setIsDirty(true);
+};
+
+const handleAddPdf = () => {
+  const updated = [
+    ...tempData,
+    { id: Date.now(), name: "New pdf", pdf_path: "", selected: false },
+  ];
+
+  setTempData(updated);
+  setIsDirty(hasRealChanges(updated, originalData));
+};
+
 
   const toggleSelectRow = (index) => {
     const nxt = new Set(selectedRows);
@@ -173,21 +289,38 @@ const handleCancel = () => {
     setSelectedRows(nxt);
   };
 
+  const hasRealChanges = (current, original) => {
+  if (current.length !== original.length) return true;
+
+  const map = new Map(original.map((i) => [i.id, i]));
+
+  return current.some((item) => {
+    const old = map.get(item.id);
+    if (!old) return true;
+    return (
+      old.name !== item.name ||
+      old.pdf_path !== item.pdf_path
+    );
+  });
+};
+
+
 const confirmDelete = () => {
   setTempData((prev) => {
     const updated = prev.filter((_, i) => !selectedRows.has(i));
 
-    // If the active PDF was deleted, reset activePdf
     if (activePdf && !updated.some((item) => item.id === activePdf.id)) {
       setActivePdf(null);
     }
+
+    // 🔥 FIX: recompute isDirty
+    setIsDirty(hasRealChanges(updated, originalData));
 
     return updated;
   });
 
   setSelectedRows(new Set());
   setShowDeleteModal(false);
-  setIsDirty(true);
 };
 
 
@@ -222,7 +355,10 @@ const confirmDelete = () => {
     const oldItem = originalData.find((o) => o.id === rowId);
     let reverted;
     if (oldItem) {
-      reverted = pendingData.map((item) => (item.id === rowId ? deepCopy(oldItem) : item));
+      reverted = pendingData.map((item) =>
+  item.id === rowId ? { ...oldItem, file: null } : item
+);
+
     } else {
       const originalItem = originalData.find((o) => o.id === rowId);
       reverted = [...pendingData, deepCopy(originalItem)];
@@ -389,7 +525,7 @@ const confirmDelete = () => {
               >
                 Cancel
               </button>
-              {isDirty && (
+              {isDirty&& (
                 <button
                   onClick={handleSave}
                   className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
@@ -473,11 +609,19 @@ const confirmDelete = () => {
               </button>
               {changes.length > 0 && (
                 <button
-                  onClick={handleFinalRequestConfirm}
-                  className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                >
-                  Final Request
-                </button>
+  onClick={handleFinalRequestConfirm}
+  disabled={loadings}
+  className={`px-4 py-2 rounded flex items-center gap-2
+    ${
+      loadings
+        ? "bg-gray-400 cursor-not-allowed text-white"
+        : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+    }
+  `}
+>
+  {loadings ? "Processing..." : "Final Request"}
+</button>
+
               )}
             </div>
           </div>
