@@ -1,422 +1,439 @@
 [
-   
-            {
-                "collectionName": "iqac",
-                "collection_type": "objectives",
-                "action": "insert",
-                "title": "insertion of iqac objectives",
-                "meta_data": {
-                    "about": "The Internal Quality Assurance Cell (IQAC) was established in 2004 as per the guidelines of the National Assessment and Accreditation Council (NAAC) to ensure continuous improvement in the overall performance of the institution. The IQAC serves as a central body that coordinates and monitors quality enhancement initiatives across various departments and functions of the college.",
-                    "objectives": [
-                    "To develop a system for conscious, consistent and catalytic action to improve the academic and administrative performance of the institution.",
-                    "To promote measures for institutional functioning towards quality enhancement through internalization of quality culture and institutionalization of best practices.",
-                    "To provide a sound basis for decision-making to improve institutional functioning by facilitating the creation of a learner-centric environment.",
-                    "To act as a dynamic system for quality changes in higher education by fostering a culture of excellence and innovation."
-                    ]
-                    },
-                "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "objectives",
-            "action": "update",
-            "title": "updation of iqac objectives",
-            "meta_data":{
-                "about": "new about of iqac",
-                "objectives": [
+    {
+        "collectionName": "iqac",
+        "collection_type": "objectives",
+        "action": "update",
+        "title": "updation of iqac objectives",
+        "meta_data": {
+            "about": "new about of iqac",
+            "objectives": [
                 "new objective 1",
                 "new objective 2",
-                "new objective 3",
-                "new objective 4"
-                ]
-                },
-            "original_data": {
-                "about": "The Internal Quality Assurance Cell (IQAC) was established in 2004 as …",
-                "objectives": [
+                "To provide a sound basis for decision-making to improve institutional …",
+                "To act as a dynamic system for quality changes in higher education."
+            ]
+        },
+        "original_data": {
+            "about": "The Internal Quality Assurance Cell (IQAC) was established in 2004 as …",
+            "objectives": [
                 "To develop a system for conscious, consistent and catalytic action to …",
                 "To promote measures for institutional functioning towards quality enha…",
                 "To provide a sound basis for decision-making to improve institutional …",
                 "To act as a dynamic system for quality changes in higher education."
-                ]
-                }
-            },
-            {
-                
-            "collectionName": "iqac",
-            "collection_type": "objectives",
-            "action": "delete",
-            "title": "deletion of iqac objectives",
-            "meta_data": {
-                "about": "The Internal Quality Assurance Cell (IQAC) was established in 2004 as …",
-                "objectives": [
-                "To develop a system for conscious, consistent and catalytic action to …",
-                "To promote measures for institutional functioning towards quality enha…",
-                "To provide a sound basis for decision-making to improve institutional …",
-                "To act as a dynamic system for quality changes in higher education."
-                ]
-                },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "coordinator",
-            "action": "update",
-            "title": "updation of iqac coordinator",
-            "category": "IQAC",
-            "meta_data": {
-                "name": "Dr. PRIYA NARAYANAN",
-                "designation": "Deputy Coordinator",
-                "role": "Associate Professor, Dept of Information Technology",
-                "email": "priya.narayanan@velammal.edu.in",
-                "phone": "+91 9123456780",
-                "image_path": "/static/images/profile_photos/006/VEC-006-04-201.webp"
-            },
-            "original_data": {
-                "name": "Dr. GUNASUNDARI S",
-                "designation": "Coordinator",
-                "role": "Professor, Dept of Computer Science and Engineering",
-                "email": "gunasundari@velammal.edu.in",
-                "phone": "+91 8754509510",
-                "image_path": "/static/images/profile_photos/005/VEC-005-03-106.webp"
-            }
-            },
-            
-
-
-
-
-           {
-            "collectionName": "iqac",
-            "collection_type": "members",
-            "action": "insert",
-            "title": "insertion of iqac chairperson",
-            "category": "Chairperson",
-            "meta_data": {
-                
-                
-                    "name": "Dr. SATISH KUMAR S",
-                    "designation": "Chairperson",
-                    "role": "Principal, Velammal Engineering College",
-                    "image_path": "/static/images/principal_data/principal_photo.webp"
-                
-                
-            },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "members",
-            "action": "update",
-            "title": "updation of iqac chairperson",
-            "category": "Chairperson",
-            "meta_data":
-                {
-                    "name": "Dr. RAMESH KUMAR",
-                    "designation": "Chairperson",
-                    "role": "Principal & Academic Director, Velammal Engineering College",
-                    "image_path": "/static/images/principal_data/new_principal.webp"
-            },
-            "original_data": 
-                {
-                    "name": "Dr. SATISH KUMAR S",
-                    "designation": "Chairperson",
-                    "role": "Principal, Velammal Engineering College",
-                    "image_path": "/static/images/principal_data/principal_photo.webp"
-            }
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "members",
-            "action": "delete",
-            "title": "deletion of iqac chairperson",
-           
-            "meta_data": {
-                "members": [
-                {
-                    "name": "Dr. SATISH KUMAR S",
-                    "designation": "Chairperson",
-                    "role": "Principal, Velammal Engineering College",
-                    "image_path": "/static/images/principal_data/principal_photo.webp"
-                }
-                ]
-            },
-            "original_data": null
-            },
-
-
-            
-            {
-            "collectionName": "iqac",
-            "collection_type": "minutes_of_meetings",
-            "action": "insert",
-            "title": "insertion of iqac minutes of meetings",
-            "meta_data":{
-                
-                "year": "2020-2021 (ODD)",
-                "pdf_path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf"
-                },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "minutes_of_meetings",
-            "action": "update",
-            "title": "updation of iqac minutes of meetings",
-            "meta_data": {
-                "year": "2021-2022 (EVEN)",
-                "pdf_path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2021-2022.pdf"
-            },
-            "original_data": {
-                "year": "2020-2021 (EVEN)",
-                "pdf_path": "/static/pdfs/iqac/IQAC_MOM_EVEN_SEM_2020-2021.pdf"
-            }
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "minutes_of_meetings",
-            "action": "delete",
-            "title": "deletion of iqac minutes of meetings",
-            "meta_data": {
-                "year": "2020-2021 (ODD)",
-                "pdf_path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf"
-            },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "academic_admin_audit",
-            "action": "insert",
-            "title": "insertion of academic and administrative audit",
-            "meta_data": {
-                "department_name": "B.E. Computer Science and Engineering",
-                "year": [
+            ]
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "coordinator",
+        "action": "update",
+        "title": "updation of iqac coordinator",
+        "category": "IQAC",
+        "meta_data": {
+            "name": "Dr. PRIYA NARAYANAN",
+            "designation": "Deputy Coordinator",
+            "role": "Associate Professor, Dept of Information Technology",
+            "email": "priya.narayanan@velammal.edu.in",
+            "phone": "+91 9123456780",
+            "image_path": "/static/images/profile_photos/006/VEC-006-04-201.webp"
+        },
+        "original_data": {
+            "name": "Dr. GUNASUNDARI S",
+            "designation": "Coordinator",
+            "role": "Professor, Dept of Computer Science and Engineering",
+            "email": "gunasundari@velammal.edu.in",
+            "phone": "+91 8754509510",
+            "image_path": "/static/images/profile_photos/005/VEC-005-03-106.webp"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "members",
+        "action": "update",
+        "title": "updation of iqac chairperson",
+        "category": "Chairperson",
+        "meta_data": {
+            "name": "Dr. RAMESH KUMAR",
+            "designation": "Chairperson",
+            "role": "Principal & Academic Director, Velammal Engineering College",
+            "image_path": "/static/images/principal_data/new_principal.webp"
+        },
+        "original_data": {
+            "name": "Dr. SATISH KUMAR S",
+            "designation": "Chairperson",
+            "role": "Principal, Velammal Engineering College",
+            "image_path": "/static/images/principal_data/principal_photo.webp"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "members",
+        "action": "update",
+        "title": "updation of iqac chairperson",
+        "category": "Coordinator",
+        "meta_data": {
+            "name": "Dr. RAMESH KUMAR",
+            "designation": "Chairperson",
+            "role": "Principal & Academic Director, Velammal Engineering College",
+            "image_path": "/static/images/principal_data/new_principal.webp"
+        },
+        "original_data": {
+            "name": "Dr. GUNASUNDARI S",
+            "designation": "Coordinator",
+            "role": "Professor, Dept of Computer Science and Engineering",
+            "image_path": "/static/images/iqac/dean_and_associates/web_logo.jpg"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "members",
+        "action": "update",
+        "title": "updation of iqac chairperson",
+        "category": "Senior Administrative Officers",
+        "meta_data": {
+            "name": "Dr. JEBA A",
+            "designation": " Dean, Academics",
+            "role": "Professor & Head, Department of Civil Engineering,",
+            "image_path": "/static/images/iqac/dean_and_associates/web_logo.jpg"
+        },
+        "original_data": {
+            "name": "Dr. JEBAMALAR A",
+            "designation": " Dean, Academics",
+            "role": "Professor & Head, Department of Civil Engineering,",
+            "image_path": "/static/images/iqac/dean_and_associates/web_logo.jpg"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "members",
+        "action": "update",
+        "title": "updation of iqac chairperson",
+        "category": "Teachers To Represent In All Levels",
+        "meta_data": {
+            "name": "Dr. JASWIN M",
+            "role": "Professor, Department of Mechanical Engineering",
+            "designation": "Associate Dean, Academics",
+            "image_path": ""
+        },
+        "original_data": {
+            "name": "Dr. AROKIA JASWIN M",
+            "role": "Professor, Department of Mechanical Engineering",
+            "designation": "Associate Dean, Academics",
+            "image_path": ""
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "members",
+        "action": "update",
+        "title": "updation of iqac chairperson",
+        "category": "Member From Management",
+        "meta_data": {
+            "name": "Mr. JAVAKUMAR R",
+            "role": "AVP(Finance),Velammal Educational Trust",
+            "designation": "",
+            "image_path": ""
+        },
+        "original_data": {
+            "name": "Mr. KUMAR R",
+            "role": "AVP(Finance),Velammal Educational Trust",
+            "designation": "",
+            "image_path": ""
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "minutes_of_meetings",
+        "action": "insert",
+        "title": "insertion of iqac minutes of meetings",
+        "meta_data": {
+            "year": "2027-2028",
+            "pdf_path": "/static/pdfs/iqac/IQAC_MOM_ODD_SEM_2020-2021.pdf",
+            "type": "ODD",
+            "conducted_on": "08.06.2020"
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "minutes_of_meetings",
+        "action": "update",
+        "title": "updation of iqac minutes of meetings",
+        "meta_data": {
+            "year": "2030-2021",
+            "pdf_path": "/static/pdfs/iqac/certificate (1).pdf",
+            "type": "ODD",
+            "conducted_on": "08.06.2020"
+        },
+        "original_data": {
+            "year": "2027-2028",
+            "pdf_path": "/static/pdfs/iqac/certificate (1).pdf",
+            "type": "ODD",
+            "conducted_on": "08.06.2020"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "minutes_of_meetings",
+        "action": "delete",
+        "title": "deletion of iqac minutes of meetings",
+        "meta_data": {
+            "year": "2030-2021",
+            "pdf_path": "/static/pdfs/iqac/certificate (1).pdf",
+            "type": "ODD",
+            "conducted_on": "08.06.2020"
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "academic_admin_audit",
+        "action": "insert",
+        "title": "insertion of academic and administrative audit",
+        "meta_data": {
+            "department_name": "B.E. Mechancial Engineering",
+            "year": [
                 "2022-2023",
                 "2023-2024"
-                ],
-                "pdf_path": [
+            ],
+            "pdf_path": [
                 "/static/pdfs/iqac/aaa/005/Academic_Audit_CSE_2022-23.pdf",
                 "/static/pdfs/iqac/aaa/005/Academic_Audit_CSE_2023-24.pdf"
-                ]
-            },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "academic_admin_audit",
-            "action": "update",
-            "title": "updation of academic and administrative audit",
-            "meta_data": {
-                "department_name": "B.E. Automobile Engineering",
-                "year": [
+            ]
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "academic_admin_audit",
+        "action": "update",
+        "title": "updation of academic and administrative audit",
+        "meta_data": {
+            "department_name": "B.E. Automobile Engineering",
+            "year": [
                 "2023-2024",
                 "2022-2023"
-                ],
-                "pdf_path": [
+            ],
+            "pdf_path": [
                 "/static/pdfs/iqac/aaa/004/Academic_Audit_Civil_2023-24_v2.pdf",
                 "/static/pdfs/iqac/aaa/004/Academic_Audit_Civil_2022-23_v2.pdf"
-                ]
-            },
-            "original_data": {
-                "department_name": "B.E. Automobile Engineering",
-                "year": [
+            ]
+        },
+        "original_data": {
+            "department_name": "B.E. Automobile Engineering",
+            "year": [
                 "2022-2023",
                 "2023-2024"
-                ],
-                "pdf_path": [
+            ],
+            "pdf_path": [
                 "/static/pdfs/iqac/aaa/002/Academic Audit Report AY 2022-23  Final.pdf",
                 "/static/pdfs/iqac/aaa/002/Academic Audit AUTO 2023-24 Final Report .pdf"
-                ]
-            }
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "academic_admin_audit",
-            "action": "delete",
-            "title": "deletion of academic and administrative audit",
-            "category": "Academic & Administrative Audit",
-            "meta_data": {
-               "department_name": "B.E. Computer Science and Engineering",
-                "year": [
+            ]
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "academic_admin_audit",
+        "action": "delete",
+        "title": "deletion of academic and administrative audit",
+        "category": "Academic & Administrative Audit",
+        "meta_data": {
+            "department_name": "B.E. Automobile Engineering",
+            "year": [
                 "2022-2023",
                 "2023-2024"
-                ],
-                "pdf_path": [
-                "/static/pdfs/iqac/aaa/005/Academic_Audit_CSE_2022-23.pdf",
-                "/static/pdfs/iqac/aaa/005/Academic_Audit_CSE_2023-24.pdf"
-                ]
-            },
-            "original_data": null
-            },
-
-
-            {
-            "collectionName": "iqac",
-            "collection_type": "gallery",
-            "action": "insert",
-            "title": "insertion of gallery images",
-            "category": "24-25 FIRST MEETING",
-            "meta_data": {
-                "category": "24-25 FIRST MEETING",
-                "image_path": [
+            ],
+            "pdf_path": [
+                "/static/pdfs/iqac/aaa/002/Academic Audit Report AY 2022-23  Final.pdf",
+                "/static/pdfs/iqac/aaa/002/Academic Audit AUTO 2023-24 Final Report .pdf"
+            ]
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "gallery",
+        "action": "insert",
+        "title": "insertion of gallery images",
+        "category": "25-26 FIRST MEETING",
+        "meta_data": {
+            "category": "25-26 FIRST MEETING",
+            "image_path": [
                 "/static/images/iqac/24-25_first_meeting/1.webp",
                 "/static/images/iqac/24-25_first_meeting/2.webp"
-                ]
-            },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "gallery",
-            "action": "update",
-            "title": "updation of gallery images",
-            "category": "23-24 FIRST MEETING",
-            "meta_data": {
-                "image_path": [
+            ]
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "gallery",
+        "action": "update",
+        "title": "updation of gallery images",
+        "category": "23-24 FIRST MEETING",
+        "meta_data": {
+            "image_path": [
                 "/static/images/iqac/22-23_first_meeting/1.webp",
                 "/static/images/iqac/22-23_first_meeting/2.webp"
-                ]
-            },
-            "original_data": {
-                "image_path": [
-                "/static/images/iqac/23-24_first_meeting/1.webp",
-                "/static/images/iqac/23-24_first_meeting/2.webp"
-                ]
-            }
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "gallery",
-            "action": "delete",
-            "title": "deletion of gallery images",
-            "category": "23-24 FIRST MEETING",
-            "meta_data": {
-                "image_path": [
-                "/static/images/iqac/23-24_first_meeting/1.webp",
-                "/static/images/iqac/23-24_first_meeting/2.webp"
-                ]
-            },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "strategic_plan",
-            "action": "update",
-            "title": "updation of strategic plan",
-            "meta_data": {
-                "years": "2029-35",
-                "pdf_path": "/static/pdfs/iqac/strategic_plan_2024-29_v2.pdf"
-            },
-            "original_data":  {
-                "years": "2024-29",
-                "pdf_path": "/static/pdfs/iqac/strategic_plan_2024-29.pdf"
-            }
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "best_practices",
-            "action": "insert",
-            "title": "insertion of best practices",
-            "meta_data": {
-                "year": "2022-23",
-                "pdf_path": "/static/pdfs/iqac/best_practices_2022-2023.pdf"
-            },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "best_practices",
-            "action": "update",
-            "title": "updation of best practices",
-            "meta_data": {
-                "year": "2020-21",
-                "pdf_path": "/static/pdfs/iqac/best_practices_2020-2021_v2.pdf"
-            },
-            "original_data":  {
-                "year": "2022-23",
-                "pdf_path": "/static/pdfs/iqac/best_practices_2022-2023.pdf"
-            }
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "best_practices",
-            "action": "delete",
-            "title": "deletion of best practices",
-            "meta_data":{
-                "year": "2020-21",
-                "pdf_path": "/static/pdfs/iqac/best_practices_2020-2021_v2.pdf"
-            },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "institutional_distinctiveness",
-            "action": "update",
-            "title": "updation of institutional distinctiveness",
-            "meta_data": {
-                "pdf_path": "/static/pdfs/iqac/VEC-Institutional-Distinctiveness-v2.pdf"
-            },
-            "original_data": {
-                "pdf_path": "/static/pdfs/iqac/VEC-Institutional-Distinctiveness-v2.pdf"
-            }
-            },  
-            {
-            "collectionName": "iqac",
-            "collection_type": "code_of_ethics",
-            "action": "update",
-            "title": "updation of code of ethics",
-            "meta_data": {
-                "pdf_path": "/static/pdfs/iqac/code_of_ethics_updated.pdf"
-            },
-            "original_data": {
-                "pdf_path": "/static/pdfs/iqac/code_of_ethics.pdf"
-            }
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "aqar",
-            "action": "insert",
-            "title": "insertion of AQAR",
-            "meta_data": {
-                "year": "2021-22",
-                "pdf_path": "/static/pdfs/iqac/AQAR_2021-2022.pdf"
-            },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "aqar",
-            "action": "update",
-            "title": "updation of AQAR",
-            "meta_data": {
-                "year": "2020-21",
-                "pdf_path": "/static/pdfs/iqac/AQAR_2020-2021_v2.pdf"
-            },
-            "original_data": {
-                "year": "2018-19",
-                "pdf_path": "/static/pdfs/iqac/AQAR_2020-2021.pdf"
-            }
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "aqar",
-            "action": "delete",
-            "title": "deletion of AQAR",
-            "meta_data": {
-                "year": "2018-19",
-                "pdf_path": "/static/pdfs/iqac/AQAR_2018-2019.pdf"
-            },
-            "original_data": null
-            },
-            {
-            "collectionName": "iqac",
-            "collection_type": "iso_certificate",
-            "action": "update",
-            "title": "updation of ISO certificate",
-            "meta_data": {
-                "pdf_path": "/static/pdfs/iqac/iso_certificate_updated.pdf"
-            },
-            "original_data": {
-                "pdf_path": "/static/pdfs/iqac/iso_certificate.pdf"
-            }
-            }
+            ]
+        },
+        "original_data": {
+            "image_path": [
+                "/static/images/iqac/gallery/web_logo.jpg",
+                "/static/images/iqac/gallery/IMG-20251222-WA0026.jpg"
+            ]
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "gallery",
+        "action": "delete",
+        "title": "deletion of gallery images",
+        "category": "24-25 FIRST MEETING",
+        "meta_data": {
+            "image_path": [
+                "/static/images/iqac/24-25_second_meeting/1.webp",
+                "/static/images/iqac/24-25_second_meeting/2.webp"
+            ]
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "strategic_plan",
+        "action": "update",
+        "title": "updation of strategic plan",
+        "meta_data": {
+            "years": "2029-35",
+            "pdf_path": "/static/pdfs/iqac/strategic_plan_2024-29_v2.pdf"
+        },
+        "original_data": {
+            "years": "2024-29",
+            "pdf_path": "/static/pdfs/iqac/strategic_plan_2024-29.pdf"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "best_practices",
+        "action": "insert",
+        "title": "insertion of best practices",
+        "meta_data": {
+            "year": "2027-23",
+            "title": [
+                "Promoting Innovation...",
+                "Promoting Outreach..."
+            ],
+            "pdf_path": "/static/pdfs/iqac/best_practices_2022-2023.pdf"
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "best_practices",
+        "action": "update",
+        "title": "updation of best practices",
+        "meta_data": {
+            "year": "2027-23",
+            "title": [
+                "Promoting Innvation...",
+                "Promoting Outreach..."
+            ],
+            "pdf_path": "/static/pdfs/iqac/certificate (1).pdf"
+        },
+        "original_data": {
+            "year": "2027-23",
+            "title": [
+                "Promoting Innovation...",
+                "Promoting Outreach..."
+            ],
+            "pdf_path": "/static/pdfs/iqac/Slot 1 - 3.pdf"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "best_practices",
+        "action": "delete",
+        "title": "deletion of best practices",
+        "meta_data": {
+            "year": "2027-23",
+            "title": [
+                "Promoting Innvation...",
+                "Promoting Outreach..."
+            ],
+            "pdf_path": "/static/pdfs/iqac/doc.pdf"
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "institutional_distinctiveness",
+        "action": "update",
+        "title": "updation of institutional distinctiveness",
+        "meta_data": {
+            "pdf_path": "/static/pdfs/iqac/VEC-Institutional-Distinctiveness-v2.pdf"
+        },
+        "original_data": {
+            "pdf_path": "/static/pdfs/iqac/VEC-Institutional-Distinctiveness-v2.pdf"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "code_of_ethics",
+        "action": "update",
+        "title": "updation of code of ethics",
+        "meta_data": {
+            "pdf_path": "/static/pdfs/iqac/code_of_ethics_updated.pdf"
+        },
+        "original_data": {
+            "pdf_path": "/static/pdfs/iqac/code_of_ethics.pdf"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "aqar",
+        "action": "insert",
+        "title": "insertion of AQAR",
+        "meta_data": {
+            "year": "2021-22",
+            "pdf_path": "/static/pdfs/iqac/AQAR_2021-2022.pdf"
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "aqar",
+        "action": "update",
+        "title": "updation of AQAR",
+        "meta_data": {
+            "year": "2020-21",
+            "pdf_path": "/static/pdfs/iqac/AQAR_2020-2021_v2.pdf"
+        },
+        "original_data": {
+            "year": "2018-19",
+            "pdf_path": "/static/pdfs/iqac/AQAR_2020-2021.pdf"
+        }
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "aqar",
+        "action": "delete",
+        "title": "deletion of AQAR",
+        "meta_data": {
+            "year": "2018-19",
+            "pdf_path": "/static/pdfs/iqac/AQAR_2018-2019.pdf"
+        },
+        "original_data": null
+    },
+    {
+        "collectionName": "iqac",
+        "collection_type": "iso_certificate",
+        "action": "update",
+        "title": "updation of ISO certificate",
+        "meta_data": {
+            "pdf_path": "/static/pdfs/iqac/iso_certificate_updated.pdf"
+        },
+        "original_data": {
+            "pdf_path": "/static/pdfs/iqac/iso_certificate.pdf"
+        }
+    }
 ]

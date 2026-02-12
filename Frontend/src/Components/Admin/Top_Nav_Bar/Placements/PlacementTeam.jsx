@@ -1,35 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './AdminPlacementTeam.css';
-import Banner from '../../Banner';
-import LoadComp from '../../LoadComp';
+import "./AdminPlacementTeam.css";
+import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
-import { Trash2 } from 'react-feather';
+import { Trash2 } from "react-feather";
 import { Pencil, Send, Plus } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 function PersonDetail({ person, isEditable, onChange }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) => path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-
+  const UrlParser = (path) =>
+    path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   if (!person) return null;
 
-  const hasImage = !!(person.photo_path || person.photo_file);
+  const hasImage = !!(person.image_path || person.photo_file);
+  const imageSrc =
+    person.preview_url ||
+    (person.image_path ? UrlParser(person.image_path) : "");
 
   return (
-    <div className={`person-detail left dark:bg-drkts new-card-wrap`} style={{ position: 'relative' }}>
+    <div
+      className={`person-detail left dark:bg-drkts new-card-wrap`}
+      style={{ position: "relative" }}
+    >
       <div className="person-image-wrap new-image-wrap">
-        <img src={UrlParser(person.photo_path)} alt={person?.name} className="person-image" />
+        <img src={imageSrc} alt={person?.name} className="person-image" />
         {isEditable && (
           <div className="new-upload-below">
             <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
-              {hasImage ? 'Replace' : 'Upload'}
+              {hasImage ? "Replace" : "Upload"}
               <input
                 type="file"
-                accept="image/*,application/pdf"
+                accept="image/*"
                 className="hidden"
-                onChange={(e) => onChange('photo_file', e.target.files[0])}
+                onChange={(e) => onChange("photo_file", e.target.files[0])}
               />
             </label>
           </div>
@@ -41,28 +48,30 @@ function PersonDetail({ person, isEditable, onChange }) {
           <>
             <input
               className="person-input"
-              value={person.name || ''}
-              onChange={(e) => onChange('name', e.target.value)}
+              value={person.name || ""}
+              onChange={(e) => onChange("name", e.target.value)}
               placeholder="Name"
             />
             <input
               className="person-input"
-              value={person.designation || ''}
-              onChange={(e) => onChange('designation', e.target.value)}
+              value={person.designation || ""}
+              onChange={(e) => onChange("designation", e.target.value)}
               placeholder="Designation"
             />
             <textarea
               className="person-textarea"
               rows={4}
-              value={person.content || ''}
-              onChange={(e) => onChange('content', e.target.value)}
+              value={person.content || ""}
+              onChange={(e) => onChange("content", e.target.value)}
               placeholder="Description / Content"
             />
           </>
         ) : (
           <>
-            <h3 className='placement-head'>{person?.name}</h3>
-            <p className="text-accn dark:text-drka text-[24px]">{person?.designation}</p>
+            <h3 className="placement-head">{person?.name}</h3>
+            <p className="text-accn dark:text-drka text-[24px]">
+              {person?.designation}
+            </p>
             <p>{person?.content}</p>
           </>
         )}
@@ -71,15 +80,26 @@ function PersonDetail({ person, isEditable, onChange }) {
   );
 }
 
-function PersonMemberDetail({ person, isImageLeft, isEditable, onChange, checked, onCheck }) {
+function PersonMemberDetail({
+  person,
+  isImageLeft,
+  isEditable,
+  onChange,
+  checked,
+  onCheck,
+}) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) => path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  const hasImage = !!(person.photo_path || person.photo_file);
-
+  const UrlParser = (path) =>
+    path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const hasImage = !!(person.image_path || person.photo_file);
+  const { sendRequest, loading, error } = useAdminRequest();
+  const imageSrc =
+    person.preview_url ||
+    (person.image_path ? UrlParser(person.image_path) : "");
   return (
     <div
-      className={`person-detail ${isImageLeft ? 'left' : 'right'} dark:bg-drkts new-card-wrap`}
-      style={{ position: 'relative' }}
+      className={`person-detail ${isImageLeft ? "left" : "right"} dark:bg-drkts new-card-wrap`}
+      style={{ position: "relative" }}
     >
       {isEditable && (
         <input
@@ -87,21 +107,21 @@ function PersonMemberDetail({ person, isImageLeft, isEditable, onChange, checked
           className="new-top-checkbox"
           checked={!!checked}
           onChange={(e) => onCheck(e.target.checked)}
-          aria-label={`select ${person?.name || 'member'}`}
+          aria-label={`select ${person?.name || "member"}`}
         />
       )}
 
       <div className="new-image-wrap">
-        <img src={UrlParser(person.photo_path)} alt={person?.name} className="person-image-mem" />
+        <img src={imageSrc} alt={person?.name} className="person-image" />
         {isEditable && (
           <div className="new-upload-below">
             <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
-              {hasImage ? 'Replace' : 'Upload'}
+              {hasImage ? "Replace" : "Upload"}
               <input
                 type="file"
-                accept="image/*,application/pdf"
+                accept="image/*"
                 className="hidden"
-                onChange={(e) => onChange('photo_file', e.target.files[0])}
+                onChange={(e) => onChange("photo_file", e.target.files[0])}
               />
             </label>
           </div>
@@ -114,21 +134,21 @@ function PersonMemberDetail({ person, isImageLeft, isEditable, onChange, checked
             <div className="flex items-center justify-between">
               <input
                 className="w-[100%] p-1 rounded border"
-                value={person.name || ''}
-                onChange={(e) => onChange('name', e.target.value)}
+                value={person.name || ""}
+                onChange={(e) => onChange("name", e.target.value)}
                 placeholder="Name"
               />
             </div>
             <input
               className="w-full mt-2 p-1 rounded border"
-              value={person.designation || ''}
-              onChange={(e) => onChange('designation', e.target.value)}
+              value={person.designation || ""}
+              onChange={(e) => onChange("designation", e.target.value)}
               placeholder="Designation"
             />
           </>
         ) : (
           <>
-            <h3 className='placement-member-head'>{person?.name}</h3>
+            <h3 className="placement-member-head">{person?.name}</h3>
             <p className="text-accn dark:text-drka ">{person?.designation}</p>
           </>
         )}
@@ -155,10 +175,12 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   const [selectedItems, setSelectedItems] = useState([]); // indexes of selected members in draftTeam.slice(1)
   const [showMultiDeleteConfirm, setShowMultiDeleteConfirm] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const { sendRequest, loading, error } = useAdminRequest();
   const navigate = useNavigate();
 
   // returns whether the draft differs from current saved placementTeam (unsaved edits vs server)
-  const hasServerDiff = (d = draftTeam) => JSON.stringify(placementTeam) !== JSON.stringify(d);
+  const hasServerDiff = (d = draftTeam) =>
+    JSON.stringify(placementTeam) !== JSON.stringify(d);
 
   // returns whether the draft differs from initialDraft (i.e., session unsaved changes)
   const hasSessionChanges = () => {
@@ -169,10 +191,17 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post(`/api/main-backend/placement`, { type: "placement_team" });
+        const response = await axios.post(`/api/main-backend/placement`, {
+          type: "placement_team",
+        });
         const data = response.data.data || [];
-        setPlacementTeam(data.map(x => ({ ...x })));
-        setDraftTeam(data.map(x => ({ ...x })));
+        const withUID = data.map((x) => ({
+          ...x,
+          _uid: x._uid || genUID(),
+        }));
+
+        setPlacementTeam(withUID);
+        setDraftTeam(withUID.map((x) => ({ ...x })));
         setPendingDraft(null);
         setPendingChanges(false);
         setInitialDraft(null);
@@ -180,7 +209,9 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
       } catch (error) {
         console.error("Error fetching data:", error?.message);
         if (error?.response?.data?.status === 429) {
-          navigate('/ratelimit', { state: { msg: error?.response?.data?.message } });
+          navigate("/ratelimit", {
+            state: { msg: error?.response?.data?.message },
+          });
         }
         setIsLoading(false);
       }
@@ -208,23 +239,88 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
       </div>
     );
   }
+  const buildPlacementPayload = ({ action, newData, oldData }) => {
+    // 🟢 INSERT
+    if (action === "Added") {
+      return {
+        action: "insert",
+        collectionName: "placement",
+        title: "placement_team_insert",
+        collection_type: "placement_team",
+        meta_data: {
+          name: newData.name,
+          designation: newData.designation,
+          qualification: newData.qualification || "",
+          photo_path: newData.image_path || "", // backend will replace if file sent
+        },
+      };
+    }
+
+    // 🔵 UPDATE
+    if (action === "Edited") {
+      return {
+        action: "update",
+        collectionName: "placement",
+        title: "placement_team_update",
+        collection_type: "placement_team",
+        original_data: {
+          name: oldData?.name, // identifier
+        },
+        meta_data: {
+          name: newData.name,
+          designation: newData.designation,
+          qualification: newData.qualification || "",
+          photo_path: newData.image_path || "",
+        },
+      };
+    }
+
+    // 🔴 DELETE
+    if (action === "Deleted") {
+      return {
+        action: "delete",
+        collectionName: "placement",
+        title: "placement_team_delete",
+        collection_type: "placement_team",
+        meta_data: {
+          name: oldData?.name,
+        },
+      };
+    }
+
+    return null;
+  };
+  const collectPlacementFiles = (draft) => {
+    const files = [];
+
+    draft.forEach((member, index) => {
+      if (member?.photo_file instanceof File) {
+        files.push({
+          key: `placement_image_${index}`,
+          file: member.photo_file,
+        });
+      }
+    });
+
+    return files;
+  };
 
   // ---------- Editable handlers ----------
   const enterEdit = () => {
     setEditMode(true);
     // choose base: pendingDraft (if user previously saved) else placementTeam
     const base = pendingDraft ? pendingDraft : placementTeam;
-    const snapshot = (base || []).map(x => ({ ...x }));
+    const snapshot = (base || []).map((x) => ({ ...x }));
     setInitialDraft(snapshot); // snapshot of state at edit-session start
-    setDraftTeam(snapshot.map(x => ({ ...x })));
+    setDraftTeam(snapshot.map((x) => ({ ...x })));
   };
 
   const exitEdit = () => {
     // revert unsaved edits only — now we revert to initialDraft (session start)
     if (initialDraft) {
-      setDraftTeam(initialDraft.map(x => ({ ...x })));
+      setDraftTeam(initialDraft.map((x) => ({ ...x })));
     } else {
-      setDraftTeam((placementTeam || []).map(x => ({ ...x })));
+      setDraftTeam((placementTeam || []).map((x) => ({ ...x })));
     }
     setSelectedItems([]);
     setEditMode(false);
@@ -232,25 +328,25 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   };
 
   const handleFieldChange = (idx, field, value) => {
-    setDraftTeam(prev => {
-      const copy = prev.map(x => ({ ...x }));
+    setDraftTeam((prev) => {
+      const copy = prev.map((x) => ({ ...x }));
       if (!copy[idx]) copy[idx] = {};
-      if (field === 'photo_file') {
+
+      if (field === "photo_file") {
         copy[idx].photo_file = value;
-        try {
-          copy[idx].photo_path = URL.createObjectURL(value);
-        } catch (e) {
-          console.warn('object url failed', e);
-        }
+
+        // create preview blob url
+        copy[idx].preview_url = URL.createObjectURL(value);
       } else {
         copy[idx][field] = value;
       }
+
       return copy;
     });
   };
 
   const handleSave = async () => {
-    setPendingDraft(draftTeam.map(x => ({ ...x })));
+    setPendingDraft(draftTeam.map((x) => ({ ...x })));
     setPendingChanges(true);
     setEditMode(false);
     setSelectedItems([]);
@@ -259,7 +355,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
 
   const handleDiscardAll = () => {
     setPendingDraft(null);
-    setDraftTeam((placementTeam || []).map(x => ({ ...x })));
+    setDraftTeam((placementTeam || []).map((x) => ({ ...x })));
     setPendingChanges(false);
     setSelectedItems([]);
     setEditMode(false);
@@ -269,7 +365,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
 
   const handleCancel = () => {
     if (hasSessionChanges()) {
-      setDraftTeam(initialDraft.map(x => ({ ...x })));
+      setDraftTeam(initialDraft.map((x) => ({ ...x })));
       setEditMode(false);
       setSelectedItems([]);
       setInitialDraft(null);
@@ -278,9 +374,11 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
       setInitialDraft(null);
     }
   };
+  const genUID = () =>
+    Math.random().toString(36).slice(2) + Date.now().toString(36);
 
   const toggleSelectItem = (memberIndex, checked) => {
-    setSelectedItems(prev => {
+    setSelectedItems((prev) => {
       const copy = new Set(prev);
       if (checked) copy.add(memberIndex);
       else copy.delete(memberIndex);
@@ -291,52 +389,96 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   const confirmMultiDelete = () => {
     setShowMultiDeleteConfirm(false);
     // selectedItems correspond to indexes inside draftTeam.slice(1)
-    setDraftTeam(prev => prev.filter((_, idx) => !(idx >= 1 && selectedItems.includes(idx - 1))));
+    setDraftTeam((prev) =>
+      prev.filter((_, idx) => !(idx >= 1 && selectedItems.includes(idx - 1))),
+    );
     setSelectedItems([]);
   };
 
   // Add a new blank member at the end
   const handleAddNewMember = () => {
-    setDraftTeam(prev => [
+    setDraftTeam((prev) => [
       ...prev,
-      { name: "", designation: "", photo_path: "", content: "" }
+      {
+        _uid: genUID(),
+        name: "",
+        designation: "",
+        image_path: "",
+        content: "",
+      },
     ]);
   };
 
   const getChanges = (baseDraft = pendingDraft) => {
     const changes = [];
-    const orig = placementTeam || [];
-    const draf = (baseDraft || []);
 
-    const maxLen = Math.max(orig.length, draf.length);
-    for (let i = 0; i < maxLen; i++) {
-      const o = orig[i];
-      const d = draf[i];
-      if (o && !d) {
-        changes.push({ action: 'Deleted', section: 'Placement Team', data: o, index: i });
-      } else if (!o && d) {
-        changes.push({ action: 'Added', section: 'Placement Team', data: d, index: i });
-      } else if (o && d && JSON.stringify(o) !== JSON.stringify(d)) {
-        changes.push({ action: 'Modified', section: 'Placement Team', data: d, index: i });
+    const origMap = new Map();
+    const draftMap = new Map();
+
+    (placementTeam || []).forEach((item, index) => {
+      origMap.set(item._uid, { item, index });
+    });
+
+    (baseDraft || []).forEach((item, index) => {
+      draftMap.set(item._uid, { item, index });
+    });
+
+    // 🔴 Deleted
+    origMap.forEach(({ item, index }, uid) => {
+      if (!draftMap.has(uid)) {
+        changes.push({
+          action: "Deleted",
+          section: "Placement Team",
+          data: item,
+          index,
+        });
       }
-    }
+    });
+
+    // 🟢 Added
+    draftMap.forEach(({ item, index }, uid) => {
+      if (!origMap.has(uid)) {
+        changes.push({
+          action: "Added",
+          section: "Placement Team",
+          data: item,
+          index,
+        });
+      }
+    });
+
+    // 🔵 Edited
+    draftMap.forEach(({ item, index }, uid) => {
+      if (origMap.has(uid)) {
+        const originalItem = origMap.get(uid).item;
+        if (JSON.stringify(originalItem) !== JSON.stringify(item)) {
+          changes.push({
+            action: "Edited",
+            section: "Placement Team",
+            data: item,
+            index,
+          });
+        }
+      }
+    });
+
     return changes;
   };
 
   const handleRevertChange = (change) => {
-    setPendingDraft(prevPending => {
-      const working = (prevPending || []).map(x => ({ ...x }));
+    setPendingDraft((prevPending) => {
+      const working = (prevPending || []).map((x) => ({ ...x }));
       if (!prevPending) {
-        setDraftTeam(prev => {
-          const copy = prev.map(x => ({ ...x }));
-          if (change.action === 'Added') {
+        setDraftTeam((prev) => {
+          const copy = prev.map((x) => ({ ...x }));
+          if (change.action === "Added") {
             copy.splice(change.index, 1);
             return copy;
-          } else if (change.action === 'Modified') {
+          } else if (change.action === "Edited") {
             copy[change.index] = { ...(placementTeam[change.index] || {}) };
             return copy;
-          } else if (change.action === 'Deleted') {
-            copy.splice(change.index, 0, (placementTeam[change.index] || {}));
+          } else if (change.action === "Deleted") {
+            copy.splice(change.index, 0, placementTeam[change.index] || {});
             return copy;
           }
           return prev;
@@ -344,41 +486,70 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
         return null;
       }
 
-      if (change.action === 'Added') {
+      if (change.action === "Added") {
         working.splice(change.index, 1);
-      } else if (change.action === 'Modified') {
+      } else if (change.action === "Edited") {
         working[change.index] = { ...(placementTeam[change.index] || {}) };
-      } else if (change.action === 'Deleted') {
-        working.splice(change.index, 0, { ...(placementTeam[change.index] || {}) });
+      } else if (change.action === "Deleted") {
+        working.splice(change.index, 0, {
+          ...(placementTeam[change.index] || {}),
+        });
       }
-      setDraftTeam(working.map(x => ({ ...x })));
+      setDraftTeam(working.map((x) => ({ ...x })));
       return working;
     });
   };
 
-  const handleRequestConfirm = async () => {
-    try {
-      setShowRequestModal(false);
-      toast.success("Request submitted successfully!");
-    } catch (err) {
-      console.error(err);
-      toast.error("Request failed. Please try again.");
+  const handleFinalRequestConfirm = async () => {
+    const changes = getChanges(pendingDraft);
+
+    if (changes.length === 0) {
+      toast.warn("No changes to submit");
+      return;
     }
+
+    const payload = changes
+      .map((change) =>
+        buildPlacementPayload({
+          action: change.action,
+          newData: change.data,
+          oldData: placementTeam[change.index],
+        }),
+      )
+      .filter(Boolean);
+
+    // 🔥 THIS IS THE KEY LINE
+    const files = collectPlacementFiles(draftTeam);
+
+    console.log("📦 PAYLOAD:", payload);
+    console.log("🖼 FILES:", files);
+
+    await sendRequest(payload, files);
+
+    toast.success("Request submitted successfully!");
+    setShowRequestModal(false);
   };
 
   return (
     <>
-      <Banner toggle={toggle} theme={theme}
+      <Banner
+        toggle={toggle}
+        theme={theme}
         backgroundImage="./Banners/placementbanner.webp"
         headerText="Placement Team"
-        subHeaderText="Connecting talent with opportunity through strategic partnerships and career support services." />
+        subHeaderText="Connecting talent with opportunity through strategic partnerships and career support services."
+      />
 
-      <div className='place-container pb-60 pt-10'>
-        <div className="Placement-App" style={{ marginTop: '30px', position: 'relative' }}>
-
+      <div className="place-container pb-60 pt-10">
+        <div
+          className="Placement-App"
+          style={{ marginTop: "30px", position: "relative" }}
+        >
           {/* Edit button top-right (visible when not editing) */}
           {!editMode && (
-            <div style={{ position: 'absolute', right: 12, top: -50, zIndex: 50 }}>
+            <div
+              style={{ position: "absolute", right: 12, top: -50, zIndex: 50 }}
+            >
               <button
                 onClick={enterEdit}
                 className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
@@ -398,7 +569,14 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
             <>
               {/* Main person */}
               <PersonDetail
-                person={draftTeam[0] || { name: "", designation: "", content: "", photo_path: "" }}
+                person={
+                  draftTeam[0] || {
+                    name: "",
+                    designation: "",
+                    content: "",
+                    image_path: "",
+                  }
+                }
                 isEditable={editMode}
                 onChange={(field, value) => handleFieldChange(0, field, value)}
               />
@@ -412,7 +590,9 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                     person={person}
                     isImageLeft={index % 2 === 0}
                     isEditable={editMode}
-                    onChange={(field, value) => handleFieldChange(index + 1, field, value)}
+                    onChange={(field, value) =>
+                      handleFieldChange(index + 1, field, value)
+                    }
                     checked={selectedItems.includes(index)}
                     onCheck={(checked) => toggleSelectItem(index, checked)}
                   />
@@ -422,7 +602,12 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                 {editMode && (
                   <div
                     className="person-detail centered-card dark:bg-drkts new-card-wrap flex items-center justify-center cursor-pointer hover:bg-gray-200"
-                    style={{ position: 'relative', minHeight: '220px', minWidth: '300px', margin: '20px auto' }}
+                    style={{
+                      position: "relative",
+                      minHeight: "220px",
+                      minWidth: "300px",
+                      margin: "20px auto",
+                    }}
                     onClick={handleAddNewMember}
                     aria-label="Add new member"
                   >
@@ -446,7 +631,16 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
               )}
 
               {/* Bottom right action buttons */}
-              <div style={{ position: 'absolute', right: 20, bottom: -40, display: 'flex', gap: 8, zIndex: 60 }}>
+              <div
+                style={{
+                  position: "absolute",
+                  right: 20,
+                  bottom: -40,
+                  display: "flex",
+                  gap: 8,
+                  zIndex: 60,
+                }}
+              >
                 {/* CANCEL (left) - visible in edit mode */}
                 {editMode && (
                   <button
@@ -480,7 +674,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                       onClick={() => setShowRequestModal(true)}
                       className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
                     >
-                      <Send size={16}/>
+                      <Send size={16} />
                       Request
                     </button>
                   </>
@@ -491,8 +685,13 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
               {showMultiDeleteConfirm && (
                 <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[1000]">
                   <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[420px]">
-                    <h3 className="text-lg font-semibold mb-3">Confirm Delete</h3>
-                    <p className="mb-4">Are you sure you want to delete {selectedItems.length} selected item</p>
+                    <h3 className="text-lg font-semibold mb-3">
+                      Confirm Delete
+                    </h3>
+                    <p className="mb-4">
+                      Are you sure you want to delete {selectedItems.length}{" "}
+                      selected item
+                    </p>
                     <div className="flex justify-end gap-2 mt-[20px]">
                       <button
                         onClick={() => setShowMultiDeleteConfirm(false)}
@@ -519,8 +718,8 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                       Request
                     </h2>
                     <p className="text-sm text-red-500 mb-4">
-                      Note: Your changes will stay pending until approved by the superior admin.
-                      Once approved they will go live.
+                      Note: Your changes will stay pending until approved by the
+                      superior admin. Once approved they will go live.
                     </p>
 
                     <div className="max-h-[250px] overflow-y-auto mb-4">
@@ -553,17 +752,21 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                                   <span>{change.data?.name || "Unnamed"}</span>
                                 </div>
                               </td>
-                              <td><button
-                                    onClick={() => handleRevertChange(change)}
-                                    className="text-red-500 hover:text-red-700 font-bold"
-                                  >
-                                    ✕
-                                  </button></td>
+                              <td>
+                                <button
+                                  onClick={() => handleRevertChange(change)}
+                                  className="text-red-500 hover:text-red-700 font-bold"
+                                >
+                                  ✕
+                                </button>
+                              </td>
                             </tr>
                           ))}
                           {getChanges(pendingDraft).length === 0 && (
                             <tr>
-                              <td colSpan={3} className="py-3 text-sm">No pending changes.</td>
+                              <td colSpan={3} className="py-3 text-sm">
+                                No pending changes.
+                              </td>
                             </tr>
                           )}
                         </tbody>
@@ -579,16 +782,18 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                         Cancel
                       </button>
                       <button
-                        onClick={handleRequestConfirm}
-                        className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
+                        onClick={handleFinalRequestConfirm}
+                        disabled={loading}
+                        className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
+                          loading ? "cursor-progress" : "hover:bg-[#800000]"
+                        }`}
                       >
-                        Final Request
+                        {loading ? "Processing..." : "Final Request"}
                       </button>
                     </div>
                   </div>
                 </div>
               )}
-
             </>
           )}
         </div>
