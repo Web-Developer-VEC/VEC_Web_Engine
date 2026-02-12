@@ -22,6 +22,9 @@ const SportsInfra = ({ data: initialData }) => {
   const [changes, setChanges] = useState([]);
   const { sendRequest, loading, error } = useAdminRequest();
   const filesRef = useRef([]);
+  const [isDirty, setIsDirty] = useState(false);
+
+
 
   console.log('====================================');
   console.log("Ajith", changes);
@@ -70,12 +73,80 @@ const SportsInfra = ({ data: initialData }) => {
 
       return next;
     });
+    setIsDirty(true);
   };
 
   const getCardAction = (id) => {
     const change = changes.find(c => c.id === id);
     return change?.type || null;  // "added" | "updated" | "deleted" | null
   };
+
+  // const buildSportsInfrastructurePayload = ({
+  //   action,
+  //   newData = {},
+  //   oldData = {},
+  // }) => {
+
+  //   /* -------------------- INSERT -------------------- */
+  //   if (action === "Added") {
+  //     return {
+  //       collectionName: "sports",
+  //       collection_type: "infrastructure",
+  //       action: "insert",
+  //       title: "Insertion of Infrastructure",
+
+  //       meta_data: {
+  //         title: newData.title,
+  //         description: newData.description,
+  //         image_path: newData.image_path,
+  //       },
+
+  //       original_data: null,
+  //     };
+  //   }
+
+  //   /* -------------------- UPDATE -------------------- */
+  //   if (action === "Edited") {
+  //     return {
+  //       collectionName: "sports",
+  //       collection_type: "infrastructure",
+  //       action: "update",
+  //       title: "Updation of Infrastructure",
+
+  //       meta_data: {
+  //         title: newData.title,
+  //         description: newData.description,
+  //         image_path: newData.image_path,
+  //       },
+
+  //       original_data: {
+  //         title: oldData.original_data?.title || oldData.meta_data?.title || oldData.title,
+  //         description: oldData.original_data?.description || oldData.meta_data?.description || oldData.description,
+  //         image_path: oldData.original_data?.image_path || oldData.meta_data?.image_path || oldData.image_path,
+  //       },
+  //     };
+  //   }
+
+  //   /* -------------------- DELETE -------------------- */
+  //   if (action === "Deleted") {
+  //     return {
+  //       collectionName: "sports",
+  //       collection_type: "infrastructure",
+  //       action: "delete",
+  //       title: "Deletion of Infrastructure",
+
+  //       meta_data: {
+  //         title: oldData.original_data?.title || oldData.meta_data?.title || oldData.title,
+  //         description: oldData.original_data?.description || oldData.meta_data?.description || oldData.description,
+  //         image_path: oldData.original_data?.image_path || oldData.meta_data?.image_path || oldData.image_path,
+  //       },
+
+  //       original_data: null,
+  //     };
+  //   }
+
+  //   return null;
+  // };
 
   const buildSportsInfrastructurePayload = ({
     action,
@@ -116,9 +187,9 @@ const SportsInfra = ({ data: initialData }) => {
         },
 
         original_data: {
-          title: oldData.original_data?.title || oldData.meta_data?.title || oldData.title,
-          description: oldData.original_data?.description || oldData.meta_data?.description || oldData.description,
-          image_path: oldData.original_data?.image_path || oldData.meta_data?.image_path || oldData.image_path,
+          title: oldData.title,
+          description: oldData.description,
+          image_path: oldData.image_path,
         },
       };
     }
@@ -132,9 +203,9 @@ const SportsInfra = ({ data: initialData }) => {
         title: "Deletion of Infrastructure",
 
         meta_data: {
-          title: oldData.original_data?.title || oldData.meta_data?.title || oldData.title,
-          description: oldData.original_data?.description || oldData.meta_data?.description || oldData.description,
-          image_path: oldData.original_data?.image_path || oldData.meta_data?.image_path || oldData.image_path,
+          title: oldData.title,
+          description: oldData.description,
+          image_path: oldData.image_path,
         },
 
         original_data: null,
@@ -143,73 +214,6 @@ const SportsInfra = ({ data: initialData }) => {
 
     return null;
   };
-
-const buildSportsInfrastructurePayload = ({
-  action,
-  newData = {},
-  oldData = {},
-}) => {
-
-  /* -------------------- INSERT -------------------- */
-  if (action === "Added") {
-    return {
-      collectionName: "sports",
-      collection_type: "infrastructure",
-      action: "insert",
-      title: "Insertion of Infrastructure",
-
-      meta_data: {
-        title: newData.title,
-        description: newData.description,
-        image_path: newData.image_path,
-      },
-
-      original_data: null,
-    };
-  }
-
-  /* -------------------- UPDATE -------------------- */
-  if (action === "Edited") {
-    return {
-      collectionName: "sports",
-      collection_type: "infrastructure",
-      action: "update",
-      title: "Updation of Infrastructure",
-
-      meta_data: {
-        title: newData.title,
-        description: newData.description,
-        image_path: newData.image_path,
-      },
-
-      original_data: {
-        title: oldData.title,
-        description: oldData.description,
-        image_path: oldData.image_path,
-      },
-    };
-  }
-
-  /* -------------------- DELETE -------------------- */
-  if (action === "Deleted") {
-    return {
-      collectionName: "sports",
-      collection_type: "infrastructure",
-      action: "delete",
-      title: "Deletion of Infrastructure",
-
-      meta_data: {
-        title: oldData.title,
-        description: oldData.description,
-        image_path: oldData.image_path,
-      },
-
-      original_data: null,
-    };
-  }
-
-  return null;
-};
 
   const handleDeleteSelected = () => {
 
@@ -254,6 +258,8 @@ const buildSportsInfrastructurePayload = ({
     setSelectedItems([]);
     setShowDeleteModal(false);
     toast.success("Selected items deleted.");
+    setIsDirty(true);
+
   };
 
 
@@ -273,6 +279,8 @@ const buildSportsInfrastructurePayload = ({
     setChanges([]);
 
     toast.success("Changes saved!");
+    setIsDirty(false);
+
   };
 
   // -------------------- DISCARD --------------------
@@ -286,6 +294,8 @@ const buildSportsInfrastructurePayload = ({
     setEditMode(false);
     setShowRequestButtons(false);
     toast.info("All changes since page load were discarded.");
+    setIsDirty(false);
+
   };
 
   // const confirmDiscard = () => {
@@ -471,6 +481,8 @@ const buildSportsInfrastructurePayload = ({
     setShowRequestButtons(false);
     setChanges([]);
     filesRef.current = [];
+    setIsDirty(false);
+
 
   };
 
@@ -482,6 +494,7 @@ const buildSportsInfrastructurePayload = ({
       const change = prevChanges[index];
       if (!change) return prevChanges;
 
+      // First, revert the actual data
       setSportsData(prevData => {
         let data = [...prevData];
 
@@ -490,14 +503,14 @@ const buildSportsInfrastructurePayload = ({
           return data.filter(item => item.id !== change.id);
         }
 
-        // 🔵 Undo UPDATE → replace edited with original
+        // 🔵 Undo UPDATE → restore original
         if (change.type === "updated") {
           return data.map(item =>
             item.id === change.id ? { ...change.original } : item
           );
         }
 
-        // ⚫ Undo DELETE → restore in correct position
+        // ⚫ Undo DELETE → restore at original position
         if (change.type === "deleted") {
           const before = data.slice(0, change.originalIndex);
           const after = data.slice(change.originalIndex);
@@ -507,7 +520,19 @@ const buildSportsInfrastructurePayload = ({
         return data;
       });
 
-      return prevChanges.filter((_, i) => i !== index);
+      // Now remove this change from list
+      const nextChanges = prevChanges.filter((_, i) => i !== index);
+
+      // 🧠 If this was the LAST change → exit request mode
+      if (nextChanges.length === 0) {
+        setShowRequestModal(false);     // close modal
+        setShowRequestButtons(false);   // hide Request/Discard buttons
+        setEditMode(false);             // back to normal view (Edit button shows)
+        setIsDirty(false);
+        toast.info("All changes reverted.");
+      }
+
+      return nextChanges;
     });
   };
 
@@ -518,7 +543,7 @@ const buildSportsInfrastructurePayload = ({
       toast.warn("Undo delete before editing this card.");
       return;
     }
-
+    setIsDirty(true);
     setSportsData(prev => {
       const next = prev.map((item, i) =>
         i === index ? { ...item, [field]: value } : item
@@ -588,6 +613,8 @@ const buildSportsInfrastructurePayload = ({
     setEditMode(false);
     setShowRequestButtons(false);
     toast.info("Changes since last save were cancelled.");
+    setIsDirty(false);
+
   };
 
   const handleImageChange = (index, file) => {
@@ -665,6 +692,8 @@ const buildSportsInfrastructurePayload = ({
     });
 
     filesRef.current.push({ field: "sports_infra_image", file });
+    setIsDirty(true);
+
   };
 
 
@@ -688,6 +717,7 @@ const buildSportsInfrastructurePayload = ({
             onClick={() => {
               setEditMode(true);
               setShowRequestButtons(false)
+              setIsDirty(false)
             }}
           >
             <Pencil size={16} /> Edit
@@ -795,6 +825,7 @@ const buildSportsInfrastructurePayload = ({
           </button>
         </div>
       )}
+      {console.log("RENDER → isDirty =", isDirty)}
       {editMode && !showRequestButtons && (
         <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
           <button
@@ -803,12 +834,14 @@ const buildSportsInfrastructurePayload = ({
           >
             Cancel
           </button>
-          <button
-            className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
-            onClick={handleSave}
-          >
-            Save
-          </button>
+          {isDirty && (
+            <button
+              className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
+              onClick={handleSave}
+            >
+              Save
+            </button>
+          )}
         </div>
       )}
 
@@ -816,7 +849,7 @@ const buildSportsInfrastructurePayload = ({
         <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
           <button
             className="px-4 py-2 bg-gray-500 text-white rounded"
-            onClick={() => handleDiscard()}
+            onClick={() => setShowDiscardModal(true)}
           >
             Discard Changes
           </button>
@@ -871,6 +904,35 @@ const buildSportsInfrastructurePayload = ({
           </div>
         </div>
       )}
+      {showDiscardModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white p-6 rounded-xl w-[400px]">
+            <h2 className="text-lg font-semibold mb-4">Discard Changes?</h2>
+            <p className="text-sm text-gray-600 mb-6">
+              Are you sure you want to discard all your changes? This action cannot be undone.
+            </p>
+
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowDiscardModal(false)}
+                className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 text-black"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  handleDiscard();          // 👈 actually discard
+                  setShowDiscardModal(false);
+                }}
+                className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white"
+              >
+                Discard
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
 
       {/* REQUEST MODAL */}
       {showRequestModal && (() => {
@@ -940,7 +1002,7 @@ const buildSportsInfrastructurePayload = ({
                 </button>
                 {changes.length > 0 && (
                   <button
-                  disabled={loading}
+                    disabled={loading}
                     onClick={handleFinalRequest}
                     className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white"
                   >

@@ -133,6 +133,7 @@ const AdminADMteam = ({ theme, toggle }) => {
     oldData,
     deleteImageOnly = false,
   }) => {
+    /* -------- INSERT -------- */
     if (action === "insert") {
       return {
         collectionName: "admissions",
@@ -142,11 +143,12 @@ const AdminADMteam = ({ theme, toggle }) => {
         meta_data: {
           name: newData.name,
           designation: newData.designation,
-          photo_path: newData.photo_path || "",
+          image_path: newData.image_path || "",
         },
       };
     }
 
+    /* -------- UPDATE -------- */
     if (action === "update") {
       return {
         collectionName: "admissions",
@@ -156,16 +158,17 @@ const AdminADMteam = ({ theme, toggle }) => {
         meta_data: {
           name: newData.name,
           designation: newData.designation,
-          photo_path: newData.photo_path || "",
+          image_path: newData.image_path || "",
         },
         original_data: {
           name: oldData.name,
           designation: oldData.designation,
-          photo_path: oldData.photo_path || "",
+          image_path: oldData.image_path || "",
         },
       };
     }
 
+    /* -------- DELETE IMAGE ONLY -------- */
     if (action === "delete" && deleteImageOnly) {
       return {
         collectionName: "admissions",
@@ -174,11 +177,12 @@ const AdminADMteam = ({ theme, toggle }) => {
         title: "Delete photo_path for admission team member",
         meta_data: {
           name: newData.name,
-          photo_path: newData.photo_path,
+          image_path: newData.image_path,
         },
       };
     }
 
+    /* -------- DELETE MEMBER -------- */
     if (action === "delete") {
       return {
         collectionName: "admissions",
@@ -324,62 +328,49 @@ const AdminADMteam = ({ theme, toggle }) => {
       // Map through changeList and find the CURRENT state of those items from admissionteamData
       const requests = changeList
         .map((change) => {
-          const currentItem = admissionteamData.find(
+          const current = admissionteamData.find(
             (m) => m.id === change.data.id,
           );
-          const originalItem = originalData.find(
-            (o) => o.id === change.data.id,
-          );
+          const original = originalData.find((o) => o.id === change.data.id);
 
-          // 🔵 ADDED
-          if (change.type === "added") {
-            if (!currentItem) return null;
-            return {
-              collectionName: "admissions",
-              collection_type: "admission_team",
+          /* 🟢 INSERT */
+          if (change.type === "added" && current) {
+            return buildAdmissionTeamPayload({
               action: "insert",
-              title: `Insert team member: ${currentItem.name}`,
-              meta_data: {
-                name: currentItem.name,
-                designation: currentItem.designation,
-                photo_path: currentItem.image_path || "",
-              },
-            };
+              newData: current,
+            });
           }
 
-          // 🔵 EDITED
-          if (change.type === "edited") {
-            if (!currentItem || !originalItem) return null;
-            return {
-              collectionName: "admissions",
-              collection_type: "admission_team",
+          /* 🔵 UPDATE */
+          if (change.type === "edited" && current && original) {
+            return buildAdmissionTeamPayload({
               action: "update",
-              title: `Update team member: ${currentItem.name}`,
-              meta_data: {
-                name: currentItem.name,
-                designation: currentItem.designation,
-                photo_path: currentItem.image_path || "",
-              },
-              original_data: {
-                name: originalItem.name,
-                designation: originalItem.designation,
-                photo_path: originalItem.image_path || "",
-              },
-            };
+              newData: current,
+              oldData: original,
+            });
           }
 
-          // 🔴 DELETED
-          if (change.type === "deleted") {
-            return {
-              collectionName: "admissions",
-              collection_type: "admission_team",
+          /* 🔴 DELETE IMAGE ONLY */
+          if (
+            change.type === "edited" &&
+            change.fields?.image_path &&
+            !current.image_path
+          ) {
+            return buildAdmissionTeamPayload({
               action: "delete",
-              title: `Delete team member: ${change.data.name}`,
-              meta_data: {
-                name: change.data.name,
-              },
-            };
+              deleteImageOnly: true,
+              newData: original,
+            });
           }
+
+          /* 🔴 DELETE MEMBER */
+          if (change.type === "deleted") {
+            return buildAdmissionTeamPayload({
+              action: "delete",
+              newData: change.data,
+            });
+          }
+
           return null;
         })
         .filter(Boolean);

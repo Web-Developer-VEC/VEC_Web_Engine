@@ -31,6 +31,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           original_data,
         } = doc;
 
+
         if (!collectionName || !collection_type || !action || !title) {
           throw new Error(
             "collectionName, collection_type, action, and title are required"
@@ -99,6 +100,7 @@ function findMatchingItem(container, original, excludeKey) {
         const skipImageFor = ["warden","members","library_services","team","achivements"];
 
         const mainCollection = maindb.collection(collectionName);
+
         const existingDoc = await mainCollection.findOne(
           { type: collection_type },
           { projection: { data: 1 } }
@@ -123,6 +125,7 @@ function findMatchingItem(container, original, excludeKey) {
         // console.log("pdf path ", pdf_path);
         // console.log("image path ", image_path);
           
+        console.log(existingDoc)
 
         const notdoc = Array.isArray(existingDoc.data)?existingDoc.data:[existingDoc.data];
 

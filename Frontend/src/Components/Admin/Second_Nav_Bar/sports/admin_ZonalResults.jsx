@@ -17,6 +17,7 @@ const ZonalResults = ({ data, year: initialYear }) => {
   const [originalYear] = useState(initialYear);
   const [changes, setChanges] = useState([]);
   const { sendRequest, loading, error } = useAdminRequest();
+  const haschanges=changes.length>0
 
 
   const [results, setResults] = useState(
@@ -476,12 +477,12 @@ const ZonalResults = ({ data, year: initialYear }) => {
           >
             Cancel
           </button>
-          <button
+          {haschanges && (<button
             onClick={handleSave}
             className="px-4 py-1 bg-[#800000] text-white rounded"
           >
             Save
-          </button>
+          </button>)}
         </div>
       )}
 
@@ -490,7 +491,7 @@ const ZonalResults = ({ data, year: initialYear }) => {
         <div className="flex justify-end gap-3 mt-6 mb-4">
           <button
             className="px-4 py-2 bg-gray-500 text-white rounded"
-            onClick={() => confirmDiscard(true)}
+            onClick={() => setShowDiscardModal(true)}
           >
             Discard Changes
           </button>
@@ -520,6 +521,34 @@ const ZonalResults = ({ data, year: initialYear }) => {
                 onClick={handleDeleteSelected}
               >
                 Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+         {showDiscardModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white p-6 rounded-xl w-[400px]">
+            <h2 className="text-lg font-semibold mb-4">Discard Changes?</h2>
+            <p className="text-sm text-gray-600 mb-6">
+              Are you sure you want to discard all your changes? This action cannot be undone.
+            </p>
+
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowDiscardModal(false)}
+                className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 text-black"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  confirmDiscard();    // 👈 actually discard
+                  setShowDiscardModal(false);
+                }}
+                className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white"
+              >
+                Discard
               </button>
             </div>
           </div>
