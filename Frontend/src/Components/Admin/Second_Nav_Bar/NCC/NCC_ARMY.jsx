@@ -11,7 +11,8 @@ import Banner from "../../Banner";
 import { useNavigate } from "react-router";
 import { Pencil, X, Trash2, Send, Plus } from "lucide-react";
 import AutoResizeTextarea from "../AutoResizeTextarea";
-
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
+import { toast, ToastContainer } from "react-toastify";
 // NCCAbout Component with Edit Functionality
 function NCCAbout({ data, isEditing, onUpdate, onStartEdit }) {
   const [localData, setLocalData] = useState(data || []);
@@ -559,6 +560,7 @@ const NCC_ARMY = ({ toggle, theme }) => {
   const [isDirty, setIsDirty] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const { sendRequest, loading, error } = useAdminRequest();
   const navigate = useNavigate();
 
   const handleDataUpdate = (newData) => {
@@ -633,15 +635,39 @@ const NCC_ARMY = ({ toggle, theme }) => {
     setShowRequestModal(true);
   };
 
-  const handleFinalRequestConfirm = () => {
-    if (!pendingData) return;
 
-    setCommittedData(JSON.parse(JSON.stringify(pendingData)));
-    setarmydata(JSON.parse(JSON.stringify(pendingData)));
-    setPendingData(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-  };
+  const handleFinalRequestConfirm = async () => {
+  if (!pendingData) return;
+
+  // Prepare payload for the backend
+  const payload = [
+    {
+    collectionName: "ncc_army",
+    collection_type: "about",
+    action: "update",
+    title: "update about ",
+      original_data: committedData[0], // data before edit
+      meta_data: pendingData[0],       // data after edit
+    },
+  ];
+
+  try {
+    const result = await sendRequest(payload); // Send using the hook
+    toast.success("Request confirmed and sent successfully!");
+    if (result) {
+      // Update local states after successful request
+      setCommittedData(JSON.parse(JSON.stringify(pendingData)));
+      setarmydata(JSON.parse(JSON.stringify(pendingData)));
+      setPendingData(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+
+      // toast.success("Request confirmed and sent successfully!");
+    }
+  } catch (err) {
+    toast.error("Failed to send request!");
+  }
+};
 
   const revertChange = (field) => {
     if (!pendingData || !committedData) return;
@@ -790,9 +816,9 @@ const NCC_ARMY = ({ toggle, theme }) => {
 
       </>
     ),
-    "Recent Events": <NCCACarousel data={ncc_army} />,
+    // "Recent Events": <NCCACarousel data={ncc_army} />,
     "Team & Coordinators": <NCCAMembers data={ncc_army} />,
-    "Awards & Recognition": <AlumniSlider data={ncc_army} />,
+    // "Awards & Recognition": <AlumniSlider data={ncc_army} />,
   };
 
   return (
@@ -805,7 +831,7 @@ const NCC_ARMY = ({ toggle, theme }) => {
         subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
         isVideo={true}
       />
-
+<ToastContainer position="bottom-right" autoClose={2000} />
       <SideNav sts={army} setSts={setnccarmy} navData={navData} cls="" backButton={true} />
 
       {/* Final Request Modal */}
