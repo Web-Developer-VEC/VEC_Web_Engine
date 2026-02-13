@@ -1,78 +1,49 @@
 [
+    
     {
-        "collectionName": "AIDS_001",
-        "collection_type": "mous",
-        "category":"mous_details",
-        "action": "insert",
-        "title": "Insertion of MOU",
-        "meta_data": 
-        {
-            "S_NO": 11,
-            "ORGANISATION_NAME": "VEC",
-            "MONTH_AND_YEAR": "15-09-2025",
-            "VALIDITY": "5 Years",
-            "LOGO_PATH": "/static/images/mous/001/VEC.jpg",
-            "PDF_PATH": "VEC.pdf",
-            "ACTIVITIES_PLANNED": 
-            [
-                "AI Research Collaboration",
-                "Industry Internships",
-                "Faculty Training Programs"
-            ]
-        }
-    },
-    {
-        "collectionName": "AIDS_001",
-        "collection_type":"mous",
-        "category":"mous_details",
-        "action": "delete",
-        "title": "Deletion of MOU",
-        "meta_data": 
-        {
-            "S_NO": 11,
-            "ORGANISATION_NAME": "VEC",
-            "MONTH_AND_YEAR": "15-09-2025",
-            "VALIDITY": "5 Years",
-            "LOGO_PATH": "/static/images/mous/001/VEC.jpg",
-            "PDF_PATH": "VEC.pdf",
-            "ACTIVITIES_PLANNED": 
-            [
-                "AI Research Collaboration",
-                "Industry Internships",
-                "Faculty Training Programs"
-            ]
-        }
-    },
-    {
-        "collectionName": "AIDS_001",
-        "collection_type":"mous",
-        "category":"mous_details",
-        "action": "update",
-        "title": "updation of MOU",
-        "original_data": 
-        {
-            "S_NO": 11,
-            "ORGANISATION_NAME": "VEC",
-            "MONTH_AND_YEAR": "15-09-2025",
-            "VALIDITY": "5 Years",
-            "LOGO_PATH": "/static/images/mous/001/VEC.jpg",
-            "PDF_PATH": "VEC.pdf",
-            "ACTIVITIES_PLANNED": 
-            [
-                "AI Research Collaboration",
-                "Industry Internships",
-                "Faculty Training Programs"
-            ]
-        },
-        "meta_data": 
-        {
-            "VALIDITY": "6 Years",
-            "ACTIVITIES_PLANNED": 
-            [
-                "Cybersecurity Initiatives",
-                "Cloud Solutions",
-                "AI Security Research"
-            ]
-        }
-    }
+  "collectionName": "AIDS_001",
+  "collection_type": "mous",
+  "action": "insert",
+  "title": "insert mou",
+  "category": "mous_details",
+  "meta_data": {
+    "ORGANISATION_NAME": "Infosys Limited",
+    "MONTH_AND_YEAR": "12-01-2025",
+    "VALIDITY": "5 Years"
+  }
+},
+
+{
+  "collectionName": "AIDS_001",
+  "collection_type": "mous",
+  "action": "update",
+  "title": "update mou",
+  "category": "mous_details",
+  "meta_data": {
+    "ORGANISATION_NAME": "Infosys Limited",
+    "MONTH_AND_YEAR": "12-01-2025",
+    "VALIDITY": "10 Years"
+  },
+  "original_data": {
+    "ORGANISATION_NAME": "Infosys Limited",
+    "MONTH_AND_YEAR":"12-01-2025",
+    "VALIDITY":"5 Years"
+  }
+},
+
+{
+  "collectionName": "AIDS_001",
+  "collection_type": "mous",
+  "action": "delete",
+  "title": "delete mou",
+  "category": "mous_details",
+  "meta_data": {
+    "ORGANISATION_NAME": "Infosys Limited",
+    "MONTH_AND_YEAR":"12-01-2025",
+    "VALIDITY":"10 Years"
+  }
+}
+
+
+
 ]
