@@ -131,66 +131,59 @@ const AdminMBA = ({ theme, toggle }) => {
     }
 
     /* -------------------- GOVERNMENT LINK UPDATE -------------------- */
-    if (action === "GovLinkEdited") {
-      return {
-        collectionName: "admissions",
-        collection_type: "mba",
-        action: "update",
-        title: "Update MBA Government Quota Link",
+   /* -------------------- GOVERNMENT LINK UPDATE -------------------- */
+if (action === "GovLinkEdited") {
+  return {
+    collectionName: "admissions",
+    collection_type: "mba",
+    action: "update",
+    title: "Update MBA Government Link",
 
-        meta_data: {
-          data: {
-            year,
-            MBA_Government: {
-              MBA_Government_link_name: newData.linkName,
-              // ✅ keep old pdf if new one not uploaded
-              pdf_path: newData.pdfPath ?? oldData.pdfPath,
-            },
-          },
-        },
+    meta_data: {
+      year,
+      MBA_Government: {
+        MBA_Government_link_name: newData.linkName,
+        pdf_path: newData.pdfPath ?? oldData.pdfPath,
+      },
+    },
 
-        original_data: {
-          data: {
-            year,
-            MBA_Government: {
-              MBA_Government_link_name: oldData.linkName,
-              pdf_path: oldData.pdfPath,
-            },
-          },
-        },
-      };
-    }
+    original_data: {
+      year,
+      MBA_Government: {
+        MBA_Government_link_name: oldData.linkName,
+        pdf_path: oldData.pdfPath,
+      },
+    },
+  };
+}
 
-    /* -------------------- MANAGEMENT LINK UPDATE -------------------- */
-    if (action === "MgmtLinkEdited") {
-      return {
-        collectionName: "admissions",
-        collection_type: "mba",
-        action: "update",
-        title: "Update MBA Management Quota Link",
 
-        meta_data: {
-          data: {
-            year,
-            MBA_Management: {
-              MBA_Management_link_name: newData.linkName,
-              // ✅ keep old pdf if new one not uploaded
-              pdf_path: newData.pdfPath ?? oldData.pdfPath,
-            },
-          },
-        },
+   /* -------------------- MANAGEMENT LINK UPDATE -------------------- */
+if (action === "MgmtLinkEdited") {
+  return {
+    collectionName: "admissions",
+    collection_type: "mba",
+    action: "update",
+    title: "Update MBA Management Link",
 
-        original_data: {
-          data: {
-            year,
-            MBA_Management: {
-              MBA_Management_link_name: oldData.linkName,
-              pdf_path: oldData.pdfPath,
-            },
-          },
-        },
-      };
-    }
+    meta_data: {
+      year,
+      MBA_Management: {
+        MBA_Management_link_name: newData.linkName,
+        pdf_path: newData.pdfPath ?? oldData.pdfPath,
+      },
+    },
+
+    original_data: {
+      year,
+      MBA_Management: {
+        MBA_Management_link_name: oldData.linkName,
+        pdf_path: oldData.pdfPath,
+      },
+    },
+  };
+}
+
 
     /* -------------------- DELETE MBA -------------------- */
     if (action === "Deleted") {
@@ -1007,7 +1000,7 @@ const AdminMBA = ({ theme, toggle }) => {
                     <th>Government Quota Intake</th>
                     <th>Management Quota Intake</th>
                     <th>Total Intake</th>
-                    {isEditing && <th>Actions</th>}
+                    {/* {isEditing && <th>Actions</th>} */}
                   </tr>
                 </thead>
                 <tbody>
@@ -1064,7 +1057,7 @@ const AdminMBA = ({ theme, toggle }) => {
                         )}
                       </td>
                       <td>{row.totalIntake}</td>
-                      {isEditing && (
+                      {/* {isEditing && (
                         <td className="text-center">
                           <input
                             type="checkbox"
@@ -1075,12 +1068,12 @@ const AdminMBA = ({ theme, toggle }) => {
                             className="w-4 h-4 cursor-pointer"
                           />
                         </td>
-                      )}
+                      )} */}
                     </tr>
                   ))}
                   {isEditing && (
                     <tr>
-                      <td colSpan={5}>
+                      {/* <td colSpan={5}>
                         <div className="flex justify-center items-center gap-2">
                           <button
                             onClick={handleAddNew}
@@ -1098,7 +1091,7 @@ const AdminMBA = ({ theme, toggle }) => {
                             </button>
                           )}
                         </div>
-                      </td>
+                      </td> */}
                     </tr>
                   )}
                 </tbody>

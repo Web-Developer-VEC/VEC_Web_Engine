@@ -629,7 +629,7 @@ const AdminME = ({ theme, toggle }) => {
                     <th>Government Quota Intake</th>
                     <th>Management Quota Intake</th>
                     <th>Total Intake</th>
-                    {pgedit && <th>Actions</th>}
+                    {/* {pgedit && <th>Actions</th>} */}
                   </tr>
                 </thead>
                 <tbody>
@@ -703,7 +703,7 @@ const AdminME = ({ theme, toggle }) => {
                           )}
                         </td>
                         <td>{courseDetails["Total Intakes"]}</td>
-                        {pgedit && (
+                        {/* {pgedit && (
                           <td className="text-center">
                             <input
                               type="checkbox"
@@ -722,13 +722,13 @@ const AdminME = ({ theme, toggle }) => {
                               }}
                             />
                           </td>
-                        )}
+                        )} */}
                       </tr>
                     );
                   })}
                   {pgedit && (
                     <tr>
-                      <td colSpan={5}>
+                      {/* <td colSpan={5}>
                         <div className="flex justify-center items-center gap-2">
                           <button
                             onClick={handleAddNewRow}
@@ -746,7 +746,7 @@ const AdminME = ({ theme, toggle }) => {
                             </button>
                           )}
                         </div>
-                      </td>
+                      </td> */}
                     </tr>
                   )}
                 </tbody>
@@ -869,7 +869,11 @@ const AdminME = ({ theme, toggle }) => {
                           <>
                             <b>{Object.keys(req.row)[0]}</b>
                           </>
-                        ) : null}
+                        ) : req.type === "YearEdited" ? (
+                          <>
+                            <b>Year</b> 
+                          </>
+                          ) : null}
                       </td>
 
                       <td className="p-2 border">

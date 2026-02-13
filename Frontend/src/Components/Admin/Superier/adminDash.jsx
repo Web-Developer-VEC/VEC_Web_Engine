@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Trash2, Plus, Check, X, Clock, TrendingUp, Users, FileText, Activity, Power } from "lucide-react"
+import { Trash2, Plus, Check, X, Clock, TrendingUp, Users, FileText, Activity, Power, Phone } from "lucide-react"
 import PastRequestsPage from "./pastReq"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
@@ -8,6 +8,9 @@ import { LogOut } from "react-feather"
 export default function AdminDashboard() {
   const [currentView, setCurrentView] = useState("dashboard")
   const [pendingRequests, setPendingRequests] = useState([])
+  const [showProfilePopup, setShowProfilePopup] = useState(false)
+
+  const adminDetails = JSON.parse(sessionStorage.getItem("userSession"))
   const navigate = useNavigate()
 
   const [pastDecisions, setPastDecisions] = useState([
@@ -47,6 +50,17 @@ export default function AdminDashboard() {
     }
     fetchData()
   }, [])
+
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (!event.target.closest(".profile-container")) {
+      setShowProfilePopup(false)
+    }
+  }
+
+  document.addEventListener("click", handleClickOutside)
+  return () => document.removeEventListener("click", handleClickOutside)
+}, [])
 
   const handleRequestClick = (request) => {
     navigate("/admin_approval", {
@@ -92,18 +106,37 @@ export default function AdminDashboard() {
               </div>
             </div>
             <div className="flex items-center gap-6">
-              <div className="hidden md:flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                <div className="text-right">
-                  <p className="text-white font-semibold">Superior Admin</p>
-                  <p className="text-emerald-100 text-sm">Online</p>
-                </div>
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
+              <div className="relative profile-container">
+                <div
+                  onClick={() => setShowProfilePopup(!showProfilePopup)}
+                  className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-105 transition"
+                >
                   <span className="text-white font-bold text-lg">SA</span>
                 </div>
+
+                {showProfilePopup && (
+                  <div className="absolute right-0 mt-3 w-72 bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 z-50">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">
+                        {adminDetails.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-800">{adminDetails.name}</p>
+                        <p className="text-sm text-gray-500 capitalize">{adminDetails.role.replace("_", " ")}</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 text-sm text-gray-600">
+                      <p><strong>Email:</strong> {adminDetails.email}</p>
+                      <p><strong>Phone:</strong> {adminDetails.phone_no}</p>
+                    </div>
+
+                    <button className="flex items-center gap-2 text-black px-3 py-3 m-auto transition-all duration-300" onClick={handleLogout}>
+                      Logout <LogOut />
+                    </button>
+                  </div>
+                )}
               </div>
-              <button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-6 py-3 rounded-xl border border-white/20 transition-all duration-300 hover:scale-105" onClick={handleLogout}>
-                Logout <Power />
-              </button>
             </div>
           </div>
         </div>

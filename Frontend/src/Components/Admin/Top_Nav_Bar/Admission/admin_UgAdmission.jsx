@@ -24,16 +24,73 @@ const AdminUgAdmission = ({ theme, toggle }) => {
     newData,
     oldData = null,
   }) => {
+    /* -------------------- UPDATE BE GOVERNMENT -------------------- */
+    if (action === "Update_BE_Government") {
+      return {
+        collectionName: "admissions",
+        collection_type: "ug",
+        action: "update",
+        title: "Update BE Government Link",
+        category: null,
+        meta_data: {
+            year: String(year),
+            BE_Government: {
+              BE_Government_link_name: newData.link_name,
+              pdf_path: newData.pdf_path,
+            },
+        },
+
+        original_data: {
+
+            year: String(year),
+            BE_Government: {
+              BE_Government_link_name: oldData.link_name,
+              pdf_path: oldData.pdf_path,
+            },
+        },
+
+        admin: {
+          status: "pending",
+        },
+      };
+    }
+    /* -------------------- UPDATE YEAR -------------------- */
+    if (action === "Update_Year") {
+      return {
+        collectionName: "admissions",
+        collection_type: "ug",
+        action: "update",
+        title: "Update Year",
+        category: null,
+
+        meta_data: {
+          data: {
+            year: String(newData.year),
+          },
+        },
+
+        original_data: {
+          data: {
+            year: String(oldData.year),
+          },
+        },
+
+        admin: {
+          status: "pending",
+        },
+      };
+    }
+
     /* -------------------- ADD -------------------- */
     if (action === "Added") {
       return {
-        collection: "admissions",
+        collectionName: "admissions",
         collection_type: "ug",
         action: "insert",
         title: `Add ${newData.course} to ${level}`,
         category: null,
         meta_data: {
-          year,
+          year: String(year),
           [level]: [
             {
               [newData.course]: {
@@ -45,16 +102,14 @@ const AdminUgAdmission = ({ theme, toggle }) => {
           ],
         },
         original_data: null,
-        admin: {
-          status: "pending",
-        },
+        admin: { status: "pending" },
       };
     }
 
     /* -------------------- EDIT -------------------- */
     if (action === "Edited") {
       return {
-        collection: "admissions",
+        collectionName: "admissions",
         collection_type: "ug",
         action: "update",
         title: "Update UG Intake",
@@ -62,7 +117,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
 
         meta_data: {
           data: {
-            year,
+            year: String(year),
             [level]: [
               {
                 [newData.course]: {
@@ -77,7 +132,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
 
         original_data: {
           data: {
-            year,
+            year: String(year),
             [level]: [
               {
                 [oldData.course]: {
@@ -90,29 +145,55 @@ const AdminUgAdmission = ({ theme, toggle }) => {
           },
         },
 
-        admin: {
-          status: "pending",
-        },
+        admin: { status: "pending" },
       };
     }
 
     /* -------------------- DELETE -------------------- */
     if (action === "Deleted") {
       return {
-        collection: "admissions",
+        collectionName: "admissions",
         collection_type: "ug",
         action: "delete",
-        title: `Delete department from ${level}`,
+        title: `Delete ${newData.course} from ${level}`,
         category: null,
         meta_data: {
-          year,
-          [level]: [
-            {
-              [newData.course]: {},
-            },
-          ],
+          year: String(year),
+          [level]: [{ [newData.course]: {} }],
         },
         original_data: null,
+        admin: { status: "pending" },
+      };
+    }
+    /* -------------------- UPDATE BE MANAGEMENT -------------------- */
+    if (action === "Update_BE_Management") {
+      return {
+        collectionName: "admissions",
+        collection_type: "ug",
+        action: "update",
+        title: "Update BE Management Link",
+        category: null,
+
+        meta_data: {
+          data: {
+            year: String(year),
+            BE_Management: {
+              BE_Management_link_name: newData.link_name,
+              pdf_path: newData.pdf_path,
+            },
+          },
+        },
+
+        original_data: {
+          data: {
+            year: String(year),
+            BE_Management: {
+              BE_Management_link_name: oldData.link_name,
+              pdf_path: oldData.pdf_path,
+            },
+          },
+        },
+
         admin: {
           status: "pending",
         },
@@ -1128,63 +1209,70 @@ const AdminUgAdmission = ({ theme, toggle }) => {
 
     /* -------------------- PDF UPDATES -------------------- */
 
-    if (beGovLinkFile) {
-      payloads.push({
-        collectionName: "admissions",
-        collection_type: "ug",
-        action: "update",
-        title: "Update BE Government PDF",
-        category: null,
+   if (beGovLinkFile) {
+  payloads.push({
+    collectionName: "admissions",
+    collection_type: "ug",
+    action: "update",
+    title: "Update BE Government PDF",
+    category: null,
 
-        // ✅ NEW DATA
-        meta_data: {
-          type: "BE_Government",
-          link_name: beGovLinkName,
-          pdf_path: `/static/images/admission_team/${beGovLinkFile.name}`,
+    meta_data: {
+        year: String(editableYearUG),
+        BE_Government: {
+          BE_Government_link_name: beGovLinkName || "",
+          pdf_path: `/static/pdfs/admission/${beGovLinkFile.name}`,
         },
+    },
 
-        // ✅ OLD DATA
-        original_data: {
-          type: "BE_Government",
-          link_name:
-            originalRef.current?.BE_Government?.BE_Government_link_name || "",
-          pdf_path: originalRef.current?.BE_Government?.pdf_path || "",
+    original_data: {
+        year: String(originalRef.current?.year || editableYearUG),
+        BE_Government: {
+          BE_Government_link_name:
+            originalRef.current?.BE_Government
+              ?.BE_Government_link_name || "",
+          pdf_path:
+            originalRef.current?.BE_Government?.pdf_path || "",
         },
+    },
 
-        admin: {
-          status: "pending",
+    admin: {
+      status: "pending",
+    },
+  });
+}
+if (beMgmtLinkFile) {
+  payloads.push({
+    collectionName: "admissions",
+    collection_type: "ug",
+    action: "update",
+    title: "Update BE Management PDF",
+    category: null,
+
+    meta_data: {
+        year: String(editableYearUG),
+        BE_Management: {
+          BE_Management_link_name: beMgmtLinkName || "",
+          pdf_path: `/static/pdfs/admission/${beMgmtLinkFile.name}`,
         },
-      });
-    }
+    },
 
-    if (beMgmtLinkFile) {
-      payloads.push({
-        collectionName: "admissions",
-        collection_type: "ug",
-        action: "update",
-        title: "Update BE Management PDF",
-        category: null,
-
-        // ✅ NEW DATA
-        meta_data: {
-          type: "BE_Management",
-          link_name: beMgmtLinkName,
-          pdf_path: `/static/images/admission_team/${beMgmtLinkFile.name}`,
+    original_data: {
+        year: String(originalRef.current?.year || editableYearUG),
+        BE_Management: {
+          BE_Management_link_name:
+            originalRef.current?.BE_Management
+              ?.BE_Management_link_name || "",
+          pdf_path:
+            originalRef.current?.BE_Management?.pdf_path || "",
         },
+    },
 
-        // ✅ OLD DATA
-        original_data: {
-          type: "BE_Management",
-          link_name:
-            originalRef.current?.BE_Management?.BE_Management_link_name || "",
-          pdf_path: originalRef.current?.BE_Management?.pdf_path || "",
-        },
-
-        admin: {
-          status: "pending",
-        },
-      });
-    }
+    admin: {
+      status: "pending",
+    },
+  });
+}
 
     /* -------------------- UG / LATERAL CHANGES -------------------- */
 
@@ -1273,23 +1361,167 @@ const AdminUgAdmission = ({ theme, toggle }) => {
         );
       }
     });
+    /* -------------------- BE GOVERNMENT PDF UPDATE -------------------- */
+    if (beGovLinkFile) {
+      payloads.push(
+        buildUgAdmissionPayload({
+          action: "Update_BE_Government",
+          year: editableYearUG,
+          newData: {
+            link_name: beGovLinkName,
+            pdf_path: `/static/pdfs/admission/${beGovLinkFile.name}`,
+          },
+          oldData: {
+            link_name:
+              originalRef.current?.BE_Government?.BE_Government_link_name || "",
+            pdf_path: originalRef.current?.BE_Government?.pdf_path || "",
+          },
+        }),
+      );
+    }
+    /* -------------------- BE MANAGEMENT PDF UPDATE -------------------- */
+    if (beMgmtLinkFile) {
+      payloads.push(
+        buildUgAdmissionPayload({
+          action: "Update_BE_Management",
+          year: editableYearUG,
+          newData: {
+            link_name: beMgmtLinkName,
+            pdf_path: `/static/pdfs/admission/${beMgmtLinkFile.name}`,
+          },
+          oldData: {
+            link_name:
+              originalRef.current?.BE_Management?.BE_Management_link_name || "",
+            pdf_path: originalRef.current?.BE_Management?.pdf_path || "",
+          },
+        }),
+      );
+    }
+    /* -------------------- YEAR UPDATE -------------------- */
+    if (editableYearUG !== originalRef.current?.year) {
+      payloads.push(
+        buildUgAdmissionPayload({
+          action: "Update_Year",
+          newData: {
+            year: editableYearUG,
+          },
+          oldData: {
+            year: originalRef.current?.year,
+          },
+        }),
+      );
+    }
+    // BE GOVERNMENT
+if (
+  beGovLinkFile ||
+  beGovLinkName !==
+    originalRef.current?.BE_Government?.BE_Government_link_name
+) {
+  payloads.push(
+    buildUgAdmissionPayload({
+      action: "Update_BE_Government",
+      year: editableYearUG,
+      newData: {
+        link_name: beGovLinkName,
+        pdf_path: beGovLinkFile
+          ? `/static/pdfs/admission/${beGovLinkFile.name}`
+          : originalRef.current?.BE_Government?.pdf_path,
+      },
+      oldData: {
+        link_name:
+          originalRef.current?.BE_Government?.BE_Government_link_name || "",
+        pdf_path:
+          originalRef.current?.BE_Government?.pdf_path || "",
+      },
+    }),
+  );
+}
+
+// BE MANAGEMENT
+if (
+  beMgmtLinkFile ||
+  beMgmtLinkName !==
+    originalRef.current?.BE_Management?.BE_Management_link_name
+) {
+  payloads.push(
+    buildUgAdmissionPayload({
+      action: "Update_BE_Management",
+      year: editableYearUG,
+      newData: {
+        link_name: beMgmtLinkName,
+        pdf_path: beMgmtLinkFile
+          ? `/static/pdfs/admission/${beMgmtLinkFile.name}`
+          : originalRef.current?.BE_Management?.pdf_path,
+      },
+      oldData: {
+        link_name:
+          originalRef.current?.BE_Management?.BE_Management_link_name || "",
+        pdf_path:
+          originalRef.current?.BE_Management?.pdf_path || "",
+      },
+    }),
+  );
+}
+
 
     /* -------------------- FILES -------------------- */
 
     const files = [];
-    if (beGovLinkFile) files.push({ field: "be_gov_pdf", file: beGovLinkFile });
-    if (beMgmtLinkFile)
-      files.push({ field: "be_mgmt_pdf", file: beMgmtLinkFile });
+    if (beGovLinkFile) files.push(beGovLinkFile);
+    if (beMgmtLinkFile) files.push(beMgmtLinkFile);
 
-    try {
-      await sendRequest(payloads, files);
-      toast.success("UG Admission request submitted successfully!");
-      setShowPopup(false);
-      setIsSaved(false);
-    } catch (err) {
-      console.error(err);
-      toast.error("Failed to submit UG Admission request");
-    }
+    console.log("app", payloads, files);
+  try {
+    await sendRequest(payloads, files);
+
+  // ✅ BUILD FINAL DATA FROM EDITABLE STATE
+  const committedData = {
+    ...(ugData || {}),
+    year: editableYearUG,
+    year_lateral: editableYearLateral,
+
+    BE_Government: {
+      ...(ugData?.BE_Government || {}),
+      BE_Government_link_name: beGovLinkName,
+    },
+
+    BE_Management: {
+      ...(ugData?.BE_Management || {}),
+      BE_Management_link_name: beMgmtLinkName,
+    },
+
+    UG: editableUGRows.map((r) => ({
+      [r.course]: {
+        "Government Quota Intakes": Number(r.governmentQuota),
+        "Management Quota Intakes": Number(r.managementQuota),
+        "Total Intakes": Number(r.totalIntake),
+      },
+    })),
+
+    UG_Lateral: editableLateralRows.map((r) => ({
+      [r.course]: {
+        "Government Quota Intakes": Number(r.governmentQuota),
+        "Management Quota Intakes": Number(r.managementQuota),
+        "Total Intakes": Number(r.totalIntake),
+      },
+    })),
+  };
+
+  // ✅ PROMOTE AS BASELINE
+  setUgData(committedData);
+  originalRef.current = committedData;
+
+  // ✅ RESET UI STATE
+  setIsEditing(false);
+  setIsSaved(false);
+  setShowPopup(false);
+  setChangeList([]);
+
+  toast.success("Request submitted. Changes are pending approval.");
+} catch (err) {
+  console.error(err);
+  toast.error("Failed to submit UG Admission request");
+}
   };
 
   // ---------- Table rendering helper ----------
@@ -1318,7 +1550,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
                 <th className="ugHeader">GOVERNMENT QUOTA INTAKE</th>
                 <th className="ugHeader">MANAGEMENT QUOTA INTAKE</th>
                 <th className="ugHeader">TOTAL INTAKE</th>
-                {isEditing && <th className="ugHeader">Actions</th>}
+                {/* {isEditing && <th className="ugHeader">Actions</th>} */}
               </tr>
             </thead>
             <tbody>
@@ -1375,7 +1607,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
                         />
                       </td>
                       <td>{row.totalIntake}</td>
-                      <td className="text-center">
+                      {/* <td className="text-center">
                         <input
                           type="checkbox"
                           checked={row.isSelected || false}
@@ -1383,7 +1615,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
                             onCheckboxChange(idx, e.target.checked)
                           }
                         />
-                      </td>
+                      </td> */}
                     </tr>
                   ))
                 : // non-editing view uses dataArray (original UG or Lateral)
@@ -1416,7 +1648,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
 
               {isEditing && (
                 <tr>
-                  <td colSpan={isEditing ? 5 : 4}>
+                  {/* <td colSpan={isEditing ? 5 : 4}>
                     <div className="flex justify-center items-center gap-2">
                       <button
                         onClick={onAdd}
@@ -1438,7 +1670,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
                         </button>
                       )}
                     </div>
-                  </td>
+                  </td> */}
                 </tr>
               )}
             </tbody>
