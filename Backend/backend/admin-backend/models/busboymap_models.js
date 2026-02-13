@@ -23,6 +23,7 @@ const hodHandler = require("../controllers/top_navbar/academics_controllers/hod_
 const admissionsHandler = require("../controllers/top_navbar/admission_controllers/admission_busboy")
 const otherFacilitiesHandler = require("../controllers/second_navbar/other_facilities_controllers/other_facilties_busboy")
 const academiccalendarHandler = require("../controllers/top_navbar/academics_controllers/academic_calendar_controllers/calendar_busboy")
+const newsletterHandler = require("../controllers/top_navbar/academics_controllers/newsletter_controllers/newsletterbusboy");
 const busboyModels = {
   // Testing Complete
   about_us: aboutusHandler,
@@ -53,7 +54,8 @@ const busboyModels = {
   other_facilities: otherFacilitiesHandler,
  
   // ACADEMICS 
-  academics: academiccalendarHandler
+  academics: academiccalendarHandler,
+  AIDS_001: newsletterHandler,
 };
 
 module.exports = busboyModels;
