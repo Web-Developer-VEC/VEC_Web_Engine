@@ -10,37 +10,8 @@ const AlumniSlider1 = ({data}) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-
-  // useEffect(() => {
-  //   const fetchAwards = async () => {
-  //     try {
-  //       const response = await axios.get("/api/ncc_navy");
-
-  //       if (
-  //         Array.isArray(response.data) &&
-  //         response.data.length > 0 &&
-  //         response.data[0].awards &&
-  //         response.data[0].awards.image_path
-  //       ) {
-  //         const awards = response.data?.awards;
-
-  //         // Build array of { image, description }
-  //         const parsedData = awards.image_path.map((img, i) => ({
-  //           image: UrlParser(img),
-  //           description: awards.des[i],
-  //         }));
-
-  //         setAwardData(parsedData);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching award data:", error);
-  //     }
-  //   };
-
-  //   fetchAwards();
-  // }, []);
 
   // Auto-slide functionality
   useEffect(() => {
@@ -82,7 +53,7 @@ const AlumniSlider1 = ({data}) => {
                 }}
               >
                 <img
-                  src={item?.image_path}
+                  src={UrlParser(item?.image_path)}
                   alt={`Award ${index + 1}`}
                   className="w-full h-80 object-contain rounded-t-lg"
                 />

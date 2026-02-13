@@ -127,9 +127,6 @@ function NCCMotto({data}) {
 
 
 const NCC_NAVY = ({ toggle, theme }) => {
-  const [member,setMember]= useState({})
-  const [tabel,setTabelValue] = useState({});
-  const [curosel, setCarosel] = useState({});
   const [ Coordinator, setCoordinator] = useState({});
   const [ncc_navy, setnavy] = useState("About NCC Navy");
   const [navydata, setnavdata] = useState(null);
