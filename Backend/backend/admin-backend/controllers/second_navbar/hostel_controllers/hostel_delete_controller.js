@@ -37,9 +37,16 @@ async function deleteData(tempDoc, mainCollection) {
       if (catIndex === -1) throw new Error("Category not found");
 
       doc.data[catIndex].members = doc.data[catIndex].members.filter(
-        (m) => !Object.keys(meta_data).every((k) => m[k] === meta_data[k])
-      );
+        (m) => {
+          console.log("War ", m);
 
+          return !Object.keys(meta_data).every((k) => {
+            console.log(m[k]," => ",meta_data[k]);
+            
+            return m[k] === meta_data[k]
+          })
+        }
+      );
       await mainCollection.updateOne(
         { type: "warden" },
         { $set: { data: doc.data } }

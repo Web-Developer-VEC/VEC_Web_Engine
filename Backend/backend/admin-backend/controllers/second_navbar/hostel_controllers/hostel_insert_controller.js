@@ -15,30 +15,34 @@ async function insertData(tempDoc, mainCollection) {
 
     // ---------- ABOUT ----------
     if (collection_type === "about") {
-  // get existing about object (always first item)
-  const existingData =
-    Array.isArray(doc.data) && doc.data.length > 0
-      ? doc.data[0]
-      : {};
 
-  // merge meta_data into existing object (overwrite only)
-  const updatedAbout = {
-    ...existingData,
-    ...meta_data,
-  };
+      if (!doc?.data?.length) {
+        return {
+          success: false,
+          message: "About record not found"
+        };
+      }
 
-  await mainCollection.updateOne(
-    { type: "about" },
-    { $set: { data: [updatedAbout] } } // always keep array with one object
-  );
+      if (!Array.isArray(meta_data) || !meta_data.length) {
+        return {
+          success: false,
+          message: "Invalid payload"
+        };
+      }
 
-  return {
-    success: true,
-    message: "About data updated successfully",
-    data: [updatedAbout],
-  };
-}
+      const cleanObject = meta_data[0]; // ← IMPORTANT
 
+      await mainCollection.updateOne(
+        { type: "about" },
+        { $set: { "data.0": cleanObject } }
+      );
+
+      return {
+        success: true,
+        message: "About updated correctly",
+        data: [cleanObject]
+      };
+    }
 
     // ---------- HOSTEL FACILITIES ----------
     if (collection_type === "hostel_facilities") {
