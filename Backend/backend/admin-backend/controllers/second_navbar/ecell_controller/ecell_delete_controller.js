@@ -1,4 +1,4 @@
-// ------------------- DELETE -------------------   
+// ------------------- DELETE -------------------
 async function deleteData(tempDoc, mainCollection) {
   try {
     const { collection_type, meta_data } = tempDoc;
@@ -10,46 +10,34 @@ async function deleteData(tempDoc, mainCollection) {
     const doc = await mainCollection.findOne({ type: collection_type });
     if (!doc) throw new Error("Type not found");
 
-    // ---------- ABOUT ----------
-    if (collection_type === "about") {
-      if (meta_data.mission) {
-        doc.data[0].mission = doc.data[0].mission.filter((m) => m !== meta_data.mission);
-      } else {
-        throw new Error("Only mission deletion is supported");
-      }
-
-      await mainCollection.updateOne(
-        { type: "about" },
-        { $set: { data: doc.data } }
-      );
-
-      return { success: true, message: "Mission deleted successfully", data: doc.data };
-    }
-
-
     // ---------- COMMITTEE ----------
     if (collection_type === "committee") {
       const updatedData = doc.data.filter(
-        (item) => !Object.keys(meta_data).every((k) => item[k] === meta_data[k])
+        (item) =>
+          !Object.keys(meta_data).every((k) => item[k] === meta_data[k]),
       );
 
       await mainCollection.updateOne(
         { type: "committee" },
-        { $set: { data: updatedData } }
+        { $set: { data: updatedData } },
       );
 
-      return { success: true, message: "Committee member deleted successfully" };
+      return {
+        success: true,
+        message: "Committee member deleted successfully",
+      };
     }
 
     // ---------- ENTREPRENEUR ----------
     if (collection_type === "enterpreneur") {
       const updatedData = doc.data.filter(
-        (item) => !Object.keys(meta_data).every((k) => item[k] === meta_data[k])
+        (item) =>
+          !Object.keys(meta_data).every((k) => item[k] === meta_data[k]),
       );
 
       await mainCollection.updateOne(
         { type: "enterpreneur" },
-        { $set: { data: updatedData } }
+        { $set: { data: updatedData } },
       );
 
       return { success: true, message: "Entrepreneur deleted successfully" };
@@ -58,12 +46,13 @@ async function deleteData(tempDoc, mainCollection) {
     // ---------- ACTIVITY ----------
     if (collection_type === "activity") {
       const updatedData = doc.data.filter(
-        (item) => !Object.keys(meta_data).every((k) => item[k] === meta_data[k])
+        (item) =>
+          !Object.keys(meta_data).every((k) => item[k] === meta_data[k]),
       );
 
       await mainCollection.updateOne(
         { type: "activity" },
-        { $set: { data: updatedData } }
+        { $set: { data: updatedData } },
       );
 
       return { success: true, message: "Activity deleted successfully" };
@@ -71,14 +60,35 @@ async function deleteData(tempDoc, mainCollection) {
 
     // ---------- GALLERY ----------
     if (collection_type === "gallery") {
-      const updatedData = doc.data.filter((path) => path !== meta_data.image_path);
+      if (
+        !Array.isArray(meta_data.image_path) ||
+        meta_data.image_path.length === 0
+      ) {
+        throw new Error("meta_data.image_path must be a non-empty array");
+      }
+
+      if (!Array.isArray(doc.data)) {
+        throw new Error("Gallery data is not an array");
+      }
+
+      const updatedData = doc.data.filter(
+        (path) => !meta_data.image_path.includes(path),
+      );
+
+      if (updatedData.length === doc.data.length) {
+        throw new Error("No matching image paths found to delete");
+      }
 
       await mainCollection.updateOne(
         { type: "gallery" },
-        { $set: { data: updatedData } }
+        { $set: { data: updatedData } },
       );
 
-      return { success: true, message: "Gallery image deleted successfully" };
+      return {
+        success: true,
+        message: "Gallery image(s) deleted successfully",
+        data: updatedData,
+      };
     }
 
     throw new Error("Invalid collection type");

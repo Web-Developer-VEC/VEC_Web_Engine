@@ -1,14 +1,31 @@
 [   
     {
-      "action":"insert",
+      "action":"update",
       "collectionName":"ecell",
-      "title":"coolie",
+      "title":"update",
       "collection_type":"about",
-      "meta_data": 
-      {
-        "mission": "To promote collaboration with industries()."
-      }
-
+      "original_data": 
+       {
+      "about": "LemonIvy started in 2008 to nurture spirit of entrepreneurship among fellow students. Velammal Engineering College is one of the 500 member institutions of the National Entrepreneurship Network (NEN-supported by Wadhwani Foundation) across the country. LemonIvy aims at making the student members aware of the different start-up terminologies and also give them the confidence to start their own business venture with the available resources. With the same kind of spark, zeal and out-of-the box thinking to go a long way in spreading the spirit of entrepreneurship.",
+      "vision": "To train our members, so as to face the challenges provided by the real world by exposing them to real world problems and also give them theoretical background and to inspire them to attain their dreams.",
+      "mission": [
+        "To make each and every member achieve his entrepreneurial dreams by providing",
+        "A platform for expressing their views.",
+        "An atmosphere where idea generation is made possible.",
+        "An interaction with the real world to get overall exposure."
+      ]
+    },
+      "meta_data":
+       {
+      "about":["LemonIvy started in 2008 to nurture spirit of entrepreneurship among fellow students. Velammal Engineering College is one of the 500 member institutions of the National Entrepreneurship Network (NEN-supported by Wadhwani Foundation) across the country. LemonIvy aims at making the student members aware of the different start-up terminologies and also give them the confidence to start their own business venture with the available resources. With the same kind of spark, zeal and out-of-the box thinking to go a long way in spreading the spirit of entrepreneurship.",
+                "dinesh"],
+      "vision": "hello",
+      "mission": [
+        "To make each and every member achieve his entrepreneurial dreams by providing",
+        "A platform for expressing their views.",
+        "An atmosphere where idea generation is made possible."
+      ]
+    }
     },
     {
       "action":"insert",
@@ -17,10 +34,40 @@
       "collection_type":"committee",
       "meta_data": 
        {
-            "name": "Dr.A.LEO DAS",
-            "position": "Head",
-            "affiliation": "Head - Dept. of Thuganomics"
-       }
+           "name": "Dr.A.LEO DAS",
+           "position": "Head",
+           "affiliation": "Head - Dept. of Thuganomics"
+        }
+    },
+    {
+        "action":"update",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"committee",
+        "original_data": 
+            {
+                "name": "VIDHYALAKHMI T",
+                "position": "Student President",
+                "affiliation": "Student - CSE-CS"
+            },
+        "meta_data": 
+        {
+            "name": "DINESH PRABAKARAN T",
+            "position": "Student President",
+            "affiliation": "Student - CSE-CS"
+        }
+    },
+    {
+      "action":"delete",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"committee",
+      "meta_data": 
+        {
+            "name": "DINESH PRABAKARAN T",
+            "position": "Student President",
+            "affiliation": "Student - CSE-CS"
+        }
     },
     {
         "action":"insert",
@@ -32,6 +79,36 @@
             "name": "Kishan",
             "business_name": "Scorpio Pvt Ltd",
             "year": "2019-2023"
+        }
+    },
+    {
+        "action":"update",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"enterpreneur",
+        "original_data": 
+        {
+            "name": "NIRANJAN RAJ J",
+            "business_name": "Niranjan Travels, Namakal, Tamilnadu Logistic Service.",
+            "year": "2012-2016"
+        },
+        "meta_data": 
+        {
+            "name": "DINESH PRABAKARAN T",
+            "business_name": "Niranjan Travels, Namakal, Tamilnadu Logistic Service.",
+            "year": "2012-2016"
+        }
+    },
+    {
+      "action":"delete",
+      "collectionName":"ecell",
+      "title":"coolie",
+      "collection_type":"enterpreneur",
+      "meta_data": 
+        {
+            "name": "DINESH PRABAKARAN T",
+            "business_name": "Niranjan Travels, Namakal, Tamilnadu Logistic Service.",
+            "year": "2012-2016"
         }
     },
     {
@@ -46,126 +123,20 @@
         }
     },
     {
-        "action":"insert",
-        "collectionName":"ecell",
-        "title":"coolie",
-        "collection_type":"gallery",
-        "meta_data": 
-        {
-            "image_path": "/static/images/e_cell/10.webp"
-        }
-    },
-    {
-      "action":"update",
-      "collectionName":"ecell",
-      "title":"coolie",
-      "collection_type":"about",
-      "original_data": 
-      {
-        "mission": "To promote collaboration with industries()."
-      },
-      "meta_data":
-      { 
-            "mission":"To promote collaboration with industries."
-      }
-
-    },
-    {
-        "action":"update",
-        "collectionName":"ecell",
-        "title":"coolie",
-        "collection_type":"committee",
-        "original_data": 
-        {
-            "name":"Dr.A.LEO DAS",
-            "position":"Head",
-            "affiliation":"Head - Dept. of Thuganomics"
-        },
-        "meta_data": 
-        {
-            "position": "Head of Department"
-        }
-    },
-    {
-        "action":"update",
-        "collectionName":"ecell",
-        "title":"coolie",
-        "collection_type":"enterpreneur",
-        "original_data": 
-        {
-            "name": "Kishan",
-            "business_name": "Scorpio Pvt Ltd",
-            "year": "2019-2023"
-        },
-        "meta_data": 
-        {
-            "business_name": "Dass & Co"
-        }
-    },
-    {
         "action":"update",
         "collectionName":"ecell",
         "title":"coolie",
         "collection_type":"activity",
         "original_data": 
         {
-            "year":"2028 - 29",
-            "pdf_path":"/static/pdfs/e_cell/2028-2029.pdf"
+            "year": "2022 - 23",
+            "pdf_path": "/static/pdfs/e_cell/2022-2023.pdf"
         },
         "meta_data": 
         {
+            "year": "2022 - 23",
             "pdf_path": "/static/pdfs/e_cell/2028-2029-updated.pdf"
         }
-    },
-    {
-        "action":"update",
-        "collectionName":"ecell",
-        "title":"coolie",
-        "collection_type":"gallery",
-        "original_data": 
-        {
-            "image_path": "/static/images/e_cell/10.webp"
-        },
-        "meta_data": 
-        {
-            "image_path": "/static/images/e_cell/10new.webp"
-        }    
-  
-    },
-    {
-      "action":"delete",
-      "collectionName":"ecell",
-      "title":"coolie",
-      "collection_type":"about",
-      "meta_data":
-      { 
-            "mission":"To promote collaboration with industries."
-      }
-
-    },
-    {
-      "action":"delete",
-      "collectionName":"ecell",
-      "title":"coolie",
-      "collection_type":"committee",
-      "meta_data": 
-       {
-        "name": "Dr.A.LEO DAS",
-        "position": "Head",
-        "affiliation": "Head - Dept. of Thuganomics"
-       }
-    },
-    {
-      "action":"delete",
-      "collectionName":"ecell",
-      "title":"coolie",
-      "collection_type":"enterpreneur",
-      "meta_data": 
-      {
-        "name": "Kishan",
-        "business_name": "Dass & Co",
-        "year": "2019-2023"
-      }
     },
     {
       "action":"delete",
@@ -174,9 +145,35 @@
       "collection_type":"activity",
       "meta_data": 
       {
-        "year": "2028 - 29",
-        "pdf_path": "/static/pdfs/e_cell/2028-2029-updated.pdf"
-      }
+        "year": "2022 - 23",
+        "pdf_path": "/static/pdfs/e_cell/2022 - 23"
+    }
+    },
+    {
+        "action":"insert",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"gallery",
+        "meta_data": 
+        {
+            "image_path": ["/static/images/e_cell/10.webp"]
+        }
+    },
+    {
+        "action":"update",
+        "collectionName":"ecell",
+        "title":"coolie",
+        "collection_type":"gallery",
+        "original_data": 
+        {
+            "image_path":["/static/images/e_cell/4.webp",
+                        "/static/images/e_cell/5.webp"
+        ]
+        },
+        "meta_data": 
+        {
+        }    
+  
     },
     {
       "action":"delete",
@@ -185,7 +182,8 @@
       "collection_type":"gallery",
       "meta_data": 
       {
-        "image_path": "/static/images/e_cell/10new.webp"
+        "image_path": ["/static/images/e_cell/3.webp",
+    "/static/images/e_cell/6.webp"]
       }
 
     }

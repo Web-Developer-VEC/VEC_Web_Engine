@@ -6,17 +6,24 @@ async function facultyHandler(fileStream, docs, req, cb, filename, mimetype) {
     const realFilename =
       typeof filename === "string"
         ? filename
-        : filename?.filename || "image.jpg";
+        : filename?.filename || "file";
 
-    const effectiveMime = mimetype || filename?.mimeType || "image/jpeg";
+    const effectiveMime = mimetype || filename?.mimeType || "application/octet-stream";
 
-    // ✅ Allow only image formats
-    if (!effectiveMime.startsWith("image/")) {
+    // ✅ Allow only images and PDFs
+    const isImage = effectiveMime.startsWith("image/");
+    const isPdf = effectiveMime === "application/pdf";
+``
+    if (!isImage && !isPdf) {
       fileStream.resume();
-      return cb(new Error("Only images are allowed"));
+      return cb(new Error("Only images and PDFs are allowed"));
     }
 
-    const folder = `temp/static/images/profile_photos/`;
+    // ✅ Decide folder based on file type
+    const folder = isPdf
+      ? `temp/static/pdfs/faculty_profile/`
+      : `temp/static/images/profile_photos/`;
+
     const s3Key = folder + realFilename;
 
     // Buffer the stream
