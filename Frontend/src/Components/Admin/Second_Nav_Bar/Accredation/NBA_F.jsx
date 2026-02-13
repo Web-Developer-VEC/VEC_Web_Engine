@@ -5,10 +5,11 @@ import { FaTrash, FaPlus, FaEye } from "react-icons/fa";
 import { Pencil, Send, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const NBA_F = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-
+  const { sendRequest, loading: loadings , error } = useAdminRequest();
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
@@ -377,35 +378,146 @@ const NBA_F = ({ data }) => {
     setDeleteConfirm(null);
     toast.success("PDF deleted!");
   };
+const collectNbaFiles = () => {
+  const files = [];
 
-  const handleRequestConfirm = () => {
-    // Build payload with section "NBA" and list of change descriptions
-    const payload = {
-      section: "NBA",
-      timestamp: new Date().toISOString(),
-      changes: getChanges().map((c) => ({
-        id: c.id,
-        action: c.action,
-        raw: c,
-        description: describeChange(c),
-      })),
+  editableData.forEach((row) => {
+    if (!Array.isArray(row.pdfs)) return;
+
+    row.pdfs.forEach((pdf) => {
+      if (pdf?.file instanceof File) {
+        files.push(pdf.file);
+      }
+    });
+  });
+
+  return files;
+};
+
+  const handleRequestConfirm = async () => {
+      const changes = getChanges();
+
+      if (changes.length === 0) {
+        toast.warn("No changes to submit");
+        return;
+      }
+
+      // 1️⃣ Build payload
+      const payload = changes
+        .map(buildNbaPayload)
+        .filter(Boolean);
+
+      // 2️⃣ Collect PDF files
+      const files = collectNbaFiles();
+
+      console.log("📦 NBA PAYLOAD:", payload);
+      console.log("📄 NBA FILES:", files);
+
+      // 3️⃣ Send payload + files
+      const result = await sendRequest(payload, files);
+
+      if (result) {
+        setShowRequestModal(false);
+        setSavedChanges([]);
+        setChangeLog([]);
+        setEditMode(false);
+        setHasChanges(false);
+        toast.success("Request submitted successfully!");
+      }
     };
-
-    // Replace with your API call to send `payload`
-    console.log("Submitting request payload:", payload);
-
-    setShowRequestModal(false);
-    setRequestSent(true);
-    setChangesSaved(false);
-    setChangeLog([]); // clear after submit
-    toast.success("Request submitted successfully!");
-  };
 
   const toggleRowSelect = (rowIndex) => {
     setSelectedItems((prev) =>
       prev.includes(rowIndex) ? prev.filter((i) => i !== rowIndex) : [...prev, rowIndex]
     );
   };
+  const getNbaPdfPath = (pdf) => {
+      if (pdf?.file?.name) {
+        return `/static/pdfs/nba/${pdf.file.name}`;
+      }
+      return pdf?.pdf_path || "";
+    };
+
+  const getOriginalRow = (rowIndex) => {
+      return originalDataRef.current?.[rowIndex] || null;
+    };
+  const buildNbaPayload = (change) => {
+      const { action, rowIndex, data } = change;
+
+      // 🟢 INSERT (New Program)
+      if (action === "Added" && change.rowAdded) {
+        const row = data;
+
+        return {
+          collectionName: "accreditations_and_ranking",
+          collection_type: "nba",
+          action: "insert",
+          title: "insert in nba",
+          meta_data: {
+            id: row?.id,
+            department: row?.department || "",
+            pdfs: (row?.pdfs || []).map((pdf) => ({
+              name: pdf?.name || "",
+              pdf_path: getNbaPdfPath(pdf),
+            })),
+          },
+        };
+      }
+
+      // 🔵 UPDATE (Edit Program / PDF)
+      if (action === "Edited") {
+        const originalRow = getOriginalRow(rowIndex);
+        const editedRow = editableData?.[rowIndex];
+
+        if (!originalRow || !editedRow) return null;
+
+        return {
+          collectionName: "accreditations_and_ranking",
+          collection_type: "nba",
+          action: "update",
+          title: "update in nba",
+          original_data: {
+            id: originalRow?.id,
+            department: originalRow?.department || "",
+            pdfs: (originalRow?.pdfs || []).map((pdf) => ({
+              name: pdf?.name || "",
+              pdf_path: pdf?.pdf_path || "",
+            })),
+          },
+          meta_data: {
+            id: editedRow?.id,
+            department: editedRow?.department || "",
+            pdfs: (editedRow?.pdfs || []).map((pdf) => ({
+              name: pdf?.name || "",
+              pdf_path: getNbaPdfPath(pdf),
+            })),
+          },
+        };
+      }
+
+      // 🔴 DELETE (Delete Program)
+      if (action === "Deleted" && change.rowDeleted) {
+        const row = data;
+
+        return {
+          collectionName: "accreditations_and_ranking",
+          collection_type: "nba",
+          action: "delete",
+          title: "delete in nba",
+          meta_data: {
+            id: row?.id,
+            department: row?.department || "",
+            pdfs: (row?.pdfs || []).map((pdf) => ({
+              name: pdf?.name || "",
+              pdf_path: pdf?.pdf_path || "",
+            })),
+          },
+        };
+      }
+
+      return null;
+    };
+
 
   // --- Human-readable change descriptions ---
   const describeChange = (change) => {
@@ -789,9 +901,10 @@ const NBA_F = ({ data }) => {
                 </button>
                 <button
                   onClick={handleRequestConfirm}
+                  disabled={loadings}
                   className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
                 >
-                  Final Request
+                   {loadings ? "Submitting..." : "Final Request"}
                 </button>
               </div>
             </div>

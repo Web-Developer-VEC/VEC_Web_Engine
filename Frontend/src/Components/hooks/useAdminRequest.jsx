@@ -9,19 +9,39 @@ import { m } from "framer-motion";
 const extractFileNames = (meta = {}) => {
   const paths = [];
 
-  // PDF paths
-  if (Array.isArray(meta.pdf_path)) {
-    paths.push(...meta.pdf_path);
-  } else if (typeof meta.pdf_path === "string") {
-    paths.push(meta.pdf_path);
-  }
+  const extractPathsRecursively = (obj) => {
+    if (!obj || typeof obj !== "object") return;
 
-  // Image paths
-  if (Array.isArray(meta.image_path)) {
-    paths.push(...meta.image_path);
-  } else if (typeof meta.image_path === "string") {
-    paths.push(meta.image_path);
-  }
+    // Check for pdf_path and image_path at current level
+    if (obj.pdf_path) {
+      if (Array.isArray(obj.pdf_path)) {
+        paths.push(...obj.pdf_path);
+      } else if (typeof obj.pdf_path === "string") {
+        paths.push(obj.pdf_path);
+      }
+    }
+
+    if (obj.image_path) {
+      if (Array.isArray(obj.image_path)) {
+        paths.push(...obj.image_path);
+      } else if (typeof obj.image_path === "string") {
+        paths.push(obj.image_path);
+      }
+    }
+
+    // Recursively check arrays and nested objects
+    if (Array.isArray(obj)) {
+      obj.forEach(item => extractPathsRecursively(item));
+    } else {
+      Object.values(obj).forEach(value => {
+        if (typeof value === "object" && value !== null) {
+          extractPathsRecursively(value);
+        }
+      });
+    }
+  };
+
+  extractPathsRecursively(meta);
 
   return paths
     .filter(Boolean)

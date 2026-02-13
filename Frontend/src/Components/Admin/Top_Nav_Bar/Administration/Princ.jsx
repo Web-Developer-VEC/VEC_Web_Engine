@@ -9,6 +9,7 @@ import { FaBook, FaLinkedin, FaOrcid, FaResearchgate } from 'react-icons/fa';
 import { FaGoogleScholar } from 'react-icons/fa6';
 import { SiPublons } from 'react-icons/si';
 import { useAdminRequest } from '../../../hooks/useAdminRequest';
+import { X } from "lucide-react";
 
 const SOCIAL_LINKS_CONFIG = [
   { key: "linkedin", label: "LinkedIn", icon: FaLinkedin, backendKey: "LinkedIn Profile" },
@@ -126,6 +127,21 @@ const AdminPrinc = ({ theme, toggle }) => {
     return <IconComponent size={20} />;
   };
 
+  // ---- NEW: when request modal is open and all changes are undone -> auto close modal and go back to original page
+  useEffect(() => {
+    if (!showConfirmModal) return;
+    const changes = getRequestChanges();
+    if (changes.length === 0) {
+      setShowConfirmModal(false);
+      setRequestStep(false);
+      setIsEditing(false);
+      setPreviewImage(null);
+      setEditedData(data);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editedData, data, showConfirmModal]);
+  // ---- END NEW
+
   const handleConfirm = () => setShowConfirmModal(true);
 
   // Build payload entries according to changes (supports add, update, delete actions)
@@ -230,7 +246,7 @@ const AdminPrinc = ({ theme, toggle }) => {
       const payloadEntries = buildPayloadEntriesFromChanges(oldData, newData);
 
       if (!payloadEntries.length) {
-        setError("No changes detected to request.");  
+        setError("No changes detected to request.");
         return;
       }
 
@@ -251,7 +267,7 @@ const AdminPrinc = ({ theme, toggle }) => {
         setPreviewImage(null);
       } else {
         if (result?.status === 429 || result?.data?.status === 429) {
-          navigate('/ratelimit', { state: { msg: result?.message || result?.data?.message || "Rate limit exceeded" }});
+          navigate('/ratelimit', { state: { msg: result?.message || result?.data?.message || "Rate limit exceeded" } });
           return;
         }
         setError(result?.message || "Failed to send request");
@@ -447,14 +463,14 @@ const AdminPrinc = ({ theme, toggle }) => {
       ) : (
         <div className="relative max-w-[90%] mx-auto my-8 px-4 pb-15">
           {/* Top-right Edit button */}
-          {!isEditing && (
+          {!isEditing && !requestStep && (
             <div className='flex justify-end top-0 right-0'>
-            <button
-              onClick={handleEditClick}
-              className="px-3 py-2 bg-yellow-400 p-2 rounded shadow-md hover:bg-yellow-500"
-            >
-              Edit
-            </button>
+              <button
+                onClick={handleEditClick}
+                className="px-3 py-2 bg-yellow-400 p-2 rounded shadow-md hover:bg-yellow-500"
+              >
+                Edit
+              </button>
             </div>
           )}
 
@@ -636,7 +652,6 @@ const AdminPrinc = ({ theme, toggle }) => {
                           }}
                           title="Delete"
                         >
-                          {/* You may use <MdDelete size={20} /> if you want a delete icon from react-icons */}
                           <Trash2 size={20} />
                         </button>
                       </td>
@@ -663,60 +678,70 @@ const AdminPrinc = ({ theme, toggle }) => {
           </div>
         </div>
       )}
-      
-      {/* Request Modal - CHANGES ALWAYS SHOW */}
+
+      {/* Confirm request modal */}
       {showConfirmModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[450px]">
-            <h2 className="text-lg font-bold mb-4">Final Request for the Changes</h2>
-            <p className="text-red-600 mb-4">
-              <span className="font-semibold">Note:</span> Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
+            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
+              Final Request for the Changes
+            </h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the
+              superior admin. Once approved, they will be applied automatically
+              to the live site.
             </p>
-            <table className="w-full border-collapse mb-6">
-              <thead>
-                <tr className="text-left border-b">
-                  <th className="pb-2">Action</th>
-                  <th className="pb-2">Section</th>
-                  <th className="pb-2">Undo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {getRequestChanges().length > 0 ? (
-                  getRequestChanges().map((change, idx) => (
-                    <tr key={idx} className="border-b">
-                      <td className="py-2">{change.action}</td>
-                      <td className="py-2">{change.section}</td>
-                      <td className="py-2">
-                        <button
-                          onClick={() => handleUndoChange(change)}
-                          className="px-3 py-1 bg-yellow-400 text-black rounded hover:bg-yellow-500 flex items-center gap-1"
-                        >
-                          <MdUndo /> Undo
-                        </button>
-                      </td>
+
+            <div className="max-h-[200px] overflow-y-auto mb-4">
+              {getRequestChanges().length > 0 ? (
+                <table className="w-full text-left text-text dark:text-drkt">
+                  <thead>
+                    <tr>
+                      <th className="py-1">Action</th>
+                      <th className="py-1">Section</th>
+                      <th className="py-1">Changes</th>
+                      <th className="py-1">Undo</th>
                     </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="3" className="text-center py-4 text-gray-500">
-                      No changes detected.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-            <div className="flex justify-between">
+                  </thead>
+                  <tbody>
+                    {getRequestChanges().map((c, i) => (
+                      <tr key={i}>
+                        <td className="py-1">
+                          <span className="text-blue-600">✎ Edited</span>
+                        </td>
+                        <td className="py-1">{c.section}</td>
+                        <td className="py-1">Updated</td>
+                        <td className="py-1">
+                          <button
+                            onClick={() => handleUndoChange(c)}
+                            title="Undo"
+                          >
+                            <X />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-gray-400">No gallery changes found.</p>
+              )}
+            </div>
+
+            <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowConfirmModal(false)}
-                className="px-4 py-2 bg-gray-400 text-white font-[poppins] rounded hover:bg-gray-500"
+                className={`px-4 py-2 rounded bg-gray-400 text-white ${loadings ? "cursor-not-allowed" : ""}`}
+                disabled={loadings}
               >
                 Cancel
               </button>
               <button
                 onClick={handleRequest}
-                className="px-4 py-2 bg-yellow-400 text-black rounded font-[poppins] flex items-center gap-2 hover:bg-yellow-500"
+                className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${loadings ? "cursor-progress" : "hover:bg-[#800000]"}`}
+                disabled={loadings}
               >
-                Final Request
+                {loadings ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>

@@ -182,13 +182,13 @@ const Achievements1 = ({ data }) => {
       prev.map((z, zIdx) =>
         zIdx === currentZoneIndex
           ? {
-              ...z,
-              images: z.images.map((img) =>
-                img.id === id
-                  ? { ...img, image: imageUrl, newFile: file }
-                  : img,
-              ),
-            }
+            ...z,
+            images: z.images.map((img) =>
+              img.id === id
+                ? { ...img, image: imageUrl, newFile: file }
+                : img,
+            ),
+          }
           : z,
       ),
     );
@@ -203,73 +203,73 @@ const Achievements1 = ({ data }) => {
     });
   };
 
-const buildAchievementsPayload = ({ action, newData, oldData, isNewZone = false }) => {
+  const buildAchievementsPayload = ({ action, newData, oldData, isNewZone = false }) => {
 
-  // 🟢 INSERT (New Zone OR New Image)
-  if (action === "add") {
-    if (!newData) return null;
+    // 🟢 INSERT (New Zone OR New Image)
+    if (action === "add") {
+      if (!newData) return null;
 
-    return {
-      collectionName: "sports",
-      collection_type: "achivements",
-      action: "insert",
-      title: isNewZone
-        ? "Insertion of New Zone Achievements"
-        : "Insertion of Achievements",
-      category: "coordinator",
-      meta_data: {
-        zone: newData.zone,
-        year: newData.year,
-        image_path: newData.image_path || [],
-      },
-      original_data: null,
-    };
-  }
+      return {
+        collectionName: "sports",
+        collection_type: "achivements",
+        action: "insert",
+        title: isNewZone
+          ? "Insertion of New Zone Achievements"
+          : "Insertion of Achievements",
+        category: "coordinator",
+        meta_data: {
+          zone: newData.zone,
+          year: newData.year,
+          image_path: newData.image_path || [],
+        },
+        original_data: null,
+      };
+    }
 
-  // 🔵 UPDATE
-  if (action === "update") {
-    if (!newData || !oldData) return null;
+    // 🔵 UPDATE
+    if (action === "update") {
+      if (!newData || !oldData) return null;
 
-    return {
-      collectionName: "sports",
-      collection_type: "achivements",
-      action: "update",
-      title: "Updation of Achievements",
-      category: "coordinator",
-      meta_data: {
-        zone: newData.zone,
-        year: newData.year,
-        image_path: newData.image_path || [],
-      },
-      original_data: {
-        zone: oldData.zone,
-        year: oldData.year,
-        image_path: oldData.image_path || [],
-      },
-    };
-  }
+      return {
+        collectionName: "sports",
+        collection_type: "achivements",
+        action: "update",
+        title: "Updation of Achievements",
+        category: "coordinator",
+        meta_data: {
+          zone: newData.zone,
+          year: newData.year,
+          image_path: newData.image_path || [],
+        },
+        original_data: {
+          zone: oldData.zone,
+          year: oldData.year,
+          image_path: oldData.image_path || [],
+        },
+      };
+    }
 
-  // 🔴 DELETE (Image or Whole Zone)
-  if (action === "delete") {
-    if (!oldData) return null;
+    // 🔴 DELETE (Image or Whole Zone)
+    if (action === "delete") {
+      if (!oldData) return null;
 
-    return {
-      collectionName: "sports",
-      collection_type: "achivements",
-      action: "delete",
-      title: "Deletion of Achievements",
-      category: "coordinator",
-      meta_data: {
-        zone: oldData.zone,
-        year: oldData.year,
-        image_path: oldData.image_path || [],
-      },
-      original_data: null,
-    };
-  }
+      return {
+        collectionName: "sports",
+        collection_type: "achivements",
+        action: "delete",
+        title: "Deletion of Achievements",
+        category: "coordinator",
+        meta_data: {
+          zone: oldData.zone,
+          year: oldData.year,
+          image_path: oldData.image_path || [],
+        },
+        original_data: null,
+      };
+    }
 
-  return null;
-};
+    return null;
+  };
 
 
   const handleAddRow = () => {
@@ -485,128 +485,128 @@ const buildAchievementsPayload = ({ action, newData, oldData, isNewZone = false 
     setEditMode(false);
     setShowRequestButtons(true);
   };
-const handleFinalRequestConfirm = async () => {
-  if (!changes.length) {
-    toast.warn("No changes to submit");
-    return;
-  }
-
-  const payload = [];
-  const files = [];
-
-  changes.forEach((change) => {
-    // 🔎 Extract zone number from section
-    const zoneNumber = change.section?.split("ZONE-")[1];
-    const zoneIndex = zones.findIndex(
-      (z) => String(z.zone) === String(zoneNumber)
-    );
-
-    const currentZone = zones[zoneIndex];
-    const originalZone = originalZones[zoneIndex];
-
-    if (!currentZone) return;
-
-    // 🆕 NEW ZONE
-   if (change.field === "new_zone") {
-  const imagePaths = [];
-  const imageFiles = [];
-
-  currentZone.images.forEach((img) => {
-    if (img.newFile) {
-      const path = `/static/images/sports/coordinates/${img.newFile.name}`;
-      imagePaths.push(path);
-      imageFiles.push(img.newFile);
-    } else if (img.image) {
-      imagePaths.push(img.image);
+  const handleFinalRequestConfirm = async () => {
+    if (!changes.length) {
+      toast.warn("No changes to submit");
+      return;
     }
-  });
 
-  const req = buildAchievementsPayload({
-    action: "add",
-    isNewZone: true,
-    newData: {
-      zone: currentZone.zone,
-      year: currentZone.year,
-      image_path: imagePaths, // ✅ NOT EMPTY
-    },
-  });
+    const payload = [];
+    const files = [];
 
-  if (req) payload.push(req);
-  files.push(...imageFiles); // ✅ push all files together
-  return;
-}
-
-
-    // 🖼 IMAGE CHANGES
-    if (change.field === "image") {
-      const newImage = currentZone.images?.find(
-        (img) => img.id === change.imageIndex
+    changes.forEach((change) => {
+      // 🔎 Extract zone number from section
+      const zoneNumber = change.section?.split("ZONE-")[1];
+      const zoneIndex = zones.findIndex(
+        (z) => String(z.zone) === String(zoneNumber)
       );
 
-      const oldImage = originalZone?.images?.find(
-        (img) => img.id === change.imageIndex
-      );
+      const currentZone = zones[zoneIndex];
+      const originalZone = originalZones[zoneIndex];
 
-  const newData = newImage
-  ? {
-      zone: currentZone.zone,
-      year: currentZone.year,
-      image_path: [
-        newImage.newFile
-          ? `/static/images/sports/coordinates/${newImage.newFile.name}`
-          : newImage.image,
-      ],
-      newFile: newImage.newFile,
-    }
-  : null;
+      if (!currentZone) return;
 
-      const oldData = oldImage
-        ? {
+      // 🆕 NEW ZONE
+      if (change.field === "new_zone") {
+        const imagePaths = [];
+        const imageFiles = [];
+
+        currentZone.images.forEach((img) => {
+          if (img.newFile) {
+            const path = `/static/images/sports/coordinates/${img.newFile.name}`;
+            imagePaths.push(path);
+            imageFiles.push(img.newFile);
+          } else if (img.image) {
+            imagePaths.push(img.image);
+          }
+        });
+
+        const req = buildAchievementsPayload({
+          action: "add",
+          isNewZone: true,
+          newData: {
+            zone: currentZone.zone,
+            year: currentZone.year,
+            image_path: imagePaths, // ✅ NOT EMPTY
+          },
+        });
+
+        if (req) payload.push(req);
+        files.push(...imageFiles); // ✅ push all files together
+        return;
+      }
+
+
+      // 🖼 IMAGE CHANGES
+      if (change.field === "image") {
+        const newImage = currentZone.images?.find(
+          (img) => img.id === change.imageIndex
+        );
+
+        const oldImage = originalZone?.images?.find(
+          (img) => img.id === change.imageIndex
+        );
+
+        const newData = newImage
+          ? {
+            zone: currentZone.zone,
+            year: currentZone.year,
+            image_path: [
+              newImage.newFile
+                ? `/static/images/sports/coordinates/${newImage.newFile.name}`
+                : newImage.image,
+            ],
+            newFile: newImage.newFile,
+          }
+          : null;
+
+        const oldData = oldImage
+          ? {
             zone: originalZone.zone,
             year: originalZone.year,
             image_path: oldImage.image,
           }
-        : null;
+          : null;
 
-      const req = buildAchievementsPayload({
-        action: change.action,
-        newData,
-        oldData,
-      });
+        const req = buildAchievementsPayload({
+          action: change.action,
+          newData,
+          oldData,
+        });
 
-      if (req) payload.push(req);
-      if (newData?.newFile) files.push(newData.newFile);
+        if (req) payload.push(req);
+        if (newData?.newFile) files.push(newData.newFile);
 
-      return;
-    }
+        return;
+      }
 
-    if (change.field === "zone" || change.field === "year") {
-      const req = buildAchievementsPayload({
-        action: "update",
-        newData: {
-          zone: currentZone.zone,
-          year: currentZone.year,
-          image_path: null,
-        },
-        oldData: {
-          zone: originalZone.zone,
-          year: originalZone.year,
-          image_path: null,
-        },
-      });
+      if (change.field === "zone" || change.field === "year") {
+        const req = buildAchievementsPayload({
+          action: "update",
+          newData: {
+            zone: currentZone.zone,
+            year: currentZone.year,
+            image_path: null,
+          },
+          oldData: {
+            zone: originalZone.zone,
+            year: originalZone.year,
+            image_path: null,
+          },
+        });
 
-      if (req) payload.push(req);
-    }
-  });
+        if (req) payload.push(req);
+      }
+    });
 
-  console.log("📦 ACHIEVEMENTS PAYLOAD:", payload);
-  console.log("🖼 FILES:", files);
+    console.log("📦 ACHIEVEMENTS PAYLOAD:", payload);
+    console.log("🖼 FILES:", files);
 
-  await sendRequest(payload, files);
+    await sendRequest(payload, files);
 
-  toast.success("Request submitted successfully!");
-  setShowRequestModal(false);
-};
+    toast.success("Request submitted successfully!");
+    setShowRequestModal(false);
+  };
 
   const updateCurrentZone = (updates) => {
     setZones((prev) =>
@@ -699,7 +699,7 @@ const handleFinalRequestConfirm = async () => {
               </div>
             </div>
           )}
-          {}
+          { }
           <div className="relative mr-8 ml-8 justify-center mb-7">
             {/* <button
               disabled={currentZoneIndex === 0}
@@ -878,7 +878,7 @@ const handleFinalRequestConfirm = async () => {
               <button
                 className="px-4 py-2 bg-gray-500 text-white rounded"
                 onClick={() => {
-                  handleDiscardChanges(true);
+                  setShowDiscardModal(true)
                 }}
               >
                 Discard Changes
@@ -893,31 +893,28 @@ const handleFinalRequestConfirm = async () => {
           )}
           <div className="flex flex-wrap gap-6 justify-center items-center mb-6">
             <button
-              className={`font-bold rounded-md px-4 py-2 ${
-                showZone === "zone"
+              className={`font-bold rounded-md px-4 py-2 ${showZone === "zone"
                   ? "bg-brwn text-white"
                   : "bg-secd text-black"
-              }`}
+                }`}
               onClick={() => handleZoneClick("zone")}
             >
               Zone
             </button>
             <button
-              className={`font-bold rounded-md px-4 py-2 ${
-                showZone === "interzone"
+              className={`font-bold rounded-md px-4 py-2 ${showZone === "interzone"
                   ? "bg-brwn text-white"
                   : "bg-secd text-black"
-              }`}
+                }`}
               onClick={() => handleZoneClick("interzone")}
             >
               Inter Zone
             </button>
             <button
-              className={`font-bold rounded-md px-4 py-2 ${
-                showZone === "others"
+              className={`font-bold rounded-md px-4 py-2 ${showZone === "others"
                   ? "bg-brwn text-white"
                   : "bg-secd text-black"
-              }`}
+                }`}
               onClick={() => handleZoneClick("others")}
             >
               Others
@@ -967,6 +964,35 @@ const handleFinalRequestConfirm = async () => {
           </div>
         </div>
       )}
+      {showDiscardModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white p-6 rounded-xl w-[400px]">
+            <h2 className="text-lg font-semibold mb-4">Discard Changes?</h2>
+            <p className="text-sm text-gray-600 mb-6">
+              Are you sure you want to discard all your changes? This action cannot be undone.
+            </p>
+
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowDiscardModal(false)}
+                className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 text-black"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  handleDiscardChanges();         // 👈 actually discard
+                  setShowDiscardModal(false);
+                }}
+                className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white"
+              >
+                Discard
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
@@ -1028,11 +1054,10 @@ const handleFinalRequestConfirm = async () => {
               <button
                 onClick={handleFinalRequestConfirm}
                 disabled={loadings}
-                className={`flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg ${
-                  loadings ? "cursor-progress" : ""
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg ${loadings ? "cursor-progress" : ""
+                  }`}
               >
-               {loadings ? "Processing..." : "Final Request"}
+                {loadings ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>

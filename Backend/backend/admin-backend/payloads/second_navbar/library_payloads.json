@@ -471,16 +471,16 @@
     "action": "insert",
     "title": "update journal",
     "meta_data": {
-      "Total Journals":"10",
-        "National Journals":"93",
-        "International Journals":"87",
-        "E-Journals":"1480" 
+      "Total Journals": "10",
+      "National Journals": "93",
+      "International Journals": "87",
+      "E-Journals": "1480"
     },
     "original_data": {
-        "Total Journals":"180",
-        "National Journals":"93",
-        "International Journals":"87",
-        "E-Journals":"1480" 
+      "Total Journals": "180",
+      "National Journals": "93",
+      "International Journals": "87",
+      "E-Journals": "1480"
     }
   }
 ]

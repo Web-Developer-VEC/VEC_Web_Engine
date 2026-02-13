@@ -31,6 +31,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           original_data,
         } = doc;
 
+
         if (!collectionName || !collection_type || !action || !title) {
           throw new Error(
             "collectionName, collection_type, action, and title are required"
@@ -96,9 +97,9 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
         const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE"];
 
-        const skipImageFor = ["warden", "members", "team", "achivements"];
-
+        const skipImageFor = ["members","library_services","team","achivements", ...(collectionName === "ecell" ? ["gallery"] : [])]
         const mainCollection = maindb.collection(collectionName);
+
         const existingDoc = await mainCollection.findOne(
           { type: collection_type },
           { projection: { data: 1 } }
