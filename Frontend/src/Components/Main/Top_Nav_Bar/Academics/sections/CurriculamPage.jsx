@@ -66,7 +66,7 @@ const CurriculumPage = ({ data }) => {
                       return (
                         <div
                           key={key}
-                          className="row-item dark:bg-drkp border-0 dark:hover:bg-drks flex flex-col mb-4"
+                          className="row-item dark:bg-drkp border-0 flex flex-col mb-4"
                         >
                           <div className="R-years self-start">{item.year}</div>
 
@@ -89,11 +89,10 @@ const CurriculumPage = ({ data }) => {
                                   if (!doc.pdf_path) e.preventDefault();
                                 }}
                                 className={`no-underline text-inherit px-3 py-2 rounded flex items-center justify-center gap-2
-    ${
-      "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
-       
-    }
-  `}
+                                  ${
+                                    "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
+                                  }
+                                `}
                               >
                                 {doc.isView && <FontAwesomeIcon icon={faEye} />}
                                 {doc.name}
@@ -107,7 +106,7 @@ const CurriculumPage = ({ data }) => {
                     return (
                       <div
                         key={key}
-                        className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks flex flex-row justify-between items-center mt-6"
+                        className="row-item rounded-lg dark:bg-drkp border-0 flex flex-row justify-between items-center mt-6"
                       >
                         <div className="R-years">{item.year}</div>
 
