@@ -7,14 +7,14 @@ import { useNavigate } from "react-router";
 import { Plus, Send, Pencil, Eye, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAdminRequest } from "../../../hooks/useAdminRequest"; 
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminREGULATION = ({ theme, toggle }) => {
   const { sendRequest, loading: requestLoading, error: requestError } = useAdminRequest();
 
   const [regulationData, setRegulationData] = useState([]);
-  const [initialData, setInitialData] = useState([]); 
-  const initialMapRef = useRef(new Map()); 
+  const [initialData, setInitialData] = useState([]);
+  const initialMapRef = useRef(new Map());
 
   const [hasChanges, setHasChanges] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -52,6 +52,50 @@ const AdminREGULATION = ({ theme, toggle }) => {
     return `${BASE_URL}${path}`;
   };
 
+  // -----------------------------
+  // FIX SUMMARY
+  // -----------------------------
+  // Previously we diffed by a "fingerprint" made from link names only.
+  // That made "rename category" appear as Update (good),
+  // but it also made "delete one regulation year" invisible if another year
+  // has the same link names (UG/PG labels), because both share the same fingerprint.
+  //
+  // ✅ Correct approach:
+  // Use a stable per-item identity:
+  //   - If backend provides _id, use it.
+  //   - Otherwise, use the *original category at baseline* as identity.
+  // And treat category changes as "Updated" (rename) by matching edited items
+  // back to their baseline identity using editIndex in the UI.
+  //
+  // We implement:
+  // 1) `__key` stored only in UI state for each item (baseline identity).
+  // 2) On edit, preserve `__key`.
+  // 3) On add, generate unique `__key`.
+  // 4) Diff by `__key` so deletions always show.
+  // -----------------------------
+
+  const makeKey = () => `${Date.now()}_${Math.random().toString(16).slice(2)}`;
+
+  const normalizeReg = (reg) => ({
+    __key: reg?.__key || reg?._id || makeKey(),
+    category: reg?.category ?? "",
+    links: Array.isArray(reg?.links)
+      ? reg.links.map((l) => ({
+          name: l?.name ?? "",
+          pdf_path: l?.pdf_path ?? "",
+        }))
+      : [],
+  });
+
+  const buildMapByKey = (arr) => {
+    const map = new Map();
+    (arr || []).forEach((r) => {
+      const norm = normalizeReg(r);
+      map.set(norm.__key, norm);
+    });
+    return map;
+  };
+
   // Online/offline
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -64,24 +108,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
     };
   }, []);
 
-  const normalizeReg = (reg) => ({
-    category: reg?.category ?? "",
-    links: Array.isArray(reg?.links)
-      ? reg.links.map((l) => ({
-          name: l?.name ?? "",
-          pdf_path: l?.pdf_path ?? "",
-        }))
-      : [],
-  });
-
-  const buildMapByCategory = (arr) => {
-    const map = new Map();
-    (arr || []).forEach((r) => {
-      map.set(r?.category ?? "", normalizeReg(r));
-    });
-    return map;
-  };
-
   // Fetch regulation data
   useEffect(() => {
     const fetchData = async () => {
@@ -91,10 +117,13 @@ const AdminREGULATION = ({ theme, toggle }) => {
         });
         const data = response.data.data || [];
 
-        setRegulationData(data);
-        setInitialData(data);
+        // Attach stable keys to fetched data (UI only)
+        const keyed = data.map((r) => normalizeReg(r));
 
-        initialMapRef.current = buildMapByCategory(data);
+        setRegulationData(keyed);
+        setInitialData(keyed);
+
+        initialMapRef.current = buildMapByKey(keyed);
 
         setLoading(false);
       } catch (error) {
@@ -110,16 +139,16 @@ const AdminREGULATION = ({ theme, toggle }) => {
     fetchData();
   }, [navigate]);
 
-  // Detect changes vs baseline
+  // Detect changes vs baseline (by __key)
   useEffect(() => {
     const baseMap = initialMapRef.current;
-    const curMap = buildMapByCategory(regulationData);
+    const curMap = buildMapByKey(regulationData);
 
     let changed = false;
 
     // insert/update
-    for (const [cat, cur] of curMap.entries()) {
-      const base = baseMap.get(cat);
+    for (const [key, cur] of curMap.entries()) {
+      const base = baseMap.get(key);
       if (!base || JSON.stringify(base) !== JSON.stringify(cur)) {
         changed = true;
         break;
@@ -128,8 +157,8 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
     // delete
     if (!changed) {
-      for (const [cat] of baseMap.entries()) {
-        if (!curMap.has(cat)) {
+      for (const [key] of baseMap.entries()) {
+        if (!curMap.has(key)) {
           changed = true;
           break;
         }
@@ -141,9 +170,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
   // Checkbox selection
   const handleCheckboxChange = (index) => {
-    setSelectedRegs((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    );
+    setSelectedRegs((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
   };
 
   // Add or update regulation (UI only)
@@ -151,11 +178,15 @@ const AdminREGULATION = ({ theme, toggle }) => {
     if (index !== null) {
       setRegulationData((prev) => {
         const updated = [...prev];
-        updated[index] = newReg;
+        // Preserve __key on update
+        const existingKey = updated[index]?.__key;
+        updated[index] = normalizeReg({ ...newReg, __key: existingKey });
         return updated;
       });
     } else {
-      setRegulationData((prev) => [newReg, ...prev]);
+      // New item: create a new __key
+      const withKey = normalizeReg({ ...newReg, __key: makeKey() });
+      setRegulationData((prev) => [withKey, ...prev]);
     }
   };
 
@@ -182,6 +213,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
   // Discard changes (reset to baseline)
   const handleDiscardChanges = () => {
     const clonedData = initialData.map((reg) => ({
+      __key: reg.__key,
       category: reg.category,
       links: reg.links.map((link) => ({ ...link })),
     }));
@@ -236,35 +268,37 @@ const AdminREGULATION = ({ theme, toggle }) => {
   // Confirm delete selection
   const confirmDeleteSelected = () => {
     if (selectedRegs.length === 0) return;
-    setRegulationData((prev) => prev.filter((_, idx) => !selectedRegs.includes(idx)));
+    const selectedSet = new Set(selectedRegs);
+    setRegulationData((prev) => prev.filter((_, idx) => !selectedSet.has(idx)));
     setSelectedRegs([]);
     setShowDeleteConfirm(false);
     toast.success("Selected items removed (pending request).");
   };
 
   // -----------------------------
-  // Request changes (Inserted/Updated/Deleted) based on category key
+  // Request changes (Inserted/Updated/Deleted) based on __key
+  // ✅ Now deletions always show correctly in request modal.
   // -----------------------------
   const requestChanges = useMemo(() => {
     const baseMap = initialMapRef.current;
-    const curMap = buildMapByCategory(regulationData);
+    const curMap = buildMapByKey(regulationData);
 
     const changes = [];
 
     // insert/update
-    for (const [cat, cur] of curMap.entries()) {
-      const base = baseMap.get(cat);
+    for (const [key, cur] of curMap.entries()) {
+      const base = baseMap.get(key);
       if (!base) {
-        changes.push({ type: "Inserted", category: cat, current: cur, original: null });
+        changes.push({ type: "Inserted", key, section: cur.category, current: cur, original: null });
       } else if (JSON.stringify(base) !== JSON.stringify(cur)) {
-        changes.push({ type: "Updated", category: cat, current: cur, original: base });
+        changes.push({ type: "Updated", key, section: cur.category, current: cur, original: base });
       }
     }
 
     // delete
-    for (const [cat, base] of baseMap.entries()) {
-      if (!curMap.has(cat)) {
-        changes.push({ type: "Deleted", category: cat, current: null, original: base });
+    for (const [key, base] of baseMap.entries()) {
+      if (!curMap.has(key)) {
+        changes.push({ type: "Deleted", key, section: base.category, current: null, original: base });
       }
     }
 
@@ -275,19 +309,19 @@ const AdminREGULATION = ({ theme, toggle }) => {
     const baseMap = initialMapRef.current;
 
     if (change.type === "Inserted") {
-      setRegulationData((prev) => prev.filter((r) => r.category !== change.category));
+      setRegulationData((prev) => prev.filter((r) => r.__key !== change.key));
       return;
     }
 
     if (change.type === "Updated") {
-      const baseline = baseMap.get(change.category);
+      const baseline = baseMap.get(change.key);
       if (!baseline) return;
-      setRegulationData((prev) => prev.map((r) => (r.category === change.category ? baseline : r)));
+      setRegulationData((prev) => prev.map((r) => (r.__key === change.key ? baseline : r)));
       return;
     }
 
     if (change.type === "Deleted") {
-      const baseline = baseMap.get(change.category);
+      const baseline = baseMap.get(change.key);
       if (!baseline) return;
       setRegulationData((prev) => [baseline, ...prev]);
     }
@@ -295,9 +329,15 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
   // -----------------------------
   // Payload generation for /api/admin-backend/temp (useAdminRequest)
-  // IMPORTANT: useAdminRequest sends {docs: JSON.stringify(payload)} as FormData
-  // So payload must be an ARRAY of docs.
+  // NOTE: remove __key from payload (backend doesn't need it)
   // -----------------------------
+  const stripKey = (reg) => ({
+    category: reg?.category ?? "",
+    links: Array.isArray(reg?.links)
+      ? reg.links.map((l) => ({ name: l?.name ?? "", pdf_path: l?.pdf_path ?? "" }))
+      : [],
+  });
+
   const buildPayloads = () => {
     return requestChanges.map((c) => {
       if (c.type === "Inserted") {
@@ -306,7 +346,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
           collection_type: "regulation",
           action: "insert",
           title: "insert in regulation",
-          meta_data: c.current,
+          meta_data: stripKey(c.current),
         };
       }
       if (c.type === "Updated") {
@@ -315,8 +355,8 @@ const AdminREGULATION = ({ theme, toggle }) => {
           collection_type: "regulation",
           action: "update",
           title: "update in regulation",
-          original_data: c.original,
-          meta_data: c.current,
+          original_data: stripKey(c.original),
+          meta_data: stripKey(c.current),
         };
       }
       // Deleted
@@ -325,19 +365,20 @@ const AdminREGULATION = ({ theme, toggle }) => {
         collection_type: "regulation",
         action: "delete",
         title: "delete in regulation",
-        meta_data: c.original,
+        meta_data: stripKey(c.original),
       };
     });
   };
 
   const handleConfirmRequest = async () => {
-    // Gate: must have changes
     if (requestChanges.length === 0) {
       toast.info("No changes to request.");
       return;
     }
 
     const payloads = buildPayloads();
+
+    // Keeping your existing behavior: files are from popup selection
     const filesToSend = newFiles.filter(Boolean);
 
     console.log("REGULATION PAYLOADS:", payloads);
@@ -346,16 +387,15 @@ const AdminREGULATION = ({ theme, toggle }) => {
     const res = await sendRequest(payloads, filesToSend);
 
     if (!res) {
-      // useAdminRequest already shows toast "Request failed". Add a helpful hint:
       toast.error(
         "Request failed. Check console Network tab: /api/admin-backend/temp. Also confirm token/cookies are valid."
       );
       return;
     }
 
-    // After success: set new baseline to current
+    // After success: set new baseline to current (keep __key)
     setInitialData(JSON.parse(JSON.stringify(regulationData)));
-    initialMapRef.current = buildMapByCategory(regulationData);
+    initialMapRef.current = buildMapByKey(regulationData);
 
     setIsDone(false);
     setShowRequestModal(false);
@@ -402,7 +442,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
           <div className="regulation-grid">
             {regulationData?.map((reg, index) => (
-              <div key={reg.category || index} className="regulation-card relative">
+              <div key={reg.__key} className="regulation-card relative">
                 <div className="flex items-center justify-between">
                   <h2 className="regulation-year text-brwn dark:text-drkt text-md border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">
                     {reg.category}
@@ -439,9 +479,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
                           {link.name}
                         </a>
                       ) : (
-                        <span className="text-text dark:text-drkt font-[Poppins]">
-                          {link.name}
-                        </span>
+                        <span className="text-text dark:text-drkt font-[Poppins]">{link.name}</span>
                       )}
                     </li>
                   ))}
@@ -462,10 +500,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
           <div className="flex gap-3 justify-end items-center pr-8 my-8 mr-10">
             {isEditing && (
               <>
-                <button
-                  className="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300"
-                  onClick={handleCancel}
-                >
+                <button className="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300" onClick={handleCancel}>
                   Cancel
                 </button>
 
@@ -559,14 +594,12 @@ const AdminREGULATION = ({ theme, toggle }) => {
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       if (file) {
-                        // keep file for backend upload
                         setNewFiles((prev) => {
                           const nxt = [...prev];
                           nxt[idx] = file;
                           return nxt;
                         });
 
-                        // UI preview
                         const updatedLinks = [...newLinks];
                         updatedLinks[idx].pdf_path = URL.createObjectURL(file);
                         setNewLinks(updatedLinks);
@@ -621,9 +654,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-[400px]">
             <h2 className="text-lg font-semibold mb-4 text-center">Confirm Deletion</h2>
-            <p className="text-center mb-4">
-              Are you sure you want to delete selected item(s)?
-            </p>
+            <p className="text-center mb-4">Are you sure you want to delete selected item(s)?</p>
             <div className="flex justify-center gap-4">
               <button
                 className="px-6 py-3 bg-red-600 text-white rounded hover:bg-red-700 font-semibold"
@@ -664,23 +695,21 @@ const AdminREGULATION = ({ theme, toggle }) => {
               <tbody>
                 {requestChanges.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="border p-4">No changes detected</td>
+                    <td colSpan={4} className="border p-4">
+                      No changes detected
+                    </td>
                   </tr>
                 ) : (
                   requestChanges.map((c) => (
-                    <tr key={`${c.type}-${c.category}`}>
+                    <tr key={`${c.type}-${c.key}`}>
                       <td
                         className={`border p-2 ${
-                          c.type === "Deleted"
-                            ? "text-red-600"
-                            : c.type === "Inserted"
-                              ? "text-green-600"
-                              : "text-blue-600"
+                          c.type === "Deleted" ? "text-red-600" : c.type === "Inserted" ? "text-green-600" : "text-blue-600"
                         }`}
                       >
                         {c.type}
                       </td>
-                      <td className="border p-2">{c.category}</td>
+                      <td className="border p-2">{c.section}</td>
                       <td className="border p-2">
                         {(c.current?.links || c.original?.links || []).map((l) => l.name).join(", ")}
                       </td>
@@ -689,6 +718,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
                           onClick={() => undoRequestChange(c)}
                           className="p-1 rounded hover:bg-gray-100"
                           title="Undo"
+                          disabled={requestLoading}
                         >
                           <X size={16} className="text-red-500" />
                         </button>
@@ -717,9 +747,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
             </div>
 
             {requestError && (
-              <p className="mt-3 text-sm text-red-600">
-                Error: {String(requestError?.message || requestError)}
-              </p>
+              <p className="mt-3 text-sm text-red-600">Error: {String(requestError?.message || requestError)}</p>
             )}
           </div>
         </div>

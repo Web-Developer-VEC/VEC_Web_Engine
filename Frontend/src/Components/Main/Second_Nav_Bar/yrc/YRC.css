@@ -688,7 +688,7 @@ marquee p {
 }
 
 /* Text Overlay */
-.nss-carousel-text {
+.yrc-carousel-text {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -701,7 +701,7 @@ marquee p {
 }
 
 /* Carousel Buttons */
-.nss-carousel-btn {
+.yrc-carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -714,26 +714,26 @@ marquee p {
     border-radius: 5px;
 }
 
-.nss-carousel-btn-left {
+.yrc-carousel-btn-left {
     left: 10px;
 }
 
-.nss-carousel-btn-right {
+.yrc-carousel-btn-right {
     right: 10px;
 }
 
 /* Hover Effects */
-.nss-carousel-btn:hover {
+.yrc-carousel-btn:hover {
     background: rgba(0, 0, 0, 0.8);
 }
 
 /* Dots Indicator */
-.nss-carousel-dots {
+.yrc-carousel-dots {
     text-align: center;
     margin-top: 15px;
 }
 
-.nss-dot {
+.yrc-dot {
     width: 10px;
     height: 10px;
     background: #ccc;
@@ -743,7 +743,7 @@ marquee p {
     cursor: pointer;
 }
 
-.nss-dot.active {
+.yrc-dot.active {
     background: #fdb515;
 }
 
@@ -762,7 +762,7 @@ marquee p {
 }
 
 /* Overlay text bar */
-.nss-carousel-overlay {
+.yrc-carousel-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -776,22 +776,22 @@ marquee p {
   font-family: 'Poppins', sans-serif;
 }
 
-.nss-carousel-overlay-left {
+.yrc-carousel-overlay-left {
   max-width: 80%;
 }
 
-.nss-carousel-overlay-left h3 {
+.yrc-carousel-overlay-left h3 {
   margin: 0 0 6px 0;
   font-size: 20px;
 }
 
-.nss-carousel-overlay-left p {
+.yrc-carousel-overlay-left p {
   margin: 0;
   font-size: 14px;
   line-height: 1.4;
 }
 
-.nss-carousel-overlay-right {
+.yrc-carousel-overlay-right {
   align-self: flex-end;
   background: #ffc107;
   color: #000;
@@ -1258,7 +1258,7 @@ marquee p {
 }
 
 
-.nss-carousel-content {
+.yrc-carousel-content {
   position: relative;
   padding: 15px;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
@@ -1273,24 +1273,24 @@ marquee p {
   
 }
 
-.nss-carousel-content-left {
+.yrc-carousel-content-left {
   flex: 1;
 }
 
-.nss-carousel-content-left h3 {
+.yrc-carousel-content-left h3 {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 600;
   color: #333;
 }
 
-.nss-carousel-content-left p {
+.yrc-carousel-content-left p {
   margin: 5px 0 0;
   font-size: 0.95rem;
   color: #555;
 }
 
-.nss-carousel-content-right {
+.yrc-carousel-content-right {
   position: absolute;
   right: 15px;
   /* bottom: -10px; */
