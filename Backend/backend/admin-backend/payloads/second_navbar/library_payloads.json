@@ -1,190 +1,486 @@
-[{
-  "collectionName": "library",
-  "collection_type": "about_the_library",
-  "action": "insert",
-  "title": "update about library",
-  "meta_data": {
-    "Area": "25000 sq.ft",
-    "no_of_books": "80000 Volumes",
-    "vision": "Updated vision of library",
-    "mission": "Updated mission of library",
-    "general_instructions": [
-      "Instruction 1",
-      "Instruction 2"
-    ]
-  }
-},
-{
-  "collectionName": "library",
-  "collection_type": "Faculty_Staff",
-  "action": "insert",
-  "title": "Add new faculty",
-  "meta_data": {
-    "name": "Dinesh T",
-    "designation": "Library Assistant",
-    "educational_qualification": "M.A., M.L.I.Sc",
-    "image": "/static/images/library/faculty/Dinesh T.webp"
-  }
-},
-{
-  "collectionName": "library",
-  "collection_type": "Faculty_Staff",
-  "action": "update",
-  "title": "Update faculty info",
-  "meta_data": {
-    "name": "Dinesh T",
-    "designation": "Senior Library Assistant",
-    "educational_qualification": "M.A., M.L.I.Sc",
-    "image": "/static/images/library/faculty/Dinesh T.webp"
+[
+  {
+    "collectionName": "library",
+    "collection_type": "about_the_library",
+    "action": "insert",
+    "title": "update about library",
+    "meta_data": {
+      "Area": "25000 sq.ft",
+      "no_of_books": "80000 Volumes",
+      "vision": "Updated vision of library",
+      "mission": "Updated mission of library",
+      "general_instructions": [
+        "Instruction 1",
+        "Instruction 2"
+      ]
+    }
   },
-  "original_data": {
-    "name": "Dinesh T",
-    "designation": "Library Assistant",
-    "educational_qualification": "M.A., M.L.I.Sc",
-    "image": "/static/images/library/faculty/Dinesh T.webp"
-  }
-},
-{
-  "collectionName": "library",
-  "collection_type": "Faculty_Staff",
-  "action": "delete",
-  "title": "Delete faculty",
-  "category": null,
-  "meta_data": {
-    "name": "Dinesh T",
-    "designation": "Senior Library Assistant",
-    "educational_qualification": "M.A., M.L.I.Sc",
-    "image": "/static/images/library/faculty/Dinesh T.webp"
-  }
-},
-{
-  "collectionName": "library",
-  "collection_type": "about_the_library",
-  "action": "update",
-  "title": "update about library",
-  "meta_data": {
-    "Area": "26000 sq.ft",
-    "no_of_books": "81000 Volumes",
-    "vision": "New vision text",
-    "mission": "New mission text"
+  {
+    "collectionName": "library",
+    "collection_type": "Faculty_Staff",
+    "action": "insert",
+    "title": "Add new faculty",
+    "meta_data": {
+      "name": "Dinesh T",
+      "designation": "Library Assistant",
+      "educational_qualification": "M.A., M.L.I.Sc",
+      "image_path": "/static/images/library/faculty/Dinesh T.webp"
+    }
   },
-  "original_data": {
-    "Area": "24000 sq.ft",
-    "no_of_books": "78070  Volumes",
-    "no_of_titles": "25271 ",
-    "no_of_journals": "180  National and International",
-    "no_of_online_journals": "9517",
-    "vision": "To enrich the knowledge of Velammalians by providing dynamic world class learning environment.To provide a learning environment with intense intellectual inquiry. To become the most dynamic learning environment in the world. To advance with successful teaching, learning and research through building a robust One System, One Library. To transform the library as a place dynamic learning with ease.",
-    "mission": "To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources and services in support of the research, teaching and learning needs of the college community to maintain and improve collections and achieve efficient services in an environment of flat or reduced budgets for the students, faculty and staff. To transform the information available in the environment into knowledge for students, staff and faculty.",
-    "general_instructions": [
-      "Students can obtain membership cards by showing their ID cards with barcodes.",
-      "Members should sign in at the entrance to accept library rules.",
-      "Two renewals per book are allowed unless reserved by others.",
-      "Users should verify book conditions before borrowing.",
-      "Books must be returned on or before the due date.",
-      "Late returns will incur overdue charges as per rules.",
-      "Users should collect a receipt for any fines paid.",
-      "Members can suggest new books to the librarian.",
-      "Strict silence must be maintained in the library."
-    ]
-  }
-},
-{
-  "collectionName": "library",
-  "collection_type": "about_the_library",
-  "action": "delete",
-  "title": "delete about library",
-  "meta_data": {
-    "Area": "25000 sq.ft",
-    "no_of_books": "80000 Volumes",
-    "vision": "Updated vision of library",
-    "mission": "Updated mission of library",
-    "general_instructions": [
-      "Instruction 1",
-      "Instruction 2"
-    ]
-  }
-},
-{
-  "collectionName": "library",
-  "collection_type": "membership_details",
-  "action": "update",
-  "title": "Update member types",
-  "category": "Member Details",
-  "meta_data": {
-    "content": [
-      "Undergraduate Students",
-      "Postgraduate Students"
-    ]
+  {
+    "collectionName": "library",
+    "collection_type": "Faculty_Staff",
+    "action": "update",
+    "title": "Update faculty info",
+    "meta_data": {
+      "name": "Dinesh T",
+      "designation": "Senior Library Assistant",
+      "educational_qualification": "M.A., M.L.I.Sc",
+      "image_path": "/static/images/library/faculty/Dinesh T.webp"
+    },
+    "original_data": {
+      "name": "Dinesh T",
+      "designation": "Library Assistant",
+      "educational_qualification": "M.A., M.L.I.Sc",
+      "image_path": "/static/images/library/faculty/Dinesh T.png"
+    }
   },
-  "original_data": {
-    "content": [
-      "UG Students",
-      "PG Students"
-    ]
-  }
-},
-{
-  
-  "collectionName": "library",
-  "collection_type": "membership_details",
-  "action": "insert",
-  "title": "insert member types",
-  "category": "Member Details",
-  "meta_data": {
-    "content": [
-      "Undergraduate Students",
-      "Postgraduate Students",
-      "ug"
-    ]
-  }
-},
-{
-  "collectionName": "library",
-  "collection_type": "membership_details",
-  "action": "delete",
-  "title": "insert member types",
-  "category": "Member Details",
-  "meta_data": {}
-},
-{
-  "collectionName": "library",
-  "collection_type": "library_services",
-  "action": "insert",
-  "title": "insertion of gallery",
-  "category": "Image_Gallery",
-  "meta_data": {
-    "title": "dinesh",
-    "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
-    "image": "/static/images/library/library_images/dinesh.webp"
-  }
-},
-{
-  "collectionName": "library",
-  "collection_type": "library_services",
-  "action": "update",
-  "title": "update of gallery",
-  "category": "Image_Gallery",
-  "meta_data": {
-    "title": "hari",
-    "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
-    "image": "/static/images/library/library_images/hari.webp"
+  {
+    "collectionName": "library",
+    "collection_type": "Faculty_Staff",
+    "action": "delete",
+    "title": "Delete faculty",
+    "category": null,
+    "meta_data": {
+      "name": "SENTHIVEL T",
+      "designation": "Library Assistant",
+      "educational_qualification": "M.A., M.L.I.Sc",
+      "image_path": "/static/images/library/faculty/Senthivel T.webp"
+    }
   },
-  "original_data": {
-    "title": "dinesh",
-    "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
-    "image": "/static/images/library/library_images/dinesh.webp"
+  {
+    "collectionName": "library",
+    "collection_type": "about_the_library",
+    "action": "update",
+    "title": "update about library",
+    "meta_data": {
+      "Area": "26000 sq.ft",
+      "no_of_books": "81000 Volumes",
+      "vision": "New vision text",
+      "mission": "New mission text"
+    },
+    "original_data": {
+      "Area": "24000 sq.ft",
+      "no_of_books": "78070  Volumes",
+      "no_of_titles": "25271 ",
+      "no_of_journals": "180  National and International",
+      "no_of_online_journals": "9517",
+      "vision": "To enrich the knowledge of Velammalians by providing dynamic world class learning environment.To provide a learning environment with intense intellectual inquiry. To become the most dynamic learning environment in the world. To advance with successful teaching, learning and research through building a robust One System, One Library. To transform the library as a place dynamic learning with ease.",
+      "mission": "To link the information with technology and make it available as knowledge at ease to the Velammalians. To provide comprehensive resources and services in support of the research, teaching and learning needs of the college community to maintain and improve collections and achieve efficient services in an environment of flat or reduced budgets for the students, faculty and staff. To transform the information available in the environment into knowledge for students, staff and faculty.",
+      "general_instructions": [
+        "Students can obtain membership cards by showing their ID cards with barcodes.",
+        "Members should sign in at the entrance to accept library rules.",
+        "Two renewals per book are allowed unless reserved by others.",
+        "Users should verify book conditions before borrowing.",
+        "Books must be returned on or before the due date.",
+        "Late returns will incur overdue charges as per rules.",
+        "Users should collect a receipt for any fines paid.",
+        "Members can suggest new books to the librarian.",
+        "Strict silence must be maintained in the library."
+      ]
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "Collection",
+    "action": "update",
+    "title": "Update member types",
+    "category": "Member Details",
+    "meta_data": {
+      "content": [
+        "Undergraduate Students",
+        "Postgraduate Students"
+      ]
+    },
+    "original_data": {
+      "content": [
+        "UG Students",
+        "PG Students"
+      ]
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "Collection",
+    "action": "insert",
+    "title": "insert member types",
+    "category": "Member Details",
+    "meta_data": {
+      "content": [
+        "Undergraduate Students",
+        "Postgraduate Students",
+        "ug"
+      ]
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "Collection",
+    "action": "delete",
+    "title": "insert member types",
+    "category": "Member Details",
+    "meta_data": {}
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "library_services",
+    "action": "insert",
+    "title": "insertion of gallery",
+    "category": "Image_Gallery",
+    "meta_data": {
+      "title": "dinesh",
+      "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
+      "image_path": "/static/images/library/library_images/dinesh.webp"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "library_services",
+    "action": "update",
+    "title": "update of gallery",
+    "category": "Image_Gallery",
+    "meta_data": {
+      "title": "hari",
+      "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
+      "image_path": "/static/images/library/library_images/hari.webp"
+    },
+    "original_data": {
+      "title": "priyan",
+      "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
+      "image_path": "/static/images/library/library_images/priyan.png"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "library_services",
+    "action": "delete",
+    "title": "delete of gallery",
+    "category": "Image_Gallery",
+    "meta_data": {
+      "title": "priyan",
+      "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
+      "image_path": "/static/images/library/library_images/priyan.png"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "HOD",
+    "action": "insert",
+    "title": "update HOD",
+    "meta_data": {
+      "name": "Dr. Priyan S",
+      "image_path": "/static/images/library/hod/Rajendra Prasath S.webp",
+      "designation": "Librarian/HOD",
+      "education_qualification": "B.Sc., M.A., M.L.I.Sc., M.phil., Ph.D",
+      "message": "VEC’s Central Library is a one of it’s kind installation that facilitates teaching, learning and research endeavours of our students, scholars and faculty members. It is one of the formost such libraries in Tamil Nadu higher educational systems. significant efforts are not just building structure that stores books. It serves more realistically as a space for learning and knowledge exchange with users coming from diverse study and aspirational backgrounds."
+    },
+    "original_data": {
+      "name": "Dr. RAJENDRAPRASATH S",
+      "image_path": "/static/images/library/hod/Rajendra Prasath S.webp",
+      "designation": "Librarian/HOD",
+      "education_qualification": "B.Sc., M.A., M.L.I.Sc., M.phil., Ph.D",
+      "message": "VEC’s Central Library is a one of it’s kind installation that facilitates teaching, learning and research endeavours of our students, scholars and faculty members. It is one of the formost such libraries in Tamil Nadu higher educational systems. significant efforts are not just building structure that stores books. It serves more realistically as a space for learning and knowledge exchange with users coming from diverse study and aspirational backgrounds."
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "advisors",
+    "action": "insert",
+    "title": "Add new advisors",
+    "meta_data": {
+      "name": "Priyan T",
+      "designation": "Library Assistant"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "advisors",
+    "action": "update",
+    "title": "Update advisors info",
+    "meta_data": {
+      "name": "PriyaDharsan T",
+      "designation": "Library Assistant"
+    },
+    "original_data": {
+      "name": "Priyan T",
+      "designation": "Library Assistant"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "advisors",
+    "action": "delete",
+    "title": "Delete advisors",
+    "category": null,
+    "meta_data": {
+      "name": "PriyaDharsan T",
+      "designation": "Library Assistant"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "Collection",
+    "action": "update",
+    "title": "update of Collection",
+    "category": "Our Collections",
+    "meta_data": {
+      "content": [
+        "No of books",
+        "No of titles",
+        "General Bank Books",
+        "SC/ST Book Bank Books",
+        "e-Books",
+        "Priyan",
+        "Journals",
+        "International",
+        "National",
+        "CD's",
+        "Video Cassettes",
+        "Journal Back Volumes",
+        "Student Project Reports",
+        "Online Journals Package",
+        "Magazine And NewsPapers"
+      ]
+    },
+    "original_data": {
+      "content": [
+        "no_of_books",
+        "no_of_titles",
+        "General Bank Books",
+        "SC/ST Book Bank Books",
+        "e-Books",
+        "Journals",
+        "International",
+        "National",
+        "CD's",
+        "Video Cassettes",
+        "Journal Back Volumes",
+        "Student Project Reports",
+        "Online Journals Package",
+        "Magazine And NewsPapers"
+      ]
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "digital_libraries",
+    "action": "insert",
+    "title": "Add new digital_libraries",
+    "meta_data": {
+      "title": "Priyan",
+      "description": "New books are displayed in the new arrival rack for at least one week. Current periodicals are arranged subject-wise in racks until new issues arrive.",
+      "image_path": "/static/images/library/library_images/New Arrivals.webp"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "digital_libraries",
+    "action": "update",
+    "title": "Update digital_libraries info",
+    "meta_data": {
+      "title": "dinesh",
+      "description": "New books are displayed in the new arrival rack for at least one week. Current periodicals are arranged subject-wise in racks until new issues arrive.",
+      "image_path": "/static/images/library/library_images/Priyan.png"
+    },
+    "original_data": {
+      "title": "Priyan",
+      "description": "New books are displayed in the new arrival rack for at least one week. Current periodicals are arranged subject-wise in racks until new issues arrive.",
+      "image_path": "/static/images/library/library_images/Priyan.png"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "digital_libraries",
+    "action": "delete",
+    "title": "Delete digital_libraries",
+    "category": null,
+    "meta_data": {
+      "title": "dinesh",
+      "description": "New books are displayed in the new arrival rack for at least one week. Current periodicals are arranged subject-wise in racks until new issues arrive.",
+      "image_path": "/static/images/library/library_images/dinesh.png"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "membership_details",
+    "action": "update",
+    "title": "Update membership_details",
+    "category": "Member Details",
+    "meta_data": {
+      "content": [
+        "Professors, Associate Professors and Assistant Professors",
+        "JRF/Research Scholars",
+        "UG Students",
+        "PG Students",
+        "Skilled Non-Teaching Staff"
+      ]
+    },
+    "original_data": {
+      "content": [
+        "Professors, Associate Professors and Assistant Professors",
+        "JRF/Research Scholars",
+        "UG Students",
+        "PG Students",
+        "Skilled Non-Teaching Staff"
+      ]
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "library_resources",
+    "action": "update",
+    "title": "update of library_resources",
+    "category": "Anti-Plagiarism Scanner Software",
+    "meta_data": {
+      "content": [
+        {
+          "name": "Priyan",
+          "link": "https://www.priyan.com"
+        },
+        {
+          "name": "Copyscape",
+          "link": "https://www.copyscape.com"
+        },
+        {
+          "name": "CodeMatch (CodeSuite)",
+          "link": "https://www.zeidmanconsulting.com/CodeSuite.htm"
+        },
+        {
+          "name": "ArticleChecker",
+          "link": "https://www.articlechecker.com"
+        },
+        {
+          "name": "PlagiarismDetect.com",
+          "link": "https://www.plagiarismdetect.com"
+        },
+        {
+          "name": "Duplichecker",
+          "link": "https://www.duplichecker.com"
+        },
+        {
+          "name": "Small SEO Tools",
+          "link": "https://smallseotools.com/plagiarism-checker/"
+        },
+        {
+          "name": "ScanMyEssay & Viper & WCopyFind",
+          "link": "https://www.scanmyessay.com/"
+        }
+      ]
+    },
+    "original_data": {
+      "content": [
+        {
+          "name": "TurnItOut",
+          "link": "https://www.turnitout.com"
+        },
+        {
+          "name": "Copyscape",
+          "link": "https://www.copyscape.com"
+        },
+        {
+          "name": "CodeMatch (CodeSuite)",
+          "link": "https://www.zeidmanconsulting.com/CodeSuite.htm"
+        },
+        {
+          "name": "ArticleChecker",
+          "link": "https://www.articlechecker.com"
+        },
+        {
+          "name": "PlagiarismDetect.com",
+          "link": "https://www.plagiarismdetect.com"
+        },
+        {
+          "name": "Duplichecker",
+          "link": "https://www.duplichecker.com"
+        },
+        {
+          "name": "Small SEO Tools",
+          "link": "https://smallseotools.com/plagiarism-checker/"
+        },
+        {
+          "name": "ScanMyEssay & Viper & WCopyFind",
+          "link": "https://www.scanmyessay.com/"
+        }
+      ]
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "Ebook_Sources",
+    "action": "insert",
+    "title": "Add new Ebook_Sources",
+    "meta_data": {
+      "name": "Priyan",
+      "url": "http://digital.library.upenn.edu/books"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "Ebook_Sources",
+    "action": "update",
+    "title": "Update Ebook_Sources info",
+    "meta_data": {
+      "name": "Dinesh T",
+      "url": "http://digital.library.upenn.edu/books"
+    },
+    "original_data": {
+      "name": "Priyan",
+      "url": "http://digital.library.upenn.edu/books"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "Ebook_Sources",
+    "action": "delete",
+    "title": "Delete Ebook_Sources",
+    "category": null,
+    "meta_data": {
+      "name": "Dinesh T",
+      "url": "http://digital.library.upenn.edu/books"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "books",
+    "action": "insert",
+    "title": "update books",
+    "meta_data": {
+      "Number of Books": "0",
+      "Total Number of Journals ": "180",
+      "General book bank": "2802"
+    },
+    "original_data": {
+      "Number of Books": "78070",
+      "Total Number of Journals ": "180",
+      "General book bank": "2802"
+    }
+  },
+  {
+    "collectionName": "library",
+    "collection_type": "journal",
+    "action": "insert",
+    "title": "update journal",
+    "meta_data": {
+      "Total Journals":"10",
+        "National Journals":"93",
+        "International Journals":"87",
+        "E-Journals":"1480" 
+    },
+    "original_data": {
+        "Total Journals":"180",
+        "National Journals":"93",
+        "International Journals":"87",
+        "E-Journals":"1480" 
+    }
   }
-},
-{
-  "collectionName": "library",
-  "collection_type": "library_services",
-  "action": "delete",
-  "title": "delete of gallery",
-  "category": "Image_Gallery",
-  "meta_data": {
-    "title": "hari",
-    "description": "The College Library is equipped with a plain paper copier for REPROGRAPHY SERVICE, enabling users to obtain photocopies of library documents at a nominal cost while preserving the collection.",
-    "image": "/static/images/library/library_images/hari.webp"
-  }
-}]
+]
