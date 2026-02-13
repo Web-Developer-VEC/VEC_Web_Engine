@@ -17,8 +17,16 @@ export default function AdminApprovalPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = "https://vectest123.s3.ap-south-1.amazonaws.com"
+  const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
+
   useEffect(() => {
     setrequest(location?.state?.request)
+    // Scroll to top whenever location changes
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, [location?.state]);
 
   const [itemApprovals, setItemApprovals] = useState([])
@@ -214,7 +222,7 @@ export default function AdminApprovalPage() {
     // Handle image/pdf paths
     if (fieldName?.toLowerCase().includes('image_path') && value) {
       return (
-        <a href={value} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-1">
+        <a href={UrlParser(value)} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-1">
           <Image className="w-4 h-4" />
           View Image
         </a>
@@ -223,7 +231,7 @@ export default function AdminApprovalPage() {
 
     if (fieldName?.toLowerCase().includes('pdf_path') && value) {
       return (
-        <a href={value} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-1">
+        <a href={UrlParser(value)} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-1">
           <FileText className="w-4 h-4" />
           View PDF
         </a>
@@ -233,7 +241,7 @@ export default function AdminApprovalPage() {
     // Handle URLs
     if (typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://'))) {
       return (
-        <a href={value} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+        <a href={UrlParser(value)} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
           {value}
         </a>
       )
