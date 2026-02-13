@@ -4,75 +4,83 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import LoadComp from "../../../LoadComp";
-const  NCCNMembers = ({data}) => {
 
+const NCCNMembers = ({data}) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  const UrlParser = (path) => {
+  const parseUrl = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-
   };
   let stud = [];
   let coor = null;
- if (Array.isArray(data) && data.length >= 2) {
-  coor = data[0]?.members?.[0] || null;
-  stud = Array.isArray(data[1]?.members) ? data[1].members : [];
-}
-  
+  if (Array.isArray(data) && data.length >= 2) {
+      coor = data[0]?.members?.[0] || null;
+      stud = Array.isArray(data[1]?.members) ? data[1].members : [];
+    }
   return (
     <>
-    {(coor && stud )
-      
-      ?(
-        
-        <div className="yrc-coordinators-container">
-      <h2 className="text-lg md:text-3xl font-bold text-center text-brwn dark:text-drkt capitalize mb-4">
-        FACULTY COORDINATOR 
-        <div className="yrc-underline2"></div>
-      </h2>
-      
-      <div className="yrc-member-card-1 dark:bg-text">
-        <img
-          src={UrlParser(coor?.image_path)}
-          alt={coor?.name}
-          className="yrc-member-image1"
-          />
+      {stud?.length > 0 && coor ? (
+        <div className="p-6">
+          {/* Faculty Coordinator */}
+          <h2 className="text-lg md:text-3xl font-bold text-center text-brwn dark:text-drkt capitalize mb-1">
+            FACULTY COORDINATOR
+          </h2>
 
-        <div className="yrc-member-info1">
-          {/* <span className="yrc-platoon">Programme Officer</span> */}
-          <h3>{coor?.name}</h3>
-          <p className="yrc-title text-brwn dark:text-drka">{coor?.designation}</p>
-        </div>
-      </div>
 
-        <h2 className="text-lg md:text-2xl font-bold text-center text-brwn dark:text-drkt capitalize mb-4">
+          <div className="nss-member-card-1 dark:bg-text flex flex-col md:flex-row items-center gap-6 mt-4">
+            <div className="flex-shrink-0">
+              <img
+                src={parseUrl(coor?.image_path)}
+                alt={coor?.name}
+                className="w-32 h-32 rounded border object-cover"
+              />
+            </div>
+
+            <div className="text-center md:text-left ">
+              <h3 className="text-text dark:text-drkt text-xl font-semibold">
+                {coor?.name}
+              </h3>
+              <p className="text- center text-sm text-brwn dark:text-drka">
+                {coor?.designation}
+              </p>
+            </div>
+          </div>
+
+          {/* Student Coordinators */}
+          <h2 className="text-xl md:text-2xl font-bold text-center text-brwn dark:text-drkt uppercase mb-1">
             STUDENT COORDINATORS
-        </h2>
-      <div className="yrc-members-grid grid grid-cols-4 gap-6 auto-rows-auto justify-items-center justify-content-center align-items-center">
-     {stud?.map((item,i) => (
-        <div key={i} className="student-card dark:bg-text">
-          {/* <img src={UrlParser(student.image)} className="w-[150px] h-[200px] m-auto" alt={student.name} /> */}
-          <div className="ncc-n-stu-detail p-2 text-left">
-            <h5 className="text-center">{item?.name}</h5>
-            <p className="pl-4 text-brwn dark:text-drka">regiment no: {item?.regiment_no}</p>
-            <p className="pl-4 text-brwn dark:text-drka">Rank : {item?.rank}</p>
-            <p className="pl-4 text-brwn dark:text-drka">University No : {item?.universityno}</p>
-            <p className="pl-4 text-brwn dark:text-drka">Department: {item?.department}</p>
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+            {stud?.map((member, index) => (
+              <div
+                key={index}
+                className="dark:bg-text shadow-md rounded-xl p-4 flex flex-col items-center text-center"
+              >
+                <h3 className="text-lg font-semibold">{member?.name}</h3>
+                <span className="text-sm text-brwn dark:text-drka">
+                  {member?.regiment_no}
+                </span>
+                <span className="text-sm text-brwn dark:text-drka">
+                  {member?.rank}
+                </span>
+                <span className="text-sm text-brwn dark:text-drka">
+                  {member?.universityno}
+                </span>
+                <span className="text-sm text-brwn dark:text-drka">
+                  {member?.department}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-
-    </div>
-
-
-): (<div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+      ) : (
+        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
           <LoadComp />
-</div>)}
-    
-        </>
-    
+        </div>
+      )}
+    </>
   );
-}
+};
 
 export default NCCNMembers;
