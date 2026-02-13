@@ -330,9 +330,19 @@ const GrievanceForm = ({ theme, toggle }) => {
           ) : (
             <p className="text-center text-gray-500">Loading grievance table...</p>
           )}
+          <br />
+          <div style={{ fontSize: '18px',fontWeight: 'bold',textAlign: 'center'  }}>
+            Feedback facility for students and faculties is available on the AICTE Web-Portal:{' '}
+            <a
+              href="https://www.aicte-india.org/feedback/index.php"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.aicte-india.org/feedback/index.php
+            </a>
+          </div>
         </div>
       </div>
-
     </>
   );
 };
