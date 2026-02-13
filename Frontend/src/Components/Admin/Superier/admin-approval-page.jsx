@@ -1,8 +1,6 @@
-"use client"
-
 import { useEffect, useState } from "react"
-import { ChevronDown, ChevronUp, Check, X, Plus, Edit, Trash2, Calendar, User, Trophy, Phone, Image } from "lucide-react"
-import { useLocation } from "react-router-dom"
+import { ChevronDown, ChevronUp, Check, X, Plus, Edit, Trash2, Calendar, User, Trophy, Image, FileText, ArrowRight, ArrowLeft, Type, GraduationCap, ShieldPlus, Mail, Phone } from "lucide-react"
+import { useLocation, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -14,8 +12,10 @@ export default function AdminApprovalPage() {
     delete: false,
   })
 
-  const [request,setrequest] = useState(null)
+  const [request, setrequest] = useState(null)
+  const [loading, setLoading] = useState(false)
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setrequest(location?.state?.request)
@@ -54,25 +54,7 @@ export default function AdminApprovalPage() {
   };
 
   const handleSubmitReview = async () => {
-    const allItems = [
-      ...(request?.data?.insert || []),
-      ...(request?.data?.update || []),
-      ...(request?.data?.delete || []),
-    ]
-
-    // Get all item IDs
-    const allItemIds = allItems.map((item) => item?._id?.toString())
-
-    // Get all approved/rejected IDs
-    const decidedIds = itemApprovals.map((item) => item.id)
-
-    // Find missing ones (not approved/rejected yet)
-    const pending = allItemIds.filter((id) => !decidedIds.includes(id))
-
-    // if (pending.length > 0) {
-    //   toast.error("⚠️ Please approve or reject all items before submitting.")
-    //   return
-    // }
+    setLoading(true);
 
     // Prepare the review data
     const review = {
@@ -85,7 +67,7 @@ export default function AdminApprovalPage() {
       about_us: "aboutusadmin",
       administration: "administrationadmin",
       admissions: "admissionadmin",
-      exams: "examsadmin" , 
+      exams: "examsadmin", 
       placement: "placementadmin",
       research: "researchadmin",
       accreditations_and_ranking: "accreditations_and_ranking_admin",
@@ -105,7 +87,7 @@ export default function AdminApprovalPage() {
       transport: "transportadmin",
       yrc: "yrcadmin",
       landing_page_details: "landingpageadmin",
-      academics: "calendaradmin" ,
+      academics: "calendaradmin",
     }
 
     try {
@@ -115,12 +97,13 @@ export default function AdminApprovalPage() {
 
       toast.success(responce.message || "Successful")
     } catch (error) {
-      console.error("Error sending data to the approval status",error);
+      console.error("Error sending data to the approval status", error);
       toast.error("Error sending responce")
+    } finally {
+      setLoading(false)
     }
 
     console.log("Submitting review:", review)
-    toast.success("✅ Review submitted! Check console for details.")
   }
 
   const button = (item) => (
@@ -131,7 +114,7 @@ export default function AdminApprovalPage() {
           getApprovalStatus(request?.collection, item?._id?.toString()) === "approved"
             ? "bg-green-600 text-white"
             : "bg-white"
-        }`}x
+        }`}
       >
         <Check className="w-5 h-5" />
       </button>
@@ -149,106 +132,245 @@ export default function AdminApprovalPage() {
   );
 
   const getFieldIcon = (fieldName) => {
-      const field = fieldName?.toLowerCase()
-      if (field?.includes("date") || field?.includes("year") || field?.includes("conducted_on")) return <Calendar className="w-3 h-3 text-gray-500" />
-      if (field?.includes("name") || field?.includes("requester")) return <User className="w-3 h-3 text-gray-500" />
-      if (field?.includes("winner") || field?.includes("position")) return <Trophy className="w-3 h-3 text-gray-500" />
-      if (field?.includes("image_path")) return <Image className="w-3 h-3 text-gray-500" />
-      return null
+    const field = fieldName?.toLowerCase()
+    if (field?.includes("date") || field?.includes("year") || field?.includes("conducted_on")) return <Calendar className="w-4 h-4 text-gray-500" />
+    if (field?.includes("name") || field?.includes("requester")) return <User className="w-4 h-4 text-gray-500" />
+    if (field?.includes("winner") || field?.includes("position")) return <Trophy className="w-4 h-4 text-gray-500" />
+    if (field?.includes("image_path")) return <Image className="w-4 h-4 text-gray-500" />
+    if (field?.includes("pdf_path")) return <FileText className="w-4 h-4 text-gray-500" />
+    if (field?.includes("type") || field?.includes("title")) return <Type className="w-4 h-4 text-gray-500" />
+    if (field?.includes("designation")) return <GraduationCap className="w-4 h-4 text-gray-500" />
+    if (field?.includes("role")) return <ShieldPlus className="w-4 h-4 text-gray-500" />
+    if (field?.includes("email")) return <Mail className="w-4 h-4 text-gray-500" />
+    if (field?.includes("phone")) return <Phone className="w-4 h-4 text-gray-500" />
+    return null
   }
 
   const formatFieldName = (fieldName) => {
-    if (fieldName == "image_path") return "Images"
-    return fieldName.charAt(0).toUpperCase() + fieldName.slice(1).replace(/([A-Z])/g, " $1")
+    if (fieldName === "image_path") return "Images"
+    if (fieldName === "pdf_path") return "Pdf"
+    return fieldName.charAt(0).toUpperCase() + fieldName.slice(1).replace(/([A-Z_])/g, " $1").replace(/_/g, " ")
   }
 
-  const renderDataFields = (item, excludeFields = []) => {
-      return Object.entries(item)
-          .filter(([key]) => !excludeFields.includes(key))
-          .map(([key, value]) => (
-          <div key={key} className="flex items-center gap-2 text-sm">
-              {getFieldIcon(key)}
-              <span className="text-gray-600 font-medium">{formatFieldName(key)}:</span>
-              {Array.isArray(value) ? (
-                  <>
-                  {value?.length > 0 ? (
-                      <>
-                          {value?.map((img,idx) => (
-                              <span className="text-gray-900"><a href={img}>Image {idx + 1}</a></span>
-                          ))}
-                      </>
-                  ) : (
-                      <span className="text-gray-900">Entire Category Was Deleted</span>
-                  )}
-                  </>
-              ) : (
-                  <span className="text-gray-900">{value}</span>
-              )}  
+  // ✅ NEW: Recursive function to render any nested data structure
+  const renderValue = (value, fieldName = "", depth = 0) => {
+    // Handle null/undefined
+    if (value === null || value === undefined) {
+      return <span className="text-gray-400 italic">None</span>
+    }
+
+    // Handle arrays
+    if (Array.isArray(value)) {
+      // Empty array
+      if (value.length === 0) {
+        return <span className="text-gray-400 italic">Empty</span>
+      }
+
+      // Array of primitives (strings, numbers)
+      if (typeof value[0] !== 'object') {
+        return (
+          <div className="flex flex-wrap gap-2">
+            {value.map((item, idx) => (
+              <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs">
+                {item}
+              </span>
+            ))}
           </div>
-      ))
-  }
-  
-  const renderAddItems = (data) => (
-      <div className="space-y-3">
-          {data?.data?.insert?.map((item, index) => (
-          <div
-              key={index}
-              className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200/50 shadow-sm"
-          >
-              <div className="flex justify-between items-start">
-              <div className="flex-1 space-y-3">
-                  <div className="flex items-center gap-2"><span className="text-gray-600">{item?.title}</span> - <Calendar size={16}/>{formatDate(item?.createdAt)}</div>
-                  {renderDataFields(item?.meta_data)}
-              </div>
-              <div className="flex gap-3 ml-6">
-                  {button(item)}
-              </div>
-              </div>
-          </div>
+        )
+      }
+
+      // Array of objects - render each object
+      return (
+        <div className={`space-y-2 ${depth > 0 ? 'ml-4 pl-4 border-l-2 border-gray-200' : ''}`}>
+          {value.map((item, idx) => (
+            <div key={idx} className="bg-gray-50 rounded-lg p-3">
+              <div className="text-xs font-semibold text-gray-500 mb-2">Item {idx + 1}</div>
+              {renderValue(item, '', depth + 1)}
+            </div>
           ))}
-      </div>
-  )
-  
-  const renderEditItems = (data) => (
-      <div className="space-y-3">
-          {data?.data?.update?.map((item, index) => (
-          <div
-              key={index}
-              className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200/50 shadow-sm"
-          >
-              <div className="flex justify-between items-start">
-              <div className="flex-1 space-y-3">
-                  <div className="flex items-center gap-2"><span className="text-gray-600">{item?.title}</span> - <Calendar size={16}/>{formatDate(item?.createdAt)}</div>
-                  {renderDataFields(item?.meta_data)}
+        </div>
+      )
+    }
+
+    // Handle objects
+    if (typeof value === 'object') {
+      return (
+        <div className={`space-y-2 ${depth > 0 ? 'ml-4 pl-4 border-l-2 border-gray-200' : ''}`}>
+          {Object.entries(value).map(([key, val]) => (
+            <div key={key} className="flex items-start gap-2">
+              <div className="flex items-center gap-2">
+                {getFieldIcon(key)}
+                <span className="text-gray-600 font-medium min-w-[120px]">{formatFieldName(key)}:</span>
               </div>
-              <div className="flex gap-3 ml-6">
-                  {button(item)}
-              </div>
-              </div>
-          </div>
-          ))}
-      </div>
-  )
-  
-  const renderDeleteItems = (data) => (
-      <div className="space-y-3">
-        {data?.data?.delete.map((item, index) => (
-          <div
-            key={index}
-            className="bg-gradient-to-r from-red-50 to-rose-50 rounded-xl p-6 border border-red-200/50 shadow-sm"
-          >
-            <div className="flex justify-between items-start">
-              <div className="flex-1 space-y-3">
-                  <div className="flex items-center gap-2"><span className="text-gray-600">{item?.title}</span> - <Calendar size={16}/>{formatDate(item?.createdAt)}</div>
-                  {renderDataFields(item?.meta_data)}
-              </div>
-              <div className="flex gap-3 ml-6">
-                  {button(item)}
+              <div className="flex-1">
+                {renderValue(val, key, depth + 1)}
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      )
+    }
+
+    // Handle image/pdf paths
+    if (fieldName?.toLowerCase().includes('image_path') && value) {
+      return (
+        <a href={value} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-1">
+          <Image className="w-4 h-4" />
+          View Image
+        </a>
+      )
+    }
+
+    if (fieldName?.toLowerCase().includes('pdf_path') && value) {
+      return (
+        <a href={value} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-1">
+          <FileText className="w-4 h-4" />
+          View PDF
+        </a>
+      )
+    }
+
+    // Handle URLs
+    if (typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://'))) {
+      return (
+        <a href={value} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+          {value}
+        </a>
+      )
+    }
+
+    // Handle primitives (string, number, boolean)
+    return <span className="text-gray-900">{String(value)}</span>
+  }
+
+  // ✅ IMPROVED: Render data fields with recursive support
+  const renderDataFields = (data) => {
+    if (!data || typeof data !== 'object') {
+      return <div className="text-gray-400 italic">No data</div>
+    }
+
+    console.log(data);
+    
+
+    return (
+      <div className="space-y-3">
+        {renderValue(data)}
       </div>
+    )
+  }
+
+  const renderAddItems = (data) => (
+    <div className="space-y-3">
+      {data?.data?.insert?.map((item, index) => (
+        <div
+          key={index}
+          className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200/50 shadow-sm"
+        >
+          <div className="flex justify-between items-start">
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="text-gray-600 font-semibold">{item?.title?.replaceAll("_", " ").toUpperCase()}</span>
+                <span className="text-gray-400">•</span>
+                <Calendar size={16} />
+                {formatDate(item?.createdAt)}
+              </div>
+              {item?.category && (
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
+                    {item?.category}
+                  </span>
+                </div>
+              )}
+              {renderDataFields(item?.meta_data)}
+            </div>
+            <div className="flex gap-3 ml-6">
+              {button(item)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+
+  const renderEditItems = (data) => (
+    <div className="space-y-3">
+      {data?.data?.update?.map((item, index) => (
+        <div
+          key={index}
+          className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-6 border border-orange-200/50 shadow-sm"
+        >
+          <div className="flex justify-between items-start">
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="text-gray-600 font-semibold">{item?.title?.replaceAll("_", " ").toUpperCase()}</span>
+                <span className="text-gray-400">•</span>
+                <Calendar size={16} />
+                {formatDate(item?.createdAt)}
+              </div>
+              {item?.category && (
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">
+                    {item?.category}
+                  </span>
+                </div>
+              )}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="bg-white/50 rounded-lg p-4">
+                  <div className="text-xs font-semibold text-gray-500 mb-3 flex items-center gap-2">
+                    {/* <ArrowLeft className="w-4 h-4" /> */}
+                    Original Data
+                  </div>
+                  {renderDataFields(item?.original_data)}
+                </div>
+                <div className="bg-white/50 rounded-lg p-4">
+                  <div className="text-xs font-semibold text-gray-500 mb-3 flex items-center gap-2">
+                    {/* <ArrowRight className="w-4 h-4" /> */}
+                    Updated Data
+                  </div>
+                  {renderDataFields(item?.meta_data)}
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-3 ml-6">
+              {button(item)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+
+  const renderDeleteItems = (data) => (
+    <div className="space-y-3">
+      {data?.data?.delete.map((item, index) => (
+        <div
+          key={index}
+          className="bg-gradient-to-r from-red-50 to-rose-50 rounded-xl p-6 border border-red-200/50 shadow-sm"
+        >
+          <div className="flex justify-between items-start">
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="text-gray-600 font-semibold">{item?.title?.replace("_", " ").toUpperCase()}</span>
+                <span className="text-gray-400">•</span>
+                <Calendar size={16} />
+                {formatDate(item?.createdAt)}
+              </div>
+              {item?.category && (
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium">
+                    {item?.category}
+                  </span>
+                </div>
+              )}
+              {renderDataFields(item?.meta_data)}
+            </div>
+            <div className="flex gap-3 ml-6">
+              {button(item)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   )
 
   const formatDate = (dateString) => {
@@ -270,55 +392,38 @@ export default function AdminApprovalPage() {
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50 mt-4">
       <div className="bg-[#046f54] shadow-xl">
         <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-start gap-4">
+            <button
+              onClick={() => navigate(-1)}
+              className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-300"
+            >
+              <ArrowLeft className="w-6 h-6 text-white" />
+            </button>
             <div>
               <h1 className="text-3xl font-bold text-white mb-2">Content Approval Dashboard</h1>
               <p className="text-emerald-100">Review and approve content changes</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="backdrop-blur-sm rounded-lg px-4 py-2">
-                {/* <span className="text-white text-sm font-medium">Request #{requestData.id}</span> */}
-              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 mb-8">
-          <div className="flex items-start justify-between mb-6">
-            <div>
-              {/* <h2 className="text-2xl font-bold text-foreground mb-2">{requestData.title}</h2> */}
-              <div className="flex flex-col gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4" />
-                  <span>
-                    Requested by <strong className="text-text">{request?.admin?.name}</strong>
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  <span>
-                    <a href={`tel:${request?.admin?.phone_no}`} className="text-text">{request?.admin?.phone_no}</a>
-                  </span>
-                </div>
-              </div>
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-4 mb-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              <span>
+                Requested by <strong className="text-text">{request?.admin?.name}</strong>
+              </span>
             </div>
             <div className="flex flex-col items-center justify-center gap-3">
               {request?.collection && (
                 <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20">
-                  {request?.collection?.toUpperCase()}
+                  {request?.collection?.replace("_", " ").toUpperCase()}
                 </span>
               )}
             </div>
           </div>
-
-          {request?.reason && (
-            <div className="bg-muted/50 rounded-xl p-4 border border-border/50">
-              <h3 className="font-semibold text-foreground mb-2">Reason for Request</h3>
-              <p className="text-muted-foreground">{request?.reason}</p>
-            </div>
-          )}
         </div>
 
         <div className="space-y-6">
@@ -431,7 +536,8 @@ export default function AdminApprovalPage() {
         <div className="mt-12 text-center">
           <button
             onClick={handleSubmitReview}
-            className="inline-flex items-center gap-3 bg-secd text-text hover:bg-brwn hover:text-prim px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-200 border border-white/20"
+            className={`${(loading) ? "cursor-wait" : ""} inline-flex items-center gap-3 bg-secd text-text hover:bg-brwn hover:text-prim px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-200 border border-white/20`}
+            disabled={loading || itemApprovals.length == 0}
           >
             <Check className="w-6 h-6" />
             Submit Review Decision

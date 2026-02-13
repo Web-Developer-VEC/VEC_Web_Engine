@@ -1,150 +1,154 @@
 [
   {
-    "collection_type": "warden",
-    "action": "insert",
     "collectionName": "hostel_details",
-    "category": "male_warden",
-    "title": "Powerhouse",
-    "meta_data": 
-    {
-      "warden_name": "Meow Das V",
-      "phone_number": "4500304304",
-      "image_path": "/static/images/warden_profile_photos/999.webp",
-      "designation": "Deputy Warden"
-    }
-  },
-  {
-    "action": "insert",
-    "collectionName": "hostel_details",
-    "category":null,
-    "title": "Powerhouse",
-    "collection_type": "hostel_facilities",
-    "meta_data": 
-    {
-      "title": "Study Hall",
-      "description": "A dedicated study hall with quiet ambiance, proper lighting, and Wi-Fi connectivity to help students concentrate on academics.",
-      "image_path": "/static/images/hostel/study-hall.webp"
-    }
-  },
-  {
-    "action": "insert",
-    "collectionName": "hostel_details",
-    "category":"Menu",
-    "title": "Powerhouse",
-    "collection_type": "general_info",
-    "meta_data": 
-    {
-      "day": ["Extra Monday"],
-      "Breakfast": ["Oats Upma, Coconut Chutney, Coffee / Milk"],
-      "lunch": ["Jeera Rice, Dal Fry, Aloo Gobi, Pickle, Curd, Appalam"],
-      "snacks": ["Veg Sandwich, Tea & Milk"],
-      "dinner": ["Paneer Butter Masala, Chapathi, White Rice, Rasam, Milk & Banana"]
-    }
-  },
-  {
-    "action": "insert",
-    "collectionName": "hostel_details",
-    "category":"Timings",
-    "title": "Powerhouse",
-    "collection_type": "general_info",
-    "meta_data": 
-    {
-      "section": "library timings",
-      "breakfast": "6:00 AM - 9:00 AM",
-      "lunch": "12:00 PM - 11:00 PM",
-      "dinner": "6:00 PM - 10:00 PM"
-    }
-  },
-  {
-    "action": "insert",
-    "collectionName": "hostel_details",
-    "category":null,
-    "title": "Powerhouse",
     "collection_type": "about",
-    "meta_data": 
-    {
-      "about_us": "The hostel vanakam excellent residential facilities with modern infrastructure and strong security, ensuring a homely atmosphere"
-    }
-  },
-  {
     "action": "update",
-    "collectionName": "hostel_details",
-    "category":null,
-    "title": "Powerhouse",
-    "collection_type": "about",
-    "original_data": 
-    {
-      "about_us": "The hostel vanakam excellent residential facilities with modern infrastructure and strong security, ensuring a homely atmosphere"
+    "category": "about",
+    "title": "Update About Hostel",
+    "original_data": {
+      "about_us": "Our college hostel provides a safe, clean, and welcoming environment that supports students’ academic and personal growth. It features spacious, well-ventilated rooms, clean washrooms, uninterrupted water supply, high-speed internet, and common study and recreation areas. The hostel mess serves fresh, hygienic, and nutritious meals prepared under strict quality standards, catering to both vegetarian and non-vegetarian preferences. Regular menu rotations and feedback systems ensure variety and student satisfaction. The facility is managed by experienced wardens and support staff, with 24/7 security to ensure safety. The hostel promotes discipline, responsibility, and a sense of community, making it a true home away from home.",
+      "image_path": "/static/images/hostel/landing.webp"
     },
-    "meta_data": 
-    {
-      "about_us": "Naan thaan da LEO, LEO DAS"
+    "meta_data": {
+      "about_us": "kiruba",
+      "image_path": "/static/images/hostel/landing.webp"
     }
   },
   {
-    "action": "update",
     "collectionName": "hostel_details",
-    "category":null,
-    "title": "Powerhouse",
     "collection_type": "hostel_facilities",
-    "original_data": 
-    {
+    "action": "insert",
+    "category": "",
+    "title": "Insert Hostel Facilities",
+    "meta_data": {
+      "title": "KIRUBA Hostel",
+      "description": "The girl's hostel ensures safety, comfort, and privacy, wto student's well-being and convenience.",
+      "image_path": ""
+    }
+  },
+  {
+    "collectionName": "hostel_details",
+    "collection_type": "hostel_facilities",
+    "action": "update",
+    "category": "hostel_facilities",
+    "title": "Update Hostel Facility - Mess",
+    "original_data": {
       "title": "Boys Hostel",
       "description": "The boy's hostel offers a secure and disciplined environment with all necessary facilities, promoting academic focus and healthy social interaction.",
       "image_path": "/static/images/hostel/Boys Hostel.webp"
     },
-    "meta_data": 
-    {
-      "description": "The boys’ hostel now features air-conditioned rooms and a renovated recreation hall."
+    "meta_data": {
+      "title": "KIRUBA HOSTEL A",
+      "description": "The hostel mess serves hygienic, nutritious, and tasty meals daily, with a rotating menu, special weekend dishes, and options for various dietary preferences. (Updated)",
+      "image_path": ""
     }
   },
   {
-    "action": "update",
     "collectionName": "hostel_details",
-    "title": "Powerhouse",
-    "collection_type": "warden",
-    "category": "male_warden",
-    "original_data": 
-    {
-      "warden_name": "Meow Das V",
-      "phone_number": "4500304304",
-      "image_path": "/static/images/warden_profile_photos/999.webp",
-      "designation": "Deputy Warden"
-    },
-    "meta_data": 
-    {
-      "phone_number": "9000000000"
-    }
-  },
-  {
-    "action": "update",
-    "collectionName": "hostel_details",
-    "title": "Powerhouse",
-    "collection_type": "general_info",
-    "category": "Timings",
-    "original_data": 
-    {
-      "section": "library timings",
-      "breakfast": "6:00 AM - 9:00 AM",
-      "lunch": "12:00 PM - 11:00 PM",
-      "dinner": "9:00 PM - 11:00 PM"
-    },
-    "meta_data": 
-    {
-      "dinner": "9:00 PM - 12:00 PM"
-    }
-  },
-  {
-    "action": "delete",
-    "collectionName": "hostel_details",
-    "title": "Powerhouse",
     "collection_type": "hostel_facilities",
-    "category": null,
-    "meta_data":
-    {
-      "title": "Study Hall",
-      "description": "A dedicated study hall with quiet ambiance, proper lighting, and Wi-Fi connectivity to help students concentrate on academics.",
-      "image_path": "/static/images/hostel/study-hall.webp"
+    "action": "delete",
+    "category": "hostel_facilities",
+    "title": "Delete Hostel Facility - Hostel Room",
+    "meta_data": {
+      "title": "Hostel Room",
+      "description": "A spacious common area for socializing and relaxing with other guests.",
+      "image_path": "/static/images/hostel/Boys Hostel Room.webp"
     }
+  },
+  {
+    "collectionName": "hostel_details",
+    "collection_type": "warden",
+    "action": "insert",
+    "category": "male_warden",
+    "title": "Insert Warden Details",
+    "meta_data": {
+      "warden_name": "Dr. SATISH KUMAR S",
+      "phone_number": 8529637410,
+      "image_path": "",
+      "designation": "Chief Warden"
+    }
+  },
+  {
+    "collectionName": "hostel_details",
+    "collection_type": "warden",
+    "action": "update",
+    "category": "male_warden",
+    "title": "Update Warden Details",
+    "original_data": {
+      "warden_name": "Dr. SATISH KUMAR S",
+      "phone_number": 8529637410,
+      "image_path": "/static/images/warden_profile_photos/dr._satish_kumar_s.png",
+      "designation": "Chief Warden"
+    },
+    "meta_data": {
+      "warden_name": "kiruba aa",
+      "phone_number": 7418529630,
+      "image_path": "",
+      "designation": "God"
+    }
+  },
+  {
+    "collectionName": "hostel_details",
+    "collection_type": "warden",
+    "action": "delete",
+    "category": "male_warden",
+    "title": "Delete Warden",
+    "meta_data": {
+      "warden_name": "kiruba aa",
+      "phone_number": 7418529630,
+      "image_path": "/static/images/warden_profile_photos/kiruba_aa.png",
+      "designation": "God"
+    }
+  },
+    {
+    "collectionName": "hostel_details",
+    "collection_type": "general_info",
+    "action": "update",
+    "category": "Timings",
+    "title": "Update Mess Timings",
+    "original_data": {
+      "section": "mess timings",
+      "breakfast": "7:00 AM - 9:00 AM",
+      "lunch": "12:00 PM - 2:00 PM",
+      "dinner": "7:00 PM - 8:00 PM"
+    },
+    "meta_data": {
+      "section": "mess timings",
+      "breakfast": "7:30 AM - 9:30 AM",
+      "lunch": "12:30 PM - 2:30 PM",
+      "dinner": "7:30 PM - 8:30 PM"
+    }
+  },
+  {
+  "collectionName": "hostel_details",
+  "collection_type": "general_info",
+  "action": "update",
+  "category": "Timings",
+  "title": "Update Study Timings",
+  "original_data": {
+    "section": "study timings",
+    "breakfast": "6:00 AM - 8:00 AM",
+    "lunch": "1:00 PM - 6:00 PM",
+    "dinner": "10:30 PM - 12:00 AM"
+  },
+  "meta_data": {
+    "section": "study timings",
+    "breakfast": "6:30 AM - 8:30 AM",
+    "lunch": "2:00 PM - 6:30 PM",
+    "dinner": "10:00 PM - 12:30 AM"
   }
-] 
+},
+{
+  "collectionName": "hostel_details",
+  "collection_type": "general_info",
+  "action": "update",
+  "category": "Menu",
+  "title": "Update Tuesday Breakfast",
+  "original_data": {
+    "Breakfast": "Idly, Kara Chutney, Vada Curry, Coffee / Milk"
+  },
+  "meta_data": {
+    "Breakfast": "UPDATED - Special Masala Idly, Sambar, Coffee"
+  }
+}
+]
