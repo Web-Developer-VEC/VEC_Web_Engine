@@ -97,7 +97,6 @@ function findMatchingItem(container, original, excludeKey) {
 
         const skipPdfFor = ["AISHE","ug","mba","placement_details", "nirf", "nba","regulation","all_forms","COE"];
 
-
         const skipImageFor = ["members","library_services","team","achivements", ...(collectionName === "ecell" ? ["gallery"] : [])]
         const mainCollection = maindb.collection(collectionName);
 
