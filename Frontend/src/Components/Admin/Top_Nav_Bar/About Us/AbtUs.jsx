@@ -7,7 +7,7 @@ import ScrollToTopButton from "../../ScrollToTopButton";
 import "./AbtUs.css";
 import { useNavigate } from "react-router";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const AdminAbtUs = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -435,7 +435,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
         collection_type: "about_vec",
         action: "update",
         title: "Update About VEC Content",
-        category: "about_us",
+        category: "content",
         meta_data: { content: newBackend.content },
         original_data: { content: oldBackend.content },
       });
@@ -477,7 +477,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
           collection_type: "about_vec",
           action: "delete",
           title: `Delete About VEC PDF ${oldItem.name || i + 1}`,
-          category: "about_us",
+          category: "about_us_pdf",
           meta_data: { name: oldItem.name || "", pdf_path: "" },
           original_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" },
         });
@@ -487,7 +487,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
           collection_type: "about_vec",
           action: "insert",
           title: `Add About VEC PDF ${newItem.name || i + 1}`,
-          category: "about_us",
+          category: "about_us_pdf",
           meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
           original_data: {},
         });
@@ -508,7 +508,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
             collection_type: "about_vec",
             action: "update",
             title: `Update About VEC PDF ${newItem.name || i + 1}`,
-            category: "about_us",
+            category: "about_us_pdf",
             meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
             original_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" },
           });
@@ -553,7 +553,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
         setAbtUsData(updatedBackend);
 
         resetPendingUiState();
-        toast.success("Request submitted successfully.");
       } else {
         if (result?.status === 429 || result?.data?.status === 429) {
           navigate("/ratelimit", {
@@ -627,27 +626,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
     }
   };
 
-  const confirmCancel = () => {
-    if (postSaveSnapshot) {
-      const s = deepClone(postSaveSnapshot);
-      setEditedContent(s.content || "");
-      setEditedImages({ ...(s.images || { 0: null, 1: null, 2: null }) });
-      setPdfLinks((s.pdfLinks || []).map((p) => ({ ...p })));
-      setSavedChanges(true);
-    } else if (editSessionSnapshot) {
-      const s = deepClone(editSessionSnapshot);
-      setEditedContent(s.content || "");
-      setEditedImages({ ...(s.images || { 0: null, 1: null, 2: null }) });
-      setPdfLinks((s.pdfLinks || []).map((p) => ({ ...p })));
-      setSavedChanges(false);
-    }
-
-    setChanged(false);
-    setEditMode(false);
-    setShowCancelConfirm(false);
-    setSelectedPdfs([]);
-  };
-
   const handleSave = () => {
     if (!pendingBaselineSnapshot) {
       setPendingBaselineSnapshot(deepClone(baselineFromBackend));
@@ -662,24 +640,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
   };
 
   const handleDiscardAll = () => setShowDiscardConfirm(true);
-
-  const confirmDiscardAll = () => {
-    setEditedContent(contentArrayToString(abtUsData?.content));
-    setEditedImages({ 0: null, 1: null, 2: null });
-
-    const initialPdfLinks = normalizePdfLinksFromBackend(abtUsData || {});
-    setPdfLinks(initialPdfLinks.map((p) => ({ ...p })));
-
-    setChanged(false);
-    setSavedChanges(false);
-    setEditMode(false);
-    setSelectedPdfs([]);
-
-    setShowDiscardConfirm(false);
-
-    setPostSaveSnapshot(null);
-    setPendingBaselineSnapshot(null);
-  };
 
   // -------------------- render --------------------
   if (!isOnline) {
@@ -699,6 +659,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
         headerText="About VEC"
         subHeaderText="A center for academic excellence and innovation, nurturing minds to create a brighter future through education and empowerment."
       />
+      <ToastContainer position="bottom-right" />
 
       {abtUsData ? (
         <>
@@ -787,6 +748,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 const isSelected = selectedPdfs.includes(index);
 
                 return (
+                  // pdf conrtainer 
                   <div
                     key={index}
                     className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd text-text hover:bg-accn hover:text-white ${
