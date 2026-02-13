@@ -1,6 +1,6 @@
 const { s3, bucketName } = require("../../../../config/s3");
 const { PutObjectCommand } = require("@aws-sdk/client-s3");
-const deptMap = require("../../../../models/constants/deptMap");
+const deptMap = require("../../../../models/deptmap");
 
 // Reverse lookup: "CSE_005" -> "005"
 const reverseDeptMap = Object.fromEntries(
