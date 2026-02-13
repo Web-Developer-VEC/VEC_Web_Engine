@@ -16,41 +16,41 @@ async function updateData(tempDoc, mainCollection) {
 
     // ---------- ABOUT ----------
     if (collection_type === "about") {
-      let updatedData = Array.isArray(doc.data) ? [...doc.data] : [doc.data];
+      // let updatedData = Array.isArray(doc.data) ? [...doc.data] : [doc.data];
 
-      updatedData = updatedData.map((item) => {
-        let newItem = { ...item };
+      // updatedData = updatedData.map((item) => {
+      //   let newItem = { ...item };
 
-        Object.keys(meta_data).forEach((key) => {
-          if (newItem.hasOwnProperty(key)) {
-            if (Array.isArray(newItem[key])) {
-              newItem[key] = newItem[key].map((val) =>
-                val === original_data[key] ? meta_data[key] : val
-              );
-              if (!newItem[key].includes(meta_data[key])) {
-                newItem[key].push(meta_data[key]);
-              }
-            } else {
-              if (newItem[key] === original_data[key]) {
-                newItem[key] = meta_data[key];
-              }
-            }
-          } else {
-            newItem[key] = Array.isArray(meta_data[key])
-              ? meta_data[key]
-              : [meta_data[key]];
-          }
-        });
+      //   Object.keys(meta_data).forEach((key) => {
+      //     if (newItem.hasOwnProperty(key)) {
+      //       if (Array.isArray(newItem[key])) {
+      //         newItem[key] = newItem[key].map((val) =>
+      //           val === original_data[key] ? meta_data[key] : val
+      //         );
+      //         if (!newItem[key].includes(meta_data[key])) {
+      //           newItem[key].push(meta_data[key]);
+      //         }
+      //       } else {
+      //         if (newItem[key] === original_data[key]) {
+      //           newItem[key] = meta_data[key];
+      //         }
+      //       }
+      //     } else {
+      //       newItem[key] = Array.isArray(meta_data[key])
+      //         ? meta_data[key]
+      //         : [meta_data[key]];
+      //     }
+      //   });
 
-        return newItem;
-      });
+      //   return newItem;
+      // });
 
       await mainCollection.updateOne(
         { type: "about" },
-        { $set: { data: updatedData } }
+        { $set: { data: [meta_data] } }
       );
 
-      return { success: true, message: "About data updated successfully", data: updatedData };
+      return { success: true, message: "About data updated successfully", meta_data };
     }
 
     // ---------- HOSTEL FACILITIES ----------
@@ -81,6 +81,9 @@ async function updateData(tempDoc, mainCollection) {
       const memberIndex = doc.data[catIndex].members.findIndex((m) =>
         Object.keys(original_data).every((k) => m[k] === original_data[k])
       );
+      console.log("Priyan",doc.data[catIndex]);
+      console.log("Pr",original_data);
+      
       if (memberIndex === -1) throw new Error("Member not found");
 
       doc.data[catIndex].members[memberIndex] = {
