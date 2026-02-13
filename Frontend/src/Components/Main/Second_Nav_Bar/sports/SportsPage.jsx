@@ -143,7 +143,7 @@ const SportsPage = ({theme, toggle}) => {
                 subHeaderText="Fostering excellence in sports, fitness, and holistic development for students."
                 isVideo = {true}
             />
-            <SideNav sts={spt} setSts={setSpt} navData={navData} cls={"w-screen"} />
+            <SideNav sts={spt} setSts={setSpt} navData={navData} cls={""} />
         </div>
     );
 };

@@ -56,7 +56,7 @@ body {
   font-size: 1rem;
   font-weight: 600;
   border: none;
-  /* border-radius: 30px; */
+  border-radius: 30px;
   /*background: linear-gradient(135deg, #cbb811, #fca225); !* Modern gradient *!*/
   /*color: #fff;*/
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
