@@ -109,8 +109,9 @@ async function insertData(tempDoc, mainCollection) {
 
           // ✅ Case 3: Check if this year already exists
           const yearContent = categoryExists.content.find(c => c.year === meta_data.year);
+          const zoneContent = categoryExists.content.find(c => c.zone === meta_data.zone);
 
-          if (yearContent) {
+          if (yearContent && zoneContent) {
             // Year exists → push new images
             const imagesToAdd = Array.isArray(meta_data.image_path) 
               ? meta_data.image_path 
