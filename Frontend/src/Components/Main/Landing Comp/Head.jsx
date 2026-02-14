@@ -191,6 +191,13 @@ const Head = () => {
         return arr
     }
 
+    const session = JSON.parse(sessionStorage.getItem("userSession"))
+    
+    const isRouteAllowed = (link) => {
+        if (!session?.routes) return true; // If no session routes, allow by default
+        return session.routes.includes(link);
+    };
+
     return (
         <>
             <nav className='fixed z-[100] w-full'>
@@ -198,7 +205,7 @@ const Head = () => {
                     className={'flex items-center font-popp group bg-prim dark:bg-drkts text-text dark:text-drkt' +
                         'transition-all ease-in-out duration-300 w-full h-auto ' +
                         ' h-20'}>
-                    <a href="/" className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
+                    <a href={!session || !session?.role || session.role === "super_admin" ? "/" : "/admin_profile"} className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
                         <div className="z-10">
                             <img
                             src={logo}
@@ -255,12 +262,13 @@ const Head = () => {
                                     style={{gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))`}}>
                                     {griddy(nvt.sub, nvt.cod).map((sbj, i, {length}) => (
                                         <div className='group/sub relative w-full bg-prim dark:bg-drkts first:rounded-lg last:rounded-b-lg' key={i}>
-                                            <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
+                                            <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} ${isRouteAllowed(sbj.lnk) ? "" : "cursor-not-allowed"}
+                                                     bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
                                                     ${(i === length - 1) ? 'rounded-b-lg' : ''} bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% border-slate-700
                                                     w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500]` +
                                                 (sbj.hrd || sbj.ttl === "" ? '' : ' hover:bg-[position:-100%_100%]')}
                                                style={{transitionDelay: `${((length > 10) ? 25 : 100) * i}ms`}}
-                                               key={sbj.ttl} href={sbj.lnk}
+                                               key={sbj.ttl} href={`${isRouteAllowed(sbj.lnk) ? sbj.lnk : "#"}`}
                                                target={sbj.openInNewTab ? '_blank' : '_self'}
                                             ><p
                                                 className={'w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts border-slate-500 border-dashed ' +
@@ -272,13 +280,14 @@ const Head = () => {
                                                         outline-offset-2 duration-500 ease-in transiton-[ht] rounded-xl'>
                                                     {sbj.sup.map((spj, i, {length}) => (
                                                         <a className={`no-underline inline-block bg-[length:200%_100%] 
+                                                            ${isRouteAllowed(spj.lnk) ? "" : "cursor-not-allowed"}
                                                             bg-[position:0%_100%] text-slate-950 -translate-x-[-40vw] px-2
                                                             ${(i !== length - 1) ? '' : ''} bg-gradient-to-l 
                                                             from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
                                                             w-full group-hover/sub:translate-x-0 hover:delay-0 duration-200 
                                                             ease-in transition-all hover:bg-[position:-100%_100%]`}
                                                            style={{transitionDelay: `${100 * i}ms`}}
-                                                           key={sbj.ttl + i} href={spj.lnk}>
+                                                           key={sbj.ttl + i} href={`${isRouteAllowed ? spj.lnk : "#"}`}>
                                                             <p className='w-fit my-2 text-right align-middle
                                                             text-text dark:text-drkt text-nowrap'>{spj.ttl}</p>
                                                         </a>
@@ -306,7 +315,8 @@ const Head = () => {
                                             ? window.open(hdr.lnk, '_blank', 'noopener,noreferrer')
                                             : navigate(hdr.lnk)
                                     }
-                                    className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all`}
+                                    disabled={!isRouteAllowed(hdr.lnk)}
+                                    className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all ${isRouteAllowed(hdr.lnk) ? "" : "cursor-not-allowed"}`}
                                 >
                                     {hdr.ttl}
                                     {/* Underline animation */}
@@ -334,6 +344,7 @@ const Head = () => {
                                                 key={i}
                                                 href={subItem.lnk}
                                                 className={`no-underline inline-block bg-[length:200%_100%] 
+                                                            ${isRouteAllowed(subItem.lnk) ? "" : "cursor-not-allowed"}
                                                             bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
                                                             bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
                                                             w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500] hover:bg-[position:-100%_100%]
@@ -353,6 +364,14 @@ const Head = () => {
                             onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
                             className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white dark:text-drkts px-2">
                             Fees Payment
+                        </button>
+                        <button
+                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-prim dark:text-drkts px-2">
+                            {session && session?.role === "super_admin" && (
+                                <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer no-underline'>
+                                    Admin
+                                </a>
+                            )}
                         </button>
 
                         {/* Social Icons */}

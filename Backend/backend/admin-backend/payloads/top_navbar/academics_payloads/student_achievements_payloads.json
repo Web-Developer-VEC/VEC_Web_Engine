@@ -52,19 +52,12 @@
         "collectionName":"CSE_005",
         "collection_type":"student_achievements",
         "category":"student_achievements_content",
-        "action":"insert",
-        "title":"insert in student_achievements",
-        "meta_data":[ "HI how are you","I am Fine"]
-        
-    },
-    {
-        "collectionName":"CSE_005",
-        "collection_type":"student_achievements",
-        "category":"student_achievements_content",
         "action":"update",
         "title":"update in student_achievements",
         "meta_data":[ "dinesh","I am Fine"],
-        "original_data":[ "HI how are you","I am Fine"]
+        "original_data":[
+          "Students' achievements are a testament to their hard work, dedication, and resilience in the pursuit of academic and personal growth. From excelling in academics and securing top grades to showcasing talent in sports, arts, and extracurricular activities, their accomplishments reflect a well-rounded development. Participation in science fairs, debates, and cultural events highlights their creativity and critical thinking, while community service projects demonstrate their commitment to making a positive impact. These achievements not only inspire their peers but also pave the way for future opportunities, building confidence and a strong foundation for lifelong success."
+        ]
         
     }
 ]

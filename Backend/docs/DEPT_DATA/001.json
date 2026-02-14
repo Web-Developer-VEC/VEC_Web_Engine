@@ -538,39 +538,39 @@
                   "docs":[
                     {
                     "name":"I Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM1.pdf"
                   },
                     {
                     "name":"II Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM2.pdf"
                   },
                     {
                     "name":"III Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM3.pdf"
                   },
                     {
                     "name":"IV Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM4.pdf"
                   },
                     {
                     "name":"V Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM5.pdf"
                   },
                     {
                     "name":"VI Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM6.pdf"
                   },
                     {
                     "name":"VII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM7.pdf"
                   },
                     {
                     "name":"VIII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM8.pdf"
                   },
                     {
                     "name":"Elective Courses",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023)ELECTIVE COURSES WITH TW & SDG.pdf"
                   }
                 ]
                 },
