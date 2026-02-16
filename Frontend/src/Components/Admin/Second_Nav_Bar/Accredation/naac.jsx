@@ -19,7 +19,7 @@ const Naac = ({ data }) => {
   const [openSection, setOpenSection] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const lastSavedStateRef = useRef([]); // keep track of last saved state
-  const { sendRequest, loading: loadings , error } = useAdminRequest();
+  const { sendRequest, loading: loadings, error } = useAdminRequest();
   // Workflow states
   const [editMode, setEditMode] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
@@ -69,12 +69,21 @@ const Naac = ({ data }) => {
   }, [data]);
 
   const handlePdfClick = (pdf) => {
-    if (!pdf?.pdf_path || pdf.pdf_path.trim() === "") {
-      toast.warn("No PDF available for this file!");
+    // If new uploaded file (before request)
+    if (pdf?.file instanceof File) {
+      const blobUrl = URL.createObjectURL(pdf.file);
+      window.open(`${blobUrl}#toolbar=0`, "_blank");
       return;
     }
-    const url = `${UrlParser(pdf.pdf_path)}#toolbar=0`;
-    window.open(url, "_blank"); // always new tab
+
+    // Existing file from server
+    if (pdf?.pdf_path) {
+      const url = `${UrlParser(pdf.pdf_path)}#toolbar=0`;
+      window.open(url, "_blank");
+      return;
+    }
+
+    toast.warn("No PDF available for this file!");
   };
 
   // Utility: generate unique id for change log and temp items
@@ -105,10 +114,11 @@ const Naac = ({ data }) => {
     }
     setEditMode(false);
   };
-   const getOriginalItem = (sectionIndex, itemIndex) => {
-      return lastSavedStateRef.current?.[sectionIndex]?.content?.[itemIndex] || {};
-    };
-
+  const getOriginalItem = (sectionIndex, itemIndex) => {
+    return (
+      lastSavedStateRef.current?.[sectionIndex]?.content?.[itemIndex] || {}
+    );
+  };
 
   const handleSaveClick = () => {
     const copy = JSON.parse(JSON.stringify(editableData));
@@ -128,143 +138,145 @@ const Naac = ({ data }) => {
     setChangeLog([]);
     toast.info("All changes discarded.");
   };
- 
- const handleRequestConfirm = async () => {
-  const changes = getChanges();
 
-  if (changes.length === 0) {
-    toast.warn("No changes to submit");
-    return;
-  }
+  const handleRequestConfirm = async () => {
+    const changes = getChanges();
 
-  // 1️⃣ Build payload
-  const payload = changes
-    .map(buildNaacPayload)
-    .filter(Boolean);
+    if (changes.length === 0) {
+      toast.warn("No changes to submit");
+      return;
+    }
 
-  // 2️⃣ Collect PDF files
-  const files = collectNaacFiles();
+    // 1️⃣ Build payload
+    const payload = changes.map(buildNaacPayload).filter(Boolean);
 
-  console.log("📦 NAAC PAYLOAD:", payload);
-  console.log("📄 NAAC FILES:", files);
+    // 2️⃣ Collect PDF files
+    const files = collectNaacFiles();
 
-  // 3️⃣ Send payload + files
-  const result = await sendRequest(payload, files);
+    console.log("📦 NAAC PAYLOAD:", payload);
+    console.log("📄 NAAC FILES:", files);
 
-  if (result) {
-    setShowRequestModal(false);
-    setSavedChanges([]);
-    setChangeLog([]);
-    setEditMode(false);
-    setHasChanges(false);
-    toast.success("Request submitted successfully!");
-  }
-};
+    // 3️⃣ Send payload + files
+    const result = await sendRequest(payload, files);
 
-    const collectNaacFiles = () => {
-  const files = [];
+    if (result) {
+      setShowRequestModal(false);
+      setSavedChanges([]);
+      setChangeLog([]);
+      setEditMode(false);
+      setHasChanges(false);
+      toast.success("Request submitted successfully!");
+    }
+  };
 
-  editableData.forEach((section) => {
-    if (!Array.isArray(section.content)) return;
+  const collectNaacFiles = () => {
+    const files = [];
 
-    section.content.forEach((item) => {
-      if (item?.file instanceof File) {
-        files.push(item.file);
-      }
+    editableData.forEach((section) => {
+      if (!Array.isArray(section.content)) return;
+
+      section.content.forEach((item) => {
+        if (item?.file instanceof File) {
+          files.push(item.file);
+        }
+      });
     });
-  });
 
-  return files;
+    return files;
+  };
+
+  // ---- Change Log Handlers ----
+  const pushChangeLog = (entry) => {
+    setChangeLog((prev) => [...prev, { id: uid("chg_"), ...entry }]);
+  };
+  // --- Payload -----
+ const buildNaacPayload = (change) => {
+  const { action, sectionIndex, itemIndex, sectionName } = change;
+
+  const getPdfPath = (item) =>
+    item?.file?.name
+      ? `/static/pdfs/naac/${item.file.name}`
+      : item?.pdf_path || "";
+
+  /* ==============================
+        INSERT
+  ============================== */
+  if (action === "Added") {
+    const item = change.data;
+
+    return {
+      collectionName: "accreditations_and_ranking",
+      collection_type: "naac",
+      action: "insert",
+      title: "insert in naaac",
+      category: sectionName,
+      meta_data: {
+        name: item?.name || "",
+        pdf_path: getPdfPath(item),
+      },
+    };
+  }
+if (action === "Edited") {
+  const editedItem =
+    editableData?.[sectionIndex]?.content?.[itemIndex];
+
+  if (!editedItem) return null;
+
+  const oldName = change.prevData?.name || "";
+  const oldPdf = change.prevData?.pdf_path || "";
+
+  const newName = editedItem?.name || "";
+  const newPdf = editedItem?.file
+    ? `/static/pdfs/naac/${editedItem.file.name}`
+    : editedItem?.pdf_path || "";
+
+  if (oldName === newName && oldPdf === newPdf) {
+    return null;
+  }
+
+  return {
+    collectionName: "accreditations_and_ranking",
+    collection_type: "naac",
+    action: "update",
+    title: "update in naaac",
+    category: sectionName,
+
+    original_data: {
+      name: oldName,
+      pdf_path: oldPdf,
+    },
+
+    meta_data: {
+      name: newName,
+      pdf_path: newPdf,
+    },
+  };
+}
+
+  /* ==============================
+        DELETE
+        meta_data = DELETED DATA
+  ============================== */
+  if (action === "Deleted") {
+    const deletedItem = change.data;
+
+    return {
+      collectionName: "accreditations_and_ranking",
+      collection_type: "naac",
+      action: "delete",
+      title: "delete in naaac",
+      category: sectionName,
+
+      meta_data: {
+        name: deletedItem?.name || "",
+        pdf_path: deletedItem?.pdf_path || "",
+      },
+    };
+  }
+
+  return null;
 };
 
-
-      // ---- Change Log Handlers ----
-    const pushChangeLog = (entry) => {
-        setChangeLog((prev) => [...prev, { id: uid("chg_"), ...entry }]);
-      };
-      // --- Payload -----  
-   const buildNaacPayload = (change) => {
-        const { action, sectionIndex, itemIndex, sectionName } = change;
-
-        const getNewPdfPath = (item) =>
-          item?.file?.name
-            ? `/static/pdfs/naac/${item.file.name}`
-            : item?.pdf_path || "";
-
-        // 🟢 INSERT (no original_data)
-        if (action === "Added") {
-          const item = change.data;
-
-          return {
-            collectionName: "accreditations_and_ranking",
-            collection_type: "naac",
-            action: "insert",
-            title: "Insert in NAAC",
-            category: sectionName,
-            meta_data: {
-              name: item?.name || "",
-              pdf_path: getNewPdfPath(item),
-            },
-          };
-        }
-
-        // 🔵 UPDATE (original_data = old, meta_data = new)
-        if (action === "Edited") {
-            const editedItem = editableData?.[sectionIndex]?.content?.[itemIndex];
-
-            const oldName = change.prevData?.name || "";
-            const oldPdf = change.prevData?.pdf_path || "";
-
-            const newName = editedItem?.name || "";
-            const newPdf = editedItem?.file
-              ? `/static/pdfs/naac/${editedItem.file.name}`
-              : editedItem?.pdf_path || "";
-
-            // ⛔ Skip fake updates
-            if (oldName === newName && oldPdf === newPdf) {
-              return null;
-            }
-
-            return {
-              collectionName: "accreditations_and_ranking",
-              collection_type: "naac",
-              action: "update",
-              title: "Update in NAAC",
-              category: sectionName,
-
-              // ✅ TRUE ORIGINAL (from changeLog)
-              original_data: {
-                name: oldName,
-                pdf_path: oldPdf,
-              },
-
-              // ✅ TRUE NEW
-              meta_data: {
-                name: newName,
-                pdf_path: newPdf,
-              },
-            };
-          }
-
-        // 🔴 DELETE (delete existing record)
-        if (action === "Deleted") {
-          const item = change.data;
-          const originalItem = getOriginalItem(sectionIndex, itemIndex);
-          return {
-            collectionName: "accreditations_and_ranking",
-            collection_type: "naac",
-            action: "delete",
-            title: "Delete in NAAC",
-            category: sectionName,
-            original_data: {
-              name: originalItem?.name || "",
-              pdf_path: originalItem?.pdf_path || "",
-            },
-          };
-        }
-
-        return null;
-      };
 
   const handleRevertChange = (change) => {
     // Revert the change in the editableData depending on type
@@ -282,9 +294,15 @@ const Naac = ({ data }) => {
             break;
           }
         }
-      } else if (typeof change.sectionIndex === "number" && typeof change.itemIndex === "number") {
+      } else if (
+        typeof change.sectionIndex === "number" &&
+        typeof change.itemIndex === "number"
+      ) {
         const { sectionIndex, itemIndex } = change;
-        if (updated[sectionIndex] && updated[sectionIndex].content?.[itemIndex]) {
+        if (
+          updated[sectionIndex] &&
+          updated[sectionIndex].content?.[itemIndex]
+        ) {
           updated[sectionIndex].content.splice(itemIndex, 1);
         }
       } else if (change.sectionAdded && change.sectionIndex != null) {
@@ -298,44 +316,81 @@ const Naac = ({ data }) => {
         const pos = Math.min(change.sectionIndex, updated.length);
         updated.splice(pos, 0, change.data); // data is full section object
       } else if (typeof change.sectionIndex === "number") {
-        const pos = Math.min(change.itemIndex ?? updated[change.sectionIndex].content.length, (change.itemIndex ?? 0));
+        const pos = Math.min(
+          change.itemIndex ?? updated[change.sectionIndex].content.length,
+          change.itemIndex ?? 0,
+        );
         // ensure content array exists
         if (!Array.isArray(updated[change.sectionIndex].content)) {
           updated[change.sectionIndex].content = [];
         }
-        updated[change.sectionIndex].content.splice(change.itemIndex ?? updated[change.sectionIndex].content.length, 0, change.data);
+        updated[change.sectionIndex].content.splice(
+          change.itemIndex ?? updated[change.sectionIndex].content.length,
+          0,
+          change.data,
+        );
       }
     } else if (change.action === "Edited") {
       // restore previous data stored in prevData
       if (change.type === "sectionName") {
-        if (typeof change.sectionIndex === "number" && updated[change.sectionIndex]) {
-          updated[change.sectionIndex].category = change.prevData?.category ?? updated[change.sectionIndex].category;
+        if (
+          typeof change.sectionIndex === "number" &&
+          updated[change.sectionIndex]
+        ) {
+          updated[change.sectionIndex].category =
+            change.prevData?.category ?? updated[change.sectionIndex].category;
         } else {
           // fallback: try find by sectionName
-          const idx = updated.findIndex((s) => s.category === change.sectionName);
-          if (idx !== -1 && change.prevData?.category) updated[idx].category = change.prevData.category;
+          const idx = updated.findIndex(
+            (s) => s.category === change.sectionName,
+          );
+          if (idx !== -1 && change.prevData?.category)
+            updated[idx].category = change.prevData.category;
         }
       } else if (change.type === "itemName") {
-        if (typeof change.sectionIndex === "number" && typeof change.itemIndex === "number") {
-          if (updated[change.sectionIndex] && updated[change.sectionIndex].content?.[change.itemIndex]) {
-            updated[change.sectionIndex].content[change.itemIndex].name = change.prevData?.name ?? updated[change.sectionIndex].content[change.itemIndex].name;
+        if (
+          typeof change.sectionIndex === "number" &&
+          typeof change.itemIndex === "number"
+        ) {
+          if (
+            updated[change.sectionIndex] &&
+            updated[change.sectionIndex].content?.[change.itemIndex]
+          ) {
+            updated[change.sectionIndex].content[change.itemIndex].name =
+              change.prevData?.name ??
+              updated[change.sectionIndex].content[change.itemIndex].name;
           }
         } else {
           // fallback search by current name
           for (let s = 0; s < updated.length; s++) {
-            const idx = (updated[s].content || []).findIndex((it) => it.name === change.data?.name);
+            const idx = (updated[s].content || []).findIndex(
+              (it) => it.name === change.data?.name,
+            );
             if (idx !== -1) {
-              updated[s].content[idx].name = change.prevData?.name ?? updated[s].content[idx].name;
+              updated[s].content[idx].name =
+                change.prevData?.name ?? updated[s].content[idx].name;
               break;
             }
           }
         }
       } else if (change.type === "fileReplace") {
-        if (typeof change.sectionIndex === "number" && typeof change.itemIndex === "number") {
-          if (updated[change.sectionIndex] && updated[change.sectionIndex].content?.[change.itemIndex]) {
-            updated[change.sectionIndex].content[change.itemIndex].pdf_path = change.prevData?.pdf_path ?? updated[change.sectionIndex].content[change.itemIndex].pdf_path;
-            if (change.prevData?.file) updated[change.sectionIndex].content[change.itemIndex].file = change.prevData.file;
-            else delete updated[change.sectionIndex].content[change.itemIndex].file;
+        if (
+          typeof change.sectionIndex === "number" &&
+          typeof change.itemIndex === "number"
+        ) {
+          if (
+            updated[change.sectionIndex] &&
+            updated[change.sectionIndex].content?.[change.itemIndex]
+          ) {
+            updated[change.sectionIndex].content[change.itemIndex].pdf_path =
+              change.prevData?.pdf_path ??
+              updated[change.sectionIndex].content[change.itemIndex].pdf_path;
+            if (change.prevData?.file)
+              updated[change.sectionIndex].content[change.itemIndex].file =
+                change.prevData.file;
+            else
+              delete updated[change.sectionIndex].content[change.itemIndex]
+                .file;
           }
         }
       }
@@ -345,50 +400,43 @@ const Naac = ({ data }) => {
     // remove entry from changeLog
     setChangeLog((prev) => prev.filter((c) => c.id !== change.id));
     setHasChanges(true);
-    toast.info(`Reverted ${change.action} - ${change.data?.name || change.sectionName || ""}`);
+    toast.info(
+      `Reverted ${change.action} - ${change.data?.name || change.sectionName || ""}`,
+    );
   };
 
   const getChanges = () => {
-    return changeLog.filter((c) => ["Added", "Edited", "Deleted"].includes(c.action));
+    return changeLog.filter((c) =>
+      ["Added", "Edited", "Deleted"].includes(c.action),
+    );
   };
 
   // Helper to produce human readable change description
   const describeChange = (change) => {
-    // Default: show data.name or sectionName
-    const sectionName = change.sectionName ?? change.data?.sectionName ?? "";
-    const fileName = change.data?.name ?? "";
-    if (change.sectionAdded) {
-      return `Section added: ${sectionName || "(unnamed section)"}`;
-    }
+    const sectionName = change.sectionName || "";
+    const fileName = change.data?.name || "";
+
+    // FULL SECTION DELETE
     if (change.sectionDeleted) {
-      return `Section deleted: ${sectionName || "(unnamed section)"}`;
+      return `${sectionName}`;
     }
-    if (change.action === "Added") {
-      // Could be added file or added item
-      if (change.tempId || typeof change.itemIndex === "number") {
-        return `File added: ${fileName || "(untitled file)"} (in section: ${sectionName || "(unknown)"})`;
-      }
-      return fileName ? `Added: ${fileName}` : `Added: ${JSON.stringify(change.data)}`;
+
+    // SECTION ADDED
+    if (change.sectionAdded) {
+      return `${sectionName}`;
     }
-    if (change.action === "Deleted") {
-      if (change.sectionDeleted) return `Section deleted: ${sectionName || "(unnamed section)"}`;
-      return `File deleted: ${fileName || "(untitled file)"} (from section: ${sectionName || "(unknown)"})`;
+
+    // FILE LEVEL ACTIONS
+    if (["Added", "Edited", "Deleted"].includes(change.action)) {
+      if (fileName) {
+        return `${sectionName} - ${fileName}`;
+      }
+      return `${sectionName}`;
     }
-    if (change.action === "Edited") {
-      if (change.type === "sectionName") {
-        return `Section renamed to: ${change.data?.name || "(unnamed)"}`;
-      }
-      if (change.type === "itemName") {
-        return `File renamed to: ${change.data?.name || "(unnamed)"} (in section: ${sectionName || "(unknown)"})`;
-      }
-      if (change.type === "fileReplace") {
-        return `File replaced: ${change.data?.name || "(untitled)"} (in section: ${sectionName || "(unknown)"})`;
-      }
-      return `Edited: ${fileName || sectionName || "(change)"}`;
-    }
-    return `${change.action}: ${fileName || sectionName || JSON.stringify(change.data || {})}`;
+
+    return sectionName;
   };
-  
+
   // ---- Data Editing Handlers ----
   const handleSectionNameChange = (index, value) => {
     const updated = [...editableData];
@@ -403,7 +451,9 @@ const Naac = ({ data }) => {
 
       const tempId = updated[index]?._tempId;
       if (tempId) {
-        const addedIdx = clone.findIndex((c) => c.tempId === tempId && c.action === "Added");
+        const addedIdx = clone.findIndex(
+          (c) => c.tempId === tempId && c.action === "Added",
+        );
         if (addedIdx !== -1) {
           clone[addedIdx] = {
             ...clone[addedIdx],
@@ -416,7 +466,10 @@ const Naac = ({ data }) => {
 
       // Otherwise, try to coalesce multiple quick edits to a single Edited entry for this section
       const editIdx = clone.findIndex(
-        (c) => c.action === "Edited" && c.type === "sectionName" && c.sectionIndex === index
+        (c) =>
+          c.action === "Edited" &&
+          c.type === "sectionName" &&
+          c.sectionIndex === index,
       );
       if (editIdx !== -1) {
         // keep original prevData, only update data/sectionName
@@ -429,7 +482,15 @@ const Naac = ({ data }) => {
       }
 
       // push a new Edited entry
-      clone.push({ id: uid("chg_"), action: "Edited", type: "sectionName", sectionIndex: index, sectionName: value, prevData: { category: prevCategory }, data: { name: value } });
+      clone.push({
+        id: uid("chg_"),
+        action: "Edited",
+        type: "sectionName",
+        sectionIndex: index,
+        sectionName: value,
+        prevData: { category: prevCategory },
+        data: { name: value },
+      });
       return clone;
     });
   };
@@ -438,75 +499,113 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
   if (!file) return;
 
   const updated = [...editableData];
-  const prevItem = updated[sectionIndex].content[itemIndex];
+  const item = updated[sectionIndex]?.content?.[itemIndex];
 
-  const prevData = {
-    name: prevItem.name,
-    pdf_path: prevItem.pdf_path, // ✅ OLD PDF STORED HERE
-  };
+  if (!item) return;
+
+  const isNewItem = !!item._tempId;
+
+  // 🔥 STORE OLD VALUES BEFORE MODIFYING
+  const oldName = item.name;
+  const oldPdfPath = item.pdf_path;
 
   const newPdfPath = `/static/pdfs/naac/${file.name}`;
 
-  updated[sectionIndex].content[itemIndex].pdf_path = newPdfPath;
-  updated[sectionIndex].content[itemIndex].file = file;
+  // now update
+  item.pdf_path = newPdfPath;
+  item.file = file;
 
   setEditableData(updated);
   setHasChanges(true);
 
+  // ✅ If newly added → just update Added log
+  if (isNewItem) {
+    setChangeLog((prev) =>
+      prev.map((c) =>
+        c.tempId === item._tempId && c.action === "Added"
+          ? {
+              ...c,
+              sectionName: updated[sectionIndex]?.category,
+              data: {
+                ...c.data,
+                name: item.name,
+                pdf_path: newPdfPath,
+              },
+            }
+          : c
+      )
+    );
+    return;
+  }
+
+  // 🔵 For existing item → push proper Edited log
   pushChangeLog({
     action: "Edited",
     type: "fileReplace",
     sectionIndex,
     itemIndex,
     sectionName: updated[sectionIndex]?.category,
-    prevData, // 🔒 ORIGINAL PDF
+
+    // ✅ CORRECT ORIGINAL DATA
+    prevData: {
+      name: oldName,
+      pdf_path: oldPdfPath,
+    },
+
     data: {
-      name: prevItem.name,
+      name: oldName,
       pdf_path: newPdfPath,
     },
   });
 };
 
 
-
   const handleItemNameChange = (sectionIndex, itemIndex, value) => {
     const updated = [...editableData];
-    const prevName = updated[sectionIndex]?.content?.[itemIndex]?.name;
-    updated[sectionIndex].content[itemIndex].name = value;
+    const item = updated[sectionIndex]?.content?.[itemIndex];
+
+    if (!item) return;
+
+    const isNewItem = !!item._tempId; // 🔥 check if newly added
+
+    item.name = value;
+
     setEditableData(updated);
     setHasChanges(true);
 
-    // Try to update existing Added entry if this item was freshly added
-    setChangeLog((prev) => {
-      const clone = [...prev];
-
-      const tempId = updated[sectionIndex]?.content?.[itemIndex]?._tempId;
-      if (tempId) {
-        const addedIdx = clone.findIndex((c) => c.tempId === tempId && c.action === "Added");
-        if (addedIdx !== -1) {
-          clone[addedIdx] = { ...clone[addedIdx], sectionName: updated[sectionIndex]?.category, data: { ...(clone[addedIdx].data || {}), name: value } };
-          return clone;
-        }
-      }
-
-      // coalesce quick edits for the same item
-      const editIdx = clone.findIndex(
-        (c) => c.action === "Edited" && c.type === "itemName" && c.sectionIndex === sectionIndex && c.itemIndex === itemIndex
+    // ✅ If it's newly added → update only the Added log entry
+    if (isNewItem) {
+      setChangeLog((prev) =>
+        prev.map((c) =>
+          c.tempId === item._tempId && c.action === "Added"
+            ? {
+                ...c,
+                sectionName: updated[sectionIndex]?.category,
+                data: { ...c.data, name: value },
+              }
+            : c,
+        ),
       );
-      if (editIdx !== -1) {
-        clone[editIdx] = { ...clone[editIdx], sectionName: updated[sectionIndex]?.category, data: { ...(clone[editIdx].data || {}), name: value } };
-        return clone;
-      }
+      return; // 🚀 STOP here (do not push Edited)
+    }
 
-      clone.push({ id: uid("chg_"), action: "Edited", type: "itemName", sectionIndex, itemIndex, sectionName: updated[sectionIndex]?.category, prevData: { name: prevName }, data: { name: value } });
-      return clone;
+    // 🔵 Only for existing items → push Edited
+    pushChangeLog({
+      action: "Edited",
+      type: "itemName",
+      sectionIndex,
+      itemIndex,
+      sectionName: updated[sectionIndex]?.category,
+      prevData: { name: item.name },
+      data: { name: value },
     });
   };
 
   const handleAddItem = (sectionIndex) => {
     const updated = [...editableData];
     const newItem = { name: "", pdf_path: "", _tempId: uid("tmp_") };
-    if (!Array.isArray(updated[sectionIndex].content)) updated[sectionIndex].content = [];
+    if (!Array.isArray(updated[sectionIndex].content))
+      updated[sectionIndex].content = [];
     updated[sectionIndex].content.push(newItem);
     setEditableData(updated);
     setHasChanges(true);
@@ -571,7 +670,7 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
   // ---- Section Multi Select ----
   const toggleSelectSection = (index) => {
     setSelectedItems((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
   };
 
@@ -602,7 +701,6 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
     setShowMultiDeleteConfirm(false);
     toast.success("Selected sections deleted successfully!");
   };
-
 
   // ---- Render ----
   if (!isOnline) {
@@ -656,14 +754,14 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
                   className="dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] rounded-2xl shadow-lg relative"
                 >
                   {/* Checkbox for section multi-delete (only edit mode) */}
-                  {editMode && (
+                  {/* {editMode && (
                     <input
                       type="checkbox"
                       checked={selectedItems.includes(index)}
                       onChange={() => toggleSelectSection(index)}
                       className="absolute top-3 right-3 w-4 h-4 cursor-pointer"
                     />
-                  )}
+                  )} */}
 
                   <button
                     onClick={() => toggleSection(index)}
@@ -675,7 +773,7 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
                         : "bg-accn dark:bg-drks text-white "
                     }`}
                   >
-                    {editMode ? (
+                    {/* {editMode ? (
                       <input
                         type="text"
                         value={section?.category || ""}
@@ -685,8 +783,8 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
                         className="bg-transparent border-b border-gray-300 focus:outline-none"
                       />
                     ) : (
-                      section?.category
-                    )}
+                    )} */}
+                     { section?.category}
                     {openSection === index ? (
                       <FaChevronUp />
                     ) : (
@@ -718,7 +816,7 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
                                       handleItemNameChange(
                                         index,
                                         i,
-                                        e.target.value
+                                        e.target.value,
                                       )
                                     }
                                     className="border p-1 rounded text-sm flex-1"
@@ -735,7 +833,7 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
                                         handleFileChange(
                                           index,
                                           i,
-                                          e.target.files[0]
+                                          e.target.files[0],
                                         )
                                       }
                                     />
@@ -751,9 +849,7 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
 
                                   {/* Delete */}
                                   <button
-                                    onClick={() =>
-                                      handleDeleteItem(index, i)
-                                    }
+                                    onClick={() => handleDeleteItem(index, i)}
                                     className="text-red-500"
                                     title="Delete"
                                   >
@@ -784,7 +880,7 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
                 </div>
               ))}
 
-            {/* Add Section Button */}
+            {/* Add Section Button
             {editMode && (
               <button
                 onClick={handleAddSection}
@@ -792,7 +888,7 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
               >
                 <FaPlus className="mr-2" /> Add Section
               </button>
-            )}
+            )} */}
           </div>
 
           {/* Bottom Buttons */}
@@ -874,11 +970,13 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
                               change.action === "Added"
                                 ? "text-green-600"
                                 : change.action === "Deleted"
-                                ? "text-red-600"
-                                : "text-blue-600"
+                                  ? "text-red-600"
+                                  : "text-blue-600"
                             }`}
                           >
-                            {change.action}
+                            {change.action === "Added" && "Added"}
+                            {change.action === "Edited" && "Edited"}
+                            {change.action === "Deleted" && "Deleted"}
                           </td>
 
                           {/* Section column is set to NAAC as requested */}
@@ -902,7 +1000,12 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
                       ))}
                       {getChanges().length === 0 && (
                         <tr>
-                          <td colSpan={4} className="py-6 text-sm text-gray-500">No pending changes</td>
+                          <td
+                            colSpan={4}
+                            className="py-6 text-sm text-gray-500"
+                          >
+                            No pending changes
+                          </td>
                         </tr>
                       )}
                     </tbody>
@@ -932,7 +1035,9 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
           {deleteConfirm && (
             <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
               <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
-                <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
+                <h2 className="text-lg font-bold mb-4 text-center">
+                  Confirm Delete
+                </h2>
                 <p className="text-sm mb-4 text-center">
                   Are you sure you want to delete?
                 </p>
@@ -959,9 +1064,13 @@ const handleFileChange = (sectionIndex, itemIndex, file) => {
       {showMultiDeleteConfirm && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[420px]">
-            <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
+            <h2 className="text-lg font-bold mb-4 text-center">
+              Confirm Delete
+            </h2>
             <p className="text-sm mb-4 text-center">
-              Are you sure you want to delete the selected {selectedItems.length} section{selectedItems.length > 1 ? 's' : ''}?
+              Are you sure you want to delete the selected{" "}
+              {selectedItems.length} section
+              {selectedItems.length > 1 ? "s" : ""}?
             </p>
             <div className="flex justify-center gap-3">
               <button

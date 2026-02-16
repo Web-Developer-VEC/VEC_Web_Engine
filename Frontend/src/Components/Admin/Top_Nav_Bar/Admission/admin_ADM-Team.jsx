@@ -21,6 +21,7 @@ const AdminADMteam = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const { sendRequest, loading, error } = useAdminRequest();
   const [imageFiles, setImageFiles] = useState({});
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
@@ -240,17 +241,37 @@ const AdminADMteam = ({ theme, toggle }) => {
     setAdmissionteamData((prev) =>
       prev.filter((item) => !selectedItems.includes(item.id)),
     );
-    setChangeList((prev) => [
-      ...prev,
-      ...deletedItems.map((d) => ({
-        type: "deleted",
-        section: d.name,
-        fields: {},
-        data: d,
-      })),
-    ]);
-    setSelectedItems([]);
-    toast.success("Selected members deleted.");
+    setChangeList((prev) => {
+      let updated = [...prev];
+
+      deletedItems.forEach((d) => {
+        // 🟢 If NEW item → remove completely
+        if (d.isNew) {
+          // Remove its "added" entry
+          updated = updated.filter(
+            (c) => !(c.data?.id === d.id && c.type === "added"),
+          );
+          return; // do not add delete entry
+        }
+
+        // 🔵 If EXISTING item
+
+        // Remove any previous "edited"
+        updated = updated.filter(
+          (c) => !(c.data?.id === d.id && c.type === "edited"),
+        );
+
+        // Add delete entry
+        updated.push({
+          type: "deleted",
+          section: d.name,
+          fields: {},
+          data: d,
+        });
+      });
+
+      return updated;
+    });
   };
 
   // Revert change
@@ -325,70 +346,69 @@ const AdminADMteam = ({ theme, toggle }) => {
         return;
       }
 
-      // Map through changeList and find the CURRENT state of those items from admissionteamData
-      const requests = changeList
-        .map((change) => {
-          const current = admissionteamData.find(
-            (m) => m.id === change.data.id,
-          );
-          const original = originalData.find((o) => o.id === change.data.id);
+      const requests = [];
+      const files = [];
 
-          /* 🟢 INSERT */
-          if (change.type === "added" && current) {
-            return buildAdmissionTeamPayload({
+      changeList.forEach((change) => {
+        const current = admissionteamData.find((m) => m.id === change.data.id);
+        const original = originalData.find((o) => o.id === change.data.id);
+
+        /* 🟢 INSERT */
+        if (change.type === "added" && current) {
+          requests.push(
+            buildAdmissionTeamPayload({
               action: "insert",
               newData: current,
+            }),
+          );
+
+          // 🔥 SEND IMAGE FILE IF EXISTS
+          if (current.imageFile instanceof File) {
+            files.push({
+              file: current.imageFile,
             });
           }
+        }
 
-          /* 🔵 UPDATE */
-          if (change.type === "edited" && current && original) {
-            return buildAdmissionTeamPayload({
+        /* 🔵 UPDATE */
+        if (change.type === "edited" && current && original) {
+          requests.push(
+            buildAdmissionTeamPayload({
               action: "update",
               newData: current,
               oldData: original,
+            }),
+          );
+
+          // 🔥 SEND IMAGE FILE IF EXISTS
+          if (current.imageFile instanceof File) {
+            files.push({
+              field: "admission_team_image",
+              file: current.imageFile,
             });
           }
+        }
 
-          /* 🔴 DELETE IMAGE ONLY */
-          if (
-            change.type === "edited" &&
-            change.fields?.image_path &&
-            !current.image_path
-          ) {
-            return buildAdmissionTeamPayload({
-              action: "delete",
-              deleteImageOnly: true,
-              newData: original,
-            });
-          }
-
-          /* 🔴 DELETE MEMBER */
-          if (change.type === "deleted") {
-            return buildAdmissionTeamPayload({
+        /* 🔴 DELETE MEMBER */
+        if (change.type === "deleted") {
+          requests.push(
+            buildAdmissionTeamPayload({
               action: "delete",
               newData: change.data,
-            });
-          }
+            }),
+          );
+        }
+      });
 
-          return null;
-        })
-        .filter(Boolean);
+      console.log("🚀 REQUESTS:", requests);
+      console.log("📂 FILES:", files);
 
-      if (requests.length === 0) {
-        toast.error("Could not process changes. Please try again.");
-        return;
-      }
-      console.log("gfdg", imageFiles);
-
-      console.log("🚀 SENDING PAYLOAD:", { requests, imageFiles });
-
-      await sendRequest(requests);
+      // 🔥 PASS FILES HERE
+      await sendRequest(requests, files);
 
       toast.success("Request submitted successfully!");
 
-      // Reset all states
-      setOriginalData([...admissionteamData]); // Sync original with new changes
+      setOriginalData([...admissionteamData]);
       setChangeList([]);
       setShowRequestModal(false);
       setShowRequestButtons(false);
@@ -493,11 +513,43 @@ const AdminADMteam = ({ theme, toggle }) => {
           {teamCardEdit && selectedItems.length > 0 && (
             <div className="flex justify-center mt-4">
               <button
-                className="px-4 py-2 bg-red-600 text-white rounded-md flex items-center gap-2"
-                onClick={handleDeleteSelected}
+                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+                onClick={() => setShowDeleteModal(true)}
               >
                 <Trash2 size={16} /> Delete Selected
               </button>
+            </div>
+          )}
+          {showDeleteModal && (
+            <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[1000]">
+              <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[420px] shadow-lg">
+                <h2 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white">
+                  Confirm Delete
+                </h2>
+
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  Are you sure you want to delete the selected team member
+                  {selectedItems.length > 1 ? "s" : ""}?
+                </p>
+                <div className="flex justify-end gap-3">
+                  <button
+                    className="px-4 py-2 bg-gray-300 rounded-md"
+                    onClick={() => setShowDeleteModal(false)}
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+                    onClick={() => {
+                      handleDeleteSelected();
+                      setShowDeleteModal(false);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
           )}
 
