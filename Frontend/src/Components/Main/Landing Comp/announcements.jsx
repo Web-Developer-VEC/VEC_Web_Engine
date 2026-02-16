@@ -11,10 +11,19 @@ const Announcements1 = ({ anno, spc }) => {
     const links = spc[0]?.list_of_links || [];
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
+    
+    const [editedContent, setEditedContent] = useState({ spc: [], anno: [] });
+    const [originalContent, setOriginalContent] = useState({ spc: [], anno: [] });
+    
 
     const UrlParser = (path) => {
         return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
     };
+
+    useEffect(() => {
+            setOriginalContent({ spc: spc || [], anno: anno || [] });
+            setEditedContent({ spc: spc || [], anno: anno || [] });
+        }, [spc, anno])
 
     // Auto-flip and index update
     useEffect(() => {
@@ -42,25 +51,23 @@ const Announcements1 = ({ anno, spc }) => {
         };
     }, [hovered, anno?.length]);
 
+    const ITEMS_PER_PAGE = 4;
+    const PAGE_SIZE = ITEMS_PER_PAGE * 2;
     const handleManualFlip = (direction) => {
-        setFlipped((prev) => {
-            const newFlipped = !prev;
-
-            if (newFlipped === false) {
-                setCurrentIndex((prevIndex) => {
-                    if (direction === "next") {
-                        // stop at the last page
-                        return prevIndex + 4 >= anno.length ? prevIndex : prevIndex + 4;
-                    } else if (direction === "prev") {
-                        // stop at the first page
-                        return prevIndex - 4 < 0 ? 0 : prevIndex - 4;
-                    }
-                    return prevIndex;
-                });
+        setCurrentIndex((prev) => {
+            const maxIndex =
+                Math.ceil(editedContent.anno.length / PAGE_SIZE) * PAGE_SIZE - PAGE_SIZE;
+            if (direction === "next") {
+                return prev >= maxIndex ? 0 : prev + PAGE_SIZE;
             }
 
-            return newFlipped;
+            if (direction === "prev") {
+                return prev <= 0 ? maxIndex : prev - PAGE_SIZE;
+            }
+
+            return prev;
         });
+        setFlipped(f => !f);
     };
 
     const getItems = (arr, start, count) => {

@@ -10,10 +10,10 @@ const Coordinators = ({data}) => {
   };
   let stud = [];
   let coor = null;
- if (Array.isArray(data) && data.length >= 2) {
-  coor = data[0]?.members?.[0] || null;
-  stud = Array.isArray(data[1]?.members) ? data[1].members : [];
-}
+  if (Array.isArray(data) && data.length >= 2) {
+      coor = data[0]?.members?.[0] || null;
+      stud = Array.isArray(data[1]?.members) ? data[1].members : [];
+    }
   return (
     <>
       {stud?.length > 0 && coor ? (

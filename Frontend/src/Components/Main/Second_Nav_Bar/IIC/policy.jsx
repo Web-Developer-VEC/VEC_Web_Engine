@@ -23,7 +23,7 @@ export default function IicFacPolicy({ data }) {
     <>
       {data ? (
         <div className="nirf-content mt-12">
-          <h1 className="text-accn dark:text-drkt text-4xl mb-4 font-bold">Policy</h1>
+          <h1 className="text-accn dark:text-drkt text-4xl mb-4 font-bold text-center">Policy</h1>
           <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] height">
             <div className="nirf-year-actions flex flex-col mb-20 md:grid md:grid-cols-2 md:gap-8 md:gap-x-16 md:p-4 md:w-fit md:mx-auto">
               {policyArray.map((action, index) => {
