@@ -131,66 +131,59 @@ const AdminMBA = ({ theme, toggle }) => {
     }
 
     /* -------------------- GOVERNMENT LINK UPDATE -------------------- */
-    if (action === "GovLinkEdited") {
-      return {
-        collectionName: "admissions",
-        collection_type: "mba",
-        action: "update",
-        title: "Update MBA Government Quota Link",
+   /* -------------------- GOVERNMENT LINK UPDATE -------------------- */
+if (action === "GovLinkEdited") {
+  return {
+    collectionName: "admissions",
+    collection_type: "mba",
+    action: "update",
+    title: "Update MBA Government Link",
 
-        meta_data: {
-          data: {
-            year,
-            MBA_Government: {
-              MBA_Government_link_name: newData.linkName,
-              // ✅ keep old pdf if new one not uploaded
-              pdf_path: newData.pdfPath ?? oldData.pdfPath,
-            },
-          },
-        },
+    meta_data: {
+      year,
+      MBA_Government: {
+        MBA_Government_link_name: newData.linkName,
+        pdf_path: newData.pdfPath ?? oldData.pdfPath,
+      },
+    },
 
-        original_data: {
-          data: {
-            year,
-            MBA_Government: {
-              MBA_Government_link_name: oldData.linkName,
-              pdf_path: oldData.pdfPath,
-            },
-          },
-        },
-      };
-    }
+    original_data: {
+      year,
+      MBA_Government: {
+        MBA_Government_link_name: oldData.linkName,
+        pdf_path: oldData.pdfPath,
+      },
+    },
+  };
+}
 
-    /* -------------------- MANAGEMENT LINK UPDATE -------------------- */
-    if (action === "MgmtLinkEdited") {
-      return {
-        collectionName: "admissions",
-        collection_type: "mba",
-        action: "update",
-        title: "Update MBA Management Quota Link",
 
-        meta_data: {
-          data: {
-            year,
-            MBA_Management: {
-              MBA_Management_link_name: newData.linkName,
-              // ✅ keep old pdf if new one not uploaded
-              pdf_path: newData.pdfPath ?? oldData.pdfPath,
-            },
-          },
-        },
+   /* -------------------- MANAGEMENT LINK UPDATE -------------------- */
+if (action === "MgmtLinkEdited") {
+  return {
+    collectionName: "admissions",
+    collection_type: "mba",
+    action: "update",
+    title: "Update MBA Management Link",
 
-        original_data: {
-          data: {
-            year,
-            MBA_Management: {
-              MBA_Management_link_name: oldData.linkName,
-              pdf_path: oldData.pdfPath,
-            },
-          },
-        },
-      };
-    }
+    meta_data: {
+      year,
+      MBA_Management: {
+        MBA_Management_link_name: newData.linkName,
+        pdf_path: newData.pdfPath ?? oldData.pdfPath,
+      },
+    },
+
+    original_data: {
+      year,
+      MBA_Management: {
+        MBA_Management_link_name: oldData.linkName,
+        pdf_path: oldData.pdfPath,
+      },
+    },
+  };
+}
+
 
     /* -------------------- DELETE MBA -------------------- */
     if (action === "Deleted") {
@@ -431,24 +424,6 @@ const AdminMBA = ({ theme, toggle }) => {
         },
       }));
     }
-  };
-
-  const handleAddNew = () => {
-    setEditableRows((prev) => [
-      ...prev,
-      {
-        course: "",
-        governmentQuota: "",
-        managementQuota: "",
-        totalIntake: "",
-        isNew: true, // ✅ IMPORTANT FLAG
-      },
-    ]);
-  };
-
-  const handleDelete = (index) => {
-    const updatedRows = editableRows.filter((_, i) => i !== index);
-    setEditableRows(updatedRows);
   };
 
   const handleSave = () => {
@@ -851,50 +826,52 @@ const AdminMBA = ({ theme, toggle }) => {
               </p>
               {isEditing ? (
                 <div className="flex flex-col gap-2">
-                  <input
-                    type="text"
-                    className="admin-mba"
-                    value={govLinkName}
-                    onChange={(e) => setGovLinkName(e.target.value)}
-                    placeholder="Enter Link Name"
-                  />
-                  <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
-                    <span>Replace</span>
+                  <div className="flex items-center justify-start gap-3">
                     <input
-                      type="file"
-                      accept="application/pdf"
-                      className="hidden"
-                      onChange={(e) =>
-                        handlePdfChange(e.target.files?.[0], "GOV")
-                      }
+                      type="text"
+                      className="admin-mba"
+                      value={govLinkName}
+                      onChange={(e) => setGovLinkName(e.target.value)}
+                      placeholder="Enter Link Name"
                     />
-                  </label>
-                  <div className="w-[100px]">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (govLinkFile) {
-                          console.log("Ajith");
-
-                          // If new file selected
-                          const fileURL = URL.createObjectURL(govLinkFile);
-                          window.open(fileURL, "_blank");
-                        } else if (MBA_Government?.pdf_path) {
-                          console.log("Aji");
-
-                          // If backend link exists
-                          window.open(
-                            UrlParser(MBA_Government.pdf_path),
-                            "_blank",
-                          );
-                        } else {
-                          alert("No PDF available to view");
+                    <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
+                      <span>Replace</span>
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        className="hidden"
+                        onChange={(e) =>
+                          handlePdfChange(e.target.files?.[0], "GOV")
                         }
-                      }}
-                      className="text-blue"
-                    >
-                      <Eye color="blue" size={18} />
-                    </button>
+                      />
+                    </label>
+                    <div className="w-[100px]">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (govLinkFile) {
+                            console.log("Ajith");
+
+                            // If new file selected
+                            const fileURL = URL.createObjectURL(govLinkFile);
+                            window.open(fileURL, "_blank");
+                          } else if (MBA_Government?.pdf_path) {
+                            console.log("Aji");
+
+                            // If backend link exists
+                            window.open(
+                              UrlParser(MBA_Government.pdf_path),
+                              "_blank",
+                            );
+                          } else {
+                            alert("No PDF available to view");
+                          }
+                        }}
+                        className="text-blue"
+                      >
+                        <Eye color="blue" size={18} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -925,49 +902,51 @@ const AdminMBA = ({ theme, toggle }) => {
               </p>
               {isEditing ? (
                 <div className="flex flex-col gap-2">
-                  <input
-                    type="text"
-                    className="admin-mba"
-                    value={mgmtLinkName}
-                    onChange={(e) => setMgmtLinkName(e.target.value)}
-                    placeholder="Enter Link Name"
-                  />
-                  <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
-                    <span>Replace</span>
+                  <div className="flex items-center justify-start gap-3">
                     <input
-                      type="file"
-                      accept="application/pdf"
-                      className="hidden"
-                      onChange={(e) =>
-                        handlePdfChange(e.target.files?.[0], "MGMT")
-                      }
+                      type="text"
+                      className="admin-mba"
+                      value={mgmtLinkName}
+                      onChange={(e) => setMgmtLinkName(e.target.value)}
+                      placeholder="Enter Link Name"
                     />
-                  </label>
-                  <div className="w-[100px]">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        // If a new file has been uploaded, show it
-                        if (mgmtLinkFile) {
-                          const fileURL = URL.createObjectURL(mgmtLinkFile);
-                          window.open(fileURL, "_blank", "noopener,noreferrer");
+                    <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
+                      <span>Replace</span>
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        className="hidden"
+                        onChange={(e) =>
+                          handlePdfChange(e.target.files?.[0], "MGMT")
                         }
-                        // Otherwise show the old PDF from backend
-                        else if (MBA_Management?.pdf_path) {
-                          const url = MBA_Management.pdf_path.startsWith("http")
-                            ? MBA_Management.pdf_path
-                            : `${BASE_URL || ""}${MBA_Management.pdf_path}`;
-                          window.open(url, "_blank", "noopener,noreferrer");
-                        }
-                        // If no PDF exists
-                        else {
-                          alert("No PDF available to view");
-                        }
-                      }}
-                      className="text-blue"
-                    >
-                      <Eye color="blue" size={18} />
-                    </button>
+                      />
+                    </label>
+                    <div className="w-[100px]">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          // If a new file has been uploaded, show it
+                          if (mgmtLinkFile) {
+                            const fileURL = URL.createObjectURL(mgmtLinkFile);
+                            window.open(fileURL, "_blank", "noopener,noreferrer");
+                          }
+                          // Otherwise show the old PDF from backend
+                          else if (MBA_Management?.pdf_path) {
+                            const url = MBA_Management.pdf_path.startsWith("http")
+                              ? MBA_Management.pdf_path
+                              : `${BASE_URL || ""}${MBA_Management.pdf_path}`;
+                            window.open(url, "_blank", "noopener,noreferrer");
+                          }
+                          // If no PDF exists
+                          else {
+                            alert("No PDF available to view");
+                          }
+                        }}
+                        className="text-blue"
+                      >
+                        <Eye color="blue" size={18} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -1007,7 +986,7 @@ const AdminMBA = ({ theme, toggle }) => {
                     <th>Government Quota Intake</th>
                     <th>Management Quota Intake</th>
                     <th>Total Intake</th>
-                    {isEditing && <th>Actions</th>}
+                    {/* {isEditing && <th>Actions</th>} */}
                   </tr>
                 </thead>
                 <tbody>
@@ -1064,7 +1043,7 @@ const AdminMBA = ({ theme, toggle }) => {
                         )}
                       </td>
                       <td>{row.totalIntake}</td>
-                      {isEditing && (
+                      {/* {isEditing && (
                         <td className="text-center">
                           <input
                             type="checkbox"
@@ -1075,12 +1054,12 @@ const AdminMBA = ({ theme, toggle }) => {
                             className="w-4 h-4 cursor-pointer"
                           />
                         </td>
-                      )}
+                      )} */}
                     </tr>
                   ))}
                   {isEditing && (
                     <tr>
-                      <td colSpan={5}>
+                      {/* <td colSpan={5}>
                         <div className="flex justify-center items-center gap-2">
                           <button
                             onClick={handleAddNew}
@@ -1098,7 +1077,7 @@ const AdminMBA = ({ theme, toggle }) => {
                             </button>
                           )}
                         </div>
-                      </td>
+                      </td> */}
                     </tr>
                   )}
                 </tbody>

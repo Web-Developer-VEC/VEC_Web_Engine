@@ -10,6 +10,7 @@ import { FaPaperPlane } from "react-icons/fa";
 import { Eye } from "lucide-react";
 import { MdUndo } from "react-icons/md";
 import { Pencil } from "lucide-react";
+import { X } from "lucide-react";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 import { toast } from "react-toastify";
 
@@ -499,20 +500,16 @@ const AdminHandbook = ({ theme, toggle }) => {
   };
 
   const getChanges = () => (pendingChanges || []).map((c, idx) => {
-    if (c.type === "Added") return { id: idx, type: "Added", label: c.label || c.item?.year || "New Handbook", fields: [], raw: c };
-    if (c.type === "Updated") {
-      const changedFields = [];
-      if (c.prevItem?.year !== c.newItem?.year) changedFields.push("year");
-      if (c.prevItem?.pdf_path !== c.newItem?.pdf_path) changedFields.push("pdf");
-      return { id: idx, type: "Updated", label: c.label || c.newItem?.year || "Updated Handbook", fields: changedFields, raw: c };
-    }
-    if (c.type === "Deleted") return { id: idx, type: "Deleted", label: c.label || c.prevItem?.year || "Deleted Handbook", fields: [], raw: c };
-    return { id: idx, type: c.type, label: c.label || "Change", fields: [], raw: c };
+    if (c.type === "Added") return { id: idx, action: "insert", category: c.label || c.item?.year || "New Handbook", files: c.item?._file ? [c.item._file] : [], links: (c.item?.pdf_path || c.item?.url) ? [c.item.pdf_path || c.item.url] : [], raw: c };
+    if (c.type === "Updated") return { id: idx, action: "update", category: c.label || c.newItem?.year || "Updated Handbook", files: c.newItem?._file ? [c.newItem._file] : [], links: (c.newItem?.pdf_path || c.newItem?.url) ? [c.newItem.pdf_path || c.newItem.url] : [], raw: c, original: c.prevItem };
+    if (c.type === "Deleted") return { id: idx, action: "delete", category: c.label || c.prevItem?.year || "Deleted Handbook", files: [], links: [], raw: c, original: c.prevItem };
+    return { id: idx, action: "update", category: c.label || "Change", files: [], links: [], raw: c };
   });
 
   const handleUndo = (changeEntry) => {
     const idx = changeEntry.id;
     const c = changeEntry.raw;
+
     setPendingChanges((prev) => {
       const newArr = [...prev];
       if (idx >= 0 && idx < newArr.length) newArr.splice(idx, 1);
@@ -543,6 +540,17 @@ const AdminHandbook = ({ theme, toggle }) => {
       else if (c.type === "Deleted") setHrHandbook(c.prevItem || null);
     }
   };
+
+  // ---- NEW: Auto close request modal + return to original page (Edit button visible) when no changes left
+  useEffect(() => {
+    if (!showConfirmModal) return;
+    if (getChanges().length === 0) {
+      setShowConfirmModal(false);
+      setIsSaved(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showConfirmModal, pendingChanges, editModeChanges]);
+  // ---- END NEW
 
   const confirmDiscardAll = () => {
     setHandbook(originalHandbook);
@@ -648,31 +656,118 @@ const AdminHandbook = ({ theme, toggle }) => {
 
       <ConfirmModal show={showDiscardModal} message="Are you sure you want to discard all changes?" onCancel={() => setShowDiscardModal(false)} onConfirm={confirmDiscardAll} type="confirm" />
 
+      {/* Confirm request modal (REPLACED as per your provided code) */}
       {showConfirmModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-[2000] scrabble-bg bg-black bg-opacity-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[520px] max-w-[92vw]">
-            <h2 className="text-lg font-bold mb-4">Final Request for the Changes</h2>
-            <p className="text-red-600 mb-4"><span className="font-semibold">Note:</span> Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically.</p>
-            <table className="w-full border-collapse mb-6 text-sm">
-              <thead>
-                <tr className="text-left border-b"><th className="pb-2">Action</th><th className="pb-2">Item</th><th className="pb-2">Details</th><th className="pb-2">Undo</th></tr>
-              </thead>
-              <tbody>
-                {getChanges().length ? getChanges().map((c, idx) => (
-                  <tr key={`${c.type}-${c.id}-${idx}`} className="border-b">
-                    <td className="py-2">{c.type}</td>
-                    <td className="py-2">{c.label}</td>
-                    <td className="py-2">{c.type === "Updated" ? c.fields?.join(", ") : "—"}</td>
-                    <td className="py-2">
-                      <button onClick={() => handleUndo(c)} className="px-3 py-1 bg-yellow-400 text-black rounded hover:bg-yellow-500 flex items-center gap-1 whitespace-nowrap" title="Undo this change"><MdUndo /> Undo</button>
-                    </td>
-                  </tr>
-                )) : <tr><td colSpan={4} className="text-center py-4 text-gray-500">No changes detected.</td></tr>}
-              </tbody>
-            </table>
-            <div className="flex justify-between">
-              <button onClick={() => setShowConfirmModal(false)} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 whitespace-nowrap">Cancel</button>
-              <button onClick={handleRequest} className="px-4 py-2 bg-yellow-400 text-black rounded flex items-center gap-2 hover:bg-yellow-500 whitespace-nowrap" disabled={reqLoading}><FaPaperPlane /> {reqLoading ? "Processing..." : "Confirm Request"}</button>
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
+            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
+              Final Request for the Changes
+            </h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the
+              superior admin. Once approved, they will be applied automatically
+              to the live site.
+            </p>
+            <div className="max-h-[200px] overflow-y-auto mb-4">
+              {getChanges().length > 0 ? (
+                <table className="w-full text-left text-text dark:text-drkt">
+                  <thead>
+                    <tr>
+                      <th className="py-1">Action</th>
+                      <th className="py-1">Section</th>
+                      <th className="py-1">Changes</th>
+                      <th className="py-1">Undo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {getChanges().map((g, i) => (
+                      <tr key={i}>
+                        <td className="py-1">
+                          {g.action === "insert" && (
+                            <span className="text-green-600">+ Added</span>
+                          )}
+                          {g.action === "update" && (
+                            <span className="text-blue-600">✎ Edited</span>
+                          )}
+                          {g.action === "delete" && (
+                            <span className="text-red-600">– Deleted</span>
+                          )}
+                        </td>
+                        <td className="py-1">{g.category}</td>
+                        <td className="py-1">
+                          {g.files.length} images
+                          {g.links.length > 0
+                            ? `, ${g.links.length} links`
+                            : ""}
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => {
+                              // Remove this change from pendingChanges
+                              setPendingChanges(prev => prev.filter((_, idx) => idx !== g.id));
+
+                              // Restore UI state for handbook/HR handbook
+                              const c = g.raw;
+
+                              // If it was an "insert", remove the added item from handbook
+                              if (g.action === "insert") {
+                                setHandbook(prev => (prev || []).filter(it => it.id !== c.item?.id));
+                              }
+
+                              // If it was a "delete", restore the deleted item
+                              if (g.action === "delete" && g.original) {
+                                setHandbook(prev => {
+                                  const copy = [...(prev || [])];
+                                  const insertIndex = (c.index <= copy.length ? c.index : copy.length);
+                                  copy.splice(insertIndex, 0, g.original);
+                                  return copy;
+                                });
+                              }
+
+                              // If it was an "update", restore original item
+                              if (g.action === "update" && g.original) {
+                                setHandbook(prev => {
+                                  const copy = [...(prev || [])];
+                                  const idx2 = copy.findIndex(it => it.id === g.original.id);
+                                  if (idx2 !== -1) copy[idx2] = g.original;
+                                  return copy;
+                                });
+                              }
+
+                              // HR Handbook undo handling
+                              if (c.collection_type === "HRHandBook") {
+                                if (c.type === "Added") setHrHandbook(null);
+                                else if (c.type === "Updated") setHrHandbook(c.prevItem || null);
+                                else if (c.type === "Deleted") setHrHandbook(c.prevItem || null);
+                              }
+                            }}
+                          >
+                            <X />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-gray-400">No changes found.</p>
+              )}
+            </div>
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowConfirmModal(false)}
+                className={`px-4 py-2 rounded bg-gray-400 text-white ${reqLoading ? "cursor-not-allowed" : ""}`}
+                disabled={reqLoading}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleRequest}
+                className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${reqLoading ? "cursor-progress" : "hover:bg-[#800000]"}`}
+                disabled={reqLoading}
+              >
+                {reqLoading ? "Processing..." : "Final Request"}
+              </button>
             </div>
           </div>
         </div>
@@ -681,4 +776,4 @@ const AdminHandbook = ({ theme, toggle }) => {
   );
 };
 
-export default AdminHandbook; 
+export default AdminHandbook;

@@ -1,10 +1,5 @@
 import { lazy } from 'react';
-import DepartmentRoute from "./deptRoute.js"; // Keep this eager if it's not a component or used differently? It's used as 'admin: DepartmentRoute'. Let's check.
-// import NewTrust from './Components/Admin/Top_Nav_Bar/About Us/Trust.jsx';
-// import Collegevisionmission from './Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx';
-// import Management from './Components/Main/Top_Nav_Bar/About Us/Management.jsx';
-// import ExecutiveCommittee from './Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx';
-// import CollegeOrgChart from './Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx';
+import DepartmentRoute from "./deptRoute.js"; 
 
 // Lazy load components
 const Admingallerydetails = lazy(() => import("./Components/Admin/Second_Nav_Bar/Gallery/detailpage"));
@@ -35,6 +30,7 @@ const AdminSyllabus = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/Sy
 const Forms = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
 const AdminForms = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
+const RankHonder = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
 const AdminCoe = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/Coe.jsx"));
 const UgAdmission = lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/UgAdmission.jsx"));
 const AdminUgAdmission = lazy(() => import("./Components/Admin/Top_Nav_Bar/Admission/admin_UgAdmission.jsx"));
@@ -121,9 +117,9 @@ export const routeConfig = {
   "/abt-us": { normal: AbtUs, admin: AdminAbtUs },
   "/abt-yr": { normal: Aishe, admin: AdminAishe},
   "/trust": { normal: NewTrust, admin: NewTrust },
-  "/v_m": { normal: Collegevisionmission, admin: Collegevisionmission },
+  "/vm": { normal: Collegevisionmission, admin: Collegevisionmission },
   "/management": { normal: Management, admin: Management },
-  "/committees": { normal: ExecutiveCommittee, admin: ExecutiveCommittee},
+  "/committee": { normal: ExecutiveCommittee, admin: ExecutiveCommittee},
   "/clg-org": { normal: CollegeOrgChart, admin: CollegeOrgChart },
 
   // Administrator Routes
@@ -150,6 +146,7 @@ export const routeConfig = {
   "/Syllabus": { normal: Syllabus, admin: AdminSyllabus },
   "/form": { normal: Forms, admin: AdminForms },
   "/coe": { normal: Coe, admin: AdminCoe },
+  "/rankholders": { normal: RankHonder, admin: RankHonder },
 
   // Research Routes
   "/Consultancy": { normal: Consultancy, admin: AdminConsultancy },

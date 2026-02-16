@@ -28,6 +28,7 @@ const InterZone = ({ data }) => {
   const [changes, setChanges] = useState([]);
   const [initialSnapshot, setInitialSnapshot] = useState([]);
   const [isDirty, setIsDirty] = useState(false);
+  const hasChanges = changes.length > 0;
 
   const { sendRequest, loading, error } = useAdminRequest();
 
@@ -689,12 +690,12 @@ const InterZone = ({ data }) => {
                 >
                   Cancel
                 </button>
-                <button
+                {hasChanges && (<button
                   onClick={handleSave}
                   className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
                 >
                   Save
-                </button>
+                </button>)}
               </div>
             </div>
           )}
@@ -704,7 +705,7 @@ const InterZone = ({ data }) => {
             <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
               <button
                 className="px-4 py-2 bg-gray-500 text-white rounded"
-                onClick={() => { confirmDiscard(); }}
+                onClick={() => { setShowDiscardModal(true); }}
               >
                 Discard Changes
               </button>
@@ -741,6 +742,18 @@ const InterZone = ({ data }) => {
             Are you sure you want to delete the selected items?
           </p>
         </Modal>
+      )}
+      {showDiscardModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-white/40 z-50">
+          <div className="bg-white p-6 rounded shadow-lg w-[350px]">
+            <h2 className="font-semibold mb-4">Discard Changes?</h2>
+            <p>All your unsaved changes will be lost.</p>
+            <div className="flex justify-end gap-3 mt-4">
+              <button className="px-4 py-2 bg-gray-300 rounded" onClick={() => setShowDiscardModal(false)}>Cancel</button>
+              <button className="px-4 py-2 bg-red-600 text-white rounded" onClick={confirmDiscard}>Discard</button>
+            </div>
+          </div>
+        </div>
       )}
       {showRequestModal && (
         <Modal

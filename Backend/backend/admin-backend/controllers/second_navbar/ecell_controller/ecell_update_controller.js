@@ -17,31 +17,23 @@ async function updateData(tempDoc, mainCollection) {
 
     // ---------- ABOUT ----------
     if (collection_type === "about") {
-      if (original_data.about && meta_data.about) {
-        doc.data[0].about = meta_data.about;
-      }
-      if (original_data.vision && meta_data.vision) {
-        doc.data[0].vision = meta_data.vision;
-      }
-      if (original_data.mission && meta_data.mission) {
-        const index = doc.data[0].mission.findIndex((m) => m === original_data.mission);
-        if (index === -1) throw new Error("Mission statement not found");
-        doc.data[0].mission[index] = meta_data.mission;
-      }
+      const updateData = Array.isArray(meta_data) ? meta_data : [meta_data];
 
       await mainCollection.updateOne(
         { type: "about" },
-        { $set: { data: doc.data } }
+        { $set: { data: updateData } },
       );
-
-      return { success: true, message: "About data updated successfully", data: doc.data };
+      return {
+        success: true,
+        message: "About data updated successfully",
+        data: doc.data,
+      };
     }
-
 
     // ---------- COMMITTEE ----------
     if (collection_type === "committee") {
       const index = doc.data.findIndex((item) =>
-        Object.keys(original_data).every((k) => item[k] === original_data[k])
+        Object.keys(original_data).every((k) => item[k] === original_data[k]),
       );
 
       if (index === -1) throw new Error("Committee member not found");
@@ -50,16 +42,19 @@ async function updateData(tempDoc, mainCollection) {
 
       await mainCollection.updateOne(
         { type: "committee" },
-        { $set: { data: doc.data } }
+        { $set: { data: doc.data } },
       );
 
-      return { success: true, message: "Committee member updated successfully" };
+      return {
+        success: true,
+        message: "Committee member updated successfully",
+      };
     }
 
     // ---------- ENTREPRENEUR ----------
     if (collection_type === "enterpreneur") {
       const index = doc.data.findIndex((item) =>
-        Object.keys(original_data).every((k) => item[k] === original_data[k])
+        Object.keys(original_data).every((k) => item[k] === original_data[k]),
       );
 
       if (index === -1) throw new Error("Entrepreneur not found");
@@ -68,7 +63,7 @@ async function updateData(tempDoc, mainCollection) {
 
       await mainCollection.updateOne(
         { type: "enterpreneur" },
-        { $set: { data: doc.data } }
+        { $set: { data: doc.data } },
       );
 
       return { success: true, message: "Entrepreneur updated successfully" };
@@ -77,7 +72,7 @@ async function updateData(tempDoc, mainCollection) {
     // ---------- ACTIVITY ----------
     if (collection_type === "activity") {
       const index = doc.data.findIndex((item) =>
-        Object.keys(original_data).every((k) => item[k] === original_data[k])
+        Object.keys(original_data).every((k) => item[k] === original_data[k]),
       );
 
       if (index === -1) throw new Error("Activity not found");
@@ -86,7 +81,7 @@ async function updateData(tempDoc, mainCollection) {
 
       await mainCollection.updateOne(
         { type: "activity" },
-        { $set: { data: doc.data } }
+        { $set: { data: doc.data } },
       );
 
       return { success: true, message: "Activity updated successfully" };
@@ -94,20 +89,43 @@ async function updateData(tempDoc, mainCollection) {
 
     // ---------- GALLERY ----------
     if (collection_type === "gallery") {
-      const index = doc.data.findIndex((img) => img === original_data.image_path);
-      if (index === -1) throw new Error("Image not found in gallery");
+      // 1. Validate inputs
+      if (
+        !Array.isArray(original_data.image_path) ||
+        !Array.isArray(meta_data.image_path) ||
+        original_data.image_path.length === 0 ||
+        original_data.image_path.length !== meta_data.image_path.length
+      ) {
+        throw new Error(
+          "original_data.image_path and meta_data.image_path must be arrays of equal length",
+        );
+      }
 
-      // replace old image with new one
-      doc.data[index] = meta_data.image_path;
+      if (!Array.isArray(doc.data)) {
+        throw new Error("Gallery data is corrupted or not an array");
+      }
 
+      // 2. Replace images
+      original_data.image_path.forEach((oldPath, i) => {
+        const index = doc.data.findIndex((img) => img === oldPath);
+
+        if (index === -1) {
+          throw new Error(`Image not found in gallery: ${oldPath}`);
+        }
+
+        doc.data[index] = meta_data.image_path[i];
+      });
+
+      // 3. Save update
       await mainCollection.updateOne(
         { type: "gallery" },
-        { $set: { data: doc.data } }
+        { $set: { data: doc.data } },
       );
 
+      // 4. Response
       return {
         success: true,
-        message: "Gallery image updated successfully",
+        message: "Gallery image(s) updated successfully",
         data: doc.data,
       };
     }

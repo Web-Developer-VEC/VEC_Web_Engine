@@ -12,11 +12,11 @@ function IICFaculty({data}){
         <h2 className="iic-h3 text-brwn dark:text-drkt">Faculty Members</h2>
         <div className="iic-members-grid">
           {data?.map((faculty,i) => (
-            <div key={i} className="faculty-card dark:bg-text">
+            <div key={i} className="iic-faculty-card dark:bg-text">
                 {/* <img src={faculty.image} className="w-[150px] h-[200px] m-auto" alt={faculty.name} />  */}
                 <div className="ncc-n-stu-detail p-2 text-left">
                   <h5 className="text-center  text-[18px-">{faculty.name}</h5>
-                  <p className="pl-4 text-brwn dark:text-drka text-sm">{faculty.designation}</p>
+                  <p className="pl-4 text-brwn dark:text-drka text-sm text-center">{faculty.designation}</p>
                 </div>
               </div>
             ))}
@@ -44,11 +44,11 @@ function IICExpert({data}){
         </h2>
         <div className="iic-members-grid">
       {data?.map(faculty => (
-        <div key={faculty.id} className="faculty-card dark:bg-text">
+        <div key={faculty.id} className="iic-faculty-card dark:bg-text">
             {/* <img src={faculty.image} className="w-[150px] h-[200px] m-auto" alt={faculty.name} />  */}
             <div className="ncc-n-stu-detail p-2 text-left">
               <h5 className="text-center text-[18px]">{faculty.name}</h5>
-              <p className="pl-4 text-brwn dark:text-drka text-sm">{faculty.designation}</p>
+              <p className="pl-4 text-brwn dark:text-drka text-sm text-center">{faculty.designation}</p>
             </div>
           </div>
         ))}

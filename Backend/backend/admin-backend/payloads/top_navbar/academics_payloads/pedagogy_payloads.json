@@ -54,57 +54,5 @@
       }
     ]
   }
-},
-{
-  "collectionName": "CSE_005",
-  "collection_type": "pedagogy",
-  "action": "delete",
-  "title": "delete pedagogy 2022 - 2023",
-  "category": "Pedagogy Initiatives",
-  "meta_data": {
-    "year": "SLIDESHARE - CSE DEPARTMENT",
-    "content": [
-      {
-        "name": "Hari",
-        "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
-      }
-    ]
-  }
-},
-{
-  "collectionName": "CSE_005",
-  "collection_type": "pedagogy",
-  "action": "delete",
-  "title": "delete pedagogy 2022 - 2023",
-  "category": "Pedagogy Initiatives",
-  "meta_data": 
-  {
-    "year": "SLIDESHARE - CSE DEPARTMENT",
-    "content": 
-    [
-      {
-        "name": "Hari",
-        "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
-      }
-    ]
-  }
-},
-{
-  "collectionName": "CSE_005",
-  "collection_type": "pedagogy",
-  "action": "delete",
-  "title": "delete pedagogy 2022 - 2023",
-  "category": "Pedagogy Initiatives",
-  "meta_data": 
-  {
-    "year": "SLIDESHARE - CSE DEPARTMENT",
-    "content": 
-    [
-      {
-        "name": "Hari",
-        "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
-      }
-    ]
-  }
 }
 ]
