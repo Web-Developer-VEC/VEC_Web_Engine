@@ -751,6 +751,16 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
           ) : (
             <p>Loading grievance table...</p>
           )}
+          <div style={{ fontSize: '18px',fontWeight: 'bold',textAlign: 'center'  }}>
+            Feedback facility for students and faculties is available on the AICTE Web-Portal:{' '}
+            <a
+              href="https://www.aicte-india.org/feedback/index.php"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.aicte-india.org/feedback/index.php
+            </a>
+          </div>
         </div>
 
         {gredit && (

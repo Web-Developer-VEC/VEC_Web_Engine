@@ -368,7 +368,7 @@ const Head = () => {
                         <button
                             className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-prim dark:text-drkts px-2">
                             {session && session?.role === "super_admin" && (
-                                <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer'>
+                                <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer no-underline'>
                                     Admin
                                 </a>
                             )}
