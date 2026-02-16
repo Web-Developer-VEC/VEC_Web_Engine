@@ -412,69 +412,51 @@ const handleUndoChange = (label) => {
 const handleFinalRequestConfirm = async () => {
   if (!originalData) return;
 
-  const payloads = [];
-
   const originalPG = JSON.stringify(originalData.PG || []);
   const currentPG = JSON.stringify(pgData.PG || []);
 
   const originalYear = originalData.year;
   const currentYear = pgData.year;
 
-  /* -------------------- INTAKE UPDATE -------------------- */
-  if (originalPG !== currentPG) {
-    payloads.push({
-      collectionName: "admissions",
-      collection_type: "pg",
-      action: "update",
-      title: "Update PG Intake",
+  const intakeChanged = originalPG !== currentPG;
+  const yearChanged = originalYear !== currentYear;
 
-      meta_data: {
-        data: {
-          year: currentYear,
-          PG: pgData.PG,
-        },
-      },
-
-      original_data: {
-        data: {
-          year: originalYear,
-          PG: originalData.PG,
-        },
-      },
-
-      admin: { status: "pending" },
-    });
-  }
-
-  /* -------------------- YEAR UPDATE -------------------- */
-  if (originalYear !== currentYear) {
-    payloads.push({
-      collectionName: "admissions",
-      collection_type: "pg",
-      action: "update",
-      title: "Update Year",
-
-      meta_data: {
-        data: { year: currentYear },
-      },
-
-      original_data: {
-        data: { year: originalYear },
-      },
-
-      admin: { status: "pending" },
-    });
-  }
-
-  if (!payloads.length) {
+  if (!intakeChanged && !yearChanged) {
     toast.warn("No changes to submit");
     return;
   }
 
-  console.log("📦 FINAL PAYLOAD:", payloads);
+  /* ------------------------------------------
+     🔥 ALWAYS SEND SINGLE COMBINED PAYLOAD
+  ------------------------------------------ */
+
+  const payload = {
+    collectionName: "admissions",
+    collection_type: "pg",
+    action: "update",
+    title: "Update PG Admission",
+
+    meta_data: {
+      data: {
+        year: currentYear,
+        PG: pgData.PG,
+      },
+    },
+
+    original_data: {
+      data: {
+        year: originalYear,
+        PG: originalData.PG,
+      },
+    },
+
+    admin: { status: "pending" },
+  };
+
+  console.log("📦 FINAL COMBINED PAYLOAD:", payload);
 
   try {
-    await sendRequest(payloads);
+    await sendRequest([payload]); // send as array if your API expects array
 
     toast.success("PG Admission request submitted successfully!");
 
@@ -486,6 +468,7 @@ const handleFinalRequestConfirm = async () => {
     toast.error("Failed to submit request");
   }
 };
+
 
 
   const handleCancel = () => {
