@@ -141,7 +141,7 @@
             "name": "Dr. BASKARA SETHUPATHY S",
             "department_name": "Automobile Engineering (AUTO)",
             "unique_id": "VEC-002-01-567",
-             "resume_pdf":"/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf",
+             "pdf_path":"/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": ["Our department was established to provide well qualified industry ready engineers in the field of Automobile Engineering. The Department has a team of highly qualified, experienced and dedicated faculty members in diversified streams to cater for all-round development of students. Indian automotive industry is growing at a very fast rate with newer designs of automobiles and change in technologies. This will be a way for moulding our students for a bright future."],
             "hod_image": "/static/images/hods/auto.webp",
@@ -195,7 +195,7 @@
             },
           
             "image_path":"/static/images/profile_photos/002/VEC-002-01-567.webp",
-            "resume_pdf":"/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf"
+            "pdf_path":"/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf"
           }]
       },
       {
@@ -215,7 +215,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/002/VEC-002-03-168.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/002/VEC-002-03-168.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-03-168.pdf"
   },
   {
     "name": "Dr. THENNARASU P",
@@ -230,7 +230,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/002/VEC-002-04-155.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/002/VEC-002-04-155.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-155.pdf"
   },
   {
     "name": "Mr. YUVARAJ M",
@@ -245,7 +245,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/002/VEC-002-04-160.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/002/VEC-002-04-160.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-160.pdf"
   },
   {
     "name": "Mr. DINESHBABU D",
@@ -260,7 +260,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/002/VEC-002-04-010.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/002/VEC-002-04-010.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-010.pdf"
   },
   {
     "name": "Dr. SENTHAMIL SELVAN M",
@@ -275,7 +275,7 @@
       "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58350433000"
     },
     "image_path": "/static/images/profile_photos/002/VEC-002-03-167.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/002/VEC-002-03-167.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-03-167.pdf"
   }
 ]
       },
@@ -297,7 +297,7 @@
                 "scopus": ""
               },
             "image_path": "/static/images/profile_photos/002/VEC-002-05-002.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
         }
       ]
       }
