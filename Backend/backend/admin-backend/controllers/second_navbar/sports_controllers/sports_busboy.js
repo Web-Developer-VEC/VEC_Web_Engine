@@ -1,5 +1,6 @@
 const { s3, bucketName } = require("../../../config/s3");
 const { PutObjectCommand } = require("@aws-sdk/client-s3");
+const path = require('path')
 
 async function sportsHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
@@ -15,15 +16,25 @@ async function sportsHandler(fileStream, docs, req, cb, filename, mimetype) {
       fileStream.resume();
       return cb(new Error("Only images are allowed"));
     }
-   
-    if(docs[0].collection_type==="hod" || "faculty" || "infrastructure" || "intramural"){
+
     const collection_type = docs[0]?.collection_type || "sports";
+    const meta_data = docs[0]?.meta_data;
+    
+    const ext = path.extname(realFilename) || ".jpg";
+   
+    if(collection_type=== "hod" || collection_type=== "faculty" ){
+      console.log("dinesh",meta_data.title);
     const folder = `temp/static/images/sports/${collection_type}/`;
-    s3Key = folder + realFilename;
+    s3Key = folder + meta_data.name + ext;
+    }
+    else if(collection_type=== "infrastructure" || collection_type=== "intramural"){
+    const folder = `temp/static/images/sports/${collection_type}/`;
+    
+    s3Key = folder + meta_data.title + ext;
     
     }
-    else if(docs[0].collection_type==="achivements"){
-    const folder = `temp/static/images/sports/${category}/`;
+    else if(collection_type==="achivements"){
+    const folder = `temp/static/images/sports/coordinates/`;
     s3Key = folder + realFilename;
 
     }

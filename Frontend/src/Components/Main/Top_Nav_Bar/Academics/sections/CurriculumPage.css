@@ -76,20 +76,14 @@
   /*background-color: #edf2f7;*/
 }
 
-.row-item p {
-  font-size: 16px;
-  margin-bottom: 0rem;
-  /*color: #4a5568;*/
-  font-weight: 500;
-  text-transform: capitalize;
-}
+
 /* Buttons and Dropdowns */
 .options-container {
   position: relative;
   display: flex;
   justify-content: flex-end; /* Aligns the button to the right */
   align-items:flex-start;
-  margin-top: -25px; /* Centers the button vertically */
+ 
 }
 
 .options-btn {
@@ -240,6 +234,9 @@
     .R-years
   {
     width: 35vw;
+    display: flex;
+    margin-right: auto;
+    justify-content: start;
   }
 
 }
@@ -348,4 +345,32 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+/* UG Grid */
+.ug-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.ug-grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffd700; /* yellow like your buttons */
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.ug-grid-item:hover {
+  background-color: #e6b800;
+  transform: scale(1.05);
 }

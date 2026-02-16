@@ -8,9 +8,9 @@ import { SiPublons } from 'react-icons/si';
 import { FaGoogleScholar } from 'react-icons/fa6';
 
 const Princ = ({theme, toggle}) => {
-  const [data, setData] = useState(null); 
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null);
+  const [data, setData] = useState(null); // State to store fetched data
+  const [loading, setLoading] = useState(true); // State for loading indicator
+  const [error, setError] = useState(null); // State for error handling
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -176,4 +176,16 @@ const Princ = ({theme, toggle}) => {
   );
 };
 
-export default Princ;                        
+export default Princ;
+                        
+              
+                      
+                  
+                
+                            
+                             
+                                    
+                             
+                           
+                              
+                                

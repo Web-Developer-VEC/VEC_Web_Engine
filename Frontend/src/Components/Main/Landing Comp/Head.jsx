@@ -12,36 +12,10 @@ import Fcbk from '../../Assets/facebook.png'
 import Twtr from '../../Assets/twitter.png'
 import Lknd from '../../Assets/linkedin.png'
 import logo from '../../Assets/NEWLOGO.png'
-import { Crown } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 const Head = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const [HrHandbook,setHrHandbook] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () =>{
-            try{
-                const responce = await axios.post('/api/main-backend/administration', {
-                    type : "HRHandBook"
-                })
-
-                const data = responce.data.data;
-                setHrHandbook(data);
-            }
-            catch (error) {
-            if (error.response?.data?.status === 429) {
-            navigate('/ratelimit', { state: { msg: error.response.data.message } });
-            } else {
-            console.error(error);
-            }
-        }
-        } 
-
-    fetchData();
-    }, [])
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -98,7 +72,7 @@ const Head = () => {
             sub: [
                 {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
                 {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
-                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "/vm"},
+                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
                 {hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer"}, // Link to footer
             ],
@@ -113,7 +87,7 @@ const Head = () => {
                 {hrd: false, ttl: "Admin Office", sup: [], lnk: "/admin"},
                 {hrd: false, ttl: "Administrative Committee", sup: [], lnk: "/committee"},
                 {hrd: false, ttl:"Handbook",sup:[],lnk:"/handbook"},
-                {hrd: false, ttl:"HR Handbook",sup:[],lnk:UrlParser(HrHandbook?.pdf_path[0]) , openInNewTab: true},
+                {hrd: false, ttl:"HR Handbook",sup:[],lnk:UrlParser("/static/pdfs/handbook/HR-Handbook.pdf") , openInNewTab: true},
                 {hrd: false, ttl: "Organization Chart", sup: [], lnk: "/clg-org"},
             ], 
         },
@@ -124,7 +98,7 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/acadamiccal" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "acadamic_cal" },
               ],
         },
         {
@@ -141,7 +115,7 @@ const Head = () => {
         },
         {
             main: "Exams",
-            cod: [0, 5],
+            cod: [0, 6],
             cols: 1,
             sub: [
                 {hrd: false, ttl: "Regulation", sup: [], lnk: "/reg"},
@@ -158,6 +132,7 @@ const Head = () => {
                     lnk: "https://vecchennai.directverify.in/student/#/app/request",
                     openInNewTab: true,
                 },
+                {hrd: false, ttl: "Rank List UG & PG", sup: [], lnk: "/rankholders"},
                 {hrd: false, ttl: "Downloads", sup: [], lnk: "/form"},
                 {hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe"},
             ],
@@ -215,7 +190,7 @@ const Head = () => {
         }
         return arr
     }
-    
+
     const session = JSON.parse(sessionStorage.getItem("userSession"))
     
     const isRouteAllowed = (link) => {
@@ -393,7 +368,7 @@ const Head = () => {
                         <button
                             className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-prim dark:text-drkts px-2">
                             {session && session?.role === "super_admin" && (
-                                <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer'>
+                                <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer no-underline'>
                                     Admin
                                 </a>
                             )}
@@ -401,11 +376,6 @@ const Head = () => {
 
                         {/* Social Icons */}
                         <div className="flex group items-center justify-end grow gap-3">
-                            {/* {session && session?.role === "super_admin" && (
-                                <a href="/admin_dash">
-                                    <Crown className='text-text cursor-pointer'/>
-                                </a>
-                            )} */}
                             {socls.map((socl, i) => (
                                 <a href={socl.Link} key={i} target='_blank'>
                                     <img src={socl.Ico} alt={socl.Name}

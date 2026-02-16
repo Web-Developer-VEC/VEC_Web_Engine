@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback, useEffect, lazy, Suspense } from "react";
-import { Router, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
@@ -21,12 +21,6 @@ const Boot = lazy(() => import("./Components/Main/Landing Comp/BootUp"));
 const Head = lazy(() => import("./Components/Main/Landing Comp/Head.jsx"));
 const Footer = lazy(() => import("./Components/Main/Landing Comp/Footer.jsx"));
 const TermsandCon = lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
-const AbtUs = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx"));
-const Collegevisionmission = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/collegevisionmission.jsx"));
-const Management = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Management.jsx"));
-const NewTrust = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Trust.jsx"));
-const ExecutiveCommittee = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Executive commitee.jsx"));
-const CollegeOrgChart = lazy(() => import("./Components/Main/Top_Nav_Bar/Administration/Organization_chart.jsx"));
 const Facultyprofile = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx"));
 const Alumni = lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"));
 const OtherFacilities = lazy(() => import("./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx"));
@@ -43,7 +37,7 @@ const ErrorLogPage = lazy(() => import("./Components/Developer_stuffs/errorlog/e
 const HitLogs = lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 const EnquiryWeb = lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx"));
 const AuthPage = lazy(() => import("./Components/Admin/Auth/auth.jsx"));
-const Aishe = lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/Aishe.jsx"));
+const Career = lazy(() => import("./Components/Main/Landing Comp/career.jsx"));
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -203,7 +197,7 @@ const App = () => {
                                     }
                                 />
                             
-                                {/* <Route path="/sports" drk element={<SportsPage toggle={toggle} theme={theme} />} /> */}
+                                <Route path="/careers" drk element={<Career toggle={toggle} theme={theme} />} />
                                 <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme} />} />
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />} />
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme} />} />

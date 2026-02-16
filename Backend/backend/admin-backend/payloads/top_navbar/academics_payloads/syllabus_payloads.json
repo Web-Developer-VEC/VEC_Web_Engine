@@ -1,59 +1,55 @@
-[
-  {
-    "collectionName": "AIDS_001",
-    "collection_type": "curriculum_and_syllabus",
-    "action": "insert",
-    "title": "insert syllabus 2022 - 2023",
-    "category": "curriculum",
-    "meta_data": {
-      "heading": "Curriculum & Syllabus",
-      "syllabus": [
-        {
-          "year": "dinesh",
-          "pdf_path": "/static/pdfs/curriculum/005/reg_21.pdf"
-        }
-      ]
-    }
-  },
-  {
-    "collectionName": "AIDS_001",
-    "collection_type": "curriculum_and_syllabus",
-    "action": "update",
-    "title": "updatesyllabus 2022 - 2023",
-    "category": "curriculum",
-    "meta_data": {
-      "heading": "Curriculum & Syllabus",
-      "syllabus": [
-        {
-          "year": "hari",
-          "pdf_path": "/static/pdfs/curriculum/005/reg_21.pdf"
-        }
-      ]
-    },
-    "original_data": {
-      "heading": "Curriculum & Syllabus",
-      "syllabus": [
-        {
-          "year": "dinesh",
-          "pdf_path": "/static/pdfs/curriculum/005/reg_21.pdf"
-        }
-      ]
-    }
-  },
-  {
-    "collectionName": "AIDS_001",
-    "collection_type": "curriculum_and_syllabus",
-    "action": "delete",
-    "title": "delete syllabus 2022 - 2023",
-    "category": "curriculum",
-    "meta_data": {
-      "heading": "Curriculum & Syllabus",
-      "syllabus": [
-        {
-          "year": "hari",
-          "pdf_path": "/static/pdfs/curriculum/005/reg_21.pdf"
-        }
-      ]
-    }
+[{
+  "collectionName": "AIDS_001",
+  "collection_type": "curriculum_and_syllabus",
+  "action": "insert",
+  "title": "insert year",
+  "category": "curriculum",
+  "meta_data": {
+    "year": "R - 2026"
   }
+},
+
+{
+  "collectionName": "AIDS_001",
+  "collection_type": "curriculum_and_syllabus",
+  "action": "insert",
+  "title": "insert semester",
+  "category": "curriculum",
+  "meta_data": {
+    "year": "R - 2023",
+    "name": "VIII Semester",
+    "pdf_path": ""
+  }
+},
+
+{
+  "collectionName": "AIDS_001",
+  "collection_type": "curriculum_and_syllabus",
+  "action": "update",
+  "title": "update semester",
+  "category": "curriculum",
+  "meta_data": {
+    "year": "R - 2023",
+    "name": "25 Semester Updated",
+    "pdf_path": ""
+  },
+  "original_data": {
+    "name": "23 Semester",
+    "pdf_path": "/static/pdfs/curriculum/AIDS_001/R2023/VIII_Semester.pdf"
+
+  }
+},
+
+
+{
+  "collectionName": "AIDS_001",
+  "collection_type": "curriculum_and_syllabus",
+  "action": "delete",
+  "title": "delete semester",
+  "category": "curriculum",
+  "meta_data": {
+    "year": "R - 2023",
+    "name": "25 Semester Updated"
+  }
+}
 ]
