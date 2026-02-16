@@ -2,54 +2,6 @@
   {
   "collectionName": "AIDS_001",
   "collection_type": "vision_and_mission",
-  "action": "insert",
-  "title": "Insert Vision and Mission",
-  "category": "programme_educational_objectives",
-  "meta_data": 
-      {
-          "header":"PEO 4",
-          "content":"new one "
-        
-    }
-  },
-
-  {
-  "collectionName": "AIDS_001",
-  "collection_type": "vision_and_mission",
-  "action": "update",
-  "title": "update Vision and Mission",
-  "category": "programme_educational_objectives",
-  "meta_data": 
-      {
-          "header":"PEO 5",
-          "content":"updated one "
-        
-      },
-      "original_data": 
-            {
-          "header":"PEO 3",
-          "content":"Demonstrate professional growth and adaptability by contributing to technological advancements and continuous learning in AI and Data Science"
-        }
-        
-},
-
-{
-  "collectionName": "AIDS_001",
-  "collection_type": "vision_and_mission",
-  "action": "delete",
-  "title": "delete Vision and Mission",
-  "category": "programme_educational_objectives",
-  "meta_data": {
-
-          "header":"PEO 2",
-          "content":"Excel in higher education, research, or entrepreneurship while upholding strong ethical and social values."
-    }
-},
-
-
-{
-  "collectionName": "AIDS_001",
-  "collection_type": "vision_and_mission",
   "action": "update",
   "title": "update Vision and Mission",
   "category": "about_the_department",
@@ -63,7 +15,6 @@
           " It is recognized as nodal center under Anna University. The Department has proved to be a center of excellence in Academic, Sponsored research and Continuing Education Programme."     
         ]
     },
-    
 
   {
   "collectionName": "AIDS_001",
@@ -99,9 +50,50 @@
             "To foster industry collaboration, career readiness, and leadership skills among students.",
             "To develop ethical professionals who contribute positively to society through responsible AI and Data Science applications."
         ]
-    }
-    
-    
-  
- 
+    },
+    {
+  "collectionName": "AIDS_001",
+  "collection_type": "vision_and_mission",
+  "action": "insert",
+  "title": "Insert Vision and Mission",
+  "category": "programme_educational_objectives",
+  "meta_data": 
+      {
+          "header":"PEO 4",
+          "content":"new one "
+        
+      }
+  },
+
+  {
+  "collectionName": "AIDS_001",
+  "collection_type": "vision_and_mission",
+  "action": "update",
+  "title": "update Vision and Mission",
+  "category": "programme_educational_objectives",
+  "meta_data": 
+      {
+          "header":"PEO 5",
+          "content":"updated one "
+        
+      },
+      "original_data": 
+            {
+          "header":"PEO 3",
+          "content":"Demonstrate professional growth and adaptability by contributing to technological advancements and continuous learning in AI and Data Science"
+        }      
+  },
+
+  {
+    "collectionName": "AIDS_001",
+    "collection_type": "vision_and_mission",
+    "action": "delete",
+    "title": "delete Vision and Mission",
+    "category": "programme_educational_objectives",
+    "meta_data": {
+
+            "header":"PEO 2",
+            "content":"Excel in higher education, research, or entrepreneurship while upholding strong ethical and social values."
+      }
+  }
 ]

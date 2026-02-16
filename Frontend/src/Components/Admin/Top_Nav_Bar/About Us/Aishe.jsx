@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Banner from "../../Banner";
-import { Eye } from "lucide-react";
+import { Eye, X } from "lucide-react";
 import "./AbtYr.css";
 import axios from "axios";
 import AisheSideNav from "./aishe_nav";
@@ -80,22 +80,24 @@ const AdminAishe = ({ toggle, theme }) => {
   const [selectedPdfs, setSelectedPdfs] = useState([]);
   const [showPdfDeleteConfirm, setShowPdfDeleteConfirm] = useState(false);
 
-  // Change tracking (page-level)
+  // Change tracking
   const [changed, setChanged] = useState(false);
   const [savedChanges, setSavedChanges] = useState(false);
 
-  // Snapshots (must preserve File objects)
+  // Snapshots
   const [originalSnapshot, setOriginalSnapshot] = useState(null);
   const [editSessionSnapshot, setEditSessionSnapshot] = useState(null);
   const [postSaveSnapshot, setPostSaveSnapshot] = useState(null);
 
-  // Baseline snapshot for diffing during a "pending request" cycle.
+  // Baseline snapshot
   const [pendingBaselineSnapshot, setPendingBaselineSnapshot] = useState(null);
 
   // Confirm popups
   const [showCancelConfirm, setShowCancelConfirm] = useState(false);
   const [showDiscardConfirm, setShowDiscardConfirm] = useState(false);
-  const [showRequestModal, setShowRequestModal] = useState(false);
+
+  // Request modal
+  const [confirmpopup, setConfirmPopup] = useState(false);
 
   // Default buttons
   const [defaultButtons, setDefaultButtons] = useState([]);
@@ -112,7 +114,7 @@ const AdminAishe = ({ toggle, theme }) => {
   const getDefaultBtns = () =>
     defaultButtons.length ? defaultButtons : FALLBACK_DEFAULT_BTNS;
 
-  // Identity
+  // Identity helpers
   const fileIdentity = (file) => {
     if (!(file instanceof File)) return "";
     return `file:${file.name}|${file.size}|${file.type}|${file.lastModified}`;
@@ -141,7 +143,23 @@ const AdminAishe = ({ toggle, theme }) => {
     }));
   };
 
-  // --------------------- NEW: Build request payload + files ---------------------
+  // ✅ Reset page to original mode (used after undo-all)
+  const resetToOriginalMode = () => {
+    const restored = originalSnapshot ? deepClone(originalSnapshot) : [];
+    setAboutYearData(restored);
+    setAbtyear(restored.length ? restored[0]?.category || "" : "");
+
+    setEditMode(false);
+    setChanged(false);
+    setSavedChanges(false);
+    setSelectedPdfs([]);
+    setEditSessionSnapshot(null);
+    setPostSaveSnapshot(null);
+    setPendingBaselineSnapshot(null);
+    setConfirmPopup(false);
+  };
+
+  // --------------------- Build request payload + files ---------------------
   const buildAisheRequestPayload = (baseline, current) => {
     const baseArr = Array.isArray(baseline) ? baseline : [];
     const currArr = Array.isArray(current) ? current : [];
@@ -162,21 +180,18 @@ const AdminAishe = ({ toggle, theme }) => {
       return map;
     };
 
-    // Year inserts: for any year that exists now but not in baseline,
-    // generate "insert" payloads for the year entries.
+    // Year inserts
     currArr.forEach((y) => {
       if (!y?.category) return;
       if (baseMap.has(y.category)) return;
 
-      // Insert year means insert each row (Certificate/DCF/Teaching...) that has a pdf/file.
-      // If you want to always insert placeholders even with empty pdf_path, remove the "hasPdf" check.
       (Array.isArray(y.content) ? y.content : []).forEach((entry) => {
         const hasPdf = entryPdfIdentity(entry) !== "empty";
         if (!hasPdf) return;
 
         const isFile = entry?.file instanceof File;
         const pdf_path = isFile
-          ? `uploads/${y.category}/${entry.name}.pdf` // ✅ placeholder; backend will store actual and return path
+          ? `uploads/${y.category}/${entry.name}.pdf`
           : entry?.pdf_path || "";
 
         docs.push({
@@ -185,10 +200,7 @@ const AdminAishe = ({ toggle, theme }) => {
           action: "insert",
           title: `Insert AISHE ${entry.name} ${y.category}`,
           category: y.category,
-          meta_data: {
-            name: entry.name,
-            pdf_path,
-          },
+          meta_data: { name: entry.name, pdf_path },
         });
 
         if (isFile) files.push(entry.file);
@@ -207,7 +219,6 @@ const AdminAishe = ({ toggle, theme }) => {
         title: `Delete AISHE Year ${y.category}`,
         category: y.category,
         meta_data: {
-          // matches your sample "delete year" style (category + content array)
           category: y.category,
           content: (Array.isArray(y.content) ? y.content : []).map((c) => ({
             name: c?.name || "",
@@ -217,7 +228,7 @@ const AdminAishe = ({ toggle, theme }) => {
       });
     });
 
-    // Per-year diffs (add/modify/delete PDFs)
+    // Per-year diffs
     currArr.forEach((y) => {
       if (!y?.category) return;
       const oldY = baseMap.get(y.category);
@@ -225,7 +236,6 @@ const AdminAishe = ({ toggle, theme }) => {
 
       const oldEntries = buildNameToEntry(oldY);
       const newEntries = buildNameToEntry(y);
-
       const names = new Set([...oldEntries.keys(), ...newEntries.keys()]);
 
       names.forEach((name) => {
@@ -235,12 +245,10 @@ const AdminAishe = ({ toggle, theme }) => {
         const oldId = entryPdfIdentity(oldEntry);
         const newId = entryPdfIdentity(newEntry);
 
-        // Added
         if (oldId === "empty" && newId !== "empty") {
           const isFile = newEntry?.file instanceof File;
-
           const pdf_path = isFile
-            ? `uploads/${y.category}/${name}.pdf` // placeholder
+            ? `uploads/${y.category}/${name}.pdf`
             : newEntry?.pdf_path || "";
 
           docs.push({
@@ -249,17 +257,13 @@ const AdminAishe = ({ toggle, theme }) => {
             action: "insert",
             title: `Insert AISHE ${name} ${y.category}`,
             category: y.category,
-            meta_data: {
-              name,
-              pdf_path,
-            },
+            meta_data: { name, pdf_path },
           });
 
           if (isFile) files.push(newEntry.file);
           return;
         }
 
-        // Deleted
         if (oldId !== "empty" && newId === "empty") {
           docs.push({
             collectionName: "about_us",
@@ -267,20 +271,15 @@ const AdminAishe = ({ toggle, theme }) => {
             action: "delete",
             title: `Delete AISHE ${name} ${y.category}`,
             category: y.category,
-            meta_data: {
-              name,
-              pdf_path: oldEntry?.pdf_path || "",
-            },
+            meta_data: { name, pdf_path: oldEntry?.pdf_path || "" },
           });
           return;
         }
 
-        // Modified (replace file or changed path)
         if (oldId !== "empty" && newId !== "empty" && oldId !== newId) {
           const isFile = newEntry?.file instanceof File;
-
           const new_pdf_path = isFile
-            ? `uploads/${y.category}/${name}.pdf` // placeholder
+            ? `uploads/${y.category}/${name}.pdf`
             : newEntry?.pdf_path || "";
 
           docs.push({
@@ -289,14 +288,8 @@ const AdminAishe = ({ toggle, theme }) => {
             action: "update",
             title: `Update AISHE ${name} ${y.category}`,
             category: y.category,
-            meta_data: {
-              name,
-              pdf_path: new_pdf_path,
-            },
-            original_data: {
-              name,
-              pdf_path: oldEntry?.pdf_path || "",
-            },
+            meta_data: { name, pdf_path: new_pdf_path },
+            original_data: { name, pdf_path: oldEntry?.pdf_path || "" },
           });
 
           if (isFile) files.push(newEntry.file);
@@ -326,6 +319,7 @@ const AdminAishe = ({ toggle, theme }) => {
         setEditSessionSnapshot(null);
         setPostSaveSnapshot(null);
         setPendingBaselineSnapshot(null);
+        setConfirmPopup(false);
 
         if (normalized.length > 0) {
           setAbtyear((prev) =>
@@ -368,6 +362,144 @@ const AdminAishe = ({ toggle, theme }) => {
       if (previewPdfUrl) URL.revokeObjectURL(previewPdfUrl);
     };
   }, [previewPdfUrl]);
+
+  // ----------------------- getAisheRequestRows (diff rows) -----------------------
+  const getAisheRequestRows = () => {
+    const baseline = Array.isArray(pendingBaselineSnapshot)
+      ? pendingBaselineSnapshot
+      : Array.isArray(originalSnapshot)
+      ? originalSnapshot
+      : [];
+
+    const current = Array.isArray(postSaveSnapshot)
+      ? postSaveSnapshot
+      : Array.isArray(aboutYearData)
+      ? aboutYearData
+      : [];
+
+    const baseMap = new Map(baseline.map((y) => [y.category, y]));
+    const currMap = new Map(current.map((y) => [y.category, y]));
+    const rows = [];
+
+    const buildNameToEntry = (yearObj) => {
+      const map = new Map();
+      (Array.isArray(yearObj?.content) ? yearObj.content : []).forEach((c) => {
+        const k = (c?.name || "").trim();
+        if (!k) return;
+        map.set(k, c);
+      });
+      return map;
+    };
+
+    // Year inserted
+    current.forEach((y) => {
+      if (!y?.category) return;
+      if (!baseMap.has(y.category)) {
+        rows.push({
+          key: `year-insert:${y.category}`,
+          action: "insert",
+          category: "Year",
+          year: y.category,
+          name: "",
+          originalYear: null,
+          originalEntry: null,
+        });
+      }
+    });
+
+    // Year deleted
+    baseline.forEach((y) => {
+      if (!y?.category) return;
+      if (!currMap.has(y.category)) {
+        rows.push({
+          key: `year-delete:${y.category}`,
+          action: "delete",
+          category: "Year",
+          year: y.category,
+          name: "",
+          originalYear: deepClone(y),
+          originalEntry: null,
+        });
+      }
+    });
+
+    // PDFs changed
+    current.forEach((y) => {
+      if (!y?.category) return;
+
+      const oldY = baseMap.get(y.category);
+      if (!oldY) return;
+
+      const oldEntries = buildNameToEntry(oldY);
+      const newEntries = buildNameToEntry(y);
+      const names = new Set([...oldEntries.keys(), ...newEntries.keys()]);
+
+      names.forEach((name) => {
+        const oldEntry = oldEntries.get(name) || null;
+        const newEntry = newEntries.get(name) || null;
+
+        const oldId = entryPdfIdentity(oldEntry);
+        const newId = entryPdfIdentity(newEntry);
+
+        if (oldId === "empty" && newId !== "empty") {
+          rows.push({
+            key: `pdf-insert:${y.category}:${name}`,
+            action: "insert",
+            category: "PDF",
+            year: y.category,
+            name,
+            originalEntry: null,
+            currentEntry: deepClone(newEntry),
+          });
+        } else if (oldId !== "empty" && newId === "empty") {
+          rows.push({
+            key: `pdf-delete:${y.category}:${name}`,
+            action: "delete",
+            category: "PDF",
+            year: y.category,
+            name,
+            originalEntry: deepClone(oldEntry),
+          });
+        } else if (oldId !== "empty" && newId !== "empty" && oldId !== newId) {
+          rows.push({
+            key: `pdf-update:${y.category}:${name}`,
+            action: "update",
+            category: "PDF",
+            year: y.category,
+            name,
+            originalEntry: deepClone(oldEntry),
+            currentEntry: deepClone(newEntry),
+          });
+        }
+      });
+    });
+
+    return rows;
+  };
+
+  // ✅ derived boolean: "do we currently have any pending changes?"
+  const hasPendingChanges = useMemo(() => {
+    // compute rows once per render; avoid multiple calls in JSX
+    return getAisheRequestRows().length > 0;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    aboutYearData,
+    postSaveSnapshot,
+    pendingBaselineSnapshot,
+    originalSnapshot,
+    defaultButtons,
+  ]);
+
+  // ✅ If user undone all changes (diff becomes empty), auto-hide Request/Discard + go original
+  useEffect(() => {
+    // Only auto-reset when user is in "savedChanges" state (request/discard UI area)
+    if (!savedChanges) return;
+
+    if (!hasPendingChanges) {
+      resetToOriginalMode();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [savedChanges, hasPendingChanges]);
 
   // --------- FLOW ---------
   const handleEditClick = () => {
@@ -417,61 +549,9 @@ const AdminAishe = ({ toggle, theme }) => {
   };
 
   const handleDiscardAll = () => setShowDiscardConfirm(true);
+  const confirmDiscardAll = () => resetToOriginalMode();
 
-  const confirmDiscardAll = () => {
-    const restored = originalSnapshot ? deepClone(originalSnapshot) : [];
-    setAboutYearData(restored);
-    setAbtyear(restored.length ? restored[0]?.category || "" : "");
-
-    setEditMode(false);
-    setChanged(false);
-    setSavedChanges(false);
-    setSelectedPdfs([]);
-    setEditSessionSnapshot(null);
-    setPostSaveSnapshot(null);
-    setPendingBaselineSnapshot(null);
-    setShowDiscardConfirm(false);
-  };
-
-  const handleRequest = () => setShowRequestModal(true);
-
-  // ✅ FULL REQUEST SEND IMPLEMENTATION
-  const confirmRequest = async () => {
-    try {
-      // Use pending baseline if available, else original snapshot
-      const baseline = pendingBaselineSnapshot || originalSnapshot || [];
-      const current = postSaveSnapshot || aboutYearData || [];
-
-      const { docs, files } = buildAisheRequestPayload(baseline, current);
-
-      // Nothing to send
-      if (!docs.length) {
-        setShowRequestModal(false);
-        return;
-      }
-
-      console.log(docs);
-      
-      const ok = await sendRequest(docs, files); // useAdminRequest sends one by one
-      if (!ok) return;
-
-      setShowRequestModal(false);
-
-      // Clear pending state after successful request
-      setSavedChanges(false);
-      setChanged(false);
-      setEditMode(false);
-      setPostSaveSnapshot(null);
-      setEditSessionSnapshot(null);
-      setPendingBaselineSnapshot(null);
-
-      // Optional: refresh from backend after request
-      // (depends on your flow; usually pending changes won't reflect immediately)
-      // window.location.reload();
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  const handleRequest = () => setConfirmPopup(true);
 
   // --------- Year add/delete ---------
   const openYearModal = () => setShowYearModal(true);
@@ -667,10 +747,164 @@ const AdminAishe = ({ toggle, theme }) => {
     setShowPdfDeleteConfirm(false);
   };
 
+  // --------- Undo helpers ---------
+  const restoreEntryInYear = (yearObj, name, restoredEntryOrNull, mode) => {
+    const btns = getDefaultBtns();
+    const isDefaultFormat =
+      Array.isArray(yearObj?.content) &&
+      yearObj.content.length === btns.length &&
+      yearObj.content.every((item) => item?.name && btns.includes(item.name));
+
+    if (!Array.isArray(yearObj.content)) yearObj.content = [];
+
+    const idx = yearObj.content.findIndex(
+      (c) => (c?.name || "").trim() === (name || "").trim()
+    );
+
+    if (isDefaultFormat) {
+      if (idx === -1) return;
+      if (mode === "empty") {
+        yearObj.content[idx] = { ...yearObj.content[idx], pdf_path: "", file: null };
+      } else if (mode === "restore") {
+        yearObj.content[idx] = {
+          ...yearObj.content[idx],
+          pdf_path: restoredEntryOrNull?.pdf_path || "",
+          file: restoredEntryOrNull?.file || null,
+        };
+      }
+      return;
+    }
+
+    // custom format
+    if (mode === "empty") {
+      if (idx !== -1) yearObj.content.splice(idx, 1);
+      return;
+    }
+
+    if (mode === "restore") {
+      if (idx === -1) {
+        yearObj.content.push({
+          name,
+          pdf_path: restoredEntryOrNull?.pdf_path || "",
+          file: restoredEntryOrNull?.file || null,
+        });
+      } else {
+        yearObj.content[idx] = {
+          ...yearObj.content[idx],
+          pdf_path: restoredEntryOrNull?.pdf_path || "",
+          file: restoredEntryOrNull?.file || null,
+        };
+      }
+    }
+  };
+
+  const undoRequestRow = (row) => {
+    const baseline = Array.isArray(pendingBaselineSnapshot)
+      ? pendingBaselineSnapshot
+      : Array.isArray(originalSnapshot)
+      ? originalSnapshot
+      : [];
+
+    const current = deepClone(
+      Array.isArray(postSaveSnapshot) ? postSaveSnapshot : aboutYearData
+    );
+
+    const findYearIndex = (arr, year) =>
+      arr.findIndex((y) => y?.category === year);
+
+    const sortByBaselineOrder = (arr) => {
+      const order = new Map(baseline.map((y, idx) => [y.category, idx]));
+      return arr
+        .slice()
+        .sort(
+          (a, b) =>
+            (order.get(a.category) ?? 99999) - (order.get(b.category) ?? 99999)
+        );
+    };
+
+    if (row.category === "Year" && row.action === "insert") {
+      const next = current.filter((y) => y?.category !== row.year);
+      setAboutYearData(next);
+      setPostSaveSnapshot(deepClone(next));
+      if (section === row.year) {
+        setAbtyear(next.length ? next[0]?.category || "" : "");
+      }
+      return;
+    }
+
+    if (row.category === "Year" && row.action === "delete" && row.originalYear) {
+      const exists = current.some((y) => y?.category === row.year);
+      let next = exists ? current : [...current, deepClone(row.originalYear)];
+      next = sortByBaselineOrder(next);
+      setAboutYearData(next);
+      setPostSaveSnapshot(deepClone(next));
+      return;
+    }
+
+    if (row.category === "PDF" && row.action === "insert") {
+      const yIdx = findYearIndex(current, row.year);
+      if (yIdx !== -1) {
+        restoreEntryInYear(current[yIdx], row.name, null, "empty");
+      }
+      setAboutYearData(current);
+      setPostSaveSnapshot(deepClone(current));
+      return;
+    }
+
+    if (row.category === "PDF" && row.action === "delete" && row.originalEntry) {
+      const yIdx = findYearIndex(current, row.year);
+      if (yIdx !== -1) {
+        restoreEntryInYear(current[yIdx], row.name, row.originalEntry, "restore");
+      }
+      setAboutYearData(current);
+      setPostSaveSnapshot(deepClone(current));
+      return;
+    }
+
+    if (row.category === "PDF" && row.action === "update" && row.originalEntry) {
+      const yIdx = findYearIndex(current, row.year);
+      if (yIdx !== -1) {
+        restoreEntryInYear(current[yIdx], row.name, row.originalEntry, "restore");
+      }
+      setAboutYearData(current);
+      setPostSaveSnapshot(deepClone(current));
+    }
+  };
+
+  // ✅ Request send
+  const handleConfirmRequest = async () => {
+    try {
+      const baseline = pendingBaselineSnapshot || originalSnapshot || [];
+      const current = postSaveSnapshot || aboutYearData || [];
+
+      const { docs, files } = buildAisheRequestPayload(baseline, current);
+
+      if (!docs.length) {
+        setConfirmPopup(false);
+        return;
+      }
+
+      const ok = await sendRequest(docs, files);
+      if (!ok) return;
+
+      setConfirmPopup(false);
+
+      setSavedChanges(false);
+      setChanged(false);
+      setEditMode(false);
+      setPostSaveSnapshot(null);
+      setEditSessionSnapshot(null);
+      setPendingBaselineSnapshot(null);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   // --------- render ---------
   const renderYearContent = (selectedYear) => {
     const yearIdx = aboutYearData.findIndex((item) => item.category === selectedYear);
     const yearData = aboutYearData[yearIdx];
+
     if (!yearData)
       return (
         <p style={{ textAlign: "center" }}>
@@ -717,7 +951,8 @@ const AdminAishe = ({ toggle, theme }) => {
           </div>
         )}
 
-        {!editMode && savedChanges && (
+        {/* ✅ This is the ONLY place Request/Discard buttons appear */}
+        {!editMode && savedChanges && hasPendingChanges && (
           <div className="flex justify-end gap-4 pt-4 pb-8 mr-10">
             <button
               onClick={handleDiscardAll}
@@ -865,7 +1100,7 @@ const AdminAishe = ({ toggle, theme }) => {
       return acc;
     }, {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aboutYearData, editMode, selectedPdfs, changed, savedChanges, defaultButtons]);
+  }, [aboutYearData, editMode, selectedPdfs, changed, savedChanges, defaultButtons, hasPendingChanges]);
 
   const sideNavExtra = (
     <div className="flex gap-2 items-center absolute top-4 right-10 z-20">
@@ -879,64 +1114,6 @@ const AdminAishe = ({ toggle, theme }) => {
       )}
     </div>
   );
-
-  // DIFF: compare baseline vs pending snapshot (or current)
-  const getAisheDiffSummary = () => {
-    const baseArr = Array.isArray(pendingBaselineSnapshot)
-      ? pendingBaselineSnapshot
-      : Array.isArray(originalSnapshot)
-      ? originalSnapshot
-      : [];
-
-    const currArr = Array.isArray(postSaveSnapshot) ? postSaveSnapshot : aboutYearData;
-
-    const baseMap = new Map(baseArr.map((y) => [y.category, y]));
-    const currMap = new Map(currArr.map((y) => [y.category, y]));
-
-    const addedYears = [];
-    const deletedYears = [];
-
-    const pdfAdded = [];
-    const pdfModified = [];
-    const pdfDeleted = [];
-
-    currArr.forEach((y) => {
-      if (!baseMap.has(y.category)) addedYears.push(y.category);
-    });
-    baseArr.forEach((y) => {
-      if (!currMap.has(y.category)) deletedYears.push(y.category);
-    });
-
-    const buildNameToId = (yearObj) => {
-      const map = new Map();
-      (Array.isArray(yearObj?.content) ? yearObj.content : []).forEach((c) => {
-        const k = (c?.name || "").trim();
-        if (!k) return;
-        map.set(k, entryPdfIdentity(c));
-      });
-      return map;
-    };
-
-    currArr.forEach((y) => {
-      const oldY = baseMap.get(y.category);
-      if (!oldY) return;
-
-      const oldMap = buildNameToId(oldY);
-      const newMap = buildNameToId(y);
-
-      const names = new Set([...oldMap.keys(), ...newMap.keys()]);
-      names.forEach((name) => {
-        const a = oldMap.get(name) || "empty";
-        const b = newMap.get(name) || "empty";
-
-        if (a === "empty" && b !== "empty") pdfAdded.push(`${y.category} → ${name}`);
-        else if (a !== "empty" && b === "empty") pdfDeleted.push(`${y.category} → ${name}`);
-        else if (a !== b) pdfModified.push(`${y.category} → ${name}`);
-      });
-    });
-
-    return { addedYears, deletedYears, pdfAdded, pdfModified, pdfDeleted };
-  };
 
   return (
     <>
@@ -1160,7 +1337,10 @@ const AdminAishe = ({ toggle, theme }) => {
                 No
               </button>
               <button
-                onClick={confirmDiscardAll}
+                onClick={() => {
+                  setShowDiscardConfirm(false);
+                  confirmDiscardAll();
+                }}
                 className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded"
               >
                 Yes, Discard all
@@ -1170,108 +1350,95 @@ const AdminAishe = ({ toggle, theme }) => {
         </div>
       )}
 
-      {/* Request Modal */}
-      {showRequestModal && (
+      {/* ✅ Confirm request modal */}
+      {confirmpopup && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[530px]">
-            <h2 className="text-xl font-bold mb-4 dark:text-white text-text">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[450px]">
+            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
               Final Request for the Changes
             </h2>
             <p className="text-sm text-red-500 mb-4">
               Note: Your changes will stay pending until approved by the superior
-              admin. Once approved, will go on live.
+              admin. Once approved, they will be applied automatically to the live
+              site.
             </p>
 
-            <div className="max-h-[220px] overflow-y-auto mb-4">
-              <table className="w-full text-center text-text dark:text-white">
-                <thead>
-                  <tr>
-                    <th className="py-1">Action</th>
-                    <th className="py-1">Section</th>
-                    <th className="py-1 text-center">Changes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {(() => {
-                    const { addedYears, deletedYears, pdfAdded, pdfModified, pdfDeleted } =
-                      getAisheDiffSummary();
-                    const empty =
-                      addedYears.length === 0 &&
-                      deletedYears.length === 0 &&
-                      pdfAdded.length === 0 &&
-                      pdfModified.length === 0 &&
-                      pdfDeleted.length === 0;
+            <div className="max-h-[200px] overflow-y-auto mb-4">
+              {getAisheRequestRows().length > 0 ? (
+                <table className="w-full text-left text-text dark:text-drkt">
+                  <thead>
+                    <tr>
+                      <th className="py-1">Action</th>
+                      <th className="py-1">Section</th>
+                      <th className="py-1">Changes</th>
+                      <th className="py-1">Undo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {getAisheRequestRows().map((r, i) => (
+                      <tr key={r.key || i}>
+                        <td className="py-1">
+                          {r.action === "insert" && (
+                            <span className="text-green-600">+ Added</span>
+                          )}
+                          {r.action === "update" && (
+                            <span className="text-blue-600">✎ Edited</span>
+                          )}
+                          {r.action === "delete" && (
+                            <span className="text-red-600">– Deleted</span>
+                          )}
+                        </td>
 
-                    return (
-                      <>
-                        {addedYears.map((y, i) => (
-                          <tr key={`add-year-${i}`}>
-                            <td className="py-1 text-green-600">+ Added</td>
-                            <td className="py-1">Year</td>
-                            <td className="py-1 text-[12px]">{y}</td>
-                          </tr>
-                        ))}
+                        <td className="py-1">{r.category}</td>
 
-                        {pdfAdded.map((x, i) => (
-                          <tr key={`pdf-add-${i}`}>
-                            <td className="py-1 text-green-600">+ Added</td>
-                            <td className="py-1">PDF</td>
-                            <td className="py-1 text-[12px]">{x}</td>
-                          </tr>
-                        ))}
+                        <td className="py-1">
+                          {r.category === "Year" ? (
+                            <span className="text-[12px]">{r.year}</span>
+                          ) : (
+                            <span className="text-[12px]">
+                              {r.year} → {r.name}
+                            </span>
+                          )}
+                        </td>
 
-                        {pdfModified.map((x, i) => (
-                          <tr key={`pdf-mod-${i}`}>
-                            <td className="py-1 text-blue-600">✎ Edited</td>
-                            <td className="py-1">PDF</td>
-                            <td className="py-1 text-[12px]">{x}</td>
-                          </tr>
-                        ))}
-
-                        {pdfDeleted.map((x, i) => (
-                          <tr key={`pdf-del-${i}`}>
-                            <td className="py-1 text-red-600">- Deleted</td>
-                            <td className="py-1">PDF</td>
-                            <td className="py-1 text-[12px]">{x}</td>
-                          </tr>
-                        ))}
-
-                        {deletedYears.map((y, i) => (
-                          <tr key={`del-year-${i}`}>
-                            <td className="py-1 text-red-600">- Deleted</td>
-                            <td className="py-1">Year</td>
-                            <td className="py-1 text-[12px]">{y}</td>
-                          </tr>
-                        ))}
-
-                        {empty && (
-                          <tr>
-                            <td colSpan={3} className="py-2 text-[12px] text-gray-500">
-                              No changes detected.
-                            </td>
-                          </tr>
-                        )}
-                      </>
-                    );
-                  })()}
-                </tbody>
-              </table>
+                        <td className="py-1">
+                          <button
+                            type="button"
+                            onClick={() => undoRequestRow(r)}
+                            disabled={requestLoading}
+                            title="Undo change"
+                            className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 disabled:opacity-60"
+                          >
+                            <X size={18} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-gray-400">No AISHE changes found.</p>
+              )}
             </div>
 
             <div className="flex justify-end gap-2">
               <button
-                onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                onClick={() => setConfirmPopup(false)}
+                className={`px-4 py-2 rounded bg-gray-400 text-white ${
+                  requestLoading ? "cursor-not-allowed" : ""
+                }`}
                 disabled={requestLoading}
               >
-                Edit Again
+                Cancel
               </button>
               <button
-                onClick={confirmRequest}
-                className="px-4 py-2 rounded bg-secd dark:bg-drks hover:bg-yellow-500 text-text hover:text-black"
+                onClick={handleConfirmRequest}
+                className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${
+                  requestLoading ? "cursor-progress" : "hover:bg-[#800000]"
+                }`}
                 disabled={requestLoading}
               >
-                {requestLoading ? "Sending..." : "Final Request"}
+                {requestLoading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>
@@ -1281,4 +1448,4 @@ const AdminAishe = ({ toggle, theme }) => {
   );
 };
 
-export default AdminAishe;
+export default AdminAishe; 
