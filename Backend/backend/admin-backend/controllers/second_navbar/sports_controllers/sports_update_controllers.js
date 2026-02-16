@@ -38,11 +38,6 @@ if (singleDocTypes.includes(collection_type)) {
     data: allValues,
   };
 }
-
-
-
-
-
     // 2️⃣ Multi-doc types → faculty, infra, intramural, hod
     const multiDocTypes = ["faculty", "infrastructure", "intramural", "hod"];
     if (multiDocTypes.includes(collection_type)) {
@@ -98,22 +93,32 @@ if (singleDocTypes.includes(collection_type)) {
   }
 
   // Update the content object fields including year, zone, and image_path
+  const oldPaths = Array.isArray(original_data.image_path) ? original_data.image_path : [original_data.image_path];
+  const newPaths = Array.isArray(meta_data.image_path) ? meta_data.image_path : [meta_data.image_path];
+
   const updatedContent = {
     ...content[contentIndex],
-    ...meta_data, // overwrite fields like year, zone, image_path
+    ...meta_data,
+    image_path: content[contentIndex].image_path.map(img => {
+      const index = oldPaths.indexOf(img);
+      return index !== -1 ? newPaths[index] : img;
+    })
   };
+
 
   // Update in MongoDB
   await mainCollection.updateOne(
-    { type: collection_type, "data.category": category },
-    { $set: { "data.$[elem].content.$[con]": updatedContent } },
-    {
-      arrayFilters: [
-        { "elem.category": category },
-        { "con.zone": original_data.zone, "con.year": original_data.year }
-      ]
+  {
+    type: collection_type,
+    "data.category": category
+  },
+  {
+    $set: {
+      "data.$.content": updatedContent
     }
-  );
+  }
+);
+
 
   return { success: true, message: "Content updated successfully", data: updatedContent };
 }
@@ -174,33 +179,13 @@ if (singleCategoryTypes.includes(collection_type)) {
   const docExists = doc.data?.[0];
   if (!docExists) return { success: false, error: "No data found for action_plan" };
 
-  const fields = ["training", "goals", "health", "facilities"];
+  const updateDatas = Array.isArray(meta_data) ? meta_data : [meta_data]
 
-  for (const field of fields) {
-    if (meta_data[field] !== undefined) {
-      const currentArray = docExists[field] || [];
+  await mainCollection.updateOne(
+    {type : collection_type},
+    {$set : { data : updateDatas}}
+  )
 
-      // Replace only if original_data for this field exists
-      if (original_data && original_data[field] !== undefined) {
-        const updatedArray = currentArray.map((item) =>
-          item === original_data[field] ? meta_data[field] : item
-        );
-
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $set: { [`data.$[elem].${field}`]: updatedArray } },
-          { arrayFilters: [{ "elem": { $exists: true } }] } // always matches the only object
-        );
-      } else {
-        // Append if no original_data
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $set: { [`data.$[elem].${field}`]: [...currentArray, meta_data[field]] } },
-          { arrayFilters: [{ "elem": { $exists: true } }] }
-        );
-      }
-    }
-  }
 
   return {
     success: true,
@@ -208,11 +193,6 @@ if (singleCategoryTypes.includes(collection_type)) {
     data: meta_data
   };
 }
-
-
-
-    
-
     // 5️⃣ No case matched
     return { success: false, error: "No matching case found" };
   } catch (err) {

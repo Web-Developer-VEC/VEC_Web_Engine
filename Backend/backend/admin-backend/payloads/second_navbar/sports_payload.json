@@ -1,17 +1,4 @@
 [
-
-    {
-  "collectionName": "sports",
-  "collection_type": "introduction",
-  "action": "insert",
-  "title": "Insertion of Introduction",
-  "meta_data":[
-      "Our College department of Physical Education is an integral part...",
-      "We are now having 3 faculty members...",
-      "Our college students got the 18th consecutive years of overall championship..."
-    ],
-  "original_data": null
-},
 {
   "collectionName": "sports",
   "collection_type": "introduction",
@@ -22,31 +9,11 @@
       "Updated introduction line 2."
     ],
   "original_data":[
-      "Old introduction line 1.",
-      "Old introduction line 2."
+       "Our College department of Physical Education is an integral part of our institution right from its inception from the year 2005-2006.",
+        "We are now having 3 faculty members, including a Head of the department. In which we have one doctorate in physical education. We engage the students both morning and evening for sports activities and make them to participate in Inter collegiate tournaments. We have one big Indoor stadium and one multi Gym with Fitness trainer.",
+        "Our college students got the 18th consecutive years of overall championship in Zone – I competitions. This is our pride for our department of Physical Education. Moreover, our college students participate for Anna university teams, State and National teams. Our students got places in National level sports competitions every year.",
+        "hello everyone"
     ]
-},
-{
-  "collectionName": "sports",
-  "collection_type": "introduction",
-  "action": "delete",
-  "title": "Deletion of Introduction",
-  "meta_data": [
-      "Our College department of Physical Education is an integral part..."
-    ],
-  "original_data": null
-},
-
-{
-  "collectionName": "sports",
-  "collection_type": "vision",
-  "action": "insert",
-  "title": "Insertion of Vision",
-  "meta_data": [
-      "To promote physical education and sports activities...",
-      "To develop the overall personality of students..."
-    ],
-  "original_data": null
 },
 {
   "collectionName": "sports",
@@ -58,22 +25,10 @@
       "Updated vision line 2."
     ],
   "original_data": [
-      "Old vision line 1.",
-      "Old vision line 2."
-    ]
+    "The vision of our department of physical education is physical, mental and Intellectual development of the whole student. For which we create an environment that will focus on students’ attitude towards physical activity. And provide opportunities for personal and intellectual growth through fitness, outdoor recreation, and coaching and sports participation.",
+    "hello everyone"
+  ]
 },
-{
-  "collectionName": "sports",
-  "collection_type": "vision",
-  "action": "delete",
-  "title": "Deletion of Vision",
-  "meta_data":[
-      "To promote physical education and sports activities..."
-    ],
-  "original_data": null
-},
-
-
 {
   "collectionName": "sports",
   "collection_type": "faculty",
@@ -83,7 +38,7 @@
       "name": "Ms.JAYANTHI K",
       "qualification": "M.P.Ed., M.Phil.",
        "designation": "Asst.Physical Director",
-      "image_path": "/static/images/sports/faculty/Jayanthi.webp"
+      "image_path": "/static/images/sports/faculty/Ms.JAYANTHI K.webp"
   },
   "original_data": null
 },
@@ -93,7 +48,7 @@
   "action": "update",
   "title": "Updation of Faculty Member",
   "meta_data":  {
-      "name": "Ms.JAYANTHI K",
+      "name": "Ms.Dinesh K",
       "qualification": "M.P.Ed., M.Phil.",
        "designation": "Asst.Physical Director",
       "image_path": "/static/images/sports/faculty/Jayanthi.webp"
@@ -103,8 +58,8 @@
       "name": "Ms.JAYANTHI K",
       "qualification": "M.P.Ed., M.Phil.",
        "designation": "Asst.Physical Director",
-      "image_path": "/static/images/sports/faculty/Jayanthi.webp"
-    }
+      "image_path": "/static/images/sports/faculty/Ms.JAYANTHI K.webp"
+  }
   
 },
 {
@@ -113,26 +68,10 @@
   "action": "delete",
   "title": "Deletion of Faculty Member",
   "meta_data": {
-      "name": "Ms.JAYANTHI K",
+      "name": "Ms.Dinesh K",
       "qualification": "M.P.Ed., M.Phil.",
        "designation": "Asst.Physical Director",
-      "image_path": "/static/images/sports/faculty/Jayanthi.webp"
-    
-  },
-  "original_data": null
-},
-{
-  "collectionName": "sports",
-  "collection_type": "hod",
-  "action": "insert",
-  "title": "Insertion of HOD",
-  "meta_data": {
-        "name": "Dr.RAMESH KANNAN P",
-        "designation": "Head - Department of Physical Education",
-        "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
-        "message": "Sports play an important role...",
-        "image_path": "/static/images/sports/hod/Rameshkannan.webp"
-      
+      "image_path": "/static/images/sports/faculty/Ms.Dinesh K"
     
   },
   "original_data": null
@@ -142,56 +81,20 @@
   "collection_type": "hod",
   "action": "update",
   "title": "Updation of HOD",
-  "meta_data": {
-        "name": "Dr.RAMESH KANNAN P",
-        "designation": "Head - Department of Physical Education",
-        "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
-        "message": "Updated message from HOD.",
-        "image_path": "/static/images/sports/hod/Rameshkannan_updated.webp"
-      
-    
-  },
-  "original_data": {
-        "name": "Dr.RAMESH KANNAN P",
-        "designation": "Head - Department of Physical Education",
-        "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
-        "message": "Sports play an important role...",
-        "image_path": "/static/images/sports/hod/Rameshkannan.webp"
-      
+  "meta_data":  {
+      "name": "Dr.RAMESHKANNAN",
+      "designation": "Head - Department of Physical Education",
+      "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
+      "message": "Sports play an important role in every human being’s day-to-day life and bring people together irrespective of their age, gender and nationality. Our department of Physical Education is marching towards fulfilling CEO Sir Vision as a reality. Young achievers in various sports have won prizes and medals at various state, National and international level events. Our goal is to increase the participation of our teams in various competitions and win medals and bring laurels to the College and the country."
+    },
+  "original_data":  {
+      "name": "Dr.dinesh",
+      "designation": "Head - Department of Physical Education",
+      "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
+      "message": "Sports play an important role in every human being’s day-to-day life and bring people together irrespective of their age, gender and nationality. Our department of Physical Education is marching towards fulfilling CEO Sir Vision as a reality. Young achievers in various sports have won prizes and medals at various state, National and international level events. Our goal is to increase the participation of our teams in various competitions and win medals and bring laurels to the College and the country.",
+      "image_path": "/static/images/sports/hod/Rameshkannan.webp"
     }
   
-},
-{
-  "collectionName": "sports",
-  "collection_type": "hod",
-  "action": "delete",
-  "title": "Deletion of HOD",
-  "meta_data": {
-        "name": "Dr.RAMESH KANNAN P",
-        "designation": "Head - Department of Physical Education",
-        "qualification": "M.A., M.P.Ed., M.Phil., Ph.D.",
-        "message": "Sports play an important role...",
-        "image_path": "/static/images/sports/hod/Rameshkannan.webp"
-      
-    
-  },
-  "original_data": null
-},
-
-{
-  "collectionName": "sports",
-  "collection_type": "action_plan",
-  "action": "insert",
-  "title": "Insertion of Action Plan",
-  "meta_data": 
-      {
-        "training": "Regular practice sessions from 4:15 pm to 6:15 pm.",
-        "goals": "To become champions of champions.",
-        "health": "To give awareness to the importance of regular food habits.",
-        "facilities": "Over all champions in Anna University Zone 1 Sports Competition."
-      
-  },
-  "original_data": null
 },
 {
   "collectionName": "sports",
@@ -207,30 +110,32 @@
       
   },
   "original_data": 
-      {
-        "training": ["Regular practice sessions from 4:15 pm to 6:15 pm."],
-        "goals": ["To become champions of champions."],
-        "health": ["To give awareness to the importance of regular food habits."],
-        "facilities": ["Over all champions in Anna University Zone 1 Sports Competition."]
-      
+       {
+      "training": [
+        "Regular practice sessions from 4:15 pm to 6:15 pm.",
+        "hari 15 pm."
+      ],
+      "goals": [
+        "To attract a greater number of students for sports participation.",
+        "To create awareness to the students about the good physique."
+      ],
+      "health": [
+        "To insist the importance and benefits of the blood donation.",
+        "To instruct the knowledge about First-Aid and its importance.",
+        "Counselling the students, when needed.",
+        "To have a cordial relationship with students and staffs."
+      ],
+      "facilities": [
+        "Above said facilities are available in our college to inculcate sports activities among admitted students.",
+        "Over all champions in Anna University Zone 1 Sports Competition for 18 consecutive years (2003 -2021).",
+        "We conduct many tournaments zonal and Inter zonal level.",
+        "Also conducted State Level “Velammal Trophy” (Volley Ball & Cricket).",
+        "Regularly used to organize: Tamil Nādu State Men and Women Senior National Coaching Camp”.",
+        "Providing Sports Facilities for Corporate Sector like Tata Communication, Pure Chemicals to name a few.",
+        "Providing Sports facilities to Government Sector like Fire Service, Prison Department staff."
+      ]
     }
   
-},
-{
-  "collectionName": "sports",
-  "collection_type": "action_plan",
-  "action": "delete",
-  "title": "Deletion of Action Plan",
-  "meta_data": 
-      {
-        "training": "Regular practice sessions from 4:15 pm to 6:15 pm.",
-        "goals": ["To become champions of champions."],
-        "health": ["To give awareness to the importance of regular food habits."],
-        "facilities": ["Over all champions in Anna University Zone 1 Sports Competition."]
-      
-    
-  },
-  "original_data": null
 },
 {
   "collectionName": "sports",
@@ -239,7 +144,7 @@
   "title": "Insertion of Infrastructure",
   "meta_data": 
       {
-        "title": "WILMA RUDOLPH INDOOR STADIUM",
+        "title": "DINESH",
         "description": "The Wilma Rudolph Indoor Stadium provides a versatile environment...",
         "image_path": "/static/images/sports/infrastructure/Indoor Stadium.webp"
       
@@ -252,18 +157,16 @@
   "action": "update",
   "title": "Updation of Infrastructure",
   "meta_data": 
-      {
-        "title": "Updated Infrastructure Title",
-        "description": "Updated description of the infrastructure.",
-        "image_path": "/static/images/sports/infrastructure/Updated_Infrastructure.webp"
-      
-  },
+         {
+      "title": "KAPIL deva yuva CRICKET GROUND",
+      "description": "Kapil Dev Cricket Ground is a professional-level cricket field designed for intense matches and practice sessions. Whether you're a budding cricketer or an experienced player, this ground is built to meet your needs.",
+      "image_path": "/static/images/sports/infrastructure/Kapil Dev Cricket Ground.webp"
+    },
   "original_data": 
-      {
-        "title": "WILMA RUDOLPH INDOOR STADIUM",
-        "description": "The Wilma Rudolph Indoor Stadium provides a versatile environment...",
-        "image_path": "/static/images/sports/infrastructure/Indoor Stadium.webp"
-      
+         {
+      "title": "KAPIL DEV CRICKET GROUND",
+      "description": "Kapil Dev Cricket Ground is a professional-level cricket field designed for intense matches and practice sessions. Whether you're a budding cricketer or an experienced player, this ground is built to meet your needs.",
+      "image_path": "/static/images/sports/infrastructure/Kapil Dev Cricket Ground.webp"
     }
   
 },
@@ -274,12 +177,10 @@
   "title": "Deletion of Infrastructure",
   "meta_data": 
       {
-        "title": "WILMA RUDOLPH INDOOR STADIUM",
-        "description": "The Wilma Rudolph Indoor Stadium provides a versatile environment...",
-        "image_path": "/static/images/sports/infrastructure/Indoor Stadium.webp"
-      
-    
-  },
+      "title": "KAPIL deva yuva CRICKET GROUND",
+      "description": "Kapil Dev Cricket Ground is a professional-level cricket field designed for intense matches and practice sessions. Whether you're a budding cricketer or an experienced player, this ground is built to meet your needs.",
+      "image_path": "/static/images/sports/infrastructure/KAPIL deva yuva CRICKET GROUND.png"
+    },
   "original_data": null
 },
 {
@@ -287,9 +188,11 @@
   "collection_type": "achivements",
   "action": "insert",
   "title": "Insertion of Achievements",
-  "category": "zonal_table",
-  "meta_data": {
-  "game": "tt(M)", "position": "Winner" },
+  "category": "interzonal_achievements",
+  "meta_data":  {
+          "title": "DINESH",
+          "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1.webp"
+        },
   "original_data": null
 },
 {
@@ -297,21 +200,40 @@
   "collection_type": "achivements",
   "action": "update",
   "title": "Updation of Achievements",
-  "category": "zonal_table",
+  "category": "interzonal_achievements",
 
   "meta_data": 
-      { "game": "Badminton(M)", "position": "Winner" },
+     {
+          "title": "Our College students ",
+          "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1.webp"
+        },
   "original_data": 
-      { "game": "Badminton(M)", "position": "Winner" }
+       {
+          "title": "Our College students S.R.Rupak of III year EIE Secure Gold Medal in inter zone Competition and qualified for represent Anna University All India Inter University Taekwondo tournament.",
+          "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1.webp"
+        }
 },
 {
   "collectionName": "sports",
   "collection_type": "achivements",
   "action": "delete",
   "title": "Deletion of Achievements",
-  "category": "zonal_table",
+  "category": "interzonal_achievements",
   "meta_data": 
-      { "game": "Badminton(M)", "position": "Winner" },
+      {
+          "title": "Our Velammal Engg College Dept of AI&DS III YR Student Mr.Diyaneshwar won Silver medal under 93kg men Anna University Inter Zone Powerlifting Tournament held @ Paavai Engineering College, Namakkal.",
+          "image_path": "/static/images/sports/interzonal/interzonal_powerlifting_m_2.webp"
+        },
+     
+  "original_data": null
+},
+{
+  "collectionName": "sports",
+  "collection_type": "achivements",
+  "action": "delete",
+  "title": "Deletion of Achievements",
+  "category": "others",
+  "meta_data": null,
      
   "original_data": null
 },
@@ -324,9 +246,9 @@
   "category": "coordinator",
   "meta_data":
   {
-  "zone": "1",
-  "year": "2024-25",
-  "image_path": "/static/images/sports/coordinates/coordinates_2.webp"
+  "zone": "14",
+  "year": "2023-25",
+  "image_path": ["/static/images/sports/coordinates/coordinates_2.webp"]
 },
   "original_data": null
 },
@@ -340,12 +262,12 @@
   {
   "zone": "1",
   "year": "2040-45",
-  "image_path": "/static/images/sports/coordinates/coordinates_1.webp"
+  "image_path": ["/static/images/sports/coordinates/coordinates_1.webp"]
 },
   "original_data": {
     "zone": "1",
     "year": "2024-25",
-    "image_path": "/static/images/sports/coordinates/coordinates_2.webp"
+    "image_path":[ "/static/images/sports/coordinates/coordinates_2.webp"]
     
   }
 },
@@ -358,73 +280,23 @@
   "meta_data":
   {
   "zone": "1",
-  "year": "2024-25",
-  "image_path": "/static/images/sports/coordinates/coordinates_2.webp"
+  "year": "2040-45",
+  "image_path": ["/static/images/sports/coordinates/Screenshot 2025-09-21 172426.png"]
 },
   "original_data": null
 },
-
-
 {
   "collectionName": "sports",
-  "collection_type": "intramural",
-  "action": "insert",
-  "title": "Insertion of Intramural Event",
-  "meta_data": 
-      { 
-    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
-    "title": "Boys Basketball Winner IT Department",
-    "year": "2024-25"
-      
-  },
-  "original_data": null
-},
-{
-  "collectionName": "sports",
-  "collection_type": "intramural",
-  "action": "insert",
-  "title": "insertion of Intramural Winner",
-  "meta_data": {
-    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
-    "title": "Boys Basketball Winner IT Department",
-    "year": "2024-25"
-  },
-  "original_data": null
-},
-{
-  "collectionName": "sports",
-  "collection_type": "intramural",
-  "action": "update",
-  "title": "Updation of Intramural Event",
-  "meta_data": 
-      {
-    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
-    "title": "Boys Basketball Winner IT Department",
-    "year": "2024-25"
-      
-  },
-  "original_data": 
-      {
-    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
-    "title": "Boys Basketball Winner IT Department",
-    "year": "2024-25"
-      
-    }
-  
-},
-{
-  "collectionName": "sports",
-  "collection_type": "intramural",
+  "collection_type": "achivements",
   "action": "delete",
-  "title": "Deletion of Intramural Winner",
-  "meta_data": {
-    "image_path": "/static/images/sports/intramural/basketball_boys_winner.webp",
-    "title": "Boys Basketball Winner IT Department",
-    "year": "2024-25"
-  },
+  "title": "deletion of Achievements",
+  "category": "coordinator",
+  "meta_data":
+  {
+  "zone": "1",
+  "year": "2040-45",
+  "image_path": []
+},
   "original_data": null
 }
-
-
-
 ]
