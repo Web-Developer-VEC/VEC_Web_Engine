@@ -5,14 +5,13 @@ import LoadComp from '../../LoadComp'
 import axios from 'axios';
 import ScrollToTopButton from '../../ScrollToTopButton';
 import { useNavigate } from "react-router";
-import AbtYear from './Aishe';
 
 const AbtUs = ({ theme, toggle }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const navigate = useNavigate();
     const openInNewTab = (url) => {
-    window.open(url, "_blank");
-  };
+        window.open(url, "_blank");
+    };
     const [loading, setLoading] = useState({
         img1: true,
         img2: true,

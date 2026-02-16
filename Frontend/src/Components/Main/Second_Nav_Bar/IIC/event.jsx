@@ -11,20 +11,20 @@ export default function IicFacEvent({title, data}) {
                 <div className="overflow-x-auto">
                     <table className="ic-data-table">
                         <thead>
-                        <tr>
-                            <th className="ic-table-head border-2 border-text dark:border-prim">SL No</th>
-                            <th className="ic-table-head border-2 border-text dark:border-prim">Name of the program</th>
-                            <th className="ic-table-head border-2 border-text dark:border-prim">Date</th>
-                            <th className="ic-table-head border-2 border-text dark:border-prim">Number of Participants</th>
+                        <tr className="bg-gry">
+                            <th className="ic-table-head border-2 border-text dark:border-prim px-4 py-3">SL No</th>
+                            <th className="ic-table-head border-2 border-text dark:border-prim px-4 py-3">Name of the program</th>
+                            <th className="ic-table-head border-2 border-text dark:border-prim px-4 py-3">Date</th>
+                            <th className="ic-table-head border-2 border-text dark:border-prim px-4 py-3">Number of Participants</th>
                         </tr>
                         </thead>
                         <tbody>
                         {data?.map((event,i) => (
                             <tr key={event.slNo}>
-                                <td className="ic-table-data">{i+1}</td>
-                                <td className="ic-table-data text-left">{event.name_of_the_program}</td>
-                                <td className="ic-table-data text-center">{event.date}</td>
-                                <td className="ic-table-data text-center">{event.number_of_participants}</td>
+                                <td className="ic-table-data px-4 py-3 border-2 border-text dark:border-prim">{i+1}</td>
+                                <td className="ic-table-data text-left px-4 py-3 border-2 border-text dark:border-prim">{event.name_of_the_program}</td>
+                                <td className="ic-table-data text-center px-4 py-3 border-2 border-text dark:border-prim">{event.date}</td>
+                                <td className="ic-table-data text-center px-4 py-3 border-2 border-text dark:border-prim">{event.number_of_participants}</td>
                             </tr>
                         ))}
                         </tbody>

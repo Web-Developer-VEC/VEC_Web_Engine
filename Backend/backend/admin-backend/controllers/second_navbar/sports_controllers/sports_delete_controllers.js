@@ -112,6 +112,31 @@ async function deleteData(tempDoc, mainCollection) {
         return { success: false, message: `Category ${category} not found` };
       }
 
+      if (
+          meta_data &&
+          typeof meta_data === "object" &&
+          Object.keys(meta_data).length === 0
+        ) {
+        // Remove category
+        const result = await mainCollection.updateOne(
+          { type: collection_type },
+          { $pull: { data: {category} } }  
+        );
+
+        if (result.modifiedCount === 0) {
+          return {
+            success: false,
+            message: `No matching document found in ${collection_type}`,
+          };
+        }
+
+        return {
+          success: true,
+          message: `Deleted one document from ${collection_type}`,
+          deleted: meta_data,
+        };
+      }
+
       const content = categoryExists.content;
       if (category === "coordinator") {
         if (!meta_data || ! meta_data.year || !meta_data.zone) {
@@ -125,17 +150,16 @@ async function deleteData(tempDoc, mainCollection) {
             : [meta_data.image_path];
 
           await mainCollection.updateOne(
-            { type: collection_type, "data.category": category },
             {
-              $pull: {
-                "data.$[elem].content.$[con].image_path": { $in: deleteArray }
-              }
+              type: collection_type,
+              "data.category": category,
+              "data.content.zone": meta_data.zone,
+              "data.content.year": meta_data.year
             },
             {
-              arrayFilters: [
-                { "elem.category": category },
-                { "con.zone": meta_data.zone, "con.year": meta_data.year }
-              ]
+              $pull: {
+                "data.$.content.image_path": { $in: deleteArray }
+              }
             }
           );
 
@@ -145,18 +169,50 @@ async function deleteData(tempDoc, mainCollection) {
           };
         }
         else if (Array.isArray(meta_data. image_path) && meta_data.image_path.length === 0) {
-          await mainCollection.updateOne(
-            { type: collection_type, "data.category": category },
-            {
-              $pull: {
-                "data.$[elem].content":  { year: meta_data.year }
+          if (Array.isArray(content)) {
+            await mainCollection.updateOne(
+              {
+                type: collection_type,
+                "data.category": category
+              },
+              {
+                $pull: {
+                  "data.$.content": {
+                    year: meta_data.year,
+                    zone: meta_data.zone
+                  }
+                }
               }
-            },
-            {
-              arrayFilters: [{ "elem.category": category }]
-            }
-          );
+            );
 
+            return {
+              success: true,
+              message: "Deleted content object from array"
+            };
+          }
+
+          if (
+                content.year === meta_data.year &&
+                content.zone === meta_data.zone
+              ) {
+                await mainCollection.updateOne(
+                  { type: collection_type },
+                  {
+                    $pull: {
+                      data: {
+                        category: category,
+                        "content.year": meta_data.year,
+                        "content.zone": meta_data.zone
+                      }
+                    }
+                  }
+                );
+
+                return {
+                  success: true,
+                  message: "Deleted content object"
+                };
+              }
           return {
             success: true,
             message: `Deleted content for year ${meta_data.year} in category ${category}`
