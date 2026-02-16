@@ -26,6 +26,7 @@ const academiccalendarHandler = require("../controllers/top_navbar/academics_con
 const newsletterHandler = require("../controllers/top_navbar/academics_controllers/newsletter_controllers/newsletterbusboy");
 const studentAchievementsHandler = require("../controllers/top_navbar/academics_controllers/student_achievments_controllers/achivementsbusboy");
 const syllabusHandler = require("../controllers/top_navbar/academics_controllers/syllabus_controllers/syllabus_busboy");
+const pedagogyHandler = require("../controllers/top_navbar/academics_controllers/pedagogy_controllers/pedagogy_busboy");
 
 const busboyModels = {
   // Testing Complete
@@ -55,12 +56,13 @@ const busboyModels = {
   placement: placementHandler,
   exams: examHandler,
   other_facilities: otherFacilitiesHandler,
- 
+
   // ACADEMICS 
   academics: academiccalendarHandler,
   AIDS_001: newsletterHandler,
   AIDS_001: studentAchievementsHandler,
-  AIDS_001:syllabusHandler
+  AIDS_001: syllabusHandler,
+  IT_011: pedagogyHandler
 
 };
 
