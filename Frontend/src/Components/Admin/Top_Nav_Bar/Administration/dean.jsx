@@ -50,15 +50,17 @@ const Dean = ({ theme, toggle }) => {
         const data = Array.isArray(response.data.data) ? response.data.data : [];
         
         // Add stable IDs to each member
-        const dataWithIds = data.map(category => ({
-          ...category,
-          selected: false,
-          members: category.members?.map((member, idx) => ({
-            ...member,
-            id: member?.id !== undefined ? String(member.id) : `gen-${Date.now()}-${idx}`,
-            selected: false
-          })) || []
-        }));
+const dataWithIds = data.map((category, idx) => ({
+  ...category,
+  id: category.id ?? `cat-${idx}`,
+  selected: false,
+  members: category.members?.map((member, midx) => ({
+    ...member,
+    id: member?.id ?? `mem-${Date.now()}-${midx}`,
+    selected: false
+  })) || []
+}));
+
 
         setDeanData(deepCopy(dataWithIds));
         setCommittedData(deepCopy(dataWithIds));
@@ -91,7 +93,15 @@ const Dean = ({ theme, toggle }) => {
     let hasError = false;
 
 deanData.forEach((category, catIdx) => {
+
+  // ✅ CATEGORY NAME REQUIRED
+  if (!category.category?.trim()) {
+    errors[`category_${catIdx}`] = "Category name is required";
+    hasError = true;
+  }
+
   category.members.forEach((member, memIdx) => {
+
     // Name
     if (!member.name?.trim()) {
       errors[`name_${catIdx}_${memIdx}`] = "Name is required";
@@ -130,7 +140,7 @@ deanData.forEach((category, catIdx) => {
     
     // If there are errors, show toast and scroll to first error
     if (hasError) {
-      toast.error("Please fill all required fields (marked in red)");
+      toast.error("Please fill all required fields (marked in red) include category name");
       
       // Scroll to first error field after a short delay
       setTimeout(() => {
@@ -215,7 +225,10 @@ deanData.forEach((category, catIdx) => {
     if (!file) return;
     
     const previewUrl = URL.createObjectURL(file);
-    const key = `${categoryIndex}-${memberIndex}`;
+    const category = deanData[categoryIndex];
+const member = category.members[memberIndex];
+const key = `${category.id}-${member.id}`;
+
     
     setPreviewImgs(prev => ({ ...prev, [key]: previewUrl }));
     
@@ -379,34 +392,37 @@ deanData.forEach((category, catIdx) => {
     // Create maps for easier lookup by ID or category name
     const committedCategoryMap = new Map();
     committedData.forEach(cat => {
-      committedCategoryMap.set(cat.category, cat);
+      committedCategoryMap.set(cat.id, cat);
     });
     
     const pendingCategoryMap = new Map();
     (pendingData.length ? pendingData : deanData).forEach(cat => {
-      pendingCategoryMap.set(cat.category, cat);
+      pendingCategoryMap.set(cat.id, cat);
     });
     
     // Find deleted categories (in committed but not in current)
-    committedData.forEach((committedCategory, catIdx) => {
-      if (!pendingCategoryMap.has(committedCategory.category)) {
-        // Entire category was deleted
-        committedCategory.members.forEach((member, memIdx) => {
-          changes.push({
-            action: "Deleted",
-            section: committedCategory.category,
-            changes: `${member.type}: ${member.name || "Member"}`,
-            itemId: member.id,
-            categoryIndex: catIdx,
-            memberIndex: memIdx
-          });
-        });
-      }
+// Find deleted categories (in committed but not in current)
+committedData.forEach((committedCategory) => {
+
+  if (!pendingCategoryMap.has(committedCategory.id)) {
+
+    changes.push({
+      action: "Deleted",
+      section: committedCategory.category,
+      changes: `Deleted category ${committedCategory.category}`,
+      categoryName: committedCategory.category,
+      deleteType: "container"
     });
+
+  }
+
+});
+
     
     // Find added categories and modified categories
     (pendingData.length ? pendingData : deanData).forEach((currentCategory, catIdx) => {
-      const committedCategory = committedCategoryMap.get(currentCategory.category);
+      const committedCategory = committedCategoryMap.get(currentCategory.id);
+
       
       if (!committedCategory) {
         // Entire category was added
@@ -471,6 +487,15 @@ deanData.forEach((category, catIdx) => {
                 memberIndex: memIdx
               });
             }
+            if (committedCategory.category !== currentCategory.category) {
+  changes.push({
+    action: "Edited",
+    section: committedCategory.category,
+    changes: `Category renamed to ${currentCategory.category}`,
+    categoryId: currentCategory.id
+  });
+}
+
           }
         });
       }
@@ -482,37 +507,41 @@ deanData.forEach((category, catIdx) => {
 const buildPayload = () => {
   const changes = getChanges();
 
+  const actionMap = {
+    Added: "insert",
+    Edited: "update",
+    Deleted: "delete"
+  };
+
+  const resolveImagePath = (m) => {
+    if (!m) return "";
+    if (m.image_file instanceof File) {
+      return `/static/images/dean_and_associates/${m.image_file.name}`;
+    }
+    return m.image_path || "";
+  };
+
   return changes.map(change => {
-    const category = deanData[change.categoryIndex];
-    const member = category.members[change.memberIndex];
-    const committedMember = committedData[change.categoryIndex]?.members
-      ?.find(m => m.id === change.itemId);
-
-    const actionMap = {
-      Added: "insert",
-      Edited: "update",
-      Deleted: "delete"
-    };
-
-    // 🔑 Final image path resolution
-    const resolveImagePath = (m) => {
-      if (!m) return "";
-      if (m.image_file instanceof File) {
-        return `/static/images/dean_and_associates/${m.image_file.name}`;
-      }
-      return m.image_path || "";
-    };
 
     const basePayload = {
       collectionName: "administration",
       collection_type: "dean_and_association",
       action: actionMap[change.action],
       title: `${actionMap[change.action]} dean_and_association`,
-      category: category.category
+      category: change.section
     };
 
-    // 🟢 INSERT
+    /* =========================
+       🟢 INSERT
+    ========================== */
     if (change.action === "Added") {
+
+      const category = deanData[change.categoryIndex];
+      if (!category) return null;
+
+      const member = category.members?.[change.memberIndex];
+      if (!member) return null;
+
       return {
         ...basePayload,
         meta_data: {
@@ -525,8 +554,24 @@ const buildPayload = () => {
       };
     }
 
-    // 🟡 UPDATE
+    /* =========================
+       🟡 UPDATE
+    ========================== */
     if (change.action === "Edited") {
+
+      
+
+      const category = deanData[change.categoryIndex];
+      const committedCategory = committedData[change.categoryIndex];
+
+      if (!category || !committedCategory) return null;
+
+      const member = category.members?.[change.memberIndex];
+      const committedMember =
+        committedCategory.members?.find(m => m.id === change.itemId);
+
+      if (!member || !committedMember) return null;
+
       return {
         ...basePayload,
         original_data: {
@@ -546,17 +591,56 @@ const buildPayload = () => {
       };
     }
 
-    // 🔴 DELETE (ONLY ONE MEMBER)
+    /* =========================
+       🔴 DELETE
+    ========================== */
     if (change.action === "Deleted") {
+
+      // ALWAYS read from committedData
+      const committedCategory =
+        committedData.find(c => c.category === change.section);
+
+      if (!committedCategory) return null;
+
+      // 🔴 DELETE ENTIRE CATEGORY
+      if (change.deleteType === "container") {
+        return {
+          ...basePayload,
+          meta_data: {
+            category: committedCategory.category,
+            members: committedCategory.members.map(m => ({
+              name: m.name,
+              type: m.type,
+              designation: m.designation,
+              image_path: m.image_path || "",
+              unique_id: m.unique_id
+            }))
+          }
+        };
+      }
+
+      // 🔴 DELETE SINGLE MEMBER
+      const committedMember =
+        committedCategory.members.find(
+          m => m.id === change.itemId
+        );
+
+      if (!committedMember) return null;
+
       return {
         ...basePayload,
         meta_data: {
+          name: committedMember.name,
+          type: committedMember.type,
+          designation: committedMember.designation,
+          image_path: committedMember.image_path || "",
           unique_id: committedMember.unique_id
         }
       };
     }
 
     return null;
+
   }).filter(Boolean);
 };
 
@@ -586,6 +670,7 @@ const handleFinalRequestConfirm = async () => {
     });
   });
 
+console.log(payload);
 
 
   try {
@@ -702,11 +787,14 @@ const handleFinalRequestConfirm = async () => {
   }
   
   const handleAddCategory = () => {
-    const newCategory = {
-      category: `New Category ${deanData.length + 1}`,
-      selected: false,
-      members: []
-    };
+const newCategory = {
+  id: `cat-${Date.now()}`,
+  category: "",
+  selected: false,
+  isNew: true,   // ✅ important
+  members: []
+};
+
 
     setDeanData(prev => [...prev, newCategory]);
     setIsDirty(true);
@@ -782,7 +870,7 @@ const handleFinalRequestConfirm = async () => {
         <div className="de-container font-[poppins]">
           {deanData.map((categoryBlock, categoryIndex) => (
             <div
-              key={categoryIndex}
+              key={categoryBlock.id}
               className={`
                 de-box min-w-[20vw] relative
                 bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)]
@@ -799,27 +887,34 @@ const handleFinalRequestConfirm = async () => {
                 />
               )}
               
-              {isEditing ? (
-                <input
-                  type="text"
-                  value={categoryBlock.category}
-                  onChange={(e) =>
-                    setDeanData(prev =>
-                      prev.map((cat, idx) =>
-                        idx === categoryIndex
-                          ? { ...cat, category: e.target.value }
-                          : cat
-                      )
-                    )
-                  }
-                  className="de-heading w-full bg-transparent border-b border-gray-400 outline-none"
-                  placeholder="Category name"
-                />
-              ) : (
-                <h1 className="de-heading text-accn dark:text-drkt font-[poppins]">
-                  {categoryBlock.category}
-                </h1>
-              )}
+{isEditing && categoryBlock.isNew ? (
+<input
+  type="text"
+  value={categoryBlock.category}
+  onChange={(e) =>
+    setDeanData(prev =>
+      prev.map((cat, idx) =>
+        idx === categoryIndex
+          ? { ...cat, category: e.target.value }
+          : cat
+      )
+    )
+  }
+  className={`de-heading w-full bg-transparent border-b outline-none
+    ${fieldErrors[`category_${categoryIndex}`]
+      ? "border-red-500 bg-red-50"
+      : "border-gray-400"
+    }`}
+  placeholder="Category name"
+  data-error-field={`category_${categoryIndex}`}
+/>
+
+) : (
+  <h1 className="de-heading text-accn dark:text-drkt font-[poppins]">
+    {categoryBlock.category}
+  </h1>
+)}
+
 
               {/* Add Member Button (only in edit mode) */}
               {isEditing && (
@@ -846,7 +941,7 @@ const handleFinalRequestConfirm = async () => {
                   <div className="de-profiles-section flex flex-wrap lg:flex-nowrap justify-center gap-4 w-full font-[poppins]">
                     {categoryBlock.members.map((member, memberIndex) => (
                       <div
-                        key={memberIndex}
+                        key={member.id}
                         className="relative font-[poppins] de-profile bg-prim dark:bg-drkp w-full lg:w-[26vw] border-2 border-secd dark:border-drks"
                       >
                         {/* Selection Checkbox (only in edit mode) */}
@@ -861,17 +956,16 @@ const handleFinalRequestConfirm = async () => {
                         
                         <div className="">
                           <div className="">
-                            <img
-                              src={
-                                previewImgs[`${categoryIndex}-${memberIndex}`]
-                                  ? previewImgs[`${categoryIndex}-${memberIndex}`]
-                                  : member?.image_path
-                                  ? UrlParser(member.image_path)
-                                  : "/placeholder-image.jpg"
-                              }
-                              alt={member.name}
-                              className="w-full h-[260px] object-cover border border-gray-300 dark:border-drks"
-                            />
+                              <img
+                                src={
+                                  previewImgs[`${categoryBlock.id}-${member.id}`]
+                                    ? previewImgs[`${categoryBlock.id}-${member.id}`]
+                                    : member?.image_path
+                                    ? UrlParser(member.image_path)
+                                    : "/placeholder-image.jpg"
+                                }
+                              />
+
                           </div>
 
                           {/* Image Upload (only in edit mode) */}
@@ -880,7 +974,7 @@ const handleFinalRequestConfirm = async () => {
                               {member?.image_path ? "Replace" : "Upload"}
                               <input
                                 type="file"
-                                accept="image/*"
+                                accept=".jpg,.jpeg,.png,.webp"
                                 className="hidden"
                                 onChange={(e) =>
                                   handleImageChange(
