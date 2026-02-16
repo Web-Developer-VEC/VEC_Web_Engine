@@ -136,7 +136,7 @@ const Incub = ( {toggle, theme}) => {
                 headerText="incubation cell"
                 subHeaderText="Innovation & Incubation Center"
             />
-            <SideNav sts={cub} setSts={setCub} navData={navData} cls={"w-screen"}/>
+            <SideNav sts={cub} setSts={setCub} navData={navData} cls={""}/>
         </>
     );
 };

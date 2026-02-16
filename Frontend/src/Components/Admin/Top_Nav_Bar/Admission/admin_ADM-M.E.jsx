@@ -390,75 +390,103 @@ const AdminME = ({ theme, toggle }) => {
   };
 
   // ✅ Undo change (restores state)
-  const handleUndoChange = (idx) => {
-    const change = changeList[idx];
-    let updatedData = { ...pgData };
-    let pgArray = [...updatedData.PG];
+const handleUndoChange = (label) => {
+  if (!originalData) return;
 
-    if (change.type === "added") {
-      updatedData.PG = pgArray.filter(
-        (row) => Object.keys(row)[0] !== Object.keys(change.row)[0],
-      );
-    } else if (change.type === "deleted") {
-      updatedData.PG = [...pgArray, change.row];
-    } else if (change.type === "Edited") {
-      pgArray.forEach((row, i) => {
-        if (Object.keys(row)[0] === change.to) {
-          const details = Object.values(row)[0];
-          pgArray[i] = { [change.from]: details };
-        }
-      });
-      updatedData.PG = pgArray;
-    } else if (change.type === "edited") {
-      pgArray.forEach((row, i) => {
-        if (Object.keys(row)[0] === change.courseName) {
-          const details = Object.values(row)[0];
-          details[change.field] = change.from;
-          details["Total Intakes"] =
-            (details["Government Quota Intakes"] || 0) +
-            (details["Management Quota Intakes"] || 0);
-        }
-      });
-      updatedData.PG = pgArray;
-    }
+  let updated = { ...pgData };
 
-    setpgData(updatedData);
-    setChangeList((prev) => prev.filter((_, i) => i !== idx));
-    toast.info("Change undone");
-  };
-  const handleFinalRequestConfirm = async () => {
-    if (changeList.length === 0) {
-      toast.warn("No changes to submit");
-      return;
-    }
+  /* -------------------- UNDO YEAR -------------------- */
+  if (label === "Year") {
+    updated.year = originalData.year;
+  }
 
-    const payload = changeList
-      .map((change) =>
-        buildPgAdmissionPayloadConfirm({
-          change,
-          pendingData: pgData,
-          committedData: originalData,
-        }),
-      )
-      .filter(Boolean);
+  /* -------------------- UNDO INTAKE -------------------- */
+  if (label === "Intake") {
+    updated.PG = JSON.parse(JSON.stringify(originalData.PG));
+  }
 
-    console.log("📦 FINAL PAYLOAD:", payload);
+  setpgData(updated);
+  toast.info(`${label} reverted`);
+};
 
-    try {
-      // 🔥 Send as array (preferred)
-      await sendRequest(payload);
+const handleFinalRequestConfirm = async () => {
+  if (!originalData) return;
 
-      toast.success("PG Admission request submitted successfully!");
+  const payloads = [];
 
-      // reset states
-      setOriginalData(JSON.parse(JSON.stringify(pgData)));
-      setChangeList([]);
-      setSavedOnce(false);
-      setShowPopup(false);
-    } catch (error) {
-      toast.error("Failed to submit request");
-    }
-  };
+  const originalPG = JSON.stringify(originalData.PG || []);
+  const currentPG = JSON.stringify(pgData.PG || []);
+
+  const originalYear = originalData.year;
+  const currentYear = pgData.year;
+
+  /* -------------------- INTAKE UPDATE -------------------- */
+  if (originalPG !== currentPG) {
+    payloads.push({
+      collectionName: "admissions",
+      collection_type: "pg",
+      action: "update",
+      title: "Update PG Intake",
+
+      meta_data: {
+        data: {
+          year: currentYear,
+          PG: pgData.PG,
+        },
+      },
+
+      original_data: {
+        data: {
+          year: originalYear,
+          PG: originalData.PG,
+        },
+      },
+
+      admin: { status: "pending" },
+    });
+  }
+
+  /* -------------------- YEAR UPDATE -------------------- */
+  if (originalYear !== currentYear) {
+    payloads.push({
+      collectionName: "admissions",
+      collection_type: "pg",
+      action: "update",
+      title: "Update Year",
+
+      meta_data: {
+        data: { year: currentYear },
+      },
+
+      original_data: {
+        data: { year: originalYear },
+      },
+
+      admin: { status: "pending" },
+    });
+  }
+
+  if (!payloads.length) {
+    toast.warn("No changes to submit");
+    return;
+  }
+
+  console.log("📦 FINAL PAYLOAD:", payloads);
+
+  try {
+    await sendRequest(payloads);
+
+    toast.success("PG Admission request submitted successfully!");
+
+    setOriginalData(JSON.parse(JSON.stringify(pgData)));
+    setChangeList([]);
+    setSavedOnce(false);
+    setShowPopup(false);
+  } catch (error) {
+    toast.error("Failed to submit request");
+  }
+};
+
 
   const handleCancel = () => {
     setpgData(originalData); // restore the original fetched data
@@ -638,7 +666,7 @@ const AdminME = ({ theme, toggle }) => {
                     return (
                       <tr key={rowIndex} className="bg-prim dark:bg-drkp">
                         <td>
-                          {pgedit ? (
+                          {/* {pgedit ? (
                             <input
                               type="text"
                               value={courseName}
@@ -658,9 +686,9 @@ const AdminME = ({ theme, toggle }) => {
                                 setpgData({ ...dataCopy, PG: pgArray });
                               }}
                             />
-                          ) : (
-                            courseName
-                          )}
+                          ) : ( */}
+                          {/* )} */}
+                            {courseName}
                         </td>
                         <td>
                           {pgedit ? (
@@ -840,57 +868,42 @@ const AdminME = ({ theme, toggle }) => {
                 </tr>
               </thead>
               <tbody>
-                {changeList.length === 0 ? (
-                  <tr>
-                    <td className="p-2 border" colSpan={3}>
-                      No pending changes.
-                    </td>
-                  </tr>
-                ) : (
-                  changeList.map((req, idx) => (
-                    <tr key={idx} className=" p-2 border-b">
-                      <td className="p-2 capitalize  border">{req.type}</td>
-                      <td className="border ">M.E</td>
-                      <td className="p-2 border ">
-                        {req.type === "edited" ? (
-                          <>
-                            <b>{req.courseName} </b>
-                          </>
-                        ) : req.type === "Edited" ? (
-                          <>
-                            {" "}
-                            <b>{req.from}</b>{" "}
-                          </>
-                        ) : req.type === "added" ? (
-                          <>
-                            <b>{Object.keys(req.row)[0]}</b>
-                          </>
-                        ) : req.type === "deleted" ? (
-                          <>
-                            <b>{Object.keys(req.row)[0]}</b>
-                          </>
-                        ) : req.type === "YearEdited" ? (
-                          <>
-                            <b>Year</b> 
-                          </>
-                          ) : null}
-                      </td>
+  {(() => {
+    const rows = [];
 
-                      <td className="p-2 border">
-                        <button
-                          className=" border flex items-center gap-1"
-                          onClick={() => handleUndoChange(idx)}
-                        >
-                          <X
-                            size={16}
-                            className="text-red-500 hover:text-red-700"
-                          />
-                        </button>
+    if (JSON.stringify(originalData?.PG) !== JSON.stringify(pgData?.PG)) {
+      rows.push({ type: "edited", label: "Intake" });
+    }
+
+    if (originalData?.year !== pgData?.year) {
+      rows.push({ type: "YearEdited", label: "Year" });
+    }
+
+    if (!rows.length) {
+      return (
+        <tr>
+          <td colSpan={4}>No pending changes.</td>
+        </tr>
+      );
+    }
+
+    return rows.map((row, idx) => (
+      <tr key={idx}>
+        <td className="border p-2 capitalize">{row.type}</td>
+        <td className="border p-2">M.E</td>
+        <td className="border p-2">
+          <b>{row.label}</b>
+        </td>
+        <td className="p-2 border">
+                        <button onClick={() => handleUndoChange(row.label)}>
+  <X size={16} className="text-red-500 hover:text-red-700" />
+</button>
                       </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
+      </tr>
+    ));
+  })()}
+</tbody>
+
             </table>
 
             <div className="flex justify-end gap-3 mt-4">

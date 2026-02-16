@@ -6,7 +6,7 @@
   "title": "insert for newsletter",
   "category": "newsletter",
   "meta_data": {
-    "year": "dinesh",
+    "year": "2023-2025",
     "pdf_path": [
       "/static/pdfs/newsletter/005/2022.pdf"
     ]
@@ -19,7 +19,7 @@
   "title": "deletefor newsletter",
   "category": "newsletter",
   "meta_data": {
-    "year": "hari",
+    "year": "2023-2025",
     "pdf_path": [
       "/static/pdfs/newsletter/005/2022.pdf"
     ]
@@ -32,13 +32,13 @@
   "title": "update for newsletter",
   "category": "newsletter",
   "meta_data": {
-    "year": "hari",
+    "year": "2023-2025",
     "pdf_path": [
       "/static/pdfs/newsletter/005/2022.pdf"
     ]
   },
   "original_data": {
-    "year": "dinesh",
+    "year": "2022-2024",
     "pdf_path": [
       "/static/pdfs/newsletter/005/2022.pdf"
     ]

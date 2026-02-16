@@ -95,7 +95,7 @@ function NCCAim({data}) {
               </p>
             </div>
           </div>);
-}
+        }
 
 function NCCMotto({data}) {
   return (<div className="NCC_NAVY-motto-pledge-container">
@@ -127,9 +127,6 @@ function NCCMotto({data}) {
 
 
 const NCC_NAVY = ({ toggle, theme }) => {
-  const [member,setMember]= useState({})
-  const [tabel,setTabelValue] = useState({});
-  const [curosel, setCarosel] = useState({});
   const [ Coordinator, setCoordinator] = useState({});
   const [ncc_navy, setnavy] = useState("About NCC Navy");
   const [navydata, setnavdata] = useState(null);
@@ -145,17 +142,10 @@ const NCC_NAVY = ({ toggle, theme }) => {
         {/* <NCCNCarousel data={curosel} /> */}
       </>
     ),
-    "Recent Events": <NCCNCarousel data={navydata}/>,
+    // "Recent Events": <NCCNCarousel data={navydata}/>,
     "Team & Coordinators": <NCCNMembers data={navydata}/>,
-    "Awards & Recognition": <AlumniSlider1 data={navydata}/>,
+    // "Awards & Recognition": <AlumniSlider1 data={navydata}/>,
     
-  };
-
-
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   useEffect(()=>{
@@ -205,27 +195,6 @@ const NCC_NAVY = ({ toggle, theme }) => {
           </div>
         );
     }
-
-
-  function NCCProf() {
-  return (<div
-            className="NCC_NAVY-profile-container bg-prim
-                dark:bg-drkb border-l-8 border-r-8 border-[#FDB515] px-6"
-          >
-            <div className="NCC_NAVY-profile-photo">
-              <img src={UrlParser(Coordinator?.coordinator_image)} alt={Coordinator?.coordinator_name} />
-            </div>
-            <div className="NCC_NAVY-profile-content">
-              <h2 className="NCC_NAVY-profile-name">{Coordinator?.coordinator_name}</h2>
-              <h4 className="NCC_NAVY-profile-position text-accn dark:text-drkt">
-                {Coordinator?.coordinator_designation}
-              </h4>
-              <p className="NCC_NAVY-profile-bio">
-                {Coordinator?.coordinator_description}
-              </p>
-            </div>
-        </div>);
-  }
 
   return (
 

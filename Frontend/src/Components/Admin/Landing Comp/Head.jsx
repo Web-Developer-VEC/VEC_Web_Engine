@@ -401,11 +401,6 @@ const Head = () => {
 
                         {/* Social Icons */}
                         <div className="flex group items-center justify-end grow gap-3">
-                            {/* {session && session?.role === "super_admin" && (
-                                <a href="/admin_dash">
-                                    <Crown className='text-text cursor-pointer'/>
-                                </a>
-                            )} */}
                             {socls.map((socl, i) => (
                                 <a href={socl.Link} key={i} target='_blank'>
                                     <img src={socl.Ico} alt={socl.Name}

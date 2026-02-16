@@ -750,7 +750,7 @@ const AdminHandbook = ({ theme, toggle }) => {
                   </tbody>
                 </table>
               ) : (
-                <p className="text-gray-400">No gallery changes found.</p>
+                <p className="text-gray-400">No changes found.</p>
               )}
             </div>
             <div className="flex justify-end gap-2">

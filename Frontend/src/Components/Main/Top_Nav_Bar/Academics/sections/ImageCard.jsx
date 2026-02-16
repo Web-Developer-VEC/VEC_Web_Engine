@@ -7,7 +7,7 @@ import { FaGoogleScholar } from "react-icons/fa6";
 
 
 
-function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid, profile}) {
+function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid, profile, isViewmore}) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
   const UrlParser = (path) => {
@@ -63,19 +63,21 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
             )}
           </div>
         
-        <button
-          // onClick={() => navigate(`/facultyprofile/${uid}`)}
-          onClick={() => {
-            if (profile && profile.trim() !== "") {
-              const url = UrlParser(profile);
-              if (url) {
-                window.open(url, "_blank", "noopener,noreferrer");
+        {isViewmore && (
+          <button
+            // onClick={() => navigate(`/facultyprofile/${uid}`)}
+            onClick={() => {
+              if (profile && profile.trim() !== "") {
+                const url = UrlParser(profile);
+                if (url) {
+                  window.open(url, "_blank", "noopener,noreferrer");
+                }
               }
-            }
-          }}
-          className={styles.facButton + " bg-brwn dark:bg-drks hover:bg-secd text-prim dark:text-black"}>
-          View More
-        </button>
+            }}
+            className={styles.facButton + " bg-brwn dark:bg-drks hover:bg-secd text-prim dark:text-black"}>
+            View More
+          </button>
+        )}
     </div>
   </div>
   </>
