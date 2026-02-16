@@ -122,7 +122,7 @@ export default function AdminDashboard() {
                       </div>
                       <div>
                         <p className="font-semibold text-gray-800">{adminDetails.name}</p>
-                        <p className="text-sm text-gray-500 capitalize">{adminDetails.role.replace("_", " ")}</p>
+                        <p className="text-sm text-gray-500 capitalize">{adminDetails.role.replaceAll("_", " ")}</p>
                       </div>
                     </div>
 
@@ -245,7 +245,7 @@ export default function AdminDashboard() {
                         </div>
                         <div>
                           <h4 className="font-semibold text-foreground text-lg group-hover:text-primary transition-colors">
-                            {request.collection}
+                            {request.collection.replaceAll("_", " ").toUpperCase()}
                           </h4>
                           <p className="text-muted-foreground text-sm capitalize">{request.action} operation</p>
                         </div>

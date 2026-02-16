@@ -12,14 +12,6 @@ async function updateData(tempDoc, mainCollection) {
     if (!doc) throw new Error("Document not found");
     if (!doc.data) throw new Error("Document has no data field");
 
-    // Debug
-    console.log("🔎 Incoming update request:", {
-      collection_type,
-      category,
-      original_data,
-      meta_data,
-    });
-
     // 3️⃣ Define type categories
     const singleDocTypes = ["about_the_library", "books", "journal", "HOD"];
     const multiDocTypes = [
@@ -60,24 +52,11 @@ async function updateData(tempDoc, mainCollection) {
       if (Array.isArray(content) && typeof content[0] === "string") {
         if (!original_data) throw new Error("original_data required");
 
-        // Unwrap { content: [...] } if present
-        const originalArray = Array.isArray(original_data?.content)
-          ? original_data.content
-          : Array.isArray(original_data)
-          ? original_data
-          : [original_data];
-
         const metaArray = Array.isArray(meta_data?.content)
           ? meta_data.content
           : Array.isArray(meta_data)
-          ? meta_data
-          : [meta_data];
-
-        // const updated = content.map((item) =>
-        //   originalArray.includes(item)
-        //     ? metaArray[originalArray.indexOf(item)] || item
-        //     : item
-        // );
+            ? meta_data
+            : [meta_data];
 
         await mainCollection.updateOne(
           { type: collection_type, "data.category": category },
@@ -85,27 +64,48 @@ async function updateData(tempDoc, mainCollection) {
         );
       }
 
-      // Case B: Array of objects → match by title
-      else if (Array.isArray(content) && content[0]?.title) {
+      // Case B: Array of objects
+      else if (Array.isArray(content) && typeof content[0] === "object") {
         if (!original_data) throw new Error("original_data required");
 
-        const originalArray = Array.isArray(original_data)
+        const originalArray = Array.isArray(original_data?.content)
+          ? original_data.content
+          : Array.isArray(original_data)
           ? original_data
           : [original_data];
-        const metaArray = Array.isArray(meta_data) ? meta_data : [meta_data];
+        const metaArray = Array.isArray(meta_data?.content)
+          ? meta_data.content
+          : Array.isArray(meta_data)
+          ? meta_data
+          : [meta_data];
 
-        const updated = content.map((item) => {
-          const index = originalArray.findIndex(
-            (od) => od.title === item.title
+        // If client sends full content array, replace content directly.
+        if (Array.isArray(meta_data?.content) || Array.isArray(original_data?.content)) {
+          await mainCollection.updateOne(
+            { type: collection_type, "data.category": category },
+            { $set: { "data.$.content": metaArray } }
           );
-          return index !== -1 ? { ...item, ...metaArray[index] } : item;
-        });
+        } else {
+          // Otherwise update specific object(s) in-place using common keys.
+          const matchKey = content[0]?.title !== undefined
+            ? "title"
+            : content[0]?.name !== undefined
+            ? "name"
+            : null;
 
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $set: { "data.$[elem].content": updated } },
-          { arrayFilters: [{ "elem.category": category }] }
-        );
+          const updated = content.map((item) => {
+            const index = originalArray.findIndex((od) =>
+              matchKey ? od?.[matchKey] === item?.[matchKey] : false
+            );
+            return index !== -1 ? { ...item, ...metaArray[index] } : item;
+          });
+
+          await mainCollection.updateOne(
+            { type: collection_type },
+            { $set: { "data.$[elem].content": updated } },
+            { arrayFilters: [{ "elem.category": category }] }
+          );
+        }
       }
 
       // Case C: Single object → overwrite
@@ -130,20 +130,21 @@ async function updateData(tempDoc, mainCollection) {
       }
 
       const updatedData = doc.data.map((item) => {
-      const isMatch =
-      item.name === original_data.name &&
-      item.educational_qualification === original_data.educational_qualification &&
-      item.designation === original_data.designation;
+        const isMatch = Object.keys(original_data).every(
+          (key) => item.hasOwnProperty(key) && item[key] === original_data[key]
+        );
 
-      if (isMatch) {
-      return {
-        ...item,
-        ...meta_data,          // update fields
-        image_path: meta_data.image_path || item.image_path
-      };
-      }
+        if (isMatch) {
+          return {
+            ...item,
+            ...meta_data,
+            ...(meta_data.hasOwnProperty("image_path") && {
+              image_path: meta_data.image_path,
+            }),
+          };
+        }
 
-      return item;
+        return item;
       });
 
       await mainCollection.updateOne(

@@ -7,7 +7,7 @@ import ScrollToTopButton from "../../ScrollToTopButton";
 import "./AbtUs.css";
 import { useNavigate } from "react-router";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const AdminAbtUs = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -195,7 +195,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
     }
   };
 
-  const closePdfModal = () => setShowPdfModal({ open: false, index: null, name: "", file: null, error: "" });
+  const closePdfModal = () =>
+    setShowPdfModal({ open: false, index: null, name: "", file: null, error: "" });
 
   const savePdfModal = () => {
     const { index, name, file } = showPdfModal;
@@ -239,10 +240,14 @@ const AdminAbtUs = ({ theme, toggle }) => {
   const toggleSelectPdf = (index) => {
     setSelectedPdfs((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
   };
+
   const handleDeleteSelected = () => setShowDeleteConfirm(true);
-  
+
   const confirmDeleteSelected = () => {
-    setPdfLinks((prev) => prev.filter((_, idx) => !selectedPdfs.includes(idx)));
+    // Defensive: stable deletion regardless of order
+    const selectedSet = new Set(selectedPdfs);
+    setPdfLinks((prev) => prev.filter((_, idx) => !selectedSet.has(idx)));
+
     setSelectedPdfs([]);
     setChanged(true);
     setSavedChanges(false);
@@ -356,10 +361,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
   }, [showRequestModal, requestRows.length]);
 
   const undoRow = (row) => {
-    const baseline = pendingBaselineSnapshot || baselineFromBackend;
     const current = postSaveSnapshot || getCurrentSnapshot();
-
-    const updated = row.applyUndo ? row.applyUndo(deepClone(current), baseline) : current;
+    const updated = row.applyUndo ? row.applyUndo(deepClone(current)) : current;
 
     setEditedContent(updated.content || "");
     setEditedImages({ ...(updated.images || { 0: null, 1: null, 2: null }) });
@@ -409,13 +412,11 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
     return {
       newBackend: {
-        // ✅ send content as Array (Mongo-style)
         content: contentStringToArray(newSnapshot?.content || ""),
         image_path: newImagePaths,
         about_us_pdf: newPdfArray,
       },
       oldBackend: {
-        // ✅ normalize old content to Array for accurate comparisons + original_data
         content: Array.isArray(oldData?.content) ? oldData.content : contentStringToArray(oldData?.content || ""),
         image_path: oldImagePaths,
         about_us_pdf: originalPdfArrayNormalized,
@@ -434,9 +435,9 @@ const AdminAbtUs = ({ theme, toggle }) => {
         collection_type: "about_vec",
         action: "update",
         title: "Update About VEC Content",
-        category: "about_us",
-        meta_data: { content: newBackend.content }, // ✅ Array
-        original_data: { content: oldBackend.content }, // ✅ Array
+        category: "content",
+        meta_data: { content: newBackend.content },
+        original_data: { content: oldBackend.content },
       });
     }
 
@@ -476,7 +477,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
           collection_type: "about_vec",
           action: "delete",
           title: `Delete About VEC PDF ${oldItem.name || i + 1}`,
-          category: "about_us",
+          category: "about_us_pdf",
           meta_data: { name: oldItem.name || "", pdf_path: "" },
           original_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" },
         });
@@ -484,9 +485,9 @@ const AdminAbtUs = ({ theme, toggle }) => {
         entries.push({
           collectionName: "about_us",
           collection_type: "about_vec",
-          action: "add",
+          action: "insert",
           title: `Add About VEC PDF ${newItem.name || i + 1}`,
-          category: "about_us",
+          category: "about_us_pdf",
           meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
           original_data: {},
         });
@@ -507,7 +508,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
             collection_type: "about_vec",
             action: "update",
             title: `Update About VEC PDF ${newItem.name || i + 1}`,
-            category: "about_us",
+            category: "about_us_pdf",
             meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
             original_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" },
           });
@@ -532,7 +533,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
     if (!entries.length) {
       toast.info("No changes detected to request.");
-      resetPendingUiState(); // ✅ hide Request/Discard
+      resetPendingUiState();
       return;
     }
 
@@ -544,15 +545,14 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
         const updatedBackend = {
           ...oldData,
-          content: newBackend.content, // ✅ content stored as Array in local state too
+          content: newBackend.content,
           image_path: newBackend.image_path,
           about_us_pdf: newBackend.about_us_pdf,
         };
 
         setAbtUsData(updatedBackend);
 
-        resetPendingUiState(); // ✅ hide Request/Discard + close modal
-        toast.success("Request submitted successfully.");
+        resetPendingUiState();
       } else {
         if (result?.status === 429 || result?.data?.status === 429) {
           navigate("/ratelimit", {
@@ -626,27 +626,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
     }
   };
 
-  const confirmCancel = () => {
-    if (postSaveSnapshot) {
-      const s = deepClone(postSaveSnapshot);
-      setEditedContent(s.content || "");
-      setEditedImages({ ...(s.images || { 0: null, 1: null, 2: null }) });
-      setPdfLinks((s.pdfLinks || []).map((p) => ({ ...p })));
-      setSavedChanges(true);
-    } else if (editSessionSnapshot) {
-      const s = deepClone(editSessionSnapshot);
-      setEditedContent(s.content || "");
-      setEditedImages({ ...(s.images || { 0: null,  1: null, 2: null }) });
-      setPdfLinks((s.pdfLinks || []).map((p) => ({ ...p })));
-      setSavedChanges(false);
-    }
-
-    setChanged(false);
-    setEditMode(false);
-    setShowCancelConfirm(false);
-    setSelectedPdfs([]);
-  };
-
   const handleSave = () => {
     if (!pendingBaselineSnapshot) {
       setPendingBaselineSnapshot(deepClone(baselineFromBackend));
@@ -661,25 +640,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
   };
 
   const handleDiscardAll = () => setShowDiscardConfirm(true);
-
-  const confirmDiscardAll = () => {
-    setEditedContent(contentArrayToString(abtUsData?.content));
-    setEditedImages({ 0: null, 1: null, 2: null });
-
-    const initialPdfLinks = normalizePdfLinksFromBackend(abtUsData || {});
-    setPdfLinks(initialPdfLinks.map((p) => ({ ...p })));
-
-    setChanged(false);
-    setSavedChanges(false);
-    setEditMode(false);
-    setSelectedPdfs([]);
-
-    setShowDiscardConfirm(false);
-
-    // discard means we are back to original page state => hide Request/Discard
-    setPostSaveSnapshot(null);
-    setPendingBaselineSnapshot(null);
-  };
 
   // -------------------- render --------------------
   if (!isOnline) {
@@ -699,6 +659,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
         headerText="About VEC"
         subHeaderText="A center for academic excellence and innovation, nurturing minds to create a brighter future through education and empowerment."
       />
+      <ToastContainer position="bottom-right" />
 
       {abtUsData ? (
         <>
@@ -782,40 +743,56 @@ const AdminAbtUs = ({ theme, toggle }) => {
           {/* PDF Links */}
           <div className="m-2 p-2 font-[Poppins]">
             <div className="pdf-links grid grid-cols-1 md:grid-cols-1 md:flex flex-wrap justify-center gap-6 w-fit mx-auto text-left">
-              {pdfLinks.map((pdf, index) => (
-                <div
-                  key={index}
-                  className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd text-text hover:bg-accn hover:text-white ${
-                    editMode ? "scale-110 cursor-pointer" : "cursor-pointer"
-                  }`}
-                  onClick={editMode && !selectedPdfs.length ? () => openPdfModal(index) : undefined}
-                  style={{ position: "relative" }}
-                >
-                  {pdf.name}
+              {pdfLinks.map((pdf, index) => {
+                const hasSelection = selectedPdfs.length > 0;
+                const isSelected = selectedPdfs.includes(index);
 
-                  {editMode && (
-                    <div className="absolute top-1 right-2 flex items-center gap-1 z-10">
-                      <input
-                        type="checkbox"
-                        checked={selectedPdfs.includes(index)}
+                return (
+                  // pdf conrtainer 
+                  <div
+                    key={index}
+                    className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd text-text hover:bg-accn hover:text-white ${
+                      editMode ? "scale-110" : ""
+                    } ${editMode ? "cursor-pointer" : "cursor-pointer"} ${
+                      editMode && isSelected ? "ring-2 ring-red-500" : ""
+                    }`}
+                    // IMPORTANT: Only allow opening edit modal when not in "multi-select" mode
+                    onClick={
+                      editMode && !hasSelection
+                        ? () => openPdfModal(index)
+                        : undefined
+                    }
+                    style={{ position: "relative" }}
+                  >
+                    {pdf.name}
+
+                    {editMode && (
+                      // Stop propagation on wrapper too
+                      <div
+                        className="absolute top-1 right-2 flex items-center gap-1 z-10"
                         onClick={(e) => e.stopPropagation()}
-                        onChange={(e) => {
-                          e.stopPropagation();
-                          toggleSelectPdf(index);
-                        }}
-                        className="custom-checkbox w-4 h-3"
-                      />
-                    </div>
-                  )}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={(e) => {
+                            e.stopPropagation();
+                            toggleSelectPdf(index);
+                          }}
+                          className="custom-checkbox w-4 h-3"
+                        />
+                      </div>
+                    )}
 
-                  {!editMode && (
-                    <div
-                      className="absolute left-0 top-0 w-full h-full"
-                      onClick={() => window.open(UrlParser(pdf.url), "_blank")}
-                    />
-                  )}
-                </div>
-              ))}
+                    {!editMode && (
+                      <div
+                        className="absolute left-0 top-0 w-full h-full"
+                        onClick={() => window.open(UrlParser(pdf.url), "_blank")}
+                      />
+                    )}
+                  </div>
+                );
+              })}
 
               {editMode && (
                 <div
@@ -872,7 +849,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
               </div>
             )}
 
-            {/* ✅ Request/Discard visible only when we truly have saved pending changes */}
             {!editMode && savedChanges && (
               <div className="flex justify-end gap-4 p-4 mr-5">
                 <button
@@ -1000,6 +976,32 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 disabled={reqLoading}
               >
                 {reqLoading ? "Processing..." : "Final Request"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete confirm modal (you already had states; add UI if you want) */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-[1100]">
+          <div className="bg-white p-6 rounded shadow-lg w-[380px]">
+            <h3 className="text-lg font-bold mb-2">Delete selected PDFs?</h3>
+            <p className="text-sm text-gray-600 mb-4">
+              This will remove {selectedPdfs.length} item(s) from the list (pending until Request).
+            </p>
+            <div className="flex justify-end gap-2">
+              <button
+                className="px-4 py-2 rounded bg-gray-400 text-white"
+                onClick={() => setShowDeleteConfirm(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 rounded bg-red-600 text-white"
+                onClick={confirmDeleteSelected}
+              >
+                Delete
               </button>
             </div>
           </div>

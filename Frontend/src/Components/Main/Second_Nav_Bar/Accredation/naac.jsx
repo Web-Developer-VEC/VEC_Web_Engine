@@ -79,10 +79,11 @@ const Naac = ({ data }) => {
                   onClick={() => toggleSection(index)}
                   className={`w-full flex justify-between items-center px-6 py-4 text-xl font-semibold
                 transition-all rounded-2xl mb-4
-                ${openSection === index
-                      ? "bg-secd text-text dark:bg-brwn "
-                      : "bg-accn dark:bg-drks text-white "
-                    }`}
+                ${
+                  openSection === index
+                    ? "bg-secd text-text dark:bg-brwn "
+                    : "bg-accn dark:bg-drks text-white "
+                }`}
                 >
                   {section?.category}
                   {openSection === index ? <FaChevronUp /> : <FaChevronDown />}
