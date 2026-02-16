@@ -1,338 +1,338 @@
-[
-  {
-    "collectionName": "admissions",
-    "collection_type": "pg",
-    "action": "update",
-    "title": "Update PG Intake",
-    "meta_data": {
-      "data": {
+  [
+    {
+      "collectionName": "admissions",
+      "collection_type": "pg",
+      "action": "update",
+      "title": "Update PG Intake",
+      "meta_data": {
+        "data": {
+          "year": "2024-2025",
+          "PG": [
+            {
+              "M.E Computer Science & Engineering": {
+                "Government Quota Intakes": "04",
+                "Management Quota Intakes": "02",
+                "Total Intakes": "06"
+              }
+            }
+          ]
+        }
+      },
+      "original_data": {
+        "data": {
+          "year": "2024-2025",
+          "PG": [
+            {
+              "M.E Computer Science & Engineering": {
+                "Government Quota Intakes": "03",
+                "Management Quota Intakes": "03",
+                "Total Intakes": "06"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "admission_team",
+      "action": "update",
+      "title": "Update Admission Team Member",
+      "meta_data": {
+        "name": "Ms. SRIVIDHYA C",
+        "designation": "Senior Admission Co-Ordinator",
+        "image_path": "/static/images/admission_team/Srividhya.webp"
+      },
+      "original_data": {
+        "name": "Ms. SRIVIDHYA C",
+        "designation": "Admission Co-Ordinator",
+        "image_path": "/static/images/admission_team/Srividhya.webp"
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "ug",
+      "action": "update",
+      "title": "Update UG Intake",
+      "meta_data": {
+        "data": {
+          "year": "2024-2025",
+          "UG": [
+            {
+              "B.Tech Artificial Intelligence & Data Science": {
+                "Government Quota Intakes": "80",
+                "Management Quota Intakes": "40",
+                "Total Intakes": "120"
+              }
+            }
+          ]
+        }
+      },
+      "original_data": {
+        "data": {
+          "year": "2024-2025",
+          "UG": [
+            {
+              "B.Tech Artificial Intelligence & Data Science": {
+                "Government Quota Intakes": "78",
+                "Management Quota Intakes": "42",
+                "Total Intakes": "120"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "phd",
+      "action": "update",
+      "title": "Update PhD Link",
+      "meta_data": {
+        "year": "2024-2025",
+        "link": "https://cfr.annauniv.edu/research/academics/new_index.php"
+      },
+      "original_data": {
+        "year": "2024-2025",
+        "link": "https://cfr.annauniv.edu/research/academics/index.php"
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "pg",
+      "action": "update",
+      "title": "Update Year",
+      "meta_data": {
+        "data": {
+          "year": "2025-2026"
+        }
+      },
+      "original_data": {
+        "data": {
+          "year": "2024-2025"
+        }
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "admission_team",
+      "action": "insert",
+      "title": "Insert single admission team member",
+      "meta_data": {
+        "name": "Mr. ARUN PRASAD K",
+        "designation": "Student Admission Counselor",
+        "image_path": "/static/images/admission_team/Arun_Prasad.webp"
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "pg",
+      "action": "insert",
+      "title": "Insert new PG department",
+      "meta_data": {
         "year": "2024-2025",
         "PG": [
           {
-            "M.E Computer Science & Engineering": {
-              "Government Quota Intakes": "04",
-              "Management Quota Intakes": "02",
-              "Total Intakes": "06"
+            "M.E Structural Engineering": {
+              "Government Quota Intakes": "05",
+              "Management Quota Intakes": "05",
+              "Total Intakes": "10"
             }
           }
         ]
       }
     },
-    "original_data": {
-      "data": {
+    {
+      "collectionName": "admissions",
+      "collection_type": "ug",
+      "action": "insert",
+      "title": "Add Automobile Engineering to UG_Lateral",
+      "meta_data": {
         "year": "2024-2025",
-        "PG": [
+        "UG_Lateral": [
           {
-            "M.E Computer Science & Engineering": {
+            "B.E Automobile Engineering": {
               "Government Quota Intakes": "03",
-              "Management Quota Intakes": "03",
-              "Total Intakes": "06"
+              "Management Quota Intakes": "00",
+              "Total Intakes": "03"
             }
           }
         ]
       }
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "admission_team",
-    "action": "update",
-    "title": "Update Admission Team Member",
-    "meta_data": {
-      "name": "Ms. SRIVIDHYA C",
-      "designation": "Senior Admission Co-Ordinator",
-      "image_path": "/static/images/admission_team/Srividhya.webp"
     },
-    "original_data": {
-      "name": "Ms. SRIVIDHYA C",
-      "designation": "Admission Co-Ordinator",
-      "image_path": "/static/images/admission_team/Srividhya.webp"
-    }
-  },
-  {
+    {
+      "collectionName": "admissions",
+      "collection_type": "ug",
+      "action": "delete",
+      "title": "Delete department from UG_LATERAL",
+      "meta_data": {
+        "year": "2024-2025",
+        "UG_Lateral": [
+          {
+            "B.E Civil Engineering": {}
+          }
+        ]
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "ug",
+      "action": "delete",
+      "title": "Clear UG_LATERAL array for year",
+      "meta_data": {
+        "year": "2024-2025",
+        "UG_Lateral": []
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "ug",
+      "action": "delete",
+      "title": "Delete all UG data",
+      "meta_data": {}
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "pg",
+      "action": "delete",
+      "title": "Delete program from PG",
+      "meta_data": {
+        "year": "2024-2025",
+        "PG": [
+          {
+            "M.E Power System Engineering": {}
+          }
+        ]
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "admission_team",
+      "action": "delete",
+      "title": "Delete admission team member",
+      "meta_data": {
+        "name": "Mrs. Muthulakshmi"
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "mba",
+      "action": "delete",
+      "title": "Delete MBA program for year",
+      "meta_data": {
+        "year": "2024-2025",
+        "MBA": [
+          {
+            "MBA": {}
+          }
+        ]
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "admission_team",
+      "action": "delete",
+      "title": "Delete photo_path for admission team member",
+      "meta_data": {
+        "name": "Mrs. JENEFER ASHA JEYARANI M",
+        "image_path": "/static/images/admission_team/Jenefer.webp"
+      }
+    },
+    {
+      "collectionName": "admissions",
+      "collection_type": "admission_team",
+      "action": "delete",
+      "title": "Delete entire data of admission team member",
+      "meta_data": {
+        "name": "Mrs. JENEFER ASHA JEYARANI M"
+      }
+    },
+    {
     "collectionName": "admissions",
     "collection_type": "ug",
     "action": "update",
-    "title": "Update UG Intake",
+    "title": "Update BE Government Link",
     "meta_data": {
       "data": {
         "year": "2024-2025",
-        "UG": [
-          {
-            "B.Tech Artificial Intelligence & Data Science": {
-              "Government Quota Intakes": "80",
-              "Management Quota Intakes": "40",
-              "Total Intakes": "120"
-            }
-          }
-        ]
+        "BE_Government": {
+          "BE_Government_link_name": "* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2026)",
+          "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota_2026.pdf"
+        }
       }
     },
     "original_data": {
       "data": {
         "year": "2024-2025",
-        "UG": [
-          {
-            "B.Tech Artificial Intelligence & Data Science": {
-              "Government Quota Intakes": "78",
-              "Management Quota Intakes": "42",
-              "Total Intakes": "120"
-            }
-          }
-        ]
+        "BE_Government": {
+          "BE_Government_link_name": "* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)",
+          "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota.pdf"
+        }
       }
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "phd",
-    "action": "update",
-    "title": "Update PhD Link",
-    "meta_data": {
-      "year": "2024-2025",
-      "link": "https://cfr.annauniv.edu/research/academics/new_index.php"
-    },
-    "original_data": {
-      "year": "2024-2025",
-      "link": "https://cfr.annauniv.edu/research/academics/index.php"
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "pg",
-    "action": "update",
-    "title": "Update Year",
-    "meta_data": {
-      "data": {
-        "year": "2025-2026"
-      }
-    },
-    "original_data": {
-      "data": {
-        "year": "2024-2025"
-      }
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "admission_team",
-    "action": "insert",
-    "title": "Insert single admission team member",
-    "meta_data": {
-      "name": "Mr. ARUN PRASAD K",
-      "designation": "Student Admission Counselor",
-      "image_path": "/static/images/admission_team/Arun_Prasad.webp"
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "pg",
-    "action": "insert",
-    "title": "Insert new PG department",
-    "meta_data": {
-      "year": "2024-2025",
-      "PG": [
-        {
-          "M.E Structural Engineering": {
-            "Government Quota Intakes": "05",
-            "Management Quota Intakes": "05",
-            "Total Intakes": "10"
-          }
-        }
-      ]
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "ug",
-    "action": "insert",
-    "title": "Add Automobile Engineering to UG_Lateral",
-    "meta_data": {
-      "year": "2024-2025",
-      "UG_Lateral": [
-        {
-          "B.E Automobile Engineering": {
-            "Government Quota Intakes": "03",
-            "Management Quota Intakes": "00",
-            "Total Intakes": "03"
-          }
-        }
-      ]
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "ug",
-    "action": "delete",
-    "title": "Delete department from UG_LATERAL",
-    "meta_data": {
-      "year": "2024-2025",
-      "UG_Lateral": [
-        {
-          "B.E Civil Engineering": {}
-        }
-      ]
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "ug",
-    "action": "delete",
-    "title": "Clear UG_LATERAL array for year",
-    "meta_data": {
-      "year": "2024-2025",
-      "UG_Lateral": []
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "ug",
-    "action": "delete",
-    "title": "Delete all UG data",
-    "meta_data": {}
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "pg",
-    "action": "delete",
-    "title": "Delete program from PG",
-    "meta_data": {
-      "year": "2024-2025",
-      "PG": [
-        {
-          "M.E Power System Engineering": {}
-        }
-      ]
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "admission_team",
-    "action": "delete",
-    "title": "Delete admission team member",
-    "meta_data": {
-      "name": "Mrs. Muthulakshmi"
     }
   },
   {
     "collectionName": "admissions",
     "collection_type": "mba",
-    "action": "delete",
-    "title": "Delete MBA program for year",
+    "action": "update",
+    "title": "Update MBA Government Link",
     "meta_data": {
       "year": "2024-2025",
-      "MBA": [
-        {
-          "MBA": {}
+      "MBA_Government": {
+        "MBA_Government_link_name": "* FIRST YEAR MBA - Government Quota (Through TANCET 2026)",
+        "pdf_path": "/static/pdfs/admission/GQ-MBA-2026.pdf"
+      }
+    },
+    "original_data": {
+      "year": "2024-2025",
+      "MBA_Government": {
+        "MBA_Government_link_name": "* FIRST YEAR MBA - Government Quota (Through TANCET 2025)",
+        "pdf_path": "/static/pdfs/admission/GQ-MBA-2025.pdf"
+      }
+    }
+  },
+  {
+    "collectionName": "admissions",
+    "collection_type": "mba",
+    "action": "update",
+    "title": "Update MBA Management Link",
+    "meta_data": {
+      "year": "2024-2025",
+      "MBA_Management": {
+        "MBA_Management_link_name": "* FIRST YEAR MBA - Management Quota 2026",
+        "pdf_path": "/static/pdfs/admission/MQ-MBA-2026.pdf"
+      }
+    },
+    "original_data": {
+      "year": "2024-2025",
+      "MBA_Management": {
+        "MBA_Management_link_name": "* FIRST YEAR MBA - MANAGEMENT QUOTA",
+        "pdf_path": "/static/pdfs/admission/MQ-MBA-2025.pdf"
+      }
+    }
+  },
+  {
+    "collectionName": "admissions",
+    "collection_type": "ug",
+    "action": "update",
+    "title": "Update BE Management Link",
+    "meta_data": {
+      "data": {
+        "year": "2024-2025",
+        "BE_Management": {
+          "BE_Management_link_name": "* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA 2026",
+          "pdf_path": "/static/pdfs/admission/B.E_B.TECH-26-27.pdf"
         }
-      ]
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "admission_team",
-    "action": "delete",
-    "title": "Delete photo_path for admission team member",
-    "meta_data": {
-      "name": "Mrs. JENEFER ASHA JEYARANI M",
-      "image_path": "/static/images/admission_team/Jenefer.webp"
-    }
-  },
-  {
-    "collectionName": "admissions",
-    "collection_type": "admission_team",
-    "action": "delete",
-    "title": "Delete entire data of admission team member",
-    "meta_data": {
-      "name": "Mrs. JENEFER ASHA JEYARANI M"
-    }
-  },
-  {
-  "collectionName": "admissions",
-  "collection_type": "ug",
-  "action": "update",
-  "title": "Update BE Government Link",
-  "meta_data": {
-    "data": {
-      "year": "2024-2025",
-      "BE_Government": {
-        "BE_Government_link_name": "* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2026)",
-        "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota_2026.pdf"
       }
-    }
-  },
-  "original_data": {
-    "data": {
-      "year": "2024-2025",
-      "BE_Government": {
-        "BE_Government_link_name": "* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)",
-        "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota.pdf"
+    },
+    "original_data": {
+      "data": {
+        "year": "2024-2025",
+        "BE_Management": {
+          "BE_Management_link_name": "* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
+          "pdf_path": "/static/pdfs/admission/B.E_B.TECH-25-26.pdf"
+        }
       }
     }
   }
-},
-{
-  "collectionName": "admissions",
-  "collection_type": "mba",
-  "action": "update",
-  "title": "Update MBA Government Link",
-  "meta_data": {
-    "year": "2024-2025",
-    "MBA_Government": {
-      "MBA_Government_link_name": "* FIRST YEAR MBA - Government Quota (Through TANCET 2026)",
-      "pdf_path": "/static/pdfs/admission/GQ-MBA-2026.pdf"
-    }
-  },
-  "original_data": {
-    "year": "2024-2025",
-    "MBA_Government": {
-      "MBA_Government_link_name": "* FIRST YEAR MBA - Government Quota (Through TANCET 2025)",
-      "pdf_path": "/static/pdfs/admission/GQ-MBA-2025.pdf"
-    }
-  }
-},
-{
-  "collectionName": "admissions",
-  "collection_type": "mba",
-  "action": "update",
-  "title": "Update MBA Management Link",
-  "meta_data": {
-    "year": "2024-2025",
-    "MBA_Management": {
-      "MBA_Management_link_name": "* FIRST YEAR MBA - Management Quota 2026",
-      "pdf_path": "/static/pdfs/admission/MQ-MBA-2026.pdf"
-    }
-  },
-  "original_data": {
-    "year": "2024-2025",
-    "MBA_Management": {
-      "MBA_Management_link_name": "* FIRST YEAR MBA - MANAGEMENT QUOTA",
-      "pdf_path": "/static/pdfs/admission/MQ-MBA-2025.pdf"
-    }
-  }
-},
-{
-  "collectionName": "admissions",
-  "collection_type": "ug",
-  "action": "update",
-  "title": "Update BE Management Link",
-  "meta_data": {
-    "data": {
-      "year": "2024-2025",
-      "BE_Management": {
-        "BE_Management_link_name": "* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA 2026",
-        "pdf_path": "/static/pdfs/admission/B.E_B.TECH-26-27.pdf"
-      }
-    }
-  },
-  "original_data": {
-    "data": {
-      "year": "2024-2025",
-      "BE_Management": {
-        "BE_Management_link_name": "* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
-        "pdf_path": "/static/pdfs/admission/B.E_B.TECH-25-26.pdf"
-      }
-    }
-  }
-}
-]
+  ]

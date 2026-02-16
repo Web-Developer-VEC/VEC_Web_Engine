@@ -130,8 +130,6 @@ const AdminMBA = ({ theme, toggle }) => {
       };
     }
 
-    /* -------------------- GOVERNMENT LINK UPDATE -------------------- */
-   /* -------------------- GOVERNMENT LINK UPDATE -------------------- */
 if (action === "GovLinkEdited") {
   return {
     collectionName: "admissions",
@@ -206,10 +204,10 @@ if (action === "MgmtLinkEdited") {
     return null;
   };
 
-  const files = [
-    { field: "mba_gov_pdf", file: govLinkFile },
-    { field: "mba_mgmt_pdf", file: mgmtLinkFile },
-  ];
+  // const files = [
+  //   { field: "mba_gov_pdf", file: govLinkFile },
+  //   { field: "mba_mgmt_pdf", file: mgmtLinkFile },
+  // ];
 
   // await sendRequest(payloads, files);
 
@@ -425,6 +423,10 @@ if (action === "MgmtLinkEdited") {
       }));
     }
   };
+const handleCancel = () => {
+  setIsEditing(false);
+  toast.info("Exited edit mode.");
+};
 
   const handleSave = () => {
     if (!editableYear.trim()) {
@@ -626,145 +628,155 @@ if (action === "MgmtLinkEdited") {
     setChangeList((prev) => prev.filter((_, i) => i !== idx));
     toast.info("Change reverted to original data.");
   };
+const handleFinalRequest = async () => {
+  const changes = collectChangeList();
+  if (!changes.length) {
+    toast.warn("No changes to submit");
+    return;
+  }
 
-  const handleFinalRequest = async () => {
-    const changes = collectChangeList();
-    if (!changes.length) {
-      toast.warn("No changes to submit");
-      return;
-    }
+  const payloads = [];
+  const files = [];
+  const original = originalRef.current || {};
+  const row = editableRows[0];
 
-    const payloads = [];
-    const files = [];
-    const original = originalRef.current || {};
+  /* ---------------- CHECK WHAT CHANGED ---------------- */
 
-    /* ---------------- CHECK IF MBA EXISTS ---------------- */
-    const isMbaMissing =
-      !original?.MBA ||
-      Object.values(original.MBA).every(
-        (v) => v === "" || v === null || v === undefined,
-      );
+  const hasYearChange = changes.some(c => c.section === "Year");
 
-    const row = editableRows[0];
+  const hasIntakeChange = changes.some(
+    c => c.section === "Master of Business Administration (MBA)"
+  );
 
-    /* ---------------- INSERT (ONLY IF MBA MISSING) ---------------- */
-    if (isMbaMissing) {
-      payloads.push(
-        buildMbaAdmissionPayload({
-          action: "Added",
+  const hasGovLinkChange = changes.some(
+    c => c.section === "Government Quota"
+  );
+
+  const hasMgmtLinkChange = changes.some(
+    c => c.section === "Management Quota"
+  );
+
+  const hasDelete = changes.some(c => c.type === "deleted");
+
+  /* ---------------- COMBINED YEAR + INTAKE ---------------- */
+
+  if (hasYearChange || hasIntakeChange) {
+    payloads.push({
+      collectionName: "admissions",
+      collection_type: "mba",
+      action: "update",
+      title: "Update MBA Admission",
+
+      meta_data: {
+        data: {
           year: editableYear,
-          newData: {
-            government: row.governmentQuota,
-            management: row.managementQuota,
-            total: row.totalIntake,
-          },
-        }),
-      );
-    }
-
-    /* ---------------- PROCESS CHANGES ---------------- */
-    changes.forEach((change) => {
-      /* YEAR UPDATE */
-      if (change.section === "Year") {
-        payloads.push(
-          buildMbaAdmissionPayload({
-            action: "YearEdited",
-            newData: { year: editableYear },
-            oldData: { year: original.year },
-          }),
-        );
-      }
-
-      /* INTAKE UPDATE */
-      if (change.section === "Master of Business Administration (MBA)") {
-        payloads.push(
-          buildMbaAdmissionPayload({
-            action: "Edited",
-            year: editableYear,
-            newData: {
-              government: row.governmentQuota,
-              management: row.managementQuota,
-              total: row.totalIntake,
+          MBA: [
+            {
+              MBA: {
+                "Government Quota Intakes": String(row.governmentQuota),
+                "Management Quota Intakes": String(row.managementQuota),
+                "Total Intakes": String(row.totalIntake),
+              },
             },
-            oldData: {
-              government: original?.MBA?.["Government Quota Intakes"],
-              management: original?.MBA?.["Management Quota Intakes"],
-              total: original?.MBA?.["Total Intakes"],
-            },
-          }),
-        );
-      }
+          ],
+        },
+      },
 
-      /* GOVERNMENT LINK */
-      if (change.section === "Government Quota") {
-        payloads.push(
-          buildMbaAdmissionPayload({
-            action: "GovLinkEdited",
-            year: editableYear,
-            newData: {
-              linkName: govLinkName,
-              pdfPath: govLinkFile
-                ? `/static/pdfs/admission/${govLinkFile.name}`
-                : undefined,
+      original_data: {
+        data: {
+          year: original.year,
+          MBA: [
+            {
+              MBA: {
+                "Government Quota Intakes":
+                  original?.MBA?.["Government Quota Intakes"],
+                "Management Quota Intakes":
+                  original?.MBA?.["Management Quota Intakes"],
+                "Total Intakes":
+                  original?.MBA?.["Total Intakes"],
+              },
             },
-            oldData: {
-              linkName: original?.MBA_Government?.MBA_Government_link_name,
-              pdfPath: original?.MBA_Government?.pdf_path,
-            },
-          }),
-        );
+          ],
+        },
+      },
 
-        if (govLinkFile) {
-          files.push({ field: "mba_gov_pdf", file: govLinkFile });
-        }
-      }
-
-      /* MANAGEMENT LINK */
-      if (change.section === "Management Quota") {
-        payloads.push(
-          buildMbaAdmissionPayload({
-            action: "MgmtLinkEdited",
-            year: editableYear,
-            newData: {
-              linkName: mgmtLinkName,
-              pdfPath: mgmtLinkFile
-                ? `/static/pdfs/admission/${mgmtLinkFile.name}`
-                : undefined,
-            },
-            oldData: {
-              linkName: original?.MBA_Management?.MBA_Management_link_name,
-              pdfPath: original?.MBA_Management?.pdf_path,
-            },
-          }),
-        );
-
-        if (mgmtLinkFile) {
-          files.push({ field: "mba_mgmt_pdf", file: mgmtLinkFile });
-        }
-      }
-
-      /* DELETE MBA */
-      if (change.type === "deleted" && !isMbaMissing) {
-        payloads.push(
-          buildMbaAdmissionPayload({
-            action: "Deleted",
-            year: editableYear,
-          }),
-        );
-      }
+      admin: { status: "pending" },
     });
+  }
 
-    console.log("FINAL MBA PAYLOADS:", payloads);
-    console.log("FILES:", files);
+  /* ---------------- GOVERNMENT LINK ---------------- */
 
-    await sendRequest(payloads, files);
+  if (hasGovLinkChange) {
+    payloads.push(
+      buildMbaAdmissionPayload({
+        action: "GovLinkEdited",
+        year: editableYear,
+        newData: {
+          linkName: govLinkName,
+          pdfPath: govLinkFile
+            ? `/static/pdfs/admission/${govLinkFile.name}`
+            : undefined,
+        },
+        oldData: {
+          linkName: original?.MBA_Government?.MBA_Government_link_name,
+          pdfPath: original?.MBA_Government?.pdf_path,
+        },
+      })
+    );
 
-    toast.success("MBA Admission request submitted successfully!");
-    setShowPopup(false);
-    setIsSaved(false);
-  };
+    if (govLinkFile) {
+      files.push({  file: govLinkFile });
+    }
+  }
 
-  console.log("Changes", changeList);
+  /* ---------------- MANAGEMENT LINK ---------------- */
+
+  if (hasMgmtLinkChange) {
+    payloads.push(
+      buildMbaAdmissionPayload({
+        action: "MgmtLinkEdited",
+        year: editableYear,
+        newData: {
+          linkName: mgmtLinkName,
+          pdfPath: mgmtLinkFile
+            ? `/static/pdfs/admission/${mgmtLinkFile.name}`
+            : undefined,
+        },
+        oldData: {
+          linkName: original?.MBA_Management?.MBA_Management_link_name,
+          pdfPath: original?.MBA_Management?.pdf_path,
+        },
+      })
+    );
+
+    if (mgmtLinkFile) {
+      files.push({  file: mgmtLinkFile });
+    }
+  }
+
+  /* ---------------- DELETE ---------------- */
+
+  if (hasDelete) {
+    payloads.push(
+      buildMbaAdmissionPayload({
+        action: "Deleted",
+        year: editableYear,
+      })
+    );
+  }
+
+  console.log("FINAL MBA PAYLOADS:", payloads);
+  console.log("FILES:", files);
+
+  await sendRequest(payloads, files);
+
+  toast.success("MBA Admission request submitted successfully!");
+  setShowPopup(false);
+  setIsSaved(false);
+};
+
+
+  // console.log("Changes", changeList);
 
   return (
     <>
@@ -827,6 +839,15 @@ if (action === "MgmtLinkEdited") {
               {isEditing ? (
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-start gap-3">
+                  <input
+                    type="text"
+                    className="admin-mba"
+                    value={govLinkName}
+                    onChange={(e) => setGovLinkName(e.target.value)}
+                    placeholder="Enter Link Name"
+                  />
+                  <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
+                    <span>Replace</span>
                     <input
                       type="text"
                       className="admin-mba"
@@ -834,6 +855,7 @@ if (action === "MgmtLinkEdited") {
                       onChange={(e) => setGovLinkName(e.target.value)}
                       placeholder="Enter Link Name"
                     />
+                    </label>
                     <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
                       <span>Replace</span>
                       <input
@@ -873,7 +895,8 @@ if (action === "MgmtLinkEdited") {
                       </button>
                     </div>
                   </div>
-                </div>
+                  </div>
+                
               ) : (
                 <button
                   className="text-blue-600 dark:text-drka"
@@ -903,6 +926,15 @@ if (action === "MgmtLinkEdited") {
               {isEditing ? (
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-start gap-3">
+                  <input
+                    type="text"
+                    className="admin-mba"
+                    value={mgmtLinkName}
+                    onChange={(e) => setMgmtLinkName(e.target.value)}
+                    placeholder="Enter Link Name"
+                  />
+                  <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
+                    <span>Replace</span>
                     <input
                       type="text"
                       className="admin-mba"
@@ -910,6 +942,7 @@ if (action === "MgmtLinkEdited") {
                       onChange={(e) => setMgmtLinkName(e.target.value)}
                       placeholder="Enter Link Name"
                     />
+                    </label>
                     <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
                       <span>Replace</span>
                       <input
@@ -948,7 +981,8 @@ if (action === "MgmtLinkEdited") {
                       </button>
                     </div>
                   </div>
-                </div>
+                  </div>
+              
               ) : (
                 <button
                   className="text-blue-600 dark:text-drka"
@@ -993,7 +1027,7 @@ if (action === "MgmtLinkEdited") {
                   {editableRows.map((row, index) => (
                     <tr key={index}>
                       <td>
-                        {isEditing ? (
+                        {/* {isEditing ? (
                           <input
                             type="text"
                             value={row.course}
@@ -1002,9 +1036,9 @@ if (action === "MgmtLinkEdited") {
                             }
                             className="admin-mbanu"
                           />
-                        ) : (
-                          row.course
-                        )}
+                        ) : ( */}
+                          {row.course}
+                        {/* )} */}
                       </td>
                       <td>
                         {isEditing ? (
@@ -1089,7 +1123,7 @@ if (action === "MgmtLinkEdited") {
           {isEditing && (
             <div className="flex gap-2 mt-4 justify-end mr-12">
               <button
-                // onClick={handleCancel}
+                onClick={handleCancel}
                 className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
               >
                 Cancel

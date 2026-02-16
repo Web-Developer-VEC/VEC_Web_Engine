@@ -95,9 +95,9 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         // ✅ Use all uploaded files (no docIndex filter)
         const allFiles = req.uploadedFiles || [];
 
-        const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE"];
+        const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE",...(collectionName === "AIDS_001" ? ["research"] : [])];
 
-        const skipImageFor = ["members","library_services","team","achivements", ...(collectionName === "ecell" ? ["gallery"] : [])]
+        const skipImageFor = ["members","library_services","team", ...(collectionName === "ecell" ? ["gallery"] : [])]
         const mainCollection = maindb.collection(collectionName);
 
         const existingDoc = await mainCollection.findOne(
