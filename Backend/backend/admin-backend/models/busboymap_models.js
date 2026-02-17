@@ -26,6 +26,8 @@ const academiccalendarHandler = require("../controllers/top_navbar/academics_con
 const newsletterHandler = require("../controllers/top_navbar/academics_controllers/newsletter_controllers/newsletterbusboy");
 const studentAchievementsHandler = require("../controllers/top_navbar/academics_controllers/student_achievments_controllers/achivementsbusboy");
 const syllabusHandler = require("../controllers/top_navbar/academics_controllers/syllabus_controllers/syllabus_busboy");
+const activitiesHandler = require("../controllers/top_navbar/academics_controllers/activities_controllers/activities_busboy");
+const infrastructureHandler = require("../controllers/top_navbar/academics_controllers/infrastructure_controllers/infrastructure_busboy");
 
 const busboyModels = {
   // Testing Complete
@@ -60,7 +62,9 @@ const busboyModels = {
   academics: academiccalendarHandler,
   AIDS_001: newsletterHandler,
   AIDS_001: studentAchievementsHandler,
-  AIDS_001:syllabusHandler
+  AIDS_001:syllabusHandler,
+  AIDS_001:activitiesHandler,
+  AIDS_001:infrastructureHandler,
 
 };
 

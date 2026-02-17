@@ -39,7 +39,7 @@ export default function AdminApprovalPage() {
   }
 
   // ✅ Approve / reject items using collection + id
-  const handleItemApproval = (collection, id, approved) => {
+  const handleItemApproval = (collection, id, approved, type) => {
     setItemApprovals((prev) => {
       const existing = prev.find((item) => item.collectionName === collection && item.id === id)
 
@@ -50,7 +50,7 @@ export default function AdminApprovalPage() {
 
       // Otherwise, set/overwrite with new status
       const filtered = prev.filter((item) => !(item.collection === collection && item.id === id))
-      return [...filtered, { collectionName: collection, id, status: approved ? "approved" : "rejected" }]
+      return [...filtered, { collectionName: collection, id, status: approved ? "approved" : "rejected", type }]
     })
   }
 
@@ -64,18 +64,11 @@ export default function AdminApprovalPage() {
   const handleSubmitReview = async () => {
     setLoading(true);
 
-    // Prepare the review data
-    const review = {
-      requestId: request?.admin?.name,
-      collection: request?.collection,
-      approvals: itemApprovals,
-    }
-
     const endpointMap = {
       about_us: "aboutusadmin",
       administration: "administrationadmin",
       admissions: "admissionadmin",
-      exams: "examsadmin", 
+      exams: "examsadmin",
       placement: "placementadmin",
       research: "researchadmin",
       accreditations_and_ranking: "accreditations_and_ranking_admin",
@@ -96,28 +89,70 @@ export default function AdminApprovalPage() {
       yrc: "yrcadmin",
       landing_page_details: "landingpageadmin",
       academics: "calendaradmin",
-    }
+    };
 
     try {
-      const responce = await axios.post(`/api/admin-backend/${endpointMap[request?.collection]}`,
-        itemApprovals
-      )
+      const isDepartmentCollection =
+        /^[A-Z]+_\d+$/.test(request.collection);
 
-      toast.success(responce.message || "Successful")
-    } catch (error) {
-      console.error("Error sending data to the approval status", error);
-      toast.error("Error sending responce")
-    } finally {
-      setLoading(false)
+      // ====================================
+      // Case 1: Department collections
+      // ====================================
+      if (isDepartmentCollection) {
+        const grouped = itemApprovals.reduce((acc, item) => {
+
+          if (!item.type) return acc;
+
+          if (!acc[item.type]) {
+            acc[item.type] = [];
+          }
+
+          acc[item.type].push(item);
+          return acc;
+        }, {});
+
+        await Promise.all(
+          Object.entries(grouped).map(([type, approvals]) => {
+            const endpoint = `${type.toLowerCase().replaceAll("_", "")}admin`;
+
+            return axios.post(
+              `/api/admin-backend/${endpoint}`,
+              approvals
+            );
+          })
+        );
+      }
+
+      // ====================================
+      // Case 2: Normal collections
+      // ====================================
+      else {
+        const endpoint = endpointMap[request.collection];
+
+        if (!endpoint) {
+          throw new Error("Unknown collection endpoint");
+        }
+
+        await axios.post(
+          `/api/admin-backend/${endpoint}`,
+          itemApprovals
+        );
+      }
+      toast.success("Approvals submitted successfully");
     }
-
-    console.log("Submitting review:", review)
-  }
+    catch (error) {
+      console.error(error);
+      toast.error("Failed to submit approvals");
+    }
+    finally {
+      setLoading(false);
+    }
+  };
 
   const button = (item) => (
     <>
       <button
-        onClick={() => handleItemApproval(request?.collection, item?._id?.toString(), true)}
+        onClick={() => handleItemApproval(request?.collection, item?._id?.toString(), true, item?.type)}
         className={`p-3 rounded-xl ${
           getApprovalStatus(request?.collection, item?._id?.toString()) === "approved"
             ? "bg-green-600 text-white"
@@ -127,7 +162,7 @@ export default function AdminApprovalPage() {
         <Check className="w-5 h-5" />
       </button>
       <button
-        onClick={() => handleItemApproval(request?.collection, item?._id?.toString(), false)}
+        onClick={() => handleItemApproval(request?.collection, item?._id?.toString(), false, item?.type)}
         className={`p-3 rounded-xl ${
           getApprovalStatus(request?.collection, item?._id?.toString()) === "rejected"
             ? "bg-red-600 text-white"
@@ -144,10 +179,10 @@ export default function AdminApprovalPage() {
     if (field?.includes("date") || field?.includes("year") || field?.includes("conducted_on")) return <Calendar className="w-4 h-4 text-gray-500" />
     if (field?.includes("name") || field?.includes("requester")) return <User className="w-4 h-4 text-gray-500" />
     if (field?.includes("winner") || field?.includes("position")) return <Trophy className="w-4 h-4 text-gray-500" />
-    if (field?.includes("image_path")) return <Image className="w-4 h-4 text-gray-500" />
-    if (field?.includes("pdf_path")) return <FileText className="w-4 h-4 text-gray-500" />
+    if (field?.includes("image")) return <Image className="w-4 h-4 text-gray-500" />
+    if (field?.includes("pdf")) return <FileText className="w-4 h-4 text-gray-500" />
     if (field?.includes("type") || field?.includes("title")) return <Type className="w-4 h-4 text-gray-500" />
-    if (field?.includes("designation")) return <GraduationCap className="w-4 h-4 text-gray-500" />
+    if (field?.includes("designation") || field?.includes("qualification")) return <GraduationCap className="w-4 h-4 text-gray-500" />
     if (field?.includes("role")) return <ShieldPlus className="w-4 h-4 text-gray-500" />
     if (field?.includes("email")) return <Mail className="w-4 h-4 text-gray-500" />
     if (field?.includes("phone")) return <Phone className="w-4 h-4 text-gray-500" />
@@ -160,26 +195,92 @@ export default function AdminApprovalPage() {
     return fieldName.charAt(0).toUpperCase() + fieldName.slice(1).replace(/([A-Z_])/g, " $1").replace(/_/g, " ")
   }
 
-  // ✅ NEW: Recursive function to render any nested data structure
+  // ✅ IMPROVED: Recursive function to render any nested data structure
   const renderValue = (value, fieldName = "", depth = 0) => {
     // Handle null/undefined
     if (value === null || value === undefined) {
       return <span className="text-gray-400 italic">None</span>
     }
 
+    // Handle empty strings
+    if (value === "") {
+      return (
+        <span className="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-500 rounded-lg text-xs font-medium italic">
+          Empty
+        </span>
+      )
+    }
+
     // Handle arrays
     if (Array.isArray(value)) {
       // Empty array
       if (value.length === 0) {
-        return <span className="text-gray-400 italic">Empty</span>
+        return <span className="text-gray-400 italic">Empty Array</span>
       }
 
-      // Array of primitives (strings, numbers)
+      // Check if this is an image_path or pdf_path array FIRST
+      if (fieldName?.toLowerCase().includes('image') && value.length > 0 && typeof value[0] === 'string') {
+        return (
+          <div className="flex flex-wrap gap-2">
+            {value.map((img, idx) => (
+              <a 
+                key={idx}
+                href={UrlParser(img)} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-2 px-3 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors text-sm font-medium"
+              >
+                <Image className="w-4 h-4" />
+                Image {idx + 1}
+              </a>
+            ))}
+          </div>
+        )
+      }
+
+      if (fieldName?.toLowerCase().includes('pdf') && value.length > 0 && typeof value[0] === 'string') {
+        return (
+          <div className="flex flex-wrap gap-2">
+            {value.map((pdf, idx) => (
+              <a 
+                key={idx}
+                href={UrlParser(pdf)} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-2 px-3 py-2 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
+              >
+                <FileText className="w-4 h-4" />
+                PDF {idx + 1}
+              </a>
+            ))}
+          </div>
+        )
+      }
+
+      // Array of primitives (strings, numbers) - for non-image/pdf fields
       if (typeof value[0] !== 'object') {
+        // Check if it's a long text array (like paragraphs)
+        const hasLongText = value.some(item => String(item).length > 100)
+        
+        if (hasLongText) {
+          // Render as stacked paragraphs
+          return (
+            <div className="space-y-3">
+              {value.map((item, idx) => (
+                <div key={idx} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <div className="text-xs font-semibold text-gray-500 mb-2">Paragraph {idx + 1}</div>
+                  <p className="text-gray-900 text-sm leading-relaxed whitespace-pre-wrap">{item}</p>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        // Short items - render as badges
         return (
           <div className="flex flex-wrap gap-2">
             {value.map((item, idx) => (
-              <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs">
+              <span key={idx} className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium">
                 {item}
               </span>
             ))}
@@ -189,11 +290,18 @@ export default function AdminApprovalPage() {
 
       // Array of objects - render each object
       return (
-        <div className={`space-y-2 ${depth > 0 ? 'ml-4 pl-4 border-l-2 border-gray-200' : ''}`}>
+        <div className={`space-y-3 ${depth > 0 ? 'mt-2' : ''}`}>
           {value.map((item, idx) => (
-            <div key={idx} className="bg-gray-50 rounded-lg p-3">
-              <div className="text-xs font-semibold text-gray-500 mb-2">Item {idx + 1}</div>
-              {renderValue(item, '', depth + 1)}
+            <div key={idx} className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
+              <div className="text-xs font-bold text-gray-600 mb-3 flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs font-bold">
+                  {idx + 1}
+                </div>
+                Item {idx + 1}
+              </div>
+              <div className="pl-2">
+                {renderValue(item, '', depth + 1)}
+              </div>
             </div>
           ))}
         </div>
@@ -203,14 +311,14 @@ export default function AdminApprovalPage() {
     // Handle objects
     if (typeof value === 'object') {
       return (
-        <div className={`space-y-2 ${depth > 0 ? 'ml-4 pl-4 border-l-2 border-gray-200' : ''}`}>
+        <div className={`space-y-3 ${depth > 0 ? 'bg-white/50 rounded-lg p-3 border border-gray-200' : ''}`}>
           {Object.entries(value).map(([key, val]) => (
-            <div key={key} className="flex items-start gap-2">
-              <div className="flex items-center gap-2">
+            <div key={key} className="flex flex-col sm:flex-row sm:items-start gap-2">
+              <div className="flex items-center gap-2 min-w-[160px] sm:min-w-[200px]">
                 {getFieldIcon(key)}
-                <span className="text-gray-600 font-medium min-w-[120px]">{formatFieldName(key)}:</span>
+                <span className="text-gray-700 font-semibold text-sm">{formatFieldName(key)}:</span>
               </div>
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 {renderValue(val, key, depth + 1)}
               </div>
             </div>
@@ -219,36 +327,77 @@ export default function AdminApprovalPage() {
       )
     }
 
-    // Handle image/pdf paths
-    if (fieldName?.toLowerCase().includes('image_path') && value) {
+    // Handle image/pdf paths (single strings only - arrays handled above)
+    if (fieldName?.toLowerCase().includes('image') && value && typeof value === 'string') {
       return (
-        <a href={UrlParser(value)} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-1">
+        <a 
+          href={UrlParser(value)} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="inline-flex items-center gap-2 px-3 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors text-sm font-medium"
+        >
           <Image className="w-4 h-4" />
           View Image
         </a>
       )
     }
 
-    if (fieldName?.toLowerCase().includes('pdf_path') && value) {
+    if (fieldName?.toLowerCase().includes('pdf') && value && typeof value === 'string') {
       return (
-        <a href={UrlParser(value)} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-1">
+        <a 
+          href={UrlParser(value)} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="inline-flex items-center gap-2 px-3 py-2 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
+        >
           <FileText className="w-4 h-4" />
           View PDF
         </a>
       )
     }
 
-    // Handle URLs
+    // Handle URLs (social media links, etc.)
     if (typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://'))) {
+      // Extract domain for better display
+      let displayText = value;
+      try {
+        const url = new URL(value);
+        displayText = url.hostname.replace('www.', '');
+      } catch {
+        // If URL parsing fails, truncate the string
+        displayText = value.length > 40 ? value.substring(0, 37) + '...' : value;
+      }
+      
       return (
-        <a href={UrlParser(value)} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-          {value}
+        <a 
+          href={UrlParser(value)} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="inline-flex items-center gap-2 px-3 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium group max-w-full"
+          title={value}
+        >
+          <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+          <span className="truncate">{displayText}</span>
+          <svg className="w-3 h-3 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
         </a>
       )
     }
 
+    // Handle long text (more than 200 characters)
+    if (typeof value === 'string' && value.length > 200) {
+      return (
+        <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+          <p className="text-gray-900 text-sm leading-relaxed whitespace-pre-wrap">{value}</p>
+        </div>
+      )
+    }
+
     // Handle primitives (string, number, boolean)
-    return <span className="text-gray-900">{String(value)}</span>
+    return <span className="text-gray-900 text-sm">{String(value)}</span>
   }
 
   // ✅ IMPROVED: Render data fields with recursive support
@@ -257,12 +406,47 @@ export default function AdminApprovalPage() {
       return <div className="text-gray-400 italic">No data</div>
     }
 
-    console.log(data);
-    
+    let meta_data = data?.meta_data;
 
     return (
       <div className="space-y-3">
-        {renderValue(data)}
+        {renderValue(meta_data)}
+      </div>
+    )
+  }
+
+  const renderDataFieldsMeta = (data) => {
+    if (!data || typeof data !== 'object') {
+      return <div className="text-gray-400 italic">No data</div>
+    }
+
+    let meta_data = data?.meta_data;
+
+    const needArrayNormalize = ['about_the_department', 'department_mission', 'department_vision'].includes(data?.category);
+
+    if (needArrayNormalize && meta_data) {
+      meta_data = Array.isArray(meta_data)
+        ? meta_data
+        : Object.values(meta_data);
+    }
+
+    return (
+      <div className="space-y-3">
+        {renderValue(meta_data)}
+      </div>
+    )
+  }
+
+  const renderDataFieldsOriginal = (data) => {
+    if (!data || typeof data !== 'object') {
+      return <div className="text-gray-400 italic">No data</div>
+    }
+
+    let original_data = data?.original_data;
+
+    return (
+      <div className="space-y-3">
+        {renderValue(original_data)}
       </div>
     )
   }
@@ -285,11 +469,11 @@ export default function AdminApprovalPage() {
               {item?.category && (
                 <div className="flex items-center gap-2">
                   <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-                    {item?.category}
+                    {item?.category.replaceAll("_", " ").toUpperCase()}
                   </span>
                 </div>
               )}
-              {renderDataFields(item?.meta_data)}
+              {renderDataFields(item)}
             </div>
             <div className="flex gap-3 ml-6">
               {button(item)}
@@ -307,40 +491,60 @@ export default function AdminApprovalPage() {
           key={index}
           className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-6 border border-orange-200/50 shadow-sm"
         >
-          <div className="flex justify-between items-start">
-            <div className="flex-1 space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="text-gray-600 font-semibold">{item?.title?.replaceAll("_", " ").toUpperCase()}</span>
-                <span className="text-gray-400">•</span>
-                <Calendar size={16} />
-                {formatDate(item?.createdAt)}
-              </div>
-              {item?.category && (
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">
-                    {item?.category}
+          <div className="flex flex-col gap-4">
+            {/* Header with title and buttons */}
+            <div className="flex justify-between items-start">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-gray-800 font-bold text-lg">{item?.title?.replaceAll("_", " ").toUpperCase()}</span>
+                  <span className="text-gray-400">•</span>
+                  <Calendar size={16} />
+                  <span className="text-gray-600 text-sm">{formatDate(item?.createdAt)}</span>
+                </div>
+                {item?.category && (
+                  <span className="inline-flex px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">
+                    {item?.category?.replaceAll("_", " ").toUpperCase()}
                   </span>
-                </div>
-              )}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div className="bg-white/50 rounded-lg p-4">
-                  <div className="text-xs font-semibold text-gray-500 mb-3 flex items-center gap-2">
-                    {/* <ArrowLeft className="w-4 h-4" /> */}
-                    Original Data
-                  </div>
-                  {renderDataFields(item?.original_data)}
-                </div>
-                <div className="bg-white/50 rounded-lg p-4">
-                  <div className="text-xs font-semibold text-gray-500 mb-3 flex items-center gap-2">
-                    {/* <ArrowRight className="w-4 h-4" /> */}
-                    Updated Data
-                  </div>
-                  {renderDataFields(item?.meta_data)}
-                </div>
+                )}
+              </div>
+              <div className="flex gap-3 ml-4">
+                {button(item)}
               </div>
             </div>
-            <div className="flex gap-3 ml-6">
-              {button(item)}
+
+            {/* Data comparison */}
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              {/* Original Data */}
+              <div className="bg-white/70 rounded-xl p-5 border-2 border-red-200 shadow-sm">
+                <div className="flex items-center gap-2 mb-4 pb-3 border-b-2 border-red-200">
+                  <div className="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center">
+                    <ArrowLeft className="w-5 h-5 text-red-600" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-red-700">Original Data</div>
+                    <div className="text-xs text-red-600">Before changes</div>
+                  </div>
+                </div>
+                <div className="max-h-[600px] overflow-y-auto custom-scrollbar">
+                  {renderDataFieldsOriginal(item)}
+                </div>
+              </div>
+
+              {/* Updated Data */}
+              <div className="bg-white/70 rounded-xl p-5 border-2 border-green-200 shadow-sm">
+                <div className="flex items-center gap-2 mb-4 pb-3 border-b-2 border-green-200">
+                  <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center">
+                    <ArrowRight className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-green-700">Updated Data</div>
+                    <div className="text-xs text-green-600">Proposed changes</div>
+                  </div>
+                </div>
+                <div className="max-h-[600px] overflow-y-auto custom-scrollbar">
+                  {renderDataFieldsMeta(item)}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -358,7 +562,7 @@ export default function AdminApprovalPage() {
           <div className="flex justify-between items-start">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-2">
-                <span className="text-gray-600 font-semibold">{item?.title?.replace("_", " ").toUpperCase()}</span>
+                <span className="text-gray-600 font-semibold">{item?.title?.replaceAll("_", " ").toUpperCase()}</span>
                 <span className="text-gray-400">•</span>
                 <Calendar size={16} />
                 {formatDate(item?.createdAt)}
@@ -366,11 +570,11 @@ export default function AdminApprovalPage() {
               {item?.category && (
                 <div className="flex items-center gap-2">
                   <span className="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium">
-                    {item?.category}
+                    {item?.category?.replaceAll("_", " ").toUpperCase()}
                   </span>
                 </div>
               )}
-              {renderDataFields(item?.meta_data)}
+              {renderDataFields(item)}
             </div>
             <div className="flex gap-3 ml-6">
               {button(item)}
@@ -398,6 +602,23 @@ export default function AdminApprovalPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50 mt-4">
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #f1f5f9;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+        }
+      `}</style>
+      
       <div className="bg-[#046f54] shadow-xl">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center justify-start gap-4">

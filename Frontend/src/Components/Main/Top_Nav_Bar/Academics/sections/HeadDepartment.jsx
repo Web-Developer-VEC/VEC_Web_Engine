@@ -25,7 +25,7 @@ const HeadDepartment = ({ data }) => {
     Hod_message = hod_details?.[0]?.hod_message,
     Image = hod_details?.[0]?.hod_image, // Provide a default path if needed
     Social_media_links = hod_details?.[0]?.Social_media_links || {},
-    resume = hod_details?.[0]?.resume_pdf
+    resume = hod_details?.[0]?.pdf_path
   } = hod_details || {};
 
   return (
