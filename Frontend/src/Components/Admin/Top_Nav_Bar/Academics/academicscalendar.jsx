@@ -4,7 +4,8 @@ import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import "../../Second_Nav_Bar/Accredation/nirf.css";
 import { Pencil, Plus, Eye, Save, Trash2, Send } from "lucide-react";
-import { toast } from "react-toastify";
+import { toast,ToastContainer } from "react-toastify";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminAcadamiccal = ({ toggle, theme }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -14,10 +15,11 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [changes, setChanges] = useState([]);
+  const { sendRequest, loading, error } = useAdminRequest();
 
+  
   // ✅ For deletion
   const [selected, setSelected] = useState([]);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -196,21 +198,132 @@ setOriginalData(JSON.parse(JSON.stringify(withUid)));
     setHasChanges(false);
     setChanges([]);
   };
+const buildPayload = () => {
+  const payload = [];
+  const files = [];
+
+  const origMap = new Map(originalData.map(r => [r.__uid, r]));
+  const editMap = new Map(editedData.map(r => [r.__uid, r]));
+
+  editedData.forEach((item) => {
+    const orig = origMap.get(item.__uid);
+
+    let newPdfPaths = [...(orig?.pdf_path || [])];
+
+    // ---------- ODD FILE ----------
+    if (item.oddFile) {
+      const oddPath =
+        `/static/pdfs/academic_calendar/${item.oddFile.name}`;
+
+      newPdfPaths = [
+        ...newPdfPaths.filter(p => !p.toLowerCase().includes("odd")),
+        oddPath
+      ];
+
+      files.push(item.oddFile);
+    }
+
+    // ---------- EVEN FILE ----------
+    if (item.evenFile) {
+      const evenPath =
+        `/static/pdfs/academic_calendar/${item.evenFile.name}`;
+
+      newPdfPaths = [
+        ...newPdfPaths.filter(p => !p.toLowerCase().includes("even")),
+        evenPath
+      ];
+
+      files.push(item.evenFile);
+    }
+
+    // ---------- INSERT ----------
+    if (!orig) {
+      payload.push({
+        collectionName: "academics",
+        collection_type: "academic_calendar",
+        action: "insert",
+        title: "insert academic calendar",
+        meta_data: {
+          year: item.year,
+          pdf_path: newPdfPaths
+        }
+      });
+      return;
+    }
+
+    // ---------- UPDATE ----------
+    if (
+      orig.year !== item.year ||
+      item.oddFile ||
+      item.evenFile
+    ) {
+      payload.push({
+        collectionName: "academics",
+        collection_type: "academic_calendar",
+        action: "update",
+        title: "update academic calendar",
+        meta_data: {
+          year: item.year,
+          pdf_path: newPdfPaths
+        },
+        original_data: {
+          year: orig.year,
+          pdf_path: orig.pdf_path || []
+        }
+      });
+    }
+  });
+
+  // ---------- DELETE ----------
+  originalData.forEach((item) => {
+    if (!editMap.has(item.__uid)) {
+      payload.push({
+        collectionName: "academics",
+        collection_type: "academic_calendar",
+        action: "delete",
+        title: "delete academic year",
+        meta_data: {
+          year: item.year
+        }
+      });
+    }
+  });
+
+  return { payload, files };
+};
+
+
 
   // Handle final request from modal
-  const handleRequestConfirm = async () => {
+const handleRequestConfirm = async () => {
+  const { payload, files } = buildPayload();
+
+  if (!payload.length) {
+    toast.error("No changes to submit!");
+    return;
+  }
+console.log("payload",payload);
+console.log("Files",files);
+
+  try {
+    await sendRequest(payload, files);
+
     toast.success("Request sent successfully!");
     setShowRequestModal(false);
 
-    // ✅ Reset all states so Edit button is available again
     setChanges([]);
     setIsSaved(false);
     setHasChanges(false);
     setIsEditing(false);
 
-    // ✅ Refetch fresh data from backend
     await fetchData();
-  };
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to send request");
+  }
+};
+
+
 
   // ✅ Toggle checkbox selection
   const toggleSelect = (i) => {
@@ -243,7 +356,7 @@ const handleDeleteSelected = () => {
         headerText="ACADEMIC CALENDAR"
         subHeaderText="Ensuring academic clarity and structured timelines for efficient learning."
       />
-
+<ToastContainer position="bottom-right" autoClose={3000} />
       {academicCal ? (
         <div className="nirf-page relative">
           {/* ✅ Edit Button always visible when not editing */}
@@ -254,7 +367,7 @@ const handleDeleteSelected = () => {
                   setIsEditing(true);
                   setIsSaved(false);
                 }}
-                className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-text font-medium rounded-xl shadow-md hover:bg-[#800000] hover:text-prim hover:shadow-lg active:scale-95 transition-all duration-200"
+                className="flex items-center mr-4 gap-2 px-3 py-2 bg-[#FDCC03] text-text font-medium rounded-xl shadow-md hover:bg-[#800000] hover:text-prim hover:shadow-lg active:scale-95 transition-all duration-200"
               >
                 <Pencil size={18} />
                 <span>Edit</span>
@@ -447,7 +560,7 @@ const handleDeleteSelected = () => {
               setHasChanges(false);
               setChanges([]);
             }}
-            className="px-5 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
+            className="px-3 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
           >
             Cancel
           </button>
@@ -457,7 +570,7 @@ const handleDeleteSelected = () => {
           {hasChanges && (
             <button
               onClick={handleGlobalSave}
-              className="flex items-center gap-2 px-5 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
+              className="flex items-center gap-2 px-3  mr-4 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
             >
               <Save size={18} />
               <span>Save</span>
@@ -477,7 +590,7 @@ const handleDeleteSelected = () => {
           </button>
           <button
             onClick={() => setShowRequestModal(true)}
-            className="flex items-center gap-2 px-5 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
+            className="flex items-center gap-2 px-5 py-2 mr-4 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
           >
             <Send size={18} />
             Request

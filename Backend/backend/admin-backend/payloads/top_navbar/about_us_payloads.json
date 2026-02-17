@@ -4,6 +4,7 @@
     "collection_type": "about_vec",
     "action": "insert",
     "title": "insert about vec",
+    "category": "about_us_pdf",
     "meta_data": {
       "name": "AICTE Approval",
       "pdf_path": "/static/pdfs/about_vec/AISHE/2021-2022/AISHE 2021-2022 Data Capture Format.pdf"
@@ -47,6 +48,7 @@
     "collectionName": "about_us",
     "collection_type": "about_vec",
     "action": "delete",
+    "category": "about_us_pdf",
     "title": "delete",
     "meta_data": {
       "name": "AICTE Approval",
