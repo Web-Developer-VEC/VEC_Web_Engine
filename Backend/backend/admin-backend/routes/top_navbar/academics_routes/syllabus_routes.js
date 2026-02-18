@@ -13,7 +13,7 @@ const { deleteData } = require('../../../controllers/top_navbar/academics_contro
 
 
 router.post(
-    '/syllabusadmin',
+    '/curriculum_and_syllabusadmin',
      handleTempApproval,
      handleTempAction(insertData, updateData, deleteData)
     );
