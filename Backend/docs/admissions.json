@@ -2,7 +2,7 @@
   {
     "type": "ug",
     "data": {
-      "year": "2024-2025",
+      "year": "2026-2027",
       "UG": [
         {
           "B.E Automobile Engineering": {
@@ -27,9 +27,9 @@
         },
         {
           "B.E Computer Science & Engineering (Cyber Security)": {
-            "Government Quota Intakes": "39",
-            "Management Quota Intakes": "21",
-            "Total Intakes": "60"
+            "Government Quota Intakes": "78",
+            "Management Quota Intakes": "42",
+            "Total Intakes": "120"
           }
         },
         {
@@ -62,9 +62,9 @@
         },
         {
           "B.Tech Artificial Intelligence & Data Science": {
-            "Government Quota Intakes": "78",
-            "Management Quota Intakes": "42",
-            "Total Intakes": "120"
+            "Government Quota Intakes": "117",
+            "Management Quota Intakes": "63",
+            "Total Intakes": "180"
           }
         },
         {
@@ -154,17 +154,10 @@
   {
     "type": "pg",
     "data": {
-      "year": "2024-2025",
+      "year": "2026-2027",
       "PG": [
         {
           "M.E Computer Science & Engineering": {
-            "Government Quota Intakes": "03",
-            "Management Quota Intakes": "03",
-            "Total Intakes": "06"
-          }
-        },
-        {
-          "M.E Power System Engineering": {
             "Government Quota Intakes": "03",
             "Management Quota Intakes": "03",
             "Total Intakes": "06"
@@ -176,7 +169,7 @@
   {
     "type": "mba",
     "data": {
-      "year": "2024-2025",
+      "year": "2026-2027",
       "MBA": {
         "Government Quota Intakes": "60",
         "Management Quota Intakes": "60",
@@ -216,7 +209,7 @@
   {
     "type": "phd",
     "data": {
-      "year": "2024-2025",
+      "year": "2026-2027",
       "link": "https://cfr.annauniv.edu/research/academics/index.php"
     }
   }

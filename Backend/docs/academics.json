@@ -85,10 +85,6 @@
             "link": "/dept/005"
           },
           {
-            "name": "M.E. Power Systems Engineering",
-            "link": "/dept/007"
-          },
-          {
             "name": "M.B.A Master of Business Administration",
             "link": "/dept/017"
           }
@@ -168,7 +164,6 @@
             "name": "M.E. Computer Science & Engineering",
             "link": "/dept/005"
           },
-          { "name": "M.E. Power System Engineering", "link": "/dept/007" },
           {
             "name": "M.B.A. Master of Business Administration",
             "link": "/dept/017"
