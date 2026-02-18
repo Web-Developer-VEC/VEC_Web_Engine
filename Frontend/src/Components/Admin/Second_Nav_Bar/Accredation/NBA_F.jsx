@@ -9,7 +9,7 @@ import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const NBA_F = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const { sendRequest, loading: loadings , error } = useAdminRequest();
+  const { sendRequest, loading: loadings, error } = useAdminRequest();
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
@@ -49,7 +49,9 @@ const NBA_F = ({ data }) => {
   const upsertEditedLog = (matchPredicate, newEntry) => {
     setChangeLog((prev) => {
       const clone = [...prev];
-      const idx = clone.findIndex((c) => c.action === "Edited" && matchPredicate(c));
+      const idx = clone.findIndex(
+        (c) => c.action === "Edited" && matchPredicate(c),
+      );
       if (idx !== -1) {
         // preserve original prevData if it exists, otherwise set from newEntry.prevData
         const existing = clone[idx];
@@ -68,7 +70,8 @@ const NBA_F = ({ data }) => {
     });
   };
 
-  const getChanges = () => changeLog.filter((c) => ["Added", "Edited", "Deleted"].includes(c.action));
+  const getChanges = () =>
+    changeLog.filter((c) => ["Added", "Edited", "Deleted"].includes(c.action));
 
   // Revert a logged change and update editableData and changeLog
   const handleRevertChange = (change) => {
@@ -96,27 +99,50 @@ const NBA_F = ({ data }) => {
       }
       // If a pdf was deleted from a row — reinsert into row.pdfs
       else if (typeof change.rowIndex === "number") {
-        if (!Array.isArray(updated[change.rowIndex].pdfs)) updated[change.rowIndex].pdfs = [];
-        const pos = Math.min(change.pdfIndex ?? updated[change.rowIndex].pdfs.length, updated[change.rowIndex].pdfs.length);
+        if (!Array.isArray(updated[change.rowIndex].pdfs))
+          updated[change.rowIndex].pdfs = [];
+        const pos = Math.min(
+          change.pdfIndex ?? updated[change.rowIndex].pdfs.length,
+          updated[change.rowIndex].pdfs.length,
+        );
         updated[change.rowIndex].pdfs.splice(pos, 0, change.data);
       }
     } else if (change.action === "Edited") {
       // revert edits using prevData
       if (change.type === "dept") {
         if (typeof change.rowIndex === "number" && updated[change.rowIndex]) {
-          updated[change.rowIndex].department = change.prevData?.department ?? updated[change.rowIndex].department;
+          updated[change.rowIndex].department =
+            change.prevData?.department ?? updated[change.rowIndex].department;
         }
       } else if (change.type === "pdfName") {
-        if (typeof change.rowIndex === "number" && typeof change.pdfIndex === "number") {
-          if (updated[change.rowIndex] && updated[change.rowIndex].pdfs?.[change.pdfIndex]) {
-            updated[change.rowIndex].pdfs[change.pdfIndex].name = change.prevData?.name ?? updated[change.rowIndex].pdfs[change.pdfIndex].name;
+        if (
+          typeof change.rowIndex === "number" &&
+          typeof change.pdfIndex === "number"
+        ) {
+          if (
+            updated[change.rowIndex] &&
+            updated[change.rowIndex].pdfs?.[change.pdfIndex]
+          ) {
+            updated[change.rowIndex].pdfs[change.pdfIndex].name =
+              change.prevData?.name ??
+              updated[change.rowIndex].pdfs[change.pdfIndex].name;
           }
         }
       } else if (change.type === "fileReplace") {
-        if (typeof change.rowIndex === "number" && typeof change.pdfIndex === "number") {
-          if (updated[change.rowIndex] && updated[change.rowIndex].pdfs?.[change.pdfIndex]) {
-            updated[change.rowIndex].pdfs[change.pdfIndex].pdf_path = change.prevData?.pdf_path ?? updated[change.rowIndex].pdfs[change.pdfIndex].pdf_path;
-            if (change.prevData?.file) updated[change.rowIndex].pdfs[change.pdfIndex].file = change.prevData.file;
+        if (
+          typeof change.rowIndex === "number" &&
+          typeof change.pdfIndex === "number"
+        ) {
+          if (
+            updated[change.rowIndex] &&
+            updated[change.rowIndex].pdfs?.[change.pdfIndex]
+          ) {
+            updated[change.rowIndex].pdfs[change.pdfIndex].pdf_path =
+              change.prevData?.pdf_path ??
+              updated[change.rowIndex].pdfs[change.pdfIndex].pdf_path;
+            if (change.prevData?.file)
+              updated[change.rowIndex].pdfs[change.pdfIndex].file =
+                change.prevData.file;
             else delete updated[change.rowIndex].pdfs[change.pdfIndex].file;
           }
         }
@@ -152,11 +178,20 @@ const NBA_F = ({ data }) => {
   }, [data]);
 
   const handlePdfClick = (pdf) => {
-    if (!pdf?.pdf_path || pdf.pdf_path.trim() === "") {
-      toast.warn("No PDF available for this file!");
+    // 🔥 If newly uploaded file (before request)
+    if (pdf?.file instanceof File) {
+      const blobUrl = URL.createObjectURL(pdf.file);
+      window.open(`${blobUrl}#toolbar=0`, "_blank");
       return;
     }
-    window.open(`${UrlParser(pdf.pdf_path)}#toolbar=0`, "_blank");
+
+    // Existing file from server
+    if (pdf?.pdf_path) {
+      window.open(`${UrlParser(pdf.pdf_path)}#toolbar=0`, "_blank");
+      return;
+    }
+
+    toast.warn("No PDF available for this file!");
   };
 
   const handleEditToggle = () => {
@@ -206,7 +241,9 @@ const NBA_F = ({ data }) => {
   const handleDiscardChanges = () => {
     // Revert to original data (all changes)
     setEditableData(JSON.parse(JSON.stringify(originalDataRef.current)));
-    lastSavedStateRef.current = JSON.parse(JSON.stringify(originalDataRef.current));
+    lastSavedStateRef.current = JSON.parse(
+      JSON.stringify(originalDataRef.current),
+    );
     setRequestSent(false);
     setChangesSaved(false);
     setHasChanges(false);
@@ -278,32 +315,66 @@ const NBA_F = ({ data }) => {
   // ---- UPDATED: coalescing Dept edits ----
   const handleDeptChange = (rowIndex, value) => {
     const updated = [...editableData];
-    const prev = updated[rowIndex]?.department;
-    updated[rowIndex].department = value;
+    const row = updated[rowIndex];
+
+    if (!row) return;
+
+    const isNewRow = !!row._tempId;
+
+    const prev = row.department;
+    row.department = value;
+
     setEditableData(updated);
     setHasChanges(true);
 
-    // Upsert Edited entry for dept (coalesce keystrokes)
-    upsertEditedLog(
-      (c) => c.type === "dept" && c.rowIndex === rowIndex,
-      {
-        action: "Edited",
-        type: "dept",
-        rowIndex,
-        prevData: { department: prev },
-        data: { department: value },
-      }
-    );
+    // ✅ If new row → update existing Added log only
+    if (isNewRow) {
+      setChangeLog((prevLogs) =>
+        prevLogs.map((c) =>
+          c.tempId === row._tempId && c.action === "Added"
+            ? {
+                ...c,
+                data: { ...c.data, department: value },
+              }
+            : c,
+        ),
+      );
+      return; // 🚀 STOP (no Edited)
+    }
+
+    // 🔵 Existing row → log Edited
+    upsertEditedLog((c) => c.type === "dept" && c.rowIndex === rowIndex, {
+      action: "Edited",
+      type: "dept",
+      rowIndex,
+      prevData: { department: prev },
+      data: { department: value },
+    });
   };
 
   const handleAddPdf = (rowIndex) => {
     const updated = [...editableData];
-    const newPdf = { name: "", pdf_path: "", _tempId: uid("tmp_pdf_") };
-    if (!Array.isArray(updated[rowIndex].pdfs)) updated[rowIndex].pdfs = [];
-    updated[rowIndex].pdfs.push(newPdf);
+    const row = updated[rowIndex];
+
+    if (!Array.isArray(row.pdfs)) row.pdfs = [];
+
+    const newPdf = {
+      name: "",
+      pdf_path: "",
+      _tempId: uid("tmp_pdf_"),
+    };
+
+    row.pdfs.push(newPdf);
+
     setEditableData(updated);
     setHasChanges(true);
 
+    // ✅ If this row itself is newly added → DO NOT push file-level log
+    if (row._tempId) {
+      return;
+    }
+
+    // 🔵 Only push Added for existing rows
     pushChangeLog({
       action: "Added",
       rowIndex,
@@ -312,54 +383,110 @@ const NBA_F = ({ data }) => {
     });
   };
 
-  // ---- UPDATED: coalesce file replace edits ----
-  const handleFileUpload = (rowIndex, pdfIndex, file) => {
-    const updated = [...editableData];
-    const fileURL = URL.createObjectURL(file);
+ const handleFileUpload = (rowIndex, pdfIndex, file) => {
+  const updated = [...editableData];
+  const row = updated[rowIndex];
+  const item = row?.pdfs?.[pdfIndex];
 
-    const prevItem = updated[rowIndex]?.pdfs?.[pdfIndex] || {};
-    const prevData = { pdf_path: prevItem.pdf_path, file: prevItem.file };
+  if (!item) return;
 
-    updated[rowIndex].pdfs[pdfIndex].pdf_path = fileURL;
-    updated[rowIndex].pdfs[pdfIndex].file = file;
-    setEditableData(updated);
-    setHasChanges(true);
+  const isNewRow = !!row._tempId;
+  const isNewPdf = !!item._tempId;
 
-    // upsert Edited entry for fileReplace (coalesce)
-    upsertEditedLog(
-      (c) => c.type === "fileReplace" && c.rowIndex === rowIndex && c.pdfIndex === pdfIndex,
-      {
-        action: "Edited",
-        type: "fileReplace",
-        rowIndex,
-        pdfIndex,
-        prevData,
-        data: { name: updated[rowIndex].pdfs[pdfIndex].name },
-      }
+  const prevData = { pdf_path: item.pdf_path, file: item.file };
+
+  const blobUrl = URL.createObjectURL(file);
+
+  // ✅ Always update state first
+  item.pdf_path = blobUrl;
+  item.file = file;
+
+  setEditableData(updated);
+  setHasChanges(true);
+
+  // 🚫 If row is newly added → no logging
+  if (isNewRow) return;
+
+  // 🚫 If pdf is newly added → update Added log only
+  if (isNewPdf) {
+    setChangeLog((prev) =>
+      prev.map((c) =>
+        c.tempId === item._tempId && c.action === "Added"
+          ? { ...c, data: { ...c.data, name: item.name } }
+          : c
+      )
     );
-  };
+    return;
+  }
 
-  // ---- UPDATED: coalesce pdf name edits ----
+  // 🔵 Existing pdf → log Edited
+  upsertEditedLog(
+    (c) =>
+      c.type === "fileReplace" &&
+      c.rowIndex === rowIndex &&
+      c.pdfIndex === pdfIndex,
+    {
+      action: "Edited",
+      type: "fileReplace",
+      rowIndex,
+      pdfIndex,
+      prevData,
+      data: { name: item.name },
+    }
+  );
+};
+
+
   const handlePdfNameChange = (rowIndex, pdfIndex, value) => {
-    const updated = [...editableData];
-    const prevName = updated[rowIndex]?.pdfs?.[pdfIndex]?.name;
-    updated[rowIndex].pdfs[pdfIndex].name = value;
-    setEditableData(updated);
-    setHasChanges(true);
+  const updated = [...editableData];
+  const row = updated[rowIndex];
+  const item = row?.pdfs?.[pdfIndex];
 
-    // Upsert Edited entry for pdfName
-    upsertEditedLog(
-      (c) => c.type === "pdfName" && c.rowIndex === rowIndex && c.pdfIndex === pdfIndex,
-      {
-        action: "Edited",
-        type: "pdfName",
-        rowIndex,
-        pdfIndex,
-        prevData: { name: prevName },
-        data: { name: value },
-      }
+  if (!item) return;
+
+  const isNewRow = !!row._tempId;
+  const isNewPdf = !!item._tempId;
+
+  const prevName = item.name;
+
+  // ✅ Always update state first
+  item.name = value;
+
+  setEditableData(updated);
+  setHasChanges(true);
+
+  // 🚫 If row is newly added → do NOT log anything
+  if (isNewRow) return;
+
+  // 🚫 If pdf is newly added in existing row → update Added log only
+  if (isNewPdf) {
+    setChangeLog((prev) =>
+      prev.map((c) =>
+        c.tempId === item._tempId && c.action === "Added"
+          ? { ...c, data: { ...c.data, name: value } }
+          : c
+      )
     );
-  };
+    return;
+  }
+
+  // 🔵 Existing PDF → log Edited
+  upsertEditedLog(
+    (c) =>
+      c.type === "pdfName" &&
+      c.rowIndex === rowIndex &&
+      c.pdfIndex === pdfIndex,
+    {
+      action: "Edited",
+      type: "pdfName",
+      rowIndex,
+      pdfIndex,
+      prevData: { name: prevName },
+      data: { name: value },
+    }
+  );
+};
+
 
   const handleDeletePdf = (rowIndex, pdfIndex) => {
     const updated = JSON.parse(JSON.stringify(editableData));
@@ -378,187 +505,198 @@ const NBA_F = ({ data }) => {
     setDeleteConfirm(null);
     toast.success("PDF deleted!");
   };
-const collectNbaFiles = () => {
-  const files = [];
+  const collectNbaFiles = () => {
+    const files = [];
 
-  editableData.forEach((row) => {
-    if (!Array.isArray(row.pdfs)) return;
+    editableData.forEach((row) => {
+      if (!Array.isArray(row.pdfs)) return;
 
-    row.pdfs.forEach((pdf) => {
-      if (pdf?.file instanceof File) {
-        files.push(pdf.file);
-      }
+      row.pdfs.forEach((pdf) => {
+        if (pdf?.file instanceof File) {
+          files.push(pdf.file);
+        }
+      });
     });
-  });
 
-  return files;
-};
+    return files;
+  };
 
   const handleRequestConfirm = async () => {
-      const changes = getChanges();
+    const changes = getChanges();
 
-      if (changes.length === 0) {
-        toast.warn("No changes to submit");
-        return;
-      }
+    if (changes.length === 0) {
+      toast.warn("No changes to submit");
+      return;
+    }
 
-      // 1️⃣ Build payload
-      const payload = changes
-        .map(buildNbaPayload)
-        .filter(Boolean);
+    // 1️⃣ Build payload
+    const payload = changes.map(buildNbaPayload).filter(Boolean);
 
-      // 2️⃣ Collect PDF files
-      const files = collectNbaFiles();
+    // 2️⃣ Collect PDF files
+    const files = collectNbaFiles();
 
-      console.log("📦 NBA PAYLOAD:", payload);
-      console.log("📄 NBA FILES:", files);
+    console.log("📦 NBA PAYLOAD:", payload);
+    console.log("📄 NBA FILES:", files);
 
-      // 3️⃣ Send payload + files
-      const result = await sendRequest(payload, files);
+    // 3️⃣ Send payload + files
+    const result = await sendRequest(payload, files);
 
-      if (result) {
-        setShowRequestModal(false);
-        setSavedChanges([]);
-        setChangeLog([]);
-        setEditMode(false);
-        setHasChanges(false);
-        toast.success("Request submitted successfully!");
-      }
-    };
+    if (result) {
+      setShowRequestModal(false);
+      setSavedChanges([]);
+      setChangeLog([]);
+      setEditMode(false);
+      setHasChanges(false);
+      toast.success("Request submitted successfully!");
+    }
+  };
 
   const toggleRowSelect = (rowIndex) => {
     setSelectedItems((prev) =>
-      prev.includes(rowIndex) ? prev.filter((i) => i !== rowIndex) : [...prev, rowIndex]
+      prev.includes(rowIndex)
+        ? prev.filter((i) => i !== rowIndex)
+        : [...prev, rowIndex],
     );
   };
   const getNbaPdfPath = (pdf) => {
-      if (pdf?.file?.name) {
-        return `/static/pdfs/nba/${pdf.file.name}`;
-      }
-      return pdf?.pdf_path || "";
-    };
+    if (pdf?.file?.name) {
+      return `/static/pdfs/nba/${pdf.file.name}`;
+    }
+    return pdf?.pdf_path || "";
+  };
 
   const getOriginalRow = (rowIndex) => {
-      return originalDataRef.current?.[rowIndex] || null;
-    };
+    return originalDataRef.current?.[rowIndex] || null;
+  };
   const buildNbaPayload = (change) => {
-      const { action, rowIndex, data } = change;
+    const { action, rowIndex, data } = change;
 
-      // 🟢 INSERT (New Program)
-      if (action === "Added" && change.rowAdded) {
-        const row = data;
+    // 🟢 INSERT (New Program)
+    if (action === "Added" && change.rowAdded) {
+      const row = data;
 
-        return {
-          collectionName: "accreditations_and_ranking",
-          collection_type: "nba",
-          action: "insert",
-          title: "insert in nba",
-          meta_data: {
-            id: row?.id,
-            department: row?.department || "",
-            pdfs: (row?.pdfs || []).map((pdf) => ({
-              name: pdf?.name || "",
-              pdf_path: getNbaPdfPath(pdf),
-            })),
-          },
-        };
-      }
+      return {
+        collectionName: "accreditations_and_ranking",
+        collection_type: "nba",
+        action: "insert",
+        title: "insert in nba",
+        meta_data: {
+          id: row?.id,
+          department: row?.department || "",
+          pdfs: (row?.pdfs || []).map((pdf) => ({
+            name: pdf?.name || "",
+            pdf_path: getNbaPdfPath(pdf),
+          })),
+        },
+      };
+    }
 
-      // 🔵 UPDATE (Edit Program / PDF)
-      if (action === "Edited") {
-        const originalRow = getOriginalRow(rowIndex);
-        const editedRow = editableData?.[rowIndex];
+    // 🔵 UPDATE (Edit Program / PDF)
+    if (action === "Edited") {
+      const originalRow = getOriginalRow(rowIndex);
+      const editedRow = editableData?.[rowIndex];
 
-        if (!originalRow || !editedRow) return null;
+      if (!originalRow || !editedRow) return null;
 
-        return {
-          collectionName: "accreditations_and_ranking",
-          collection_type: "nba",
-          action: "update",
-          title: "update in nba",
-          original_data: {
-            id: originalRow?.id,
-            department: originalRow?.department || "",
-            pdfs: (originalRow?.pdfs || []).map((pdf) => ({
-              name: pdf?.name || "",
-              pdf_path: pdf?.pdf_path || "",
-            })),
-          },
-          meta_data: {
-            id: editedRow?.id,
-            department: editedRow?.department || "",
-            pdfs: (editedRow?.pdfs || []).map((pdf) => ({
-              name: pdf?.name || "",
-              pdf_path: getNbaPdfPath(pdf),
-            })),
-          },
-        };
-      }
+      return {
+        collectionName: "accreditations_and_ranking",
+        collection_type: "nba",
+        action: "update",
+        title: "update in nba",
+        original_data: {
+          id: originalRow?.id,
+          department: originalRow?.department || "",
+          pdfs: (originalRow?.pdfs || []).map((pdf) => ({
+            name: pdf?.name || "",
+            pdf_path: pdf?.pdf_path || "",
+          })),
+        },
+        meta_data: {
+          id: editedRow?.id,
+          department: editedRow?.department || "",
+          pdfs: (editedRow?.pdfs || []).map((pdf) => ({
+            name: pdf?.name || "",
+            pdf_path: getNbaPdfPath(pdf),
+          })),
+        },
+      };
+    }
 
-      // 🔴 DELETE (Delete Program)
-      if (action === "Deleted" && change.rowDeleted) {
-        const row = data;
+    // 🔴 DELETE (Delete Program)
+    if (action === "Deleted" && change.rowDeleted) {
+      const row = data;
 
-        return {
-          collectionName: "accreditations_and_ranking",
-          collection_type: "nba",
-          action: "delete",
-          title: "delete in nba",
-          meta_data: {
-            id: row?.id,
-            department: row?.department || "",
-            pdfs: (row?.pdfs || []).map((pdf) => ({
-              name: pdf?.name || "",
-              pdf_path: pdf?.pdf_path || "",
-            })),
-          },
-        };
-      }
+      return {
+        collectionName: "accreditations_and_ranking",
+        collection_type: "nba",
+        action: "delete",
+        title: "delete in nba",
+        meta_data: {
+          id: row?.id,
+          department: row?.department || "",
+          pdfs: (row?.pdfs || []).map((pdf) => ({
+            name: pdf?.name || "",
+            pdf_path: pdf?.pdf_path || "",
+          })),
+        },
+      };
+    }
 
-      return null;
-    };
-
+    return null;
+  };
 
   // --- Human-readable change descriptions ---
   const describeChange = (change) => {
-    // row-level additions / deletions
+    // 🔥 NEW ROW
     if (change.rowAdded) {
-      const name = change.data?.department || "New Row";
-      return `Row added: ${name}`;
+      return change.data?.department || "New Program";
     }
+
+    // 🔥 ROW DELETED
     if (change.rowDeleted) {
-      const name = change.data?.department || `Row ${change.rowIndexDeleted + 1}`;
-      return `Row deleted: ${name}`;
+      return change.data?.department || "Program deleted";
     }
 
-    // file-level adds/deletes/edits
-    if (change.action === "Added" && change.rowIndex != null && change.tempId) {
-      const rowName = editableData[change.rowIndex]?.department || `Row ${change.rowIndex + 1}`;
-      const fname = change.data?.name || "(untitled file)";
-      return `File added: ${fname} (in Program: ${rowName})`;
+    // 🔵 FILE ADDED
+    if (
+      change.action === "Added" &&
+      change.rowIndex != null &&
+      !change.rowAdded
+    ) {
+      const rowName =
+        editableData[change.rowIndex]?.department ||
+        change.data?.department ||
+        "Program";
+
+      const fileName = change.data?.name || "";
+
+      return fileName ? `${rowName} - ${fileName}` : rowName;
     }
 
-    if (change.action === "Deleted" && typeof change.rowIndex === "number" && change.data?.name) {
-      const rowName = editableData[change.rowIndex]?.department || `Row ${change.rowIndex + 1}`;
-      return `File deleted: ${change.data.name} (from Program: ${rowName})`;
+    // 🔴 FILE DELETED
+    if (change.action === "Deleted" && change.data?.name) {
+      const rowName =
+        editableData[change.rowIndex]?.department ||
+        change.data?.department ||
+        "Program";
+
+      return `${rowName} - ${change.data.name}`;
     }
 
+    // 🔵 EDITED
     if (change.action === "Edited") {
       if (change.type === "dept") {
-        return `Program renamed to: ${change.data?.department ?? "(unnamed)"}`;
+        return change.data?.department || "Program edited";
       }
-      if (change.type === "pdfName") {
-        const rowName = editableData[change.rowIndex]?.department || `Row ${change.rowIndex + 1}`;
-        return `File renamed to: ${change.data?.name || "(unnamed)"} (in Program: ${rowName})`;
-      }
-      if (change.type === "fileReplace") {
-        const rowName = editableData[change.rowIndex]?.department || `Row ${change.rowIndex + 1}`;
-        return `File replaced: ${change.data?.name || "(unnamed)"} (in Program: ${rowName})`;
+
+      if (change.type === "pdfName" || change.type === "fileReplace") {
+        const rowName = editableData[change.rowIndex]?.department || "Program";
+
+        return `${rowName} - ${change.data?.name || ""}`;
       }
     }
 
-    // fallback
-    return change.data?.name ?? change.data?.department ?? JSON.stringify(change.data || {});
+    return "";
   };
 
   if (!isOnline) {
@@ -587,7 +725,7 @@ const collectNbaFiles = () => {
               onClick={handleEditToggle}
               className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
             >
-              <Pencil size={16}/>
+              <Pencil size={16} />
               Edit
             </button>
           </div>
@@ -600,7 +738,9 @@ const collectNbaFiles = () => {
                 ABOUT NBA
               </h3>
               <p className="nba-tile-text text-text dark:text-drkt">
-                The National Board of Accreditation (NBA) is an autonomous body established by the All India Council for Technical Education (AICTE) under the Ministry of Education, Government of India.
+                The National Board of Accreditation (NBA) is an autonomous body
+                established by the All India Council for Technical Education
+                (AICTE) under the Ministry of Education, Government of India.
               </p>
             </div>
             <div className="nba-tile border-l-4 border-secd dark:border-drks rounded-lg dark:bg-drkb">
@@ -608,7 +748,8 @@ const collectNbaFiles = () => {
                 Purpose of NBA Accreditation
               </h3>
               <p className="nba-tile-text text-text dark:text-drkt">
-                The primary goal of NBA accreditation is to assess and ensure that academic programs meet predefined quality standards.
+                The primary goal of NBA accreditation is to assess and ensure
+                that academic programs meet predefined quality standards.
               </p>
             </div>
           </div>
@@ -622,8 +763,12 @@ const collectNbaFiles = () => {
                 <tr>
                   <th className="text-left px-4 py-2 text-text">S.No</th>
                   <th className="text-left px-4 py-2 text-text">Programs</th>
-                  <th className="text-left px-4 py-2 text-text">Validity Years</th>
-                  {editMode && <th className="text-left px-4 py-2 text-text">Select</th>}
+                  <th className="text-left px-4 py-2 text-text">
+                    Validity Years
+                  </th>
+                  {editMode && (
+                    <th className="text-left px-4 py-2 text-text">Select</th>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -636,7 +781,9 @@ const collectNbaFiles = () => {
                           <input
                             type="text"
                             value={row.department}
-                            onChange={(e) => handleDeptChange(rowIndex, e.target.value)}
+                            onChange={(e) =>
+                              handleDeptChange(rowIndex, e.target.value)
+                            }
                             className="border p-1 rounded"
                           />
                         ) : (
@@ -647,14 +794,21 @@ const collectNbaFiles = () => {
                         <ul className="list-disc list-inside space-y-1">
                           {Array.isArray(row.pdfs) &&
                             row.pdfs.map((pdf, pdfIndex) => (
-                              <li key={pdfIndex} className="flex items-center gap-2">
+                              <li
+                                key={pdfIndex}
+                                className="flex items-center gap-2"
+                              >
                                 {editMode ? (
                                   <>
                                     <input
                                       type="text"
                                       value={pdf.name}
                                       onChange={(e) =>
-                                        handlePdfNameChange(rowIndex, pdfIndex, e.target.value)
+                                        handlePdfNameChange(
+                                          rowIndex,
+                                          pdfIndex,
+                                          e.target.value,
+                                        )
                                       }
                                       className="border p-1 rounded text-sm"
                                     />
@@ -665,7 +819,11 @@ const collectNbaFiles = () => {
                                         accept="application/pdf"
                                         className="hidden"
                                         onChange={(e) =>
-                                          handleFileUpload(rowIndex, pdfIndex, e.target.files[0])
+                                          handleFileUpload(
+                                            rowIndex,
+                                            pdfIndex,
+                                            e.target.files[0],
+                                          )
                                         }
                                       />
                                     </label>
@@ -740,7 +898,9 @@ const collectNbaFiles = () => {
         {editMode && selectedItems.length > 0 && (
           <div className="w-full flex justify-center mt-6 mb-4">
             <button
-              onClick={() => setDeleteConfirm({ type: "multiple", items: selectedItems })}
+              onClick={() =>
+                setDeleteConfirm({ type: "multiple", items: selectedItems })
+              }
               className="px-4 py-2 rounded bg-red-600 text-white flex items-center gap-2"
             >
               <Trash2 size={16} /> Delete({selectedItems.length})
@@ -781,7 +941,8 @@ const collectNbaFiles = () => {
               onClick={handleSendRequest}
               className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
             >
-              <Send size={18}/>Request
+              <Send size={18} />
+              Request
             </button>
           </div>
         )}
@@ -809,7 +970,10 @@ const collectNbaFiles = () => {
                   onClick={() =>
                     deleteConfirm.type === "multiple"
                       ? handleDeleteSelected()
-                      : handleDeletePdf(deleteConfirm.rowIndex, deleteConfirm.pdfIndex)
+                      : handleDeletePdf(
+                          deleteConfirm.rowIndex,
+                          deleteConfirm.pdfIndex,
+                        )
                   }
                   className="px-4 py-2 rounded bg-red-600 text-white"
                 >
@@ -828,8 +992,8 @@ const collectNbaFiles = () => {
                 Request
               </h2>
               <p className="text-sm text-red-500 mb-4">
-                Note: Your changes will stay pending until approved by the superior admin.
-                Once approved will go live.
+                Note: Your changes will stay pending until approved by the
+                superior admin. Once approved will go live.
               </p>
 
               <div className="max-h-[320px] overflow-y-auto mb-4">
@@ -851,8 +1015,8 @@ const collectNbaFiles = () => {
                             change.action === "Added"
                               ? "text-green-600"
                               : change.action === "Deleted"
-                              ? "text-red-600"
-                              : "text-blue-600"
+                                ? "text-red-600"
+                                : "text-blue-600"
                           }`}
                         >
                           {change.action}
@@ -904,7 +1068,7 @@ const collectNbaFiles = () => {
                   disabled={loadings}
                   className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
                 >
-                   {loadings ? "Submitting..." : "Final Request"}
+                  {loadings ? "Submitting..." : "Final Request"}
                 </button>
               </div>
             </div>

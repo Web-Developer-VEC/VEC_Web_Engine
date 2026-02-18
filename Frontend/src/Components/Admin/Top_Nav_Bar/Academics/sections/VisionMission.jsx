@@ -2,24 +2,51 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./VisionMission.css";
 import LoadComp from "../../../LoadComp";
-import { Pencil, X, Trash2,Send } from "lucide-react";
+import { Pencil, X, Trash2, Send } from "lucide-react";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const VisionMission = ({ data }) => {
-  console.log(data);
-
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const { sendRequest, loading: requestLoading } = useAdminRequest();
 
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
+  // Department mapping
+  const deptMap = {
+    "001": "AIDS_001",
+    "002": "MECH_002",
+    "003": "ECE_003",
+    "004": "CIVIL_004",
+    "005": "CSE_005",
+    "006": "EEE_006",
+    "007": "CHEM_007",
+    "008": "AUTO_008",
+    "009": "AERO_009",
+    "010": "PROD_010",
+    "011": "BIO_011",
+    "012": "TEXTILE_012",
+    "013": "APPAREL_013",
+    "014": "CIVIL_INFRA_014",
+    "015": "FOOD_015",
+    "016": "BIOTECH_016",
+    "017": "AGRI_017",
+    "018": "PS_018"
+  };
+
+  // Extract deptId from data
+  const deptId = data?.find((item) => item.category === "banner")?.deptId || "005";
+  const collectionName = deptMap[deptId] || "CSE_005";
+
   const [isEditing, setIsEditing] = useState(false);
   const [backupData, setBackupData] = useState(null);
   const [formData, setFormData] = useState(() => {
+    const aboutContent = data?.find((item) => item.category === "about_the_department")?.content;
     return {
-      about:
-        data?.find((item) => item.category === "about_the_department")
-          ?.content || "",
+      about: Array.isArray(aboutContent) ? aboutContent[0] || "" : (aboutContent || ""),
       vision:
         data?.find((item) => item.category === "department_vision")?.content ||
         [],
@@ -41,6 +68,7 @@ const VisionMission = ({ data }) => {
   });
   const [hasChanges, setHasChanges] = useState(false);
   const [initialData, setInitialData] = useState(JSON.parse(JSON.stringify(formData)));
+  const [savedData, setSavedData] = useState(null); // Data snapshot after save
 
   // Track selected items for deletion (PEO, PO, PSO only)
   const [selectedItems, setSelectedItems] = useState({
@@ -60,11 +88,158 @@ const VisionMission = ({ data }) => {
   // Track if we are in request mode (after Save)
   const [requestMode, setRequestMode] = useState(false);
 
+  // Changes tracking
+  const [changes, setChanges] = useState([]);
+
   useEffect(() => {
     setHasChanges(
       backupData ? JSON.stringify(formData) !== JSON.stringify(backupData) : false
     );
   }, [formData, backupData]);
+
+  // Compute changes for request modal
+  useEffect(() => {
+    if (savedData) {
+      const newChanges = [];
+
+      // Check about_the_department
+      if (JSON.stringify(savedData.about) !== JSON.stringify(initialData.about)) {
+        newChanges.push({
+          action: "update",
+          category: "about_the_department",
+          field: "about",
+          type: "text",
+        });
+      }
+
+      // Check department_vision
+      const visionChanges = detectArrayChanges(
+        initialData.vision,
+        savedData.vision,
+        "department_vision",
+        "text"
+      );
+      newChanges.push(...visionChanges);
+
+      // Check department_mission
+      const missionChanges = detectArrayChanges(
+        initialData.mission,
+        savedData.mission,
+        "department_mission",
+        "text"
+      );
+      newChanges.push(...missionChanges);
+
+      // Check PEO
+      const peoChanges = detectObjectArrayChanges(
+        initialData.peo,
+        savedData.peo,
+        "programme_educational_objectives"
+      );
+      newChanges.push(...peoChanges);
+
+      // Check PO
+      const poChanges = detectObjectArrayChanges(
+        initialData.po,
+        savedData.po,
+        "program_outcomes"
+      );
+      newChanges.push(...poChanges);
+
+      // Check PSO
+      const psoChanges = detectObjectArrayChanges(
+        initialData.pso,
+        savedData.pso,
+        "program_specific_outcomes"
+      );
+      newChanges.push(...psoChanges);
+
+      setChanges(newChanges);
+    }
+  }, [savedData, initialData]);
+
+  // Helper: detect changes in simple arrays
+  const detectArrayChanges = (original, current, category, type) => {
+    const changes = [];
+    
+    // Detect updates - compare items at same index
+    const maxLen = Math.max(original.length, current.length);
+    for (let i = 0; i < maxLen; i++) {
+      if (i >= original.length && i < current.length) {
+        // New item inserted
+        changes.push({
+          action: "insert",
+          category,
+          field: type,
+          index: i,
+          value: current[i],
+        });
+      } else if (i < original.length && i >= current.length) {
+        // Item deleted
+        changes.push({
+          action: "delete",
+          category,
+          field: type,
+          index: i,
+          value: original[i],
+        });
+      } else if (original[i] !== current[i]) {
+        // Item updated
+        changes.push({
+          action: "update",
+          category,
+          field: type,
+          index: i,
+          oldValue: original[i],
+          value: current[i],
+        });
+      }
+    }
+    
+    return changes;
+  };
+
+  // Helper: detect changes in object arrays (PEO, PO, PSO)
+  const detectObjectArrayChanges = (original, current, category) => {
+    const changes = [];
+    
+    const maxLen = Math.max(original.length, current.length);
+    for (let i = 0; i < maxLen; i++) {
+      if (i >= original.length && i < current.length) {
+        // New item inserted
+        changes.push({
+          action: "insert",
+          category,
+          field: "object",
+          index: i,
+          value: current[i],
+        });
+      } else if (i < original.length && i >= current.length) {
+        // Item deleted
+        changes.push({
+          action: "delete",
+          category,
+          field: "object",
+          index: i,
+          value: original[i],
+        });
+      } else if (
+        JSON.stringify(original[i]) !== JSON.stringify(current[i])
+      ) {
+        // Item updated
+        changes.push({
+          action: "update",
+          category,
+          field: "object",
+          index: i,
+          oldValue: original[i],
+          value: current[i],
+        });
+      }
+    }
+    
+    return changes;
+  };
 
   if (!data)
     return (
@@ -76,6 +251,8 @@ const VisionMission = ({ data }) => {
   const handleEdit = () => {
     setBackupData(JSON.parse(JSON.stringify(formData)));
     setInitialData(JSON.parse(JSON.stringify(formData))); // track original
+    setSavedData(null);
+    setChanges([]);
     setIsEditing(true);
     setRequestMode(false);
   };
@@ -85,18 +262,22 @@ const VisionMission = ({ data }) => {
     setIsEditing(false);
     setSelectedItems({ peo: [], po: [], pso: [] });
     setRequestMode(false);
+    setSavedData(null);
+    setChanges([]);
   };
 
   const handleSave = () => {
-    console.log("Final Saved Data:", formData);
+    setSavedData(JSON.parse(JSON.stringify(formData))); // Save snapshot
     setIsEditing(false);
     setSelectedItems({ peo: [], po: [], pso: [] });
     setRequestMode(true); // enable request/discard mode
   };
 
   const handleDiscardChanges = () => {
-    setFormData(backupData);
-    setBackupData(null);
+    setFormData(initialData); // Revert to initial data
+    setBackupData(JSON.parse(JSON.stringify(initialData)));
+    setSavedData(null);
+    setChanges([]);
     setRequestMode(false);
   };
 
@@ -111,8 +292,200 @@ const VisionMission = ({ data }) => {
     });
   };
 
+  // Build payload based on changes
+  const buildPayload = () => {
+    const payload = [];
+    const categoriesProcessed = new Set();
+
+    changes.forEach((change) => {
+      if (change.category === "about_the_department") {
+        if (!categoriesProcessed.has("about_the_department")) {
+          payload.push({
+            collectionName,
+            collection_type: "vision_and_mission",
+            action: "update",
+            title: "update Vision and Mission",
+            category: "about_the_department",
+            meta_data: [savedData.about],
+            original_data: [initialData.about],
+          });
+          categoriesProcessed.add("about_the_department");
+        }
+      } else if (change.category === "department_vision") {
+        // For any vision change (insert/update/delete), send entire array as update
+        if (!categoriesProcessed.has("department_vision")) {
+          payload.push({
+            collectionName,
+            collection_type: "vision_and_mission",
+            action: "update",
+            title: "update Vision and Mission",
+            category: "department_vision",
+            meta_data: savedData.vision,
+            original_data: initialData.vision,
+          });
+          categoriesProcessed.add("department_vision");
+        }
+      } else if (change.category === "department_mission") {
+        // For any mission change (insert/update/delete), send entire array as update
+        if (!categoriesProcessed.has("department_mission")) {
+          payload.push({
+            collectionName,
+            collection_type: "vision_and_mission",
+            action: "update",
+            title: "update Vision and Mission",
+            category: "department_mission",
+            meta_data: savedData.mission,
+            original_data: initialData.mission,
+          });
+          categoriesProcessed.add("department_mission");
+        }
+      } else if (
+        ["programme_educational_objectives", "program_outcomes", "program_specific_outcomes"].includes(change.category)
+      ) {
+        if (change.action === "insert") {
+          payload.push({
+            collectionName,
+            collection_type: "vision_and_mission",
+            action: "insert",
+            title: "Insert Vision and Mission",
+            category: change.category,
+            meta_data: change.value,
+          });
+        } else if (change.action === "update") {
+          payload.push({
+            collectionName,
+            collection_type: "vision_and_mission",
+            action: "update",
+            title: "update Vision and Mission",
+            category: change.category,
+            meta_data: change.value,
+            original_data: change.oldValue,
+          });
+        } else if (change.action === "delete") {
+          payload.push({
+            collectionName,
+            collection_type: "vision_and_mission",
+            action: "delete",
+            title: "delete Vision and Mission",
+            category: change.category,
+            meta_data: change.value,
+          });
+        }
+      }
+    });
+
+    return payload;
+  };
+
+  // Send request
+  const handleRequestConfirm = async () => {
+    const payload = buildPayload();
+    
+    if (payload.length === 0) {
+      toast.info("No changes to request");
+      setShowRequestModal(false);
+      return;
+    }
+
+    console.log(payload);
+    
+
+    try {
+      await sendRequest(payload, []);
+      toast.success("Request sent successfully!");
+      
+      // Update baseline
+      setInitialData(JSON.parse(JSON.stringify(savedData)));
+      setBackupData(JSON.parse(JSON.stringify(savedData)));
+      setSavedData(null);
+      setChanges([]);
+      setRequestMode(false);
+      setShowRequestModal(false);
+    } catch (error) {
+      console.error("Request failed:", error);
+      toast.error("Failed to send request");
+    }
+  };
+
+  // Revert individual change
+  const revertChange = (changeIndex) => {
+    const change = changes[changeIndex];
+    
+    if (!change) return;
+
+    if (change.category === "about_the_department") {
+      setSavedData((prev) => ({ ...prev, about: initialData.about }));
+    } else if (change.category === "department_vision") {
+      setSavedData((prev) => ({ ...prev, vision: [...initialData.vision] }));
+    } else if (change.category === "department_mission") {
+      setSavedData((prev) => ({ ...prev, mission: [...initialData.mission] }));
+    } else if (change.category === "programme_educational_objectives") {
+      if (change.action === "insert") {
+        setSavedData((prev) => ({
+          ...prev,
+          peo: prev.peo.filter((_, i) => i !== change.index),
+        }));
+      } else if (change.action === "delete") {
+        setSavedData((prev) => {
+          const newPeo = [...prev.peo];
+          newPeo.splice(change.index, 0, change.value);
+          return { ...prev, peo: newPeo };
+        });
+      } else if (change.action === "update") {
+        setSavedData((prev) => {
+          const newPeo = [...prev.peo];
+          newPeo[change.index] = change.oldValue;
+          return { ...prev, peo: newPeo };
+        });
+      }
+    } else if (change.category === "program_outcomes") {
+      if (change.action === "insert") {
+        setSavedData((prev) => ({
+          ...prev,
+          po: prev.po.filter((_, i) => i !== change.index),
+        }));
+      } else if (change.action === "delete") {
+        setSavedData((prev) => {
+          const newPo = [...prev.po];
+          newPo.splice(change.index, 0, change.value);
+          return { ...prev, po: newPo };
+        });
+      } else if (change.action === "update") {
+        setSavedData((prev) => {
+          const newPo = [...prev.po];
+          newPo[change.index] = change.oldValue;
+          return { ...prev, po: newPo };
+        });
+      }
+    } else if (change.category === "program_specific_outcomes") {
+      if (change.action === "insert") {
+        setSavedData((prev) => ({
+          ...prev,
+          pso: prev.pso.filter((_, i) => i !== change.index),
+        }));
+      } else if (change.action === "delete") {
+        setSavedData((prev) => {
+          const newPso = [...prev.pso];
+          newPso.splice(change.index, 0, change.value);
+          return { ...prev, pso: newPso };
+        });
+      } else if (change.action === "update") {
+        setSavedData((prev) => {
+          const newPso = [...prev.pso];
+          newPso[change.index] = change.oldValue;
+          return { ...prev, pso: newPso };
+        });
+      }
+    }
+
+    // Update formData as well
+    setFormData(JSON.parse(JSON.stringify(savedData)));
+  };
+
   return (
     <div className="main-content font-[Poppins] relative flex flex-col min-h-screen">
+      <ToastContainer position="bottom-right" autoClose={3000} />
+      
       {/* Edit button */}
       <div className="absolute top-0 right-4 flex gap-2 z-10">
         {!isEditing && !requestMode && (
@@ -450,13 +823,13 @@ const VisionMission = ({ data }) => {
 {showRequestModal && (
   <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
     <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
-      <h2 className="text-xl font-bold mb-4 text-gray-800">Request </h2>
+      <h2 className="text-xl font-bold mb-4 text-gray-800">Request Changes</h2>
       <p className="text-sm text-red-500 mb-4">
         Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
       </p>
 
       {/* Changes Table */}
-      <table className="w-full border border-gray-300 text-sm text-center">
+      <table className="w-full border border-gray-300 text-sm">
         <thead className="bg-gray-200">
           <tr>
             <th className="border p-2">Action</th>
@@ -466,73 +839,67 @@ const VisionMission = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(initialData).map((field) => {
-            if (field === "Social_media_links" || field === "Image") return null;
-            const oldVal = Array.isArray(initialData[field]) ? initialData[field].join(", ") : initialData[field];
-            const newVal = Array.isArray(formData[field]) ? formData[field].join(", ") : formData[field];
-            if (oldVal !== newVal) {
+          {changes.length > 0 ? (
+            changes.map((change, idx) => {
+              const getCategoryName = (cat) => {
+                const names = {
+                  about_the_department: "About Department",
+                  department_vision: "Vision",
+                  department_mission: "Mission",
+                  programme_educational_objectives: "PEO",
+                  program_outcomes: "PO",
+                  program_specific_outcomes: "PSO",
+                };
+                return names[cat] || cat;
+              };
+
+              const getChangeDescription = (change) => {
+                if (change.field === "about") return "Content updated";
+                if (change.field === "text") {
+                  if (change.action === "insert") return `Added: "${change.value?.substring(0, 30)}..."`;
+                  if (change.action === "delete") return `Deleted: "${change.value?.substring(0, 30)}..."`;
+                  if (change.action === "update") return `Updated item ${change.index + 1}`;
+                }
+                if (change.field === "object") {
+                  if (change.action === "insert") return `Added: ${change.value?.header || "New item"}`;
+                  if (change.action === "delete") return `Deleted: ${change.value?.header || "Item"}`;
+                  if (change.action === "update") return `Updated: ${change.value?.header || `Item ${change.index + 1}`}`;
+                }
+                return "Modified";
+              };
+
               return (
-                <tr key={field}>
-                  <td className="border p-2 text-blue-600">Edited</td>
-                  <td className="border p-2">HOD</td>
-                  <td className="border p-2">{field}</td>
+                <tr key={idx}>
                   <td className="border p-2">
+                    {change.action === "insert" && (
+                      <span className="text-green-600">+ Added</span>
+                    )}
+                    {change.action === "update" && (
+                      <span className="text-blue-600">✎ Edited</span>
+                    )}
+                    {change.action === "delete" && (
+                      <span className="text-red-600">– Deleted</span>
+                    )}
+                  </td>
+                  <td className="border p-2">{getCategoryName(change.category)}</td>
+                  <td className="border p-2 text-xs">{getChangeDescription(change)}</td>
+                  <td className="border p-2 text-center">
                     <button
-                      onClick={() => setFormData(prev => ({ ...prev, [field]: initialData[field] }))}
+                      onClick={() => revertChange(idx)}
                       className="p-1 rounded hover:bg-gray-100"
-                      title="Revert this field"
+                      title="Revert this change"
+                      disabled={requestLoading}
                     >
                       <X size={16} className="text-red-500" />
                     </button>
                   </td>
                 </tr>
               );
-            }
-            return null;
-          })}
-
-          {Object.keys(initialData.Social_media_links || {}).map((key) => {
-            const oldVal = initialData.Social_media_links[key] || "";
-            const newVal = formData.Social_media_links?.[key] || "";
-            if (oldVal !== newVal) {
-              return (
-                <tr key={key}>
-                  <td className="border p-2 text-blue-600">Edited</td>
-                  <td className="border p-2">Social Links</td>
-                  <td className="border p-2">{key}</td>
-                  <td className="border p-2">
-                    <button
-                      onClick={() =>
-                        setFormData(prev => ({
-                          ...prev,
-                          Social_media_links: { ...prev.Social_media_links, [key]: initialData.Social_media_links[key] }
-                        }))
-                      }
-                      className="p-1 rounded hover:bg-gray-100"
-                      title="Revert this link"
-                    >
-                      <X size={16} className="text-red-500" />
-                    </button>
-                  </td>
-                </tr>
-              );
-            }
-            return null;
-          })}
-
-          {initialData.Image !== formData.Image && (
+            })
+          ) : (
             <tr>
-              <td className="border p-2 text-blue-600">Edited</td>
-              <td className="border p-2">HOD Image</td>
-              <td className="border p-2">Image</td>
-              <td className="border p-2">
-                <button
-                  onClick={() => setFormData(prev => ({ ...prev, Image: initialData.Image }))}
-                  className="p-1 rounded hover:bg-gray-100"
-                  title="Revert image"
-                >
-                  <X size={16} className="text-red-500" />
-                </button>
+              <td colSpan="4" className="border p-4 text-center text-gray-500">
+                No changes to request
               </td>
             </tr>
           )}
@@ -540,29 +907,24 @@ const VisionMission = ({ data }) => {
       </table>
 
       {/* Modal Actions */}
-<div className="flex justify-end gap-2 mt-6">
-  <button
-    onClick={() => setShowRequestModal(false)}
-    className="px-4 py-2 rounded bg-gray-400 text-white"
-  >
-    Cancel
-  </button>
-  <button
-    onClick={() => {
-      console.log("Request sent:", formData); 
-      setShowRequestModal(false);
-
-      // SAVE CHANGES LOCALLY
-      setBackupData(JSON.parse(JSON.stringify(formData))); // updates backup with requested changes
-      setInitialData(JSON.parse(JSON.stringify(formData))); // reset initialData to latest
-      setRequestMode(false); // re-enable edit button after confirming request
-    }}
-    className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000]"
-  >
-    Confirm Request
-  </button>
-</div>
-
+      <div className="flex justify-end gap-2 mt-6">
+        <button
+          onClick={() => setShowRequestModal(false)}
+          className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+          disabled={requestLoading}
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleRequestConfirm}
+          className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-white ${
+            requestLoading ? "cursor-progress opacity-70" : ""
+          }`}
+          disabled={requestLoading || changes.length === 0}
+        >
+          {requestLoading ? "Sending..." : "Confirm Request"}
+        </button>
+      </div>
     </div>
   </div>
 )}

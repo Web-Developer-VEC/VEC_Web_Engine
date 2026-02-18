@@ -24,62 +24,62 @@ const AdminUgAdmission = ({ theme, toggle }) => {
     newData,
     oldData = null,
   }) => {
-    /* -------------------- UPDATE BE GOVERNMENT -------------------- */
-    if (action === "Update_BE_Government") {
-      return {
-        collectionName: "admissions",
-        collection_type: "ug",
-        action: "update",
-        title: "Update BE Government Link",
-        category: null,
-        meta_data: {
-            year: String(year),
-            BE_Government: {
-              BE_Government_link_name: newData.link_name,
-              pdf_path: newData.pdf_path,
-            },
-        },
+    // /* -------------------- UPDATE BE GOVERNMENT -------------------- */
+    // if (action === "Update_BE_Government") {
+    //   return {
+    //     collectionName: "admissions",
+    //     collection_type: "ug",
+    //     action: "update",
+    //     title: "Update BE Government Link",
+    //     category: null,
+    //     meta_data: {
+    //         year: String(year),
+    //         BE_Government: {
+    //           BE_Government_link_name: newData.link_name,
+    //           pdf_path: newData.pdf_path,
+    //         },
+    //     },
 
-        original_data: {
+    //     original_data: {
 
-            year: String(year),
-            BE_Government: {
-              BE_Government_link_name: oldData.link_name,
-              pdf_path: oldData.pdf_path,
-            },
-        },
+    //         year: String(year),
+    //         BE_Government: {
+    //           BE_Government_link_name: oldData.link_name,
+    //           pdf_path: oldData.pdf_path,
+    //         },
+    //     },
 
-        admin: {
-          status: "pending",
-        },
-      };
-    }
+    //     admin: {
+    //       status: "pending",
+    //     },
+    //   };
+    // }
     /* -------------------- UPDATE YEAR -------------------- */
-    if (action === "Update_Year") {
-      return {
-        collectionName: "admissions",
-        collection_type: "ug",
-        action: "update",
-        title: "Update Year",
-        category: null,
+    // if (action === "Update_Year") {
+    //   return {
+    //     collectionName: "admissions",
+    //     collection_type: "ug",
+    //     action: "update",
+    //     title: "Update Year",
+    //     category: null,
 
-        meta_data: {
-          data: {
-            year: String(newData.year),
-          },
-        },
+    //     meta_data: {
+    //       data: {
+    //         year: String(newData.year),
+    //       },
+    //     },
 
-        original_data: {
-          data: {
-            year: String(oldData.year),
-          },
-        },
+    //     original_data: {
+    //       data: {
+    //         year: String(oldData.year),
+    //       },
+    //     },
 
-        admin: {
-          status: "pending",
-        },
-      };
-    }
+    //     admin: {
+    //       status: "pending",
+    //     },
+    //   };
+    // }
 
     /* -------------------- ADD -------------------- */
     if (action === "Added") {
@@ -550,20 +550,25 @@ if (action === "Update_BE_Management") {
         })
       : [];
 
-    // Check UG additions/edits using originalCourse tracking
-   // ---------- UG Intake Changes ----------
-const originalUG = JSON.stringify(original?.UG || []);
-const currentUG = JSON.stringify(
-  editableUGRows.map((r) => ({
-    [r.course]: {
-      "Government Quota Intakes": Number(r.governmentQuota),
-      "Management Quota Intakes": Number(r.managementQuota),
-      "Total Intakes": Number(r.totalIntake),
-    },
-  }))
-);
+// ---------- UG Intake Changes ----------
+const originalUG = Array.isArray(original?.UG) ? original.UG : [];
 
-if (originalUG !== currentUG) {
+const isUGChanged =
+  originalUG.length !== editableUGRows.length ||
+  originalUG.some((item, index) => {
+    const [course, details] = Object.entries(item)[0] || ["", {}];
+    const row = editableUGRows[index];
+    if (!row) return true;
+
+    return (
+      course !== row.course ||
+      Number(details["Government Quota Intakes"] || 0) !== Number(row.governmentQuota || 0) ||
+      Number(details["Management Quota Intakes"] || 0) !== Number(row.managementQuota || 0) ||
+      Number(details["Total Intakes"] || 0) !== Number(row.totalIntake || 0)
+    );
+  });
+
+if (isUGChanged) {
   changes.push({
     type: "edited",
     section: "UG",
@@ -572,19 +577,28 @@ if (originalUG !== currentUG) {
   });
 }
 
-// ---------- LATERAL Intake Changes ----------
-const originalLat = JSON.stringify(original?.UG_Lateral || []);
-const currentLat = JSON.stringify(
-  editableLateralRows.map((r) => ({
-    [r.course]: {
-      "Government Quota Intakes": Number(r.governmentQuota),
-      "Management Quota Intakes": Number(r.managementQuota),
-      "Total Intakes": Number(r.totalIntake),
-    },
-  }))
-);
 
-if (originalLat !== currentLat) {
+// ---------- LATERAL Intake Changes ----------
+const originalLat = Array.isArray(original?.UG_Lateral)
+  ? original.UG_Lateral
+  : [];
+
+const isLatChanged =
+  originalLat.length !== editableLateralRows.length ||
+  originalLat.some((item, index) => {
+    const [course, details] = Object.entries(item)[0] || ["", {}];
+    const row = editableLateralRows[index];
+    if (!row) return true;
+
+    return (
+      course !== row.course ||
+      Number(details["Government Quota Intakes"] || 0) !== Number(row.governmentQuota || 0) ||
+      Number(details["Management Quota Intakes"] || 0) !== Number(row.managementQuota || 0) ||
+      Number(details["Total Intakes"] || 0) !== Number(row.totalIntake || 0)
+    );
+  });
+
+if (isLatChanged) {
   changes.push({
     type: "edited",
     section: "LATERAL",
@@ -1309,10 +1323,10 @@ if (originalLat !== currentLat) {
 //   });
 // }
 
-    /* -------------------- UG / LATERAL CHANGES -------------------- */
-
- // ---------- UG Intake Update ----------
-if (changes.some(c => c.section === "UG")) {
+if (
+  changes.some(c => c.section === "UG") ||
+  editableYearUG !== originalRef.current?.year
+) {
   payloads.push({
     collectionName: "admissions",
     collection_type: "ug",
@@ -1339,10 +1353,29 @@ if (changes.some(c => c.section === "UG")) {
     admin: { status: "pending" },
   });
 }
+const lateralYearChanged =
+  editableYearLateral !==
+  (originalRef.current?.year_lateral ??
+   originalRef.current?.year);
 
+const originalLat = originalRef.current?.UG_Lateral || [];
 
-// ---------- LATERAL Intake Update ----------
-if (changes.some(c => c.section === "LATERAL")) {
+const isLatRowsChanged =
+  originalLat.length !== editableLateralRows.length ||
+  originalLat.some((item, index) => {
+    const [course, details] = Object.entries(item)[0] || ["", {}];
+    const row = editableLateralRows[index];
+    if (!row) return true;
+
+    return (
+      course !== row.course ||
+      Number(details["Government Quota Intakes"] || 0) !== Number(row.governmentQuota || 0) ||
+      Number(details["Management Quota Intakes"] || 0) !== Number(row.managementQuota || 0) ||
+      Number(details["Total Intakes"] || 0) !== Number(row.totalIntake || 0)
+    );
+  });
+
+if (lateralYearChanged || isLatRowsChanged) {
   payloads.push({
     collectionName: "admissions",
     collection_type: "ug",
@@ -1351,7 +1384,7 @@ if (changes.some(c => c.section === "LATERAL")) {
     category: null,
 
     meta_data: {
-      year: editableYearUG,
+      year: editableYearLateral,
       UG_Lateral: editableLateralRows.map((r) => ({
         [r.course]: {
           "Government Quota Intakes": Number(r.governmentQuota),
@@ -1362,13 +1395,16 @@ if (changes.some(c => c.section === "LATERAL")) {
     },
 
     original_data: {
-      year: originalRef.current?.year,
+      year:
+        originalRef.current?.year_lateral ??
+        originalRef.current?.year,
       UG_Lateral: originalRef.current?.UG_Lateral || [],
     },
 
     admin: { status: "pending" },
   });
 }
+
 
     // /* -------------------- BE GOVERNMENT PDF UPDATE -------------------- */
     // if (beGovLinkFile) {
@@ -1481,7 +1517,11 @@ if (
 
     console.log("app", payloads, files);
   try {
-    await sendRequest(payloads, files);
+   const finalPayloads = payloads.filter(item => item !== null);
+await sendRequest(finalPayloads, files);
+console.log('====================================');
+console.log("ne",finalPayloads);
+console.log('====================================');
 
   // ✅ BUILD FINAL DATA FROM EDITABLE STATE
   const committedData = {
@@ -1692,7 +1732,7 @@ if (
 
   return (
     <>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-right" autoClose={3000} />
       <Banner
         toggle={toggle}
         theme={theme}
@@ -2092,6 +2132,7 @@ if (
                 </div>
               </div>
             </div>
+            
           )}
         </div>
       )}
