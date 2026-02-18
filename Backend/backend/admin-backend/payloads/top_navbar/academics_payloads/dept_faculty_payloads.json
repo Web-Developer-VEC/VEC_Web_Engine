@@ -45,7 +45,7 @@
       {
         "name": "Dr. VISU P",
         "designation": "Professor & Head",
-        "unique_id": "VEC-001-01-077",
+        "unique_id": "",
         "socialmedia_links": {
           "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_bro…",
           "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authus…",
@@ -54,8 +54,8 @@
           "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
         },
-        "image_path": "/static/images/profile_photos/001/VEC-001-01-077.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-01-077.pdf"
+        "image_path": "",
+        "resume_pdf": ""
       }
     ]
   },
