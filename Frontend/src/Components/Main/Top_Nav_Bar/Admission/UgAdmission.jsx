@@ -108,6 +108,7 @@ const UgAdmission = ({ theme, toggle }) => {
           </tbody>
         </table>
       </div>
+     <p className="text-accn mb-3  text- center dark:text-drkt mb-3  font-bold ">* Subject to approval</p>
     </div>
   );
 
