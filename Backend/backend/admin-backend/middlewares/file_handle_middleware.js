@@ -53,7 +53,8 @@ async function insertFile(tempDoc, tempCollection) {
 
   const updatedPaths = await Promise.all(
     paths.map(async (p) => {
-      if (!p) return null;
+      if (p === "") return "";
+      if (p === null || p === undefined) return null;
         // case 1: p is a string
         if (typeof p === "string") {
           const srcKey = p.replace(/^\//, "");
@@ -111,7 +112,8 @@ async function updateFile(tempDoc, tempCollection) {
 
     const updatedPaths = await Promise.all(
       paths.map(async (p) => {
-        if (!p) return null;
+        if (p === "") return "";
+        if (p === null || p === undefined) return null;
 
         // case 1: p is a string
         if (typeof p === "string") {
@@ -137,18 +139,18 @@ async function updateFile(tempDoc, tempCollection) {
           return p;
         }
 
-        return p;
+        return p || "";
       })
     );
 
-    const finalValue = isArray ? updatedPaths.filter(Boolean) : updatedPaths[0];
+    const finalValue = isArray ? updatedPaths : updatedPaths[0];
     original[key] = finalValue; // update original_data with history paths
   }
 
   // 2️⃣ Promote new temp files → static
   for (const [key, value] of Object.entries(meta)) {
-    if ( key === "pdf_path" || "image_path") 
-      if (!value) break ;
+    if (key !== "pdf_path" && key !== "image_path") continue;
+    if (!value) continue;
    
 
     const isArray = Array.isArray(value);
@@ -156,7 +158,8 @@ async function updateFile(tempDoc, tempCollection) {
 
     const updatedPaths = await Promise.all(
       paths.map(async (p) => {
-        if (!p) return null;
+        if (p === "") return "";
+        if (p === null || p === undefined) return null;
 
         // case 1: p is a string
         if (typeof p === "string") {
@@ -180,11 +183,25 @@ async function updateFile(tempDoc, tempCollection) {
           return p;
         }
 
-        return p;
+        return p || "";
       })
     );
 
-    meta[key] = isArray ? updatedPaths.filter(Boolean) : updatedPaths[0];
+    meta[key] = isArray ? updatedPaths : updatedPaths[0];
+    
+    if (
+      tempDoc.collection_type === "academic_calendar" &&
+      key === "pdf_path"
+    ) {
+
+      const originalPaths = tempDoc.original_data?.pdf_path || ["", ""];
+      const currentPaths = meta[key] || [];
+
+      meta[key] = [
+        currentPaths[0] !== undefined ? currentPaths[0] : originalPaths[0] || "",
+        currentPaths[1] !== undefined ? currentPaths[1] : originalPaths[1] || ""
+      ];
+    }
   }
 
   // 3️⃣ Save updated metadata & original_data
@@ -280,7 +297,8 @@ async function deleteFile(tempDoc, tempCollection) {
 
     const updatedPaths = await Promise.all(
   paths.map(async (p) => {
-    if (!p) return null;
+    if (p === "") return "";
+    if (p === null || p === undefined) return null;
 
     // case 1: p is a string
     if (typeof p === "string") {

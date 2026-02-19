@@ -39,7 +39,7 @@ async function deleteData(tempDoc, mainCollection) {
     if (Array.isArray(pdf_path) && pdf_path.length > 0) {
       // Validate each PDF path
       pdf_path.forEach(path => {
-        if (typeof path !== "string" || !path.startsWith("/static/pdfs/")) {
+        if (typeof path !== "string") {
           throw new Error(`Invalid PDF path: ${path}`);
         }
       });
