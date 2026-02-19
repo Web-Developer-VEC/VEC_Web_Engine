@@ -108,6 +108,8 @@ const UgAdmission = ({ theme, toggle }) => {
           </tbody>
         </table>
       </div>
+      <p className="text-accn mb-3  text- center dark:text-drkt mb-3  font-bold ">With * subject to approval</p>
+
     </div>
   );
 
@@ -170,7 +172,7 @@ const UgAdmission = ({ theme, toggle }) => {
                 }
               >
                 <FaLink className="inline size-5 mr-1 mb-1" />
-                 {BE_Government?.BE_Government_link_name}
+                {BE_Government?.BE_Government_link_name}
               </button>
             </div>
             <div>
@@ -188,14 +190,14 @@ const UgAdmission = ({ theme, toggle }) => {
               <button
                 onClick={() =>
                   handlePdfClick(
-                      BE_Management?.BE_Management_link_name,
-                      UrlParser(BE_Management?.pdf_path)
+                    BE_Management?.BE_Management_link_name,
+                    UrlParser(BE_Management?.pdf_path)
                   )
                 }
                 className="text-blue-600 dark:text-drka"
               >
                 <FaLink className="inline size-5 mr-1 mb-1" />* FIRST YEAR
-               {BE_Management?.BE_Management_link_name}
+                {BE_Management?.BE_Management_link_name}
               </button>
             </div>
             {renderTable(
@@ -204,6 +206,7 @@ const UgAdmission = ({ theme, toggle }) => {
               "(For First Year Admissions)"
             )}
           </div>
+
 
           <div className="B-E">
             <h3 className="text-accn dark:text-drkt mt-5 border-b-2 pb-2 w-fit border-[#fdcc03] dark:border-drks">
