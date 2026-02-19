@@ -58,18 +58,17 @@ async function insertData(tempDoc, mainCollection) {
         return { message: `Inserted AISHE item into ${category}` };
       }
 
-      // ✅ Category does not exist → create with content array
-      await mainCollection.updateOne(
-        { type: "AISHE" },
-        {
-          $push: {
-            data: {
-              category,
-              content: [meta_data],
-            },
-          },
+    await mainCollection.updateOne(
+      { type: "AISHE" },
+      {
+        $push: {
+          data: {
+              category: meta_data.category,
+              content: meta_data.content
+          }
         }
-      );
+      }
+    );
 
       return { message: `Inserted new AISHE category ${category}` };
     }

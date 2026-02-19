@@ -1,141 +1,138 @@
 [
-    {
-        "collectionName":"CSE_005",
-        "collection_type":"activities",
-        "action":"insert",
-        "title":"insert in department_activities",
-        "category":"department_activities",
-        "meta_data":{
-              "year":"2024 - 2025",
-              "activities_tile": [
-              {
-                "name": "dinesh",
-                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
-              }]
+  {
+    "collectionName": "CSE_005",
+    "collection_type": "activities",
+    "action": "insert",
+    "title": "insert in department_activities",
+    "category": "department_activities",
+    "meta_data": {
+      "year": "2024 - 2025",
+      "activities_tile": [
+        {
+          "name": "Guest Lecture",
+          "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
         }
-    },
-    {
-        "collectionName":"CSE_005",
-        "collection_type":"activities",
-        "action":"update",
-        "title":"update in department_activities",
-        "category":"department_activities",
-        "original_data":{
-              "year":"2024 - 2025",
-              "activities_tile": [
-              {
-                "name": "dinesh",
-                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
-              }]
-        },
-        "meta_data":{
-              "year":"2024 - 2025",
-              "activities_tile": [
-              {
-                "name": "hari",
-                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
-              }]
-        }
-    },
-    {
-        "collectionName":"CSE_005",
-        "collection_type":"activities",
-        "action":"delete",
-        "title":"delete in department_activities",
-        "category":"department_activities",
-        "meta_data":{
-              "year":"2024 - 2025",
-              "activities_tile": [
-              {
-                "name": "hari",
-                "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
-              }]
-        }
-    },
-    {
-
-      "collection": "CSE_005",
-      "collection_type": "activities",
-      "action": "delete",
-      "title": "delete in department_activities",
-      "category": "department_activities",
-      "meta_data": 
-      {
-        "year": "2023 - 2024",
-        "activities": 
-        [
-          {
-            "date": "21/07/2024",
-            "name_of_event": "DINESH an Industry WIPRO",
-            "coordinator": "",
-            "resource_person": "",
-            "beneficiaries": "3rd Year girls From CSE",
-            "relevant_PO_PSO": "",
-            "image_path": ""
-          }
-        ]
-      }
-    },
-    {
-      "collection": "CSE_005",
-      "collection_type": "activities",
-      "action": "insert",
-      "title": "insert in department_activities",
-      "category": "department_activities",
-      "meta_data": 
-      {
-        "year": "2023 - 2024",
-        "activities": 
-        [
-          {
-            "date": "21/07/2024",
-            "name_of_event": "DINESH an Industry WIPRO",
-            "coordinator": "",
-            "resource_person": "",
-            "beneficiaries": "3rd Year girls From CSE",
-            "relevant_PO_PSO": "",
-            "image_path": ""
-          }
-        ]
-      }
-    },
-    {
-      "collection": "CSE_005",
-      "collection_type": "activities",
-      "action": "update",
-      "title": "update in department_activities",
-      "category": "department_activities",
-      "meta_data": 
-      {
-        "year": "2023 - 2024",
-        "activities": 
-        [
-          {
-            "date": "21/08/2024",
-            "name_of_event": "dfkjsg an Industry WIPRO",
-            "coordinator": "",
-            "resource_person": "",
-            "beneficiaries": "3rd Year girls From CSE",
-            "relevant_PO_PSO": "",
-            "image_path": ""
-          }
-        ]
-      },
-      "original_data": 
-      {
-        "year": "2023 - 2024",
-        "activities": 
-        [
-          {
-            "date": "30/08/2024",
-            "name_of_event": "Visited an Industry WIPRO",
-            "coordinator": "",
-            "resource_person": "",
-            "beneficiaries": "3rd Year Students From CSE",
-            "relevant_PO_PSO": "",
-            "image_path": ""
-          }
-        ]
-      }
+      ]
     }
+  },
+  {
+    "collectionName": "CSE_005",
+    "collection_type": "activities",
+    "action": "update",
+    "title": "update in department_activities",
+    "category": "department_activities",
+    "original_data": {
+      "year": "2024 - 2025",
+      "activities_tile": [
+        {
+          "name": "Guest Lecture",
+          "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
+        }
+      ]
+    },
+    "meta_data": {
+      "year": "2024 - 2025",
+      "activities_tile": [
+        {
+          "name": "hari",
+          "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
+        }
+      ]
+    }
+  },
+  {
+    "collectionName": "CSE_005",
+    "collection_type": "activities",
+    "action": "delete",
+    "title": "delete in department_activities",
+    "category": "department_activities",
+    "meta_data": {
+      "year": "2024 - 2025",
+      "activities_tile": [
+        {
+          "name": "hari",
+          "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Guest Lecture.pdf"
+        }
+      ]
+    }
+  },
+  {
+    "collection": "CSE_005",
+    "collection_type": "activities",
+    "action": "delete",
+    "title": "delete in department_activities",
+    "category": "department_activities",
+    "meta_data": {
+      "year": "2023 - 2024",
+      "activities": [
+        {
+          "date": "21/07/2024",
+          "name_of_event": "DINESH an Industry WIPRO",
+          "coordinator": "",
+          "resource_person": "",
+          "beneficiaries": "3rd Year girls From CSE",
+          "relevant_PO_PSO": "",
+          "image_path": ""
+        }
+      ]
+    }
+  },
+  {
+    "collection": "CSE_005",
+    "collection_type": "activities",
+    "action": "insert",
+    "title": "insert in department_activities",
+    "category": "department_activities",
+    "meta_data": {
+      "year": "2023 - 2024",
+      "activities": [
+        {
+          "date": "21/07/2024",
+          "name_of_event": "DINESH an Industry WIPRO",
+          "coordinator": "",
+          "resource_person": "",
+          "beneficiaries": "3rd Year girls From CSE",
+          "relevant_PO_PSO": "",
+          "image_path": ""
+        }
+      ]
+    }
+  },
+  {
+    "collection": "CSE_005",
+    "collection_type": "activities",
+    "action": "update",
+    "title": "update in department_activities",
+    "category": "department_activities",
+    "meta_data": {
+      "year": "2023 - 2024",
+      "activities": [
+        {
+          "date": "21/08/2024",
+          "name_of_event": "dfkjsg an Industry WIPRO",
+          "coordinator": "",
+          "resource_person": "",
+          "beneficiaries": "3rd Year girls From CSE",
+          "relevant_PO_PSO": "",
+          "image_path": ""
+        }
+      ]
+    },
+    "original_data": {
+      "year": "2023 - 2024",
+      "activities": [
+        {
+          "date": "05/03/2024",
+          "name_of_event": "Seminar on Career Opportunity in Data Science with Table and power BI",
+          "coordinator": "Mrs.M.Priya\nMrs. S. Mythili\nMrs.J.Savija",
+          "resource_person": "Mr. Ahamed Khalid,\nHead -Academic Alliances, Imarticus Learning,IIM,Bangalore.",
+          "beneficiaries": "II- and III-YEAR students.",
+          "relevant_PO_PSO": "PSO1, PSO2, PO3,PO6, PO9,PO10, PO11,PSO1",
+          "image_path": [
+            "/static/images/dept_activities/001/career_oppurtunity.webp"
+          ]
+        }
+      ]
+    }
+  }
 ]

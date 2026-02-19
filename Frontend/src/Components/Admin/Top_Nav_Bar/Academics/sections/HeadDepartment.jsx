@@ -7,24 +7,56 @@ import { FaOrcid } from "react-icons/fa";
 import { FaResearchgate } from "react-icons/fa6";
 import LoadComp from "../../../LoadComp";
 import { Pencil, Save, X, Send } from "lucide-react";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HeadDepartment = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const { sendRequest, loading: requestLoading } = useAdminRequest();
 
   const UrlParser = (path) => path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 
+  // Department mapping
+  const deptMap = {
+    "001": "AIDS_001",
+    "002": "MECH_002",
+    "003": "ECE_003",
+    "004": "CIVIL_004",
+    "005": "CSE_005",
+    "006": "EEE_006",
+    "007": "CHEM_007",
+    "008": "AUTO_008",
+    "009": "AERO_009",
+    "010": "PROD_010",
+    "011": "BIO_011",
+    "012": "TEXTILE_012",
+    "013": "APPAREL_013",
+    "014": "CIVIL_INFRA_014",
+    "015": "FOOD_015",
+    "016": "BIOTECH_016",
+    "017": "AGRI_017",
+    "018": "PS_018"
+  };
+
+  // Extract deptId from data
+  const deptId = data?.find((item) => item.category === "banner_name_and_image")?.content?.[0]?.dept_id || "005";
+  const collectionName = deptMap[deptId];
+
   const hod_details = data?.find((item) => item.category === "hod_details")?.content || [];
 
-  const initialData = {
+  const [initialData, setInitialData] = useState({
     Name: hod_details?.[0]?.name || "",
     uid: hod_details?.[0]?.unique_id || "",
     Qualification: hod_details?.[0]?.qualification || [],
     designation: hod_details?.[0]?.designation || "",
-    Hod_message: hod_details?.[0]?.hod_message || "",
+    Hod_message: Array.isArray(hod_details?.[0]?.hod_message)
+      ? hod_details[0].hod_message[0]
+      : (hod_details?.[0]?.hod_message || ""),
     Image: hod_details?.[0]?.hod_image || "",
     Social_media_links: hod_details?.[0]?.Social_media_links || {},
     resume: hod_details?.[0]?.resume_pdf || ""
-  };
+  });
 
   const profiles = [
     { key: "linkedin", label: "LinkedIn" },
@@ -40,7 +72,8 @@ const HeadDepartment = ({ data }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [showLinkEditor, setShowLinkEditor] = useState(false);
-  const [globalSaved, setGlobalSaved] = useState(false); // tracks global save click
+  const [globalSaved, setGlobalSaved] = useState(false);
+  const [savedData, setSavedData] = useState(null); // Data snapshot after save
   const [showRequestModal, setShowRequestModal] = useState(false);
 
   const handleChange = (field, value) => {
@@ -56,7 +89,7 @@ const HeadDepartment = ({ data }) => {
   };
 
   const handleSave = () => {
-    console.log("Global Save:", formData);
+    setSavedData(JSON.parse(JSON.stringify(formData))); // Save snapshot
     setGlobalSaved(true); // mark global save
     setIsEditing(false);
     setIsDirty(false);
@@ -68,12 +101,81 @@ const HeadDepartment = ({ data }) => {
     setGlobalSaved(false);
     setBackupData(null);
     setIsDirty(false);
+    setSavedData(null);
+  };
+
+  // Build payload based on changes
+  const buildPayload = () => {
+    if (!savedData) return null;
+
+    const meta_data = {
+      department_id: hod_details?.[0]?.department_id || "",
+      name: savedData.Name,
+      department_name: hod_details?.[0]?.department_name || "",
+      unique_id: savedData.uid,
+      resume_pdf: savedData.resume,
+      qualification: savedData.Qualification,
+      hod_message: [savedData.Hod_message],
+      hod_image: savedData.Image,
+      designation: savedData.designation,
+      Social_media_links: savedData.Social_media_links
+    };
+
+    const original_data = {
+      department_id: hod_details?.[0]?.department_id || "",
+      name: initialData.Name,
+      department_name: hod_details?.[0]?.department_name || "",
+      unique_id: initialData.uid,
+      resume_pdf: initialData.resume,
+      qualification: initialData.Qualification,
+      hod_message: Array.isArray(initialData.Hod_message) ? initialData.Hod_message : [initialData.Hod_message],
+      hod_image: initialData.Image,
+      designation: initialData.designation,
+      Social_media_links: initialData.Social_media_links
+    };
+
+    return {
+      collectionName,
+      collection_type: "hod",
+      action: "update",
+      title: "update for hod",
+      category: "hod_details",
+      meta_data,
+      original_data
+    };
+  };
+
+  // Send request
+  const handleRequestConfirm = async () => {
+    const payload = buildPayload();
+
+    if (!payload) {
+      toast.info("No changes to request");
+      setShowRequestModal(false);
+      return;
+    }
+
+    try {
+      await sendRequest([payload], []);
+      toast.success("Request sent successfully!");
+      
+      // Update baseline
+      setInitialData({ ...savedData });
+      setBackupData(JSON.parse(JSON.stringify(savedData)));
+      setSavedData(null);
+      setGlobalSaved(false);
+      setShowRequestModal(false);
+    } catch (error) {
+      console.error("Request failed:", error);
+      toast.error("Failed to send request");
+    }
   };
 
   const handleRequest = () => setShowRequestModal(true);
 
   return (
     <>
+      <ToastContainer position="bottom-right" autoClose={3000} />
       {formData.Hod_message ? (
         <div className={styles.messageContent + " text-text dark:text-drkt relative"}>
           
@@ -279,13 +381,13 @@ const HeadDepartment = ({ data }) => {
                 </p>
 
                 {/* Changes Table */}
-                <table className="w-full border border-gray-300 text-sm text-center">
+                <table className="w-full border border-gray-300 text-sm">
                   <thead className="bg-gray-200">
                     <tr>
                       <th className="border p-2">Action</th>
                       <th className="border p-2">Section</th>
                       <th className="border p-2">Changes</th>
-                      <th className="border p-2">Undo</th> {/* Undo Column */}
+                      <th className="border p-2">Undo</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -293,7 +395,7 @@ const HeadDepartment = ({ data }) => {
                     {Object.keys(initialData).map((field) => {
                       if (field === "Social_media_links" || field === "Image") return null;
                       const oldVal = Array.isArray(initialData[field]) ? initialData[field].join(", ") : initialData[field];
-                      const newVal = Array.isArray(formData[field]) ? formData[field].join(", ") : formData[field];
+                      const newVal = Array.isArray(savedData[field]) ? savedData[field].join(", ") : savedData[field];
                       if (oldVal !== newVal) {
                         return (
                           <tr key={field}>
@@ -302,9 +404,10 @@ const HeadDepartment = ({ data }) => {
                             <td className="border p-2">{field}</td>
                             <td className="border p-2">
                               <button
-                                onClick={() => setFormData(prev => ({ ...prev, [field]: initialData[field] }))}
+                                onClick={() => setSavedData(prev => ({ ...prev, [field]: initialData[field] }))}
                                 className="p-1 rounded hover:bg-gray-100"
                                 title="Revert this field"
+                                disabled={requestLoading}
                               >
                                 <X size={16} className="text-red-500" />
                               </button>
@@ -316,9 +419,9 @@ const HeadDepartment = ({ data }) => {
                     })}
 
                     {/* Social Media Links */}
-                    {Object.keys(initialData.Social_media_links).map((key) => {
+                    {savedData && Object.keys(initialData.Social_media_links).map((key) => {
                       const oldVal = initialData.Social_media_links[key] || "";
-                      const newVal = formData.Social_media_links[key] || "";
+                      const newVal = savedData.Social_media_links[key] || "";
                       if (oldVal !== newVal) {
                         return (
                           <tr key={key}>
@@ -328,13 +431,14 @@ const HeadDepartment = ({ data }) => {
                             <td className="border p-2">
                               <button
                                 onClick={() =>
-                                  setFormData(prev => ({
+                                  setSavedData(prev => ({
                                     ...prev,
                                     Social_media_links: { ...prev.Social_media_links, [key]: initialData.Social_media_links[key] }
                                   }))
                                 }
                                 className="p-1 rounded hover:bg-gray-100"
                                 title="Revert this link"
+                                disabled={requestLoading}
                               >
                                 <X size={16} className="text-red-500" />
                               </button>
@@ -346,16 +450,17 @@ const HeadDepartment = ({ data }) => {
                     })}
 
                     {/* Image */}
-                    {initialData.Image !== formData.Image && (
+                    {savedData && initialData.Image !== savedData.Image && (
                       <tr>
                         <td className="border p-2 text-blue-600">Edited</td>
                         <td className="border p-2">HOD Image</td>
                         <td className="border p-2">Image</td>
                         <td className="border p-2">
                           <button
-                            onClick={() => setFormData(prev => ({ ...prev, Image: initialData.Image }))}
+                            onClick={() => setSavedData(prev => ({ ...prev, Image: initialData.Image }))}
                             className="p-1 rounded hover:bg-gray-100"
                             title="Revert image"
+                            disabled={requestLoading}
                           >
                             <X size={16} className="text-red-500" />
                           </button>
@@ -369,20 +474,19 @@ const HeadDepartment = ({ data }) => {
                 <div className="flex justify-end gap-2 mt-6">
                   <button
                     onClick={() => setShowRequestModal(false)}
-                    className="px-4 py-2 rounded bg-gray-400 text-white"
+                    className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+                    disabled={requestLoading}
                   >
                     Cancel
                   </button>
                   <button
-                    onClick={() => {
-                      console.log("Request sent:", formData); // send this to API if needed
-                      setShowRequestModal(false);
-                      setGlobalSaved(false); // mark as pending request
-                      // Do NOT call handleDiscard(), keep changes
-                    }}
-                    className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000]"
+                    onClick={handleRequestConfirm}
+                    className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-white ${
+                      requestLoading ? "cursor-progress opacity-70" : ""
+                    }`}
+                    disabled={requestLoading}
                   >
-                    Confirm Request
+                    {requestLoading ? "Sending..." : "Confirm Request"}
                   </button>
                 </div>
               </div>
