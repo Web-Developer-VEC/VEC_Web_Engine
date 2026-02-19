@@ -1,4 +1,5 @@
-[{
+[
+  {
     "collectionName": "CSE_005",
     "collection_type": "hod",
     "action": "update",
@@ -7,8 +8,7 @@
 "meta_data":{
             "department_id": "005",
             "name": "Dr. DINESH",
-            "department_name": "Computer Science & Engineering (CSE) ",
-            "unique_id": "VEC-005-01-120",      
+            "department_name": "Computer Science & Engineering (CSE) ",     
             "resume_pdf":"/static/pdfs/faculty_profile/005/VEC-005-01-120.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message":["The department is instrumental in conducting various technical and non-technical activities for students as well as faculty members. The focus is not only technical stuff on but also moral values, ethics; professionalism and students are made aware of the latest industry trends and needs in various technological domains. Well-motivated, competent faculty members are always engaged in student’s welfare. Encouragement and guidance is offered to the students for participating in sports and various extracurricular activities to highlight and strengthen their nontechnical skills. Our academic rigor, Plan-Do-Check-Act approach in all sorts of aspects has made this department to be a one of the best choices for UG, PG and PhD admission aspirants."],

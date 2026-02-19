@@ -9,7 +9,7 @@ const {deleteData} = require('../../controllers/landing_page_controllers/landing
 
 router.post(
   "/landingpageadmin",
-  checkRole(["superadmin"]), 
+  checkRole(["super_admin"]), 
   handleTempApproval,
   handleTempAction(  insertData , updateData , deleteData )
 );
