@@ -142,8 +142,8 @@
       ],
 
       "BE_Government":{
-        "BE_Government_link_name":"* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2025)",
-        "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota.pdf"
+        "BE_Government_link_name":"* FIRST YEAR B.E/B.Tech – Government Quota ( Through TNEA counselling 2026)",
+        "pdf_path": "/static/pdfs/admission/FIRST_YEAR_B.E_B.Tech-Government_Quota (1).pdf"
       },
       "BE_Management":{
         "BE_Management_link_name":"* FIRST YEAR B.E/B.TECH – MANAGEMENT QUOTA",
@@ -181,8 +181,8 @@
         "pdf_path": "/static/pdfs/admission/MQ-MBA-2025.pdf"
       },
       "MBA_Government":{
-      "MBA_Government_link_name":"* FIRST YEAR MBA - Government Quota (Through TANCET 2025)",
-      "pdf_path": "/static/pdfs/admission/GQ-MBA-2025.pdf"
+      "MBA_Government_link_name":"* FIRST YEAR MBA - Government Quota (Through TANCET 2026)",
+      "pdf_path": "/static/pdfs/admission/GQ-MBA-2026.pdf"
       }
     }
   },
