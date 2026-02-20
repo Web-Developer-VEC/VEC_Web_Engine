@@ -57,11 +57,11 @@ const getChanges = () => {
         });
       }
 
-      if (item.oddFile) {
+      if (item.oddFile || item.oddRemoved) {
         changes.push({ type: "odd", year: item.year });
       }
 
-      if (item.evenFile) {
+      if (item.evenFile || item.evenRemoved) {
         changes.push({ type: "even", year: item.year });
       }
     }
@@ -164,9 +164,11 @@ setOriginalData(JSON.parse(JSON.stringify(withUid)));
     if (type === "odd") {
       updated[i].oddFile = file;
       updated[i].oddPreview = fakePath;
+      updated[i].oddRemoved = false;
     } else if (type === "even") {
       updated[i].evenFile = file;
       updated[i].evenPreview = fakePath;
+      updated[i].evenRemoved = false;
     }
 
     setEditedData(updated);
@@ -208,32 +210,29 @@ const buildPayload = () => {
   editedData.forEach((item) => {
     const orig = origMap.get(item.__uid);
 
-    let newPdfPaths = [...(orig?.pdf_path || [])];
+    let newPdfPaths = [...(orig?.pdf_path || ["", ""])];
+
+    // Ensure array always has 2 slots
+    if (newPdfPaths.length < 2) {
+      newPdfPaths = [newPdfPaths[0] || "", newPdfPaths[1] || ""];
+    }
 
     // ---------- ODD FILE ----------
     if (item.oddFile) {
-      const oddPath =
+      newPdfPaths[0] =
         `/static/pdfs/academic_calendar/${item.oddFile.name}`;
-
-      newPdfPaths = [
-        ...newPdfPaths.filter(p => !p.toLowerCase().includes("odd")),
-        oddPath
-      ];
-
       files.push(item.oddFile);
+    } else if (item.oddRemoved) {
+      newPdfPaths[0] = "";
     }
 
     // ---------- EVEN FILE ----------
     if (item.evenFile) {
-      const evenPath =
+      newPdfPaths[1] =
         `/static/pdfs/academic_calendar/${item.evenFile.name}`;
-
-      newPdfPaths = [
-        ...newPdfPaths.filter(p => !p.toLowerCase().includes("even")),
-        evenPath
-      ];
-
       files.push(item.evenFile);
+    } else if (item.evenRemoved) {
+      newPdfPaths[1] = "";
     }
 
     // ---------- INSERT ----------
@@ -255,7 +254,9 @@ const buildPayload = () => {
     if (
       orig.year !== item.year ||
       item.oddFile ||
-      item.evenFile
+      item.evenFile ||
+      item.oddRemoved ||
+      item.evenRemoved
     ) {
       payload.push({
         collectionName: "academics",
@@ -385,10 +386,13 @@ const handleDeleteSelected = () => {
               {editedData?.map((item, i) => {
                 const oddPath =
                   item.oddPreview ||
-                  item.pdf_path?.find((p) => p.toLowerCase().includes("odd"));
+                  item.pdf_path?.[0] ||
+                  "";
+
                 const evenPath =
                   item.evenPreview ||
-                  item.pdf_path?.find((p) => p.toLowerCase().includes("even"));
+                  item.pdf_path?.[1] ||
+                  "";
 
                 return (
                   <div
@@ -422,6 +426,10 @@ const handleDeleteSelected = () => {
                       {isEditing && (
                         <>
                           {/* Odd Sem */}
+                            <div className="flex flex-col items-center space-y-3 text-blue-600 mt-4">
+                      {isEditing && (
+                        <>
+                          {/* Odd Sem */}
                           <div className="flex items-center gap-3">
                             <span className="text-black dark:text-white">
                               Odd Sem
@@ -442,14 +450,31 @@ const handleDeleteSelected = () => {
                               {oddPath ? "Replace" : "Upload"}
                             </label>
                             {oddPath && (
-                              <button
-                                onClick={() =>
-                                  window.open(UrlParser(oddPath), "_blank")
-                                }
-                                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-                              >
-                                <Eye size={18} />
-                              </button>
+                              <>
+                                <button
+                                  onClick={() =>
+                                    window.open(UrlParser(oddPath), "_blank")
+                                  }
+                                  className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                                >
+                                  <Eye size={18} />
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    const updated = [...editedData];
+                                    updated[i].oddFile = null;
+                                    updated[i].oddPreview = null;
+                                    updated[i].pdf_path[0] = "";
+                                    updated[i].oddRemoved = true;
+                                    updated[i].evenRemoved = updated[i].evenRemoved || false;
+                                    setEditedData(updated);
+                                    setHasChanges(true);
+                                  }}
+                                  className="p-2 rounded-full hover:bg-red-200 dark:hover:bg-red-900 transition"
+                                >
+                                  <Trash2 size={18} className="text-red-600" />
+                                </button>
+                              </>
                             )}
                           </div>
 
@@ -474,16 +499,61 @@ const handleDeleteSelected = () => {
                               {evenPath ? "Replace" : "Upload"}
                             </label>
                             {evenPath && (
-                              <button
-                                onClick={() =>
-                                  window.open(UrlParser(evenPath), "_blank")
-                                }
-                                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-                              >
-                                <Eye size={18} />
-                              </button>
+                              <>
+                                <button
+                                  onClick={() =>
+                                    window.open(UrlParser(evenPath), "_blank")
+                                  }
+                                  className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                                >
+                                  <Eye size={18} />
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    const updated = [...editedData];
+                                    updated[i].evenFile = null;
+                                    updated[i].evenPreview = null;
+                                    updated[i].pdf_path[1] = "";
+                                    updated[i].evenRemoved = true;
+                                    updated[i].oddRemoved = updated[i].oddRemoved || false;
+                                    setEditedData(updated);
+                                    setHasChanges(true);
+                                  }}
+                                  className="p-2 rounded-full hover:bg-red-200 dark:hover:bg-red-900 transition"
+                                >
+                                  <Trash2 size={18} className="text-red-600" />
+                                </button>
+                              </>
                             )}
                           </div>
+                        </>
+                      )}
+
+                      {!isEditing && (
+                        <>
+                          {oddPath && (
+                            <a
+                              href={UrlParser(oddPath)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-blue-800 dark:text-drka"
+                            >
+                              Odd Sem
+                            </a>
+                          )}
+                          {evenPath && (
+                            <a
+                              href={UrlParser(evenPath)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-blue-800 dark:text-drka"
+                            >
+                              Even Sem
+                            </a>
+                          )}
+                        </>
+                      )}
+                    </div>
                         </>
                       )}
 
@@ -521,7 +591,10 @@ const handleDeleteSelected = () => {
                   onClick={() =>
                     setEditedData([
                       ...editedData,
-                      { year: "New Year", pdf_path: [] },
+                      {
+                        year: "New Year",
+                        pdf_path: ["", ""]
+                      }
                     ])
                   }
                   className="border-2 border-dashed border-gray-400 flex items-center justify-center p-6 rounded-lg cursor-pointer hover:border-yellow-500 transition"
@@ -681,15 +754,11 @@ const handleDeleteSelected = () => {
                               } else if (change.type === "odd") {
                                 updated[change.index].oddFile = null;
                                 updated[change.index].oddPreview =
-                                  orig.pdf_path?.find((p) =>
-                                    p.toLowerCase().includes("odd")
-                                  ) || null;
+                                  orig.pdf_path?.[0] || null
                               } else if (change.type === "even") {
                                 updated[change.index].evenFile = null;
                                 updated[change.index].evenPreview =
-                                  orig.pdf_path?.find((p) =>
-                                    p.toLowerCase().includes("even")
-                                  ) || null;
+                                  orig.pdf_path?.[1] || null
                               }
                             } else {
                               updated.splice(change.index, 1);
