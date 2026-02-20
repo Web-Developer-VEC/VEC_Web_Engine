@@ -405,10 +405,10 @@ const handleRequestConfirm = async () => {
 
         {/* After Save: show Discard Changes + Request (bottom-right) */}
         {!isEditing && changesSaved && changeLog.length > 0 && (
-          <div className="absolute bottom-4 right-4 flex gap-2 items-center z-[60]">
+          <div className="flex justify-end gap-3 mt-6">
             <button
               onClick={handleDiscardAll}
-              className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+              className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
             >
               Discard Changes
             </button>

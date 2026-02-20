@@ -421,7 +421,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
         {/* Header */}
         <div className="relative flex items-center justify-center mb-4">
           <h2 className="text-4xl text-brwn dark:text-drkt font-bold">{title}</h2>
-          {!isEditing && !isSaved && (
+          {!isEditing  && (
             <div className="absolute right-0">
               <button onClick={handleStartEdit} className="btn-edit">
                 <Pencil size={18} /> Edit

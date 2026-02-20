@@ -358,7 +358,7 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
             {title || "Mentee Institution"}
           </h2>
           {/* Edit button on right */}
-          {!isEditing && !isSaved && (
+          {!isEditing  && (
             <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
               <button
                 onClick={handleStartEdit}
