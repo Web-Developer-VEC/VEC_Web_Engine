@@ -72,7 +72,6 @@ export default function IicFacCertificate({ data }) {
 
 const handleSave = () => {
   if (!isDirty) {
-    toast.info("No changes to save!");
     return;
   }
 
@@ -87,7 +86,6 @@ const handleSave = () => {
   setIsEditing(false);
   setIsDirty(false);
   setSelectedRows(new Set());
-  toast.success("Changes saved as draft!");
 };
 
 const handleCancel = () => {
@@ -99,8 +97,6 @@ const handleCancel = () => {
             const resetPdf = pendingData.find((x) => x.id === activePdf.id);
             setActivePdf(resetPdf || null);
         }
-
-        toast.info("Cancelled edits. Draft preserved!");
     } else {
         // No draft, revert to original
         const resetData = deepCopy(originalData);
@@ -110,8 +106,6 @@ const handleCancel = () => {
             const resetPdf = resetData.find((x) => x.id === activePdf.id);
             setActivePdf(resetPdf || null);
         }
-
-        toast.info("Cancelled. Reverted to original data!");
     }
 
     setIsEditing(false);
@@ -216,7 +210,6 @@ const handleFinalRequestConfirm = async () => {
   const { payload, files } = buildCertificatePayload();
 
   if (payload.length === 0) {
-    toast.info("No changes to submit!");
     return;
   }
 
@@ -236,10 +229,9 @@ const handleFinalRequestConfirm = async () => {
       setPendingData(null);
       setIsSaved(false);
       setShowRequestModal(false);
-      toast.success("Certificate request sent for approval!");
     }
   } catch {
-    toast.error("Failed to submit certificate request");
+    
   }
 };
 

@@ -68,10 +68,8 @@ function IicHome({ data }) {
   const handleCancel = () => {
     if (pendingContent) {
       setAboutContent(deepCopy(pendingContent));
-      toast.info("Cancelled edits. Draft preserved!");
     } else {
       setAboutContent(deepCopy(committedContent));
-      toast.info("Cancelled. Reverted to original data!");
     }
 
     setIsEditing(false);
@@ -92,7 +90,6 @@ function IicHome({ data }) {
     setIsSaved(true);
     setIsEditing(false);
     setIsDirty(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -135,13 +132,9 @@ function IicHome({ data }) {
         setPendingContent(null);
         setIsSaved(false);
         setShowRequestModal(false);
-        toast.success("Final request submitted!");
-      } else {
-        toast.error("Request failed. See console for details.");
       }
     } catch (err) {
       console.error("IIC final request error:", err);
-      toast.error("An error occurred while sending final request.");
     }
   };
 
@@ -150,7 +143,6 @@ function IicHome({ data }) {
     setPendingContent(null);
     setIsSaved(false);
     setShowRequestModal(false);
-    toast.info("Reverted to committed content");
   };
 
   const getChanges = () => {
