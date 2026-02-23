@@ -8,7 +8,22 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+const deepCopy = (data) => {
+  if (!data) return data;
+
+  if (Array.isArray(data)) {
+    return data.map(item => {
+      const copy = { ...item };
+      if (item._file) copy._file = item._file; // preserve File
+      return copy;
+    });
+  }
+
+  const copy = { ...data };
+  if (data._file) copy._file = data._file; // preserve File
+  return copy;
+};
+
 
 const Coordinators = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;

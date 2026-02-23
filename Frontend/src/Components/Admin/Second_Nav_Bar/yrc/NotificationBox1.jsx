@@ -443,7 +443,7 @@ return (
         onClick={handleDiscard}
         className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500 text-sm"
       >
-        Discard
+        Discard Changes
       </button>
 
       {getChanges().length > 0 && (

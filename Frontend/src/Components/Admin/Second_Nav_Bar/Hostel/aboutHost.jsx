@@ -26,6 +26,8 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
   // New: detailed change log used for the final request modal with undo
   const [changeLog, setChangeLog] = useState([]);
 
+  const [isRequesting, setIsRequesting] = useState(false);//Load for the final request
+
   const { sendRequest, loading, error } = useAdminRequest();
 
   let data;
@@ -193,48 +195,59 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
 const handleRequestConfirm = async () => {
   if (!originalData) return;
 
-  // OLD values (before change)
-  const oldAbout = initialSnapshot?.about_us || "";
-  const oldImagePath = initialSnapshot?.image_path || "";
+  setIsRequesting(true);   // 🔥 START LOADING
 
-  // NEW image path (only if image changed)
+  try {
 
-  const newImagePath = `/static/images/hostel/${uploadedFile.file.name}`;
-  console.log(newImagePath);
+    const oldAbout = initialSnapshot?.about_us || "";
+    const oldImagePath = initialSnapshot?.image_path || "";
 
-  const payload = [
-    {
-      action: "update",
-      collectionName: "hostel_details",
-      collection_type: "about",
-      title: "Hostel About",
-      category: null,
+    let newImagePath = originalData.image_path;
 
-      original_data: {
-        about_us: oldAbout,
-        image_path: oldImagePath,
+    if (uploadedFile?.file) {
+      newImagePath = `/static/images/hostel/${uploadedFile.file.name}`;
+    }
+
+    const payload = [
+      {
+        action: "update",
+        collectionName: "hostel_details",
+        collection_type: "about",
+        title: "Hostel About",
+        category: null,
+
+        original_data: {
+          about_us: oldAbout,
+          image_path: oldImagePath,
+        },
+
+        meta_data: {
+          about_us: originalData.about_us,
+          image_path: newImagePath,
+        },
       },
+    ];
 
-      meta_data: {
-        about_us: originalData.about_us,
-        image_path: newImagePath,
-      },
-    },
-  ];
+    const result = await sendRequest(
+      payload,
+      uploadedFile?.file || null
+    );
 
-  
-  const result = await sendRequest(payload, uploadedFile?.file || null);
+    if (result) {
+      toast.success("Request submitted successfully!");
+      setShowRequestModal(false);
+      setChangesSaved(false);
+      setChangeLog([]);
+      setUploadedFile(null);
+      setTempImageFile(null);
+      setHasChanges(false);
+    }
 
-  if (result) {
-    toast.success("Request submitted successfully!");
-
-    setShowRequestModal(false);
-    setChangesSaved(false);
-    setChangeLog([]);
-    setUploadedFile(null);
-    setTempImageFile(null);
-    setHasChanges(false);
+  } catch (err) {
+    toast.error("Request Failed!");
   }
+
+  setIsRequesting(false);  // 🔥 STOP LOADING
 };
 
 
@@ -517,11 +530,23 @@ const handleRequestConfirm = async () => {
                 Cancel
               </button>
               {changeLog.length > 0 && (
-                <button
+              <button
                   onClick={handleRequestConfirm}
-                  className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  disabled={isRequesting}
+                  className={`px-4 py-2 rounded flex items-center gap-2
+                  ${isRequesting
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-[#fdcc03] hover:bg-[#800000] hover:text-prim"
+                  } text-text`}
                 >
-                  Final Request
+                  {isRequesting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    "Final Request"
+                  )}
                 </button>
               )}
             </div>
