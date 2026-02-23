@@ -1,0 +1,441 @@
+[
+  {
+    "HOD": [
+      {
+        "Name": "Dr. VISU P",
+        "Designation": "Professor & Head",
+        "Department Name": "Artificial Intelligence and Data Science",
+        "Mail ID": "hodaids@velammal.edu.in",
+        "image_path": "/static/images/staff_profile_images/VEC-001-01-077.webp",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_browsemap&originalSubdomain=in",
+          "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authuser=2&hl=en&user=KfwgAmoAAAAJ&sortby=pubdate&authuser=2",
+          "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
+          "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
+          "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
+        },
+
+        "EDUCATIONAL_QUALIFICATION": [
+          {
+            "DEGREE": "Ph.D",
+            "BRANCH": "Computer Science and Engineering",
+            "INSTITUTE": "Vel Tech Rangarajan Dr.Sakunthala R&D\nInstitute of Science and Technology\n",
+            "YEAR": 2013
+          },
+          {
+            "DEGREE": "M.E",
+            "BRANCH": "Computer Science and Engineering",
+            "INSTITUTE": "Sathyabama Institute of Science and Technology ",
+            "YEAR": 2006
+          },
+          {
+            "DEGREE": "B.Tech",
+            "BRANCH": "Information Technology",
+            "INSTITUTE": "Priyadarshini Engineering College",
+            "YEAR": 2002
+          },
+          {
+            "DEGREE": "DEEE",
+            "BRANCH": "Electrical and Electronics Engineering",
+            "INSTITUTE": "Priyadarshini Polytecnic College",
+            "YEAR": 1999
+          }
+        ],
+
+        "EXPERIENCE": [
+          {
+            "INSTITUTION": "Velammal Engineering College",
+            "FROM": "02.12.2019",
+            "TO": "Present",
+            "DESIGNATION": "Professor"
+          },
+          {
+            "INSTITUTION": "Velammal Engineering College",
+            "FROM": "16.06.2016",
+            "TO": "01.12.2019",
+            "DESIGNATION": "Associate Professor"
+          },
+          {
+            "INSTITUTION": "Priyadarshini Engineering College",
+            "FROM": "03.02.2016",
+            "TO": "15.06.2016",
+            "DESIGNATION": "Associate Professor"
+          },
+          {
+            "INSTITUTION": "Vel Tech Rangarajan Dr.Sakunthala R&D Institute of Science and Technology",
+            "FROM": "26.08.2013",
+            "TO": "30.01.2016",
+            "DESIGNATION": "Associate Professor"
+          },
+          {
+            "INSTITUTION": "Vel Tech (Engineering College)",
+            "FROM": "03.01.2008",
+            "TO": "25.08.2013",
+            "DESIGNATION": "Assistant Professor"
+          },
+          {
+            "INSTITUTION": "Ganadipathy Tulsi's Jain Engineering College",
+            "FROM": "12.07.2006",
+            "TO": "31.12.2007",
+            "DESIGNATION": "Lecturer"
+          },
+          {
+            "INSTITUTION": "Sri Nandhanam College Engineering & Technology",
+            "FROM": "22.08.2002",
+            "TO": "11.07.2006",
+            "DESIGNATION": "Lecturer"
+          }
+        ],
+
+        "PROJECTS": [
+          {
+            "TITLE": "Combined Swarm Intelligence Routing Protocol for MANET",
+            "SPONSORING_AGENCY": "DST",
+            "AMOUNT": "Rs. 33,15,250",
+            "YEAR_OF_SANCTION": "2015",
+            "DURATION": "3 Years",
+            "RESPONSIBILITY": "PI",
+            "STATUS": "Completed"
+          },
+          {
+            "TITLE": "Criminal Face Detection Tool - Criminator",
+            "SPONSORING_AGENCY": "DST",
+            "AMOUNT": "Rs. 2,50,000",
+            "YEAR_OF_SANCTION": "2022",
+            "DURATION": "2 Years",
+            "RESPONSIBILITY": "PI",
+            "STATUS": "Completed"
+          },
+          {
+            "TITLE": "Workshop Grant",
+            "SPONSORING_AGENCY": "IEEE Madras Section",
+            "AMOUNT": "Rs. 8,950",
+            "YEAR_OF_SANCTION": "2022",
+            "DURATION": "1 Day",
+            "RESPONSIBILITY": "Organizer",
+            "STATUS": "Completed"
+          },
+          {
+            "TITLE": "Conference Grant",
+            "SPONSORING_AGENCY": "AICTE",
+            "AMOUNT": "Rs. 1,35,000",
+            "YEAR_OF_SANCTION": "2020",
+            "DURATION": "2 Days",
+            "RESPONSIBILITY": "Organizer",
+            "STATUS": "Completed"
+          },
+          {
+            "TITLE": "Prerana - Preparing SC/ST Students for Higher Education",
+            "SPONSORING_AGENCY": "AICTE",
+            "AMOUNT": "Rs. 8,20,000",
+            "YEAR_OF_SANCTION": "2019",
+            "DURATION": "2 Years",
+            "RESPONSIBILITY": "Organizer",
+            "STATUS": "Completed"
+          },
+          {
+            "TITLE": "Seminar Grant",
+            "SPONSORING_AGENCY": "IEEE Madras Section",
+            "AMOUNT": "Rs. 12,500",
+            "YEAR_OF_SANCTION": "2016",
+            "DURATION": "1 Day",
+            "RESPONSIBILITY": "Organizer",
+            "STATUS": "Completed"
+          }
+        ],
+
+        "PATENTS": [
+          {
+            "NAME_OF_PATENT": "IOT based Agriculture Crop Monitoring System Using Sensors ",
+            "PATENT_TYPE_(UTILITY)": "UTILITY",
+            "COUNTRY": "INDIA",
+            "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+            "DATE_OF_RECENT_ACHIEVED_LEVEL": "16.04.2021"
+          },
+          {
+            "NAME_OF_PATENT": "IoT based remote Intellient Healthcare System for the Detection and  Prevention of a Patient Health Monitoring ",
+            "PATENT_TYPE_(UTILITY)": "UTILITY",
+            "COUNTRY": "INDIA",
+            "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+            "DATE_OF_RECENT_ACHIEVED_LEVEL": "23.07.2021"
+          },
+          {
+            "NAME_OF_PATENT": "A smart application for Multi-Food Recognition using Machine learning",
+            "PATENT_TYPE_(UTILITY)": "UTILITY",
+            "COUNTRY": "INDIA",
+            "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+            "DATE_OF_RECENT_ACHIEVED_LEVEL": "30.07.2021"
+          },
+          {
+            "NAME_OF_PATENT": "Design system of Monitoring and Alert Management of Spy Tracker using artificial intelligence (VSaaS) for IoT",
+            "PATENT_TYPE_(UTILITY)": "UTILITY",
+            "COUNTRY": "INDIA",
+            "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+            "DATE_OF_RECENT_ACHIEVED_LEVEL": "11.02.2022"
+          },
+          {
+            "NAME_OF_PATENT": "System for Water Management Platform for Smart Irrigation using Cloud based- IoT\n",
+            "PATENT_TYPE_(UTILITY)": "UTILITY",
+            "COUNTRY": "INDIA",
+            "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+            "DATE_OF_RECENT_ACHIEVED_LEVEL": "03.09.2022"
+          },
+          {
+            "NAME_OF_PATENT": "A Novel method- Crop Health Monitoring System Using IoT and Machine Learning",
+            "PATENT_TYPE_(UTILITY)": "UTILITY",
+            "COUNTRY": "Australia",
+            "STATUS_(_Published_/_FER_/_Granted_)": "Granted",
+            "DATE_OF_RECENT_ACHIEVED_LEVEL": "08.12.2021"
+          }
+        ],
+
+        "JOURNAL_PUBLICATIONS": [
+          {
+            "AUTHORS": "Visu P, Sathiya V, Ajitha P, Surendran R",
+            "PAPER_TITLE": "Enhanced Swin Transformer Based Tuberculosis Classification with Segmentation using Chest X-ray",
+            "JOURNAL_NAME": "Journal of X-Ray Science and Technology",
+            "DOI": "https://doi.org/10.1177/08953996241300018",
+            "PAGES": "167-186",
+            "VOLUME_ISSUE": "33(1)",
+            "YEAR": 2025,
+            "INDEXED_IN": "SCI"
+          },
+          {
+            "AUTHORS": "V Yamuna, Jeevaa Katiravan, P Visu",
+            "PAPER_TITLE": "Advanced Pest Identification Framework Using Deep Learning and Feature Extraction Techniques",
+            "JOURNAL_NAME": "Journal of Electrical Engineering & Technology",
+            "DOI": "https://doi.org/10.1007/s42835-024-02111-3",
+            "PAGES": "1803-1814",
+            "VOLUME_ISSUE": "20(3)",
+            "YEAR": 2025,
+            "INDEXED_IN": "SCI"
+          },
+          {
+            "AUTHORS": "Visu P, Smitha PS, Pughazendi N, Murugananthan V",
+            "PAPER_TITLE": "Hybrid Deep Learning-Based Skin Cancer Classification with RPO-SegNet",
+            "JOURNAL_NAME": "Network: Computation in Neural Systems",
+            "DOI": "https://doi.org/10.1080/0954898X.2024.2428705",
+            "PAGES": null,
+            "VOLUME_ISSUE": null,
+            "YEAR": 2024,
+            "INDEXED_IN": "SCI"
+          },
+          {
+            "AUTHORS": "Visu P, Rajesh KM, Navaneethakrishnan SR, Subramanian P",
+            "PAPER_TITLE": "Air Pollution Prediction Using Attention Module with CNN-OptBiLSTM",
+            "JOURNAL_NAME": "Global Nest Journal",
+            "DOI": "10.30955/gnj.05823",
+            "PAGES": "5823",
+            "VOLUME_ISSUE": "26(6)",
+            "YEAR": 2024,
+            "INDEXED_IN": "SCI"
+          },
+          {
+            "AUTHORS": "Thivya Lakshmi RT, Katiravan J, Visu P",
+            "PAPER_TITLE": "CoDet: A Novel Deep Learning Pipeline for Cotton Plant Detection",
+            "JOURNAL_NAME": "Automatika",
+            "DOI": "10.1080/00051144.2024.2317093",
+            "PAGES": "662-674",
+            "VOLUME_ISSUE": "65(2)",
+            "YEAR": 2024,
+            "INDEXED_IN": "SCI"
+          },
+
+          {
+            "AUTHORS": "Visu P, Kannan E",
+            "PAPER_TITLE": "Combined Swarm Intelligence Routing Protocol for MANET",
+            "JOURNAL_NAME": "Information Technology Journal",
+            "DOI": "10.3923/itj.2013.791.797",
+            "PAGES": "791-797",
+            "VOLUME_ISSUE": "12(4)",
+            "YEAR": 2013,
+            "INDEXED_IN": "SCOPUS"
+          },
+          {
+            "AUTHORS": "Visu P, Koteeswaran S, Janet J",
+            "PAPER_TITLE": "Artificial Bee Colony Based Energy Aware Routing Protocol",
+            "JOURNAL_NAME": "Journal of Computer Science",
+            "DOI": "10.3844/jcssp.2012.227.231",
+            "PAGES": "227-231",
+            "VOLUME_ISSUE": "8(2)",
+            "YEAR": 2012,
+            "INDEXED_IN": "SCOPUS"
+          }
+        ],
+
+        "CONFERENCE_PUBLICATIONS": [
+          {
+            "AUTHORS": "Mohan, A., Chakkaravarthy, A.P., Partha Sarathy, G., Visu, P.",
+            "PAPER_TITLE": "Storing and securing the FIR using block-chain technology",
+            "CONFERENCE_NAME": "AIP Conference Proceedings",
+            "ORGANIZED_BY": "RESEARCH ADVANCEMENTS AND INNOVATIONS IN COMPUTING, COMMUNICATIONS AND INFORMATION TECHNOLOGIES: ICRAIC2IT",
+            "ISBN_/_ISSN_/DOI_NO": "10.1063/5.0148922",
+            "MONTH_&_YEAR": 2023
+          },
+          {
+            "AUTHORS": "Hamsini, R., Visu, P.",
+            "PAPER_TITLE": "A Survey on Power Consumption Indicator Using Machine Learning-Based Approach",
+            "CONFERENCE_NAME": "Lecture Notes in Electrical Engineering",
+            "ORGANIZED_BY": "springer - Computer Vision and Machine Intelligence Paradigms for SDGs ",
+            "ISBN_/_ISSN_/DOI_NO": "10.1007/978-981-19-7169-3_21",
+            "YEAR": 2023
+          },
+          {
+            "AUTHORS": "Chakaravarthi, S., Visu, P., Balu, B., Vineshwaran, V., Yakeshraj, M.",
+            "PAPER_TITLE": "Web service registration and routing system and inter web proxy service model prevents the message alteration attacks, man-in-the middle attacks",
+            "CONFERENCE_NAME": "2017 International Conference on Information Communication and Embedded Systems, ICICES 2017",
+            "ORGANIZED_BY": " IEEE explore",
+            "ISBN_/_ISSN_/DOI_NO": "10.1109/ICICES.2017.8070759",
+            "YEAR": 2017
+          },
+          {
+            "AUTHORS": "Veena, K., Visu, P.",
+            "PAPER_TITLE": "Detection of cyber crime: An approach using the lie detection technique and methods to solve it",
+            "CONFERENCE_NAME": "2016 International Conference on Information Communication and Embedded Systems, ICICES 2016",
+            "ORGANIZED_BY": " IEEE explore",
+            "ISBN_/_ISSN_/DOI_NO": "10.1109/ICICES.2016.7518885",
+            "YEAR": 2016
+          },
+          {
+            "AUTHORS": "Imran, S., Karthick, R.V., Visu, P.",
+            "PAPER_TITLE": "DD-SARP: Dynamic data secure Anonymous Routing Protocol for MANETs in attacking environments",
+            "CONFERENCE_NAME": "2015 International Conference on Smart Technologies and Management for Computing, Communication, Controls, Energy and Materials, ICSTM 2015 - Proceedings",
+            "ORGANIZED_BY": " IEEE explore",
+            "ISBN_/_ISSN_/DOI_NO": "10.1109/ICSTM.2015.7225388",
+            "YEAR": 2015
+          },
+          {
+            "AUTHORS": "Shetty, S., Devadiga, A.S., Sibi Chakkaravarthy, S., Varun Kumar, K.A., Kamalanaban, E., Visu, P.",
+            "PAPER_TITLE": "Optical character recognition for alphanumerical character verification in video frames",
+            "CONFERENCE_NAME": "Advances in Intelligent Systems and Computing",
+            "ORGANIZED_BY": "springer - Artificial Intelligence and Evolutionary Algorithms in Engineering Systems ",
+            "ISBN_/_ISSN_/DOI_NO": "10.1007/978-81-322-2126-5_10",
+            "YEAR": 2015
+          },
+          {
+            "AUTHORS": "Dharani, P., Chakkaravarthy, S.S., Ganesan, M., Kamalanaban, E., Visu, P., Patil, P.R., Mahesh, C.",
+            "PAPER_TITLE": "An unidentified location-based efficient routing protocol in vanet",
+            "CONFERENCE_NAME": "Advances in Intelligent Systems and Computing",
+            "ORGANIZED_BY": "springer - Artificial Intelligence and Evolutionary Algorithms in Engineering Systems ",
+            "ISBN_/_ISSN_/DOI_NO": "10.1007/978-81-322-2126-5_46",
+            "YEAR": 2015
+          },
+          {
+            "AUTHORS": "Visu, P., Chembian, W.T., Koteeswaran, S.",
+            "PAPER_TITLE": "Security in multicast mobile ad-hoc networks",
+            "CONFERENCE_NAME": "2009 1st International Conference on Advanced Computing, ICAC 2009",
+            "ORGANIZED_BY": " IEEE explore",
+            "ISBN_/_ISSN_/DOI_NO": "10.1109/ICADVC.2009.5378230",
+            "YEAR": 2009
+          }
+        ],
+
+        "BOOK_PUBLICATIONS": [
+          {
+            "AUTHOR": "Dr.P.Visu, R.Kavitha, P.V.Rajasuganya",
+            "BOOK_NAME_/_EDITION": "Foundations of Data Science",
+            "PUBLISHER": "Charulatha Publications",
+            "ISBN_/_ISSN_NO": "978-93-5577-894-9",
+            "YEAR": 2024,
+            "TYPE": "BOOK"
+          },
+          {
+            "AUTHOR": "Dr. R Kumar, Mr. J. Jegan Amarnath, Dr. P. Visu",
+            "BOOK_NAME_/_EDITION": "Advanced Machine Learning",
+            "PUBLISHER": "Notion Press Media Pvt Ltd",
+            "ISBN_/_ISSN_NO": "13:9781648998560",
+            "YEAR": 2020,
+            "TYPE": "BOOK"
+          },
+          {
+            "AUTHOR": "E.Kannan, E.Kamalanaban, P.Visu, and S.Koteeswaran ",
+            "BOOK_NAME_/_EDITION": "Computing fundamentals & Programming in C",
+            "PUBLISHER": "CENGAGE Learning, Delhi – 110092",
+            "ISBN_/_ISSN_NO": "978-81-315-2854-9",
+            "YEAR": 2015,
+            "TYPE": "BOOK"
+          },
+          {
+            "AUTHOR": "P.Visu, R.Srinivasan and S.Koteeswaran",
+            "BOOK_NAME_/_EDITION": "Introduction to Computing",
+            "PUBLISHER": "Sri Krishna Hitech Publishing Company Pvt. Ltd, Chennai ",
+            "ISBN_/_ISSN_NO": "978-93-80659-38-1",
+            "YEAR": 2013,
+            "TYPE": "BOOK"
+          },
+          {
+            "AUTHOR": "Jothikumar, R., Vijay Anand, R., Visu, P., Kumar, R., Susi, S., Kumar, K.R.",
+            "BOOK_NAME_/_EDITION": "Sentiment analysis of tweets on the COVID-19 pandemic using machine learning techniques",
+            "PUBLISHER": "Handbook of Research on Innovations and Applications of AI, IoT, and Cognitive Technologies",
+            "ISBN_/_ISSN_NO": "10.4018/978-1-7998-6870-5.ch021",
+            "YEAR": 2021,
+            "TYPE": "BOOK CHAPTER"
+          },
+          {
+            "AUTHOR": "Sabapathi, V., Visu, P., Varun Kumar, K.A.",
+            "BOOK_NAME_/_EDITION": "A hybrid cloud architecture for secure serviceâ€”measures against poodle vulnerability",
+            "PUBLISHER": "Advances in Intelligent Systems and Computing",
+            "ISBN_/_ISSN_NO": "10.1007/978-81-322-2674-1_67",
+            "YEAR": 2016,
+            "TYPE": "BOOK CHAPTER"
+          }
+        ],
+
+        "CONSULTANCY": [
+          {
+            "NAME": "",
+            "FUNDING_AGENT": "",
+            "AMOUNT": "",
+            "DURATION": "",
+            "OUTCOME": ""
+          }
+        ],
+
+        "RESEARCH_SCHOLARS": [
+          {
+            "RESEARCH_SCHOLAR_NAME": "Soniya Priyadarshini G",
+            "RESEARCH_TITLE": "A Novel Framework for Cloud Environment with Enhanced Energy Efficiency and Optimized Resource Utilization",
+            "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART TIME",
+            "STATUS_(_ONGOING_/_COMPLETED)": "COMPLETED",
+            "MONTH_&_YEAR_OF_DEGREE_AWARDED": 2019
+          },
+          {
+            "RESEARCH_SCHOLAR_NAME": "Selvarani P",
+            "RESEARCH_TITLE": "Secure and Privacy Enhanced Multimodal Biometric Based User Authentication in Cloud Paradigm",
+            "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART TIME",
+            "STATUS_(_ONGOING_/_COMPLETED)": "COMPLETED",
+            "MONTH_&_YEAR_OF_DEGREE_AWARDED": 2019
+          },
+          {
+            "RESEARCH_SCHOLAR_NAME": "Veena K",
+            "RESEARCH_TITLE": "Detection of Cybercrime using Conventional Methods and Machine Learning Techniques",
+            "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART TIME",
+            "STATUS_(_ONGOING_/_COMPLETED)": "COMPLETED",
+            "MONTH_&_YEAR_OF_DEGREE_AWARDED": 2020
+          }
+        ],
+
+        "COUNT": {
+          "Professional Membership": "IEEE, ACM, CSI, ISTE",
+          "Sponsored Projects": "5",
+          "Patent Granted": "1",
+          "Patent Published": "5",
+          "Patent Filed": "1",
+          "Journal Publications": "27",
+          "Conference Publications": "8",
+          "Book / Book Chapter Published": "6",
+          "Seminar / Workshop / Guest Lectures Delivered": "15",
+          "Seminar / Workshop / Guest Lectures Attended": "53",
+          "Conference / Seminar / Workshop / Guest Lectures Organized": "45",
+          "PHD Produced": "3",
+          "PHD Pursuing": "0"
+        }
+      }
+    ]
+  },
+
+  { "FACULTY": [{}, {}] },
+
+  { "NON_TEACHING_FACULTY": [{}, {}] }
+]

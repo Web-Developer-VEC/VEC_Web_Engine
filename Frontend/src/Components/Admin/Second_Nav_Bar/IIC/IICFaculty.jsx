@@ -118,11 +118,9 @@ function IICFaculty({ data }) {
     if (pendingRows) {
       // Restore the draft (pending changes)
       setRows(deepCopy(pendingRows));
-      toast.info("Cancelled edits. Draft preserved!");
     } else {
       // No draft, restore original committed data
       setRows(deepCopy(committedRows));
-      toast.info("Cancelled. Reverted to original data!");
     }
 
     setIsEditing(false);
@@ -147,7 +145,6 @@ function IICFaculty({ data }) {
     setIsDirty(false);
     setSelectedRows(new Set());
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -168,7 +165,6 @@ function IICFaculty({ data }) {
   const handleFinalRequestConfirm = async () => {
     const draft = pendingRows;
     if (!draft) {
-      toast.error("No draft to submit. Save changes first.");
       return;
     }
 
@@ -230,7 +226,6 @@ function IICFaculty({ data }) {
     }
 
     if (payload.length === 0) {
-      toast.info("No changes detected to submit.");
       setShowRequestModal(false);
       return;
     }
@@ -247,13 +242,9 @@ function IICFaculty({ data }) {
         setShowRequestModal(false);
         setIsEditing(false);
         setIsDirty(false);
-        toast.success("Final request submitted!");
-      } else {
-        toast.error("Request failed. Check console for details.");
       }
     } catch (err) {
       console.error("Final request error (faculty):", err);
-      toast.error("An error occurred while sending final request.");
     }
   };
 
@@ -677,10 +668,8 @@ const IICStudent = ({ data = [] }) => {
   const handleCancel = () => {
     if (pendingRows) {
       setRows(deepCopy(pendingRows));
-      toast.info("Cancelled edits. Draft preserved!");
     } else {
       setRows(deepCopy(committedRows));
-      toast.info("Cancelled. Reverted to original data!");
     }
 
     setIsEditing(false);
@@ -715,7 +704,6 @@ const IICStudent = ({ data = [] }) => {
     setIsDirty(false);
     setSelectedRows(new Set());
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -861,7 +849,6 @@ const IICStudent = ({ data = [] }) => {
     const payload = buildPayload();
     
     if (payload.length === 0) {
-      toast.error("No changes to submit!");
       return;
     }
 
@@ -876,10 +863,7 @@ const IICStudent = ({ data = [] }) => {
       setPendingRows(null);
       setIsSaved(false);
       setShowRequestModal(false);
-      toast.success("Final request submitted successfully!");
-    } else {
-      toast.error("Failed to submit request. Please check console for details.");
-    }
+     }
   };
 
   // Advanced change tracking with revert functionality
