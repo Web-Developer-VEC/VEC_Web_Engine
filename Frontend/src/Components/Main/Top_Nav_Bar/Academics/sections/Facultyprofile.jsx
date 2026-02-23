@@ -163,8 +163,8 @@ const ProfileSection = ({data}) => {
                 <p className="faculty-profile-designation">Department Of {data?.Department_Name}</p>
               </div>
               <div className='faculty-profile-contact'>
-                <p className='fac-contact'> <FaPhone style={{ marginRight: "8px" }} />Phone: </p>
-                <p className='fac-contact'> <FaEnvelope style={{ marginRight: "8px" }} />Email: </p>
+                {/* <p className='fac-contact'> <FaPhone style={{ marginRight: "8px" }} />Phone: {data?.Phone}</p> */}
+                <p className='fac-contact'> <FaEnvelope style={{ marginRight: "8px" }} />Email: {data?.Mail_ID}</p>
               </div>
               
             </div>
