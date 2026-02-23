@@ -112,11 +112,9 @@ export default function IicFacEvent({ title, data, collectionType }) {
   const handleCancel = () => {
     if (pendingRows) {
       setRows(deepCopy(pendingRows));
-      toast.info("Cancelled edits. Draft preserved!");
       setIsSaved(true);
     } else {
       setRows(deepCopy(committedRows));
-      toast.info("Cancelled. Reverted to original data!");
       setIsSaved(false);
     }
     setIsEditing(false);
@@ -144,7 +142,6 @@ export default function IicFacEvent({ title, data, collectionType }) {
     setIsDirty(false);
     setSelectedRows([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -241,7 +238,6 @@ export default function IicFacEvent({ title, data, collectionType }) {
     const payload = buildPayload();
     
     if (payload.length === 0) {
-      toast.error("No changes to submit!");
       return;
     }
 
@@ -256,10 +252,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
       setPendingRows(null);
       setIsSaved(false);
       setShowRequestModal(false);
-      toast.success("Final request submitted successfully!");
-    } else {
-      toast.error("Failed to submit request. Please check console for details.");
-    }
+    } 
   };
 
   const getChanges = () => {

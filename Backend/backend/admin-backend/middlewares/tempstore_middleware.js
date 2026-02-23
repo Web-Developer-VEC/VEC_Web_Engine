@@ -111,11 +111,56 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         );
 
 
-        let pdf_path = !skipPdfFor.includes(collection_type)
-          ? allFiles
-            .filter((f) => f.mimetype === "application/pdf")
-            .map((f) => f.location || `/${f.key}`)
-          : [];
+        let pdf_path = [];
+
+        if (action !== "delete" && !skipPdfFor.includes(collection_type)) {
+
+          // SPECIAL HANDLING ONLY FOR academic_calendar
+          if (collection_type === "academic_calendar") {
+
+            const originalPaths = original_data?.pdf_path || ["", ""];
+            const incomingPaths = meta_data?.pdf_path || ["", ""];
+            const uploadedFiles = (req.uploadedFiles || [])
+              .filter(f => f.mimetype === "application/pdf");
+
+            const finalPdfPaths = [originalPaths[0] || "", originalPaths[1] || ""];
+
+            for (let i = 0; i < 2; i++) {
+
+              const incoming = incomingPaths[i];
+              const original = originalPaths[i] || "";
+
+              if (incoming === undefined) {
+                finalPdfPaths[i] = original;
+              }
+              else if (incoming === "") {
+                finalPdfPaths[i] = "";
+              }
+              else if (incoming === original) {
+                finalPdfPaths[i] = original;
+              }
+              else {
+                const filename = incoming.split("/").pop();
+
+                const uploaded = uploadedFiles.find(f =>
+                  f.location.endsWith(filename)
+                );
+
+                finalPdfPaths[i] = uploaded ? uploaded.location : incoming;
+              }
+            }
+
+            pdf_path = finalPdfPaths;
+
+          } else {
+
+            // DEFAULT logic for all other collection types (unchanged)
+            pdf_path = allFiles
+              .filter((f) => f.mimetype === "application/pdf")
+              .map((f) => f.location || `/${f.key}`);
+
+          }
+        }
 
 
         let image_path = !skipImageFor.includes(collection_type)
