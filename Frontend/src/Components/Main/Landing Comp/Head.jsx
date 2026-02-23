@@ -98,7 +98,7 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "acadamic_cal" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/acadamiccal" },
               ],
         },
         {

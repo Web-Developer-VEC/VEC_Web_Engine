@@ -95,9 +95,14 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         // ✅ Use all uploaded files (no docIndex filter)
         const allFiles = req.uploadedFiles || [];
 
-        const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE",...(collectionName === "AIDS_001" ? ["research"] : [])];
+        const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE", ...(
+  ["AIDS_001","AUTO_002","CHEMISTRY_003","CIVIL_004","CSE_005","CSECS_006","EEE_007","EIE_008","ECE_009","ENGLISH_010","IT_011","MATHS_012","MECH_013","TAMIL_014","PHYSICS_015","MECSE_016","MBA_017","PS_018"].includes(collectionName)
+    ? ["research"]
+    : []
+)
+];
 
-        const skipImageFor = ["members","library_services","team", ...(collectionName === "ecell" ? ["gallery"] : [])]
+        const skipImageFor = ["members", "library_services", "team", ...(collectionName === "ecell" ? ["gallery"] : [])]
         const mainCollection = maindb.collection(collectionName);
 
         const existingDoc = await mainCollection.findOne(
@@ -106,11 +111,56 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         );
 
 
-        let pdf_path = !skipPdfFor.includes(collection_type)
-          ? allFiles
-            .filter((f) => f.mimetype === "application/pdf")
-            .map((f) => f.location || `/${f.key}`)
-          : [];
+        let pdf_path = [];
+
+        if (action !== "delete" && !skipPdfFor.includes(collection_type)) {
+
+          // SPECIAL HANDLING ONLY FOR academic_calendar
+          if (collection_type === "academic_calendar") {
+
+            const originalPaths = original_data?.pdf_path || ["", ""];
+            const incomingPaths = meta_data?.pdf_path || ["", ""];
+            const uploadedFiles = (req.uploadedFiles || [])
+              .filter(f => f.mimetype === "application/pdf");
+
+            const finalPdfPaths = [originalPaths[0] || "", originalPaths[1] || ""];
+
+            for (let i = 0; i < 2; i++) {
+
+              const incoming = incomingPaths[i];
+              const original = originalPaths[i] || "";
+
+              if (incoming === undefined) {
+                finalPdfPaths[i] = original;
+              }
+              else if (incoming === "") {
+                finalPdfPaths[i] = "";
+              }
+              else if (incoming === original) {
+                finalPdfPaths[i] = original;
+              }
+              else {
+                const filename = incoming.split("/").pop();
+
+                const uploaded = uploadedFiles.find(f =>
+                  f.location.endsWith(filename)
+                );
+
+                finalPdfPaths[i] = uploaded ? uploaded.location : incoming;
+              }
+            }
+
+            pdf_path = finalPdfPaths;
+
+          } else {
+
+            // DEFAULT logic for all other collection types (unchanged)
+            pdf_path = allFiles
+              .filter((f) => f.mimetype === "application/pdf")
+              .map((f) => f.location || `/${f.key}`);
+
+          }
+        }
 
 
         let image_path = !skipImageFor.includes(collection_type)
