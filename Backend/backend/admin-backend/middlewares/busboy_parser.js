@@ -2,9 +2,9 @@ const Busboy = require("busboy");
 const busboyModels = require("../models/busboymap_models");
 
 function tempstoreBusboy(req, res, next) {
-  
   if (
-    req.method !== "POST" || !req.headers["content-type"]?.includes("multipart/form-data")
+    req.method !== "POST" ||
+    !req.headers["content-type"]?.includes("multipart/form-data")
   ) {
     return next();
   }
@@ -24,7 +24,7 @@ function tempstoreBusboy(req, res, next) {
 
         if (!res.headersSent) {
           res.status(400).json({
-            error: "Invalid JSON format in docs"
+            error: "Invalid JSON format in docs",
           });
         }
 
@@ -41,24 +41,40 @@ function tempstoreBusboy(req, res, next) {
       return;
     }
 
-   const docs = req.docsFromBusboy || [];
-   const collectionName = docs[0]?.collectionName;
-   const section = docs[0]?.collection_type;  // since you said this holds type
+    const docs = req.docsFromBusboy || [];
+    const collectionName = docs[0]?.collectionName;
+    const section = docs[0]?.collection_type; // since you said this holds type
 
-   const handler = busboyModels[collectionName]?.[section];
+    const handler =
+      busboyModels[collectionName]?.[section] || busboyModels[collectionName];
+    if (!handler) {
+      throw new Error(`Handler not found. Collection is ${collectionName}`);
+    }
 
+    console.log("Handler check up", handler);
+    
 
     // Wrap handler in a promise so we can wait for it
     const uploadPromise = new Promise((resolve, reject) => {
-      handler(file, docs, req, (err) => {
-        if (err) {
-          console.error("Handler error:", err.message);
-          reject(err);
-        } else {
-          console.log("✅ Handler finished. Uploaded files so far:", req.uploadedFiles);
-          resolve();
-        }
-      }, filename, mimetype);
+      handler(
+        file,
+        docs,
+        req,
+        (err) => {
+          if (err) {
+            console.error("Handler error:", err.message);
+            reject(err);
+          } else {
+            console.log(
+              "✅ Handler finished. Uploaded files so far:",
+              req.uploadedFiles,
+            );
+            resolve();
+          }
+        },
+        filename,
+        mimetype,
+      );
     });
 
     req._fileUploadPromises.push(uploadPromise);
@@ -77,12 +93,13 @@ function tempstoreBusboy(req, res, next) {
       next();
     } catch (err) {
       console.error("Upload error:", err);
-      res.status(500).json({ error: "File upload failed", details: err.message });
+      res
+        .status(500)
+        .json({ error: "File upload failed", details: err.message });
     }
   });
 
   req.pipe(busboy);
 }
-
 
 module.exports = tempstoreBusboy;

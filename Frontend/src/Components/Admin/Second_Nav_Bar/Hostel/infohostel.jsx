@@ -233,7 +233,7 @@ const buildTimingsPayload = (original, updated) => {
     payloads.push({
       action: "update",
       collectionName: "hostel_details",
-      title: "Powerhouse",
+      title: "Update General Info",
       collection_type: "general_info",
       category: "Timings",
 
@@ -350,7 +350,7 @@ const buildMenuPayload = (original, updated) => {
     action: "update",
     collectionName: "hostel_details",
     category: "Menu",
-    title: "Powerhouse",
+    title: "Updated Menu",
     collection_type: "general_info",
     original_data: {
       day: origMenu.day || [],

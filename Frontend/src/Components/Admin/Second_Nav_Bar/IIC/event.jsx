@@ -112,11 +112,9 @@ export default function IicFacEvent({ title, data, collectionType }) {
   const handleCancel = () => {
     if (pendingRows) {
       setRows(deepCopy(pendingRows));
-      toast.info("Cancelled edits. Draft preserved!");
       setIsSaved(true);
     } else {
       setRows(deepCopy(committedRows));
-      toast.info("Cancelled. Reverted to original data!");
       setIsSaved(false);
     }
     setIsEditing(false);
@@ -144,7 +142,6 @@ export default function IicFacEvent({ title, data, collectionType }) {
     setIsDirty(false);
     setSelectedRows([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -241,7 +238,6 @@ export default function IicFacEvent({ title, data, collectionType }) {
     const payload = buildPayload();
     
     if (payload.length === 0) {
-      toast.error("No changes to submit!");
       return;
     }
 
@@ -256,10 +252,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
       setPendingRows(null);
       setIsSaved(false);
       setShowRequestModal(false);
-      toast.success("Final request submitted successfully!");
-    } else {
-      toast.error("Failed to submit request. Please check console for details.");
-    }
+    } 
   };
 
   const getChanges = () => {
@@ -421,7 +414,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
         {/* Header */}
         <div className="relative flex items-center justify-center mb-4">
           <h2 className="text-4xl text-brwn dark:text-drkt font-bold">{title}</h2>
-          {!isEditing && !isSaved && (
+          {!isEditing  && (
             <div className="absolute right-0">
               <button onClick={handleStartEdit} className="btn-edit">
                 <Pencil size={18} /> Edit

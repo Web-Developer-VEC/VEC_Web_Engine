@@ -35,7 +35,12 @@ const LIBHod = ({ data }) => {
   }, [data]);
 
   // ✅ detect if changed compared to original
-  const isChanged = JSON.stringify(formData) !== JSON.stringify(originalData);
+  const isImageChanged = hodPic !== null;
+
+const isChanged =
+  JSON.stringify(formData) !== JSON.stringify(originalData) ||
+  isImageChanged;
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,7 +75,8 @@ const LIBHod = ({ data }) => {
 
   // ✅ confirm final request
   const handleRequestConfirm = async () => {
-    const changes = detectChanges();
+    const changes = buildHodChangeList(formData, originalData);
+
 
     if (changes.length === 0) {
       toast.warn("No changes to submit");
@@ -114,26 +120,41 @@ const LIBHod = ({ data }) => {
       toast.error("❌ Failed to submit request");
     }
   };
-  const buildHodChangeList = (formData, originalData) => {
-    const fieldLabels = {
-      name: "Name",
-      designation: "Designation",
-      education_qualification: "Education Qualification",
-      message: "Message",
-      image_path: "Profile Image",
-    };
 
-    return Object.keys(fieldLabels)
-      .filter((key) => formData[key] !== originalData[key])
-      .map((key) => ({
-        key,
-        action: "Edit",
-        section: "Library HOD",
-        label: `${fieldLabels[key]}`,
-        oldValue: originalData[key],
-        newValue: formData[key],
-      }));
+  const buildHodChangeList = (formData, originalData) => {
+  const fieldLabels = {
+    name: "Name",
+    designation: "Designation",
+    education_qualification: "Education Qualification",
+    message: "Message",
   };
+
+  const changes = Object.keys(fieldLabels)
+    .filter((key) => formData[key] !== originalData[key])
+    .map((key) => ({
+      key,
+      action: "Edit",
+      section: "Library HOD",
+      label: fieldLabels[key],
+      oldValue: originalData[key],
+      newValue: formData[key],
+    }));
+
+  // ✅ manually detect image change
+  if (hodPic) {
+    changes.push({
+      key: "image_path",
+      action: "Edit",
+      section: "Library HOD",
+      label: "Profile Image",
+      oldValue: originalData.image_path,
+      newValue: hodPic.name,
+    });
+  }
+
+  return changes;
+};
+
 const newImagePath = hodPic
   ? `/static/images/library/hod/${hodPic.name}`
   : originalData.image_path;
@@ -155,7 +176,7 @@ const newImagePath = hodPic
   }
 
   return (
-    <article className="relative flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center font-[Poppins]">
+    <article className="relative flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center font-[Poppins] mt-6">
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* ✅ Edit Button */}
@@ -209,7 +230,7 @@ const newImagePath = hodPic
           <img
             className="w-auto h-60 rounded-lg"
             alt="Library HoD"
-            src={UrlParser(formData?.image_path)}
+            src={imagePreview || UrlParser(formData?.image_path)}
           />
         )}
       </div>
@@ -283,8 +304,11 @@ const newImagePath = hodPic
             <>
               <button
                 onClick={() => {
-                  setFormData(editBackup); // restore this session only
-                  setIsEditing(false);
+                setFormData(editBackup);
+                setHodPic(null);
+                setImagePreview(null);
+                setIsEditing(false);
+                toast.info("Changes reverted");
                 }}
                 className="px-4 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
               >

@@ -8,7 +8,7 @@ const { updateData } = require("../../../controllers/top_navbar/academics_contro
 const { deleteData } = require("../../../controllers/top_navbar/academics_controllers/vision_mission_controllers/vision_mission_delete_controllers");
 
 router.post(
-  "/visionmissionadmin",
+  "/visionandmissionadmin",
   checkRole(["super_admin"]),
   handleTempApproval,
   handleTempAction( insertData, updateData, deleteData)
