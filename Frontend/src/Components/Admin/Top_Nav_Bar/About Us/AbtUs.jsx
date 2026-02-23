@@ -34,7 +34,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
     file: null,
     error: "",
   });
-  const [selectedPdfs, setSelectedPdfs] = useState([]);
+  const [selectedPdfNames, setSelectedPdfNames] = useState([]); // Use names instead of indices
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showCancelConfirm, setShowCancelConfirm] = useState(false);
   const [showDiscardConfirm, setShowDiscardConfirm] = useState(false);
@@ -122,9 +122,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
   const makeSafeFileName = (file) => {
     if (!file) return "";
-    const ts = Date.now();
-    const name = file.name.replace(/\s+/g, "_");
-    return `${ts}_${name}`;
+    const name = file.name;
+    return `${name}`;
   };
 
   const normalizePdfLinksFromBackend = (data) => {
@@ -237,18 +236,17 @@ const AdminAbtUs = ({ theme, toggle }) => {
   };
 
   // selection delete
-  const toggleSelectPdf = (index) => {
-    setSelectedPdfs((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
+  const toggleSelectPdf = (pdfName) => {
+    setSelectedPdfNames((prev) => (prev.includes(pdfName) ? prev.filter((name) => name !== pdfName) : [...prev, pdfName]));
   };
 
   const handleDeleteSelected = () => setShowDeleteConfirm(true);
 
   const confirmDeleteSelected = () => {
-    // Defensive: stable deletion regardless of order
-    const selectedSet = new Set(selectedPdfs);
-    setPdfLinks((prev) => prev.filter((_, idx) => !selectedSet.has(idx)));
+    // Filter by name instead of index to avoid index-shifting issues
+    setPdfLinks((prev) => prev.filter((pdf) => !selectedPdfNames.includes(pdf.name)));
 
-    setSelectedPdfs([]);
+    setSelectedPdfNames([]);
     setChanged(true);
     setSavedChanges(false);
     setShowDeleteConfirm(false);
@@ -285,59 +283,71 @@ const AdminAbtUs = ({ theme, toggle }) => {
       }
     });
 
-    // pdfs - by index
+    // pdfs - by NAME (not by index, to avoid index-shifting issues)
+    // When you delete a PDF, remaining PDFs' indices shift, breaking index-based comparisons
+    // Solution: Use PDF name as unique identifier for comparison
     const basePdfs = Array.isArray(baseline.pdfLinks) ? baseline.pdfLinks : [];
     const currPdfs = Array.isArray(current.pdfLinks) ? current.pdfLinks : [];
-    const maxLen = Math.max(basePdfs.length, currPdfs.length);
-
-    for (let i = 0; i < maxLen; i++) {
-      const b = basePdfs[i] || null;
-      const c = currPdfs[i] || null;
+    
+    // Create maps by name for comparison
+    const baseMap = new Map(basePdfs.map((p) => [p.name, p]));
+    const currMap = new Map(currPdfs.map((p) => [p.name, p]));
+    
+    // Get all unique PDF names from both baseline and current
+    const allPdfNames = new Set([...baseMap.keys(), ...currMap.keys()]);
+    
+    allPdfNames.forEach((pdfName) => {
+      const b = baseMap.get(pdfName) || null;
+      const c = currMap.get(pdfName) || null;
 
       if (!b && c) {
+        // INSERT: new PDF added (only in current)
         rows.push({
-          key: `pdf-add-${i}-${c?.name || ""}`,
+          key: `pdf-add-${pdfName}`,
           action: "insert",
           section: "PDF Document",
-          changes: c?.name || `Document ${i + 1}`,
+          changes: c.name || "New Document",
           applyUndo: (curr) => {
             const next = deepClone(curr);
-            next.pdfLinks = (next.pdfLinks || []).filter((_, idx) => idx !== i);
+            next.pdfLinks = (next.pdfLinks || []).filter((p) => p.name !== pdfName);
             return next;
           },
         });
       } else if (b && !c) {
+        // DELETE: PDF removed (only in baseline)
         rows.push({
-          key: `pdf-del-${i}-${b?.name || ""}`,
+          key: `pdf-del-${pdfName}`,
           action: "delete",
           section: "PDF Document",
-          changes: b?.name || `Document ${i + 1}`,
+          changes: b.name || "Document",
           applyUndo: (curr) => {
             const next = deepClone(curr);
             const arr = Array.isArray(next.pdfLinks) ? [...next.pdfLinks] : [];
-            arr.splice(i, 0, deepClone(b));
+            arr.push(deepClone(b)); // Restore deleted PDF to end of array
             next.pdfLinks = arr;
             return next;
           },
         });
       } else if (b && c) {
+        // UPDATE: PDF exists in both but content may have changed
         if (pdfIdentity(b) !== pdfIdentity(c)) {
           rows.push({
-            key: `pdf-upd-${i}-${c?.name || ""}`,
+            key: `pdf-upd-${pdfName}`,
             action: "update",
             section: "PDF Document",
-            changes: c?.name || b?.name || `Document ${i + 1}`,
+            changes: c.name,
             applyUndo: (curr) => {
               const next = deepClone(curr);
               const arr = Array.isArray(next.pdfLinks) ? [...next.pdfLinks] : [];
-              arr[i] = deepClone(b);
+              const idx = arr.findIndex((p) => p.name === pdfName);
+              if (idx >= 0) arr[idx] = deepClone(b);
               next.pdfLinks = arr;
               return next;
             },
           });
         }
       }
-    }
+    })
 
     return rows;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -383,7 +393,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
       const newFile = newSnapshot?.images?.[i];
       if (newFile) {
         const safeName = makeSafeFileName(newFile);
-        newImagePaths[i] = `/static/images/about_us/${safeName}`;
+        newImagePaths[i] = `/static/images/about_vec/${safeName}`;
       } else {
         newImagePaths[i] = oldImagePaths?.[i] || "";
       }
@@ -392,7 +402,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
     const newPdfArray = (newSnapshot?.pdfLinks || []).map((pdf) => {
       if (pdf?.file instanceof File) {
         const safeName = makeSafeFileName(pdf.file);
-        return { name: pdf.name || "", pdf_path: `/static/pdfs/about_us/${safeName}` };
+        return { name: pdf.name || "", pdf_path: `/static/pdfs/about_vec/${safeName}` };
       }
       return { name: pdf.name || "", pdf_path: pdf.url || "" };
     });
@@ -429,6 +439,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
     const entries = [];
     const filesToSend = [];
 
+    // 1. Handle content changes
     if (JSON.stringify(oldBackend.content || []) !== JSON.stringify(newBackend.content || [])) {
       entries.push({
         collectionName: "about_us",
@@ -441,11 +452,14 @@ const AdminAbtUs = ({ theme, toggle }) => {
       });
     }
 
+    // 2. Handle image changes (each image as separate payload)
     for (let i = 0; i < 3; i++) {
       const newFile = newSnapshot.images?.[i];
       const oldPath = oldBackend.image_path?.[i] || "";
       const newPath = newBackend.image_path?.[i] || "";
+      
       if (newFile) {
+        // Image was replaced
         const safeName = makeSafeFileName(newFile);
         const renamed = new File([newFile], safeName, { type: newFile.type });
         filesToSend.push(renamed);
@@ -454,42 +468,51 @@ const AdminAbtUs = ({ theme, toggle }) => {
           collectionName: "about_us",
           collection_type: "about_vec",
           action: "update",
-          title: `Update About VEC Image ${i + 1}`,
-          category: "about_us",
-          meta_data: { image_path: newPath },
-          original_data: { image_path: oldPath },
+          title: `Update Image ${i + 1}`,
+          category: "image_path",
+          meta_data: { index: i, image_path: `/static/images/about_vec/${safeName}` },
+          original_data: { index: i, image_path: oldPath },
         });
       }
     }
 
+    // 3. Handle PDF changes - use NAME-based comparison (not index-based)
     const oldPdfList = oldBackend.about_us_pdf || [];
     const newPdfList = newBackend.about_us_pdf || [];
-    const maxLen = Math.max(oldPdfList.length, newPdfList.length);
-
-    for (let i = 0; i < maxLen; i++) {
-      const oldItem = oldPdfList[i] || null;
-      const newItem = newPdfList[i] || null;
-      const snapPdf = (newSnapshot.pdfLinks || [])[i] || null;
+    
+    // Create maps by name for comparison (same as requestRows)
+    const oldPdfMap = new Map(oldPdfList.map((p) => [p.name, p]));
+    const newPdfMap = new Map(newPdfList.map((p) => [p.name, p]));
+    
+    // Get all unique PDF names
+    const allPdfNames = new Set([...oldPdfMap.keys(), ...newPdfMap.keys()]);
+    
+    allPdfNames.forEach((pdfName) => {
+      const oldItem = oldPdfMap.get(pdfName) || null;
+      const newItem = newPdfMap.get(pdfName) || null;
+      const snapPdf = (newSnapshot.pdfLinks || []).find((p) => p.name === pdfName) || null;
 
       if (oldItem && !newItem) {
+        // PDF was deleted
         entries.push({
           collectionName: "about_us",
           collection_type: "about_vec",
           action: "delete",
-          title: `Delete About VEC PDF ${oldItem.name || i + 1}`,
+          title: `Delete PDF: ${oldItem.name}`,
           category: "about_us_pdf",
-          meta_data: { name: oldItem.name || "", pdf_path: "" },
-          original_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" },
+          meta_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" },
+          original_data: null,
         });
       } else if (!oldItem && newItem) {
+        // New PDF was added
         entries.push({
           collectionName: "about_us",
           collection_type: "about_vec",
           action: "insert",
-          title: `Add About VEC PDF ${newItem.name || i + 1}`,
+          title: `Add PDF: ${newItem.name}`,
           category: "about_us_pdf",
           meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
-          original_data: {},
+          original_data: null,
         });
 
         if (snapPdf?.file instanceof File) {
@@ -498,6 +521,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
           filesToSend.push(renamed);
         }
       } else if (oldItem && newItem) {
+        // PDF was updated
         const nameChanged = (oldItem.name || "") !== (newItem.name || "");
         const pathChanged = (oldItem.pdf_path || "") !== (newItem.pdf_path || "");
         const fileUploaded = snapPdf?.file instanceof File;
@@ -507,7 +531,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
             collectionName: "about_us",
             collection_type: "about_vec",
             action: "update",
-            title: `Update About VEC PDF ${newItem.name || i + 1}`,
+            title: `Update PDF: ${newItem.name}`,
             category: "about_us_pdf",
             meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
             original_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" },
@@ -520,7 +544,10 @@ const AdminAbtUs = ({ theme, toggle }) => {
           }
         }
       }
-    }
+    });
+    console.log("Entries:", entries);
+    console.log("Files:", filesToSend);
+    console.log("=== END DEBUG ===");
 
     return { entries, filesToSend };
   };
@@ -615,7 +642,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
     setEditSessionSnapshot(getCurrentSnapshot());
     setEditMode(true);
     setChanged(false);
-    setSelectedPdfs([]);
+    setSelectedPdfNames([]);
   };
 
   const handleCancel = () => {
@@ -623,6 +650,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
     else {
       setEditMode(false);
       setChanged(false);
+      setSelectedPdfNames([]);
     }
   };
 
@@ -636,7 +664,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
     setSavedChanges(true);
     setChanged(false);
     setEditMode(false);
-    setSelectedPdfs([]);
+    setSelectedPdfNames([]);
   };
 
   const handleDiscardAll = () => setShowDiscardConfirm(true);
@@ -667,7 +695,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
             {!editMode && (
               <button
                 onClick={handleEditClick}
-                className="absolute top-4 right-12 bg-secd hover:bg-yellow-500 font-semibold text-black px-3 py-2 rounded flex items-center gap-2"
+                className="absolute top-4 right-12 bg-[#fdcc03] hover:bg-[#800000] hover:text-white font-semibold text-black px-3 py-2 rounded flex items-center gap-2 transition"
               >
                 Edit
               </button>
@@ -714,6 +742,24 @@ const AdminAbtUs = ({ theme, toggle }) => {
                       alt={`Banner Image${i}`}
                       onLoad={() => setLoading((prev) => ({ ...prev, [`img${i + 1}`]: false }))}
                     />
+
+                    {editMode && (
+                      <label className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity cursor-pointer z-20">
+                        <span className="text-white text-center font-bold text-lg">Change Image</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => {
+                            if (e.target.files?.[0]) {
+                              setEditedImages((prev) => ({ ...prev, [i]: e.target.files[0] }));
+                              setChanged(true);
+                              setSavedChanges(false);
+                            }
+                          }}
+                          className="hidden"
+                        />
+                      </label>
+                    )}
                   </div>
                 ))}
               </div>
@@ -744,14 +790,14 @@ const AdminAbtUs = ({ theme, toggle }) => {
           <div className="m-2 p-2 font-[Poppins]">
             <div className="pdf-links grid grid-cols-1 md:grid-cols-1 md:flex flex-wrap justify-center gap-6 w-fit mx-auto text-left">
               {pdfLinks.map((pdf, index) => {
-                const hasSelection = selectedPdfs.length > 0;
-                const isSelected = selectedPdfs.includes(index);
+                const hasSelection = selectedPdfNames.length > 0;
+                const isSelected = selectedPdfNames.includes(pdf.name);
 
                 return (
                   // pdf conrtainer 
                   <div
                     key={index}
-                    className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd text-text hover:bg-accn hover:text-white ${
+                    className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white transition ${
                       editMode ? "scale-110" : ""
                     } ${editMode ? "cursor-pointer" : "cursor-pointer"} ${
                       editMode && isSelected ? "ring-2 ring-red-500" : ""
@@ -777,7 +823,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
                           checked={isSelected}
                           onChange={(e) => {
                             e.stopPropagation();
-                            toggleSelectPdf(index);
+                            toggleSelectPdf(pdf.name);
                           }}
                           className="custom-checkbox w-4 h-3"
                         />
@@ -805,7 +851,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
               {/* AISHE link */}
               <div
-                className={`relative cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-secd text-text hover:bg-accn hover:text-white ${
+                className={`relative cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white transition ${
                   editMode ? "scale-110" : ""
                 }`}
                 onClick={() => {
@@ -816,7 +862,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
               </div>
             </div>
 
-            {editMode && selectedPdfs.length > 0 && (
+            {editMode && selectedPdfNames.length > 0 && (
               <div className="flex justify-center mt-6">
                 <button
                   onClick={handleDeleteSelected}
@@ -833,7 +879,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
               <div className="flex justify-end gap-4 p-4 mr-5">
                 <button
                   onClick={handleCancel}
-                  className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded flex items-center gap-2 shadow-lg"
+                  className="bg-gray-400 hover:bg-gray-600 text-white px-4 py-2 rounded flex items-center gap-2 shadow-lg transition"
                 >
                   Cancel
                 </button>
@@ -841,7 +887,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 {changed && (
                   <button
                     onClick={handleSave}
-                    className="bg-secd hover:bg-yellow-500 text-black px-4 py-2 rounded flex items-center gap-2 shadow-lg"
+                    className="bg-[#fdcc03] hover:bg-[#800000] hover:text-white text-text px-4 py-2 rounded flex items-center gap-2 shadow-lg transition"
                   >
                     Save
                   </button>
@@ -853,14 +899,14 @@ const AdminAbtUs = ({ theme, toggle }) => {
               <div className="flex justify-end gap-4 p-4 mr-5">
                 <button
                   onClick={handleDiscardAll}
-                  className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded"
+                  className="bg-gray-400 hover:bg-gray-600 text-white px-4 py-2 rounded transition"
                   disabled={reqLoading}
                 >
                   Discard All Changes
                 </button>
                 <button
                   onClick={() => setShowRequestModal(true)}
-                  className="bg-secd hover:bg-yellow-500 text-black px-4 py-2 rounded"
+                  className="bg-[#fdcc03] hover:bg-[#800000] hover:text-white text-text px-4 py-2 rounded transition"
                   disabled={reqLoading}
                 >
                   Request
@@ -908,10 +954,10 @@ const AdminAbtUs = ({ theme, toggle }) => {
             {showPdfModal.error && <p className="text-red-600 text-sm mb-2">{showPdfModal.error}</p>}
 
             <div className="flex justify-end gap-3 w-full">
-              <button onClick={closePdfModal} className="px-3 py-1 bg-gray-400 text-white rounded">
+              <button onClick={closePdfModal} className="px-3 py-1 bg-gray-400 hover:bg-gray-600 text-white rounded transition">
                 Cancel
               </button>
-              <button onClick={savePdfModal} className="px-3 py-1 bg-secd text-black rounded">
+              <button onClick={savePdfModal} className="px-3 py-1 bg-[#fdcc03] hover:bg-[#800000] hover:text-white text-black rounded transition">
                 Save
               </button>
             </div>
@@ -963,15 +1009,15 @@ const AdminAbtUs = ({ theme, toggle }) => {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className={`px-4 py-2 rounded bg-gray-400 text-white ${reqLoading ? "cursor-not-allowed" : ""}`}
+                className={`px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition ${reqLoading ? "cursor-not-allowed" : ""}`}
                 disabled={reqLoading}
               >
                 Cancel
               </button>
               <button
                 onClick={confirmRequest}
-                className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${
-                  reqLoading ? "cursor-progress" : "hover:bg-[#800000]"
+                className={`px-4 py-2 rounded bg-[#fdcc03] hover:bg-[#800000] text-black hover:text-white transition ${
+                  reqLoading ? "cursor-progress" : ""
                 }`}
                 disabled={reqLoading}
               >
@@ -988,7 +1034,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
           <div className="bg-white p-6 rounded shadow-lg w-[380px]">
             <h3 className="text-lg font-bold mb-2">Delete selected PDFs?</h3>
             <p className="text-sm text-gray-600 mb-4">
-              This will remove {selectedPdfs.length} item(s) from the list (pending until Request).
+              This will remove {selectedPdfNames.length} item(s) from the list (pending until Request).
             </p>
             <div className="flex justify-end gap-2">
               <button
