@@ -305,7 +305,7 @@ const Activities = ({ data }) => {
 
       <div className="deptevent-intro flex justify-center items-center">
         <h1 className="deptevent-header text-brwn dark:text-drkt text-[Poppins] text-[16px] md:text-[24px]">
-          Department Activities
+          Activities
         </h1>
       </div>
 

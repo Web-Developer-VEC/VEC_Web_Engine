@@ -56,57 +56,34 @@ const Sportsfaculties = ({ data: initialData }) => {
     );
   };
   const trackChange = (index, field, value) => {
-    setFacultyData(prev => {
-      const updated = [...prev];
+  setFacultyData(prev => {
+    const updated = [...prev];
+    updated[index] = { ...updated[index], [field]: value };
+    const faculty = updated[index];
 
-      updated[index] = { ...updated[index], [field]: value };
-      const faculty = updated[index];
+    const original = originalData.find(o => o.id === faculty.id);
 
-      console.log("✏️ Editing faculty ID:", faculty.id);
+    setChangeList(prevChanges => {
+      let newChanges = [...prevChanges];
 
-      const original = originalData.find(o => o.id === faculty.id);
+      // 🟢 IF NEW FACULTY → update added entry
+      if (faculty.isNew) {
+        const existingIndex = newChanges.findIndex(
+          c => c.type === "added" && c.data.id === faculty.id
+        );
 
-      console.log("📦 Current faculty:", faculty);
-      console.log("🗂️ Original faculty:", original);
-
-      // 🔴 Block edit if already deleted
-      setChangeList(prevChanges => {
-        const existingAction = prevChanges.find(c => c.data.id === faculty.id);
-        if (existingAction?.type === "deleted") {
-          console.warn("⛔ Attempted edit on deleted card");
-          return prevChanges;
-        }
-        return prevChanges;
-      });
-
-      const isBackToOriginal =
-        original &&
-        faculty.name === original.name &&
-        faculty.qualification === original.qualification &&
-        faculty.designation === original.designation &&
-        faculty.image_path === original.image_path;
-
-      console.log("🔄 Back to original?", isBackToOriginal);
-
-      setChangeList(prevChanges => {
-        console.log("🧾 Before changeList:", prevChanges);
-
-        let newChanges = [...prevChanges];
-
-        // 🧹 Remove edited entry if fully reverted
-        if (isBackToOriginal) {
-          newChanges = newChanges.filter(
-            c => !(c.type === "edited" && c.data.id === faculty.id)
-          );
+        if (existingIndex >= 0) {
+          newChanges[existingIndex] = {
+            ...newChanges[existingIndex],
+            section: faculty.name || "New Faculty",
+            data: faculty
+          };
         }
 
-        console.log("🧾 After changeList:", newChanges);
         return newChanges;
-      });
+      }
 
-      // 🟡 NEW CARD → keep as added only
-      if (faculty.isNew) return updated;
-
+      // 🔵 EXISTING FACULTY EDIT
       const editedFields = {};
 
       ["name", "qualification", "designation", "image_path"].forEach(key => {
@@ -118,38 +95,36 @@ const Sportsfaculties = ({ data: initialData }) => {
         }
       });
 
-      setChangeList(prevChanges => {
-        const existingIndex = prevChanges.findIndex(
-          c => c.type === "edited" && c.data.id === faculty.id
-        );
+      const existingIndex = newChanges.findIndex(
+        c => c.type === "edited" && c.data.id === faculty.id
+      );
 
-        if (Object.keys(editedFields).length === 0) {
-          if (existingIndex >= 0) {
-            console.log("🧹 Removing stale edited record");
-            return prevChanges.filter((_, i) => i !== existingIndex);
-          }
-          return prevChanges;
-        }
-
-        const newChange = {
-          type: "edited",
-          section: faculty.name || "Faculty",
-          fields: editedFields,
-          data: faculty
-        };
-
+      if (Object.keys(editedFields).length === 0) {
         if (existingIndex >= 0) {
-          const next = [...prevChanges];
-          next[existingIndex] = newChange;
-          return next;
+          return newChanges.filter((_, i) => i !== existingIndex);
         }
+        return newChanges;
+      }
 
-        return [...prevChanges, newChange];
-      });
+      const newChange = {
+        type: "edited",
+        section: faculty.name || "Faculty",
+        fields: editedFields,
+        data: faculty
+      };
 
-      return updated;
+      if (existingIndex >= 0) {
+        newChanges[existingIndex] = newChange;
+        return newChanges;
+      }
+
+      return [...newChanges, newChange];
     });
-  };
+
+    return updated;
+  });
+};
+
 
 
 
@@ -175,13 +150,22 @@ const Sportsfaculties = ({ data: initialData }) => {
     });
 
     // 🧠 2) ALSO inject file into changeList immediately
-    setChangeList(prev =>
-      prev.map(change =>
-        change.data.id === facultyId
-          ? { ...change, data: { ...change.data, image_path: finalPath, image_file: file } }
-          : change
-      )
-    );
+    setChangeList(prev => {
+  return prev.map(change => {
+    if (change.data.id === facultyId) {
+      return {
+        ...change,
+        data: {
+          ...change.data,
+          image_path: finalPath,
+          image_file: file
+        }
+      };
+    }
+    return change;
+  });
+});
+
 
     // 🧠 3) Track path change
     trackChange(index, "image_path", finalPath);
