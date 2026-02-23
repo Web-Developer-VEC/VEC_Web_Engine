@@ -120,7 +120,6 @@ const IICContact = ({ data }) => {
   // Save as draft
   const handleSave = () => {
     if (!isDirty) {
-      toast.info("No changes to save!");
       return;
     }
     if (!validateContact(tempData)) return;
@@ -129,7 +128,6 @@ const IICContact = ({ data }) => {
     setIsSaved(true);
     setIsEditing(false);
     setIsDirty(false);
-    toast.success("Changes saved as draft!");
   };
 
   // Cancel edits (if draft exists, go back to draft; else revert to original)
@@ -157,7 +155,6 @@ const IICContact = ({ data }) => {
   // Open request modal; modalData is a copy of pendingData (draft) for UI manipulations
   const handleRequest = () => {
     if (!pendingData) {
-      toast.error("No draft to request. Save changes first.");
       return;
     }
     setModalData(deepCopy(pendingData));
@@ -176,7 +173,6 @@ const IICContact = ({ data }) => {
     });
     // Also update tempData if not editing (or keep UI in sync)
     setTempData((prev) => (prev ? { ...prev, [field]: originalData[field] } : prev));
-    toast.info(`${field} reverted to original value in draft.`);
   };
 
   // Delete draft completely (via delete modal)
@@ -185,7 +181,6 @@ const IICContact = ({ data }) => {
     setIsSaved(false);
     setTempData(deepCopy(originalData));
     setShowDeleteModal(false);
-    toast.info("Draft deleted!");
   };
 
   // Build payload exactly as your sample expects (single update item)
@@ -226,13 +221,11 @@ const IICContact = ({ data }) => {
   // Final Request: send payload with useAdminRequest
   const handleFinalRequestConfirm = async () => {
     if (!modalData) {
-      toast.error("No draft selected.");
       return;
     }
 
     const payload = buildPayload();
     if (!payload || payload.length === 0) {
-      toast.info("No changes to submit.");
       setShowRequestModal(false);
       return;
     }
@@ -250,15 +243,13 @@ const IICContact = ({ data }) => {
         setIsSaved(false);
         setShowRequestModal(false);
         setIsEditing(false);
-        toast.success("Final request submitted!");
       } else {
         const errMsg = (res && (res.message || res.error)) || "Request failed. Check console for details.";
         console.error("IICContact request response:", res);
-        toast.error(errMsg);
+        // toast.error(errMsg);
       }
     } catch (err) {
       console.error("IICContact request error:", err);
-      toast.error("Request failed. Check console for details.");
     }
   };
 

@@ -13,7 +13,7 @@ const { checkRole } = require('../../../middlewares/role_middleware');
 
 
 router.post(
-    '/deptresearchadmin',
+    '/researchadmin',
      checkRole(["super_admin"]),
      handleTempApproval,
      handleTempAction(insertData, updateData, deleteData)

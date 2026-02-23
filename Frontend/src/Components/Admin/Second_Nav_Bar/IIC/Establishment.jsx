@@ -179,11 +179,9 @@ function IicEst({ data }) {
   const handleCancel = () => {
     if (pendingItems) {
       setItems(deepCopy(pendingItems));
-      toast.info("Cancelled edits. Draft preserved!");
       setIsSaved(true);
     } else {
       setItems(deepCopy(committedItems));
-      toast.info("Cancelled. Reverted to original data!");
       setIsSaved(false);
     }
     setIsEditing(false);
@@ -218,7 +216,6 @@ function IicEst({ data }) {
     setIsSaved(true);
     setIsEditing(false);
     setIsDirty(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -269,7 +266,6 @@ function IicEst({ data }) {
   // Final request: send only categories that changed (build payloads as in your sample)
   const handleFinalRequestConfirm = async () => {
     if (!pendingItems) {
-      toast.error("No draft to submit. Save changes first.");
       return;
     }
 
@@ -303,7 +299,6 @@ function IicEst({ data }) {
     }
 
     if (payload.length === 0) {
-      toast.info("No changes detected to submit.");
       setShowRequestModal(false);
       return;
     }
@@ -327,13 +322,9 @@ function IicEst({ data }) {
         setShowRequestModal(false);
         setIsEditing(false);
         setIsDirty(false);
-        toast.success("Final request submitted!");
-      } else {
-        toast.error("Request failed. See console for details.");
       }
     } catch (err) {
       console.error("IIC establishment final request error:", err);
-      toast.error("An error occurred while sending final request.");
     }
   };
 

@@ -4,7 +4,8 @@ import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import "../../Second_Nav_Bar/Accredation/nirf.css";
 import { Pencil, Plus, Eye, Save, Trash2, Send } from "lucide-react";
-import { toast } from "react-toastify";
+import { toast,ToastContainer } from "react-toastify";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminAcadamiccal = ({ toggle, theme }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -14,10 +15,11 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [changes, setChanges] = useState([]);
+  const { sendRequest, loading, error } = useAdminRequest();
 
+  
   // ✅ For deletion
   const [selected, setSelected] = useState([]);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -55,11 +57,11 @@ const getChanges = () => {
         });
       }
 
-      if (item.oddFile) {
+      if (item.oddFile || item.oddRemoved) {
         changes.push({ type: "odd", year: item.year });
       }
 
-      if (item.evenFile) {
+      if (item.evenFile || item.evenRemoved) {
         changes.push({ type: "even", year: item.year });
       }
     }
@@ -162,9 +164,11 @@ setOriginalData(JSON.parse(JSON.stringify(withUid)));
     if (type === "odd") {
       updated[i].oddFile = file;
       updated[i].oddPreview = fakePath;
+      updated[i].oddRemoved = false;
     } else if (type === "even") {
       updated[i].evenFile = file;
       updated[i].evenPreview = fakePath;
+      updated[i].evenRemoved = false;
     }
 
     setEditedData(updated);
@@ -196,21 +200,131 @@ setOriginalData(JSON.parse(JSON.stringify(withUid)));
     setHasChanges(false);
     setChanges([]);
   };
+const buildPayload = () => {
+  const payload = [];
+  const files = [];
+
+  const origMap = new Map(originalData.map(r => [r.__uid, r]));
+  const editMap = new Map(editedData.map(r => [r.__uid, r]));
+
+  editedData.forEach((item) => {
+    const orig = origMap.get(item.__uid);
+
+    let newPdfPaths = [...(orig?.pdf_path || ["", ""])];
+
+    // Ensure array always has 2 slots
+    if (newPdfPaths.length < 2) {
+      newPdfPaths = [newPdfPaths[0] || "", newPdfPaths[1] || ""];
+    }
+
+    // ---------- ODD FILE ----------
+    if (item.oddFile) {
+      newPdfPaths[0] =
+        `/static/pdfs/academic_calendar/${item.oddFile.name}`;
+      files.push(item.oddFile);
+    } else if (item.oddRemoved) {
+      newPdfPaths[0] = "";
+    }
+
+    // ---------- EVEN FILE ----------
+    if (item.evenFile) {
+      newPdfPaths[1] =
+        `/static/pdfs/academic_calendar/${item.evenFile.name}`;
+      files.push(item.evenFile);
+    } else if (item.evenRemoved) {
+      newPdfPaths[1] = "";
+    }
+
+    // ---------- INSERT ----------
+    if (!orig) {
+      payload.push({
+        collectionName: "academics",
+        collection_type: "academic_calendar",
+        action: "insert",
+        title: "insert academic calendar",
+        meta_data: {
+          year: item.year,
+          pdf_path: newPdfPaths
+        }
+      });
+      return;
+    }
+
+    // ---------- UPDATE ----------
+    if (
+      orig.year !== item.year ||
+      item.oddFile ||
+      item.evenFile ||
+      item.oddRemoved ||
+      item.evenRemoved
+    ) {
+      payload.push({
+        collectionName: "academics",
+        collection_type: "academic_calendar",
+        action: "update",
+        title: "update academic calendar",
+        meta_data: {
+          year: item.year,
+          pdf_path: newPdfPaths
+        },
+        original_data: {
+          year: orig.year,
+          pdf_path: orig.pdf_path || []
+        }
+      });
+    }
+  });
+
+  // ---------- DELETE ----------
+  originalData.forEach((item) => {
+    if (!editMap.has(item.__uid)) {
+      payload.push({
+        collectionName: "academics",
+        collection_type: "academic_calendar",
+        action: "delete",
+        title: "delete academic year",
+        meta_data: {
+          year: item.year
+        }
+      });
+    }
+  });
+
+  return { payload, files };
+};
+
+
 
   // Handle final request from modal
-  const handleRequestConfirm = async () => {
+const handleRequestConfirm = async () => {
+  const { payload, files } = buildPayload();
+
+  if (!payload.length) {
+    toast.error("No changes to submit!");
+    return;
+  }
+console.log("payload",payload);
+console.log("Files",files);
+
+  try {
+    await sendRequest(payload, files);
+
     toast.success("Request sent successfully!");
     setShowRequestModal(false);
 
-    // ✅ Reset all states so Edit button is available again
     setChanges([]);
     setIsSaved(false);
     setHasChanges(false);
     setIsEditing(false);
 
-    // ✅ Refetch fresh data from backend
     await fetchData();
-  };
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to send request");
+  }
+};
+
+
 
   // ✅ Toggle checkbox selection
   const toggleSelect = (i) => {
@@ -243,7 +357,7 @@ const handleDeleteSelected = () => {
         headerText="ACADEMIC CALENDAR"
         subHeaderText="Ensuring academic clarity and structured timelines for efficient learning."
       />
-
+<ToastContainer position="bottom-right" autoClose={3000} />
       {academicCal ? (
         <div className="nirf-page relative">
           {/* ✅ Edit Button always visible when not editing */}
@@ -254,7 +368,7 @@ const handleDeleteSelected = () => {
                   setIsEditing(true);
                   setIsSaved(false);
                 }}
-                className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-text font-medium rounded-xl shadow-md hover:bg-[#800000] hover:text-prim hover:shadow-lg active:scale-95 transition-all duration-200"
+                className="flex items-center mr-4 gap-2 px-3 py-2 bg-[#FDCC03] text-text font-medium rounded-xl shadow-md hover:bg-[#800000] hover:text-prim hover:shadow-lg active:scale-95 transition-all duration-200"
               >
                 <Pencil size={18} />
                 <span>Edit</span>
@@ -272,10 +386,13 @@ const handleDeleteSelected = () => {
               {editedData?.map((item, i) => {
                 const oddPath =
                   item.oddPreview ||
-                  item.pdf_path?.find((p) => p.toLowerCase().includes("odd"));
+                  item.pdf_path?.[0] ||
+                  "";
+
                 const evenPath =
                   item.evenPreview ||
-                  item.pdf_path?.find((p) => p.toLowerCase().includes("even"));
+                  item.pdf_path?.[1] ||
+                  "";
 
                 return (
                   <div
@@ -309,6 +426,10 @@ const handleDeleteSelected = () => {
                       {isEditing && (
                         <>
                           {/* Odd Sem */}
+                            <div className="flex flex-col items-center space-y-3 text-blue-600 mt-4">
+                      {isEditing && (
+                        <>
+                          {/* Odd Sem */}
                           <div className="flex items-center gap-3">
                             <span className="text-black dark:text-white">
                               Odd Sem
@@ -329,14 +450,31 @@ const handleDeleteSelected = () => {
                               {oddPath ? "Replace" : "Upload"}
                             </label>
                             {oddPath && (
-                              <button
-                                onClick={() =>
-                                  window.open(UrlParser(oddPath), "_blank")
-                                }
-                                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-                              >
-                                <Eye size={18} />
-                              </button>
+                              <>
+                                <button
+                                  onClick={() =>
+                                    window.open(UrlParser(oddPath), "_blank")
+                                  }
+                                  className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                                >
+                                  <Eye size={18} />
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    const updated = [...editedData];
+                                    updated[i].oddFile = null;
+                                    updated[i].oddPreview = null;
+                                    updated[i].pdf_path[0] = "";
+                                    updated[i].oddRemoved = true;
+                                    updated[i].evenRemoved = updated[i].evenRemoved || false;
+                                    setEditedData(updated);
+                                    setHasChanges(true);
+                                  }}
+                                  className="p-2 rounded-full hover:bg-red-200 dark:hover:bg-red-900 transition"
+                                >
+                                  <Trash2 size={18} className="text-red-600" />
+                                </button>
+                              </>
                             )}
                           </div>
 
@@ -361,16 +499,61 @@ const handleDeleteSelected = () => {
                               {evenPath ? "Replace" : "Upload"}
                             </label>
                             {evenPath && (
-                              <button
-                                onClick={() =>
-                                  window.open(UrlParser(evenPath), "_blank")
-                                }
-                                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-                              >
-                                <Eye size={18} />
-                              </button>
+                              <>
+                                <button
+                                  onClick={() =>
+                                    window.open(UrlParser(evenPath), "_blank")
+                                  }
+                                  className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                                >
+                                  <Eye size={18} />
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    const updated = [...editedData];
+                                    updated[i].evenFile = null;
+                                    updated[i].evenPreview = null;
+                                    updated[i].pdf_path[1] = "";
+                                    updated[i].evenRemoved = true;
+                                    updated[i].oddRemoved = updated[i].oddRemoved || false;
+                                    setEditedData(updated);
+                                    setHasChanges(true);
+                                  }}
+                                  className="p-2 rounded-full hover:bg-red-200 dark:hover:bg-red-900 transition"
+                                >
+                                  <Trash2 size={18} className="text-red-600" />
+                                </button>
+                              </>
                             )}
                           </div>
+                        </>
+                      )}
+
+                      {!isEditing && (
+                        <>
+                          {oddPath && (
+                            <a
+                              href={UrlParser(oddPath)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-blue-800 dark:text-drka"
+                            >
+                              Odd Sem
+                            </a>
+                          )}
+                          {evenPath && (
+                            <a
+                              href={UrlParser(evenPath)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-blue-800 dark:text-drka"
+                            >
+                              Even Sem
+                            </a>
+                          )}
+                        </>
+                      )}
+                    </div>
                         </>
                       )}
 
@@ -408,7 +591,10 @@ const handleDeleteSelected = () => {
                   onClick={() =>
                     setEditedData([
                       ...editedData,
-                      { year: "New Year", pdf_path: [] },
+                      {
+                        year: "New Year",
+                        pdf_path: ["", ""]
+                      }
                     ])
                   }
                   className="border-2 border-dashed border-gray-400 flex items-center justify-center p-6 rounded-lg cursor-pointer hover:border-yellow-500 transition"
@@ -447,7 +633,7 @@ const handleDeleteSelected = () => {
               setHasChanges(false);
               setChanges([]);
             }}
-            className="px-5 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
+            className="px-3 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
           >
             Cancel
           </button>
@@ -457,7 +643,7 @@ const handleDeleteSelected = () => {
           {hasChanges && (
             <button
               onClick={handleGlobalSave}
-              className="flex items-center gap-2 px-5 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
+              className="flex items-center gap-2 px-3  mr-4 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
             >
               <Save size={18} />
               <span>Save</span>
@@ -477,7 +663,7 @@ const handleDeleteSelected = () => {
           </button>
           <button
             onClick={() => setShowRequestModal(true)}
-            className="flex items-center gap-2 px-5 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
+            className="flex items-center gap-2 px-5 py-2 mr-4 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
           >
             <Send size={18} />
             Request
@@ -568,15 +754,11 @@ const handleDeleteSelected = () => {
                               } else if (change.type === "odd") {
                                 updated[change.index].oddFile = null;
                                 updated[change.index].oddPreview =
-                                  orig.pdf_path?.find((p) =>
-                                    p.toLowerCase().includes("odd")
-                                  ) || null;
+                                  orig.pdf_path?.[0] || null
                               } else if (change.type === "even") {
                                 updated[change.index].evenFile = null;
                                 updated[change.index].evenPreview =
-                                  orig.pdf_path?.find((p) =>
-                                    p.toLowerCase().includes("even")
-                                  ) || null;
+                                  orig.pdf_path?.[1] || null
                               }
                             } else {
                               updated.splice(change.index, 1);

@@ -6,6 +6,7 @@ import "./AbtYr.css";
 import axios from "axios";
 import AisheSideNav from "./aishe_nav";
 import { useAdminRequest } from "../../../hooks/useAdminRequest"; // ✅ adjust path if needed
+import { toast, ToastContainer } from "react-toastify";
 
 const FALLBACK_DEFAULT_BTNS = [
   "Certificate",
@@ -77,7 +78,7 @@ const AdminAishe = ({ toggle, theme }) => {
   const [previewPdfUrl, setPreviewPdfUrl] = useState(null);
   const [pdfModalChanged, setPdfModalChanged] = useState(false);
 
-  const [selectedPdfs, setSelectedPdfs] = useState([]);
+  const [selectedPdfNames, setSelectedPdfNames] = useState([]); // Use names instead of indices
   const [showPdfDeleteConfirm, setShowPdfDeleteConfirm] = useState(false);
 
   // Change tracking
@@ -152,7 +153,7 @@ const AdminAishe = ({ toggle, theme }) => {
     setEditMode(false);
     setChanged(false);
     setSavedChanges(false);
-    setSelectedPdfs([]);
+    setSelectedPdfNames([]);
     setEditSessionSnapshot(null);
     setPostSaveSnapshot(null);
     setPendingBaselineSnapshot(null);
@@ -180,30 +181,43 @@ const AdminAishe = ({ toggle, theme }) => {
       return map;
     };
 
-    // Year inserts
+    // Year inserts - send all default buttons together
     currArr.forEach((y) => {
       if (!y?.category) return;
       if (baseMap.has(y.category)) return;
 
-      (Array.isArray(y.content) ? y.content : []).forEach((entry) => {
+      // New year inserted - collect all buttons with their states
+      const btns = getDefaultBtns();
+      const allButtonsData = [];
+      const yearContent = Array.isArray(y.content) ? y.content : [];
+      
+      btns.forEach((btnName) => {
+        const entry = yearContent.find((c) => c.name === btnName);
         const hasPdf = entryPdfIdentity(entry) !== "empty";
-        if (!hasPdf) return;
+        
+        if (!hasPdf) {
+          allButtonsData.push({ name: btnName, pdf_path: "" });
+        } else {
+          const isFile = entry?.file instanceof File;
+          const pdf_path = isFile
+            ? `uploads/${y.category}/${entry?.file.name}`
+            : entry?.pdf_path || "";
+          
+          allButtonsData.push({ name: btnName, pdf_path });
+          if (isFile) files.push(entry.file);
+        }
+      });
 
-        const isFile = entry?.file instanceof File;
-        const pdf_path = isFile
-          ? `uploads/${y.category}/${entry.name}.pdf`
-          : entry?.pdf_path || "";
-
-        docs.push({
-          collectionName: "about_us",
-          collection_type: "AISHE",
-          action: "insert",
-          title: `Insert AISHE ${entry.name} ${y.category}`,
+      docs.push({
+        collectionName: "about_us",
+        collection_type: "AISHE",
+        action: "insert",
+        title: `Insert Year ${y.category}`,
+        category: y.category,
+        meta_data: {
           category: y.category,
-          meta_data: { name: entry.name, pdf_path },
-        });
-
-        if (isFile) files.push(entry.file);
+          content: allButtonsData,
+        },
       });
     });
 
@@ -246,21 +260,34 @@ const AdminAishe = ({ toggle, theme }) => {
         const newId = entryPdfIdentity(newEntry);
 
         if (oldId === "empty" && newId !== "empty") {
-          const isFile = newEntry?.file instanceof File;
-          const pdf_path = isFile
-            ? `uploads/${y.category}/${name}.pdf`
-            : newEntry?.pdf_path || "";
+          // INSERT: A PDF is being uploaded for a previously empty button
+          // Send ALL default buttons with their current states
+          const btns = getDefaultBtns();
+          const allButtonsData = btns.map((btnName) => {
+            const btnEntry = newEntries.get(btnName);
+            const btnId = entryPdfIdentity(btnEntry);
+            
+            if (btnId === "empty") {
+              return { name: btnName, pdf_path: "" };
+            }
+            
+            const isFile = btnEntry?.file instanceof File;
+            const pdf_path = isFile
+              ? `uploads/${y.category}/${btnEntry?.file.name}`
+              : btnEntry?.pdf_path || "";
+            
+            if (isFile) files.push(btnEntry.file);
+            return { name: btnName, pdf_path };
+          });
 
           docs.push({
             collectionName: "about_us",
             collection_type: "AISHE",
             action: "insert",
-            title: `Insert AISHE ${name} ${y.category}`,
+            title: `Insert AISHE PDFs for ${y.category}`,
             category: y.category,
-            meta_data: { name, pdf_path },
+            meta_data: allButtonsData,
           });
-
-          if (isFile) files.push(newEntry.file);
           return;
         }
 
@@ -279,7 +306,7 @@ const AdminAishe = ({ toggle, theme }) => {
         if (oldId !== "empty" && newId !== "empty" && oldId !== newId) {
           const isFile = newEntry?.file instanceof File;
           const new_pdf_path = isFile
-            ? `uploads/${y.category}/${name}.pdf`
+            ? `uploads/${y.category}/${newEntry?.file.name}`
             : newEntry?.pdf_path || "";
 
           docs.push({
@@ -315,7 +342,7 @@ const AdminAishe = ({ toggle, theme }) => {
         setEditMode(false);
         setChanged(false);
         setSavedChanges(false);
-        setSelectedPdfs([]);
+        setSelectedPdfNames([]);
         setEditSessionSnapshot(null);
         setPostSaveSnapshot(null);
         setPendingBaselineSnapshot(null);
@@ -506,14 +533,14 @@ const AdminAishe = ({ toggle, theme }) => {
     setEditSessionSnapshot(deepClone(aboutYearData));
     setEditMode(true);
     setChanged(false);
-    setSelectedPdfs([]);
+    setSelectedPdfNames([]);
   };
 
   const handleCancel = () => {
     if (changed) setShowCancelConfirm(true);
     else {
       setEditMode(false);
-      setSelectedPdfs([]);
+      setSelectedPdfNames([]);
       setChanged(false);
     }
   };
@@ -532,7 +559,7 @@ const AdminAishe = ({ toggle, theme }) => {
 
     setChanged(false);
     setEditMode(false);
-    setSelectedPdfs([]);
+    setSelectedPdfNames([]);
     setShowCancelConfirm(false);
   };
 
@@ -545,7 +572,7 @@ const AdminAishe = ({ toggle, theme }) => {
     setSavedChanges(true);
     setChanged(false);
     setEditMode(false);
-    setSelectedPdfs([]);
+    setSelectedPdfNames([]);
   };
 
   const handleDiscardAll = () => setShowDiscardConfirm(true);
@@ -579,6 +606,7 @@ const AdminAishe = ({ toggle, theme }) => {
     setShowYearModal(false);
     setNewYear("");
     setAbtyear(year);
+    setSelectedPdfNames([]);
   };
 
   const openYearDeleteConfirm = (year) => {
@@ -711,9 +739,9 @@ const AdminAishe = ({ toggle, theme }) => {
   };
 
   // --------- selection delete ---------
-  const toggleSelectPdf = (pdfIdx) => {
-    setSelectedPdfs((prev) =>
-      prev.includes(pdfIdx) ? prev.filter((i) => i !== pdfIdx) : [...prev, pdfIdx]
+  const toggleSelectPdf = (pdfName) => {
+    setSelectedPdfNames((prev) =>
+      prev.includes(pdfName) ? prev.filter((n) => n !== pdfName) : [...prev, pdfName]
     );
   };
 
@@ -732,16 +760,18 @@ const AdminAishe = ({ toggle, theme }) => {
       y.content.length === btns.length && y.content.every((c) => btns.includes(c.name));
 
     if (isDefaultFormat) {
-      y.content = y.content.map((c, idx) => {
-        if (!selectedPdfs.includes(idx)) return c;
+      // For default format: clear pdf_path and file instead of removing
+      y.content = y.content.map((c) => {
+        if (!selectedPdfNames.includes(c.name)) return c;
         return { ...c, pdf_path: "", file: null };
       });
     } else {
-      y.content = y.content.filter((_, idx) => !selectedPdfs.includes(idx));
+      // For custom format: filter by name instead of index
+      y.content = y.content.filter((c) => !selectedPdfNames.includes(c.name));
     }
 
     setAboutYearData(newData);
-    setSelectedPdfs([]);
+    setSelectedPdfNames([]);
     setChanged(true);
     setSavedChanges(false);
     setShowPdfDeleteConfirm(false);
@@ -879,6 +909,9 @@ const AdminAishe = ({ toggle, theme }) => {
 
       const { docs, files } = buildAisheRequestPayload(baseline, current);
 
+      console.log(docs, files);
+      
+
       if (!docs.length) {
         setConfirmPopup(false);
         return;
@@ -920,7 +953,7 @@ const AdminAishe = ({ toggle, theme }) => {
 
     const actionButtons = (
       <div className="w-full">
-        {editMode && selectedPdfs.length > 0 && (
+        {editMode && selectedPdfNames.length > 0 && (
           <div className="flex justify-center mt-6">
             <button
               onClick={openPdfDeleteConfirm}
@@ -985,17 +1018,17 @@ const AdminAishe = ({ toggle, theme }) => {
             <div className="btn-yr text-black flex flex-wrap justify-center gap-2">
               {yearData.content.map((btnEntry, idx) => {
                 const hasPdf = entryPdfIdentity(btnEntry) !== "empty";
-                const isSelected = selectedPdfs.includes(idx);
+                const isSelected = selectedPdfNames.includes(btnEntry.name);
 
                 return (
                   <div key={btnEntry.name} className="relative flex items-center">
                     {editMode && (
                       <input
                         type="checkbox"
-                        checked={isSelected}
+                        checked={selectedPdfNames.includes(btnEntry.name)}
                         onChange={(e) => {
                           e.stopPropagation();
-                          toggleSelectPdf(idx);
+                          toggleSelectPdf(btnEntry.name);
                         }}
                         className="custom-checkbox w-3 h-3 absolute top-1 right-1 z-10"
                         style={{ position: "absolute" }}
@@ -1058,10 +1091,10 @@ const AdminAishe = ({ toggle, theme }) => {
                 {editMode && (
                   <input
                     type="checkbox"
-                    checked={selectedPdfs.includes(index)}
+                    checked={selectedPdfNames.includes(entry.name)}
                     onChange={(e) => {
                       e.stopPropagation();
-                      toggleSelectPdf(index);
+                      toggleSelectPdf(entry.name);
                     }}
                     className="custom-checkbox w-3 h-3 absolute top-1 right-1 z-10"
                     style={{ position: "absolute" }}
@@ -1100,7 +1133,7 @@ const AdminAishe = ({ toggle, theme }) => {
       return acc;
     }, {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aboutYearData, editMode, selectedPdfs, changed, savedChanges, defaultButtons, hasPendingChanges]);
+  }, [aboutYearData, editMode, selectedPdfNames, changed, savedChanges, defaultButtons, hasPendingChanges]);
 
   const sideNavExtra = (
     <div className="flex gap-2 items-center absolute top-4 right-10 z-20">
@@ -1124,6 +1157,7 @@ const AdminAishe = ({ toggle, theme }) => {
         headerText="AISHE"
         subHeaderText="A center for academic excellence and innovation, nurturing minds to create a brighter future through education and empowerment."
       />
+      <ToastContainer position="bottom-right" autoClose={3000} />
 
       <div className="relative">
         <AisheSideNav
@@ -1270,7 +1304,7 @@ const AdminAishe = ({ toggle, theme }) => {
           <div className="bg-white p-6 rounded shadow-lg w-96 text-center">
             <h2 className="text-lg text-brwn font-bold mb-4">Delete PDFs</h2>
             <p>
-              Are you sure you want to delete {selectedPdfs.length} selected PDF(s)?
+              Are you sure you want to delete {selectedPdfNames.length} selected PDF(s)?
             </p>
             <div className="flex justify-center gap-4 mt-4">
               <button

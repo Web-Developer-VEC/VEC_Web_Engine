@@ -1,43 +1,43 @@
 [
-{
-  "collectionName": "AIDS_001",
-  "collection_type": "research",
-  "action": "insert",
-  "title": "insert Research 2022 - 2023",
-  "category": "department_research",
-  "meta_data": {
-    "year": "2022 - 2024",
-    "research": [
-      {
-        "name": "dinesh",
-        "pdf_path": ""
-      }
-    ]
-  }
-},
-{
-  "collectionName": "AIDS_001",
-  "collection_type": "research",
-  "action": "update",
-  "title": "updateResearch 2022 - 2023",
-  "category": "department_research",
-  "meta_data": {
-    "year": "2022 - 2029",
-    "research": [
-      {
-        "name": "deepak",
-        "pdf_path": ""
-      }
-    ]
+  {
+    "collectionName": "AIDS_001",
+    "collection_type": "research",
+    "action": "insert",
+    "title": "insert Research 2022 - 2023",
+    "category": "department_research",
+    "meta_data": {
+      "year": "2022 - 2024",
+      "research": [
+        {
+          "name": "dinesh",
+          "pdf_path": ""
+        }
+      ]
+    }
   },
-  "original_data": {
-    "year": "2022 - 2023",
-    "research": [
-      {
-        "name": "dinesh",
-        "pdf_path": "/static/pdfs/research/001/2229/pgm-221119-pcs-cs-velammal.pdf"
-      }
-    ]
+  {
+    "collectionName": "AIDS_001",
+    "collection_type": "research",
+    "action": "update",
+    "title": "updateResearch 2022 - 2023",
+    "category": "department_research",
+    "meta_data": {
+      "year": "2022 - 2029",
+      "research": [
+        {
+          "name": "deepak",
+          "pdf_path": ""
+        }
+      ]
+    },
+    "original_data": {
+      "year": "2022 - 2023",
+      "research": [
+        {
+          "name": "Book",
+          "pdf_path": "/static/pdfs/research/001/2223/Books & Book Chapters 22-23.pdf"
+        }
+      ]
+    }
   }
-}
 ]
