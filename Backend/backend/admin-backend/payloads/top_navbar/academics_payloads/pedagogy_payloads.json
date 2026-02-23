@@ -1,58 +1,116 @@
-[{
-  "collectionName": "CSE_005",
-  "collection_type": "pedagogy",
-  "action": "insert",
-  "title": "insert pedagogy 2022 - 2023",
-  "category": "Pedagogy Initiatives",
-  "meta_data": {
-    "year": "VEC CSE YOUTUBE CHANNEL",
-    "content": [
-      {
-        "name": "Dinesh",
-        "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
-      }
-    ]
-  }
-},
-{
-  "collectionName": "CSE_005",
-  "collection_type": "pedagogy",
-  "action": "update",
-  "title": "update pedagogy 2022 - 2023",
-  "category": "Pedagogy Initiatives",
-  "meta_data": {
-    "year": "VEC CSE YOUTUBE CHANNEL",
-    "content": [
-      {
-        "name": "hari",
-        "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
-      }
-    ]
+[
+  {
+    "collectionName": "CSE_005",
+    "collection_type": "pedagogy",
+    "action": "insert",
+    "title": "insert pedagogy 2022 - 2023",
+    "category": "Pedagogy Initiatives",
+    "meta_data": {
+      "year": "VEC CSE YOUTUBE CHANNEL",
+      "content": [
+        {
+          "name": "Dinesh",
+          "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
+        }
+      ]
+    }
   },
-  "original_data": {
-    "year": "VEC CSE YOUTUBE CHANNEL",
-    "content": [
-      {
-        "name": "Dinesh",
-        "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
-      }
-    ]
+  {
+    "collectionName": "CSE_005",
+    "collection_type": "pedagogy",
+    "action": "update",
+    "title": "update pedagogy 2022 - 2023",
+    "category": "Pedagogy Initiatives",
+    "meta_data": {
+      "year": "VEC CSE YOUTUBE CHANNEL",
+      "content": [
+        {
+          "name": "hari",
+          "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
+        }
+      ]
+    },
+    "original_data": {
+      "year": "VEC CSE YOUTUBE CHANNEL",
+      "content": [
+        {
+          "name": "VEC CSE YOUTUBE CHANNEL",
+          "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
+        }
+      ]
+    }
+  },
+  {
+    "collectionName": "CSE_005",
+    "collection_type": "pedagogy",
+    "action": "delete",
+    "title": "delete pedagogy 2022 - 2023",
+    "category": "Pedagogy Initiatives",
+    "meta_data": {
+      "year": "VEC CSE YOUTUBE CHANNEL",
+      "content": [
+        {
+          "name": "hari",
+          "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
+        }
+      ]
+    }
+  },
+  {
+    "collectionName": "IT_011",
+    "collection_type": "pedagogy",
+    "action": "insert",
+    "title": "insert pedagogy IT 2024 - 2025",
+    "category": "Pedagogy Initiatives",
+    "meta_data": {
+      "year": "2024 - 2025",
+      "content": [
+        {
+          "name": "Pedagogy Initiatives",
+          "pdf_path": "/static/pdfs/Pedagogy/011/2024-2025/Pedagogy Initiatives 2024-2025.pdf"
+        }
+      ]
+    }
+  },
+  {
+    "collectionName": "IT_011",
+    "collection_type": "pedagogy",
+    "action": "update",
+    "title": "update pedagogy IT 2024 - 2025",
+    "category": "Pedagogy Initiatives",
+    "meta_data": {
+      "year": "2024 - 2025",
+      "content": [
+        {
+          "name": "Pedagogy Initiatives (Revised)",
+          "pdf_path": "/static/pdfs/Pedagogy/011/2024-2025/Pedagogy Initiatives Revised 2024-2025.pdf"
+        }
+      ]
+    },
+    "original_data": {
+      "year": "2024 - 2025",
+      "content": [
+        {
+          "name": "Pedagogy Initiatives",
+          "pdf_path": "/static/pdfs/Pedagogy/011/2024-2025/Pedagogy Initiatives 2024-2025.pdf"
+        }
+      ]
+    }
+  },
+  {
+    "collectionName": "IT_011",
+    "collection_type": "pedagogy",
+    "action": "delete",
+    "title": "delete pedagogy IT 2024 - 2025",
+    "category": "Pedagogy Initiatives",
+    "meta_data": {
+      "year": "2024 - 2025",
+      "content": [
+        {
+          "name": "Instructional Material",
+          "pdf_path": "/static/pdfs/Pedagogy/011/2024-2025/Instructional Material.pdf"
+        }
+      ]
+    }
   }
-},
-{
-  "collectionName": "CSE_005",
-  "collection_type": "pedagogy",
-  "action": "delete",
-  "title": "delete pedagogy 2022 - 2023",
-  "category": "Pedagogy Initiatives",
-  "meta_data": {
-    "year": "VEC CSE YOUTUBE CHANNEL",
-    "content": [
-      {
-        "name": "hari",
-        "pdf_path": "https://youtube.com/playlist?list=PLodrFpDKbzArpi6z5U6A-mtPxgJPLm1Gs&si=bBNwCSrDVvcMiRMI"
-      }
-    ]
-  }
-}
 ]
