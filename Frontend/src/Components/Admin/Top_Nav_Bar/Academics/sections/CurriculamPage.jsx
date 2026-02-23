@@ -1,723 +1,1364 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { Send, Trash2 } from "lucide-react";
-import "./admin-CurriculumPage.css";
-import LoadComp from "../../../LoadComp";
+import { faEye, faPencil, faPlus, faXmark, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Send, X, Plus, Pencil, Trash2 } from "lucide-react";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Pencil } from "lucide-react";
+import { useNavigate } from "react-router";
+import LoadComp from "../../../LoadComp";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+const deepCopy = (data) => {
+  if (!Array.isArray(data)) return [];
+  return data.map((section) => ({
+    ...section,
+    syllabus: section.syllabus?.map((item) => ({
+      ...item,
+      file: item.file ?? null,
+      docs: item.docs?.map((doc) => ({
+        ...doc,
+        file: doc.file ?? null,
+      })) || [],
+    })) || [],
+  }));
+};
 
 const CurriculumPage = ({ data }) => {
+  const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const curriculamOrigFromProp =
-    data?.find((item) => item.category === "curriculum")?.content || [];
-  const [originalData, setOriginalData] = useState(deepCopy(curriculamOrigFromProp));
+  const { sendRequest, loading: requestLoading, error } = useAdminRequest();
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedData, setEditedData] = useState(null);
-  const [isChanged, setIsChanged] = useState(false);
+  const UrlParser = (path) => {
+    if (typeof path !== "string" || !path) return "";
+    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [showMultiDeleteConfirm, setShowMultiDeleteConfirm] = useState(false);
 
+  // State variables
+  const [originalData, setOriginalData] = useState([]);
+  const [tempData, setTempData] = useState([]);
   const [pendingData, setPendingData] = useState(null);
-  const [pendingRequested, setPendingRequested] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [selectedYears, setSelectedYears] = useState(new Set());
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  useEffect(() => {
-    setOriginalData(deepCopy(curriculamOrigFromProp));
-  }, [curriculamOrigFromProp]);
-
-  useEffect(() => {
-    if (!isEditing) {
-      setEditedData(null);
-      setIsChanged(false);
-      setSelectedItems([]);
-    }
-  }, [isEditing, data]);
-
-  const UrlParser = (pathOrFile) => {
-    if (!pathOrFile) return null;
-    if (typeof pathOrFile === "string") {
-      return pathOrFile.startsWith("http") ? pathOrFile : `${BASE_URL}${pathOrFile}`;
-    }
-    if (pathOrFile instanceof File) {
-      return URL.createObjectURL(pathOrFile);
-    }
-    return null;
-  };
-
-  const isValidForSave = (candidate) => {
-    if (!candidate || !Array.isArray(candidate)) return false;
-
-    for (let s = 0; s < candidate.length; s++) {
-      const sec = candidate[s];
-      if (!sec) return false;
-      if (!sec.heading || String(sec.heading).trim() === "") return false;
-
-      const list = sec.syllabus || [];
-      if (!Array.isArray(list) || list.length === 0) return false;
-
-      for (let i = 0; i < list.length; i++) {
-        const row = list[i];
-        if (!row) return false;
-        if (!row.year || String(row.year).trim() === "") return false;
-        if (!row.pdf_path && !row._uploadedFile) return false;
+  const toggleSelectYear = (sectionIndex, itemIndex) => {
+    const key = `${sectionIndex}-${itemIndex}`;
+    setSelectedYears(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(key)) {
+        newSet.delete(key);
+      } else {
+        newSet.add(key);
       }
+      return newSet;
+    });
+  };
+
+  // Popup state
+  const [popupData, setPopupData] = useState({
+    sectionIndex: null,
+    itemIndex: null,
+    docIndex: null,
+    year: "",
+    pdf_path: "",
+    docName: "",
+    file: null,
+    isEditing: false,
+    isDoc: false,
+    isCurriculum: false,
+  });
+
+  const fileInputRef = useRef(null);
+
+  // Fetch initial data
+  useEffect(() => {
+    const curriculum = data?.find((item) => item.category === "curriculum")?.content || [];
+    const formattedData = curriculum.map((section) => ({
+      ...section,
+      syllabus: section.syllabus?.map((item) => ({
+        ...item,
+        id: item.pdf_path || Date.now() + Math.random(),
+        docs: item.docs?.map((doc) => ({
+          ...doc,
+          id: doc.pdf_path || Date.now() + Math.random(),
+        })) || [],
+      })) || [],
+    }));
+
+    setTempData(deepCopy(formattedData));
+    setOriginalData(deepCopy(formattedData));
+    setIsLoading(false);
+  }, [data]);
+
+  // Online/Offline handling
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+  // View handlers
+  const handleViewClick = (pdfUrl) => {
+    if (pdfUrl) {
+      window.open(UrlParser(pdfUrl), "_blank", "noopener,noreferrer");
     }
-
-    return true;
   };
 
-  const enterEdit = () => {
-    const source = pendingData ? deepCopy(pendingData) : deepCopy(originalData);
+  const handleViewWithFile = (item) => {
+    if (!item) return;
 
-    source.forEach((section) => {
-      section.syllabus = section.syllabus || [];
-      section.syllabus.forEach((s) => {
-        if (!s._uploadedFile) s._uploadedFile = null;
-        if (!s.pdf_path) s.pdf_path = s.pdf_path || "";
-      });
-    });
-    setEditedData(source);
-    setIsEditing(true);
-    setIsChanged(false);
-    setSelectedItems([]);
-  };
-
-  const cancelEdit = () => {
-    setEditedData(null);
-    setIsEditing(false);
-    setIsChanged(false);
-    setSelectedItems([]);
-  };
-
-  const discardPendingChanges = () => {
-    setPendingData(null);
-    setPendingRequested(false);
-    setShowRequestModal(false);
-    setIsEditing(false);
-    setEditedData(null);
-    setSelectedItems([]);
-    setIsChanged(false);
-    toast.error("Changes discarded.");
-  };
-
-  const handleInputChange = (sectionIndex, syllabusIndex, field, value) => {
-    const updated = deepCopy(editedData);
-    if (field === "heading") {
-      updated[sectionIndex].heading = value;
-    } else {
-      updated[sectionIndex].syllabus[syllabusIndex][field] = value;
-    }
-    setEditedData(updated);
-    setIsChanged(true);
-  };
-
-  const handleFileChange = (sectionIndex, syllabusIndex, file) => {
-    if (!file) return;
-    const updated = deepCopy(editedData);
-    updated[sectionIndex].syllabus[syllabusIndex]._uploadedFile = file;
-    updated[sectionIndex].syllabus[syllabusIndex].pdf_path = file.name;
-    setEditedData(updated);
-    setIsChanged(true);
-  };
-
-  const handleViewClick = (sectionIndex, syllabusIndex) => {
-    const source = isEditing
-      ? editedData?.[sectionIndex]?.syllabus?.[syllabusIndex]?._uploadedFile ||
-        editedData?.[sectionIndex]?.syllabus?.[syllabusIndex]?.pdf_path
-      : (pendingData?.[sectionIndex]?.syllabus?.[syllabusIndex]?.pdf_path ||
-         originalData?.[sectionIndex]?.syllabus?.[syllabusIndex]?.pdf_path);
-    const url = UrlParser(source);
-    if (url) window.open(url, "_blank", "noopener,noreferrer");
-    else toast.info("No PDF available to view.");
-  };
-
-  const toggleSelectItem = (sectionIndex, syllabusIndex) => {
-    const key = `s-${sectionIndex}-l-${syllabusIndex}`;
-    setSelectedItems((prev) => (prev.includes(key) ? prev.filter((p) => p !== key) : [...prev, key]));
-  };
-
-  const confirmMultiDelete = () => {
-    if (!editedData) return;
-    const updated = deepCopy(editedData);
-    const toRemove = selectedItems.map((k) => {
-      const parts = k.split("-");
-      return { sectionIndex: Number(parts[1]), syllabusIndex: Number(parts[3]) };
-    });
-
-    const grouped = {};
-    toRemove.forEach(({ sectionIndex, syllabusIndex }) => {
-      if (!grouped[sectionIndex]) grouped[sectionIndex] = [];
-      grouped[sectionIndex].push(syllabusIndex);
-    });
-
-    Object.keys(grouped).forEach((secStr) => {
-      const sec = Number(secStr);
-      grouped[sec]
-        .sort((a, b) => b - a)
-        .forEach((idx) => {
-          if (updated[sec] && updated[sec].syllabus && updated[sec].syllabus[idx]) {
-            updated[sec].syllabus.splice(idx, 1);
-          }
-        });
-    });
-
-    setEditedData(updated);
-    setSelectedItems([]);
-    setShowMultiDeleteConfirm(false);
-    setIsChanged(true);
-    toast.success("Selected items deleted from draft.");
-  };
-
-  const handleSingleDeleteWithConfirm = (sectionIndex, syllabusIndex) => {
-    setSelectedItems([`s-${sectionIndex}-l-${syllabusIndex}`]);
-    setShowMultiDeleteConfirm(true);
-  };
-
-  const handleSave = async () => {
-    if (!editedData) return;
-    if (!isValidForSave(editedData)) {
-      toast.error("Please fill all mandatory fields (section heading, year, and attach PDF) before saving.");
+    // 1️⃣ New replaced PDF (blob)
+    if (typeof item.url === "string" && item.url.startsWith("blob:")) {
+      window.open(item.url);
       return;
     }
 
-    const payload = deepCopy(editedData);
-    const filesToUpload = [];
-    payload.forEach((sec, sIdx) => {
-      sec.syllabus?.forEach((sy, syIdx) => {
-        if (sy._uploadedFile)
-          filesToUpload.push({
-            sectionIndex: sIdx,
-            syllabusIndex: syIdx,
-            file: sy._uploadedFile,
+    // 2️⃣ Backend PDF
+    if (typeof item.pdf_path === "string" && item.pdf_path.length > 0) {
+      window.open(UrlParser(item.pdf_path));
+      return;
+    }
+
+    // 3️⃣ Nothing found
+    toast.error("PDF not available");
+  };
+
+
+  // Edit mode handlers
+  const handleEdit = () => {
+    setIsEditing(true);
+    setIsSaved(false);
+    setIsDirty(false);
+    setSelectedYears(new Set());
+  };
+
+  const handleRevertChange = (changeToRemove) => {
+    if (!originalData) return;
+    const allChanges = getChanges(pendingData);
+    const remainingChanges = allChanges.filter(
+      (ch) =>
+        !(
+          ch.action === changeToRemove.action &&
+          ch.section === changeToRemove.section &&
+          ch.year === changeToRemove.year &&
+          ch.docName === changeToRemove.docName
+        )
+    );
+
+    let rebuiltData = deepCopy(originalData);
+
+    remainingChanges.forEach((change) => {
+      rebuiltData.forEach((section) => {
+        if (change.section.startsWith(section.heading)) {
+          section.syllabus?.forEach((item) => {
+            if (item.year === change.year) {
+              if (change.docName) {
+                if (change.action === "Added") {
+                  item.docs.push({
+                    id: Date.now() + Math.random(),
+                    name: change.docName,
+                    pdf_path: change.pdf_path || "",
+                    file: change.file || null,
+                  });
+                }
+                if (change.action === "Edited") {
+                  const doc = item.docs.find(
+                    (d) => d.name === change.original_data?.name
+                  );
+                  if (doc) {
+                    doc.name = change.docName;
+                    doc.pdf_path = change.pdf_path || doc.pdf_path;
+                  }
+                }
+                if (change.action === "Deleted") {
+                  item.docs = item.docs.filter(
+                    (d) => d.name !== change.docName
+                  );
+                }
+              } else {
+                if (change.action === "Added") {
+                  section.syllabus.push({
+                    id: Date.now() + Math.random(),
+                    year: change.year,
+                    docs: change.docs || [],
+                  });
+                }
+                if (change.action === "Edited") {
+                  item.year = change.year;
+                }
+                if (change.action === "Deleted") {
+                  section.syllabus = section.syllabus.filter(
+                    (s) => s.year !== change.year
+                  );
+                }
+              }
+            }
           });
+        }
       });
     });
 
-    console.log("Payload (pending):", payload);
-    console.log("Files to upload (demo):", filesToUpload);
-    setPendingData(payload);
-    setIsEditing(false);
-    setEditedData(null);
-    setIsChanged(false);
-    toast.success("Draft saved (pending).");
+    setPendingData(rebuiltData);
+    setTempData(deepCopy(rebuiltData));
+    toast.info("Change discarded successfully");
   };
-  const displayData = isEditing ? editedData || [] : pendingData || originalData || [];
-  const getChanges = () => {
-    const changes = [];
-    const base = originalData || [];
-    const target = pendingData || [];
 
-    const maxSections = Math.max(base.length, target.length);
-    for (let s = 0; s < maxSections; s++) {
-      const baseSec = base[s];
-      const tgtSec = target[s];
+  const handleSave = () => {
+    const changes = getChanges(tempData);
+    if (changes.length === 0) {
+      toast.info("No changes to save!");
+      return;
+    }
 
-      if (!baseSec && tgtSec) {
-        if (tgtSec.heading) {
-          changes.push({
-            action: "Added",
-            section: tgtSec.heading,
-            data: { heading: tgtSec.heading },
-            path: { sec: s, idx: null },
-          });
-        }
-        (tgtSec.syllabus || []).forEach((item, idx) => {
-          changes.push({
-            action: "Added",
-            section: tgtSec.heading || `Section ${s + 1}`,
-            data: item,
-            path: { sec: s, idx },
-          });
+    const allItems = tempData.flatMap(section =>
+      section.syllabus?.flatMap(item =>
+        item.docs?.length ? item.docs : [item]
+      ) || []
+    );
+
+    const invalidItem = allItems.find(item => !item.name?.trim() && !item.year?.trim());
+
+    if (invalidItem) {
+      toast.error("Please fill all required fields before saving!");
+      return;
+    }
+
+    setPendingData(deepCopy(tempData));
+    setIsSaved(true);
+    setIsEditing(false);
+    setIsDirty(false);
+    toast.success("Changes saved as draft!");
+  };
+
+  const handleCancel = () => {
+    if (pendingData) {
+      setTempData(deepCopy(pendingData));
+      toast.info("Cancelled changes. Draft preserved!");
+    } else {
+      setTempData(deepCopy(originalData));
+      toast.info("Cancelled changes. Reverted to original!");
+    }
+    setIsEditing(false);
+    setIsSaved(!!pendingData);
+    setIsDirty(false);
+    setShowPopup(false);
+  };
+
+  const confirmDeleteYears = () => {
+    setTempData(prev => {
+      const updatedData = prev.map((section, sectionIndex) => {
+        const filteredSyllabus = section.syllabus.filter((_, itemIndex) => {
+          const key = `${sectionIndex}-${itemIndex}`;
+          return !selectedYears.has(key);
         });
-        continue;
+        return {
+          ...section,
+          syllabus: filteredSyllabus,
+        };
+      });
+      return updatedData;
+    });
+
+    setSelectedYears(new Set());
+    setShowDeleteModal(false);
+    setIsDirty(true);
+    toast.success("Selected year(s) deleted successfully");
+  };
+
+  const handleDiscard = () => {
+    setTempData(deepCopy(originalData));
+    setPendingData(null);
+    setIsSaved(false);
+    setIsDirty(false);
+    toast.info("Changes discarded!");
+  };
+
+  // Popup handlers
+  const romanNumerals = [
+    "I", "II", "III", "IV", "V", "VI", "VII", "VIII",
+    "IX", "X", "XI", "XII"
+  ];
+
+  const handleAddExtraSemester = (sectionIndex, itemIndex) => {
+    const existingCount =
+      tempData[sectionIndex].syllabus[itemIndex].docs?.length || 0;
+
+    const nextRoman = romanNumerals[existingCount] || `${existingCount + 1}`;
+
+    setPopupData({
+      sectionIndex,
+      itemIndex,
+      docIndex: null,
+      docName: "", // IX Semester auto
+      file: null,
+      isEditing: false,
+      isDoc: true,
+      isSemester: true,
+      isExtraSemester: true,
+    });
+
+    setShowPopup(true);
+  };
+
+
+  const handleEditUGYear = (sectionIndex, itemIndex) => {
+    const item = tempData[sectionIndex].syllabus[itemIndex];
+    setPopupData({
+      sectionIndex,
+      itemIndex,
+      docIndex: null,
+      year: item.year,
+      pdf_path: "",
+      docName: "",
+      file: null,
+      isEditing: true,
+      isDoc: false,
+      isSemester: false,
+      isCurriculum: false,
+    });
+    setShowPopup(true);
+  };
+
+  const handleEditDoc = (sectionIndex, itemIndex, docIndex, isSemester = false) => {
+    if (!isEditing) {
+      const docOrSemester = isSemester
+        ? tempData[sectionIndex].syllabus[itemIndex]
+        : tempData[sectionIndex].syllabus[itemIndex].docs[docIndex];
+      const url = docOrSemester?.url || docOrSemester?.pdf_path;
+      if (url) {
+        handleViewWithFile(docOrSemester);
+      } else {
+        toast.info("No PDF available to preview");
       }
-      if (baseSec && !tgtSec) {
-        if (baseSec.heading) {
-          changes.push({
-            action: "Deleted",
-            section: baseSec.heading,
-            data: { heading: baseSec.heading },
-            path: { sec: s, idx: null },
-          });
-        }
-        (baseSec.syllabus || []).forEach((item, idx) => {
-          changes.push({
-            action: "Deleted",
-            section: baseSec.heading || `Section ${s + 1}`,
-            data: item,
-            path: { sec: s, idx },
-          });
-        });
-        continue;
+      return;
+    }
+
+    const docOrSemester = isSemester
+      ? tempData[sectionIndex].syllabus[itemIndex]
+      : tempData[sectionIndex].syllabus[itemIndex].docs[docIndex];
+
+    setPopupData({
+      sectionIndex,
+      itemIndex,
+      docIndex,
+      year: isSemester ? docOrSemester.year : "",
+      pdf_path: docOrSemester.pdf_path || "",   // backend truth
+      docName: isSemester ? "" : docOrSemester.name,
+      file: null,
+      isEditing: true,
+      isDoc: !isSemester,
+      isSemester,
+    });
+
+    setShowPopup(true);
+  };
+
+  const handleDeleteUGYear = (sectionIndex, itemIndex) => {
+    setTempData(prev => {
+      const newData = [...prev];
+      newData[sectionIndex].syllabus = newData[sectionIndex].syllabus.filter((_, i) => i !== itemIndex);
+      return newData;
+    });
+    setIsDirty(true);
+    toast.success("Item deleted");
+  };
+
+  const handleDeleteDoc = (sectionIndex, itemIndex, docIndex) => {
+    setTempData(prev => {
+      const newData = [...prev];
+      newData[sectionIndex].syllabus[itemIndex].docs =
+        newData[sectionIndex].syllabus[itemIndex].docs.filter((_, i) => i !== docIndex);
+      return newData;
+    });
+    setIsDirty(true);
+    toast.success("Document deleted");
+  };
+
+  // File handlers
+  const triggerFileInput = () => fileInputRef.current?.click();
+
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.type !== "application/pdf") {
+      toast.error("Only PDF files are allowed");
+      e.target.value = "";
+      return;
+    }
+
+    setPopupData(prev => ({ ...prev, file }));
+  };
+
+  const handlePopupView = () => {
+    const { file, pdf_path, isEditing, sectionIndex, itemIndex, docIndex, isDoc } = popupData;
+    let url = null;
+
+    if (file) {
+      url = URL.createObjectURL(file);
+    } else if (isEditing && pdf_path) {
+      url = UrlParser(pdf_path);
+    } else if (!isEditing && !file) {
+      toast.info("No PDF available to preview");
+      return;
+    }
+
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handlePopupSubmit = () => {
+    const {
+      sectionIndex,
+      itemIndex,
+      docIndex,
+      year,
+      docName,
+      file,
+      isEditing,
+      isDoc,
+      isSemester,
+      isCurriculum,
+      semesters,
+    } = popupData;
+
+    // 🔴 EXTRA SEMESTER VALIDATION
+    if (popupData.isDoc && !popupData.isEditing) {
+      if (!popupData.docName.trim()) {
+        toast.error("Please enter semester name");
+        return;
       }
 
-      if (baseSec && tgtSec && baseSec.heading !== tgtSec.heading) {
-        changes.push({
-          action: "Updated",
-          section: tgtSec.heading || `Section ${s + 1}`,
-          data: { before: baseSec.heading, after: tgtSec.heading },
-          path: { sec: s, idx: null },
-        });
-      }
-
-      const baseList = baseSec?.syllabus || [];
-      const tgtList = tgtSec?.syllabus || [];
-      const maxRows = Math.max(baseList.length, tgtList.length);
-
-      for (let i = 0; i < maxRows; i++) {
-        const b = baseList[i];
-        const t = tgtList[i];
-
-        if (!b && t) {
-          changes.push({
-            action: "Added",
-            section: tgtSec.heading || `Section ${s + 1}`,
-            data: t,
-            path: { sec: s, idx: i },
-          });
-          continue;
-        }
-        if (b && !t) {
-          changes.push({
-            action: "Deleted",
-            section: baseSec.heading || `Section ${s + 1}`,
-            data: b,
-            path: { sec: s, idx: i },
-          });
-          continue;
-        }
-        if (b && t) {
-          const bStr = JSON.stringify({ year: b.year, pdf_path: b.pdf_path });
-          const tStr = JSON.stringify({ year: t.year, pdf_path: t.pdf_path });
-          if (bStr !== tStr) {
-            changes.push({
-              action: "Updated",
-              section: tgtSec.heading || `Section ${s + 1}`,
-              data: { before: b, after: t },
-              path: { sec: s, idx: i },
-            });
-          }
-        }
+      if (!popupData.file) {
+        toast.error("Please upload semester PDF");
+        return;
       }
     }
+
+    // 🔴 CURRICULUM ADD
+    if (isCurriculum) {
+      if (!year.trim()) {
+        toast.error("Please enter curriculum name");
+        return;
+      }
+
+      setTempData(prev => {
+        const newData = [...prev];
+
+        const newYear = {
+          id: Date.now() + Math.random(),
+          year: year.trim(),
+          docs: semesters.map((sem, idx) => ({
+            id: Date.now() + Math.random() + idx,
+            name: sem.name,
+            pdf_path: "",
+            file: sem.file || null,
+            url: sem.file ? URL.createObjectURL(sem.file) : "",
+            _isNew: !!sem.file,
+          })),
+        };
+
+        newData[0].syllabus.push(newYear);
+        return newData;
+      });
+
+      setIsDirty(true);
+      setShowPopup(false);
+      toast.success("Curriculum year added successfully!");
+      return;
+    }
+
+    if (!isDoc && !isSemester && !year.trim()) {
+      toast.error("Please enter year");
+      return;
+    }
+
+    setTempData(prev => {
+      const newData = [...prev];
+
+      // ===================== DOC =====================
+      if (isDoc) {
+        if (isEditing && docIndex !== null) {
+          const oldDoc =
+            newData[sectionIndex].syllabus[itemIndex].docs[docIndex];
+
+          newData[sectionIndex].syllabus[itemIndex].docs[docIndex] = {
+            ...oldDoc,
+            name: docName.trim(),
+
+            // ✅ FIX: preserve backend pdf_path
+            pdf_path: oldDoc.pdf_path,
+
+            url: file ? URL.createObjectURL(file) : oldDoc.url,
+            file: file || null,
+            _isNew: !!file,
+          };
+        } else {
+          const newDoc = {
+            id: Date.now() + Math.random(),
+            name: docName.trim(),
+            pdf_path: "",
+            url: file ? URL.createObjectURL(file) : "",
+            file: file || null,
+            _isNew: !!file,
+          };
+
+          if (!newData[sectionIndex].syllabus[itemIndex].docs) {
+            newData[sectionIndex].syllabus[itemIndex].docs = [];
+          }
+
+          newData[sectionIndex].syllabus[itemIndex].docs.push(newDoc);
+        }
+      }
+      // ===================== YEAR / SEMESTER =====================
+      else {
+        if (isEditing && itemIndex !== null) {
+          const oldItem = newData[sectionIndex].syllabus[itemIndex];
+
+          newData[sectionIndex].syllabus[itemIndex] = {
+            ...oldItem,
+            year: year.trim(),
+
+            // ✅ FIX: preserve backend pdf_path
+            pdf_path: oldItem.pdf_path,
+
+            url: file ? URL.createObjectURL(file) : oldItem.url,
+            file: file || null,
+            docs: oldItem.docs || [],
+            _isNew: !!file,
+          };
+        } else {
+          const newItem = {
+            id: Date.now() + Math.random(),
+            year: year.trim(),
+            pdf_path: "",
+            url: file ? URL.createObjectURL(file) : "",
+            file: file || null,
+            docs: [],
+            _isNew: !!file,
+          };
+
+          if (!newData[sectionIndex].syllabus) {
+            newData[sectionIndex].syllabus = [];
+          }
+
+          newData[sectionIndex].syllabus.push(newItem);
+        }
+      }
+
+      return newData;
+    });
+
+    setIsDirty(true);
+    setShowPopup(false);
+
+    setPopupData({
+      sectionIndex: null,
+      itemIndex: null,
+      docIndex: null,
+      year: "",
+      pdf_path: "",
+      docName: "",
+      file: null,
+      isEditing: false,
+      isDoc: false,
+      isCurriculum: false,
+      semesters: [],
+    });
+  };
+
+
+  // Request handlers
+  const handleRequest = () => setShowRequestModal(true);
+
+  const getChanges = (sourceData = tempData) => {
+    if (!sourceData || !originalData.length) return [];
+
+    const changes = [];
+
+    sourceData.forEach((section, sIdx) => {
+      const originalSection = originalData[sIdx];
+
+      section.syllabus?.forEach((item) => {
+        const originalItem = originalSection?.syllabus?.find(oItem => oItem.id === item.id);
+
+        if (!originalItem) {
+          // New Year/Semester
+          changes.push({
+            action: "Added",
+            section: section.heading,
+            year: item.year,
+            pdf_path: item.pdf_path || "",
+            file: item.file instanceof File ? item.file : null,
+            docs: item.docs?.map(doc => ({
+              name: doc.name,
+              pdf_path: doc.pdf_path || "",
+              file: doc.file instanceof File ? doc.file : null,
+            })) || [],
+          });
+        } else {
+          // Edited Year
+          if (item.year !== originalItem.year || item.file instanceof File) {
+            changes.push({
+              action: "Edited",
+              section: section.heading,
+              year: item.year,
+              pdf_path: item.pdf_path || originalItem.pdf_path || "", // preserve old path
+              original_data: {
+                year: originalItem.year,
+                pdf_path: originalItem.pdf_path || "",
+              },
+              file: item.file instanceof File ? item.file : null,
+            });
+          }
+
+          // Docs changes
+          item.docs?.forEach((doc) => {
+            const originalDoc = originalItem?.docs?.find(oDoc => oDoc.id === doc.id);
+
+            if (!originalDoc) {
+              // New doc
+              changes.push({
+                action: "Added",
+                section: `${section.heading} - ${item.year}`,
+                year: item.year,
+                docName: doc.name,
+                pdf_path: doc.pdf_path || "",
+                file: doc.file instanceof File ? doc.file : null,
+              });
+            } else if (doc.name !== originalDoc.name || doc.file instanceof File) {
+              // Edited doc
+              changes.push({
+                action: "Edited",
+                section: `${section.heading} - ${item.year}`,
+                year: item.year,
+                docName: doc.name,
+                pdf_path: doc.pdf_path || originalDoc.pdf_path || "",
+                original_data: {
+                  name: originalDoc.name,
+                  pdf_path: originalDoc.pdf_path || "",
+                },
+                file: doc.file instanceof File ? doc.file : null,
+              });
+            }
+          });
+
+          // Deleted Docs
+          originalItem?.docs?.forEach((originalDoc) => {
+            const exists = item.docs?.some(doc => doc.id === originalDoc.id);
+            if (!exists) {
+              changes.push({
+                action: "Deleted",
+                section: `${section.heading} - ${item.year}`,
+                year: item.year,
+                docName: originalDoc.name,
+                pdf_path: originalDoc.pdf_path || "",
+              });
+            }
+          });
+        }
+      });
+
+      // Deleted Years
+      originalSection?.syllabus?.forEach((originalItem) => {
+        const exists = section.syllabus?.some(item => item.id === originalItem.id);
+        if (!exists) {
+          changes.push({
+            action: "Deleted",
+            section: section.heading,
+            year: originalItem.year,
+            pdf_path: originalItem.pdf_path || "",
+          });
+        }
+      });
+    });
 
     return changes;
   };
 
-  const formatChangeText = (change) => {
-    const idx = change.path?.idx;
-    if (change.action === "Added") {
-      if (idx === null) {
-        return `Section added: ${change.data?.heading || "(no heading)"}`;
-      } else {
-        const year = change.data?.year || "";
-        const file = change.data?.pdf_path || "";
-        const parts = [];
-        if (year) parts.push(`Year: ${year}`);
-        if (file) parts.push(`File: ${file}`);
-        return parts.length ? `Added — ${parts.join(" | ")}` : "Added";
+
+
+  const buildPayload = (data = pendingData) => {
+    if (!data) return { payload: [], files: [] };
+
+    const changes = getChanges(data);
+
+    const payload = changes.map((change) => {
+      const base = {
+        collectionName: "AIDS_001",
+        collection_type: "curriculum_and_syllabus",
+        category: "curriculum",
+      };
+
+      if (change.action === "Added") {
+        return {
+          ...base,
+          action: "insert",
+          title: change.docName ? "insert semester" : "insert year",
+          meta_data: {
+            year: change.year,
+            name: change.docName || undefined,
+            pdf_path: change.pdf_path || "",
+          },
+          file: change.file || null,
+        };
       }
-    } else if (change.action === "Deleted") {
-      if (idx === null) {
-        return `Section deleted: ${change.data?.heading || "(no heading)"}`;
-      } else {
-        const year = change.data?.year || "";
-        const file = change.data?.pdf_path || "";
-        const parts = [];
-        if (year) parts.push(`Year: ${year}`);
-        if (file) parts.push(`File: ${file}`);
-        return parts.length ? `Deleted — ${parts.join(" | ")}` : "Deleted";
+
+      if (change.action === "Edited") {
+        return {
+          ...base,
+          action: "update",
+          title: change.docName ? "update semester" : "update year",
+          meta_data: {
+            year: change.year,
+            name: change.docName || undefined,
+            pdf_path: change.pdf_path || change.original_data?.pdf_path || "", // preserve old path
+          },
+          original_data: {
+            year: change.original_data?.year || undefined,
+            name: change.original_data?.name || undefined,
+            pdf_path: change.original_data?.pdf_path || "",
+          },
+          file: change.file || null,
+        };
       }
-    } else if (change.action === "Updated") {
-      if (idx === null) {
-        const before = change.data?.before || "";
-        const after = change.data?.after || "";
-        return `Heading: "${before}" → "${after}"`;
-      } else {
-        const before = change.data?.before || {};
-        const after = change.data?.after || {};
-        const beforeParts = [];
-        const afterParts = [];
-        if (before.year) beforeParts.push(before.year);
-        if (before.pdf_path) beforeParts.push(before.pdf_path);
-        if (after.year) afterParts.push(after.year);
-        if (after.pdf_path) afterParts.push(after.pdf_path);
-        const b = beforeParts.length ? beforeParts.join(" | ") : "—";
-        const a = afterParts.length ? afterParts.join(" | ") : "—";
-        return `Updated — ${b} → ${a}`;
+
+      if (change.action === "Deleted") {
+        return {
+          ...base,
+          action: "delete",
+          title: change.docName ? "delete semester" : "delete year",
+          meta_data: {
+            year: change.year,
+            name: change.docName || undefined,
+          },
+        };
       }
-    }
-    return JSON.stringify(change.data);
+
+      return null;
+    }).filter(Boolean);
+
+    const files = payload.map(p => p.file).filter(Boolean);
+
+    return { payload, files };
   };
 
-  // NEW: displayAction maps internal action values to labels the user asked for
-  const displayAction = (action) => {
-    if (!action) return "";
-    if (action === "Updated") return "Edit";
-    if (action === "Added") return "Add";
-    if (action === "Deleted") return "Delete";
-    return action;
-  };
 
-  const handleRevertChange = (change) => {
-    if (!pendingData) return;
-    const updated = deepCopy(pendingData);
-    const base = originalData || [];
 
-    const { action, path } = change;
-    const sec = path?.sec;
-    const idx = path?.idx;
 
-    if (action === "Added") {
-      if (idx === null) {
-        if (updated[sec]) updated.splice(sec, 1);
-      } else {
-        if (updated[sec] && updated[sec].syllabus) updated[sec].syllabus.splice(idx, 1);
-      }
-    } else if (action === "Deleted") {
-      if (idx === null) {
-        if (base[sec]) {
-          updated.splice(sec, 0, deepCopy(base[sec]));
-        }
-      } else {
-        if (!updated[sec]) updated[sec] = { heading: base[sec]?.heading || "", syllabus: [] };
-        if (!updated[sec].syllabus) updated[sec].syllabus = [];
-        updated[sec].syllabus.splice(idx, 0, deepCopy(base[sec].syllabus[idx]));
-      }
-    } else if (action === "Updated") {
-      if (idx === null) {
-        if (base[sec]) updated[sec].heading = base[sec].heading;
-      } else {
-        if (base[sec] && base[sec].syllabus && updated[sec] && updated[sec].syllabus) {
-          updated[sec].syllabus[idx] = deepCopy(base[sec].syllabus[idx]);
-        }
-      }
+
+
+  const handleFinalRequestConfirm = async () => {
+    const sourceData = pendingData || tempData;
+    const { payload, files } = buildPayload(sourceData);
+
+    if (!payload.length) {
+      toast.error("No valid changes detected to send");
+      return;
     }
 
-    setPendingData(updated);
-    toast.success("Change reverted in pending draft.");
+    try {
+      const response = await sendRequest(payload, files);
+      toast.success("Changes request sent successfully!");
+
+      // Update local state after successful request
+      setOriginalData(deepCopy(sourceData));
+      setTempData(deepCopy(sourceData));
+
+      setPendingData(null);
+      setIsSaved(false);
+      setIsDirty(false);
+      setShowRequestModal(false);
+
+      console.log("Backend response:", response);
+    } catch (err) {
+      console.error("Request failed:", err);
+      toast.error(err?.response?.data?.message || "Failed to process request");
+    }
   };
 
-  const handleRequestConfirm = () => {
-    console.log("Requesting approval for changes:", pendingData);
-    setShowRequestModal(false);
-    setPendingRequested(true);
-    setPendingData(null);
-    toast.success("Request sent");
-  };
 
-  if (!data) {
+
+
+  // Check if popup has existing PDF
+  const popupHasExistingPdf = (() => {
+    if (!popupData.isEditing) return false;
+    return !!(popupData.pdf_path || popupData.file);
+  })();
+
+
+  const showPopupEye = !!(popupData.file || popupData.pdf_path);
+
+  // Check if edit modal has changes
+  const editModalHasChanges = (() => {
+    if (!popupData.isEditing) return true;
+
+    if (popupData.isDoc) {
+      const originalDoc = popupData.sectionIndex !== null &&
+        popupData.itemIndex !== null &&
+        popupData.docIndex !== null ?
+        tempData[popupData.sectionIndex]?.syllabus[popupData.itemIndex]?.docs[popupData.docIndex] : null;
+
+      if (!originalDoc) return true;
+
+      const nameChanged = (popupData.docName || "").trim() !== (originalDoc.name || "").trim();
+      const pdfChanged = popupData.file instanceof File;
+      return nameChanged || pdfChanged;
+    } else {
+      const originalItem = popupData.sectionIndex !== null &&
+        popupData.itemIndex !== null ?
+        tempData[popupData.sectionIndex]?.syllabus[popupData.itemIndex] : null;
+
+      if (!originalItem) return true;
+
+      const yearChanged = (popupData.year || "").trim() !== (originalItem.year || "").trim();
+      const pdfChanged = popupData.file instanceof File;
+      return yearChanged || pdfChanged;
+    }
+  })();
+
+  if (!isOnline) {
     return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-        <LoadComp />
+      <div className="h-screen flex items-center justify-center">
+        <LoadComp txt="You are offline" />
       </div>
     );
   }
 
-  const changes = getChanges();
+  if (isLoading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <LoadComp txt="Loading curriculum..." />
+      </div>
+    );
+  }
+
+  if (errorMsg) {
+    return (
+      <div className="h-screen flex items-center justify-center text-red-600 font-semibold">
+        {errorMsg}
+      </div>
+    );
+  }
+
+  const changes = getChanges(pendingData || tempData);
+  const editingChanges = getChanges(tempData);
+
+  const handleAddCurriculum = () => {
+    const roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"];
+    setPopupData({
+      sectionIndex: 0,
+      itemIndex: null,
+      docIndex: null,
+      year: "",
+      pdf_path: "",
+      docName: "",
+      file: null,
+      isEditing: false,
+      isDoc: false,
+      isCurriculum: true,
+      semesters: roman.map((r) => ({
+        id: Date.now() + Math.random(),
+        name: `${r} Semester`,
+        pdf_path: "",
+        file: null,
+        url: "",
+        _isNew: true,
+      })),
+    });
+    setShowPopup(true);
+  };
 
   return (
-    <div className="containers mt-5 relative pb-28">
-      <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnFocusLoss draggable pauseOnHover />
+    <div className="containers mt-5">
+      <ToastContainer position="bottom-right" autoClose={2000} />
 
-      {!isEditing && (
-        <div style={{ position: "absolute", top: -50, right: 15, zIndex: 50 }}>
+      {/* Header */}
+      <div className="flex justify-between items-center mb-8 px-4">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-white"></h1>
+        {!isEditing && (
           <button
-            className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
-            onClick={enterEdit}
+            onClick={handleEdit}
+            className="flex items-center gap-2  px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
           >
-            <Pencil size={16} />
-            <span>Edit</span>
+            <Pencil size={18} />
+            Edit
           </button>
-        </div>
-      )}
+        )}
+      </div>
 
-      {displayData?.length > 0 ? (
+      {/* Main Content */}
+      {tempData.length > 0 ? (
         <div className="row">
           <div className="col-md-6">
-            {displayData.map((req, sectionIndex) => (
-              <div
-                className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]"
-                key={sectionIndex}
-              >
-                <h2 className="text-bold text-[24px] text-brwn dark:text-drkt mb-8">
-                  {isEditing ? (
-                    <>
-                      <input
-                        type="text"
-                        value={req?.heading || ""}
-                        onChange={(e) =>
-                          handleInputChange(sectionIndex, null, "heading", e.target.value)
-                        }
-                        className={`edit-input heading-input ${(!req?.heading || String(req.heading).trim() === "") && isChanged ? "input-invalid" : ""}`}
-                        placeholder="Section heading (required)"
-                      />
-                      {(!req?.heading || String(req.heading).trim() === "") && isChanged && (
-                        <div className="text-xs text-red-500 mt-1">Heading is required.</div>
-                      )}
-                    </>
-                  ) : (
-                    req?.heading
-                  )}
-                </h2>
+            {tempData.map((section, sectionIndex) => {
+              const isUG = sectionIndex === 0;
 
-                {req?.syllabus?.map((item, syllabusIndex) => (
-                  <div
-                    key={syllabusIndex}
-                    className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks flex items-center justify-between"
-                  >
-                    {isEditing ? (
-                      <div className="syllabus-row w-full">
-                        <div className="syllabus-left">
-                          <input
-                            type="text"
-                            className={`year-input ${(!item?.year || String(item.year).trim() === "") && isChanged ? "input-invalid" : ""}`}
-                            value={item?.year || ""}
-                            onChange={(e) =>
-                              handleInputChange(sectionIndex, syllabusIndex, "year", e.target.value)
-                            }
-                            placeholder=""
-                          />
-                          {(!item?.year || String(item.year).trim() === "") && isChanged && (
-                            <div className="text-xs text-red-500 mt-1"></div>
+              return (
+                <div
+                  key={sectionIndex}
+                  className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] mb-10"
+                >
+                  <h2 className="text-bold text-[24px] text-brwn dark:text-drkt mb-8">
+                    {section.heading}
+                  </h2>
+
+                  {section?.syllabus?.map((item, itemIndex) => {
+                    const key = `${sectionIndex}-${itemIndex}`;
+                    const hasDocs = item.docs?.length > 0;
+
+                    if (isUG) {
+                      const docs = hasDocs
+                        ? item.docs
+                        : item.pdf_path
+                          ? [
+                            {
+                              name: "View",
+                              pdf_path: item.pdf_path,
+                              isView: true,
+                            },
+                          ]
+                          : [];
+
+                      return (
+                        <div
+                          key={key}
+                          className="row-item dark:bg-drkp border-0 flex flex-col mb-4 relative"
+                        >
+                          <div className="flex items-center justify-between w-full">
+                            <div className="R-years self-start">{item.year}</div>
+
+                            {isEditing && (
+                              <div className="flex items-center gap-2">
+                                <button
+                                  onClick={() => handleEditUGYear(sectionIndex, itemIndex)}
+                                  className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                                  title="Edit"
+                                >
+                                  <Pencil size={16} />
+                                </button>
+                                <input
+                                  type="checkbox"
+                                  checked={selectedYears.has(`${sectionIndex}-${itemIndex}`)}
+                                  onChange={() => toggleSelectYear(sectionIndex, itemIndex)}
+                                  className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                />
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="overflow-hidden w-[90%] mx-auto mt-4">
+                            <div className="grid grid-cols-3 gap-6 text-center">
+                              {docs.map((doc, docIndex) => (
+                                <button
+                                  key={docIndex}
+                                  onClick={() => {
+                                    if (isEditing) {
+                                      handleEditDoc(sectionIndex, itemIndex, docIndex, !hasDocs);
+                                    } else {
+                                      handleViewWithFile(doc);   // ✅ PASS FULL OBJECT
+                                    }
+                                  }}
+
+                                  className={`px-4 py-2 rounded flex items-center justify-center gap-2 
+          ${hasDocs
+                                      ? "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                                      : "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
+                                    }`}
+                                >
+                                  {doc.isView && <FontAwesomeIcon icon={faEye} />}
+                                  {doc.name}
+                                </button>
+                              ))}
+                            </div>
+
+                            {/* Move button here, outside of docs grid */}
+                            {isEditing && (
+                              <div className="mt-4 flex justify-center">
+                                <button
+                                  onClick={() => handleAddExtraSemester(sectionIndex, itemIndex)}
+                                  className="flex items-center gap-2 px-4 py-2 border-2 border-dashed border-yellow-500 text-yellow-600 rounded hover:bg-yellow-50"
+                                >
+                                  <Plus size={16} />
+                                  Add New Semester
+                                </button>
+                              </div>
+                            )}
+                          </div>
+
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div
+                        key={key}
+                        className="row-item rounded-lg dark:bg-drkp border-0 flex flex-row justify-between items-center mt-6"
+                      >
+                        <div className="R-years">{item.year}</div>
+
+                        <div className="flex items-center gap-2">
+                          {isEditing && (
+                            <>
+                              <button
+                                onClick={() => handleEditUGYear(sectionIndex, itemIndex)}
+                                className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                                title="Edit"
+                              >
+                                <Pencil size={16} />
+                              </button>
+                              <input
+                                type="checkbox"
+                                checked={selectedYears.has(`${sectionIndex}-${itemIndex}`)}
+                                onChange={() => toggleSelectYear(sectionIndex, itemIndex)}
+                                className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                              />
+                            </>
+                          )}
+
+                          {item.pdf_path && (
+                            <button
+                              className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-brwn"
+                              onClick={() => handleViewClick(item.pdf_path)}
+                            >
+                              <FontAwesomeIcon
+                                icon={faEye}
+                                style={{ marginRight: "6px" }}
+                              />
+                              View
+                            </button>
                           )}
                         </div>
-
-                        <div className="syllabus-middle">
-                          <label className="upload-label">
-                            {item?.pdf_path ? "Replace" : "Upload *"}
-                            <input
-                              type="file"
-                              accept="application/pdf"
-                              className="hidden-file-input"
-                              onChange={(e) =>
-                                handleFileChange(sectionIndex, syllabusIndex, e.target.files[0] || null)
-                              }
-                            />
-                          </label>
-                          {(!item?.pdf_path && !item?._uploadedFile) && isChanged && (
-                            <div className="text-xs text-red-500 mt-1"></div>
-                          )}
-                        </div>
-
-                        <div className="syllabus-actions">
-                          <button
-                            className="action-btn"
-                            onClick={() => handleViewClick(sectionIndex, syllabusIndex)}
-                            title="View"
-                          >
-                            <FontAwesomeIcon icon={faEye} />
-                          </button>
-                          <input
-                            type="checkbox"
-                            checked={selectedItems.includes(`s-${sectionIndex}-l-${syllabusIndex}`)}
-                            onChange={() => toggleSelectItem(sectionIndex, syllabusIndex)}
-                          />
-                        </div>
                       </div>
-                    ) : (
-                      <div className="flex items-center justify-between w-full">
-                        <div className="R-years">{item?.year}</div>
-                        <div className="options-container">
-                          <button
-                            className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-brwn"
-                            onClick={() => handleViewClick(sectionIndex, syllabusIndex)}
-                          >
-                            <FontAwesomeIcon icon={faEye} style={{ marginRight: "5px" }} />
-                            View
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                    );
+                  })}
 
-                {isEditing && (
-                  <div style={{ marginTop: 8 }}>
+                  {/* Add New Curriculum Button */}
+                  {isEditing && (
                     <button
-                      onClick={() => {
-                        const updated = deepCopy(editedData);
-                        updated[sectionIndex].syllabus = updated[sectionIndex].syllabus || [];
-                        updated[sectionIndex].syllabus.push({ year: "", pdf_path: "", _uploadedFile: null });
-                        setEditedData(updated);
-                        setIsChanged(true);
-                      }}
-                      className="px-3 py-2 rounded bg-[#fdcc03] hover:bg-[#800000]"
+                      onClick={handleAddCurriculum}
+                      className="w-full mt-6 px-4 py-3 border-2  rounded-lg text-gray-600 dark:text-gray-400 hover:border-yellow-500 hover:text-yellow-600 dark:hover:border-yellow-400 dark:hover:text-yellow-400 transition-colors flex items-center justify-center gap-2"
                     >
-                      + Add
+                      <Plus size={20} />
+                      Add New Curriculum
                     </button>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       ) : (
-        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <div className="h-screen flex items-center justify-center">
           <LoadComp />
         </div>
       )}
 
-      {isEditing && selectedItems.length > 0 && (
-        <div className="multi-delete-center justify-center">
-          <button onClick={() => setShowMultiDeleteConfirm(true)} className="multi-delete-btn">
-            <Trash2 size={16} /> Delete ({selectedItems.length})
+      {/* Delete Selected Button */}
+      {isEditing && selectedYears.size > 0 && (
+        <div className="relative mt-6 flex justify-center z-40">
+          <button
+            onClick={() => setShowDeleteModal(true)}
+            className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600"
+          >
+            <Trash2 size={20} />
+            Delete Selected ({selectedYears.size})
           </button>
         </div>
       )}
 
+      {/* Edit Mode Action Buttons */}
       {isEditing && (
-        <div
-          style={{
-            position: "absolute",
-            right: 20,
-            bottom: 20,
-            display: "flex",
-            gap: 12,
-            zIndex: 60,
-          }}
-        >
+        <div className="flex justify-end gap-3 mt-6 m-8">
           <button
-            onClick={cancelEdit}
-            className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+            onClick={handleCancel}
+            className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
           >
             Cancel
           </button>
-
-          {isChanged && editedData && isValidForSave(editedData) && (
+          {editingChanges.length > 0 && (
             <button
               onClick={handleSave}
-              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+              className="px-4 py-2 bg-secd text-text rounded hover:bg-brwn hover:text-prim transition-colors"
             >
-              Save
+              Save Changes
             </button>
           )}
         </div>
       )}
 
-      {!isEditing && pendingData && (
-        <div
-          className="pending-actions"
-          style={{
-            position: "absolute",
-            right: 20,
-            bottom: 20,
-            display: "flex",
-            gap: 12,
-            zIndex: 60,
-          }}
-        >
+      {/* Saved Draft Actions */}
+      {isSaved && (
+        <div className="flex justify-end gap-3 mt-6 m-8">
           <button
-            onClick={discardPendingChanges}
-            className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+            onClick={handleDiscard}
+            className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
           >
             Discard Changes
           </button>
-
-          <button
-            onClick={() => setShowRequestModal(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-          >
-            <Send size={16} />
-            Request
-          </button>
+          {changes.length > 0 && (
+            <button
+              onClick={handleRequest}
+              className="flex items-center px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+            >
+              <Send size={18} />
+              Request
+            </button>
+          )}
         </div>
       )}
 
-      {showMultiDeleteConfirm && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
-            <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
-            <p className="text-sm mb-4 text-center">
-              Are you sure you want to delete {selectedItems.length} item
-              {selectedItems.length > 1 ? "s" : ""}?
-            </p>
-            <div className="flex justify-center gap-3">
+      {/* Add/Edit Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-md p-6">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+              {popupData.isEditing
+                ? popupData.isDoc
+                  ? "Edit Document"
+                  : popupData.isSemester
+                    ? "Edit Semester"
+                    : "Edit Year"
+                : popupData.isDoc
+                  ? "Add Document"
+                  : "Add Curriculum"}
+            </h2>
+
+            {/* Input Fields */}
+           {/* Semester Name */}
+{popupData.isDoc && (
+  popupData.isEditing ? (
+    // 🔒 EDIT MODE → static text
+    <div className="w-full px-3 py-2 mb-4 border rounded bg-gray-100 text-gray-700">
+      {popupData.docName}
+    </div>
+  ) : (
+    // ➕ ADD MODE → input box
+    <input
+      type="text"
+      placeholder="Enter Semester Name"
+      value={popupData.docName || ""}
+      onChange={(e) =>
+        setPopupData((prev) => ({ ...prev, docName: e.target.value }))
+      }
+      className="w-full px-3 py-2 mb-4 border rounded"
+    />
+  )
+)}
+
+
+
+            {/* Year Input */}
+            {!popupData.isDoc && !popupData.isSemester && (
+              <input
+                type="text"
+                placeholder="Enter Year (e.g., R-2023)"
+                value={popupData.year}
+                onChange={(e) =>
+                  setPopupData((prev) => ({ ...prev, year: e.target.value }))
+                }
+                className="w-full px-3 py-2 mb-4 border rounded"
+              />
+            )}
+
+            {/* File Upload Section */}
+            {(popupData.isDoc || popupData.isSemester) && (
+              <div className="mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <button
+                    type="button"
+                    onClick={triggerFileInput}
+                    className="px-3 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500 flex items-center gap-2 whitespace-nowrap"
+                  >
+                    {popupData.file || popupData.pdf_path ? "Replace PDF" : "Upload PDF"}
+                  </button>
+                  {(popupData.file || popupData.pdf_path) && (
+                    <button
+                      type="button"
+                      onClick={handlePopupView}
+                      className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                      title="Preview PDF"
+                    >
+                      <FontAwesomeIcon icon={faEye} size="lg" />
+                    </button>
+                  )}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="application/pdf"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                </div>
+                {popupData.file && (
+                  <p className="text-sm text-green-600 dark:text-green-400">
+                    ✓ {popupData.file.name}
+                  </p>
+                )}
+                {!popupData.file && popupData.pdf_path && (
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Existing PDF: {popupData.pdf_path.split("/").pop()}
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* Action Buttons */}
+            <div className="flex justify-end gap-3 mt-6 m-8">
               <button
-                onClick={() => setShowMultiDeleteConfirm(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                onClick={() => {
+                  setShowPopup(false);
+                  setPopupData({
+                    sectionIndex: null,
+                    itemIndex: null,
+                    docIndex: null,
+                    year: "",
+                    pdf_path: "",
+                    docName: "",
+                    file: null,
+                    isEditing: false,
+                    isDoc: false,
+                    isSemester: false,
+                    isCurriculum: false,
+                  });
+                }}
+                className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
               >
                 Cancel
               </button>
-              <button
-                onClick={confirmMultiDelete}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-              >
-                Delete
-              </button>
+              {(!popupData.isEditing || editModalHasChanges) && (
+                <button
+                  onClick={handlePopupSubmit}
+                  className="px-4 py-2 bg-secd text-text rounded hover:bg-brwn hover:text-prim transition-colors"
+                  disabled={
+                    popupData.isDoc
+                      ? (!popupData.isEditing && !popupData.file)
+                      : popupData.isSemester
+                        ? (!popupData.file && !popupData.isEditing)
+                        : !popupData.year.trim()
+                  }
+                >
+                  Save
+                </button>
+              )}
             </div>
           </div>
         </div>
       )}
 
+      {/* Request Modal */}
       {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
-            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">Request</h2>
-            <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-3xl p-6">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+              Review Changes
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              Note: Your changes will stay pending until approved by the superior admin.
             </p>
 
-            <div className="max-h-[250px] overflow-y-auto mb-4">
-              <table className="w-full text-center text-text dark:text-drkt border">
-                <thead>
-                  <tr className="bg-gray-200 dark:bg-drka">
-                    <th className="py-1">Action</th>
-                    <th className="py-1">Section</th>
-                    <th className="py-1 text-center">Changes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {changes.map((change, idx) => (
-                    <tr key={idx} className="border-t">
-                      <td
-                        className={`py-1 ${
-                          change.action === "Added" ? "text-green-600" : change.action === "Deleted" ? "text-red-600" : "text-blue-600"
-                        }`}
-                      >
-                        {displayAction(change.action)}
-                      </td>
-                      <td className="py-1">{change.section || "Library Faculty"}</td>
-                      <td className="py-1 text-[12px]">
-                        <div className="flex items-center justify-center gap-2">
-                          <span>{formatChangeText(change)}</span>
-                          <button
-                            onClick={() => handleRevertChange(change)}
-                            className="text-red-500 hover:text-red-700 font-bold"
-                          >
-                            ✕
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-
-                  {changes.length === 0 && (
+            {changes.length > 0 ? (
+              <div className="max-h-96 overflow-y-auto mb-4">
+                <table className="w-full text-sm">
+                  <thead className="bg-gray-100 dark:bg-gray-700">
                     <tr>
-                      <td colSpan={3} className="py-4">
-                        No changes to request.
-                      </td>
+                      <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Action</th>
+                      <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Section</th>
+                      <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Changes</th>
+                      <th className="px-4 py-2 text-center text-gray-700 dark:text-gray-300">Revert</th>
                     </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {changes.map((ch, i) => (
+                      <tr key={i} className="border-b border-gray-200 dark:border-gray-700">
+                        <td className="px-4 py-2">
+                          <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium
+                            ${ch.action === 'Added' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' :
+                              ch.action === 'Edited' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300' :
+                                'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'}`}>
+                            {ch.action}
+                          </span>
+                        </td>
+                        <td className="px-4 py-2 text-gray-700 dark:text-gray-300">{ch.section}</td>
+                        <td className="px-4 py-2 text-gray-700 dark:text-gray-300">
+                          {ch.docName || ch.year}
+                        </td>
+                        <td className="px-4 py-2 text-center">
+                          <button
+                            onClick={() => handleRevertChange(ch)}
+                            className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
+                            title="Revert this change"
+                          >
+                            <X size={18} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p className="text-gray-600 dark:text-gray-400 mb-4">No changes detected.</p>
+            )}
 
-            <div className="flex justify-end gap-2">
-              <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-white">
+            <div className="flex justify-end gap-3 mt-6 m-8">
+              <button
+                onClick={() => setShowRequestModal(false)}
+                className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+              >
+                Cancel
+              </button>
+              {changes.length > 0 && (
+                <button
+                  onClick={handleFinalRequestConfirm}
+                  className="flex items-center px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                >
+                  Final Request
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-md p-6">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+              Confirm Delete
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
+              Are you sure you want to delete {selectedYears.size} selected year(s)? This action cannot be undone.
+            </p>
+
+            <div className="flex justify-end gap-3 mt-6 m-8">
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+              >
                 Cancel
               </button>
               <button
-                onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
+                onClick={confirmDeleteYears}
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
               >
-                Final Request
+                Delete
               </button>
             </div>
           </div>

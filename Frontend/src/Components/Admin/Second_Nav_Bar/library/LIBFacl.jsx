@@ -84,7 +84,7 @@ const LIBFacl = ({ faculty }) => {
         return;
       }
     }
-
+    toast.success("Changes saved");
     setFacultyList([...tempList]);
     setIsEditing(false);
     setShowRequestBtn(true);
@@ -204,6 +204,7 @@ const LIBFacl = ({ faculty }) => {
   };
 
   const handleDiscardChanges = () => {
+    toast.info("Changes discarded");
     setFacultyList(originalList);
     setShowRequestBtn(false);
   };
