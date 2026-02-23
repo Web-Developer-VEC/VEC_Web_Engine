@@ -145,6 +145,7 @@ const handleDataUpdate = (newData) => {
   };
 
   const handleDiscard = () => {
+    toast.info("Changes discarded!");
     setYrcData(JSON.parse(JSON.stringify(committedData)));
     setPendingData(null);
     setIsSaved(false);
