@@ -151,28 +151,18 @@ const NSSContent = ({ data }) => {
         category: null,
         meta_data: {
           about: pendingContent.about,
-        },
-        original_data: {
-          about: committedContent.about,
-        },
-      },
-      {
-        collectionName: "nss",
-        collection_type: "about",
-        action: "update",
-        title: "update about NSS",
-        category: null,
-        meta_data: {
           objectives: pendingContent.objectives,
         },
         original_data: {
+          about: committedContent.about,
           objectives: committedContent.objectives,
         },
-      },
+      }
     ];
 
 
     try {
+      console.log(singlePayload);
       const result = await sendRequest(singlePayload, []); 
       if (result) {
         setCommittedContent(deepCopy(pendingContent));
