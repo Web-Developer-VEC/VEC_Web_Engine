@@ -18,16 +18,17 @@ async function activitiesHandler(fileStream, docs, req, cb, filename, mimetype) 
     const effectiveMime =
       mimetype || filename?.mimeType || "application/octet-stream";
 
-    // ✅ Allow only images and PDFs
-    const isImage = effectiveMime.startsWith("image/");
+    // ✅ Logic Changed: Allow ONLY PDFs
+    const isPDF = effectiveMime === "application/pdf" || realFilename.toLowerCase().endsWith('.pdf');
 
-    if (!isImage) {
-      fileStream.resume();
-      return cb(new Error("Only images  are allowed"));
+    if (!isPDF) {
+      // Important: Resume the stream to avoid memory leaks/hanging requests
+      fileStream.resume(); 
+      return cb(new Error("Only PDF documents are allowed"));
     }
 
     const collection_type = docs[0].collection_type;
-    const collectionName = docs[0]?.collectionName || docs[0]?.collection_name; // e.g. AUTO_002
+    const collectionName = docs[0]?.collectionName || docs[0]?.collection_name;
 
     if (!collectionName) {
       return cb(new Error("collectionName is missing"));
@@ -38,8 +39,8 @@ async function activitiesHandler(fileStream, docs, req, cb, filename, mimetype) 
     let s3Key;
 
     if(collection_type === "activities"){
-
-        const folder = `temp/static/images/dept_activities/${folderId}/`;
+        // Changed folder naming convention from 'images' to 'documents' or 'files' for clarity
+        const folder = `temp/static/pdfs/dept_activities/${folderId}/`;
         s3Key = folder + realFilename;
     }
 
@@ -55,7 +56,7 @@ async function activitiesHandler(fileStream, docs, req, cb, filename, mimetype) 
       Bucket: bucketName,
       Key: s3Key,
       Body: fileBuffer,
-      ContentType: effectiveMime,
+      ContentType: "application/pdf", // Explicitly set PDF content type
     });
 
     const data = await s3.send(command);
@@ -64,14 +65,14 @@ async function activitiesHandler(fileStream, docs, req, cb, filename, mimetype) 
     req.uploadedFiles.push({
       key: s3Key,
       location: `/${s3Key}`,
-      mimetype: effectiveMime,
-      category,
+      mimetype: "application/pdf",
+      category: docs[0]?.category, // Ensure category is pulled from docs
       department: folderId,
     });
 
     cb(null, data);
   } catch (err) {
-    console.error("Faculty upload error:", err);
+    console.error("PDF upload error:", err);
     cb(err);
   }
 }

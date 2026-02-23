@@ -1,5 +1,8 @@
 async function deleteData(tempDoc, mainCollection) {
   const { collection_type, category, meta_data } = tempDoc;
+  if (collection_type !== "mous") {
+    throw new Error("Incorrect collection type or route");
+  }
 
   await mainCollection.updateOne(
     { type: collection_type },

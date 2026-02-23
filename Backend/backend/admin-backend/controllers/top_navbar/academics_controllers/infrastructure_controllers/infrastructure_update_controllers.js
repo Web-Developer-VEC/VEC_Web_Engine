@@ -1,7 +1,9 @@
 async function updateData(tempDoc, mainCollection) {
   try {
     const { collection_type, category, meta_data, original_data } = tempDoc;
-
+    if (collection_type !== "infrastructure") {
+      throw new Error("collection_type should be infrastructure");
+    }
     if (!collection_type || !meta_data || !category || !original_data) {
       throw new Error(
         "collection_type, category, meta_data, and original_data are required"
@@ -22,7 +24,7 @@ async function updateData(tempDoc, mainCollection) {
           {
             arrayFilters: [
               { "cat.category": "infrastructure_images" },
-              { "cont": original_data } 
+              { "cont": original_data }
             ]
           }
         );
@@ -30,7 +32,7 @@ async function updateData(tempDoc, mainCollection) {
         return {
           message: `The data is updated successfully in the ${collection_type}`
         };
-      } 
+      }
     }
   } catch (error) {
     console.error("Error updating data:", error);
