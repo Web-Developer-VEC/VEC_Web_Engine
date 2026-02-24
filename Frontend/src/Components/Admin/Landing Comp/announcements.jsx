@@ -56,26 +56,32 @@ const Announcements1 = ({ anno, spc }) => {
         };
     }, [hovered, editedContent.anno.length, isEditing]);
 
+    const ITEMS_PER_PAGE = 4;
+    const PAGE_SIZE = ITEMS_PER_PAGE * 2;
+    
     const handleManualFlip = (direction) => {
-        setFlipped((prev) => {
-            const newFlipped = !prev;
-            if (!newFlipped) {
-                setCurrentIndex((prevIndex) => {
-                    if (direction === "next") {
-                        return prevIndex + 4 >= editedContent.anno.length ? prevIndex : prevIndex + 4;
-                    } else if (direction === "prev") {
-                        return prevIndex - 4 < 0 ? 0 : prevIndex - 4;
-                    }
-                    return prevIndex;
-                });
+        setCurrentIndex((prev) => {
+            const maxIndex =
+                Math.ceil(editedContent.anno.length / PAGE_SIZE) * PAGE_SIZE - PAGE_SIZE;
+
+            if (direction === "next") {
+                return prev >= maxIndex ? 0 : prev + PAGE_SIZE;
             }
-            return newFlipped;
+
+            if (direction === "prev") {
+                return prev <= 0 ? maxIndex : prev - PAGE_SIZE;
+            }
+
+            return prev;
         });
+
+        setFlipped(f => !f);
     };
+
 
     const getItems = (arr, start, count) => (!arr?.length ? [] : arr.slice(start, start + count));
     const frontItems = editedContent.anno.length <= 4 ? editedContent.anno : getItems(editedContent.anno, currentIndex, 4);
-    const backItems = editedContent.anno.length <= 4 ? editedContent.anno : getItems(editedContent.anno, currentIndex + 4, 4);
+    const backItems = getItems(editedContent.anno, currentIndex + 4 < editedContent.anno.length ? currentIndex + 4 : 0, 4);
 
     const handleEditClick = () => setIsEditing(true);
 

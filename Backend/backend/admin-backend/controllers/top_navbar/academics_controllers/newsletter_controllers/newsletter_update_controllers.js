@@ -7,6 +7,9 @@ async function updateData(tempDoc, mainCollection) {
         "collection_type, category, meta_data, and original_data are required"
       );
     }
+    if (collection_type !== "newsletter") {
+      throw new Error("Incorrect collection type or route");
+    }
 
     if (collection_type === "newsletter") {
       if (category === "newsletter") {

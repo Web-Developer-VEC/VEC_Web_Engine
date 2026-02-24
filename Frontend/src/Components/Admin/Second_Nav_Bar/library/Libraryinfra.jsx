@@ -936,15 +936,15 @@ const LibrarySections = ({ data, lib }) => {
           {isEditing && (
             <div className="mt-6 flex justify-between items-center">
               {selectedMembers.length > 0 && (
-                <div className="fixed bottom-6 right-6 z-[9999]">
-                  <button
-                    onClick={handleDeleteSelected}
-                    className="px-6 py-2 rounded-lg bg-red-600 text-white shadow-lg hover:bg-red-700 flex items-center gap-2"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                    Delete Selected
-                  </button>
-                </div>
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[9999]">
+                <button
+                  onClick={handleDeleteSelected}
+                  className="px-6 py-2 rounded-lg bg-red-600 text-white shadow-lg hover:bg-red-700 flex items-center gap-2"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  Delete Selected
+                </button>
+              </div>
               )}
               <div className="ml-auto flex gap-3">
                 <button

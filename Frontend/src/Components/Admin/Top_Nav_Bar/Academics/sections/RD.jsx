@@ -315,6 +315,9 @@ const Research = ({ data }) => {
       });
     });
 
+    console.log(payload, files);
+    
+
     const result = await sendRequest(payload, files.length > 0 ? files : null);
 
     if (result) {
