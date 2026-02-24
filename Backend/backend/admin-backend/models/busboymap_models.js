@@ -273,17 +273,6 @@ const busboyModels = {
   infrastructure:infrastructureHandler,
   research:deptresearchHandler
 },
-   //PS
-  PS_018:{
-  newsletter: newsletterHandler,
-  faculty: facultyHandler,
-  hod: hodHandler,
-  achievements: studentAchievementsHandler,
-  curriculum_and_syllabus:syllabusHandler,
-  activities: activitiesHandler,
-  pedagogy:pedagogyHandler,
-  infrastructure:infrastructureHandler,
-  research:deptresearchHandler
-}}
+}
 
 module.exports = busboyModels;
