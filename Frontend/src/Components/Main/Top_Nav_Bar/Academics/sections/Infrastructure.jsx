@@ -7,11 +7,15 @@ const Infrastructure = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
+    console.log(path);
+    
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   const [selectedCard, setSelectedCard] = useState(null);
   const infrastructure_images = data?.find((item) => item.category === "infrastructure_images")?.content || [];
+  console.log(infrastructure_images);
+  
 
 
   const handleCardClick = (index) => {
