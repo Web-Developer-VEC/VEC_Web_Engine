@@ -5,45 +5,6 @@ import { Check, Clock, Trash2, Plus, LogOut, Mail, Phone, Shield, Calendar, Acti
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
-// Dummy static pending requests (replace with API later)
-const staticPendingRequests = [
-  {
-    id: 1,
-    title: "Insert new faculty profile",
-    action: "insert",
-    timestamp: "2025-09-10 11:00 AM",
-    description: "Add Dr. Sarah Johnson to Computer Science department",
-  },
-  {
-    id: 2,
-    title: "Delete sports gallery image",
-    action: "delete",
-    timestamp: "2025-09-11 4:30 PM",
-    description: "Remove outdated basketball tournament photo",
-  },
-  {
-    id: 3,
-    title: "Update library handbook",
-    action: "update",
-    timestamp: "2025-09-12 2:15 PM",
-    description: "Revise borrowing policies and late fee structure",
-  },
-  {
-    id: 3,
-    title: "Update library handbook",
-    action: "update",
-    timestamp: "2025-09-12 2:15 PM",
-    description: "Revise borrowing policies and late fee structure",
-  },
-  {
-    id: 3,
-    title: "Update library handbook",
-    action: "update",
-    timestamp: "2025-09-12 2:15 PM",
-    description: "Revise borrowing policies and late fee structure",
-  },
-]
-
 // Dictionary to map routes → human-readable labels
 const routeDictionary = {
   "/": "Home",

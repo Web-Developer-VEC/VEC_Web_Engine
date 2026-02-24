@@ -110,11 +110,9 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
     if (pendingRows) {
       // ✅ Draft exists → revert only current edits, keep the draft
       setRows(deepCopy(pendingRows));
-      toast.info("Cancelled edits. Draft preserved!");
     } else {
       // ❌ No draft yet → revert back to committed/original data
       setRows(deepCopy(committedRows));
-      toast.info("Cancelled. Reverted to original data!");
     }
 
     setIsEditing(false);
@@ -144,7 +142,6 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
     setIsDirty(false);
     setSelectedRows([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -240,7 +237,6 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
     const payload = buildPayload();
     
     if (payload.length === 0) {
-      toast.error("No changes to submit!");
       return;
     }
 
@@ -255,10 +251,7 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
       setPendingRows(null);
       setIsSaved(false);
       setShowRequestModal(false);
-      toast.success("Final request submitted successfully!");
-    } else {
-      toast.error("Failed to submit request. Please check console for details.");
-    }
+    } 
   };
 
   const revertChange = (rowId) => {
@@ -358,7 +351,7 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
             {title || "Mentee Institution"}
           </h2>
           {/* Edit button on right */}
-          {!isEditing && !isSaved && (
+          {!isEditing  && (
             <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
               <button
                 onClick={handleStartEdit}
