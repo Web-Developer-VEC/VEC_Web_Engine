@@ -1,6 +1,9 @@
 async function updateData(tempDoc, mainCollection) {
   const { collection_type, category, meta_data, original_data } = tempDoc;
   const { year, name, pdf_path } = meta_data;
+  if (collection_type !== "curriculum_and_syllabus") {
+    throw new Error("Incorrect collection type or route");
+  }
 
   await mainCollection.updateOne(
     { type: collection_type },
