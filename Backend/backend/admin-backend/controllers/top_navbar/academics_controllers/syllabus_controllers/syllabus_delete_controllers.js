@@ -1,6 +1,9 @@
 async function deleteData(tempDoc, mainCollection) {
   const { collection_type, category, meta_data } = tempDoc;
   const { year, name } = meta_data;
+  if (collection_type !== "curriculum_and_syllabus") {
+    throw new Error("Incorrect collection type or route");
+  }
 
   if (!name) {
     /* -------- DELETE ENTIRE YEAR -------- */
