@@ -5,7 +5,9 @@ async function insertData(tempDoc, mainCollection) {
     throw new Error("collection_type, category and meta_data are required");
   }
 
-  if (collection_type !== "pedagogy") return;
+  if (collection_type !== "pedagogy") {
+    throw new Error("Incorrect collection type or route");
+  }
 
   const doc = await mainCollection.findOne({ type: collection_type });
   if (!doc) {

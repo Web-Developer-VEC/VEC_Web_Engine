@@ -1,0 +1,1045 @@
+[
+    {
+        "HOD": [
+            {
+                "Name": "DR. JEBAMALAR A",
+                "Designation": "Professor & Head",
+                "Department_Name": "Civil Engineering",
+                "Mail_ID": "hodcivil@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/004/VEC-004-01-145.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400"
+                },
+                "Professional_Membership": "ACCE, ISTE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "Hydrogy & Water Resources Engg",
+                        "INSTITUTE": "Colege of Engg Guindy, Anna University",
+                        "YEAR": 2012
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "Hydrogy & Water Resources Engg",
+                        "INSTITUTE": "Colege of Engg Guindy, Anna University",
+                        "YEAR": 2005
+                    },
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "Civil Engineering",
+                        "INSTITUTE": "Bharath Engg College, Madras University",
+                        "YEAR": 1995
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "1995-09-01 00:00:00",
+                        "Unnamed:_1": "2002-08-01 00:00:00",
+                        "EXPERIENCE": "7",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "VEC"
+                    },
+                    {
+                        "DURATION": "2002-08-01 00:00:00",
+                        "Unnamed:_1": "2006-07-01 00:00:00",
+                        "EXPERIENCE": "4",
+                        "DESIGNATION": "Senior Lecturer ",
+                        "INSTITUTION": "VEC"
+                    },
+                    {
+                        "DURATION": "2006-07-01 00:00:00",
+                        "Unnamed:_1": " July 2007",
+                        "EXPERIENCE": "1",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "VEC"
+                    },
+                    {
+                        "DURATION": "2007-07-01 00:00:00",
+                        "Unnamed:_1": " Dec 2012   ",
+                        "EXPERIENCE": "5",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Professor",
+                        "INSTITUTION": "VEC"
+                    },
+                    {
+                        "DURATION": "2012-12-01 00:00:00",
+                        "Unnamed:_1": " Nov 2014",
+                        "EXPERIENCE": "2",
+                        "DESIGNATION": "Professor & Head",
+                        "INSTITUTION": "VEC"
+                    },
+                    {
+                        "DURATION": "2014-11-01 00:00:00",
+                        "Unnamed:_1": " March 2020",
+                        "EXPERIENCE": "5",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Professor ",
+                        "INSTITUTION": "VEC"
+                    },
+                    {
+                        "DURATION": "2020-04-01 00:00:00",
+                        "Unnamed:_1": "Till date",
+                        "EXPERIENCE": "4",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Professor & Head",
+                        "INSTITUTION": "VEC"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Modernization of Surveying and photogrammetry  lab ",
+                        "SPONSORING_AGENCY": "AICTE & MODROB",
+                        "AMOUNT": "14.5 LAKHS  ",
+                        "YEAR_OF_SANCTION": "2013",
+                        "DURATION": "1.5 years",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "A.Jebamalar",
+                        "STATUS_(_Completed_/_Ongoing)": "completed"
+                    },
+                    {
+                        "TITLE": "Development of Piezo Electric slab for harnessing power",
+                        "SPONSORING_AGENCY": "Tamilnadu State Council for  Science and Technology ",
+                        "AMOUNT": "Rs 10,000",
+                        "YEAR_OF_SANCTION": "2017",
+                        "DURATION": "5 months",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "A.Jebamalar",
+                        "STATUS_(_Completed_/_Ongoing)": "completed"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "NIL"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": "Groundwater Storage through Rain Water Harvesting (RWH)",
+                        "JOURNAL_NAME": "CLEAN- Soil, Air, Water",
+                        "DOI_NUMBER": "ISSN :1863-0669",
+                        "PAGE_NO": "624–629",
+                        "VOL_NO_/_ISSUE_NO": "Vol.40, No. 6.",
+                        "MONTH_&_YEAR": "2012-06-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": "Impact Assessment of Rain Water Harvesting in an Urban Environment.",
+                        "JOURNAL_NAME": "International Journal of Earth  Sciences Engg. ",
+                        "DOI_NUMBER": "ISSN: 0974-5904",
+                        "PAGE_NO": "354-360",
+                        "VOL_NO_/_ISSUE_NO": "Vol.6, No.2.",
+                        "MONTH_&_YEAR": "2013-04-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": "Groundwater modeling for RWH System ",
+                        "JOURNAL_NAME": "Water and Energy international ",
+                        "DOI_NUMBER": "ISSN:0972 -057X",
+                        "PAGE_NO": "45-55",
+                        "VOL_NO_/_ISSUE_NO": "Vol 57, No. 8.",
+                        "MONTH_&_YEAR": "2014-11-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": "Spatial Analysis of Ground Water Quality Using Geographical Information System And Water Quality Index",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "ISSN: 0973-4562",
+                        "PAGE_NO": "19125-19141",
+                        "VOL_NO_/_ISSUE_NO": "Vol.10,No.8",
+                        "MONTH_&_YEAR": "2015-05-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": "Effect of subsurface development on groundwater regime of an urban aquifer – A review paper",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "ISSN: 2229-5518",
+                        "PAGE_NO": "37-40",
+                        "VOL_NO_/_ISSUE_NO": "Vol.8,No.10",
+                        "MONTH_&_YEAR": "2017-10-01",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": "Rainwater Harvesting Impact on Urban Groundwater",
+                        "JOURNAL_NAME": "Hand book of water harvesting and  conservation",
+                        "DOI_NUMBER": "ISBN:9781119478959",
+                        "PAGE_NO": "209-226",
+                        "VOL_NO_/_ISSUE_NO": "Vol.9,No.14",
+                        "MONTH_&_YEAR": "2020-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": "Assessing the effectiveness of rainwater harvesting structures in an urban environment",
+                        "JOURNAL_NAME": "Desalination and water treatment",
+                        "DOI_NUMBER": "ISSN: 1944-3986",
+                        "PAGE_NO": "224-236",
+                        "VOL_NO_/_ISSUE_NO": "Vol.316",
+                        "MONTH_&_YEAR": "2023-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCII",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": "A Comparative analysis of Hydrologic responses to Rain water harvesting- A case study ",
+                        "JOURNAL_NAME": "Indian Journal of Science & Technology.",
+                        "DOI_NUMBER": "ISSN :0974-6846",
+                        "PAGE_NO": "34-39",
+                        "VOL_NO_/_ISSUE_NO": "Vol.4",
+                        "MONTH_&_YEAR": "2011-01-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": " Effectiveness of Rain Water Harvesting for change of trends in Aquifer behaviour",
+                        "JOURNAL_NAME": " Journal of Water Resources and Pollution Studies",
+                        "DOI_NUMBER": " e-ISSN: 2581-5326",
+                        "PAGE_NO": "16-25",
+                        "VOL_NO_/_ISSUE_NO": "Vol.4",
+                        "MONTH_&_YEAR": "2019-04-01",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "PAPER_TITLE": "Ground water recharge estimation – A case study in Chennai City",
+                        "JOURNAL_NAME": "Journal of Water Resources and Pollution Studies",
+                        "DOI_NUMBER": "e-ISSN: 2581-5326",
+                        "PAGE_NO": "6--14",
+                        "VOL_NO_/_ISSUE_NO": "Vol.4",
+                        "MONTH_&_YEAR": "2019-04-01",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Public participation, a key to success of Rain water harvesting.",
+                        "CONFERENCE_NAME": "National conference-Sustainable management of Water Resources",
+                        "ORGANIZED_BY": "Junagadh University, Gujarat",
+                        "MONTH_&_YEAR": "2005-01-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Questionnaire Survey to extract Rain water harvesting information System.",
+                        "CONFERENCE_NAME": "National Seminar on water resources and Environment",
+                        "ORGANIZED_BY": "Annamalai university",
+                        "MONTH_&_YEAR": "2005-03-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Impact of Rain water harvesting and Tsunami on Chennai City Ground water",
+                        "CONFERENCE_NAME": "NZHS-IAH-NZSSS AUCKLAND CONFERENCE 2005",
+                        "ORGANIZED_BY": "New Zealand Hydrological Society, The Carlton Hotel, Auckland",
+                        "MONTH_&_YEAR": "2005-12-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Public Awareness on Rainwater Harvesting",
+                        "CONFERENCE_NAME": "Rain Harvest 2006",
+                        "ORGANIZED_BY": "The Institutions Of Engineers (India) Nagpur Local Centre",
+                        "MONTH_&_YEAR": "2006-11-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Performance Evaluation of Rainwater harvesting",
+                        "CONFERENCE_NAME": "Rain Harvest 2006",
+                        "ORGANIZED_BY": "The Institutions Of Engineers (India) Nagpur Local Centre",
+                        "MONTH_&_YEAR": "2006-11-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Sustainable Groundwater Resources through RWH.",
+                        "CONFERENCE_NAME": "Water 2011",
+                        "ORGANIZED_BY": "NEERI, Nagpur",
+                        "MONTH_&_YEAR": "2011-01-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Estimation of Tank Yield Using GIS towards Sustainable Surface Water Development.",
+                        "CONFERENCE_NAME": "Water 2011",
+                        "ORGANIZED_BY": "NEERI, Nagpur",
+                        "MONTH_&_YEAR": "2011-01-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Spatial distribution of mapping of rainfall over Chennai basin using GIS Technique",
+                        "CONFERENCE_NAME": "ROSICE 2011",
+                        "ORGANIZED_BY": "VEC,Chennai",
+                        "MONTH_&_YEAR": "2011-04-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Improvement of urban groundwater resources through Rain Water Harvesting.",
+                        "CONFERENCE_NAME": "EITWRE 2011",
+                        "ORGANIZED_BY": "EIT, Thailand",
+                        "MONTH_&_YEAR": "2011-08-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Investigating the effectiveness of Artificial Recharge structures in an urban aquifer",
+                        "CONFERENCE_NAME": "International conference on Smart Technologies and Green Environment (ICSTaGE 2017)",
+                        "ORGANIZED_BY": "VEC",
+                        "MONTH_&_YEAR": "24.3.2017"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Effect of subsurface development on groundwater regime of an urban aquifer",
+                        "CONFERENCE_NAME": "International conference on Smart Technologies and Green Environment (ICSTaGE 2017)",
+                        "ORGANIZED_BY": "VEC",
+                        "MONTH_&_YEAR": "24.3.2017"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Subsurface developments and groundwater regimes – A Review",
+                        "CONFERENCE_NAME": "International conference on Smart Technologies and Green Environment (ICSTaGE 2017)",
+                        "ORGANIZED_BY": "VEC",
+                        "MONTH_&_YEAR": "24.3.2017"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Experimental Investigation on effect of Admixtures on Self-Compacting Concrete",
+                        "CONFERENCE_NAME": "Recent Innovations in Civil Engineering [RICE-2018]",
+                        "ORGANIZED_BY": "VEC",
+                        "MONTH_&_YEAR": "23.4.2018"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Behaviour of concrete with various Waterproofing compounds",
+                        "CONFERENCE_NAME": "Recent Innovations in Civil Engineering [RICE-2018]",
+                        "ORGANIZED_BY": "VEC",
+                        "MONTH_&_YEAR": "23.4.2018"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Feasibility study of drip irrigation system on roof top garden",
+                        "CONFERENCE_NAME": "Recent Advancement and Innovations in Civil Engineering (RAICE – 2019)",
+                        "ORGANIZED_BY": "VEC",
+                        "MONTH_&_YEAR": "29.3.2019"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Estimation of ground water recharge in Chennai ",
+                        "CONFERENCE_NAME": "Recent Advancement and Innovations in Civil Engineering (RAICE – 2019)",
+                        "ORGANIZED_BY": "VEC",
+                        "MONTH_&_YEAR": "29.3.2019"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "A review report on impact of Rain water harvesting on ground water in Chennai City",
+                        "CONFERENCE_NAME": "Recent Advancement and Innovations in Civil Engineering (RAICE – 2019)",
+                        "ORGANIZED_BY": "VEC",
+                        "MONTH_&_YEAR": "29.3.2019"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Organic waste composting",
+                        "CONFERENCE_NAME": "Recent Advancement and Innovations in Civil Engineering (RAICE – 2023)",
+                        "ORGANIZED_BY": "VEC",
+                        "ISBN_/_ISSN_NO": "978-93-5891-344-6",
+                        "MONTH_&_YEAR": "13.4.2023"
+                    },
+                    {
+                        "AUTHORS": "A.Jebamalar",
+                        "PAPER_TITLE": "Effluent treatment",
+                        "CONFERENCE_NAME": "Recent Advancement and Innovations in Civil Engineering (RAICE – 2024)",
+                        "ORGANIZED_BY": "VEC",
+                        "ISBN_/_ISSN_NO": "978-93-340-2777-8",
+                        "MONTH_&_YEAR": "17.4.2024"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "Dr.A.Jebamalar & Dr.M.Saskumar",
+                        "BOOK_NAME,_EDITION": "Applied Hydraulic Engg.",
+                        "PUBLISHER": "Manus publications",
+                        "ISBN_/_ISSN_NO": "ISBN- 13-978-81-927609-8-8",
+                        "MONTH_&_YEAR": "2015-01-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Dr.A.Jebamalar & Dr.G.Ravikumar",
+                        "BOOK_NAME,_EDITION": "Water Resources and Irrigation Engg.",
+                        "PUBLISHER": "Manus publications",
+                        "ISBN_/_ISSN_NO": "ISBN- 13-978-81-933711-0-7",
+                        "MONTH_&_YEAR": "2016-07-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Dr.A.Jebamalar & T.Rajha Rajeswaran",
+                        "BOOK_NAME,_EDITION": "Prefabricated Structures",
+                        "PUBLISHER": "Manus publications",
+                        "ISBN_/_ISSN_NO": "ISBN- 13-978-81-933711-7-6",
+                        "MONTH_&_YEAR": "2017-03-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Dr.A.Jebamalar & Dr.M.Saskumar",
+                        "BOOK_NAME,_EDITION": "Fluid Mechanics and Machinery",
+                        "PUBLISHER": "Shruthi Pubishers",
+                        "ISBN_/_ISSN_NO": "ISBN- 13-978-81-934968-3-1",
+                        "MONTH_&_YEAR": "2018-06-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Dr.A.Jebamalar & Dr.S.Suriya",
+                        "BOOK_NAME,_EDITION": "Hydrology and Water Resources Engg ",
+                        "PUBLISHER": "Manus publications",
+                        "ISBN_/_ISSN_NO": "ISBN- 978-81-978434-9-5",
+                        "MONTH_&_YEAR": "2024-09-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "NIL"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "ACCE, ISTE",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 10,
+                    "Conference_Publications": 19,
+                    "Book_/_Book_Chapter_Published": 5,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 4,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 32,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 9,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "FACULTY": [
+            {
+                "Name": "DR. REVATHEE T",
+                "Designation": "Associate Professor",
+                "Department_Name": "Civil Engineering",
+                "Mail_ID": "revathee@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/004/VEC-004-03-082.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-revathee-thothathri-86129057/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en?authuser%3D&authuser=1&user=4iGLe88AAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Revathee-Thothathri?ev=hdr_xprf",
+                    "orchidprofile": "https://orcid.org/0009-0005-4891-8229",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "IWWA - Life Member -LM 8508",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E.,",
+                        "BRANCH": "CIVILENGINEERING",
+                        "INSTITUTE": "Alagappa Chettiar Government College of Engineering & Technology.",
+                        "YEAR": 1997
+                    },
+                    {
+                        "DEGREE": "M.E.,",
+                        "BRANCH": "GEOINFORMATICS",
+                        "INSTITUTE": "GUINDY ENGINEERING COLLEGE",
+                        "YEAR": 2005
+                    },
+                    {
+                        "DEGREE": "PhD",
+                        "BRANCH": "CIVILENGINEERING",
+                        "INSTITUTE": "ANNA UNIVERSITY",
+                        "YEAR": 2016
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "13.07.2005",
+                        "Unnamed:_1": "24.05.2008",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "10",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Meenakshi Sundararajan Engineering College, Chennai"
+                    },
+                    {
+                        "DURATION": "23.06.2008",
+                        "Unnamed:_1": "31.05.2009",
+                        "EXPERIENCE": "1",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE, CHENNAI"
+                    },
+                    {
+                        "DURATION": "01.06.2009",
+                        "Unnamed:_1": "31.05.2011",
+                        "EXPERIENCE": "2",
+                        "DESIGNATION": "Senior Lecturer"
+                    },
+                    {
+                        "DURATION": "01.06.2011",
+                        "Unnamed:_1": "28.02.2016",
+                        "EXPERIENCE": "5",
+                        "DESIGNATION": "Assistant Professor II"
+                    },
+                    {
+                        "DURATION": "01.03.2016",
+                        "Unnamed:_1": "31.03.2018",
+                        "EXPERIENCE": "2",
+                        "DESIGNATION": "Assistant Professor III"
+                    },
+                    {
+                        "DURATION": "01.04.2018",
+                        "Unnamed:_1": "Till date",
+                        "DESIGNATION": "Associate Professor "
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "Urban planning model by integrating transport network and landuse in GIS",
+                        "JOURNAL_NAME": "International Journal of Engineering Research and Technology",
+                        "VOL_NO_/_ISSUE_NO": "3",
+                        "MONTH_&_YEAR": "April & 2014",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "T.Revathee Dr.A.Jebamalar, Dr.G.Ravikumar",
+                        "PAPER_TITLE": "Spatial Analysis of Ground Water Quality Using Geographical Information System And Water Quality Index",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "DOI:10.37622/000000",
+                        "PAGE_NO": "19125-19141, ",
+                        "VOL_NO_/_ISSUE_NO": "10  & 8",
+                        "MONTH_&_YEAR": "May & 2015",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "S. Kandasamy , T. Revathee ,         M. V. V Thirumuruga Poiyamozhi, S. Syed Ibrahim, N. Pannirselvam,                    A. K. Kaliluthin ",
+                        "PAPER_TITLE": "The effect of permeable formwork on the mechanical properties of steel fiber-reinforced concrete.",
+                        "JOURNAL_NAME": "Journal of Engineering Science and Technology",
+                        "DOI_NUMBER": "ISSN 1823-4690",
+                        "PAGE_NO": "3097-3112",
+                        "VOL_NO_/_ISSUE_NO": "18 & 6",
+                        "MONTH_&_YEAR": "December  & 2023",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "Spatial analysis of Ground water quality using GIS",
+                        "CONFERENCE_NAME": "Advances in Civil Engineering",
+                        "ORGANIZED_BY": "SSN College of Engineeing",
+                        "MONTH_&_YEAR": "May & 2015"
+                    },
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "Identification Of Constraints In Construction Projects To Improve Scheduling",
+                        "CONFERENCE_NAME": "Quality Assurance in Civil Engineering",
+                        "ORGANIZED_BY": "SRM University",
+                        "MONTH_&_YEAR": "March & 2017"
+                    },
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "An Experimental Study On The Properties Of Alternative Materials In Concrete",
+                        "CONFERENCE_NAME": "Quality Assurance in Civil Engineering",
+                        "ORGANIZED_BY": "SRM University",
+                        "MONTH_&_YEAR": "March & 2017"
+                    },
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "Detecting and remedial measures of saltwater intrusion in coastal aquifers",
+                        "CONFERENCE_NAME": "Soft ware Applications",
+                        "ORGANIZED_BY": "Annai Velankanni College of Engineering",
+                        "MONTH_&_YEAR": "April  & 2018"
+                    },
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "Treatment Of Sullage Using Natural Coagulants",
+                        "CONFERENCE_NAME": "Recent Advances in Civil Engineering",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "April  & 2019"
+                    },
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "Transport Planning Model In Gis",
+                        "MONTH_&_YEAR": "April  & 2019",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "Experimental study on additives to enhance the strength of soil",
+                        "MONTH_&_YEAR": "June  & 2022",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "Interlocking permeable concrete blocks",
+                        "MONTH_&_YEAR": "April  & 2023",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "T.Revathee",
+                        "PAPER_TITLE": "Analysis and characteristics of ar glass and polypropylene",
+                        "MONTH_&_YEAR": "April  & 2024",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "IWWA - Life Member -LM 8508",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 3,
+                    "Conference_Publications": 9,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 18,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 5,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. RAJHARASEHWARAN T A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Civil Engineering",
+                "Mail_ID": "rajharajeswaran@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-066.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/rajha-rajeswaran-t-a-5649744b/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=z1BuZYcAAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Rajha-Rajeswaran-Rajha",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "Life Member in ISTE, ACCE ( I ), ICI, InDA, INVEST, IAENG",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B E ",
+                        "BRANCH": "Civil Engineering ",
+                        "INSTITUTE": "Adhi Parasakthi Engineering College, Melmaruvathur ",
+                        "YEAR": 1992
+                    },
+                    {
+                        "DEGREE": "M E ",
+                        "BRANCH": "Construction Engineering and Management ",
+                        "INSTITUTE": "College of Engineering, Guindy ",
+                        "YEAR": 1994
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2008-06-01 00:00:00",
+                        "Unnamed:_1": "Till Date ",
+                        "EXPERIENCE": "16",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "VELAMMAL   Engineering College"
+                    },
+                    {
+                        "DURATION": "2007-05-01 00:00:00",
+                        "Unnamed:_1": "2008-04-01 00:00:00",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "MNM  Jain Engineering College"
+                    },
+                    {
+                        "DURATION": "2006-09-01 00:00:00",
+                        "Unnamed:_1": "2007-04-01 00:00:00",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "7",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "Vel Hgh Tech Engineering College"
+                    },
+                    {
+                        "DURATION": "2003-12-01 00:00:00",
+                        "Unnamed:_1": "2006-09-01 00:00:00",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "9",
+                        "DESIGNATION": "Senior Lecturer ",
+                        "INSTITUTION": "Tagore Engineering College"
+                    },
+                    {
+                        "DURATION": "2003-07-01 00:00:00",
+                        "Unnamed:_1": "2003-11-01 00:00:00",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "4",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "SSM Engineering College"
+                    },
+                    {
+                        "DURATION": "2001-05-01 00:00:00",
+                        "Unnamed:_1": "2003-06-01 00:00:00",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "1",
+                        "DESIGNATION": "Quality Control Engineer ",
+                        "INSTITUTION": "Ganesan Builders Limited "
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "IEDC     ",
+                        "SPONSORING_AGENCY": "IEDC ",
+                        "AMOUNT": "Rs. 2.00 lakhs ",
+                        "YEAR_OF_SANCTION": "1 year ",
+                        "DURATION": "2021",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Completed "
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "NIL "
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "T A Rajha Rajeswaran",
+                        "PAPER_TITLE": "Combining Traditional Materials-Concrete and Reinforcement - in a Modern Manner-SCC and WWF - for Cost Effective and Zero Defects Construction",
+                        "JOURNAL_NAME": "Key Engineering Materials  Volume 803 ",
+                        "DOI_NUMBER": "https://doi.org/10.4028/www.scientific.net/KEM.803.294",
+                        "PAGE_NO": "294 - 301",
+                        "VOL_NO_/_ISSUE_NO": "Vol 803  ",
+                        "MONTH_&_YEAR": "2019-05-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr A Ravichandran "
+                    },
+                    {
+                        "AUTHORS": "Dr S Kothandaraman"
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "T A Rajha Rajeswaran",
+                        "PAPER_TITLE": "Combining Traditional Materials-Concrete and Reinforcement - in a Modern Manner-SCC and WWF - for Cost Effective and Zero Defects Construction",
+                        "CONFERENCE_NAME": "ICCBM ICCBM – International Conference on Civil and Building Materials  \nSingapore           January  24 – 27, 2019 \n"
+                    },
+                    {
+                        "AUTHORS": "Dr A Ravichandran ",
+                        "ORGANIZED_BY": "SCIEI",
+                        "MONTH_&_YEAR": "2019-01-01"
+                    },
+                    {
+                        "AUTHORS": "Dr S Kothandaraman"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "Dr A Jebamalar, S Sampath Kumar & T A Rajha Rajeswaran ",
+                        "BOOK_NAME,_EDITION": "Prefabricated Structures ",
+                        "PUBLISHER": "Magnus Publications ",
+                        "ISBN_/_ISSN_NO": "978-81-964292-4-9",
+                        "MONTH_&_YEAR": "2020-05-01",
+                        "BOOK_/_BOOK_CHAPTER": "Book Chapter "
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "NIL"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "Life Member in ISTE, ACCE ( I ), ICI, InDA, INVEST, IAENG",
+                    "Sponsored_Projects": 1,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 3,
+                    "Conference_Publications": 3,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 5,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 1,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. RAJENDHIRAN K",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Civil Engineering",
+                "Mail_ID": "rajendhiran.k@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-061.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/rajendhiran-krishnamurthy-a7a1181ba",
+                    "googlescholar": "",
+                    "researchgate": "https://www.researchgate.net/profile/Krajendhiran-Arul",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "IAENG Membership",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Bachelor of Engineering\n(Civil)\n",
+                        "BRANCH": "CIVIL",
+                        "INSTITUTE": "Dr. M.G.R  University, Chennai",
+                        "YEAR": 2009
+                    },
+                    {
+                        "DEGREE": "Master of Engineering Structural Engg",
+                        "BRANCH": "Structural engineering",
+                        "INSTITUTE": "VIT University,Vellore",
+                        "YEAR": 2015
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2015-06-01 00:00:00",
+                        "Unnamed:_1": "  MAY 2016",
+                        "EXPERIENCE": "1",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "SAMS College Of Engineering And Technology "
+                    },
+                    {
+                        "DURATION": "2016-06-01 00:00:00",
+                        "Unnamed:_1": "TILL DATE",
+                        "EXPERIENCE": "8",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "Velammal Engineering College, Chennai."
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "SPONSORING_AGENCY": "NIL"
+                    },
+                    {
+                        "SPONSORING_AGENCY": "NIL"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "COUNTRY": "NIL"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "JOURNAL_NAME": "NIL"
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "K.RAJENDHIRAN",
+                        "PAPER_TITLE": "Effect of glass fiber on strength of concrete",
+                        "CONFERENCE_NAME": "International Conference on Emerging Research Trends in Structural Engineering (ERTSE - 2020).",
+                        "ORGANIZED_BY": "Bannari Amman Institute of Technology",
+                        "MONTH_&_YEAR": 2020
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "BOOK_NAME,_EDITION": "NIL"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "NIL"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "IAENG Membership",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 1,
+                    "Conference_Publications": 1,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. FRIEDA F S",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-601.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. PRAVEENA A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-602.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. SELVAPRASANTH P",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-603.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. SUREKHA A",
+                "Designation": "Teaching Assistant",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-100.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "NON_TEACHING_FACULTY": []
+    }
+]
