@@ -21,7 +21,7 @@ function shortYear(yearStr) {
   return match[1].slice(2) + match[2].slice(2); // "2229"
 }
 
-async function researchHandler(fileStream, docs, req, cb, filename, mimetype) {
+async function deptresearchHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
     const realPdfName =
       typeof filename === "string"
@@ -111,4 +111,4 @@ async function researchHandler(fileStream, docs, req, cb, filename, mimetype) {
   }
 }
 
-module.exports = researchHandler;
+module.exports = deptresearchHandler;
