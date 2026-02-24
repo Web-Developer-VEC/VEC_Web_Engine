@@ -1,0 +1,830 @@
+[
+    {
+        "HOD": [
+            {
+                "Name": "DR. SHAHIL KIRUPAVATHY S",
+                "Designation": "Professor & head",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/015/VEC-015-01-191.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/shahil-kirupavathy-0632b416/",
+                    "googlescholar": "https://scholar.google.com/citations?user=c0eMtlMAAAAJ&hl=en&oi=ao",
+                    "researchgate": "https://www.researchgate.net/profile/S-Shahil-Kirupavathy",
+                    "orchidprofile": "https://orcid.org/0000-0001-8764-8843",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=6508212683"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "FACULTY": [
+            {
+                "Name": "DR. RAMESH KUMAR V",
+                "Designation": "Associate Professor",
+                "Department_Name": "Physics",
+                "Mail_ID": "rameshkumar@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/015/VEC-015-03-193.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-v-ramesh-kumar-vaduganathan-383a3522/?originalSubdomain=in",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=mmRjxoIAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0000-0003-4302-6131",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D ",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": "Centre for Nonlinear Science, Govt. College for Women (Autonomous), Kumbakonam",
+                        "YEAR": "Dec. 2010"
+                    },
+                    {
+                        "DEGREE": "M.Sc.",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": "Centre for Nonlinear Dynamics, Department of Physics, Bharathidasan University Tiruchirappalli",
+                        "YEAR": "2002-04-01 00:00:00"
+                    },
+                    {
+                        "DEGREE": "B.Sc.",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": "St. Joseph College (Autonomous),  Tiruchirappalli",
+                        "YEAR": "2000-04-01 00:00:00"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2010-07-01 00:00:00",
+                        "Unnamed:_1": "2011-06-01 00:00:00",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Post-Doc Researcher",
+                        "INSTITUTION": "Institute of Physics, Chinese Academy of Sciences, Beijing, China.\nChinese Academy of Sciences, Beijing, China\n"
+                    },
+                    {
+                        "DURATION": "2011-07-01 00:00:00",
+                        "Unnamed:_1": "2023-07-01 00:00:00",
+                        "EXPERIENCE": "12",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College (Autonomous) Chennai - 66"
+                    },
+                    {
+                        "DURATION": "August 2023- ",
+                        "Unnamed:_1": "till date",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "6",
+                        "DESIGNATION": "Associate Professor",
+                        "INSTITUTION": "Velammal Engineering College (Autonomous) Chennai - 66"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Investigation on nonlinear excitations in Bose-Einstein condensates and Electromagnetically Induced Transparency",
+                        "SPONSORING_AGENCY": "DST-SERB ",
+                        "AMOUNT": "10.45 lakhs",
+                        "YEAR_OF_SANCTION": "2018",
+                        "DURATION": "3 years",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Nature Inspired Solar Panel",
+                        "SPONSORING_AGENCY": "DST- IEDC",
+                        "AMOUNT": "2.5 Lakhs",
+                        "YEAR_OF_SANCTION": "2021",
+                        "DURATION": "1 year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    }
+                ],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "V. Ramesh kumar, V. Rajadurai",
+                        "PAPER_TITLE": "Bright and dark soliton of probe and couple laser beam in an electromagnetically induced transparency",
+                        "JOURNAL_NAME": "Physics Letters  A ",
+                        "DOI_NUMBER": "doi.org/10.1016/j.physleta.2022.128280",
+                        "PAGE_NO": "446, 12828 (2022)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V. Rajadurai, V. Ramesh kumar, R. Radha",
+                        "PAPER_TITLE": "Multiple bright and dark soliton solutions in three component spinor Bose-Einstein condensates",
+                        "JOURNAL_NAME": "Physics Letters  A ",
+                        "DOI_NUMBER": "doi.org/10.1016/j.physleta.2019.126163",
+                        "PAGE_NO": "384, 126163 (2020)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V. Ramesh Kumar, Lin Wen, R. Radha, W.M. Liu",
+                        "PAPER_TITLE": "Splitting and recombination of 2D matter-wave solitons in a transient trap",
+                        "JOURNAL_NAME": "Romanian Rep. Phys",
+                        "DOI_NUMBER": "https://rrp.nipne.ro/2014_66_2/A15B.pdf",
+                        "PAGE_NO": "Vol. 66, No. 2 (2014)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "H.J. Shin, R. Radha V. Ramesh Kumar",
+                        "PAPER_TITLE": "Bose-Einstein Condensates with spatially inhomogeneous interaction and bright solitons",
+                        "JOURNAL_NAME": "Physics Letters  A ",
+                        "DOI_NUMBER": "doi:10.1016/j.physleta.2011.05.011",
+                        "PAGE_NO": "375, 2519 (2011)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V. Ramesh Kumar, R. Radha, M. Wadati",
+                        "PAPER_TITLE": "Collision of bright vector solitons in two-component Bose- Einstein condensates",
+                        "JOURNAL_NAME": "Physics Letters  A ",
+                        "DOI_NUMBER": "doi:10.1016/j.physleta.2010.07.016",
+                        "PAGE_NO": "374, 3685 (2010)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V. Ramesh Kumar, R. Radha, M. Wadati",
+                        "PAPER_TITLE": "Phase Engineering and Solitons of Bose-Einstein Condensates with Two- and Three-Body Interactions",
+                        "JOURNAL_NAME": "Journal of Physical Society of Japan ",
+                        "DOI_NUMBER": "DOI: 10.1143/JPSJ.79.074005",
+                        "PAGE_NO": "79, 074005 (2010)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Radha, V. Ramesh Kumar, M. Wadati",
+                        "PAPER_TITLE": "Line-soliton dynamics and stability of Bose-Einstein condensates in (2+1) Gross-Pitaevskii equation",
+                        "JOURNAL_NAME": "Journal of Mathematical Physics ",
+                        "DOI_NUMBER": "doi:10.1063/1.3372625 ",
+                        "PAGE_NO": "51, 043507(2010)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V. Ramesh Kumar, R. Radha, K. Porsezian",
+                        "PAPER_TITLE": "Intensity redistribution and shape changing collision in  coupled femtosecond solitons",
+                        "JOURNAL_NAME": "European Physical Journal D ",
+                        "DOI_NUMBER": "DOI: 10.1140/epjd/e2010-00049-0",
+                        "PAGE_NO": "57, 387 (2010)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Radha, V. Ramesh Kumar",
+                        "PAPER_TITLE": "Interplay Between Dispersion and Nonlinearity in Femtosecond Soliton Management",
+                        "JOURNAL_NAME": "Zeitschrift fur Naturforschung Section A-A Journal of Physical Sciences ",
+                        "DOI_NUMBER": "doi.org/10.1515/zna-2010-6-710",
+                        "PAGE_NO": "65, 549 (2010)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V. Ramesh Kumar, R. Radha, PK. Panigrahi",
+                        "PAPER_TITLE": "Matter wave interference pattern in the collision of bright solitons",
+                        "JOURNAL_NAME": "Physics Letters  A ",
+                        "DOI_NUMBER": "doi:10.1016/j.physleta.2009.09.056",
+                        "PAGE_NO": "373, 4381 (2009)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V. Ramesh Kumar, R. Radha, M. Wadati",
+                        "PAPER_TITLE": "Collision of solitons in electromagnetically induced transparency",
+                        "JOURNAL_NAME": "Physical Review A (Rapid Commun.) ",
+                        "DOI_NUMBER": "DOI: 10.1103/PhysRevA.78.041803",
+                        "PAGE_NO": "78, 041803 (2008)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Radha, V. Ramesh Kumar, K. Porsezian",
+                        "PAPER_TITLE": "Remote controlling the dynamics of Bose-Einstein  condensates through time-dependent atomic feeding and trap",
+                        "JOURNAL_NAME": "Journal of Physics A: Mathematical and Theoretical",
+                        "DOI_NUMBER": "doi:10.1088/1751-8113/41/31/315209",
+                        "PAGE_NO": "41, 315209 (2008)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V. Ramesh Kumar, R. Radha, PK. Panigrahi",
+                        "PAPER_TITLE": "Dynamics of Bose-Einstein condensates in a time- dependent trap",
+                        "JOURNAL_NAME": "Physical Review A ",
+                        "DOI_NUMBER": "DOI: 10.1103/PhysRevA.77.023611",
+                        "PAGE_NO": "77, 023611 (2008)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Radha,  V. Ramesh Kumar",
+                        "PAPER_TITLE": "Bright matter wave solitons and their collision in Bose-Einstein condensates",
+                        "JOURNAL_NAME": "Physics Letters  A ",
+                        "DOI_NUMBER": "doi:10.1016/j.physleta.2007.05.031",
+                        "PAGE_NO": "370, 46 (2007)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Radha, V. Ramesh Kumar",
+                        "PAPER_TITLE": "Gauge equivalence of the Gross-Pitaevskii equation and the equivalent  Heisenberg spin chain",
+                        "JOURNAL_NAME": "Physica Scripta ",
+                        "DOI_NUMBER": "doi:10.1088/0031-8949/76/5/004",
+                        "PAGE_NO": "76, 431 (2007)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Radha, V. Ramesh Kumar",
+                        "PAPER_TITLE": "Explode-decay solitons in the generalized inhomogeneous higher-order nonlinear Schrodinger equations",
+                        "JOURNAL_NAME": "Zeitschrift fur Naturforschung Section A-A Journal of Physical Sciences",
+                        "DOI_NUMBER": "DOI: \n10.1515/zna-2007-7-805 ",
+                        "PAGE_NO": "62, 381-386 (2007)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Vishnu Devan S, Yoga Avinash S, Ramesh Kumar V",
+                        "PAPER_TITLE": "Development of Radial Pen Plotter",
+                        "CONFERENCE_NAME": "National Conference on Advancements in Mechanical Sciences (AIMS 2k24)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-1620-8",
+                        "MONTH_&_YEAR": "2024-03-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Vinoth M, Vishnu Santhosh S, V. Ramesh Kumar",
+                        "PAPER_TITLE": "Mechanical Batteries",
+                        "CONFERENCE_NAME": "National Conference on Emerging Trends in Automative and Mechanical Sciences (ETAMS-2024)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-6128-640-7",
+                        "MONTH_&_YEAR": "2024-03-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "F. Nissi Grace, K.G. Nisha, G. Gopika, V. Ramesh Kumar",
+                        "PAPER_TITLE": "Hybrid solar-CNT turbine harvesting energy from solar, heat and wind\nenergy from solar, heat and wind",
+                        "CONFERENCE_NAME": "National Conference on Advancements in  Mechanical Sciences- AIMS 2023",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-5890-806-0",
+                        "MONTH_&_YEAR": "2023-04-01 00:00:00"
+                    },
+                    {
+                        "PAPER_TITLE": "V. Rajadurai, V.Ramesh Kumar",
+                        "CONFERENCE_NAME": "International conference on recent advancement in material science (NEWPHY 2020)",
+                        "ORGANIZED_BY": " PG and research department of physics, New College (Autonomous), Chennai",
+                        "MONTH_&_YEAR": "2020-01-01 00:00:00"
+                    },
+                    {
+                        "PAPER_TITLE": "V. Rajadurai, V.Ramesh Kumar",
+                        "CONFERENCE_NAME": "International conference on physics of advanced materials and molecules (ICPAMM 2020)",
+                        "ORGANIZED_BY": "Department of physics, DR. Ambedkar government arts college, Vyasarpadi, Chennai",
+                        "MONTH_&_YEAR": "2020-01-01 00:00:00"
+                    },
+                    {
+                        "PAPER_TITLE": "V. Rajadurai, V. Ramesh Kumar",
+                        "CONFERENCE_NAME": "National conference on nano materials, nlo materials and nonlinear dynamics (NCNNN-2018)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "2018-04-01 00:00:00"
+                    },
+                    {
+                        "PAPER_TITLE": "V. Ramesh Kumar, R. Radha and Miki Wadati",
+                        "CONFERENCE_NAME": "International Conference on Cold Atoms",
+                        "ORGANIZED_BY": "Indian Institute of Science Education and Research, Kolkata",
+                        "MONTH_&_YEAR": "Dec.-2008"
+                    },
+                    {
+                        "PAPER_TITLE": "R. Radha, V. Ramesh Kumar and K. Porsezian",
+                        "CONFERENCE_NAME": "International Conference on Cold Atoms",
+                        "ORGANIZED_BY": "Indian Institute of Science Education and Research",
+                        "MONTH_&_YEAR": "Dec.-2008"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "S. Shahil Kirupavathy, V. Ramesh Kumar, T.A. Revathy, G. Hamsavalli",
+                        "BOOK_NAME,_EDITION": "Nanomaterials and Nanotechnology",
+                        "PUBLISHER": "SAN International Scientific Publisher",
+                        "ISBN_/_ISSN_NO": "978-81-974075-3-6",
+                        "MONTH_&_YEAR": "2024-05-01",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mr. V. Rajadurai",
+                        "RESEARCH_TITLE": "Invesitigation on Nonlinear Excitation in Bose-Einstien condensates and Electromagnetically Induced Transparency",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Full Time",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "Ongoing"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 16,
+                    "Conference_Publications": 8,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 6,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 1,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. HAMSAVALLI G",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Physics",
+                "Mail_ID": "hamsavalli@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/015/VEC-015-04-091.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/hamsavalli-g-322069204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "nil",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "M.Phil",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": "Ethiraj College For Women",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "M.Sc",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": "Ethiraj College For Women",
+                        "YEAR": 2009
+                    },
+                    {
+                        "DEGREE": "B.Sc",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": "JBAS College For Women",
+                        "YEAR": 2007
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2013-01-02 00:00:00",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "11 Years",
+                        "Unnamed:_3": "8 Months",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "nil",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 6,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. MOSES ISAIAH V G",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Physics",
+                "Mail_ID": "moses@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/015/VEC-015-04-192.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/moses-isaiah-47b68332a/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=2&user=S-bt3OoAAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Moses-V-G-Isaiah?ev=hdr_xprf",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "NO",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2015-08-14 00:00:00",
+                        "Unnamed:_1": "2015-11-25 00:00:00",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "ASSISTANT PROFESSOR"
+                    },
+                    {
+                        "DURATION": "2016-01-13 00:00:00",
+                        "Unnamed:_1": "2017-12-20 00:00:00",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "11",
+                        "DESIGNATION": "ASSISTANT PROFESSOR"
+                    },
+                    {
+                        "DURATION": "2018-07-02 00:00:00",
+                        "EXPERIENCE": "6",
+                        "Unnamed:_3": "8",
+                        "DESIGNATION": "ASSISTANT PROFESSOR"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "NO",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 6,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. REVATHY T A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/015/VEC-015-04-527.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://in.linkedin.com/in/revathy-t-a-726bb5175",
+                    "googlescholar": "https://scholar.google.co.in/citations?user=0ZaDW38AAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Revathy-T-A",
+                    "orchidprofile": "https://orcid.org/0009-0009-3888-9451",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/MEK-9464-2025",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55816833000"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. ARUMUGAM J",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/015/VEC-015-04-201.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-arumugam-j-8912a7101/",
+                    "googlescholar": "https://scholar.google.com/citations?user=LhooRSoAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Arumugam_Jayachandhiran",
+                    "orchidprofile": "https://orcid.org/0000-0002-3567-4473",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57189235655"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. JAYACHANDIRAN M",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Physics",
+                "Mail_ID": "jayachandiran@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/015/VEC-015-04-049.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/jai-chandiran-4124b161/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=KMk68FUAAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Mr-Jayachandiran",
+                    "orchidprofile": "https://orcid.org/0000-0003-3059-9520",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57185644700"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.SC",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": "Madras University",
+                        "YEAR": 2012
+                    },
+                    {
+                        "DEGREE": "M.SC",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": "Madras University",
+                        "YEAR": 2014
+                    },
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "Science and Humanities",
+                        "INSTITUTE": "Anna University",
+                        "YEAR": 2020
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2020-12-28 00:00:00",
+                        "Unnamed:_1": "2023-03-30 00:00:00",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "9",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Rajalakshmi Institute of Technology"
+                    },
+                    {
+                        "DURATION": "2023-04-12 00:00:00",
+                        "Unnamed:_1": "Till date",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "VEC"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Applied",
+                        "PATENT_TYPE_(UTILITY)": "Design Patent"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. ANITHA JENNIFER D",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/015/VEC-015-04-200.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "https://scholar.google.co.in/citations?hl=en&user=02j5uIsAAAAJ&scilu=&scisig=AJY4_hMAAAAAZvoqni4DSLTRwPgytCas9jWH5rc&gmla=ALUCkoU0UKJQa-ObNK0tq_7xMeqAP2FMW34ei8LE5qOi6k8QOsggmF87Oqz6y8-QxOkoPieEvKpY1JOW97F-Pdr0i6pWxnoD7P25PEc&sciund=9598116635219421236",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. SIVATHARANI B",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Physics",
+                "Mail_ID": "sivatharani@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/015/VEC-015-04-078.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/sivatharani-boomiraja-54401b28b/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=oew0jxQAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0000-0003-3741-6678",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57710931100"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": " SRM IST, Ramapuram Campus, Chennai, Tamil Nadu, India.",
+                        "YEAR": "June 2020 – April 2024"
+                    },
+                    {
+                        "DEGREE": "M.Sc",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": " The American college, Madurai, Tamil Nadu, India.",
+                        "YEAR": "June 2018 – April 2020"
+                    },
+                    {
+                        "DEGREE": "B.Sc",
+                        "BRANCH": "Physics",
+                        "INSTITUTE": "Sri Meenakshi Gov. arts college for women, Madurai, Tamil Nadu, India.",
+                        "YEAR": "June 2015 – April 2018"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "25.09.2023",
+                        "Unnamed:_1": "till now",
+                        "EXPERIENCE": "1",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College, Chennai, Tamil Nadu, India."
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "B. Sivatharani · K. Subramanian",
+                        "PAPER_TITLE": "A novel stationary behaviour of nonlinear wave patterns for the (2 + 1)-dimensional 2-component coupled Maccari’s system",
+                        "JOURNAL_NAME": "Nonlinear Dyn",
+                        "DOI_NUMBER": "10.1007/s11071-024-10236-3",
+                        "PAGE_NO": "1 to 11",
+                        "MONTH_&_YEAR": "2024-09-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "J Thilakavathy ,R Amrutha ,KSubramanian and B Sivatharani",
+                        "PAPER_TITLE": "Plenteous stationary wave patterns for (2+1) dimensional fokas system",
+                        "JOURNAL_NAME": "Physica Scripta",
+                        "DOI_NUMBER": "10.1088/1402-4896/acfea6",
+                        "PAGE_NO": "115226",
+                        "VOL_NO_/_ISSUE_NO": "98 and issue 11",
+                        "MONTH_&_YEAR": "2023-10-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI ",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 2,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "NON_TEACHING_FACULTY": [
+            {
+                "Name": "MR. RAVI KUMAR C",
+                "Designation": "Lab Instructor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/015/VEC-015-05-011.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    }
+]

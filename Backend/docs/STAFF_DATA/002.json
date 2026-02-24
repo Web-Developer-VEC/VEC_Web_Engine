@@ -1,564 +1,1058 @@
 [
-  {
-    "HOD": [
-      {
-        "Name": "Dr. BASKARA SETHUPATHY S",
-        "Designation": "Professor & Head, Dept of Automobile Engineering",
-        "Department Name": "Automobile Engineering (AUTO)",
-        "Mail ID": "",
-        "image_path": "/static/images/hods/auto.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235",
-          "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&hl=en",
-          "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "EDUCATIONAL_QUALIFICATION": [
-          {
-            "DEGREE": "M.E",
-            "BRANCH": "",
-            "INSTITUTE": "",
-            "YEAR": ""
-          },
-          {
-            "DEGREE": "Ph.D",
-            "BRANCH": "",
-            "INSTITUTE": "",
-            "YEAR": ""
-          }
-        ],
-        "EXPERIENCE": [],
-        "PROJECTS": [],
-        "PATENTS": [],
-        "JOURNAL_PUBLICATIONS": [],
-        "CONFERENCE_PUBLICATIONS": [],
-        "BOOK_PUBLICATIONS": [],
-        "CONSULTANCY": [
-          {
-            "NAME": "",
-            "FUNDING_AGENT": "",
-            "AMOUNT": "",
-            "DURATION": "",
-            "OUTCOME": ""
-          }
-        ],
-        "RESEARCH_SCHOLARS": [],
-        "COUNT": {
-          "Professional Membership": "",
-          "Sponsored Projects": "",
-          "Patent Granted": "",
-          "Patent Published": "",
-          "Patent Filed": "",
-          "Journal Publications": "",
-          "Conference Publications": "",
-          "Book / Book Chapter Published": "",
-          "Seminar / Workshop / Guest Lectures Delivered": "",
-          "Seminar / Workshop / Guest Lectures Attended": "",
-          "Conference / Seminar / Workshop / Guest Lectures Organized": "",
-          "PHD Produced": "",
-          "PHD Pursuing": ""
-        }
-      }
-    ]
-  },
-  {
-    "FACULTY": [
-      {
-        "Name": "YUVARAJ M",
-        "Designation": "Assistant Professor",
-        "Department Name": "Automobile Engineering",
-        "Mail ID": "yuvaraj@velammal.edu.in",
-        "image_path": "/static/images/profile_photos/002/VEC-002-04-160.webp",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/yuvaraj-maruthu-pandian-81796943/",
-          "googlescholar": "https://scholar.google.co.in/citations?user=ad1pYeEAAAAJ&hl=en",
-          "researchgate": "https://www.researchgate.net/profile/Yuvaraj_m",
-          "orchidprofile": "https://orcid.org/0000-0003-2986-5369",
-          "publonprofile": "",
-          "scopus": "https://www.webofscience.com/wos/author/record/AEE-7608-2022"
-        },
-        "EDUCATIONAL_QUALIFICATION": [
-          {
-            "DEGREE": "M.E",
-            "BRANCH": "Automobile",
-            "INSTITUTE": "Velammal Engineering College",
-            "YEAR": 2015
-          }
-        ],
-        "EXPERIENCE": [
-          {
-            "INSTITUTION": "Velammal Engineering College",
-            "FROM": "2015",
-            "TO": "Present",
-            "DESIGNATION": "Assistant Professor"
-          }
-        ],
-        "PROJECTS": [
-          {
-            "TITLE": "Hybrid Solar Desalination Power Plant",
-            "SPONSORING_AGENCY": "IEDC",
-            "AMOUNT": "2,50,000",
-            "YEAR_OF_SANCTION": "2017-18",
-            "DURATION": "1 Year",
-            "RESPONSIBILITY": "PI",
-            "STATUS": "Completed"
-          },
-          {
-            "TITLE": "Ventilation And Voice Control Visor Helmet",
-            "SPONSORING_AGENCY": "IEDC",
-            "AMOUNT": "2,50,000",
-            "YEAR_OF_SANCTION": "2019-20",
-            "DURATION": "1 Year",
-            "RESPONSIBILITY": "PI",
-            "STATUS": "Completed"
-          },
-          {
-            "TITLE": "MYMSME",
-            "SPONSORING_AGENCY": "MSME",
-            "AMOUNT": "1 CR",
-            "YEAR_OF_SANCTION": "2024",
-            "DURATION": "Ongoing",
-            "RESPONSIBILITY": "PI",
-            "STATUS": "Ongoing"
-          }
-        ],
-        "PATENTS": [
-          {
-            "NAME_OF_PATENT": "Solar hybrid desalination system",
-            "PATENT_TYPE_(UTILITY)": "Utility",
-            "COUNTRY": "India",
-            "STATUS_(_Published_/_FER_/_Granted_)": "Granted",
-            "DATE_OF_RECENT_ACHIEVED_LEVEL": ""
-          },
-          {
-            "NAME_OF_PATENT": "Intelligent Head protective safety helmet",
-            "PATENT_TYPE_(UTILITY)": "Utility",
-            "COUNTRY": "India",
-            "STATUS_(_Published_/_FER_/_Granted_)": "Published",
-            "DATE_OF_RECENT_ACHIEVED_LEVEL": ""
-          },
-          {
-            "NAME_OF_PATENT": "Hand Held Braille Device and Methods Translating media and text contents into Braille character thereof",
-            "PATENT_TYPE_(UTILITY)": "Utility",
-            "COUNTRY": "India",
-            "STATUS_(_Published_/_FER_/_Granted_)": "Published",
-            "DATE_OF_RECENT_ACHIEVED_LEVEL": ""
-          }
-        ],
-        "JOURNAL_PUBLICATIONS": [
-          {
-            "AUTHORS": "M. Yuvaraj",
-            "PAPER_TITLE": "Performance Enhancement In Diesel Engine By Coating Aluminium– Titanium",
-            "JOURNAL_NAME": "Journal of Applied Sciences Research",
-            "DOI": "1819-544X",
-            "PAGES": "200-205",
-            "VOLUME_ISSUE": "14",
-            "YEAR": 2015,
-            "INDEXED_IN": "SCOPUS"
-          },
-          {
-            "AUTHORS": "M. Yuvaraj",
-            "PAPER_TITLE": "Comparative analysis of single slope solar still and solar dish concentrator",
-            "JOURNAL_NAME": "Iranian Journal of Chemistry and Chemical Engineering",
-            "DOI": "-",
-            "PAGES": "-",
-            "VOLUME_ISSUE": "-",
-            "YEAR": 2023,
-            "INDEXED_IN": "SCI"
-          }
-        ],
-        "CONFERENCE_PUBLICATIONS": [
-          {
-            "AUTHORS": "M.Yuvaraj",
-            "PAPER_TITLE": "Performance combustion and characteristics of a CI engine using ethanol biodiesel fuel",
-            "CONFERENCE_NAME": "ICRTESM 2016",
-            "ORGANIZED_BY": "Velammal Engineering College",
-            "ISBN_/_ISSN_/DOI_NO": "",
-            "YEAR": 2016
-          }
-        ],
-        "BOOK_PUBLICATIONS": [
-          {
-            "AUTHOR": "M. Yuvaraj",
-            "BOOK_NAME_/_EDITION": "Industrial Automation, First Edition",
-            "PUBLISHER": "Techno Publishers",
-            "ISBN_/_ISSN_NO": "",
-            "YEAR": 2016,
-            "TYPE": "BOOK"
-          }
-        ],
-        "CONSULTANCY": [
-          {
-            "NAME": "",
-            "FUNDING_AGENT": "",
-            "AMOUNT": "",
-            "DURATION": "",
-            "OUTCOME": ""
-          }
-        ],
-        "RESEARCH_SCHOLARS": [],
-        "COUNT": {
-          "Professional Membership": "ISTE, IEI, SAE, IAENG",
-          "Sponsored Projects": "8+",
-          "Patent Granted": "1",
-          "Patent Published": "2",
-          "Patent Filed": "0",
-          "Journal Publications": "4",
-          "Conference Publications": "3",
-          "Book / Book Chapter Published": "1",
-          "Seminar / Workshop / Guest Lectures Delivered": "13+",
-          "Seminar / Workshop / Guest Lectures Attended": "70+",
-          "Conference / Seminar / Workshop / Guest Lectures Organized": "17",
-          "PHD Produced": "0",
-          "PHD Pursuing": "Yes"
-        }
-      },
-      {
-        "Name": "Dr. M. Senthamil Selvan",
-        "Designation": "Assistant Professor",
-        "Department Name": "Automobile Engineering",
-        "Mail ID": "senthamilselvan@velammal.edu.in",
-        "image_path": "/static/images/profile_photos/002/VEC-002-03-167.webp",
-        "socialmedia_links": {
-          "linkedin": "www.linkedin.com/in/dr-senthamil-selvan-murugan-01811166",
-          "googlescholar": "https://scholar.google.com/citations?user=yDeX6gQAAAAJ&hl=en",
-          "researchgate": "https://www.researchgate.net/profile/Senthamil-Murugan",
-          "orchidprofile": "https://orcid.org/0000-0002-3674-5798",
-          "publonprofile": "https://www.webofscience.com/wos/author/record/LKL-3897-2024",
-          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58350433000"
-        },
-        "EDUCATIONAL_QUALIFICATION": [
-          {
-            "DEGREE": "Ph.D",
-            "BRANCH": "Mechanical Engineering",
-            "INSTITUTE": "Sri Sivasubramaniya Nadar College of Engineering, Chennai",
-            "YEAR": 2024
-          },
-          {
-            "DEGREE": "M.E",
-            "BRANCH": "Internal Combustion Engineering",
-            "INSTITUTE": "Sri Venkateswara College of Engineering, Chennai",
-            "YEAR": 2014
-          },
-          {
-            "DEGREE": "B.E",
-            "BRANCH": "Mechanical Engineering",
-            "INSTITUTE": "University College of Engineering, Ariyalur",
-            "YEAR": 2012
-          }
-        ],
-        "EXPERIENCE": [
-          {
-            "INSTITUTION": "Velammal Engineering College",
-            "FROM": "09.06.2017",
-            "TO": "Present",
-            "DESIGNATION": "Assistant Professor"
-          },
-          {
-            "INSTITUTION": "GKM College of Engineering & Technology",
-            "FROM": "16.06.2014",
-            "TO": "17.04.2017",
-            "DESIGNATION": "Assistant Professor"
-          }
-        ],
-        "PROJECTS": [
-          {
-            "TITLE": "MSME Idea Hackathon 3.0",
-            "SPONSORING_AGENCY": "Government of India",
-            "AMOUNT": "10.1 Lakhs",
-            "YEAR_OF_SANCTION": "2024",
-            "DURATION": "Ongoing",
-            "RESPONSIBILITY": "PI",
-            "STATUS": "Ongoing"
-          }
-        ],
-        "PATENTS": [
-          {
-            "NAME_OF_PATENT": "AI-Based Wireless Charging Station for Electric Vehicles",
-            "PATENT_TYPE_(UTILITY)": "Utility",
-            "COUNTRY": "India",
-            "STATUS_(_Published_/_FER_/_Granted_)": "Published",
-            "DATE_OF_RECENT_ACHIEVED_LEVEL": "29.11.2024"
-          }
-        ],
-        "JOURNAL_PUBLICATIONS": [
-          {
-            "AUTHORS": "Senthamil Selvan M, Prakash, Rajkumar, Nallusamy",
-            "PAPER_TITLE": "Impacts of pine oil and hydrogen induction with hemp oil methyl ester",
-            "JOURNAL_NAME": "Environmental Progress & Sustainable Energy",
-            "DOI": "10.1002/ep.14410",
-            "YEAR": 2024,
-            "INDEXED_IN": "SCI"
-          },
-          {
-            "AUTHORS": "Senthamil Selvan M",
-            "PAPER_TITLE": "A review on combustion, performance and emission characteristics of RCCI Engine",
-            "JOURNAL_NAME": "IJMPERD",
-            "YEAR": 2018,
-            "INDEXED_IN": "SCOPUS"
-          }
-        ],
-        "CONFERENCE_PUBLICATIONS": [
-          {
-            "PAPER_TITLE": "Experimental investigation of RCCI engine for Hydrogen gas and hemp oil methyl ester",
-            "CONFERENCE_NAME": "International Conference on Technological Advancements in Mechanical Engineering",
-            "YEAR": 2021
-          },
-          {
-            "PAPER_TITLE": "Effects of Dual Fuel RCCI Combustion of n-Butanol",
-            "CONFERENCE_NAME": "3rd International Hybrid Conference on Advances in Automobile",
-            "YEAR": 2024
-          }
-        ],
-        "BOOK_PUBLICATIONS": [],
-        "CONSULTANCY": [
-          {
-            "NAME": "",
-            "FUNDING_AGENT": "",
-            "AMOUNT": "",
-            "DURATION": "",
-            "OUTCOME": ""
-          }
-        ],
-        "RESEARCH_SCHOLARS": [],
-        "COUNT": {
-          "Professional Membership": "SAE",
-          "Sponsored Projects": "2",
-          "Patent Granted": "0",
-          "Patent Published": "1",
-          "Patent Filed": "1",
-          "Journal Publications": "6",
-          "Conference Publications": "11",
-          "Book / Book Chapter Published": "0",
-          "Seminar / Workshop / Guest Lectures Delivered": "1",
-          "Seminar / Workshop / Guest Lectures Attended": "12",
-          "Conference / Seminar / Workshop / Guest Lectures Organized": "1",
-          "PHD Produced": "0",
-          "PHD Pursuing": "Completed"
-        }
-      },
-      {
-        "Name": "V. Chandran",
-        "Designation": "Associate Professor",
-        "Department Name": "Automobile Engineering",
-        "Mail ID": "chandran@velammal.edu.in",
-        "image_path": "/static/images/profile_photos/002/VEC-002-03-168.webp",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/dr-v-chandran-b54505117/",
-          "googlescholar": "https://scholar.google.com/citations?user=Lr_pGOcAAAAJ",
-          "researchgate": "https://www.researchgate.net/profile/V-Chandran",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "EDUCATIONAL_QUALIFICATION": [
-          {
-            "DEGREE": "Ph.D",
-            "BRANCH": "Mechanical Engineering",
-            "INSTITUTE": "Anna University",
-            "YEAR": 2016
-          },
-          {
-            "DEGREE": "M.Tech",
-            "BRANCH": "Manufacturing",
-            "INSTITUTE": "Prist University",
-            "YEAR": 2011
-          },
-          {
-            "DEGREE": "B.Tech",
-            "BRANCH": "Automobile",
-            "INSTITUTE": "MIT, Anna University",
-            "YEAR": 2003
-          }
-        ],
-        "EXPERIENCE": [
-          {
-            "INSTITUTION": "Velammal Engineering College",
-            "FROM": "16.06.2016",
-            "TO": "Present",
-            "DESIGNATION": "Associate Professor"
-          }
-        ],
-        "PROJECTS": [
-          {
-            "TITLE": "Self Sustainable E-Boat",
-            "SPONSORING_AGENCY": "DST-IEDC",
-            "AMOUNT": "2.5 Lakhs",
-            "YEAR_OF_SANCTION": "2019",
-            "DURATION": "1 Year",
-            "RESPONSIBILITY": "PI",
-            "STATUS": "Completed"
-          }
-        ],
-        "PATENTS": [
-          {
-            "NAME_OF_PATENT": "Mobile Phone cum Power Bank Charger Holder",
-            "PATENT_TYPE_(UTILITY)": "Design Patent",
-            "COUNTRY": "India",
-            "STATUS_(_Published_/_FER_/_Granted_)": "Granted",
-            "DATE_OF_RECENT_ACHIEVED_LEVEL": "23.12.2024"
-          }
-        ],
-        "JOURNAL_PUBLICATIONS": [
-          {
-            "AUTHORS": "Dr.V.Chandran",
-            "PAPER_TITLE": "Optimization of dual pulse resistance welding parameters",
-            "JOURNAL_NAME": "Interactions",
-            "YEAR": 2024,
-            "INDEXED_IN": "Scopus"
-          },
-          {
-            "AUTHORS": "Dr.V.Chandran",
-            "PAPER_TITLE": "Comparative behavior of various nano additives in diesel engine",
-            "JOURNAL_NAME": "Journal of Cleaner Production",
-            "YEAR": 2019,
-            "INDEXED_IN": "SCI"
-          }
-        ],
-        "CONFERENCE_PUBLICATIONS": [
-          {
-            "PAPER_TITLE": "Experimental Analysis of Crane Hook using AISI 4340 Alloy Steel",
-            "YEAR": 2018
-          }
-        ],
-        "BOOK_PUBLICATIONS": [
-          {
-            "AUTHOR": "Dr.V.Chandran",
-            "BOOK_NAME_/_EDITION": "Advanced Internal Combustion Engines",
-            "PUBLISHER": "Technical Publications",
-            "YEAR": 2017,
-            "TYPE": "BOOK"
-          }
-        ],
-        "CONSULTANCY": [
-          {
-            "NAME": "",
-            "FUNDING_AGENT": "",
-            "AMOUNT": "",
-            "DURATION": "",
-            "OUTCOME": ""
-          }
-        ],
-        "RESEARCH_SCHOLARS": [
-          {
-            "RESEARCH_SCHOLAR_NAME": "C.Krishnamurthy",
-            "RESEARCH_TITLE": "Dynamic Characteristics of Polymer Matrix Composite",
-            "CATEGORY__(FULL_TIME_/_PART__TIME)": "Full Time",
-            "STATUS_(_ONGOING_/_COMPLETED)": "Ongoing",
-            "MONTH_&_YEAR_OF_DEGREE_AWARDED": ""
-          }
-        ],
-        "COUNT": {
-          "Professional Membership": "SAE",
-          "Sponsored Projects": "3",
-          "Patent Granted": "1",
-          "Patent Published": "2",
-          "Patent Filed": "2",
-          "Journal Publications": "20",
-          "Conference Publications": "4",
-          "Book / Book Chapter Published": "4",
-          "Seminar / Workshop / Guest Lectures Delivered": "3",
-          "Seminar / Workshop / Guest Lectures Attended": "10",
-          "Conference / Seminar / Workshop / Guest Lectures Organized": "4",
-          "PHD Produced": "0",
-          "PHD Pursuing": "1"
-        }
-      },
-      {
-        "Name": "Thennarasu P",
-        "Designation": "Assistant Professor",
-        "Department Name": "Automobile Engineering",
-        "Mail ID": "thennarasu.p@velammal.edu.in",
-        "image_path": "/static/images/profile_photos/002/VEC-002-04-155.webp",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/thennarasu-pa-2943b373",
-          "googlescholar": "https://scholar.google.com/citations?user=0zYqQyAAAAAJ",
-          "researchgate": "https://www.researchgate.net/profile/Thennarasu-Palani-3",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "EDUCATIONAL_QUALIFICATION": [
-          {
-            "DEGREE": "M.E",
-            "BRANCH": "Internal Combustion Engineering",
-            "INSTITUTE": "Velammal Engineering College",
-            "YEAR": 2012
-          },
-          {
-            "DEGREE": "B.E",
-            "BRANCH": "Mechanical Engineering",
-            "INSTITUTE": "Magna College of Engineering",
-            "YEAR": 2010
-          }
-        ],
-        "EXPERIENCE": [
-          {
-            "INSTITUTION": "Velammal Engineering College",
-            "FROM": "03.06.2015",
-            "TO": "Present",
-            "DESIGNATION": "Assistant Professor"
-          }
-        ],
-        "PROJECTS": [
-          {
-            "TITLE": "Active Vacuum Suspension System",
-            "SPONSORING_AGENCY": "IEDC",
-            "AMOUNT": "2.5 Lakhs",
-            "YEAR_OF_SANCTION": "2018",
-            "DURATION": "1 Year",
-            "RESPONSIBILITY": "Mentor",
-            "STATUS": "Completed"
-          }
-        ],
-        "PATENTS": [],
-        "JOURNAL_PUBLICATIONS": [
-          {
-            "AUTHORS": "Thennarasu Palani",
-            "PAPER_TITLE": "Experimental study on dual oxygenates with gasoline",
-            "JOURNAL_NAME": "International Journal of Environmental Science and Technology",
-            "YEAR": 2023,
-            "INDEXED_IN": "SCI"
-          }
-        ],
-        "CONFERENCE_PUBLICATIONS": [
-          {
-            "PAPER_TITLE": "Performance and Emission Characteristics of Diesel–LPG Dual Fuel",
-            "YEAR": 2016
-          }
-        ],
-        "BOOK_PUBLICATIONS": [],
-        "CONSULTANCY": [
-          {
-            "NAME": "",
-            "FUNDING_AGENT": "",
-            "AMOUNT": "",
-            "DURATION": "",
-            "OUTCOME": ""
-          }
-        ],
-        "RESEARCH_SCHOLARS": [],
-        "COUNT": {
-          "Professional Membership": "",
-          "Sponsored Projects": "1",
-          "Patent Granted": "0",
-          "Patent Published": "0",
-          "Patent Filed": "0",
-          "Journal Publications": "8",
-          "Conference Publications": "9",
-          "Book / Book Chapter Published": "0",
-          "Seminar / Workshop / Guest Lectures Delivered": "4",
-          "Seminar / Workshop / Guest Lectures Attended": "25",
-          "Conference / Seminar / Workshop / Guest Lectures Organized": "10",
-          "PHD Produced": "0",
-          "PHD Pursuing": "0"
-        }
-      }
-    ]
-  },
-
-  { "NON_TEACHING_FACULTY": [{}, {}] }
+    {
+        "HOD": [
+            {
+                "Name": "DR. BASKARA SETHUPATHY S",
+                "Designation": "Professor & Head",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/002/VEC-002-01-567.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                    "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "FACULTY": [
+            {
+                "Name": "DR. CHANDRAN V",
+                "Designation": "Associate Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/002/VEC-002-03-168.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-v-chandran-velu-b54505117/?originalSubdomain=in",
+                    "googlescholar": "",
+                    "researchgate": "https://www.researchgate.net/profile/V-Chandran?ev=hdr_xprf",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. THENNARASU P",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Automobile Engineering",
+                "Mail_ID": "yuvaraj@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/002/VEC-002-04-155.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=0zYqQyAAAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Thennarasu-Palani-3?ev=hdr_xprf",
+                    "orchidprofile": "https://orcid.org/0000-0001-8729-4571?lang=en",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "ISTE, IEI, SAE, IAENG",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "AUTOMOBILE",
+                        "INSTITUTE": "VELAMMAL ENGINEERING COLLEGE",
+                        "YEAR": 2015
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2015",
+                        "Unnamed:_1": "TILL DATE",
+                        "EXPERIENCE": "9",
+                        "Unnamed:_3": "6",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Hybrid Solar Desalination Power Plant",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2,50,000",
+                        "YEAR_OF_SANCTION": "2017-18",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Entrepreneurship Awareness Camp",
+                        "SPONSORING_AGENCY": "NIMAT",
+                        "AMOUNT": "40000",
+                        "YEAR_OF_SANCTION": "2017- 18",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Entrepreneurship Awareness Camp",
+                        "SPONSORING_AGENCY": "NIMAT",
+                        "AMOUNT": "60000",
+                        "YEAR_OF_SANCTION": "2018- 19",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Ventilation And Voice Control Visor Helmet",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2,50,000",
+                        "YEAR_OF_SANCTION": "2019-20",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Braille Phablet",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2,50,000",
+                        "YEAR_OF_SANCTION": "2019-20",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Karthavya",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2,50,000",
+                        "YEAR_OF_SANCTION": "2020-21",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Handicap Vehicle ",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2,50,000",
+                        "YEAR_OF_SANCTION": "2020-21",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "MYMSME",
+                        "SPONSORING_AGENCY": "MSME",
+                        "AMOUNT": "1 CR",
+                        "YEAR_OF_SANCTION": "2024",
+                        "DURATION": "2024",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Ongoing"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Solar hybrid desalination system",
+                        "PATENT_TYPE_(UTILITY)": "Utility",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Granted"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Intelligent Head protective safety helmet",
+                        "PATENT_TYPE_(UTILITY)": "Utility",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Hand Held Braille Device and Methods Translating media and text contents into Braille character thereof",
+                        "PATENT_TYPE_(UTILITY)": "Utility",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "M.Yuvaraj",
+                        "PAPER_TITLE": "Performance Enhancement In Diesel Engine By Coating Aluminium– Titanium In Combustion Chamber With Varying Coating Thickness",
+                        "JOURNAL_NAME": "Journal of Applied Sciences Research",
+                        "DOI_NUMBER": "1819-544X",
+                        "PAGE_NO": "14",
+                        "VOL_NO_/_ISSUE_NO": "200-205",
+                        "MONTH_&_YEAR": 2015,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "M.Yuvaraj",
+                        "PAPER_TITLE": "Design, Fabrication and analysis of welding fixture having higher accuracy without using robot",
+                        "JOURNAL_NAME": "Sadguru publications",
+                        "DOI_NUMBER": "0972-768X",
+                        "PAGE_NO": "14/2",
+                        "VOL_NO_/_ISSUE_NO": "2024-01-08 00:00:00",
+                        "MONTH_&_YEAR": 2016,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "M.Yuvaraj",
+                        "PAPER_TITLE": "Performance and Emission Characteristics of a Diesel-LPG Duel Fuel in Greeves Engine",
+                        "JOURNAL_NAME": "Journal of Automation and Automobile Engineering",
+                        "PAGE_NO": "18-24",
+                        "VOL_NO_/_ISSUE_NO": "2024-03-03 00:00:00",
+                        "MONTH_&_YEAR": 2018,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "M.Yuvaraj",
+                        "PAPER_TITLE": "Comparative analysis of single slope solar still and solar dish concentrator by energy and exergy approach",
+                        "JOURNAL_NAME": "Iranian Journal of Chemistry and Chemical Engineering",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "-",
+                        "VOL_NO_/_ISSUE_NO": "-",
+                        "MONTH_&_YEAR": 2023,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "M.Yuvaraj",
+                        "PAPER_TITLE": "Performance combustion and characteristics of a CI engine using ethanol biodiesel fuel",
+                        "CONFERENCE_NAME": "International conference on recent trends in engineering, science and management – ICRTESM2016",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "2016-07-01"
+                    },
+                    {
+                        "AUTHORS": "M.Yuvaraj",
+                        "PAPER_TITLE": "Studies on the performance of different types of pebbles in solar desalination",
+                        "CONFERENCE_NAME": "International web conference on smart engineering Technology – 2020",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "2020-06-01"
+                    },
+                    {
+                        "AUTHORS": "M.Yuvaraj",
+                        "PAPER_TITLE": "Studies On The Effect Of Dust Deposition On The Solar Still Cover In The Performance Of A Single Slope Passive Desalination System",
+                        "CONFERENCE_NAME": "ICSCT'23 International Solar and Renewable Energy Conference",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "2023-06-01"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "M.Yuvaraj",
+                        "BOOK_NAME,_EDITION": "Industrial Automation, First Edition",
+                        "PUBLISHER": "Techno Publishers"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "ISTE, IEI, SAE, IAENG",
+                    "Sponsored_Projects": 8,
+                    "Patent_Granted": 1,
+                    "Patent_Published": 2,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 4,
+                    "Conference_Publications": 3,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. YUVARAJ M",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Automobile Engineering",
+                "Mail_ID": "senthamilselvan@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/002/VEC-002-04-160.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/yuvaraj-maruthu-pandian-81796943/",
+                    "googlescholar": "https://scholar.google.co.in/citations?user=ad1pYeEAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Yuvaraj_m",
+                    "orchidprofile": "https://orcid.org/0000-0003-2986-5369?lang=en",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/AEE-7608-2022",
+                    "scopus": ""
+                },
+                "Professional_Membership": "Society of Automotive Engineers (SAE)",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D.",
+                        "BRANCH": "Mechanical Engineering)",
+                        "INSTITUTE": "Sri Sivasubramaniya Nadar College of Engineering, Kalavakkam, Chennai.",
+                        "YEAR": 2024
+                    },
+                    {
+                        "DEGREE": "M.E.",
+                        "BRANCH": "Internal Combustion Engineering)",
+                        "INSTITUTE": "Sri Venkateswara College of Engineering, Sriperumbudur, Chennai.",
+                        "YEAR": 2014
+                    },
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "Mechanical Engineering)",
+                        "INSTITUTE": "University College of Engineering, Ariyalur Campus.",
+                        "YEAR": 2012
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "09.06.2017",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "6",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College, Chennai"
+                    },
+                    {
+                        "DURATION": "16.06.2014",
+                        "Unnamed:_1": "17.04.2017",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "10",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "GKM College of Engineering & Technology, Chennai"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "IEDC",
+                        "SPONSORING_AGENCY": "GST",
+                        "AMOUNT": "2.5",
+                        "YEAR_OF_SANCTION": "1",
+                        "DURATION": "2018",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Completed"
+                    },
+                    {
+                        "TITLE": "MSME Idea Hackathon 3.0",
+                        "SPONSORING_AGENCY": "GOI",
+                        "AMOUNT": "10.1",
+                        "YEAR_OF_SANCTION": "2",
+                        "DURATION": "2024",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Ongoing"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Ai-Based Wireless Charging Station for Electric Vehicles",
+                        "PATENT_TYPE_(UTILITY)": "Utility",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "29.11.2024"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Senthamil Selvan Murugan, Prakash, Rajkumar and Nallusamy",
+                        "PAPER_TITLE": "Impacts of pine oil and hydrogen induction with hemp oil methyl ester on dual fuel Reactivity Controlled Compression Ignition combustion in diesel engine",
+                        "JOURNAL_NAME": "Environmental Progress & Sustainable Energy",
+                        "DOI_NUMBER": "DOI: 10.1002/ep.14410",
+                        "PAGE_NO": "1 of 12",
+                        "VOL_NO_/_ISSUE_NO": "43/4",
+                        "MONTH_&_YEAR": "2024-05-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCI ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Senthamil Selvan Murugan, Nallusamy, Prakash and Venkatesan",
+                        "PAPER_TITLE": "Ethanol, Hemp, and Cottonseed Oil Biofuel Injection Completely Eliminates Diesel Fuel in Reactivity-Controlled Compression Ignition Engine",
+                        "JOURNAL_NAME": "American Society of Civil Engineers (ASCE)- Journal of Energy Engineering",
+                        "DOI_NUMBER": "DOI: 10.1061/(ASCE)EY.1943-7897.0000867.",
+                        "PAGE_NO": "04022039 (1-12)",
+                        "VOL_NO_/_ISSUE_NO": "148/6",
+                        "MONTH_&_YEAR": "2022-12-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCI ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan, N.Nallusamy",
+                        "PAPER_TITLE": "A review on combustion, performance and emission characteristics of Reactivity Controlled Compression Ignition (RCCI) Engine",
+                        "JOURNAL_NAME": "International Journal of Mechanical and Production Engineering Research and Development (IJMPERD)",
+                        "DOI_NUMBER": "ISSN (P): 2249-6890;",
+                        "PAGE_NO": "1 of 8",
+                        "VOL_NO_/_ISSUE_NO": "18/8",
+                        "MONTH_&_YEAR": "2018-08-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan,\nP. Raghu,\nK. Pitchandi, N.Nallusamy",
+                        "PAPER_TITLE": "Experimental study on diesel engine and analysis the spray characteristics of diesel and biodiesel by varying injection pressure",
+                        "JOURNAL_NAME": "Advanced Materials Research",
+                        "DOI_NUMBER": "doi:10.4028/www.scientific.net/AMR.984-985.932",
+                        "PAGE_NO": "932-937",
+                        "VOL_NO_/_ISSUE_NO": "984-985",
+                        "MONTH_&_YEAR": "2014",
+                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan,\nP. Raghu,\nN.Nallusamy",
+                        "PAPER_TITLE": "Experimental study on diesel engine to analyse the spray characteristics of biodiesel by varying injection pressure",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "ISSN 0973-4562",
+                        "PAGE_NO": "5968-5971",
+                        "VOL_NO_/_ISSUE_NO": "Vol. 10\nIssue 6",
+                        "MONTH_&_YEAR": "2015",
+                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan,\nP. Raghu,\nK. Pitchandi, N.Nallusamy",
+                        "PAPER_TITLE": "A review of macroscopic and microscopic spray characteristics of vegetable oil biodiesel/blends in DI diesel engine",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "ISSN 0973-4562",
+                        "PAGE_NO": "81-85",
+                        "VOL_NO_/_ISSUE_NO": "Vol. 10\nIssue 63",
+                        "MONTH_&_YEAR": "2015",
+                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "M. Senthamil Selvan,  P. Raghu, K. Pitchandi, N.Nallusamy",
+                        "PAPER_TITLE": "A review of macroscopic and microscopic spray characteristics of vegetable oil biodiesel/blends in DI diesel engine",
+                        "CONFERENCE_NAME": " International Conference on Computational Systems in engineering and Technology. (ICCSET-2014)",
+                        "ORGANIZED_BY": "Sri Venkateswara College of Engineering, Chennai.",
+                        "MONTH_&_YEAR": "2014"
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan, P. Raghu, N.Nallusamy",
+                        "PAPER_TITLE": "Experimental study on diesel engine to analyse the spray characteristics of biodiesel by varying injection pressure",
+                        "CONFERENCE_NAME": "International Conference on Modelling, Optimisation And Computing. (ICMOC – 2014)",
+                        "ORGANIZED_BY": "Noorul Islam Centre for Higher Education, Kumaracoil",
+                        "MONTH_&_YEAR": "2014"
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan,  P. Raghu, K. Pitchandi, N.Nallusamy",
+                        "PAPER_TITLE": "Experimental study on diesel engine and analysis the spray characteristics of diesel and biodiesel by varying injection pressure",
+                        "CONFERENCE_NAME": " International Conference on Recent Trends in Mechanical and Interdisciplinary. (ICRAMID-2014)",
+                        "ORGANIZED_BY": "Ponjesly College of Engineering, Nagercoil,",
+                        "MONTH_&_YEAR": "2014"
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan, N.Nallusamy",
+                        "PAPER_TITLE": "A review on combustion, performance and emission characteristics of Reactivity Controlled Compression Ignition (RCCI) engine",
+                        "CONFERENCE_NAME": "International Conference on Automobile, Marine and Mechanical Engineering.  (ICAMME 2018)",
+                        "ORGANIZED_BY": "Sri Venkateswara College of Engineering, Chennai",
+                        "MONTH_&_YEAR": "2018"
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan, M. Pranesh, M. Dhanush Kumar, N. Nallusamy",
+                        "PAPER_TITLE": "Experimental study on performance, combustion and emission characteristics of Reactivity Controlled Compression Ignition (RCCI) engine with EGR for cotton seed oil methyl ester",
+                        "CONFERENCE_NAME": "International Conference on Innovative Research in Thermal and Manufacturing Engineering.  (IRTME 2019)",
+                        "ORGANIZED_BY": "Velammal College of Engineering & Technology, Madurai",
+                        "MONTH_&_YEAR": "2019"
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan, V.Kabilan, Gokul Saikiran, B.Muthu, K.Rudresh",
+                        "PAPER_TITLE": "Experimental investigation of performance, combustion and emission characteristics of Reactivity Controlled Compression Ignition (RCCI) engine for Hydrogen gas (H2) and hemp oil methyl ester.",
+                        "CONFERENCE_NAME": "International Conference on Technological Advancements in Mechanical Engineering  held on 15th & 16th June 2021",
+                        "ORGANIZED_BY": " Academy of Maritime Education and Training (AMET), Chennai (2021)",
+                        "MONTH_&_YEAR": "2021"
+                    },
+                    {
+                        "AUTHORS": "M. Senthamil Selvan,",
+                        "PAPER_TITLE": "Effects of Dual Fuel Reactivity Controlled Compression Ignition Combustion of n-Butanol with Diesel and Hemp oil biodiesel in Diesel engine",
+                        "CONFERENCE_NAME": "3rd International hybrid conference of advances in Automobile, Manufacturing and Mechanical Engineering-2024",
+                        "ORGANIZED_BY": "Easwari Engineering College, Chennai.",
+                        "MONTH_&_YEAR": "5.4.2024"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "Society of Automotive Engineers (SAE)",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 1,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 6,
+                    "Conference_Publications": 7,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 12,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 1,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. DINESHBABU D",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/002/VEC-002-04-010.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dineshbabu-d-463108128/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=BNZQRpIAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. SENTHAMIL SELVAN M",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Automobile Engineering",
+                "Mail_ID": "chandran@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/002/VEC-002-03-167.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-senthamil-selvan-murugan-01811166",
+                    "googlescholar": "https://scholar.google.com/citations?user=yDeX6gQAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Senthamil-Murugan",
+                    "orchidprofile": "https://orcid.org/0000-0002-3674-5798?lang=en",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/LKL-3897-2024",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58350433000"
+                },
+                "Professional_Membership": "SAE 7180410845",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "Anna University",
+                        "YEAR": 2016
+                    },
+                    {
+                        "DEGREE": "M.Tech",
+                        "BRANCH": "Manufacturing",
+                        "INSTITUTE": "Prist University",
+                        "YEAR": 2011
+                    },
+                    {
+                        "DEGREE": "B.Tech",
+                        "BRANCH": "Automobile",
+                        "INSTITUTE": "MIT, Anna University",
+                        "YEAR": 2003
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "3.7.2003",
+                        "Unnamed:_1": "6.12.2006",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "IFET College of Engineering"
+                    },
+                    {
+                        "DURATION": "17.1.2007",
+                        "Unnamed:_1": "31.5.2008",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Industrial Engineer",
+                        "INSTITUTION": "Ammaiyapper Textiles P. Ltd."
+                    },
+                    {
+                        "DURATION": "11.6.2008",
+                        "Unnamed:_1": "6.5.2009",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "11",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Annai Teresa College of Engineering"
+                    },
+                    {
+                        "DURATION": "13.6.2011",
+                        "Unnamed:_1": "31.1.2016",
+                        "EXPERIENCE": "4",
+                        "Unnamed:_3": "7",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "SKR Engineering College"
+                    },
+                    {
+                        "DURATION": "16.6.2016",
+                        "Unnamed:_1": "Till date",
+                        "EXPERIENCE": "8",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Associate Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Self Sustainable  E-Boat",
+                        "SPONSORING_AGENCY": "DST-IEDC",
+                        "AMOUNT": "2.5 L",
+                        "YEAR_OF_SANCTION": "2019",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Self Powered Bike Mobile Charging By Waste Heat Recovery Energy Machine",
+                        "SPONSORING_AGENCY": "DST-IEDC",
+                        "AMOUNT": "2.5 L",
+                        "YEAR_OF_SANCTION": "2020",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Tidy Water purifier for domestic purposes",
+                        "SPONSORING_AGENCY": "DST-IEDC",
+                        "AMOUNT": "2.5 L",
+                        "YEAR_OF_SANCTION": "2021",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Self Sustainable Electric Generation Mechanism And Methods Of Operating Boat Thereof",
+                        "PATENT_TYPE_(UTILITY)": "Utility Patent",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "23.12.2024"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Detachable Thernoelectric generator and method of generating electricity thereof",
+                        "PATENT_TYPE_(UTILITY)": "Utility Patent",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "23.12.2024"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Mobile Phone cum Power Bank Charger Holder",
+                        "PATENT_TYPE_(UTILITY)": "Design Patent",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Granted",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "23.12.2024"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Optimization of dual pulse resistance welding parameters for ASTM A240 stainless steel sheets: A multi-objective approach",
+                        "JOURNAL_NAME": "Interactions",
+                        "DOI_NUMBER": "10.4273/inters.15.5.9",
+                        "PAGE_NO": "140-146",
+                        "VOL_NO_/_ISSUE_NO": "245/1",
+                        "MONTH_&_YEAR": "2024-10-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Evaluation of Mechanical and Thermal Behavior of Ferrous and Non-Ferrous Nano Fillers Based GFRP Composites",
+                        "JOURNAL_NAME": "Int. J. Vehicle Structures & Systems",
+                        "DOI_NUMBER": "10.4273/ijvss.15.5.14",
+                        "PAGE_NO": "1-5",
+                        "VOL_NO_/_ISSUE_NO": "15/5",
+                        "MONTH_&_YEAR": "2023-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "An Evolutionary Algorithmic Approach for Improving the Success Rate of Selective Assembly through a Novel EAUB Method",
+                        "JOURNAL_NAME": "Applied Sciences",
+                        "DOI_NUMBER": "10.3390/\napp12178797",
+                        "PAGE_NO": "1-17",
+                        "VOL_NO_/_ISSUE_NO": "1/2",
+                        "MONTH_&_YEAR": "2022-09-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Mechanical Behavior of GFRP filled with Copper Nano Particles based Composite",
+                        "JOURNAL_NAME": "Journal of Mechanical and Mechanics Engineering",
+                        "PAGE_NO": "10-15",
+                        "VOL_NO_/_ISSUE_NO": "7/3",
+                        "MONTH_&_YEAR": "2021-11-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Others",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Optimization for Double Pulse Resistance Spot Welded Joints of Ferritic Stainless Steel",
+                        "JOURNAL_NAME": "YMER Journal",
+                        "DOI_NUMBER": "10.4673/ymer.15.5.12",
+                        "PAGE_NO": "431-439",
+                        "VOL_NO_/_ISSUE_NO": "21/2",
+                        "MONTH_&_YEAR": "2022-02-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Investigation on mechanical characterizes of natural fiber reinforcement polymer composite material",
+                        "JOURNAL_NAME": "International journal of vehicle structure and system ",
+                        "DOI_NUMBER": "10.4273/ijvss.12.2.15",
+                        "PAGE_NO": "31-40",
+                        "VOL_NO_/_ISSUE_NO": "11/7",
+                        "MONTH_&_YEAR": "2020-12-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Performance Evaluation of Mono Suspension Using Neodymium Magnets",
+                        "JOURNAL_NAME": "Journal of Recent Trends in Mechanics",
+                        "PAGE_NO": "151-162",
+                        "VOL_NO_/_ISSUE_NO": "12/2",
+                        "MONTH_&_YEAR": "2020-08-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Others",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Mechanical Investigation of Crane Hook using AISI 4340 Alloy Steel with Various Proportions of Vanadium",
+                        "JOURNAL_NAME": "Journal of Automation and Automobile Engineering",
+                        "PAGE_NO": "1-6",
+                        "VOL_NO_/_ISSUE_NO": "4/3",
+                        "MONTH_&_YEAR": "2019-07-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Others",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Comparative behavior of various nano additives in a DIESEL engine powered by novel Garciniagummi-gutta biodiesel",
+                        "JOURNAL_NAME": "Journal of Cleaner Production",
+                        "DOI_NUMBER": "10.1016/j.jclepro.2019.118940",
+                        "PAGE_NO": "11-10",
+                        "VOL_NO_/_ISSUE_NO": "245/2",
+                        "MONTH_&_YEAR": "2019-11-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Experimental Investigation on the Effect of Ignition Enhancers in the Blends of Sapota Biodiesel/Diesel Blends on a CRDi Engine",
+                        "JOURNAL_NAME": "Energy Fuels",
+                        "DOI_NUMBER": "10.1021/acs.energyfuels.9b02521",
+                        "PAGE_NO": "121-130",
+                        "VOL_NO_/_ISSUE_NO": "11/15",
+                        "MONTH_&_YEAR": "2020-02-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Comparative study on the effect of samarium additions on thermo-mechanical behaviour of shape memory alloys",
+                        "JOURNAL_NAME": "Matériaux & Techniques",
+                        "DOI_NUMBER": "10.1051/mattech/2018009",
+                        "PAGE_NO": "1-8",
+                        "VOL_NO_/_ISSUE_NO": "106/1",
+                        "MONTH_&_YEAR": "2018-10-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Evaluation of vibration damping behavior of different sizes of  waste tyre rubber in natural rubber composites",
+                        "JOURNAL_NAME": "Journal of Composite Materials",
+                        "DOI_NUMBER": "DOI: 10.1177/0021998317748467",
+                        "PAGE_NO": "2493-1501",
+                        "VOL_NO_/_ISSUE_NO": "52/8",
+                        "MONTH_&_YEAR": "2018-12-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Sound and vibration behavior assessment of different sizes of waste tyre rubber in natural rubber composites for damping applications",
+                        "JOURNAL_NAME": "Chiang mai journal of Science",
+                        "DOI_NUMBER": "DOI: 10.1177/0021998317748467",
+                        "PAGE_NO": "515-527",
+                        "VOL_NO_/_ISSUE_NO": "45/1",
+                        "MONTH_&_YEAR": "2018-02-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Effect of different proportions of silicon carbide reinforced magnesium alloy composites for Connecting rod applications",
+                        "JOURNAL_NAME": "Journal of Manufacturing Engineering",
+                        "DOI_NUMBER": "DOI: 10.1177/0021998317748467",
+                        "PAGE_NO": "77-81",
+                        "VOL_NO_/_ISSUE_NO": "45/3",
+                        "MONTH_&_YEAR": "2017-06-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Others",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Structural and Mechanical studies of Waste Printed Circuit boards – International Journal of Advanced Technology in Engineering and Science",
+                        "JOURNAL_NAME": "International Journal of Advanced Technology in Engineering and Science",
+                        "PAGE_NO": "11-16",
+                        "VOL_NO_/_ISSUE_NO": "4/8",
+                        "MONTH_&_YEAR": "2017-01-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Effect of Recycled Rubber Particles and Silica on Tensile and Tear properties of Natural Rubber Composites",
+                        "JOURNAL_NAME": "Materials Science",
+                        "DOI_NUMBER": "10.5755/j01.22.2.7330",
+                        "PAGE_NO": "256-261",
+                        "VOL_NO_/_ISSUE_NO": "22/3",
+                        "MONTH_&_YEAR": "2016-06-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Influence of natural rubber composites on different fillers to assess mechanical performance",
+                        "JOURNAL_NAME": "Journal of Engineering Transactions C: Aspects",
+                        "PAGE_NO": "932-939",
+                        "VOL_NO_/_ISSUE_NO": "20/5",
+                        "MONTH_&_YEAR": "2015-06-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Evaluation of performance of natural rubber composites with different sizes of waste tyre rubber (WTR) and precipitated silica on C-M-M,",
+                        "JOURNAL_NAME": "The Arabian Journal for Science and Engineering",
+                        "DOI_NUMBER": "10.1007/s13369-015-1616-y ",
+                        "PAGE_NO": "1187–1196",
+                        "VOL_NO_/_ISSUE_NO": "40/3",
+                        "MONTH_&_YEAR": "2015-02-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr.V.Chandran",
+                        "PAPER_TITLE": "Application of Ground Tire Particle (GTP)-Silica (Si) in Partial Natural Rubber Compounds for Solving Environmental Problems ",
+                        "JOURNAL_NAME": "International Journal of Applied environmental science",
+                        "PAGE_NO": "1959-1967",
+                        "VOL_NO_/_ISSUE_NO": "4/4",
+                        "MONTH_&_YEAR": "2014-11-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "PAPER_TITLE": "Invesigation of mechanical and thermal properties of hybrid composites helmet reinforced with epoxy polymer matrix",
+                        "CONFERENCE_NAME": "ICRDME'23",
+                        "ORGANIZED_BY": "SAEC, Chennai",
+                        "MONTH_&_YEAR": "2023-03-01"
+                    },
+                    {
+                        "PAPER_TITLE": "Evaluation of thermal behavior of ferrous and non-ferrous nano fillersbased GRFP composites for automotive gear casing",
+                        "CONFERENCE_NAME": "NCIRAT’23",
+                        "ORGANIZED_BY": "MIT, Chennai",
+                        "MONTH_&_YEAR": "2023-04-01"
+                    },
+                    {
+                        "AUTHORS": "V.Chandran",
+                        "PAPER_TITLE": "Experimental Analysis of Crane Hook using AISI 4340 Alloy Steel With Different Proportions Of Vanadium ",
+                        "CONFERENCE_NAME": "National Conference On  “Recent Advances In Mechanical Sciences And Technology ",
+                        "ORGANIZED_BY": "GCT, Bargur",
+                        "MONTH_&_YEAR": "2018-11-01"
+                    },
+                    {
+                        "AUTHORS": "V.Chandran",
+                        "PAPER_TITLE": "Performance Assessment of Connecting rod made of Magnesium Alloy Reinforced Silicon Carbide Composites",
+                        "CONFERENCE_NAME": "National conference on Advances in Mechanical Engineering (AME’2017) ",
+                        "ORGANIZED_BY": "Sri Ram Engineering College, Chennai",
+                        "MONTH_&_YEAR": "2017-03-01"
+                    },
+                    {
+                        "AUTHORS": "V.Chandran",
+                        "PAPER_TITLE": "Experimental Investigation of mechanical properties of hybrid filled natural rubber composites compared with vulcanized natural rubber",
+                        "CONFERENCE_NAME": "National conference on Emerging Trends in Design, Thermal, and Manufacturing ",
+                        "ORGANIZED_BY": "Saveetha Engineering College, Chennai",
+                        "MONTH_&_YEAR": "2013-04-01"
+                    },
+                    {
+                        "AUTHORS": "V.Chandran"
+                    },
+                    {
+                        "AUTHORS": "V.Chandran"
+                    },
+                    {
+                        "AUTHORS": "V.Chandran"
+                    },
+                    {
+                        "AUTHORS": "V.Chandran"
+                    },
+                    {
+                        "AUTHORS": "V.Chandran"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "Dr.V.Chandran",
+                        "BOOK_NAME,_EDITION": "Performance of Waste Tyre Rubber in Engineering Applications",
+                        "PUBLISHER": "LAMBERT Academic Publishing",
+                        "ISBN_/_ISSN_NO": "978-3-659-84868-1",
+                        "MONTH_&_YEAR": "2016-03-01"
+                    },
+                    {
+                        "AUTHOR": "Dr.V.Chandran",
+                        "BOOK_NAME,_EDITION": "Advanced Internal Combustion Engines",
+                        "PUBLISHER": "Technical Publications",
+                        "ISBN_/_ISSN_NO": "978-93-332-1327-1",
+                        "MONTH_&_YEAR": "2017-02-01"
+                    },
+                    {
+                        "AUTHOR": "Dr.V.Chandran",
+                        "BOOK_NAME,_EDITION": "Vehicle Body Engineering",
+                        "PUBLISHER": "Krishna Publications",
+                        "ISBN_/_ISSN_NO": "978-93-91330-83-5",
+                        "MONTH_&_YEAR": "2021-09-01"
+                    },
+                    {
+                        "AUTHOR": "Dr.V.Chandran",
+                        "BOOK_NAME,_EDITION": "Power Units and Transmission",
+                        "PUBLISHER": "Krishna Publications",
+                        "ISBN_/_ISSN_NO": "978-93-95254-20-5",
+                        "MONTH_&_YEAR": "2022-12-01"
+                    },
+                    {
+                        "AUTHOR": "Dr.V.Chandran",
+                        "BOOK_NAME,_EDITION": "Hydraulics and Pneumatics",
+                        "PUBLISHER": "Krishna Publications",
+                        "ISBN_/_ISSN_NO": "978-93-93808-17-2",
+                        "MONTH_&_YEAR": "2023-03-01"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "C.Krishnamurthy",
+                        "RESEARCH_TITLE": "Dynamic Characteristics of Polymer matrix composite using natural fibers. composites",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Full Time",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "Ongoinh",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": ";-"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "SAE 7180410845",
+                    "Sponsored_Projects": 3,
+                    "Patent_Granted": 1,
+                    "Patent_Published": 2,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 19,
+                    "Conference_Publications": 10,
+                    "Book_/_Book_Chapter_Published": 5,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 3,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 10,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 4,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 1
+                }
+            }
+        ]
+    },
+    {
+        "NON_TEACHING_FACULTY": [
+            {
+                "Name": "MR. BHARANI KUMAR M",
+                "Designation": "Lab Instructor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/002/VEC-002-05-002.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    }
 ]
