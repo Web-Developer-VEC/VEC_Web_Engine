@@ -73,7 +73,6 @@ export default function IicFacPolicy({ data }) {
 
 const handleSave = () => {
   if (!isDirty) {
-    toast.info("No changes to save!");
     return;
   }
 
@@ -88,7 +87,6 @@ const handleSave = () => {
   setIsEditing(false);
   setIsDirty(false);
   setSelectedRows(new Set());
-  toast.success("Changes saved as draft!");
 };
 
 const handleCancel = () => {
@@ -99,7 +97,7 @@ const handleCancel = () => {
             const resetPdf = pendingData.find((x) => x.id === activePdf.id);
             setActivePdf(resetPdf || null);
         }
-        toast.info("Cancelled changes. Draft preserved!");
+
     } else {
         // No draft, revert to original data
         setTempData(deepCopy(originalData));
@@ -107,7 +105,6 @@ const handleCancel = () => {
             const resetPdf = originalData.find((x) => x.id === activePdf.id);
             setActivePdf(resetPdf || null);
         }
-        toast.info("Cancelled changes. Reverted to original!");
     }
 
     setIsEditing(false);
@@ -210,7 +207,6 @@ const handleFinalRequestConfirm = async () => {
   const { payload, files } = buildPolicyPayload();
 
   if (payload.length === 0) {
-    toast.info("No changes to submit!");
     return;
   }
 
@@ -226,10 +222,8 @@ const handleFinalRequestConfirm = async () => {
       setPendingData(null);
       setIsSaved(false);
       setShowRequestModal(false);
-      toast.success("Policy request sent for approval!");
     }
   } catch (err) {
-    toast.error("Failed to submit policy request");
   }
 };
 

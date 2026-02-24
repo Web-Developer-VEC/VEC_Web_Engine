@@ -66,7 +66,6 @@ async function infrastructureHandler(fileStream, docs, req, cb, filename, mimety
       key: s3Key,
       location: `/${s3Key}`,
       mimetype: effectiveMime,
-      category,
       department: folderId,
     });
 

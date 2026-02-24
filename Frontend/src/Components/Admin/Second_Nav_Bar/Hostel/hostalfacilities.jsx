@@ -495,7 +495,7 @@ const handleRequestConfirm = async () => {
       collectionName: "hostel_details",
       collection_type: "hostel_facilities",
       category: null,
-      title: "Powerhouse",
+      title: "Insert Hostel Facilities",
       meta_data: {
         title: facility.title,
         description: facility.description,
@@ -524,7 +524,7 @@ const handleRequestConfirm = async () => {
       collectionName: "hostel_details",
       collection_type: "hostel_facilities",
       category: null,
-      title: "Powerhouse",
+      title: "Update Hostel Facilities",
       original_data: {
         title: original.title,
         description: original.description,
@@ -558,7 +558,7 @@ detected.deleted.forEach(item => {
     collectionName: "hostel_details",
     collection_type: "hostel_facilities",
     category: null,
-    title: "Powerhouse",
+    title: "Delete Hostel Facilities",
     meta_data: {
       title: original.title,
       description: original.description,
