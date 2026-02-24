@@ -26,6 +26,7 @@ const academiccalendarHandler = require("../controllers/top_navbar/academics_con
 const newsletterHandler = require("../controllers/top_navbar/academics_controllers/newsletter_controllers/newsletterbusboy");
 const studentAchievementsHandler = require("../controllers/top_navbar/academics_controllers/student_achievments_controllers/achivementsbusboy");
 const syllabusHandler = require("../controllers/top_navbar/academics_controllers/syllabus_controllers/syllabus_busboy");
+const pedagogyHandler = require("../controllers/top_navbar/academics_controllers/pedagogy_controllers/pedagogy_busboy");
 const activitiesHandler = require("../controllers/top_navbar/academics_controllers/activities_controllers/activities_busboy");
 const infrastructureHandler = require("../controllers/top_navbar/academics_controllers/infrastructure_controllers/infrastructure_busboy");
 
@@ -57,17 +58,232 @@ const busboyModels = {
   placement: placementHandler,
   exams: examHandler,
   other_facilities: otherFacilitiesHandler,
+  
  
   // ACADEMICS 
   academics: academiccalendarHandler,
-  AIDS_001: newsletterHandler,
-  AIDS_001: studentAchievementsHandler,
-  AIDS_001:syllabusHandler,
-  AIDS_001:activitiesHandler,
-  AIDS_001:infrastructureHandler,
+  //AIDS
+  AIDS_001: {
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
 
-};
+  //IT
+  IT_011: {
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+  //AUTO
+  AUTO_002:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+  //CHEMISTRY
+  CHEMISTRY_003: {
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+  //CIVIL
+  CIVIL_004: {
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+  
+   //CSE
+  CSE_005: {
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+   //CSECS
+  CSECS_006: {
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+   //EEE
+  EEE_007:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+  //EIE
+  EIE_008:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+  //ECE
+  ECE_009:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+  //ENGLISH
+  ENGLISH_010:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+  //MATH
+  MATHS_012: {
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+  //MECH
+  MECH_013:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+   //TAMIL
+  TAMIL_014:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+   //PHYSICS
+  PHYSICS_015: {
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+   //MECSE
+  MECSE_016:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+   //MBA
+  MBA_017:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+},
+   //PS
+  PS_018:{
+  newsletter: newsletterHandler,
+  faculty: facultyHandler,
+  hod: hodHandler,
+  achievements: studentAchievementsHandler,
+  curriculum_and_syllabus:syllabusHandler,
+  activities: activitiesHandler,
+  pedagogy:pedagogyHandler,
+  infrastructure:infrastructureHandler,
+  research:researchHandler
+}}
 
 module.exports = busboyModels;
-
-

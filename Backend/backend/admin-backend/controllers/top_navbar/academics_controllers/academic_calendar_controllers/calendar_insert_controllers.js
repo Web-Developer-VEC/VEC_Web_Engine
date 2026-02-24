@@ -24,7 +24,7 @@ async function insertData(tempDoc, mainCollection) {
 
     // Validate PDF paths
     pdf_path.forEach(path => {
-      if (typeof path !== "string" || !path.startsWith("/static/pdfs/")) {
+      if (typeof path !== "string") {
         throw new Error(`Invalid PDF path: ${path}`);
       }
     });

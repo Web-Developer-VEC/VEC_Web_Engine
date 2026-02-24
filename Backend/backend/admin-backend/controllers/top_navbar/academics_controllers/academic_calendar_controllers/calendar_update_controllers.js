@@ -2,30 +2,38 @@ async function updateData(tempDoc, mainCollection) {
   try {
     const { collection_type, meta_data, original_data } = tempDoc;
 
-    if (!collection_type || !meta_data || !original_data) {
-      throw new Error("collection_type, meta_data, and original_data are required");
-    }
-
     if (collection_type !== "academic_calendar") {
       throw new Error("Invalid collection type");
     }
 
-    const { year: newYear, pdf_path: newPdfPaths } = meta_data;
-    const { year: origYear } = original_data;
+    const newYear = meta_data.year;
+    const origYear = original_data.year;
 
-    if (!newYear || !origYear || !Array.isArray(newPdfPaths)) {
-      throw new Error("year and pdf_path array are required");
+    if (!newYear || !origYear) {
+      throw new Error("year is required");
     }
 
-    const yearRegex = /^Academic Year \d{4}-\d{4}$/;
-    if (!yearRegex.test(newYear) || !yearRegex.test(origYear)) {
-      throw new Error("Invalid year format");
+    const existingDoc = await mainCollection.findOne(
+      { type: "academic_calendar", "data.year": origYear },
+      { projection: { "data.$": 1 } }
+    );
+
+    if (!existingDoc?.data?.length) {
+      throw new Error(`Academic year ${origYear} not found`);
     }
 
-    newPdfPaths.forEach(p => {
-      if (typeof p !== "string" || !p.startsWith("/static/pdfs/")) {
-        throw new Error(`Invalid PDF path: ${p}`);
-      }
+    const existingPdfPaths = existingDoc.data[0].pdf_path || ["", ""];
+    const incomingPdfPaths = meta_data.pdf_path || [];
+
+    const finalPdfPaths = [0, 1].map(index => {
+      const incoming = incomingPdfPaths[index];
+      const existing = existingPdfPaths[index] || "";
+
+      if (incoming === undefined) return existing;
+
+      if (incoming === "") return "";
+
+      return incoming;
     });
 
     const result = await mainCollection.updateOne(
@@ -36,22 +44,24 @@ async function updateData(tempDoc, mainCollection) {
       {
         $set: {
           "data.$.year": newYear,
-          "data.$.pdf_path": newPdfPaths
+          "data.$.pdf_path": finalPdfPaths
         }
       }
     );
 
-    if (result.matchedCount === 0) {
+    if (!result.matchedCount) {
       throw new Error(`Academic year ${origYear} not found`);
     }
 
-    return { success: true, message: "Academic calendar updated successfully" };
+    return {
+      success: true,
+      message: "Academic calendar updated successfully"
+    };
 
   } catch (error) {
     console.error("Update error:", error);
-    throw new Error(error.message);
+    throw error;
   }
 }
-
 
 module.exports = { updateData };

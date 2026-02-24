@@ -1,12 +1,11 @@
 [
     {
-        "collectionName":"CSE_005",
-        "collection_type":"student_achievements",
-        "category":"student_achievements_details",
-        "action":"insert",
-        "title":"insert in student_achievements",
-        "meta_data":
-        {
+        "collectionName": "CSE_005",
+        "collection_type": "student_achievements",
+        "category": "student_achievements_details",
+        "action": "insert",
+        "title": "insert in student_achievements",
+        "meta_data": {
             "image_path": "/static/images/student_activities/005/1.webp",
             "event_name": "dinesh",
             "image_content": "Mr.R. Prasath, K. Logendiran, KM. Udaya Krishna has won first place in Code Debugging event with a Cash Award of 5000/- held at VelTech Engineering College",
@@ -14,20 +13,18 @@
         }
     },
     {
-        "collectionName":"CSE_005",
-        "collection_type":"student_achievements",
-        "category":"student_achievements_details",
-        "action":"update",
-        "title":"update in student_achievements",
-        "original_data":
-        {
-            "image_path": "/static/images/student_activities/005/1.webp",
-            "event_name": "dinesh",
-            "image_content": "Mr.R. Prasath, K. Logendiran, KM. Udaya Krishna has won first place in Code Debugging event with a Cash Award of 5000/- held at VelTech Engineering College",
-            "date": "2025-02-14"
+        "collectionName": "CSE_005",
+        "collection_type": "student_achievements",
+        "category": "student_achievements_details",
+        "action": "update",
+        "title": "update in student_achievements",
+        "original_data": {
+            "image_path": "/static/images/student_activities/001/1.webp",
+            "event_name": "Paper Presentation (2nd Prize)",
+            "image_content": "III year students of the AI&DS department won second prize in the paper presentation held at Saveetha Engineering College on 23.08.24. Paper Title: 'Are Women Safe in India?",
+            "date": "2024-08-23"
         },
-        "meta_data":
-        {
+        "meta_data": {
             "image_path": "/static/images/student_activities/005/1.webp",
             "event_name": "hari",
             "image_content": "Mr.R. Prasath, K. Logendiran, KM. Udaya Krishna has won first place in Code Debugging event with a Cash Award of 5000/- held at VelTech Engineering College",
@@ -35,13 +32,12 @@
         }
     },
     {
-        "collectionName":"CSE_005",
-        "collection_type":"student_achievements",
-        "category":"student_achievements_details",
-        "action":"delete",
-        "title":"delete in student_achievements",
-        "meta_data":
-        {
+        "collectionName": "CSE_005",
+        "collection_type": "student_achievements",
+        "category": "student_achievements_details",
+        "action": "delete",
+        "title": "delete in student_achievements",
+        "meta_data": {
             "image_path": "/static/images/student_activities/005/1.webp",
             "event_name": "hari",
             "image_content": "Mr.R. Prasath, K. Logendiran, KM. Udaya Krishna has won first place in Code Debugging event with a Cash Award of 5000/- held at VelTech Engineering College",
@@ -49,15 +45,17 @@
         }
     },
     {
-        "collectionName":"CSE_005",
-        "collection_type":"student_achievements",
-        "category":"student_achievements_content",
-        "action":"update",
-        "title":"update in student_achievements",
-        "meta_data":[ "dinesh","I am Fine"],
-        "original_data":[
-          "Students' achievements are a testament to their hard work, dedication, and resilience in the pursuit of academic and personal growth. From excelling in academics and securing top grades to showcasing talent in sports, arts, and extracurricular activities, their accomplishments reflect a well-rounded development. Participation in science fairs, debates, and cultural events highlights their creativity and critical thinking, while community service projects demonstrate their commitment to making a positive impact. These achievements not only inspire their peers but also pave the way for future opportunities, building confidence and a strong foundation for lifelong success."
+        "collectionName": "CSE_005",
+        "collection_type": "student_achievements",
+        "category": "student_achievements_content",
+        "action": "update",
+        "title": "update in student_achievements",
+        "meta_data": [
+            "dinesh",
+            "I am Fine"
+        ],
+        "original_data": [
+            "Students' achievements are a testament to their hard work, dedication, and resilience in the pursuit of academic and personal growth. From excelling in academics and securing top grades to showcasing talent in sports, arts, and extracurricular activities, their accomplishments reflect a well-rounded development. Participation in science fairs, debates, and cultural events highlights their creativity and critical thinking, while community service projects demonstrate their commitment to making a positive impact. These achievements not only inspire their peers but also pave the way for future opportunities, building confidence and a strong foundation for lifelong success."
         ]
-        
     }
 ]

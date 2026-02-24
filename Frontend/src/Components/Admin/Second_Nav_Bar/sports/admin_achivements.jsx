@@ -171,6 +171,7 @@ const Achievements1 = ({ data }) => {
       ];
     });
   };
+  
   const handleImageUpload = (id, file) => {
     const imageUrl = URL.createObjectURL(file);
     setTempData((prev) =>
@@ -182,13 +183,13 @@ const Achievements1 = ({ data }) => {
       prev.map((z, zIdx) =>
         zIdx === currentZoneIndex
           ? {
-            ...z,
-            images: z.images.map((img) =>
-              img.id === id
-                ? { ...img, image: imageUrl, newFile: file }
-                : img,
-            ),
-          }
+              ...z,
+              images: z.images.map((img) =>
+                img.id === id
+                  ? { ...img, image: imageUrl, newFile: file }
+                  : img,
+              ),
+            }
           : z,
       ),
     );
@@ -270,7 +271,6 @@ const Achievements1 = ({ data }) => {
 
     return null;
   };
-
 
   const handleAddRow = () => {
     const newId = tempData.length
@@ -449,6 +449,42 @@ const Achievements1 = ({ data }) => {
     setShowDeleteModal(false);
   };
 
+  // Fixed: Added zone and year changes to the changes array
+  const handleZoneChange = (e) => {
+    const value = e.target.value;
+    setZone(value);
+    updateCurrentZone({ zone: value });
+    
+    // Add to changes array if different from saved
+    if (value !== savedZone) {
+      upsertChange({
+        action: "update",
+        section: `ANNA UNIVERSITY ZONE-${value}`,
+        field: "zone",
+        oldValue: savedZone,
+        newValue: value
+      });
+    }
+  };
+
+  // Fixed: Added year changes to the changes array
+  const handleYearChange = (e) => {
+    const value = e.target.value;
+    setYear(value);
+    updateCurrentZone({ year: value });
+    
+    // Add to changes array if different from saved
+    if (value !== savedYear) {
+      upsertChange({
+        action: "update",
+        section: `ANNA UNIVERSITY ZONE-${zone}`,
+        field: "year",
+        oldValue: savedYear,
+        newValue: value
+      });
+    }
+  };
+
   const handleSave = () => {
     if (!zone || !year) {
       toast.error("Zone and Year are mandatory!");
@@ -485,6 +521,7 @@ const Achievements1 = ({ data }) => {
     setEditMode(false);
     setShowRequestButtons(true);
   };
+  
   const handleFinalRequestConfirm = async () => {
     if (!changes.length) {
       toast.warn("No changes to submit");
@@ -536,7 +573,6 @@ const Achievements1 = ({ data }) => {
         return;
       }
 
-
       // 🖼 IMAGE CHANGES
       if (change.field === "image") {
         const newImage = currentZone.images?.find(
@@ -549,23 +585,23 @@ const Achievements1 = ({ data }) => {
 
         const newData = newImage
           ? {
-            zone: currentZone.zone,
-            year: currentZone.year,
-            image_path: [
-              newImage.newFile
-                ? `/static/images/sports/coordinates/${newImage.newFile.name}`
-                : newImage.image,
-            ],
-            newFile: newImage.newFile,
-          }
+              zone: currentZone.zone,
+              year: currentZone.year,
+              image_path: [
+                newImage.newFile
+                  ? `/static/images/sports/coordinates/${newImage.newFile.name}`
+                  : newImage.image,
+              ],
+              newFile: newImage.newFile,
+            }
           : null;
 
         const oldData = oldImage
           ? {
-            zone: originalZone.zone,
-            year: originalZone.year,
-            image_path: oldImage.image,
-          }
+              zone: originalZone.zone,
+              year: originalZone.year,
+              image_path: oldImage.image,
+            }
           : null;
 
         const req = buildAchievementsPayload({
@@ -615,27 +651,31 @@ const Achievements1 = ({ data }) => {
       ),
     );
   };
+  
   const handleZoneClick = (zoneType) => {
     setShowZone(zoneType);
     setTimeout(() => {
       sectionRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   };
+  
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = tempData.slice(indexOfFirstRow, indexOfLastRow);
   const totalPages = Math.max(1, Math.ceil(tempData.length / rowsPerPage));
+  
+  // Fixed: Removed duplicate infinite property
   const sliderSettings = {
     dots: true,
-    infinite: true,
+    infinite: savedData.length > 1,
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3500,
     arrows: true,
-    infinite: savedData.length > 1,
   };
+  
   const addNewZoneAndSwitch = () => {
     const newZoneNumber = zones.length + 1;
 
@@ -691,7 +731,7 @@ const Achievements1 = ({ data }) => {
                   <Slider {...sliderSettings}>
                     {savedData.map((item, index) => (
                       <div key={item.id ?? index}>
-                        <img src={item.image} className="m-auto" />
+                        <img src={item.image} className="m-auto" alt={`Coordinator ${index + 1}`} />
                       </div>
                     ))}
                   </Slider>
@@ -699,33 +739,11 @@ const Achievements1 = ({ data }) => {
               </div>
             </div>
           )}
-          { }
+          
           <div className="relative mr-8 ml-8 justify-center mb-7">
-            {/* <button
-              disabled={currentZoneIndex === 0}
-              onClick={() =>
-                setCurrentZoneIndex((prev) => Math.max(0, prev - 1))
-              }
-              className="absolute top-1/2 -translate-y-[800%] left-2
-                 bg-black/60 text-white p-2 rounded-full
-                 hover:bg-black disabled:opacity-40"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              disabled={currentZoneIndex >= zones.length - 1}
-              onClick={() =>
-                setCurrentZoneIndex((prev) =>
-                  Math.min(prev + 1, zones.length - 1),
-                )
-              }
-              className="absolute top-1/2 -translate-y-[800%] right-2
-                 bg-black/60 text-white p-2 rounded-full
-                 hover:bg-black disabled:opacity-40"
-            >
-              <ChevronRight size={24} />
-            </button> */}
+            {/* Zone navigation buttons commented out */}
           </div>
+          
           {editMode && (
             <div className="overflow-x-auto border rounded-lg shadow-md p-4 bg-white dark:bg-gray-800">
               <div className="flex flex-col gap-3 mb-6">
@@ -745,11 +763,7 @@ const Achievements1 = ({ data }) => {
                   <input
                     type="number"
                     value={zone}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setZone(value);
-                      updateCurrentZone({ zone: value });
-                    }}
+                    onChange={handleZoneChange} // Fixed: Using the new handler
                     className="border p-2 rounded w-full"
                   />
                 </div>
@@ -760,26 +774,23 @@ const Achievements1 = ({ data }) => {
                   <input
                     type="text"
                     value={year}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      setYear(value);
-                      updateCurrentZone({ year: value });
-                    }}
+                    onChange={handleYearChange} // Fixed: Using the new handler
                     className="border p-2 rounded w-full"
                   />
                 </div>
               </div>
+              
               <table className="w-full justify-items-center m-auto border-collapse">
                 <thead>
                   <tr className="bg-gray-100 dark:bg-gray-700">
-                    <th className=" p-2 border">Image</th>
-                    <th className=" p-2 border">Select</th>
+                    <th className="p-2 border">Image</th>
+                    <th className="p-2 border">Select</th>
                   </tr>
                 </thead>
                 <tbody>
                   {currentRows.map((item) => (
                     <tr key={item.id} className="border ml-4">
-                      <td className="p-2 flex  border items-center gap-2">
+                      <td className="p-2 flex border items-center gap-2">
                         {item.image && (
                           <img
                             src={item.image}
@@ -816,6 +827,7 @@ const Achievements1 = ({ data }) => {
                   ))}
                 </tbody>
               </table>
+              
               <div className="flex justify-between items-center mt-4">
                 <button
                   disabled={currentPage === 1}
@@ -854,6 +866,7 @@ const Achievements1 = ({ data }) => {
               </div>
             </div>
           )}
+          
           {editMode && (
             <div className="flex justify-end gap-2 mt-4 mr-12">
               <button
@@ -863,16 +876,16 @@ const Achievements1 = ({ data }) => {
                 Cancel
               </button>
 
-              {hasChanges && (
-                <button
-                  onClick={handleSave}
-                  className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
-                >
-                  Save
-                </button>
-              )}
+              {/* Save button now shows when ANY changes exist */}
+              <button
+                onClick={handleSave}
+                className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
+              >
+                <Save size={16} /> Save
+              </button>
             </div>
           )}
+          
           {!editMode && hasChanges && showRequestButtons && (
             <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
               <button
@@ -891,35 +904,40 @@ const Achievements1 = ({ data }) => {
               </button>
             </div>
           )}
+          
           <div className="flex flex-wrap gap-6 justify-center items-center mb-6">
             <button
-              className={`font-bold rounded-md px-4 py-2 ${showZone === "zone"
+              className={`font-bold rounded-md px-4 py-2 ${
+                showZone === "zone"
                   ? "bg-brwn text-white"
                   : "bg-secd text-black"
-                }`}
+              }`}
               onClick={() => handleZoneClick("zone")}
             >
               Zone
             </button>
             <button
-              className={`font-bold rounded-md px-4 py-2 ${showZone === "interzone"
+              className={`font-bold rounded-md px-4 py-2 ${
+                showZone === "interzone"
                   ? "bg-brwn text-white"
                   : "bg-secd text-black"
-                }`}
+              }`}
               onClick={() => handleZoneClick("interzone")}
             >
               Inter Zone
             </button>
             <button
-              className={`font-bold rounded-md px-4 py-2 ${showZone === "others"
+              className={`font-bold rounded-md px-4 py-2 ${
+                showZone === "others"
                   ? "bg-brwn text-white"
                   : "bg-secd text-black"
-                }`}
+              }`}
               onClick={() => handleZoneClick("others")}
             >
               Others
             </button>
           </div>
+          
           <div ref={sectionRef}>
             {showZone === "zone" ? (
               <div className="sport-zone-container mb-10">
@@ -942,6 +960,7 @@ const Achievements1 = ({ data }) => {
           <LoadComp />
         </div>
       )}
+      
       {showDeleteModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
           <div className="bg-white p-6 rounded shadow-lg w-[350px]">
@@ -964,6 +983,7 @@ const Achievements1 = ({ data }) => {
           </div>
         </div>
       )}
+      
       {showDiscardModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white p-6 rounded-xl w-[400px]">
@@ -981,7 +1001,7 @@ const Achievements1 = ({ data }) => {
               </button>
               <button
                 onClick={() => {
-                  handleDiscardChanges();         // 👈 actually discard
+                  handleDiscardChanges();
                   setShowDiscardModal(false);
                 }}
                 className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white"
@@ -1002,7 +1022,7 @@ const Achievements1 = ({ data }) => {
             <p className="text-sm text-red-500 mb-4">
               Note: Your changes will stay pending until approved by the
               superior admin. Once approved, they will be applied automatically
-              to the live site..
+              to the live site.
             </p>
 
             <table className="w-full text-sm text-black dark:text-white border">
@@ -1011,13 +1031,13 @@ const Achievements1 = ({ data }) => {
                   <th className="py-2 border">Action</th>
                   <th className="py-2 border">Section</th>
                   <th className="py-2 border">Changes</th>
-                  <th className="py-2 border">undo</th>
+                  <th className="py-2 border">Undo</th>
                 </tr>
               </thead>
               <tbody>
                 {changes.map((change, index) => (
                   <tr key={index} className="border text-center">
-                    <td className="py-2  border text-blue-600 font-semibold">
+                    <td className="py-2 border text-blue-600 font-semibold">
                       {change.action === "add" && "Added"}
                       {change.action === "delete" && "Deleted"}
                       {change.action === "update" && "Updated"}
@@ -1054,8 +1074,9 @@ const Achievements1 = ({ data }) => {
               <button
                 onClick={handleFinalRequestConfirm}
                 disabled={loadings}
-                className={`flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg ${loadings ? "cursor-progress" : ""
-                  }`}
+                className={`flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg ${
+                  loadings ? "cursor-progress" : ""
+                }`}
               >
                 {loadings ? "Processing..." : "Final Request"}
               </button>
@@ -1066,4 +1087,5 @@ const Achievements1 = ({ data }) => {
     </>
   );
 };
+
 export default Achievements1;

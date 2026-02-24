@@ -4,7 +4,7 @@ import axios from "axios";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
-import { Plus, Send, Pencil, Eye, X } from "lucide-react";
+import { Plus, Send, Pencil, Eye, X, Trash2 } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
@@ -32,7 +32,8 @@ const AdminREGULATION = ({ theme, toggle }) => {
     { name: "PG - ME", pdf_path: "" },
     { name: "PG - MBA", pdf_path: "" },
   ]);
-  const [newFiles, setNewFiles] = useState([null, null, null]); // File | null per link index
+  const [popupFiles, setPopupFiles] = useState([null, null, null]); // File | null per link index
+
   const [isEditingItem, setIsEditingItem] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
 
@@ -42,6 +43,9 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
   // Request modal states
   const [showRequestModal, setShowRequestModal] = useState(false);
+
+  // ✅ NEW: Discard confirmation for "Discard Changes" (after Save)
+  const [showDiscardConfirm, setShowDiscardConfirm] = useState(false);
 
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -53,27 +57,8 @@ const AdminREGULATION = ({ theme, toggle }) => {
   };
 
   // -----------------------------
-  // FIX SUMMARY
+  // Stable key logic (for diff)
   // -----------------------------
-  // Previously we diffed by a "fingerprint" made from link names only.
-  // That made "rename category" appear as Update (good),
-  // but it also made "delete one regulation year" invisible if another year
-  // has the same link names (UG/PG labels), because both share the same fingerprint.
-  //
-  // ✅ Correct approach:
-  // Use a stable per-item identity:
-  //   - If backend provides _id, use it.
-  //   - Otherwise, use the *original category at baseline* as identity.
-  // And treat category changes as "Updated" (rename) by matching edited items
-  // back to their baseline identity using editIndex in the UI.
-  //
-  // We implement:
-  // 1) `__key` stored only in UI state for each item (baseline identity).
-  // 2) On edit, preserve `__key`.
-  // 3) On add, generate unique `__key`.
-  // 4) Diff by `__key` so deletions always show.
-  // -----------------------------
-
   const makeKey = () => `${Date.now()}_${Math.random().toString(16).slice(2)}`;
 
   const normalizeReg = (reg) => ({
@@ -96,6 +81,13 @@ const AdminREGULATION = ({ theme, toggle }) => {
     return map;
   };
 
+  const deepCloneRegs = (arr) =>
+    (arr || []).map((r) => ({
+      __key: r.__key,
+      category: r.category,
+      links: (r.links || []).map((l) => ({ ...l })),
+    }));
+
   // Online/offline
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -117,12 +109,10 @@ const AdminREGULATION = ({ theme, toggle }) => {
         });
         const data = response.data.data || [];
 
-        // Attach stable keys to fetched data (UI only)
         const keyed = data.map((r) => normalizeReg(r));
 
         setRegulationData(keyed);
-        setInitialData(keyed);
-
+        setInitialData(deepCloneRegs(keyed));
         initialMapRef.current = buildMapByKey(keyed);
 
         setLoading(false);
@@ -146,7 +136,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
     let changed = false;
 
-    // insert/update
     for (const [key, cur] of curMap.entries()) {
       const base = baseMap.get(key);
       if (!base || JSON.stringify(base) !== JSON.stringify(cur)) {
@@ -155,7 +144,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
       }
     }
 
-    // delete
     if (!changed) {
       for (const [key] of baseMap.entries()) {
         if (!curMap.has(key)) {
@@ -166,6 +154,17 @@ const AdminREGULATION = ({ theme, toggle }) => {
     }
 
     setHasChanges(changed);
+
+    // ✅ NEW: if request modal is open and changes become empty, auto close and restore original page state
+    // This happens when user clicks Undo for everything, leaving no diffs.
+    if (!changed && showRequestModal) {
+      setShowRequestModal(false);
+      setIsDone(false);
+      setIsEditing(false);
+      setSelectedRegs([]);
+      toast.info("No pending changes. Returning to original page.");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [regulationData]);
 
   // Checkbox selection
@@ -178,25 +177,43 @@ const AdminREGULATION = ({ theme, toggle }) => {
     if (index !== null) {
       setRegulationData((prev) => {
         const updated = [...prev];
-        // Preserve __key on update
         const existingKey = updated[index]?.__key;
         updated[index] = normalizeReg({ ...newReg, __key: existingKey });
         return updated;
       });
     } else {
-      // New item: create a new __key
       const withKey = normalizeReg({ ...newReg, __key: makeKey() });
       setRegulationData((prev) => [withKey, ...prev]);
     }
   };
 
   // Start editing
-  const handleStartEditing = () => setIsEditing(true);
-
-  // Cancel editing (exit edit mode only)
-  const handleCancel = () => {
-    setIsEditing(false);
+  const handleStartEditing = () => {
+    setIsEditing(true);
     setSelectedRegs([]);
+  };
+
+  // Cancel editing => revert all changes
+  const handleCancel = () => {
+    const baseline = deepCloneRegs(initialData);
+    setRegulationData(baseline);
+
+    setIsEditing(false);
+    setIsDone(false);
+    setSelectedRegs([]);
+
+    setShowPopup(false);
+    setIsEditingItem(false);
+    setEditIndex(null);
+    setNewYear("");
+    setNewLinks([
+      { name: "UG - B.E / B.Tech", pdf_path: "" },
+      { name: "PG - ME", pdf_path: "" },
+      { name: "PG - MBA", pdf_path: "" },
+    ]);
+    setPopupFiles([null, null, null]);
+
+    toast.info("Changes reverted.");
   };
 
   // Save changes (stage for request)
@@ -210,13 +227,11 @@ const AdminREGULATION = ({ theme, toggle }) => {
     toast.success("Saved. Now click Request to send for approval.");
   };
 
-  // Discard changes (reset to baseline)
-  const handleDiscardChanges = () => {
-    const clonedData = initialData.map((reg) => ({
-      __key: reg.__key,
-      category: reg.category,
-      links: reg.links.map((link) => ({ ...link })),
-    }));
+  // ✅ Confirmation flow for "Discard Changes" (after Save)
+  const requestDiscardChanges = () => setShowDiscardConfirm(true);
+
+  const confirmDiscardChanges = () => {
+    const clonedData = deepCloneRegs(initialData);
 
     setRegulationData(clonedData);
     setIsEditing(false);
@@ -232,10 +247,12 @@ const AdminREGULATION = ({ theme, toggle }) => {
       { name: "PG - ME", pdf_path: "" },
       { name: "PG - MBA", pdf_path: "" },
     ]);
-    setNewFiles([null, null, null]);
+    setPopupFiles([null, null, null]);
 
     setSelectedRegs([]);
     setShowDeleteConfirm(false);
+    setShowDiscardConfirm(false);
+    setShowRequestModal(false);
 
     toast.info("Discarded all changes.");
   };
@@ -250,7 +267,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
       { name: "PG - ME", pdf_path: "" },
       { name: "PG - MBA", pdf_path: "" },
     ]);
-    setNewFiles([null, null, null]);
+    setPopupFiles([null, null, null]);
     setShowPopup(true);
   };
 
@@ -261,11 +278,11 @@ const AdminREGULATION = ({ theme, toggle }) => {
     setEditIndex(index);
     setNewYear(item.category);
     setNewLinks(item.links.map((l) => ({ ...l })));
-    setNewFiles([null, null, null]); // only new uploads will be sent
+    setPopupFiles([null, null, null]);
     setShowPopup(true);
   };
 
-  // Confirm delete selection
+  // Confirm delete selection (delete a year card)
   const confirmDeleteSelected = () => {
     if (selectedRegs.length === 0) return;
     const selectedSet = new Set(selectedRegs);
@@ -276,8 +293,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
   };
 
   // -----------------------------
-  // Request changes (Inserted/Updated/Deleted) based on __key
-  // ✅ Now deletions always show correctly in request modal.
+  // Diff for request modal (Inserted/Updated/Deleted)
   // -----------------------------
   const requestChanges = useMemo(() => {
     const baseMap = initialMapRef.current;
@@ -285,7 +301,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
     const changes = [];
 
-    // insert/update
     for (const [key, cur] of curMap.entries()) {
       const base = baseMap.get(key);
       if (!base) {
@@ -295,7 +310,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
       }
     }
 
-    // delete
     for (const [key, base] of baseMap.entries()) {
       if (!curMap.has(key)) {
         changes.push({ type: "Deleted", key, section: base.category, current: null, original: base });
@@ -327,10 +341,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
     }
   };
 
-  // -----------------------------
-  // Payload generation for /api/admin-backend/temp (useAdminRequest)
-  // NOTE: remove __key from payload (backend doesn't need it)
-  // -----------------------------
+  // Payload generation (strip __key)
   const stripKey = (reg) => ({
     category: reg?.category ?? "",
     links: Array.isArray(reg?.links)
@@ -359,7 +370,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
           meta_data: stripKey(c.current),
         };
       }
-      // Deleted
       return {
         collectionName: "exams",
         collection_type: "regulation",
@@ -373,16 +383,13 @@ const AdminREGULATION = ({ theme, toggle }) => {
   const handleConfirmRequest = async () => {
     if (requestChanges.length === 0) {
       toast.info("No changes to request.");
+      setShowRequestModal(false);
+      setIsDone(false);
       return;
     }
 
     const payloads = buildPayloads();
-
-    // Keeping your existing behavior: files are from popup selection
-    const filesToSend = newFiles.filter(Boolean);
-
-    console.log("REGULATION PAYLOADS:", payloads);
-    console.log("FILES:", filesToSend);
+    const filesToSend = popupFiles.filter(Boolean);
 
     const res = await sendRequest(payloads, filesToSend);
 
@@ -393,14 +400,50 @@ const AdminREGULATION = ({ theme, toggle }) => {
       return;
     }
 
-    // After success: set new baseline to current (keep __key)
-    setInitialData(JSON.parse(JSON.stringify(regulationData)));
-    initialMapRef.current = buildMapByKey(regulationData);
+    // After success: set new baseline to current
+    const nextBaseline = deepCloneRegs(regulationData);
+    setInitialData(nextBaseline);
+    initialMapRef.current = buildMapByKey(nextBaseline);
 
     setIsDone(false);
     setShowRequestModal(false);
-    setNewFiles([null, null, null]);
+    setPopupFiles([null, null, null]);
     toast.success("Request submitted successfully.");
+  };
+
+  // -----------------------------
+  // Popup helpers (Trash + file name)
+  // -----------------------------
+  const clearProgrammePdf = (idx) => {
+    setNewLinks((prev) => {
+      const next = [...prev];
+      next[idx] = { ...next[idx], pdf_path: "" };
+      return next;
+    });
+
+    setPopupFiles((prev) => {
+      const next = [...prev];
+      next[idx] = null;
+      return next;
+    });
+
+    toast.info("PDF removed (pending submit).");
+  };
+
+  const handleProgrammeUpload = (idx, file) => {
+    if (!file) return;
+
+    setPopupFiles((prev) => {
+      const next = [...prev];
+      next[idx] = file;
+      return next;
+    });
+
+    setNewLinks((prev) => {
+      const next = [...prev];
+      next[idx] = { ...next[idx], pdf_path: URL.createObjectURL(file) };
+      return next;
+    });
   };
 
   if (!isOnline) {
@@ -519,7 +562,8 @@ const AdminREGULATION = ({ theme, toggle }) => {
               <>
                 <button
                   className="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300"
-                  onClick={handleDiscardChanges}
+                  onClick={requestDiscardChanges}
+                  disabled={requestLoading}
                 >
                   Discard Changes
                 </button>
@@ -551,7 +595,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
       {/* Add/Edit Popup */}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-[420px]">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-[460px]">
             <h2 className="text-lg font-semibold mb-4 text-center">
               {isEditingItem ? "Edit Regulation" : "Add New Regulation"}
             </h2>
@@ -564,52 +608,66 @@ const AdminREGULATION = ({ theme, toggle }) => {
               className="w-full mb-3 p-2 border rounded"
             />
 
-            {newLinks.map((link, idx) => (
-              <div key={idx} className="flex justify-between items-center mb-2">
-                <span className="font-medium">{link.name}</span>
+            {newLinks.map((link, idx) => {
+              const file = popupFiles[idx];
+              const hasPdf = Boolean(link?.pdf_path);
 
-                <div className="flex gap-2 items-center">
-                  <button
-                    className="px-2 py-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
-                    onClick={() => document.getElementById(`file-${idx}`).click()}
-                  >
-                    {link.pdf_path ? "Replace" : "Upload"}
-                  </button>
+              return (
+                <div key={idx} className="flex justify-between items-center mb-2">
+                  <span className="font-medium">{link.name}</span>
 
-                  {link.pdf_path && (
+                  <div className="flex items-center gap-2">
+                    {file && (
+                      <p className="text-[11px] text-green-600 dark:text-green-400 truncate max-w-[140px]">
+                        ✓ {file.name}
+                      </p>
+                    )}
+
                     <button
-                      className="px-2 py-1 rounded"
-                      onClick={() => window.open(UrlParser(link.pdf_path), "_blank")}
-                      title="Preview PDF"
+                      className="px-2 py-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+                      onClick={() => document.getElementById(`file-${idx}`).click()}
+                      type="button"
                     >
-                      <Eye size={16} color="blue" />
+                      {hasPdf ? "Replace" : "Upload"}
                     </button>
-                  )}
 
-                  <input
-                    type="file"
-                    accept="application/pdf"
-                    id={`file-${idx}`}
-                    className="hidden"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        setNewFiles((prev) => {
-                          const nxt = [...prev];
-                          nxt[idx] = file;
-                          return nxt;
-                        });
+                    {hasPdf && (
+                      <button
+                        className="px-2 py-1 rounded"
+                        onClick={() => window.open(UrlParser(link.pdf_path), "_blank")}
+                        title="Preview PDF"
+                        type="button"
+                      >
+                        <Eye size={16} color="blue" />
+                      </button>
+                    )}
 
-                        const updatedLinks = [...newLinks];
-                        updatedLinks[idx].pdf_path = URL.createObjectURL(file);
-                        setNewLinks(updatedLinks);
-                      }
-                      e.target.value = "";
-                    }}
-                  />
+                    {hasPdf && (
+                      <button
+                        className="px-2 py-1 rounded"
+                        onClick={() => clearProgrammePdf(idx)}
+                        title="Remove PDF"
+                        type="button"
+                      >
+                        <Trash2 size={16} className="text-red-600" />
+                      </button>
+                    )}
+
+                    <input
+                      type="file"
+                      accept="application/pdf"
+                      id={`file-${idx}`}
+                      className="hidden"
+                      onChange={(e) => {
+                        const f = e.target.files?.[0];
+                        handleProgrammeUpload(idx, f);
+                        e.target.value = "";
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             <div className="flex justify-end gap-3 mt-4">
               <button
@@ -630,7 +688,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
                     { name: "PG - ME", pdf_path: "" },
                     { name: "PG - MBA", pdf_path: "" },
                   ]);
-                  setNewFiles([null, null, null]);
+                  setPopupFiles([null, null, null]);
                   setIsEditingItem(false);
                   setEditIndex(null);
                 }}
@@ -674,6 +732,36 @@ const AdminREGULATION = ({ theme, toggle }) => {
         </div>
       )}
 
+      {/* ✅ NEW: Discard Confirmation */}
+      {showDiscardConfirm && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-[420px]">
+            <h2 className="text-lg font-semibold mb-4 text-center">Discard all changes?</h2>
+            <p className="text-center mb-5 text-sm text-gray-600 dark:text-gray-300">
+              This will revert everything back to the last approved state.
+            </p>
+
+            <div className="flex justify-center gap-4">
+              <button
+                className="px-6 py-3 bg-red-600 text-white rounded hover:bg-red-700 font-semibold"
+                onClick={confirmDiscardChanges}
+                disabled={requestLoading}
+              >
+                Yes, Discard
+              </button>
+
+              <button
+                className="px-4 py-2 bg-gray-200 text-black rounded hover:bg-gray-300"
+                onClick={() => setShowDiscardConfirm(false)}
+                disabled={requestLoading}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Request Changes Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
@@ -704,7 +792,11 @@ const AdminREGULATION = ({ theme, toggle }) => {
                     <tr key={`${c.type}-${c.key}`}>
                       <td
                         className={`border p-2 ${
-                          c.type === "Deleted" ? "text-red-600" : c.type === "Inserted" ? "text-green-600" : "text-blue-600"
+                          c.type === "Deleted"
+                            ? "text-red-600"
+                            : c.type === "Inserted"
+                              ? "text-green-600"
+                              : "text-blue-600"
                         }`}
                       >
                         {c.type}
