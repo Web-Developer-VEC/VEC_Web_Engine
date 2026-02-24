@@ -8,6 +8,9 @@ async function updateData(tempDoc, mainCollection) {
     if (!collection_type || !meta_data || !category) {
       throw new Error("collection_type, category and meta_data are required");
     }
+    if (collection_type !== "vision_and_mission") {
+      throw new Error("Incorrect collection type or route");
+    }
 
     // ==============================
     // 2️⃣ Check Document Exists
