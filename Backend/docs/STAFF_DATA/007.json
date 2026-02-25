@@ -1,0 +1,2440 @@
+[
+    {
+        "HOD": [
+            {
+                "Name": "DR. SURESHKUMAR K",
+                "Designation": "Professor & Head",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/007/VEC-007-03-500.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/sureshkumar-k-19111860/",
+                    "googlescholar": "https://scholar.google.com/citations?user=4soReLkAAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Sureshkumar-Kumaravel-2?ev=hdr_xprf",
+                    "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-4823-3597",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/JKH-6279-2023",
+                    "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "FACULTY": [
+            {
+                "Name": "DR. SRINATH S",
+                "Designation": "Professor & COE",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "drsrinath@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-02-165.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/srinath-subbaraman-9b10b723/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0000-0002-9953-9932",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/N-5572-2019",
+                    "scopus": "https://tinyurl.com/743phucx"
+                },
+                "Professional_Membership": "ISTE, IEEE",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "ISTE, IEEE",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 25,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 50,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 5,
+                    "PHD_Produced": 4,
+                    "PHD_Pursuing": 2
+                }
+            },
+            {
+                "Name": "DR. GEETHA R",
+                "Designation": "Associate Professor",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "geethar@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-185.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/geetha-raman-86a635203/",
+                    "googlescholar": "https://scholar.google.com/citations?user=z5gJDvwAAAAJ&hl=en",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "ISTE,IAENG",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "ELECTRICAL AND ELECTRONICS ENGINEERING",
+                        "INSTITUTE": "COLLEGE OF ENGINEERING GUINDY ,ANNA UNIVERSITY",
+                        "YEAR": 1998
+                    },
+                    {
+                        "DEGREE": "M.E.",
+                        "BRANCH": "POWER ELECTRONICS AND DRIVES",
+                        "INSTITUTE": "COLLEGE OF ENGINEERING GUINDY ,ANNA UNIVERSITY",
+                        "YEAR": 2008
+                    },
+                    {
+                        "DEGREE": "PhD",
+                        "BRANCH": "NON LINEAR DYNAMICS OF POWER ELECTRONIC CONVERTERS",
+                        "INSTITUTE": "COLLEGE OF ENGINEERING GUINDY ,ANNA UNIVERSITY",
+                        "YEAR": 2019
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "23.08.1999",
+                        "Unnamed:_1": "TILL DATE",
+                        "EXPERIENCE": "25",
+                        "Unnamed:_3": "6",
+                        "DESIGNATION": "ASSISTANT PROFESSOR III",
+                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Iot Based Smart Bottle for Healthcare with Patient Prime Care",
+                        "SPONSORING_AGENCY": "DST-IEDC",
+                        "AMOUNT": "100000",
+                        "YEAR_OF_SANCTION": "2021-2022",
+                        "DURATION": "1 YEAR",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "COMPLETED"
+                    },
+                    {
+                        "TITLE": "TRAFFIC GUARD",
+                        "SPONSORING_AGENCY": "NMNT",
+                        "AMOUNT": "10000",
+                        "YEAR_OF_SANCTION": "2024-2025",
+                        "DURATION": "3 MONTHS",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "ONGOING"
+                    }
+                ],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "P.Deivasundari., R.Geetha , G.Uma, K.Murali ",
+                        "PAPER_TITLE": "Chaos, bifurcation and intermittent phenomena in DC-DC converters under resonant parametric perturbation",
+                        "JOURNAL_NAME": "Eur. Phys. J. Special Topics",
+                        "DOI_NUMBER": "10.1140/epjst/e2013-01872-5",
+                        "PAGE_NO": "689–697",
+                        "VOL_NO_/_ISSUE_NO": "222, 689–697 (2013)",
+                        "MONTH_&_YEAR": "2013-07-11 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R, Geetha., G.Angalaparameswari .,S.Balaji ",
+                        "PAPER_TITLE": "Grid Interface of Wind Energy Conversion  System  Using  Cascaded  Multilevel  Inverter",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "ISSN 0973-4562",
+                        "PAGE_NO": "31150-31160",
+                        "VOL_NO_/_ISSUE_NO": "10(44)",
+                        "MONTH_&_YEAR": "2015",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "P, Preethi Petula., K, Sureshkumar., & R, Geetha",
+                        "PAPER_TITLE": "A Protection Scheme for Low-Voltage DC Ring Bus Microgrid System",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "ISSN 0973-4562",
+                        "PAGE_NO": "31216-31220",
+                        "VOL_NO_/_ISSUE_NO": "10(44)",
+                        "MONTH_&_YEAR": "2015",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R, Geetha., G, Angala Parameswari., K, Sureshkumar., & R, Santhiya",
+                        "PAPER_TITLE": "MPPT for DFIG Fed Stand Alone Wind Energy Conversion System",
+                        "JOURNAL_NAME": "International Journal of Control Theory and Applications ",
+                        "PAGE_NO": "7969-7977",
+                        "VOL_NO_/_ISSUE_NO": "9(16)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R, Geetha., K, Sureshkumar., G, Angala Parameswari., & R, Santhiya",
+                        "PAPER_TITLE": "MPPT for PMSG Fed Stand Alone Wind Energy Conversion System.",
+                        "JOURNAL_NAME": "International Journal of Control Theory and Applications (IJCTA), ,",
+                        "PAGE_NO": " 01-15.",
+                        "VOL_NO_/_ISSUE_NO": "9(28)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Geetha, R, Uma, G & Archana",
+                        "PAPER_TITLE": "Exploration of intermittent instabilities in a boost converter supplied from a rectifier",
+                        "JOURNAL_NAME": "Journal of Electrical Engineering",
+                        "PAGE_NO": "79-88",
+                        "VOL_NO_/_ISSUE_NO": "17(3)",
+                        "MONTH_&_YEAR": "Sep,2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "G,Angalaparameswari., R.Geetha., K.Sureshkumar., & A.Keerthiga",
+                        "PAPER_TITLE": "Integrating DFIG based wind turbine to the grid With Solid-State Transformer by Replacing the Fundamental Transformer",
+                        "JOURNAL_NAME": "International Journal of Pure and Applied Mathematics ",
+                        "DOI_NUMBER": "ISSN 1314-3395",
+                        "PAGE_NO": "1 TO 11",
+                        "VOL_NO_/_ISSUE_NO": "118(24)",
+                        "MONTH_&_YEAR": "April 25, 2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R.Geetha., G,Angalaparameswari., K.Sureshkumar., & A.Sangeetha",
+                        "PAPER_TITLE": "Permanent Magnet Synchronous Generator Based Wind Energy Battery Storage System Using Nonlinear Multi Input Multi Output Controller",
+                        "JOURNAL_NAME": "International Journal of Pure and Applied Mathematics ",
+                        "DOI_NUMBER": "ISSN 1314-3395",
+                        "PAGE_NO": "1 TO 11",
+                        "VOL_NO_/_ISSUE_NO": "118(24)",
+                        "MONTH_&_YEAR": "April 25, 2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "K.Sureshkumar., G,Angalaparameswari., R.Geetha., & S.Waheeda Parveen",
+                        "PAPER_TITLE": "Analysis of Grid Connected DFIG-Based Wind Turbines During LVRT",
+                        "JOURNAL_NAME": "International Journal of Pure and Applied Mathematics ",
+                        "DOI_NUMBER": "ISSN 1314-3395",
+                        "PAGE_NO": "1 TO 11",
+                        "VOL_NO_/_ISSUE_NO": "118(24)",
+                        "MONTH_&_YEAR": "April 25, 2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": ", K.,  Ponnusamy, V. G,Angalaparameswari., R.Geetha., & JoyalIsac, S",
+                        "PAPER_TITLE": "Minimization of losses in Radial Distribution System by Optimal sizing and Placement using Biogeography based Optimization",
+                        "JOURNAL_NAME": "Solid State Technology",
+                        "PAGE_NO": " 6990-7001",
+                        "VOL_NO_/_ISSUE_NO": "63(2)",
+                        "MONTH_&_YEAR": "2020",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "R.Geetha,M.Siddharth,Dhaneesh,Sriharan,Sathish.M.E.",
+                        "PAPER_TITLE": "Optimsed EV charging for smart householdsusing deep reinforcement learning and surrogate optimisation",
+                        "CONFERENCE_NAME": "EMPOWER 2025",
+                        "ORGANIZED_BY": "SRMIST,Ramapuram",
+                        "MONTH_&_YEAR": "25,26,Feb 2025"
+                    },
+                    {
+                        "AUTHORS": "R.Geetha,Aruthra,Pavithra.M,T.Thaksana,Shanmugapriya",
+                        "PAPER_TITLE": "Adaptive Integration of Hybrid Renewables for reliable and Efficient Charging",
+                        "CONFERENCE_NAME": "EMPOWER 2025",
+                        "ORGANIZED_BY": "SRMIST,Ramapuram",
+                        "MONTH_&_YEAR": "25,26,Feb 2025"
+                    },
+                    {
+                        "AUTHORS": "R. Geetha,R.Santhi",
+                        "PAPER_TITLE": "Single Phase Matrix Converter fed induction motor drive ",
+                        "CONFERENCE_NAME": "Future Engineering Trends",
+                        "ORGANIZED_BY": " Saveetha University",
+                        "MONTH_&_YEAR": "29,30 April 2010"
+                    },
+                    {
+                        "AUTHORS": "R. Geetha,R.Santhi",
+                        "PAPER_TITLE": "Hysteresis Controller for 3 phase to 3 phase Matrix Converter",
+                        "CONFERENCE_NAME": "Future Engineering Trends",
+                        "ORGANIZED_BY": " Saveetha University",
+                        "MONTH_&_YEAR": "29,30 April 2010"
+                    },
+                    {
+                        "AUTHORS": "R. Geetha",
+                        "PAPER_TITLE": "Modeling And Control Of A Multi-Input Dc-Dc Converter For Hybrid Renewable Power System ",
+                        "ORGANIZED_BY": "Karunya University",
+                        "MONTH_&_YEAR": "2013-03-01 00:00:00",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Geetha,P.Deivasundari",
+                        "PAPER_TITLE": "Exploration of Slow-Scale Oscillation in Peak Current-Mode Controlled Converters of Order Three or above ",
+                        "CONFERENCE_NAME": "Dynamic Days Asia Pacific(DDAP08)",
+                        "ORGANIZED_BY": "IITM"
+                    },
+                    {
+                        "AUTHORS": "R. Geetha,Chandru",
+                        "PAPER_TITLE": " Enhancement of Stability in  Distribution Network Comprising of Distributed Generation, 3rd Afro – Asian International Conference on Science, Engineering & Technology",
+                        "CONFERENCE_NAME": "AAICSET ",
+                        "ORGANIZED_BY": "Bharuch, Gujarat",
+                        "MONTH_&_YEAR": "2015"
+                    },
+                    {
+                        "AUTHORS": "A. Sangeetha,R. Geetha",
+                        "PAPER_TITLE": "Permanent Magnet Synchronous Generator Based Wind Energy Battery Storage System Using Robust Nonlinear Multi Input Multi Output Controller",
+                        "CONFERENCE_NAME": "Joint International Conference on Intelligent Computing and Applications-(ICICA) Power, Circuit and Information Technologies-(ICPCIT",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "2 & 3 Feb -2018"
+                    },
+                    {
+                        "AUTHORS": "A. Sangeetha,R. Geetha",
+                        "PAPER_TITLE": "Design of multi input multi output controller for a DFIG based wind energy battery storage system",
+                        "CONFERENCE_NAME": "Second National Power Engineering Research Scholar Conference",
+                        "ORGANIZED_BY": "Indian Institute of Technology, Madras",
+                        "MONTH_&_YEAR": "24& 25 Feb -2018"
+                    },
+                    {
+                        "AUTHORS": "R. Geetha,S.Srinath",
+                        "PAPER_TITLE": "Energy Efficient Motor",
+                        "ORGANIZED_BY": "Adhiyaman Engineering College",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Geetha",
+                        "PAPER_TITLE": "Single phase matrix converter with improved performance",
+                        "ORGANIZED_BY": "CEG,Anna University",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Geetha",
+                        "PAPER_TITLE": " Fuzzy Cluster Model for Quasi Resonant Converter",
+                        "ORGANIZED_BY": "Jayaram Engineering College",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Geetha",
+                        "PAPER_TITLE": "Transient stability studies in a power system with shunt compensator ",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Geetha",
+                        "PAPER_TITLE": "Forced Commutated Cycloconverter with Effective Commutation ",
+                        "ORGANIZED_BY": "Saveetha Engineering College,Chennai",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Geetha",
+                        "PAPER_TITLE": "Modernized Electric Vehicle ",
+                        "ORGANIZED_BY": "Velalar Engineering College,Erode",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R. Geetha",
+                        "PAPER_TITLE": "Chaos Bifurcation and Intermittent Phenomena in DC – DC  converters under resonant parametric perturbation",
+                        "CONFERENCE_NAME": "NCNSD ",
+                        "ORGANIZED_BY": "IISER , Pune",
+                        "MONTH_&_YEAR": "2011"
+                    },
+                    {
+                        "AUTHORS": "R. Geetha",
+                        "PAPER_TITLE": "Modeling And Control Of A Multi-Input Dc-Dc Converter For Hybrid Renewable Power System ",
+                        "CONFERENCE_NAME": "RTPEPS'13",
+                        "ORGANIZED_BY": "RMK Engineering College ",
+                        "ISBN_/_ISSN_NO": "978-8-1920-8894-5",
+                        "MONTH_&_YEAR": "2013-03-18 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "R. Geetha",
+                        "PAPER_TITLE": "Cascaded neural network based maximum power point tracking technique for PV Systems ",
+                        "ORGANIZED_BY": "Sathyabama University ",
+                        "MONTH_&_YEAR": "  February 2014",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "R, Geetha., K, Sureshkumar., G, Angala Parameswari., & R, Santhiya",
+                        "PAPER_TITLE": "MPPT for PMSG Fed Stand Alone Wind Energy Conversion System.",
+                        "CONFERENCE_NAME": "ICAIECES-2016&ICPCIT-2016",
+                        "ORGANIZED_BY": "SRM University ",
+                        "MONTH_&_YEAR": "19-21,May 2016"
+                    },
+                    {
+                        "AUTHORS": "G.Angalaparameswari,R.Geetha",
+                        "PAPER_TITLE": "MPPT for DFIG Fed Stand Alone Wind Energy Conversion System",
+                        "CONFERENCE_NAME": "ICAIECES-2016&ICPCIT-2016",
+                        "ORGANIZED_BY": "SRM University ",
+                        "MONTH_&_YEAR": "19-21,May 2016"
+                    },
+                    {
+                        "AUTHORS": "R, Geetha., G, Angala Parameswari., K, Sureshkumar., & R, Santhiya",
+                        "PAPER_TITLE": "Notch Filter Based PLL-Less Control Grid interfaced Solar PV Generating System",
+                        "CONFERENCE_NAME": "ICIIECS'16",
+                        "ORGANIZED_BY": "Karpagam Innovation Centre",
+                        "ISBN_/_ISSN_NO": "978-1-4673-8207-6",
+                        "MONTH_&_YEAR": "17,18 March 2016"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "R.Geetha,Anjana S, Shubashree G,Surya D",
+                        "BOOK_NAME,_EDITION": "Wearable sensors for sports biomechanics application",
+                        "PUBLISHER": "NOVA",
+                        "BOOK_/_BOOK_CHAPTER": "Book Chapter"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "ISTE,IAENG",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 10,
+                    "Conference_Publications": 21,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 10,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 30,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 25,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. RAGHURAMAN S",
+                "Designation": "Associate Professor",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "raghuraman@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-109.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/raghu-raman-sivalingam-930020125/",
+                    "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=raghuraman+sivalingam&oq=ra",
+                    "researchgate": "https://www.researchgate.net/profile/Raghuraman-Sivalingam",
+                    "orchidprofile": "https://orcid.org/0000-0001-6140-8913",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/1114935",
+                    "scopus": "https://www.scopus.com/results/authorNamesList.uri?..."
+                },
+                "Professional_Membership": "MISTE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "EEE",
+                        "INSTITUTE": "BHARATHIAR UNIVERSITY ",
+                        "YEAR": 2000
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "POWER SYSTEM ENGINEERING",
+                        "INSTITUTE": "ANNA UNIVERSITY",
+                        "YEAR": 2007
+                    },
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "ELECTRICAL ENGINEERING",
+                        "INSTITUTE": "SRM UNIVERSITY",
+                        "YEAR": 2017
+                    }
+                ],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "MISTE",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 2,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. SELVE V",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "selve@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-149.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=7bJB7R8AAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-7783-9221",
+                    "publonprofile": "https://publons.com/wos-op/researcher/5362541/selve-v/",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57941486900"
+                },
+                "Professional_Membership": "ISTE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "ME",
+                        "BRANCH": "Power Systems Engineering",
+                        "INSTITUTE": "Velammal\nEngineering\nCollege, Chennai",
+                        "YEAR": 2007
+                    },
+                    {
+                        "DEGREE": "BE",
+                        "BRANCH": "Electrical and Electronics Engineering",
+                        "INSTITUTE": "Institute of Road and Transport Technology -Erode",
+                        "YEAR": 1999
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "14.02.2001",
+                        "Unnamed:_1": "31.05.2004",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Priyadarshini\nEngineering College"
+                    },
+                    {
+                        "DURATION": "09.06.2004",
+                        "Unnamed:_1": "Till date",
+                        "EXPERIENCE": "20",
+                        "Unnamed:_3": "4",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "V.Selve and Dr.G.Baskar",
+                        "PAPER_TITLE": "Distribution Feeder Reconfiguration for Reliability Evaluation by Using Binary Particle Swarm Optimization",
+                        "JOURNAL_NAME": "International Journal of Innovative Research in Science, Engineering and Technology",
+                        "DOI_NUMBER": "ISSN (Print): 2347-6710, ISSN (Online): 2319-8753",
+                        "PAGE_NO": "1225-1243",
+                        "VOL_NO_/_ISSUE_NO": "03     03",
+                        "MONTH_&_YEAR": "2014-03-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V.Selve",
+                        "PAPER_TITLE": "Optimal Allocation of Distributed Generation to Minimize Loss in Distribution System",
+                        "JOURNAL_NAME": "International Journal of Advanced Research in Electrical, Electronics and Instrumentation Engineering",
+                        "PAGE_NO": "323-329",
+                        "VOL_NO_/_ISSUE_NO": "03     04",
+                        "MONTH_&_YEAR": "2014-05-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "S.Vivek and Mrs.V.Selve",
+                        "PAPER_TITLE": "SSR Mitigation and Damping Power System Oscillation in a Series compensated Wind Generation System",
+                        "JOURNAL_NAME": " International Journal of Applied Engineering Research",
+                        "PAGE_NO": "9881-9887",
+                        "VOL_NO_/_ISSUE_NO": "10      10",
+                        "MONTH_&_YEAR": "2015-03-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve, Dr.G.Baskar and Ms R.Charlet Priya",
+                        "PAPER_TITLE": "Enhancement of Stability in Distribution Network Comprising of Distributed Generation",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "PAGE_NO": "31309-31317",
+                        "VOL_NO_/_ISSUE_NO": "10   44",
+                        "MONTH_&_YEAR": "2015-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Ms.Dhanalakshmi.C.R, Mrs.Vidhya.K and Mrs Selve Veerabathran",
+                        "PAPER_TITLE": "Power Quality Improvement in Distribution System Using Auto-Tuned Shunt Hybrid Filter",
+                        "JOURNAL_NAME": "International Journal of Science and Innovative Engineering &amp; Technology",
+                        "DOI_NUMBER": "ISBN 978-81-904760-9-6",
+                        "PAGE_NO": "432-450",
+                        "VOL_NO_/_ISSUE_NO": "  01   04",
+                        "MONTH_&_YEAR": "2017-05-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V. Selve, Dr.G.Baskar",
+                        "PAPER_TITLE": "Optimal Feeder Reconfiguration And Siting Of DG In Distribution Network Using Advanced Optimization Techniques",
+                        "JOURNAL_NAME": " Journal of Electrical Engineering",
+                        "PAGE_NO": "674-686",
+                        "VOL_NO_/_ISSUE_NO": "63     02",
+                        "MONTH_&_YEAR": "2018-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Selve. V, Vidhya. K , Sureshkumar K , Joyal Isac S",
+                        "PAPER_TITLE": "Optimal feeder reconfiguration and siting of DG in distribution network using advanced optimization techniques",
+                        "JOURNAL_NAME": "Solid StateTechnology",
+                        "PAGE_NO": "5488-5508",
+                        "VOL_NO_/_ISSUE_NO": "63    02 ",
+                        "MONTH_&_YEAR": "2020-11-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Jeyaraj Jency Joseph, Rajasekaran Meenal, Francis Thomas Josh, Prawin Angel",
+                        "PAPER_TITLE": "Weather observation and forecasting using radiosonde",
+                        "JOURNAL_NAME": "TELKOMNIKA Telecommunication Computing Electronics and Control",
+                        "DOI_NUMBER": "10.12928/TELKOMNIKA.v20i6.24247",
+                        "PAGE_NO": "1376-1383",
+                        "VOL_NO_/_ISSUE_NO": "20   06 ",
+                        "MONTH_&_YEAR": "2022-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Mr.G.Kalivarathan, Mrs.V.Selve, and Mrs.V.Umayal Muthu",
+                        "PAPER_TITLE": "Simulation of Compressible Turbulence – ACFD Analysis",
+                        "CONFERENCE_NAME": "International Conference on Advanced Manufacturing and Automation (INCAMA-2009)",
+                        "ORGANIZED_BY": "KalasalingamUniversity",
+                        "MONTH_&_YEAR": "March, 2009"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "A New Topology for Improving Power Quality in Renewable Energy System using FACTS Devices",
+                        "CONFERENCE_NAME": "International Conference on Advanced Computing Technology (ICACT-2012)",
+                        "ORGANIZED_BY": "JKK Nattraja College of Engineering and Technology",
+                        "MONTH_&_YEAR": "March, 2012"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Distribution Feeder Reconfiguration for Loss Reduction using Bio-Inspired Computing",
+                        "CONFERENCE_NAME": "International Conference on Instrumentation, Optimization &amp; Signal Processing (ICIIIOS-2013)",
+                        "ORGANIZED_BY": "Karunya University",
+                        "MONTH_&_YEAR": "March, 2013"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Optimal Allocation of Distributed Generation to Minimize Loss in Distribution System",
+                        "CONFERENCE_NAME": "International Conference on Instrumentation, Optimization &amp; Signal Processing (ICIIIOS-2013)",
+                        "ORGANIZED_BY": "Karunya University",
+                        "MONTH_&_YEAR": "March, 2013"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Distribution Feeder Reconfiguration for Reliability Evaluation by using BPSO",
+                        "CONFERENCE_NAME": "International Conference on Evolutionary &amp; Memetic Computing (SEMCCO-2013)",
+                        "ORGANIZED_BY": "SRM University",
+                        "MONTH_&_YEAR": "December, 2013"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Optimal Allocation of Distributed Generation in Distribution System for Voltage Stability Enhancement",
+                        "CONFERENCE_NAME": "International Conference on Evolutionary &amp; Memetic Computing (SEMCCO-2013)",
+                        "ORGANIZED_BY": "SRM University",
+                        "MONTH_&_YEAR": "December, 2013"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Distribution Feeder Reconfiguration for Reliability Evaluation by using Binary Particle Swarm Optimization",
+                        "CONFERENCE_NAME": "International Conference on Innovations in Engineering and Technology(ICIET’14)",
+                        "ORGANIZED_BY": "KLN College of Engineering",
+                        "MONTH_&_YEAR": "March, 2014"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "SSR Mitigation and Damping Power System Oscillation in a series compensated Wind Generation System",
+                        "CONFERENCE_NAME": "International Conference on Innovative strategies in Renewable Energy and its Applications (ISREA 2015)",
+                        "ORGANIZED_BY": "Sona College of Technology",
+                        "MONTH_&_YEAR": "March, 2015"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Enhancement of Stability in Distribution Network Comprising of Distributed Generation",
+                        "CONFERENCE_NAME": "3 rd Afro – Asian International Conference on Science, Engineering &amp; Technology (AAICSET - 2015)",
+                        "ORGANIZED_BY": "Bharuch, Gujarat",
+                        "MONTH_&_YEAR": "March, 2015"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Enhancement of Stability in Distribution Network Comprising of Distributed Generation",
+                        "CONFERENCE_NAME": "Joint International Conference on Communication, Computing and Power Technologies and Artificial Intelligence and Evolutionary Computations in Engineering Systems",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "April, 2015"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Coordinated Control of AC Microgrid in Islanded Mode ",
+                        "CONFERENCE_NAME": "International Conference on Information, Embedded and Communication System (ICIIECS’16)",
+                        "ORGANIZED_BY": "Karpagam College of Engineering",
+                        "MONTH_&_YEAR": "March, 2016"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Three phase EPLL Synchronization of Grid Voltage in DG System",
+                        "CONFERENCE_NAME": "International Conference on Information, Embedded and Communication System (ICIIECS’16)",
+                        "ORGANIZED_BY": "Karpagam College of Engineering",
+                        "MONTH_&_YEAR": "March, 2016"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Three phase Four Switch Inverter with PI controller to a Grid Connected",
+                        "CONFERENCE_NAME": "International Conference on Information, Embedded and Communication System (ICIIECS’16)",
+                        "ORGANIZED_BY": "Karpagam College of Engineering",
+                        "MONTH_&_YEAR": "March, 2016"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Optimal Feeder Reconfiguration and Siting of DG in Distribution Network",
+                        "CONFERENCE_NAME": "International Conference on Contemporary Topics in Power Engineering and Aiding Technology(ICCPEAT’2017)",
+                        "ORGANIZED_BY": "Pondicherry Engineering College",
+                        "MONTH_&_YEAR": "February, 2017"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Power Quality Improvement in Distribution System using Auto-Tuned Shunt Hybrid Filter",
+                        "CONFERENCE_NAME": "International Conference on Contemporary Engineering and Technology(ICCET’17)",
+                        "ORGANIZED_BY": "Madha Engineering College",
+                        "MONTH_&_YEAR": "March, 2017"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Enhancement of Distributed Generation Hosting Capacity by Reconfiguring the Network in Active Distribution System",
+                        "CONFERENCE_NAME": "Joint International Conference on Intelligent Computing and Applications and Power, Circuit and Information Technologies(ICPCIT 2018)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "February, 2018"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Implementation of Smart Vehicle Accident Detection using Raspberry PI in Smart Cities",
+                        "CONFERENCE_NAME": "Inventive Research in Computing Applications (ICIRCA 2022)",
+                        "ORGANIZED_BY": "RVS College of Engineering & Technology",
+                        "MONTH_&_YEAR": "September, 2022"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "An Analysis of IOT based smart garbage level of detection System",
+                        "CONFERENCE_NAME": "Multidisciplinary Research in Technology and Management (MRTM-2023)",
+                        "ORGANIZED_BY": "New Horizon College of Engineering",
+                        "MONTH_&_YEAR": "September, 2023"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "A review analysis on smart blind stick using IoT",
+                        "CONFERENCE_NAME": "Multidisciplinary Research in Technology and Management (MRTM-2023)",
+                        "ORGANIZED_BY": "New Horizon College of Engineering",
+                        "MONTH_&_YEAR": "September, 2023"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Transmission Line Fault Detection and Location using Wavelet Transform",
+                        "CONFERENCE_NAME": "National Conference on Modern Trends in Electrical and Electronics System (NCEES-2006)",
+                        "ORGANIZED_BY": "Government College of Engineering",
+                        "MONTH_&_YEAR": "March, 2006"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Economic Load Dispatch using Evolutionary Programming with Prohibited Operating Zones",
+                        "CONFERENCE_NAME": "National Conference on Recent Trends in Electrical Engineering",
+                        "ORGANIZED_BY": "Sri Sai Ram Engineering College",
+                        "MONTH_&_YEAR": "March, 2007"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Three phase Permanent Magnet Synchronous Machine",
+                        "CONFERENCE_NAME": "National Conference on Innovative Techniques in Power Engineering and Drives (ITPED-2011)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March, 2011"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Transient Stability Enhancement of Multimachine System using Multiple FACTS Devices",
+                        "CONFERENCE_NAME": "National Conference on Emerging Trends in Intellectual Power Systems (ETIPS- 2012)",
+                        "ORGANIZED_BY": "Veltech-Multitech Dr.Rangarajan Dr.Sankutala Engineering College",
+                        "MONTH_&_YEAR": "February, 2012"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Modeling and Simulation of UPQC to Improve Power Quality and Transfer Wind Energy to Grid",
+                        "CONFERENCE_NAME": "National Conference on Emerging Trends in Intellectual Power Systems (ETIPS- 2012)",
+                        "ORGANIZED_BY": "Veltech-Multitech Dr.Rangarajan Dr.Sankutala Engineering College",
+                        "MONTH_&_YEAR": "February, 2012"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Mitigation of Power Quality Disturbances using UPQC and Transferring Wind Energy to Grid",
+                        "CONFERENCE_NAME": "National Conference on Recent Trends in Power Electronics and Power Systems (RTPEPS-2012)",
+                        "ORGANIZED_BY": "RMK Engineering College",
+                        "MONTH_&_YEAR": "March, 2013"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Distribution Feeder Reconfiguration for Loss Reduction using Bio-Inspired Computing",
+                        "CONFERENCE_NAME": "National Conference on Recent Trends in Power Electronics and Power Systems (RTPEPS-2012)",
+                        "ORGANIZED_BY": "RMK Engineering College",
+                        "MONTH_&_YEAR": "March, 2013"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Optimal Allocation of Distribution Generation to Minimize Loss in Distribution System",
+                        "CONFERENCE_NAME": "National Conference on Recent Trends in Power Electronics and Power Systems (RTPEPS-2012)",
+                        "ORGANIZED_BY": "RMK Engineering College",
+                        "MONTH_&_YEAR": "March, 2013"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Distribution Feeder Reconfiguration for Reliability Evaluation by using Binary Particle Swarm Optimization",
+                        "CONFERENCE_NAME": "National Conference on Recent Trends in Electrical Drives (NACRED’14)",
+                        "ORGANIZED_BY": "S.A. Engineering College",
+                        "MONTH_&_YEAR": "March, 2014"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "The Optimal Placement of Distributed generation for the voltage Stability Enhancement",
+                        "CONFERENCE_NAME": "National Conference on Enhancing Trends in Nano, Embedded and Telecommunication Technologies (ETNET’14)",
+                        "ORGANIZED_BY": "Saveetha University",
+                        "MONTH_&_YEAR": "April, 2014"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Stability Analysis of Distribution Network Comprising of Distributed Generator",
+                        "CONFERENCE_NAME": "Second IEEE National Conference on Emerging  Trends in New and Renewable Energy Sources and Energy Management (NCET NRES EM-2014)",
+                        "ORGANIZED_BY": "Aarupadai Veedu Institute of Technology",
+                        "MONTH_&_YEAR": "December, 2014"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "SSR Mitigation and Damping Power System Oscillation in a Series compensated Wind Generation System",
+                        "CONFERENCE_NAME": "Second IEEE National Conference on Emerging  Trends in New and Renewable Energy Sources and Energy Management (NCET NRES EM-2014)",
+                        "ORGANIZED_BY": "Aarupadai Veedu Institute of Technology",
+                        "MONTH_&_YEAR": "December, 2014"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Synchronization of Grid Voltage In Distributed Generation System Using PLL",
+                        "CONFERENCE_NAME": "Fifth National Conference on Emerging Trends and Developments in Power System, Power Electronics & Drives (NCETDPSPED-2016)",
+                        "ORGANIZED_BY": "RMK College of Engineering and Technology ",
+                        "MONTH_&_YEAR": "March, 2016"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Coordinated Architecture of Islanded AC Microgrids",
+                        "CONFERENCE_NAME": "Second National Conference on Advances in Computational Intelligence and Instrumentation Technology (ACIIT 2016)",
+                        "ORGANIZED_BY": "Kongu Engineering College",
+                        "MONTH_&_YEAR": "March, 2016"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Three phase four switch inverter with PI controller to a grid connected system",
+                        "CONFERENCE_NAME": "National Conference on innovative techniques in Power Engineering and Drives ITPED'16",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "April, 2016"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Power Quality Improvement in Distribution System using Hybrid Filter",
+                        "CONFERENCE_NAME": "National Conference on Electrical Systems and Renewable Energy- NESR’17",
+                        "ORGANIZED_BY": "Anna University, Trichy",
+                        "MONTH_&_YEAR": "March, 2017"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Optimal Reconfiguration of Feeder and Siting of DG in Radial Distribution System",
+                        "CONFERENCE_NAME": "National Conference on Electrical Systems and Renewable Energy- NESR’17",
+                        "ORGANIZED_BY": "Anna University, Trichy",
+                        "MONTH_&_YEAR": "March, 2017"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Power Quality Improvement Using Auto-Tuned Shunt Hybrid Filter",
+                        "CONFERENCE_NAME": "National Conference on innovative techniques in Power Engineering and Drives ITPED’17",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March, 2017"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Distribution Network Feeder Reconfiguration and Siting of DG",
+                        "CONFERENCE_NAME": "National Conference on innovative techniques in Power Engineering and Drives ITPED’17",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March, 2017"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Optimal Siting of DG and Power Loss Minimization in a Reconfigured Distribution Network using Grasshopper Optimization Algorithm",
+                        "CONFERENCE_NAME": "National Power Engineering Research Scholars",
+                        "ORGANIZED_BY": "Indian Institute of Technology Madras",
+                        "MONTH_&_YEAR": "February, 2018"
+                    },
+                    {
+                        "AUTHORS": " Mrs.V.Selve",
+                        "PAPER_TITLE": "Effectiveness of automatic smart dustbin compared with conventional bin",
+                        "CONFERENCE_NAME": "National Conference on Emerging Trends in Automotive and Mechanical Sciences (ETAMS-2024)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March, 2024"
+                    },
+                    {
+                        "PAPER_TITLE": "Papers Presented in National Conference: (20)",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "1. Paper titled “Transmission Line Fault Detection and Location using Wavelet",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Transform”,by Mrs.V.Selve, has presented in the “National Conference on Modern",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Trends in Electrical and Electronics System (NCEES-2006)” at Government College of",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Engineering, Salem from 22 nd -23 rd March, 2006.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "2. Paper titled “Economic Load Dispatch using Evolutionary Programming with Prohibited",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Operating Zones”, by Mrs.V.Selve, has presented in the “Recent Trends in Electrical",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Engineering “at Sri Sai Ram Engineering College, Chennai on 13 th March, 2007.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "3. Paper titled “Three phase Permanent Magnet Synchronous Machine”,by Mrs.V.Selve,",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "has presented in the “National Conference on Innovative Techniques in Power",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Engineering and Drives (ITPED-2011)” at Velammal Engineering College, Chennai from",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "24 th -25 th March, 2011.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "4. Paper titled “Transient Stability Enhancement of Multimachine System using Multiple",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "FACTS Devices”,by Mrs.V.Selve, has presented in the “National Conference on",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Emerging Trends in Intellectual Power Systems (ETIPS- 2012)” at Veltech-Multitech",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Dr.Rangarajan Dr.Sankutala Engineering College, Avadi during 25 th February, 2012.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "5. Paper titled “Modeling and Simulation of UPQC to Improve Power Quality and Transfer",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Wind Energy to Grid”,by Mrs.V.Selve, has presented in the “National Conference on",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Emerging Trends in Intellectual Power Systems (ETIPS- 2012)” at Veltech-Multitech",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Dr.Rangarajan Dr.Sankutala Engineering College, Avadi during 25 th February, 2012.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "6. Paper titled “Mitigation of Power Quality Disturbances using UPQC and Transferring",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Wind Energy to Grid”,by Mrs.V.Selve, has presented in the “National Conference on",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Recent Trends in Power Electronics and Power Systems (RTPEPS-2012)” at RMK",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Engineering College, during 10 th March, 2013.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "7. Paper titled “Distribution Feeder Reconfiguration for Loss Reduction using Bio-Inspired",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Computing”,by Mrs.V.Selve, has presented in the “National Conference on Recent",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Trends in Power Electronics and Power Systems (RTPEPS-2012)” at RMK Engineering",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "College, during 18 th March, 2013.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "8. Paper titled “Optimal Allocation of Distribution Generation to Minimize Loss in",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Distribution System”, by Mrs.V.Selve, has presented in the “National Conference on",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Recent Trends in Power Electronics and Power Systems (RTPEPS-2012)” at RMK",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Engineering College, during 18 th March, 2013.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "9. Paper titled “Distribution Feeder Reconfiguration for Reliability Evaluation by using",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Binary Particle Swarm Optimization”, by Mrs.V.Selve, has presented in the “National",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Conference on Recent Trends in Electrical Drives (NACRED’14)” at S.A. Engineering",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "College, during 12 th March, 2014.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "10. Paper titled “The Optimal Placement of Distributed generation for the voltage Stability",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Enhancement”, by Mrs.V.Selve, has presented in the “National Conference on Enhancing",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Trends in Nano, Embedded and Telecommunication Technologies (ETNET’14)” at",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Saveetha University, during 4 th April, 2014.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "11. Paper titled “Stability Analysis of Distribution Network Comprising of Distributed",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Generator”, by Mrs.V.Selve, has been presented in the “Second IEEE National",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Conference on Emerging Trends in New and Renewable Energy Sources and Energy",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Management (NCET NRES EM-2014)” at Aarupadai Veedu Institute of Technology,",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "during 16 th – 17 th December, 2014.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "12. Paper titled “SSR Mitigation and Damping Power System Oscillation in a Series",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "compensated Wind Generation System”, by Mrs.V.Selve, has been presented in the",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "“Second IEEE National Conference on Emerging Trends in New &amp; Renewable Energy",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Sources &amp; Energy Management” at Aarupadai Veedu Institute of Technology, during",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "16 th- 17 th December, 2014.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "13. Paper titled “Synchronization of Grid Voltage In Distributed Generation System Using",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "PLL”, by Mrs.V.Selve, has been presented in the “Fifth National Conference on",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Emerging Trends and Developments in Power System, Power Electronics &amp; Drives",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "(NCETDPSPED-2016)” at RMK College of Engineering and Technology on 7 th March,",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "2016",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "14. Paper titled “Coordinated Architecture of Islanded AC Microgrids”, by Mrs.V.Selve, has",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "been presented in the “Second National Conference on Advances in Computational",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Intelligence and Instrumentation Technology (ACIIT 2016)” at Kongu Engineering",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "College on 7 th March, 2016.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "15. Paper titled “Three phase four switch inverter with PI controller to a grid connected",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "system”, by Mrs.V.Selve, has been presented in the “ National Conference on innovative",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "techniques in Power Engineering and Drives ITPED’16 at Velammal Engineering",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "College on 20 th April, 2016.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "16. Paper titled “Power Quality Improvement in Distribution System using Hybrid Filter”, by",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Mrs.V.Selve, has been presented in the “ National Conference on Electrical Systems and",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Renewable Energy- NESR’17 at BIT Campus, Anna University, Trichy from 24 th -25 th",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "March, 2017.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "17. Paper titled “Optimal Reconfiguration of Feeder and Siting of DG in Radial Distribution",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "System”, by Mrs.V.Selve, has been presented in the “ National Conference on Electrical",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Systems and Renewable Energy- NESR’17 at BIT Campus, Anna University, Trichy",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "from 24 th -25 th March, 2017.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "18. Paper titled “Power Quality Improvement Using Auto-Tuned Shunt Hybrid Filter”, by",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Mrs.V.Selve, has been presented in the “ National Conference on innovative techniques",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "in Power Engineering and Drives ITPED’17 at Velammal Engineering College on 31 st",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "March, 2017.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "19. Paper titled “Distribution Netwirk Feeder Reconfiguration and Siting of DG”, by",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Mrs.V.Selve, has been presented in the “ National Conference on innovative techniques",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "in Power Engineering and Drives ITPED’16 at Velammal Engineering College on 31 st",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "March, 2017.",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "20. Paper titled “Optimal Siting of DG and Power Loss Minimization in a Reconfigured",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Distribution Network using Grasshopper Optimization Algorithm”, by Mrs.V.Selve, has",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "been presented in the “ National Power Engineering Research Scholars Conference at",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Indian Institute of Technology Madras, Chennai from 24 th – 25 th February 2018.",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "V.Selve, V.Rengarajan",
+                        "BOOK_NAME,_EDITION": "Basic Electrical, Electronics and Instrumentation Engineering",
+                        "PUBLISHER": "Charulatha Publications",
+                        "ISBN_/_ISSN_NO": "978-93-86532-66-4",
+                        "MONTH_&_YEAR": "January, 2018",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "V.Selve, V.Rengarajan",
+                        "BOOK_NAME,_EDITION": "Basic Electrical and Electronics Engineering",
+                        "PUBLISHER": "Charulatha Publications",
+                        "ISBN_/_ISSN_NO": "978-93-86532-66-4",
+                        "MONTH_&_YEAR": "December, 2020",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "ISTE",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 8,
+                    "Conference_Publications": 123,
+                    "Book_/_Book_Chapter_Published": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 4,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 52,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. ANGALAPARAMESWARI G",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "angalaparameswari@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-164.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/angala-parameswari-g-asst-professor-iii-0aa210345/",
+                    "googlescholar": "https://scholar.google.com/citations?user=QJgd7cYAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Angala-Gandhinathan",
+                    "orchidprofile": "https://orcid.org/0000-0001-7046-0078",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "IETE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph. D",
+                        "BRANCH": "Faculty of Electrical Engineering",
+                        "INSTITUTE": "Anna University, Chennai",
+                        "YEAR": 2022
+                    },
+                    {
+                        "DEGREE": "M.E. ",
+                        "BRANCH": "Power Systems Engineering",
+                        "INSTITUTE": "Velammal Engineering College, Chennai",
+                        "YEAR": 2009
+                    },
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "Electrical and Electronics Engineering",
+                        "INSTITUTE": " Mohamed Sathak Engineering College, kilakarai",
+                        "YEAR": 2000
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "01.06.2009",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "15 Years ",
+                        "Unnamed:_3": "6 months",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "01.04.2007",
+                        "Unnamed:_1": "30.05.2009",
+                        "EXPERIENCE": "2 years ",
+                        "Unnamed:_3": "2 months",
+                        "DESIGNATION": "Senior Lecturer/ EEE",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "11.07.2005",
+                        "Unnamed:_1": "31.03.2007",
+                        "EXPERIENCE": "1year ",
+                        "Unnamed:_3": "8 months",
+                        "DESIGNATION": "Lecturer/ EEE",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "02.07.2001",
+                        "Unnamed:_1": "30.04.2005",
+                        "EXPERIENCE": "3 years ",
+                        "Unnamed:_3": "10 months",
+                        "DESIGNATION": "Lecturer/EEE",
+                        "INSTITUTION": "Syed Ammal Engineering College, Ramnad"
+                    },
+                    {
+                        "DURATION": "29.08.2000",
+                        "Unnamed:_1": "01.07.2001",
+                        "Unnamed:_3": "10 months",
+                        "DESIGNATION": "Lecturer/EEE",
+                        "INSTITUTION": "Mohamed Sathak Engineering. College, Kilakarai"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Angala Parameswari G & G. Arunsankar G.",
+                        "PAPER_TITLE": "Energy management of smart grid equipped by an Internet of Things (IoT) configuration: A DDFAT methodology",
+                        "JOURNAL_NAME": "Energy & Environment",
+                        "DOI_NUMBER": "https://doi.org/10.1177/0958305x221117519",
+                        "VOL_NO_/_ISSUE_NO": "Volume 34, Issue 8",
+                        "MONTH_&_YEAR": "2022-08-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Angala Parameswari G & Habeebullah Sait ",
+                        "PAPER_TITLE": "Low voltage ride through enhancement in DFIG based WECS by hybrid method",
+                        "JOURNAL_NAME": "International Journal of Electronics",
+                        "DOI_NUMBER": "https://doi.org/10.1080/00207217.2021.2001857 ",
+                        "VOL_NO_/_ISSUE_NO": "Volume 109, Issue 11",
+                        "MONTH_&_YEAR": "2021-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Angala Parameswari G & Habeebullah Sait",
+                        "PAPER_TITLE": "A comprehensive review of fault ride-through capability of wind turbines with grid-connected doubly fed induction generator",
+                        "JOURNAL_NAME": "International Transactions on Electrical Energy Systems",
+                        "DOI_NUMBER": "https://doi.org/10.1002/2050-7038.12395",
+                        "VOL_NO_/_ISSUE_NO": "Volume30, Issue 8",
+                        "MONTH_&_YEAR": "2020-04-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "IETE",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 3,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 25,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 2,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. SUNITHA D",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "sunitha@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-159.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-sunitha-senthil-38b05961/",
+                    "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&user=2ZsplucAAAAJ",
+                    "researchgate": "https://www.researchgate.net/scientific-contributions/D-Sunitha-2096230154",
+                    "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-6054-841X",
+                    "publonprofile": "https://publons.com/wos-op/account/unified-auth/",
+                    "scopus": "https://www.scopus.com/home.uri"
+                },
+                "Professional_Membership": "ISTE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "EEE",
+                        "INSTITUTE": "SSN Engineering College",
+                        "YEAR": 2000
+                    },
+                    {
+                        "DEGREE": "M.Tech",
+                        "BRANCH": "RS",
+                        "INSTITUTE": "College of Engineering College, Guindy",
+                        "YEAR": 2006
+                    },
+                    {
+                        "DEGREE": "P.hD",
+                        "BRANCH": "Power Systems",
+                        "INSTITUTE": "College of Engineering College, Guindy",
+                        "YEAR": 2020
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "16.10.2006",
+                        "Unnamed:_1": "till date",
+                        "EXPERIENCE": "18",
+                        "Unnamed:_3": "2 months",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineeering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "SEMINAR GRANT",
+                        "SPONSORING_AGENCY": "AICTE",
+                        "AMOUNT": "1 Lakh",
+                        "YEAR_OF_SANCTION": "7,8 Dec. 2017",
+                        "DURATION": "8.06.2017",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Completed"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "AI-BASED PREDICTIVE MAINTENANCE AND EFFICIENCY ENHANCEMENTFOR PHOTOVOLTAIC CELLS IN SMART GRIDS",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "2024-06-21",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2024-06-21"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "S. Premalatha(1*), Subhransu Sekhar Dash(2), D. Sunitha(3), R. Mohanasundaram(4)\n",
+                        "PAPER_TITLE": "     PV Supported DVR and D-STATCOM For Mitigating Power Quality Issues",
+                        "JOURNAL_NAME": "International Review on Modelling and Simulations (IREMOS)",
+                        "DOI_NUMBER": "Vol 6, No 6 ",
+                        "PAGE_NO": "PP 6",
+                        "VOL_NO_/_ISSUE_NO": "Volume 6",
+                        "MONTH_&_YEAR": "2013",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "D. Sunitha and V. Senthil Kumar",
+                        "PAPER_TITLE": " Comparative Analysis of Voltage Source and Current Source Converter Based Unified Power Quality Conditioner for mitigating Power quality Problems.",
+                        "JOURNAL_NAME": "I J C T A, International Science Press",
+                        "DOI_NUMBER": "I J C T A, 9(16), ",
+                        "PAGE_NO": " pp. 7979-7988",
+                        "VOL_NO_/_ISSUE_NO": "Volume1 6",
+                        "MONTH_&_YEAR": "2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "S. Premalatha1, S. Sukanthan2, D. Sunitha3 and V. Umayal Muthu4",
+                        "PAPER_TITLE": "Reactive Power Compensation with UPQC Allocations and Optimal Placement of\nCapacitors in Radial Distribution Systems using Firefly Algorithm\n",
+                        "JOURNAL_NAME": "I J C T A, International Science Press",
+                        "DOI_NUMBER": "I J C T A, 9(16), ",
+                        "PAGE_NO": " pp. 7989-7999",
+                        "VOL_NO_/_ISSUE_NO": "Volume1 6",
+                        "MONTH_&_YEAR": "2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "D. SUNITHA1 V. SENTHILKUMAR2",
+                        "PAPER_TITLE": "Optimal Placement and Parameter Setting of Facts Device Using Particle Swarm Technique for Power System Stability Problems",
+                        "JOURNAL_NAME": "Journal of Electrical Engineering",
+                        "DOI_NUMBER": "e-ISSN: 2278-1676,p-ISSN: 2320-3331,  , ",
+                        "PAGE_NO": "PP 20-26",
+                        "VOL_NO_/_ISSUE_NO": "Volume 10, Issue 2 Ver. III",
+                        "MONTH_&_YEAR": "(Mar – Apr. 2015)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Lijo Jacob Varghese U. Arun Kumar D. Sunitha",
+                        "PAPER_TITLE": "Solar PV and Wind Energy Based Reconfigurable Microgrid for Optimal Load Dispatch",
+                        "JOURNAL_NAME": "  Journal of Electrical Engineering & Technology",
+                        "PAGE_NO": "pp 2909-2928",
+                        "VOL_NO_/_ISSUE_NO": "Volume 18",
+                        "MONTH_&_YEAR": "2023-01-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Springer ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "·"
+                    },
+                    {
+                        "AUTHORS": "·"
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "D. Sunitha; M. Arun Bhaskar; S.V. Anjana; V. Senthil Kumar; Subhransu Sekhar Dash",
+                        "PAPER_TITLE": "Power Quality Enhancement with Wind   Energy Coupled UPQC Using     \n         Adaptive Controller \n",
+                        "CONFERENCE_NAME": "            IEEE Transaction",
+                        "ORGANIZED_BY": "2019 8th International Conference on Renewable Energy Research and Applications (ICRERA)",
+                        "ISBN_/_ISSN_NO": "DOI: 10.1109/ICRERA47325.",
+                        "MONTH_&_YEAR": 2019
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "ISTE",
+                    "Sponsored_Projects": 1,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 7,
+                    "Conference_Publications": 1,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 5,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 25,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 10,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. VIDHYA K",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "vidhya@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-178.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/vidhya-k-695143204/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=6KRDyYEAAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Vidhya-Kumar-4?ev=hdr_xprf",
+                    "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-3072-5200",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5520-2025",
+                    "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
+                },
+                "Professional_Membership": "ISTE Life time member",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "EEE",
+                        "INSTITUTE": "KSR College of Technology",
+                        "YEAR": 2001
+                    },
+                    {
+                        "DEGREE": "M.Tech",
+                        "BRANCH": "Power Electronics and Drives",
+                        "INSTITUTE": "SASTRA",
+                        "YEAR": 2004
+                    },
+                    {
+                        "DEGREE": "Ph.D",
+                        "INSTITUTE": "Anna University",
+                        "YEAR": 2023
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "09.06.2004",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "20",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "VEC"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Vidhya K Manjula devi",
+                        "PAPER_TITLE": "Implementation of PI controller in three phase four switch Inverter to a grid connected system",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "VOL_NO_/_ISSUE_NO": "Vol",
+                        "MONTH_&_YEAR": "Issue 44",
+                        "INDEXED_IN_SCI_/_SCOPUS": "2015-04-01",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Vidhya.K ,Dhanalakshmi C.R,Selve.V",
+                        "PAPER_TITLE": "Power Quality Improvement in Distribution System Using Auto-Tuned Shunt Hybrid Filter",
+                        "JOURNAL_NAME": "International Journal of Science and Innovative Engineering & Technology",
+                        "VOL_NO_/_ISSUE_NO": "Vol1",
+                        "INDEXED_IN_SCI_/_SCOPUS": "2017-05-01",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Selve. V, Vidhya. K , Sureshkumar K , Joyal Isac S",
+                        "PAPER_TITLE": "Optimal feeder reconfiguration and siting of DG in distribution network using advanced optimization techniques. ",
+                        "JOURNAL_NAME": "Solid State Technology",
+                        "VOL_NO_/_ISSUE_NO": "Vol: 63 ",
+                        "MONTH_&_YEAR": "Issue: 2",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Vidhya K",
+                        "PAPER_TITLE": "A Hvbrid Technique for Optimal Power Quality Enhancement in Grid Connected Photovoltaic Interleaved Inverter",
+                        "JOURNAL_NAME": "Energy and Environment",
+                        "VOL_NO_/_ISSUE_NO": "Vol ",
+                        "MONTH_&_YEAR": "Issue1",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Vidhya K Dhanalakshmi C.R ",
+                        "PAPER_TITLE": "Power Quality improvement in Distribution System Using Auto Tuned Shunt Hybrid Filter",
+                        "CONFERENCE_NAME": "Internatinational conference on Contemporary Engineering 2017",
+                        "ORGANIZED_BY": "Madha Engineering College",
+                        "MONTH_&_YEAR": "2017-03-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Vidhya K",
+                        "PAPER_TITLE": "Design and implementation of single phase grid connected transformerless PV inverter",
+                        "CONFERENCE_NAME": "National Conference on Innovative techniques in Power Engineering and drives-ITPED’2016",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "2016-04-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Vidhya K Dhanalakshmi C.R ",
+                        "PAPER_TITLE": "Three phase four switch inverter with PI controller to a grid connected system",
+                        "CONFERENCE_NAME": "International Conference on Innovations in information, Embedded and Communication Systems(ICIIECS’16",
+                        "ORGANIZED_BY": "Karpagam college of Engineering",
+                        "MONTH_&_YEAR": "2016-03-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Vidhya K",
+                        "PAPER_TITLE": "Implementation of PI controller in three phase four switch Inverter to a grid connected system",
+                        "CONFERENCE_NAME": "International Conference on Communication, Computing and power technologies(ICCPT 2015) and  Artificial intelligence and evolutionary computations in engineering systems(ICAIECES2015)",
+                        "ORGANIZED_BY": "Velammal Engineering College, ",
+                        "MONTH_&_YEAR": "2015-04-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Vidhya K",
+                        "PAPER_TITLE": "Design and implementation of single phase transformerless grid connected PV inverter ",
+                        "CONFERENCE_NAME": "International conference on Innovations in intelligent instrumentation, optimization &signal processing ",
+                        "ORGANIZED_BY": "Karunya University ",
+                        "MONTH_&_YEAR": "2013-03-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Vidhya K",
+                        "PAPER_TITLE": "Modernized electric vehicle",
+                        "CONFERENCE_NAME": "National Conference on Recent Trends in Electrical technology",
+                        "ORGANIZED_BY": "Velalar college of Engineering &technology ",
+                        "MONTH_&_YEAR": "March, 2011"
+                    },
+                    {
+                        "AUTHORS": "Aruna.K Vidhya K",
+                        "PAPER_TITLE": "Evolutionary programming based optimal power flow",
+                        "CONFERENCE_NAME": "National conference on Innovative techniques in power Engg &Drives ",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "2008-03-01 00:00:00"
+                    },
+                    {
+                        "MONTH_&_YEAR": " "
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "ISTE Life time member",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 4,
+                    "Conference_Publications": 8,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 30,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 4,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. KASIRATHI N",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "kasirathi@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-187.webp",
+                "socialmedia_links": {
+                    "linkedin": "www.linkedin.com/in/kasirathi-n-698393353/",
+                    "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=kasirathi&btnG=",
+                    "researchgate": "https://www.researchgate.net/profile/Kasirathi-Natarajan?ev=hdr_xprf",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "ISTE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "EEE",
+                        "INSTITUTE": "Mepco Schlenk Engineering College",
+                        "YEAR": "2000-2004"
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "IE",
+                        "INSTITUTE": "Kumaraguru College of Technology",
+                        "YEAR": "2004-2006"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2006-08-04 00:00:00",
+                        "Unnamed:_1": "2007-05-31 00:00:00",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "10",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Magna College of Engineering"
+                    },
+                    {
+                        "DURATION": "2007-06-16 00:00:00",
+                        "Unnamed:_1": "2010-04-03 00:00:00",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "10",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Daanish Ahmed College of engineering"
+                    },
+                    {
+                        "DURATION": "2010-06-16 00:00:00",
+                        "Unnamed:_1": "till date",
+                        "EXPERIENCE": "14",
+                        "Unnamed:_3": "9",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering college"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "S. Aparna, N. Kasirathi",
+                        "PAPER_TITLE": "SERIES PARALLEL RESONANT CONVERTER FOR EDM POWER SUUPLY",
+                        "JOURNAL_NAME": "IEEE explorer",
+                        "DOI_NUMBER": " 10.1109/ICEES.2011.5725297",
+                        "PAGE_NO": "28-33",
+                        "MONTH_&_YEAR": "2011-01-01",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "S. Aparna, N. Kasirathi",
+                        "PAPER_TITLE": "SERIES PARALLEL RESONANT CONVERTER FOR EDM POWER SUUPLY",
+                        "CONFERENCE_NAME": "Internation Conference on Electrical Energy systems(ICEES)",
+                        "ORGANIZED_BY": "SSN Engineering college",
+                        "MONTH_&_YEAR": "2011-01-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "N. Kasirathi, J.Vijay",
+                        "PAPER_TITLE": "Speed Control of single phase Induction motor with PWM technique using VFC",
+                        "CONFERENCE_NAME": "Nascent Technologies in Biomedical, Electrical, Electronics and Communication(NT BEECOM'17)",
+                        "ORGANIZED_BY": "Vel Tech MultiTech Engg College",
+                        "MONTH_&_YEAR": "Jan 2017\n"
+                    },
+                    {
+                        "AUTHORS": "V.Rengarajan, N. Kasirathi",
+                        "PAPER_TITLE": "Smart Monitoring and Control of Electrical Appliances",
+                        "CONFERENCE_NAME": "International Conference on Emerging Trends in Electrical Machines, Power and Energy Systems, EMPOWER 2024",
+                        "ORGANIZED_BY": "SRM Institute of Science and Technology Ramapuram.",
+                        "MONTH_&_YEAR": "2024-04-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "N. Kasirathi, V.Rengarajan",
+                        "PAPER_TITLE": "Recursive Discrete Fourier Transform Based Numerical Relay for overcurrent protection",
+                        "CONFERENCE_NAME": "International Conference on Emerging Trends in Electrical Machines, Power and Energy Systems, EMPOWER 2025",
+                        "ORGANIZED_BY": "SRM Institute of Science and Technology Ramapuram.",
+                        "MONTH_&_YEAR": "2024-05-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Mrs. Kasirathi N, Harish D, Robin Jerome A, Sachin D, Sam Sebastin T",
+                        "PAPER_TITLE": "SMART BLACK BOX FOR ROAD VEHICLES",
+                        "CONFERENCE_NAME": "International Conference on Power Electronics and Renewable Energy systems",
+                        "ORGANIZED_BY": "Rajalakshmi Engineering College",
+                        "ISBN_/_ISSN_NO": "978-81-980294-5-4",
+                        "MONTH_&_YEAR": "2024-12-01 00:00:00"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "ISTE",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 1,
+                    "Conference_Publications": 5,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 20,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. JAGADEESH BABU V",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "jagadeesh@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-117.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/jagadeesh-babu-jagababu007-35390365/",
+                    "googlescholar": "https://scholar.google.com/citations?user=pK6RxpMAAAAJ&hl=en",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0003-3278-1166",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5255-2025",
+                    "scopus": "https://www.editorialmanager.com/dwt/default2.aspx"
+                },
+                "Professional_Membership": "aicte life time member",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E ",
+                        "BRANCH": "EEE",
+                        "INSTITUTE": "SRI RAM ENGINEERING COLLEGE",
+                        "YEAR": "2007"
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "PED",
+                        "INSTITUTE": "SATHYABAMA UNIVERSITY OF SCIENCE AND TECHNOLOGY",
+                        "YEAR": "2011"
+                    },
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "HIGH VOLTAGE ENGINEERING",
+                        "INSTITUTE": "ANNA UNIVERSITY",
+                        "YEAR": "pursuing"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2007-05-01 00:00:00",
+                        "Unnamed:_1": "2008-06-01 00:00:00",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "1",
+                        "DESIGNATION": "LECTURER",
+                        "INSTITUTION": "DHAANISH AHMED ENGINEERING COLLEGE"
+                    },
+                    {
+                        "DURATION": "2008-07-01 00:00:00",
+                        "Unnamed:_1": "2010-05-01 00:00:00",
+                        "EXPERIENCE": "2",
+                        "DESIGNATION": "LECTURER",
+                        "INSTITUTION": "AGNI ENGINEERING COLLEGE"
+                    },
+                    {
+                        "DURATION": "2010-06-01 00:00:00",
+                        "Unnamed:_1": "2012-05-01 00:00:00",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "1",
+                        "DESIGNATION": "ASSISTANT PROFESSOR",
+                        "INSTITUTION": "JAYA SURIYA ENGINEERING COLLEGE"
+                    },
+                    {
+                        "DURATION": "2012-06-01 00:00:00",
+                        "Unnamed:_1": "TILL DATE",
+                        "EXPERIENCE": "12",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "SR. ASSISTANT PROFESSOR",
+                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "SKILL AND PERSONALITY DEVELOPMENT",
+                        "SPONSORING_AGENCY": "AICTE",
+                        "AMOUNT": "11,50,000/-",
+                        "YEAR_OF_SANCTION": "2019",
+                        "DURATION": "5 YR",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "ON GOING"
+                    }
+                ],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "V.JAGADEESH BABU",
+                        "PAPER_TITLE": "PERFORMANCE EVALUATION AND ENVIRONMENTAL IMPACT OF DECOLOURATED METHYLENE BLUE IN INDUSTRIAL EFFLUENT USING PULSED ELECTRIC FIELD – AN AOP TECHNIQUE",
+                        "JOURNAL_NAME": "Journal of Environmental Protection and Ecology",
+                        "PAGE_NO": "1935-1948",
+                        "VOL_NO_/_ISSUE_NO": "24/6",
+                        "MONTH_&_YEAR": "2023-10-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V.JAGADEESH BABU",
+                        "PAPER_TITLE": "Effective discharge method of pulsed energy in industrial effluents by DBD\nand EHPD technique",
+                        "JOURNAL_NAME": "International journal of hydrogen energy",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.ijhydene.2024.03.114\n",
+                        "PAGE_NO": "424-434",
+                        "VOL_NO_/_ISSUE_NO": "68",
+                        "MONTH_&_YEAR": "2024-03-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V.JAGADEESH BABU",
+                        "PAPER_TITLE": "ZVC Based Bidirectional DC-DC Converter for Multiport RES Applications",
+                        "JOURNAL_NAME": "Springer Science+Business Media Singapore",
+                        "DOI_NUMBER": "https://link.springer.com/chapter/10.1007/978-981-10-1645-5_41",
+                        "PAGE_NO": "483-492",
+                        "VOL_NO_/_ISSUE_NO": "2",
+                        "MONTH_&_YEAR": "2024-10-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V.JAGADEESH BABU",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "PAGE_NO": "31344-31352",
+                        "VOL_NO_/_ISSUE_NO": "10 49",
+                        "MONTH_&_YEAR": "2015-06-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS"
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "JAGADEESH BABU V",
+                        "BOOK_NAME,_EDITION": "ELECTRICAL DRIVES AND CONTROL",
+                        "PUBLISHER": "SCI TECH ",
+                        "ISBN_/_ISSN_NO": "978 93 85 983 351",
+                        "MONTH_&_YEAR": "2017-07-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "aicte life time member",
+                    "Sponsored_Projects": 1,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 4,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 10,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 10,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 25,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. RENGARAJAN V",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Electrical & Electronics Engineering",
+                "Mail_ID": "rengarajanv@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-184.webp",
+                "socialmedia_links": {
+                    "linkedin": "www.linkedin.com/in/rengarajan-v-58281464/",
+                    "googlescholar": "https://scholar.google.com/citations?user=iU1IeMsAAAAJ&hl=en",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0009-0004-5418-3946",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5720-2025",
+                    "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
+                },
+                "Professional_Membership": "MIE -IEI",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "ME",
+                        "BRANCH": "Power electronics and Drive",
+                        "INSTITUTE": "Anand Institute of higher technology ",
+                        "YEAR": 2013
+                    },
+                    {
+                        "DEGREE": "BE ",
+                        "BRANCH": "Electrical and Electronics Engineering ",
+                        "INSTITUTE": "AMCET ",
+                        "YEAR": 2011
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "01.07.2013",
+                        "Unnamed:_1": "25.04.2017",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "10",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "Anad Institute of higher education "
+                    },
+                    {
+                        "DURATION": "09.06.2017",
+                        "Unnamed:_1": "na ",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "9",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "velammal engineering college "
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Electronic Watchdog based Home Safe System",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2.5 lakh ",
+                        "YEAR_OF_SANCTION": "2019-2020",
+                        "DURATION": "1 year ",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed "
+                    },
+                    {
+                        "TITLE": "Smart Monitoring And Control Of         Biofloc",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2.5 lakh ",
+                        "YEAR_OF_SANCTION": "2020-2021",
+                        "DURATION": "2 year ",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed "
+                    },
+                    {
+                        "TITLE": "Real Time Monitoring Parameters During The Formulation Of Siddha Medicine",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2.5 lakh ",
+                        "YEAR_OF_SANCTION": "2020-2021",
+                        "DURATION": "3 year ",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed "
+                    },
+                    {
+                        "TITLE": "Palliative Auto Nutrient Feeder",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2.5 lakh ",
+                        "YEAR_OF_SANCTION": "2022-2023",
+                        "DURATION": "4 year ",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed "
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Electronic Watchdog based Home Safe System",
+                        "PATENT_TYPE_(UTILITY)": "utility ",
+                        "COUNTRY": "india ",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "published "
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": 1,
+                        "PAPER_TITLE": "V. Rengarajan ",
+                        "JOURNAL_NAME": "Optimizing energy management in electric vehicles with hybrid battery systems using the GTOA-DRCNN method",
+                        "DOI_NUMBER": "SCI",
+                        "PAGE_NO": "Journal of Energy Storage",
+                        "VOL_NO_/_ISSUE_NO": "2352-152X",
+                        "MONTH_&_YEAR": " 01-10-2024",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Rengarajan v",
+                        "PAPER_TITLE": "Battery thermal mangement ",
+                        "CONFERENCE_NAME": "ICPETES 2024",
+                        "ORGANIZED_BY": "Rajalakshmi Engineering college ",
+                        "MONTH_&_YEAR": "DECEMBER & 2024"
+                    },
+                    {
+                        "AUTHORS": "Rengarajan v",
+                        "PAPER_TITLE": "Smart monitoring and control of biofloc fish farming ",
+                        "CONFERENCE_NAME": "PECTEAM 2K24",
+                        "ORGANIZED_BY": "PANIMALLAR ENGINEERING COLLEGE ",
+                        "MONTH_&_YEAR": "MARCH &2024"
+                    },
+                    {
+                        "AUTHORS": "Mr.V. Rengarajan",
+                        "PAPER_TITLE": "FT based neumarical relay",
+                        "CONFERENCE_NAME": "EMPOWER 2025",
+                        "ORGANIZED_BY": "SRM University, Ramapuram campus",
+                        "ISBN_/_ISSN_NO": "9788-196-686995",
+                        "MONTH_&_YEAR": "septemeber &  2024"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "V.Rengarajan",
+                        "BOOK_NAME,_EDITION": "Basic Electrical and Electronics Engineering ",
+                        "PUBLISHER": "Charulatha ",
+                        "ISBN_/_ISSN_NO": "978-93-86532-66-4",
+                        "MONTH_&_YEAR": "DEC & 2020",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    },
+                    {
+                        "AUTHOR": "V.Rengarajan",
+                        "BOOK_NAME,_EDITION": "Basic Electrical ,Electronics and Instrumenatation  Engineering ",
+                        "PUBLISHER": "Charulatha ",
+                        "ISBN_/_ISSN_NO": "978-93-86532-66-4",
+                        "MONTH_&_YEAR": "Jan & 2018",
+                        "BOOK_/_BOOK_CHAPTER": "Book "
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "MIE -IEI",
+                    "Sponsored_Projects": 4,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 1,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 1,
+                    "Conference_Publications": 3,
+                    "Book_/_Book_Chapter_Published": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 6,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 45,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 6,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. VIJAYALAKSHMI M",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-502.webp",
+                "socialmedia_links": {
+                    "linkedin": "www.linkedin.com/in/viji-lakshmi-70b667353",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=8VaZJUAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0000-1230-9118",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. MATHUMATHI T",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-100.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. DEVIKA B",
+                "Designation": "Teaching Assistant",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/007/VEC-007-04-501.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/b-devika-087814353/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0006-3420-0686",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/home.uri"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "NON_TEACHING_FACULTY": [
+            {
+                "Name": "MR. GNANASEKAR R",
+                "Designation": "Lab Instructor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/007/VEC-007-05-008.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. RAJENDRAN.P",
+                "Designation": "Lab Instructor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/007/VEC-007-05-009.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. RANGARAJAN K",
+                "Designation": "Lab Instructor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/007/VEC-007-05-010.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. SELVAKUMAR.P",
+                "Designation": "Lab Assistant",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/007/VEC-007-05-019.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    }
+]

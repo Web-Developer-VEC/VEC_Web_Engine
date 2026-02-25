@@ -51,6 +51,9 @@ function tempstoreBusboy(req, res, next) {
       throw new Error(`Handler not found. Collection is ${collectionName}`);
     }
 
+    console.log("Handler check up", handler);
+    
+
     // Wrap handler in a promise so we can wait for it
     const uploadPromise = new Promise((resolve, reject) => {
       handler(
