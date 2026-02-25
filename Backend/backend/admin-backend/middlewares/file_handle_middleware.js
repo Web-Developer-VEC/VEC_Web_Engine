@@ -30,12 +30,31 @@ async function moveFile(srcKey, destKey) {
 }
 
 
-async function normalizeKey(key) {
-  if (!key) return key;
-  return key
-    .normalize("NFC")               // normalize unicode
-    .replace(/\u00A0/g, " ")        // replace non-breaking space with normal space
-    .trim();
+function normalizeKey(key) {
+  if (!key || typeof key !== "string") return key;
+
+  try {
+    if (key.startsWith("http")) {
+      const url = new URL(key);
+      key = url.pathname;
+    }
+
+    key = key.replace(/^\/+/, "");
+    key = key.replace(/\\/g, "/");
+
+    try {
+      key = decodeURIComponent(key);
+    } catch {}
+
+    key = key.normalize("NFC");
+    key = key.replace(/\u00A0/g, " ");
+    key = key.replace(/\/{2,}/g, "/");
+
+    return key.trim();
+  } catch (err) {
+    console.error("Key normalization failed:", err);
+    return key;
+  }
 }
 
 

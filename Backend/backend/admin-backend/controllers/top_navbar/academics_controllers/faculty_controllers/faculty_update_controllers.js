@@ -7,6 +7,9 @@ async function updateData(tempDoc, mainCollection) {
         "meta data and collection type and category and original data is required"
       );
     }
+    if (collection_type !== "faculty") {
+      throw new Error("Incorrect collection type or route");
+    }
 
     if (
       category === "head_of_department" ||
