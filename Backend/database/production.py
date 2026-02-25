@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 #Hostel Student Test Settings is Turned On Till Now at line 1126
 mongo_uri = "mongodb://localhost:27017/"
-db_name = "VEC"
+db_name = "TESTDATA"
 client = MongoClient(mongo_uri)
 db = client[db_name]
 logsdb = client["LOGS_VEC"]
@@ -52,6 +52,42 @@ def insert_department_data_sections():
             if documents:
                 collection.insert_many(documents)
                 print(f"{dept_id} dept_data inserted into '{collection_name}'.")
+            else:
+                print(f"No data in {file_path}")
+
+        except FileNotFoundError:
+            print(f"File not found: {file_path}")
+        except json.JSONDecodeError as e:
+            print(f"Error decoding JSON in file {file_path}: {e}")
+        except Exception as e:
+            print(f"Unexpected error processing {file_path}: {e}")
+
+
+def insert_staff_data_sections():
+    base_path = "/VEC_Web_Engine/Backend/docs/STAFF_DATA/"  # 👈 your staff folder path
+
+    for dept_id, collection_name in deptMap.items():
+        file_path = f"{base_path}{dept_id}.json"
+
+        # 👇 Add _staff to collection name
+        staff_collection_name = f"{collection_name}_staff"
+        collection = db[staff_collection_name]
+
+        try:
+            with open(file_path, "r", encoding="utf-8") as file:
+                staff_data = json.load(file)
+
+            documents = [
+                {
+                    "type": section.get("type"),
+                    "data": section.get("data")
+                }
+                for section in staff_data
+            ]
+
+            if documents:
+                collection.insert_many(documents)
+                print(f"{dept_id} staff data inserted into '{staff_collection_name}'.")
             else:
                 print(f"No data in {file_path}")
 
@@ -181,6 +217,21 @@ def insert_ecell_sections():
 
     print("e cell sections inserted successfully.")
 
+def insert_transport_sections():
+    collection = db["transport"]
+
+    with open("/VEC_Web_Engine/Backend/docs/transport.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("transport sections inserted successfully.")
 
 def insert_other_facilities_sections():
     collection = db["other_facilities"]
@@ -248,10 +299,12 @@ def insert_web_team():
 
 
 insert_department_data_sections()
+insert_staff_data_sections()
 insert_web_team()
 insert_academics_sections()
 insert_gallery_sections()
 insert_other_facilities_sections()
+insert_transport_sections()
 insert_ecell_sections()
 insert_accreditations_and_ranking_sections()
 insert_iqac_sections()
