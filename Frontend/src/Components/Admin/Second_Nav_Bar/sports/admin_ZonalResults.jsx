@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoadComp from "../../LoadComp";
 import { Pencil, Trash2, Send, Plus, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,8 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 import { nanoid } from "nanoid";
 
-
-const ZonalResults = ({ data, year: initialYear }) => {
+const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
   const [editMode, setEditMode] = useState(false);
   const [currentYear, setCurrentYear] = useState(initialYear);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -17,22 +16,28 @@ const ZonalResults = ({ data, year: initialYear }) => {
   const [originalYear] = useState(initialYear);
   const [changes, setChanges] = useState([]);
   const { sendRequest, loading, error } = useAdminRequest();
-  const haschanges=changes.length>0
-
+  const haschanges = changes.length > 0;
 
   const [results, setResults] = useState(
     Array.isArray(data)
       ? data.map((item) => ({
-        id: nanoid(),          // ✅ stable id
-        game: item?.game || "",
-        position: item?.position || "",
-        selected: false,
-      }))
+          id: nanoid(), // ✅ stable id
+          game: item?.game || "",
+          position: item?.position || "",
+          selected: false,
+        }))
       : []
   );
 
   const [originalResults, setOriginalResults] = useState(results);
   const positionOptions = ["Winner", "Runner", "Third"];
+
+  // Send changes to parent component whenever they update
+  useEffect(() => {
+    if (onChangesChange) {
+      onChangesChange(changes);
+    }
+  }, [changes, onChangesChange]);
 
   if (!data) {
     return (
@@ -41,8 +46,10 @@ const ZonalResults = ({ data, year: initialYear }) => {
       </div>
     );
   }
+  
   console.log("Zonal Results Data:", data);
   console.log("results state:", results);
+  
   // Split results into pairs for desktop view
   const resultPairs = [];
   for (let i = 0; i < results.length; i += 2) {
@@ -63,11 +70,11 @@ const ZonalResults = ({ data, year: initialYear }) => {
         prev.map((c) =>
           c.type === "added" && c.data === results[index]
             ? {
-              ...c,
-              data: {
-                ...updatedResults[index],
-              },
-            }
+                ...c,
+                data: {
+                  ...updatedResults[index],
+                },
+              }
             : c
         )
       );
@@ -87,12 +94,12 @@ const ZonalResults = ({ data, year: initialYear }) => {
         return prev.map((c) =>
           c.index === index
             ? {
-              ...c,
-              meta_data: {
-                ...c.meta_data,
-                [field]: value,
-              },
-            }
+                ...c,
+                meta_data: {
+                  ...c.meta_data,
+                  [field]: value,
+                },
+              }
             : c
         );
       }
@@ -115,7 +122,6 @@ const ZonalResults = ({ data, year: initialYear }) => {
       ];
     });
   };
-
 
   const handleRevertChange = (index) => {
     const change = changes[index];
@@ -155,24 +161,31 @@ const ZonalResults = ({ data, year: initialYear }) => {
       toast.error("Year is mandatory!");
       return;
     }
+    
+    const newChanges = [...changes];
+    
     if (currentYear !== originalYear) {
-      setChanges((prev) => [
-        ...prev,
-        {
-          type: "year_updated",
-          section: "Zonal Results",
-          original_data: {
-            year: originalYear,
-          },
-          meta_data: {
-            year: currentYear,
-          },
+      newChanges.push({
+        type: "year_updated",
+        section: "Zonal Results",
+        original_data: {
+          year: originalYear,
         },
-      ]);
+        meta_data: {
+          year: currentYear,
+        },
+      });
     }
 
+    setChanges(newChanges);
     setEditMode(false);
     setShowRequestButtons(true);
+    
+    // Call onSave prop to notify parent
+    if (onSave) {
+      onSave();
+    }
+    
     toast.success("Changes saved successfully!");
   };
 
@@ -191,10 +204,9 @@ const ZonalResults = ({ data, year: initialYear }) => {
     toast.success("Selected rows deleted successfully!");
   };
 
-
   const handleAddRow = () => {
     const newRow = {
-      id: nanoid(),      // ✅ unique id
+      id: nanoid(), // ✅ unique id
       game: "",
       position: "",
       selected: false,
@@ -208,7 +220,7 @@ const ZonalResults = ({ data, year: initialYear }) => {
       {
         type: "added",
         section: "Zonal Results",
-        rowId: newRow.id,   // ✅ store id, not index
+        rowId: newRow.id, // ✅ store id, not index
       },
     ]);
   };
@@ -241,7 +253,6 @@ const ZonalResults = ({ data, year: initialYear }) => {
           };
         }
 
-
         // UPDATE
         if (ch.type === "updated") {
           return {
@@ -270,6 +281,7 @@ const ZonalResults = ({ data, year: initialYear }) => {
             original_data: null,
           };
         }
+        
         if (ch.type === "year_updated") {
           return {
             collectionName: "sports",
@@ -304,15 +316,16 @@ const ZonalResults = ({ data, year: initialYear }) => {
   const confirmDiscard = () => {
     const resetResults = Array.isArray(data)
       ? data.map((item) => ({
-        game: item?.game || "",
-        position: item?.position || "",
-        selected: false,
-      }))
+          id: nanoid(),
+          game: item?.game || "",
+          position: item?.position || "",
+          selected: false,
+        }))
       : [];
 
     setResults(resetResults);
     setOriginalResults(resetResults);
-    setChanges([]);            // 🔥 clears discarded changes
+    setChanges([]); // 🔥 clears discarded changes
     setCurrentYear(initialYear);
     setShowRequestButtons(false);
     setShowDiscardModal(false);
@@ -332,7 +345,7 @@ const ZonalResults = ({ data, year: initialYear }) => {
             className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20"
             onClick={() => {
               setEditMode(true);
-              setShowRequestButtons(true)
+              setShowRequestButtons(true);
             }}
           >
             <Pencil size={16} /> Edit
@@ -354,6 +367,7 @@ const ZonalResults = ({ data, year: initialYear }) => {
           `Zonal Results ${currentYear}`
         )}
       </h1>
+      
       {/* Table */}
       {!editMode ? (
         <div className="hidden sm:block overflow-x-auto shadow-md rounded-lg">
@@ -405,7 +419,7 @@ const ZonalResults = ({ data, year: initialYear }) => {
             </thead>
             <tbody>
               {results.map((item, index) => (
-                <tr key={index} className="border-t border-gray-200">
+                <tr key={item.id || index} className="border-t border-gray-200">
                   <td className="py-3 px-4 text-left">
                     <input
                       type="text"
@@ -477,12 +491,14 @@ const ZonalResults = ({ data, year: initialYear }) => {
           >
             Cancel
           </button>
-          {haschanges && (<button
-            onClick={handleSave}
-            className="px-4 py-1 bg-[#800000] text-white rounded"
-          >
-            Save
-          </button>)}
+          {haschanges && (
+            <button
+              onClick={handleSave}
+              className="px-4 py-1 bg-[#800000] text-white rounded"
+            >
+              Save
+            </button>
+          )}
         </div>
       )}
 
@@ -516,7 +532,8 @@ const ZonalResults = ({ data, year: initialYear }) => {
                 onClick={() => setShowDeleteModal(false)}
               >
                 Cancel
-              </button> <button
+              </button>{" "}
+              <button
                 className="px-4 py-2 bg-red-600 text-white rounded"
                 onClick={handleDeleteSelected}
               >
@@ -526,12 +543,14 @@ const ZonalResults = ({ data, year: initialYear }) => {
           </div>
         </div>
       )}
-         {showDiscardModal && (
+      
+      {showDiscardModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white p-6 rounded-xl w-[400px]">
             <h2 className="text-lg font-semibold mb-4">Discard Changes?</h2>
             <p className="text-sm text-gray-600 mb-6">
-              Are you sure you want to discard all your changes? This action cannot be undone.
+              Are you sure you want to discard all your changes? This action
+              cannot be undone.
             </p>
 
             <div className="flex justify-end gap-2">
@@ -543,7 +562,7 @@ const ZonalResults = ({ data, year: initialYear }) => {
               </button>
               <button
                 onClick={() => {
-                  confirmDiscard();    // 👈 actually discard
+                  confirmDiscard(); // 👈 actually discard
                   setShowDiscardModal(false);
                 }}
                 className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white"
@@ -583,22 +602,27 @@ const ZonalResults = ({ data, year: initialYear }) => {
                           className={`p-2 border font-semibold
                               ${ch.type === "added" ? "text-green-600" : ""}
                               ${ch.type === "updated" ? "text-blue-600" : ""}
-                              ${ch.type === "deleted" ? "text-red-600" : ""}`}
+                              ${ch.type === "deleted" ? "text-red-600" : ""}
+                              ${ch.type === "year_updated" ? "text-purple-600" : ""}`}
                         >
-                          {ch.type}
+                          {ch.type === "year_updated" ? "YEAR UPDATED" : ch.type.toUpperCase()}
                         </td>
                         <td className="p-2 border">{ch.section}</td>
                         <td className="p-2 border">
                           {ch.type === "year_updated"
                             ? `Year: ${ch.original_data.year} → ${ch.meta_data.year}`
                             : ch.type === "added"
-                              ? `Game: ${results.find(r => r.id === ch.rowId)?.game || "-"},
-       Position: ${results.find(r => r.id === ch.rowId)?.position || "-"}`
-                              : ch.fields
-                                ? ch.fields.join(", ")
-                                : "—"}
+                            ? `Game: ${
+                                results.find((r) => r.id === ch.rowId)?.game || "-"
+                              }, Position: ${
+                                results.find((r) => r.id === ch.rowId)?.position || "-"
+                              }`
+                            : ch.type === "updated"
+                            ? `Game: ${ch.meta_data.game}, Position: ${ch.meta_data.position}`
+                            : ch.fields
+                            ? ch.fields.join(", ")
+                            : "—"}
                         </td>
-
                         <td className="p-2 border">
                           <button
                             onClick={() => handleRevertChange(i)}
