@@ -200,7 +200,7 @@ const MOU = ({ data }) => {
     const result = await sendRequest(payload, null);
 
     if (result) {
-      const updatedApproved = addUids(tempDetails);
+      const updatedApproved = addUids(tempDetails); 
       
       setApprovedDetails(updatedApproved);
       setMousDetails(updatedApproved);
