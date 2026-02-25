@@ -200,6 +200,13 @@ const MOU = ({ data }) => {
     const result = await sendRequest(payload, null);
 
     if (result) {
+      const updatedApproved = addUids(tempDetails);
+      
+      setApprovedDetails(updatedApproved);
+      setMousDetails(updatedApproved);
+      setTempDetails(updatedApproved);
+      setOriginalSnapshot(updatedApproved);
+
       setShowRequestModal(false);
       setEditMode(false);
       setHasChanges(false);
@@ -432,7 +439,7 @@ const MOU = ({ data }) => {
                     onClick={() => setShowRequestModal(true)}
                     className="btn-save inline-flex items-center gap-2 px-4 py-2 rounded"
                   >
-                    <Send size={16}/>Request
+                    <Send size={16} />Request
                   </button>
                 </>
               ) : null}
@@ -491,13 +498,12 @@ const MOU = ({ data }) => {
                       {getChanges().map((change, idx) => (
                         <tr key={idx} className="border-t">
                           <td
-                            className={`py-1 ${
-                              change.action === "Added"
+                            className={`py-1 ${change.action === "Added"
                                 ? "text-green-600"
                                 : change.action === "Deleted"
-                                ? "text-red-600"
-                                : "text-blue-600"
-                            }`}
+                                  ? "text-red-600"
+                                  : "text-blue-600"
+                              }`}
                           >
                             {change.action}
                           </td>
@@ -521,7 +527,7 @@ const MOU = ({ data }) => {
                               onClick={() => removeChangeEntry(idx)}
                               className="text-red-500 hover:text-red-700 font-bold"
                             >
-                              <X/>
+                              <X />
                             </button>
                           </td>
                         </tr>
