@@ -140,7 +140,7 @@
             "name": "Dr. GANAPATHY SUNDARAM E",
             "department_name": "Mechancial Engineering (MECH)",
             "unique_id": "VEC-013-01-160",       
-            "resume_pdf":"/static/pdfs/faculty_profile/013/VEC-013-01-203.pdf",
+            "pdf_path":"/static/pdfs/faculty_profile/013/VEC-013-01-203.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": [
               "The department of Mechanical Engineering is designed to facilitate for teaching and research in the area of Thermal and Energy, Design and Manufacturing, Material Science, Mechatronics, Industrial automation and Industrial Engineering. A highly skilled, well qualified and motivated team of 20 faculty members, including 10 Doctorates and 9 are pursuing Doctorate, imparts quality education to students and support them to reach greater heights. Faculty members support the students to do various industrial projects, innovative projects carried out through funds received from various government agencies like DST New Gen IEDC, Tamilnadu State Council for Science and Technology, Indian Society for Refrigeration and Air Conditioning etc. A separate project lab facility is established to support the students to get various hands on skill, carryout different project work in the curriculum and support to participate various student’s events. The department regularly organizes events to promote higher studies and entrepreneurship among the students. The department also offering Honours and minor degree to students in emerging thrust areas."
@@ -193,7 +193,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/013/VEC-013-01-203.webp",
-            "resume_pdf":"/static/pdfs/faculty_profile/013/VEC-013-01-203.pdf"
+            "pdf_path":"/static/pdfs/faculty_profile/013/VEC-013-01-203.pdf"
           }
         ]
       },
@@ -213,7 +213,7 @@
               "scopus":"https://www.scopus.com/authid/detail.uri?authorId=13806246500"
             },
             "image_path":"/static/images/profile_photos/013/VEC-013-02-200.webp",
-            "resume_pdf":"/static/pdfs/faculty_profile/013/VEC-013-02-200.pdf"
+            "pdf_path":"/static/pdfs/faculty_profile/013/VEC-013-02-200.pdf"
           },
             {
                "name": "Dr. AROCKIA JASWIN M",
@@ -228,7 +228,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36468002200"
               },
               "image_path": "/static/images/profile_photos/013/VEC-013-02-027.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-02-027.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-02-027.pdf"
             },
             {
               "name": "Dr. SURESH S",
@@ -243,7 +243,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57204060327"
                },
                "image_path": "/static/images/profile_photos/013/VEC-013-03-024.webp",
-               "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-03-024.pdf"
+               "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-03-024.pdf"
               },
               {
               "name": "Dr. KARTHICK M",
@@ -258,7 +258,7 @@
               "scopus": ""
                },
                "image_path": "/static/images/profile_photos/013/VEC-013-04-198.webp",
-               "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-198.pdf"
+               "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-198.pdf"
 
               },
               {
@@ -274,7 +274,7 @@
               "scopus":""
             },
             "image_path":"/static/images/profile_photos/013/VEC-013-04-133.webp",
-            "resume_pdf":"/static/pdfs/faculty_profile/013/VEC-013-04-133.pdf"
+            "pdf_path":"/static/pdfs/faculty_profile/013/VEC-013-04-133.pdf"
           },
           {
       "name": "Mr. FRANK GLADSON T S",
@@ -289,7 +289,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57191980691"
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-028.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-028.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-028.pdf"
     },
     {
       "name": "Mr. CHEZHIAN R",
@@ -304,7 +304,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-202.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-202.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-202.pdf"
     },
     {
       "name": "Dr. GEETHA R",
@@ -319,7 +319,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57210626865"
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-004.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-004.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-004.pdf"
     },
     {
       "name": "Dr. DEEPAK KUMAR M",
@@ -334,7 +334,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56297082000"
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-001.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-001.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-001.pdf"
     },
     {
       "name": "Mr. KARTHIKEYAN M",
@@ -349,7 +349,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-103.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-103.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-103.pdf"
     },
     {
       "name": "Dr. PRADEEP KUMAR S",
@@ -364,7 +364,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-020.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-020.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-020.pdf"
     },
     {
       "name": "Dr. LOGANATHAN D",
@@ -379,7 +379,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56319193800"
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-044.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-044.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-044.pdf"
     },
     {
       "name": "Mr. ELVIN R P",
@@ -394,7 +394,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-204.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-204.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-204.pdf"
     },
     {
       "name": "Mr. JOHN LEONARD A",
@@ -409,7 +409,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-680.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-680.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-680.pdf"
     },
     {
       "name": "Dr. SIVASANKAR D",
@@ -424,7 +424,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-084.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-084.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-084.pdf"
     },
     {
       "name": "Mr. SHANKARANARAYANAN S",
@@ -439,7 +439,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-022.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-022.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-022.pdf"
     },
     {
       "name": "Mr. SARAVANAN M",
@@ -454,7 +454,7 @@
         "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57669626800"
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-003.webp",
-      "resume_pdf": "/static/pdfs/faculty_profile/013/VEC-013-04-003.pdf"
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-003.pdf"
     }]
       },
       {
@@ -472,7 +472,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-05-012.webp",
-      "resume_pdf": ""
+      "pdf_path": ""
     },
     {
       "name": "Mr. CHANDRAMOULLI P",
@@ -487,7 +487,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-05-013.webp",
-      "resume_pdf": ""
+      "pdf_path": ""
     },
     {
       "name": "Mr. ANANDAN A",
@@ -502,7 +502,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-05-014.webp",
-      "resume_pdf": ""
+      "pdf_path": ""
     },
     {
       "name": "Mr. ARUMUGAM B",
@@ -517,7 +517,7 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-05-015.webp",
-      "resume_pdf": ""
+      "pdf_path": ""
     }]
       }
     ]
@@ -536,18 +536,55 @@
       },
       {
         "category": "curriculum",
-        "content":  [
-               {
-              "heading":"Curriculum & Syllabus - UG",
-              "syllabus":[
+        "content":[
               {
-                "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                "pdf_path":  "/static/pdfs/curriculum/013/reg_21.pdf"
-              },
-              {
-                "year": "R - 2023",
-                "pdf_path": "/static/pdfs/curriculum/013/reg_23.pdf"
-              }
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
+                {
+                  "year": "R - 2023",
+                  "docs":[
+                    {
+                    "name":"I Semester",
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER I.pdf"
+                  },
+                    {
+                    "name":"II Semester",
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER II.pdf"
+                  },
+                    {
+                    "name":"III Semester",
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER III.pdf"
+                  },
+                    {
+                    "name":"IV Semester",
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER IV.pdf"
+                  },
+                    {
+                    "name":"V Semester",
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER V.pdf"
+                  },
+                    {
+                    "name":"VI Semester",
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER VI.pdf"
+                  },
+                    {
+                    "name":"VII Semester",
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER VII.pdf"
+                  },
+                    {
+                    "name":"VIII Semester",
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER VIII.pdf"
+                  },
+                    {
+                    "name":"Elective Courses",
+                      "pdf_path": "/static/pdfs/curriculum/013/PROFESSIONAL ELECTIVES , MANDATORY COURSES ,MINOR DEGREE COURSES , OPEN ELECTIVE COURSES.pdf"
+                  }
+                ]
+                },
+                {
+                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
+                    "pdf_path":"/static/pdfs/curriculum/013/reg_21.pdf"
+                }
             ]
           }
         ]

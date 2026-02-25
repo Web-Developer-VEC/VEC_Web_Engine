@@ -72,7 +72,7 @@ const Head = () => {
             sub: [
                 {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
                 {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
-                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
+                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "/v_m"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
                 {hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer"}, // Link to footer
             ],
@@ -98,7 +98,7 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "acadamic_cal" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/acadamiccal" },
               ],
         },
         {

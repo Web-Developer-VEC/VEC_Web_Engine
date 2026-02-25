@@ -73,7 +73,7 @@ export default function Projects({data}) {
       ) : (
         <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
           <LoadComp />
-        </div>
+        </div>
       )}
     </>
   );

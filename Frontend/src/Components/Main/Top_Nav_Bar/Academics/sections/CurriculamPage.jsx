@@ -5,15 +5,16 @@ import "./CurriculumPage.css";
 import LoadComp from "../../../LoadComp";
 
 const CurriculumPage = ({ data }) => {
-  const [openYear, setOpenYear] = useState(null);
+  const [openKey, setOpenKey] = useState(null);
 
-  const curriculam =
+  const curriculum =
     data?.find((item) => item.category === "curriculum")?.content || [];
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    if (!path) return "#";
+    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   const handleViewClick = (pdfUrl) => {
@@ -26,7 +27,7 @@ const CurriculumPage = ({ data }) => {
 
   if (!data) {
     return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+      <div className="h-screen flex items-center justify-center">
         <LoadComp />
       </div>
     );
@@ -36,86 +37,103 @@ const CurriculumPage = ({ data }) => {
 
   return (
     <div className="containers mt-5">
-      {curriculam.length > 0 ? (
+      {curriculum.length > 0 ? (
         <div className="row">
           <div className="col-md-6">
-            {curriculam.map((req, i) => (
-              <div
-                className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)]"
-                key={i}
-              >
-                <h2 className="text-bold text-[24px] text-brwn dark:text-drkt mb-8">
-                  {req?.heading}
-                </h2>
+            {curriculum.map((section, sectionIndex) => {
+              const isUG = sectionIndex === 0;
+              // const isPG = sectionIndex > 0;
 
-                {req?.syllabus?.filter(s=> s.year.includes("R - 2023"))?.map((item, index) => {
-                  const isOpen = openYear === index;
+              return (
+                <div
+                  key={sectionIndex}
+                  className="content-section bg-prim dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] mb-10"
+                >
+                  <h2 className="text-bold text-[24px] text-brwn dark:text-drkt mb-8">
+                    {section.heading}
+                  </h2>
 
-                  return (
-                    <div
-                      key={index}
-                      className="row-item dark:bg-drkp border-0 dark:hover:bg-drks flex flex-col"
-                    >
-                      {/* Year Button */}
-                      <button
-                        className="R-years  self-start "
-                        onClick={() =>
-                          setOpenYear(isOpen ? null : index)
-                        }
-                      >
-                        {item?.year}
-                      </button>
+                  {section?.syllabus?.map((item, itemIndex) => {
+                    const key = `${sectionIndex}-${itemIndex}`;
 
-                      {/* Accordion Content */}
+                    if (isUG) {
+                      const docs = item.docs?.length
+                        ? item.docs
+                        : [
+                            {
+                              name: "View",
+                              pdf_path: item.pdf_path,
+                              isView: true,
+                            },
+                          ];
+
+                      return (
+                        <div
+                          key={key}
+                          className="row-item dark:bg-drkp border-0 flex flex-col mb-4"
+                        >
+                          <div className="R-years self-start">{item.year}</div>
+
+                          <div className="overflow-hidden w-[90%] mx-auto grid grid-cols-3 gap-6 text-center mt-4">
+                            {docs.map((doc, docIndex) => (
+                              <a
+                                key={docIndex}
+                                href={
+                                  doc.pdf_path
+                                    ? UrlParser(doc.pdf_path)
+                                    : undefined
+                                }
+                                target={doc.pdf_path ? "_blank" : undefined}
+                                rel={
+                                  doc.pdf_path
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
+                                onClick={(e) => {
+                                  if (!doc.pdf_path) e.preventDefault();
+                                }}
+                                className={`no-underline text-inherit px-3 py-2 rounded flex items-center justify-center gap-2
+                                  ${
+                                    "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
+                                  }
+                                `}
+                              >
+                                {doc.isView && <FontAwesomeIcon icon={faEye} />}
+                                {doc.name}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    return (
                       <div
-                        className={`overflow-hidden transition-all duration-300 ease-in-out w-[90%] mx-auto grid grid-cols-3  gap-8 flex-wrap text-center  ${
-                          isOpen
-                            ? "max-h-[500px] opacity-100 mt-4"
-                            : "max-h-0 opacity-0"
-                        }`}
+                        key={key}
+                        className="row-item rounded-lg dark:bg-drkp border-0 flex flex-row justify-between items-center mt-6"
                       >
-                    
-                       {item?.docs.map((icon,value)=>{
-                        return(
-                            <a href={UrlParser(icon.pdf_path)} target="_blank" rel="noopener noreferrer" className="no-underline text-inherit  bg-secd hover:bg-brwn text-text hover:text-prim  px-2 py-2 rounded  self-center w-[18rem] ">{icon.name}</a>
-                          )
-                        })}
-                     
-                      </div>
-                    </div>
-                  );
-                })}
-                <div></div>
-               {req?.syllabus?.filter(s=> !s.year.includes("R - 2023")).map((data, index) => (
-                  <div
-                    className="row-item rounded-lg dark:bg-drkp border-0 dark:hover:bg-drks flex flex-row justify-between my-auto mt-12 "
-                    key={index}
-                  >
-                   
-                      <div className="R-years">{data?.year}</div>
-                    
+                        <div className="R-years">{item.year}</div>
+
                         <button
-                          className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim
-                            dark:hover:bg-brwn"
-                          onClick={() => handleViewClick(data?.pdf_path)}
+                          className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-brwn"
+                          onClick={() => handleViewClick(item.pdf_path)}
                         >
                           <FontAwesomeIcon
                             icon={faEye}
-                            style={{ marginRight: "5px" }}
+                            style={{ marginRight: "6px" }}
                           />
                           View
                         </button>
-                    
-                   
-                  </div>
-                ))}
-
-              </div>
-            ))}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
           </div>
         </div>
       ) : (
-        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <div className="h-screen flex items-center justify-center">
           <LoadComp />
         </div>
       )}

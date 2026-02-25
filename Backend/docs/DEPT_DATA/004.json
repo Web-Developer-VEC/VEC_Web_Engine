@@ -149,7 +149,7 @@
             "department_name": "Civil Engineering (CIVIL)",
             "unique_id": "VEC-004-01-145",
             
-            "resume_pdf":"/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf",
+            "pdf_path":"/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": ["Civil Engineering, the Mother of all Engineering Disciplines, also bears the prestige of being in the forefront with advanced applications in all domains based on technologies like Drones,  AI, AR and VR,  3 D Printing,  IoT and with special  emphasis  on   Sustainability and the 17 SDG Goals as envisaged by UN. The BE  Civil Engineering Graduates from VEC  are trained with skills and technical know-how  to stay on par with global peers  in application of concepts and tools with utmost  responsibility towards Environment and the Society."],
             "hod_image": "/static/images/profile_photos/004/VEC-004-01-145.webp",
@@ -205,7 +205,7 @@
                 },
           
             "image_path":"/static/images/profile_photos/004/VEC-004-01-145.webp",
-            "resume_pdf":"/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf"
+            "pdf_path":"/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf"
           }]
       },
       {
@@ -227,7 +227,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-03-082.webp",
-                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-03-082.pdf"
+                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-03-082.pdf"
             },
             {
                 "name": "Mr. RAJHARASEHWARAN T A",
@@ -243,7 +243,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-066.webp",
-                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-066.pdf"
+                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-066.pdf"
             },
             {
                 "name": "Mr. RAJENDHIRAN K",
@@ -259,7 +259,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-061.webp",
-                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-061.pdf"
+                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-061.pdf"
             },
             {
                 "name": "Mrs. FRIEDA F S",
@@ -275,7 +275,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-601.webp",
-                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-601.pdf"
+                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-601.pdf"
             },
             {
                 "name": "Mrs. PRAVEENA A",
@@ -291,7 +291,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-602.webp",
-                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-602.pdf"
+                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-602.pdf"
             },
             {
                 "name": "Mr. SELVAPRASANTH P",
@@ -307,7 +307,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-603.webp",
-                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-603.pdf"
+                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-603.pdf"
             },
             {
                 "name": "Mrs. SUREKHA A",
@@ -323,7 +323,7 @@
                     "scopus": ""
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-100.webp",
-                "resume_pdf": "/static/pdfs/faculty_profile/004/VEC-004-04-100.pdf"
+                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-100.pdf"
             }
         ]
       },
@@ -346,20 +346,57 @@
         ]
       },
       {
-        "category": "curriculum",
-        "content": [
+         "category": "curriculum",
+        "content":[
               {
                 "heading":"Curriculum & Syllabus",
                 "syllabus":[
                 {
                   "year": "R - 2023",
-                  "pdf_path": "/static/pdfs/curriculum/004/reg_23.pdf"
+                  "docs":[
+                    {
+                    "name":"I Semester",
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 1.pdf"
+                  },
+                    {
+                    "name":"II Semester",
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 2.pdf"
+                  },
+                    {
+                    "name":"III Semester",
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 3.pdf"
+                  },
+                    {
+                    "name":"IV Semester",
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 4.pdf"
+                  },
+                    {
+                    "name":"V Semester",
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 5.pdf"
+                  },
+                    {
+                    "name":"VI Semester",
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 6.pdf"
+                  },
+                    {
+                    "name":"VII Semester",
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 7.pdf"
+                  },
+                    {
+                    "name":"VIII Semester",
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 8.pdf"
+                  },
+                    {
+                    "name":"Elective Courses",
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E. CIVIL (R2023) ELECTIVE COURSES WITH TW & SDG.pdf"
+                  }
+                ]
                 },
                 {
                     "year":"R - 2019 A (Students admitted during 2021 and 2022)",
                     "pdf_path":"/static/pdfs/curriculum/004/reg_21.pdf"
                 }
-              ]
+                   ]
               }
             ]
       }

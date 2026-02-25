@@ -31,14 +31,9 @@ const web_team = require('./web_team_routes');
 const log = require('./log_routes');
 const feedback = require('../second_navbar/feedback_routes');
 const research = require('../top_navbar/research_routes');
-const coelogin = require('../questionbank/coe_login_routes');
-const qbform = require('../questionbank/questionbank_routes')
-//QA
-const login = require('../qa_exams/login_routes');
-const qa_examiner = require('../qa_exams/qa_examiner_routes');
-const qa_student = require('../qa_exams/qa_student_routes');
-const qa_exam = require('../qa_exams/qa_exam_routes')
-const qa_question_paper = require('../qa_exams/qa_questionstore_routes')
+
+const appraisalform = require('../forms/dept_appraisal.routes')
+
 
 // TOP & SECOND NAV
 router.use('', about_us);
@@ -71,18 +66,9 @@ router.use('', sport);
 router.use('', web_team);
 router.use('', log);
 router.use('', feedback);
-router.use('', research);
-router.use('', coelogin);
-router.use('', qbform);
+router.use('', research );
 
-//QA
-router.use('',login);
-router.use('',qa_exam)
-router.use('',qa_examiner);
-router.use('',qa_student);
-router.use('',qa_question_paper)
-
-
-
+//FORM
+router.use('', appraisalform)
 
 module.exports = router;

@@ -142,7 +142,7 @@
             "name": "Dr. VISU P",
             "department_name": "Artificial Intelligence and Data Science (AI&DS) ",
             "unique_id": "VEC-001-01-077",         
-            "resume_pdf":"/static/pdfs/faculty_profile/001/VEC-001-01-077.pdf",
+            "pdf_path":"/static/pdfs/faculty_profile/001/VEC-001-01-077.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": [
               "I feel privileged to lead a team of talented and experienced faculty members. AI & DS is the most conspicuous technology transforming the facet of industry and mankind. This course is specially designed to enable students to build intelligent machines, software, or applications with a cutting-edge combination of Machine Learning, Deep Learning, Analytics, and Visualization technologies.",
@@ -197,7 +197,7 @@
             "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
         },
             "image_path":"/static/images/profile_photos/001/VEC-001-01-077.webp",
-            "resume_pdf":"/static/pdfs/faculty_profile/001/VEC-001-01-077.pdf"
+            "pdf_path":"/static/pdfs/faculty_profile/001/VEC-001-01-077.pdf"
           }]
       },
       {
@@ -217,7 +217,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-080.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-080.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-080.pdf"
   },
   {
     "name": "Mrs. RAJASUGANYA P V",
@@ -232,7 +232,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-085.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-085.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-085.pdf"
   },
   {
     "name": "Mrs. KAVITHA R",
@@ -247,7 +247,7 @@
       "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59188506100"
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-075.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-075.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-075.pdf"
   },
   {
     "name": "Dr. HANNAH ROSE ESTHER T",
@@ -262,7 +262,7 @@
       "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58565594400"
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-060.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-060.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-060.pdf"
   },
   {
     "name": "Mrs. VIJAYALAKSHMI S",
@@ -277,7 +277,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-086.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-086.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-086.pdf"
   },
   {
     "name": "Mrs. MYTHILI S",
@@ -292,7 +292,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-087.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-087.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-087.pdf"
   },
   {
     "name": "Mrs. PRIYA M",
@@ -307,7 +307,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-095.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-095.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-095.pdf"
   },
   {
     "name": "Mr. SATHISH K",
@@ -322,7 +322,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-056.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-056.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-056.pdf"
   },
   {
     "name": "Mrs. DEEPA S",
@@ -337,7 +337,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-063.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-063.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-063.pdf"
   },
   {
     "name": "Mrs. KARTHIKA L",
@@ -352,7 +352,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-068.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-068.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-068.pdf"
   },
   {
     "name": "Mrs. JONCY J",
@@ -367,7 +367,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-055.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-055.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-055.pdf"
   },
   {
     "name": "Mrs. MIZPAH QUEENY R",
@@ -382,7 +382,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-059.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-059.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-059.pdf"
   },
   {
     "name": "Ms. SWETHA R",
@@ -397,7 +397,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-094.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-094.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-094.pdf"
   },
   {
     "name": "Mrs. MANIMEGALAI L",
@@ -412,7 +412,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-067.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-067.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-067.pdf"
   },
   {
     "name": "Mrs. JARIYA BEGUM A R",
@@ -427,7 +427,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-623.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-623.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-623.pdf"
   },
   {
     "name": "Mrs. TAMIL SELVI V",
@@ -442,7 +442,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-622.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-622.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-622.pdf"
   },
   {
     "name": "Ms. RASHMI P",
@@ -457,7 +457,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-621.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-621.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-621.pdf"
   },
   {
     "name": "Mrs. KAVITHA R",
@@ -472,7 +472,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-624.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-624.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-624.pdf"
   },
   {
     "name": "Mrs. RAMYA P",
@@ -487,7 +487,7 @@
       "scopus": ""
     },
     "image_path": "/static/images/profile_photos/001/VEC-001-04-625.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-625.pdf"
+    "pdf_path": "/static/pdfs/faculty_profile/001/VEC-001-04-625.pdf"
   }
 ]
       },
@@ -509,7 +509,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/001/VEC-001-05-001.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           }
         ]
       }
@@ -535,7 +535,44 @@
                 "syllabus":[
                 {
                   "year": "R - 2023",
-                  "pdf_path": "/static/pdfs/curriculum/001/reg_23.pdf"
+                  "docs":[
+                    {
+                    "name":"I Semester",
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM1.pdf"
+                  },
+                    {
+                    "name":"II Semester",
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM2.pdf"
+                  },
+                    {
+                    "name":"III Semester",
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM3.pdf"
+                  },
+                    {
+                    "name":"IV Semester",
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM4.pdf"
+                  },
+                    {
+                    "name":"V Semester",
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM5.pdf"
+                  },
+                    {
+                    "name":"VI Semester",
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM6.pdf"
+                  },
+                    {
+                    "name":"VII Semester",
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM7.pdf"
+                  },
+                    {
+                    "name":"VIII Semester",
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023) WITH TW &SDG - SEM8.pdf"
+                  },
+                    {
+                    "name":"Elective Courses",
+                      "pdf_path": "/static/pdfs/curriculum/001/B.TECH. AI&DS(R2023)ELECTIVE COURSES WITH TW & SDG.pdf"
+                  }
+                ]
                 },
                 {
                     "year":"R - 2019 A (Students admitted during 2021 and 2022)",
@@ -543,8 +580,7 @@
                 }
               ]
               }
-            ]
-          
+            ]  
       }
     ]
   },
