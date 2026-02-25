@@ -3,7 +3,7 @@ import LoadComp from "../../LoadComp";
 import { Send, Plus, Trash2, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAdminRequest } from "../../../hooks/useAdminRequest"; 
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function Startup({ data }) {
   const { sendRequest, loading: requestLoading } = useAdminRequest();
@@ -11,19 +11,16 @@ export default function Startup({ data }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isSavedOnce, setIsSavedOnce] = useState(false);
   const [editableData, setEditableData] = useState([]);
-
   const [selectedRows, setSelectedRows] = useState(new Set());
-  const [sessionChanges, setSessionChanges] = useState([]);
-  const [allChanges, setAllChanges] = useState([]);
   const [showRequestModal, setShowRequestModal] = useState(false);
-
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [indexToDelete, setIndexToDelete] = useState(null);
 
   const originalRef = useRef([]);
   const sessionBaseRef = useRef([]);
 
-  // dd.mm.yyyy -> yyyy-mm-dd
+  const generateUid = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
+
   const formatToInputDate = (dateStr) => {
     if (!dateStr) return "";
     const parts = String(dateStr).split(".");
@@ -32,7 +29,6 @@ export default function Startup({ data }) {
     return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
   };
 
-  // yyyy-mm-dd -> dd.mm.yyyy
   const formatFromInputDate = (dateStr) => {
     if (!dateStr) return "";
     const parts = String(dateStr).split("-");
@@ -41,37 +37,38 @@ export default function Startup({ data }) {
     return `${day}.${month}.${year}`;
   };
 
-  const normalizeStartupRow = (row, fallbackSno) => {
-    const directors =
-      Array.isArray(row?.directors)
-        ? row.directors.map((d) => String(d).trim()).filter(Boolean)
-        : typeof row?.directors === "string"
-          ? row.directors
-              .split(",")
-              .map((d) => d.trim())
-              .filter(Boolean)
-          : [];
+  const normalizeStartupRow = (row) => {
+  const directors =
+    Array.isArray(row?.directors)
+      ? row.directors.map((d) => String(d).trim()).filter(Boolean)
+      : typeof row?.directors === "string"
+        ? row.directors
+            .split(",")
+            .map((d) => d.trim())
+            .filter(Boolean)
+        : [];
 
-    return {
-      s_no: row?.s_no ?? fallbackSno,
-      start_up_name: row?.start_up_name ?? "",
-      directors,
-      type: row?.type ?? "",
-      date_of_registration: row?.date_of_registration ?? "",
-      corporate_identity_number: row?.corporate_identity_number ?? "",
-      udyam_number: row?.udyam_number ?? "",
-    };
+  return {
+    start_up_name: row?.start_up_name ?? "",
+    directors,
+    type: row?.type ?? "",
+    date_of_registration: row?.date_of_registration ?? "",
+    corporate_identity_number: row?.corporate_identity_number ?? "",
+    udyam_number: row?.udyam_number ?? "",
   };
+};
 
   useEffect(() => {
     if (Array.isArray(data)) {
       const clone = JSON.parse(JSON.stringify(data));
-      originalRef.current = clone;
-      sessionBaseRef.current = clone;
-      setEditableData(clone);
+      const withUids = clone.map((r, i) => {
+        if (!r.__uid) r.__uid = generateUid();
+        return r;
+      });
+      originalRef.current = JSON.parse(JSON.stringify(withUids));
+      sessionBaseRef.current = JSON.parse(JSON.stringify(withUids));
+      setEditableData(withUids);
       setSelectedRows(new Set());
-      setSessionChanges([]);
-      setAllChanges([]);
       setIsEditing(false);
       setIsSavedOnce(false);
     }
@@ -86,13 +83,13 @@ export default function Startup({ data }) {
 
   const startEditSession = () => {
     sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
-    setSessionChanges([]);
     setSelectedRows(new Set());
     setIsEditing(true);
   };
 
   const handleAddRow = () => {
     const newRow = {
+      __uid: generateUid(),
       s_no: editableData.length + 1,
       start_up_name: "",
       directors: [],
@@ -101,71 +98,30 @@ export default function Startup({ data }) {
       corporate_identity_number: "",
       udyam_number: "",
     };
-
     setEditableData((p) => [...p, newRow]);
-    setSessionChanges((p) => [
-      ...p,
-      { index: editableData.length, action: "add", changes: {} },
-    ]);
   };
 
   const handleFieldChange = (index, field, value) => {
     const newData = [...editableData];
-    const oldVal = newData[index]?.[field];
-
     if (field === "directors" && typeof value === "string") {
       value = value
         .split(",")
         .map((d) => d.trim())
         .filter(Boolean);
     }
-
     newData[index] = { ...newData[index], [field]: value };
     setEditableData(newData);
-
-    setSessionChanges((prev) => {
-      const cp = [...prev];
-      const existingIndex = cp.findIndex(
-        (c) => c.index === index && c.action !== "delete"
-      );
-
-      if (existingIndex >= 0) {
-        cp[existingIndex] = {
-          ...cp[existingIndex],
-          action: cp[existingIndex].action === "add" ? "add" : "edit",
-          changes: {
-            ...cp[existingIndex].changes,
-            [field]: { old: oldVal, new: value },
-          },
-        };
-      } else {
-        cp.push({
-          index,
-          action: sessionBaseRef.current[index] ? "edit" : "add",
-          changes: { [field]: { old: oldVal, new: value } },
-        });
-      }
-      return cp;
-    });
   };
 
   const handleSave = () => {
-    if (sessionChanges.length === 0) {
-      toast.info("No changes to save.");
-      return;
-    }
-
-    setAllChanges((p) => [...p, ...sessionChanges]);
-    setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(true);
-
+    sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
     toast.success("Changes saved. Now you can Request.");
   };
 
   const handleCancelSession = () => {
     setEditableData(JSON.parse(JSON.stringify(sessionBaseRef.current)));
-    setSessionChanges([]);
     setIsEditing(false);
     toast.info("Session changes discarded.");
   };
@@ -173,10 +129,9 @@ export default function Startup({ data }) {
   const handleDiscardAll = () => {
     setEditableData(JSON.parse(JSON.stringify(originalRef.current)));
     sessionBaseRef.current = JSON.parse(JSON.stringify(originalRef.current));
-    setSessionChanges([]);
-    setAllChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
+    setSelectedRows(new Set());
     toast.info("All changes discarded and data reset.");
   };
 
@@ -191,23 +146,16 @@ export default function Startup({ data }) {
 
   const confirmDelete = () => {
     let newData = [...editableData];
-    let newChanges = [...sessionChanges];
-
     if (indexToDelete === "multiple") {
       const toDelete = Array.from(selectedRows).sort((a, b) => b - a);
       for (const idx of toDelete) {
-        newChanges.push({ index: idx, action: "delete", deletedItem: newData[idx] });
         newData.splice(idx, 1);
       }
     } else if (typeof indexToDelete === "number") {
-      const idx = indexToDelete;
-      newChanges.push({ index: idx, action: "delete", deletedItem: newData[idx] });
-      newData.splice(idx, 1);
+      newData.splice(indexToDelete, 1);
     }
-
     newData.forEach((r, i) => (r.s_no = i + 1));
     setEditableData(newData);
-    setSessionChanges(newChanges);
     setSelectedRows(new Set());
     setDeleteConfirmOpen(false);
     setIndexToDelete(null);
@@ -219,7 +167,125 @@ export default function Startup({ data }) {
     setIndexToDelete(null);
   };
 
-  const getChangesForRequest = () => [...allChanges, ...sessionChanges];
+  const computeDiffs = (originalArr, currentArr) => {
+    const diffs = [];
+    const origByUid = new Map();
+    originalArr.forEach((r, i) => origByUid.set(r.__uid, { row: r, index: i }));
+    const currByUid = new Map();
+    currentArr.forEach((r, i) => currByUid.set(r.__uid, { row: r, index: i }));
+
+    for (const [uid, { row: oRow, index: oIdx }] of origByUid.entries()) {
+      if (!currByUid.has(uid)) {
+        diffs.push({
+          action: "delete",
+          uid,
+          originalIndex: oIdx,
+          original_data: normalizeStartupRow(oRow, oIdx + 1),
+          deletedItem: oRow,
+        });
+      }
+    }
+
+    for (const [uid, { row: cRow, index: cIdx }] of currByUid.entries()) {
+      if (!origByUid.has(uid)) {
+        diffs.push({
+          action: "add",
+          uid,
+          currentIndex: cIdx,
+          meta_data: normalizeStartupRow(cRow, cIdx + 1),
+          currentRow: cRow,
+        });
+      } else {
+        const oRow = origByUid.get(uid).row;
+        const normalizedOriginal = normalizeStartupRow(oRow, origByUid.get(uid).index + 1);
+        const normalizedCurrent = normalizeStartupRow(cRow, cIdx + 1);
+        const isEqual = deepEqualForRows(normalizedOriginal, normalizedCurrent);
+        if (!isEqual) {
+          diffs.push({
+            action: "edit",
+            uid,
+            originalIndex: origByUid.get(uid).index,
+            currentIndex: cIdx,
+            original_data: normalizedOriginal,
+            meta_data: normalizedCurrent,
+          });
+        }
+      }
+    }
+
+    diffs.sort((a, b) => {
+      const order = { delete: 0, edit: 1, add: 2 };
+      return order[a.action] - order[b.action] || (a.currentIndex ?? a.originalIndex) - (b.currentIndex ?? b.originalIndex);
+    });
+
+    return diffs;
+  };
+
+  const deepEqualForRows = (a, b) => {
+  const ignoreFields = ["s_no"]; // 👈 ignore serial number
+
+  const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+
+  for (const k of keys) {
+    if (ignoreFields.includes(k)) continue;
+
+    const va = a[k];
+    const vb = b[k];
+
+    if (Array.isArray(va) && Array.isArray(vb)) {
+      if (va.length !== vb.length) return false;
+      for (let i = 0; i < va.length; i++) {
+        if (String(va[i]) !== String(vb[i])) return false;
+      }
+    } else {
+      if (String(va ?? "") !== String(vb ?? "")) return false;
+    }
+  }
+
+  return true;
+};
+
+  const getChangesForRequest = () => {
+    return computeDiffs(originalRef.current || [], editableData || []);
+  };
+
+  const buildIncubationStartupPayloads = () => {
+    const changes = getChangesForRequest();
+    const payloads = [];
+    for (const change of changes) {
+      if (change.action === "delete") {
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "start_up",
+          action: "delete",
+          title: "delete in start_up",
+          meta_data: change.original_data,
+        });
+        continue;
+      }
+      if (change.action === "add") {
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "start_up",
+          action: "insert",
+          title: "insert in start_up",
+          meta_data: change.meta_data,
+        });
+        continue;
+      }
+      if (change.action === "edit") {
+        payloads.push({
+          collectionName: "incubation",
+          collection_type: "start_up",
+          action: "update",
+          title: "update in start_up",
+          original_data: change.original_data,
+          meta_data: change.meta_data,
+        });
+      }
+    }
+    return payloads;
+  };
 
   const handleRequest = () => {
     const changes = getChangesForRequest();
@@ -230,107 +296,43 @@ export default function Startup({ data }) {
     setShowRequestModal(true);
   };
 
-  const buildIncubationStartupPayloads = () => {
-    const changes = getChangesForRequest();
-    const payloads = [];
-
-    for (const change of changes) {
-      if (change.action === "delete") {
-        payloads.push({
-          collectionName: "incubation",
-          collection_type: "start_up",
-          action: "delete",
-          title: "delete in start_up",
-          meta_data: normalizeStartupRow(change.deletedItem, change.index + 1),
-        });
-        continue;
-      }
-
-      const currentRow = editableData[change.index];
-      if (!currentRow) continue;
-
-      if (change.action === "add") {
-        payloads.push({
-          collectionName: "incubation",
-          collection_type: "start_up",
-          action: "insert",
-          title: "insert in start_up",
-          meta_data: normalizeStartupRow(currentRow, change.index + 1),
-        });
-        continue;
-      }
-
-      if (change.action === "edit") {
-        const originalRow = sessionBaseRef.current?.[change.index];
-        payloads.push({
-          collectionName: "incubation",
-          collection_type: "start_up",
-          action: "update",
-          title: "update in start_up",
-          original_data: normalizeStartupRow(originalRow, change.index + 1),
-          meta_data: normalizeStartupRow(currentRow, change.index + 1),
-        });
-      }
-    }
-
-    return payloads;
-  };
-
   const handleFinalRequestConfirm = async () => {
     const payloads = buildIncubationStartupPayloads();
-
     if (payloads.length === 0) {
       toast.info("No changes to submit.");
       return;
     }
-
     const res = await sendRequest(payloads);
     if (!res) return;
-
     setShowRequestModal(false);
-
-    setAllChanges([]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(false);
-
     originalRef.current = JSON.parse(JSON.stringify(editableData));
     sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
+    setIsEditing(false);
+    setIsSavedOnce(false);
+    toast.success("Request submitted.");
   };
 
   const handleUndoChange = (change) => {
+    if (!change) return;
     if (change.action === "add") {
-      setEditableData((prev) => prev.filter((_, idx) => idx !== change.index));
+      setEditableData((prev) => prev.filter((r) => r.__uid !== change.uid).map((r, i) => ({ ...r, s_no: i + 1 })));
     } else if (change.action === "delete") {
       setEditableData((prev) => {
-        const newList = [...prev];
-        newList.splice(change.index, 0, change.deletedItem);
-        return newList.map((r, i) => ({ ...r, s_no: i + 1 }));
+        const copy = [...prev];
+        const insertAt = Math.min(Math.max(change.originalIndex, 0), copy.length);
+        copy.splice(insertAt, 0, change.deletedItem);
+        return copy.map((r, i) => ({ ...r, s_no: i + 1 }));
       });
     } else if (change.action === "edit") {
       setEditableData((prev) =>
-        prev.map((item, idx) =>
-          idx === change.index
-            ? {
-                ...item,
-                ...Object.fromEntries(
-                  Object.entries(change.changes || {}).map(([field, values]) => [
-                    field,
-                    values.old,
-                  ])
-                ),
-              }
+        prev.map((item) =>
+          item.__uid === change.uid
+            ? { ...item, ...change.original_data }
             : item
-        )
+        ).map((r, i) => ({ ...r, s_no: i + 1 }))
       );
     }
-
-    setAllChanges((prev) =>
-      prev.filter((c) => !(c.index === change.index && c.action === change.action))
-    );
-    setSessionChanges((prev) =>
-      prev.filter((c) => !(c.index === change.index && c.action === change.action))
-    );
+    toast.info("Change undone.");
   };
 
   if (!data) {
@@ -361,10 +363,10 @@ export default function Startup({ data }) {
           </p>
         </div>
 
-        <table className="ic-data-table">
+        <table className={`ic-data-table ${isEditing ? "ic-data-table-edit" : ""}`}>
           <thead>
             <tr>
-              <th className="ic-table-head">SL No</th>
+              <th className="ic-table-head">s no</th>
               <th className="ic-table-head">Startup Name</th>
               <th className="ic-table-head">Directors</th>
               <th className="ic-table-head">Type</th>
@@ -377,8 +379,8 @@ export default function Startup({ data }) {
 
           <tbody>
             {editableData.map((startup, i) => (
-              <tr key={i}>
-                <td className="ic-table-data">{startup.s_no ?? i + 1}</td>
+              <tr key={startup.__uid || i}>
+                <td className="ic-table-data">{i + 1}</td>
 
                 <td className="ic-table-data">
                   {isEditing ? (
@@ -527,14 +529,12 @@ export default function Startup({ data }) {
             >
               Cancel
             </button>
-            {sessionChanges.length > 0 && (
-              <button
-                className="bg-secd hoverbg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
-                onClick={handleSave}
-              >
-                Save
-              </button>
-            )}
+            <button
+              className="bg-secd hoverbg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
+              onClick={handleSave}
+            >
+              Save
+            </button>
           </div>
         )}
 
@@ -557,7 +557,6 @@ export default function Startup({ data }) {
         )}
       </div>
 
-      {/* Request Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
@@ -585,47 +584,42 @@ export default function Startup({ data }) {
                     </tr>
                   ) : (
                     getChangesForRequest().map((change, idx) => (
-                      <tr key={idx} className="even:bg-white odd:bg-gray-50">
+                      <tr key={change.uid + "-" + idx} className="even:bg-white odd:bg-gray-50">
                         <td className="py-2 px-3 border align-top">
-                          {change.action === "edit" && (
-                            <span className="text-blue-600">✎ Edited</span>
-                          )}
-                          {change.action === "add" && (
-                            <span className="text-green-600">+ Added</span>
-                          )}
-                          {change.action === "delete" && (
-                            <span className="text-red-600">🗑 Deleted</span>
-                          )}
+                          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
+                          {change.action === "add" && <span className="text-green-600">+ Added</span>}
+                          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
                         </td>
 
                         <td className="py-2 px-3 border align-top">Startup</td>
 
-                        {/* ✅ IMPORTANT: show changes for add/update/delete */}
                         <td className="py-2 px-3 border text-[13px] align-top">
                           {change.action === "delete" ? (
-                            <div>Row {change.index + 1} deleted</div>
+                            <div>Row {change.originalIndex + 1} deleted</div>
                           ) : change.action === "add" ? (
-                            <div>Row {change.index + 1} added</div>
-                          ) : Object.keys(change.changes || {}).length === 0 ? (
-                            <div>Row {change.index + 1} updated</div>
+                            <div>Row {change.currentIndex + 1} added</div>
+                          ) : Object.keys(change.original_data || {}).length === 0 ? (
+                            <div>Row {change.currentIndex + 1} updated</div>
                           ) : (
                             <ul className="list-disc pl-5">
-                              {Object.entries(change.changes).map(([field, values]) => (
-                                <li key={field}>
-                                  <span className="font-semibold">{field}:</span>{" "}
-                                  <span className="text-gray-600">
-                                    {Array.isArray(values.old)
-                                      ? values.old.join(", ")
-                                      : String(values.old ?? "")}
-                                  </span>{" "}
-                                  →{" "}
-                                  <span className="text-black">
-                                    {Array.isArray(values.new)
-                                      ? values.new.join(", ")
-                                      : String(values.new ?? "")}
-                                  </span>
-                                </li>
-                              ))}
+                              {Object.entries(change.original_data || {})
+                                .filter(([field]) => field !== "s_no") // 👈 ignore SL No here also
+                                .map(([field, oldVal]) => {
+                                const newVal = (change.meta_data || {})[field];
+                                if (String(oldVal ?? "") === String(newVal ?? "")) return null;
+                                return (
+                                  <li key={field}>
+                                    <span className="font-semibold">{field}:</span>{" "}
+                                    <span className="text-gray-600">
+                                      {Array.isArray(oldVal) ? oldVal.join(", ") : String(oldVal ?? "")}
+                                    </span>{" "}
+                                    →{" "}
+                                    <span className="text-black">
+                                      {Array.isArray(newVal) ? newVal.join(", ") : String(newVal ?? "")}
+                                    </span>
+                                  </li>
+                                );
+                              })}
                             </ul>
                           )}
                         </td>
@@ -666,7 +660,6 @@ export default function Startup({ data }) {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
       {deleteConfirmOpen && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1100]">
           <div className="bg-white rounded-xl w-[380px] p-6 shadow-lg text-center">
