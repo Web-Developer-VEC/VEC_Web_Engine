@@ -1,0 +1,535 @@
+[
+    {
+        "type":"HOD",
+        "data":[
+            {
+                "Name": "DR. RAJALAKSHMI S",
+                "Designation": "Associate Professor & Head",
+                "Department_Name": "Computer Science and Engineering (CYBER SECURITY)",
+                "Mail_ID": "hod.cyber@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/006/VEC-006-03-039.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/rajalakshmi-srinivasan-a14927161/",
+                    "googlescholar": "https://scholar.google.com/citations?user=vQoy5VEAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/S-Rajalakshmi-2",
+                    "orchidprofile": "https://orcid.org/0000-0002-2963-9057",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58321740200"
+                },
+                "Professional_Membership": "ISTE membership",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "Information and communication",
+                        "INSTITUTE": "Anna university",
+                        "YEAR": 2021
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "Computer Science and Engineering",
+                        "INSTITUTE": "Anna University, Chennai",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "Computer Science and Engineering",
+                        "INSTITUTE": "Manonmanium Sundaranar University",
+                        "YEAR": 2002
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2003-08-11 00:00:00",
+                        "Unnamed:_1": "2024-07-01 00:00:00",
+                        "EXPERIENCE": "20",
+                        "Unnamed:_3": "11",
+                        "DESIGNATION": "Asst Professor, CSE",
+                        "INSTITUTION": "Velammal Engineering College "
+                    },
+                    {
+                        "DURATION": "2024-07-01 00:00:00",
+                        "Unnamed:_1": "Till date",
+                        "DESIGNATION": "Asso Prof & Head - CSE (Cybersecurity)",
+                        "INSTITUTION": "Velammal Engineering College "
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "B.Murugeshwari, S.Rajalakshmi, K.Sudharson",
+                        "PAPER_TITLE": "Hybrid Approach for Privacy Enhancement in Data Mining Using Arbitrariness and Perturbation",
+                        "JOURNAL_NAME": "Computer Systems Science & Engineering",
+                        "DOI_NUMBER": "10.32604/csse.2023.029074",
+                        "PAGE_NO": "2293-2037",
+                        "VOL_NO_/_ISSUE_NO": "44/3",
+                        "MONTH_&_YEAR": "2023",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "K.Sudharson\nS.Rajalakshmi\nK.R.Mohanraj\nDhakshunhaamoorthiy",
+                        "PAPER_TITLE": "A Trust-Based Framework for IoT Device Management Using Blockchain Technology",
+                        "JOURNAL_NAME": "SSRG International Journal of Electrical and Electronics Engineering",
+                        "DOI_NUMBER": "https://doi.org/10.14445/23488379/IJEEE-V10I10P104",
+                        "PAGE_NO": "32-39",
+                        "VOL_NO_/_ISSUE_NO": "10 /10",
+                        "MONTH_&_YEAR": "2023-10-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "D. Venkatesh,\n D. Hemanand, \nP. Shobha Rani, Rajalakshmi S",
+                        "PAPER_TITLE": "Recognition of Energy Harvesting Techniques for Enhanced Operation in WSN Using IoT with Deep Learning",
+                        "JOURNAL_NAME": "J. Electrical Systems",
+                        "DOI_NUMBER": "https://doi.org/10.52783/jes.1260",
+                        "PAGE_NO": "142-149",
+                        "VOL_NO_/_ISSUE_NO": "20  / 3",
+                        "MONTH_&_YEAR": "2024",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Rajalakshmi, S.,\nChamundeeswari, V.V.",
+                        "PAPER_TITLE": "Mineral exploration by decision tree classification using multi temporal cluster images in Jharkhand region",
+                        "JOURNAL_NAME": "Cluster Computing",
+                        "DOI_NUMBER": "https://doi.org/10.1007/s10586-018-1776-0",
+                        "PAGE_NO": "6921–6926",
+                        "VOL_NO_/_ISSUE_NO": "22 / 3",
+                        "MONTH_&_YEAR": "2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": " Rajalakshmi S,\nJayanthi A, \nSridevi S\nPadma S",
+                        "PAPER_TITLE": "Detection Of Facial Paralysis In Human Beings Using Deep Auto Facialnet Clustering",
+                        "JOURNAL_NAME": "Chinese Journal Of Computational Mechanics",
+                        "PAGE_NO": "486 - 492",
+                        "VOL_NO_/_ISSUE_NO": "44 / 5",
+                        "MONTH_&_YEAR": "2023",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Rajalakshmi S, \nPadma S,\n K. C. Aarthi,\n P Rajeshwari ",
+                        "PAPER_TITLE": "Ensemble Deep Support Vector Machine For Classification Of Liver Cirrhosis",
+                        "JOURNAL_NAME": "Chinese Journal Of Computational Mechanics",
+                        "PAGE_NO": "281-287",
+                        "VOL_NO_/_ISSUE_NO": "44 / 5",
+                        "MONTH_&_YEAR": "2023",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "K. Sudharson1, S. Rajalalakshmi2, K.R. Mohan Raj3, Dhakshunhaamoorthiy3#"
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Rajalakshmi S\nC.S.Vigneesh",
+                        "PAPER_TITLE": "A survey on Remote data integrity checking based on cloud system storage",
+                        "CONFERENCE_NAME": "International Conference on Advancement In Agriculture, Engineering, Applied Science and  Management",
+                        "ISBN_/_ISSN_NO": "978-93-81693-07-5",
+                        "MONTH_&_YEAR": 2017
+                    },
+                    {
+                        "AUTHORS": "K.H.Haripriya\nRajalakshmi S",
+                        "PAPER_TITLE": "Mineral Mapping in Jharia Region with Landsat data using Support Vector Machine",
+                        "CONFERENCE_NAME": "International Conference on innovations in Information, Embedded and Communication Systems ",
+                        "ISBN_/_ISSN_NO": "978-1-4753-8207-6",
+                        "MONTH_&_YEAR": 2016
+                    },
+                    {
+                        "AUTHORS": "Battala Priyanka\nS.Rajalakshmi",
+                        "PAPER_TITLE": "Image Segmentation Using Spatial Fuzzy Clustering Algorithm For Urban Vegetation Detection",
+                        "CONFERENCE_NAME": "International Conference On Recent Trends In Computer Science And Engineering ",
+                        "ORGANIZED_BY": "Apollo Engineering College ",
+                        "ISBN_/_ISSN_NO": "978-81-9089B07-2",
+                        "MONTH_&_YEAR": 2014
+                    },
+                    {
+                        "AUTHORS": "S.Rajalakshmi, \nDr.V.Vijaya Chamundesswari",
+                        "PAPER_TITLE": "Mapping of mineral deposits using image fusion by PCA approach  ",
+                        "CONFERENCE_NAME": "International Conference on Computer communication and systems ",
+                        "ORGANIZED_BY": "Saveetha Engg college (IEEE conference)",
+                        "ISBN_/_ISSN_NO": "978-1-4799-3672-4",
+                        "MONTH_&_YEAR": 2014
+                    },
+                    {
+                        "AUTHORS": "Vengadeswari \nRajalakshmi S",
+                        "PAPER_TITLE": "A survey on urban vegetation detection using airborne lidar data images”",
+                        "CONFERENCE_NAME": "International conference on Information Communication and Embedded Systems ",
+                        "ORGANIZED_BY": "Karpagam College of Engineering ",
+                        "ISBN_/_ISSN_NO": "978-1-4673-5788-3",
+                        "MONTH_&_YEAR": 2015
+                    },
+                    {
+                        "AUTHORS": "Deepa S\nBhagyalakshmi A\nRajalakshmi S",
+                        "PAPER_TITLE": "New controlled and unmonitored learning methods pulmonary and cancer progression characterisation",
+                        "CONFERENCE_NAME": "International Conference on Advances in Computational Science and Engineering ",
+                        "ORGANIZED_BY": "Coimabatore Institute of Technology",
+                        "ISBN_/_ISSN_NO": "1551-7616",
+                        "MONTH_&_YEAR": 2021
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "S.Rajalakshmi, \nDr.V.Vijaya Chamundesswari",
+                        "BOOK_NAME,_EDITION": "Mapping of mineral deposits using image fusion by PCA approach  ",
+                        "PUBLISHER": "IEEE",
+                        "ISBN_/_ISSN_NO": "978-1-4799-3672-4",
+                        "MONTH_&_YEAR": 2018,
+                        "BOOK_/_BOOK_CHAPTER": "Book Chapter "
+                    },
+                    {
+                        "AUTHOR": "Vengadeswari \nRajalakshmi S",
+                        "BOOK_NAME,_EDITION": "A survey on urban vegetation detection using airborne lidar data images”",
+                        "PUBLISHER": "IEEE",
+                        "ISBN_/_ISSN_NO": "978-1-4673-5788-3",
+                        "MONTH_&_YEAR": 2023,
+                        "BOOK_/_BOOK_CHAPTER": "Book Chapter "
+                    },
+                    {
+                        "AUTHOR": "Deepa S\nBhagyalakshmi A\nRajalakshmi S",
+                        "BOOK_NAME,_EDITION": "New controlled and unmonitored learning methods pulmonary and cancer progression characterisation",
+                        "PUBLISHER": "AIP",
+                        "ISBN_/_ISSN_NO": "1551-7616",
+                        "MONTH_&_YEAR": 2023,
+                        "BOOK_/_BOOK_CHAPTER": "Book Chapter "
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "ISTE membership",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 7,
+                    "Conference_Publications": 6,
+                    "Book_/_Book_Chapter_Published": 3,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 50,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 7,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "type":"FACULTY",
+        "data":[
+            {
+                "Name": "MS. AKSAYA DHARANI K",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Computer Science and Engineering (CYBER SECURITY)",
+                "Mail_ID": "aksayadharani@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/006/VEC-006-04-035.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "https://www.researchgate.net/profile/Aksaya-Dharani?ev=hdr_xprf",
+                    "orchidprofile": "https://orcid.org/0009-0008-4404-8248?lang=en",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "CSE",
+                        "INSTITUTE": "VELAMMAL ENGINEERING COLLEGE,CHENNAI",
+                        "YEAR": 2024
+                    },
+                    {
+                        "DEGREE": "B.Tech",
+                        "BRANCH": "IT",
+                        "INSTITUTE": "VELAMMAL ENGINEERING COLLEGE,CHENNAI",
+                        "YEAR": 2022
+                    }
+                ],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. PARVEEN BANU M",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Computer Science and Engineering (CYBER SECURITY)",
+                "Mail_ID": "parveenbanu@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/006/VEC-006-04-034.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/parveenbanu-iqbal-bb990934b/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0009-0007-4097-7253?lang=en",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "CSE",
+                        "INSTITUTE": "MNSK COLLEHGE OF ENGINEERING(ANNA UNIVERSITY),PUDUKKOTTAI",
+                        "YEAR": 2015
+                    },
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "CSE",
+                        "INSTITUTE": "PERIYAR MANIAMMAI UNIVERSITY,THANJAVUR",
+                        "YEAR": 2012
+                    },
+                    {
+                        "DEGREE": "B.ED",
+                        "BRANCH": "CS",
+                        "INSTITUTE": "BISHOP PACKIAM AROKKIYASAMY COLLEGE OF EDUCATION,PUDUKKOTTAI",
+                        "YEAR": 2021
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "11.06.2012",
+                        "Unnamed:_1": "30.09.2013",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "LECTURER",
+                        "INSTITUTION": "DR.KALAM POLYTECHNIC COLLEGE,PATTUKKOTTAI"
+                    },
+                    {
+                        "DURATION": "06.07.2015",
+                        "Unnamed:_1": "30.8.2016",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "1",
+                        "DESIGNATION": "ASSISTANT PROFESSOR",
+                        "INSTITUTION": "SMR EAST COAST COLLEGE OF ENGG AND TECH,PATTUKOTTAI"
+                    },
+                    {
+                        "DURATION": "27.8.2021",
+                        "Unnamed:_1": "20.11.2021",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "ASSISTANT PROFESSOR",
+                        "INSTITUTION": "CHENDHURAN COLLEGE OF ENGG AND TECH,PUDUKKOTTAI"
+                    },
+                    {
+                        "DURATION": "24.08.2022",
+                        "Unnamed:_1": "15.06.2024",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "11",
+                        "DESIGNATION": "ASSISTANT PROFESSOR",
+                        "INSTITUTION": "SRI BHARATHI ENGG COLLEGE FOR WOMEN,PUDUKKOTTAI"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. RUBA ARUMUGAM",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/006/VEC-006-04-641.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. PRAISEWIN C",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/006/VEC-006-04-642.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. NIRANJANA DEVI J",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/006/VEC-006-04-643.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MRS. PRAMILA K",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/006/VEC-006-04-644.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+       "type": "NON_TEACHING_FACULTY",
+        "data": []
+    }
+]

@@ -1,0 +1,3319 @@
+[
+    {
+        "type":"HOD",
+        "data":[
+            {
+                "Name": "DR. GANAPATHY SUNDARAM E",
+                "Designation": "Professor & Head",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-01-203.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/ganapathy-sundaram-esakkimuthu-787163204/?originalSubdomain=in",
+                    "googlescholar": "https://scholar.google.com/citations?user=PrLAIusAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/scientific-contributions/E-Ganapathy-Sundaram-2069766762",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "type":"FACULTY",
+        "data":[
+            {
+                "Name": "DR. SATISH KUMAR S",
+                "Designation": "Professor & Principal",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-02-200.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/satishchennai/?originalSubdomain=in",
+                    "googlescholar": "https://scholar.google.com/citations?user=nqRRK20AAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/S-Satishkumar",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=13806246500"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. AROCKIA JASWIN M",
+                "Designation": "Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "arockiajaswin@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-02-027.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-arockia-jaswin-45962224?originalSubdomain=in",
+                    "googlescholar": "https://scholar.google.com/citations?user=MI_lw40AAAAJ&hl=en",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0000-0001-9601-1342",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/GOV-4047-2022",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=36468002200"
+                },
+                "Professional_Membership": "MISTE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "Noorul Islam College of Engineering, Manonmaniam Sundaranar University, Tirunelveli.",
+                        "YEAR": 1999
+                    },
+                    {
+                        "DEGREE": "M.E.",
+                        "BRANCH": "Production Engineering",
+                        "INSTITUTE": "Annamalai University, Chidambaram",
+                        "YEAR": 2000
+                    },
+                    {
+                        "DEGREE": "Ph.D.",
+                        "BRANCH": "Cryogenic Treatment to Materials",
+                        "INSTITUTE": "College of Engineering Guindy, Anna University, Chennai",
+                        "YEAR": 2010
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2016-06-16 00:00:00",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "8",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "Professor",
+                        "INSTITUTION": "Velammal Engineering college"
+                    },
+                    {
+                        "DURATION": "2011-01-03 00:00:00",
+                        "Unnamed:_1": "2016-06-15 00:00:00",
+                        "EXPERIENCE": "5",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Prof. & Head",
+                        "INSTITUTION": "Aksheyaa College of Engg."
+                    },
+                    {
+                        "DURATION": "2010-09-28 00:00:00",
+                        "Unnamed:_1": "2010-12-28 00:00:00",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "Asst. Professor",
+                        "INSTITUTION": "Dhaanish Ahamed Engg. College"
+                    },
+                    {
+                        "DURATION": "2005-03-01 00:00:00",
+                        "Unnamed:_1": "2010-09-24 00:00:00",
+                        "EXPERIENCE": "5",
+                        "Unnamed:_3": "7",
+                        "DESIGNATION": "Asst. Prof. & Head",
+                        "INSTITUTION": "Vins Christian College of Engineering"
+                    },
+                    {
+                        "DURATION": "2004-06-22 00:00:00",
+                        "Unnamed:_1": "2005-02-28 00:00:00",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "8",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Vins Christian College of Engineering"
+                    },
+                    {
+                        "DURATION": "2000-12-04 00:00:00",
+                        "Unnamed:_1": "2004-06-21 00:00:00",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "6",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Sardar Raja College of Engineering"
+                    },
+                    {
+                        "DURATION": "TOTAL",
+                        "EXPERIENCE": "23",
+                        "Unnamed:_3": "8"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Pesticide spraying Agro-drone.",
+                        "SPONSORING_AGENCY": "Innovation and Entrepreneurship Development Center (IEDC)",
+                        "AMOUNT": "Rs. 2,50,000",
+                        "YEAR_OF_SANCTION": "2019 - 2020",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Eco-friendly paper bag from water hyacinth to replace polythene bag.",
+                        "SPONSORING_AGENCY": "TAMILNADU STATE COUNCIL FOR SCIENCE AND TECHNOLOGY (TNSCST)",
+                        "AMOUNT": "Rs. 7,500",
+                        "YEAR_OF_SANCTION": "2019 - 2020",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Artificial Intelligence Embodied Drone and Methods of Spraying Relevant Chemical thereof",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "INDIAN PATENT",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2024-02-23"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Direct metal laser sintering to develop complex contours of AISIMG aluminium alloy",
+                        "JOURNAL_NAME": "Surface Reviews and Letters",
+                        "DOI_NUMBER": "https://doi.org/10.1142/S0218625X24500963",
+                        "PAGE_NO": "-",
+                        "VOL_NO_/_ISSUE_NO": "-",
+                        "MONTH_&_YEAR": "2024-03-26",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Effect of CNT Inclusion on the Thernmo-Mechanical Behaviour of Cu-Ni-Zn-Sn Nano Composite",
+                        "JOURNAL_NAME": "Iranian Journal of Chemistry and Chemical Engineering",
+                        "DOI_NUMBER": "https://www.ijcce.ac.ir/article_705685.html",
+                        "PAGE_NO": "3588-3597",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 42, Issue : 11",
+                        "MONTH_&_YEAR": "2023-11-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Mechanical Behaviour of Cissus Quadrangularis / Basalt Fibre Reinforced Hybrid Bio Composite for Bone Implantations",
+                        "JOURNAL_NAME": "Iranian Journal of Chemistry and Chemical Engineering",
+                        "DOI_NUMBER": "10.30492/IJCCE.2022.560033.5514",
+                        "PAGE_NO": "2160-2174",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 42 Issue : 7",
+                        "MONTH_&_YEAR": "2023-07-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Influence of Graphene Oxide Nano Particle and Aluminum Powder on Mechanical and Thermal Behaviour of Carbon Fiber Epoxy Composite",
+                        "JOURNAL_NAME": "Materials Today: Proceedings",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.matpr.2020.06.092",
+                        "PAGE_NO": "2358-2368",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 72, Issue : 4",
+                        "MONTH_&_YEAR": "2022-09-27",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Effect of Multi-Objective Optimization for Double Pulse Resistance Spot Welded Joints of Ferritic Stainless Steel",
+                        "JOURNAL_NAME": "YMER",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "431-439",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 21 Issue : 2",
+                        "MONTH_&_YEAR": "2022-02-22",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Experimental Investigation on NSS test and PDT test for corrosion resistance of Zn-Ni coated steel",
+                        "JOURNAL_NAME": "Journal of Huazhong University of Science and Technology",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "01-05",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 50 Issue : 4",
+                        "MONTH_&_YEAR": "2021-04-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Drop-Weight Impact Behaviour of Hybrid Fiber/Epoxy Honeycomb Core Sandwich Composites under Hemi-Spherical Impactor",
+                        "JOURNAL_NAME": "Fibers and Polymers 2020",
+                        "DOI_NUMBER": "DOI: 10.1007/s12221-020-9872-1",
+                        "PAGE_NO": "1152-1162",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 21 Issue : 5",
+                        "MONTH_&_YEAR": "2020-05-07",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Effect of energy-absorbing materials on the mechanical behaviour of hybrid FRP honeycomb core sandwich composites",
+                        "JOURNAL_NAME": "Materials Research Innovations",
+                        "DOI_NUMBER": "https://doi.org/10.1080/14328917.2019.1640497",
+                        "PAGE_NO": "244-255",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 24 Issue : 5",
+                        "MONTH_&_YEAR": "2019-07-08",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Influence of Coir Fiber Diameter and Length on Mechanical Behavior of Coconut Shell Powder–Based Polyester Resin Composites",
+                        "JOURNAL_NAME": "Journal of Testing and Evaluation",
+                        "DOI_NUMBER": "https://doi.org/10.1520/JTE20170428",
+                        "PAGE_NO": "01-10",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 49 Issue : 2",
+                        "MONTH_&_YEAR": "2019-06-10",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Vibration and flexural characterization of hybrid honeycomb core sandwich panels filled with different energy absorbing materials",
+                        "JOURNAL_NAME": "Materials Research Express",
+                        "DOI_NUMBER": "https://doi.org/10.1088/2053-1591/ab1576",
+                        "PAGE_NO": "-",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 6 Issue : 7",
+                        "MONTH_&_YEAR": "2019-04-12",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "\"Characterization and synthesis of silver nanoparticles embedded in P Ani-PMo 12 Nanocomposites\"",
+                        "JOURNAL_NAME": "IOP Conf. Series: Materials Science and Engineering",
+                        "DOI_NUMBER": "10.1088/1757-899X/402/1/012172",
+                        "PAGE_NO": "01-10",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 402 Issue : 1",
+                        "MONTH_&_YEAR": "2018-10-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Comprehensive analysis on the effect of deep cryogenic treatment on the mechanical behaviour of Martensitic valve steel",
+                        "JOURNAL_NAME": "Iranian Journal of Materials Science and Engineering",
+                        "DOI_NUMBER": "10.22068/ijmse.15.1.9",
+                        "PAGE_NO": "9-16",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 15 Issue : 1",
+                        "MONTH_&_YEAR": "2018-03-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Compressive behaviour of Glass Fabric/Epoxy honeycomb core sandwich composites",
+                        "JOURNAL_NAME": "International Journal of Materials, Manufacturing Systems Engineering and Management",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "42-47",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 1 Issue : 1",
+                        "MONTH_&_YEAR": "2016-01-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Optimization on Mechanical Behavior of Coconut Shell Powder and Coir Fiber Reinforced Polyester Composites using Grey-Taguchi Method",
+                        "JOURNAL_NAME": "Journal of Polymer Materials; Henderson",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "291-304",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 32 Issue : 3",
+                        "MONTH_&_YEAR": "2015-07-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Development and Analysis of Aluminium Hybrid Metal Matrix Composites",
+                        "JOURNAL_NAME": "International Journal of Advances in Engineering",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "396-401",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 1 Issue : 3",
+                        "MONTH_&_YEAR": "2015-04-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Development of Al-CNT Composite by Powder Metallurgy Method",
+                        "JOURNAL_NAME": "International Journal of Advances in Engineering",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "362-366",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 1 Issue : 3",
+                        "MONTH_&_YEAR": "2015-04-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Effect of Cryogenic Treatment on the Mechanical Behavior of En8D Alloy Steel",
+                        "JOURNAL_NAME": "International Journal of Advances in Engineering",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "222 – 227",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 1 Issue : 3",
+                        "MONTH_&_YEAR": "2015-04-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Evaluation of the Thermal Properties of Glass ‘e’ Fiber / Epoxy Resin Honeycomb Sandwich Composite",
+                        "JOURNAL_NAME": "International Journal of Advances in Engineering",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "294 – 300",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 1 Issue : 3",
+                        "MONTH_&_YEAR": "2015-04-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Microstructural Analysis of Aluminium Hybrid Metal Matrix Composites Developed Using Stir Casting Process",
+                        "JOURNAL_NAME": "International Journal of Advances in Engineering",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "333– 339",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 1 Issue : 3",
+                        "MONTH_&_YEAR": "2015-04-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Effect of Cryogenic Treatment on Corrosion Resistance and Thermal Expansion of Valve Steels",
+                        "JOURNAL_NAME": "International Journal of Engineering Technology, Management and Applied Sciences",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "305-313",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 3 Issue : 3",
+                        "MONTH_&_YEAR": "2015-03-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Low velocity impact behaviour of glass fabric/epoxy honeycomb core sandwich composites",
+                        "JOURNAL_NAME": "Science and Engineering of Composite Materials",
+                        "DOI_NUMBER": "https://doi.org/10.1515/secm-2013-0069",
+                        "PAGE_NO": " 525–538",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 22 Issue : 5",
+                        "MONTH_&_YEAR": "2014-04-29",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Influence of cryogenic treatment on the wear characteristics of 100Cr6 bearing steel",
+                        "JOURNAL_NAME": "International Journal of Minerals, Metallurgy, and Materials",
+                        "DOI_NUMBER": "https://doi.org/10.1007/s12613-014-0863-3",
+                        "PAGE_NO": "46–51",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 21 Issue : -",
+                        "MONTH_&_YEAR": "2014-01-08",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Optimization of Deep Cryogenic Treatment Process for 100Cr6 Bearing Steel Using the Grey-Taguchi Method",
+                        "JOURNAL_NAME": " Tribology Transactions",
+                        "DOI_NUMBER": "https://doi.org/10.1080/10402004.2012.720002",
+                        "PAGE_NO": "854-862",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 55 Issue : 6",
+                        "MONTH_&_YEAR": "2012-11-16",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Enhancing the Wear Resistance of 100Cr6 Bearing Steel Using Cryogenic Treatment",
+                        "JOURNAL_NAME": " Tribology Transactions",
+                        "DOI_NUMBER": "https://doi.org/10.1080/10402004.2012.664837",
+                        "PAGE_NO": "387-393",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 55 Issue : 3",
+                        "MONTH_&_YEAR": "2012-06-07",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Multi-response optimisation of the deep cryogenic treatment for 21-4N valve steel",
+                        "JOURNAL_NAME": "International Journal of Experimental Design and Process Optimisation",
+                        "DOI_NUMBER": "https://doi.org/10.1504/IJEDPO.2011.043569",
+                        "PAGE_NO": "357-372",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 2 Issue : 4",
+                        "MONTH_&_YEAR": "2011-11-09",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Effect of Cryogenic Treatment on the Microstructure and Wear Resistance of X45Cr9Si3 and X53Cr22Mn9Ni4N Valve Steels",
+                        "JOURNAL_NAME": "Tribology Transactions",
+                        "DOI_NUMBER": "https://doi.org/10.1080/10402004.2010.546033",
+                        "PAGE_NO": "341-350",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 54 Issue : 3",
+                        "MONTH_&_YEAR": "2011-03-07",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Effect of Cryogenic treatment on the tensile behaviour of En 52 and 21-4N valve steels at room and elevated temperatures",
+                        "JOURNAL_NAME": "Materials & Design",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.matdes.2010.11.065",
+                        "PAGE_NO": "2429-2437",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 32 Issue : 4",
+                        "MONTH_&_YEAR": "2010-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Effect of cryogenic treatment on the tensile behaviour of En 52 and 21-4N valve steels at room and elevated temperatures",
+                        "JOURNAL_NAME": "Materials & Design",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.matdes.2010.11.065",
+                        "PAGE_NO": "2429-2437",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 32 Issue : 4",
+                        "MONTH_&_YEAR": "2010-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Optimization of the Cryogenic Treatment Process for En 52 Valve Steel Using the Grey-Taguchi Method",
+                        "JOURNAL_NAME": "Materials and Manufacturing Processes",
+                        "DOI_NUMBER": "https://doi.org/10.1080/10426910903536766",
+                        "PAGE_NO": "842-850",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 25 Issue : 8",
+                        "MONTH_&_YEAR": "2010-09-02",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Wear resistance enhancement in cryotreatedEn 52 and 21-4N valve steels",
+                        "JOURNAL_NAME": "International Journal of Precision Engineering and Manufacturing",
+                        "DOI_NUMBER": "https://doi.org/10.1007/s12541-010-0012-5",
+                        "PAGE_NO": " 97–105",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 11, Issue : -",
+                        "MONTH_&_YEAR": "2010-04-17",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Development of Nano Functionalized Material for Improved\nEnergy Absorption",
+                        "CONFERENCE_NAME": "National Conference on Advancements in Mechanical Sciences (AIMS-2K24)",
+                        "ORGANIZED_BY": "Department of Mechanical Engineering, Velammal Engineering College-Chennai-64",
+                        "ISBN_/_ISSN_NO": "ISBN : 978-93-340-1620-8",
+                        "MONTH_&_YEAR": "Feb 2024\n"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Experimental study on the machining parameters of in 718 precipitation hardening nickel-chromium alloy synthesized by wire assisted additive manufacturing process (WAAM)",
+                        "CONFERENCE_NAME": "National Conference on Advances in Mechanical Science (AIMS 2k23)",
+                        "ORGANIZED_BY": "Department of Mechanical Engineering, Velammal Engineering College-Chennai-65",
+                        "ISBN_/_ISSN_NO": "ISBN : 978-93-340-1620-8",
+                        "MONTH_&_YEAR": "2023-04-12 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Influence of Graphene Oxide Nano Particle and Aluminum Powder on Mechanical and Thermal Behaviour of Carbon Fibre Epoxy Composite",
+                        "CONFERENCE_NAME": "International Conference On Processing And Characterization Of Materials ICPCM – 22",
+                        "ORGANIZED_BY": "SSN College Of Engineering",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2022-03-08 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Characterization and synthesis of silver nanoparticles embedded in P Ani-PMo 12 Nanocomposites",
+                        "CONFERENCE_NAME": "2nd International Conference on Advances in Mechanical Engineering (ICAME-2018)",
+                        "ORGANIZED_BY": "SRM Institute of Science and technology, Chennai",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2018-03-22 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Experimental Investigation on neutral salt spray(NSS) test and electrochemical potentiostat test for corrosion on Zinc-Nickel plated steel",
+                        "CONFERENCE_NAME": "Emerging Research and Advances in Mechanical Sciences",
+                        "ORGANIZED_BY": "Department of Mechanical Engineering, Velammal Engineering College-Chennai-66",
+                        "ISBN_/_ISSN_NO": "ISBN : 978-93-340-1620-8",
+                        "MONTH_&_YEAR": "2018-03-14 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "CONFERENCE_NAME": "3rd International conference on Innovative Design, Analysis and Development Practices in Aeronautical and Automobile Engineering (IDAD 2018)",
+                        "ORGANIZED_BY": "Vel Tech RangarajanDrSagunthala R&D Institute of Science and Technology, Avadi, Chennai",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2018-02-22 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Experimental Investigation on the Flexural behavior of Friction Stir Welded 6063 & 6069 Aluminium Alloys",
+                        "CONFERENCE_NAME": "ERME",
+                        "ORGANIZED_BY": "Chendu College of Engg. & Tech, Madurantakam.",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2015-03-19 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Characterisation of Cryogenic treated En8DAlloy Steel",
+                        "CONFERENCE_NAME": " International Conference on Advance Research in Engineering & Technology-2014",
+                        "ORGANIZED_BY": "ARM College of Engg. & Tech. Chennai",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2014-01-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Experimental Investigation on the Tensile behavior of Friction Stir Welded 6063 & 6069 Aluminium Alloys",
+                        "CONFERENCE_NAME": "NCETME",
+                        "ORGANIZED_BY": "Lord Jegannath College of Engg. & Tech. Nagarcoil",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2012-03-19 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Nanocomposites-A Review of Current Status",
+                        "CONFERENCE_NAME": "Proceedings of the National Conference on Recent Trends in Engineering Sciences 2k11, NCRTES 2k11",
+                        "ORGANIZED_BY": "SRM Institute of Science and technology, Chennai",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2011-03-19 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Influence of the Filler Materials on the Thermal Stability of Honeycomb Sandwich Composites",
+                        "CONFERENCE_NAME": "Proceedings of the “National Conference on Emerging Trends In Mechanical Engineering 2k11”  NCETIME – 2k11",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2011-03-19 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Tensile behavior of Cryogenic treated En8DAlloy Steel",
+                        "CONFERENCE_NAME": "NCATIMME",
+                        "ORGANIZED_BY": "Lord Jegannath College of Engg. & Tech. Nagarcoil",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2011-03-19 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Effect of Cryogenic treatment on the wear resistance of valve steels at an elevated temperature",
+                        "CONFERENCE_NAME": "Proceedings of the 2nd International Conference on Recent Advances in Materials Processing Technology, RAMPT 09",
+                        "ORGANIZED_BY": "National Engineering College, Kovilpatti, Tamilnadu, India",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2009-02-27 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Influence of Cryogenic Treatment on Dimensional Stability of En 52 And 21-4N Valve Steels",
+                        "CONFERENCE_NAME": "Proceedings of the International Conference on Digital Factory, ICDF 2008",
+                        "ORGANIZED_BY": "Coimbatore",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2008-01-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. Arockia Jaswin M",
+                        "PAPER_TITLE": "Analysis the effect of Cryogenic treatment on the Hardness of En52 Valve Steel",
+                        "CONFERENCE_NAME": "SLCATME",
+                        "ORGANIZED_BY": "Lord Jegannath College of Engg. & Tech. Nagarcoil.",
+                        "ISBN_/_ISSN_NO": "-"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "Dr. Arockia Jaswin M",
+                        "BOOK_NAME,_EDITION": "Engineering Graphics",
+                        "PUBLISHER": "Tri Sea Publishers, Tamil Nadu, India",
+                        "ISBN_/_ISSN_NO": "978-81-909278-2-6",
+                        "MONTH_&_YEAR": "2011-06-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Dr. Arockia Jaswin M",
+                        "BOOK_NAME,_EDITION": "Engineering Mechanics",
+                        "PUBLISHER": "Tri Sea Publishers, Tamil Nadu, India",
+                        "ISBN_/_ISSN_NO": "978-81-909278-6-4",
+                        "MONTH_&_YEAR": "2013-06-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Dr. Arockia Jaswin M",
+                        "BOOK_NAME,_EDITION": "Cryogenic Treatment for Valve steel Materials",
+                        "PUBLISHER": "LAP Lambert Academic Publishing, Saarbrucken, Germany",
+                        "ISBN_/_ISSN_NO": "978-3-330-01287-5",
+                        "MONTH_&_YEAR": "2016-04-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Dr. Arockia Jaswin M",
+                        "BOOK_NAME,_EDITION": "Precision manufacturing through cryogenic treatment: a case study",
+                        "PUBLISHER": "De Gruyter",
+                        "ISBN_/_ISSN_NO": "10.1515/9783111335537-006",
+                        "MONTH_&_YEAR": "2023-04-01",
+                        "BOOK_/_BOOK_CHAPTER": " BOOK CHAPTER"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "A Florence",
+                        "RESEARCH_TITLE": "Experimental Investigation on Hybrid FRP Honeycomb Core Sandwich Composites Filled with Energy Absorbing Material",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "FULL TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "COMPLETED",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "2021-03-01 00:00:00"
+                    },
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mr.T.Purusothaman, Asst Prof., Dept Of Mechanical Engineering, Aksheyaa College of Engineering",
+                        "RESEARCH_TITLE": "Experimental Investigation on the Mechanical Behaviour of Pretreated Ridge Gourd Fiber Reinforced Polymer Matrix Composites",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART  TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "ONGOING",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "-"
+                    },
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mr. Prithiviraj D, Asst. Professor, Dept. of Mechanical Engineering, Rajalakshmi Engineering College",
+                        "RESEARCH_TITLE": "Experimental Investigation for Corrosion Resistance of AH-32 Steel Through Deep Cryogenic Treatment",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART  TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "ONGOING",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "-"
+                    },
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mr.Chenthil.M., Asst. Professor, Dept. of Mechanical Engineering, Rajalakshmi Engineering College",
+                        "RESEARCH_TITLE": "Experimental Analysis of Diffusion Bonding of Dissimilar Materials with Interlayer Foils and Interlayer Metal Powder",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART  TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "ONGOING",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "-"
+                    },
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mr. Vijayarangam.K, Asst. Professor, Dept. of Mechanical Engineering, Adhiparasakthi Engineering College.",
+                        "RESEARCH_TITLE": "Experimental Investigation on the Deformation of Metal in Metal Forming Process",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART  TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "ONGOING",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "-"
+                    },
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mr. R. P. Elvin, Asst. Professor, Dept. of Mechanical Engineering, Velammal Engineering College.",
+                        "RESEARCH_TITLE": "Experimental Investigation On Agro Based Pla Bi0-Composite Developed Using Additive Manufacturing Technique for Bio Implantation/ Bio Medical Applications",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART  TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "ONGOING",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "-"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "MISTE",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 1,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 30,
+                    "Conference_Publications": 15,
+                    "Book_/_Book_Chapter_Published": 4,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 7,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 54,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 25,
+                    "PHD_Produced": 1,
+                    "PHD_Pursuing": 5
+                }
+            },
+            {
+                "Name": "DR. SURESH S",
+                "Designation": "Associate Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "ssuresh@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-03-024.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/suresh-sugumar-b7959274",
+                    "googlescholar": "https://scholar.google.com/citations?user=t_iu9IkAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Suresh-Sugumar-3",
+                    "orchidprofile": "https://orcid.org/0000-0002-6462-5806",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57204060327"
+                },
+                "Professional_Membership": "Nil",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D.",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "CEG Campus, Anna University, Chennai",
+                        "YEAR": "Dec. 2018"
+                    },
+                    {
+                        "DEGREE": "M.E.",
+                        "BRANCH": "Production Engineering",
+                        "INSTITUTE": "Thiagarajar College of Engineering, Madurai ",
+                        "YEAR": "Feb. 2002"
+                    },
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "Thiagarajar College of Engineering, Madurai ",
+                        "YEAR": "April. 1999"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "01.01.2019",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "5",
+                        "Unnamed:_3": "8",
+                        "DESIGNATION": "Associate Professor",
+                        "INSTITUTION": "Velammal Engineering College, Chennai"
+                    },
+                    {
+                        "DURATION": "01.03.2016",
+                        "Unnamed:_1": "31.12.2018",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "10",
+                        "DESIGNATION": "Assistant Professor III",
+                        "INSTITUTION": "Velammal Engineering College, Chennai"
+                    },
+                    {
+                        "DURATION": "01.06.2009",
+                        "Unnamed:_1": "29.02.2016",
+                        "EXPERIENCE": "6",
+                        "Unnamed:_3": "9",
+                        "DESIGNATION": "Assistant Professor II",
+                        "INSTITUTION": "Velammal Engineering College, Chennai"
+                    },
+                    {
+                        "DURATION": "23.06.2008 ",
+                        "Unnamed:_1": "31.05.2009",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Velammal Engineering College, Chennai"
+                    },
+                    {
+                        "DURATION": "07.06.2006 ",
+                        "Unnamed:_1": "30.04.2007",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "11",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Sethu Institute of Technology, Kariapatti"
+                    },
+                    {
+                        "DURATION": "10.06.2002 ",
+                        "Unnamed:_1": "31.05.2006",
+                        "EXPERIENCE": "4",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Raja College of Engineering & Technology, Madurai"
+                    },
+                    {
+                        "DURATION": "03.08.1999 ",
+                        "Unnamed:_1": "30.04.2000",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "9",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Sri Durgadevi Polytechnic, Kavaraipettai"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "NIL"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Biodegradable Container/Bag and methods of preparing Sustainable packaging material",
+                        "PATENT_TYPE_(UTILITY)": "Utility",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2023-12-29"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Biodegradable Container/Bag and methods of preparing Sustainable packaging material",
+                        "PATENT_TYPE_(UTILITY)": "International (Utility)",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2023-12-28"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Multi-Layered sustainable packaging material and method of preparation",
+                        "PATENT_TYPE_(UTILITY)": "Utility",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Complete specification filed",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2023-06-22"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Lokesh, R, Jagadesh, V & Suresh, S",
+                        "PAPER_TITLE": "Mechanical and Low Velocity Impact Behavior of Al based Kevlar Fabric Reinforced Epoxy Laminate",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "660-669",
+                        "VOL_NO_/_ISSUE_NO": "vol. 16, no. 8",
+                        "MONTH_&_YEAR": 2021,
+                        "INDEXED_IN_SCI_/_SCOPUS": "-",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Effects of process parameters on the mechanical properties of glass fabric reinforced polypropylene composites",
+                        "JOURNAL_NAME": "Polymer (Korea)",
+                        "DOI_NUMBER": "http://dx.doi.org/10.7317/pk.2018.42.4.594",
+                        "PAGE_NO": "594-602",
+                        "VOL_NO_/_ISSUE_NO": "vol.42 no.4",
+                        "MONTH_&_YEAR": 2018,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Investigation on static, dynamic and thermal behavior of novel glass fabric reinforced polymer composites",
+                        "JOURNAL_NAME": "International Journal of Polymer Analysis and Characterization",
+                        "DOI_NUMBER": "https://doi.org/10.1080/1023666X.2018.1489454",
+                        "PAGE_NO": "633-645",
+                        "VOL_NO_/_ISSUE_NO": "vol. 23, no.7",
+                        "MONTH_&_YEAR": 2018,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Effects of Fabric structure on the Formability characteristics of Thermoplastic Composites under various process conditions",
+                        "JOURNAL_NAME": "Transactions of the Canadian Society for Mechanical Engineering",
+                        "DOI_NUMBER": "https://doi.org/10.1139/tcsme-2017-0075",
+                        "PAGE_NO": "298-308",
+                        "VOL_NO_/_ISSUE_NO": "vol. 42, no.3",
+                        "MONTH_&_YEAR": 2018,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Investigation on influence of stamp forming parameters on formability of Thermoplastic Composite",
+                        "JOURNAL_NAME": "Polimeros-ciencia e tecnologia",
+                        "DOI_NUMBER": "https://doi.org/10.1590/0104-1428.11717",
+                        "PAGE_NO": "422-432",
+                        "VOL_NO_/_ISSUE_NO": "vol. 28, no. 5",
+                        "MONTH_&_YEAR": 2018,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Influence of Process Parameters on the Forming behavior of Thermoplastic Composite: An Experimental Approach",
+                        "JOURNAL_NAME": "International Journal of Printing, Packaging & Allied Sciences",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "1553-1564",
+                        "VOL_NO_/_ISSUE_NO": "vol. 4, no. 3",
+                        "MONTH_&_YEAR": 2016,
+                        "INDEXED_IN_SCI_/_SCOPUS": "-",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Effect of Maleic anhydride compatibilizer on Mechanical properties of Fiber reinforced Thermoplastic composites",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "291-296",
+                        "VOL_NO_/_ISSUE_NO": "vol. 10, no. 56",
+                        "MONTH_&_YEAR": 2015,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Experimental determination of the mechanical behavior of glass fiber reinforced polypropylene composites",
+                        "JOURNAL_NAME": "Procedia Engineering",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.proeng.2014.12.292",
+                        "PAGE_NO": "632- 641",
+                        "VOL_NO_/_ISSUE_NO": "vol. 97",
+                        "MONTH_&_YEAR": 2014,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "An overview of recent research works on the forming of thermoplastic composite sheets",
+                        "JOURNAL_NAME": "Applied Mechanics and Materials",
+                        "DOI_NUMBER": "https://doi.org/10.4028/www.scientific.net/AMM.117-119.764",
+                        "PAGE_NO": "764-768",
+                        "VOL_NO_/_ISSUE_NO": "vol. 117-119",
+                        "MONTH_&_YEAR": 2012,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Suresh S",
+                        "PAPER_TITLE": "Advanced monitoring in armrest and end cap assembly through poka-yoke principle",
+                        "CONFERENCE_NAME": "Advances in Mechanical Sciences (AIMS 2k24)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March-2024."
+                    },
+                    {
+                        "AUTHORS": "Suresh S",
+                        "PAPER_TITLE": "Experimental and numerical investigation on tensile property of 3d printed nylon based composites",
+                        "CONFERENCE_NAME": "Advances in Mechanical Sciences (AIMS 2k23)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "April-2023."
+                    },
+                    {
+                        "AUTHORS": "Suresh S",
+                        "PAPER_TITLE": "Effects of Shell powders on the Mechanical properties of Glass Fibre Reinforced Epoxy Composites",
+                        "CONFERENCE_NAME": "Emerging Research and Advances in Mechanical Sciences (ERAMS-19)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March-2019."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Experimental investigation on the forming behaviour of thermoplastic composite in the stamp forming process",
+                        "CONFERENCE_NAME": "I-DAD 2018",
+                        "ORGANIZED_BY": "Vel Tech Rangarajan Dr. Sagunthala R&D Institute of Science and Technology",
+                        "MONTH_&_YEAR": "Feb-2018."
+                    },
+                    {
+                        "AUTHORS": "Suresh S",
+                        "PAPER_TITLE": "Experimental and Numerical study of Tensile behavior of Thermoplastic Composite Material",
+                        "CONFERENCE_NAME": "Emerging Research and Advances in Mechanical Sciences (ERAMS-17)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March-2017."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "An experimental investigation of the influence of process parameters on the forming behavior of Thermoplastic composites",
+                        "CONFERENCE_NAME": "ICMDM 2016",
+                        "ORGANIZED_BY": "CEG Campus, Anna University",
+                        "MONTH_&_YEAR": "Feb-2016."
+                    },
+                    {
+                        "AUTHORS": "Suresh S",
+                        "PAPER_TITLE": "Effect of coupling agent on the tensile behavior of thermoplastic composite laminates",
+                        "CONFERENCE_NAME": "Emerging Research and Advances in Mechanical Sciences (ERAMS-16)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March-2016."
+                    },
+                    {
+                        "AUTHORS": "Suresh S",
+                        "PAPER_TITLE": "Optimization of stamping process parameters for hemispherical forming of fiber composite using Grey rational approach",
+                        "CONFERENCE_NAME": "OPTEST 2016",
+                        "ORGANIZED_BY": "Bannari Amman Institute of Technology",
+                        "MONTH_&_YEAR": "March-2016."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Parameter optimization for the tensile behavior of thermoplastic composite - A Taguchi Approach’",
+                        "CONFERENCE_NAME": "COPEN 9",
+                        "ORGANIZED_BY": "IIT Bombay",
+                        "MONTH_&_YEAR": "Dec-2015."
+                    },
+                    {
+                        "AUTHORS": "Suresh S",
+                        "PAPER_TITLE": "Effect of maleic anhydride compatibilizer on mechanical properties of fiber reinforced thermoplastic composites",
+                        "CONFERENCE_NAME": "NCSGC 2015",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "April-2015."
+                    },
+                    {
+                        "AUTHORS": "Suresh S",
+                        "PAPER_TITLE": "Flexural behavior of thermoplastic fiber metal laminate",
+                        "CONFERENCE_NAME": "Emerging Research and Advances in Mechanical Sciences (ERAMS-15)",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March-2015."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Experimental determination of the mechanical behavior of glass fiber reinforced polypropylene composites",
+                        "CONFERENCE_NAME": "GCMM 14",
+                        "ORGANIZED_BY": "VIT, Vellore",
+                        "MONTH_&_YEAR": "Dec-2014."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S, Ranganathan",
+                        "PAPER_TITLE": "Study of tensile behavior of thermoplastic fiber metal laminates",
+                        "CONFERENCE_NAME": "FAME 2014",
+                        "ORGANIZED_BY": "RMK College of Engg. & Tech",
+                        "MONTH_&_YEAR": "March-2014."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S, Ranganathan",
+                        "PAPER_TITLE": "Cup forming simulation of Thermoplastic composite laminate using Abaqus/Explicit",
+                        "CONFERENCE_NAME": "ERA 2014",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March-2014."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Mechanical characterization of thermoplastic composite laminates",
+                        "CONFERENCE_NAME": "ICAMB 2012",
+                        "ORGANIZED_BY": "VIT, Vellore",
+                        "MONTH_&_YEAR": "Jan-2012."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S & Senthil Kumar, VS",
+                        "PAPER_TITLE": "Innovations in Thermoplastic Composite Materials",
+                        "CONFERENCE_NAME": "ERA 2011",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "March-2011."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S, Kumar, M",
+                        "PAPER_TITLE": "An Extensive study of Nanomaterials for heat transfer applications",
+                        "CONFERENCE_NAME": "NSTCA 2008",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": "Aug-2008."
+                    },
+                    {
+                        "AUTHORS": "Suresh, S, Jawahar, N",
+                        "PAPER_TITLE": "A Genetic Algorithm for optimal order and transportation schedule in supply chain networks",
+                        "CONFERENCE_NAME": "NSSCEA ’02",
+                        "ORGANIZED_BY": "M.B.M. Engineering College, Jai Narain Vyas University",
+                        "MONTH_&_YEAR": "Feb-2002."
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "Suresh, S & Senthil Kumar, VS",
+                        "BOOK_NAME,_EDITION": "Fabrication and stamp forming of thermoplastic composites - In Book: Primary and Secondary Manufacturing of Polymer Matrix Composites",
+                        "PUBLISHER": "CRC Press, Taylor & Francis group",
+                        "ISBN_/_ISSN_NO": "978-1-4987-9930-0",
+                        "MONTH_&_YEAR": 2017,
+                        "BOOK_/_BOOK_CHAPTER": "Book Chapter"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mr.N.Sivaraman",
+                        "RESEARCH_TITLE": "Innovative Approaches to Robotic Grasping and Manipulation of Complex Object",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Part Time",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "Ongoing"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "Nil",
+                    "Sponsored_Projects": 1,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 2,
+                    "Patent_Filed": 1,
+                    "Journal_Publications": 9,
+                    "Conference_Publications": 18,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 7,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 56,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 15,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 1
+                }
+            },
+            {
+                "Name": "DR. KARTHICK M",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-198.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/karthick-m-ap-iii-mechanical-86330a282/",
+                    "googlescholar": "https://scholar.google.com/citations?user=WPNgCKEAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. CHINNASAMY SUBRAMANIAN S",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "chinnasamy@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-133.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/chinnasamy-s-50117425/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                    "googlescholar": "https://scholar.google.com/citations?user=WNV3nmsAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Chinnasamy-Subramanian-S",
+                    "orchidprofile": "https://orcid.org/0000-0002-2447-5807",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "SAE INDIA",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "DESALINATION",
+                        "INSTITUTE": "ANNA UNIVERSITY",
+                        "YEAR": "2023"
+                    },
+                    {
+                        "DEGREE": "ME",
+                        "BRANCH": "IC ENGINEERING",
+                        "INSTITUTE": "VELAMMAL ENGINEERING COLLEGE",
+                        "YEAR": "2010-05-01 00:00:00"
+                    },
+                    {
+                        "DEGREE": "B.TECH",
+                        "BRANCH": "AUTOMOBILE ENGINEERING",
+                        "INSTITUTE": "MIT, CHROMPET",
+                        "YEAR": "2005"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2005-06-01 00:00:00",
+                        "Unnamed:_1": "2009-06-01 00:00:00",
+                        "EXPERIENCE": "4",
+                        "Unnamed:_3": "-",
+                        "DESIGNATION": "LECTURER",
+                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE"
+                    },
+                    {
+                        "DURATION": "2009-06-01 00:00:00",
+                        "Unnamed:_1": "2016-02-01 00:00:00",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "-",
+                        "DESIGNATION": "Sr.Lecturer",
+                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE"
+                    },
+                    {
+                        "DURATION": "2016-02-01 00:00:00",
+                        "Unnamed:_1": "Till date",
+                        "EXPERIENCE": "8",
+                        "Unnamed:_3": "7",
+                        "DESIGNATION": "Assistant Professor - III",
+                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "NIL"
+                    },
+                    {
+                        "TITLE": "NIL"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": 1,
+                        "PATENT_TYPE_(UTILITY)": "DESIGN",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "GRANTED",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2024-03-28"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Dr. Chinnasamy Subramanian Shanmugam",
+                        "PAPER_TITLE": "Optimization of Activated Carbon Fiber Preparation from Hemp Fiber through Dipotassium Hydrogen Phosphate for Application of Thermal Storage System",
+                        "JOURNAL_NAME": "Adsorption Science & Technology",
+                        "DOI_NUMBER": "https://doi.org/10.1155/2023/7228408",
+                        "PAGE_NO": "2024-01-09 00:00:00",
+                        "VOL_NO_/_ISSUE_NO": "Volume 2023, Article ID 7228408, 9 pages",
+                        "MONTH_&_YEAR": "2023-04-21 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. Chinnasamy Subramanian Shanmugam",
+                        "PAPER_TITLE": "Environmental and embodied analysis of partial shading pyramid solar still",
+                        "JOURNAL_NAME": "Environmental Science and Pollution Research",
+                        "DOI_NUMBER": "https://doi.org/10.1007/s11356-022-24249-1",
+                        "PAGE_NO": "25933-25951",
+                        "VOL_NO_/_ISSUE_NO": "Volume 30",
+                        "MONTH_&_YEAR": "2022-11-09 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. S. Chinnasamy Subramanian",
+                        "PAPER_TITLE": "Performance of SSMT heat exchanger with engine waste heat as source for distillation process",
+                        "JOURNAL_NAME": "https://intercienciajournal.com/",
+                        "DOI_NUMBER": "Paper ID: 6Z66w",
+                        "PAGE_NO": "-",
+                        "VOL_NO_/_ISSUE_NO": "45",
+                        "MONTH_&_YEAR": "2020",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. S. Chinnasamy Subramanian",
+                        "PAPER_TITLE": "An experimental assessment of performance and exhaust emission Characteristics by addition of Hydroxy (HHO) gas in Twin cylinder C.I. engine",
+                        "JOURNAL_NAME": "IJIRSET",
+                        "DOI_NUMBER": "ISSN/ISBN 2319 - 8753",
+                        "PAGE_NO": "60 - 67",
+                        "VOL_NO_/_ISSUE_NO": "3",
+                        "MONTH_&_YEAR": "2014-03-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Dr. S. Chinnasamy Subramanian",
+                        "PAPER_TITLE": "Experimental investigation of effects of bio-additives on fuel economy of the gasoline engines",
+                        "CONFERENCE_NAME": "National Conference on Advances in Mechanical Science (AIMS 2k23)",
+                        "ORGANIZED_BY": "epartment of Mechanical Engineering, Velammal Engineering College-Chennai-66 ",
+                        "ISBN_/_ISSN_NO": "National",
+                        "MONTH_&_YEAR": "2023-04-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. S. Chinnasamy Subramanian",
+                        "PAPER_TITLE": "Investigation on the effect of performance and characteristics of diesel blends with anti-oxidant additive",
+                        "CONFERENCE_NAME": "Innovative and emerging trends in engineering and technology",
+                        "ORGANIZED_BY": "Panimalar Institute of Technology",
+                        "ISBN_/_ISSN_NO": "International",
+                        "MONTH_&_YEAR": "2017-05-15 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. S. Chinnasamy Subramanian",
+                        "PAPER_TITLE": "Thermal analysis of waste heat recovery unit using the exhaust gas emitted from IC engine",
+                        "CONFERENCE_NAME": "Proceedings of Academics world International conference, Dubai",
+                        "ORGANIZED_BY": "https://iraj.doionline.org/dx/IJASEAT-IRAJ-DOIONLINE-4670",
+                        "ISBN_/_ISSN_NO": " ISBN: 978-93-85973-50-5",
+                        "MONTH_&_YEAR": "2016-04-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "Dr. S. Chinnasamy Subramanian",
+                        "PAPER_TITLE": "Gasification of Methane from sugarcane pressmud",
+                        "CONFERENCE_NAME": "Recent Innovations in Mechanical Engineering",
+                        "ORGANIZED_BY": "RMK Engineering College",
+                        "ISBN_/_ISSN_NO": "National",
+                        "MONTH_&_YEAR": "9 Mar'2015"
+                    },
+                    {
+                        "AUTHORS": "Dr. S. Chinnasamy Subramanian",
+                        "PAPER_TITLE": "A compendious review on combustion in CI engine fueled with bio diesel Vs Diesel",
+                        "CONFERENCE_NAME": "International conference on Advanced Engineering and technology for sustainable development",
+                        "ORGANIZED_BY": "Karpagam College of Engg.",
+                        "ISBN_/_ISSN_NO": "INTERNATIONAL",
+                        "MONTH_&_YEAR": "5-6 Mar'2015"
+                    },
+                    {
+                        "AUTHORS": "Dr. S. Chinnasamy Subramanian",
+                        "PAPER_TITLE": "A comprehensive review of six stroke engine",
+                        "CONFERENCE_NAME": "Advances in Design and Manufacturing of mechanical systems",
+                        "ORGANIZED_BY": "Sri Krishna College of Engg & Tech",
+                        "ISBN_/_ISSN_NO": "National",
+                        "MONTH_&_YEAR": "26-27 Mar' 2015"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "NIL"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "NIL"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "SAE INDIA",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 1,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 4,
+                    "Conference_Publications": 6,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 15,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 2,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. FRANK GLADSON T S",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "frankgladson@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-028.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&pli=1&authuser=1&user=4vvKUoYAAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Frank-Gladson",
+                    "orchidprofile": "https://orcid.org/0000-0001-9460-3686",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57191980691"
+                },
+                "Professional_Membership": "ISTE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "ME",
+                        "BRANCH": "CAD",
+                        "INSTITUTE": "Sathyabama University",
+                        "YEAR": 2004
+                    },
+                    {
+                        "DEGREE": "BE",
+                        "BRANCH": "Mechanical",
+                        "INSTITUTE": "University of Madras",
+                        "YEAR": 1998
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "Velammal Engineering College Surapet, Chennai-66",
+                        "Unnamed:_1": "Asst.Prof-III",
+                        "EXPERIENCE": "20.6.2011",
+                        "Unnamed:_3": "Till Date",
+                        "DESIGNATION": 13,
+                        "INSTITUTION": 3
+                    },
+                    {
+                        "DURATION": "Panimalar Engineering College, Poonamallee",
+                        "Unnamed:_1": "Senior Lecturer",
+                        "EXPERIENCE": "28.08.2009",
+                        "Unnamed:_3": "30.04.2011",
+                        "DESIGNATION": 1,
+                        "INSTITUTION": 8
+                    },
+                    {
+                        "DURATION": "Dr.MGR University, Maduravoyal, Ch-95",
+                        "Unnamed:_1": "Senior Lecturer",
+                        "EXPERIENCE": "06.09.2004",
+                        "Unnamed:_3": "28.08.2009",
+                        "DESIGNATION": 4,
+                        "INSTITUTION": 11
+                    },
+                    {
+                        "DURATION": "Arignar Anna Inst of Sci & Tech, Sriprembudur",
+                        "Unnamed:_1": "Lecturer",
+                        "EXPERIENCE": "01.10.1999",
+                        "Unnamed:_3": "13.07.2002",
+                        "DESIGNATION": 2,
+                        "INSTITUTION": 9
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Development of car accident investigation mechanism and its analysis for life resque",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": "2,00,000",
+                        "YEAR_OF_SANCTION": 2021,
+                        "DURATION": "1 year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Design and Analysis of high strength to weight backhoe loaders",
+                        "PATENT_TYPE_(UTILITY)": "Publication",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "15.03.2024"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "T Mayavan, S Sambath, A Kadirvel, TSF Gladson, SS Kumar, ",
+                        "PAPER_TITLE": "Artificial Neural Networks to the Analysis of AISI 304 steel sheets through limiting Drawing Ratio test",
+                        "JOURNAL_NAME": "Journal of Electrical Systems 20 (3),",
+                        "DOI_NUMBER": " 1161-1168",
+                        "PAGE_NO": "1161-1168",
+                        "VOL_NO_/_ISSUE_NO": "20/3",
+                        "MONTH_&_YEAR": "2024",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "TS Kavitha, C., Frank Gladson",
+                        "PAPER_TITLE": "Analysis of Multi Objective Response Variables for the Milling Characteristics of Al-SiC Particulate Composites Using Taguchi Based Grey Relational Analysis",
+                        "JOURNAL_NAME": "Intelligent and Fuzzy Techniques for Emerging Conditions and Digital Transformation ",
+                        "DOI_NUMBER": ". https://doi.org/10.1007/978-3-030-85626-7_77",
+                        "PAGE_NO": "pp 657–665",
+                        "VOL_NO_/_ISSUE_NO": " 307.",
+                        "MONTH_&_YEAR": "2021-08-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "TSF Gladson, R Ramesh, C Kavitha",
+                        "PAPER_TITLE": "Experimental investigation of mechanical, tribological and dielectric properties of alumina nano wire-reinforced PEEK/PTFE composites",
+                        "JOURNAL_NAME": "Materials Research Express  ",
+                        "DOI_NUMBER": " 10.1088/2053-1591/ab491d",
+                        "PAGE_NO": "115327",
+                        "VOL_NO_/_ISSUE_NO": "6 (11),",
+                        "MONTH_&_YEAR": "OCT&2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "TS Kavitha, G Frank",
+                        "PAPER_TITLE": "Evaluation of best supplier using multi criteria decision making methods",
+                        "JOURNAL_NAME": "International Journal of Civil Engineering and Technology",
+                        "DOI_NUMBER": ": 0976-6308",
+                        "PAGE_NO": "2176–2183",
+                        "VOL_NO_/_ISSUE_NO": "10 (2)",
+                        "MONTH_&_YEAR": "FEB &2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "C Kavitha, TSF Gladson",
+                        "PAPER_TITLE": "Design and Analysis of Fuzzy Arithmetic Neutrosophic Soft Set Compositions Using Triangular Fuzzy Number",
+                        "JOURNAL_NAME": "International Journal of Mechanical Engineering and Technology",
+                        "VOL_NO_/_ISSUE_NO": "9(5)",
+                        "MONTH_&_YEAR": "May &2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A Raman, F Gladson",
+                        "PAPER_TITLE": "Dry lubrication of polymer gears using epoxy and poly urethane paints",
+                        "JOURNAL_NAME": "International Journal for Technological Research in Engineering ",
+                        "DOI_NUMBER": "1",
+                        "PAGE_NO": "260-265",
+                        "MONTH_&_YEAR": "2014",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "C KAVITHA, TS FRANK GLADSON, M PRASANNA JEYANTHI",
+                        "PAPER_TITLE": "ANALYSIS OF ADAPTIVE NEURO-FUZZY INFERENCE SYSTEM FOR THE PREDICTION OF HYBRID COMPOSITES",
+                        "JOURNAL_NAME": "Advances in Mathematics: Scientific Journal",
+                        "DOI_NUMBER": " https://doi.org/10.37418/amsj.9.3.54",
+                        "PAGE_NO": "1303–1314",
+                        "VOL_NO_/_ISSUE_NO": "3",
+                        "MONTH_&_YEAR": "9 (2020)",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "T Gladson, P Kumar, R Ramesh",
+                        "PAPER_TITLE": "Investigation of Mechanical and Tribological Behaviour of Nano Al2O3 Reinforced PEEK/PTFE Hybrid Composite for Structural Applications",
+                        "CONFERENCE_NAME": "Proceedings of 10th International Conference on Precision, Mes so, Micro and Nano Engineering (COPEN 10)",
+                        "ORGANIZED_BY": "IIT Madras",
+                        "MONTH_&_YEAR": "12(2017)"
+                    },
+                    {
+                        "MONTH_&_YEAR": "2024-07-09 00:00:00",
+                        "Unnamed:_7": "Dec & 2017"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "ISTE",
+                    "Sponsored_Projects": 1,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 1,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 7,
+                    "Conference_Publications": 2,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 8,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 2,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. CHEZHIAN R",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-202.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/chezhian-r-664275146/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. GEETHA R",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "geetha@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-004.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/geetha-rajamani-9ba9972a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                    "googlescholar": "",
+                    "researchgate": "https://www.researchgate.net/profile/Geetha-Rajamani",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57210626865"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "Mechanical",
+                        "INSTITUTE": "Pondichery University",
+                        "YEAR": 2002
+                    },
+                    {
+                        "DEGREE": "M.E.",
+                        "BRANCH": "Manufacturing",
+                        "INSTITUTE": "GCT, Coimbatore",
+                        "YEAR": 2005
+                    },
+                    {
+                        "DEGREE": "Ph.D.",
+                        "BRANCH": "Materials",
+                        "INSTITUTE": "Anna University",
+                        "YEAR": 2019
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "8.02.2010",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "14",
+                        "Unnamed:_3": "7",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engg College,"
+                    },
+                    {
+                        "DURATION": "9.01.2006",
+                        "Unnamed:_1": "31.10.2009",
+                        "EXPERIENCE": "4",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Mailam Engg College,"
+                    },
+                    {
+                        "DURATION": "23.05.2005",
+                        "Unnamed:_1": "20.12.2005",
+                        "EXPERIENCE": "-",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "R.M.K   Engg.College"
+                    },
+                    {
+                        "DURATION": "TOTAL",
+                        "EXPERIENCE": "19",
+                        "Unnamed:_3": "-"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Exterior wall painting system\n assisted with wall climbing\n Robot.",
+                        "SPONSORING_AGENCY": "Innovation and Entrepreneurship Development Center (IEDC)",
+                        "AMOUNT": "Rs. 2,50,000",
+                        "YEAR_OF_SANCTION": "2018-2019",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    }
+                ],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Mechanical Behaviour of Light Weight Hybrid Metal Matrix Composites for compact Automobile Applications",
+                        "JOURNAL_NAME": "SAE Technical paper series",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "-",
+                        "VOL_NO_/_ISSUE_NO": "-",
+                        "MONTH_&_YEAR": "2024-09-20",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Direct metal laser sintering to develop complex contours of AISIMG aluminium alloy",
+                        "JOURNAL_NAME": "Surface Reviews and Letters",
+                        "DOI_NUMBER": "https://doi.org/10.1142/S0218625X24500963",
+                        "PAGE_NO": "1793-6667",
+                        "VOL_NO_/_ISSUE_NO": "-",
+                        "MONTH_&_YEAR": "2024-03-26",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Effect of CNT Inclusion on the Thernmo-Mechanical Behaviour of Cu-Ni-Zn-Sn Nano Composite",
+                        "JOURNAL_NAME": "Iranian Journal of Chemistry and Chemical Engineering",
+                        "DOI_NUMBER": "https://www.ijcce.ac.ir/article_705685.html",
+                        "PAGE_NO": "1021-9986",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 42, Issue : 11",
+                        "MONTH_&_YEAR": "2023-11-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Mechanical Behaviour of Cissus Quadrangularis / Basalt Fibre Reinforced Hybrid Bio Composite for Bone Implantations",
+                        "JOURNAL_NAME": "Iranian Journal of Chemistry and Chemical Engineering",
+                        "DOI_NUMBER": "10.30492/IJCCE.2022.560033.5514",
+                        "PAGE_NO": "2160-2174",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 42 Issue : 7",
+                        "MONTH_&_YEAR": "2023-07-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Experimental Studies on the Performance of Graphene Oxide Based Hybrid Nanopolymers for Bearing Applications",
+                        "JOURNAL_NAME": "International Journal of Polymer Science",
+                        "DOI_NUMBER": "https://doi.org/10.1155/2022/2974237",
+                        "PAGE_NO": "01-11",
+                        "VOL_NO_/_ISSUE_NO": "Volume: 2022",
+                        "MONTH_&_YEAR": "2022-04-20",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Abrasive wear analysis on graphene oxide-based Hybrid Nano polymer composites",
+                        "JOURNAL_NAME": "Surface Review and Letters.",
+                        "DOI_NUMBER": "http://dx.doi.org/10.1142/S0218625X18501561",
+                        "PAGE_NO": "1850156-1 to 1850156-7",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 26, Issue : 3",
+                        "MONTH_&_YEAR": "2018-03-14",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Analysis of wear behavior of graphene oxide — polyamide gears for engineering applications",
+                        "JOURNAL_NAME": "Surface Review and Letters.",
+                        "DOI_NUMBER": "10.1142/S0218625X1850018X",
+                        "PAGE_NO": "01-11",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 25, Issue : 3",
+                        "MONTH_&_YEAR": "2017-04-20",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Comparative Investigations on the Mechanical and Tribological Properties of Glass Fibre Reinforced Thermoplastic and Blended Graphene-Oxide Hybrid Thermoplastic Nanocomposites",
+                        "JOURNAL_NAME": "Applied Mechanics and Materials",
+                        "DOI_NUMBER": "https://doi.org/10.4028/www.scientific.net/AMM.591.85",
+                        "PAGE_NO": "85-88",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 591",
+                        "MONTH_&_YEAR": "2014-07-18",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Tribological Properties of Hybrid Thermoplastic Nanocomposites",
+                        "CONFERENCE_NAME": "International conference on Advances in composites, Biocomposites and Nanocomposites",
+                        "ORGANIZED_BY": "Durban, University",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2013"
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Comparative investigations on the Mechanical and Tribological properties of Glass fibre Reinforced Thermoplastic and Blended Graphene oxide hybrid thermoplastic Nanocomposites",
+                        "CONFERENCE_NAME": "International conference on computational intelligence & advanced manufacturing research – ICCIAMR ,Chennai",
+                        "ORGANIZED_BY": "Chennai",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2nd& 3rd May, 2014"
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Tribological analysis of graphene oxide reinforced hybrid polyamide bearings under radial loading conditions in dry rolling contact behaviour",
+                        "CONFERENCE_NAME": "International conference on Recent Innovations in production Engineering, RIPE – 2017",
+                        "ORGANIZED_BY": "MIT, Chennai",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "24-25 March 2017"
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Experimental study on the machining parameters of in 718 precipitation hardening nickel-chromium alloy synthesized by wire assisted additive manufacturing process (WAAM)",
+                        "CONFERENCE_NAME": "National Conference on Advances in Mechanical Science (AIMS 2k23)",
+                        "ORGANIZED_BY": "Department of Mechanical Engineering, Velammal Engineering College-Chennai-66",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "12.04.2023"
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Mechanical Studies on Epoxy resin based Hybrid Composite containing Glass-Fibre and Coconut Shell Charcoal Powder",
+                        "CONFERENCE_NAME": "ERAMS 2019",
+                        "ORGANIZED_BY": "Department of Mechanical Engineering, Velammal Engineering College-Chennai-67",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "20.03.2019"
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Tribological analysis of graphene oxide reinforced hybrid polyamide bearing under radial loading conditions in dry rolling contact behaviour",
+                        "CONFERENCE_NAME": "Recent innovations in production engineering",
+                        "ORGANIZED_BY": "Madras Institute of Technology",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "24-25 Mar'2017"
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Dry sliding wear behaviour of magnesium matrix composite reinforced with nano TiN particulates ",
+                        "CONFERENCE_NAME": "Sustainable development in Mechanical Engineering",
+                        "ORGANIZED_BY": "National University Of Singapore",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "5.11.2019"
+                    },
+                    {
+                        "AUTHORS": "Dr. R. Geetha",
+                        "PAPER_TITLE": "Dry sliding wear behaviour of graphene oxide based ployamide nanocomposites",
+                        "CONFERENCE_NAME": "Sustainable development in Mechanical Engineering",
+                        "ORGANIZED_BY": "National University Of Singapore",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "5.11.2019"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "Dr. R. Geetha",
+                        "BOOK_NAME,_EDITION": "Fundamentals of Nanoscience (Book)",
+                        "PUBLISHER": "Noor Publishing",
+                        "ISBN_/_ISSN_NO": "978-620-0-07700-4",
+                        "MONTH_&_YEAR": "2020-06-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Dr.R. Geetha",
+                        "BOOK_NAME,_EDITION": "Precision manufacturing through cryogenic treatment: a case study",
+                        "PUBLISHER": "De Gruyter",
+                        "ISBN_/_ISSN_NO": "10.1515/9783111335537-006",
+                        "MONTH_&_YEAR": "2023-04-01",
+                        "BOOK_/_BOOK_CHAPTER": " BOOK CHAPTER"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 1,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 8,
+                    "Conference_Publications": 8,
+                    "Book_/_Book_Chapter_Published": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 1,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. DEEPAK KUMAR M",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "deepakkumar@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-001.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/deepak-kumar-murugan-a20569a4/",
+                    "googlescholar": "https://scholar.google.com/citations?user=qSci3AEAAAAJ&hl=en",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0000-0003-3884-3778",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56297082000"
+                },
+                "Professional_Membership": "ASME",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "Anna University",
+                        "YEAR": 2021
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "Internal Combustion Engineering",
+                        "INSTITUTE": "Velammal Engineering College, Chennai",
+                        "YEAR": 2012
+                    },
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "Sri Muthukumaran Institute of Technology",
+                        "YEAR": 2010
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "20.06.2012",
+                        "Unnamed:_1": "Present",
+                        "EXPERIENCE": "12",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Autonomous water surface cleaning machine and methods of removing floatable solid waste",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "GRANTED",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "15/03/2024"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Automated Ventillator and methods of controlling flow rates thereof",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "PUBLISHED",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2022-10-07 00:00:00"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Recycling waste textile materials and method of making new textile",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "PUBLISHED",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "13/05/2022"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Deepak Kumar Murugan, Hitesh Panchal, Zafar Said, Shankaranarayanan S",
+                        "PAPER_TITLE": "Air stone-induced microbubble agitation: a strategy for solar still performance enhancement.",
+                        "JOURNAL_NAME": "Clean Technologies and Environmental Policy",
+                        "DOI_NUMBER": "https://doi.org/10.1007/s10098-023-02630-z",
+                        "PAGE_NO": "417 – 434",
+                        "VOL_NO_/_ISSUE_NO": "Vol. 26 ",
+                        "MONTH_&_YEAR": "November, 2023",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Deepak Kumar Murugan, Zafar Said, Hitesh Panchal, Naveen Gupta, Sekar Subramani, Abhinav Kumar, Kishor Kumar Sadasivuni",
+                        "PAPER_TITLE": "Machine Learning Approaches for Real-Time Forecasting of Solar Still Distillate Output",
+                        "JOURNAL_NAME": "Environmental Challenges",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.envc.2023.100779",
+                        "PAGE_NO": "100779",
+                        "VOL_NO_/_ISSUE_NO": "Vol. 13 ",
+                        "MONTH_&_YEAR": "December, 2023",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Muthiah Chidambaram, Sekar Subramani, Deepak Kumar Murugan,",
+                        "PAPER_TITLE": "Productivity Enhancement of Solar Stills using Natural Fibers: Experimental Investigation on the Effect of Strychnos potatorum Seeds and Gooseberry Stems",
+                        "JOURNAL_NAME": "Desalination and Water Treatment",
+                        "DOI_NUMBER": "https://doi.org/10.5004/dwt.2023.29962",
+                        "PAGE_NO": "12 – 22",
+                        "VOL_NO_/_ISSUE_NO": "Vol. 310",
+                        "MONTH_&_YEAR": "October, 2023",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Rajkamal Sivakumar, Prabhakaran Gopalakrishnan, Deepak Kumar Murugan",
+                        "PAPER_TITLE": "Enhancement of Optical Properties of Anti-Reflection Coatings on Solar PV Cells through Hybrid TiO2-SiO2 Nanoparticles",
+                        "JOURNAL_NAME": "Iranian Journal of Chemistry and Chemical Engineering",
+                        "DOI_NUMBER": "https://doi.org/10.30492/ijcce.2023.1989023.5856",
+                        "PAGE_NO": "4291 – 4306",
+                        "VOL_NO_/_ISSUE_NO": "Vol. 42, Issue. 12",
+                        "MONTH_&_YEAR": "December, 2023",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Deepak Kumar Murugan, Sekar Subramani, Arunkumar Thirugnanasambantham, Karthick Munuswamy",
+                        "PAPER_TITLE": "Thermo-economic comparison of single basin and stacked solar still configurations",
+                        "JOURNAL_NAME": "Environmental Science and Pollution Research",
+                        "DOI_NUMBER": "https://doi.org/10.1007/s11356-022-20914-7",
+                        "PAGE_NO": "71650 – 71664",
+                        "VOL_NO_/_ISSUE_NO": "Vol. 29",
+                        "MONTH_&_YEAR": "May, 2022",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mr. S. Shankaranarayanan",
+                        "RESEARCH_TITLE": "Performance and Durability studies of solar still through advanced basin materials, coatings and effective maintenance strategies",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "ONGOING"
+                    },
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mr. D. Dineshbabu",
+                        "RESEARCH_TITLE": "Investigation of dynamic compression ratio control in hydrogen VCR engine for enhanced performance and emission",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "ONGOING"
+                    },
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Mrs. S. Kuzhali",
+                        "RESEARCH_TITLE": "Development of nanostructured thermal absorbers and smart fluids for enhanced solar energy utilization in hybrid Photovoltaic – Thermal (PV-T) collector",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "FULL TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "ONGOING"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "ASME",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 1,
+                    "Patent_Published": 2,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 5,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. KARTHIKEYAN M",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "karthikeyanm@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-103.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/karthikeyan-m-2bbb3864/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=SgpuYdgAAAAJ&view_op=list_works&authuser=1&sortby=pubdate",
+                    "researchgate": "https://www.researchgate.net/profile/Karthikeyan-Mahalingam",
+                    "orchidprofile": "https://orcid.org/0009-0007-4504-2852",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "IAENG",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "MECHANICAL ENGINEERING",
+                        "INSTITUTE": "Government College of engineering, Tirunelveli",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "COMPUTER AIDED DESIGN",
+                        "INSTITUTE": "Alagappa Chettiar College of engg & tech (Autonomous), karaikudi",
+                        "YEAR": 2012
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "20.06.2012",
+                        "Unnamed:_1": "26.09.2024",
+                        "EXPERIENCE": "12",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Portable seed planter",
+                        "SPONSORING_AGENCY": "TNSCST",
+                        "AMOUNT": "Rs.10000",
+                        "YEAR_OF_SANCTION": "2017",
+                        "DURATION": "6 months",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Mentor",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    }
+                ],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Karthikeyan M, Sooraj R, Senthil Guru M and Ramesh Balaji D",
+                        "PAPER_TITLE": "Evolution of tensile properties of titanium dioxide reinforced Aluminium composite and analysis of Ic engine connecting rod made up of TIO2 composite",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "DOI_NUMBER": "DOI:10.37622/000000",
+                        "PAGE_NO": "281-286",
+                        "VOL_NO_/_ISSUE_NO": "10/56",
+                        "MONTH_&_YEAR": "2015",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "1Karthikeyan M, 2Sharmila B, 3Madhan M, 4Silambarasan S",
+                        "PAPER_TITLE": "Design of Absorptive silencer of drum Safety Valve",
+                        "JOURNAL_NAME": "Advances in Natural and Applied Sciences",
+                        "PAGE_NO": "408-415",
+                        "VOL_NO_/_ISSUE_NO": "11/8",
+                        "MONTH_&_YEAR": "2017-05-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "M. KARTHIKEYAN & M. MADHAN B. SHARMILA , G. PRABHAKARAN",
+                        "PAPER_TITLE": "The Effect of Hot Forging on Mechanical Characteristics of Al356 Hybrid Metal Matrix Composites",
+                        "JOURNAL_NAME": "International Journal of Mechanical and Production Engineering Research and Development",
+                        "PAGE_NO": "2249-8001",
+                        "VOL_NO_/_ISSUE_NO": "8/8",
+                        "MONTH_&_YEAR": "2018-08-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "M. Karthikeyan1 · E. Ganapathy Sundaram1 · S. Vishvanathperumal2",
+                        "PAPER_TITLE": "Development of halloysite nanotubes reinforced chlorinated ethylene\npropylene diene monomer/chlorinated acrylonitrile butadiene rubber\nblends",
+                        "JOURNAL_NAME": "Journal of Polymer Research",
+                        "DOI_NUMBER": "https://doi.org/10.1007/s10965-024-04027-y",
+                        "PAGE_NO": "2022-01-01 00:00:00",
+                        "VOL_NO_/_ISSUE_NO": "31/169",
+                        "MONTH_&_YEAR": "2024-06-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Karthikeyan M",
+                        "PAPER_TITLE": "The Effects Of Elements Type And Contact Formulation Technologies On Finite Element Analysis",
+                        "CONFERENCE_NAME": "LIME ",
+                        "ORGANIZED_BY": "Andhra University College of Engineering",
+                        "MONTH_&_YEAR": 2013
+                    },
+                    {
+                        "AUTHORS": "Karthikeyan M",
+                        "PAPER_TITLE": "Design and analysis of IC engine connecting rod made up of Al TiO2 composite",
+                        "CONFERENCE_NAME": ", ERAMS ",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": 2015
+                    },
+                    {
+                        "AUTHORS": "Karthikeyan M",
+                        "PAPER_TITLE": "Development and categorization of Engineering polymer composites",
+                        "CONFERENCE_NAME": ", ERAMS ",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": 2015
+                    },
+                    {
+                        "AUTHORS": "Karthikeyan M, Sooraj R, Senthil Guru M and Ramesh Balaji D",
+                        "PAPER_TITLE": "Evolution of tensile properties of titanium dioxide reinforced aluminium composite and analysis of Ic engine connecting rod made up of TIO2 composite",
+                        "CONFERENCE_NAME": "NCSGC",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "MONTH_&_YEAR": 2015
+                    },
+                    {
+                        "AUTHORS": "1Karthikeyan M, 2Sharmila B, 3Madhan M, 4Silambarasan S",
+                        "PAPER_TITLE": "Design of Absorptive Silencer of Drum Safety Valve",
+                        "CONFERENCE_NAME": "NCRASE ",
+                        "ORGANIZED_BY": "University College of Engineering",
+                        "MONTH_&_YEAR": 2017
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "IAENG",
+                    "Sponsored_Projects": 1,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 4,
+                    "Conference_Publications": 5,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 8,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. PRADEEP KUMAR S",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "pradeepkumars@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-020.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/pradeep-kumar-s-629a8494/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=jrE_JAwAAAAJ&view_op=list_works&gmla=ALUCkoWFGeljBhr8qkQK9UHXUV5aiNb-CPeF1lk53AIcLChccm9-ZNO5Jx0Ba6kFsAkmebiGr8YRlxFP27b4ozq3",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "MECHANICAL ENGINEERING",
+                        "INSTITUTE": "RAJALAKSHMI ENGINEERING COLLEGE",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "PRINTING & PACKAGING TECHNOLOGY",
+                        "INSTITUTE": "ANNA UNIVERSITY CEG CAMPUS",
+                        "YEAR": 2012
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2012-06-20 00:00:00",
+                        "Unnamed:_1": "2024-09-21 00:00:00",
+                        "EXPERIENCE": "12",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "ASSISTANT PROFESSOR",
+                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "LUXURIOUS AIR-CONDITIONED DOG CAGE",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": 200000,
+                        "YEAR_OF_SANCTION": "2022-2023",
+                        "DURATION": "6MONTH",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "CO PI",
+                        "STATUS_(_Completed_/_Ongoing)": "COMPLETED"
+                    },
+                    {
+                        "TITLE": "AUTOMATIC GRAIN COLLECTOR",
+                        "SPONSORING_AGENCY": "IEDC",
+                        "AMOUNT": 200000,
+                        "YEAR_OF_SANCTION": "2022-2023",
+                        "DURATION": "6MONTH",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "COMPLETED"
+                    },
+                    {
+                        "SPONSORING_AGENCY": "TNSCST",
+                        "AMOUNT": 7500,
+                        "YEAR_OF_SANCTION": "2021-2022",
+                        "DURATION": "6MONTH",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "COMPLETED"
+                    },
+                    {
+                        "SPONSORING_AGENCY": "TNSCST",
+                        "AMOUNT": 7500,
+                        "YEAR_OF_SANCTION": "2023-2024",
+                        "DURATION": "6MONTH",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "ONGOING"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "DESIGN PATTENT",
+                        "PATENT_TYPE_(UTILITY)": "NIL",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "PUBLISHED",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "NIL"
+                    },
+                    {
+                        "NAME_OF_PATENT": "DESIGN PATTENT",
+                        "PATENT_TYPE_(UTILITY)": "NIL",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "PUBLISHED",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "NIL"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "S.PRADEEP KUMAR",
+                        "PAPER_TITLE": "Influence of modified nanosilica on the performance of NR/EPDM blends: cure characteristics, mechanical properties and swelling resistance",
+                        "JOURNAL_NAME": "Journal of Inorganic and Organometallic Polymers and Materials,",
+                        "DOI_NUMBER": "https://doi.org/10.1007/s10904-023-02985-2",
+                        "MONTH_&_YEAR": "2024-01-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "S.PRADEEP KUMAR",
+                        "PAPER_TITLE": "Mechanical and Tribological Behaviour of Hybrid Multi Fibre Reinforced Nylon 6-6 Nanocomposites",
+                        "JOURNAL_NAME": "Materiale Plastice",
+                        "DOI_NUMBER": "https://doi.org/10.37358/MP.21.3.5512",
+                        "PAGE_NO": "137-147",
+                        "VOL_NO_/_ISSUE_NO": "58(3)",
+                        "MONTH_&_YEAR": "2021-03-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "S.Pradeep Kumar",
+                        "PAPER_TITLE": "Development and categorization of engineering polymer composite",
+                        "CONFERENCE_NAME": "International Journal of Applied Engineering Research,",
+                        "ORGANIZED_BY": "Velammal engineering college",
+                        "ISBN_/_ISSN_NO": "0973-4562",
+                        "MONTH_&_YEAR": "2015-11-01"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 4,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 2,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 2,
+                    "Conference_Publications": 1,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 8,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 3,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. LOGANATHAN D",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "loganathand4@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-044.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-loganathan-duraiswamy-6b193161/?originalSubdomain=in",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=e5rg52EAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0000-0001-6365-3162",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/IUM-9440-2023",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56319193800"
+                },
+                "Professional_Membership": "LMISTE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "PhD",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "Anna University",
+                        "YEAR": "Pursuing"
+                    },
+                    {
+                        "DEGREE": "M. Tech ",
+                        "BRANCH": "Production Engineering and System Technology",
+                        "INSTITUTE": "Visveswaraiah Technological University",
+                        "YEAR": "2002"
+                    },
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "Bharathiyar University",
+                        "YEAR": "1998"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "09.06.2017",
+                        "Unnamed:_1": "As on 22.09.2024",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "AP II",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "08.09.2010",
+                        "Unnamed:_1": "01.06.2017",
+                        "EXPERIENCE": "6",
+                        "Unnamed:_3": "8",
+                        "DESIGNATION": "Associate Professor",
+                        "INSTITUTION": "S K P Institute of Technology Thiruvannamalai."
+                    },
+                    {
+                        "DURATION": "05.07.2006",
+                        "Unnamed:_1": "06.09.2010",
+                        "EXPERIENCE": "4",
+                        "Unnamed:_3": "2",
+                        "DESIGNATION": "Asst. Professor",
+                        "INSTITUTION": "Kuppam Engineering college. Kuppam."
+                    },
+                    {
+                        "DURATION": "20.06.2005",
+                        "Unnamed:_1": "28.06.2006",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Sr. Lecturer",
+                        "INSTITUTION": "SBC Engineering College, Arni."
+                    },
+                    {
+                        "DURATION": "04.10.2002",
+                        "Unnamed:_1": "30.05.2005",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "7",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Arunai Engineering College, Tv.malai"
+                    },
+                    {
+                        "DURATION": "10.11.1998",
+                        "Unnamed:_1": "30.09.2000",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "10",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Arunai Engineering College, Tv.malai"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "PORTABLE CAR WASH BRUSH",
+                        "PATENT_TYPE_(UTILITY)": "DESIGN",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Granted"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Loganathan, D .; Shunmugam, S.K.; Ramadoss, R.",
+                        "PAPER_TITLE": "Grey relational analysis-based optimisation of input parameters of incremental forming process applied to the AA6061 alloy",
+                        "JOURNAL_NAME": "Transactions of Famena",
+                        "DOI_NUMBER": "10.21278/TOF.44108",
+                        "PAGE_NO": "pp.93-104",
+                        "VOL_NO_/_ISSUE_NO": "44(1)",
+                        "MONTH_&_YEAR": 2020,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Loganathan, D.; Gnanavelbabu, A.; Rajkumar, K.; Ramadoss, R.",
+                        "PAPER_TITLE": "Effect of microwave heat treatment on mechanical properties of AA6061 sheet metal",
+                        "JOURNAL_NAME": "Procedia Engineering",
+                        "DOI_NUMBER": "10.1016/j.proeng.2014.12.320",
+                        "PAGE_NO": "1692-1697",
+                        "VOL_NO_/_ISSUE_NO": " 97, ",
+                        "MONTH_&_YEAR": 2014,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Loganathan, D.; Gnanavelbabu, A.",
+                        "PAPER_TITLE": "Formability analysis of AA6061 aluminium alloy at room temperature",
+                        "JOURNAL_NAME": "Applied Mechanics and Materials",
+                        "DOI_NUMBER": "10.4028/www.scientific.net/AMM.591.55",
+                        "PAGE_NO": "55-59",
+                        "VOL_NO_/_ISSUE_NO": "591",
+                        "MONTH_&_YEAR": 2014,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Loganathan, D.; Gnanavelbabu, A",
+                        "PAPER_TITLE": "Formability analysis of AA6061 aluminium alloy at room temperature",
+                        "CONFERENCE_NAME": "ICCIAMR 2014",
+                        "ORGANIZED_BY": "SCHOOL OF ENGINEERING, VELS UNIVERSITY",
+                        "ISBN_/_ISSN_NO": "1662-7482",
+                        "MONTH_&_YEAR": "2014-05-01"
+                    },
+                    {
+                        "AUTHORS": "Loganathan, D.; Gnanavelbabu, A.; Rajkumar, K.; Ramadoss, R.",
+                        "PAPER_TITLE": "Effect of microwave heat treatment on mechanical properties of AA6061 sheet metal",
+                        "CONFERENCE_NAME": "GCMM 2014",
+                        "ORGANIZED_BY": "SCHOOL OF MECHANICAL AND BUILDING SCIENCES, VIT UNIVERSITY",
+                        "ISBN_/_ISSN_NO": "1877-7058",
+                        "MONTH_&_YEAR": "2014-12-01"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "LMISTE",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 1,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 3,
+                    "Conference_Publications": 2,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 40,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. ELVIN R P",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-204.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "https://scholar.google.com/citations?user=X2qEj8wAAAAJ&hl=en",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/GRY-6498-2022",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. JOHN LEONARD A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-680.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "DR. SIVASANKAR D",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "sivasankar@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-084.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://in.linkedin.com/in/dr-sivasankar-d-a8833447",
+                    "googlescholar": "https://scholar.google.com/citations?user=N30j06EAAAAJ&hl=en",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D.",
+                        "BRANCH": "MECHANICAL ENGINEERING ",
+                        "INSTITUTE": "ANNA UNIVERSITY",
+                        "YEAR": 2024
+                    },
+                    {
+                        "DEGREE": "M.E.",
+                        "BRANCH": "MANUFACTURING ENGINEERING ",
+                        "INSTITUTE": "VELAMMAL COLLEGE OF ENGINEERING & TECHONOLOGY, MADURAI.",
+                        "YEAR": 2015
+                    },
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "PRODUCTION ENGINEERING ",
+                        "INSTITUTE": "VELAMMAL ENGINEERING COLLGE, CHENNAI",
+                        "YEAR": 2012
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "24.06.2015",
+                        "Unnamed:_1": "TILL DATE- 22-09-2024",
+                        "EXPERIENCE": "9 YEARS ",
+                        "Unnamed:_3": "3 MONTHS",
+                        "DESIGNATION": "ASSISTANT PROFESSOR ",
+                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE, CHENNAI."
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "D Sivasankar, Sekar Subramani, Deepak Kumar Murugan",
+                        "PAPER_TITLE": "Performance enhancement of single basin solar still using a composite vertical wick configuration",
+                        "JOURNAL_NAME": "Desalination and Water Treatment",
+                        "DOI_NUMBER": "doi: 10.5004/dwt.2023.29202",
+                        "PAGE_NO": "80-85",
+                        "VOL_NO_/_ISSUE_NO": "vol. 282,pp",
+                        "MONTH_&_YEAR": "JANUARY & 2023",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Desalination and Water Treatment, www.deswater.com",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V Anbumalar, R Mayandy, D Sivasankar",
+                        "PAPER_TITLE": "Dynamic cellular manufacturing under multi-period planning horizons",
+                        "JOURNAL_NAME": "International Journal of Innovative Research in Science, Engineering, and Technology",
+                        "PAGE_NO": "ISSN (Online) : 2319 - 8753 ISSN (Print) : 2347 - 6710",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, Special Issue 3, March 2015",
+                        "MONTH_&_YEAR": "2015-03-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "D.SIVSANKAR",
+                        "BOOK_NAME,_EDITION": "Fundamentals Of Welding and Friction Surfacing",
+                        "PUBLISHER": "AMAZON ONLINE",
+                        "ISBN_/_ISSN_NO": "ISBN¬10: 1514271788 ISBN¬13: 978¬1514271780",
+                        "MONTH_&_YEAR": "2015-06-01",
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 2,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 5,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. SHANKARANARAYANAN S",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "shankar.mech@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-022.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/shankaranarayanan-556618138",
+                    "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&authuser=3&user=EF5IZ9QAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "MISTE - Lifetime - LM105552",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "Dr.Sivanthi Aditanar College Of Engg, Tiruchendur",
+                        "YEAR": "2004-2008"
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "Production Engineering",
+                        "INSTITUTE": "National Engineering College, Kovilpatti",
+                        "YEAR": "2012-2014"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2009-06-06 00:00:00",
+                        "Unnamed:_1": "2012-07-09 00:00:00",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "1",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Scad Polytechnic College"
+                    },
+                    {
+                        "DURATION": "2014-05-14 00:00:00",
+                        "Unnamed:_1": "2017-05-31 00:00:00",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "RMK Engineering College"
+                    },
+                    {
+                        "DURATION": "2017-06-09 00:00:00",
+                        "Unnamed:_1": "Till date",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Cloth dryer",
+                        "PATENT_TYPE_(UTILITY)": "Design",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Publised",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2024-03-28"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Detection of sludge in critical region",
+                        "PATENT_TYPE_(UTILITY)": "Patent",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Publised",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2022-12-23"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Deepak Kumar Murugan, Hitesh Panchal, Zafar Said & S. Shankaranarayanan ",
+                        "PAPER_TITLE": "Air stone-induced microbubble agitation: a strategy for solar still performance enhancement",
+                        "JOURNAL_NAME": "Clean Technologies and Environmental policy",
+                        "PAGE_NO": "417-434",
+                        "VOL_NO_/_ISSUE_NO": "26",
+                        "MONTH_&_YEAR": "2023-11-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Ganesh Radhakrishnan, Saravanan Mathialagan, S Shankaranarayanan, J Paulmar Pushparaj",
+                        "PAPER_TITLE": "Investigation on the machinability of TiN nano particulate reinforced magnesium matrix composite",
+                        "JOURNAL_NAME": "Materials Today: Proceedings",
+                        "PAGE_NO": "2281-2288",
+                        "VOL_NO_/_ISSUE_NO": "72",
+                        "MONTH_&_YEAR": "2023-01-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "J Paulmar Pushparaj, R Jeremiah, D Prabhakaran, S Shankaranarayanan, D David, D Billy, K Giridharan",
+                        "PAPER_TITLE": "Experimental investigation and Optimization of FSW on Eglin Steel",
+                        "JOURNAL_NAME": "OP Conference Series: Materials Science and Engineering",
+                        "PAGE_NO": "988",
+                        "VOL_NO_/_ISSUE_NO": "988/1",
+                        "MONTH_&_YEAR": "2020-12-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "P J Lokesh Kumar1,*, P Sevvel2, S Shankaranarayanan3, C Jayabalan4, S D Sekar5 and K\nSengottaiyan",
+                        "PAPER_TITLE": "Impact of Tool Rotating Speeds on The Mechanical\nCharacteristics of Dissimilar Friction Stir-Welded AZ80AMg\n– AA6061-Al Joints",
+                        "JOURNAL_NAME": "Journal of\nPolymer & Composites",
+                        "DOI_NUMBER": "10.37591/JoPC",
+                        "PAGE_NO": "s161-s168",
+                        "VOL_NO_/_ISSUE_NO": "2024-01-12 00:00:00",
+                        "MONTH_&_YEAR": "2024-01-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "S.Venkatasubramanian, S.Shankaranarayanan, K.Manisekar",
+                        "PAPER_TITLE": "Optimization of Machining Parameters in Drilling of Al-4.4Cu Alloy Using Taguchi Method",
+                        "CONFERENCE_NAME": "International Conference on Advanced Design and Manufacturing,",
+                        "ORGANIZED_BY": "Sethu Institute of Technology",
+                        "MONTH_&_YEAR": "2014-03-01"
+                    },
+                    {
+                        "PAPER_TITLE": "Study of microstructure and mechanical properties of cast and rolled aluminium alloy",
+                        "CONFERENCE_NAME": "International Conference on Emerging trend in Engieering and Technology",
+                        "ORGANIZED_BY": "Scad college of engineering and Technology",
+                        "MONTH_&_YEAR": "2018-03-01"
+                    },
+                    {
+                        "PAPER_TITLE": "Performance analysis of modified two stroke extended expansion",
+                        "CONFERENCE_NAME": "Recent advancement in Mechanical engineering - Rime 2018",
+                        "ORGANIZED_BY": "RMK Engineering college ",
+                        "MONTH_&_YEAR": "2018-05-01"
+                    },
+                    {
+                        "PAPER_TITLE": "Experimental investigation of Compoiste materials using Hemp fibre reinforced polymer matrix composites",
+                        "CONFERENCE_NAME": "Erams -2019`",
+                        "ORGANIZED_BY": "Velammal Engineering college",
+                        "MONTH_&_YEAR": "2019-03-01"
+                    },
+                    {
+                        "AUTHORS": "S.Shankaranarayanan, Deepak kumar M, Dineshbabu D",
+                        "PAPER_TITLE": "An Overview on Rapid prototyping and Applications",
+                        "CONFERENCE_NAME": "Ada\\vancement in mechanical science (AIMS 2k24)",
+                        "ORGANIZED_BY": "Velammal Engineering college",
+                        "MONTH_&_YEAR": "2024-03-01"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "MISTE - Lifetime - LM105552",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 4,
+                    "Conference_Publications": 5,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 10,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 1,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. SARAVANAN M",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Mechancial Engineering",
+                "Mail_ID": "saravanan.mech@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/013/VEC-013-04-003.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/saravanan-mathialagan-769901122/?originalSubdomain=in",
+                    "googlescholar": "https://scholar.google.com/citations?user=O6ABDp8AAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Saravanan-Mathi",
+                    "orchidprofile": "https://orcid.org/0000-0003-2384-3361",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/LIC-4857-2024",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57669626800"
+                },
+                "Professional_Membership": "Life Member of (LM-105372) Indian society of Technical Education (ISTE) & Member (221664) of International Association of Engineers (IAENG).",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "B.E.",
+                        "BRANCH": "Mechanical Engineering",
+                        "INSTITUTE": "Thanthai Periyar Government Institute of Technology, Anna University, Vellore",
+                        "YEAR": "2007"
+                    },
+                    {
+                        "DEGREE": "M.B.A",
+                        "BRANCH": "System",
+                        "INSTITUTE": "Madras University, Chennai",
+                        "YEAR": "2010"
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "Computer Integrated Manufacturing",
+                        "INSTITUTE": "College of Engineering, Anna University, Guindy, Chennai - 25",
+                        "YEAR": "2013"
+                    },
+                    {
+                        "DEGREE": "(Ph.D)",
+                        "BRANCH": "Composites for Thermal Insulators (Heating Elements)",
+                        "INSTITUTE": "DOME, College of Engineering, Anna University, Guindy, Chennai - 25",
+                        "YEAR": "Pursuing"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2017-06-09 00:00:00",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "3",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "2013-05-08 00:00:00",
+                        "Unnamed:_1": "2017-05-31 00:00:00",
+                        "EXPERIENCE": "4",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "R.M.K. College of Engineering and Technology"
+                    },
+                    {
+                        "DURATION": "2008-01-07 00:00:00",
+                        "Unnamed:_1": "2013-05-07 00:00:00",
+                        "EXPERIENCE": "5",
+                        "Unnamed:_3": "4",
+                        "DESIGNATION": "Quality / R&D / Training Engineer",
+                        "INSTITUTION": "Toshniwal Hyvac Private Limited"
+                    },
+                    {
+                        "DURATION": "2007-06-18 00:00:00",
+                        "Unnamed:_1": "2007-12-11 00:00:00",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "6",
+                        "DESIGNATION": "Quality / Production Engineer ",
+                        "INSTITUTION": "Rudra Blades & Edges "
+                    },
+                    {
+                        "DURATION": "TOTAL",
+                        "EXPERIENCE": "17",
+                        "Unnamed:_3": "1"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "HMI Controller for Converting Older Machines to adapt newer Technologies",
+                        "SPONSORING_AGENCY": "Innovation and Entrepreneurship Development Center (IEDC)",
+                        "AMOUNT": "Rs. 2,00,000",
+                        "YEAR_OF_SANCTION": "2022 - 2023",
+                        "DURATION": "1 Year",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    }
+                ],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Mr. Saravanan Mathialagan",
+                        "PAPER_TITLE": "Mechanical Behaviour of Light Weight Hybrid Metal Matrix Composites for compact Automobile Applications",
+                        "JOURNAL_NAME": "SAE Technical paper series",
+                        "DOI_NUMBER": "-",
+                        "PAGE_NO": "-",
+                        "VOL_NO_/_ISSUE_NO": "-",
+                        "MONTH_&_YEAR": "2024-09-20",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Mr. Saravanan Mathialagan",
+                        "PAPER_TITLE": "Direct metal laser sintering to develop complex contours of AISIMG aluminium alloy",
+                        "JOURNAL_NAME": "Surface Reviews and Letters",
+                        "DOI_NUMBER": "https://doi.org/10.1142/S0218625X24500963",
+                        "PAGE_NO": "1793-6667",
+                        "VOL_NO_/_ISSUE_NO": "-",
+                        "MONTH_&_YEAR": "2024-03-26",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Mr. Saravanan Mathialagan",
+                        "PAPER_TITLE": "Effect of CNT Inclusion on the Thernmo-Mechanical Behaviour of Cu-Ni-Zn-Sn Nano Composite",
+                        "JOURNAL_NAME": "Iranian Journal of Chemistry and Chemical Engineering",
+                        "DOI_NUMBER": "https://www.ijcce.ac.ir/article_705685.html",
+                        "PAGE_NO": "1021-9986",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 42, Issue : 11",
+                        "MONTH_&_YEAR": "2023-11-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Mr. Saravanan Mathialagan",
+                        "PAPER_TITLE": "Influence of Graphene Oxide Nano Particle and Aluminum Powder on Mechanical and Thermal Behaviour of Carbon Fiber Epoxy Composite",
+                        "JOURNAL_NAME": "Materials Today: Proceedings",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.matpr.2020.06.092",
+                        "PAGE_NO": "2358-2368",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 72, Issue : 4",
+                        "MONTH_&_YEAR": "2022-09-27",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Mr. Saravanan Mathialagan",
+                        "PAPER_TITLE": "Investigation on the machinability of TiN nano particulate reinforced magnesium matrix composite",
+                        "JOURNAL_NAME": "Materials Today: Proceedings",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.matpr.2022.09.217",
+                        "PAGE_NO": "2281-2288",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 72, Issue : 4",
+                        "MONTH_&_YEAR": "2022-09-26",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Mr. Saravanan Mathialagan",
+                        "PAPER_TITLE": "Effect of fiber orientation on mechanical behavior of glass fiber reinforced polyethylene terephthalate foam sandwich composite",
+                        "JOURNAL_NAME": "Materials Today: Proceedings",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.matpr.2022.03.623",
+                        "PAGE_NO": "624-628",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 62, Issue : 2",
+                        "MONTH_&_YEAR": "2022-04-04",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Mr. Saravanan Mathialagan",
+                        "PAPER_TITLE": "Multiple regression analysis on drilling performance of Al 2219 – SiCp metal matrix composite by Response surface Methodology (RSM) technique",
+                        "JOURNAL_NAME": "Materials Today: Proceedings",
+                        "DOI_NUMBER": "https://doi.org/10.1016/j.matpr.2022.04.041",
+                        "PAGE_NO": "829-834",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 62, Issue : 2",
+                        "MONTH_&_YEAR": "2022-04-04",
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Mr. Saravanan Mathialagan",
+                        "PAPER_TITLE": "Minimization of Green House Gases Emission and Fossil Fuel Usage using Cylinder De Activation Technique in Multi-Cylinder IC Engines",
+                        "JOURNAL_NAME": ", International Journal for Scientific Research & Development",
+                        "DOI_NUMBER": "Paper ID: IJSRDV4I30865",
+                        "PAGE_NO": "1026-1030",
+                        "VOL_NO_/_ISSUE_NO": "Volume : 4, Issue : 3",
+                        "MONTH_&_YEAR": "2016-06-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Others",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Investigation and analysis of drillability and millablity of copper (cu) with reduced graphene oxide by stir casting process for aerospace applications",
+                        "CONFERENCE_NAME": "National Conference on Advancements in Mechanical Sciences (AIMS-2K24)",
+                        "ORGANIZED_BY": "Department of Mechanical Engineering, Velammal Engineering College-Chennai-64",
+                        "ISBN_/_ISSN_NO": "ISBN : 978-93-340-1620-8",
+                        "MONTH_&_YEAR": "Feb 2024\n"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Experimental study to optimize the machining parameter of lightweight Mg/Wc for bio-medical application",
+                        "CONFERENCE_NAME": "National Conference on Advances in Mechanical Science (AIMS 2k23)",
+                        "ORGANIZED_BY": "Department of Mechanical Engineering, Velammal Engineering College-Chennai-65",
+                        "ISBN_/_ISSN_NO": "ISBN : 978-93-340-1620-8",
+                        "MONTH_&_YEAR": "2023-04-12 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Investigation of mechanical properties of nano carbon fiber reinforced forged structural steel (ASTM A572)",
+                        "CONFERENCE_NAME": "National Conference on Advances in Mechanical Science (AIMS 2k23)",
+                        "ORGANIZED_BY": "Department of Mechanical Engineering, Velammal Engineering College-Chennai-66",
+                        "ISBN_/_ISSN_NO": "ISBN : 978-93-340-1620-8",
+                        "MONTH_&_YEAR": "2023-04-12 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Investigating the Properties of Bio-Plastics Extracted from a Corn-Starch",
+                        "CONFERENCE_NAME": "International Conference on Automation, Robotics, Artificial Intelligence, Mechatronics and Materials - ARAM - 2023",
+                        "ORGANIZED_BY": "Sri Sivasubramaniya Nadar College of Engineering (SSN)",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2023-03-23 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Influence of Graphene Oxide Nano Particle and Aluminum Powder on Mechanical and Thermal Behaviour of Carbon Fibre Epoxy Composite",
+                        "CONFERENCE_NAME": "International Conference On Processing And Characterization Of Materials ICPCM – 22",
+                        "ORGANIZED_BY": "SSN College Of Engineering",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2022-03-08 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Investigation on the Machinability of Tin Nano particulate Reinforced Magnesium Matrix Composite",
+                        "CONFERENCE_NAME": "International Conference On Processing And Characterization Of Materials ICPCM – 22",
+                        "ORGANIZED_BY": "SSN College Of Engineering",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2022-03-08 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Effect of Fiber Orientation On Mechanical Behavior of Glass Fiber Reinforced Polyethylene Terephthalate Foam Sandwich Composite",
+                        "CONFERENCE_NAME": "Second International Conference On\nEngineering Materials, Metallurgy And Manufacturing (ICEMMM 2021)",
+                        "ORGANIZED_BY": "SSN College Of Engineering",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2021-12-16 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Multiple Regression Analysis On Drilling Performance of Al 2219 _ SiCp Metal Matrix Composite Using Response Surface",
+                        "CONFERENCE_NAME": "Second International Conference On\nEngineering Materials, Metallurgy And Manufacturing (ICEMMM 2021)",
+                        "ORGANIZED_BY": "SSN College Of Engineering",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2021-12-16 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Study On Mechanical Behavior Of Nanoparticulate Reinforced Magnesium Matrix Composites",
+                        "CONFERENCE_NAME": "ERAMS 2019",
+                        "ORGANIZED_BY": "Velammal Engineering College, Chennai",
+                        "ISBN_/_ISSN_NO": "ISBN : 978-93-340-1620-8",
+                        "MONTH_&_YEAR": "2019-03-20 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Automatic Safety Valve for Leakage Detection and Arresting the Flammable Gases Using IOT",
+                        "CONFERENCE_NAME": "National Conference on Advances in Mechanical Engineering (AME-2017)",
+                        "ORGANIZED_BY": "Sriram Engineering College, Chennai",
+                        "ISBN_/_ISSN_NO": "ISBN : 978-93-340-1620-8",
+                        "MONTH_&_YEAR": "2017-03-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "Automatic Safety Valve For Flammable Gases",
+                        "CONFERENCE_NAME": "International Conference on Emerging Trends in Engineering Research (ICETER'16)",
+                        "ORGANIZED_BY": "Vels University, Chennai",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2016-02-01 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "M. Saravanan",
+                        "PAPER_TITLE": "A Micromechanical Model for Predicting Thermal Properties of Knitted Fabrics Used in Heating Elements",
+                        "CONFERENCE_NAME": "Proceedings of National Conference on Recent Trends in Manufacturing Technology -RTMT 2013",
+                        "ORGANIZED_BY": "Department of Manufacturing Engineering, College of Engineering Guindy, Anna university, Chennai – 600 025",
+                        "ISBN_/_ISSN_NO": "-",
+                        "MONTH_&_YEAR": "2013-03-01 00:00:00"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "Life Member of (LM-105372) Indian society of Technical Education (ISTE) & Member (221664) of International Association of Engineers (IAENG).",
+                    "Sponsored_Projects": 1,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 8,
+                    "Conference_Publications": 12,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 35,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 7,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+       "type": "NON_TEACHING_FACULTY",
+        "data": [
+            {
+                "Name": "MR. PRASAD J",
+                "Designation": "Lab Instructor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-05-012.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. CHANDRAMOULLI P",
+                "Designation": "Lab Instructor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-05-013.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. ANANDAN A",
+                "Designation": "Lab Instructor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-05-014.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+            {
+                "Name": "MR. ARUMUGAM B",
+                "Designation": "Lab Instructor",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/013/VEC-013-05-015.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    }
+]
