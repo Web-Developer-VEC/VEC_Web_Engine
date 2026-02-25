@@ -22,14 +22,17 @@ async function incubationHandler(fileStream, docs, req, cb, filename, mimetype) 
     let s3Key;
     let name;
     let folder;
+    let ext;
 
     if (collection_type === "facilities") {
+      ext = path.extname(realpdfname) || "";
       name = docs[0].meta_data.name;
-      folder = `temp/static/images/incubation/${name}`;
+      folder = `temp/static/images/incubation/${name}${ext}`;
       s3Key = folder;
     }else if(collection_type === "incubation_committee"){
+      ext = path.extname(realpdfname) || "";
       name = docs[0].meta_data.name;
-      folder = `temp/static/images/incubation/commitee/${name}`;
+      folder = `temp/static/images/incubation/commitee/${name}${ext}`;
       s3Key = folder;
 
     }
