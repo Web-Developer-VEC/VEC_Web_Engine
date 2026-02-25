@@ -65,12 +65,19 @@ const Achievements1 = ({ data }) => {
   const [currentZoneIndex, setCurrentZoneIndex] = useState(0);
   const [originalZones, setOriginalZones] = useState([]);
 
+  // State for Zonal Results changes
+  const [zonalResultsData, setZonalResultsData] = useState(zonalTableData);
+  const [originalZonalResults, setOriginalZonalResults] = useState(zonalTableData);
+  const [zonalResultsYear, setZonalResultsYear] = useState(zonalTableYear);
+  const [originalZonalResultsYear, setOriginalZonalResultsYear] = useState(zonalTableYear);
+
   const [changes, setChanges] = useState([]);
   const [originalData, setOriginalData] = useState({
     zone: coordinator?.zone,
     year: coordinator?.year,
   });
   const hasChanges = changes.length > 0;
+  
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
@@ -123,6 +130,14 @@ const Achievements1 = ({ data }) => {
     setOriginalZones(JSON.parse(JSON.stringify(initialZones))); // ✅ snapshot
     setCurrentZoneIndex(0);
   }, [coordinator]);
+
+  // Initialize Zonal Results data
+  useEffect(() => {
+    setZonalResultsData(zonalTableData);
+    setOriginalZonalResults(zonalTableData);
+    setZonalResultsYear(zonalTableYear);
+    setOriginalZonalResultsYear(zonalTableYear);
+  }, [zonalTableData, zonalTableYear]);
 
   useEffect(() => {
     const z = zones[currentZoneIndex];
@@ -201,7 +216,37 @@ const Achievements1 = ({ data }) => {
       section: `ANNA UNIVERSITY ZONE-${zone}`,
       field: "image",
       imageIndex: id,
+      newValue: file.name,
+      oldValue: isNew ? null : "existing image"
     });
+  };
+
+  // Handler for Zonal Results changes
+  const handleZonalResultsChange = (newData, newYear) => {
+    // Check if data changed
+    if (JSON.stringify(newData) !== JSON.stringify(originalZonalResults)) {
+      upsertChange({
+        action: "update",
+        section: "Zonal Results",
+        field: "data",
+        oldValue: "Previous data",
+        newValue: "Updated data"
+      });
+    }
+    
+    // Check if year changed
+    if (newYear !== originalZonalResultsYear) {
+      upsertChange({
+        action: "update",
+        section: "Zonal Results",
+        field: "year",
+        oldValue: originalZonalResultsYear,
+        newValue: newYear
+      });
+    }
+    
+    setZonalResultsData(newData);
+    setZonalResultsYear(newYear);
   };
 
   const buildAchievementsPayload = ({ action, newData, oldData, isNewZone = false }) => {
@@ -294,38 +339,39 @@ const Achievements1 = ({ data }) => {
       section: `ANNA UNIVERSITY ZONE-${zone}`,
       field: "image",
       imageIndex: newId,
+      newValue: "New Image",
+      oldValue: null
     });
   };
 
   const upsertChange = (newChange) => {
     setChanges((prev) => {
-      const existing = prev.find(
+      // Check if this change already exists
+      const existingIndex = prev.findIndex(
         (ch) =>
           ch.section === newChange.section &&
           ch.field === newChange.field &&
-          ch.imageIndex === newChange.imageIndex,
+          (newChange.imageIndex === undefined || ch.imageIndex === newChange.imageIndex)
       );
-      if (existing?.action === "add" && newChange.action === "delete") {
-        return prev.filter(
-          (ch) =>
-            !(
-              ch.section === newChange.section &&
-              ch.field === newChange.field &&
-              ch.imageIndex === newChange.imageIndex
-            ),
-        );
+
+      // If it's an add followed by delete, remove it completely
+      if (existingIndex !== -1 && prev[existingIndex]?.action === "add" && newChange.action === "delete") {
+        return prev.filter((_, i) => i !== existingIndex);
       }
 
-      const filtered = prev.filter(
-        (ch) =>
-          !(
-            ch.section === newChange.section &&
-            ch.field === newChange.field &&
-            ch.imageIndex === newChange.imageIndex
-          ),
-      );
+      // For updates, replace the existing change with the new one (to keep latest values)
+      if (existingIndex !== -1 && newChange.action === "update") {
+        const newChanges = [...prev];
+        newChanges[existingIndex] = newChange;
+        return newChanges;
+      }
 
-      return [...filtered, newChange];
+      // For new changes, add them
+      if (existingIndex === -1) {
+        return [...prev, newChange];
+      }
+
+      return prev;
     });
   };
 
@@ -350,6 +396,8 @@ const Achievements1 = ({ data }) => {
             section: `ANNA UNIVERSITY ZONE-${zone}`,
             field: "image",
             imageIndex: id,
+            newValue: null,
+            oldValue: `Image ${id}`
           });
         }
       });
@@ -364,6 +412,8 @@ const Achievements1 = ({ data }) => {
   const handleDiscardChanges = () => {
     setChanges([]);
     setSelected([]);
+    
+    // Restore coordinator data
     const restoredZones = JSON.parse(JSON.stringify(originalZones));
     setZones(restoredZones);
     const resetIndex = 0;
@@ -382,6 +432,11 @@ const Achievements1 = ({ data }) => {
     setSavedData(formattedImages);
     setSavedZone(restoredZone?.zone || "");
     setSavedYear(restoredZone?.year || "");
+    
+    // Restore Zonal Results data
+    setZonalResultsData(originalZonalResults);
+    setZonalResultsYear(originalZonalResultsYear);
+    
     setEditMode(false);
     setShowRequestButtons(false);
     setShowRequestModal(false);
@@ -392,53 +447,65 @@ const Achievements1 = ({ data }) => {
   const handleRevertChange = (change, index) => {
     setChanges((prev) => prev.filter((_, i) => i !== index));
 
-    setZones((prevZones) => {
-      const updatedZones = [...prevZones];
-      const originalZone = originalZones[currentZoneIndex];
-      const currentZone = updatedZones[currentZoneIndex];
-
-      if (!originalZone || !currentZone) return prevZones;
-
-      switch (change.action) {
-        case "add":
-          if (change.field === "new_zone") {
-            updatedZones.pop();
-            setCurrentZoneIndex(0);
-          } else {
-            currentZone.images = originalZone.images;
-          }
-          break;
-
-        case "delete":
-          currentZone.images = originalZone.images;
-          break;
-
-        case "update":
-          if (change.field === "image") {
-            currentZone.images = originalZone.images;
-          }
-          if (change.field === "zone") {
-            currentZone.zone = originalZone.zone;
-            setZone(originalZone.zone);
-          }
-          if (change.field === "year") {
-            currentZone.year = originalZone.year;
-            setYear(originalZone.year);
-          }
-          break;
-
-        default:
-          break;
+    if (change.section === "Zonal Results") {
+      // Revert Zonal Results changes
+      if (change.field === "data") {
+        setZonalResultsData(originalZonalResults);
       }
+      if (change.field === "year") {
+        setZonalResultsYear(originalZonalResultsYear);
+      }
+    } else {
+      // Revert coordinator changes
+      setZones((prevZones) => {
+        const updatedZones = [...prevZones];
+        const originalZone = originalZones[currentZoneIndex];
+        const currentZone = updatedZones[currentZoneIndex];
 
-      return updatedZones;
-    });
-    const restored = originalZones[currentZoneIndex];
-    if (restored) {
-      setTempData(restored.images);
-      setSavedData(restored.images);
-      setZone(restored.zone);
-      setYear(restored.year);
+        if (!originalZone || !currentZone) return prevZones;
+
+        switch (change.action) {
+          case "add":
+            if (change.field === "new_zone") {
+              updatedZones.pop();
+              setCurrentZoneIndex(0);
+            } else {
+              currentZone.images = originalZone.images;
+            }
+            break;
+
+          case "delete":
+            currentZone.images = originalZone.images;
+            break;
+
+          case "update":
+            if (change.field === "image") {
+              currentZone.images = originalZone.images;
+            }
+            if (change.field === "zone") {
+              currentZone.zone = originalZone.zone;
+              setZone(originalZone.zone);
+            }
+            if (change.field === "year") {
+              currentZone.year = originalZone.year;
+              setYear(originalZone.year);
+            }
+            break;
+
+          default:
+            break;
+        }
+
+        return updatedZones;
+      });
+      
+      const restored = originalZones[currentZoneIndex];
+      if (restored) {
+        setTempData(restored.images);
+        setSavedData(restored.images);
+        setZone(restored.zone);
+        setYear(restored.year);
+      }
     }
   };
 
@@ -449,27 +516,29 @@ const Achievements1 = ({ data }) => {
     setShowDeleteModal(false);
   };
 
-  // Fixed: Added zone and year changes to the changes array
+  // Fixed: Added zone changes with actual values
   const handleZoneChange = (e) => {
     const value = e.target.value;
+    const oldValue = zone; // Get current value before change
     setZone(value);
     updateCurrentZone({ zone: value });
     
-    // Add to changes array if different from saved
+    // Add to changes array with actual values
     if (value !== savedZone) {
       upsertChange({
         action: "update",
         section: `ANNA UNIVERSITY ZONE-${value}`,
         field: "zone",
-        oldValue: savedZone,
+        oldValue: oldValue,
         newValue: value
       });
     }
   };
 
-  // Fixed: Added year changes to the changes array
+  // Fixed: Added year changes with actual values
   const handleYearChange = (e) => {
     const value = e.target.value;
+    const oldValue = year; // Get current value before change
     setYear(value);
     updateCurrentZone({ year: value });
     
@@ -479,12 +548,13 @@ const Achievements1 = ({ data }) => {
         action: "update",
         section: `ANNA UNIVERSITY ZONE-${zone}`,
         field: "year",
-        oldValue: savedYear,
+        oldValue: oldValue,
         newValue: value
       });
     }
   };
 
+  // Fixed: Updated handleSave to include actual values
   const handleSave = () => {
     if (!zone || !year) {
       toast.error("Zone and Year are mandatory!");
@@ -501,6 +571,8 @@ const Achievements1 = ({ data }) => {
           action: "update",
           section: sectionName,
           field: "zone",
+          oldValue: savedZone,
+          newValue: zone
         });
       }
 
@@ -509,8 +581,31 @@ const Achievements1 = ({ data }) => {
           action: "update",
           section: sectionName,
           field: "year",
+          oldValue: savedYear,
+          newValue: year
         });
       }
+    }
+
+    // Check for Zonal Results changes
+    if (JSON.stringify(zonalResultsData) !== JSON.stringify(originalZonalResults)) {
+      newChanges.push({
+        action: "update",
+        section: "Zonal Results",
+        field: "data",
+        oldValue: "Previous data",
+        newValue: "Updated data"
+      });
+    }
+
+    if (zonalResultsYear !== originalZonalResultsYear) {
+      newChanges.push({
+        action: "update",
+        section: "Zonal Results",
+        field: "year",
+        oldValue: originalZonalResultsYear,
+        newValue: zonalResultsYear
+      });
     }
 
     setSavedZone(zone);
@@ -532,6 +627,14 @@ const Achievements1 = ({ data }) => {
     const files = [];
 
     changes.forEach((change) => {
+      // Handle Zonal Results changes separately
+      if (change.section === "Zonal Results") {
+        // You'll need to implement the payload structure for Zonal Results
+        // based on your API requirements
+        console.log("Zonal Results change:", change);
+        return;
+      }
+
       // 🔎 Extract zone number from section
       const zoneNumber = change.section?.split("ZONE-")[1];
       const zoneIndex = zones.findIndex(
@@ -690,6 +793,8 @@ const Achievements1 = ({ data }) => {
         action: "add",
         section: `ANNA UNIVERSITY ZONE-${newZoneNumber}`,
         field: "new_zone",
+        newValue: `Zone ${newZoneNumber}`,
+        oldValue: null
       },
     ]);
 
@@ -941,7 +1046,12 @@ const Achievements1 = ({ data }) => {
           <div ref={sectionRef}>
             {showZone === "zone" ? (
               <div className="sport-zone-container mb-10">
-                <ZonalResults data={zonalTableData} year={zonalTableYear} />
+                <ZonalResults 
+                  data={zonalResultsData} 
+                  year={zonalResultsYear}
+                  onDataChange={handleZonalResultsChange}
+                  editMode={editMode}
+                />
                 <WinnerSlider data={zoneWinnerData} />
               </div>
             ) : showZone === "interzone" ? (
@@ -1021,8 +1131,7 @@ const Achievements1 = ({ data }) => {
             </h2>
             <p className="text-sm text-red-500 mb-4">
               Note: Your changes will stay pending until approved by the
-              superior admin. Once approved, they will be applied automatically
-              to the live site.
+              superior admin. Once approved, they will go live.
             </p>
 
             <table className="w-full text-sm text-black dark:text-white border">
@@ -1043,14 +1152,37 @@ const Achievements1 = ({ data }) => {
                       {change.action === "update" && "Updated"}
                     </td>
                     <td className="py-2 border">{change.section}</td>
-                    <td className="py-2 flex items-center justify-center border gap-2">
-                      <span className="px-2 py-1 bg-yellow-100 text-black rounded-md">
-                        {change.field === "zone" && "Zone"}
-                        {change.field === "year" && "Year"}
-                        {change.field === "new_zone" && "New Zone"}
-                        {change.field === "image" &&
-                          `Image - ${change.imageIndex}`}
-                      </span>
+                    <td className="py-2 border">
+                      {change.field === "zone" && (
+                        <span className="px-2 py-1 bg-yellow-100 text-black rounded-md block">
+                          Zone: {change.oldValue} → {change.newValue}
+                        </span>
+                      )}
+                      {change.field === "year" && change.section !== "Zonal Results" && (
+                        <span className="px-2 py-1 bg-yellow-100 text-black rounded-md block">
+                          Year: {change.oldValue} → {change.newValue}
+                        </span>
+                      )}
+                      {change.field === "year" && change.section === "Zonal Results" && (
+                        <span className="px-2 py-1 bg-yellow-100 text-black rounded-md block">
+                          Zonal Results Year: {change.oldValue} → {change.newValue}
+                        </span>
+                      )}
+                      {change.field === "data" && (
+                        <span className="px-2 py-1 bg-yellow-100 text-black rounded-md block">
+                          Zonal Results Data Updated
+                        </span>
+                      )}
+                      {change.field === "new_zone" && (
+                        <span className="px-2 py-1 bg-yellow-100 text-black rounded-md block">
+                          New Zone Added: {change.newValue}
+                        </span>
+                      )}
+                      {change.field === "image" && (
+                        <span className="px-2 py-1 bg-yellow-100 text-black rounded-md block">
+                          Image - {change.imageIndex} {change.action === "delete" ? "🗑️ Deleted" : change.action === "add" ? "➕ Added" : "✏️ Updated"}
+                        </span>
+                      )}
                     </td>
                     <td className="py-2 border">
                       <button
