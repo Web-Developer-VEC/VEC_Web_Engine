@@ -3,7 +3,7 @@ import LoadComp from "../../LoadComp";
 import { Send, Plus, Trash2, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAdminRequest } from "../../../hooks/useAdminRequest"; 
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function Seedmoney({ data }) {
   const { sendRequest, loading: requestLoading } = useAdminRequest();
@@ -12,16 +12,17 @@ export default function Seedmoney({ data }) {
   const [isSavedOnce, setIsSavedOnce] = useState(false);
   const [editableData, setEditableData] = useState([]);
   const [selectedRows, setSelectedRows] = useState(new Set());
-  const [sessionChanges, setSessionChanges] = useState([]);
-  const [allChanges, setAllChanges] = useState([]);
+  const [sessionChanges, setSessionChanges] = useState([]); // changes for current session
+  const [allChanges, setAllChanges] = useState([]); // saved changes across sessions
   const [showRequestModal, setShowRequestModal] = useState(false);
 
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [indexToDelete, setIndexToDelete] = useState(null);
 
-  const originalRef = useRef([]);
-  const sessionBaseRef = useRef([]);
+  const originalRef = useRef([]); // original loaded data
+  const sessionBaseRef = useRef([]); // snapshot at start of edit session
 
+  // --- Initialize and normalize incoming data, add stable __id and slNo ---
   useEffect(() => {
     if (Array.isArray(data)) {
       const safeData = data.map((d, idx) => ({
@@ -70,6 +71,7 @@ export default function Seedmoney({ data }) {
     setSelectedRows(nxt);
   };
 
+  // --- Add row: create new row with stable __id and record a session change (add) with id ---
   const handleAddRow = () => {
     const newRow = {
       __id: `${Date.now()}-${Math.random()}`,
@@ -83,26 +85,51 @@ export default function Seedmoney({ data }) {
         },
       ],
     };
-    setEditableData((p) => [...p, newRow]);
-    setSessionChanges((p) => [...p, { index: editableData.length, action: "add", changes: {} }]);
+
+    setEditableData((p) => {
+      const next = [...p, newRow];
+      return next;
+    });
+
+    setSessionChanges((p) => [
+      ...p,
+      {
+        id: newRow.__id,
+        index: editableData.length,
+        action: "add",
+        changes: {},
+        // no original data for add
+      },
+    ]);
   };
 
+  // --- Field change (either row-level or fund-level) ---
+  // We base merging/lookup on row.__id so index shifts won't break mapping
   const handleFieldChange = (rowIndex, field, value, fundIndex = null) => {
     const newData = [...editableData];
+    const row = newData[rowIndex];
+    if (!row) return;
+
+    const rowId = row.__id;
     let oldVal;
 
     if (fundIndex !== null) {
-      oldVal = newData[rowIndex].funds[fundIndex][field];
-      newData[rowIndex].funds[fundIndex][field] = value;
+      oldVal = row.funds[fundIndex]?.[field];
+      // ensure funds array exists
+      if (!Array.isArray(row.funds)) row.funds = [];
+      row.funds[fundIndex] = { ...(row.funds[fundIndex] || {}), [field]: value };
     } else {
-      oldVal = newData[rowIndex][field];
-      newData[rowIndex][field] = value;
+      oldVal = row[field];
+      row[field] = value;
     }
+
     setEditableData(newData);
 
     setSessionChanges((prev) => {
       const cp = [...prev];
-      const existingIndex = cp.findIndex((c) => c.index === rowIndex && c.action !== "delete");
+      // find existing change for this row by id (and not a delete)
+      const existingIndex = cp.findIndex((c) => c.id === rowId && c.action !== "delete");
+
       const key = fundIndex !== null ? `${field}_${fundIndex}` : field;
 
       if (existingIndex >= 0) {
@@ -115,9 +142,13 @@ export default function Seedmoney({ data }) {
           },
         };
       } else {
+        // determine if row existed at session start
+        const existedAtSessionStart =
+          Boolean(sessionBaseRef.current?.find((r) => r.__id === rowId));
         cp.push({
+          id: rowId,
           index: rowIndex,
-          action: sessionBaseRef.current[rowIndex] ? "edit" : "add",
+          action: existedAtSessionStart ? "edit" : "add",
           changes: { [key]: { old: oldVal, new: value } },
         });
       }
@@ -125,6 +156,7 @@ export default function Seedmoney({ data }) {
     });
   };
 
+  // --- Save current session changes into allChanges and mark not editing ---
   const handleSave = () => {
     if (sessionChanges.length === 0) {
       toast.info("No changes to save.");
@@ -164,44 +196,65 @@ export default function Seedmoney({ data }) {
     setShowRequestModal(true);
   };
 
+  // --- Undo change: use id to find affected row(s) ---
   const handleUndoChange = (change) => {
     const newEditable = [...editableData];
 
     if (change.action === "add") {
-      newEditable.splice(change.index, 1);
+      // remove row with matching id
+      const idx = newEditable.findIndex((r) => r.__id === change.id);
+      if (idx >= 0) newEditable.splice(idx, 1);
     } else if (change.action === "edit") {
-      newEditable[change.index] = JSON.parse(JSON.stringify(sessionBaseRef.current[change.index]));
+      // revert to sessionBaseRef snapshot for that id (if exists)
+      const original = sessionBaseRef.current.find((r) => r.__id === change.id);
+      const idx = newEditable.findIndex((r) => r.__id === change.id);
+      if (original && idx >= 0) {
+        newEditable[idx] = JSON.parse(JSON.stringify(original));
+      }
     } else if (change.action === "delete") {
+      // re-insert deletedItem at original index (if provided) otherwise push end
+      const insertAt = typeof change.index === "number" ? change.index : newEditable.length;
       if (change.deletedItem) {
-        newEditable.splice(change.index, 0, change.deletedItem);
+        // avoid duplicate if already present
+        const exists = newEditable.find((r) => r.__id === change.deletedItem.__id);
+        if (!exists) {
+          newEditable.splice(Math.min(Math.max(insertAt, 0), newEditable.length), 0, change.deletedItem);
+        }
       }
     }
 
+    // fix slNo
     newEditable.forEach((r, i) => (r.slNo = i + 1));
 
     setEditableData(newEditable);
-    setAllChanges((prev) => prev.filter((c) => c !== change));
-    setSessionChanges((prev) => prev.filter((c) => c !== change));
+
+    // remove this change from tracked lists
+    setAllChanges((prev) => prev.filter((c) => !(c.id === change.id && c.action === change.action && c.index === change.index)));
+    setSessionChanges((prev) => prev.filter((c) => !(c.id === change.id && c.action === change.action && c.index === change.index)));
+
+    toast.info("Change undone.");
   };
-  
+
   const normalizeSeedRow = (row) => ({
     name: row?.name ?? "",
     funds: Array.isArray(row?.funds)
       ? row.funds.map((f) => ({
-          amount_in_rupees:
-            f?.amount_in_rupees === "" ? "" : Number(f?.amount_in_rupees),
+          amount_in_rupees: f?.amount_in_rupees === "" ? "" : Number(f?.amount_in_rupees),
           organization: f?.organization ?? "",
           year: f?.year ?? "",
         }))
       : [],
   });
 
+  // --- Build payloads using stable ids, not numeric indices ---
   const buildSeedMoneyPayloads = () => {
     const changes = getChangesForRequest();
     const payloads = [];
 
+    // For each change, find the current row by id (if needed)
     for (const ch of changes) {
       if (ch.action === "delete") {
+        // deletedItem should be present
         payloads.push({
           collectionName: "incubation",
           collection_type: "seed_money",
@@ -212,28 +265,47 @@ export default function Seedmoney({ data }) {
         continue;
       }
 
-      const currentRow = editableData[ch.index];
-      if (!currentRow) continue;
-
+      // For add and edit, find current row by id (safer than index)
+      const currentRow = editableData.find((r) => r.__id === ch.id);
+      // note: for add it should exist (we added it to editableData), for edit it should also exist
       if (ch.action === "add") {
-        payloads.push({
-          collectionName: "incubation",
-          collection_type: "seed_money",
-          action: "insert",
-          title: "insert in seed_money",
-          meta_data: normalizeSeedRow(currentRow),
-        });
+        if (!currentRow) {
+          // fallback: if not found by id, try by index
+          // (defensive; typically shouldn't happen)
+          const fallback = editableData[ch.index];
+          if (!fallback) continue;
+          payloads.push({
+            collectionName: "incubation",
+            collection_type: "seed_money",
+            action: "insert",
+            title: "insert in seed_money",
+            meta_data: normalizeSeedRow(fallback),
+          });
+        } else {
+          payloads.push({
+            collectionName: "incubation",
+            collection_type: "seed_money",
+            action: "insert",
+            title: "insert in seed_money",
+            meta_data: normalizeSeedRow(currentRow),
+          });
+        }
         continue;
       }
 
       if (ch.action === "edit") {
-        const originalRow = sessionBaseRef.current?.[ch.index];
+        const originalRow = sessionBaseRef.current?.find((r) => r.__id === ch.id);
+        // defensive: if we couldn't find original in sessionBase (e.g., session started earlier),
+        // attempt to find in originalRef
+        const originalToUse = originalRow ?? originalRef.current?.find((r) => r.__id === ch.id);
+        if (!currentRow) continue; // nothing to send
+
         payloads.push({
           collectionName: "incubation",
           collection_type: "seed_money",
           action: "update",
           title: "update in seed_money",
-          original_data: normalizeSeedRow(originalRow),
+          original_data: normalizeSeedRow(originalToUse || currentRow),
           meta_data: normalizeSeedRow(currentRow),
         });
       }
@@ -256,15 +328,18 @@ export default function Seedmoney({ data }) {
     toast.success(res.message || "Final request submitted");
     setShowRequestModal(false);
 
+    // reset trackers
     setAllChanges([]);
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
 
+    // update snapshots to current state (deep copy)
     originalRef.current = JSON.parse(JSON.stringify(editableData));
     sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
   };
 
+  // --- Delete multi / single flow (record deletedItem with id & original index) ---
   const openDeleteMultiple = () => {
     if (selectedRows.size === 0) {
       toast.info("No rows selected for delete");
@@ -281,12 +356,24 @@ export default function Seedmoney({ data }) {
     if (indexToDelete === "multiple") {
       const toDelete = Array.from(selectedRows).sort((a, b) => b - a);
       for (const idx of toDelete) {
-        newChanges.push({ index: idx, action: "delete", deletedItem: newData[idx] });
+        const deletedItem = newData[idx];
+        newChanges.push({
+          id: deletedItem.__id,
+          index: idx,
+          action: "delete",
+          deletedItem: JSON.parse(JSON.stringify(deletedItem)),
+        });
         newData.splice(idx, 1);
       }
     } else if (typeof indexToDelete === "number") {
       const idx = indexToDelete;
-      newChanges.push({ index: idx, action: "delete", deletedItem: newData[idx] });
+      const deletedItem = newData[idx];
+      newChanges.push({
+        id: deletedItem.__id,
+        index: idx,
+        action: "delete",
+        deletedItem: JSON.parse(JSON.stringify(deletedItem)),
+      });
       newData.splice(idx, 1);
     }
 
@@ -368,9 +455,7 @@ export default function Seedmoney({ data }) {
                       <input
                         className="border px-0 py-1 w-full"
                         value={fund.amount_in_rupees ?? ""}
-                        onChange={(e) =>
-                          handleFieldChange(i, "amount_in_rupees", e.target.value, j)
-                        }
+                        onChange={(e) => handleFieldChange(i, "amount_in_rupees", e.target.value, j)}
                       />
                     ) : (
                       fund.amount_in_rupees || "-"
@@ -382,9 +467,7 @@ export default function Seedmoney({ data }) {
                       <input
                         className="border px-0 py-1 w-full"
                         value={fund.organization ?? ""}
-                        onChange={(e) =>
-                          handleFieldChange(i, "organization", e.target.value, j)
-                        }
+                        onChange={(e) => handleFieldChange(i, "organization", e.target.value, j)}
                       />
                     ) : (
                       fund.organization || "-"
@@ -490,27 +573,40 @@ export default function Seedmoney({ data }) {
                   <th className="py-2 px-3 border">Undo</th>
                 </tr>
               </thead>
+
               <tbody>
-                {getChangesForRequest().map((c, idx) => (
-                  <tr key={idx} className="even:bg-white odd:bg-gray-50">
-                    <td className="py-2 px-3 border text-blue-600">
-                      {c.action === "edit" ? "Edited" : c.action === "add" ? "Added" : "Deleted"}
-                    </td>
-                    <td className="py-2 px-3 border">{c.index + 1}</td>
-                    <td className="py-2 px-3 border text-[13px]">
-                      {c.action === "edit"
-                        ? Object.keys(c.changes || {}).join(", ")
-                        : c.action === "add"
+                {getChangesForRequest().map((c, idx) => {
+                  // derive row display info: prefer deletedItem for delete, otherwise current editableData by id
+                  const rowData =
+                    c.action === "delete"
+                      ? c.deletedItem
+                      : editableData.find((r) => r.__id === c.id) || editableData[c.index];
+
+                  return (
+                    <tr key={idx} className="even:bg-white odd:bg-gray-50">
+                      <td className="py-2 px-3 border text-blue-600">
+                        {c.action === "edit" ? "Edited" : c.action === "add" ? "Added" : "Deleted"}
+                      </td>
+
+                      {/* Show row name (kept simple as requested) */}
+                      <td className="py-2 px-3 border">{rowData?.name || "-"}</td>
+
+                      <td className="py-2 px-3 border text-[13px]">
+                        {c.action === "edit"
+                          ? "Row updated"
+                          : c.action === "add"
                           ? "New row added"
                           : "Row deleted"}
-                    </td>
-                    <td className="py-2 px-3 border text-center">
-                      <button className="text-red-500" onClick={() => handleUndoChange(c)}>
-                        X
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+
+                      <td className="py-2 px-3 border text-center">
+                        <button className="text-red-500" onClick={() => handleUndoChange(c)}>
+                          X
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
 
