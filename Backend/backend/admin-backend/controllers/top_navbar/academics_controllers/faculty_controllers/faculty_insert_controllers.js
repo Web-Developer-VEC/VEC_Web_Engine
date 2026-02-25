@@ -7,6 +7,9 @@ async function insertData(tempDoc, mainCollection) {
 
         throw new Error("meta data and collection type and category is required");
     }
+    if (collection_type !== "faculty") {
+        throw new Error("Incorrect collection type or route");
+    }
 
     if(category === "head_of_department" || category === "teaching_staff" || category === "non_teaching_staff"){
 

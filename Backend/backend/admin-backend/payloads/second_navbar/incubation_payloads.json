@@ -128,7 +128,8 @@
         "action":"insert",
         "title":"insert in facilities",
         "meta_data":{
-        "name": "dinesh"
+        "name": "dinesh",
+        "image_path": ""
       }
     },
     {
@@ -141,7 +142,8 @@
         "image_path": "/static/images/incubation/dinesh"
       },
         "meta_data":{
-        "name": "hari"
+        "name": "hari",
+        "image_path": "/static/images/incubation/hari"
       }
     },
     {

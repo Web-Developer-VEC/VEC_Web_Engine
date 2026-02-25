@@ -47,15 +47,25 @@ function tempstoreBusboy(req, res, next) {
 
     const handler =
       busboyModels[collectionName]?.[section] || busboyModels[collectionName];
+
+
     if (!handler) {
-      throw new Error(`Handler not found. Collection is ${collectionName}`);
+      file.resume();
+
+      req._fileUploadPromises.push(
+        Promise.resolve({
+          success:false,
+          error:`Handler not found. Collection is ${collectionName}`
+        })
+      )
+      return
     }
 
     console.log("Handler check up", handler);
     
 
     // Wrap handler in a promise so we can wait for it
-    const uploadPromise = new Promise((resolve, reject) => {
+    const uploadPromise = new Promise((resolve) => {
       handler(
         file,
         docs,
@@ -63,13 +73,14 @@ function tempstoreBusboy(req, res, next) {
         (err) => {
           if (err) {
             console.error("Handler error:", err.message);
-            reject(err);
+            resolve({
+              success:false,error : err.message});
           } else {
             console.log(
               "✅ Handler finished. Uploaded files so far:",
               req.uploadedFiles,
             );
-            resolve();
+            resolve({success:true});
           }
         },
         filename,
@@ -81,23 +92,37 @@ function tempstoreBusboy(req, res, next) {
   });
 
   busboy.on("finish", async () => {
-    try {
-      if (!req.docsFromBusboy.length) {
-        return res.status(400).json({ error: "docs must be provided" });
-      }
-
-      // ✅ Wait for all uploads to finish
-      await Promise.all(req._fileUploadPromises);
-
-      console.log("🚀 All uploads completed. Files:", req.uploadedFiles);
-      next();
-    } catch (err) {
-      console.error("Upload error:", err);
-      res
-        .status(500)
-        .json({ error: "File upload failed", details: err.message });
+  try {
+    if (!req.docsFromBusboy.length) {
+      return res.status(400).json({ error: "docs must be provided" });
     }
-  });
+
+    const results = await Promise.allSettled(req._fileUploadPromises);
+
+    const failed = results.find      ((r) =>
+        r.status === "fulfilled" &&
+        r.value &&
+        r.value.success === false
+    );
+
+
+    if (failed) {
+      return res.status(400).json({
+        error: failed.value.error
+      });
+    }
+
+    console.log("🚀 All uploads completed. Files:", req.uploadedFiles);
+
+    next();
+  } catch (err) {
+    console.error("Upload error:", err);
+    res.status(500).json({
+      error: "Unexpected upload failure",
+      details: err.message,
+    });
+  }
+});
 
   req.pipe(busboy);
 }

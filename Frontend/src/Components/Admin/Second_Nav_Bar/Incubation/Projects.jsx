@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import LoadComp from "../../LoadComp";
-import { Pencil, Plus, Send, Trash2, X } from "lucide-react";
+import { Pencil, Plus, Send, Trash2, X, Trash } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 import { useAdminRequest } from "../../../hooks/useAdminRequest"; // <-- adjust path if needed
 
@@ -11,7 +11,7 @@ function useCountUp(target, duration = 1500) {
     let startTime = performance.now();
     const animate = (now) => {
       const progress = Math.min((now - startTime) / duration, 1);
-      setCount(Math.floor(progress * target));
+      setCount(Math.floor(progress * (target || 0)));
       if (progress < 1) requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
@@ -32,7 +32,7 @@ export function StatCard({ number, label, color, isEditing, onDelete, onChange }
             type="number"
             value={number ?? ""}
             placeholder="Enter the stat"
-            onChange={(e) => onChange("number", parseInt(e.target.value) || 0)}
+            onChange={(e) => onChange("number", parseInt(e.target.value || "0", 10) || 0)}
             className="w-40 text-center text-text "
           />
           <input
@@ -44,6 +44,7 @@ export function StatCard({ number, label, color, isEditing, onDelete, onChange }
           <button
             className="p-1 text-12 absolute top-0 right-0 text-prim bg-red-500 rounded-full"
             onClick={onDelete}
+            title="Delete card"
           >
             <Trash2 />
           </button>
@@ -66,10 +67,10 @@ export default function Projects({ data }) {
   const { sendRequest, loading: requestLoading } = useAdminRequest();
 
   const [projects, setProjects] = useState([]);
-  const [deletedProjects, setDeletedProjects] = useState([]);
-  const [mode, setMode] = useState("view");
-  const originalRef = useRef([]);
-  const savedRef = useRef([]);
+  const [deletedProjects, setDeletedProjects] = useState([]); // stores deleted sections (with cards)
+  const [mode, setMode] = useState("view"); // "view" | "editing" | "postSave"
+  const originalRef = useRef([]); // ORIGINAL snapshot (used as baseline for diffs / payloads)
+  const savedRef = useRef([]); // local saved snapshot (not used for payloads now)
   const [unsavedChanges, setUnsavedChanges] = useState(false);
   const [selectedRows, setSelectedRows] = useState(new Set());
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
@@ -81,18 +82,24 @@ export default function Projects({ data }) {
   const projectRefs = useRef({});
 
   const deepClone = (v) => JSON.parse(JSON.stringify(v));
+
+  // Ensure each section has __key and each card has __cid
   const attachKeys = (list = []) =>
-    list.map((p) => ({
+    (list || []).map((p) => ({
       ...p,
       __key: p.__key || p.id || uuidv4(),
       isNew: p.isNew || false,
-      content: Array.isArray(p.content) ? p.content : [],
+      content: (p.content || []).map((c) => ({
+        __cid: c.__cid || uuidv4(),
+        number: c.number ?? null,
+        label: c.label ?? "",
+      })),
     }));
 
   useEffect(() => {
     const withKeys = attachKeys(data || []);
     setProjects(deepClone(withKeys));
-    originalRef.current = deepClone(withKeys);
+    originalRef.current = deepClone(withKeys); // keep as baseline for diffs
     savedRef.current = deepClone(withKeys);
     setDeletedProjects([]);
     setSelectedRows(new Set());
@@ -100,59 +107,63 @@ export default function Projects({ data }) {
     setUnsavedChanges(false);
   }, [data]);
 
-  const handleUndoChange = (change) => {
-    if (change.type === "Added") {
-      setProjects((prev) => prev.filter((p) => p.__key !== change.project.__key));
-    } else if (change.type === "Deleted") {
-      setProjects((prev) => [...prev, change.project]);
-      setDeletedProjects((prev) => prev.filter((p) => p.__key !== change.project.__key));
-    } else if (change.type === "Edited") {
-      const saved = savedRef.current.find((p) => p.__key === change.project.__key);
-      if (saved) {
-        setProjects((prev) =>
-          prev.map((p) => (p.__key === saved.__key ? deepClone(saved) : p))
-        );
-      }
-    }
-    setUnsavedChanges(true);
-  };
-
+  // track unsaved changes: compare savedRef.current vs projects by stripping transient meta
   useEffect(() => {
     const stripMeta = (arr) =>
       (arr || []).map((p) => ({
-        category: p.category,
-        content: (p.content || []).map((s) => ({
-          label: s.label,
-          number: s.number,
-        })),
+        __key: p.__key,
+        category: p.category ?? "",
+        content: (p.content || []).map((s) => ({ __cid: s.__cid, label: s.label ?? "", number: s.number ?? null })),
       }));
-    const savedStr = JSON.stringify(stripMeta(savedRef.current));
-    const curStr = JSON.stringify(stripMeta(projects));
+    const savedStr = JSON.stringify(stripMeta(savedRef.current || []));
+    const curStr = JSON.stringify(stripMeta(projects || []));
     setUnsavedChanges(savedStr !== curStr || deletedProjects.length > 0);
   }, [projects, deletedProjects]);
 
-  const handleEdit = () => setMode("editing");
-  const handleCancel = () => {
-    setProjects(deepClone(savedRef.current));
-    setDeletedProjects([]);
-    setUnsavedChanges(false);
-    const hasSavedChanges = JSON.stringify(savedRef.current) !== JSON.stringify(originalRef.current);
-    setMode(hasSavedChanges ? "postSave" : "view");
+  // helpers to add card with __cid
+  const handleAddCard = (sectionIndex) => {
+    setProjects((prev) => {
+      const copy = deepClone(prev);
+      const content = copy[sectionIndex].content || [];
+      if (content.length < 3) {
+        content.push({ __cid: uuidv4(), number: null, label: "" });
+        copy[sectionIndex].content = content;
+      }
+      return copy;
+    });
   };
 
-  const handleSave = () => {
-    setUnsavedChanges(false);
-    setMode("postSave");
+  const handleStatChange = (sectionIndex, statIndex, field, value) => {
+    setProjects((prev) => {
+      const copy = deepClone(prev);
+      copy[sectionIndex].content[statIndex][field] = value;
+      return copy;
+    });
   };
 
-  const handleRequest = () => setFinalPopupOpen(true);
+  const handleStatDelete = (sectionIndex, statIndex) => {
+    setProjects((prev) => {
+      const copy = deepClone(prev);
+      // capture deleted card if needed in deletedProjects? we rely on originalRef for diffs
+      copy[sectionIndex].content.splice(statIndex, 1);
+      return copy;
+    });
+  };
 
-  const handleDiscardAll = () => {
-    setProjects(deepClone(originalRef.current));
-    savedRef.current = deepClone(originalRef.current);
-    setDeletedProjects([]);
-    setUnsavedChanges(false);
-    setMode("view");
+  const handleAddNew = () => {
+    const key = uuidv4();
+    const newProject = { __key: key, category: "", isNew: true, content: [] };
+    setProjects((prev) => [...prev, newProject]);
+    lastAddedKeyRef.current = key;
+  };
+
+  const handleDeleteSelected = () => {
+    const toDelete = projects.filter((_, idx) => selectedRows.has(idx));
+    if (toDelete.length === 0) return;
+    setDeletedProjects((prev) => [...prev, ...toDelete]); // track removed sections for payloads
+    setProjects((prev) => prev.filter((_, idx) => !selectedRows.has(idx)));
+    setSelectedRows(new Set());
+    setDeleteConfirmOpen(false);
   };
 
   const handleCheckboxToggle = (i) => {
@@ -161,48 +172,25 @@ export default function Projects({ data }) {
     setSelectedRows(newSet);
   };
 
-  const handleStatChange = (sectionIndex, statIndex, field, value) => {
-    const updated = deepClone(projects);
-    updated[sectionIndex].content[statIndex][field] = value;
-    setProjects(updated);
-    setUnsavedChanges(true);
-  };
-
-  const handleStatDelete = (sectionIndex, statIndex) => {
-    const updated = deepClone(projects);
-    updated[sectionIndex].content.splice(statIndex, 1);
-    setProjects(updated);
-    setUnsavedChanges(true);
-  };
-
-  const handleAddCard = (sectionIndex) => {
-    const updated = deepClone(projects);
-    const content = updated[sectionIndex].content || [];
-    if (content.length < 3) {
-      updated[sectionIndex].content.push({ number: null, label: "" });
-      setProjects(updated);
-      setUnsavedChanges(true);
+  // Undo for changes shown in popup (we will produce diffs that include the project and type)
+  const handleUndoChange = (change) => {
+    if (change.type === "Added") {
+      // remove added project
+      setProjects((prev) => prev.filter((p) => p.__key !== change.project.__key));
+    } else if (change.type === "Deleted") {
+      // restore deleted project
+      setDeletedProjects((prev) => prev.filter((p) => p.__key !== change.project.__key));
+      setProjects((prev) => [...prev, change.project]);
+    } else if (change.type === "Edited") {
+      // revert the edited project to the saved version (savedRef.current)
+      const saved = savedRef.current.find((p) => p.__key === change.project.__key);
+      if (saved) {
+        setProjects((prev) => prev.map((p) => (p.__key === saved.__key ? deepClone(saved) : p)));
+      }
     }
   };
 
-  const handleAddNew = () => {
-    const key = uuidv4();
-    const newProject = { __key: key, category: "", isNew: true, content: [] };
-    setProjects((prev) => [...prev, newProject]);
-    lastAddedKeyRef.current = key;
-    setUnsavedChanges(true);
-  };
-
-  const handleDeleteSelected = () => {
-    const toDelete = projects.filter((_, idx) => selectedRows.has(idx));
-    setDeletedProjects([...deletedProjects, ...toDelete]);
-    const updated = projects.filter((_, idx) => !selectedRows.has(idx));
-    setProjects(updated);
-    setSelectedRows(new Set());
-    setDeleteConfirmOpen(false);
-    setUnsavedChanges(true);
-  };
-
+  // Scrolling/focus after adding
   useEffect(() => {
     const lastKey = lastAddedKeyRef.current;
     if (!lastKey) return;
@@ -213,7 +201,7 @@ export default function Projects({ data }) {
       if (containerRef.current && typeof containerRef.current.scrollTo === "function") {
         try {
           containerRef.current.scrollTo({ top: 0, behavior: "smooth" });
-        } catch (e) {
+        } catch {
           containerRef.current.scrollTop = 0;
         }
       } else {
@@ -225,120 +213,199 @@ export default function Projects({ data }) {
         const input = el.querySelector('input[type="text"], input[type="number"], textarea');
         if (input) input.focus();
       }
-
       lastAddedKeyRef.current = null;
     });
   }, [projects]);
 
-  const getChangedProjects = () => {
-    const changes = [];
-    const saved = deepClone(savedRef.current);
-
-    projects.forEach((proj) => {
-      const orig = saved.find((p) => p.__key === proj.__key);
-      if (!orig) {
-        changes.push({ type: "Added", project: proj });
-      } else {
-        const editedFields = [];
-        proj.content.forEach((row, idx) => {
-          const origRow = orig.content[idx];
-          if (!origRow || row.label !== origRow.label || row.number !== origRow.number) {
-            editedFields.push(`Label: ${row.label || "-"} | Number: ${row.number ?? "-"}`);
-          }
-        });
-        if (proj.category !== orig.category || editedFields.length > 0) {
-          changes.push({ type: "Edited", project: proj, fields: editedFields });
-        }
-      }
-    });
-
-    deletedProjects.forEach((proj) => {
-      changes.push({ type: "Deleted", project: proj });
-    });
-
-    return changes;
-  };
-
- 
+  // normalize for payload
   const normalizeStat = (stat) => ({
     number: stat?.number ?? "",
     label: stat?.label ?? "",
   });
 
+  // Compute diffs between baseline (originalRef) and current projects using UIDs
+  const computeProjectsDiffs = (savedArr = [], currArr = []) => {
+    const diffs = [];
+    const savedByKey = new Map((savedArr || []).map((s) => [s.__key, s]));
+    const currByKey = new Map((currArr || []).map((s) => [s.__key, s]));
+
+    // Deleted sections (present in saved, not in curr)
+    for (const [key, savedSection] of savedByKey.entries()) {
+      if (!currByKey.has(key)) {
+        // every card in this section is considered deleted
+        (savedSection.content || []).forEach((card) =>
+          diffs.push({
+            action: "card-delete",
+            project: savedSection,
+            card,
+            original_data: normalizeStat(card),
+            category: savedSection.category ?? "",
+            __cid: card.__cid,
+          })
+        );
+        // also mark a project-level deleted for the popup (shows whole section deleted)
+        diffs.push({
+          action: "section-removed",
+          project: savedSection,
+        });
+      }
+    }
+
+    // Added sections (present in curr, not in saved)
+    for (const [key, currSection] of currByKey.entries()) {
+      if (!savedByKey.has(key)) {
+        // each card inserted (if any)
+        (currSection.content || []).forEach((card) =>
+          diffs.push({
+            action: "card-add",
+            project: currSection,
+            card,
+            meta_data: normalizeStat(card),
+            category: currSection.category ?? "",
+            __cid: card.__cid,
+          })
+        );
+        diffs.push({
+          action: "section-added",
+          project: currSection,
+        });
+      }
+    }
+
+    // Sections present in both -> compare by __cid
+    for (const [key, currSection] of currByKey.entries()) {
+      if (!savedByKey.has(key)) continue;
+      const savedSection = savedByKey.get(key);
+
+      const categoryChanged = (savedSection.category ?? "") !== (currSection.category ?? "");
+
+      // map cards
+      const savedCardsByCid = new Map((savedSection.content || []).map((c) => [c.__cid, c]));
+      const currCardsByCid = new Map((currSection.content || []).map((c) => [c.__cid, c]));
+
+      // deleted cards
+      for (const [cid, sCard] of savedCardsByCid.entries()) {
+        if (!currCardsByCid.has(cid)) {
+          diffs.push({
+            action: "card-delete",
+            project: savedSection,
+            card: sCard,
+            original_data: normalizeStat(sCard),
+            category: savedSection.category ?? "",
+            __cid: cid,
+          });
+        }
+      }
+
+      // added cards
+      for (const [cid, cCard] of currCardsByCid.entries()) {
+        if (!savedCardsByCid.has(cid)) {
+          diffs.push({
+            action: "card-add",
+            project: currSection,
+            card: cCard,
+            meta_data: normalizeStat(cCard),
+            category: currSection.category ?? "",
+            __cid: cid,
+          });
+        }
+      }
+
+      // edited cards (present in both with changed fields) OR category changed
+      for (const [cid, cCard] of currCardsByCid.entries()) {
+        if (!savedCardsByCid.has(cid)) continue;
+        const sCard = savedCardsByCid.get(cid);
+        const cardChanged =
+          (sCard.label ?? "") !== (cCard.label ?? "") || (sCard.number ?? null) !== (cCard.number ?? null);
+
+        if (cardChanged) {
+          diffs.push({
+            action: "card-edit",
+            project: currSection,
+            card: cCard,
+            original_card: sCard,
+            original_data: normalizeStat(sCard),
+            meta_data: normalizeStat(cCard),
+            category: currSection.category ?? "",
+            __cid: cid,
+          });
+        } else if (categoryChanged) {
+          // category changed but card content same -> emit an update so server knows category changed
+          diffs.push({
+            action: "card-edit-category-only",
+            project: currSection,
+            card: cCard,
+            original_card: sCard,
+            original_data: normalizeStat(sCard),
+            meta_data: normalizeStat(cCard),
+            original_category: savedSection.category ?? "",
+            category: currSection.category ?? "",
+            __cid: cid,
+          });
+        }
+      }
+    }
+
+    // Normalize order
+    const order = {
+      "section-removed": 0,
+      "card-delete": 1,
+      "card-edit": 2,
+      "card-edit-category-only": 2,
+      "card-add": 3,
+      "section-added": 4,
+    };
+    diffs.sort((a, b) => (order[a.action] ?? 99) - (order[b.action] ?? 99));
+
+    return diffs;
+  };
+
+  // Build payloads from diffs (map to your server format), use originalRef as baseline
   const buildProjectsPayloads = () => {
+    const diffs = computeProjectsDiffs(originalRef.current || [], projects || []);
     const payloads = [];
 
-    const savedMap = new Map(savedRef.current.map((p) => [p.__key, p]));
-    projects.forEach((proj) => {
-      const orig = savedMap.get(proj.__key);
-      const maxLen = Math.max(orig?.content?.length || 0, proj?.content?.length || 0);
-
-      if (!orig) {
-        (proj.content || []).forEach((card) => {
+    diffs.forEach((d) => {
+      switch (d.action) {
+        case "card-add":
           payloads.push({
             collectionName: "incubation",
             collection_type: "projects",
             action: "insert",
             title: "insert in projects",
-            category: proj.category || "",
-            meta_data: normalizeStat(card),
+            category: d.category || "",
+            meta_data: normalizeStat(d.card),
           });
-        });
-        return;
-      }
-
-      const categoryChanged = (proj.category || "") !== (orig.category || "");
-
-      for (let i = 0; i < maxLen; i++) {
-        const oldCard = orig.content?.[i];
-        const newCard = proj.content?.[i];
-
-        if (oldCard && !newCard) {
+          break;
+        case "card-delete":
           payloads.push({
             collectionName: "incubation",
             collection_type: "projects",
             action: "delete",
             title: "delete in projects",
-            category: orig.category || "",
-            meta_data: normalizeStat(oldCard),
+            category: d.category || "",
+            meta_data: normalizeStat(d.card),
           });
-          continue;
-        }
-
-        if (!oldCard && newCard) {
+          break;
+        case "card-edit":
+        case "card-edit-category-only":
           payloads.push({
             collectionName: "incubation",
             collection_type: "projects",
-            action: "insert",
-            title: "insert in projects",
-            category: proj.category || "",
-            meta_data: normalizeStat(newCard),
+            action: "update",
+            title: "update in projects",
+            category: d.category || "",
+            original_data: normalizeStat(d.original_card ?? d.card),
+            meta_data: normalizeStat(d.card),
           });
-          continue;
-        }
-
-        if (oldCard && newCard) {
-          const changed =
-            categoryChanged ||
-            (oldCard.label ?? "") !== (newCard.label ?? "") ||
-            (oldCard.number ?? null) !== (newCard.number ?? null);
-
-          if (changed) {
-            payloads.push({
-              collectionName: "incubation",
-              collection_type: "projects",
-              action: "update",
-              title: "update in projects",
-              category: proj.category || "",
-              original_data: normalizeStat(oldCard),
-              meta_data: normalizeStat(newCard),
-            });
-          }
-        }
+          break;
+        default:
+          break;
       }
     });
 
-    deletedProjects.forEach((proj) => {
+    // Also include deletes from deletedProjects (sections removed via deleteSelected)
+    (deletedProjects || []).forEach((proj) => {
       (proj.content || []).forEach((card) => {
         payloads.push({
           collectionName: "incubation",
@@ -354,35 +421,97 @@ export default function Projects({ data }) {
     return payloads;
   };
 
+  // For the popup, produce user-friendly changes list using originalRef baseline
+  const getChangedProjectsForPopup = () => {
+    const diffs = computeProjectsDiffs(originalRef.current || [], projects || []);
+    const changes = [];
+    const addedSections = new Set();
+    const removedSections = new Set();
+
+    diffs.forEach((d) => {
+      if (d.action === "section-added" && !addedSections.has(d.project.__key)) {
+        changes.push({ type: "Added", project: d.project });
+        addedSections.add(d.project.__key);
+      } else if (d.action === "section-removed" && !removedSections.has(d.project.__key)) {
+        changes.push({ type: "Deleted", project: d.project });
+        removedSections.add(d.project.__key);
+      } else if (d.action === "card-add") {
+        if (addedSections.has(d.project.__key)) return;
+        changes.push({ type: "Added", project: d.project, card: d.card });
+      } else if (d.action === "card-delete") {
+        if (removedSections.has(d.project.__key)) return;
+        changes.push({ type: "Deleted", project: d.project, card: d.card });
+      } else if (d.action === "card-edit" || d.action === "card-edit-category-only") {
+        changes.push({
+          type: "Edited",
+          project: d.project,
+          fields: [
+            `${d.original_data?.label ?? "-"} → ${d.meta_data?.label ?? "-"}`,
+            `# ${d.original_data?.number ?? "-"} → ${d.meta_data?.number ?? "-"}`,
+          ],
+        });
+      }
+    });
+
+    // also include any manually deletedProjects (if not already included)
+    deletedProjects.forEach((proj) => {
+      if (!removedSections.has(proj.__key)) changes.push({ type: "Deleted", project: proj });
+    });
+
+    return changes;
+  };
+
+  // final submit -> build payloads and send (use originalRef baseline)
   const handleFinalSubmit = async () => {
     const payloads = buildProjectsPayloads();
 
-    if (payloads.length === 0) {
-      // nothing to submit
+    if (!payloads.length) {
       setFinalPopupOpen(false);
       return;
     }
 
     const res = await sendRequest(payloads);
     if (!res) return;
-    const newKeys = projects.filter((p) => p.isNew).map((p) => p.__key);
-    const finalized = projects.map((p) => ({ ...p, isNew: false }));
-    const reordered = [
-      ...finalized.filter((p) => newKeys.includes(p.__key)),
-      ...finalized.filter((p) => !newKeys.includes(p.__key)),
-    ];
 
-    savedRef.current = deepClone(reordered);
-    originalRef.current = deepClone(reordered);
-    setProjects(reordered);
+    // After successful submit, set baseline to current projects (so future diffs are relative to this)
+    const finalized = projects.map((p) => ({ ...p, isNew: false }));
+    savedRef.current = deepClone(finalized);
+    originalRef.current = deepClone(finalized);
+    setProjects(finalized);
     setDeletedProjects([]);
     setFinalPopupOpen(false);
     setMode("view");
     setUnsavedChanges(false);
     setSelectedRows(new Set());
-    lastAddedKeyRef.current = null;
   };
 
+  // UI actions
+  const handleEdit = () => setMode("editing");
+  const handleCancel = () => {
+    setProjects(deepClone(savedRef.current));
+    setDeletedProjects([]);
+    setUnsavedChanges(false);
+    const hasSavedChanges = JSON.stringify(savedRef.current) !== JSON.stringify(originalRef.current);
+    setMode(hasSavedChanges ? "postSave" : "view");
+  };
+  const handleSave = () => {
+    // Save locally (mark that changes are saved for this user)
+    savedRef.current = deepClone(projects);
+    setUnsavedChanges(false);
+    setMode("postSave");
+  };
+  const handleRequest = () => {
+    setFinalPopupOpen(true);
+  };
+  const handleDiscardAll = () => {
+    setProjects(deepClone(originalRef.current));
+    savedRef.current = deepClone(originalRef.current);
+    setDeletedProjects([]);
+    setUnsavedChanges(false);
+    setMode("view");
+  };
+
+  // Render
   return (
     <>
       {projects.length === 0 ? (
@@ -414,13 +543,14 @@ export default function Projects({ data }) {
                   {mode === "editing" ? (
                     <input
                       type="text"
-                      value={section.category}
+                      value={section.category ?? ""}
                       placeholder="Enter the project title"
                       onChange={(e) => {
-                        const updated = deepClone(projects);
-                        updated[i].category = e.target.value;
-                        setProjects(updated);
-                        setUnsavedChanges(true);
+                        setProjects((prev) => {
+                          const copy = deepClone(prev);
+                          copy[i].category = e.target.value;
+                          return copy;
+                        });
                       }}
                       className="flex m-auto my-4 w-[400px] px-1 text-center border-2 border-text text-lg font-bold"
                     />
@@ -440,7 +570,7 @@ export default function Projects({ data }) {
 
                     {section.content.map((item, j) => (
                       <StatCard
-                        key={j}
+                        key={item.__cid}
                         number={item.number}
                         label={item.label}
                         color={colors[j % colors.length]}
@@ -477,7 +607,7 @@ export default function Projects({ data }) {
                 className="bg-red-500 text-prim p-2 flex m-auto flex-row mt-4 rounded"
                 onClick={() => setDeleteConfirmOpen(true)}
               >
-                <Trash2 /> Delete Selected
+                <Trash /> Delete Selected
               </button>
             )}
           </div>
@@ -513,6 +643,7 @@ export default function Projects({ data }) {
         </div>
       )}
 
+      {/* delete confirm */}
       {deleteConfirmOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-[1100]">
           <div className="bg-white rounded-xl w-[380px] p-6 shadow-lg text-center">
@@ -534,6 +665,7 @@ export default function Projects({ data }) {
         </div>
       )}
 
+      {/* final request popup */}
       {finalPopupOpen && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
           <div className="bg-white p-6 rounded-xl w-[700px] max-h-[80vh] overflow-y-auto">
@@ -552,12 +684,12 @@ export default function Projects({ data }) {
                 </tr>
               </thead>
               <tbody>
-                {getChangedProjects().length === 0 ? (
+                {getChangedProjectsForPopup().length === 0 ? (
                   <tr>
                     <td colSpan={4} className="text-center py-4">No changes detected</td>
                   </tr>
                 ) : (
-                  getChangedProjects().map((c, idx) => (
+                  getChangedProjectsForPopup().map((c, idx) => (
                     <tr key={idx} className="even:bg-white odd:bg-gray-50">
                       <td className="py-2 px-3 border text-blue-600">{c.type}</td>
                       <td className="py-2 px-3 border">{c.project.category || "-"}</td>
@@ -565,7 +697,7 @@ export default function Projects({ data }) {
                         {c.type === "Edited"
                           ? (c.fields?.length ? c.fields.join(", ") : "Project updated")
                           : c.type === "Added"
-                            ? "New project added"
+                            ? (c.card ? `New card: ${c.card.label || "-"} / ${c.card.number ?? "-"}` : "New project added")
                             : "Project deleted"}
                       </td>
                       <td className="py-2 px-3 border text-center">

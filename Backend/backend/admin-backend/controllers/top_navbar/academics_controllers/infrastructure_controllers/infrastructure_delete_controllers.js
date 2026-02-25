@@ -7,6 +7,9 @@ async function deleteData(tempDoc, mainCollection) {
         "collection_type, category, and meta_data are required"
       );
     }
+    if (collection_type !== "infrastructure") {
+      throw new Error("Incorrect collection type or route");
+    }
 
     if (collection_type === "infrastructure") {
       if (category === "infrastructure_images") {
