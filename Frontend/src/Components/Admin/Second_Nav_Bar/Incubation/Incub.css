@@ -677,3 +677,42 @@
 
 
 
+/* ============================= */
+/* Edit Mode Table Styling */
+/* ============================= */
+
+.ic-data-table-edit {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.ic-data-table-edit th,
+.ic-data-table-edit td {
+    border: 1px solid #ccc;   /* thinner border */
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.ic-data-table-edit th {
+    
+    color: white;
+}
+
+.ic-data-table-edit td {
+    background-color: #fafafa;
+}
+
+.ic-data-table-edit input {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+}
+
+.ic-data-table-edit input:focus {
+    border-color: gray;
+    box-shadow: 0 0 0 2px rgba(131, 0, 0, 0.1);
+}
