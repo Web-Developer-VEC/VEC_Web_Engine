@@ -34,12 +34,12 @@ async function newsletterHandler(fileStream, docs, req, cb, filename, mimetype) 
       return cb(new Error("Missing year in meta_data"));
     }
 
-    // (Optional) If you want strict year format
-    const yearRegex = /^\d{4}-\d{4}$/;
-    if (!yearRegex.test(meta_data.year)) {
-      return cb(new Error("Year must be in format 'YYYY-YYYY'"));
-    }
+    // 
+const yearRegex = /^(\d{4}|\d{4}-\d{4})$/;
 
+if (!yearRegex.test(meta_data.year)) {
+  return cb(new Error("Year must be in format 'YYYY' or 'YYYY-YYYY'"));
+}
     // ✅ Resolve folderId from model map using collectionName
     const folderId = reverseDeptMap[collectionName]; // "005"
 
