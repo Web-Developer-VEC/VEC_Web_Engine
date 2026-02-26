@@ -1,4 +1,4 @@
-﻿const fs = require("fs");
+const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 const { getlogDb } = require("../config/db");
