@@ -108,6 +108,7 @@ const RateLimitReach = React.lazy(() => import("./ratelimit.jsx"));
 const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
 const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
+const Appraisal =React.lazy(() => import("./Components/Main/Appraisal/Appraisal.jsx"));
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -319,6 +320,10 @@ const App = () => {
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 <Route path="/careers" element={<Career />} />
+
+                                {/*Appraisal  */}
+                                <Route path="/appraisal" element={<Appraisal />} />
+
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />

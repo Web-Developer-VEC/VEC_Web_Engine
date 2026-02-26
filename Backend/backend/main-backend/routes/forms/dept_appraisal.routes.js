@@ -15,7 +15,7 @@ router.post("/appraisal_doc_without_proof", (req, res, next) => {
     req.body.report_type = "download";
     return generateAppraisalDoc(req, res, next);
 });
-router.post("/appraisal_doc_view_with_proof", (req, res, next) => {
+router.post("/appraisal_doc_with_proof", (req, res, next) => {
     req.body.include_proof = true;
     req.body.report_type = "download";
     return generateAppraisalDoc(req, res, next);
