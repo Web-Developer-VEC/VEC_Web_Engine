@@ -1,4 +1,10 @@
-﻿
+const fs = require("fs");
+const path = require("path");
+const { spawnSync } = require("child_process");
+const { getlogDb } = require("../config/db");
+const docxConverter = require("docx-pdf");
+const libre = require("libreoffice-convert");
+const util = require("util");
 
 const {
     Document,
@@ -10,13 +16,24 @@ const {
     TextRun,
     ExternalHyperlink,
     WidthType,
+    TableLayoutType,
     AlignmentType,
     VerticalAlign,
 } = require("docx");
-const fs = require("fs");
-const path = require("path");
-const { getlogDb } = require("../config/db");
 
+
+function convertDocxToPdf(docxPath, pdfPath) {
+
+    const word = new winax.Object("Word.Application");
+    word.Visible = false;
+
+    const doc = word.Documents.Open(docxPath);
+
+    doc.SaveAs(pdfPath, 17); // 17 = PDF format
+
+    doc.Close();
+    word.Quit();
+}
 const FONT_SIZE_HEADING = 22; // 11 pt
 const FONT_SIZE_HOD_DETAILS = 20; // 10 pt
 const FONT_SIZE_OTHERS = 16; // 8 pt
@@ -35,15 +52,15 @@ const headerCell = (text) =>
     });
 
 const dataCell = (text, alignment = AlignmentType.CENTER) =>
-  new TableCell({
-    verticalAlign: VerticalAlign.CENTER,
-    children: [
-      new Paragraph({
-        alignment,
-        children: [new TextRun({ text: String(text ?? "-"), size: FONT_SIZE_OTHERS })],
+    new TableCell({
+        verticalAlign: VerticalAlign.CENTER,
+        children: [
+            new Paragraph({
+                alignment,
+                children: [new TextRun({ text: String(text ?? "-"), size: FONT_SIZE_OTHERS })],
             }),
-    ],
-  });
+        ],
+    });
 
 const proofCell = (link) => {
     const value = normalizeProofLink(link);
@@ -370,13 +387,12 @@ const parseAcademicYearStart = (academicYear) => {
     return -1;
 };
 
-// PDF conversion is intentionally disabled for now.
-// const getSofficeCandidates = () => [
-//     "soffice",
-//     "C:\\Program Files\\LibreOffice\\program\\soffice.exe",
-//     "C:\\Program Files (x86)\\LibreOffice\\program\\soffice.exe",
-// ];
-//
+const getSofficeCandidates = () => [
+    "soffice",
+    "C:\\Program Files\\LibreOffice\\program\\soffice.exe",
+    "C:\\Program Files (x86)\\LibreOffice\\program\\soffice.exe",
+];
+
 // const convertDocxToPdf = (docxPath, outDir) => {
 //     const candidates = getSofficeCandidates();
 //     for (const cmd of candidates) {
@@ -434,9 +450,26 @@ const buildSectionedWebView = (doc) => {
     return sections;
 };
 
-const makeTable = (headers, rows, sectionProofLink = "-") =>
-    new Table({
+const makeTable = (headers, rows, sectionProofLink = "-") => {
+    const totalColumns = headers.length + (PROOF_COLUMN_MODE ? 1 : 0);
+    const totalWidth = 9900;
+    let columnWidths = [totalWidth];
+
+    if (totalColumns === 2) {
+        columnWidths = [700, 9200];
+    } else if (totalColumns > 2) {
+        const firstColumn = 700;
+        const secondColumn = 3500;
+        const remainingColumns = totalColumns - 2;
+        const remainingWidth = Math.max(totalWidth - firstColumn - secondColumn, remainingColumns * 650);
+        const eachRemaining = Math.floor(remainingWidth / remainingColumns);
+        columnWidths = [firstColumn, secondColumn, ...Array(remainingColumns).fill(eachRemaining)];
+    }
+
+    return new Table({
+        layout: TableLayoutType.FIXED,
         width: { size: 100, type: WidthType.PERCENTAGE },
+        columnWidths,
         rows: [
             new TableRow({
                 children: [
@@ -458,6 +491,7 @@ const makeTable = (headers, rows, sectionProofLink = "-") =>
             ),
         ],
     });
+};
 
 const makeRow = (cells, alignments, proofLink = "-") => {
     const row = new TableRow({
@@ -608,7 +642,9 @@ const generateAppraisalDoc = async (req, res) => {
 
         blocks.push(
             new Table({
+                layout: TableLayoutType.FIXED,
                 width: { size: 100, type: WidthType.PERCENTAGE },
+                columnWidths: [600, 3200, 700, 700, 700, 700, 700, 700, 700, 700, 1400],
                 rows: [
                     new TableRow({
                         children: [
@@ -832,7 +868,9 @@ const generateAppraisalDoc = async (req, res) => {
 
         blocks.push(
             new Table({
+                layout: TableLayoutType.FIXED,
                 width: { size: 100, type: WidthType.PERCENTAGE },
+                columnWidths: [600, 3000, 650, 650, 650, 650, 650, 650, 650, 650, 650, 1400],
                 rows: [
                     new TableRow({
                         children: [
@@ -990,7 +1028,15 @@ const generateAppraisalDoc = async (req, res) => {
 
         blocks.push(
             new Table({
+                layout: TableLayoutType.FIXED,
                 width: { size: 100, type: WidthType.PERCENTAGE },
+                columnWidths: [
+                    700, 3200,
+                    800, 800, 800, 800, 1000,
+                    800, 800, 800, 800, 1000,
+                    800, 800, 800, 800, 1000,
+                    1500,
+                ],
                 rows: [
                     new TableRow({
                         children: [
@@ -1166,7 +1212,9 @@ const generateAppraisalDoc = async (req, res) => {
 
         blocks.push(
             new Table({
+                layout: TableLayoutType.FIXED,
                 width: { size: 100, type: WidthType.PERCENTAGE },
+                columnWidths: [600, 3500, ...history4.flatMap(() => [650, 650]), 1500],
                 rows: [
                     new TableRow({
                         children: [
@@ -1250,7 +1298,9 @@ const generateAppraisalDoc = async (req, res) => {
 
         blocks.push(
             new Table({
+                layout: TableLayoutType.FIXED,
                 width: { size: 100, type: WidthType.PERCENTAGE },
+                columnWidths: [600, 3200, 700, 700, 700, 700, 700, 700, 1500],
                 rows: [
                     new TableRow({
                         children: [
@@ -1462,25 +1512,87 @@ const generateAppraisalDoc = async (req, res) => {
             ],
         });
 
-        const buffer = await Packer.toBuffer(doc);
-        const docxFileName = includeProofInDoc ? "Appraisal_report_with_proof.docx" : "Appraisal_report.docx";
+        //PDF
 
-        // File saving is intentionally disabled for now.
+        // const buffer = await Packer.toBuffer(doc);
+        // const docxFileName = includeProofInDoc ? "Appraisal_report_with_proof.docx" : "Appraisal_report.docx";
+        // const pdfFileName = docxFileName.replace(/\.docx$/i, ".pdf");
+
         // const reportsDir = path.join(__dirname, "../generated_reports");
         // if (!fs.existsSync(reportsDir)) {
         //     fs.mkdirSync(reportsDir, { recursive: true });
         // }
         // const filePath = path.join(reportsDir, docxFileName);
         // fs.writeFileSync(filePath, buffer);
+        // const pdfPath = convertDocxToPdf(filePath, reportsDir);
+        // const pdfBuffer = fs.readFileSync(pdfPath);
 
-        if (saveFileOnly) {
-            PROOF_COLUMN_MODE = false;
-            return res.status(400).json({ message: "save_file is temporarily disabled" });
+        // if (saveFileOnly) {
+        //     PROOF_COLUMN_MODE = false;
+        //     return res.status(400).json({ message: "save_file is temporarily disabled" });
+        // }
+
+        // PROOF_COLUMN_MODE = false;
+
+        // res.setHeader("Content-Type", "application/pdf");
+        // res.setHeader(
+        //     "Content-Disposition",
+        //     `${reportType === "download" ? "attachment" : "inline"}; filename="${pdfFileName}"`
+        // );
+        // return res.send(pdfBuffer);
+
+        //doc
+
+        const libre = require("libreoffice-convert");
+
+        const buffer = await Packer.toBuffer(doc);
+
+        const docxFileName = includeProofInDoc
+            ? "Appraisal_report_with_proof.docx"
+            : "Appraisal_report.docx";
+
+        const pdfFileName = includeProofInDoc
+            ? "Appraisal_report_with_proof.pdf"
+            : "Appraisal_report.pdf";
+
+        const reportsDir = path.join(__dirname, "../generated_reports");
+
+        if (!fs.existsSync(reportsDir)) {
+            fs.mkdirSync(reportsDir, { recursive: true });
         }
+
+        const docxPath = path.join(reportsDir, docxFileName);
+
+        // Save DOCX
+        fs.writeFileSync(docxPath, buffer);
+
+
+        // ✅ Convert DOCX → PDF (Correct Way)
+
+        const pdfBuf = await new Promise((resolve, reject) => {
+
+            libre.convert(buffer, ".pdf", undefined, (err, done) => {
+
+                if (err) {
+                    return reject(err);
+                }
+
+                resolve(done);
+
+            });
+
+        });
+
         PROOF_COLUMN_MODE = false;
-        res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-        res.setHeader("Content-Disposition", `attachment; filename=\"${docxFileName}\"`);
-        return res.send(buffer);
+
+        res.setHeader("Content-Type", "application/pdf");
+
+        res.setHeader(
+            "Content-Disposition",
+            `attachment; filename="${pdfFileName}"`
+        );
+
+        res.send(pdfBuf);
     } catch (error) {
         PROOF_COLUMN_MODE = false;
         console.error("Error generating appraisal report:", error);
