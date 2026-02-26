@@ -1,5 +1,6 @@
 const { s3, bucketName } = require("../../../config/s3");
 const { PutObjectCommand } = require("@aws-sdk/client-s3");
+const path = require("path");
 
 async function ecellHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
@@ -24,11 +25,12 @@ async function ecellHandler(fileStream, docs, req, cb, filename, mimetype) {
     const collection_type = docs[0]?.collection_type;
 
     // Determine folder path based on file type
+    let ext = path.extname(realFilename) || ""; 
     let folder;
     if (effectiveMime.startsWith("image/")) {
-      folder = `temp/static/images/e_cell/${realFilename}`;
+      folder = `temp/static/images/e_cell/${realFilename}${ext}`;
     } else if (effectiveMime === "application/pdf") {
-      folder = `temp/static/pdfs/e_cell/${meta_data.year}`;
+      folder = `temp/static/pdfs/e_cell/${meta_data.year}${ext}`;
     } else {
       fileStream.resume();
       return cb(new Error("Unsupported file type"));
