@@ -118,11 +118,7 @@ const RateLimitReach = React.lazy(() => import("./ratelimit.jsx"));
 const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
 const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
-/* Aptitude */
-const QuestionPage = React.lazy(() => import("./Components/Main/Aptitude/questions.jsx"));
-const InstructionPage = React.lazy(() => import("./Components/Main/Aptitude/Approve.jsx"));
-const DetailsPage = React.lazy(() => import("./Components/Main/Aptitude/Details.jsx"));
-
+const Appraisal =React.lazy(() => import("./Components/Main/Appraisal/Appraisal.jsx"));
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -380,6 +376,10 @@ const App = () => {
                                 <Route path="/qaresult" element={<QAExamResults toggle={toggle} theme={theme}/>} />
 
                                 <Route path="/careers" element={<Career />} />
+
+                                {/*Appraisal  */}
+                                <Route path="/appraisal" element={<Appraisal />} />
+
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
