@@ -83,7 +83,7 @@ async function insertData(tempDoc, mainCollection) {
         { type: "gallery" },
         {
           $push: {
-            data: { $each: meta_data.image_path },
+            "data.image_path": { $each: meta_data.image_path }
           },
         },
         {
