@@ -1,0 +1,559 @@
+{
+    "department": "CSE",
+    "academic_year": "2024-25",
+    "hod_details": {
+        "hod_name": "Dr. R. Kumar",
+        "department_name": "Computer Science and Engineering",
+        "date_of_joining_as_hod": "15-06-2021"
+    },
+    "essential_parameters": {
+        "research_status": {
+            "present_status": "Recognized Research Centre till 2028",
+            "undertaking": "NBA Accredited till 2027",
+            "pdf_path": "docs/dummy/brand_building_admission_consolidated_prospective_students_covered_target.pdf"
+        },
+        "nba_status": {
+            "present_status": "Recognized Research Centre till 2028",
+            "undertaking": "NBA Accredited till 2027",
+            "pdf_path": "docs/dummy/brand_building_admission_consolidated_prospective_students_covered_target.pdf"
+        }
+    },
+    "student_admitted_details": {
+        "sanctioned_strength": {
+            "sanctioned_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/student_admission_details_sanctioned_strength.pdf"
+        },
+        "students_on_roll": {
+            "students_on_roll_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/student_admission_details_sanctioned_strength.pdf"
+        },
+        "vacant_seats": {
+            "vacant_seats_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/student_admission_details_sanctioned_strength.pdf"
+        }
+    },
+    "end_sem_results": {
+        "student_appeared": {
+            "odd_sem": {
+                "year1": "42",
+                "year2": "42",
+                "year3": "42",
+                "year4": "42"
+            },
+            "even_sem": {
+                "year1": "42",
+                "year2": "42",
+                "year3": "42",
+                "year4": "42"
+            },
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/end_sem_results_student_appeared.pdf"
+        },
+        "student_passed": {
+            "odd_sem": {
+                "year1": "42",
+                "year2": "42",
+                "year3": "42",
+                "year4": "42"
+            },
+            "even_sem": {
+                "year1": "42",
+                "year2": "42",
+                "year3": "42",
+                "year4": "42"
+            },
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/end_sem_results_student_appeared.pdf"
+        },
+        "pass_percent": {
+            "odd_sem": {
+                "year1": "42",
+                "year2": "42",
+                "year3": "42",
+                "year4": "42"
+            },
+            "even_sem": {
+                "year1": "42",
+                "year2": "42",
+                "year3": "42",
+                "year4": "42"
+            },
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/end_sem_results_student_appeared.pdf"
+        }
+    },
+    "graduation_success_rate": {
+        "total_on_roll": {
+            "2021-2025": "42",
+            "2020-2024": "42",
+            "2019-2023": "42",
+            "2018-2023": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/graduation_success_rate_total_on_roll.pdf"
+        },
+        "total_graduated": {
+            "2021-2025": "42",
+            "2020-2024": "42",
+            "2019-2023": "42",
+            "2018-2023": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/graduation_success_rate_total_on_roll.pdf"
+        },
+        "percent_graduated": {
+            "2021-2025": "42",
+            "2020-2024": "42",
+            "2019-2023": "42",
+            "2018-2023": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/graduation_success_rate_total_on_roll.pdf"
+        },
+        "average_cgpa": {
+            "2021-2025": "42",
+            "2020-2024": "42",
+            "2019-2023": "42",
+            "2018-2023": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/graduation_success_rate_total_on_roll.pdf"
+        },
+        "university_ranks": {
+            "2021-2025": "42",
+            "2020-2024": "42",
+            "2019-2023": "42",
+            "2018-2023": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/graduation_success_rate_total_on_roll.pdf"
+        }
+    },
+    "faculty_learning": {
+        "total_faculty": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/faculty_learning_total_faculty.pdf"
+        },
+        "nptel_completed": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/faculty_learning_total_faculty.pdf"
+        },
+        "fdps_attended": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/faculty_learning_total_faculty.pdf"
+        },
+        "fdps_organized": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/faculty_learning_total_faculty.pdf"
+        }
+    },
+    "phd_scholars": {
+        "faculty_with_phd": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/phd_scholars_faculty_with_phd.pdf"
+        },
+        "phd_supervisors_au": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/phd_scholars_faculty_with_phd.pdf"
+        },
+        "faculty_pursuing_phd": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/phd_scholars_faculty_with_phd.pdf"
+        },
+        "phd_scholars_pursuing": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/phd_scholars_faculty_with_phd.pdf"
+        },
+        "phd_scholars_completed": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/phd_scholars_faculty_with_phd.pdf"
+        }
+    },
+    "research_publications": {
+        "total_faculty": {
+            "odd_sem": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "even_sem": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "consolidated": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_publications_total_faculty.pdf"
+        },
+        "journals_sci_wos": {
+            "odd_sem": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "even_sem": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "consolidated": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_publications_total_faculty.pdf"
+        },
+        "journals_scopus": {
+            "odd_sem": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "even_sem": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "consolidated": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_publications_total_faculty.pdf"
+        },
+        "avg_publications_per_faculty": {
+            "odd_sem": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "even_sem": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "consolidated": {
+                "target": "42",
+                "achieved": "42",
+                "percentage": "42"
+            },
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_publications_total_faculty.pdf"
+        }
+    },
+    "research_funding": {
+        "funded_projects_sanctioned": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_funding_funded_projects_sanctioned.pdf"
+        },
+        "amount_received": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_funding_amount_received.pdf"
+        },
+        "ongoing_projects_sanctioned_previous_years": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_funding_ongoing_projects_sanctioned_previous_years.pdf"
+        },
+        "modrobs_proposals_and_amount": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_funding_modrobs_proposals_and_amount.pdf"
+        },
+        "sttp_workshops_fdps_entrepreneurship_proposals_and_amount": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_funding_sttp_workshops_fdps_entrepreneurship_proposals_and_amount.pdf"
+        },
+        "other_student_schemes_iedc_tnscst": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/research_funding_other_student_schemes_iedc_tnscst.pdf"
+        }
+    },
+    "consultancy": {
+        "amount_received": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/consultancy_amount_received.pdf"
+        }
+    },
+    "student_development_parameters": {
+        "value_added_courses_conducted": {
+            "year1": "42",
+            "year2": "42",
+            "year3": "42",
+            "year4": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/student_development_parameters_value_added_courses_conducted.pdf"
+        },
+        "paid_internships": {
+            "year1": "42",
+            "year2": "42",
+            "year3": "42",
+            "year4": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/student_development_parameters_value_added_courses_conducted.pdf"
+        }
+    },
+    "professional_associations": {
+        "faculty_professional_membership": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/professional_associations_faculty_professional_membership.pdf"
+        },
+        "student_chapters_available": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/professional_associations_faculty_professional_membership.pdf"
+        },
+        "total_student_members": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/professional_associations_faculty_professional_membership.pdf"
+        },
+        "student_chapter_activities": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/professional_associations_faculty_professional_membership.pdf"
+        }
+    },
+    "competitions_participated_won": {
+        "competitions_participated": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/competitions_participated_won_competitions_participated.pdf"
+        },
+        "awards_won": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/competitions_participated_won_competitions_participated.pdf"
+        },
+        "prize_money_received": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/competitions_participated_won_competitions_participated.pdf"
+        }
+    },
+    "mou_centre_of_excellence": {
+        "mous_signed": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/mou_centre_of_excellence_mous_signed.pdf"
+        },
+        "mou_activities": {
+            "odd_sem": "42",
+            "even_sem": "42",
+            "consolidated": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/mou_centre_of_excellence_mou_activities.pdf"
+        }
+    },
+    "placements_higher_studies_entrepreneurship": {
+        "companies_visited": {
+            "companies_visited_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/placements_higher_studies_entrepreneurship_companies_visited.pdf"
+        },
+        "median_salary": {
+            "median_salary_value": "650000",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/placements_higher_studies_entrepreneurship_median_salary.pdf"
+        },
+        "students_placed_core_companies": {
+            "number": "42",
+            "percentage": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/brand_building_admission_consolidated_prospective_students_covered_target.pdf"
+        },
+        "students_admitted_higher_studies": {
+            "number": "42",
+            "percentage": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/placements_higher_studies_entrepreneurship_students_admitted_higher_studies.pdf"
+        },
+        "entrepreneurs_evolved": {
+            "number": "42",
+            "percentage": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/placements_higher_studies_entrepreneurship_entrepreneurs_evolved.pdf"
+        }
+    },
+    "brand_building_admission": {
+        "prospective_students_covered": {
+            "odd_sem": {
+                "target": "42",
+                "achieved": "42"
+            },
+            "even_sem": {
+                "target": "42",
+                "achieved": "42"
+            },
+            "consolidated": {
+                "target": "42",
+                "achieved": "42"
+            },
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/brand_building_admission_prospective_students_covered_target.pdf"
+        },
+        "students_converted_admissions": {
+            "odd_sem": {
+                "target": "42",
+                "achieved": "42"
+            },
+            "even_sem": {
+                "target": "42",
+                "achieved": "42"
+            },
+            "consolidated": {
+                "target": "42",
+                "achieved": "42"
+            },
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/brand_building_admission_prospective_students_covered_target.pdf"
+        }
+    },
+    "innovation_entrepreneurship_activities": {
+        "trained_innovation_ambassadors": {
+            "trained_innovation_ambassadors_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_trained_innovation_ambassadors.pdf"
+        },
+        "teams_participated_sih": {
+            "teams_participated_sihvalue": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_teams_participated_sih.pdf"
+        },
+        "innovations_trl_4_9_yukti": {
+            "innovations_trl_4_9_yukti_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_innovations_trl_4_9_yukti.pdf"
+        },
+        "student_ventures_yukti": {
+            "student_ventures_yukti_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_student_ventures_yukti.pdf"
+        },
+        "innovative_ideas_final_year_projects": {
+            "innovative_ideas_final_year_projects_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_innovative_ideas_final_year_projects.pdf"
+        },
+        "patents_filed": {
+            "patents_filed_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_patents_filed.pdf"
+        },
+        "patents_published": {
+            "patents_published_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_patents_published.pdf"
+        },
+        "patents_granted": {
+            "patents_granted_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_patents_granted.pdf"
+        },
+        "patents_filed_kapila_scheme": {
+            "patents_filed_kapila_scheme_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_patents_filed_kapila_scheme.pdf"
+        },
+        "patents_commercialized": {
+            "patents_commercialized_value": "42",
+            "undertaking": "42",
+            "pdf_path": "docs/dummy/innovation_entrepreneurship_activities_patents_commercialized.pdf"
+        }
+    },
+    "others": {
+        "improve_scores_nba_naac_nirf": {
+            "value": "Conducted quality audits and criterion-wise action tracking.",
+            "pdf_path": "docs/dummy/remarks_others_improve_scores_nba_naac_nirf.pdf"
+        },
+        "documentary_evidence_pos_psos": {
+            "value": "Maintained course files, attainment sheets, and CO-PO mapping records.",
+            "pdf_path": "docs/dummy/remarks_others_documentary_evidence_pos_psos.pdf"
+        },
+        "gaps_shortfalls_peos_psos": {
+            "value": "Identified gaps in industry exposure and advanced tool proficiency.",
+            "pdf_path": "docs/dummy/remarks_others_gaps_shortfalls_peos_psos.pdf"
+        },
+        "plan_action_bridge_gap": {
+            "value": "Planned bridge modules, mentoring, and industry workshops each semester.",
+            "pdf_path": "docs/dummy/remarks_others_plan_action_bridge_gap.pdf"
+        }
+    },
+    "appraisers_remarks": [
+        {
+            "name_and_designation": "Dr. Dummy Reviewer, Professor",
+            "remarks": "Dummy appraisal remarks for testing."
+        },
+        {
+            "name_and_designation": "Dr. Dummy Reviewer, Professor",
+            "remarks": "Dummy appraisal remarks for testing."
+        }
+    ]
+}
