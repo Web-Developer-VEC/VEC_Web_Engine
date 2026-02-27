@@ -198,7 +198,7 @@ const App = () => {
                                 />
                             
                                 <Route path="/careers" drk element={<Career toggle={toggle} theme={theme} />} />
-                                <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme} />} />
+                                {/* <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme} />} /> */}
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />} />
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme} />} />
                                 {/* Hostel Pages */}
