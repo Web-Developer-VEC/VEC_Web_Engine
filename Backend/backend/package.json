@@ -20,12 +20,10 @@
     "body-parser": "^1.20.3",
     "child_process": "^1.0.2",
     "compression": "^1.8.1",
-    "connect-mongo": "^6.0.0",
     "cors": "^2.8.5",
     "docx": "^9.6.0",
     "docx-pdf": "^0.0.1",
     "dotenv": "^16.6.1",
-    "exceljs": "^4.4.0",
     "express": "^4.21.2",
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^6.11.2",
@@ -46,8 +44,7 @@
     "sanitize-html": "^2.17.0",
     "sharp": "^0.34.3",
     "twilio": "^5.4.3",
-    "uuid": "^11.0.5",
-    "xlsx": "^0.18.5"
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "concurrently": "^9.2.0",

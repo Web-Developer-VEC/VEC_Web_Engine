@@ -25,37 +25,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-
-.qa-logout-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 8px 14px;
-  border-radius: 6px;
-
-  font-size: 14px;
-  font-weight: 500;
-
-  color: #b42318;
-  background-color: #fff;
-  border: 1px solid #f5c2c7;
-
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.qa-logout-btn:hover {
-  background-color: #b42318;
-  color: #ffffff;
-  border-color: #b42318;
-}
-
-.qa-logout-btn:active {
-  transform: translateY(1px);
-}
-
-.qa-logout-btn svg {
-  stroke-width: 2;
-}
