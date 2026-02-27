@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-function PersonDetail({ person, isEditable, onChange }) {
+function PersonDetail({ person, isEditable, onChange, errors = {} }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) =>
     path?.startsWith("http") ? path : `${BASE_URL}${path}`;
@@ -30,7 +30,7 @@ function PersonDetail({ person, isEditable, onChange }) {
         <img src={imageSrc} alt={person?.name} className="person-image" />
         {isEditable && (
           <div className="new-upload-below">
-            <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
+            <label className={`new-upload-label ${!hasImage && !person?.image_path && !person?.photo_file ? 'border-2 border-red-500' : ''} bg-blue-500 text-white px-3 py-1 rounded cursor-pointer`}>
               {hasImage ? "Replace" : "Upload"}
               <input
                 type="file"
@@ -39,32 +39,57 @@ function PersonDetail({ person, isEditable, onChange }) {
                 onChange={(e) => onChange("photo_file", e.target.files[0])}
               />
             </label>
+            {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image}</p>}
           </div>
         )}
       </div>
 
-      <div className="person-content">
+      <div className="person-content" style={{ width: '100%' }}>
         {isEditable ? (
           <>
-            <input
-              className="person-input"
-              value={person.name || ""}
-              onChange={(e) => onChange("name", e.target.value)}
-              placeholder="Name"
-            />
-            <input
-              className="person-input"
-              value={person.designation || ""}
-              onChange={(e) => onChange("designation", e.target.value)}
-              placeholder="Designation"
-            />
-            <textarea
-              className="person-textarea"
-              rows={4}
-              value={person.content || ""}
-              onChange={(e) => onChange("content", e.target.value)}
-              placeholder="Description / Content"
-            />
+            <div style={{ width: '100%', marginBottom: '15px' }}>
+              <input
+                className={`person-input ${errors.name ? 'border-red-500' : ''}`}
+                style={{
+                  width: '100%',
+                  maxWidth: '100%',
+                  boxSizing: 'border-box'
+                }}
+                value={person.name || ""}
+                onChange={(e) => onChange("name", e.target.value)}
+                placeholder="Name *"
+              />
+              {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+            </div>
+            <div style={{ width: '100%', marginBottom: '15px' }}>
+              <input
+                className={`person-input ${errors.designation ? 'border-red-500' : ''}`}
+                style={{
+                  width: '100%',
+                  maxWidth: '100%',
+                  boxSizing: 'border-box'
+                }}
+                value={person.designation || ""}
+                onChange={(e) => onChange("designation", e.target.value)}
+                placeholder="Designation *"
+              />
+              {errors.designation && <p className="text-red-500 text-sm">{errors.designation}</p>}
+            </div>
+            <div style={{ width: '100%' }}>
+              <textarea
+                className={`person-textarea ${errors.content ? 'border-red-500' : ''}`}
+                style={{
+                  width: '100%',
+                  maxWidth: '100%',
+                  boxSizing: 'border-box'
+                }}
+                rows={9}
+                value={person.content || ""}
+                onChange={(e) => onChange("content", e.target.value)}
+                placeholder="Description / Content *"
+              />
+              {errors.content && <p className="text-red-500 text-sm">{errors.content}</p>}
+            </div>
           </>
         ) : (
           <>
@@ -87,6 +112,8 @@ function PersonMemberDetail({
   onChange,
   checked,
   onCheck,
+  errors = {},
+  index
 }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) =>
@@ -96,6 +123,7 @@ function PersonMemberDetail({
   const imageSrc =
     person.preview_url ||
     (person.image_path ? UrlParser(person.image_path) : "");
+    
   return (
     <div
       className={`person-detail ${isImageLeft ? "left" : "right"} dark:bg-drkts new-card-wrap`}
@@ -115,7 +143,7 @@ function PersonMemberDetail({
         <img src={imageSrc} alt={person?.name} className="person-image" />
         {isEditable && (
           <div className="new-upload-below">
-            <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
+            <label className={`new-upload-label ${!hasImage && !person?.image_path && !person?.photo_file ? 'border-2 border-red-500' : ''} bg-blue-500 text-white px-3 py-1 rounded cursor-pointer`}>
               {hasImage ? "Replace" : "Upload"}
               <input
                 type="file"
@@ -124,6 +152,7 @@ function PersonMemberDetail({
                 onChange={(e) => onChange("photo_file", e.target.files[0])}
               />
             </label>
+            {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image}</p>}
           </div>
         )}
       </div>
@@ -133,18 +162,20 @@ function PersonMemberDetail({
           <>
             <div className="flex items-center justify-between">
               <input
-                className="w-[100%] p-1 rounded border"
+                className={`w-[100%] p-1 rounded border ${errors.name ? 'border-red-500' : ''}`}
                 value={person.name || ""}
                 onChange={(e) => onChange("name", e.target.value)}
-                placeholder="Name"
+                placeholder="Name *"
               />
             </div>
+            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
             <input
-              className="w-full mt-2 p-1 rounded border"
+              className={`w-full mt-2 p-1 rounded border ${errors.designation ? 'border-red-500' : ''}`}
               value={person.designation || ""}
               onChange={(e) => onChange("designation", e.target.value)}
-              placeholder="Designation"
+              placeholder="Designation *"
             />
+            {errors.designation && <p className="text-red-500 text-sm">{errors.designation}</p>}
           </>
         ) : (
           <>
@@ -175,10 +206,11 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   const [selectedItems, setSelectedItems] = useState([]); // indexes of selected members in draftTeam.slice(1)
   const [showMultiDeleteConfirm, setShowMultiDeleteConfirm] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
   const { sendRequest, loading, error } = useAdminRequest();
   const navigate = useNavigate();
 
-  // returns whether the draft differs from current saved placementTeam (unsaved edits vs server)
+  // returns whether the draft differs from saved placementTeam (unsaved edits vs server)
   const hasServerDiff = (d = draftTeam) =>
     JSON.stringify(placementTeam) !== JSON.stringify(d);
 
@@ -232,6 +264,42 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
     };
   }, []);
 
+  // Validation function
+  const validateTeam = (team) => {
+    const errors = {};
+    
+    team.forEach((member, index) => {
+      if (!errors[index]) errors[index] = {};
+      
+      // Check required fields
+      if (!member.name || member.name.trim() === '') {
+        errors[index].name = 'Name is required';
+      }
+      
+      if (!member.designation || member.designation.trim() === '') {
+        errors[index].designation = 'Designation is required';
+      }
+      
+      // For main person (index 0), check content
+      if (index === 0 && (!member.content || member.content.trim() === '')) {
+        errors[index].content = 'Description is required';
+      }
+      
+      // Check if image exists
+      const hasImage = member.image_path || member.photo_file;
+      if (!hasImage) {
+        errors[index].image = 'Image is required';
+      }
+    });
+    
+    return errors;
+  };
+
+  const isValidTeam = (team) => {
+    const errors = validateTeam(team);
+    return Object.keys(errors).length === 0;
+  };
+
   if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
@@ -239,6 +307,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
       </div>
     );
   }
+  
   const buildPlacementPayload = ({ action, newData, oldData }) => {
     // 🟢 INSERT
     if (action === "Added") {
@@ -290,6 +359,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
 
     return null;
   };
+  
   const collectPlacementFiles = (draft) => {
     const files = [];
 
@@ -313,6 +383,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
     const snapshot = (base || []).map((x) => ({ ...x }));
     setInitialDraft(snapshot); // snapshot of state at edit-session start
     setDraftTeam(snapshot.map((x) => ({ ...x })));
+    setValidationErrors({});
   };
 
   const exitEdit = () => {
@@ -325,6 +396,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
     setSelectedItems([]);
     setEditMode(false);
     setInitialDraft(null);
+    setValidationErrors({});
   };
 
   const handleFieldChange = (idx, field, value) => {
@@ -336,30 +408,57 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
         copy[idx].photo_file = value;
 
         // create preview blob url
-        copy[idx].preview_url = URL.createObjectURL(value);
+        if (value) {
+          copy[idx].preview_url = URL.createObjectURL(value);
+        }
       } else {
         copy[idx][field] = value;
       }
 
       return copy;
     });
+
+    // Clear validation error for this field when user starts typing/uploading
+    setValidationErrors(prev => {
+      const newErrors = { ...prev };
+      if (newErrors[idx] && newErrors[idx][field]) {
+        delete newErrors[idx][field];
+        
+        // If no errors left for this index, remove the index entirely
+        if (Object.keys(newErrors[idx]).length === 0) {
+          delete newErrors[idx];
+        }
+      }
+      return newErrors;
+    });
   };
 
-  const handleSave = async () => {
+  const handleSave = () => {
+    // Validate all fields before saving
+    const errors = validateTeam(draftTeam);
+    
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      toast.error("Please fill in all required fields");
+      return;
+    }
+    
     setPendingDraft(draftTeam.map((x) => ({ ...x })));
     setPendingChanges(true);
     setEditMode(false);
     setSelectedItems([]);
     setInitialDraft(null);
+    setValidationErrors({});
+    toast.success("Draft saved successfully");
   };
 
   const handleDiscardAll = () => {
     setPendingDraft(null);
     setDraftTeam((placementTeam || []).map((x) => ({ ...x })));
     setPendingChanges(false);
-    setSelectedItems([]);
     setEditMode(false);
     setInitialDraft(null);
+    setValidationErrors({});
     toast.error("All changes discarded.");
   };
 
@@ -373,7 +472,9 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
       setEditMode(false);
       setInitialDraft(null);
     }
+    setValidationErrors({});
   };
+  
   const genUID = () =>
     Math.random().toString(36).slice(2) + Date.now().toString(36);
 
@@ -501,6 +602,18 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   };
 
   const handleFinalRequestConfirm = async () => {
+    // Validate all fields before final request
+    if (pendingDraft) {
+      const errors = validateTeam(pendingDraft);
+      
+      if (Object.keys(errors).length > 0) {
+        setValidationErrors(errors);
+        toast.error("Please fill in all required fields before submitting request");
+        setShowRequestModal(false);
+        return;
+      }
+    }
+    
     const changes = getChanges(pendingDraft);
 
     if (changes.length === 0) {
@@ -579,6 +692,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                 }
                 isEditable={editMode}
                 onChange={(field, value) => handleFieldChange(0, field, value)}
+                errors={validationErrors[0] || {}}
               />
 
               {/* Members list */}
@@ -595,6 +709,8 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                     }
                     checked={selectedItems.includes(index)}
                     onCheck={(checked) => toggleSelectItem(index, checked)}
+                    errors={validationErrors[index + 1] || {}}
+                    index={index + 1}
                   />
                 ))}
 
@@ -613,6 +729,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                   >
                     <div className="flex flex-col items-center gap-2">
                       <Plus size={26} />
+                      <span className="text-sm text-gray-600">Add New Member</span>
                     </div>
                   </div>
                 )}
@@ -690,7 +807,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                     </h3>
                     <p className="mb-4">
                       Are you sure you want to delete {selectedItems.length}{" "}
-                      selected item
+                      selected item(s)?
                     </p>
                     <div className="flex justify-end gap-2 mt-[20px]">
                       <button
@@ -764,7 +881,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
                           ))}
                           {getChanges(pendingDraft).length === 0 && (
                             <tr>
-                              <td colSpan={3} className="py-3 text-sm">
+                              <td colSpan={4} className="py-3 text-sm">
                                 No pending changes.
                               </td>
                             </tr>
