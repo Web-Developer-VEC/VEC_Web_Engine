@@ -11,6 +11,7 @@ import Boot from "./Components/Main/Landing Comp/BootUp";
 import Head from "./Components/Main/Landing Comp/Head.jsx";
 import Footer from "./Components/Main/Landing Comp/Footer.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
+import AptitudeHeader from "./Components/Main/Aptitude/AptitudeHeader.jsx";
 import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
@@ -57,6 +58,15 @@ const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Sy
 const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
 const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
+const Schedule = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/Schedule/schedule.jsx"));
+const ScheduledExam = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/scheduledExam.jsx"));
+const QAExamResults = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/qaExamResult.jsx"));
+const UploadContainer = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/uploads/uploadContainer.jsx"));
+
+// Question Paper
+const AuthPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/auth.jsx"));
+const Qp = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QP.jsx"));
+const Layout = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QuestionPaper.jsx"));
 
 /* Research Pages */
 const Academres = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
@@ -108,9 +118,7 @@ const RateLimitReach = React.lazy(() => import("./ratelimit.jsx"));
 const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
 const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
-/* General Forms */
-const AppraisalReport = React.lazy(() => import("./Components/Main/Forms/Appraisal/Appraisal Download/AppraisalReport.jsx"));
-const AppraisalForm = React.lazy(() => import("./Components/Main/Forms/Appraisal/Appraisal Form/AppraisalForm.jsx"));
+const Appraisal =React.lazy(() => import("./Components/Main/Appraisal/Appraisal.jsx"));
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -262,6 +270,7 @@ const App = () => {
     // Render header
     const renderHeader = () => {
             if (currentPath.startsWith('/hostel')) return <HostelHeader />;
+            if (currentPath.startsWith('/QA')) return <AptitudeHeader showTimer={showTimer} />;
             return <Head />;
 }
 
@@ -350,15 +359,26 @@ const App = () => {
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital />} />
                                 <Route path="/hostel/forget-password" element={<ForgotPassword />} />
+                                {/*  Question paper Routes */}
+                                <Route path="/login" element={<AuthPage />} />
+                                <Route path="/preview" element={<Layout />} />
+                                <Route path="/qp" drk element={<Qp toggle={toggle} theme={theme}/>}/>
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
+                                {/* Aptitude Routes */}
+                                <Route path="/QA/qaexam" drk element={<DetailsPage toggle={toggle} theme={theme} />}/>
+                                <Route path="/QA/confirm" element={<InstructionPage toggle={toggle} theme={theme}/>} />
+                                <Route path="/QA/questions" element={<QuestionPage toggle={toggle} theme={theme}/>} />
+                                <Route path="/staff-dashboard" element={<Schedule toggle={toggle} theme={theme}/>} />
+                                <Route path="/upload" element={<UploadContainer toggle={toggle} theme={theme}/>} />
+                                <Route path="/scheduled-exam" element={<ScheduledExam toggle={toggle} theme={theme}/>} />
+                                <Route path="/qaresult" element={<QAExamResults toggle={toggle} theme={theme}/>} />
 
                                 <Route path="/careers" element={<Career />} />
 
-                                {/*  General Forms  */}
-                                <Route path="/appraisalreport" element={<AppraisalReport />} />
-                                <Route path="/appraisalform" element={<AppraisalForm />} />
+                                {/*Appraisal  */}
+                                <Route path="/appraisal" element={<Appraisal />} />
 
 
                                 {/*  404 - Page not found  */}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./AppraisalForm.css";
+import "./FacultyForm.css";
 
 const Page5 = ({ selectedYear, newAcadamicYear, data, setData }) => {
 

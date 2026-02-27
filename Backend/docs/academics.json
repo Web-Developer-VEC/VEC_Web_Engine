@@ -25,10 +25,7 @@
       },
       {
         "year": "Academic Year 2025-2026",
-        "pdf_path": [
-          "/static/pdfs/calendar/2025-2026/odd.pdf",
-          ""
-        ]
+        "pdf_path": ["/static/pdfs/calendar/2025-2026/odd.pdf"]
       }
     ]
   },
