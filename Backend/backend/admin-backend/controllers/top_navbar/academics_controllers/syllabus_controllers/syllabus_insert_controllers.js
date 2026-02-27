@@ -37,7 +37,11 @@ async function insertData(tempDoc, mainCollection) {
 
   /* ---------------- DUPLICATE CHECK ---------------- */
   if (name) {
-    const duplicate = yearData.docs.find(
+    console.log(yearData);
+
+    const yeardocs = yearData.docs || [];
+    
+    const duplicate = yeardocs.find(
       d => d.name.trim().toLowerCase() === name.trim().toLowerCase()
     );
 
