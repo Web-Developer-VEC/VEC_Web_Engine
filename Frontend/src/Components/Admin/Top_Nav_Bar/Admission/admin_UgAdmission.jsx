@@ -1515,12 +1515,12 @@ if (
     if (beGovLinkFile) files.push(beGovLinkFile);
     if (beMgmtLinkFile) files.push(beMgmtLinkFile);
 
-    console.log("app", payloads, files);
+    // console.log("app", payloads, files);
   try {
    const finalPayloads = payloads.filter(item => item !== null);
 await sendRequest(finalPayloads, files);
 console.log('====================================');
-console.log("ne",finalPayloads);
+console.log("payload",finalPayloads);
 console.log('====================================');
 
   // ✅ BUILD FINAL DATA FROM EDITABLE STATE
