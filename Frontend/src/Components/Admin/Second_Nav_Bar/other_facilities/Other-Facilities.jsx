@@ -518,7 +518,7 @@ const handleImageUpload = (rowId, file) => {
 
   // Use the other_facilities folder (was inconsistent before)
   const safeFileName = file.name.replace(/\s+/g, "_");
-  const imagePath = `/static/images/other_facilities/${Date.now()}_${safeFileName}`;
+  const imagePath = `/static/images/other_facilities/${file.name}`;
 
   setCurrentRows((prev) =>
     prev.map((r) =>
@@ -691,7 +691,7 @@ currentRows.forEach((row, index) => {
     imagePaths.push(row.origImagePath);
   } else if (row.imageFile) {
     // new uploaded file
-    const filename = `other_facilities/${Date.now()}_${row.imageFile.name}`;
+    const filename = `other_facilities/${row.imageFile.name}`;
     imagePaths.push(filename);
     imageFiles.push(row.imageFile);
   }
@@ -714,10 +714,7 @@ const filesToUpload = changeList
 
   console.log("PAYLOAD:", payload);
   console.log("FILES :", filesToUpload);
-console.log(
-  "FILES:",
-  filesToUpload.map((f) => f.name)
-);
+
 
   await sendRequest(payload, filesToUpload);
 

@@ -16,6 +16,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Eye, Pencil, Trash2, X } from "lucide-react";
 import { useAdminRequest } from "../../../../hooks/useAdminRequest";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./activitiestile.css";
 
 const Activities = ({ data }) => {
@@ -291,11 +293,12 @@ const Activities = ({ data }) => {
 
   return (
     <>
+      <ToastContainer position="bottom-right" autoClose={3000} />
       {/* Header */}
       <div className="flex justify-end">
         {!isEditing && (
           <button
-            className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex gap-2 px-3 py-1 rounded mr-4 transition"
+            className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex gap-2 px-3 py-1 rounded mr-4 transition flex items-center"
             onClick={() => setIsEditing(true)}
           >
             <Pencil size={16} /> Edit
@@ -305,7 +308,7 @@ const Activities = ({ data }) => {
 
       <div className="deptevent-intro flex justify-center items-center">
         <h1 className="deptevent-header text-brwn dark:text-drkt text-[Poppins] text-[16px] md:text-[24px]">
-          Department Activities
+          Activities
         </h1>
       </div>
 
@@ -499,7 +502,7 @@ const Activities = ({ data }) => {
                   disabled={loading}
                   className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex items-center gap-2 transition ${loading ? 'cursor-progress' : ''}`}
                 >
-                  <X size={16} /> {loading ? "Processing..." : "Confirm Request"}
+                  {loading ? "Processing..." : "Confirm Request"}
                 </button>
               )}
             </div>
@@ -667,6 +670,7 @@ const Activitiestile = ({
                 <div
                   key={index}
                   className="deptevent-action-button flex items-center gap-2"
+                  onClick={() => !isEditing && handlePdfOpen(item?.pdf_path)}
                 >
                   <FontAwesomeIcon
                     icon={actionIcons[item?.name] || faFileAlt}

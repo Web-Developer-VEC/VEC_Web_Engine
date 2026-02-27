@@ -26,6 +26,7 @@ async function aboutusHandler(fileStream, docs, req, cb, filename, mimetype) {
     const collection_type = doc.collection_type;
     const meta_data = doc.meta_data;
     const category = doc.category;
+    const isUpdate = doc.action === "update";
 
     if (!meta_data) {
       return cb(new Error("meta_data missing"));
@@ -57,7 +58,7 @@ async function aboutusHandler(fileStream, docs, req, cb, filename, mimetype) {
       const frontendBase = path.basename(meta_data.pdf_path);
       const uploadBase = path.basename(realpdfname);
 
-      if (frontendBase !== uploadBase) {
+      if (!isUpdate && frontendBase !== uploadBase) {
         return cb(
           new Error(
             `Filename mismatch. Expected "${frontendBase}" got "${uploadBase}"`

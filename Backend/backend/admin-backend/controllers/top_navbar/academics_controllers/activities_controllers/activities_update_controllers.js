@@ -4,6 +4,9 @@ async function updateData(tempDoc, mainCollection) {
   if (!collection_type || !category || !meta_data || !original_data) {
     throw new Error("collection_type, category, original_data and meta_data are required");
   }
+  if (collection_type !== "activities") {
+    throw new Error("Incorrect collection type or route");
+  }
 
   if (collection_type === "activities") {
     const doc = await mainCollection.findOne({ type: collection_type });

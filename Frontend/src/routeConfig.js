@@ -102,6 +102,8 @@ const Programmes = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/Pr
 const AdminProgrammes = lazy(() => import("./Components/Admin/Top_Nav_Bar/Academics/Programmes.jsx"));
 const AdminSportsPage = lazy(() => import("./Components/Admin/Second_Nav_Bar/sports/admin_SportsPage.jsx"));
 const SportsPage = lazy(() => import("./Components/Main/Second_Nav_Bar/sports/SportsPage.jsx"));
+const Otherfacilities= lazy(() => import("./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx"));
+const AdminOtherFacilities= lazy(() => import("./Components/Admin/Second_Nav_Bar/other_facilities/Other-Facilities.jsx"));
 
 
 export const routeConfig = {
@@ -181,6 +183,7 @@ export const routeConfig = {
   "/grievances": { normal: GrievanceForm, admin: AdminGrievanceForm },
   "/gallery": { normal: Gallery, admin: Admingallery },
   "/gallery_details": { normal: Gallerydetails, admin: Admingallerydetails },
+  "/other-facilities": { normal: Otherfacilities, admin: AdminOtherFacilities },
 
   // Superior Admin Routes
   "/admin_dash": { normal: NotFound, admin: AdminDashboard },

@@ -1,0 +1,52 @@
+[
+    {
+        "HOD": [
+            {
+                "Name": "திரு. முத்தையா மு.மு",
+                "Designation": "உதவிப்பேராசிரியர் மற்றும் தமிழ்த்துறைத் தலைவர்",
+                "Department_Name": "",
+                "Mail_ID": "",
+                "image_path": "/static/images/profile_photos/014/VEC-014-01-180.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/muthiah-m-m-190398355/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [],
+                "EXPERIENCE": [],
+                "PROJECTS": [],
+                "PATENTS": [],
+                "JOURNAL_PUBLICATIONS": [],
+                "CONFERENCE_PUBLICATIONS": [],
+                "BOOK_PUBLICATIONS": [],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 0,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 0,
+                    "Conference_Publications": 0,
+                    "Book_/_Book_Chapter_Published": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "FACULTY": []
+    },
+    {
+        "NON_TEACHING_FACULTY": []
+    }
+]

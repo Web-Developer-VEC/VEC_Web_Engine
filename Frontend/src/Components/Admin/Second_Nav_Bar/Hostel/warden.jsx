@@ -215,7 +215,10 @@ const handleSave = () => {
   setEditData(null);
   setShowPostSaveActions(true);
 
-  setChanges(computeFinalChanges(updatedData));
+  setChanges(prev => [
+  ...prev,
+  ...computeFinalChanges(updatedData)
+]);
 };
 
 
@@ -311,7 +314,7 @@ const handleFinalRequest = async () => {
     action: "update",
     collectionName: "hostel_details",
     category,
-    title: "Powerhouse",
+    title: "Update Hostel Warden",
 
     original_data: {
       warden_name: originalWarden.warden_name,
@@ -351,7 +354,7 @@ const handleFinalRequest = async () => {
           action: "insert",
           collectionName: "hostel_details",
           category,
-          title: "Powerhouse",
+          title: "Insert Hostel Warden",
           meta_data: {
             warden_name: w.warden_name,
             designation: w.designation,
@@ -390,7 +393,7 @@ updatedList.forEach(w => {
     action: "update",
     collectionName: "hostel_details",
     category,
-    title: "Powerhouse",
+    title: "Update Hostel Warden",
 
     // 🔍 ORIGINAL (for audit / approval)
     original_data: {
@@ -423,7 +426,7 @@ updatedList.forEach(w => {
           action: "delete",
           collectionName: "hostel_details",
           category,
-          title: "Powerhouse",
+          title: "Delete Hostel Warden",
           meta_data: {
             warden_name: w.warden_name,
             designation: w.designation,
@@ -495,7 +498,9 @@ try {
 
       // Multi delete
       if (showMultiDeleteConfirm && selectedItems.length > 0) {
-        const removal = new Set(selectedItems.map((id) => id.split("-")[1]));
+        const removal = new Set(
+  selectedItems.map((id) => id.substring(id.indexOf("-") + 1))
+);
 
         ["boysWardens", "girlsWardens"].forEach((section) => {
           if (updated[section]) {
@@ -520,13 +525,18 @@ try {
     setShowMultiDeleteConfirm(false);
   };
 
-  if (!chief || !chiefDeputy || boysWardens.length === 0 || girlsWardens.length === 0) {
-    return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-        <LoadComp />
-      </div>
-    );
-  }
+if (
+  chief === null ||
+  chiefDeputy === null ||
+  boysWardens === null ||
+  girlsWardens === null
+) {
+  return (
+    <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+      <LoadComp />
+    </div>
+  );
+}
 
   const renderWardenCard = (warden, section) => {
     const isSelectableSection = section === "boysWardens" || section === "girlsWardens";
