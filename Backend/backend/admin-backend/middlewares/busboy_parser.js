@@ -41,16 +41,13 @@ function tempstoreBusboy(req, res, next) {
       return;
     }
 
-    const docs = req.docsFromBusboy || [];
-    const collectionName = docs[0]?.collectionName;
-    const section = docs[0]?.collection_type; // since you said this holds type
+   const docs = req.docsFromBusboy || [];
+   const collectionName = docs[0]?.collectionName;
+   const section = docs[0]?.collection_type;  // since you said this holds type
+console.log("📁 File received:", { filename, mimetype, collectionName, section });
+   const handler = busboyModels[collectionName]?.[section] ? busboyModels[collectionName][section] : busboyModels[collectionName];
 
-    const handler =
-      busboyModels[collectionName]?.[section] || busboyModels[collectionName];
-    if (!handler) {
-      throw new Error(`Handler not found. Collection is ${collectionName}`);
-    }
-
+console.log("🔍 Found handler:", !!handler, "for collection:", collectionName, "and section:", section);
     // Wrap handler in a promise so we can wait for it
     const uploadPromise = new Promise((resolve, reject) => {
       handler(
