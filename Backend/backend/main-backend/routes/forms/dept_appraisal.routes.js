@@ -1,8 +1,8 @@
 const express = require('express');
 const s3UploadMiddleware = require('../../middlewares/appraisal_multer');
-const { Appraisal, getAppraisal } = require('../../controllers/appraisal_controller');
+const { Appraisal, getAppraisal } = require('../../controllers/Appraisal_controller/appraisal_controller');
 const logError = require('../../middlewares/logerror');
-const generateAppraisalDoc = require('../../controllers/appraisal_report');
+const generateAppraisalDoc = require('../../controllers/Appraisal_controller/appraisal_report');
 
 const router = express.Router();
 

@@ -74,12 +74,23 @@ const s3UploadMiddleware = (req, res, next) => {
             const year = parsedData.academic_year;
 
             const allowedDepts = [
-                "cse",
-                "ece",
-                "it",
-                "mech",
-                "civil",
-                "ai_ds"
+                "AIDS",
+                "AUTO",
+                "CHEMISTRY",
+                "CIVIL",
+                "CSE",
+                "CSECS",
+                "EEE",
+                "EIE",
+                "ECE",
+                "ENGLISH",
+                "IT",
+                "MATHS",
+                "MECH",
+                "TAMIL",
+                "PHYSICS",
+                "MECSE",
+                "MBA",
             ];
 
             if (!allowedDepts.includes(dept)) {
@@ -105,16 +116,17 @@ const s3UploadMiddleware = (req, res, next) => {
                         `static/pdfs/appraisal/${dept}/${year}/${baseName}.pdf`;
                     console.log(fileKey);
 
-                    await s3.send(new PutObjectCommand({
+                    const da = await s3.send(new PutObjectCommand({
                         Bucket: bucketName,
                         Key: fileKey,
                         Body: file.buffer,
                         ContentType: file.mimetype
                     }));
-
+                    const fullPath =
+                        `https://${bucketName}.s3.ap-south-1.amazonaws.com/${fileKey}`
                     // fieldname example:
                     // student_admission_details.sanctioned_strength.pdf_path
-                    setDeepValue(parsedData, file.fieldname, fileKey);
+                    setDeepValue(parsedData, file.fieldname, fullPath);
                 }
             }
 

@@ -1,24 +1,24 @@
-const { getlogDb } = require("../config/db");
-const logError = require("../middlewares/logerror");
+const { getlogDb } = require("../../config/db");
+const logError = require("../../middlewares/logerror");
 
 const allowedDepts = [
-"AIDS",
-"AUTO",
-"CHEMISTRY",
-"CIVIL",
-"CSE",
-"CSECS",
-"EEE",
-"EIE",
-"ECE",
-"ENGLISH",
-"IT",
-"MATHS",
-"MECH",
-"TAMIL",
-"PHYSICS",
-"MECSE",
-"MBA",
+    "AIDS",
+    "AUTO",
+    "CHEMISTRY",
+    "CIVIL",
+    "CSE",
+    "CSECS",
+    "EEE",
+    "EIE",
+    "ECE",
+    "ENGLISH",
+    "IT",
+    "MATHS",
+    "MECH",
+    "TAMIL",
+    "PHYSICS",
+    "MECSE",
+    "MBA",
 ];
 
 const Appraisal = async (req, res, next) => {
@@ -28,6 +28,7 @@ const Appraisal = async (req, res, next) => {
 
         const dept = data.department;
         const year = data.academic_year;
+        console.log(dept);
         console.log(dept);
 
         if (!allowedDepts.includes(dept)) {
