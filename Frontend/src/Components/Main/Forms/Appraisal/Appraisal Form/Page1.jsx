@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./FacultyForm.css";
+import "./AppraisalForm.css";
 import { FaEye } from "react-icons/fa";
 
 const Page1 = ({ selectedYear, newAcadamicYear, data, setData }) => {

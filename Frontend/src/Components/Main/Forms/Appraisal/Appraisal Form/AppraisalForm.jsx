@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./FacultyForm.css";
+import "./AppraisalForm.css";
 import Page1 from "./Page1.jsx";
 import Page2 from "./Page2.jsx";
 import Page3 from "./Page3.jsx";
@@ -7,7 +7,7 @@ import Page4 from "./Page4.jsx";
 import Page5 from "./Page5.jsx";
 import axios from "axios";
 
-const FacultyForm = () => {
+const AppraisalForm = () => {
   /* ================= MAIN FORM STATE ================= */
 
   const [mainForm, setMainForm] = useState({
@@ -321,4 +321,4 @@ const handleSubmit = async (e) => {
   );
 };
 
-export default FacultyForm;
+export default AppraisalForm;

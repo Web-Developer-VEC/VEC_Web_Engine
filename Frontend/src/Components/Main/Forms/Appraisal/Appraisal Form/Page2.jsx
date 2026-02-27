@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "./FacultyForm";
+import "./AppraisalForm.css";
 import { Eye } from "lucide-react";
 
 const Page2 = ({ selectedYear, newAcadamicYear, data, setData }) => {
