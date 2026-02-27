@@ -74,8 +74,8 @@ const Acadamiccal = ({ toggle, theme }) => {
             <div className="max-w-6xl mx-auto px-4 py-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 {academicCal?.map((item, i) => {
-                  const oddPath = item.pdf_path?.find(path => path.toLowerCase().includes("odd"));
-                  const evenPath = item.pdf_path?.find(path => path.toLowerCase().includes("even"));
+                  const oddPath = item?.pdf_path?.[0] || "";
+                  const evenPath = item?.pdf_path?.[1] || "";
 
                   return (
                     <div

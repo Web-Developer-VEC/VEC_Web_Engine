@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import LoadComp from "../LoadComp";
+import LoadComp from "../../../LoadComp";
 import axios from "axios";
 
 const deptMap = [
@@ -18,7 +18,7 @@ const yearList = [
   "2022-23"
 ];
 
-const Appraisal = () => {
+const AppraisalReport = () => {
 
   const [selectedDept, setSelectedDept] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
@@ -224,4 +224,4 @@ const Appraisal = () => {
 
 };
 
-export default Appraisal;
+export default AppraisalReport;
