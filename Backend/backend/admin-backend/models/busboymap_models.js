@@ -273,6 +273,8 @@ const busboyModels = {
   infrastructure:infrastructureHandler,
   research:deptresearchHandler
 },
+
+  AIDS_001_staff: facultyHandler,
 }
 
 module.exports = busboyModels;
