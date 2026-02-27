@@ -1,129 +1,3002 @@
-[ {
-    "collectionName": "AIDS_001",
-    "collection_type": "faculty",
-    "title": "AI&DS New Faculty Insertion",
-    "category": "head_of_department",
-    "action": "update",
-    "meta_data": 
-      {
-        "name": "Dr. VISU P",
-        "designation": "Professor & Head",
-        "unique_id": "VEC-001-01-077",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_bro…",
-          "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authus…",
-          "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
-          "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
-          "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
-          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
-        },
-        "image_path": "/static/images/profile_photos/001/VEC-001-01-077.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-01-077.pdf"
-      },
-    "original_data": {
-        "name": "Dr. jeba kumar  P",
-        "designation": "Professor & Head",
-        "unique_id": "VEC-001-01-077",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_bro…",
-          "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authus…",
-          "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
-          "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
-          "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
-          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
-        },
-        "image_path": "/static/images/profile_photos/001/VEC-001-01-077.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-01-077.pdf"
-      }
-  },{
-    "collectionName": "AIDS_001",
-    "collection_type": "faculty",
-    "title": "AI&DS New Faculty Insertion",
-    "category": "teaching_staff",
-    "action": "insert",
-    "meta_data": [
-      {
-        "name": "Dr. VISU P",
-        "designation": "Professor & Head",
-        "unique_id": "",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_bro…",
-          "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authus…",
-          "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
-          "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
-          "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
-          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
-        },
-        "image_path": "",
-        "resume_pdf": ""
-      }
-    ]
-  },
+[
   {
-    "collectionName": "AIDS_001",
-    "collection_type": "faculty",
-    "title": "AI&DS Faculty Changes",
-    "category": "teaching_staff",
+    "collectionName": "AIDS_001_staff",
+    "collection_type": "HOD",
+    "title": "AI&DS HOD Update",
     "action": "update",
     "meta_data": {
-    "name": "Mrs. JARIYA BEGUM A R",
-    "designation": "Assistant Professor",
-    "unique_id": "VEC-001-04-623",
-    "socialmedia_links": {
-      "linkedin": "",
-      "googlescholar": "",
-      "researchgate": "",
-      "orchidprofile": "",
-      "publonprofile": "",
-      "scopus": ""
+      "Name": "DR. DEEPAK P",
+      "Designation": "Professor & Head",
+      "Department_Name": "Artificial Intelligence and Data Science",
+      "Mail_ID": "hodaids@velammal.edu.in",
+      "image_path": "/static/images/profile_photos/001/VEC-001-01-077.webp",
+      "socialmedia_links": {
+        "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_browsemap&originalSubdomain=in",
+        "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&user=KfwgAmoAAAAJ",
+        "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
+        "orchidprofile": "https://orcid.org/0000-0001-8020-1678",
+        "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
+        "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
+      },
+      "Professional_Membership": "IEEE, ACM, CSI, ISTE",
+      "EDUCATIONAL_QUALIFICATION": [],
+      "EXPERIENCE": [],
+      "PROJECTS": [],
+      "PATENTS": [],
+      "JOURNAL_PUBLICATIONS": [],
+      "CONFERENCE_PUBLICATIONS": [],
+      "BOOK_PUBLICATIONS": [],
+      "CONSULTANCY": [],
+      "RESEARCH_SCHOLARS": [],
+      "COUNT": {
+        "Professional_Membership": "IEEE, ACM, CSI, ISTE",
+        "Sponsored_Projects": 0,
+        "Patent_Granted": 0,
+        "Patent_Published": 0,
+        "Patent_Filed": 0,
+        "Journal_Publications": 0,
+        "Conference_Publications": 0,
+        "Book_/_Book_Chapter_Published": 0,
+        "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+        "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+        "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+        "PHD_Produced": 0,
+        "PHD_Pursuing": 0
+      }
     },
-    "image_path": "/static/images/profile_photos/001/VEC-001-04-623.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-623.pdf"
-  },
-    "original_data": {
-    "name": "Mrs. jaba kumar ",
-    "designation": "Assistant Professor",
-    "unique_id": "VEC-001-04-623",
-    "socialmedia_links": {
-      "linkedin": "",
-      "googlescholar": "",
-      "researchgate": "",
-      "orchidprofile": "",
-      "publonprofile": "",
-      "scopus": ""
-    },
-    "image_path": "/static/images/profile_photos/001/VEC-001-04-623.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-623.pdf"
-  }
+    "original_data":  {
+                "Name": "DR. VISU P",
+                "Designation": "Professor & Head",
+                "Department_Name": "Artificial Intelligence and Data Science",
+                "Mail_ID": "hodaids@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/001/VEC-001-01-077.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-visu-p-12a78961/?trk=public_profile_browsemap&originalSubdomain=in",
+                    "googlescholar": "https://scholar.google.co.in/citations?view_op=list_works&hl=en&authuser=2&hl=en&user=KfwgAmoAAAAJ&sortby=pubdate&authuser=2",
+                    "researchgate": "https://www.researchgate.net/profile/Pandu-Visu",
+                    "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0001-8020-1678",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/21718142",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=35744043700"
+                },
+                "Professional_Membership": "IEEE, ACM, CSI, ISTE",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "Ph.D",
+                        "BRANCH": "Computer Science and Engineering",
+                        "INSTITUTE": "Vel Tech Rangarajan Dr.Sakunthala R&D\nInstitute of Science and Technology\n",
+                        "YEAR": 2013
+                    },
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "Computer Science and Engineering",
+                        "INSTITUTE": "Sathyabama Institute of Science and Technology ",
+                        "YEAR": 2006
+                    },
+                    {
+                        "DEGREE": "B.Tech",
+                        "BRANCH": "Information Technology",
+                        "INSTITUTE": "Priyadarshini Engineering College",
+                        "YEAR": 2002
+                    },
+                    {
+                        "DEGREE": "DEEE",
+                        "BRANCH": "Electrical and Electronics Engineering",
+                        "INSTITUTE": "Priyadarshini Polytecnic College",
+                        "YEAR": 1999
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "02.12.2019",
+                        "Unnamed:_1": "Present ",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "9",
+                        "DESIGNATION": "Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "16.06.2016",
+                        "Unnamed:_1": "01.12.2019",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "6",
+                        "DESIGNATION": "Associate Professor ",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "03.02.2016",
+                        "Unnamed:_1": "15.06.2016",
+                        "EXPERIENCE": "0",
+                        "Unnamed:_3": "4",
+                        "DESIGNATION": "Associate Professor ",
+                        "INSTITUTION": "Priyadarshini Engineering College"
+                    },
+                    {
+                        "DURATION": "26.08.2013",
+                        "Unnamed:_1": "30.01.2016",
+                        "EXPERIENCE": "2",
+                        "Unnamed:_3": "5",
+                        "DESIGNATION": "Associate Professor ",
+                        "INSTITUTION": "Vel Tech Rangarajan Dr.Sakunthala R&D Institute of Science and Technology"
+                    },
+                    {
+                        "DURATION": "03.01.2008",
+                        "Unnamed:_1": "25.08.2013",
+                        "EXPERIENCE": "6",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor ",
+                        "INSTITUTION": "Vel Tech (Engineering College)"
+                    },
+                    {
+                        "DURATION": "12.07.2006",
+                        "Unnamed:_1": "31.12.2007",
+                        "EXPERIENCE": "1",
+                        "Unnamed:_3": "6",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Ganadipathy Tulsi's Jain Engineering College"
+                    },
+                    {
+                        "DURATION": "22.08.2002",
+                        "Unnamed:_1": "11.07.2006",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "11",
+                        "DESIGNATION": "Lecturer",
+                        "INSTITUTION": "Sri Nandhanam College Engineering & Technology"
+                    },
+                    {
+                        "DESIGNATION": "3.416666667"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Combined Swarm Intelligence Routing \n               Protocol for MANET",
+                        "SPONSORING_AGENCY": "DST",
+                        "AMOUNT": "Rs. 33,15,250 ",
+                        "YEAR_OF_SANCTION": "2015",
+                        "DURATION": "3 Years",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Criminal Face Detection Tool - Criminator",
+                        "SPONSORING_AGENCY": "DST",
+                        "AMOUNT": "Rs. 2,50,000",
+                        "YEAR_OF_SANCTION": "2022",
+                        "DURATION": "2 Years",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Workshop Grand",
+                        "SPONSORING_AGENCY": "IEEE Madras Section",
+                        "AMOUNT": "Rs.8950",
+                        "YEAR_OF_SANCTION": "1 Day",
+                        "DURATION": "2022",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Completed"
+                    },
+                    {
+                        "TITLE": "Conference Grand",
+                        "SPONSORING_AGENCY": "AICTE",
+                        "AMOUNT": "Rs. 1,35,000",
+                        "YEAR_OF_SANCTION": "2 Days",
+                        "DURATION": "2020",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Completed"
+                    },
+                    {
+                        "TITLE": "Prerana - preparing\nSC/ST Students for Higher education\n",
+                        "SPONSORING_AGENCY": "AICTE",
+                        "AMOUNT": "Rs.8,20,000",
+                        "YEAR_OF_SANCTION": "2 Years",
+                        "DURATION": "2019",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Completed"
+                    },
+                    {
+                        "TITLE": "Seminar Grand",
+                        "SPONSORING_AGENCY": "IEEE Madras Section",
+                        "AMOUNT": "Rs.12500",
+                        "YEAR_OF_SANCTION": "1 Day",
+                        "DURATION": "2016",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Completed"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "IOT based Agriculture Crop Monitoring System Using Sensors ",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "16.04.2021"
+                    },
+                    {
+                        "NAME_OF_PATENT": "IoT based remote Intellient Healthcare System for the Detection and  Prevention of a Patient Health Monitoring ",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "23.07.2021"
+                    },
+                    {
+                        "NAME_OF_PATENT": "A smart application for Multi-Food Recognition using Machine learning",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "30.07.2021"
+                    },
+                    {
+                        "NAME_OF_PATENT": "Design system of Monitoring and Alert Management of Spy Tracker using artificial intelligence (VSaaS) for IoT",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "11.02.2022"
+                    },
+                    {
+                        "NAME_OF_PATENT": "System for Water Management Platform for Smart Irrigation using Cloud based- IoT\n",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "INDIA",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "03.09.2022"
+                    },
+                    {
+                        "NAME_OF_PATENT": "A Novel method- Crop Health Monitoring System Using IoT and Machine Learning",
+                        "PATENT_TYPE_(UTILITY)": "UTILITY",
+                        "COUNTRY": "Australia",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Granted",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "08.12.2021"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Visu P, Sathiya, V, Ajitha, P., Surendran, R.",
+                        "PAPER_TITLE": "Enhanced swin transformer based tuberculosis classification with segmentation using chest X-ray",
+                        "JOURNAL_NAME": "Journal of X-Ray Science and Technology, 2025",
+                        "DOI_NUMBER": "https://doi.org/10.1177/08953996241300018",
+                        "PAGE_NO": "167–186",
+                        "VOL_NO_/_ISSUE_NO": "33 (1)",
+                        "MONTH_&_YEAR": 2025,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "V Yamuna, Jeevaa Katiravan, P Visu",
+                        "PAPER_TITLE": "Advanced Pest Identification Framework Using Deep Learning and Feature Extraction Techniques",
+                        "JOURNAL_NAME": "Journal of Electrical Engineering & Technology",
+                        "DOI_NUMBER": "https://doi.org/10.1007/s42835-024-02111-3",
+                        "PAGE_NO": "1803-1814",
+                        "VOL_NO_/_ISSUE_NO": "20 (3)",
+                        "MONTH_&_YEAR": 2025,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu P, Smitha P S, Pughazendi N, Murugananthan V",
+                        "PAPER_TITLE": "Hybrid deep learning-based skin cancer classification with RPO-SegNet for skin lesion segmentation",
+                        "JOURNAL_NAME": "Network: Computation in Neural Systems",
+                        "DOI_NUMBER": "https://doi.org/10.1080/0954898X.2024.2428705",
+                        "MONTH_&_YEAR": 2024,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Rajesh, K.M., Navaneethakrishnan, S.R., Subramanian, P.",
+                        "PAPER_TITLE": "Air pollution prediction using attention module with CNN-OptBiLSTM",
+                        "JOURNAL_NAME": "Global Nest Journal",
+                        "DOI_NUMBER": "10.30955/gnj.05823",
+                        "PAGE_NO": "5823",
+                        "VOL_NO_/_ISSUE_NO": "26(6)",
+                        "MONTH_&_YEAR": 2024,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Thivya Lakshmi, R.T., Katiravan, J., Visu, P.",
+                        "PAPER_TITLE": "CoDet: A novel deep learning pipeline for cotton plant detection and disease identification",
+                        "JOURNAL_NAME": "Automatika",
+                        "DOI_NUMBER": "10.1080/00051144.2024.2317093",
+                        "PAGE_NO": "662-674",
+                        "VOL_NO_/_ISSUE_NO": "65(2)",
+                        "MONTH_&_YEAR": 2024,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Smitha, P.S., Velayutham, M., Ahmad, M.W.",
+                        "PAPER_TITLE": "Enhanced EEG classification using adaptive DWT and heuristic-ICA algorithm",
+                        "JOURNAL_NAME": "Automatika",
+                        "DOI_NUMBER": "10.1080/00051144.2023.2220207",
+                        "PAGE_NO": "827-836",
+                        "VOL_NO_/_ISSUE_NO": "64(4)",
+                        "MONTH_&_YEAR": 2023,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Prabu, S., Velan, B., Christalin Nelson, S., Jayasudha, F.V., Visu, P., Janarthanan, K.",
+                        "PAPER_TITLE": "Mobile technologies for contact tracing and prevention of COVID-19 positive cases: a cross- sectional study",
+                        "JOURNAL_NAME": "International Journal of Pervasive Computing and Communications",
+                        "DOI_NUMBER": "10.1108/IJPCC-07-2020-0086",
+                        "PAGE_NO": "226-235",
+                        "VOL_NO_/_ISSUE_NO": "18(2)",
+                        "MONTH_&_YEAR": 2022,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Praba, T.S., Sivakumar, N., Srinivasan, R., Sethukarasi, T.",
+                        "PAPER_TITLE": "Bio-inspired dual cluster heads optimized routing algorithm for wireless sensor networks",
+                        "JOURNAL_NAME": "Journal of Ambient Intelligence and Humanized Computing",
+                        "DOI_NUMBER": "10.1007/s12652-019-01657-9",
+                        "PAGE_NO": "3753-3761",
+                        "VOL_NO_/_ISSUE_NO": "12(3)",
+                        "MONTH_&_YEAR": 2021,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Josephine, M.S., Lakshmanan, L., Nair, R.R., Visu, P., Ganesan, R., Jothikumar, R.",
+                        "PAPER_TITLE": "Monitoring and sensing COVID-19 symptoms as a precaution using electronic wearable devices",
+                        "JOURNAL_NAME": "International Journal of Pervasive Computing and Communications",
+                        "DOI_NUMBER": "10.1108/IJPCC-06-2020-0067",
+                        "PAGE_NO": "341-350",
+                        "VOL_NO_/_ISSUE_NO": "16(4)",
+                        "MONTH_&_YEAR": 2020,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Sivakumar, N., Kumaresan, P., Yokesh Babu, S., Ramesh, P.S.",
+                        "PAPER_TITLE": "Removing leaf petioles and auto locating apex-base points using straight line interpolation and bisection",
+                        "JOURNAL_NAME": "Multimedia Tools and Applications",
+                        "DOI_NUMBER": "10.1007/s11042-018-6579-z",
+                        "PAGE_NO": "5355-5369",
+                        "VOL_NO_/_ISSUE_NO": "79(7)",
+                        "MONTH_&_YEAR": 2020,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Arivudainambi, D., Varun Kumar, K.A., Vinoth Kumar, R., Visu, P.",
+                        "PAPER_TITLE": "Ransomware traffic classification using deep learning models: Ransomware traffic classification",
+                        "JOURNAL_NAME": "International Journal of Web Portals",
+                        "DOI_NUMBER": "10.4018/IJWP.2020010101",
+                        "PAGE_NO": "001-011",
+                        "VOL_NO_/_ISSUE_NO": "12(1)",
+                        "MONTH_&_YEAR": 2020,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Arivudainambi, D., K.A., V.K., S., S.C., Visu, P.",
+                        "PAPER_TITLE": "Malware traffic classification using principal component analysis and artificial neural network for extreme surveillance",
+                        "JOURNAL_NAME": "Computer Communications",
+                        "DOI_NUMBER": "10.1016/j.comcom.2019.08.003",
+                        "PAGE_NO": "50-57",
+                        "VOL_NO_/_ISSUE_NO": "147",
+                        "MONTH_&_YEAR": 2019,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Lakshmanan, L., Murugananthan, V., Cruz, M.V.",
+                        "PAPER_TITLE": "Software-defined forensic framework for malware disaster management in Internet of Thing devices for extreme surveillance",
+                        "JOURNAL_NAME": "Computer Communications",
+                        "DOI_NUMBER": "10.1016/j.comcom.2019.08.013",
+                        "PAGE_NO": "14-20",
+                        "VOL_NO_/_ISSUE_NO": "147",
+                        "MONTH_&_YEAR": 2019,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Kavitha, R., Kannan, E., Visu, P., Vimala Devi, K.",
+                        "PAPER_TITLE": "Implementation of vehicular networking using OMNeTpp",
+                        "JOURNAL_NAME": "International Journal of Advanced Trends in Computer Science and Engineering",
+                        "DOI_NUMBER": "10.30534/ijatcse/2019/53852019",
+                        "PAGE_NO": "2199-2204",
+                        "VOL_NO_/_ISSUE_NO": "8(5)",
+                        "MONTH_&_YEAR": 2019,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Murugananthan, V.",
+                        "PAPER_TITLE": "A dependable smart security system for dominant attacks on agriculture crop fields",
+                        "JOURNAL_NAME": "International Journal of Engineering and Technology(UAE)",
+                        "PAGE_NO": "195-197",
+                        "VOL_NO_/_ISSUE_NO": "7(1.3)",
+                        "MONTH_&_YEAR": 2018,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Varunkumar, K.A., Srinivasan, R., Vinoth Kumar, R.",
+                        "PAPER_TITLE": "Brainwave based accident avoidance system for drowsy drivers",
+                        "JOURNAL_NAME": "Indian Journal of Science and Technology",
+                        "DOI_NUMBER": "10.17485/ijst/2016/v9i3/86381",
+                        "PAGE_NO": "001-05",
+                        "VOL_NO_/_ISSUE_NO": "9(3)",
+                        "MONTH_&_YEAR": 2016,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Koteeswaran, S., Visu, P., Kannan, E.",
+                        "PAPER_TITLE": "Enhancing JS- MR based data visualisation using YARN",
+                        "JOURNAL_NAME": "Indian Journal of Science and Technology",
+                        "DOI_NUMBER": "10.17485/ijst/2015/v8i11/71780",
+                        "PAGE_NO": "53138",
+                        "VOL_NO_/_ISSUE_NO": "8(11)",
+                        "MONTH_&_YEAR": 2015,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Varunkumar, K.A., Visu, P., Manikandan, N.K., Ravikumar, S., Vinothkumar, R.",
+                        "PAPER_TITLE": "Inception complex stable election routing protocol",
+                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
+                        "PAGE_NO": "10539-10546",
+                        "VOL_NO_/_ISSUE_NO": "10(4)",
+                        "MONTH_&_YEAR": 2015,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Koteeswaran, S., Kannan, E., Visu, P.",
+                        "PAPER_TITLE": "Virtual mining model for classifying text using unsupervised learning",
+                        "JOURNAL_NAME": "American Journal of Applied Sciences",
+                        "DOI_NUMBER": "10.3844/ajassp.2014.764.768",
+                        "PAGE_NO": "764-768",
+                        "VOL_NO_/_ISSUE_NO": "11(5)",
+                        "MONTH_&_YEAR": 2014,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Vimal Karthick, R., Raj, G.S., Srinivasan, R., Sibi Chakkaravarthy, S., Visu, P.",
+                        "PAPER_TITLE": "Asynchronous time encoder based quasi-static modelling for human area network in vanet",
+                        "JOURNAL_NAME": "Journal of Computer Science",
+                        "DOI_NUMBER": "10.3844/jcssp.2014.2284.2291",
+                        "PAGE_NO": "2284-2291",
+                        "VOL_NO_/_ISSUE_NO": "10(11)",
+                        "MONTH_&_YEAR": 2014,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Koteeswaran, S., Visu, P., Silambarasan, K., Vimal Karthick, R.",
+                        "PAPER_TITLE": "HADOOP+big data: Analytics using series queue with blocking model",
+                        "JOURNAL_NAME": "Research Journal of Applied Sciences, Engineering and Technology",
+                        "DOI_NUMBER": "10.19026/rjaset.8.978",
+                        "PAGE_NO": "341-345",
+                        "VOL_NO_/_ISSUE_NO": "8(3)",
+                        "MONTH_&_YEAR": 2014,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Geetha Rani, K., Nair, S.P., Visu, P., Koteeswaran, S.",
+                        "PAPER_TITLE": "Expertised string mining in outsized databases and hefty files",
+                        "JOURNAL_NAME": "Research Journal of Applied Sciences, Engineering and Technology",
+                        "DOI_NUMBER": "10.19026/rjaset.7.900",
+                        "PAGE_NO": "5063-5067",
+                        "VOL_NO_/_ISSUE_NO": "7(23)",
+                        "MONTH_&_YEAR": 2014,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Kannan, E.",
+                        "PAPER_TITLE": "Traffic parameterized ACO for ad-hoc routing",
+                        "JOURNAL_NAME": "Life Science Journal",
+                        "PAGE_NO": "1391-1396",
+                        "VOL_NO_/_ISSUE_NO": "10(2)",
+                        "MONTH_&_YEAR": 2013,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Sibi Chakkaravarthy, S., Nair, R.R., Visu, P.",
+                        "PAPER_TITLE": "A novel methodology to identify and recognize the composite human gesture for kinect based human-machine interface",
+                        "JOURNAL_NAME": "Life Science Journal",
+                        "PAGE_NO": "1261-1266",
+                        "VOL_NO_/_ISSUE_NO": "10(2)",
+                        "MONTH_&_YEAR": 2013,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Kannan, E.",
+                        "PAPER_TITLE": "Combined swarm intelligence routing protocol for MANET",
+                        "JOURNAL_NAME": "Information Technology Journal",
+                        "DOI_NUMBER": "10.3923/itj.2013.791.797",
+                        "PAGE_NO": "791-797",
+                        "VOL_NO_/_ISSUE_NO": "12(4)",
+                        "MONTH_&_YEAR": 2013,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Koteeswaran, S., Janet, J., Kannan, E., Visu, P.",
+                        "PAPER_TITLE": "Terrorist intrusion monitoring system using outlier analysis based search knight algorithm",
+                        "JOURNAL_NAME": "European Journal of Scientific Research",
+                        "PAGE_NO": "440-449",
+                        "VOL_NO_/_ISSUE_NO": "74(3)",
+                        "MONTH_&_YEAR": 2012,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Janet, J., Kannan, E., Koteeswaran, S.",
+                        "PAPER_TITLE": "Optimal energy management in wireless adhoc network using Artificial Bee Colony based routing protocol",
+                        "JOURNAL_NAME": "European Journal of Scientific Research",
+                        "PAGE_NO": "301-307",
+                        "VOL_NO_/_ISSUE_NO": "74(2)",
+                        "MONTH_&_YEAR": 2012,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Koteeswaran, S., Janet, J.",
+                        "PAPER_TITLE": "Artificial Bee Colony based Energy Aware and Energy Efficient Routing Protocol",
+                        "JOURNAL_NAME": "Journal of Computer Science",
+                        "DOI_NUMBER": "10.3844/jcssp.2012.227.231",
+                        "PAGE_NO": "227-231",
+                        "VOL_NO_/_ISSUE_NO": "8(2)",
+                        "MONTH_&_YEAR": 2012,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "Koteeswaran, S., Visu, P., Janet, J.",
+                        "PAPER_TITLE": "A review on clustering and outlier analysis techniques in datamining",
+                        "JOURNAL_NAME": "American Journal of Applied Sciences",
+                        "DOI_NUMBER": "10.3844/ajassp.2012.254.258",
+                        "PAGE_NO": "254-258",
+                        "VOL_NO_/_ISSUE_NO": "9(2)",
+                        "MONTH_&_YEAR": 2012,
+                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "Mohan, A., Chakkaravarthy, A.P., Partha Sarathy, G., Visu, P.",
+                        "PAPER_TITLE": "Storing and securing the FIR using block-chain technology",
+                        "CONFERENCE_NAME": "AIP Conference Proceedings",
+                        "ORGANIZED_BY": "RESEARCH ADVANCEMENTS AND INNOVATIONS IN COMPUTING, COMMUNICATIONS AND INFORMATION TECHNOLOGIES: ICRAIC2IT",
+                        "ISBN_/_ISSN_/DOI_NO": "10.1063/5.0148922",
+                        "MONTH_&_YEAR": 2023
+                    },
+                    {
+                        "AUTHORS": "Hamsini, R., Visu, P.",
+                        "PAPER_TITLE": "A Survey on Power Consumption Indicator Using Machine Learning-Based Approach",
+                        "CONFERENCE_NAME": "Lecture Notes in Electrical Engineering",
+                        "ORGANIZED_BY": "springer - Computer Vision and Machine Intelligence Paradigms for SDGs ",
+                        "ISBN_/_ISSN_/DOI_NO": "10.1007/978-981-19-7169-3_21",
+                        "MONTH_&_YEAR": 2023
+                    },
+                    {
+                        "AUTHORS": "Chakaravarthi, S., Visu, P., Balu, B., Vineshwaran, V., Yakeshraj, M.",
+                        "PAPER_TITLE": "Web service registration and routing system and inter web proxy service model prevents the message alteration attacks, man-in-the middle attacks",
+                        "CONFERENCE_NAME": "2017 International Conference on Information Communication and Embedded Systems, ICICES 2017",
+                        "ORGANIZED_BY": " IEEE explore",
+                        "ISBN_/_ISSN_/DOI_NO": "10.1109/ICICES.2017.8070759",
+                        "MONTH_&_YEAR": 2017
+                    },
+                    {
+                        "AUTHORS": "Veena, K., Visu, P.",
+                        "PAPER_TITLE": "Detection of cyber crime: An approach using the lie detection technique and methods to solve it",
+                        "CONFERENCE_NAME": "2016 International Conference on Information Communication and Embedded Systems, ICICES 2016",
+                        "ORGANIZED_BY": " IEEE explore",
+                        "ISBN_/_ISSN_/DOI_NO": "10.1109/ICICES.2016.7518885",
+                        "MONTH_&_YEAR": 2016
+                    },
+                    {
+                        "AUTHORS": "Imran, S., Karthick, R.V., Visu, P.",
+                        "PAPER_TITLE": "DD-SARP: Dynamic data secure Anonymous Routing Protocol for MANETs in attacking environments",
+                        "CONFERENCE_NAME": "2015 International Conference on Smart Technologies and Management for Computing, Communication, Controls, Energy and Materials, ICSTM 2015 - Proceedings",
+                        "ORGANIZED_BY": " IEEE explore",
+                        "ISBN_/_ISSN_/DOI_NO": "10.1109/ICSTM.2015.7225388",
+                        "MONTH_&_YEAR": 2015
+                    },
+                    {
+                        "AUTHORS": "Shetty, S., Devadiga, A.S., Sibi Chakkaravarthy, S., Varun Kumar, K.A., Kamalanaban, E., Visu, P.",
+                        "PAPER_TITLE": "Optical character recognition for alphanumerical character verification in video frames",
+                        "CONFERENCE_NAME": "Advances in Intelligent Systems and Computing",
+                        "ORGANIZED_BY": "springer - Artificial Intelligence and Evolutionary Algorithms in Engineering Systems ",
+                        "ISBN_/_ISSN_/DOI_NO": "10.1007/978-81-322-2126-5_10",
+                        "MONTH_&_YEAR": 2015
+                    },
+                    {
+                        "AUTHORS": "Dharani, P., Chakkaravarthy, S.S., Ganesan, M., Kamalanaban, E., Visu, P., Patil, P.R., Mahesh, C.",
+                        "PAPER_TITLE": "An unidentified location-based efficient routing protocol in vanet",
+                        "CONFERENCE_NAME": "Advances in Intelligent Systems and Computing",
+                        "ORGANIZED_BY": "springer - Artificial Intelligence and Evolutionary Algorithms in Engineering Systems ",
+                        "ISBN_/_ISSN_/DOI_NO": "10.1007/978-81-322-2126-5_46",
+                        "MONTH_&_YEAR": 2015
+                    },
+                    {
+                        "AUTHORS": "Visu, P., Chembian, W.T., Koteeswaran, S.",
+                        "PAPER_TITLE": "Security in multicast mobile ad-hoc networks",
+                        "CONFERENCE_NAME": "2009 1st International Conference on Advanced Computing, ICAC 2009",
+                        "ORGANIZED_BY": " IEEE explore",
+                        "ISBN_/_ISSN_/DOI_NO": "10.1109/ICADVC.2009.5378230",
+                        "MONTH_&_YEAR": 2009
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "Dr.P.Visu, R.Kavitha, P.V.Rajasuganya",
+                        "BOOK_NAME,_EDITION": "Foundations of Data Science",
+                        "PUBLISHER": "Charulatha Publications",
+                        "ISBN_/_ISSN_NO": "978-93-5577-894-9",
+                        "MONTH_&_YEAR": 2024,
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Dr. R Kumar, Mr. J. Jegan Amarnath, Dr. P. Visu",
+                        "BOOK_NAME,_EDITION": "Advanced Machine Learning",
+                        "PUBLISHER": "Notion Press Media Pvt Ltd",
+                        "ISBN_/_ISSN_NO": "13:9781648998560",
+                        "MONTH_&_YEAR": 2020,
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "E.Kannan, E.Kamalanaban, P.Visu, and S.Koteeswaran ",
+                        "BOOK_NAME,_EDITION": "Computing fundamentals & Programming in C",
+                        "PUBLISHER": "CENGAGE Learning, Delhi – 110092",
+                        "ISBN_/_ISSN_NO": "978-81-315-2854-9",
+                        "MONTH_&_YEAR": 2015,
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "P.Visu, R.Srinivasan and S.Koteeswaran",
+                        "BOOK_NAME,_EDITION": "Introduction to Computing",
+                        "PUBLISHER": "Sri Krishna Hitech Publishing Company Pvt. Ltd, Chennai ",
+                        "ISBN_/_ISSN_NO": "978-93-80659-38-1",
+                        "MONTH_&_YEAR": 2013,
+                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                    },
+                    {
+                        "AUTHOR": "Jothikumar, R., Vijay Anand, R., Visu, P., Kumar, R., Susi, S., Kumar, K.R.",
+                        "BOOK_NAME,_EDITION": "Sentiment analysis of tweets on the COVID-19 pandemic using machine learning techniques",
+                        "PUBLISHER": "Handbook of Research on Innovations and Applications of AI, IoT, and Cognitive Technologies",
+                        "ISBN_/_ISSN_NO": "10.4018/978-1-7998-6870-5.ch021",
+                        "MONTH_&_YEAR": 2021,
+                        "BOOK_/_BOOK_CHAPTER": "BOOK CHAPTER"
+                    },
+                    {
+                        "AUTHOR": "Sabapathi, V., Visu, P., Varun Kumar, K.A.",
+                        "BOOK_NAME,_EDITION": "A hybrid cloud architecture for secure serviceâ€”measures against poodle vulnerability",
+                        "PUBLISHER": "Advances in Intelligent Systems and Computing",
+                        "ISBN_/_ISSN_NO": "10.1007/978-81-322-2674-1_67",
+                        "MONTH_&_YEAR": 2016,
+                        "BOOK_/_BOOK_CHAPTER": "BOOK CHAPTER"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Soniya Priyadarshini G",
+                        "RESEARCH_TITLE": "A Novel Framework for Cloud Environment with Enhanced Energy Efficiency and Optimized Resource Utilization",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "COMPLETED",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": 2019
+                    },
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Selvarani P",
+                        "RESEARCH_TITLE": "Secure and Privacy Enhanced Multimodal Biometric Based User Authentication in Cloud Paradigm",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "COMPLETED",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": 2019
+                    },
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "Veena K",
+                        "RESEARCH_TITLE": "Detection of Cybercrime using Conventional Methods and Machine Learning Techniques",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "PART TIME",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "COMPLETED",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": 2020
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "IEEE, ACM, CSI, ISTE",
+                    "Sponsored_Projects": 6,
+                    "Patent_Granted": 1,
+                    "Patent_Published": 5,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 29,
+                    "Conference_Publications": 8,
+                    "Book_/_Book_Chapter_Published": 6,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 15,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 53,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 45,
+                    "PHD_Produced": 3,
+                    "PHD_Pursuing": 0
+                }
+            }
   },
   {
-    "collectionName": "AIDS_001",
-    "collection_type": "faculty",
-    "title": "AI&DS Faculty deletion",
-    "category": "teaching_staff",
+    "collectionName": "AIDS_001_staff",
+    "collection_type": "FACULTY",
+    "title": "AI&DS Faculty Insert",
+    "action": "insert",
+    "meta_data": {
+                "Name": "MRS. PREMA A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Artificial Intelligence and Data Science",
+                "Mail_ID": "prema@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/001/VEC-001-04-080.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/prema-amirthalingam-10b3726a/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "PG",
+                        "BRANCH": "M.E",
+                        "INSTITUTE": "Annai Mathammal Sheela Engineering College",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "UG",
+                        "BRANCH": "B.Tech",
+                        "INSTITUTE": "Institute of Road and Transport Technology",
+                        "YEAR": 2007
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "1st June 2017",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "Till Date",
+                        "DESIGNATION": "Assistant Professor-II",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "1st June 2010",
+                        "Unnamed:_1": "2017-05-01 00:00:00",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor-I",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "AI-Powered Fog and Smoke Detection",
+                        "SPONSORING_AGENCY": "Naan Mudhalvan -Niral Thiruvizha",
+                        "AMOUNT": "Rs.10000",
+                        "YEAR_OF_SANCTION": "2024",
+                        "DURATION": "6 Months",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Mentor",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Nil"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "nil"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing with Priority Based Buffer Management on Adaptive Routers",
+                        "JOURNAL_NAME": "SSRG-IJECE-ICEIS",
+                        "DOI_NUMBER": "E-Issn:2348-8549",
+                        "PAGE_NO": "113-120",
+                        "VOL_NO_/_ISSUE_NO": "_",
+                        "MONTH_&_YEAR": "June_2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication\n in M-Healthcare Cloud Computing System",
+                        "JOURNAL_NAME": "Middle-East Journal of Scientific Research",
+                        "DOI_NUMBER": "DOI: 10.5829/idosi.mejsr.2016.24.TAET23538\nIssn 1990-9233",
+                        "PAGE_NO": "281-283",
+                        "VOL_NO_/_ISSUE_NO": "© IDOSI Publications \n",
+                        "MONTH_&_YEAR": "2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "SRS and Gamified SRS Analysis For The Betterment Of Students Learning",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "39-41",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Haptic Technology",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "56-60",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Proficient Public Substantiation of Data \nVeracity for Cloud Storage through Dual Protection",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5325",
+                        "PAGE_NO": "40-45",
+                        "VOL_NO_/_ISSUE_NO": "Vol.4\nIssue 3\n",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "DDOS Botnet Detection and Identification \nChallenges and Strategies in Peer To Peer Systems",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "22-24",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Novel Mechanism To Prevent DDOS \nTCP SYN Attack Using Pre-Shared Key",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "56-58",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "__",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Secure Data Transmission Using Image\nSteganography",
+                        "JOURNAL_NAME": "Special Issue Published in Int.\n Jnl. Of Advanced Networking & \nApplications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "300-303",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Smart Application for the Detection of Road Conditions While Driving\n\n",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "276-278",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "File Splitting and Storing In Multiple Cloud\nServers for Secured Cloud Storage",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN:0975-0282",
+                        "PAGE_NO": "272-275",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Survey on Step towards Predictive Analysis  in Revolutionizing Learning in\nEducation as well as Industry Sector",
+                        "JOURNAL_NAME": "Industrial Engineering Journal ",
+                        "DOI_NUMBER": "ISSN: 0970-2555",
+                        "PAGE_NO": "1215",
+                        "VOL_NO_/_ISSUE_NO": "Volume15 \nIssue 12 ",
+                        "MONTH_&_YEAR": "2022-12-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Growth and Habit Tracking",
+                        "JOURNAL_NAME": "International Journal of science and\n Management Studies(ijsms)",
+                        "DOI_NUMBER": "https://irojournals.com/\nitdw/article/view/6/1/4\nE-Issn:2348-8549",
+                        "PAGE_NO": "2581-5946",
+                        "VOL_NO_/_ISSUE_NO": "Volume:7,Issue:1",
+                        "MONTH_&_YEAR": "2024-02-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "UGC Care",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Web Portal for Tracking and Findingh \nmissing Person using Aadhar enabled Biometrics",
+                        "JOURNAL_NAME": "IRO Journals",
+                        "DOI_NUMBER": "DOI: 10.51386/25815946/ijsms-v7i1p115\nE-ISSN:2581-5946",
+                        "PAGE_NO": "2582-418X",
+                        "VOL_NO_/_ISSUE_NO": "Volume6,Issue 1",
+                        "MONTH_&_YEAR": "2024-03-21 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Image Based Data Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Muthayammal Engineering.College",
+                        "ORGANIZED_BY": "Muthayammal Engineering.College",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "04-02-2010  to 05-02-2010"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Modeling Image Data For Effective Indexing & Retrieval In Large General Image Database",
+                        "CONFERENCE_NAME": "PGP College of Engineering and Technology",
+                        "ORGANIZED_BY": "PGP College of Engineering and Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2010-04-07 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Content Based Image Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ORGANIZED_BY": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "15-03-2011 to 16-03-2011"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Real –World Security Testing For Online Banking",
+                        "CONFERENCE_NAME": "Velalar College of Engineering & Technology",
+                        "ORGANIZED_BY": "Velalar College of Engineering & Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2011-03-26 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Identification Of Cancer Using Pulse Signals We-Face",
+                        "CONFERENCE_NAME": "SMK Fomra Institute Of Technology",
+                        "ORGANIZED_BY": "SMK Fomra Institute Of Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2015-03-13 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication in M-Healthcare Cloud Computing System",
+                        "CONFERENCE_NAME": "Dhumra Mahate Icta(ICETNCI)",
+                        "ORGANIZED_BY": "Er.Perumal Manimekalai College of Engineering",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "28.03.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing With Priority Based Buffer Management on Adaptive Routers",
+                        "CONFERENCE_NAME": "CMS College of Engineering (ICEIS)",
+                        "ORGANIZED_BY": "CMS College of Engineering (ICEIS)",
+                        "ISBN_/_ISSN_NO": "E-ISSN:2348-8549",
+                        "MONTH_&_YEAR": "22.04.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Issues and Challenges in Cyber Security",
+                        "CONFERENCE_NAME": "International Conference on Contemporary  Engineering and Technology 2017",
+                        "ORGANIZED_BY": "Madha Engineering College",
+                        "ISBN_/_ISSN_NO": "ISBN 978-81-904760-9-6",
+                        "MONTH_&_YEAR": "24-03-2017 to 25-03-2017"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Evolution Companion",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "AI And ML Based De-Smoking Algorithm",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "A.Prema",
+                        "BOOK_NAME,_EDITION": "Object Oriented Programming",
+                        "PUBLISHER": "Charulatha Publication",
+                        "ISBN_/_ISSN_NO": "ISBN-13:978-93-5577-816-1",
+                        "MONTH_&_YEAR": "2024-02-01",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "A.Prema",
+                        "RESEARCH_TITLE": "Failure Prediction in Cloud computing based on\n Hierarchical Temporal memory(HTM) on AI enabled cloud operation",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Part Time",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "Ongoing",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "_"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 13,
+                    "Conference_Publications": 10,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+  },
+  {
+    "collectionName": "AIDS_001_staff",
+    "collection_type": "FACULTY",
+    "title": "AI&DS Faculty Update",
+    "action": "update",
+    "meta_data": {
+                "Name": "MRS. VANKAM A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Artificial Intelligence and Data Science",
+                "Mail_ID": "prema@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/001/VEC-001-04-080.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/prema-amirthalingam-10b3726a/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "PG",
+                        "BRANCH": "M.E",
+                        "INSTITUTE": "Annai Mathammal Sheela Engineering College",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "UG",
+                        "BRANCH": "B.Tech",
+                        "INSTITUTE": "Institute of Road and Transport Technology",
+                        "YEAR": 2007
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "1st June 2017",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "Till Date",
+                        "DESIGNATION": "Assistant Professor-II",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "1st June 2010",
+                        "Unnamed:_1": "2017-05-01 00:00:00",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor-I",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "AI-Powered Fog and Smoke Detection",
+                        "SPONSORING_AGENCY": "Naan Mudhalvan -Niral Thiruvizha",
+                        "AMOUNT": "Rs.10000",
+                        "YEAR_OF_SANCTION": "2024",
+                        "DURATION": "6 Months",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Mentor",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Nil"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "nil"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing with Priority Based Buffer Management on Adaptive Routers",
+                        "JOURNAL_NAME": "SSRG-IJECE-ICEIS",
+                        "DOI_NUMBER": "E-Issn:2348-8549",
+                        "PAGE_NO": "113-120",
+                        "VOL_NO_/_ISSUE_NO": "_",
+                        "MONTH_&_YEAR": "June_2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication\n in M-Healthcare Cloud Computing System",
+                        "JOURNAL_NAME": "Middle-East Journal of Scientific Research",
+                        "DOI_NUMBER": "DOI: 10.5829/idosi.mejsr.2016.24.TAET23538\nIssn 1990-9233",
+                        "PAGE_NO": "281-283",
+                        "VOL_NO_/_ISSUE_NO": "© IDOSI Publications \n",
+                        "MONTH_&_YEAR": "2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "SRS and Gamified SRS Analysis For The Betterment Of Students Learning",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "39-41",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Haptic Technology",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "56-60",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Proficient Public Substantiation of Data \nVeracity for Cloud Storage through Dual Protection",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5325",
+                        "PAGE_NO": "40-45",
+                        "VOL_NO_/_ISSUE_NO": "Vol.4\nIssue 3\n",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "DDOS Botnet Detection and Identification \nChallenges and Strategies in Peer To Peer Systems",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "22-24",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Novel Mechanism To Prevent DDOS \nTCP SYN Attack Using Pre-Shared Key",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "56-58",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "__",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Secure Data Transmission Using Image\nSteganography",
+                        "JOURNAL_NAME": "Special Issue Published in Int.\n Jnl. Of Advanced Networking & \nApplications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "300-303",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Smart Application for the Detection of Road Conditions While Driving\n\n",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "276-278",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "File Splitting and Storing In Multiple Cloud\nServers for Secured Cloud Storage",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN:0975-0282",
+                        "PAGE_NO": "272-275",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Survey on Step towards Predictive Analysis  in Revolutionizing Learning in\nEducation as well as Industry Sector",
+                        "JOURNAL_NAME": "Industrial Engineering Journal ",
+                        "DOI_NUMBER": "ISSN: 0970-2555",
+                        "PAGE_NO": "1215",
+                        "VOL_NO_/_ISSUE_NO": "Volume15 \nIssue 12 ",
+                        "MONTH_&_YEAR": "2022-12-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Growth and Habit Tracking",
+                        "JOURNAL_NAME": "International Journal of science and\n Management Studies(ijsms)",
+                        "DOI_NUMBER": "https://irojournals.com/\nitdw/article/view/6/1/4\nE-Issn:2348-8549",
+                        "PAGE_NO": "2581-5946",
+                        "VOL_NO_/_ISSUE_NO": "Volume:7,Issue:1",
+                        "MONTH_&_YEAR": "2024-02-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "UGC Care",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Web Portal for Tracking and Findingh \nmissing Person using Aadhar enabled Biometrics",
+                        "JOURNAL_NAME": "IRO Journals",
+                        "DOI_NUMBER": "DOI: 10.51386/25815946/ijsms-v7i1p115\nE-ISSN:2581-5946",
+                        "PAGE_NO": "2582-418X",
+                        "VOL_NO_/_ISSUE_NO": "Volume6,Issue 1",
+                        "MONTH_&_YEAR": "2024-03-21 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Image Based Data Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Muthayammal Engineering.College",
+                        "ORGANIZED_BY": "Muthayammal Engineering.College",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "04-02-2010  to 05-02-2010"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Modeling Image Data For Effective Indexing & Retrieval In Large General Image Database",
+                        "CONFERENCE_NAME": "PGP College of Engineering and Technology",
+                        "ORGANIZED_BY": "PGP College of Engineering and Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2010-04-07 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Content Based Image Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ORGANIZED_BY": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "15-03-2011 to 16-03-2011"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Real –World Security Testing For Online Banking",
+                        "CONFERENCE_NAME": "Velalar College of Engineering & Technology",
+                        "ORGANIZED_BY": "Velalar College of Engineering & Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2011-03-26 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Identification Of Cancer Using Pulse Signals We-Face",
+                        "CONFERENCE_NAME": "SMK Fomra Institute Of Technology",
+                        "ORGANIZED_BY": "SMK Fomra Institute Of Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2015-03-13 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication in M-Healthcare Cloud Computing System",
+                        "CONFERENCE_NAME": "Dhumra Mahate Icta(ICETNCI)",
+                        "ORGANIZED_BY": "Er.Perumal Manimekalai College of Engineering",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "28.03.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing With Priority Based Buffer Management on Adaptive Routers",
+                        "CONFERENCE_NAME": "CMS College of Engineering (ICEIS)",
+                        "ORGANIZED_BY": "CMS College of Engineering (ICEIS)",
+                        "ISBN_/_ISSN_NO": "E-ISSN:2348-8549",
+                        "MONTH_&_YEAR": "22.04.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Issues and Challenges in Cyber Security",
+                        "CONFERENCE_NAME": "International Conference on Contemporary  Engineering and Technology 2017",
+                        "ORGANIZED_BY": "Madha Engineering College",
+                        "ISBN_/_ISSN_NO": "ISBN 978-81-904760-9-6",
+                        "MONTH_&_YEAR": "24-03-2017 to 25-03-2017"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Evolution Companion",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "AI And ML Based De-Smoking Algorithm",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "A.Prema",
+                        "BOOK_NAME,_EDITION": "Object Oriented Programming",
+                        "PUBLISHER": "Charulatha Publication",
+                        "ISBN_/_ISSN_NO": "ISBN-13:978-93-5577-816-1",
+                        "MONTH_&_YEAR": "2024-02-01",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "A.Prema",
+                        "RESEARCH_TITLE": "Failure Prediction in Cloud computing based on\n Hierarchical Temporal memory(HTM) on AI enabled cloud operation",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Part Time",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "Ongoing",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "_"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 13,
+                    "Conference_Publications": 10,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+    "original_data": {
+                "Name": "MRS. RAJASUGANYA P V",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Artificial Intelligence and Data Science",
+                "Mail_ID": "rajasuganya@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/001/VEC-001-04-085.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/rajasuganya-pv-1a8baa203/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=VyAc3CUAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0009-0007-0136-5270?lang=en",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "-",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "Computer Science",
+                        "INSTITUTE": "Sri Muthukumaran Institute of Technology",
+                        "YEAR": 2012
+                    },
+                    {
+                        "DEGREE": "B.Tech",
+                        "BRANCH": "Information Technology",
+                        "INSTITUTE": "Sri Muthukumaran Institute of Technology",
+                        "YEAR": 2009
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "18-1-2021",
+                        "Unnamed:_1": "Till now",
+                        "EXPERIENCE": "4",
+                        "Unnamed:_3": "8",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Sentiment Analysis of Incoming calls on Help Desk"
+                    },
+                    {
+                        "TITLE": "“ELECTRIC\nVEHICLE CHARGE ADMINISTRATING STATION AND METHOD OF\nPROCESSING PAYMENT THEREOF”"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "Wearable IOT Health Care Device with Machine Learning For Real -Time Health Data Analysis",
+                        "PATENT_TYPE_(UTILITY)": "Utility",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "21/6/2024"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "1 L.Vanitha, 2R.Kavitha, 3M.Panneerselvam, 4Ch Prathima, 5G.Mary Valantina",
+                        "PAPER_TITLE": "Secured Banking System Using Decentralized Approach -Block Chain",
+                        "JOURNAL_NAME": "Intelligent Systems Design and Applications",
+                        "DOI_NUMBER": "2367-3389",
+                        "PAGE_NO": "241-250",
+                        "VOL_NO_/_ISSUE_NO": 1048,
+                        "MONTH_&_YEAR": "2024-07-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Identification And Detection Of Credit Card Frauds Using Cnn",
+                        "JOURNAL_NAME": "Applications of Computational Intelligence in Management and Mathematics",
+                        "DOI_NUMBER": "10.1007/978-3-031-25194-8-22",
+                        "PAGE_NO": "267",
+                        "VOL_NO_/_ISSUE_NO": 417,
+                        "MONTH_&_YEAR": "2022-07-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Safe Encryption Algorithm For Secured Message Communication Using  Dcombo :A New Sorting Technique",
+                        "JOURNAL_NAME": "Lecture Notes in Networks and Systems",
+                        "DOI_NUMBER": "2367-3389",
+                        "PAGE_NO": "559-572",
+                        "VOL_NO_/_ISSUE_NO": 351,
+                        "MONTH_&_YEAR": "2022-02-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "A Machine Learning Artery To Credentials Of Syndrome Management Relation Approach",
+                        "JOURNAL_NAME": "Turkish Journal of Computer and Mathematics Education",
+                        "DOI_NUMBER": "3188-3196",
+                        "PAGE_NO": "-",
+                        "VOL_NO_/_ISSUE_NO": 12,
+                        "MONTH_&_YEAR": "2021-05-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google Scholar",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "PAPER_TITLE": "Iot Based An Efficient Image Processing Algorithm For Capture Image In Museum Using Localization Service For User Involvemrnt ",
+                        "JOURNAL_NAME": "Revista Geintec",
+                        "DOI_NUMBER": "2237-0722",
+                        "PAGE_NO": "-",
+                        "VOL_NO_/_ISSUE_NO": 11,
+                        "MONTH_&_YEAR": "2021-05-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "PAPER_TITLE": "Next gen cold Storage Surveillance platform",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "2024-03-24"
+                    },
+                    {
+                        "PAPER_TITLE": "Detection and analysis of sentiments on twitter using machine learning algorithm",
+                        "CONFERENCE_NAME": "ICICIT 2022",
+                        "ORGANIZED_BY": "RVS Technical Campus",
+                        "ISBN_/_ISSN_NO": "2367-3389",
+                        "MONTH_&_YEAR": "2022-08-01"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "P.V.RajaSuganya",
+                        "BOOK_NAME,_EDITION": "Foundation of Data Science",
+                        "PUBLISHER": "Charulatha Publications",
+                        "ISBN_/_ISSN_NO": "13:978-93-5577-894-9",
+                        "MONTH_&_YEAR": "Feburary 2024",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "-",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 1,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 5,
+                    "Conference_Publications": 2,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 6,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+  },
+  {
+    "collectionName": "AIDS_001_staff",
+    "collection_type": "FACULTY",
+    "title": "AI&DS Faculty Delete",
     "action": "delete",
     "meta_data": {
-    "name": "Mrs. jaba kumar ",
-    "designation": "Assistant Professor",
-    "unique_id": "VEC-001-04-623",
-    "socialmedia_links": {
-      "linkedin": "",
-      "googlescholar": "",
-      "researchgate": "",
-      "orchidprofile": "",
-      "publonprofile": "",
-      "scopus": ""
-    },
-    "image_path": "/static/images/profile_photos/001/VEC-001-04-623.webp",
-    "resume_pdf": "/static/pdfs/faculty_profile/001/VEC-001-04-623.pdf"
-  }
+                "Name": "MRS. KAVITHA R",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Artificial Intelligence and Data Science",
+                "Mail_ID": "kavithar@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/001/VEC-001-04-075.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/kavitha-r-2940958a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59188506100"
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "M.E",
+                        "BRANCH": "Computer Science",
+                        "INSTITUTE": "St. Peter's College of Engineering and Technology, Avadi.",
+                        "YEAR": "2020-2021"
+                    },
+                    {
+                        "DEGREE": "B.Tech",
+                        "BRANCH": "Information Technology",
+                        "INSTITUTE": "Priyadarshini Engineering College,Vaniyambadi.",
+                        "YEAR": "2011-2015"
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "2021-11-17 00:00:00",
+                        "Unnamed:_1": "Till now",
+                        "EXPERIENCE": "3",
+                        "Unnamed:_3": "10",
+                        "DESIGNATION": "Assistant Professor",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "Sentiment Analysis of Incoming calls on Help Desk",
+                        "SPONSORING_AGENCY": "Government of TamilNadu - Naan Mudhalavan(Niral Projects)",
+                        "AMOUNT": "10000",
+                        "YEAR_OF_SANCTION": "2024",
+                        "DURATION": "6 Months",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "R. Kavitha",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "“ELECTRIC\nVEHICLE CHARGE ADMINISTRATING STATION AND METHOD OF\nPROCESSING PAYMENT THEREOF”",
+                        "SPONSORING_AGENCY": "DST-NewGen IEDC",
+                        "AMOUNT": "2.5 Lakhs",
+                        "YEAR_OF_SANCTION": "2021-22",
+                        "DURATION": "2 years",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "R. Kavitha",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "“ELECTRIC\nVEHICLE CHARGE ADMINISTRATING STATION AND METHOD OF\nPROCESSING PAYMENT THEREOF”",
+                        "PATENT_TYPE_(UTILITY)": "Utility",
+                        "COUNTRY": "India",
+                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
+                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2024-08-23"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "1 L.Vanitha, 2R.Kavitha, 3M.Panneerselvam, 4Ch Prathima, 5G.Mary Valantina",
+                        "PAPER_TITLE": "A Novel Deep Learning Method for the Identification and Categorization of Footpath Defects based on Thermography",
+                        "JOURNAL_NAME": "ICOSEC 2022",
+                        "DOI_NUMBER": "10.1109/ICOSEC54921.2022.9951904",
+                        "PAGE_NO": 1390,
+                        "VOL_NO_/_ISSUE_NO": "978-1-6654-9764-0/22/$31.00 ©2022 IEEE",
+                        "MONTH_&_YEAR": "2022-10-01",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "PAPER_TITLE": "Enhancing Human-Robot Interaction: The Chat-Gpt Controlled Eye Blink Robot",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "2024-03-01"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "R. Kavitha",
+                        "BOOK_NAME,_EDITION": "Foundation of Data Science",
+                        "PUBLISHER": "Charulatha Publications",
+                        "ISBN_/_ISSN_NO": "13:978-93-5577-894-9",
+                        "MONTH_&_YEAR": "Feburary 2024",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 1,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 1,
+                    "Conference_Publications": 1,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 5,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
   },
-
   {
-    "collectionName": "AIDS_001",
-    "collection_type": "faculty",
-    "title": "AI&DS Faculty category deletion",
-    "category": "teaching_staff",
+    "collectionName": "AIDS_001_staff",
+    "collection_type": "NON_TEACHING_FACULTY",
+    "title": "AI&DS Non Teaching Faculty Insert",
+    "action": "insert",
+    "meta_data": {
+                "Name": "MRS. PREMA A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Artificial Intelligence and Data Science",
+                "Mail_ID": "prema@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/001/VEC-001-04-080.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/prema-amirthalingam-10b3726a/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "PG",
+                        "BRANCH": "M.E",
+                        "INSTITUTE": "Annai Mathammal Sheela Engineering College",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "UG",
+                        "BRANCH": "B.Tech",
+                        "INSTITUTE": "Institute of Road and Transport Technology",
+                        "YEAR": 2007
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "1st June 2017",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "Till Date",
+                        "DESIGNATION": "Assistant Professor-II",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "1st June 2010",
+                        "Unnamed:_1": "2017-05-01 00:00:00",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor-I",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "AI-Powered Fog and Smoke Detection",
+                        "SPONSORING_AGENCY": "Naan Mudhalvan -Niral Thiruvizha",
+                        "AMOUNT": "Rs.10000",
+                        "YEAR_OF_SANCTION": "2024",
+                        "DURATION": "6 Months",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Mentor",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Nil"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "nil"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing with Priority Based Buffer Management on Adaptive Routers",
+                        "JOURNAL_NAME": "SSRG-IJECE-ICEIS",
+                        "DOI_NUMBER": "E-Issn:2348-8549",
+                        "PAGE_NO": "113-120",
+                        "VOL_NO_/_ISSUE_NO": "_",
+                        "MONTH_&_YEAR": "June_2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication\n in M-Healthcare Cloud Computing System",
+                        "JOURNAL_NAME": "Middle-East Journal of Scientific Research",
+                        "DOI_NUMBER": "DOI: 10.5829/idosi.mejsr.2016.24.TAET23538\nIssn 1990-9233",
+                        "PAGE_NO": "281-283",
+                        "VOL_NO_/_ISSUE_NO": "© IDOSI Publications \n",
+                        "MONTH_&_YEAR": "2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "SRS and Gamified SRS Analysis For The Betterment Of Students Learning",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "39-41",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Haptic Technology",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "56-60",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Proficient Public Substantiation of Data \nVeracity for Cloud Storage through Dual Protection",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5325",
+                        "PAGE_NO": "40-45",
+                        "VOL_NO_/_ISSUE_NO": "Vol.4\nIssue 3\n",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "DDOS Botnet Detection and Identification \nChallenges and Strategies in Peer To Peer Systems",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "22-24",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Novel Mechanism To Prevent DDOS \nTCP SYN Attack Using Pre-Shared Key",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "56-58",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "__",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Secure Data Transmission Using Image\nSteganography",
+                        "JOURNAL_NAME": "Special Issue Published in Int.\n Jnl. Of Advanced Networking & \nApplications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "300-303",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Smart Application for the Detection of Road Conditions While Driving\n\n",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "276-278",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "File Splitting and Storing In Multiple Cloud\nServers for Secured Cloud Storage",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN:0975-0282",
+                        "PAGE_NO": "272-275",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Survey on Step towards Predictive Analysis  in Revolutionizing Learning in\nEducation as well as Industry Sector",
+                        "JOURNAL_NAME": "Industrial Engineering Journal ",
+                        "DOI_NUMBER": "ISSN: 0970-2555",
+                        "PAGE_NO": "1215",
+                        "VOL_NO_/_ISSUE_NO": "Volume15 \nIssue 12 ",
+                        "MONTH_&_YEAR": "2022-12-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Growth and Habit Tracking",
+                        "JOURNAL_NAME": "International Journal of science and\n Management Studies(ijsms)",
+                        "DOI_NUMBER": "https://irojournals.com/\nitdw/article/view/6/1/4\nE-Issn:2348-8549",
+                        "PAGE_NO": "2581-5946",
+                        "VOL_NO_/_ISSUE_NO": "Volume:7,Issue:1",
+                        "MONTH_&_YEAR": "2024-02-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "UGC Care",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Web Portal for Tracking and Findingh \nmissing Person using Aadhar enabled Biometrics",
+                        "JOURNAL_NAME": "IRO Journals",
+                        "DOI_NUMBER": "DOI: 10.51386/25815946/ijsms-v7i1p115\nE-ISSN:2581-5946",
+                        "PAGE_NO": "2582-418X",
+                        "VOL_NO_/_ISSUE_NO": "Volume6,Issue 1",
+                        "MONTH_&_YEAR": "2024-03-21 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Image Based Data Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Muthayammal Engineering.College",
+                        "ORGANIZED_BY": "Muthayammal Engineering.College",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "04-02-2010  to 05-02-2010"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Modeling Image Data For Effective Indexing & Retrieval In Large General Image Database",
+                        "CONFERENCE_NAME": "PGP College of Engineering and Technology",
+                        "ORGANIZED_BY": "PGP College of Engineering and Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2010-04-07 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Content Based Image Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ORGANIZED_BY": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "15-03-2011 to 16-03-2011"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Real –World Security Testing For Online Banking",
+                        "CONFERENCE_NAME": "Velalar College of Engineering & Technology",
+                        "ORGANIZED_BY": "Velalar College of Engineering & Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2011-03-26 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Identification Of Cancer Using Pulse Signals We-Face",
+                        "CONFERENCE_NAME": "SMK Fomra Institute Of Technology",
+                        "ORGANIZED_BY": "SMK Fomra Institute Of Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2015-03-13 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication in M-Healthcare Cloud Computing System",
+                        "CONFERENCE_NAME": "Dhumra Mahate Icta(ICETNCI)",
+                        "ORGANIZED_BY": "Er.Perumal Manimekalai College of Engineering",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "28.03.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing With Priority Based Buffer Management on Adaptive Routers",
+                        "CONFERENCE_NAME": "CMS College of Engineering (ICEIS)",
+                        "ORGANIZED_BY": "CMS College of Engineering (ICEIS)",
+                        "ISBN_/_ISSN_NO": "E-ISSN:2348-8549",
+                        "MONTH_&_YEAR": "22.04.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Issues and Challenges in Cyber Security",
+                        "CONFERENCE_NAME": "International Conference on Contemporary  Engineering and Technology 2017",
+                        "ORGANIZED_BY": "Madha Engineering College",
+                        "ISBN_/_ISSN_NO": "ISBN 978-81-904760-9-6",
+                        "MONTH_&_YEAR": "24-03-2017 to 25-03-2017"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Evolution Companion",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "AI And ML Based De-Smoking Algorithm",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "A.Prema",
+                        "BOOK_NAME,_EDITION": "Object Oriented Programming",
+                        "PUBLISHER": "Charulatha Publication",
+                        "ISBN_/_ISSN_NO": "ISBN-13:978-93-5577-816-1",
+                        "MONTH_&_YEAR": "2024-02-01",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "A.Prema",
+                        "RESEARCH_TITLE": "Failure Prediction in Cloud computing based on\n Hierarchical Temporal memory(HTM) on AI enabled cloud operation",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Part Time",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "Ongoing",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "_"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 13,
+                    "Conference_Publications": 10,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+  },
+  {
+    "collectionName": "AIDS_001_staff",
+    "collection_type": "NON_TEACHING_FACULTY",
+    "title": "AI&DS Faculty Update",
+    "action": "update",
+    "meta_data": {
+                "Name": "MRS. VANKAM A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Artificial Intelligence and Data Science",
+                "Mail_ID": "prema@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/001/VEC-001-04-080.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/prema-amirthalingam-10b3726a/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "PG",
+                        "BRANCH": "M.E",
+                        "INSTITUTE": "Annai Mathammal Sheela Engineering College",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "UG",
+                        "BRANCH": "B.Tech",
+                        "INSTITUTE": "Institute of Road and Transport Technology",
+                        "YEAR": 2007
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "1st June 2017",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "Till Date",
+                        "DESIGNATION": "Assistant Professor-II",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "1st June 2010",
+                        "Unnamed:_1": "2017-05-01 00:00:00",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor-I",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "AI-Powered Fog and Smoke Detection",
+                        "SPONSORING_AGENCY": "Naan Mudhalvan -Niral Thiruvizha",
+                        "AMOUNT": "Rs.10000",
+                        "YEAR_OF_SANCTION": "2024",
+                        "DURATION": "6 Months",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Mentor",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Nil"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "nil"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing with Priority Based Buffer Management on Adaptive Routers",
+                        "JOURNAL_NAME": "SSRG-IJECE-ICEIS",
+                        "DOI_NUMBER": "E-Issn:2348-8549",
+                        "PAGE_NO": "113-120",
+                        "VOL_NO_/_ISSUE_NO": "_",
+                        "MONTH_&_YEAR": "June_2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication\n in M-Healthcare Cloud Computing System",
+                        "JOURNAL_NAME": "Middle-East Journal of Scientific Research",
+                        "DOI_NUMBER": "DOI: 10.5829/idosi.mejsr.2016.24.TAET23538\nIssn 1990-9233",
+                        "PAGE_NO": "281-283",
+                        "VOL_NO_/_ISSUE_NO": "© IDOSI Publications \n",
+                        "MONTH_&_YEAR": "2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "SRS and Gamified SRS Analysis For The Betterment Of Students Learning",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "39-41",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Haptic Technology",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "56-60",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Proficient Public Substantiation of Data \nVeracity for Cloud Storage through Dual Protection",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5325",
+                        "PAGE_NO": "40-45",
+                        "VOL_NO_/_ISSUE_NO": "Vol.4\nIssue 3\n",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "DDOS Botnet Detection and Identification \nChallenges and Strategies in Peer To Peer Systems",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "22-24",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Novel Mechanism To Prevent DDOS \nTCP SYN Attack Using Pre-Shared Key",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "56-58",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "__",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Secure Data Transmission Using Image\nSteganography",
+                        "JOURNAL_NAME": "Special Issue Published in Int.\n Jnl. Of Advanced Networking & \nApplications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "300-303",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Smart Application for the Detection of Road Conditions While Driving\n\n",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "276-278",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "File Splitting and Storing In Multiple Cloud\nServers for Secured Cloud Storage",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN:0975-0282",
+                        "PAGE_NO": "272-275",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Survey on Step towards Predictive Analysis  in Revolutionizing Learning in\nEducation as well as Industry Sector",
+                        "JOURNAL_NAME": "Industrial Engineering Journal ",
+                        "DOI_NUMBER": "ISSN: 0970-2555",
+                        "PAGE_NO": "1215",
+                        "VOL_NO_/_ISSUE_NO": "Volume15 \nIssue 12 ",
+                        "MONTH_&_YEAR": "2022-12-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Growth and Habit Tracking",
+                        "JOURNAL_NAME": "International Journal of science and\n Management Studies(ijsms)",
+                        "DOI_NUMBER": "https://irojournals.com/\nitdw/article/view/6/1/4\nE-Issn:2348-8549",
+                        "PAGE_NO": "2581-5946",
+                        "VOL_NO_/_ISSUE_NO": "Volume:7,Issue:1",
+                        "MONTH_&_YEAR": "2024-02-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "UGC Care",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Web Portal for Tracking and Findingh \nmissing Person using Aadhar enabled Biometrics",
+                        "JOURNAL_NAME": "IRO Journals",
+                        "DOI_NUMBER": "DOI: 10.51386/25815946/ijsms-v7i1p115\nE-ISSN:2581-5946",
+                        "PAGE_NO": "2582-418X",
+                        "VOL_NO_/_ISSUE_NO": "Volume6,Issue 1",
+                        "MONTH_&_YEAR": "2024-03-21 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Image Based Data Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Muthayammal Engineering.College",
+                        "ORGANIZED_BY": "Muthayammal Engineering.College",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "04-02-2010  to 05-02-2010"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Modeling Image Data For Effective Indexing & Retrieval In Large General Image Database",
+                        "CONFERENCE_NAME": "PGP College of Engineering and Technology",
+                        "ORGANIZED_BY": "PGP College of Engineering and Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2010-04-07 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Content Based Image Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ORGANIZED_BY": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "15-03-2011 to 16-03-2011"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Real –World Security Testing For Online Banking",
+                        "CONFERENCE_NAME": "Velalar College of Engineering & Technology",
+                        "ORGANIZED_BY": "Velalar College of Engineering & Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2011-03-26 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Identification Of Cancer Using Pulse Signals We-Face",
+                        "CONFERENCE_NAME": "SMK Fomra Institute Of Technology",
+                        "ORGANIZED_BY": "SMK Fomra Institute Of Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2015-03-13 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication in M-Healthcare Cloud Computing System",
+                        "CONFERENCE_NAME": "Dhumra Mahate Icta(ICETNCI)",
+                        "ORGANIZED_BY": "Er.Perumal Manimekalai College of Engineering",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "28.03.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing With Priority Based Buffer Management on Adaptive Routers",
+                        "CONFERENCE_NAME": "CMS College of Engineering (ICEIS)",
+                        "ORGANIZED_BY": "CMS College of Engineering (ICEIS)",
+                        "ISBN_/_ISSN_NO": "E-ISSN:2348-8549",
+                        "MONTH_&_YEAR": "22.04.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Issues and Challenges in Cyber Security",
+                        "CONFERENCE_NAME": "International Conference on Contemporary  Engineering and Technology 2017",
+                        "ORGANIZED_BY": "Madha Engineering College",
+                        "ISBN_/_ISSN_NO": "ISBN 978-81-904760-9-6",
+                        "MONTH_&_YEAR": "24-03-2017 to 25-03-2017"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Evolution Companion",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "AI And ML Based De-Smoking Algorithm",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "A.Prema",
+                        "BOOK_NAME,_EDITION": "Object Oriented Programming",
+                        "PUBLISHER": "Charulatha Publication",
+                        "ISBN_/_ISSN_NO": "ISBN-13:978-93-5577-816-1",
+                        "MONTH_&_YEAR": "2024-02-01",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "A.Prema",
+                        "RESEARCH_TITLE": "Failure Prediction in Cloud computing based on\n Hierarchical Temporal memory(HTM) on AI enabled cloud operation",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Part Time",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "Ongoing",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "_"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 13,
+                    "Conference_Publications": 10,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            },
+    "original_data": {
+                "Name": "MRS. PREMA A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Artificial Intelligence and Data Science",
+                "Mail_ID": "prema@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/001/VEC-001-04-080.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/prema-amirthalingam-10b3726a/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "PG",
+                        "BRANCH": "M.E",
+                        "INSTITUTE": "Annai Mathammal Sheela Engineering College",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "UG",
+                        "BRANCH": "B.Tech",
+                        "INSTITUTE": "Institute of Road and Transport Technology",
+                        "YEAR": 2007
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "1st June 2017",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "Till Date",
+                        "DESIGNATION": "Assistant Professor-II",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "1st June 2010",
+                        "Unnamed:_1": "2017-05-01 00:00:00",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor-I",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "AI-Powered Fog and Smoke Detection",
+                        "SPONSORING_AGENCY": "Naan Mudhalvan -Niral Thiruvizha",
+                        "AMOUNT": "Rs.10000",
+                        "YEAR_OF_SANCTION": "2024",
+                        "DURATION": "6 Months",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Mentor",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Nil"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "nil"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing with Priority Based Buffer Management on Adaptive Routers",
+                        "JOURNAL_NAME": "SSRG-IJECE-ICEIS",
+                        "DOI_NUMBER": "E-Issn:2348-8549",
+                        "PAGE_NO": "113-120",
+                        "VOL_NO_/_ISSUE_NO": "_",
+                        "MONTH_&_YEAR": "June_2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication\n in M-Healthcare Cloud Computing System",
+                        "JOURNAL_NAME": "Middle-East Journal of Scientific Research",
+                        "DOI_NUMBER": "DOI: 10.5829/idosi.mejsr.2016.24.TAET23538\nIssn 1990-9233",
+                        "PAGE_NO": "281-283",
+                        "VOL_NO_/_ISSUE_NO": "© IDOSI Publications \n",
+                        "MONTH_&_YEAR": "2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "SRS and Gamified SRS Analysis For The Betterment Of Students Learning",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "39-41",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Haptic Technology",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "56-60",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Proficient Public Substantiation of Data \nVeracity for Cloud Storage through Dual Protection",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5325",
+                        "PAGE_NO": "40-45",
+                        "VOL_NO_/_ISSUE_NO": "Vol.4\nIssue 3\n",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "DDOS Botnet Detection and Identification \nChallenges and Strategies in Peer To Peer Systems",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "22-24",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Novel Mechanism To Prevent DDOS \nTCP SYN Attack Using Pre-Shared Key",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "56-58",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "__",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Secure Data Transmission Using Image\nSteganography",
+                        "JOURNAL_NAME": "Special Issue Published in Int.\n Jnl. Of Advanced Networking & \nApplications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "300-303",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Smart Application for the Detection of Road Conditions While Driving\n\n",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "276-278",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "File Splitting and Storing In Multiple Cloud\nServers for Secured Cloud Storage",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN:0975-0282",
+                        "PAGE_NO": "272-275",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Survey on Step towards Predictive Analysis  in Revolutionizing Learning in\nEducation as well as Industry Sector",
+                        "JOURNAL_NAME": "Industrial Engineering Journal ",
+                        "DOI_NUMBER": "ISSN: 0970-2555",
+                        "PAGE_NO": "1215",
+                        "VOL_NO_/_ISSUE_NO": "Volume15 \nIssue 12 ",
+                        "MONTH_&_YEAR": "2022-12-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Growth and Habit Tracking",
+                        "JOURNAL_NAME": "International Journal of science and\n Management Studies(ijsms)",
+                        "DOI_NUMBER": "https://irojournals.com/\nitdw/article/view/6/1/4\nE-Issn:2348-8549",
+                        "PAGE_NO": "2581-5946",
+                        "VOL_NO_/_ISSUE_NO": "Volume:7,Issue:1",
+                        "MONTH_&_YEAR": "2024-02-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "UGC Care",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Web Portal for Tracking and Findingh \nmissing Person using Aadhar enabled Biometrics",
+                        "JOURNAL_NAME": "IRO Journals",
+                        "DOI_NUMBER": "DOI: 10.51386/25815946/ijsms-v7i1p115\nE-ISSN:2581-5946",
+                        "PAGE_NO": "2582-418X",
+                        "VOL_NO_/_ISSUE_NO": "Volume6,Issue 1",
+                        "MONTH_&_YEAR": "2024-03-21 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Image Based Data Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Muthayammal Engineering.College",
+                        "ORGANIZED_BY": "Muthayammal Engineering.College",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "04-02-2010  to 05-02-2010"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Modeling Image Data For Effective Indexing & Retrieval In Large General Image Database",
+                        "CONFERENCE_NAME": "PGP College of Engineering and Technology",
+                        "ORGANIZED_BY": "PGP College of Engineering and Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2010-04-07 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Content Based Image Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ORGANIZED_BY": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "15-03-2011 to 16-03-2011"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Real –World Security Testing For Online Banking",
+                        "CONFERENCE_NAME": "Velalar College of Engineering & Technology",
+                        "ORGANIZED_BY": "Velalar College of Engineering & Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2011-03-26 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Identification Of Cancer Using Pulse Signals We-Face",
+                        "CONFERENCE_NAME": "SMK Fomra Institute Of Technology",
+                        "ORGANIZED_BY": "SMK Fomra Institute Of Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2015-03-13 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication in M-Healthcare Cloud Computing System",
+                        "CONFERENCE_NAME": "Dhumra Mahate Icta(ICETNCI)",
+                        "ORGANIZED_BY": "Er.Perumal Manimekalai College of Engineering",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "28.03.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing With Priority Based Buffer Management on Adaptive Routers",
+                        "CONFERENCE_NAME": "CMS College of Engineering (ICEIS)",
+                        "ORGANIZED_BY": "CMS College of Engineering (ICEIS)",
+                        "ISBN_/_ISSN_NO": "E-ISSN:2348-8549",
+                        "MONTH_&_YEAR": "22.04.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Issues and Challenges in Cyber Security",
+                        "CONFERENCE_NAME": "International Conference on Contemporary  Engineering and Technology 2017",
+                        "ORGANIZED_BY": "Madha Engineering College",
+                        "ISBN_/_ISSN_NO": "ISBN 978-81-904760-9-6",
+                        "MONTH_&_YEAR": "24-03-2017 to 25-03-2017"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Evolution Companion",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "AI And ML Based De-Smoking Algorithm",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "A.Prema",
+                        "BOOK_NAME,_EDITION": "Object Oriented Programming",
+                        "PUBLISHER": "Charulatha Publication",
+                        "ISBN_/_ISSN_NO": "ISBN-13:978-93-5577-816-1",
+                        "MONTH_&_YEAR": "2024-02-01",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "A.Prema",
+                        "RESEARCH_TITLE": "Failure Prediction in Cloud computing based on\n Hierarchical Temporal memory(HTM) on AI enabled cloud operation",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Part Time",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "Ongoing",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "_"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 13,
+                    "Conference_Publications": 10,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+  },
+  {
+    "collectionName": "AIDS_001_staff",
+    "collection_type": "NON_TEACHING_FACULTY",
+    "title": "AI&DS Non Teaching Faculty Delete",
+    "action": "delete",
+    "meta_data": {
+                "Name": "MRS. PREMA A",
+                "Designation": "Assistant Professor",
+                "Department_Name": "Artificial Intelligence and Data Science",
+                "Mail_ID": "prema@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/001/VEC-001-04-080.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/prema-amirthalingam-10b3726a/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "Professional_Membership": "",
+                "EDUCATIONAL_QUALIFICATION": [
+                    {
+                        "DEGREE": "PG",
+                        "BRANCH": "M.E",
+                        "INSTITUTE": "Annai Mathammal Sheela Engineering College",
+                        "YEAR": 2010
+                    },
+                    {
+                        "DEGREE": "UG",
+                        "BRANCH": "B.Tech",
+                        "INSTITUTE": "Institute of Road and Transport Technology",
+                        "YEAR": 2007
+                    }
+                ],
+                "EXPERIENCE": [
+                    {
+                        "DURATION": "1st June 2017",
+                        "Unnamed:_1": "Till Date",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "Till Date",
+                        "DESIGNATION": "Assistant Professor-II",
+                        "INSTITUTION": "Velammal Engineering College"
+                    },
+                    {
+                        "DURATION": "1st June 2010",
+                        "Unnamed:_1": "2017-05-01 00:00:00",
+                        "EXPERIENCE": "7",
+                        "Unnamed:_3": "0",
+                        "DESIGNATION": "Assistant Professor-I",
+                        "INSTITUTION": "Velammal Engineering College"
+                    }
+                ],
+                "PROJECTS": [
+                    {
+                        "TITLE": "AI-Powered Fog and Smoke Detection",
+                        "SPONSORING_AGENCY": "Naan Mudhalvan -Niral Thiruvizha",
+                        "AMOUNT": "Rs.10000",
+                        "YEAR_OF_SANCTION": "2024",
+                        "DURATION": "6 Months",
+                        "RESPONSIBILITY_(PI_/_CO_PI)": "Mentor",
+                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                    },
+                    {
+                        "TITLE": "Nil"
+                    }
+                ],
+                "PATENTS": [
+                    {
+                        "NAME_OF_PATENT": "nil"
+                    }
+                ],
+                "JOURNAL_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing with Priority Based Buffer Management on Adaptive Routers",
+                        "JOURNAL_NAME": "SSRG-IJECE-ICEIS",
+                        "DOI_NUMBER": "E-Issn:2348-8549",
+                        "PAGE_NO": "113-120",
+                        "VOL_NO_/_ISSUE_NO": "_",
+                        "MONTH_&_YEAR": "June_2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication\n in M-Healthcare Cloud Computing System",
+                        "JOURNAL_NAME": "Middle-East Journal of Scientific Research",
+                        "DOI_NUMBER": "DOI: 10.5829/idosi.mejsr.2016.24.TAET23538\nIssn 1990-9233",
+                        "PAGE_NO": "281-283",
+                        "VOL_NO_/_ISSUE_NO": "© IDOSI Publications \n",
+                        "MONTH_&_YEAR": "2016",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "SRS and Gamified SRS Analysis For The Betterment Of Students Learning",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "39-41",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Haptic Technology",
+                        "JOURNAL_NAME": "IJCRCST",
+                        "DOI_NUMBER": "Issn:2395-5325",
+                        "PAGE_NO": "56-60",
+                        "VOL_NO_/_ISSUE_NO": "Vol.3,Issue 2",
+                        "MONTH_&_YEAR": "2017",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Proficient Public Substantiation of Data \nVeracity for Cloud Storage through Dual Protection",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5325",
+                        "PAGE_NO": "40-45",
+                        "VOL_NO_/_ISSUE_NO": "Vol.4\nIssue 3\n",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "DDOS Botnet Detection and Identification \nChallenges and Strategies in Peer To Peer Systems",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "22-24",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Novel Mechanism To Prevent DDOS \nTCP SYN Attack Using Pre-Shared Key",
+                        "JOURNAL_NAME": "International Journal of contemporary Research in computer science & Technology",
+                        "DOI_NUMBER": "ISSN:2395-5ISSN:\n2395-5325\n(Online)",
+                        "PAGE_NO": "56-58",
+                        "VOL_NO_/_ISSUE_NO": "Volume 4, \nSpecial Issue 3",
+                        "MONTH_&_YEAR": "Marh_2018",
+                        "INDEXED_IN_SCI_/_SCOPUS": "__",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Secure Data Transmission Using Image\nSteganography",
+                        "JOURNAL_NAME": "Special Issue Published in Int.\n Jnl. Of Advanced Networking & \nApplications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "300-303",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Smart Application for the Detection of Road Conditions While Driving\n\n",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN: 0975-0282 ",
+                        "PAGE_NO": "276-278",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "File Splitting and Storing In Multiple Cloud\nServers for Secured Cloud Storage",
+                        "JOURNAL_NAME": "Special Issue Published in Int. Jnl. Of Advanced Networking & Applications (IJANA)",
+                        "DOI_NUMBER": "ISSN:0975-0282",
+                        "PAGE_NO": "272-275",
+                        "VOL_NO_/_ISSUE_NO": "Special Issue",
+                        "MONTH_&_YEAR": "2019",
+                        "INDEXED_IN_SCI_/_SCOPUS": "_",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Survey on Step towards Predictive Analysis  in Revolutionizing Learning in\nEducation as well as Industry Sector",
+                        "JOURNAL_NAME": "Industrial Engineering Journal ",
+                        "DOI_NUMBER": "ISSN: 0970-2555",
+                        "PAGE_NO": "1215",
+                        "VOL_NO_/_ISSUE_NO": "Volume15 \nIssue 12 ",
+                        "MONTH_&_YEAR": "2022-12-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Growth and Habit Tracking",
+                        "JOURNAL_NAME": "International Journal of science and\n Management Studies(ijsms)",
+                        "DOI_NUMBER": "https://irojournals.com/\nitdw/article/view/6/1/4\nE-Issn:2348-8549",
+                        "PAGE_NO": "2581-5946",
+                        "VOL_NO_/_ISSUE_NO": "Volume:7,Issue:1",
+                        "MONTH_&_YEAR": "2024-02-01 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "UGC Care",
+                        "CONFERENCE_NAME": ""
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "A Web Portal for Tracking and Findingh \nmissing Person using Aadhar enabled Biometrics",
+                        "JOURNAL_NAME": "IRO Journals",
+                        "DOI_NUMBER": "DOI: 10.51386/25815946/ijsms-v7i1p115\nE-ISSN:2581-5946",
+                        "PAGE_NO": "2582-418X",
+                        "VOL_NO_/_ISSUE_NO": "Volume6,Issue 1",
+                        "MONTH_&_YEAR": "2024-03-21 00:00:00",
+                        "INDEXED_IN_SCI_/_SCOPUS": "Google scholar",
+                        "CONFERENCE_NAME": ""
+                    }
+                ],
+                "CONFERENCE_PUBLICATIONS": [
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Image Based Data Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Muthayammal Engineering.College",
+                        "ORGANIZED_BY": "Muthayammal Engineering.College",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "04-02-2010  to 05-02-2010"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Modeling Image Data For Effective Indexing & Retrieval In Large General Image Database",
+                        "CONFERENCE_NAME": "PGP College of Engineering and Technology",
+                        "ORGANIZED_BY": "PGP College of Engineering and Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2010-04-07 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Content Based Image Retrieval By Effective Indexing",
+                        "CONFERENCE_NAME": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ORGANIZED_BY": "Vivekanandha Institute of Engineering and Technology For Women",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "15-03-2011 to 16-03-2011"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Real –World Security Testing For Online Banking",
+                        "CONFERENCE_NAME": "Velalar College of Engineering & Technology",
+                        "ORGANIZED_BY": "Velalar College of Engineering & Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2011-03-26 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Identification Of Cancer Using Pulse Signals We-Face",
+                        "CONFERENCE_NAME": "SMK Fomra Institute Of Technology",
+                        "ORGANIZED_BY": "SMK Fomra Institute Of Technology",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "2015-03-13 00:00:00"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Multilevel Identity Privacy and Authentication in M-Healthcare Cloud Computing System",
+                        "CONFERENCE_NAME": "Dhumra Mahate Icta(ICETNCI)",
+                        "ORGANIZED_BY": "Er.Perumal Manimekalai College of Engineering",
+                        "ISBN_/_ISSN_NO": "_",
+                        "MONTH_&_YEAR": "28.03.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Load Balancing With Priority Based Buffer Management on Adaptive Routers",
+                        "CONFERENCE_NAME": "CMS College of Engineering (ICEIS)",
+                        "ORGANIZED_BY": "CMS College of Engineering (ICEIS)",
+                        "ISBN_/_ISSN_NO": "E-ISSN:2348-8549",
+                        "MONTH_&_YEAR": "22.04.2016"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Issues and Challenges in Cyber Security",
+                        "CONFERENCE_NAME": "International Conference on Contemporary  Engineering and Technology 2017",
+                        "ORGANIZED_BY": "Madha Engineering College",
+                        "ISBN_/_ISSN_NO": "ISBN 978-81-904760-9-6",
+                        "MONTH_&_YEAR": "24-03-2017 to 25-03-2017"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "Personal Evolution Companion",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    },
+                    {
+                        "AUTHORS": "A.Prema",
+                        "PAPER_TITLE": "AI And ML Based De-Smoking Algorithm",
+                        "CONFERENCE_NAME": "NCAIBIA ‘2k24",
+                        "ORGANIZED_BY": "Velammal Engineering College",
+                        "ISBN_/_ISSN_NO": "978-93-340-3988-7",
+                        "MONTH_&_YEAR": "April_2024"
+                    }
+                ],
+                "BOOK_PUBLICATIONS": [
+                    {
+                        "AUTHOR": "A.Prema",
+                        "BOOK_NAME,_EDITION": "Object Oriented Programming",
+                        "PUBLISHER": "Charulatha Publication",
+                        "ISBN_/_ISSN_NO": "ISBN-13:978-93-5577-816-1",
+                        "MONTH_&_YEAR": "2024-02-01",
+                        "BOOK_/_BOOK_CHAPTER": "Book"
+                    }
+                ],
+                "CONSULTANCY": [],
+                "RESEARCH_SCHOLARS": [
+                    {
+                        "RESEARCH_SCHOLAR_NAME": "A.Prema",
+                        "RESEARCH_TITLE": "Failure Prediction in Cloud computing based on\n Hierarchical Temporal memory(HTM) on AI enabled cloud operation",
+                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Part Time",
+                        "STATUS_(_ONGOING_/_COMPLETED)": "Ongoing",
+                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "_"
+                    }
+                ],
+                "COUNT": {
+                    "Professional_Membership": "",
+                    "Sponsored_Projects": 2,
+                    "Patent_Granted": 0,
+                    "Patent_Published": 0,
+                    "Patent_Filed": 0,
+                    "Journal_Publications": 13,
+                    "Conference_Publications": 10,
+                    "Book_/_Book_Chapter_Published": 1,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
+                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
+                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
+                    "PHD_Produced": 0,
+                    "PHD_Pursuing": 0
+                }
+            }
+  },
+  {
+    "collectionName": "AIDS_001_staff",
+    "collection_type": "NON_TEACHING_FACULTY",
+    "title": "Delete Non-Teaching Section",
     "action": "delete",
     "meta_data": []
   }
