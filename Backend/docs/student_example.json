@@ -1,0 +1,73 @@
+[
+  { "name": "STUDENT 1", "registerno": "1", "email": "", "phone": "9000000001", "password": "1", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 2", "registerno": "2", "email": "", "phone": "9000000002", "password": "2", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 3", "registerno": "3", "email": "", "phone": "9000000003", "password": "3", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 4", "registerno": "4", "email": "", "phone": "9000000004", "password": "4", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 5", "registerno": "5", "email": "", "phone": "9000000005", "password": "5", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 6", "registerno": "6", "email": "", "phone": "9000000006", "password": "6", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 7", "registerno": "7", "email": "", "phone": "9000000007", "password": "7", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 8", "registerno": "8", "email": "", "phone": "9000000008", "password": "8", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 9", "registerno": "9", "email": "", "phone": "9000000009", "password": "9", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 10", "registerno": "10", "email": "", "phone": "9000000010", "password": "10", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 11", "registerno": "11", "email": "", "phone": "9000000011", "password": "11", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 12", "registerno": "12", "email": "", "phone": "9000000012", "password": "12", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 13", "registerno": "13", "email": "", "phone": "9000000013", "password": "13", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 14", "registerno": "14", "email": "", "phone": "9000000014", "password": "14", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 15", "registerno": "15", "email": "", "phone": "9000000015", "password": "15", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 16", "registerno": "16", "email": "", "phone": "9000000016", "password": "16", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 17", "registerno": "17", "email": "", "phone": "9000000017", "password": "17", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 18", "registerno": "18", "email": "", "phone": "9000000018", "password": "18", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 19", "registerno": "19", "email": "", "phone": "9000000019", "password": "19", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 20", "registerno": "20", "email": "", "phone": "9000000020", "password": "20", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 21", "registerno": "21", "email": "", "phone": "9000000021", "password": "21", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 22", "registerno": "22", "email": "", "phone": "9000000022", "password": "22", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 23", "registerno": "23", "email": "", "phone": "9000000023", "password": "23", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 24", "registerno": "24", "email": "", "phone": "9000000024", "password": "24", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 25", "registerno": "25", "email": "", "phone": "9000000025", "password": "25", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 26", "registerno": "26", "email": "", "phone": "9000000026", "password": "26", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 27", "registerno": "27", "email": "", "phone": "9000000027", "password": "27", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 28", "registerno": "28", "email": "", "phone": "9000000028", "password": "28", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 29", "registerno": "29", "email": "", "phone": "9000000029", "password": "29", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 30", "registerno": "30", "email": "", "phone": "9000000030", "password": "30", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 31", "registerno": "31", "email": "", "phone": "9000000031", "password": "31", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 32", "registerno": "32", "email": "", "phone": "9000000032", "password": "32", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 33", "registerno": "33", "email": "", "phone": "9000000033", "password": "33", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 34", "registerno": "34", "email": "", "phone": "9000000034", "password": "34", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 35", "registerno": "35", "email": "", "phone": "9000000035", "password": "35", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 36", "registerno": "36", "email": "", "phone": "9000000036", "password": "36", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 37", "registerno": "37", "email": "", "phone": "9000000037", "password": "37", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 38", "registerno": "38", "email": "", "phone": "9000000038", "password": "38", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 39", "registerno": "39", "email": "", "phone": "9000000039", "password": "39", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 40", "registerno": "40", "email": "", "phone": "9000000040", "password": "40", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 41", "registerno": "41", "email": "", "phone": "9000000041", "password": "41", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 42", "registerno": "42", "email": "", "phone": "9000000042", "password": "42", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 43", "registerno": "43", "email": "", "phone": "9000000043", "password": "43", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 44", "registerno": "44", "email": "", "phone": "9000000044", "password": "44", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 45", "registerno": "45", "email": "", "phone": "9000000045", "password": "45", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 46", "registerno": "46", "email": "", "phone": "9000000046", "password": "46", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 47", "registerno": "47", "email": "", "phone": "9000000047", "password": "47", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 48", "registerno": "48", "email": "", "phone": "9000000048", "password": "48", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 49", "registerno": "49", "email": "", "phone": "9000000049", "password": "49", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 50", "registerno": "50", "email": "", "phone": "9000000050", "password": "50", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 51", "registerno": "51", "email": "", "phone": "9000000051", "password": "51", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 52", "registerno": "52", "email": "", "phone": "9000000052", "password": "52", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 53", "registerno": "53", "email": "", "phone": "9000000053", "password": "53", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 54", "registerno": "54", "email": "", "phone": "9000000054", "password": "54", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 55", "registerno": "55", "email": "", "phone": "9000000055", "password": "55", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+
+  { "name": "STUDENT 56", "registerno": "56", "email": "", "phone": "9000000056", "password": "56", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 57", "registerno": "57", "email": "", "phone": "9000000057", "password": "57", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 58", "registerno": "58", "email": "", "phone": "9000000058", "password": "58", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 59", "registerno": "59", "email": "", "phone": "9000000059", "password": "59", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" },
+  { "name": "STUDENT 60", "registerno": "60", "email": "", "phone": "9000000060", "password": "60", "department": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE", "year": 2, "batch": "2023-2027" }
+]

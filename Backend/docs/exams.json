@@ -343,4 +343,99 @@
       ]
     }
   ]
+},
+{
+  "type": "questionbank",
+  "data": [
+    {
+          "regulations": ["R2019"," R2023"],
+          "cie": ["I", "II", "III"],
+          "degree": ["B.E","B.Tech"],
+          "departments": {
+            "BE": [
+              "Automobile Engineering",
+              "Civil Engineering",
+              "Computer Science Engineering",
+              "Cyber Security Engineering",
+              "Electrical and Electronic Engineering",
+              "Electronics and Communication Engineering",
+              "Electronics and Instrumentation Engineering",
+              "Mechanical Engineering"
+            ],
+            "BTech": [
+              "Artificial Intelligence and Data Science",
+              "Information Technology"
+            ]
+          },
+          "years": ["I", "II", "III", "IV"],
+          "semesters": ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"],
+          
+          "subject": [
+            {
+              "name": "Basics of Civil Engineering",
+              "code": "HS8151",
+              "excel_path":"/static/xlsx/exams/HS8151.xlsx"
+            },
+            {
+              "name": "Engineering Mechanics",
+              "code": "MA8151"
+            },
+            {
+              "name": "Engineering Graphics",
+              "code": "PH8151"
+            },
+            {
+              "name": "Programming in C",
+              "code": "CY8151"
+            },
+            {
+              "name": "Basic Electrical and Electronics Engineering",
+              "code": "GE8151"
+            },
+            {
+              "name": "Environmental Science",
+              "code": "GE8152"
+            },
+            {
+              "name": "Mathematics - I",
+              "code": "GE8161"
+            },
+            {
+              "name": "Mathematics - II",
+              "code": "GE8162"
+            },
+            {
+              "name": "Physics",
+              "code": "GE8163"
+            },
+            {
+              "name": "Chemistry",
+              "code": "GE8164"
+            }
+          ],
+          "branch_paper": [
+            "B.E Automobile Engineering",
+            "B.E Civil Engineering",
+            "B.E Computer Science and Engineering",
+            "B.E Computer Science and Engineering (Cyber Security)",
+            "B.E Electronics and Communication Engineering",
+            "B.E Electrical and Electronics Engineering",
+            "B.E Electronics and Instrumentation Engineering",
+            "B.E Mechanical Engineering",
+            "B.Tech Artificial Intelligence and Data Science",
+            "B.Tech Information Technology"
+          ],
+          "departmentOptions" : [
+            "CSE",
+            "AI&DS",
+            "AME",
+            "Civil",
+            "IT",
+            "EEE",
+            "ECE",
+            "EIE",
+            "CSE(CS)"
+          ]
+    }
+  ]
 }]

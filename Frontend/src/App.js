@@ -108,7 +108,9 @@ const RateLimitReach = React.lazy(() => import("./ratelimit.jsx"));
 const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
 const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
-const Appraisal =React.lazy(() => import("./Components/Main/Appraisal/Appraisal.jsx"));
+/* General Forms */
+const AppraisalReport = React.lazy(() => import("./Components/Main/Forms/Appraisal/Appraisal Download/AppraisalReport.jsx"));
+const AppraisalForm = React.lazy(() => import("./Components/Main/Forms/Appraisal/Appraisal Form/AppraisalForm.jsx"));
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -178,6 +180,28 @@ const App = () => {
     }, []);
 
     useEffect(() => {
+        const handler = (event) => {
+        const msg = event?.message || "";
+        const isChunkError =
+            msg.includes("Loading chunk") ||
+            msg.includes("ChunkLoadError") ||
+            /\/static\/js\/.*\.chunk\.js/i.test(msg) ||
+            /chunk\..*\.js/i.test(msg);
+
+        if (isChunkError) {
+            const key = "chunk-reload-once";
+            if (!sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, "1");
+            window.location.reload();
+            }
+        }
+        };
+
+        window.addEventListener("error", handler);
+        return () => window.removeEventListener("error", handler);
+    }, []);
+
+    useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
 
@@ -232,7 +256,16 @@ const App = () => {
         );
     }
 
-    const isHostelRoute = currentPath.startsWith("/hostel")
+    // Determine if timer should show
+    const showTimer = currentPath === "/QA/questions";
+
+    // Render header
+    const renderHeader = () => {
+            if (currentPath.startsWith('/hostel')) return <HostelHeader />;
+            return <Head />;
+}
+
+    const isFooter = currentPath.startsWith("/hostel") || currentPath.startsWith('/QA');
 
     return (
         <>
@@ -243,7 +276,8 @@ const App = () => {
                 {/* Conditionally render Head and Footer */}
                 <>
                     {/* <Head/> */}
-                    {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
+                    {/* {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />} */}
+                    {renderHeader()}
                     <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                         <DynamicTitle />
                         <Suspense fallback={<div className="h-screen flex items-center justify-center"><LoadComp /></div>}>
@@ -319,10 +353,12 @@ const App = () => {
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
+
                                 <Route path="/careers" element={<Career />} />
 
-                                {/*Appraisal  */}
-                                <Route path="/appraisal" element={<Appraisal />} />
+                                {/*  General Forms  */}
+                                <Route path="/appraisalreport" element={<AppraisalReport />} />
+                                <Route path="/appraisalform" element={<AppraisalForm />} />
 
 
                                 {/*  404 - Page not found  */}
@@ -334,10 +370,14 @@ const App = () => {
 
                     </MainContentWrapper>
                     {/* <Footer ref={footerRef}/> */}
-                    {!isHostelRoute && <Footer theme={theme} data={footer?.[0]} />}
+                    {!isFooter && <Footer theme={theme} data={footer?.[0]} />}
 
-                    <SideButton />
-                    <ScrollToTopButton />
+                    {!isFooter && (
+                        <>
+                            <SideButton />
+                            <ScrollToTopButton />
+                        </>
+                    )}
                 </>
             </AppContainer>
         </>
