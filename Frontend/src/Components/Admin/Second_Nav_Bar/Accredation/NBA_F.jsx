@@ -153,7 +153,7 @@ const NBA_F = ({ data }) => {
     // remove change from log
     setChangeLog((prev) => prev.filter((c) => c.id !== change.id));
     setHasChanges(true);
-    toast.info(`Reverted ${change.action} ${change.data?.name ?? ""}`);
+    // toast.info(`Reverted ${change.action} ${change.data?.name ?? ""}`);
   };
 
   useEffect(() => {
@@ -190,8 +190,6 @@ const NBA_F = ({ data }) => {
       window.open(`${UrlParser(pdf.pdf_path)}#toolbar=0`, "_blank");
       return;
     }
-
-    toast.warn("No PDF available for this file!");
   };
 
   const handleEditToggle = () => {
@@ -200,7 +198,7 @@ const NBA_F = ({ data }) => {
     setChangesSaved(false);
     // Save current state when entering edit mode
     lastSavedStateRef.current = JSON.parse(JSON.stringify(editableData));
-    toast.info("You are now in edit mode.");
+
   };
 
   const handleCancel = () => {
@@ -208,10 +206,8 @@ const NBA_F = ({ data }) => {
       // If unsaved changes exist, revert them
       setEditableData(JSON.parse(JSON.stringify(lastSavedStateRef.current)));
       setHasChanges(false);
-      toast.info("Recent changes reverted.");
+ 
     } else {
-      // No new changes → just exit edit mode
-      toast.info("Exited edit mode.");
     }
 
     setEditMode(false);
@@ -227,8 +223,6 @@ const NBA_F = ({ data }) => {
     const currentState = JSON.parse(JSON.stringify(editableData));
     setSavedChanges(currentState);
     lastSavedStateRef.current = currentState;
-
-    toast.success("Changes saved successfully!");
     setEditMode(false);
     setHasChanges(false);
     setChangesSaved(true);
@@ -248,7 +242,6 @@ const NBA_F = ({ data }) => {
     setChangesSaved(false);
     setHasChanges(false);
     setChangeLog([]); // clear any logged changes
-    toast.info("All changes discarded.");
   };
 
   const handleAddRow = () => {
@@ -285,8 +278,6 @@ const NBA_F = ({ data }) => {
       rowIndexDeleted: rowIndex,
       data: deletedRow,
     });
-
-    toast.success("Row deleted!");
   };
 
   const handleDeleteSelected = () => {
@@ -309,7 +300,6 @@ const NBA_F = ({ data }) => {
     setSelectedItems([]);
     setDeleteConfirm(null);
     setHasChanges(true);
-    toast.success("Selected rows deleted!");
   };
 
   // ---- UPDATED: coalescing Dept edits ----
@@ -503,7 +493,7 @@ const NBA_F = ({ data }) => {
     });
 
     setDeleteConfirm(null);
-    toast.success("PDF deleted!");
+
   };
   const collectNbaFiles = () => {
     const files = [];
@@ -525,7 +515,7 @@ const NBA_F = ({ data }) => {
     const changes = getChanges();
 
     if (changes.length === 0) {
-      toast.warn("No changes to submit");
+
       return;
     }
 
@@ -547,7 +537,7 @@ const NBA_F = ({ data }) => {
       setChangeLog([]);
       setEditMode(false);
       setHasChanges(false);
-      toast.success("Request submitted successfully!");
+  
     }
   };
 
@@ -720,7 +710,7 @@ const NBA_F = ({ data }) => {
       <div className="nba-page relative">
         {/* Edit Button (always top-right when not in edit mode) */}
         {!editMode && (
-          <div className="flex justify-end px-6 py-4">
+          <div className="flex justify-end px-6 py-4 mr-4">
             <button
               onClick={handleEditToggle}
               className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
