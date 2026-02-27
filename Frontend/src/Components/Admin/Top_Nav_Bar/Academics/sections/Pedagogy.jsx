@@ -8,7 +8,7 @@ import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
 const Pedagogy = ({ data = [] }) => {
-  const [activeYear, setActiveYear] = useState(null);
+  const [activeYearId, setActiveYearId] = useState(null);
   const [tempData, setTempData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
@@ -52,16 +52,22 @@ const Pedagogy = ({ data = [] }) => {
   useEffect(() => {
     if (data && data.length > 0) {
       const pedagogyCategory = data.find(item => item.category === "Pedagogy Initiatives");
-      const formattedData = pedagogyCategory ? deepCopy(pedagogyCategory.content) : [];
+      let formattedData = pedagogyCategory ? deepCopy(pedagogyCategory.content) : [];
+
+      // Add stable id to each year (just like Kapila)
+      formattedData = formattedData.map((y) => ({
+        id: y.id || crypto.randomUUID(),   // ✅ stable identity
+        ...y,
+      }));
 
       setTempData(formattedData);
       setOriginalData(deepCopy(formattedData));
     }
   }, [data]);
 
-  const handleYearClick = (year) => {
-    setActiveYear(activeYear === year ? null : year);
-  };
+  // const handleYearClick = (id) => {
+  //   setActiveYearId(prev => (prev === id ? null : id));
+  // };
 
   const handlePdfClick = (pdfPath) => {
     if (pdfPath) {
@@ -129,51 +135,51 @@ const Pedagogy = ({ data = [] }) => {
 
     const payloads = [];
 
-    const originalMap = new Map(originalData.map(y => [y.year, y]));
-    const pendingMap = new Map(pendingData.map(y => [y.year, y]));
+    const originalMap = new Map(originalData.map(y => [y.id, y]));
+    const pendingMap = new Map(pendingData.map(y => [y.id, y]));
 
-    // -----------------------
-    // Added & Updated
-    // -----------------------
-    pendingData.forEach(pYear => {
-      const oYear = originalMap.get(pYear.year);
+    // UPDATE
+    for (const [id, newYear] of pendingMap.entries()) {
+      const oldYear = originalMap.get(id);
+      if (!oldYear) continue;
 
-      if (!oYear) {
-        // ➕ New year added
+      if (
+        oldYear.year !== newYear.year ||
+        JSON.stringify(oldYear.content) !== JSON.stringify(newYear.content)
+      ) {
+        const payload = buildPedagogyPayload({
+          action: "Edited",
+          newData: newYear,
+          oldData: oldYear,
+        });
+        if (payload) payloads.push(payload);
+      }
+    }
+
+    // INSERT
+    for (const [id, newYear] of pendingMap.entries()) {
+      if (!originalMap.has(id)) {
         const payload = buildPedagogyPayload({
           action: "Added",
-          newData: pYear,
+          newData: newYear,
         });
         if (payload) payloads.push(payload);
-      } else {
-        // ✏️ Possibly updated
-        if (JSON.stringify(oYear.content) !== JSON.stringify(pYear.content)) {
-          const payload = buildPedagogyPayload({
-            action: "Edited",
-            newData: pYear,
-            oldData: oYear,
-          });
-          if (payload) payloads.push(payload);
-        }
       }
-    });
+    }
 
-    // -----------------------
-    // Deleted
-    // -----------------------
-    originalData.forEach(oYear => {
-      const stillExists = pendingMap.has(oYear.year);
-      if (!stillExists) {
+    // DELETE
+    for (const [id, oldYear] of originalMap.entries()) {
+      if (!pendingMap.has(id)) {
         const payload = buildPedagogyPayload({
           action: "Deleted",
-          oldData: oYear,
+          oldData: oldYear,
         });
         if (payload) payloads.push(payload);
       }
-    });
+    }
+
     return payloads;
   };
-
   const handleEdit = () => {
     setIsEditing(true);
     setIsSaved(false);
@@ -213,7 +219,7 @@ const Pedagogy = ({ data = [] }) => {
     setIsSaved(!!pendingData);
 
     // Clear active year selection
-    setActiveYear(null);
+    setActiveYearId(null);
   };
 
 
@@ -271,7 +277,7 @@ const Pedagogy = ({ data = [] }) => {
     setNewPedagogy({ name: "", pdf_path: "", link: "" });
 
     // Clear active year
-    setActiveYear(null);
+    setActiveYearId(null);
 
     toast.info("All changes discarded! Reverted to original data.");
   };
@@ -332,20 +338,20 @@ const Pedagogy = ({ data = [] }) => {
     setIsDirty(true);
   };
 
-  const handleYearChange = (yearIndex, newYear) => {
-    const updated = [...tempData];
+  // const handleYearChange = (yearIndex, newYear) => {
+  //   const updated = [...tempData];
 
-    // Only capitalize if not empty
-    updated[yearIndex].year = newYear ? newYear.charAt(0).toUpperCase() + newYear.slice(1) : "";
+  //   // Only capitalize if not empty
+  //   updated[yearIndex].year = newYear ? newYear.charAt(0).toUpperCase() + newYear.slice(1) : "";
 
-    setTempData(updated);
+  //   setTempData(updated);
 
-    // Update activeYear if editing current active year
-    if (yearIndex === editingYearIndex) {
-      setActiveYear(updated[yearIndex].year);
-    }
-    setIsDirty(true);
-  };
+  //   // Update activeYear if editing current active year
+  //   if (yearIndex === editingYearIndex) {
+  //     setActiveYear(updated[yearIndex].year);
+  //   }
+  //   setIsDirty(true);
+  // };
 
 
 
@@ -365,15 +371,19 @@ const Pedagogy = ({ data = [] }) => {
       return;
     }
 
-    // Add new year with input value
-    const updated = [...tempData, { year: newYearInput, content: [] }];
+    const updated = [
+      ...tempData,
+      {
+        id: crypto.randomUUID(),   // ✅ stable id
+        year: newYearInput,
+        content: []
+      }
+    ];
 
     setTempData(updated);
-    setActiveYear(newYearInput);                  // set new year as active
-    setEditingYearIndex(updated.length - 1);      // start editing this year
+    setActiveYearId(updated[updated.length - 1].id);
     setIsDirty(true);
 
-    // Reset input state
     setNewYearInput("");
     setAddingYear(false);
   };
@@ -382,7 +392,7 @@ const Pedagogy = ({ data = [] }) => {
 
 
   const handleAddOrUpdatePedagogy = () => {
-    if (!activeYear) {
+    if (!activeYearObj) {
       toast.error("Please select a year first!");
       return;
     }
@@ -395,7 +405,7 @@ const Pedagogy = ({ data = [] }) => {
       return;
     }
 
-    const yearIndex = tempData.findIndex((item) => item.year === activeYear);
+    const yearIndex = tempData.findIndex((item) => item.id === activeYearObj.id);
     if (yearIndex === -1) return;
 
     const updated = deepCopy(tempData);
@@ -458,7 +468,7 @@ const Pedagogy = ({ data = [] }) => {
     setIsDirty(true);
 
     if (selectedYears.size > 0) {
-      setActiveYear(null);
+      setActiveYearId(null);
     }
 
     toast.info("Selected items deleted!");
@@ -500,7 +510,7 @@ const Pedagogy = ({ data = [] }) => {
       setSelectedItems(updatedItems);
 
       // Close active year
-      setActiveYear(null);
+      setActiveYearId(null);
     }
     setSelectedYears(updatedYears);
   };
@@ -511,128 +521,57 @@ const Pedagogy = ({ data = [] }) => {
 
   const getChanges = () => {
     if (!pendingData || !originalData) return [];
+
     const changes = [];
 
-    // -----------------------------
-    // Year additions & deletions
-    // -----------------------------
-    const originalYears = originalData.map(y => y.year);
-    const pendingYears = pendingData.map(y => y.year);
+    const originalMap = new Map(originalData.map(y => [y.id, y]));
+    const pendingMap = new Map(pendingData.map(y => [y.id, y]));
 
-    originalYears.forEach(year => {
-      if (!pendingYears.includes(year)) {
-        changes.push({ action: "Deleted", section: "Year", changes: year });
-      }
-    });
+    const handledIds = new Set(); // ✅ prevents duplicates
 
-    pendingYears.forEach(year => {
-      if (!originalYears.includes(year)) {
-        changes.push({ action: "Added", section: "Year", changes: year });
-      }
-    });
+    // -----------------------
+    // EDITED & ADDED
+    // -----------------------
+    for (const [id, newYear] of pendingMap.entries()) {
+      const oldYear = originalMap.get(id);
 
-    // -----------------------------
-    // Year rename (content same but year label changed)
-    // -----------------------------
-    originalData.forEach(originalYear => {
-      const pendingYearWithSameContent = pendingData.find(pendingYear => {
-        return (
-          JSON.stringify(originalYear.content) === JSON.stringify(pendingYear.content) &&
-          originalYear.year !== pendingYear.year
-        );
-      });
-
-      if (pendingYearWithSameContent) {
+      if (!oldYear) {
+        // ➕ Added
+        changes.push({
+          action: "Added",
+          section: "Year",
+          changes: newYear.year,
+        });
+        handledIds.add(id);
+      } else if (
+        oldYear.year !== newYear.year ||
+        JSON.stringify(oldYear.content) !== JSON.stringify(newYear.content)
+      ) {
+        // ✏️ Edited (rename and/or content change)
         changes.push({
           action: "Edited",
           section: "Year",
-          changes: pendingYearWithSameContent.year, // ✅ Just show new year name
+          changes: newYear.year,
         });
-
-        // Remove false add/delete entries for this rename
-        const delIdx = changes.findIndex(
-          c => c.action === "Deleted" && c.changes === originalYear.year
-        );
-        const addIdx = changes.findIndex(
-          c => c.action === "Added" && c.changes === pendingYearWithSameContent.year
-        );
-        if (delIdx !== -1) changes.splice(delIdx, 1);
-        if (addIdx !== -1) changes.splice(addIdx, 1);
+        handledIds.add(id);
       }
-    });
+    }
 
-    // -----------------------------
-    // Item-level changes
-    // -----------------------------
-    // -----------------------------
-    // Item-level changes
-    // -----------------------------
-    pendingData.forEach(pendingYear => {
-      const originalYear = originalData.find(y => y.year === pendingYear.year);
-      if (!originalYear) return; // Already handled in "Added Year"
-
-      // Loop through original items
-      originalYear.content.forEach(originalItem => {
-        const matchingPending = pendingYear.content.find(
-          p => p.pdf_path === originalItem.pdf_path && p.link === originalItem.link
-        );
-
-        if (!matchingPending) {
-          // Maybe name changed → detect edit instead of add+delete
-          const possibleRename = pendingYear.content.find(
-            p =>
-              (p.pdf_path === originalItem.pdf_path || p.link === originalItem.link) &&
-              p.name !== originalItem.name
-          );
-
-          if (possibleRename) {
-            changes.push({
-              action: "Edited",
-              section: pendingYear.year,
-              changes: originalItem.name
-            });
-          } else {
-            // Fully deleted
-            changes.push({
-              action: "Deleted",
-              section: pendingYear.year,
-              changes: originalItem.name
-            });
-          }
-        }
-      });
-
-      // Check for new items (added only if not just rename)
-      pendingYear.content.forEach(pendingItem => {
-        const existsInOriginal = originalYear.content.find(
-          o =>
-            o.name === pendingItem.name &&
-            o.pdf_path === pendingItem.pdf_path &&
-            o.link === pendingItem.link
-        );
-
-        if (!existsInOriginal) {
-          const wasRename = originalYear.content.find(
-            o =>
-              (o.pdf_path === pendingItem.pdf_path || o.link === pendingItem.link) &&
-              o.name !== pendingItem.name
-          );
-          if (!wasRename) {
-            changes.push({
-              action: "Added",
-              section: pendingYear.year,
-              changes: pendingItem.name
-            });
-          }
-        }
-      });
-    });
-
+    // -----------------------
+    // DELETED
+    // -----------------------
+    for (const [id, oldYear] of originalMap.entries()) {
+      if (!pendingMap.has(id) && !handledIds.has(id)) {
+        changes.push({
+          action: "Deleted",
+          section: "Year",
+          changes: oldYear.year,
+        });
+      }
+    }
 
     return changes;
   };
-
-
 
   const handleRevertChange = (change) => {
     let updated = deepCopy(pendingData);
@@ -737,9 +676,8 @@ const Pedagogy = ({ data = [] }) => {
   };
 
 
-  const activeContent = activeYear
-    ? tempData.find(item => item.year === activeYear)?.content || []
-    : [];
+  const activeYearObj = tempData.find(y => y.id === activeYearId);
+  const activeContent = activeYearObj?.content || [];
 
   return (
     <>
@@ -785,10 +723,10 @@ const Pedagogy = ({ data = [] }) => {
                 type="button"
                 onClick={() => {
                   if (selectedYears.size > 0) return; // block click if any checkbox is selected
-                  handleYearClick(yearItem.year);
+                  setActiveYearId(yearItem.id);
                 }}
                 className={`px-6 py-3 font-semibold rounded-xl transition-all hover:text-prim
-          ${activeYear === yearItem.year
+          ${activeYearObj === yearItem.year
                     ? "bg-[#800000] text-prim"
                     : "bg-[#fdcc03] text-text"
                   }
@@ -838,42 +776,34 @@ const Pedagogy = ({ data = [] }) => {
         </div>
 
         {/* Year Content */}
-        {activeYear && (
+        {activeYearObj && (
           <div className="mb-6">
             <h3 className="text-xl font-semibold mb-4 text-center flex items-center justify-center gap-2">
-              {editingYearIndex !== null ? (
+              {editingYearIndex !== null && activeYearObj ? (
                 <input
                   type="text"
-                  value={tempData[editingYearIndex]?.year || ""}
+                  value={activeYearObj.year}
                   placeholder="Enter title"
                   onChange={(e) => {
                     const val = e.target.value;
 
-                    const updated = [...tempData];
-                    updated[editingYearIndex].year = val; // allow typing
-                    setTempData(updated);
+                    setTempData(prev =>
+                      prev.map(y =>
+                        y.id === activeYearObj.id ? { ...y, year: val } : y
+                      )
+                    );
                     setIsDirty(true);
-
-                    // ⚠️ Warn if empty, but DO NOT change activeYear here
-                    if (!val.trim()) {
-                      toast.warn("Please type something. Title cannot be empty.");
-                    }
                   }}
                   onBlur={() => {
-                    const updated = [...tempData];
-                    const current = updated[editingYearIndex].year?.trim();
-
-                    if (!current) {
-                      // ❌ Still empty → restore old name
-                      updated[editingYearIndex].year = prevYearValue || "NEW YEAR";
-                      toast.error("Title restored. It cannot be empty.");
+                    // prevent empty title
+                    if (!activeYearObj.year.trim()) {
+                      toast.error("Title cannot be empty");
+                      setTempData(prev =>
+                        prev.map(y =>
+                          y.id === activeYearObj.id ? { ...y, year: "NEW YEAR" } : y
+                        )
+                      );
                     }
-
-                    setTempData(updated);
-
-                    // ✅ NOW (and only now) update activeYear
-                    setActiveYear(updated[editingYearIndex].year);
-
                     setEditingYearIndex(null);
                   }}
                   className="px-2 py-1 border rounded text-center"
@@ -881,13 +811,12 @@ const Pedagogy = ({ data = [] }) => {
                 />
               ) : (
                 <>
-                  {activeYear || "NEW YEAR"}
-                  {isEditing && (
+                  {activeYearObj?.year || "NEW YEAR"}
+                  {isEditing && activeYearObj && (
                     <button
                       onClick={() => {
-                        const idx = tempData.findIndex((y) => y.year === activeYear);
-                        setPrevYearValue(tempData[idx]?.year || ""); // ✅ save old name
-                        setEditingYearIndex(idx);
+                        setEditingYearIndex(activeYearObj.id);
+                        setPrevYearValue(activeYearObj.year);
                       }}
                       className="ml-2 text-gray-600 hover:text-blue-600"
                     >
@@ -901,7 +830,7 @@ const Pedagogy = ({ data = [] }) => {
             {/* PDF Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-8 place-items-center">
               {activeContent.map((pdfItem, itemIndex) => {
-                const yearIndex = tempData.findIndex(item => item.year === activeYear);
+                const yearIndex = tempData.findIndex(item => item.id === activeYearObj.id);
                 const key = `${yearIndex}-${itemIndex}`;
 
                 return (
@@ -953,7 +882,7 @@ const Pedagogy = ({ data = [] }) => {
               })}
 
               {/* Add New Item Button */}
-              {isEditing && activeYear && (
+              {isEditing && activeYearObj && (
                 <div
                   className="w-[300px] h-[70px] border-2 border-dashed border-gray-400 rounded-md flex items-center justify-center cursor-pointer hover:border-blue-500"
                   onClick={() => {
@@ -1125,7 +1054,7 @@ const Pedagogy = ({ data = [] }) => {
                       }) ===
                       JSON.stringify({
                         ...(
-                          tempData.find((y) => y.year === activeYear)?.content[editIndex] || {}
+                          tempData.find((y) => y.id === activeYearObj.id)?.content[editIndex] || {}
                         ),
                         pdf_file: null,
                       }))
