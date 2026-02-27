@@ -524,6 +524,21 @@ def insert_research_data():
 
     print("Research data inserted successfully.")
 
+def insert_qa_form():
+    collection = db["qa_form"]
+
+    with open("/VEC_Web_Engine/Backend/docs/qa_form.json", "r", encoding="utf-8") as file:
+        exams_data = json.load(file)
+
+        for section in exams_data:
+            section_key = section["type"]
+            document = {
+                "type": section_key,
+                "data": section["data"]
+            }
+            collection.insert_one(document)
+
+    print("qa_form sections inserted successfully.")
 
 insert_help_desk_sections()
 insert_landing_page_sections()
@@ -540,6 +555,7 @@ insert_incubations_sections()
 insert_about_us()
 insert_web_team()
 insert_research_data()
+insert_qa_form()
 
 
 #logs creation in seperate db
