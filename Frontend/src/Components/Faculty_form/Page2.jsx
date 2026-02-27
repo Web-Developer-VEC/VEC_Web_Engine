@@ -265,7 +265,7 @@ const handleInputChange = (section, key, subKey, value, sem = null) => {
               onChange={(e) => handleInputChange("research_publications", key, "undertaking", e.target.value)}
             />
 
-            <div style={{ display: "flex", gap: "4px", alignItems: "center" , }}>
+            <div style={{ display: "flex", gap: "4px", alignItems: "center" }}>
               <input
                 type="file"
                 ref={(el) => (fileRefs.current[key] = el)}

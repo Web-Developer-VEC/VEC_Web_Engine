@@ -1,0 +1,37 @@
+[{
+  "type": "qa_details",
+  "data": {
+    "batch": [
+      "2023-2027",
+      "2024-2028",
+      "2025-2029"
+    ],
+    "departments": [
+      "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE",
+      "ELECTRONICS AND COMMUNICATION ENGINEERING",
+      "COMPUTER SCIENCE AND ENGINEERING",
+      "ELECTRICAL AND ELECTRONICS ENGINEERING",
+      "ELECTRONICS AND INSTRUMENTATION ENGINEERING",
+      "INFORMATION TECHNOLOGY",
+      "MECHANICAL ENGINEERING",
+      "CSE(CYBER SECURITY)",
+      "AUTOMOBILE ENGINEERING",
+      "CIVIL ENGINEERING"
+    ],
+    "subjects": [
+      {
+        "code": "QA204",
+        "name": "QA/VR"
+      },
+      {
+        "code": "QA301",
+        "name": "QA/BS"
+      },
+      {
+        "code": "QA210",
+        "name": "QA"
+      }
+    ]
+  }
+}
+]

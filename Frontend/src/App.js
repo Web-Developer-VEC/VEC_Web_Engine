@@ -11,6 +11,7 @@ import Boot from "./Components/Main/Landing Comp/BootUp";
 import Head from "./Components/Main/Landing Comp/Head.jsx";
 import Footer from "./Components/Main/Landing Comp/Footer.jsx";
 import HostelHeader from "./Components/Digital Hostel/HostelPages/HeadHeader.jsx";
+import AptitudeHeader from "./Components/Main/Aptitude/AptitudeHeader.jsx";
 import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import LoadComp from "./Components/Main/LoadComp.jsx";
@@ -57,6 +58,15 @@ const Syllabus = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Sy
 const Forms = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
 const RankHonder = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
+const Schedule = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/Schedule/schedule.jsx"));
+const ScheduledExam = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/scheduledExam.jsx"));
+const QAExamResults = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/qaExamResult.jsx"));
+const UploadContainer = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QA Exam/uploads/uploadContainer.jsx"));
+
+// Question Paper
+const AuthPage = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/auth.jsx"));
+const Qp = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QP.jsx"));
+const Layout = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/QP/QuestionPaper.jsx"));
 
 /* Research Pages */
 const Academres = React.lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
@@ -108,6 +118,7 @@ const RateLimitReach = React.lazy(() => import("./ratelimit.jsx"));
 const ErrorLogPage = React.lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
 const HitLogs = React.lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
 
+const Appraisal =React.lazy(() => import("./Components/Main/Appraisal/Appraisal.jsx"));
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -177,6 +188,28 @@ const App = () => {
     }, []);
 
     useEffect(() => {
+        const handler = (event) => {
+        const msg = event?.message || "";
+        const isChunkError =
+            msg.includes("Loading chunk") ||
+            msg.includes("ChunkLoadError") ||
+            /\/static\/js\/.*\.chunk\.js/i.test(msg) ||
+            /chunk\..*\.js/i.test(msg);
+
+        if (isChunkError) {
+            const key = "chunk-reload-once";
+            if (!sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, "1");
+            window.location.reload();
+            }
+        }
+        };
+
+        window.addEventListener("error", handler);
+        return () => window.removeEventListener("error", handler);
+    }, []);
+
+    useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
 
@@ -231,7 +264,17 @@ const App = () => {
         );
     }
 
-    const isHostelRoute = currentPath.startsWith("/hostel")
+    // Determine if timer should show
+    const showTimer = currentPath === "/QA/questions";
+
+    // Render header
+    const renderHeader = () => {
+            if (currentPath.startsWith('/hostel')) return <HostelHeader />;
+            if (currentPath.startsWith('/QA')) return <AptitudeHeader showTimer={showTimer} />;
+            return <Head />;
+}
+
+    const isFooter = currentPath.startsWith("/hostel") || currentPath.startsWith('/QA');
 
     return (
         <>
@@ -242,7 +285,8 @@ const App = () => {
                 {/* Conditionally render Head and Footer */}
                 <>
                     {/* <Head/> */}
-                    {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
+                    {/* {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />} */}
+                    {renderHeader()}
                     <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                         <DynamicTitle />
                         <Suspense fallback={<div className="h-screen flex items-center justify-center"><LoadComp /></div>}>
@@ -315,10 +359,27 @@ const App = () => {
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital />} />
                                 <Route path="/hostel/forget-password" element={<ForgotPassword />} />
+                                {/*  Question paper Routes */}
+                                <Route path="/login" element={<AuthPage />} />
+                                <Route path="/preview" element={<Layout />} />
+                                <Route path="/qp" drk element={<Qp toggle={toggle} theme={theme}/>}/>
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
+                                {/* Aptitude Routes */}
+                                <Route path="/QA/qaexam" drk element={<DetailsPage toggle={toggle} theme={theme} />}/>
+                                <Route path="/QA/confirm" element={<InstructionPage toggle={toggle} theme={theme}/>} />
+                                <Route path="/QA/questions" element={<QuestionPage toggle={toggle} theme={theme}/>} />
+                                <Route path="/staff-dashboard" element={<Schedule toggle={toggle} theme={theme}/>} />
+                                <Route path="/upload" element={<UploadContainer toggle={toggle} theme={theme}/>} />
+                                <Route path="/scheduled-exam" element={<ScheduledExam toggle={toggle} theme={theme}/>} />
+                                <Route path="/qaresult" element={<QAExamResults toggle={toggle} theme={theme}/>} />
+
                                 <Route path="/careers" element={<Career />} />
+
+                                {/*Appraisal  */}
+                                <Route path="/appraisal" element={<Appraisal />} />
+
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
@@ -329,10 +390,14 @@ const App = () => {
 
                     </MainContentWrapper>
                     {/* <Footer ref={footerRef}/> */}
-                    {!isHostelRoute && <Footer theme={theme} data={footer?.[0]} />}
+                    {!isFooter && <Footer theme={theme} data={footer?.[0]} />}
 
-                    <SideButton />
-                    <ScrollToTopButton />
+                    {!isFooter && (
+                        <>
+                            <SideButton />
+                            <ScrollToTopButton />
+                        </>
+                    )}
                 </>
             </AppContainer>
         </>
