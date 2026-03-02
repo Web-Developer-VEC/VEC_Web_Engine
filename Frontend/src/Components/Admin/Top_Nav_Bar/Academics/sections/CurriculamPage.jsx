@@ -1,11 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faPencil, faPlus, faXmark, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faPencil,
+  faPlus,
+  faXmark,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { Send, X, Plus, Pencil, Trash2 } from "lucide-react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import LoadComp from "../../../LoadComp";
 import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 
@@ -13,18 +19,20 @@ const deepCopy = (data) => {
   if (!Array.isArray(data)) return [];
   return data.map((section) => ({
     ...section,
-    syllabus: section.syllabus?.map((item) => ({
-      ...item,
-      file: item.file ?? null,
-      docs: item.docs?.map((doc) => ({
-        ...doc,
-        file: doc.file ?? null,
+    syllabus:
+      section.syllabus?.map((item) => ({
+        ...item,
+        file: item.file ?? null,
+        docs:
+          item.docs?.map((doc) => ({
+            ...doc,
+            file: doc.file ?? null,
+          })) || [],
       })) || [],
-    })) || [],
   }));
 };
 
-const CurriculumPage = ({ data }) => {
+const CurriculumPage = ({ data, deptId }) => {
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const { sendRequest, loading: requestLoading, error } = useAdminRequest();
@@ -33,7 +41,6 @@ const CurriculumPage = ({ data }) => {
     if (typeof path !== "string" || !path) return "";
     return path.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-
 
   // State variables
   const [originalData, setOriginalData] = useState([]);
@@ -52,7 +59,7 @@ const CurriculumPage = ({ data }) => {
 
   const toggleSelectYear = (sectionIndex, itemIndex) => {
     const key = `${sectionIndex}-${itemIndex}`;
-    setSelectedYears(prev => {
+    setSelectedYears((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(key)) {
         newSet.delete(key);
@@ -81,17 +88,20 @@ const CurriculumPage = ({ data }) => {
 
   // Fetch initial data
   useEffect(() => {
-    const curriculum = data?.find((item) => item.category === "curriculum")?.content || [];
+    const curriculum =
+      data?.find((item) => item.category === "curriculum")?.content || [];
     const formattedData = curriculum.map((section) => ({
       ...section,
-      syllabus: section.syllabus?.map((item) => ({
-        ...item,
-        id: item.pdf_path || Date.now() + Math.random(),
-        docs: item.docs?.map((doc) => ({
-          ...doc,
-          id: doc.pdf_path || Date.now() + Math.random(),
+      syllabus:
+        section.syllabus?.map((item) => ({
+          ...item,
+          id: item.pdf_path || Date.now() + Math.random(),
+          docs:
+            item.docs?.map((doc) => ({
+              ...doc,
+              id: doc.pdf_path || Date.now() + Math.random(),
+            })) || [],
         })) || [],
-      })) || [],
     }));
 
     setTempData(deepCopy(formattedData));
@@ -137,7 +147,6 @@ const CurriculumPage = ({ data }) => {
     toast.error("PDF not available");
   };
 
-
   // Edit mode handlers
   const handleEdit = () => {
     setIsEditing(true);
@@ -156,7 +165,7 @@ const CurriculumPage = ({ data }) => {
           ch.section === changeToRemove.section &&
           ch.year === changeToRemove.year &&
           ch.docName === changeToRemove.docName
-        )
+        ),
     );
 
     let rebuiltData = deepCopy(originalData);
@@ -177,7 +186,7 @@ const CurriculumPage = ({ data }) => {
                 }
                 if (change.action === "Edited") {
                   const doc = item.docs.find(
-                    (d) => d.name === change.original_data?.name
+                    (d) => d.name === change.original_data?.name,
                   );
                   if (doc) {
                     doc.name = change.docName;
@@ -186,7 +195,7 @@ const CurriculumPage = ({ data }) => {
                 }
                 if (change.action === "Deleted") {
                   item.docs = item.docs.filter(
-                    (d) => d.name !== change.docName
+                    (d) => d.name !== change.docName,
                   );
                 }
               } else {
@@ -202,7 +211,7 @@ const CurriculumPage = ({ data }) => {
                 }
                 if (change.action === "Deleted") {
                   section.syllabus = section.syllabus.filter(
-                    (s) => s.year !== change.year
+                    (s) => s.year !== change.year,
                   );
                 }
               }
@@ -224,13 +233,16 @@ const CurriculumPage = ({ data }) => {
       return;
     }
 
-    const allItems = tempData.flatMap(section =>
-      section.syllabus?.flatMap(item =>
-        item.docs?.length ? item.docs : [item]
-      ) || []
+    const allItems = tempData.flatMap(
+      (section) =>
+        section.syllabus?.flatMap((item) =>
+          item.docs?.length ? item.docs : [item],
+        ) || [],
     );
 
-    const invalidItem = allItems.find(item => !item.name?.trim() && !item.year?.trim());
+    const invalidItem = allItems.find(
+      (item) => !item.name?.trim() && !item.year?.trim(),
+    );
 
     if (invalidItem) {
       toast.error("Please fill all required fields before saving!");
@@ -259,7 +271,7 @@ const CurriculumPage = ({ data }) => {
   };
 
   const confirmDeleteYears = () => {
-    setTempData(prev => {
+    setTempData((prev) => {
       const updatedData = prev.map((section, sectionIndex) => {
         const filteredSyllabus = section.syllabus.filter((_, itemIndex) => {
           const key = `${sectionIndex}-${itemIndex}`;
@@ -289,8 +301,18 @@ const CurriculumPage = ({ data }) => {
 
   // Popup handlers
   const romanNumerals = [
-    "I", "II", "III", "IV", "V", "VI", "VII", "VIII",
-    "IX", "X", "XI", "XII"
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+    "VI",
+    "VII",
+    "VIII",
+    "IX",
+    "X",
+    "XI",
+    "XII",
   ];
 
   const handleAddExtraSemester = (sectionIndex, itemIndex) => {
@@ -314,7 +336,6 @@ const CurriculumPage = ({ data }) => {
     setShowPopup(true);
   };
 
-
   const handleEditUGYear = (sectionIndex, itemIndex) => {
     const item = tempData[sectionIndex].syllabus[itemIndex];
     setPopupData({
@@ -333,7 +354,12 @@ const CurriculumPage = ({ data }) => {
     setShowPopup(true);
   };
 
-  const handleEditDoc = (sectionIndex, itemIndex, docIndex, isSemester = false) => {
+  const handleEditDoc = (
+    sectionIndex,
+    itemIndex,
+    docIndex,
+    isSemester = false,
+  ) => {
     if (!isEditing) {
       const docOrSemester = isSemester
         ? tempData[sectionIndex].syllabus[itemIndex]
@@ -356,7 +382,7 @@ const CurriculumPage = ({ data }) => {
       itemIndex,
       docIndex,
       year: isSemester ? docOrSemester.year : "",
-      pdf_path: docOrSemester.pdf_path || "",   // backend truth
+      pdf_path: docOrSemester.pdf_path || "", // backend truth
       docName: isSemester ? "" : docOrSemester.name,
       file: null,
       isEditing: true,
@@ -368,9 +394,11 @@ const CurriculumPage = ({ data }) => {
   };
 
   const handleDeleteUGYear = (sectionIndex, itemIndex) => {
-    setTempData(prev => {
+    setTempData((prev) => {
       const newData = [...prev];
-      newData[sectionIndex].syllabus = newData[sectionIndex].syllabus.filter((_, i) => i !== itemIndex);
+      newData[sectionIndex].syllabus = newData[sectionIndex].syllabus.filter(
+        (_, i) => i !== itemIndex,
+      );
       return newData;
     });
     setIsDirty(true);
@@ -378,10 +406,11 @@ const CurriculumPage = ({ data }) => {
   };
 
   const handleDeleteDoc = (sectionIndex, itemIndex, docIndex) => {
-    setTempData(prev => {
+    setTempData((prev) => {
       const newData = [...prev];
-      newData[sectionIndex].syllabus[itemIndex].docs =
-        newData[sectionIndex].syllabus[itemIndex].docs.filter((_, i) => i !== docIndex);
+      newData[sectionIndex].syllabus[itemIndex].docs = newData[
+        sectionIndex
+      ].syllabus[itemIndex].docs.filter((_, i) => i !== docIndex);
       return newData;
     });
     setIsDirty(true);
@@ -401,11 +430,19 @@ const CurriculumPage = ({ data }) => {
       return;
     }
 
-    setPopupData(prev => ({ ...prev, file }));
+    setPopupData((prev) => ({ ...prev, file }));
   };
 
   const handlePopupView = () => {
-    const { file, pdf_path, isEditing, sectionIndex, itemIndex, docIndex, isDoc } = popupData;
+    const {
+      file,
+      pdf_path,
+      isEditing,
+      sectionIndex,
+      itemIndex,
+      docIndex,
+      isDoc,
+    } = popupData;
     let url = null;
 
     if (file) {
@@ -457,7 +494,7 @@ const CurriculumPage = ({ data }) => {
         return;
       }
 
-      setTempData(prev => {
+      setTempData((prev) => {
         const newData = [...prev];
 
         const newYear = {
@@ -473,7 +510,11 @@ const CurriculumPage = ({ data }) => {
           })),
         };
 
-        newData[0].syllabus.push(newYear);
+        // ✅ ADD AT THE END (BOTTOM OF PAGE)
+        newData[0] = {
+          ...newData[0],
+          syllabus: [newYear, ...(newData[0].syllabus || [])],
+        };
         return newData;
       });
 
@@ -488,7 +529,7 @@ const CurriculumPage = ({ data }) => {
       return;
     }
 
-    setTempData(prev => {
+    setTempData((prev) => {
       const newData = [...prev];
 
       // ===================== DOC =====================
@@ -582,7 +623,6 @@ const CurriculumPage = ({ data }) => {
     });
   };
 
-
   // Request handlers
   const handleRequest = () => setShowRequestModal(true);
 
@@ -595,21 +635,32 @@ const CurriculumPage = ({ data }) => {
       const originalSection = originalData[sIdx];
 
       section.syllabus?.forEach((item) => {
-        const originalItem = originalSection?.syllabus?.find(oItem => oItem.id === item.id);
+        const originalItem = originalSection?.syllabus?.find(
+          (oItem) => oItem.id === item.id,
+        );
 
         if (!originalItem) {
-          // New Year/Semester
+          // 🔹 New Year Added
           changes.push({
             action: "Added",
             section: section.heading,
             year: item.year,
-            pdf_path: item.pdf_path || "",
+            pdf_path: "",
             file: item.file instanceof File ? item.file : null,
-            docs: item.docs?.map(doc => ({
-              name: doc.name,
-              pdf_path: doc.pdf_path || "",
-              file: doc.file instanceof File ? doc.file : null,
-            })) || [],
+          });
+
+          // 🔹 Now create separate changes for each semester
+          item.docs?.forEach((doc) => {
+            if (doc.file instanceof File) {
+              changes.push({
+                action: "Added",
+                section: `${section.heading} - ${item.year}`,
+                year: item.year,
+                docName: doc.name,
+                pdf_path: "",
+                file: doc.file, // ✅ THIS ensures file goes to buildPayload
+              });
+            }
           });
         } else {
           // Edited Year
@@ -618,7 +669,8 @@ const CurriculumPage = ({ data }) => {
               action: "Edited",
               section: section.heading,
               year: item.year,
-              pdf_path: item.pdf_path || originalItem.pdf_path || "", // preserve old path
+              // ✅ ALWAYS preserve backend path if no new file
+              pdf_path: originalItem.pdf_path || "",
               original_data: {
                 year: originalItem.year,
                 pdf_path: originalItem.pdf_path || "",
@@ -629,7 +681,9 @@ const CurriculumPage = ({ data }) => {
 
           // Docs changes
           item.docs?.forEach((doc) => {
-            const originalDoc = originalItem?.docs?.find(oDoc => oDoc.id === doc.id);
+            const originalDoc = originalItem?.docs?.find(
+              (oDoc) => oDoc.id === doc.id,
+            );
 
             if (!originalDoc) {
               // New doc
@@ -641,14 +695,17 @@ const CurriculumPage = ({ data }) => {
                 pdf_path: doc.pdf_path || "",
                 file: doc.file instanceof File ? doc.file : null,
               });
-            } else if (doc.name !== originalDoc.name || doc.file instanceof File) {
+            } else if (
+              doc.name !== originalDoc.name ||
+              doc.file instanceof File
+            ) {
               // Edited doc
               changes.push({
                 action: "Edited",
                 section: `${section.heading} - ${item.year}`,
                 year: item.year,
                 docName: doc.name,
-                pdf_path: doc.pdf_path || originalDoc.pdf_path || "",
+                pdf_path: originalDoc.pdf_path || "",
                 original_data: {
                   name: originalDoc.name,
                   pdf_path: originalDoc.pdf_path || "",
@@ -660,7 +717,7 @@ const CurriculumPage = ({ data }) => {
 
           // Deleted Docs
           originalItem?.docs?.forEach((originalDoc) => {
-            const exists = item.docs?.some(doc => doc.id === originalDoc.id);
+            const exists = item.docs?.some((doc) => doc.id === originalDoc.id);
             if (!exists) {
               changes.push({
                 action: "Deleted",
@@ -676,7 +733,9 @@ const CurriculumPage = ({ data }) => {
 
       // Deleted Years
       originalSection?.syllabus?.forEach((originalItem) => {
-        const exists = section.syllabus?.some(item => item.id === originalItem.id);
+        const exists = section.syllabus?.some(
+          (item) => item.id === originalItem.id,
+        );
         if (!exists) {
           changes.push({
             action: "Deleted",
@@ -690,78 +749,127 @@ const CurriculumPage = ({ data }) => {
 
     return changes;
   };
+  const deptidmap = {
+    "001": "AIDS_001",
+    "002": "AUTO_002",
+    "003": "CHEMISTRY_003",
+    "004": "CIVIL_004",
+    "005": "CSE_005",
+    "006": "CSECS_006",
+    "007": "EEE_007",
+    "008": "EIE_008",
+    "009": "ECE_009",
+    "010": "ENGLISH_010",
+    "011": "IT_011",
+    "012": "MATHS_012",
+    "013": "MECH_013",
+    "014": "TAMIL_014",
+    "015": "PHYSICS_015",
+    "016": "MECSE_016",
+    "017": "MBA_017",
+    "018": "PS_018",
+  };
 
+  const buildPayload = (dataSource = pendingData) => {
+    if (!dataSource) return { payload: [], files: [] };
 
+    // ✅ Extract dept_id safely from data prop
+    const dynamicCollectionName = deptidmap[deptId];
 
-  const buildPayload = (data = pendingData) => {
-    if (!data) return { payload: [], files: [] };
+    if (!dynamicCollectionName) {
+      toast.error("Invalid Department ID");
+      return { payload: [], files: [] };
+    }
 
-    const changes = getChanges(data);
+    const changes = getChanges(dataSource);
+    const payload = [];
+    const files = [];
 
-    const payload = changes.map((change) => {
+    changes.forEach((change) => {
       const base = {
-        collectionName: "AIDS_001",
+        collectionName: dynamicCollectionName, // ✅ FIXED HERE
         collection_type: "curriculum_and_syllabus",
         category: "curriculum",
       };
 
+      let entry = null;
+
+      // ================= INSERT =================
+      // ================= INSERT =================
       if (change.action === "Added") {
-        return {
+        const isFileAttached = change.file instanceof File;
+
+        const newPath = isFileAttached
+          ? `/staticpdf/curriculum/${change.file.name}`
+          : "";
+
+        entry = {
           ...base,
           action: "insert",
           title: change.docName ? "insert semester" : "insert year",
           meta_data: {
             year: change.year,
             name: change.docName || undefined,
-            pdf_path: change.pdf_path || "",
+            pdf_path: newPath, // ✅ same pattern as update
           },
-          file: change.file || null,
         };
+
+        if (isFileAttached) {
+          entry.file = change.file;
+          files.push(change.file);
+        }
       }
 
+      // ================= UPDATE =================
       if (change.action === "Edited") {
-        return {
+        const isFileReplaced = change.file instanceof File;
+
+        const newPath = isFileReplaced
+          ? `/staticpdf/curriculum/${change.file.name}`
+          : change.original_data?.pdf_path || "";
+
+        entry = {
           ...base,
           action: "update",
           title: change.docName ? "update semester" : "update year",
           meta_data: {
             year: change.year,
             name: change.docName || undefined,
-            pdf_path: change.pdf_path || change.original_data?.pdf_path || "", // preserve old path
+            pdf_path: newPath,
           },
           original_data: {
             year: change.original_data?.year || undefined,
             name: change.original_data?.name || undefined,
             pdf_path: change.original_data?.pdf_path || "",
           },
-          file: change.file || null,
         };
+
+        if (isFileReplaced) {
+          entry.file = change.file;
+          files.push(change.file);
+        }
       }
 
+      // ================= DELETE =================
       if (change.action === "Deleted") {
-        return {
+        entry = {
           ...base,
           action: "delete",
           title: change.docName ? "delete semester" : "delete year",
           meta_data: {
             year: change.year,
             name: change.docName || undefined,
+            pdf_path: change.pdf_path || "",
           },
         };
       }
 
-      return null;
-    }).filter(Boolean);
+      if (entry) payload.push(entry);
+    });
 
-    const files = payload.map(p => p.file).filter(Boolean);
-
+    console.log("FINAL PAYLOAD:", payload);
     return { payload, files };
   };
-
-
-
-
-
 
   const handleFinalRequestConfirm = async () => {
     const sourceData = pendingData || tempData;
@@ -792,15 +900,11 @@ const CurriculumPage = ({ data }) => {
     }
   };
 
-
-
-
   // Check if popup has existing PDF
   const popupHasExistingPdf = (() => {
     if (!popupData.isEditing) return false;
     return !!(popupData.pdf_path || popupData.file);
   })();
-
 
   const showPopupEye = !!(popupData.file || popupData.pdf_path);
 
@@ -809,24 +913,30 @@ const CurriculumPage = ({ data }) => {
     if (!popupData.isEditing) return true;
 
     if (popupData.isDoc) {
-      const originalDoc = popupData.sectionIndex !== null &&
+      const originalDoc =
+        popupData.sectionIndex !== null &&
         popupData.itemIndex !== null &&
-        popupData.docIndex !== null ?
-        tempData[popupData.sectionIndex]?.syllabus[popupData.itemIndex]?.docs[popupData.docIndex] : null;
+        popupData.docIndex !== null
+          ? tempData[popupData.sectionIndex]?.syllabus[popupData.itemIndex]
+              ?.docs[popupData.docIndex]
+          : null;
 
       if (!originalDoc) return true;
 
-      const nameChanged = (popupData.docName || "").trim() !== (originalDoc.name || "").trim();
+      const nameChanged =
+        (popupData.docName || "").trim() !== (originalDoc.name || "").trim();
       const pdfChanged = popupData.file instanceof File;
       return nameChanged || pdfChanged;
     } else {
-      const originalItem = popupData.sectionIndex !== null &&
-        popupData.itemIndex !== null ?
-        tempData[popupData.sectionIndex]?.syllabus[popupData.itemIndex] : null;
+      const originalItem =
+        popupData.sectionIndex !== null && popupData.itemIndex !== null
+          ? tempData[popupData.sectionIndex]?.syllabus[popupData.itemIndex]
+          : null;
 
       if (!originalItem) return true;
 
-      const yearChanged = (popupData.year || "").trim() !== (originalItem.year || "").trim();
+      const yearChanged =
+        (popupData.year || "").trim() !== (originalItem.year || "").trim();
       const pdfChanged = popupData.file instanceof File;
       return yearChanged || pdfChanged;
     }
@@ -860,9 +970,12 @@ const CurriculumPage = ({ data }) => {
   const editingChanges = getChanges(tempData);
 
   const handleAddCurriculum = () => {
-    const roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"];
+    const romanSemesters = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"];
+
+    const timestamp = Date.now();
+
     setPopupData({
-      sectionIndex: 0,
+      sectionIndex: 0, // UG section (first section)
       itemIndex: null,
       docIndex: null,
       year: "",
@@ -871,16 +984,20 @@ const CurriculumPage = ({ data }) => {
       file: null,
       isEditing: false,
       isDoc: false,
+      isSemester: false,
       isCurriculum: true,
-      semesters: roman.map((r) => ({
-        id: Date.now() + Math.random(),
-        name: `${r} Semester`,
+
+      // ✅ Auto create 8 semesters
+      semesters: romanSemesters.map((roman, index) => ({
+        id: `${timestamp}-${index}`,
+        name: `${roman} Semester`,
         pdf_path: "",
         file: null,
         url: "",
         _isNew: true,
       })),
     });
+
     setShowPopup(true);
   };
 
@@ -927,12 +1044,12 @@ const CurriculumPage = ({ data }) => {
                         ? item.docs
                         : item.pdf_path
                           ? [
-                            {
-                              name: "View",
-                              pdf_path: item.pdf_path,
-                              isView: true,
-                            },
-                          ]
+                              {
+                                name: "View",
+                                pdf_path: item.pdf_path,
+                                isView: true,
+                              },
+                            ]
                           : [];
 
                       return (
@@ -941,12 +1058,16 @@ const CurriculumPage = ({ data }) => {
                           className="row-item dark:bg-drkp border-0 flex flex-col mb-4 relative"
                         >
                           <div className="flex items-center justify-between w-full">
-                            <div className="R-years self-start">{item.year}</div>
+                            <div className="R-years self-start">
+                              {item.year}
+                            </div>
 
                             {isEditing && (
                               <div className="flex items-center gap-2">
                                 <button
-                                  onClick={() => handleEditUGYear(sectionIndex, itemIndex)}
+                                  onClick={() =>
+                                    handleEditUGYear(sectionIndex, itemIndex)
+                                  }
                                   className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
                                   title="Edit"
                                 >
@@ -954,8 +1075,12 @@ const CurriculumPage = ({ data }) => {
                                 </button>
                                 <input
                                   type="checkbox"
-                                  checked={selectedYears.has(`${sectionIndex}-${itemIndex}`)}
-                                  onChange={() => toggleSelectYear(sectionIndex, itemIndex)}
+                                  checked={selectedYears.has(
+                                    `${sectionIndex}-${itemIndex}`,
+                                  )}
+                                  onChange={() =>
+                                    toggleSelectYear(sectionIndex, itemIndex)
+                                  }
                                   className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                                 />
                               </div>
@@ -969,19 +1094,26 @@ const CurriculumPage = ({ data }) => {
                                   key={docIndex}
                                   onClick={() => {
                                     if (isEditing) {
-                                      handleEditDoc(sectionIndex, itemIndex, docIndex, !hasDocs);
+                                      handleEditDoc(
+                                        sectionIndex,
+                                        itemIndex,
+                                        docIndex,
+                                        !hasDocs,
+                                      );
                                     } else {
-                                      handleViewWithFile(doc);   // ✅ PASS FULL OBJECT
+                                      handleViewWithFile(doc); // ✅ PASS FULL OBJECT
                                     }
                                   }}
-
                                   className={`px-4 py-2 rounded flex items-center justify-center gap-2 
-          ${hasDocs
-                                      ? "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                                      : "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
-                                    }`}
+          ${
+            hasDocs
+              ? "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+              : "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
+          }`}
                                 >
-                                  {doc.isView && <FontAwesomeIcon icon={faEye} />}
+                                  {doc.isView && (
+                                    <FontAwesomeIcon icon={faEye} />
+                                  )}
                                   {doc.name}
                                 </button>
                               ))}
@@ -991,7 +1123,12 @@ const CurriculumPage = ({ data }) => {
                             {isEditing && (
                               <div className="mt-4 flex justify-center">
                                 <button
-                                  onClick={() => handleAddExtraSemester(sectionIndex, itemIndex)}
+                                  onClick={() =>
+                                    handleAddExtraSemester(
+                                      sectionIndex,
+                                      itemIndex,
+                                    )
+                                  }
                                   className="flex items-center gap-2 px-4 py-2 border-2 border-dashed border-yellow-500 text-yellow-600 rounded hover:bg-yellow-50"
                                 >
                                   <Plus size={16} />
@@ -1000,7 +1137,6 @@ const CurriculumPage = ({ data }) => {
                               </div>
                             )}
                           </div>
-
                         </div>
                       );
                     }
@@ -1016,7 +1152,9 @@ const CurriculumPage = ({ data }) => {
                           {isEditing && (
                             <>
                               <button
-                                onClick={() => handleEditUGYear(sectionIndex, itemIndex)}
+                                onClick={() =>
+                                  handleEditUGYear(sectionIndex, itemIndex)
+                                }
                                 className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
                                 title="Edit"
                               >
@@ -1024,8 +1162,12 @@ const CurriculumPage = ({ data }) => {
                               </button>
                               <input
                                 type="checkbox"
-                                checked={selectedYears.has(`${sectionIndex}-${itemIndex}`)}
-                                onChange={() => toggleSelectYear(sectionIndex, itemIndex)}
+                                checked={selectedYears.has(
+                                  `${sectionIndex}-${itemIndex}`,
+                                )}
+                                onChange={() =>
+                                  toggleSelectYear(sectionIndex, itemIndex)
+                                }
                                 className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                               />
                             </>
@@ -1140,28 +1282,28 @@ const CurriculumPage = ({ data }) => {
             </h2>
 
             {/* Input Fields */}
-           {/* Semester Name */}
-{popupData.isDoc && (
-  popupData.isEditing ? (
-    // 🔒 EDIT MODE → static text
-    <div className="w-full px-3 py-2 mb-4 border rounded bg-gray-100 text-gray-700">
-      {popupData.docName}
-    </div>
-  ) : (
-    // ➕ ADD MODE → input box
-    <input
-      type="text"
-      placeholder="Enter Semester Name"
-      value={popupData.docName || ""}
-      onChange={(e) =>
-        setPopupData((prev) => ({ ...prev, docName: e.target.value }))
-      }
-      className="w-full px-3 py-2 mb-4 border rounded"
-    />
-  )
-)}
-
-
+            {/* Semester Name */}
+            {popupData.isDoc &&
+              (popupData.isEditing ? (
+                // 🔒 EDIT MODE → static text
+                <div className="w-full px-3 py-2 mb-4 border rounded bg-gray-100 text-gray-700">
+                  {popupData.docName}
+                </div>
+              ) : (
+                // ➕ ADD MODE → input box
+                <input
+                  type="text"
+                  placeholder="Enter Semester Name"
+                  value={popupData.docName || ""}
+                  onChange={(e) =>
+                    setPopupData((prev) => ({
+                      ...prev,
+                      docName: e.target.value,
+                    }))
+                  }
+                  className="w-full px-3 py-2 mb-4 border rounded"
+                />
+              ))}
 
             {/* Year Input */}
             {!popupData.isDoc && !popupData.isSemester && (
@@ -1185,7 +1327,9 @@ const CurriculumPage = ({ data }) => {
                     onClick={triggerFileInput}
                     className="px-3 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500 flex items-center gap-2 whitespace-nowrap"
                   >
-                    {popupData.file || popupData.pdf_path ? "Replace PDF" : "Upload PDF"}
+                    {popupData.file || popupData.pdf_path
+                      ? "Replace PDF"
+                      : "Upload PDF"}
                   </button>
                   {(popupData.file || popupData.pdf_path) && (
                     <button
@@ -1247,9 +1391,9 @@ const CurriculumPage = ({ data }) => {
                   className="px-4 py-2 bg-secd text-text rounded hover:bg-brwn hover:text-prim transition-colors"
                   disabled={
                     popupData.isDoc
-                      ? (!popupData.isEditing && !popupData.file)
+                      ? !popupData.isEditing && !popupData.file
                       : popupData.isSemester
-                        ? (!popupData.file && !popupData.isEditing)
+                        ? !popupData.file && !popupData.isEditing
                         : !popupData.year.trim()
                   }
                 >
@@ -1269,7 +1413,8 @@ const CurriculumPage = ({ data }) => {
               Review Changes
             </h2>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin.
+              Note: Your changes will stay pending until approved by the
+              superior admin.
             </p>
 
             {changes.length > 0 ? (
@@ -1277,24 +1422,43 @@ const CurriculumPage = ({ data }) => {
                 <table className="w-full text-sm">
                   <thead className="bg-gray-100 dark:bg-gray-700">
                     <tr>
-                      <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Action</th>
-                      <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Section</th>
-                      <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">Changes</th>
-                      <th className="px-4 py-2 text-center text-gray-700 dark:text-gray-300">Revert</th>
+                      <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">
+                        Action
+                      </th>
+                      <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">
+                        Section
+                      </th>
+                      <th className="px-4 py-2 text-left text-gray-700 dark:text-gray-300">
+                        Changes
+                      </th>
+                      <th className="px-4 py-2 text-center text-gray-700 dark:text-gray-300">
+                        Revert
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {changes.map((ch, i) => (
-                      <tr key={i} className="border-b border-gray-200 dark:border-gray-700">
+                      <tr
+                        key={i}
+                        className="border-b border-gray-200 dark:border-gray-700"
+                      >
                         <td className="px-4 py-2">
-                          <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium
-                            ${ch.action === 'Added' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' :
-                              ch.action === 'Edited' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300' :
-                                'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300'}`}>
+                          <span
+                            className={`inline-block px-2 py-1 rounded-full text-xs font-medium
+                            ${
+                              ch.action === "Added"
+                                ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                                : ch.action === "Edited"
+                                  ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
+                                  : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
+                            }`}
+                          >
                             {ch.action}
                           </span>
                         </td>
-                        <td className="px-4 py-2 text-gray-700 dark:text-gray-300">{ch.section}</td>
+                        <td className="px-4 py-2 text-gray-700 dark:text-gray-300">
+                          {ch.section}
+                        </td>
                         <td className="px-4 py-2 text-gray-700 dark:text-gray-300">
                           {ch.docName || ch.year}
                         </td>
@@ -1313,7 +1477,9 @@ const CurriculumPage = ({ data }) => {
                 </table>
               </div>
             ) : (
-              <p className="text-gray-600 dark:text-gray-400 mb-4">No changes detected.</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                No changes detected.
+              </p>
             )}
 
             <div className="flex justify-end gap-3 mt-6 m-8">
@@ -1344,7 +1510,8 @@ const CurriculumPage = ({ data }) => {
               Confirm Delete
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Are you sure you want to delete {selectedYears.size} selected year(s)? This action cannot be undone.
+              Are you sure you want to delete {selectedYears.size} selected
+              year(s)? This action cannot be undone.
             </p>
 
             <div className="flex justify-end gap-3 mt-6 m-8">

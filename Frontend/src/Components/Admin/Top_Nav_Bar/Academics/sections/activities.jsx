@@ -14,7 +14,7 @@ import {
   faUser,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { Eye, Pencil, Trash2, X } from "lucide-react";
+import { Eye, Pencil, Trash2, X,Send } from "lucide-react";
 import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -502,7 +502,7 @@ const Activities = ({ data }) => {
                   disabled={loading}
                   className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex items-center gap-2 transition ${loading ? 'cursor-progress' : ''}`}
                 >
-                  {loading ? "Processing..." : "Confirm Request"}
+                  <Send size={16} /> {loading ? "Processing..." : "Confirm Request"}
                 </button>
               )}
             </div>

@@ -1,11 +1,18 @@
 const { s3, bucketName } = require("../../../../config/s3");
 const { PutObjectCommand } = require("@aws-sdk/client-s3");
-const deptMap = require("../../../../models/deptmap");
+const facultydeptMap = require("../../../../models/faculty_map");
 
-// Build reverse map once
+// Build reverse map once (COLLECTION_NAME -> folderId)
 const reverseDeptMap = Object.fromEntries(
-  Object.entries(deptMap).map(([k, v]) => [v.toUpperCase().trim(), k])
+  Object.entries(facultydeptMap).map(([k, v]) => [v.toUpperCase().trim(), k])
 );
+
+function slugify(name = "") {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+}
 
 async function facultyHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
@@ -26,40 +33,51 @@ async function facultyHandler(fileStream, docs, req, cb, filename, mimetype) {
       return cb(new Error("Only images and PDFs are allowed"));
     }
 
-    const category = docs[0]?.category; // head_of_department / teaching_staff / non_teaching_staff
-    const collectionName = docs[0]?.collectionName || docs[0]?.collection_name; // e.g. AUTO_002
+    const doc = docs?.[0];
+    const collectionName = doc?.collectionName || doc?.collection_name;
+    const collectionType = String(doc?.collection_type || "").toUpperCase(); // HOD / FACULTY / NON_TEACHING_FACULTY
+    const staffName = doc?.meta_data?.Name || "staff";
 
     if (!collectionName) {
+      fileStream.resume();
       return cb(new Error("collectionName is missing"));
     }
 
-    const normalizedName = collectionName.toUpperCase().trim();
-    const folderId = reverseDeptMap[normalizedName]; // "002"
-
-    if (!folderId) {
-      return cb(new Error(`Invalid collectionName '${collectionName}'`));
+    if (!["HOD", "FACULTY", "NON_TEACHING_FACULTY"].includes(collectionType)) {
+      fileStream.resume();
+      return cb(new Error("Invalid collection_type"));
     }
 
-    // ✅ Decide folder based on file type
+    // ✅ Normalize collection name and lookup folder ID
+    const normalizedName = collectionName.toUpperCase().trim();
+    const folderId = reverseDeptMap[normalizedName];
+
+    if (!folderId) {
+      fileStream.resume();
+      console.error("Available collections:", Object.keys(reverseDeptMap));
+      console.error("Received collectionName:", collectionName);
+      return cb(new Error(`Invalid collectionName '${collectionName}'. Expected format: DEPT_XXX_staff (e.g., AIDS_001_staff)`));
+    }
+
+    // ✅ Folder based on type + file
     const baseFolder = isPdf
-      ? `temp/static/pdfs/faculty_profile/${folderId}/`
-      : `temp/static/images/profile_photos/${folderId}/`;
+      ? `static/pdfs/${collectionType.toLowerCase()}/${folderId}/`
+      : `static/images/profile_photos/${folderId}/`;
 
-    // Optional: name file by unique_id if available
-    const uniqueId = docs[0]?.members?.[0]?.unique_id;
-    const finalFilename = uniqueId
-      ? isPdf
-        ? `${uniqueId}.pdf`
-        : realFilename
-      : realFilename;
+    // ✅ Safe filename without timestamp
+    const ext = realFilename.includes(".")
+      ? realFilename.split(".").pop()
+      : isPdf
+      ? "pdf"
+      : "jpg";
 
+    const safeName = slugify(staffName);
+    const finalFilename = `${safeName}.${ext}`;
     const s3Key = baseFolder + finalFilename;
 
     // Buffer the stream
     const chunks = [];
-    for await (const chunk of fileStream) {
-      chunks.push(chunk);
-    }
+    for await (const chunk of fileStream) chunks.push(chunk);
     const fileBuffer = Buffer.concat(chunks);
 
     // Upload to S3
@@ -77,13 +95,18 @@ async function facultyHandler(fileStream, docs, req, cb, filename, mimetype) {
       key: s3Key,
       location: `/${s3Key}`,
       mimetype: effectiveMime,
-      category,
+      collectionType,
+      collectionName,
       department: folderId,
+      departmentName: facultydeptMap[folderId],
+      staffName,
     });
+
+    console.log(`✅ Uploaded: ${s3Key}`);
 
     cb(null, data);
   } catch (err) {
-    console.error("Faculty upload error:", err);
+    console.error("❌ Faculty upload error:", err);
     cb(err);
   }
 }
