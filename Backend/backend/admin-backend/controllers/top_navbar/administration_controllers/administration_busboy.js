@@ -113,6 +113,10 @@ async function administrationHandler(fileStream, docs, req, cb, filename, mimety
 
     const data = await s3.send(command);
 
+    if (collection_type === "principal") {
+  docs[0].meta_data.image_path = `/${s3Key}`;
+  }
+
     // Track uploaded files
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({

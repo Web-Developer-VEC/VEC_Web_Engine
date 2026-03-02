@@ -1,50 +1,108 @@
+/**
+ * Delete faculty data
+ * Supports: HOD, FACULTY, NON_TEACHING_FACULTY
+ */
 async function deleteData(tempDoc, mainCollection) {
   try {
-    const { collection_type, meta_data, category } = tempDoc;
+    const { collection_type, action, meta_data } = tempDoc;
 
-    if (!collection_type || !meta_data || !category ) {
-      throw new Error("meta data and collection type and category  is required");
-    }
-    if (collection_type !== "faculty") {
-      throw new Error("Incorrect collection type or route");
+    // ==================== Validation ====================
+    if (!collection_type || !meta_data) {
+      throw new Error("collection_type and meta_data are required");
     }
 
-    const docs = await mainCollection.findOne({type:collection_type})
-    if (category === "head_of_department" || category === "teaching_staff" || category === "non_teaching_staff") {
+    if (action && action !== "delete") {
+      throw new Error("This function only handles 'delete' action");
+    }
 
-      await mainCollection.updateOne(
-        { type: collection_type },
-        { $pull: { "data.$[elem].members": meta_data } },
-        {
-          arrayFilters: [
-            { "elem.category": category }
-          ],
-        }
+    const key = String(collection_type).toUpperCase();
+
+    if (!["HOD", "FACULTY", "NON_TEACHING_FACULTY"].includes(key)) {
+      throw new Error(`Invalid collection_type: ${collection_type}`);
+    }
+
+    // ==================== Find Document by Type ====================
+    const doc = await mainCollection.findOne({ type: key });
+
+    if (!doc) {
+      throw new Error(`Document with type '${key}' not found`);
+    }
+
+    // ==================== Handle Section Clear (Delete All) ====================
+    if (Array.isArray(meta_data) && meta_data.length === 0) {
+      const memberCount = doc.data?.length || 0;
+
+      const result = await mainCollection.updateOne(
+        { type: key },
+        { $set: { data: [] } }
       );
 
-      return { message: `The  faculty is deleted in ${category} successfully` };
-
-    } else if (category === "faculty_pdf_path") {
-      const new_data = Array.isArray(meta_data)
-    ? meta_data.map(item => (typeof item === "string" ? item : Object.values(item)[0]))
-    : [typeof meta_data === "string" ? meta_data : Object.values(meta_data)[0]];
-
-        for (let i = 0; i < new_data.length; i++) {
-            await mainCollection.updateOne(
-                { type: collection_type, "data.category": category },
-                { $pull: { "data.$.content": new_data[i] } }
-            );
-
-            }
+      console.log(`✅ Cleared ${key} section (${memberCount} members)`);
 
       return {
-        message: `The faculty pdf is deleted in ${category} successfully`,
+        success: true,
+        message: `${key} section cleared successfully`,
+        modifiedCount: result.modifiedCount,
+        membersDeleted: memberCount
       };
-    } else {
-      throw new Error("no category is found");
     }
+
+    // ==================== Handle Single Member Delete ====================
+    if (!meta_data.Name) {
+      throw new Error("meta_data with Name is required to identify member to delete");
+    }
+
+    // For FACULTY and NON_TEACHING_FACULTY, also require Mail_ID
+    if ((key === "FACULTY" || key === "NON_TEACHING_FACULTY") && !meta_data.Mail_ID) {
+      throw new Error(`meta_data with Name and Mail_ID is required for ${key}`);
+    }
+
+    // Verify member exists
+    let memberExists;
+    if (key === "HOD") {
+      memberExists = doc.data?.find(m => m.Name === meta_data.Name);
+    } else {
+      memberExists = doc.data?.find(
+        m => m.Name === meta_data.Name && m.Mail_ID === meta_data.Mail_ID
+      );
+    }
+
+    if (!memberExists) {
+      throw new Error(`${key} member "${meta_data.Name}" not found`);
+    }
+
+    // Build delete filter
+    let pullFilter;
+    if (key === "HOD") {
+      pullFilter = { Name: meta_data.Name };
+    } else {
+      pullFilter = {
+        Name: meta_data.Name,
+        Mail_ID: meta_data.Mail_ID
+      };
+    }
+
+    // Delete from database
+    const result = await mainCollection.updateOne(
+      { type: key },
+      { $pull: { data: pullFilter } }
+    );
+
+    if (result.modifiedCount === 0) {
+      throw new Error(`${key} member "${meta_data.Name}" not found or already deleted`);
+    }
+
+    console.log(`✅ Deleted ${key}: ${meta_data.Name}`);
+
+    return {
+      success: true,
+      message: `${key} member "${meta_data.Name}" deleted successfully`,
+      type: key,
+      modifiedCount: result.modifiedCount
+    };
+
   } catch (error) {
-    console.error("error in deleting", error);
+    console.error("❌ Error in deleteData:", error);
     throw error;
   }
 }
