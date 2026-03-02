@@ -13,6 +13,29 @@ import { useAdminRequest } from "../../../hooks/useAdminRequest";
 const deepClone = (obj) => JSON.parse(JSON.stringify(obj));
 
 export const AdminPlacementDetails = ({ theme, toggle }) => {
+  const isDepartmentWiseValid = (data) => {
+    const section = data?.department_wise;
+    if (!section) return true;
+
+    for (let cIdx = 0; cIdx < section.years.length; cIdx++) {
+      const col = section.years[cIdx];
+
+      if (!col.year || col.year.trim() === "") return false;
+
+      for (let rIdx = 0; rIdx < section.departments.length; rIdx++) {
+        if (
+          col.values[rIdx] === undefined ||
+          col.values[rIdx] === null ||
+          col.values[rIdx] === ""
+        ) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  };
+
   const [showPdfModal, setShowPdfModal] = useState(false);
   const [pdfLink, setPdfLink] = useState("");
 
@@ -1049,7 +1072,7 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
               if (pendingYearIdx !== -1 && origRowIdx !== -1) {
                 const val =
                   originalData[sec].years[pendingYearIdx]?.values?.[
-                    origRowIdx
+                  origRowIdx
                   ] ?? "";
                 copy[sec].years[pendingYearIdx].values.splice(origIdx, 0, val);
               }
@@ -1181,7 +1204,7 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
 
       <ToastContainer position="bottom-right" autoClose={3000} />
 
-      <div className="placement-wrapper relative pb-20">
+      <div className="placement-wrapper">
         <div className="flex justify-end pr-6 pt-6">
           {!editMode ? (
             <button
@@ -1201,7 +1224,7 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
           </div>
         ) : (
           <>
-            <div className="placement-yearwise font-[poppins] card-plc bg-prim dark:bg-drkts mt-4 relative">
+            <div className="placement-yearwise font-[poppins] card-plc bg-prim dark:bg-drkts mt-4">
               <h4 className="text-text bg-secd dark:drks">
                 Placement Details Year Wise
               </h4>
@@ -1360,8 +1383,8 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
               <h4 className="place-section-title text-brwn dark:text-drkt">
                 Placement Details in % - Department Wise
               </h4>
-              <div className="table-container overflow-x-auto relative">
-                <table className="min-w-full border-collapse">
+              <div className="table-container">
+                <table className="border-collapse">
                   <thead>
                     <tr>
                       <th className="table-header">DEPARTMENT</th>
@@ -1493,18 +1516,6 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
                         </tr>
                       ),
                     )}
-                    {/* {editMode && (
-                      <tr>
-                        <td colSpan={999}>
-                          <button
-                            className="save-btn"
-                            onClick={() => addRow("department_wise")}
-                          >
-                            + Row
-                          </button>
-                        </td>
-                      </tr>
-                    )} */}
                   </tbody>
                 </table>
               </div>
@@ -1546,12 +1557,12 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
               )}
             </div>
 
-            <div className="admin-placement-percent font-[poppins] card-plc mt-6">
+            <div className="admin-placement-percent font-[poppins] card-plc mt-6 px-0">
               <h4 className="place-section-title text-brwn dark:text-drkt">
                 Placement Statistics
               </h4>
-              <div className="table-container overflow-x-auto">
-                <table className="min-w-full border-collapse">
+              <div className="table-container">
+                <table className="border-collapse">
                   <thead>
                     <tr>
                       <th className="table-header">PARTICULARS</th>
@@ -1668,18 +1679,6 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
                         ))}
                       </tr>
                     ))}
-                    {/* {editMode && (
-                      <tr>
-                        <td colSpan={999}>
-                          <button
-                            className="save-btn"
-                            onClick={() => addRow("statistics")}
-                          >
-                            + Row
-                          </button>
-                        </td>
-                      </tr>
-                    )} */}
                   </tbody>
                 </table>
               </div>
@@ -1721,7 +1720,7 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
               )}
             </div>
 
-            <div className="absolute right-6 bottom-0 mb-5 z-[60] flex items-center gap-3">
+            <div className="action-buttons-container">
               {editMode ? (
                 <>
                   <button
@@ -1730,7 +1729,7 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
                   >
                     Cancel
                   </button>
-                  {isDirty() && (
+                  {isDirty() && isDepartmentWiseValid(view) && (
                     <button
                       onClick={handleSave}
                       className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
@@ -1795,13 +1794,12 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
                           return requestRows.map((row, idx) => (
                             <tr key={idx} className="border-t">
                               <td
-                                className={`py-2 font-semibold ${
-                                  row.action === "Added"
-                                    ? "text-green-600"
-                                    : row.action === "Deleted"
-                                      ? "text-red-600"
-                                      : "text-blue-600"
-                                }`}
+                                className={`py-2 font-semibold ${row.action === "Added"
+                                  ? "text-green-600"
+                                  : row.action === "Deleted"
+                                    ? "text-red-600"
+                                    : "text-blue-600"
+                                  }`}
                               >
                                 {row.action}
                               </td>
@@ -1848,9 +1846,8 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
                     <button
                       onClick={handleRequestConfirm}
                       disabled={loading}
-                      className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
-                        loading ? "cursor-progress" : "hover:bg-[#800000]"
-                      }`}
+                      className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${loading ? "cursor-progress" : "hover:bg-[#800000]"
+                        }`}
                     >
                       {loading ? "Processing..." : "Final Request"}
                     </button>
@@ -1869,13 +1866,13 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
                     {(() => {
                       const a = deleteConfirm.action;
                       if (a === "deleteYears")
-                        return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} year`;
+                        return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} year(s)?`;
                       if (a === "deleteColumns")
-                        return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} column`;
+                        return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} column(s)?`;
                       if (a === "deleteRows")
-                        return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} row`;
+                        return `Are you sure you want to delete ${deleteConfirm.indexes?.length || 0} row(s)?`;
                       if (a === "deleteSingleRow")
-                        return `Are you sure you want to delete this row`;
+                        return `Are you sure you want to delete this row?`;
                       return "Are you sure you want to delete?";
                     })()}
                   </p>

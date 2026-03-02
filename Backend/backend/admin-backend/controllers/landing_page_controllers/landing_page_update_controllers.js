@@ -45,6 +45,7 @@ async function updateData(tempDoc, mainCollection) {
 
             
             const new_data = Array.isArray(meta_data)?meta_data:[meta_data];
+console.log(new_data);
 
             await mainCollection.updateOne(
                 { type: collection_type },
