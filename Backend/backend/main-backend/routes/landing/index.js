@@ -4,7 +4,7 @@ const router = express.Router();
 
 const about_us = require('../top_navbar/about_us_routes');
 const acadamic = require('../top_navbar/academic_routes');
-const accrediation = require('../second_navbar/accreditation_routes');
+const accrediation = require ('../second_navbar/accreditation_routes');
 const administration = require('../top_navbar/administration_routes');
 const admission = require('../top_navbar/admission_routes');
 const ecell = require('../second_navbar/ecell_routes');
@@ -27,33 +27,28 @@ const hostel = require('../second_navbar/hostel_routes');
 const landing = require('./landing_routes');
 const library = require('../second_navbar/library_routes');
 const sport = require('../second_navbar/sport_routes');
-const web_team = require('./web_team_routes');
-const log = require('./log_routes');
+const web_team = require('./web_team_routes')
+const log = require('./log_routes')
 const feedback = require('../second_navbar/feedback_routes');
 const research = require('../top_navbar/research_routes');
-
 const appraisalform = require('../forms/dept_appraisal.routes')
 
-
-// TOP & SECOND NAV
 router.use('', about_us);
 router.use('', acadamic);
-router.use('', accrediation);
+router.use('',accrediation);
 router.use('', administration);
 router.use('', admission);
-
-router.use('', iic);
-router.use('', iic_form);
-router.use('', incubation);
-router.use('', iqac);
-router.use('', ncc_army);
-router.use('', nss);
-router.use('', ncc_navy);
-router.use('', other_faculties);
-router.use('', yrc);
-router.use('', transport);
-router.use('', ecell);
-
+router.use('',iic),
+router.use('',iic_form),
+router.use('',incubation),
+router.use('',iqac),
+router.use('',ncc_army),
+router.use('',nss),
+router.use('',ncc_navy),
+router.use('',other_faculties),
+router.use('',yrc),
+router.use('',transport),
+router.use('',ecell);
 router.use('', exam);
 router.use('', placement);
 router.use('', department);

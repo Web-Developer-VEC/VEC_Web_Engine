@@ -180,28 +180,6 @@ const App = () => {
     }, []);
 
     useEffect(() => {
-        const handler = (event) => {
-        const msg = event?.message || "";
-        const isChunkError =
-            msg.includes("Loading chunk") ||
-            msg.includes("ChunkLoadError") ||
-            /\/static\/js\/.*\.chunk\.js/i.test(msg) ||
-            /chunk\..*\.js/i.test(msg);
-
-        if (isChunkError) {
-            const key = "chunk-reload-once";
-            if (!sessionStorage.getItem(key)) {
-            sessionStorage.setItem(key, "1");
-            window.location.reload();
-            }
-        }
-        };
-
-        window.addEventListener("error", handler);
-        return () => window.removeEventListener("error", handler);
-    }, []);
-
-    useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
 
@@ -276,8 +254,7 @@ const App = () => {
                 {/* Conditionally render Head and Footer */}
                 <>
                     {/* <Head/> */}
-                    {/* {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />} */}
-                    {renderHeader()}
+                    {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
                     <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                         <DynamicTitle />
                         <Suspense fallback={<div className="h-screen flex items-center justify-center"><LoadComp /></div>}>
@@ -353,7 +330,6 @@ const App = () => {
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
-
                                 <Route path="/careers" element={<Career />} />
 
                                 {/*  General Forms  */}
@@ -370,14 +346,10 @@ const App = () => {
 
                     </MainContentWrapper>
                     {/* <Footer ref={footerRef}/> */}
-                    {!isFooter && <Footer theme={theme} data={footer?.[0]} />}
+                    {!isHostelRoute && <Footer theme={theme} data={footer?.[0]} />}
 
-                    {!isFooter && (
-                        <>
-                            <SideButton />
-                            <ScrollToTopButton />
-                        </>
-                    )}
+                    <SideButton />
+                    <ScrollToTopButton />
                 </>
             </AppContainer>
         </>

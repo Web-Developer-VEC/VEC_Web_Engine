@@ -380,7 +380,7 @@
         "title": "Mastering of Fundamentals of Application Penetration Testing",
         "department": "Computer Science Engineering (Cyber Security)",
         "content": "",
-        "brochure_path": "/static/images/events/mfapt.webp",
+        "image_path": "/static/images/events/mfapt.webp",
         "link": "",
         "status": "True"
       },
@@ -391,7 +391,7 @@
         "title": "Debate Competition - 'Clash of Gears'",
         "department": "Computer Science Engineering (Cyber Security)",
         "content": "",
-        "brochure_path": "/static/images/events/dccog.webp",
+        "image_path": "/static/images/events/dccog.webp",
         "link": "",
         "status": "True"
       },
@@ -402,7 +402,7 @@
         "title": "Essentials of Artificial Intelligence and Machine Learning",
         "department": "Artificial Intelligence & Data Science",
         "content": "",
-        "brochure_path": "/static/images/events/eaiml.webp",
+        "image_path": "/static/images/events/eaiml.webp",
         "link": "",
         "status": "True"
       },
@@ -413,7 +413,7 @@
         "title": "3D - ANIMATION",
         "department": "Computer Science Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/3D.webp",
+        "image_path": "/static/images/events/3D.webp",
         "link": "",
         "status": "True"
       },
@@ -424,7 +424,7 @@
         "title": "Global Opportunities and Innovation Trends in Semiconductor & Electronics Industry",
         "department": "Electrical & Electronics Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/GOITSEI.webp",
+        "image_path": "/static/images/events/GOITSEI.webp",
         "link": "",
         "status": "True"
       },
@@ -435,7 +435,7 @@
         "title": "DESTINY 29 – I Year Inauguration Ceremony",
         "department": "DESTINY 29",
         "content": "",
-        "brochure_path": "/static/images/events/Destiny 29 - Invitation.pdf",
+        "image_path": "/static/images/events/Destiny 29 - Invitation.pdf",
         "link": "",
         "status": "True"
       },
@@ -446,7 +446,7 @@
         "title": "Career guidance - Need for skill Development",
         "department": "Electrical & Instrumentation Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/CG.webp",
+        "image_path": "/static/images/events/CG.webp",
         "link": "",
         "status": "True"
       },
@@ -457,7 +457,7 @@
         "title": "Smart Healthcare Revolution",
         "department": "Electronics & Communication Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/SHR.webp",
+        "image_path": "/static/images/events/SHR.webp",
         "link": "",
         "status": "True"
       },
@@ -468,7 +468,7 @@
         "title": "Network Layer Protocol - IP and Mobile IP",
         "department": "Electronics & Communication Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/NLPI.webp",
+        "image_path": "/static/images/events/NLPI.webp",
         "link": "",
         "status": "True"
       },
@@ -479,7 +479,7 @@
         "title": "Digital Twin Technology",
         "department": "Artificial Intelligence & Data Science",
         "content": "",
-        "brochure_path": "/static/images/events/TWIN.webp",
+        "image_path": "/static/images/events/TWIN.webp",
         "link": "",
         "status": "True"
       },
@@ -490,7 +490,7 @@
         "title": "Scalathon",
         "department": "Computer Science & Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/SCALATHON.webp",
+        "image_path": "/static/images/events/SCALATHON.webp",
         "link": "",
         "status": "True"
       },
@@ -501,7 +501,7 @@
         "title": "Building Real Time Systems using Data Structure and Java Programming",
         "department": "Electronics & Communication Engineering",
         "content": "",
-        "brochure_path": "/static/images/events/DATA STRUCTURE.webp",
+        "image_path": "/static/images/events/DATA STRUCTURE.webp",
         "link": "",
         "status": "True"
       },
@@ -512,7 +512,7 @@
         "title": "From Idea to Device: A Hands-on Journey into IoT",
         "department": "Artificial Intelligence and Data Science",
         "content": "",
-        "brochure_path": "/static/images/events/JOURNEY.webp",
+        "image_path": "/static/images/events/JOURNEY.webp",
         "link": "",
         "status": "True"
 

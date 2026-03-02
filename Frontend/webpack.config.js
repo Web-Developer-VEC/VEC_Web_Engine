@@ -1,3 +1,3 @@
 devServer:{
-    allowedHosts: 'localhost',
+    allowedHosts: ['localhost'],
 }

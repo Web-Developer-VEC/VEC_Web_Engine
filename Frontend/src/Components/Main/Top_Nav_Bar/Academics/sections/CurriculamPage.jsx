@@ -23,8 +23,6 @@ const CurriculumPage = ({ data }) => {
     }
   };
 
-
-
   if (!data) {
     return (
       <div className="h-screen flex items-center justify-center">
@@ -32,8 +30,6 @@ const CurriculumPage = ({ data }) => {
       </div>
     );
   }
-
-
 
   return (
     <div className="containers mt-5">
