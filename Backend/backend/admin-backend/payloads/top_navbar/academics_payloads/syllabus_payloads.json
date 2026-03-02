@@ -51,5 +51,15 @@
     "year": "R - 2023",
     "name": "25 Semester Updated"
   }
+},
+{
+  "collectionName": "AIDS_001",
+  "collection_type": "curriculum_and_syllabus",
+  "action": "delete",
+  "title": "delete semester",
+  "category": "curriculum",
+  "meta_data": {
+    "year": "R - 2023"
+  }
 }
 ]
