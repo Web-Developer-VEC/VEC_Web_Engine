@@ -83,6 +83,9 @@ const AdminADMteam = ({ theme, toggle }) => {
       if (item.isNew) {
         return updated;
       }
+if (field === "imageFile") {
+  console.log("IMAGE STORED AT INDEX:", index, value);
+}
 
       // 🔁 EXISTING item → track edits
       const original = originalData.find((o) => o.id === item.id) || {};
@@ -349,56 +352,56 @@ const AdminADMteam = ({ theme, toggle }) => {
       const requests = [];
       const files = [];
 
-      changeList.forEach((change) => {
-        const current = admissionteamData.find((m) => m.id === change.data.id);
-        const original = originalData.find((o) => o.id === change.data.id);
+   changeList.forEach((change) => {
+  const current = admissionteamData.find(
+    (m) => m.id === change.data.id
+  );
+  const original = originalData.find(
+    (o) => o.id === change.data.id
+  );
 
-        /* 🟢 INSERT */
-        if (change.type === "added" && current) {
-          requests.push(
-            buildAdmissionTeamPayload({
-              action: "insert",
-              newData: current,
-            }),
-          );
+  if (!current) return;
 
-          // 🔥 SEND IMAGE FILE IF EXISTS
-          if (current.imageFile instanceof File) {
-            files.push({
-              file: current.imageFile,
-            });
-          }
-        }
+  /* INSERT */
+  if (change.type === "added") {
+    requests.push(
+      buildAdmissionTeamPayload({
+        action: "insert",
+        newData: current,
+      })
+    );
 
-        /* 🔵 UPDATE */
-        if (change.type === "edited" && current && original) {
-          requests.push(
-            buildAdmissionTeamPayload({
-              action: "update",
-              newData: current,
-              oldData: original,
-            }),
-          );
+    if (current.imageFile) {
+      files.push(current.imageFile);
+    }
+  }
 
-          // 🔥 SEND IMAGE FILE IF EXISTS
-          if (current.imageFile instanceof File) {
-            files.push({
-              field: "admission_team_image",
-              file: current.imageFile,
-            });
-          }
-        }
+  /* UPDATE */
+  if (change.type === "edited") {
+    requests.push(
+      buildAdmissionTeamPayload({
+        action: "update",
+        newData: current,
+        oldData: original,
+      })
+    );
 
-        /* 🔴 DELETE MEMBER */
-        if (change.type === "deleted") {
-          requests.push(
-            buildAdmissionTeamPayload({
-              action: "delete",
-              newData: change.data,
-            }),
-          );
-        }
-      });
+    if (current.imageFile) {
+      files.push(current.imageFile);
+    }
+  }
+
+  /* DELETE */
+  if (change.type === "deleted") {
+    requests.push(
+      buildAdmissionTeamPayload({
+        action: "delete",
+        newData: change.data,
+      })
+    );
+  }
+});
+
 
       console.log("🚀 REQUESTS:", requests);
       console.log("📂 FILES:", files);

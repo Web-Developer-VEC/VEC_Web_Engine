@@ -286,7 +286,6 @@ const AdminME = ({ theme, toggle }) => {
 
   const handleDeleteSelected = () => {
     if (selectedRows.length === 0) {
-      toast.error("No rows selected to delete.");
       setShowDeleteModal(false);
       return;
     }
@@ -323,7 +322,6 @@ const AdminME = ({ theme, toggle }) => {
     pgArray.splice(rowIndex, 1);
     setpgData({ ...pgData, PG: pgArray });
     logChange("deleted", "PG", { row: removedRow });
-    toast.info("Row deleted. It will be removed on final request.");
     setShowDeleteModal(false);
   };
   const handleCourseNameChange = (rowIndex, newName) => {
@@ -406,7 +404,7 @@ const handleUndoChange = (label) => {
   }
 
   setpgData(updated);
-  toast.info(`${label} reverted`);
+  // toast.info(`${label} reverted`);
 };
 
 const handleFinalRequestConfirm = async () => {
@@ -422,7 +420,7 @@ const handleFinalRequestConfirm = async () => {
   const yearChanged = originalYear !== currentYear;
 
   if (!intakeChanged && !yearChanged) {
-    toast.warn("No changes to submit");
+    // toast.warn("No changes to submit");
     return;
   }
 
@@ -458,7 +456,7 @@ const handleFinalRequestConfirm = async () => {
   try {
     await sendRequest([payload]); // send as array if your API expects array
 
-    toast.success("PG Admission request submitted successfully!");
+    toast.success("request submitted successfully!");
 
     setOriginalData(JSON.parse(JSON.stringify(pgData)));
     setChangeList([]);
@@ -477,7 +475,7 @@ const handleFinalRequestConfirm = async () => {
     setSelectedRows([]); // clear any selected checkboxes
     setpgEdit(false); // exit edit mode
     setSavedOnce(false); // reset save flag
-    toast.info("All changes discarded.");
+    // toast.info("All changes discarded.");
   };
 
   // ✅ Online/offline detection
@@ -494,7 +492,7 @@ const handleFinalRequestConfirm = async () => {
 
   const handleSaveClick = () => {
     if (!pgData.year || pgData.year.trim() === "") {
-      toast.error("Please fill in the year field.");
+      // toast.error("Please fill in the year field.");
       return;
     }
 
@@ -514,7 +512,7 @@ const handleFinalRequestConfirm = async () => {
 
     setpgEdit(false);
     setSavedOnce(true);
-    toast.success("Changes saved locally!");
+    // toast.success("Changes saved locally!");
   };
 
   if (!isOnline) {
