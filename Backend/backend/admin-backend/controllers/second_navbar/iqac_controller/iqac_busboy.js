@@ -81,6 +81,7 @@ async function iqacHandler(fileStream, docs, req, cb, filename, mimetype) {
 
       const dept = doc.meta_data?.department_name;
       const deptNo = depts[dept];
+// console.log(doc.meta_data);
 
       if (!deptNo) {
         throw new Error(`Invalid department: ${dept}`);
