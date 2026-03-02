@@ -9,7 +9,7 @@ async function incubationHandler(fileStream, docs, req, cb, filename, mimetype) 
         : filename?.filename || "image.jpg";
 
     const effectiveMime = mimetype || filename?.mimeType || "image/jpeg";
-
+    let ext;
     console.log("Uploading incubation facilities images:", { realFilename, effectiveMime });
 
     // ✅ Allow only image formats
@@ -17,6 +17,7 @@ async function incubationHandler(fileStream, docs, req, cb, filename, mimetype) 
       fileStream.resume();
       return cb(new Error("Only images or PDFs are allowed"));
     }
+    ext = path.extname(realimagename) || "";
 
     const collection_type = docs[0]?.collection_type;
     let s3Key;
@@ -24,12 +25,14 @@ async function incubationHandler(fileStream, docs, req, cb, filename, mimetype) 
     let folder;
 
     if (collection_type === "facilities") {
+      ext = path.extname(realpdfname) || "";
       name = docs[0].meta_data.name;
-      folder = `temp/static/images/incubation/${name}`;
+      folder = `temp/static/images/incubation/${name}${ext}`;
       s3Key = folder;
     }else if(collection_type === "incubation_committee"){
+      ext = path.extname(realpdfname) || "";
       name = docs[0].meta_data.name;
-      folder = `temp/static/images/incubation/commitee/${name}`;
+      folder = `temp/static/images/incubation/commitee/${name}${ext}`;
       s3Key = folder;
 
     }
