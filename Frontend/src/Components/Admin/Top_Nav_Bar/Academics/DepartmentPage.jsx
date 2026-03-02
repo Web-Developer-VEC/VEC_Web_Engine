@@ -183,7 +183,7 @@ const AdminDepartmentPage = ({ theme, toggle }) => {
       case "Pedagogy":
         return <Pedagogy data={sectionData} />;
       case "Syllabus":
-        return <CurriculumPage data={sectionData} />;
+        return <CurriculumPage data={sectionData}  deptId={deptID} />;
       case "Infrastructure":
         return <Infrastructure data={sectionData} />;
       case "StudentAchievments":

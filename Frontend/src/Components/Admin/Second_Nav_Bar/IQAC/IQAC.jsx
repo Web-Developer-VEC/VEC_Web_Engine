@@ -276,7 +276,7 @@ const AdminIQAC = ({ toggle , theme }) => {
 
                 {/* Discard + Request Buttons */}
                 {!isEditing && Object.keys(changes).length > 0 && (
-                    <div className="flex justify-center gap-2 mt-4">
+                    <div className="flex justify-end gap-2 mt-4 mr-5">
                         <button
                             onClick={handleDiscard}
                             className="px-4 py-2 bg-gray-400 text-white rounded"
@@ -876,4 +876,4 @@ const AdminIQAC = ({ toggle , theme }) => {
     );
 };
 
-export default AdminIQAC;
+export default AdminIQAC;   

@@ -192,9 +192,13 @@ const NIRF = ({ data }) => {
         return clone;
       }
 
-      // 2) Else, try to find existing Edited entry matching predicate and update it
       const editedIdx = clone.findIndex(
-        (c) => c.action === "Edited" && matchPredicate(c),
+        (c) =>
+          c.action === "Edited" &&
+          c.yearId === newEntry.yearId &&
+          c.docIndex === newEntry.docIndex &&
+          c.tempId === newEntry.tempId &&
+          c.type === newEntry.type,
       );
       if (editedIdx !== -1) {
         const existing = clone[editedIdx];
@@ -215,19 +219,11 @@ const NIRF = ({ data }) => {
     });
   };
   const getChanges = () => {
-    const filtered = changeLog.filter((c) =>
+    return changeLog.filter((c) =>
       ["Added", "Edited", "Deleted"].includes(c.action),
     );
-
-    const latestByYear = {};
-
-    filtered.forEach((log) => {
-      latestByYear[log.yearId] = log; // override with latest action
-    });
-
-    return Object.values(latestByYear);
   };
-
+  console.log("CHANGE LOG:", changeLog);
   const handlePdfClick = (cat) => {
     if (!cat?.pdf_path) return;
 
@@ -437,8 +433,6 @@ const NIRF = ({ data }) => {
           },
         ];
       });
-
-      toast.success("Document deleted successfully");
     } else if (deleteConfirm.type === "multiple") {
       setDeleteConfirm(null);
     } else if (deleteConfirm.type === "year") {
@@ -476,7 +470,6 @@ const NIRF = ({ data }) => {
         ];
       });
 
-      toast.success("Year deleted");
     }
   };
   const getYearLevelChanges = () => {
@@ -497,7 +490,7 @@ const NIRF = ({ data }) => {
           id: yearId,
           yearObj,
           rawChanges: [],
-          action: null,
+          action: "Edited",
         };
       }
 
@@ -505,32 +498,18 @@ const NIRF = ({ data }) => {
     });
 
     Object.values(grouped).forEach((item) => {
-      const actions = item.rawChanges.map((c) => c.action);
-
-      const hasRowDelete = item.rawChanges.some((c) => c.rowDeleted);
-      const hasDocDelete = item.rawChanges.some(
-        (c) => c.action === "Deleted" && !c.rowDeleted,
-      );
-      const hasRowAdd = item.rawChanges.some((c) => c.rowAdded);
-
-      if (hasRowDelete || hasDocDelete) {
+      // 🔴 Highest priority → Whole year deleted
+      if (item.rawChanges.some((c) => c.rowDeleted)) {
         item.action = "Deleted";
-      } else if (hasRowAdd) {
+      }
+      // 🟢 Next → Whole year added
+      else if (item.rawChanges.some((c) => c.rowAdded)) {
         item.action = "Added";
-      } else {
+      }
+      // 🔵 Otherwise → Edited
+      else {
         item.action = "Edited";
       }
-
-      // ✅ Build display label
-      let label = `NIRF ${item.yearObj?.year || ""}`;
-
-      const docChange = item.rawChanges.find((c) => c.data?.name);
-
-      if (docChange?.data?.name) {
-        label = `NIRF ${item.yearObj?.year || ""}-${docChange.data.name}`;
-      }
-
-      item.year = label;
     });
 
     return Object.values(grouped);
@@ -555,7 +534,7 @@ const NIRF = ({ data }) => {
     setSelectedItems([]);
     setHasChanges(true);
     setDeleteConfirm(null);
-    toast.success("Selected items deleted successfully");
+  
   };
 
   // Revert single change (Undo)
@@ -651,13 +630,77 @@ const NIRF = ({ data }) => {
       setEditableData(updated);
       setChangeLog((prev) => prev.filter((c) => c.id !== change.id));
       setHasChanges(true);
-      toast.info("Reverted change");
+
     } catch (err) {
       console.error("Revert failed", err);
-      toast.error("Failed to revert change");
+   
     }
   };
+  const handleRevertAllForYear = (item) => {
+    // revert all rawChanges for this year (in original order)
+    // clone to avoid mutation issues
+    const toRevert = (item.rawChanges || []).slice();
+    // revert in reverse order (so deletes/adds restore correctly)
+    for (let i = toRevert.length - 1; i >= 0; i--) {
+      handleRevertChange(toRevert[i]);
+    }
+  };
+  const getDisplayChangesForItem = (item) => {
+    const lines = [];
+    const docMap = new Map();
 
+    item.rawChanges.forEach((c) => {
+      const key = c.docIndex ?? c.tempId ?? c.id;
+
+      // 🔵 Merge rename + file replace for same document
+      if (c.type === "docName" || c.type === "fileReplace") {
+        if (!docMap.has(key)) {
+          docMap.set(key, {
+            name: c.data?.name || "",
+            renamed: false,
+            replaced: false,
+            deleted: false,
+          });
+        }
+
+        const entry = docMap.get(key);
+
+        if (c.type === "docName") {
+          entry.renamed = true;
+          entry.oldName = c.prevData?.name;
+          entry.newName = c.data?.name;
+        }
+
+        if (c.type === "fileReplace") {
+          entry.replaced = true;
+          entry.name = c.data?.name;
+        }
+      }
+
+      // 🔴 Deleted document
+      if (c.action === "Deleted" && c.data?.name) {
+        lines.push(`Deleted: ${c.data.name}`);
+      }
+
+      // 🟢 Added document
+      if (c.action === "Added" && c.data?.name) {
+        lines.push(` ${c.data.name}`);
+      }
+    });
+
+    // Build merged rename/replace lines
+    docMap.forEach((doc) => {
+      if (doc.renamed && doc.replaced) {
+        lines.push(` ${doc.newName}`);
+      } else if (doc.renamed) {
+        lines.push(`${doc.newName}`);
+      } else if (doc.replaced) {
+        lines.push(`${doc.name}`);
+      }
+    });
+
+    return lines;
+  };
   // Save: persist current editableData as savedChanges (but keep changeLog for request)
   const handleSave = () => {
     const currentState = JSON.parse(JSON.stringify(editableData));
@@ -667,7 +710,7 @@ const NIRF = ({ data }) => {
     setHasChanges(false);
     setSelectedItems([]);
     setRequestSent(false);
-    toast.success("Changes saved successfully!");
+  
   };
   const collectNirfFiles = () => {
     const files = [];
@@ -684,7 +727,9 @@ const NIRF = ({ data }) => {
 
     return files;
   };
-
+  const hasYearEdits = (yearId) => {
+    return changeLog.some((c) => c.yearId === yearId && c.action === "Edited");
+  };
   const handleDiscardAll = () => {
     setEditableData(JSON.parse(JSON.stringify(originalData)));
     setLastSavedState(JSON.parse(JSON.stringify(originalData)));
@@ -694,24 +739,25 @@ const NIRF = ({ data }) => {
     setSelectedItems([]);
     setRequestSent(false);
     setChangeLog([]);
-    toast.info("All changes discarded");
+
   };
 
   const handleSendRequest = () => {
     setShowRequestModal(true);
   };
   const handleRequestConfirm = async () => {
-    const changes = getChanges();
+    const yearLevelChanges = getYearLevelChanges();
 
-    if (changes.length === 0) {
-      toast.warn("No changes to submit");
-      return;
-    }
+    const payload = yearLevelChanges
+      .map((item) =>
+        buildNirfPayload({
+          action: item.action,
+          yearId: item.id,
+          data: item.yearObj,
+        }),
+      )
+      .filter(Boolean);
 
-    // 1️⃣ Build payload
-    const payload = changes.map(buildNirfPayload).filter(Boolean);
-
-    // 2️⃣ Collect PDF files
     const files = collectNirfFiles();
 
     console.log("📦 NIRF PAYLOAD:", payload);
@@ -726,7 +772,7 @@ const NIRF = ({ data }) => {
       setChangeLog([]);
       setEditMode(false);
       setHasChanges(false);
-      toast.success("Request submitted successfully!");
+  
     }
   };
 
@@ -784,12 +830,11 @@ const NIRF = ({ data }) => {
   }
 
   return (
+    
     <div className="nirf-page relative">
-      <ToastContainer position="bottom-right" autoClose={3000} />
-
-      {/* EDIT button: always top-right when not in edit mode (fixes left-bottom issue) */}
-      {!editMode && (
-        <div className="absolute top-4 right-6 z-50">
+      <div>
+        {!editMode && (
+        <div className="flex justify-end px-6 py-4  mr-4">
           <button
             onClick={handleEditToggle}
             className="flex items-center px-4 py-2 rounded-lg bg-[#fdcc06] text-black hover:bg-[#800000] transition-colors"
@@ -798,6 +843,11 @@ const NIRF = ({ data }) => {
           </button>
         </div>
       )}
+      </div>
+      <ToastContainer position="bottom-right" autoClose={3000} />
+
+      {/* EDIT button: always top-right when not in edit mode (fixes left-bottom issue) */}
+    
 
       <div className="nirf-intro dark:bg-drkb border-l-4 border-secd dark:border-drks">
         <h1 className="nirf-header text-brwn dark:text-drkt">
@@ -854,7 +904,12 @@ const NIRF = ({ data }) => {
                       type="checkbox"
                       checked={selectedItems.includes(yearIndex)}
                       onChange={() => toggleItemSelection(yearIndex)}
-                      className="h-5 w-5"
+                      disabled={hasYearEdits(item.__id)}
+                      className={`h-5 w-5 ${
+                        hasYearEdits(item.__id)
+                          ? "cursor-not-allowed opacity-50"
+                          : ""
+                      }`}
                     />
                   </div>
                 )}
@@ -1108,45 +1163,52 @@ const NIRF = ({ data }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {getChanges().map((change) => {
-                    const yearObj =
-                      editableData.find((y) => y.__id === change.yearId) ||
-                      originalData.find((y) => y.__id === change.yearId);
-
-                    const yearText = yearObj?.year || change.data?.year || "";
-
-                    let changeText = `NIRF ${yearText}`;
-
-                    if (change.type === "docName" || change.data?.name) {
-                      changeText = `NIRF ${yearText}-${change.data?.name || ""}`;
-                    }
-
-                    if (change.type === "year") {
-                      changeText = `NIRF ${change.data?.year}`;
-                    }
+                  {getYearLevelChanges().map((item) => {
+                    const lines = getDisplayChangesForItem(item);
 
                     return (
-                      <tr key={change.id} className="border-t">
+                      <tr key={item.id} className="border-t align-top">
                         <td
                           className={`py-2 ${
-                            change.action === "Added"
+                            item.action === "Added"
                               ? "text-green-600"
-                              : change.action === "Deleted"
+                              : item.action === "Deleted"
                                 ? "text-red-600"
                                 : "text-blue-600"
                           }`}
                         >
-                          {change.action}
+                          {item.action}
                         </td>
 
                         <td className="py-2 border">NIRF</td>
 
-                        <td className="py-2 text-[13px] border">{changeText}</td>
+                        <td className="py-2 text-[13px] border text-left px-3">
+                          <div className="font-semibold">
+                            NIRF {item.yearObj?.year || ""}
+                          </div>
 
-                        <td className="py-2 border ">
+                          {lines.length === 0 ? (
+                            <div className="ml-4 text-gray-600">
+                              No visible change
+                            </div>
+                          ) : (
+                            lines.map((line, idx) => (
+                              <div
+                                key={idx}
+                                className={`ml-4 ${line.startsWith("Deleted") ? "text-red-600" : "text-gray-600"}`}
+                              >
+                                • {line}
+                              </div>
+                            ))
+                          )}
+                        </td>
+
+                        <td className="py-2 border text-center">
+                          {/* single undo for the whole year */}
                           <button
-                            onClick={() => handleRevertChange(change)}
-                            className="text-red-500 hover:text-red-700 font-bold"
+                            onClick={() => handleRevertAllForYear(item)}
+                            className="text-red-500 hover:text-red-700"
+                            title="Undo all changes for this year"
                           >
                             <X size={16} />
                           </button>

@@ -399,7 +399,7 @@ export default function IqaAud({ iqacData }) {
                 </table>
 
                 {/* Row actions */}
-                <div className="flex justify-center gap-2 p-4 border-t">
+                {/* <div className="flex justify-center gap-2 p-4 border-t">
                   <button
                     onClick={handleAddRow}
                     className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded"
@@ -414,7 +414,7 @@ export default function IqaAud({ iqacData }) {
                       <Trash2 size={16} /> Delete Selected
                     </button>
                   )}
-                </div>
+                </div> */}
               </div>
             </div>
           ) : (

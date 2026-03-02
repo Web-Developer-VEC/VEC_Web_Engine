@@ -52,19 +52,15 @@ const AdminMBA = ({ theme, toggle }) => {
         action: "insert",
         title: "Insert MBA Intake Data",
         meta_data: {
-          data: {
             year,
-            MBA: [
-              {
+       
                 MBA: {
                   "Government Quota Intakes": String(newData.government),
                   "Management Quota Intakes": String(newData.management),
                   "Total Intakes": String(newData.total),
                 },
-              },
-            ],
+            
           },
-        },
       };
     }
 
@@ -77,34 +73,27 @@ const AdminMBA = ({ theme, toggle }) => {
         title: "Update MBA Intake Numbers",
 
         meta_data: {
-          data: {
             year,
-            MBA: [
-              {
+           
                 MBA: {
                   "Government Quota Intakes": String(newData.government),
                   "Management Quota Intakes": String(newData.management),
                   "Total Intakes": String(newData.total),
                 },
-              },
-            ],
-          },
+             
         },
 
         original_data: {
-          data: {
             year,
-            MBA: [
-              {
+          
+            
                 MBA: {
                   "Government Quota Intakes": String(oldData.government),
                   "Management Quota Intakes": String(oldData.management),
                   "Total Intakes": String(oldData.total),
                 },
-              },
-            ],
+           
           },
-        },
       };
     }
 
@@ -117,15 +106,11 @@ const AdminMBA = ({ theme, toggle }) => {
         title: "Update MBA Year Only",
 
         meta_data: {
-          data: {
             year: newData.year,
-          },
         },
 
         original_data: {
-          data: {
             year: oldData.year,
-          },
         },
       };
     }
@@ -668,25 +653,18 @@ const handleFinalRequest = async () => {
       title: "Update MBA Admission",
 
       meta_data: {
-        data: {
           year: editableYear,
-          MBA: [
-            {
               MBA: {
                 "Government Quota Intakes": String(row.governmentQuota),
                 "Management Quota Intakes": String(row.managementQuota),
                 "Total Intakes": String(row.totalIntake),
               },
-            },
-          ],
-        },
+          
       },
 
       original_data: {
-        data: {
           year: original.year,
-          MBA: [
-            {
+            
               MBA: {
                 "Government Quota Intakes":
                   original?.MBA?.["Government Quota Intakes"],
@@ -695,9 +673,6 @@ const handleFinalRequest = async () => {
                 "Total Intakes":
                   original?.MBA?.["Total Intakes"],
               },
-            },
-          ],
-        },
       },
 
       admin: { status: "pending" },
@@ -846,16 +821,7 @@ const handleFinalRequest = async () => {
                     onChange={(e) => setGovLinkName(e.target.value)}
                     placeholder="Enter Link Name"
                   />
-                  <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
-                    <span>Replace</span>
-                    <input
-                      type="text"
-                      className="admin-mba"
-                      value={govLinkName}
-                      onChange={(e) => setGovLinkName(e.target.value)}
-                      placeholder="Enter Link Name"
-                    />
-                    </label>
+
                     <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
                       <span>Replace</span>
                       <input
@@ -933,16 +899,6 @@ const handleFinalRequest = async () => {
                     onChange={(e) => setMgmtLinkName(e.target.value)}
                     placeholder="Enter Link Name"
                   />
-                  <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
-                    <span>Replace</span>
-                    <input
-                      type="text"
-                      className="admin-mba"
-                      value={mgmtLinkName}
-                      onChange={(e) => setMgmtLinkName(e.target.value)}
-                      placeholder="Enter Link Name"
-                    />
-                    </label>
                     <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
                       <span>Replace</span>
                       <input
