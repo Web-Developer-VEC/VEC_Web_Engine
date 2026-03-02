@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const puppeteer = require("puppeteer");
 const { getlogDb } = require("../../config/db");
+const { uploadAppraisalReport, CheckIfFileExists } = require("../../middlewares/appraisal_multer");
+const { join } = require("path");
 
 // ==========================================
 // HELPER FUNCTIONS
@@ -13,20 +15,16 @@ const safe = (value) => {
     if (typeof value === "object") return "-";
     return String(value);
 };
+
 function formatShortYear(academicYear) {
     if (!academicYear) return "";
-
     const match = academicYear.match(/(\d{4})\D*(\d{2,4})?/);
-
     if (!match) return academicYear;
-
     const start = match[1].slice(-2);
-    const end = match[2]
-        ? match[2].slice(-2)
-        : String(Number(start) + 1);
-
+    const end = match[2] ? match[2].slice(-2) : String(Number(start) + 1);
     return `${start}-${end}`;
 }
+
 const normalizeProofLink = (value) => {
     const s = String(value ?? "").trim();
     if (!s) return "-";
@@ -47,10 +45,17 @@ const getPath = (obj, dotPath) => {
     return safe(raw);
 };
 
+// Updated to ignore "default" keys and empty strings mapping from DB
 const pickYearValue = (metricObj, academicYear) => {
     if (!metricObj || typeof metricObj !== "object") return "-";
-    if (metricObj[academicYear] !== undefined) return metricObj[academicYear];
-    const keys = Object.keys(metricObj).filter((k) => !["undertaking", "pdf_path"].includes(k));
+
+    if (metricObj[academicYear] !== undefined && metricObj[academicYear] !== "") {
+        return metricObj[academicYear];
+    }
+
+    const keys = Object.keys(metricObj).filter((k) =>
+        !["undertaking", "pdf_path", "default"].includes(k) && metricObj[k] !== ""
+    );
     return keys.length ? metricObj[keys[0]] : "-";
 };
 
@@ -138,22 +143,11 @@ const resolveNewSchemaValue = (obj, dotPath) => {
         if (m) return obj?.[p]?.[m[1]]?.[m[2]];
     }
 
+    // Updated to map correctly from DB `.value`
     if (dotPath.startsWith("innovation_entrepreneurship_activities.")) {
         const k = dotPath.replace("innovation_entrepreneurship_activities.", "");
         if (k.startsWith("undertaking.")) return obj?.innovation_entrepreneurship_activities?.[k.replace("undertaking.", "")]?.undertaking;
-        const suffixMap = {
-            trained_innovation_ambassadors: "trained_innovation_ambassadors_value",
-            teams_participated_sih: "teams_participated_sihvalue",
-            innovations_trl_4_9_yukti: "innovations_trl_4_9_yukti_value",
-            student_ventures_yukti: "student_ventures_yukti_value",
-            innovative_ideas_final_year_projects: "innovative_ideas_final_year_projects_value",
-            patents_filed: "patents_filed_value",
-            patents_published: "patents_published_value",
-            patents_granted: "patents_granted_value",
-            patents_filed_kapila_scheme: "patents_filed_kapila_scheme_value",
-            patents_commercialized: "patents_commercialized_value",
-        };
-        if (suffixMap[k]) return obj?.innovation_entrepreneurship_activities?.[k]?.[suffixMap[k]];
+        return obj?.innovation_entrepreneurship_activities?.[k]?.value;
     }
 
     if (dotPath.startsWith("graduation_success_rate.")) {
@@ -270,6 +264,7 @@ const buildSectionedWebView = (doc) => {
 // ==========================================
 
 const generateAppraisalDoc = async (req, res) => {
+
     try {
         const department = normalizeDepartment(req.body.department);
         const requestedAcademicYear = String(req.body.academic_year || "").trim();
@@ -283,6 +278,23 @@ const generateAppraisalDoc = async (req, res) => {
 
         if (!department) return res.status(400).json({ message: "Department is required" });
         if (requestedAcademicYear && requestedAcademicYearStart < 0) return res.status(400).json({ message: "Invalid academic_year format" });
+
+        const pdfFileName = includeProofInDoc
+            ? `${department}_${requestedAcademicYear}_with_proof.pdf`
+            : `${department}_${requestedAcademicYear}_without_proof.pdf`;
+
+        const isFileExist = await CheckIfFileExists(`${department}/${requestedAcademicYear}/${pdfFileName}`);
+
+        if (isFileExist.exists) {
+            console.log("From S3");
+            return res.status(200).json({
+                success: true,
+                message: "File Url from S3",
+                pdf_Url: isFileExist?.url
+            });
+        } else {
+            console.log("Generating New Report");
+        }
 
         const db = getlogDb();
         const collectionName = `${department}_appraisals`;
@@ -302,10 +314,10 @@ const generateAppraisalDoc = async (req, res) => {
         const latest = latestReports[0];
 
         // Handle Web View immediately
-        if (reportType === "view") {
-            const sections = buildSectionedWebView(latest);
-            return res.status(200).json({ success: true, report_type: "view", department, academic_year: safe(latest.academic_year), sections });
-        }
+        // if (reportType === "view") {
+        //     const sections = buildSectionedWebView(latest);
+        //     return res.status(200).json({ success: true, report_type: "view", department, academic_year: safe(latest.academic_year), sections });
+        // }
 
         const history3 = latestReports.slice(0, 3);
         const history4 = latestReports;
@@ -346,8 +358,23 @@ const generateAppraisalDoc = async (req, res) => {
                     font-family: 'Times New Roman', Times, serif; 
                     font-size: 8.5pt; 
                     color: #000; 
-                    line-height: 1.4; 
+                    line-height: 1.4;
+                    margin: 0;
                 }
+                .header-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border-bottom: 1px solid black;
+                    padding-bottom: 8px;
+                    margin-bottom: 15px;
+                }
+                .logo { width: 90px; }
+                .header-text { flex: 1; text-align: center; }
+                .college-name { font-size: 16pt; font-weight: bold; letter-spacing: 1px; }
+                .sub-text { font-size: 10pt; font-style: italic; }
+                
                 .heading { 
                     text-align: center; 
                     font-size: 14pt; 
@@ -388,104 +415,39 @@ const generateAppraisalDoc = async (req, res) => {
                 .text-left { text-align: left; }
                 .dense-table th, .dense-table td { font-size: 7.5pt; padding: 2px; }
                 
-                /* Remarks & Others (No borders, just text styling) */
-                .text-section { margin-top: 20px; page-break-inside: avoid; text-align: left; }
-                .text-title { font-size: 11pt; font-weight: bold; text-decoration: underline; margin-bottom: 15px; }
-                .text-item { margin-bottom: 12px; font-size: 9pt; }
-                
+                .section-title { font-size: 11pt; font-weight: bold; margin: 20px 0 10px 0; text-decoration: underline; }
                 a { color: #0563C1; text-decoration: underline; font-weight: bold; }
-                .header-container{
-display:flex;
-align-items:center;
-border-bottom:1px solid black;
-padding-bottom:8px;
-margin-bottom:15px;
-}
-
-.logo{
-width:90px;
-}
-
-.header-text{
-flex:1;
-text-align:center;
-}
-
-.college-name{
-font-size:16pt;
-font-weight:bold;
-letter-spacing:1px;
-
-}
-
-.sub-text{
-font-size:10pt;
-font-style: italic;
-}
             </style>
         </head>
         <body>
-        <div class="header-container">
+            <div class="header-container">
+                <img class="logo" src="https://velammal.edu.in/VEC Logo.png" />
+                <div class="header-text">
+                    <div class="college-name">VELAMMAL ENGINEERING COLLEGE</div>
+                    <div class="sub-text">An Autonomous Institution, Affiliated to Anna University, Chennai - 25</div>
+                    <div class="sub-text">Velammal Newgen Park, Ambattur - Red Hills Road, Chennai - 600 066.</div>
+                </div>
+            </div>
 
-<img class="logo"
-src="https://velammal.edu.in/VEC Logo.png"
-/>
-
-<div class="header-text">
-
-<div class="college-name">
-VELAMMAL ENGINEERING COLLEGE
-</div>
-
-<div class="sub-text">
-An Autonomous Institution, Affiliated to Anna University, Chennai - 25
-</div>
-
-<div class="sub-text">
-Velammal Newgen Park, Ambattur - Red Hills Road, Chennai - 600 066.
-</div>
-
-</div>
-
-</div>
             <div class="heading">Department Appraisal (ACY ${safe(latest.academic_year)})</div>
             
-        <div class="hod-details" style="margin-top:20px;">
-
-<p>
-Name of the HoD:
-<strong>
-${getValue(latest, "hod_details.hod_name")}
-</strong>
-</p>
-
-<p>
-Name of the Department:
-<strong>
-${getValue(latest, "hod_details.department_name")}
-</strong>
-</p>
-
-<p>
-Date of Joining as Head of the Department:
-<strong>
-${getValue(latest, "hod_details.date_of_joining_as_hod")}
-</strong>
-</p>
-
-</div>
+            <div class="hod-details" style="margin-top:20px; font-size:10pt;">
+                <p>Name of the HoD: <strong>${getValue(latest, "hod_details.hod_name")}</strong></p>
+                <p>Name of the Department: <strong>${getValue(latest, "hod_details.department_name")}</strong></p>
+                <p>Date of Joining as Head of the Department: <strong>${getValue(latest, "hod_details.date_of_joining_as_hod")}</strong></p>
+            </div>
 
             <table>
                 ${rHeaders(["I", "ESSENTIAL PARAMETERS", "Present Status", `Commitment / Undertakings ${formatShortYear(latest.academic_year)}`])}
                 ${rRow(["1", "Department Research status and period of recognition", getValue(latest, "essential_parameters.research_status"), getValue(latest, "essential_parameters.undertaking.research_status")], getProofPath(latest, "essential_parameters.research_status"))}
-                ${rRow(["2", "Department NBA status and period of accreditation", getValue(latest, "essential_parameters.nba_status"), getValue(latest, "essential_parameters.undertaking.nba_status")], getProofPath(latest, "essential_parameters.research_status"))}
+                ${rRow(["2", "Department NBA status and period of accreditation", getValue(latest, "essential_parameters.nba_status"), getValue(latest, "essential_parameters.undertaking.nba_status")], getProofPath(latest, "essential_parameters.nba_status"))}
             </table>
 
             <table>
                 ${rHeaders(["II", "DEPARTMENT STUDENT ADMITTED DETAILS", ...history3.map(r => `AY ${safe(r.academic_year)}`), `Commitment / Undertakings ${formatShortYear(latest.academic_year)}`])}
                 ${rRow(["1", "Sanctioned strength", ...history3.map((r) => getValue(r, "student_admission_details.sanctioned_strength")), getValue(latest, "student_admission_details.undertaking.sanctioned_strength")], getProofPath(latest, "student_admitted_details.sanctioned_strength"))}
-                ${rRow(["2", "No of students on roll including LE", ...history3.map((r) => getValue(r, "student_admission_details.students_on_roll")), getValue(latest, "student_admission_details.undertaking.students_on_roll")], getProofPath(latest, "student_admitted_details.sanctioned_strength"))}
-                ${rRow(["3", "Vacant seats", ...history3.map((r) => getValue(r, "student_admission_details.vacant_seats")), getValue(latest, "student_admission_details.undertaking.vacant_seats")], getProofPath(latest, "student_admitted_details.sanctioned_strength"))}
+                ${rRow(["2", "No of students on roll including LE", ...history3.map((r) => getValue(r, "student_admission_details.students_on_roll")), getValue(latest, "student_admission_details.undertaking.students_on_roll")], getProofPath(latest, "student_admitted_details.students_on_roll"))}
+                ${rRow(["3", "Vacant seats", ...history3.map((r) => getValue(r, "student_admission_details.vacant_seats")), getValue(latest, "student_admission_details.undertaking.vacant_seats")], getProofPath(latest, "student_admitted_details.vacant_seats"))}
             </table>
 
             <table class="dense-table">
@@ -516,29 +478,91 @@ ${getValue(latest, "hod_details.date_of_joining_as_hod")}
             </table>
 
             <table class="dense-table">
-                ${rHeaders(["IV", "GRADUATION SUCCESS RATE", ...history4.map(r => `${safe(r.academic_year)}`), `Commitment / Undertakings ${formatShortYear(latest.academic_year)}`])}
-                ${rRow(["1", "Total no of students on Roll during final sem", ...history4.map((r) => getValue(r, "graduation_success_rate.total_on_roll_final_sem")), getValue(latest, "graduation_success_rate.undertaking.total_on_roll_final_sem")], getProofPath(latest, "graduation_success_rate.total_on_roll"))}
-                ${rRow(["2", "Total no of students Graduated", ...history4.map((r) => getValue(r, "graduation_success_rate.total_graduated")), getValue(latest, "graduation_success_rate.undertaking.total_graduated")], getProofPath(latest, "graduation_success_rate.total_on_roll"))}
-                ${rRow(["3", "% of students graduated", ...history4.map((r) => getValue(r, "graduation_success_rate.percent_graduated")), getValue(latest, "graduation_success_rate.undertaking.percent_graduated")], getProofPath(latest, "graduation_success_rate.total_on_roll"))}
-                ${rRow(["4", "Average CGPA of the passed out batch", ...history4.map((r) => getValue(r, "graduation_success_rate.average_cgpa")), getValue(latest, "graduation_success_rate.undertaking.average_cgpa")], getProofPath(latest, "graduation_success_rate.total_on_roll"))}
-                ${rRow(["5", "No of University Ranks / No of students over 9.4 CGPA", ...history4.map((r) => getValue(r, "graduation_success_rate.university_ranks")), getValue(latest, "graduation_success_rate.undertaking.university_ranks")], getProofPath(latest, "graduation_success_rate.total_on_roll"))}
-            </table>
+<tr>
+                    <th style="width: 3%;">IV</th>
+                    <th style="width: 25%;">GRADUATION SUCCESS RATE</th>
+                    ${[0, 1, 2, 3].map(i => {
+                        let batchText = "AY -";
+                        if (history4[i] && history4[i].academic_year) {
+                            const match = String(history4[i].academic_year).match(/(\d{4})/);
+                            if (match) {
+                                const startYear = parseInt(match[1], 10);
+                                batchText = `${startYear - 3}-${startYear + 1}`;
+                            }
+                        }
+                        return `<th>${batchText}</th>`;
+                    }).join('')}
+                    <th style="width: 15%;">Commitment / Undertakings ${(() => {
+                if (latest && latest.academic_year) {
+                    const match = String(latest.academic_year).match(/(\d{4})/);
+                    if (match) {
+                        const startYear = parseInt(match[1], 10) + 1; // Shift 1 year forward
+                        return `for ${startYear - 3}-${String(startYear + 1).slice(-2)}`;
+                    }
+                }
+                return "";
+            })()}</th>
+                    ${includeProofInDoc ? '<th style="width: 6%;">Proof Link</th>' : ''}
+                </tr>             ${rRow([
+                "1",
+                "Total no of students on Roll during final sem",
+                ...Array.from({ length: 4 }).map((_, i) =>
+                    history4[i] ? getValue(history4[i], "graduation_success_rate.total_on_roll_final_sem") : "-"
+                ),
+                getValue(latest, "graduation_success_rate.undertaking.total_on_roll_final_sem")
+            ], getProofPath(latest, "graduation_success_rate.total_on_roll"))}
+
+${rRow([
+                "2",
+                "Total no of students Graduated",
+                ...Array.from({ length: 4 }).map((_, i) =>
+                    history4[i] ? getValue(history4[i], "graduation_success_rate.total_graduated") : "-"
+                ),
+                getValue(latest, "graduation_success_rate.undertaking.total_graduated")
+            ], getProofPath(latest, "graduation_success_rate.total_graduated"))}
+
+${rRow([
+                "3",
+                "% of students graduated",
+                ...Array.from({ length: 4 }).map((_, i) =>
+                    history4[i] ? getValue(history4[i], "graduation_success_rate.percent_graduated") : "-"
+                ),
+                getValue(latest, "graduation_success_rate.undertaking.percent_graduated")
+            ], getProofPath(latest, "graduation_success_rate.percent_graduated"))}
+
+${rRow([
+                "4",
+                "Average CGPA of the passed out batch",
+                ...Array.from({ length: 4 }).map((_, i) =>
+                    history4[i] ? getValue(history4[i], "graduation_success_rate.average_cgpa") : "-"
+                ),
+                getValue(latest, "graduation_success_rate.undertaking.average_cgpa")
+            ], getProofPath(latest, "graduation_success_rate.average_cgpa"))}
+
+${rRow([
+                "5",
+                "No of University Ranks / No of students over 9.4 CGPA",
+                ...Array.from({ length: 4 }).map((_, i) =>
+                    history4[i] ? getValue(history4[i], "graduation_success_rate.university_ranks") : "-"
+                ),
+                getValue(latest, "graduation_success_rate.undertaking.university_ranks")
+            ], getProofPath(latest, "graduation_success_rate.university_ranks"))}         </table>
 
             <table>
                 ${rHeaders(["V", "FACULTY CONTINUOUS LEARNING", `Odd Sem ${formatShortYear(latest.academic_year)}`, `Even Sem ${formatShortYear(latest.academic_year)}`, `Consolidated ${formatShortYear(latest.academic_year)}`, `Commitment / Undertakings ${formatShortYear(latest.academic_year)}`])}
                 ${rRow(["1", "Total No. of Faculty", getValue(latest, "faculty_learning.odd_sem.total_faculty"), getValue(latest, "faculty_learning.even_sem.total_faculty"), getValue(latest, "faculty_learning.consolidated.total_faculty"), getValue(latest, "faculty_learning.undertaking.total_faculty")], getProofPath(latest, "faculty_learning.total_faculty"))}
-                ${rRow(["2", "No of Faculty Completed NPTEL Online Courses with FDP certificate", getValue(latest, "faculty_learning.odd_sem.nptel_completed"), getValue(latest, "faculty_learning.even_sem.nptel_completed"), getValue(latest, "faculty_learning.consolidated.nptel_completed"), getValue(latest, "faculty_learning.undertaking.nptel_completed")], getProofPath(latest, "faculty_learning.total_faculty"))}
-                ${rRow(["3", "No of faculty attended FDPs (5 days)", getValue(latest, "faculty_learning.odd_sem.fdps_attended"), getValue(latest, "faculty_learning.even_sem.fdps_attended"), getValue(latest, "faculty_learning.consolidated.fdps_attended"), getValue(latest, "faculty_learning.undertaking.fdps_attended")], getProofPath(latest, "faculty_learning.total_faculty"))}
-                ${rRow(["4", "No. of FDPs organized by the dept (5 days)", getValue(latest, "faculty_learning.odd_sem.fdps_organized"), getValue(latest, "faculty_learning.even_sem.fdps_organized"), getValue(latest, "faculty_learning.consolidated.fdps_organized"), getValue(latest, "faculty_learning.undertaking.fdps_organized")], getProofPath(latest, "faculty_learning.total_faculty"))}
+                ${rRow(["2", "No of Faculty Completed NPTEL Online Courses with FDP certificate", getValue(latest, "faculty_learning.odd_sem.nptel_completed"), getValue(latest, "faculty_learning.even_sem.nptel_completed"), getValue(latest, "faculty_learning.consolidated.nptel_completed"), getValue(latest, "faculty_learning.undertaking.nptel_completed")], getProofPath(latest, "faculty_learning.nptel_completed"))}
+                ${rRow(["3", "No of faculty attended FDPs (5 days)", getValue(latest, "faculty_learning.odd_sem.fdps_attended"), getValue(latest, "faculty_learning.even_sem.fdps_attended"), getValue(latest, "faculty_learning.consolidated.fdps_attended"), getValue(latest, "faculty_learning.undertaking.fdps_attended")], getProofPath(latest, "faculty_learning.fdps_attended"))}
+                ${rRow(["4", "No. of FDPs organized by the dept (5 days)", getValue(latest, "faculty_learning.odd_sem.fdps_organized"), getValue(latest, "faculty_learning.even_sem.fdps_organized"), getValue(latest, "faculty_learning.consolidated.fdps_organized"), getValue(latest, "faculty_learning.undertaking.fdps_organized")], getProofPath(latest, "faculty_learning.fdps_organized"))}
             </table>
 
             <table>
                 ${rHeaders(["VI", "Ph.D SCHOLARS", `Odd Sem ${formatShortYear(latest.academic_year)}`, `Even Sem ${formatShortYear(latest.academic_year)}`, `Consolidated ${formatShortYear(latest.academic_year)}`, `Commitment / Undertakings ${formatShortYear(latest.academic_year)}`])}
                 ${rRow(["1", "No. of Faculty with PhD in Department", getValue(latest, "phd_scholars.odd_sem.faculty_with_phd"), getValue(latest, "phd_scholars.even_sem.faculty_with_phd"), getValue(latest, "phd_scholars.consolidated.faculty_with_phd"), getValue(latest, "phd_scholars.undertaking.faculty_with_phd")], getProofPath(latest, "phd_scholars.faculty_with_phd"))}
-                ${rRow(["2", "No. of PhD Supervisors in Department (AU)", getValue(latest, "phd_scholars.odd_sem.phd_supervisors_au"), getValue(latest, "phd_scholars.even_sem.phd_supervisors_au"), getValue(latest, "phd_scholars.consolidated.phd_supervisors_au"), getValue(latest, "phd_scholars.undertaking.phd_supervisors_au")], getProofPath(latest, "phd_scholars.faculty_with_phd"))}
-                ${rRow(["3", "No. of Faculty Pursuing PhD", getValue(latest, "phd_scholars.odd_sem.faculty_pursuing_phd"), getValue(latest, "phd_scholars.even_sem.faculty_pursuing_phd"), getValue(latest, "phd_scholars.consolidated.faculty_pursuing_phd"), getValue(latest, "phd_scholars.undertaking.faculty_pursuing_phd")], getProofPath(latest, "phd_scholars.faculty_with_phd"))}
-                ${rRow(["4", "No. of Ph.D Scholars (Int + Ext) Pursuing in the dept Research centre", getValue(latest, "phd_scholars.odd_sem.phd_scholars_pursuing"), getValue(latest, "phd_scholars.even_sem.phd_scholars_pursuing"), getValue(latest, "phd_scholars.consolidated.phd_scholars_pursuing"), getValue(latest, "phd_scholars.undertaking.phd_scholars_pursuing")], getProofPath(latest, "phd_scholars.faculty_with_phd"))}
-                ${rRow(["5", "No. of (Int + Ext) Ph.D scholars completed in the dept Research centre", getValue(latest, "phd_scholars.odd_sem.phd_scholars_completed"), getValue(latest, "phd_scholars.even_sem.phd_scholars_completed"), getValue(latest, "phd_scholars.consolidated.phd_scholars_completed"), getValue(latest, "phd_scholars.undertaking.phd_scholars_completed")], getProofPath(latest, "phd_scholars.faculty_with_phd"))}
+                ${rRow(["2", "No. of PhD Supervisors in Department (AU)", getValue(latest, "phd_scholars.odd_sem.phd_supervisors_au"), getValue(latest, "phd_scholars.even_sem.phd_supervisors_au"), getValue(latest, "phd_scholars.consolidated.phd_supervisors_au"), getValue(latest, "phd_scholars.undertaking.phd_supervisors_au")], getProofPath(latest, "phd_scholars.phd_supervisors_au"))}
+                ${rRow(["3", "No. of Faculty Pursuing PhD", getValue(latest, "phd_scholars.odd_sem.faculty_pursuing_phd"), getValue(latest, "phd_scholars.even_sem.faculty_pursuing_phd"), getValue(latest, "phd_scholars.consolidated.faculty_pursuing_phd"), getValue(latest, "phd_scholars.undertaking.faculty_pursuing_phd")], getProofPath(latest, "phd_scholars.faculty_pursuing_phd"))}
+                ${rRow(["4", "No. of Ph.D Scholars (Int + Ext) Pursuing in the dept Research centre", getValue(latest, "phd_scholars.odd_sem.phd_scholars_pursuing"), getValue(latest, "phd_scholars.even_sem.phd_scholars_pursuing"), getValue(latest, "phd_scholars.consolidated.phd_scholars_pursuing"), getValue(latest, "phd_scholars.undertaking.phd_scholars_pursuing")], getProofPath(latest, "phd_scholars.phd_scholars_pursuing"))}
+                ${rRow(["5", "No. of (Int + Ext) Ph.D scholars completed in the dept Research centre", getValue(latest, "phd_scholars.odd_sem.phd_scholars_completed"), getValue(latest, "phd_scholars.even_sem.phd_scholars_completed"), getValue(latest, "phd_scholars.consolidated.phd_scholars_completed"), getValue(latest, "phd_scholars.undertaking.phd_scholars_completed")], getProofPath(latest, "phd_scholars.phd_scholars_completed"))}
             </table>
 
             <table class="dense-table">
@@ -556,10 +580,10 @@ ${getValue(latest, "hod_details.date_of_joining_as_hod")}
                     <th>Target</th><th>Achieved</th><th>%</th>
                     <th>Target</th><th>Achieved</th><th>%</th>
                 </tr>
-                ${rRow(["1", "Total Faculty", getValue(latest, "research_publications.odd_sem.total_faculty"), "-", "-", getValue(latest, "research_publications.even_sem.total_faculty"), "-", "-", getValue(latest, "research_publications.consolidated.total_faculty"), "-", "-", getValue(latest, "research_publications.undertaking.total_faculty")], "-")}
-                ${rRow(["2", "No. of Publications in Journals (SCI/ WoS)", getValue(latest, "research_publications.odd_sem.journals_sci_wos.target"), getValue(latest, "research_publications.odd_sem.journals_sci_wos.achieved"), getValue(latest, "research_publications.odd_sem.journals_sci_wos.percentage"), getValue(latest, "research_publications.even_sem.journals_sci_wos.target"), getValue(latest, "research_publications.even_sem.journals_sci_wos.achieved"), getValue(latest, "research_publications.even_sem.journals_sci_wos.percentage"), getValue(latest, "research_publications.consolidated.journals_sci_wos.target"), getValue(latest, "research_publications.consolidated.journals_sci_wos.achieved"), getValue(latest, "research_publications.consolidated.journals_sci_wos.percentage"), getValue(latest, "research_publications.undertaking.journals_sci_wos")], "-")}
-                ${rRow(["3", "No. of Publications in Journals (Scopus)", getValue(latest, "research_publications.odd_sem.journals_scopus.target"), getValue(latest, "research_publications.odd_sem.journals_scopus.achieved"), getValue(latest, "research_publications.odd_sem.journals_scopus.percentage"), getValue(latest, "research_publications.even_sem.journals_scopus.target"), getValue(latest, "research_publications.even_sem.journals_scopus.achieved"), getValue(latest, "research_publications.even_sem.journals_scopus.percentage"), getValue(latest, "research_publications.consolidated.journals_scopus.target"), getValue(latest, "research_publications.consolidated.journals_scopus.achieved"), getValue(latest, "research_publications.consolidated.journals_scopus.percentage"), getValue(latest, "research_publications.undertaking.journals_scopus")], "-")}
-                ${rRow(["4", "Avg publication per faculty in dept", getValue(latest, "research_publications.odd_sem.avg_publications_per_faculty.target"), getValue(latest, "research_publications.odd_sem.avg_publications_per_faculty.achieved"), getValue(latest, "research_publications.odd_sem.avg_publications_per_faculty.percentage"), getValue(latest, "research_publications.even_sem.avg_publications_per_faculty.target"), getValue(latest, "research_publications.even_sem.avg_publications_per_faculty.achieved"), getValue(latest, "research_publications.even_sem.avg_publications_per_faculty.percentage"), getValue(latest, "research_publications.consolidated.avg_publications_per_faculty.target"), getValue(latest, "research_publications.consolidated.avg_publications_per_faculty.achieved"), getValue(latest, "research_publications.consolidated.avg_publications_per_faculty.percentage"), getValue(latest, "research_publications.undertaking.avg_publications_per_faculty")], "-")}
+                ${rRow(["1", "Total Faculty", getValue(latest, "research_publications.odd_sem.total_faculty"), "-", "-", getValue(latest, "research_publications.even_sem.total_faculty"), "-", "-", getValue(latest, "research_publications.consolidated.total_faculty"), "-", "-", getValue(latest, "research_publications.undertaking.total_faculty")], getProofPath(latest, "research_publications.total_faculty"))}
+                ${rRow(["2", "No. of Publications in Journals (SCI/ WoS)", getValue(latest, "research_publications.odd_sem.journals_sci_wos.target"), getValue(latest, "research_publications.odd_sem.journals_sci_wos.achieved"), getValue(latest, "research_publications.odd_sem.journals_sci_wos.percentage"), getValue(latest, "research_publications.even_sem.journals_sci_wos.target"), getValue(latest, "research_publications.even_sem.journals_sci_wos.achieved"), getValue(latest, "research_publications.even_sem.journals_sci_wos.percentage"), getValue(latest, "research_publications.consolidated.journals_sci_wos.target"), getValue(latest, "research_publications.consolidated.journals_sci_wos.achieved"), getValue(latest, "research_publications.consolidated.journals_sci_wos.percentage"), getValue(latest, "research_publications.undertaking.journals_sci_wos")], getProofPath(latest, "research_publications.journals_sci_wos"))}
+                ${rRow(["3", "No. of Publications in Journals (Scopus)", getValue(latest, "research_publications.odd_sem.journals_scopus.target"), getValue(latest, "research_publications.odd_sem.journals_scopus.achieved"), getValue(latest, "research_publications.odd_sem.journals_scopus.percentage"), getValue(latest, "research_publications.even_sem.journals_scopus.target"), getValue(latest, "research_publications.even_sem.journals_scopus.achieved"), getValue(latest, "research_publications.even_sem.journals_scopus.percentage"), getValue(latest, "research_publications.consolidated.journals_scopus.target"), getValue(latest, "research_publications.consolidated.journals_scopus.achieved"), getValue(latest, "research_publications.consolidated.journals_scopus.percentage"), getValue(latest, "research_publications.undertaking.journals_scopus")], getProofPath(latest, "research_publications.journals_scopus"))}
+                ${rRow(["4", "Avg publication per faculty in dept", getValue(latest, "research_publications.odd_sem.avg_publications_per_faculty.target"), getValue(latest, "research_publications.odd_sem.avg_publications_per_faculty.achieved"), getValue(latest, "research_publications.odd_sem.avg_publications_per_faculty.percentage"), getValue(latest, "research_publications.even_sem.avg_publications_per_faculty.target"), getValue(latest, "research_publications.even_sem.avg_publications_per_faculty.achieved"), getValue(latest, "research_publications.even_sem.avg_publications_per_faculty.percentage"), getValue(latest, "research_publications.consolidated.avg_publications_per_faculty.target"), getValue(latest, "research_publications.consolidated.avg_publications_per_faculty.achieved"), getValue(latest, "research_publications.consolidated.avg_publications_per_faculty.percentage"), getValue(latest, "research_publications.undertaking.avg_publications_per_faculty")], getProofPath(latest, "research_publications.avg_publications_per_faculty"))}
             </table>
 
             <table>
@@ -572,7 +596,7 @@ ${getValue(latest, "hod_details.date_of_joining_as_hod")}
                 ["No. of Proposals & Amount sanctioned For STTP / Workshops / FDP's / Entrepreneurship", "sttp_workshops_fdps_entrepreneurship_proposals_and_amount"],
                 ["Any other funding for student schemes like IEDC / TNSCST", "other_student_schemes_iedc_tnscst"]
             ].map(([label, key], idx) =>
-                rRow([String(idx + 1), label, getValue(latest, `research_funding.odd_sem.${key}`), getValue(latest, `research_funding.even_sem.${key}`), getValue(latest, `research_funding.consolidated.${key}`), getValue(latest, `research_funding.undertaking.${key}`)], getProofPath(latest, "research_funding.funded_projects_sanctioned"))
+                rRow([String(idx + 1), label, getValue(latest, `research_funding.odd_sem.${key}`), getValue(latest, `research_funding.even_sem.${key}`), getValue(latest, `research_funding.consolidated.${key}`), getValue(latest, `research_funding.undertaking.${key}`)], getProofPath(latest, `research_funding.${key}`))
             ).join('')}
             </table>
 
@@ -600,12 +624,12 @@ ${getValue(latest, "hod_details.date_of_joining_as_hod")}
                 getValue(history3[0] || {}, "student_development_parameters.value_added_courses_conducted.year1"), getValue(history3[0] || {}, "student_development_parameters.value_added_courses_conducted.year2"), getValue(history3[0] || {}, "student_development_parameters.value_added_courses_conducted.year3"), getValue(history3[0] || {}, "student_development_parameters.value_added_courses_conducted.year4"), getValue(history3[0] || {}, "student_development_parameters.value_added_courses_conducted.total"),
                 getValue(history3[1] || {}, "student_development_parameters.value_added_courses_conducted.year1"), getValue(history3[1] || {}, "student_development_parameters.value_added_courses_conducted.year2"), getValue(history3[1] || {}, "student_development_parameters.value_added_courses_conducted.year3"), getValue(history3[1] || {}, "student_development_parameters.value_added_courses_conducted.year4"), getValue(history3[1] || {}, "student_development_parameters.value_added_courses_conducted.total"),
                 getValue(history3[2] || {}, "student_development_parameters.value_added_courses_conducted.year1"), getValue(history3[2] || {}, "student_development_parameters.value_added_courses_conducted.year2"), getValue(history3[2] || {}, "student_development_parameters.value_added_courses_conducted.year3"), getValue(history3[2] || {}, "student_development_parameters.value_added_courses_conducted.year4"), getValue(history3[2] || {}, "student_development_parameters.value_added_courses_conducted.total"),
-                getValue(latest, "student_development_parameters.undertaking.value_added_courses_conducted")], "-")}
+                getValue(latest, "student_development_parameters.undertaking.value_added_courses_conducted")], getProofPath(latest, "student_development_parameters.value_added_courses_conducted"))}
                 ${rRow(["2", "No. of students who got paid Internship",
                     getValue(history3[0] || {}, "student_development_parameters.paid_internships.year1"), getValue(history3[0] || {}, "student_development_parameters.paid_internships.year2"), getValue(history3[0] || {}, "student_development_parameters.paid_internships.year3"), getValue(history3[0] || {}, "student_development_parameters.paid_internships.year4"), getValue(history3[0] || {}, "student_development_parameters.paid_internships.total"),
                     getValue(history3[1] || {}, "student_development_parameters.paid_internships.year1"), getValue(history3[1] || {}, "student_development_parameters.paid_internships.year2"), getValue(history3[1] || {}, "student_development_parameters.paid_internships.year3"), getValue(history3[1] || {}, "student_development_parameters.paid_internships.year4"), getValue(history3[1] || {}, "student_development_parameters.paid_internships.total"),
                     getValue(history3[2] || {}, "student_development_parameters.paid_internships.year1"), getValue(history3[2] || {}, "student_development_parameters.paid_internships.year2"), getValue(history3[2] || {}, "student_development_parameters.paid_internships.year3"), getValue(history3[2] || {}, "student_development_parameters.paid_internships.year4"), getValue(history3[2] || {}, "student_development_parameters.paid_internships.total"),
-                    getValue(latest, "student_development_parameters.undertaking.paid_internships")], "-")}
+                    getValue(latest, "student_development_parameters.undertaking.paid_internships")], getProofPath(latest, "student_development_parameters.paid_internships"))}
             </table>
 
             <table>
@@ -616,7 +640,7 @@ ${getValue(latest, "hod_details.date_of_joining_as_hod")}
                 ["Total number of student members in all chapters", "total_student_members"],
                 ["No. of student chapter activities conducted", "student_chapter_activities"]
             ].map(([label, key], idx) =>
-                rRow([String(idx + 1), label, getValue(latest, `professional_associations.odd_sem.${key}`), getValue(latest, `professional_associations.even_sem.${key}`), getValue(latest, `professional_associations.consolidated.${key}`), getValue(latest, `professional_associations.undertaking.${key}`)], getProofPath(latest, "professional_associations.faculty_professional_membership"))
+                rRow([String(idx + 1), label, getValue(latest, `professional_associations.odd_sem.${key}`), getValue(latest, `professional_associations.even_sem.${key}`), getValue(latest, `professional_associations.consolidated.${key}`), getValue(latest, `professional_associations.undertaking.${key}`)], getProofPath(latest, `professional_associations.${key}`))
             ).join('')}
             </table>
 
@@ -627,147 +651,69 @@ ${getValue(latest, "hod_details.date_of_joining_as_hod")}
                 ["No. of awards won in competition like SIH / Design competitions etc", "awards_won"],
                 ["Amount of Prize money received in the above competition", "prize_money_received"]
             ].map(([label, key], idx) =>
-                rRow([String(idx + 1), label, getValue(latest, `competitions_participated_won.odd_sem.${key}`), getValue(latest, `competitions_participated_won.even_sem.${key}`), getValue(latest, `competitions_participated_won.consolidated.${key}`), getValue(latest, `competitions_participated_won.undertaking.${key}`)], getProofPath(latest, "competitions_participated_won.competitions_participated"))
+                rRow([String(idx + 1), label, getValue(latest, `competitions_participated_won.odd_sem.${key}`), getValue(latest, `competitions_participated_won.even_sem.${key}`), getValue(latest, `competitions_participated_won.consolidated.${key}`), getValue(latest, `competitions_participated_won.undertaking.${key}`)], getProofPath(latest, `competitions_participated_won.${key}`))
             ).join('')}
             </table>
 
             <table>
                 ${rHeaders(["XIII", "MoU / CENTRE OF EXCELLENCE IN DEPARTMENT", `Odd Sem ${formatShortYear(latest.academic_year)}`, `Even Sem ${formatShortYear(latest.academic_year)}`, `Consolidated ${formatShortYear(latest.academic_year)}`, `Commitment / Undertakings ${formatShortYear(latest.academic_year)}`])}
                 ${rRow(["1", "No. of functional MoU's signed with reputed Industries", getValue(latest, "mou_centre_of_excellence.odd_sem.mous_signed"), getValue(latest, "mou_centre_of_excellence.even_sem.mous_signed"), getValue(latest, "mou_centre_of_excellence.consolidated.mous_signed"), getValue(latest, "mou_centre_of_excellence.undertaking.mous_signed")], getProofPath(latest, "mou_centre_of_excellence.mous_signed"))}
-                ${rRow(["2", "No. of Activities done through MoU of Industries", getValue(latest, "mou_centre_of_excellence.odd_sem.mou_activities"), getValue(latest, "mou_centre_of_excellence.even_sem.mou_activities"), getValue(latest, "mou_centre_of_excellence.consolidated.mou_activities"), getValue(latest, "mou_centre_of_excellence.undertaking.mou_activities")], getProofPath(latest, "mou_centre_of_excellence.mous_signed"))}
+                ${rRow(["2", "No. of Activities done through MoU of Industries", getValue(latest, "mou_centre_of_excellence.odd_sem.mou_activities"), getValue(latest, "mou_centre_of_excellence.even_sem.mou_activities"), getValue(latest, "mou_centre_of_excellence.consolidated.mou_activities"), getValue(latest, "mou_centre_of_excellence.undertaking.mou_activities")], getProofPath(latest, "mou_centre_of_excellence.mou_activities"))}
             </table>
-
-         <table class="dense-table" style="table-layout:auto;width:100%;">
-
-<tr>
-
-<th style="width:3%">XIV</th>
-
-<th style="width:25%">
-PLACEMENTS, HIGHER STUDIES, ENTREPRENEURSHIP
-</th>
-
-${history4.map(r => `<th colspan="2">AY ${safe(r.academic_year)}</th>`).join('')}
-
-<th style="width:10%">
-Commitment / Undertakings
-</th>
-
-</tr>
-
-
-<!-- Row 1 -->
-<tr>
-
-<td></td>
-
-<td>
-1 &nbsp;&nbsp; No. of companies visited for your Department
-</td>
-
-${history4.map(r => `
-<td colspan="2" class="text-center">
-${safe(getValue(r,
-                "placements_higher_studies_entrepreneurship.companies_visited"))}
-</td>
-`).join('')}
-
-<td class="text-center">
-${safe(getValue(latest,
-                    "placements_higher_studies_entrepreneurship.undertaking.companies_visited"))}
-</td>
-
-</tr>
-
-
-
-<!-- Row 2 -->
-<tr>
-
-<td></td>
-
-<td>
-2 &nbsp;&nbsp; Median Salary of the Students Placed
-</td>
-
-${history4.map(r => `
-<td colspan="2" class="text-center">
-${safe(getValue(r,
-                        "placements_higher_studies_entrepreneurship.median_salary"))}
-</td>
-`).join('')}
-
-<td class="text-center">
-${safe(getValue(latest,
-                            "placements_higher_studies_entrepreneurship.undertaking.median_salary"))}
-</td>
-
-</tr>
-
-
-
-<!-- Row 3 -->
-<tr>
-
-<td></td>
-
-<td>
-3 &nbsp;&nbsp; No. of students placed in Core Companies with %
-in terms of admitted total strength
-</td>
-
-${history4.map(r => `
-<td class="text-center">
-${safe(getValue(r,
-                                "placements_higher_studies_entrepreneurship.students_placed_core_companies.number"))}
-</td>
-
-<td class="text-center">
-${formatPercent(getValue(r,
-                                    "placements_higher_studies_entrepreneurship.students_placed_core_companies.percentage"))}
-</td>
-`).join('')}
-
-<td class="text-center">
-${safe(getValue(latest,
-                                        "placements_higher_studies_entrepreneurship.undertaking.students_placed_core_companies"))}
-</td>
-
-</tr>
-
-
-
-<!-- Row 4 -->
-<tr>
-
-<td></td>
-
-<td>
-4 &nbsp;&nbsp; No. of students admitted for higher studies with %
-in terms of total Admitted students strength
-</td>
-
-${history4.map(r => `
-<td class="text-center">
-${safe(getValue(r,
-                                            "placements_higher_studies_entrepreneurship.students_admitted_higher_studies.number"))}
-</td>
-
-<td class="text-center">
-${formatPercent(getValue(r,
-                                                "placements_higher_studies_entrepreneurship.students_admitted_higher_studies.percentage"))}
-</td>
-`).join('')}
-
-<td class="text-center">
-${safe(getValue(latest,
-                                                    "placements_higher_studies_entrepreneurship.undertaking.students_admitted_higher_studies"))}
-</td>
-
-</tr>
-
-
-</table>            <table>
+<table class="dense-table">
+                <tr>
+                    <th style="width: 3%;">XIV</th>
+                    <th style="width: 25%;">PLACEMENTS, HIGHER STUDIES, ENTREPRENEURSHIP</th>
+                    ${[0, 1, 2, 3].map(i => `<th colspan="2">AY ${history4[i] ? safe(history4[i].academic_year) : '-'}</th>`).join('')}
+                    <th style="width: 10%;">Commitment / Undertakings</th>
+                    ${includeProofInDoc ? '<th style="width: 6%;">Proof Link</th>' : ''}
+                </tr>
+                <tr>
+                    <td class="text-center">1</td>
+                    <td class="text-left">No. of companies visited for your Department</td>
+                    ${[0, 1, 2, 3].map(i => `<td colspan="2" class="text-center">${history4[i] ? safe(getValue(history4[i], "placements_higher_studies_entrepreneurship.companies_visited")) : '-'}</td>`).join('')}
+                    <td class="text-center">${safe(getValue(latest, "placements_higher_studies_entrepreneurship.undertaking.companies_visited"))}</td>
+                    ${includeProofInDoc ? `<td class="text-center">${getProofPath(latest, "placements_higher_studies_entrepreneurship.companies_visited") !== "-" ? `<a href="${getProofPath(latest, "placements_higher_studies_entrepreneurship.companies_visited")}" target="_blank">Proof</a>` : "-"}</td>` : ''}
+                </tr>
+                <tr>
+                    <td class="text-center">2</td>
+                    <td class="text-left">Median Salary of the Students Placed</td>
+                    ${[0, 1, 2, 3].map(i => `<td colspan="2" class="text-center">${history4[i] ? safe(getValue(history4[i], "placements_higher_studies_entrepreneurship.median_salary")) : '-'}</td>`).join('')}
+                    <td class="text-center">${safe(getValue(latest, "placements_higher_studies_entrepreneurship.undertaking.median_salary"))}</td>
+                    ${includeProofInDoc ? `<td class="text-center">${getProofPath(latest, "placements_higher_studies_entrepreneurship.median_salary") !== "-" ? `<a href="${getProofPath(latest, "placements_higher_studies_entrepreneurship.median_salary")}" target="_blank">Proof</a>` : "-"}</td>` : ''}
+                </tr>
+                <tr>
+                    <td class="text-center">3</td>
+                    <td class="text-left">No. of students placed in Core Companies with % in terms of admitted total strength</td>
+                    ${[0, 1, 2, 3].map(i => history4[i] ? `
+                        <td class="text-center">${safe(getValue(history4[i], "placements_higher_studies_entrepreneurship.students_placed_core_companies.number"))}</td>
+                        <td class="text-center">${formatPercent(getValue(history4[i], "placements_higher_studies_entrepreneurship.students_placed_core_companies.percentage"))}</td>
+                    ` : `<td class="text-center">-</td><td class="text-center">-</td>`).join('')}
+                    <td class="text-center">${safe(getValue(latest, "placements_higher_studies_entrepreneurship.undertaking.students_placed_core_companies"))}</td>
+                    ${includeProofInDoc ? `<td class="text-center">${getProofPath(latest, "placements_higher_studies_entrepreneurship.students_placed_core_companies") !== "-" ? `<a href="${getProofPath(latest, "placements_higher_studies_entrepreneurship.students_placed_core_companies")}" target="_blank">Proof</a>` : "-"}</td>` : ''}
+                </tr>
+                <tr>
+                    <td class="text-center">4</td>
+                    <td class="text-left">No. of students admitted for higher studies with % in terms of total Admitted students strength.</td>
+                    ${[0, 1, 2, 3].map(i => history4[i] ? `
+                        <td class="text-center">${safe(getValue(history4[i], "placements_higher_studies_entrepreneurship.students_admitted_higher_studies.number"))}</td>
+                        <td class="text-center">${formatPercent(getValue(history4[i], "placements_higher_studies_entrepreneurship.students_admitted_higher_studies.percentage"))}</td>
+                    ` : `<td class="text-center">-</td><td class="text-center">-</td>`).join('')}
+                    <td class="text-center">${safe(getValue(latest, "placements_higher_studies_entrepreneurship.undertaking.students_admitted_higher_studies"))}</td>
+                    ${includeProofInDoc ? `<td class="text-center">${getProofPath(latest, "placements_higher_studies_entrepreneurship.students_admitted_higher_studies") !== "-" ? `<a href="${getProofPath(latest, "placements_higher_studies_entrepreneurship.students_admitted_higher_studies")}" target="_blank">Proof</a>` : "-"}</td>` : ''}
+                </tr>
+                <tr>
+                    <td class="text-center">5</td>
+                    <td class="text-left">No. of Entrepreneurs evolved with % in terms of total Admitted students strength</td>
+                    ${[0, 1, 2, 3].map(i => history4[i] ? `
+                        <td class="text-center">${safe(getValue(history4[i], "placements_higher_studies_entrepreneurship.entrepreneurs_evolved.number"))}</td>
+                        <td class="text-center">${formatPercent(getValue(history4[i], "placements_higher_studies_entrepreneurship.entrepreneurs_evolved.percentage"))}</td>
+                    ` : `<td class="text-center">-</td><td class="text-center">-</td>`).join('')}
+                    <td class="text-center">${safe(getValue(latest, "placements_higher_studies_entrepreneurship.undertaking.entrepreneurs_evolved"))}</td>
+                    ${includeProofInDoc ? `<td class="text-center">${getProofPath(latest, "placements_higher_studies_entrepreneurship.entrepreneurs_evolved") !== "-" ? `<a href="${getProofPath(latest, "placements_higher_studies_entrepreneurship.entrepreneurs_evolved")}" target="_blank">Proof</a>` : "-"}</td>` : ''}
+                </tr>
+            </table>
+            <table>
                 <tr>
                     <th rowspan="2" style="width:3%;">XV</th>
                     <th rowspan="2" style="width:25%;">BRAND BUILDING FOR ADMISSION</th>
@@ -782,8 +728,8 @@ ${safe(getValue(latest,
                     <th>Target</th><th>Achieved</th>
                     <th>Target</th><th>Achieved</th>
                 </tr>
-                ${rRow(["1", "No. of Prospective students covered during Branding (Database)", getValue(latest, "brand_building_admission.odd_sem.prospective_students_covered.target"), getValue(latest, "brand_building_admission.odd_sem.prospective_students_covered.achieved"), getValue(latest, "brand_building_admission.even_sem.prospective_students_covered.target"), getValue(latest, "brand_building_admission.even_sem.prospective_students_covered.achieved"), getValue(latest, "brand_building_admission.consolidated.prospective_students_covered.target"), getValue(latest, "brand_building_admission.consolidated.prospective_students_covered.achieved"), getValue(latest, "brand_building_admission.undertaking.prospective_students_covered")], "-")}
-                ${rRow(["2", "No. of students converted as Admissions", getValue(latest, "brand_building_admission.odd_sem.students_converted_admissions.target"), getValue(latest, "brand_building_admission.odd_sem.students_converted_admissions.achieved"), getValue(latest, "brand_building_admission.even_sem.students_converted_admissions.target"), getValue(latest, "brand_building_admission.even_sem.students_converted_admissions.achieved"), getValue(latest, "brand_building_admission.consolidated.students_converted_admissions.target"), getValue(latest, "brand_building_admission.consolidated.students_converted_admissions.achieved"), getValue(latest, "brand_building_admission.undertaking.students_converted_admissions")], "-")}
+                ${rRow(["1", "No. of Prospective students covered during Branding (Database)", getValue(latest, "brand_building_admission.odd_sem.prospective_students_covered.target"), getValue(latest, "brand_building_admission.odd_sem.prospective_students_covered.achieved"), getValue(latest, "brand_building_admission.even_sem.prospective_students_covered.target"), getValue(latest, "brand_building_admission.even_sem.prospective_students_covered.achieved"), getValue(latest, "brand_building_admission.consolidated.prospective_students_covered.target"), getValue(latest, "brand_building_admission.consolidated.prospective_students_covered.achieved"), getValue(latest, "brand_building_admission.undertaking.prospective_students_covered")], getProofPath(latest, "brand_building_admission.prospective_students_covered"))}
+                ${rRow(["2", "No. of students converted as Admissions", getValue(latest, "brand_building_admission.odd_sem.students_converted_admissions.target"), getValue(latest, "brand_building_admission.odd_sem.students_converted_admissions.achieved"), getValue(latest, "brand_building_admission.even_sem.students_converted_admissions.target"), getValue(latest, "brand_building_admission.even_sem.students_converted_admissions.achieved"), getValue(latest, "brand_building_admission.consolidated.students_converted_admissions.target"), getValue(latest, "brand_building_admission.consolidated.students_converted_admissions.achieved"), getValue(latest, "brand_building_admission.undertaking.students_converted_admissions")], getProofPath(latest, "brand_building_admission.students_converted_admissions"))}
             </table>
 
             <table>
@@ -800,67 +746,22 @@ ${safe(getValue(latest,
                 ["No patents filed through Kapila Scheme", "patents_filed_kapila_scheme"],
                 ["Patents commercialized / transferred to Industry/ startup", "patents_commercialized"]
             ].map(([label, key], idx) =>
-                rRow([String(idx + 1), label, getValue(latest, `innovation_entrepreneurship_activities.${key}`), history3[1] ? getValue(history3[1], `innovation_entrepreneurship_activities.${key}`) : "-", getValue(latest, `innovation_entrepreneurship_activities.undertaking.${key}`)], getProofPath(latest, "innovation_entrepreneurship_activities.trained_innovation_ambassadors"))
+                rRow([String(idx + 1), label, getValue(latest, `innovation_entrepreneurship_activities.${key}`), history3[1] ? getValue(history3[1], `innovation_entrepreneurship_activities.${key}`) : "-", getValue(latest, `innovation_entrepreneurship_activities.undertaking.${key}`)], getProofPath(latest, `innovation_entrepreneurship_activities.${key}`))
             ).join('')}
             </table>
 
-<h3 style="margin-bottom:5px;">OTHERS</h3>
+            
 
-<table style="width:100%; border-collapse:collapse; page-break-inside:auto;">
+            <h3 style="margin-bottom: 5px; margin-top: 20px;">OTHERS</h3>
+            <table style="width:100%; border-collapse:collapse; page-break-inside:auto;">
+                <tr><td style="padding:10px;"><strong>(i) Steps taken (or being taken) for improving scores for NBA / NAAC / NIRF</strong><br><br>${safe(getValue(latest, "others.improve_scores_nba_naac_nirf.value"))}</td></tr>
+                <tr><td style="padding:10px;"><strong>(ii) Documentary evidences of POs and PSOs attainment levels</strong><br><br>${safe(getValue(latest, "others.documentary_evidence_pos_psos.value"))}</td></tr>
+                <tr><td style="padding:10px;"><strong>(iii) Identification of GAPs / Shortfalls (PEOs, PSOs)</strong><br><br>${safe(getValue(latest, "others.gaps_shortfalls_peos_psos.value"))}</td></tr>
+                <tr><td style="padding:10px;"><strong>(iv) Plan of action to bridge the gap and its implementation</strong><br><br>${safe(getValue(latest, "others.plan_action_bridge_gap.value"))}</td></tr>
+            </table>            
 
-<tr style="page-break-inside:auto;">
-<td>
-
-(i) Steps taken (or being taken) for improving scores for NBA / NAAC / NIRF
-<br><br>
-
-${safe(getValue(latest,
-                "others.improve_scores_nba_naac_nirf.value"))}
-
-</td>
-</tr>
-
-
-<tr style="page-break-inside:auto;">
-<td>
-
-(ii) Documentary evidences of POs and PSOs attainment levels
-<br><br>
-
-${safe(getValue(latest,
-                    "others.documentary_evidence_pos_psos.value"))}
-
-</td>
-</tr>
-
-
-<tr style="page-break-inside:auto;">
-<td>
-
-(iii) Identification of GAPs / Shortfalls (PEOs, PSOs)
-<br><br>
-
-${safe(getValue(latest,
-                        "others.gaps_shortfalls_peos_psos.value"))}
-
-</td>
-</tr>
-
-
-<tr style="page-break-inside:auto;">
-<td>
-
-(iv) Plan of action to bridge the gap and its implementation
-<br><br>
-
-${safe(getValue(latest,
-                            "others.plan_action_bridge_gap.value"))}
-
-</td>
-</tr>
-
-</table>            <div class="text-section" style="margin-top: 20px;">
-                <div class="text-title" style="text-decoration: none;">Appraisers Remarks</div>
+            <div class="text-section" style="margin-top: 20px;">
+                <div class="section-title" style="text-decoration: none;">Appraisers Remarks</div>
                 <table>
                     <tr>
                         <th style="width: 10%;">Sl.No</th>
@@ -902,40 +803,14 @@ ${safe(getValue(latest,
 
         await browser.close();
 
-        const pdfFileName = includeProofInDoc
-            ? `Appraisal_report_with_proof_${department}.pdf`
-            : `Appraisal_report_${department}.pdf`;
+        // Upload to S3
+        const s3Url = await uploadAppraisalReport(pdfBuffer, `${department}/${latest.academic_year}/${pdfFileName}`);
 
-        // ==========================================
-        // 💾 SAVE COPY LOCALLY
-        // ==========================================
-        const reportsDir = path.join(__dirname, "../generated_reports");
-        if (!fs.existsSync(reportsDir)) {
-            fs.mkdirSync(reportsDir, { recursive: true });
-        }
-
-        const localFilePath = path.join(reportsDir, pdfFileName);
-        fs.writeFileSync(localFilePath, pdfBuffer);
-
-        const saveFileOnly = req.body.save_file === true || String(req.body.save_file).toLowerCase() === "true";
-        if (saveFileOnly) {
-            return res.status(200).json({
-                success: true,
-                message: "Report generated and saved locally successfully.",
-                file_path: localFilePath
-            });
-        }
-
-        // Send the file back to the client
-        res.setHeader("Content-Type", "application/pdf");
-
-
-        res.setHeader(
-            "Content-Disposition",
-            `${reportType === "download" ? "attachment" : "inline"}; filename="${pdfFileName}"`
-        );
-
-        return res.send(pdfBuffer);
+        return res.status(200).json({
+            success: true,
+            message: "Report generated and uploaded successfully",
+            pdf_Url: s3Url
+        });
 
     } catch (error) {
         console.error("Error generating appraisal report:", error);

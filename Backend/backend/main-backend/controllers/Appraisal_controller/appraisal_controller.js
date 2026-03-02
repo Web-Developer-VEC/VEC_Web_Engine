@@ -26,19 +26,16 @@ const Appraisal = async (req, res, next) => {
         const db = getlogDb();
         const data = req.processedData;
 
-        const dept = data.department;
+        const dept = data.department.toLowerCase();
         const year = data.academic_year;
-        console.log(dept);
-        console.log(dept);
-
-        if (!allowedDepts.includes(dept)) {
+        if (!allowedDepts.includes(dept.toUpperCase())) {
             return res.status(400).json({
                 message: "Invalid department"
             });
         }
 
         const collectionName = `${dept}_appraisals`;
-
+ 
         // 🔥 CHECK IF COLLECTION EXISTS
         const collections = await db.listCollections(
             { name: collectionName }
