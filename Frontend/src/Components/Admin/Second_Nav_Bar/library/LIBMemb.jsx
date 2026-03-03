@@ -138,41 +138,48 @@ const LIBMemb = ({ data }) => {
   };
 
   const getMembershipChanges = (originalRows, currentRows) => {
-    const originalContent = originalRows.map((r) => r.member);
-    const newContent = currentRows.map((r) => r.member);
+    // fallback for nulls
+    originalRows = originalRows || [];
+    currentRows = currentRows || [];
 
-    // 🟢 INSERT
-    if (originalContent.length === 0 && newContent.length > 0) {
+    // compare by serialised row objects (member/book/cd)
+    const origJson = JSON.stringify(
+      originalRows.map(({ member, book, cd }) => ({ member, book, cd })),
+    );
+    const currJson = JSON.stringify(
+      currentRows.map(({ member, book, cd }) => ({ member, book, cd })),
+    );
+
+    // nothing changed
+    if (origJson === currJson) return [];
+
+    // determine action type
+    if (originalRows.length === 0 && currentRows.length > 0) {
       return [
         {
           action: "Added",
-          newData: newContent,
+          newData: currentRows.map(({ member, book, cd }) => ({ member, book, cd })),
         },
       ];
     }
 
-    // 🔴 DELETE
-    if (newContent.length === 0 && originalContent.length > 0) {
+    if (currentRows.length === 0 && originalRows.length > 0) {
       return [
         {
           action: "Deleted",
-          oldData: originalContent,
+          oldData: originalRows.map(({ member, book, cd }) => ({ member, book, cd })),
         },
       ];
     }
 
-    // 🔵 UPDATE
-    if (JSON.stringify(originalContent) !== JSON.stringify(newContent)) {
-      return [
-        {
-          action: "Edited",
-          newData: newContent,
-          oldData: originalContent,
-        },
-      ];
-    }
-
-    return [];
+    // in all other cases where content differs, treat as update
+    return [
+      {
+        action: "Edited",
+        newData: currentRows.map(({ member, book, cd }) => ({ member, book, cd })),
+        oldData: originalRows.map(({ member, book, cd }) => ({ member, book, cd })),
+      },
+    ];
   };
 
   const handleCancel = () => {
@@ -200,6 +207,7 @@ const LIBMemb = ({ data }) => {
     setIsEditing(false);
     setIsDirty(false);
     setIsSaved(true); // Show Discard & Request buttons
+    toast.success("Changes saved");
   };
 
   const handleDiscard = () => {
