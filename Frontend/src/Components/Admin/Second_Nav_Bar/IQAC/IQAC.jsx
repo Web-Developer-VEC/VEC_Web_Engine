@@ -89,12 +89,12 @@ const AdminIQAC = ({ toggle , theme }) => {
     }, [iqa]);
 
     // Render Objectives content
-    function  IqaObj () {
+    function IqaObj () {
         const [isEditing, setIsEditing] = useState(false);
         const [editedData, setEditedData] = useState(iqacData || { about: "", objectives: [] });
         const [savedData, setSavedData] = useState(iqacData || { about: "", objectives: [] });
         const [showRequestModal, setShowRequestModal] = useState(false);
-        const [changes, setChanges] = useState({});
+        const [changes, setChanges] = useState({ about: null, objectives: [] });
         const { sendRequest, loading, error } = useAdminRequest();
 
         if (!iqacData) {
@@ -128,44 +128,173 @@ const AdminIQAC = ({ toggle , theme }) => {
         };
 
         const handleSave = () => {
+            // Compare original with edited and collect changes with proper action types
+            const aboutChange = editedData.about !== iqacData.about ? {
+                old: iqacData.about,
+                new: editedData.about,
+                action: "edit"
+            } : null;
+            
+            // Track objective changes
+            const objectiveChanges = [];
+            const oldObjectives = iqacData.objectives || [];
+            const newObjectives = editedData.objectives || [];
+            
+            // Track which old objectives have been matched
+            const matchedOldIndices = new Set();
+            
+            // First, find exact matches (same content and roughly same position)
+            // This helps identify edits vs adds/deletes
+            newObjectives.forEach((newObj, newIndex) => {
+                // Look for this objective in the old list
+                for (let oldIndex = 0; oldIndex < oldObjectives.length; oldIndex++) {
+                    if (!matchedOldIndices.has(oldIndex) && oldObjectives[oldIndex] === newObj) {
+                        // Exact match found - no change
+                        matchedOldIndices.add(oldIndex);
+                        return;
+                    }
+                }
+                
+                // If we get here, this objective is either new or moved
+                // Check if it might be an edit of a nearby objective
+                for (let oldIndex = 0; oldIndex < oldObjectives.length; oldIndex++) {
+                    if (!matchedOldIndices.has(oldIndex)) {
+                        const oldObj = oldObjectives[oldIndex];
+                        const similarity = calculateSimilarity(oldObj, newObj);
+                        if (similarity > 0.7) { // 70% similar - likely an edit
+                            objectiveChanges.push({
+                                index: newIndex,
+                                old: oldObj,
+                                new: newObj,
+                                action: "edit"
+                            });
+                            matchedOldIndices.add(oldIndex);
+                            return;
+                        }
+                    }
+                }
+                
+                // No match found - this is a new objective
+                objectiveChanges.push({
+                    index: newIndex,
+                    old: null,
+                    new: newObj,
+                    action: "add"
+                });
+            });
+            
+            // Any remaining old objectives are deletions
+            oldObjectives.forEach((oldObj, oldIndex) => {
+                if (!matchedOldIndices.has(oldIndex)) {
+                    objectiveChanges.push({
+                        index: oldIndex,
+                        old: oldObj,
+                        new: null,
+                        action: "delete"
+                    });
+                }
+            });
+
+            // Sort changes by index for better display
+            objectiveChanges.sort((a, b) => a.index - b.index);
+
             setSavedData(editedData);
-
-            // Compare original with edited and collect changes
-            const diff = {};
-            if (editedData.about !== iqacData.about) {
-                diff.about = { old: iqacData.about, new: editedData.about };
-            }
-            if (JSON.stringify(editedData.objectives) !== JSON.stringify(iqacData.objectives)) {
-                diff.objectives = { old: iqacData.objectives, new: editedData.objectives };
-            }
-
-            setChanges(diff);
+            setChanges({
+                about: aboutChange,
+                objectives: objectiveChanges
+            });
             setIsEditing(false);
+        };
+
+        // Helper function to calculate similarity between two strings
+        const calculateSimilarity = (str1, str2) => {
+            if (!str1 || !str2) return 0;
+            const longer = str1.length > str2.length ? str1 : str2;
+            const shorter = str1.length > str2.length ? str2 : str1;
+            if (longer.length === 0) return 1.0;
+            
+            // Simple Levenshtein distance based similarity
+            const costs = [];
+            for (let i = 0; i <= shorter.length; i++) {
+                let lastValue = i;
+                for (let j = 0; j <= longer.length; j++) {
+                    if (i === 0) {
+                        costs[j] = j;
+                    } else if (j > 0) {
+                        let newValue = costs[j - 1];
+                        if (shorter.charAt(i - 1) !== longer.charAt(j - 1)) {
+                            newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+                        }
+                        costs[j - 1] = lastValue;
+                        lastValue = newValue;
+                    }
+                }
+                if (i > 0) costs[longer.length] = lastValue;
+            }
+            
+            const maxLength = Math.max(shorter.length, longer.length);
+            const distance = costs[shorter.length];
+            return (maxLength - distance) / maxLength;
         };
 
         const handleCancel = () => {
             setEditedData(savedData);
             setIsEditing(false);
-            setChanges({});
+            setChanges({ about: null, objectives: [] });
         };
 
         const handleDiscard = () => {
             setSavedData(iqacData);
             setEditedData(iqacData);
-            setChanges({});
+            setChanges({ about: null, objectives: [] });
         };
 
-        const handleUndo = (field) => {
-            setSavedData((prev) => ({ ...prev, [field]: iqacData[field] }));
-            setChanges((prev) => {
-                const newChanges = { ...prev };
-                delete newChanges[field];
-                return newChanges;
+        const handleUndoAbout = () => {
+            setSavedData(prev => ({ ...prev, about: iqacData.about }));
+            setEditedData(prev => ({ ...prev, about: iqacData.about }));
+            setChanges(prev => ({ ...prev, about: null }));
+        };
+
+        const handleUndoObjective = (changeIndex) => {
+            // Remove this specific change
+            const remainingChanges = changes.objectives.filter((_, idx) => idx !== changeIndex);
+            
+            // Reconstruct the objectives array based on remaining changes
+            let reconstructedObjectives = [...iqacData.objectives];
+            
+            remainingChanges.forEach(change => {
+                if (change.action === "add") {
+                    // Add this objective
+                    if (change.index <= reconstructedObjectives.length) {
+                        reconstructedObjectives.splice(change.index, 0, change.new);
+                    } else {
+                        reconstructedObjectives.push(change.new);
+                    }
+                } else if (change.action === "delete") {
+                    // Remove this objective
+                    const deleteIndex = reconstructedObjectives.findIndex(obj => obj === change.old);
+                    if (deleteIndex !== -1) {
+                        reconstructedObjectives.splice(deleteIndex, 1);
+                    }
+                } else if (change.action === "edit") {
+                    // Update this objective
+                    const editIndex = reconstructedObjectives.findIndex(obj => obj === change.old);
+                    if (editIndex !== -1) {
+                        reconstructedObjectives[editIndex] = change.new;
+                    }
+                }
             });
+            
+            setSavedData(prev => ({ ...prev, objectives: reconstructedObjectives }));
+            setEditedData(prev => ({ ...prev, objectives: reconstructedObjectives }));
+            setChanges(prev => ({ 
+                ...prev, 
+                objectives: remainingChanges 
+            }));
         };
 
         const handleRequestConfirm = async () => {
-            if (Object.keys(changes).length === 0) return;
+            if (!changes.about && changes.objectives.length === 0) return;
 
             const payload = [{
                 collectionName: "iqac",
@@ -174,7 +303,11 @@ const AdminIQAC = ({ toggle , theme }) => {
                 title: "updation of iqac objectives",
                 meta_data: {
                     about: savedData.about,
-                    objectives: savedData.objectives
+                    objectives: savedData.objectives,
+                    changes_summary: {
+                        about: changes.about,
+                        objectives: changes.objectives
+                    }
                 },
                 original_data: {
                     about: iqacData.about,
@@ -186,8 +319,17 @@ const AdminIQAC = ({ toggle , theme }) => {
 
             if (result) {
                 setShowRequestModal(false);
-                setChanges({});
+                setChanges({ about: null, objectives: [] });
                 setIsEditing(false);
+            }
+        };
+
+        const getActionDisplay = (action) => {
+            switch(action) {
+                case "add": return { text: "➕ Added", color: "text-green-600", bgColor: "bg-green-100" };
+                case "delete": return { text: "🗑️ Deleted", color: "text-red-600", bgColor: "bg-red-100" };
+                case "edit": return { text: "✎ Edited", color: "text-blue-600", bgColor: "bg-blue-100" };
+                default: return { text: "✎ Edited", color: "text-blue-600", bgColor: "bg-blue-100" };
             }
         };
 
@@ -198,7 +340,7 @@ const AdminIQAC = ({ toggle , theme }) => {
                     {!isEditing && (
                         <button
                             onClick={() => setIsEditing(true)}
-                            className="absolute top-2 right-2 bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt z-10"
+                            className="absolute top-4 right-8 bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt z-10"
                         >
                             Edit
                         </button>
@@ -275,7 +417,7 @@ const AdminIQAC = ({ toggle , theme }) => {
                 )}
 
                 {/* Discard + Request Buttons */}
-                {!isEditing && Object.keys(changes).length > 0 && (
+                {!isEditing && (changes.about || changes.objectives.length > 0) && (
                     <div className="flex justify-end gap-2 mt-4 mr-5">
                         <button
                             onClick={handleDiscard}
@@ -297,55 +439,107 @@ const AdminIQAC = ({ toggle , theme }) => {
                 {/* Request Modal */}
                 {showRequestModal && (
                     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
-                        <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[530px] max-h-[90vh] overflow-y-auto">
+                        <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px] max-h-[90vh] overflow-y-auto">
                             <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">Final Request for the Changes</h2>
                             <p className="text-sm text-red-500 mb-4">
                                 Note: Your changes will stay pending until approved by the superior admin.
                             </p>
 
-                            <div className="max-h-[200px] overflow-y-auto mb-4">
-                                <table className="w-full text-center text-text dark:text-drkt">
-                                    <thead>
-                                        <tr>
-                                            <th>Action</th>
-                                            <th>Field</th>
-                                            <th>Changes</th>
-                                            <th>Undo</th>
+                            <div className="max-h-[300px] overflow-y-auto mb-4">
+                                <table className="w-full text-left text-text dark:text-drkt border-collapse">
+                                    <thead className="sticky top-0 bg-drkt dark:bg-drkp">
+                                        <tr className="border-b-2 border-secd">
+                                            <th className="py-2 px-2">Action</th>
+                                            <th className="py-2 px-2">Field</th>
+                                            <th className="py-2 px-2">Changes</th>
+                                            <th className="py-2 px-2 text-center">Undo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {Object.keys(changes).map((field) => (
-                                            <tr key={field}>
-                                                <td className="text-blue-600">✎ Edited</td>
-                                                <td>{field}</td>
-                                                <td className="text-[12px]">
-                                                    {field === "objectives" 
-                                                        ? `${changes[field].new.length} objectives` 
-                                                        : "Updated"}
+                                        {changes.about && (
+                                            <tr className="border-b border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800">
+                                                <td className="py-3 px-2">
+                                                    <span className="text-blue-600 font-medium">✎ Edited</span>
                                                 </td>
-                                                <td>
-                                                    <button onClick={() => handleUndo(field)} className="text-red-500">
-                                                        <X />
+                                                <td className="py-3 px-2 font-medium">About IQAC</td>
+                                                <td className="py-3 px-2">
+                                                    <div className="text-sm">
+                                                        <span className="line-through text-gray-500 block">{changes.about.old.substring(0, 50)}...</span>
+                                                        <span className="text-green-600 block">{changes.about.new.substring(0, 50)}...</span>
+                                                    </div>
+                                                </td>
+                                                <td className="py-3 px-2 text-center">
+                                                    <button 
+                                                        onClick={handleUndoAbout} 
+                                                        className="text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-50"
+                                                        title="Undo this change"
+                                                    >
+                                                        <X size={18} />
                                                     </button>
                                                 </td>
                                             </tr>
-                                        ))}
+                                        )}
+                                        
+                                        {changes.objectives.map((change, idx) => {
+                                            const actionDisplay = getActionDisplay(change.action);
+                                            return (
+                                                <tr key={`objective-${idx}`} className={`border-b border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 ${actionDisplay.bgColor} bg-opacity-30`}>
+                                                    <td className="py-3 px-2">
+                                                        <span className={`${actionDisplay.color} font-medium`}>
+                                                            {actionDisplay.text}
+                                                        </span>
+                                                    </td>
+                                                    <td className="py-3 px-2 font-medium">{`Objective ${change.index + 1}`}</td>
+                                                    <td className="py-3 px-2">
+                                                        <div className="text-sm">
+                                                            {change.action === "add" && (
+                                                                <span className="text-green-600 block">"{change.new.substring(0, 50)}{change.new.length > 50 ? '...' : ''}"</span>
+                                                            )}
+                                                            {change.action === "delete" && (
+                                                                <span className="text-red-600 line-through block">"{change.old.substring(0, 50)}{change.old.length > 50 ? '...' : ''}"</span>
+                                                            )}
+                                                            {change.action === "edit" && (
+                                                                <>
+                                                                    <span className="text-gray-500 line-through block text-xs">Old: "{change.old.substring(0, 30)}..."</span>
+                                                                    <span className="text-green-600 block text-sm">New: "{change.new.substring(0, 30)}..."</span>
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                    </td>
+                                                    <td className="py-3 px-2 text-center">
+                                                        <button 
+                                                            onClick={() => handleUndoObjective(idx)} 
+                                                            className="text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-50"
+                                                            title="Undo this change"
+                                                        >
+                                                            <X size={18} />
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
                                     </tbody>
                                 </table>
+                                
+                                {!changes.about && changes.objectives.length === 0 && (
+                                    <div className="text-center py-8 text-gray-500">
+                                        No changes to display
+                                    </div>
+                                )}
                             </div>
 
-                            <div className="flex justify-end gap-2">
+                            <div className="flex justify-end gap-2 border-t pt-4">
                                 <button
                                     onClick={() => setShowRequestModal(false)}
-                                    className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
+                                    className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : "hover:bg-gray-500"}`}
                                     disabled={loading}
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleRequestConfirm}
-                                    className={`px-4 py-2 rounded bg-secd hover:bg-[#800000] text-text hover:text-drkt ${loading ? "cursor-progress" : ""}`}
-                                    disabled={Object.keys(changes).length === 0 || loading}
+                                    className={`px-4 py-2 rounded bg-secd text-text ${loading ? "cursor-progress opacity-50" : "hover:bg-[#800000] hover:text-drkt"}`}
+                                    disabled={(!changes.about && changes.objectives.length === 0) || loading}
                                 >
                                     {loading ? "Processing..." : "Final Request"}
                                 </button>
@@ -364,7 +558,7 @@ const AdminIQAC = ({ toggle , theme }) => {
         const [savedData, setSavedData] = useState(iqacData || {});
         const [uploadedFile, setUploadedFile] = useState(null);
         const [showRequestModal, setShowRequestModal] = useState(false);
-        const [changes, setChanges] = useState({}); // Track field changes
+        const [changes, setChanges] = useState({});
         const { sendRequest, loading, error } = useAdminRequest();
 
         if (!iqacData) {
@@ -384,10 +578,6 @@ const AdminIQAC = ({ toggle , theme }) => {
             if (file) {
                 const fileURL = URL.createObjectURL(file);
                 setUploadedFile({ file, fileURL });
-                setChanges((prev) => ({
-                    ...prev,
-                    image_path: { old: savedData.image_path, new: file.name }
-                }));
             }
         };
 
@@ -396,44 +586,68 @@ const AdminIQAC = ({ toggle , theme }) => {
 
             // Compare original with edited and collect changes
             const diff = {};
+            
+            // Check each field for changes
             Object.keys(editedData).forEach((key) => {
                 if (editedData[key] !== iqacData[key]) {
-                    diff[key] = { old: iqacData[key], new: editedData[key] };
+                    diff[key] = { 
+                        old: iqacData[key], 
+                        new: editedData[key],
+                        action: "edit" 
+                    };
                 }
             });
+            
+            // Check for image change
+            if (uploadedFile) {
+                diff.image_path = {
+                    old: iqacData.image_path,
+                    new: uploadedFile.file.name,
+                    action: "edit"
+                };
+            }
 
             setChanges(diff);
             setIsEditing(false);
         };
 
         const handleCancel = () => {
-            setEditedData(savedData); 
+            setEditedData(savedData);
+            setUploadedFile(null);
             setIsEditing(false);
-            setUploadedFile(null); 
             setChanges({});
         };
 
         const handleDiscard = () => {
-            setSavedData(iqacData); 
+            setSavedData(iqacData);
             setEditedData(iqacData);
             setUploadedFile(null);
             setChanges({});
         };
 
         const handleUndo = (field) => {
-            // Revert field back to original
-            setSavedData((prev) => ({ ...prev, [field]: iqacData[field] }));
-            setChanges((prev) => {
-                const newChanges = { ...prev };
-                delete newChanges[field];
-                return newChanges;
-            });
-            // If undoing image
+            // Create a copy of changes without the undone field
+            const newChanges = { ...changes };
+            delete newChanges[field];
+            
+            // Update savedData with original value for this field
+            const updatedSavedData = { ...savedData };
+            updatedSavedData[field] = iqacData[field];
+            
+            // Also update editedData to match
+            const updatedEditedData = { ...editedData };
+            updatedEditedData[field] = iqacData[field];
+            
+            setSavedData(updatedSavedData);
+            setEditedData(updatedEditedData);
+            
+            // If undoing image, clear uploadedFile
             if (field === "image_path") {
                 setUploadedFile(null);
             }
+            
+            setChanges(newChanges);
         };
-
 
         const handleRequestConfirm = async () => {
             if (Object.keys(changes).length === 0) return;
@@ -445,8 +659,8 @@ const AdminIQAC = ({ toggle , theme }) => {
             const metaData = {
                 ...savedData,
                 image_path: uploadedFile
-                ? `/static/images/profile_photos/${uploadedFile.file.name}` 
-                : savedData.image_path,
+                    ? `/static/images/profile_photos/${uploadedFile.file.name}` 
+                    : savedData.image_path,
             };
 
             // payload in the required format
@@ -482,7 +696,10 @@ const AdminIQAC = ({ toggle , theme }) => {
                     {/* Edit Button */}
                     {!isEditing && (
                         <button
-                            onClick={() => setIsEditing(true)}
+                            onClick={() => {
+                                setEditedData(savedData);
+                                setIsEditing(true);
+                            }}
                             className="absolute top-2 right-2 bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt"
                         >
                             Edit
@@ -497,8 +714,8 @@ const AdminIQAC = ({ toggle , theme }) => {
                                     <img src={uploadedFile.fileURL} alt="preview" className="coordinator-image mt-2" />
                                 ) : (
                                     <img
-                                        src={UrlParser(savedData.image_path) || "/placeholder.svg"}
-                                        alt={savedData.name}
+                                        src={UrlParser(editedData.image_path) || "/placeholder.svg"}
+                                        alt={editedData.name}
                                         className="coordinator-image mt-2"
                                     />
                                 )}
@@ -533,16 +750,17 @@ const AdminIQAC = ({ toggle , theme }) => {
                                         value={editedData[field] || ""}
                                         onChange={handleChange}
                                         className="border px-2 py-1 rounded w-full mb-2"
+                                        placeholder={field}
                                     />
                                 ))}
                             </>
                         ) : (
                             <>
                                 <h3 className="coordinator-name">{savedData.name}</h3>
-                                <p>{savedData.designation}</p>
-                                <p>{savedData.role}</p>
-                                <p>Email: {savedData.email}</p>
-                                <p>Phone: {savedData.phone}</p>
+                                <p><span className="font-semibold">Designation:</span> {savedData.designation}</p>
+                                <p><span className="font-semibold">Role:</span> {savedData.role}</p>
+                                <p><span className="font-semibold">Email:</span> {savedData.email}</p>
+                                <p><span className="font-semibold">Phone:</span> {savedData.phone}</p>
                             </>
                         )}
                     </div>
@@ -550,10 +768,10 @@ const AdminIQAC = ({ toggle , theme }) => {
 
                 {/* Save + Cancel */}
                 {isEditing && (
-                    <div className="flex gap-2 mt-3">
+                    <div className="flex gap-2 mt-3 justify-center">
                         <button
                             onClick={handleCancel}
-                            className="px-4 py-2 bg-gray-400 text-white rounded"
+                            className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
                         >
                             Cancel
                         </button>
@@ -571,7 +789,7 @@ const AdminIQAC = ({ toggle , theme }) => {
                     <div className="flex justify-center gap-2 mt-4">
                         <button
                             onClick={handleDiscard}
-                            className="px-4 py-2 bg-gray-400 text-white rounded"
+                            className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
                         >
                             Discard Changes
                         </button>
@@ -596,26 +814,41 @@ const AdminIQAC = ({ toggle , theme }) => {
                             </p>
 
                             <div className="max-h-[200px] overflow-y-auto mb-4">
-                                <table className="w-full text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>Action</th>
-                                            <th>Field</th>
-                                            <th>Changes</th>
-                                            <th>Undo</th>
+                                <table className="w-full text-left">
+                                    <thead className="sticky top-0 bg-drkt dark:bg-drkp">
+                                        <tr className="border-b-2 border-secd">
+                                            <th className="py-2 px-2">Action</th>
+                                            <th className="py-2 px-2">Field</th>
+                                            <th className="py-2 px-2">Changes</th>
+                                            <th className="py-2 px-2 text-center">Undo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {Object.keys(changes).map((field) => (
-                                            <tr key={field}>
-                                                <td className="text-blue-600">✎ Edited</td>
-                                                <td>{field}</td>
-                                                <td className="text-[12px]">
-                                                    {changes[field].new}
+                                            <tr key={field} className="border-b border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800">
+                                                <td className="py-3 px-2">
+                                                    <span className="text-blue-600 font-medium">✎ Edited</span>
                                                 </td>
-                                                <td>
-                                                    <button onClick={() => handleUndo(field)} className="text-red-500">
-                                                        <X />
+                                                <td className="py-3 px-2 font-medium capitalize">{field.replace('_', ' ')}</td>
+                                                <td className="py-3 px-2">
+                                                    <div className="text-sm">
+                                                        {field === 'image_path' ? (
+                                                            <span className="text-green-600">New image: {changes[field].new}</span>
+                                                        ) : (
+                                                            <>
+                                                                <span className="line-through text-gray-500 block text-xs">Old: {changes[field].old}</span>
+                                                                <span className="text-green-600 block">New: {changes[field].new}</span>
+                                                            </>
+                                                        )}
+                                                    </div>
+                                                </td>
+                                                <td className="py-3 px-2 text-center">
+                                                    <button 
+                                                        onClick={() => handleUndo(field)} 
+                                                        className="text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-50"
+                                                        title="Undo this change"
+                                                    >
+                                                        <X size={18} />
                                                     </button>
                                                 </td>
                                             </tr>
@@ -624,16 +857,17 @@ const AdminIQAC = ({ toggle , theme }) => {
                                 </table>
                             </div>
 
-                            <div className="flex justify-end gap-2">
+                            <div className="flex justify-end gap-2 border-t pt-4">
                                 <button
                                     onClick={() => setShowRequestModal(false)}
-                                    className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
+                                    className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : "hover:bg-gray-500"}`}
+                                    disabled={loading}
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleRequestConfirm}
-                                    className={`px-4 py-2 rounded bg-secd hover:bg-[#800000] text-text hover:text-drkt ${loading ? "cursor-progress" : "hover:bg-[#800000]"}`}
+                                    className={`px-4 py-2 rounded bg-secd text-text ${loading ? "cursor-progress opacity-50" : "hover:bg-[#800000] hover:text-drkt"}`}
                                     disabled={Object.keys(changes).length === 0 || loading}
                                 >
                                     {loading ? "Processing..." : "Final Request"}
@@ -876,4 +1110,4 @@ const AdminIQAC = ({ toggle , theme }) => {
     );
 };
 
-export default AdminIQAC;   
+export default AdminIQAC;
