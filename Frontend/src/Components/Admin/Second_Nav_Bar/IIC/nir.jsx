@@ -90,18 +90,15 @@ export default function IicFacnir({ data }) {
     // Here we treat empty string as allowed (you can change to require numeric)
     setPending(deepCopy(rows));
     setEditing(false);
-    toast.success("Saved as draft!");
   };
 
   const handleCancel = () => {
     if (pending) {
       // revert current working copy to last draft
       setRows(deepCopy(pending));
-      toast.info("Cancelled edits. Draft preserved!");
     } else {
       // revert to original
       setRows(deepCopy(original));
-      toast.info("Cancelled changes. Reverted to original data.");
     }
     setEditing(false);
   };
@@ -115,7 +112,6 @@ export default function IicFacnir({ data }) {
 
   const handleRequest = () => {
     if (!pending) {
-      toast.error("No draft saved. Save changes before requesting.");
       return;
     }
     setShowRequestModal(true);
@@ -250,16 +246,12 @@ export default function IicFacnir({ data }) {
     if (JSON.stringify(updated) === JSON.stringify(original)) {
       setPending(null);
       setShowRequestModal(false);
-      toast.info("All changes reverted; draft cleared.");
-    } else {
-      toast.info("Change reverted in draft.");
     }
   };
 
   // Final request: build payload(s) comparing original vs pending and call sendRequest
   const handleFinalRequestConfirm = async () => {
     if (!pending) {
-      toast.error("No draft to submit.");
       return;
     }
 
@@ -317,7 +309,6 @@ export default function IicFacnir({ data }) {
     }
 
     if (payload.length === 0) {
-      toast.info("No changes detected to submit.");
       setShowRequestModal(false);
       return;
     }
@@ -339,15 +330,13 @@ export default function IicFacnir({ data }) {
         setPending(null);
         setShowRequestModal(false);
         setEditing(false);
-        toast.success("Final request submitted!");
       } else {
         const msg = (result && (result.message || result.error)) || "Request failed. Check console for details.";
         console.error("Yukti request failed:", result);
-        toast.error(msg);
+        // toast.error(msg);
       }
     } catch (err) {
       console.error("Yukti request error:", err);
-      toast.error("Request failed. See console for details.");
     }
   };
 

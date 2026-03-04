@@ -1,0 +1,1214 @@
+[
+    {
+        "HOD": [
+            {
+                "name": "MR. BASKARAN V",
+                "unique_id": "VEC-010-H-001",
+                "designation": "Assistant Professor & Head",
+                "department_name": "English",
+                "mail_id": "hodenglish@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-154.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/vhod-english-47812162/",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "ISTE Life Member, ELT@I",
+                "educational_qualification": [
+                    {
+                        "degree": "M.PHIL",
+                        "branch": "ENGLISH LITERATURE",
+                        "institute": "BHARATHIDASAN UNIVERSITY",
+                        "year": 1989
+                    },
+                    {
+                        "degree": " MA",
+                        "branch": "ENGLISH LITERATURE",
+                        "institute": "BHARATHIDASAN UNIVERSITY",
+                        "year": 1986
+                    },
+                    {
+                        "degree": "B.A.",
+                        "branch": "ENGLISH LITERATURE",
+                        "institute": "UNIVERSITY OF MADRAS",
+                        "year": 1984
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "2005-02-21 00:00:00",
+                        "unnamed:_1": "2024-11-19 00:00:00",
+                        "experience": "19",
+                        "unnamed:_3": "8",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE (AUTONOMOUS)"
+                    },
+                    {
+                        "duration": "2000-06-07 00:00:00",
+                        "unnamed:_1": "2005-02-10 00:00:00",
+                        "experience": "4",
+                        "unnamed:_3": "8",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "SRI VENKATESWARA COLLEGE OF ENGINEERING AND TECHNOLOGY"
+                    },
+                    {
+                        "duration": "1998-09-16 00:00:00",
+                        "unnamed:_1": "2000-06-06 00:00:00",
+                        "experience": "1",
+                        "unnamed:_3": "8",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "DR PAULS ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "1995-08-28 00:00:00",
+                        "unnamed:_1": "1998-06-30 00:00:00",
+                        "experience": "2",
+                        "unnamed:_3": "10",
+                        "designation": "LECTURER",
+                        "institution": "MISRIMAL NAVAJEE MUNOTH JAIN ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "1994-11-14 00:00:00",
+                        "unnamed:_1": "1995-04-28 00:00:00",
+                        "experience": "0",
+                        "unnamed:_3": "5",
+                        "designation": "LECTURER",
+                        "institution": "MISRIMAL NAVAJEE MUNOTH JAIN ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "1991-09-02 00:00:00",
+                        "unnamed:_1": "1994-06-30 00:00:00",
+                        "experience": "2",
+                        "unnamed:_3": "9",
+                        "designation": "LECTURER",
+                        "institution": "MISRIMAL NAVAJEE MUNOTH JAIN POLYTECHNIC COLLEGE"
+                    }
+                ],
+                "projects": [
+                    {
+                        "title": "NIL"
+                    },
+                    {
+                        "title": "NIL"
+                    }
+                ],
+                "patents": [
+                    {
+                        "name_of_patent": "NIL"
+                    }
+                ],
+                "journal_publications": [
+                    {
+                        "authors": "NIL"
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "authors": "NIL"
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "NIL"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [
+                    {
+                        "research_scholar_name": "NIL"
+                    }
+                ],
+                "count": {
+                    "professional_membership": "ISTE Life Member, ELT@I",
+                    "sponsored_projects": 2,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 1,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 5,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "FACULTY": [
+            {
+                "name": "MS. SUGAPRIYA S",
+                "unique_id": "VEC-010-F-01",
+                "designation": "Assistant Professor",
+                "department_name": "English",
+                "mail_id": "sugapriya@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-150.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/sukhapriya-shreesughapriya-7813a260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=VMd6SjMAAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Sugapriya-Sadhasivam?ev=hdr_xprf",
+                    "orchidprofile": "https://orcid.org/0009-0009-7106-817X",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "ELTAI",
+                "educational_qualification": [
+                    {
+                        "degree": "Ph.D",
+                        "branch": "English",
+                        "institute": "UNIVERSITY OF MADRAS",
+                        "year": "Pursuing"
+                    },
+                    {
+                        "degree": "M.Phil",
+                        "branch": "English",
+                        "institute": "VELLALAR COLLEGE FOR WOMEN, BHARATHIAR UNIVERSITY",
+                        "year": "2004"
+                    },
+                    {
+                        "degree": "MA",
+                        "branch": "English",
+                        "institute": "VELLALAR COLLEGE FOR WOMEN, BHARATHIAR UNIVERSITY",
+                        "year": "2002"
+                    },
+                    {
+                        "degree": "BA",
+                        "branch": "English",
+                        "institute": "VELLALAR COLLEGE FOR WOMEN, BHARATHIAR UNIVERSITY"
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "2004-06-01 00:00:00",
+                        "unnamed:_1": "2005-04-01 00:00:00",
+                        "experience": "*",
+                        "unnamed:_3": "10",
+                        "designation": "Assistant Professor",
+                        "institution": "Cherrann’s Arts Science College, Kangayam"
+                    },
+                    {
+                        "duration": "2005-05-01 00:00:00",
+                        "unnamed:_1": "2010-12-01 00:00:00",
+                        "experience": "4",
+                        "unnamed:_3": "7",
+                        "designation": "Assistant Professor",
+                        "institution": "Kongu Arts and Science College, Erode"
+                    },
+                    {
+                        "duration": "2011-02-01 00:00:00",
+                        "unnamed:_1": "Present",
+                        "experience": "13",
+                        "unnamed:_3": "10",
+                        "designation": "Assistant Professor",
+                        "institution": "Velammal Engineering College, Chennai"
+                    }
+                ],
+                "projects": [],
+                "patents": [
+                    {
+                        "name_of_patent": "NIL"
+                    }
+                ],
+                "journal_publications": [
+                    {
+                        "authors": "Ms. S. Sugapriya",
+                        "paper_title": "SENSE OF BELONGING AND AFFINITY IN ROHINTON MISTRY’S FAMILY MATTERS",
+                        "journal_name": "RABINDRA BHARATI JOURNAL OF PHILOSOPHY",
+                        "page_no": "184-187",
+                        "vol_no_/_issue_no": "Vol. : XXIV, No:18",
+                        "month_&_year": "2023",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Ms. S. Sugapriya",
+                        "paper_title": "The Survivors of Old Age in Chitra Baneerjee Divaharuni's \"Mrs. Dutta Writes a Letter\" from The Unknown Errors of Our Lives",
+                        "journal_name": "Mukt Shabd Journal",
+                        "doi_number": "10.0014.MSJ.2023",
+                        "page_no": "595-603",
+                        "vol_no_/_issue_no": "Volume XII, Issue XII,",
+                        "month_&_year": "12 & 2023",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "authors": "Ms. S. Sugapriya",
+                        "paper_title": "Methods To Motivate and Nourish Young Adolescent Learners",
+                        "conference_name": "Innovative pedagogy in Higher Education for Millennial Teachers",
+                        "organized_by": "University of Madras",
+                        "isbn_/_issn_no": "978-81-926434-0-3.",
+                        "month_&_year": "2013-03-01"
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "Ms. S. Sugapriya",
+                        "book_name,_edition": "Exploring the Role of Self-Motivation in Second Language Acquisition: A Task-Based Learning Perspective",
+                        "publisher": "Innovation Online Training Academy",
+                        "isbn_/_issn_no": "978-93-93622-70-9",
+                        "month_&_year": 2023,
+                        "book_/_book_chapter": "BOOK CHAPTER"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [
+                    {
+                        "research_scholar_name": "NIL"
+                    }
+                ],
+                "count": {
+                    "professional_membership": "ELTAI",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 2,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 2,
+                    "seminar_/_workshop_/_guest_lectures_attended": 10,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 10,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MR. BALAJI A",
+                "unique_id": "VEC-010-F-02",
+                "designation": "Assistant Professor",
+                "department_name": "English",
+                "mail_id": "balaji@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-151.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://in.linkedin.com/in/balaji-alagurajan-43390536",
+                    "googlescholar": "https://scholar.google.com/citations?user=UK0X27YAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Balaji-Alagurajan",
+                    "orchidprofile": "https://orcid.org/0009-0001-5203-3985",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "ELTAI",
+                "educational_qualification": [
+                    {
+                        "degree": "UG - B.A.",
+                        "branch": " ENGLISH LITERATURE",
+                        "institute": "Sakathakathullah Appa College, Palayamkottai.",
+                        "year": "2005"
+                    },
+                    {
+                        "degree": "PG - M.A.",
+                        "branch": "Comparative Literature and Cultural Studies",
+                        "institute": "Gandhigram Rural Institute - Deemed University, Dindigul",
+                        "year": "2007"
+                    },
+                    {
+                        "degree": "M.Phil.",
+                        "branch": "English",
+                        "institute": "Gandhigram Rural Institute - Deemed University, Dindigul",
+                        "year": "2013"
+                    },
+                    {
+                        "degree": "(Ph.D)",
+                        "branch": "English",
+                        "institute": "Bharathidasan University, Tiruchirapalli.",
+                        "year": "2021-Present"
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "04.10.2010",
+                        "unnamed:_1": "31.07.2013",
+                        "experience": "2",
+                        "unnamed:_3": "9",
+                        "designation": "Lecturer / Assistant Professor",
+                        "institution": "PSNA College of Engineering and Technology, Dindigul."
+                    },
+                    {
+                        "duration": "01.08.2013",
+                        "unnamed:_1": "Present",
+                        "experience": "11",
+                        "unnamed:_3": "2",
+                        "designation": "Assistant Professor",
+                        "institution": "Velammal Engineering College, Chennai."
+                    }
+                ],
+                "projects": [
+                    {
+                        "title": "NIL"
+                    },
+                    {
+                        "title": "NIL"
+                    }
+                ],
+                "patents": [
+                    {
+                        "name_of_patent": "NIL"
+                    }
+                ],
+                "journal_publications": [
+                    {
+                        "authors": "A Balaji",
+                        "paper_title": "Flipping the Classroom in ELT Context",
+                        "journal_name": "International Journal of Scientific Research Review 7 (1), ",
+                        "page_no": "75-77",
+                        "vol_no_/_issue_no": "Volume 7, Issue 1",
+                        "month_&_year": 2016,
+                        "indexed_in_sci_/_scopus": "NO",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "A Balaji",
+                        "paper_title": "Re-visiting, resurrecting and reconstructing the mythology: Three dimensions of resurging young adult novels",
+                        "journal_name": "An International Multidisciplinary Research e-Journal",
+                        "page_no": "54-58",
+                        "vol_no_/_issue_no": "Volume 3, Issue 2",
+                        "month_&_year": 2016,
+                        "indexed_in_sci_/_scopus": "NO",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "authors": "A.Balaji",
+                        "paper_title": "Speaking by Reading:  Enriching Grammatically Correct Spoken English by Reading Young Adult Novels - A New Approach",
+                        "conference_name": "11th International Congress on English Grammar (ICEG 2014)\nIn association with Systemic Functional Linguistics\n\nGrammar and Grammar Teaching: Changing Perspectives\n",
+                        "organized_by": "SRI RAMAKRISHNA ENGINEERING COLLEGE",
+                        "isbn_/_issn_no": "ISSN 2279 - 543X",
+                        "month_&_year": "2014-03-01"
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "Prncy Sunil, A.BALAJI, S.Sugapriya",
+                        "book_name,_edition": "COMMUNICATIVE ENGLISH, EDITION 1",
+                        "publisher": "Cengage Publishers",
+                        "month_&_year": 2018,
+                        "book_/_book_chapter": "Book"
+                    },
+                    {
+                        "author": "A.BALAJI",
+                        "book_name,_edition": "THE THIRD GENDER : STAIN AND PAIN' Editon 2",
+                        "publisher": "Vishwabharathi Research Centre, New Delhi",
+                        "isbn_/_issn_no": {
+                            "$numberlong": "9789392108808"
+                        },
+                        "month_&_year": 2018,
+                        "book_/_book_chapter": "Book Chapter"
+                    },
+                    {
+                        "author": "A.BALAJI",
+                        "book_name,_edition": "Evolving Chapters: Language and Literature",
+                        "publisher": "IOT Academy",
+                        "isbn_/_issn_no": {
+                            "$numberlong": "9789393622709"
+                        },
+                        "month_&_year": 2023,
+                        "book_/_book_chapter": "Book Chapter"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "ELTAI",
+                    "sponsored_projects": 2,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 2,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 3,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MRS. DHANALAKSHMI R",
+                "unique_id": "VEC-010-F-03",
+                "designation": "Assistant Professor",
+                "department_name": "English",
+                "mail_id": "dhanalakshmi@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-171.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dhanalakshmi-rangarao-english-ap-i-vec-74221a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [
+                    {
+                        "degree": "M.Phil",
+                        "branch": "ENGLISH",
+                        "institute": "LOYOLA COLLEGE",
+                        "year": 2012
+                    },
+                    {
+                        "degree": "MA",
+                        "branch": "ENGLISH",
+                        "institute": "UNIVERSITY OF  MADRAS",
+                        "year": 2011
+                    },
+                    {
+                        "degree": "BA",
+                        "branch": "ENGLISH",
+                        "institute": "DRBCCC HINDU COLLEGE",
+                        "year": 2008
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "2012-09-24 00:00:00",
+                        "unnamed:_1": "to the Present",
+                        "experience": "12 yrs",
+                        "unnamed:_3": "4 months",
+                        "designation": "AP",
+                        "institution": "VEC"
+                    }
+                ],
+                "projects": [
+                    {
+                        "title": "TITLE",
+                        "sponsoring_agency": "SPONSORING AGENCY",
+                        "amount": "AMOUNT",
+                        "year_of_sanction": "YEAR OF SANCTION",
+                        "duration": "DURATION",
+                        "responsibility_(pi_/_co_pi)": "RESPONSIBILITY (PI / CO PI)",
+                        "status_(_completed_/_ongoing)": "STATUS ( Completed / Ongoing)"
+                    }
+                ],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MRS. LATHA J",
+                "unique_id": "VEC-010-F-04",
+                "designation": "Assistant Professor",
+                "department_name": "English",
+                "mail_id": "lathaj@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-148.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/latha-jayapathy-11b6952ba/",
+                    "googlescholar": "https://scholar.google.com/citations?user=wumZNXkAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Latha-Jayapathy?ev=hdr_xprf",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "NIL",
+                "educational_qualification": [
+                    {
+                        "degree": "B.A.",
+                        "branch": "ENGLISH",
+                        "institute": "BHARATHIDASAN GOVERNMEMT COLLEGE FOR WOMEN, PONDICHERRY UNIVERSITY",
+                        "year": 1997
+                    },
+                    {
+                        "degree": "M.A.",
+                        "branch": "ENGLISH",
+                        "institute": "KANCHI MAMUNIVAR CENTRE FOR POST GRADUATE STUDIES, PONDICHERRY UNIVERSITY",
+                        "year": 1999
+                    },
+                    {
+                        "degree": "M.Phil.",
+                        "branch": "ENGLISH",
+                        "institute": "KANCHI MAMUNIVAR CENTRE FOR POST GRADUATE STUDIES, PONDICHERRY UNIVERSITY",
+                        "year": 2000
+                    },
+                    {
+                        "degree": "SET",
+                        "branch": "ENGLISH",
+                        "institute": "MOTHER TERESA WOMEN'S UNIVERSITY, TAMILNADU",
+                        "year": 2017
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "11.12.2000",
+                        "unnamed:_1": "2.9.2005",
+                        "experience": "4",
+                        "unnamed:_3": "8",
+                        "designation": "LECTURER",
+                        "institution": "C.Kandaswami Naidu College for Women, Cuddalore"
+                    },
+                    {
+                        "duration": "5.9.2005",
+                        "unnamed:_1": "19.2.2007",
+                        "experience": "1",
+                        "unnamed:_3": "5",
+                        "designation": "LECTURER",
+                        "institution": "Krishnasamy College of Engineering and Technology, Cuddalore"
+                    },
+                    {
+                        "duration": "16.3.2009",
+                        "unnamed:_1": "30.4.2015",
+                        "experience": "6",
+                        "unnamed:_3": "1",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "Sakthi Mariamman Engineering College, Chennai"
+                    },
+                    {
+                        "duration": "1.7.2015",
+                        "unnamed:_1": "5.5.2020",
+                        "experience": "4",
+                        "unnamed:_3": "10",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "Rajalakshmi Institute of Technology, Chennai"
+                    },
+                    {
+                        "duration": "22-11-2021",
+                        "unnamed:_1": "22.9.2024",
+                        "experience": "2",
+                        "unnamed:_3": "9",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "Velammal Engineering College, Chennai"
+                    }
+                ],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [
+                    {
+                        "authors": "J.Latha",
+                        "paper_title": "Theme of Neurosis in Toni Morrison's Novels:The Bluest Eye and Beloved",
+                        "conference_name": "Two Day International Virtual Conference on New Millennium Indian and World Literature: A Comprehensive Approach",
+                        "organized_by": "Department of English & Comparative Literature, Madurai Kamaraj University",
+                        "isbn_/_issn_no": "ISSN NO:2277-7067",
+                        "month_&_year": "2021-10-01"
+                    }
+                ],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "NIL",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 2,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "DR. VINOTHKUMAR M",
+                "unique_id": "VEC-010-F-05",
+                "designation": "Assistant Professor",
+                "department_name": "English",
+                "mail_id": "vinothkumar@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-057.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/m-vinoth-kumar-45bba7168?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+                    "googlescholar": "https://scholar.google.com/citations?user=oIYjsvUAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Vinothkumar-Mohan-2?ev=hdr_xprf",
+                    "orchidprofile": "https://orcid.org/0009-0005-6008-3201",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [
+                    {
+                        "degree": "PhD",
+                        "branch": "English",
+                        "institute": "Thiruvalluvar University, Serkadu",
+                        "year": 2024
+                    },
+                    {
+                        "degree": "M. Phil ",
+                        "branch": "English",
+                        "institute": "Thiruvalluvar University, Serkadu.",
+                        "year": 2016
+                    },
+                    {
+                        "degree": "M.A ",
+                        "branch": "English",
+                        "institute": "Thiruvalluvar University, Serkadu.",
+                        "year": 2015
+                    },
+                    {
+                        "degree": "B.Ed.",
+                        "branch": "English",
+                        "institute": "Vellore Educational College, Vellore",
+                        "year": 2013
+                    },
+                    {
+                        "degree": "B.A ",
+                        "branch": "English",
+                        "institute": "Muthurangam Government Arts College, Otteri, Vellore.",
+                        "year": 2011
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "24.02.2022",
+                        "unnamed:_1": "Present",
+                        "experience": "2",
+                        "unnamed:_3": "7",
+                        "designation": "Assistant Professor",
+                        "institution": "Velammal Engineering College"
+                    }
+                ],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [
+                    {
+                        "authors": "P Gopikrishna, JA Premraj, A Manikandan, M Vinothkumar, R Ajayendra",
+                        "paper_title": "A Study on Techno-Nationalism, an Emerging Trend in the 21st Century India",
+                        "journal_name": "Journal of Humanities and Education Development (JHED)",
+                        "doi_number": "https://dx.doi.org/10.22161/jhed.6.1.5",
+                        "page_no": "30-42",
+                        "vol_no_/_issue_no": "6 (1)",
+                        "month_&_year": "2024-03-01 00:00:00",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "P Gopikrishna, J Anil Premraj, M Vinothkumar, R Ajayendra",
+                        "paper_title": "An Analysis on Domestic Violence, Depression and Surge of Anger During the COVID-19 Outbreak in India",
+                        "journal_name": "International Journal of English Literature and Social Sciences",
+                        "doi_number": "https://dx.doi.org/10.22161/ijels.91.8",
+                        "page_no": "64-77",
+                        "vol_no_/_issue_no": "9(1)",
+                        "month_&_year": "2024-02-01 00:00:00",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "M. Vinothkumar, Dr. V. Peruvalluthi",
+                        "paper_title": "Self-Sustainable Communal Life in Gopalla Gramam by Rajanarayanan",
+                        "journal_name": "Kala : The Journal of Indian Arts History Congress",
+                        "vol_no_/_issue_no": "26(1)",
+                        "month_&_year": "2020-2021",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "M. Vinothkumar, Dr. V. Peruvalluthi",
+                        "paper_title": "Sere life in Ashokamitran’s Novel ‘Water’: An Eco-Critical Study",
+                        "journal_name": "Smart Moves Journal IJELLH",
+                        "page_no": "2024-06-01 00:00:00",
+                        "vol_no_/_issue_no": "8 (1)",
+                        "month_&_year": "2020-01-01 00:00:00",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "M. Vinothkumar, Dr. V. Peruvalluthi",
+                        "paper_title": "Impact of Industrialisation on Environment: Sa. Kandhasamy’s Novel Sayavanam",
+                        "journal_name": "Pune Research: An International Journal in English, ",
+                        "vol_no_/_issue_no": "6 (1)",
+                        "month_&_year": "2020-2021",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "authors": "M. Vinothkumar, Dr. V. Peruvalluthi",
+                        "paper_title": "Uppu (Salt): An Eco- Critical Perceptive",
+                        "conference_name": "Polemics of Subaltern Consciousness in Academia. Emerald Publishers",
+                        "organized_by": "Thiruvalluvar University",
+                        "isbn_/_issn_no": {
+                            "$numberlong": "9788179664698"
+                        },
+                        "month_&_year": 2019
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "Dr. M. Vinothkumar, Dr. K Monika",
+                        "book_name,_edition": "India’s Culinary Conundrum: Unravelling Food Loss and Nourishing Food Security Through Data",
+                        "publisher": "Modern Research Confluence,  CIRS Publication",
+                        "isbn_/_issn_no": {
+                            "$numberlong": "9788197445026"
+                        },
+                        "month_&_year": "2024-08-20",
+                        "book_/_book_chapter": "Book Chapter"
+                    },
+                    {
+                        "publisher": " "
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [
+                    {
+                        "research_scholar_name": "NIL"
+                    }
+                ],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 5,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 2,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 5,
+                    "seminar_/_workshop_/_guest_lectures_attended": 11,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 3,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MR. ANAND V",
+                "unique_id": "VEC-010-F-06",
+                "designation": "Assistant Professor",
+                "department_name": "English",
+                "mail_id": "anandv@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-065.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/anand-vijayan-59a37b306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                    "googlescholar": "https://scholar.google.com/citations?view_op=new_articles&hl=en&imq=ANAND+V+(PC2133005013003)",
+                    "researchgate": "https://www.researchgate.net/profile/Anand-Vijayan-8",
+                    "orchidprofile": "https://orcid.org/0009-0008-2898-0510",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "Lifetime member in ISTE",
+                "educational_qualification": [
+                    {
+                        "degree": "PH. D.",
+                        "branch": "ENGLISH",
+                        "institute": "SRM INSTITUTE OF SCIENCE AND TECHNOLOGY, RAMAPURAM CAMPUS",
+                        "year": "PURSUING"
+                    },
+                    {
+                        "degree": "M. PHIL.",
+                        "branch": "ENGLISH",
+                        "institute": "MADURAI KAMARAJ UNIVERSITY, MADURAI",
+                        "year": "2012"
+                    },
+                    {
+                        "degree": "M. A.",
+                        "branch": "ENGLISH",
+                        "institute": "THIAGARAJAR COLLEGE, MADURAI",
+                        "year": "2005"
+                    },
+                    {
+                        "degree": "B. ED.",
+                        "branch": "ENGLISH",
+                        "institute": "GOVT. COLLEGE OF EDUCATION, PUDUKKOTTAI",
+                        "year": "2007"
+                    },
+                    {
+                        "degree": "B. A. ",
+                        "branch": "ENGLISH",
+                        "institute": "MANNAR THIRUMALAI NAICKER COLLEGE, MADURAI",
+                        "year": "2003"
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "02.05.2022",
+                        "unnamed:_1": "TILL NOW",
+                        "experience": "2",
+                        "unnamed:_3": "4",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "VELAMMAL ENGG. COLLEGE, CHENNAI"
+                    },
+                    {
+                        "duration": "04.08.2015",
+                        "unnamed:_1": "30.04.2022",
+                        "experience": "6",
+                        "unnamed:_3": "8",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "EASWARI ENGG. COLLEGE, CHENNAI"
+                    },
+                    {
+                        "duration": "17.11.2014",
+                        "unnamed:_1": "29.07.2015",
+                        "experience": "0",
+                        "unnamed:_3": "8",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "NPR ARTS AND SCIENCE COLLEGE, DINDIGUL"
+                    },
+                    {
+                        "duration": "09.07.2012",
+                        "unnamed:_1": "15.11.2014",
+                        "experience": "2",
+                        "unnamed:_3": "4",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "NPR COLLEGE OF ENGG. & TECH., DINDIGUL"
+                    },
+                    {
+                        "duration": "01.08.2011",
+                        "unnamed:_1": "29.06.2012",
+                        "experience": "0",
+                        "unnamed:_3": "10",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "NADAR SARASWATHI COLLEGE OF ENGG. & TECH., THENI"
+                    },
+                    {
+                        "duration": "01.07.2010",
+                        "unnamed:_1": "31.05.2011",
+                        "experience": "0",
+                        "unnamed:_3": "11",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "SETHU INSTITUTE OF TECHNOLOGY, ARUPPUKOTTAI"
+                    },
+                    {
+                        "duration": "21.01.2008",
+                        "unnamed:_1": "30.06.2010",
+                        "experience": "2",
+                        "unnamed:_3": "5",
+                        "designation": "LECTURER",
+                        "institution": "SETHU INSTITUTE OF TECHNOLOGY, ARUPPUKOTTAI"
+                    }
+                ],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [
+                    {
+                        "authors": "Mr. Anand V & Dr. Savitha S.",
+                        "paper_title": "Man in Search of Himself: A Critical Study on the Psyche of Mahesh Elkunchwar’s Protagonist of the Play Reflection",
+                        "journal_name": "Journal of the Asiatic Society of Mumbai,",
+                        "doi_number": 10.2022,
+                        "page_no": "10 TO 15",
+                        "vol_no_/_issue_no": "XCV",
+                        "month_&_year": "2022-10-01",
+                        "indexed_in_sci_/_scopus": "NIL",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "Lifetime member in ISTE",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 1,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MRS. ARCHANA G M",
+                "unique_id": "VEC-010-F-07",
+                "designation": "Assistant Professor",
+                "department_name": "English",
+                "mail_id": "archanagm@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-146.webp",
+                "socialmedia_links": {
+                    "linkedin": "http://www.linkedin.com/in/archana-g-m-govindasamy-murugesan-12128832b",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=vlQOgNAAAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [
+                    {
+                        "degree": "M.Phil",
+                        "branch": "ENGLISH LITERATURE",
+                        "institute": "MOTHER TERESA UNIVERSITY",
+                        "year": 2015
+                    },
+                    {
+                        "degree": "M.Ed",
+                        "branch": "EDUCATION",
+                        "institute": "SIVANTHI COLLEGE OF EDUCATION",
+                        "year": 2013
+                    },
+                    {
+                        "degree": "B.Ed",
+                        "branch": "EDUCATION",
+                        "institute": "SATHYA SAI COLLEGE OF EDUCATION",
+                        "year": 2009
+                    },
+                    {
+                        "degree": "M.A ",
+                        "branch": "ENGLISH LITERATURE",
+                        "institute": "UNIVERSITY OF MADRAS",
+                        "year": 2004
+                    },
+                    {
+                        "degree": "B.A",
+                        "branch": "ENGLISH LITERATURE",
+                        "institute": "ETHIRAJ COLLEGE FOR WOMEN",
+                        "year": 2001
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "27/6/2012",
+                        "unnamed:_1": "14/8/2021",
+                        "experience": "9",
+                        "unnamed:_3": "1",
+                        "designation": "Assistant Professor ",
+                        "institution": "Nazareth College of Arts and Science"
+                    }
+                ],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [
+                    {
+                        "authors": "ARCHANA G .M",
+                        "paper_title": "Realism in Henry Ibsen's play: A DOLL'S HOUSE",
+                        "journal_name": "KALA : Journal of Indian Art History Congress",
+                        "doi_number": "0975-7945",
+                        "page_no": "216",
+                        "vol_no_/_issue_no": "27/02",
+                        "month_&_year": "2020-2021",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Dr.L.KOMATHI & G.M.ARCHANA",
+                        "paper_title": "Stress Management,work and family balance - Right Approaches to tackle family and life.",
+                        "journal_name": "International Journal of Interdisciplinary Research in Arts and Humanities",
+                        "doi_number": "2456",
+                        "page_no": "77-81",
+                        "vol_no_/_issue_no": "2024-09-02 00:00:00",
+                        "month_&_year": "July-December &2024",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "authors": "ARCHANA G.M",
+                        "paper_title": "A CULTURAL CONFLICT:A STUDY FROM WOLE SOYINKA'S THE LION AND THE JEWEL",
+                        "conference_name": "THE IMPORTANCE OF LITERATURE AND ITS IMPACT ON SOCIETY",
+                        "organized_by": "NAZARETH COLLEGE OF ARTS AND SCIENCE",
+                        "isbn_/_issn_no": "2349-8684",
+                        "month_&_year": "2017-02-01"
+                    },
+                    {
+                        "paper_title": "\\",
+                        "conference_name": ""
+                    }
+                ],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 2,
+                    "conference_publications": 2,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 5,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "DR. DEEPIKA A",
+                "unique_id": "VEC-010-F-08",
+                "designation": "Assistant Professor",
+                "department_name": "",
+                "mail_id": "",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-604.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MRS. RHODAS DAISY D",
+                "unique_id": "VEC-010-F-09",
+                "designation": "Assistant Professor",
+                "department_name": "",
+                "mail_id": "",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-605.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MRS. GNANESHWARI R",
+                "unique_id": "VEC-010-F-10",
+                "designation": "Assistant Professor",
+                "department_name": "",
+                "mail_id": "",
+                "image_path": "/static/images/profile_photos/010/VEC-010-04-606.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "NON_TEACHING_FACULTY": [
+            {
+                "name": "MRS. INDUMATHI S",
+                "unique_id": "VEC-010-NF-01",
+                "designation": "Lab Instructor",
+                "department_name": "",
+                "mail_id": "",
+                "image_path": "/static/images/profile_photos/010/VEC-010-05-631.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "FACULTY_PDF_PATH": {
+            "pdf_path": "/static/pdfs/faculty_list/010.pdf"
+        }
+    }
+]

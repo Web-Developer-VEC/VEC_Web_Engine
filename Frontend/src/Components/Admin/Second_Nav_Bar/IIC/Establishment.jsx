@@ -49,19 +49,32 @@ function IicEco({ data, isEditing, onUpdate }) {
           <div className="py-2">
             {data.map((point, i) => (
               <div key={i} className="flex items-center gap-2 mb-2">
-                <input
-                  type="text"
-                  value={point}
-                  onChange={(e) => handleChange(i, e.target.value)}
-                  className="w-full p-2 border rounded"
-                  placeholder="Function point"
-                />
+                <div className="w-full">
+                  <div className="flex items-center mb-1">
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Function Point {i + 1} <span className="text-red-500">*</span>
+                    </label>
+                    {!point.trim() && (
+                      <span className="ml-2 text-xs text-red-500">(Required)</span>
+                    )}
+                  </div>
+                  <input
+                    type="text"
+                    value={point}
+                    onChange={(e) => handleChange(i, e.target.value)}
+                    className={`w-full p-2 border rounded ${
+                      !point.trim() ? "border-red-500 bg-red-50" : "border-gray-300"
+                    }`}
+                    placeholder="Function point (required)"
+                    required
+                  />
+                </div>
                 <button
                   onClick={() => handleRemovePoint(i)}
-                  className="p-2 text-red-500 hover:text-red-700"
+                  className="p-2 text-red-500 hover:text-red-700 mt-6"
                   title="Remove point"
                 >
-                  {/* Intentionally kept empty icon spot to preserve layout */}
+                  <X size={18} />
                 </button>
               </div>
             ))}
@@ -103,6 +116,7 @@ function IicEst({ data }) {
   const [isDirty, setIsDirty] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const [emptyFields, setEmptyFields] = useState({});
 
   const { sendRequest, loading } = useAdminRequest();
 
@@ -116,6 +130,7 @@ function IicEst({ data }) {
       setIsEditing(false);
       setIsDirty(false);
       setIsSaved(false);
+      setEmptyFields({});
     }
   }, [data]);
 
@@ -125,14 +140,45 @@ function IicEst({ data }) {
     return item ? item.content : [];
   };
 
+  // Check for empty fields across all categories
+  const checkEmptyFields = (itemsList) => {
+    const empty = {};
+    
+    itemsList.forEach(item => {
+      if (item.category === "vision" || item.category === "mission") {
+        // Single text field
+        if (!String(item.content || "").trim()) {
+          empty[item.category] = true;
+        }
+      } else {
+        // Array fields
+        if (Array.isArray(item.content)) {
+          const emptyIndices = item.content.reduce((acc, val, idx) => {
+            if (!String(val || "").trim()) {
+              acc.push(idx);
+            }
+            return acc;
+          }, []);
+          if (emptyIndices.length > 0) {
+            empty[item.category] = emptyIndices;
+          }
+        }
+      }
+    });
+    
+    return empty;
+  };
+
   // Start editing (load pending draft if exists)
   const handleStartEdit = () => {
     if (pendingItems) {
       setItems(deepCopy(pendingItems));
       setIsSaved(!!pendingItems);
+      setEmptyFields(checkEmptyFields(pendingItems));
     } else {
       setItems(deepCopy(committedItems));
       setIsSaved(false);
+      setEmptyFields(checkEmptyFields(committedItems));
     }
     setIsEditing(true);
     setIsDirty(false);
@@ -153,6 +199,9 @@ function IicEst({ data }) {
     });
     setItems(updated);
     setIsDirty(true);
+    
+    // Update empty fields
+    setEmptyFields(checkEmptyFields(updated));
   };
 
   const handleAddPoint = (category) => {
@@ -163,6 +212,7 @@ function IicEst({ data }) {
     });
     setItems(updated);
     setIsDirty(true);
+    setEmptyFields(checkEmptyFields(updated));
   };
 
   const handleRemovePoint = (category, index) => {
@@ -174,35 +224,51 @@ function IicEst({ data }) {
     });
     setItems(updated);
     setIsDirty(true);
+    setEmptyFields(checkEmptyFields(updated));
   };
 
   const handleCancel = () => {
     if (pendingItems) {
       setItems(deepCopy(pendingItems));
-      toast.info("Cancelled edits. Draft preserved!");
       setIsSaved(true);
+      setEmptyFields(checkEmptyFields(pendingItems));
     } else {
       setItems(deepCopy(committedItems));
-      toast.info("Cancelled. Reverted to original data!");
       setIsSaved(false);
+      setEmptyFields(checkEmptyFields(committedItems));
     }
     setIsEditing(false);
     setIsDirty(false);
   };
 
   const handleSave = () => {
-    // validate: ensure no empty strings inside content arrays or empty single values
-    // const invalid = items.find((it) => {
-    //   if (Array.isArray(it.content)) {
-    //     return it.content.some((p) => !String(p || "").trim());
-    //   }
-    //   return !String(it.content || "").trim();
-    // });
-
-    // if (invalid) {
-    //   toast.error("Please fill all fields before saving!");
-    //   return;
-    // }
+    // Validate all fields are filled
+    const emptyFieldsObj = checkEmptyFields(items);
+    const hasEmptyFields = Object.keys(emptyFieldsObj).length > 0;
+    
+    if (hasEmptyFields) {
+      // Create detailed error message
+      const emptyMessages = [];
+      
+      Object.entries(emptyFieldsObj).forEach(([category, value]) => {
+        if (category === "vision") {
+          emptyMessages.push("Vision statement");
+        } else if (category === "mission") {
+          emptyMessages.push("Mission statement");
+        } else if (category === "majorfocus") {
+          if (Array.isArray(value)) {
+            emptyMessages.push(`Major Focus (paragraphs ${value.map(v => v + 1).join(', ')})`);
+          }
+        } else if (category === "function") {
+          if (Array.isArray(value)) {
+            emptyMessages.push(`Functions of IIC (points ${value.map(v => v + 1).join(', ')})`);
+          }
+        }
+      });
+      
+      toast.error(`Please fill all required fields: ${emptyMessages.join(', ')}`);
+      return;
+    }
 
     // Clean empty points from array-type content before saving as draft
     const cleaned = items.map((it) => {
@@ -218,7 +284,8 @@ function IicEst({ data }) {
     setIsSaved(true);
     setIsEditing(false);
     setIsDirty(false);
-    toast.success("Changes saved as draft!");
+    setEmptyFields({});
+    toast.success("Changes saved successfully!");
   };
 
   const handleDiscard = () => {
@@ -226,10 +293,19 @@ function IicEst({ data }) {
     setPendingItems(null);
     setIsSaved(false);
     setIsDirty(false);
+    setEmptyFields({});
     toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
+    // Check for empty fields in pending items
+    if (pendingItems) {
+      const emptyFieldsObj = checkEmptyFields(pendingItems);
+      if (Object.keys(emptyFieldsObj).length > 0) {
+        toast.error("Cannot request with empty fields. Please edit and fill all required fields.");
+        return;
+      }
+    }
     setShowRequestModal(true);
   };
 
@@ -269,7 +345,14 @@ function IicEst({ data }) {
   // Final request: send only categories that changed (build payloads as in your sample)
   const handleFinalRequestConfirm = async () => {
     if (!pendingItems) {
-      toast.error("No draft to submit. Save changes first.");
+      return;
+    }
+
+    // Final check for empty fields
+    const emptyFieldsObj = checkEmptyFields(pendingItems);
+    if (Object.keys(emptyFieldsObj).length > 0) {
+      toast.error("Cannot submit request with empty fields. Please go back and fill all required fields.");
+      setShowRequestModal(false);
       return;
     }
 
@@ -303,7 +386,6 @@ function IicEst({ data }) {
     }
 
     if (payload.length === 0) {
-      toast.info("No changes detected to submit.");
       setShowRequestModal(false);
       return;
     }
@@ -327,13 +409,12 @@ function IicEst({ data }) {
         setShowRequestModal(false);
         setIsEditing(false);
         setIsDirty(false);
-        toast.success("Final request submitted!");
-      } else {
-        toast.error("Request failed. See console for details.");
+        setEmptyFields({});
+        toast.success("Request submitted successfully!");
       }
     } catch (err) {
       console.error("IIC establishment final request error:", err);
-      toast.error("An error occurred while sending final request.");
+      toast.error("Failed to submit request. Please try again.");
     }
   };
 
@@ -345,6 +426,8 @@ function IicEst({ data }) {
     );
     setPendingItems(updated);
     setItems(deepCopy(updated));
+    setEmptyFields(checkEmptyFields(updated));
+    
     // if no remaining differences, clear draft
     const remaining = (() => {
       const cm = new Map((committedItems || []).map((it) => [it.category, it]));
@@ -364,6 +447,7 @@ function IicEst({ data }) {
       setPendingItems(null);
       setIsSaved(false);
     }
+    toast.info(`${category} changes reverted!`);
   };
 
   // Category convenience variables for rendering
@@ -371,6 +455,9 @@ function IicEst({ data }) {
   const vision = getCategory(items, "vision");
   const mission = getCategory(items, "mission");
   const functions = getCategory(items, "function");
+
+  // Check if save button should be disabled
+  const hasEmptyFields = Object.keys(emptyFields).length > 0;
 
   if (!Array.isArray(items) || items.length === 0) {
     return (
@@ -382,7 +469,7 @@ function IicEst({ data }) {
 
   return (
     <div className="about-section">
-      <ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* Header */}
       <div className="relative mb-4 flex items-center">
@@ -413,15 +500,32 @@ function IicEst({ data }) {
             {Array.isArray(majorFocus) &&
               majorFocus.map((point, i) => (
                 <div key={i} className="flex items-center gap-2 mb-2">
-                  <input
-                    type="text"
-                    value={point}
-                    onChange={(e) => handleChange("majorfocus", i, e.target.value)}
-                    className="w-full p-2 border rounded"
-                    placeholder="Major focus point"
-                  />
-                  <button onClick={() => handleRemovePoint("majorfocus", i)} className="p-2 text-red-500 hover:text-red-700">
-                    {/* placeholder for icon */}
+                  <div className="w-full">
+                    <div className="flex items-center mb-1">
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Major Focus Point {i + 1} <span className="text-red-500">*</span>
+                      </label>
+                      {!point.trim() && (
+                        <span className="ml-2 text-xs text-red-500">(Required)</span>
+                      )}
+                    </div>
+                    <input
+                      type="text"
+                      value={point}
+                      onChange={(e) => handleChange("majorfocus", i, e.target.value)}
+                      className={`w-full p-2 border rounded ${
+                        !point.trim() ? "border-red-500 bg-red-50" : "border-gray-300"
+                      }`}
+                      placeholder="Major focus point (required)"
+                      required
+                    />
+                  </div>
+                  <button 
+                    onClick={() => handleRemovePoint("majorfocus", i)} 
+                    className="p-2 text-red-500 hover:text-red-700 mt-6"
+                    title="Remove point"
+                  >
+                    <X size={18} />
                   </button>
                 </div>
               ))}
@@ -445,31 +549,65 @@ function IicEst({ data }) {
       <div className="flex flex-col lg:flex-row justify-between gap-6 mt-6">
         {/* Vision */}
         <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
-          <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">Vision</h2>
+          <h2 className="text-[30px] text-brwn dark:text-drkt iic-establishment border-b-2 border-secd dark:border-drks pb-1">
+            Vision <span className="text-red-500 text-sm">*</span>
+          </h2>
           {isEditing ? (
-            <textarea
-              value={Array.isArray(vision) ? vision[0] || "" : vision || ""}
-              onChange={(e) => handleChange("vision", 0, e.target.value)}
-              className="w-full p-2 border rounded min-h-[100px]"
-              placeholder="Vision statement"
-            />
+            <div className="mt-2">
+              <div className="flex items-center mb-1">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Vision Statement <span className="text-red-500">*</span>
+                </label>
+                {!String(Array.isArray(vision) ? vision[0] || "" : vision || "").trim() && (
+                  <span className="ml-2 text-xs text-red-500">(Required)</span>
+                )}
+              </div>
+              <textarea
+                value={Array.isArray(vision) ? vision[0] || "" : vision || ""}
+                onChange={(e) => handleChange("vision", 0, e.target.value)}
+                className={`w-full p-2 border rounded min-h-[100px] ${
+                  !String(Array.isArray(vision) ? vision[0] || "" : vision || "").trim() 
+                    ? "border-red-500 bg-red-50" 
+                    : "border-gray-300"
+                }`}
+                placeholder="Vision statement (required)"
+                required
+              />
+            </div>
           ) : (
-            <p>{Array.isArray(vision) ? (vision[0] || "") : vision || ""}</p>
+            <p className="mt-2">{Array.isArray(vision) ? (vision[0] || "") : vision || ""}</p>
           )}
         </div>
 
         {/* Mission */}
         <div className="iqac-info-panel border-l-4 border-secd dark:border-drks w-full lg:w-1/2 dark:bg-drkb">
-          <h2 className="text-[30px] iic-establishment border-b-2 border-secd dark:border-drks pb-1 text-brwn dark:text-drkt">Mission</h2>
+          <h2 className="text-[30px] iic-establishment border-b-2 border-secd dark:border-drks pb-1 text-brwn dark:text-drkt">
+            Mission <span className="text-red-500 text-sm">*</span>
+          </h2>
           {isEditing ? (
-            <textarea
-              value={Array.isArray(mission) ? mission[0] || "" : mission || ""}
-              onChange={(e) => handleChange("mission", 0, e.target.value)}
-              className="w-full p-2 border rounded min-h-[100px]"
-              placeholder="Mission statement"
-            />
+            <div className="mt-2">
+              <div className="flex items-center mb-1">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Mission Statement <span className="text-red-500">*</span>
+                </label>
+                {!String(Array.isArray(mission) ? mission[0] || "" : mission || "").trim() && (
+                  <span className="ml-2 text-xs text-red-500">(Required)</span>
+                )}
+              </div>
+              <textarea
+                value={Array.isArray(mission) ? mission[0] || "" : mission || ""}
+                onChange={(e) => handleChange("mission", 0, e.target.value)}
+                className={`w-full p-2 border rounded min-h-[100px] ${
+                  !String(Array.isArray(mission) ? mission[0] || "" : mission || "").trim() 
+                    ? "border-red-500 bg-red-50" 
+                    : "border-gray-300"
+                }`}
+                placeholder="Mission statement (required)"
+                required
+              />
+            </div>
           ) : (
-            <p>{Array.isArray(mission) ? (mission[0] || "") : mission || ""}</p>
+            <p className="mt-2">{Array.isArray(mission) ? (mission[0] || "") : mission || ""}</p>
           )}
         </div>
       </div>
@@ -483,6 +621,7 @@ function IicEst({ data }) {
             const updatedItems = items.map((it) => (it.category === "function" ? { ...it, content: newData } : it));
             setItems(updatedItems);
             setIsDirty(true);
+            setEmptyFields(checkEmptyFields(updatedItems));
           }}
         />
       </div>
@@ -494,11 +633,26 @@ function IicEst({ data }) {
             Cancel
           </button>
           {isDirty && (
-            <button onClick={handleSave} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim">
+            <button 
+              onClick={handleSave} 
+              className={`flex items-center gap-2 px-4 py-2 rounded ${
+                hasEmptyFields 
+                  ? "bg-gray-400 cursor-not-allowed" 
+                  : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+              }`}
+              disabled={hasEmptyFields}
+            >
               <Save size={18} /> Save
             </button>
           )}
         </div>
+      )}
+
+      {/* Empty fields warning */}
+      {isEditing && hasEmptyFields && (
+        <p className="text-xs text-red-500 mt-2 text-right">
+          Please fill all required fields before saving
+        </p>
       )}
 
       {/* Discard/Request buttons when saved draft exists */}

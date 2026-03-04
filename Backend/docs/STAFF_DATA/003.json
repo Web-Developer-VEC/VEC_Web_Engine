@@ -1,0 +1,1459 @@
+[
+    {
+        "HOD": [
+            {
+                "name": "DR. MOHAMED SIKKANDER A",
+                "unique_id": "VEC-003-H-001",
+                "designation": "Associate Professor & Head",
+                "department_name": "",
+                "mail_id": "",
+                "image_path": "/static/images/profile_photos/003/VEC-003-01-173.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/dr-mohamed-sikkander-abdul-razak-51485246/?originalSubdomain=in",
+                    "googlescholar": "https://scholar.google.co.in/citations?user=M5UgVCMAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Abdul-Razak-Mohamed-Sikkander",
+                    "orchidprofile": "https://orcid.org/0000-0002-8458-7448",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/AAY-3579-2021",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57195150706"
+                },
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "FACULTY": [
+            {
+                "name": "DR. KAVITHA K",
+                "unique_id": "VEC-003-F-01",
+                "designation": "Assistant Professor",
+                "department_name": "Chemistry",
+                "mail_id": "kavithak@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/003/VEC-003-04-088.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/kavitha-kamalasekaran-360b5834b/",
+                    "googlescholar": "https://g.co/kgs/pXiMkTe",
+                    "researchgate": "https://www.researchgate.net/profile/Kamalasekaran-Kavitha",
+                    "orchidprofile": "https://orcid.org/0009-0005-6227-9224",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "Indian Society for Technical Education",
+                "educational_qualification": [
+                    {
+                        "degree": "PH.D",
+                        "branch": "ANALTYTICAL CHEMISTRY",
+                        "institute": "DEPARTMENT OF ANALYTICAL CHEMISTRY,UNIVERSITY OF MADRAS",
+                        "year": "2012"
+                    },
+                    {
+                        "degree": "M.PHIL",
+                        "branch": "ANALTYTICAL CHEMISTRY",
+                        "institute": "DEPARTMENT OF ANALYTICAL CHEMISTRY,UNIVERSITY OF MADRAS",
+                        "year": "2003-2004"
+                    },
+                    {
+                        "degree": "M.SC",
+                        "branch": "ANALTYTICAL CHEMISTRY",
+                        "institute": "DEPARTMENT OF ANALYTICAL CHEMISTRY,UNIVERSITY OF MADRAS",
+                        "year": "2001-2003"
+                    },
+                    {
+                        "degree": "B.SC",
+                        "branch": "GENERAL CHEMISTRY",
+                        "institute": "QUAID-E-MILLETH COLLEGE FOR WOMEN, UNIVERSITY OF MADRAS",
+                        "year": "1998-2001"
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "16.06.2015",
+                        "unnamed:_1": "TILL DATE (24-09-2024)",
+                        "experience": "9",
+                        "unnamed:_3": "3",
+                        "designation": "ASSISTANT PROFESSOR-II",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "13.06.2011",
+                        "unnamed:_1": "14.07.2014",
+                        "experience": "3",
+                        "unnamed:_3": "1",
+                        "designation": "ASSISTANT PROFESSOR-I",
+                        "institution": "DHAANISH AHMED COLLEGE OF ENGINEERING"
+                    }
+                ],
+                "projects": [
+                    {
+                        "title": "NIL",
+                        "sponsoring_agency": "NIL",
+                        "amount": "NIL",
+                        "year_of_sanction": "NIL",
+                        "duration": "NIL",
+                        "responsibility_(pi_/_co_pi)": "NIL",
+                        "status_(_completed_/_ongoing)": "NIL"
+                    }
+                ],
+                "patents": [
+                    {
+                        "name_of_patent": "MECHANICAL ENERGY STORAGE MACHINE",
+                        "patent_type_(utility)": "DESIGN PATENT",
+                        "country": "INDIA",
+                        "status_(_published_/_fer_/_granted_)": "PUBLISHED",
+                        "date_of_recent_achieved_level": "2024-04-01"
+                    }
+                ],
+                "journal_publications": [
+                    {
+                        "authors": "Dr.K.KAVITHA",
+                        "paper_title": "Applications of chemically modified screen -printed electrodes in food analysis and quality monitoring ; a review",
+                        "journal_name": "RSC advances",
+                        "doi_number": "https://doi.org/10.1039/d4ra02470b",
+                        "page_no": "27957-27971",
+                        "vol_no_/_issue_no": "14",
+                        "month_&_year": "2024-08-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Dr.K.KAVITHA",
+                        "paper_title": "Electrodeposition of nickel nanoparticles on graphene / iron (III)phthalicyanine-4,4',4,\",4'''-tetrasulfonic acid coated electrode for glucose sensing",
+                        "journal_name": "Inorganic chemistry communications",
+                        "doi_number": "http://dx.doi.org/10.1016/j.inoche.2024.112140",
+                        "page_no": "112140",
+                        "vol_no_/_issue_no": "1900-06-09 00:00:00",
+                        "month_&_year": "2024-01-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Dr.K.KAVITHA",
+                        "paper_title": "\"Development of Electrochemical Sensor Using Iron (III) Phthalocyanine/Gold\nNanoparticles/Graphene Hybrid Film for Highly Selective Determination of Nicotine in Human\nSalivary Samples\"",
+                        "journal_name": "Biosensors",
+                        "doi_number": "https://doi.org/10.3390/bios13090839",
+                        "page_no": "839-850",
+                        "vol_no_/_issue_no": "13(9)",
+                        "month_&_year": "2023-08-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Dr.K.KAVITHA",
+                        "paper_title": "Electrochemical synthesis of a graphene dispersed in iron (iii) phthalocyanine with nickel oxide based sensor for selective detection of glucose in human saliva.",
+                        "journal_name": "International Journal of Electrochemical Science",
+                        "doi_number": "https://doi.org/10.1016/j.ijoes.2023.100203",
+                        "page_no": "100203",
+                        "vol_no_/_issue_no": "18(7)",
+                        "month_&_year": "2023-08-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Dr.K.KAVITHA",
+                        "paper_title": "Potentiometric Titration of Vanadium (V) with Iron (II) in the Presence of NTA and DTPA Using Dry-Cell Graphite Electrode",
+                        "journal_name": "Revista de chimie",
+                        "doi_number": "https://doi.org/10.37358/RC.21.3.8445",
+                        "page_no": "144-158",
+                        "vol_no_/_issue_no": "72(3)",
+                        "month_&_year": "2021-05-01",
+                        "indexed_in_sci_/_scopus": "scopus",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Dr.K.KAVITHA",
+                        "paper_title": "Effect Of Glycine On Potentiometric Titration Of Cobalt (II) With Potassium Hexacyanoferrate (II).  9, 906-909.",
+                        "journal_name": "International Journal of Scientific & Technology Research",
+                        "doi_number": "https://doi.org/10.22/IJSTR",
+                        "page_no": "906-909",
+                        "vol_no_/_issue_no": "9(1)",
+                        "month_&_year": "2020-03-01",
+                        "indexed_in_sci_/_scopus": "scopus",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "conference_name": "NIL",
+                        "organized_by": "NIL",
+                        "isbn_/_issn_no": "NIL",
+                        "month_&_year": "NIL"
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "DR.K.KAVITHA",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "KUMUD PUBLICATIONS NEW DELHI-110053",
+                        "isbn_/_issn_no": "ISBN:978-93- 82885-54-2     ",
+                        "month_&_year": "    Nov-18",
+                        "book_/_book_chapter": "Book"
+                    },
+                    {
+                        "author": "DR.K.KAVITHA",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "DHANAM PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-89843-43-4",
+                        "month_&_year": "2021-10-01 00:00:00",
+                        "book_/_book_chapter": "Book"
+                    },
+                    {
+                        "author": "DR.K.KAVITHA",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "KRISHNA PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-908908-1-6",
+                        "month_&_year": "2024-01-23 00:00:00",
+                        "book_/_book_chapter": "Book"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [
+                    {
+                        "research_scholar_name": "NIL",
+                        "research_title": "NIL",
+                        "category__(full_time_/_part__time)": "NIL",
+                        "status_(_ongoing_/_completed)": "NIL",
+                        "month_&_year_of_degree_awarded": "NIL"
+                    }
+                ],
+                "count": {
+                    "professional_membership": "Indian Society for Technical Education",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 1,
+                    "patent_filed": 0,
+                    "journal_publications": 6,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 3,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 10,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MRS. RAMA NACHIAR R",
+                "unique_id": "VEC-003-F-02",
+                "designation": "Assistant Professor",
+                "department_name": "Chemistry",
+                "mail_id": "ramanachiar@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/003/VEC-003-04-119.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/rama-nachiar-8003ba241/?originalSubdomain=in",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [
+                    {
+                        "degree": "M.Phil",
+                        "branch": "CHEMISTRY",
+                        "institute": "V.O.Chidambaram College,Manonmanium sundaranar University",
+                        "year": "2004-2006"
+                    },
+                    {
+                        "degree": "M.Sc",
+                        "branch": "CHEMISTRY",
+                        "institute": "V.O.Chidambaram College,Manonmanium sundaranar University",
+                        "year": "2001-2003"
+                    },
+                    {
+                        "degree": "B.Sc",
+                        "branch": "CHEMISTRY",
+                        "institute": "St.Mary' s College, Manonmanium sundaranar University",
+                        "year": "1998-2001"
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "20.06.2011",
+                        "unnamed:_1": "TILL DATE (24-09-2024)",
+                        "experience": "13",
+                        "unnamed:_3": "3",
+                        "designation": "ASSISTANT PROFESSOR-II",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "08.09.2008",
+                        "unnamed:_1": "30.04.2011",
+                        "experience": "2",
+                        "unnamed:_3": "8",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "ST.PETER'S ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "01.07.2007",
+                        "unnamed:_1": "04.05.2008",
+                        "unnamed:_3": "10",
+                        "designation": "LECTURER",
+                        "institution": "APOLLO ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "01.07.2005",
+                        "unnamed:_1": "31.05.2006",
+                        "unnamed:_3": "11",
+                        "designation": "LECTURER",
+                        "institution": "V,O.CHIDAMBARAM COLLEGE"
+                    }
+                ],
+                "projects": [
+                    {
+                        "title": "NIL",
+                        "sponsoring_agency": "NIL"
+                    },
+                    {
+                        "title": "NIL"
+                    }
+                ],
+                "patents": [
+                    {
+                        "name_of_patent": "NIL",
+                        "patent_type_(utility)": "NIL"
+                    }
+                ],
+                "journal_publications": [
+                    {
+                        "authors": "RAMA NACHIAR.R",
+                        "paper_title": "Synthesis and characterization of Faujasite type Zeolite from Fly Ash by Hydrothermal treatment”",
+                        "journal_name": "Journal of Science and Technology",
+                        "page_no": "Page No:110-118",
+                        "vol_no_/_issue_no": "Volume 5/ Issue 5",
+                        "month_&_year": "Sept-October 2020",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "RAMANACHIAR.R",
+                        "paper_title": "The Spatial Distribution of Micro and Macronutrients In Soil From Ind. Site Near Nellikuppam Town In Cuddalore District,",
+                        "journal_name": "Journal of Science and Technology,",
+                        "page_no": "Page No:28-34",
+                        "vol_no_/_issue_no": "Volume 5/ Issue 5",
+                        "month_&_year": "Sept-October 2020",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "RAMANACHIAR.R",
+                        "paper_title": "Synthesis and Characterization of supra molecular cucurbituril Molybdenum 2,2- Bipyridyl Complex",
+                        "journal_name": "International Journal for Research in Applied Science & Engineering Technology",
+                        "page_no": "Page No 1925-1929",
+                        "vol_no_/_issue_no": "Volume 7/Issue 7",
+                        "month_&_year": "June 2019.",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "RAMANACHIAR.R",
+                        "paper_title": "Hydrodesulphurization of Petroleum",
+                        "journal_name": "Petroleum and Chemical Industry International",
+                        "page_no": "Page No:137-139",
+                        "vol_no_/_issue_no": "Volume 5 | Issue 3 |",
+                        "month_&_year": "2022-01-01 00:00:00",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "RAMANACHIAR.R",
+                        "paper_title": "Review on Azospirillum Bio fertilizer",
+                        "journal_name": "GIS SCIENCE JOURNAL",
+                        "page_no": "Page No:831-836",
+                        "vol_no_/_issue_no": "VOLUME 9 ISSUE 8",
+                        "month_&_year": "2022-07-01 00:00:00",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [],
+                "book_publications": [
+                    {
+                        "author": "R.RAMA NACHIAR",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "DHANAM PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-89843-43-4",
+                        "month_&_year": "2024-10-21",
+                        "book_/_book_chapter": "Book"
+                    },
+                    {
+                        "author": "R.RAMA NACHIAR",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "KRISHNA PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-908908-1-6",
+                        "month_&_year": "2024-01-23",
+                        "book_/_book_chapter": "Book"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [
+                    {
+                        "research_scholar_name": "NIL",
+                        "research_title": "NIL"
+                    }
+                ],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 2,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 5,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 2,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 2,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "DR. ANITHA V",
+                "unique_id": "VEC-003-F-03",
+                "designation": "Assistant Professor",
+                "department_name": "Chemistry",
+                "mail_id": "anitha@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/003/VEC-003-04-108.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://in.linkedin.com/in/anitha-vigneshwaran-6364761b0",
+                    "googlescholar": "https://scholar.google.com/citations?user=DcavHoIAAAAJ&hl=en",
+                    "researchgate": "https://www.researchgate.net/profile/Anitha-Vigneswaran-2",
+                    "orchidprofile": "https://orcid.org/0000-0002-8178-4390",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/AGO-1917-2022",
+                    "scopus": ""
+                },
+                "professional_membership": "Nil",
+                "educational_qualification": [
+                    {
+                        "degree": "M.Sc",
+                        "branch": "Chemistry",
+                        "institute": "Manonmanium Sundaranar University",
+                        "year": 1999
+                    },
+                    {
+                        "degree": "Ph.D",
+                        "branch": "Electrochemistry",
+                        "institute": "Madras University",
+                        "year": 2022
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "1999",
+                        "unnamed:_1": "2001",
+                        "experience": "1",
+                        "unnamed:_3": "8",
+                        "designation": "Assistant Professor",
+                        "institution": "Jayamatha Engineering College"
+                    },
+                    {
+                        "duration": "2011",
+                        "unnamed:_1": "2013",
+                        "experience": "2",
+                        "unnamed:_3": "3",
+                        "designation": "Assistant Professor",
+                        "institution": "Jaya Engineering College"
+                    },
+                    {
+                        "duration": "2013",
+                        "unnamed:_1": "2024",
+                        "experience": "11",
+                        "unnamed:_3": "3",
+                        "designation": "Assistant Professor",
+                        "institution": "Velammal Engineering College"
+                    }
+                ],
+                "projects": [
+                    {
+                        "title": "0"
+                    },
+                    {
+                        "title": "0"
+                    }
+                ],
+                "patents": [
+                    {
+                        "name_of_patent": 0
+                    }
+                ],
+                "journal_publications": [
+                    {
+                        "sl.no.": 1,
+                        "authors": "Anitha.V, Nandagopal, Sasikala",
+                        "paper_title": "SUPRAMOLECULAR COMPLEX WITH CUCURBITURIL",
+                        "journal_name": "International journal of Multidisciplinary Research and information",
+                        "page_no": "284-287.",
+                        "vol_no_/_issue_no": "Vol. 2(2)",
+                        "month_&_year": "2016-02-01 00:00:00",
+                        "conference_name": ""
+                    },
+                    {
+                        "sl.no.": 2,
+                        "authors": "Anitha.V, Nandagopal, Ramanachiyar,Sasikala",
+                        "paper_title": "SYNTHESIS AND CHARACTERIZATION OF SUPRAMOLECULAR CUCURBITURIL, MOLYBDENUM 2,2’-BIPYRIDYL COMPLEX",
+                        "journal_name": "International Journal of Scientific & Engineering Research",
+                        "page_no": "140-144",
+                        "vol_no_/_issue_no": "Volume 8, Issue 10",
+                        "month_&_year": "2017-10-01 00:00:00",
+                        "conference_name": ""
+                    },
+                    {
+                        "sl.no.": 3,
+                        "authors": "R. Rama Nachiar, Anitha.V,K.Kavitha, S.Sasi kala",
+                        "paper_title": "Synthesis and Characterization of Faujasite Type Zeolite From Fly Ash by Hydrothermal Treatment",
+                        "journal_name": "Journal of Science and Technology",
+                        "doi_number": "https://doi.org/10.46243/jst.2020.v5.i5.",
+                        "page_no": "110-118",
+                        "vol_no_/_issue_no": "Volume 5, Issue 5",
+                        "month_&_year": "2020-10-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "Scopus",
+                        "conference_name": ""
+                    },
+                    {
+                        "sl.no.": 4,
+                        "authors": "Anitha Vigneshwaran,Balaramesh, Palanivelu, Jayalakshmi Suseela, ,Venkatesh",
+                        "paper_title": "Role of Glycine in Electroless Copper plating using Polyhydroxylic alcohol complexing agent",
+                        "journal_name": "Aut Aut Research Journal",
+                        "page_no": "277-283",
+                        "vol_no_/_issue_no": "Volume XI, Issue IV",
+                        "month_&_year": " Apr-2020",
+                        "indexed_in_sci_/_scopus": "Scopus",
+                        "conference_name": ""
+                    },
+                    {
+                        "sl.no.": 5,
+                        "authors": "Anitha Vigneshwaran,Balaramesh, Palanivelu, Jayalakshmi Suseela, ,Venkatesh",
+                        "paper_title": "ELECTROLESS PLATING OF NANO CRYSTALLINE COPPER FILMS ON EPOXY LAMINATED SUBSTRATE ",
+                        "journal_name": "Aut Aut Research Journal",
+                        "page_no": "480-487",
+                        "vol_no_/_issue_no": "Volume XI, Issue IX",
+                        "month_&_year": "2020-09-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "Scopus",
+                        "conference_name": ""
+                    },
+                    {
+                        "sl.no.": 6,
+                        "authors": "Anitha Vigneshwaran,Balaramesh, Palanivelu, Jayalakshmi Suseela, ,Venkatesh",
+                        "paper_title": "AUTOCATALYTIC COPPER PLATING PROCESS ON NON CONDUCTING EPOXY RESIN PLATE",
+                        "journal_name": "JETIR",
+                        "vol_no_/_issue_no": "Volume 7, Issue 2",
+                        "month_&_year": "2020-02-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "Scopus",
+                        "conference_name": ""
+                    },
+                    {
+                        "sl.no.": 7,
+                        "authors": "Anitha Vigneshwaran,Balaramesh, Palanivelu, Jayalakshmi Suseela, ,Venkatesh",
+                        "paper_title": "Influence of organosulphur additives on autocatalytic copper thin film deposition",
+                        "journal_name": "Materials today :Proceedings",
+                        "doi_number": "https://doi.org/10.1016/j.matpr.2021.04.212",
+                        "page_no": "2020-24",
+                        "month_&_year": "2021-05-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "Scopus",
+                        "conference_name": ""
+                    },
+                    {
+                        "sl.no.": 8,
+                        "authors": "Balaramesh, Palanivelu, Jayalakshmi Suseela, Anitha Vigneshwaran,Venkatesh",
+                        "paper_title": "Effect of Active Dithiocarbamate Derivatives on Copper Nano Film Deposition",
+                        "journal_name": "Indian Journal of Science and Technology",
+                        "doi_number": "https://doi.org/10.17485/IJShttps",
+                        "month_&_year": "2023-04-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "Scopus",
+                        "conference_name": ""
+                    },
+                    {
+                        "sl.no.": 9,
+                        "authors": "Balaramesh, Palanivelu, Jayalakshmi Suseela, Anitha Vigneshwaran, Absara Fdo Venkatesh",
+                        "paper_title": "Electrochemical characteristics of eco friendly electroless copper nanofilm deposition using Dithiocarbamate derivative",
+                        "journal_name": "Materials today :Proceedings",
+                        "doi_number": "https://doi.org/10.1016/j.matpr.2023.06.262",
+                        "page_no": "1862-1867",
+                        "month_&_year": "2023-07-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "Scopus",
+                        "conference_name": ""
+                    },
+                    {
+                        "sl.no.": 10,
+                        "authors": "S.Sasi kala,R. Rama Nachiar, Anitha.V,K.Kavitha, ",
+                        "paper_title": "Analysis of The Spatial Distribution of Micro and Macronutrients In Soil From Industrial Site Near Nellikuppam Town In Cuddalore District",
+                        "journal_name": "Journal of Science and Technology",
+                        "doi_number": "https://doi.org/10.46243/jst.2020.v5.i5",
+                        "page_no": "28-34",
+                        "vol_no_/_issue_no": "Volume 5, Issue 5",
+                        "month_&_year": "2020-10-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "Scopus",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "paper_title": "Structural properties of Mercapto stabilizers on an Autocatalytic pure copper metal deposition",
+                        "conference_name": "IOP Conf. Series: Materials Science and Engineering",
+                        "isbn_/_issn_no": "1263 (2022) 012030",
+                        "month_&_year": "2022-10-01"
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "Dr.A.Ravikrishnan,Dr.A.Mohammed Sikkender,Dr.K.Kavitha,Ms.Ramanachiar,Dr.V.Anitha,S.Sasikala,C.Sivaraj,T.Niruban Balu",
+                        "book_name,_edition": "Engineering Chemistry",
+                        "publisher": "Hitech Publishing company",
+                        "isbn_/_issn_no": "978-81-908908-1-6"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "Nil",
+                    "sponsored_projects": 2,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 10,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 5,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MRS. SASIKALA S",
+                "unique_id": "VEC-003-F-04",
+                "designation": "Assistant Professor",
+                "department_name": "Chemistry",
+                "mail_id": "sasikala@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/003/VEC-003-04-104.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "https://www.researchgate.net/profile/Sasikala-Sakkaravarthy",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "ISRD",
+                "educational_qualification": [
+                    {
+                        "degree": "M.PHIL",
+                        "branch": "INORGANIC CHEMISTRY",
+                        "institute": "BHARATHIDASAN UNIVERSITY ",
+                        "year": 2008
+                    },
+                    {
+                        "degree": "M.SC",
+                        "branch": "GENERAL CHEMISTRY",
+                        "institute": "THIRUVALLUR UNIVERSITY ",
+                        "year": 2005
+                    },
+                    {
+                        "degree": "B.SC",
+                        "branch": "GENERAL CHEMISTRY",
+                        "institute": " UNIVERSITY OF MADRAS ",
+                        "year": 2003
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "24.10.2013",
+                        "unnamed:_1": "TILL DATE (24-09-2024)",
+                        "experience": "10",
+                        "unnamed:_3": "11",
+                        "designation": "ASSISTANT PROFESSOR-I",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "17.08.2011",
+                        "unnamed:_1": "23.10.2013",
+                        "experience": "2",
+                        "unnamed:_3": "2",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "PRINCE SRI VENKADESWARA COLLEGE OF ENGINEERING AND TECHNOLOGY "
+                    }
+                ],
+                "projects": [
+                    {
+                        "title": "NIL",
+                        "sponsoring_agency": "NIL",
+                        "amount": "NIL",
+                        "year_of_sanction": "NIL",
+                        "duration": "NIL",
+                        "responsibility_(pi_/_co_pi)": "NIL",
+                        "status_(_completed_/_ongoing)": "NIL"
+                    }
+                ],
+                "patents": [],
+                "journal_publications": [
+                    {
+                        "authors": "MrsS.SASIKALA",
+                        "paper_title": "Synthesis and Characterization of supra molecular cucurbituril Molybdenum 2,2- Bipyridyl ",
+                        "journal_name": "International Journal for Research in Applied Science & Engineering Technology ",
+                        "doi_number": "DOI:10.22214/ijraset.2019.6323",
+                        "page_no": "Page No 1925-1929",
+                        "vol_no_/_issue_no": "Volume 7/Issue 7",
+                        "month_&_year": "June 2019.",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "MrsS.SASIKALA",
+                        "paper_title": "The Spatial Distribution of Micro and Macronutrients In Soil From Ind. Site Near Nellikuppam Town In Cuddalore District,",
+                        "journal_name": "Journal of Science and Technology,",
+                        "doi_number": "DOI: https://doi.org/10.46243/jst.2020.v5.i5.pp28-34",
+                        "page_no": "Page No:28-34",
+                        "vol_no_/_issue_no": "Volume 5/ Issue 5",
+                        "month_&_year": "Sept-October 2020 ",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "MrsS.SASIKALA",
+                        "paper_title": "Synthesis and characterization of Faujasite type Zeolite from Fly Ash by Hydrothermal treatment”",
+                        "journal_name": " Journal of Science and Technology",
+                        "doi_number": "DOI: https://doi.org/10.46243/jst.2020.v5.i5.pp110-118",
+                        "page_no": "Page No:110-118",
+                        "vol_no_/_issue_no": "Volume 5/ Issue 5",
+                        "month_&_year": "Sept-October 2020 ",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "MrsS.SASIKALA",
+                        "paper_title": "Carbon–Based Nanomaterials Impacting in Neuroscience ",
+                        "journal_name": "Journal of Science and Technology ",
+                        "doi_number": "DOI: https://doi.org/10.46243/jst.2021.v6.i2.pp42-47",
+                        "page_no": "Page No  42-47",
+                        "vol_no_/_issue_no": "Volume 6/Issue 2 ",
+                        "month_&_year": "March-April2021",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "MrsS.SASIKALA",
+                        "paper_title": "Exigency of A.I and M.L in genetic and tissue engineering",
+                        "journal_name": "Journal of Chengdu University of Technology ",
+                        "vol_no_/_issue_no": "Volume 26 / Issue 7",
+                        "month_&_year": "April 2021",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "MrsS.SASIKALA",
+                        "paper_title": "Distinctiveness of Nanoparticles Drug Delivery in Cancer Journal of Science and Technology Volume",
+                        "journal_name": "Journal of Science and Technology Volume",
+                        "doi_number": "DOI: https://doi.org/10.46243/jst.2021.v6.i2.pp17-22",
+                        "page_no": "Page No- 17-22, ",
+                        "vol_no_/_issue_no": "Volume 6/Issue 2 ",
+                        "month_&_year": "March-April2021",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "conference_name": "NIL",
+                        "organized_by": "NIL",
+                        "isbn_/_issn_no": "NIL",
+                        "month_&_year": "NIL"
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "MrsS.SASIKALA",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "DHANAM PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-89843-43-4",
+                        "month_&_year": "2021-10-01",
+                        "book_/_book_chapter": "Book"
+                    },
+                    {
+                        "author": "MrsS.SASIKALA",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "KRISHNA PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-908908-1-6",
+                        "month_&_year": "2024-01-23",
+                        "book_/_book_chapter": "Book"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [
+                    {
+                        "research_scholar_name": "NIL",
+                        "research_title": "NIL",
+                        "category__(full_time_/_part__time)": "NIL",
+                        "status_(_ongoing_/_completed)": "NIL",
+                        "month_&_year_of_degree_awarded": "NIL"
+                    }
+                ],
+                "count": {
+                    "professional_membership": "ISRD",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 6,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 2,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 15,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MR. SIVARAJ C",
+                "unique_id": "VEC-003-F-05",
+                "designation": "Assistant Professor",
+                "department_name": "Chemistry",
+                "mail_id": "sivarajc@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/003/VEC-003-04-142.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://www.linkedin.com/in/siva-raj-575a1032b/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people%3BSSJGIiJsTYiq8fjxVgZs7A%3D%3D",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [
+                    {
+                        "degree": "SLET",
+                        "branch": "CHEMISTRY",
+                        "institute": "MOTHER TERASA UNIVERSITY",
+                        "year": "2016"
+                    },
+                    {
+                        "degree": "M.PHIL",
+                        "branch": "ANALTYTICAL CHEMISTRY",
+                        "institute": "DEPARTMENT OF PHYSICAL CHEMISTRY,UNIVERSITY OF MADRAS",
+                        "year": "2009-2010"
+                    },
+                    {
+                        "degree": "M.SC",
+                        "branch": "ANALTYTICAL CHEMISTRY",
+                        "institute": "DEPARTMENT OF PHYSICALCHEMISTRY,UNIVERSITY OF MADRAS",
+                        "year": "2007-2009"
+                    },
+                    {
+                        "degree": "B.SC",
+                        "branch": "GENERAL CHEMISTRY",
+                        "institute": "GOVT ARTS COLLEGE THIRUVANNAMALAI",
+                        "year": "2003-2006"
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "16.06.2014",
+                        "unnamed:_1": "TILL DATE (24-09-2024)",
+                        "experience": "10",
+                        "unnamed:_3": "3",
+                        "designation": "ASSISTANT PROFESSOR-I",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "02.09.2011",
+                        "unnamed:_1": "13.06.2014",
+                        "experience": "2",
+                        "unnamed:_3": "9",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "DHAANISH AHMED COLLEGE OF ENGINEERING"
+                    },
+                    {
+                        "duration": "13.08.2010",
+                        "unnamed:_1": "26.08.2011",
+                        "experience": "1",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "BALAMANI ARUNACHALAM ENGG COLLEGE"
+                    }
+                ],
+                "projects": [
+                    {
+                        "title": "NIL",
+                        "sponsoring_agency": "NIL",
+                        "amount": "NIL",
+                        "year_of_sanction": "NIL",
+                        "duration": "NIL",
+                        "responsibility_(pi_/_co_pi)": "NIL",
+                        "status_(_completed_/_ongoing)": "NIL"
+                    }
+                ],
+                "patents": [
+                    {
+                        "name_of_patent": "NIL"
+                    }
+                ],
+                "journal_publications": [
+                    {
+                        "paper_title": "NIL",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "conference_name": "NIL",
+                        "organized_by": "NIL",
+                        "isbn_/_issn_no": "NIL",
+                        "month_&_year": "NIL"
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "SIVARAJ C",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "DHANAM PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-89843-43-4",
+                        "month_&_year": "2021-10-01",
+                        "book_/_book_chapter": "Book"
+                    },
+                    {
+                        "author": "SIVARAJ C",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "KRISHNA PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-908908-1-6",
+                        "month_&_year": "2024-01-23",
+                        "book_/_book_chapter": "Book"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [
+                    {
+                        "research_scholar_name": "NIL",
+                        "research_title": "NIL",
+                        "category__(full_time_/_part__time)": "NIL",
+                        "status_(_ongoing_/_completed)": "NIL",
+                        "month_&_year_of_degree_awarded": "NIL"
+                    }
+                ],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 1,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 2,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 2,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MR. NIRUBAN BALU T",
+                "unique_id": "VEC-003-F-06",
+                "designation": "Assistant Professor",
+                "department_name": "Chemistry",
+                "mail_id": "niruban@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/003/VEC-003-04-143.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://in.linkedin.com/in/niruban-balu-270275242",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [
+                    {
+                        "degree": "PH.D",
+                        "branch": "COMPUTATIONAL CHEMISTRY",
+                        "institute": "PACHAIYAPPA'S COLLEGE, CHENNAI",
+                        "year": "PURSUING"
+                    },
+                    {
+                        "degree": "M.PHIL",
+                        "branch": "GENERAL CHEMISTRY",
+                        "institute": "LOYOLA COLLEGE, CHENNAI - 32",
+                        "year": "2005-2006"
+                    },
+                    {
+                        "degree": "M.SC",
+                        "branch": "GENERAL CHEMISTRY",
+                        "institute": "PRESIDENCY COLLEGE, CHENNAI - 05",
+                        "year": "2001-2003"
+                    },
+                    {
+                        "degree": "B.SC",
+                        "branch": "GENERAL CHEMISTRY",
+                        "institute": "JAMAL MOHAMED COLLEGE, TRICHY",
+                        "year": "1998-2001"
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "18.08.2015",
+                        "unnamed:_1": "TILL DATE (24-09-2024)",
+                        "experience": "9",
+                        "unnamed:_3": "1",
+                        "designation": "ASSISTANT PROFESSOR-I",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE, CHENNAI"
+                    },
+                    {
+                        "duration": "15.06.2011",
+                        "unnamed:_1": "20.04.2015",
+                        "experience": "3",
+                        "unnamed:_3": "10",
+                        "designation": "ASSISTANT PROFESSOR-I",
+                        "institution": "VELAMMAL INSTITUTE OF TECHNOLOGY, PANCHETTI"
+                    }
+                ],
+                "projects": [
+                    {
+                        "title": "NIL",
+                        "sponsoring_agency": "NIL",
+                        "amount": "NIL",
+                        "year_of_sanction": "NIL",
+                        "duration": "NIL",
+                        "responsibility_(pi_/_co_pi)": "NIL",
+                        "status_(_completed_/_ongoing)": "NIL"
+                    }
+                ],
+                "patents": [
+                    {
+                        "name_of_patent": "NIL",
+                        "patent_type_(utility)": "NIL",
+                        "country": "NIL",
+                        "status_(_published_/_fer_/_granted_)": "NIL",
+                        "date_of_recent_achieved_level": "NIL"
+                    }
+                ],
+                "journal_publications": [
+                    {
+                        "authors": "NIL",
+                        "paper_title": "NIL",
+                        "journal_name": "NIL",
+                        "doi_number": "NIL",
+                        "page_no": "NIL",
+                        "vol_no_/_issue_no": "NIL",
+                        "month_&_year": "NIL",
+                        "indexed_in_sci_/_scopus": "NIL",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "conference_name": "NIL",
+                        "organized_by": "NIL",
+                        "isbn_/_issn_no": "NIL",
+                        "month_&_year": "NIL"
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "NIRUBAN BALU T",
+                        "book_name,_edition": "CHEMISTRY OF ENGINEERING MATERIALS",
+                        "publisher": "KUMUD PUBLICATIONS NEW DELHI-110053",
+                        "isbn_/_issn_no": "ISBN:978-93- 82885-53-5     ",
+                        "month_&_year": "2024-03-19",
+                        "book_/_book_chapter": "Book"
+                    },
+                    {
+                        "author": "NIRUBAN BALU T",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "DHANAM PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-89843-43-4",
+                        "month_&_year": "2021-10-01",
+                        "book_/_book_chapter": "Book"
+                    },
+                    {
+                        "author": "NIRUBAN BALU T",
+                        "book_name,_edition": "ENGINEERING CHEMISTRY",
+                        "publisher": "KRISHNA PUBLICATIONS",
+                        "isbn_/_issn_no": "ISBN:978-81-908908-1-6",
+                        "month_&_year": "2024-01-23",
+                        "book_/_book_chapter": "Book"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [
+                    {
+                        "research_scholar_name": "NIL",
+                        "research_title": "NIL",
+                        "category__(full_time_/_part__time)": "NIL",
+                        "status_(_ongoing_/_completed)": "NIL",
+                        "month_&_year_of_degree_awarded": "NIL"
+                    }
+                ],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 1,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 3,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "DR. BALAMURUGAPANDIAN N",
+                "unique_id": "VEC-003-F-07",
+                "designation": "Assistant Professor",
+                "department_name": "Chemistry",
+                "mail_id": "balamurugapandian@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/003/VEC-003-04-083.webp",
+                "socialmedia_links": {
+                    "linkedin": "https://in.linkedin.com/in/balamurugapandian-n-999b80a7",
+                    "googlescholar": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://scholar.google.com/citations%3Fuser%3DQ3eloVMAAAAJ%26hl%3Den&ved=2ahUKEwj84crUsNiIAxX0yzgGHYPdHQIQFnoECBsQAQ&usg=AOvVaw2QWgTNvtazIV1qsgX6jZAh",
+                    "researchgate": "https://www.researchgate.net/profile/N-Balamurugapandian",
+                    "orchidprofile": "https://orcid.org/0000-0002-3824-6140",
+                    "publonprofile": "https://www.webofscience.com/wos/author/record/AES-2149-2022",
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56648027400"
+                },
+                "professional_membership": "-",
+                "educational_qualification": [
+                    {
+                        "degree": "Ph.D",
+                        "branch": "CHEMISTRY",
+                        "institute": "BHARATHIDASAN UNIVERSITY"
+                    },
+                    {
+                        "degree": "M.Phil",
+                        "branch": "CHEMISTRY",
+                        "institute": "BHARATHIDASAN UNIVERSITY",
+                        "year": 2009
+                    },
+                    {
+                        "degree": "M.Sc",
+                        "branch": "PHYSICAL CHEMISTRY",
+                        "institute": "UNIVERSITY OF MADRAS",
+                        "year": 2005
+                    },
+                    {
+                        "degree": "B.Sc",
+                        "branch": "CHEMISTRY",
+                        "institute": "A.M.JAIN COLLEGE",
+                        "year": 2001
+                    }
+                ],
+                "experience": [
+                    {
+                        "duration": "2012-06-27 00:00:00",
+                        "unnamed:_1": "2014-10-02 00:00:00",
+                        "experience": "1",
+                        "unnamed:_3": "7",
+                        "designation": "LECTURER",
+                        "institution": "BHAJARANG ENGINEERING COLLEGE"
+                    },
+                    {
+                        "duration": "2014-06-16 00:00:00",
+                        "unnamed:_1": "2023-03-21 00:00:00",
+                        "experience": "8",
+                        "unnamed:_3": "9",
+                        "designation": "TEACHING FELLOW",
+                        "institution": "MADRAS INSTITUTE OF TECHNOLOGY"
+                    },
+                    {
+                        "duration": "2023-03-04 00:00:00",
+                        "unnamed:_1": "2024-09-19 00:00:00",
+                        "experience": "1",
+                        "unnamed:_3": "5",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE"
+                    }
+                ],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [
+                    {
+                        "authors": "N Balamurugapandian, K SenthilKannan, V Swarnalatha and Juliet Josephine Joy J",
+                        "paper_title": "Physio-chemical and biological Characterizations of 4 Bromo–4'Chloro Benzylidene Aniline μ-crystals for Engineering Utilities",
+                        "journal_name": "ECS Journal of Solid State Science and Technology",
+                        "doi_number": "DOI:10.1149/2162-8777/ad37d7",
+                        "page_no": "43002",
+                        "vol_no_/_issue_no": "13(4)",
+                        "month_&_year": "2024-04-23",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "N Balamurugapandian, S Lavanya, K Senthil Kannan, J Juliet Josephine Joy",
+                        "paper_title": "Synthesis, characterizations of HDTDHP macro-crystals by experimental-electrical, electronic and computational structural proviso for opto-electronic and photonic utilities",
+                        "journal_name": "ECS Journal of Solid State Science and Technology",
+                        "doi_number": "DOI: 10.1149/2162-8777/ acfd5d",
+                        "page_no": "103004",
+                        "vol_no_/_issue_no": "12(10)",
+                        "month_&_year": "2023-10-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "K. SenthilKannan, N. Balamurugapandian , T. Jayanalina , G. Arokkiya Vincy , M. Guru Prasath , M. Vimalan1 , and P. Sasikumar",
+                        "paper_title": "Characterisation of Zinc Acetate microcrystals (ZAl) and Co-60 irradiated micro - crystals (GZa) forphotonic and electro-optic relevances ",
+                        "journal_name": "J Mater Sci: Mater Electron(2023)34:1143",
+                        "doi_number": "https://doi.org/10.1007/s10854-023-10550-3",
+                        "page_no": "1143",
+                        "vol_no_/_issue_no": "34",
+                        "month_&_year": "2023-05-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Balamurugapandian N,Suganya K, Hariharasuthan R,Jayanalina T, Swarnalatha V, SenthilKannan K and Manikandan R",
+                        "paper_title": "Synthesis, Studies of Shocked Pulse of 50 Scale on 100 Gy Irradiated Zinc Acetate Crystals for Photonic, NLO, PhaseMatching and Electronic Utilities",
+                        "journal_name": "ECS Journal of Solid State Science and Technology",
+                        "doi_number": "https://doi.org/10.1149/2162-8777/ad6f42",
+                        "page_no": "84005",
+                        "vol_no_/_issue_no": "13(8)",
+                        "month_&_year": "2024-08-24",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Balamurugapandian N, Ravichandran R.",
+                        "paper_title": "New thiadiazole derivatives as effective corrosion inhibitors for the control of copper-nickel alloy in sulphide polluted synthetic sea water",
+                        "journal_name": "Journal of the Chemical Society of Pakistan",
+                        "page_no": "1037-1044",
+                        "vol_no_/_issue_no": "39(6)",
+                        "month_&_year": "2017-04-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Balamurugapandian N, Ravichandran R.",
+                        "paper_title": "Corrosion inhibition of copper-nickel alloy by new thiadiazole derivatives in natural sea water – electro-analytical and surface characterisation study",
+                        "journal_name": "International Journal of ChemTech Research",
+                        "page_no": "2981-2987",
+                        "vol_no_/_issue_no": "7(7)",
+                        "month_&_year": "2015-02-01",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
+                    },
+                    {
+                        "authors": "Balamurugapandian N, Christy S, SenthilKannan K & Vimalan M",
+                        "paper_title": "Synthesis, Macro-Dielectric, Electronic m-Influx, Voltage Controlling and Computational Studies of Novel Aromatic Cyclic AMPF Crystals",
+                        "journal_name": "Polycyclic Aromatic COmpounds",
+                        "doi_number": "https://doi.org/10.1080/10406638.2023.2223337",
+                        "page_no": "2791-2801",
+                        "vol_no_/_issue_no": "44(4)",
+                        "month_&_year": "2024-06-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
+                    }
+                ],
+                "conference_publications": [
+                    {
+                        "authors": "Balamurugapandian N., Ravichandran R.",
+                        "paper_title": "Corrosion Inhibition of Copper-Nickel Alloy by New Thiadiazole Derivatives in Natural Sea water–Electro-analytical and Surface Characterisation Study”",
+                        "conference_name": "International conference on Energy, water and Environmental science and technology (ICEWEST-2016)",
+                        "organized_by": "Department of chemistry, Presidency college, Chennai",
+                        "month_&_year": "2016-02-01"
+                    },
+                    {
+                        "authors": ". N.Balamurugapandian, K.Aruna, T.M.Sridhar and K.M.Veerabadran",
+                        "paper_title": "Trigonella FoenumGraecum L, Nigella Sativa and Trachyspermum Ammi mixture as Corrosion inhibitor on Mild steel alloy in phosphoric acid medium",
+                        "conference_name": "International conference on Future Aspects of Sustainable Technologies (Virtual platform)",
+                        "organized_by": "Department of Chemistry, Central Institute of Technology, Kokrajhar, Assam",
+                        "month_&_year": "2020-10-01"
+                    }
+                ],
+                "book_publications": [
+                    {
+                        "author": "J. Ramkumar, K. SenthilKannan, N. Balamurugapandian, K.S. Radha, and R. Divya",
+                        "book_name,_edition": "Perspectives of Quorum Quenching in New Drug Development",
+                        "publisher": "CRC PRESS",
+                        "isbn_/_issn_no": {
+                            "$numberlong": "9781003297826"
+                        },
+                        "month_&_year": "2024-05-01",
+                        "book_/_book_chapter": "BOOK CHAPTER-5"
+                    }
+                ],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "-",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 7,
+                    "conference_publications": 2,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "DR. KAVIYA M",
+                "unique_id": "VEC-003-F-08",
+                "designation": "Assistant Professor",
+                "department_name": "Chemistry",
+                "mail_id": "kaviya@velammal.edu.in",
+                "image_path": "/static/images/profile_photos/003/VEC-003-04-079.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=HFXOLX4AAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [
+                    {
+                        "degree": "Ph.D",
+                        "branch": "ANALYTICAL CHEMISTRY",
+                        "institute": "UNIVERSITY OF MADRAS",
+                        "year": 2023
+                    },
+                    {
+                        "degree": "M.Sc",
+                        "branch": "ANALYTICAL CHEMISTRY",
+                        "institute": "UNIVERSITY OF MADRAS",
+                        "year": 2015
+                    },
+                    {
+                        "degree": "B.Sc",
+                        "branch": "CHEMISTRY",
+                        "institute": "ETHIRAJ COLLEGE FOR WOMEN",
+                        "year": 2013
+                    }
+                ],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 9,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 5,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            },
+            {
+                "name": "MRS. MOUNICA A",
+                "unique_id": "VEC-003-F-09",
+                "designation": "Assistant Professor",
+                "department_name": "",
+                "mail_id": "",
+                "image_path": "/static/images/profile_photos/003/VEC-003-04-626.webp",
+                "socialmedia_links": {
+                    "linkedin": "http://linkedin.com/in/dr-mounica-arangasamy-8a00a8206",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=wqMW5o0AAAAJ",
+                    "researchgate": "https://www.researchgate.net/profile/Mounica-Arangasamy",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "NON_TEACHING_FACULTY": [
+            {
+                "name": "MR. KUMAR V",
+                "unique_id": "VEC-003-NF-01",
+                "designation": "Lab Instructor",
+                "department_name": "",
+                "mail_id": "",
+                "image_path": "/static/images/profile_photos/003/VEC-003-05-003.webp",
+                "socialmedia_links": {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
+                }
+            }
+        ]
+    },
+    {
+        "FACULTY_PDF_PATH": {
+            "pdf_path": "/static/pdfs/faculty_list/003.pdf"
+        }
+    }
+]

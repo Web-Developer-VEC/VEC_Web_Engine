@@ -59,37 +59,33 @@ async function deleteData(tempDoc, mainCollection) {
     }
 
     // ---------- GALLERY ----------
-    if (collection_type === "gallery") {
-      if (
-        !Array.isArray(meta_data.image_path) ||
-        meta_data.image_path.length === 0
-      ) {
-        throw new Error("meta_data.image_path must be a non-empty array");
+   // ---------- GALLERY ----------
+if (collection_type === "gallery") {
+  if (
+    !Array.isArray(meta_data.image_path) ||
+    meta_data.image_path.length === 0
+  ) {
+    throw new Error("meta_data.image_path must be a non-empty array");
+  }
+
+  if (!doc.data || !Array.isArray(doc.data.image_path)) {
+    throw new Error("Gallery image_path is not an array");
+  }
+
+  await mainCollection.updateOne(
+    { type: "gallery" },
+    {
+      $pull: {
+        "data.image_path": { $in: meta_data.image_path }
       }
-
-      if (!Array.isArray(doc.data)) {
-        throw new Error("Gallery data is not an array");
-      }
-
-      const updatedData = doc.data.filter(
-        (path) => !meta_data.image_path.includes(path),
-      );
-
-      if (updatedData.length === doc.data.length) {
-        throw new Error("No matching image paths found to delete");
-      }
-
-      await mainCollection.updateOne(
-        { type: "gallery" },
-        { $set: { data: updatedData } },
-      );
-
-      return {
-        success: true,
-        message: "Gallery image(s) deleted successfully",
-        data: updatedData,
-      };
     }
+  );
+
+  return {
+    success: true,
+    message: "Gallery image(s) deleted successfully",
+  };
+}
 
     throw new Error("Invalid collection type");
   } catch (error) {

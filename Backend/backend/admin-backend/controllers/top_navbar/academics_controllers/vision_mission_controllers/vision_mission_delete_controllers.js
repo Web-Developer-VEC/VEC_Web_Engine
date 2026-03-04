@@ -5,6 +5,9 @@ async function deleteData(tempDoc, mainCollection) {
     if (!collection_type || !meta_data) {
       throw new Error("collection_type and meta_data are required");
     }
+    if (collection_type !== "vision_and_mission") {
+      throw new Error("Incorrect collection type or route");
+    }
 
     const categoryBasedTypes = ["vision_and_mission"];
 

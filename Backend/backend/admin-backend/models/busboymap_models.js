@@ -18,10 +18,14 @@ const nssHandler = require("../controllers/second_navbar/nss_controllers/nss_bus
 const researchHandler = require("../controllers/top_navbar/research_controllers/research_busboy");
 const placementHandler = require("../controllers/top_navbar/placement_controllers/placement_busboy");
 const examHandler = require("../controllers/top_navbar/exams_controllers/exams_busboy");
+
+
 const facultyHandler = require("../controllers/top_navbar/academics_controllers/faculty_controllers/faculties_busboy");
 const hodHandler = require("../controllers/top_navbar/academics_controllers/hod_controllers/hod_busboy");
 const admissionsHandler = require("../controllers/top_navbar/admission_controllers/admission_busboy")
 const otherFacilitiesHandler = require("../controllers/second_navbar/other_facilities_controllers/other_facilties_busboy")
+
+
 const academiccalendarHandler = require("../controllers/top_navbar/academics_controllers/academic_calendar_controllers/calendar_busboy")
 const newsletterHandler = require("../controllers/top_navbar/academics_controllers/newsletter_controllers/newsletterbusboy");
 const studentAchievementsHandler = require("../controllers/top_navbar/academics_controllers/student_achievments_controllers/achivementsbusboy");
@@ -29,6 +33,7 @@ const syllabusHandler = require("../controllers/top_navbar/academics_controllers
 const pedagogyHandler = require("../controllers/top_navbar/academics_controllers/pedagogy_controllers/pedagogy_busboy");
 const activitiesHandler = require("../controllers/top_navbar/academics_controllers/activities_controllers/activities_busboy");
 const infrastructureHandler = require("../controllers/top_navbar/academics_controllers/infrastructure_controllers/infrastructure_busboy");
+const deptresearchHandler = require("../controllers/top_navbar/academics_controllers/research_controllers/research_busboy");
 
 const busboyModels = {
   // Testing Complete
@@ -72,12 +77,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler,
-  curriculum_and_syllabus:syllabusHandler,
-  activities: activitiesHandler,
-  pedagogy:pedagogyHandler,
-  infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
 
   //IT
@@ -90,7 +90,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
   //AUTO
   AUTO_002:{
@@ -102,7 +102,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
   //CHEMISTRY
   CHEMISTRY_003: {
@@ -114,7 +114,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
   //CIVIL
   CIVIL_004: {
@@ -126,7 +126,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
   
    //CSE
@@ -139,7 +139,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
    //CSECS
   CSECS_006: {
@@ -151,7 +151,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
    //EEE
   EEE_007:{
@@ -163,7 +163,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
   //EIE
   EIE_008:{
@@ -175,7 +175,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
   //ECE
   ECE_009:{
@@ -187,7 +187,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
   //ENGLISH
   ENGLISH_010:{
@@ -199,7 +199,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
   //MATH
   MATHS_012: {
@@ -211,7 +211,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
   //MECH
   MECH_013:{
@@ -223,7 +223,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
    //TAMIL
   TAMIL_014:{
@@ -235,7 +235,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
    //PHYSICS
   PHYSICS_015: {
@@ -247,7 +247,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
    //MECSE
   MECSE_016:{
@@ -259,7 +259,7 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
    //MBA
   MBA_017:{
@@ -271,19 +271,10 @@ const busboyModels = {
   activities: activitiesHandler,
   pedagogy:pedagogyHandler,
   infrastructure:infrastructureHandler,
-  research:researchHandler
+  research:deptresearchHandler
 },
-   //PS
-  PS_018:{
-  newsletter: newsletterHandler,
-  faculty: facultyHandler,
-  hod: hodHandler,
-  achievements: studentAchievementsHandler,
-  curriculum_and_syllabus:syllabusHandler,
-  activities: activitiesHandler,
-  pedagogy:pedagogyHandler,
-  infrastructure:infrastructureHandler,
-  research:researchHandler
-}}
+
+  AIDS_001_staff: facultyHandler,
+}
 
 module.exports = busboyModels;

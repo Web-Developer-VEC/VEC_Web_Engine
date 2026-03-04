@@ -29,13 +29,19 @@ const LIBHod = ({ data }) => {
 
   useEffect(() => {
     if (data?.[0]) {
-      setFormData(data[0]);
-      setOriginalData(data[0]);
+      const clone = JSON.parse(JSON.stringify(data[0]));
+      setFormData(clone);
+      setOriginalData(clone);
     }
   }, [data]);
 
   // ✅ detect if changed compared to original
-  const isChanged = JSON.stringify(formData) !== JSON.stringify(originalData);
+  const isImageChanged = hodPic !== null;
+
+  const isChanged =
+    JSON.stringify(formData) !== JSON.stringify(originalData) ||
+    isImageChanged;
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,16 +67,20 @@ const LIBHod = ({ data }) => {
 
   // ✅ discard full changes (after Save, before Request)
   const handleDiscardConfirm = () => {
-    setFormData({ ...originalData });
+    setFormData(JSON.parse(JSON.stringify(originalData)));
+    setHodPic(null);
+    setImagePreview(null);
     setIsEditing(false);
     setShowRequest(false);
     setShowDiscardModal(false);
+    setChangeList([]);
     toast.info("❌ Changes discarded");
   };
 
   // ✅ confirm final request
   const handleRequestConfirm = async () => {
-    const changes = detectChanges();
+    const changes = buildHodChangeList(formData, originalData);
+
 
     if (changes.length === 0) {
       toast.warn("No changes to submit");
@@ -93,7 +103,7 @@ const LIBHod = ({ data }) => {
 
       meta_data: {
         name: formData.name,
-         image_path: newImagePath,
+        image_path: newImagePath,
         designation: formData.designation,
         education_qualification: formData.education_qualification,
         message: formData.message,
@@ -109,34 +119,51 @@ const LIBHod = ({ data }) => {
       setShowRequestModal(false);
       setShowRequest(false);
       setIsEditing(false);
-      setOriginalData(formData); // commit local state
+      setOriginalData(JSON.parse(JSON.stringify(formData))); // commit local state (deep clone)
+      setHodPic(null);
+      setImagePreview(null);
     } catch (err) {
       toast.error("❌ Failed to submit request");
     }
   };
+
   const buildHodChangeList = (formData, originalData) => {
     const fieldLabels = {
       name: "Name",
       designation: "Designation",
       education_qualification: "Education Qualification",
       message: "Message",
-      image_path: "Profile Image",
     };
 
-    return Object.keys(fieldLabels)
+    const changes = Object.keys(fieldLabels)
       .filter((key) => formData[key] !== originalData[key])
       .map((key) => ({
         key,
         action: "Edit",
         section: "Library HOD",
-        label: `${fieldLabels[key]}`,
+        label: fieldLabels[key],
         oldValue: originalData[key],
         newValue: formData[key],
       }));
+
+    // ✅ manually detect image change
+    if (hodPic) {
+      changes.push({
+        key: "image_path",
+        action: "Edit",
+        section: "Library HOD",
+        label: "Profile Image",
+        oldValue: originalData.image_path,
+        newValue: hodPic.name,
+      });
+    }
+
+    return changes;
   };
-const newImagePath = hodPic
-  ? `/static/images/library/hod/${hodPic.name}`
-  : originalData.image_path;
+
+  const newImagePath = hodPic
+    ? `/static/images/library/hod/${hodPic.name}`
+    : originalData.image_path;
 
   useEffect(() => {
     if (showRequestModal && changeList.length === 0) {
@@ -155,7 +182,7 @@ const newImagePath = hodPic
   }
 
   return (
-    <article className="relative flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center font-[Poppins]">
+    <article className="relative flex flex-col gap-4 bg-prim dark:bg-drkp shadow-xl p-6 rounded-xl items-center text-center font-[Poppins] mt-6">
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* ✅ Edit Button */}
@@ -163,7 +190,7 @@ const newImagePath = hodPic
         <div className="absolute top-7 right-10">
           <button
             onClick={() => {
-              setEditBackup(formData); // backup current data
+              setEditBackup(JSON.parse(JSON.stringify(formData))); // deep-copy backup
               setIsEditing(true);
             }}
             className="flex items-center gap-2 px-4 py-2 
@@ -182,11 +209,11 @@ const newImagePath = hodPic
       <div className="w-full md:w-1/8 flex flex-col justify-center items-center gap-2">
         {isEditing ? (
           <>
-           <img
-  className="w-auto h-60 rounded-lg"
-  alt="Library HoD"
-  src={imagePreview || UrlParser(formData?.image_path)}
-/>
+            <img
+              className="w-auto h-60 rounded-lg"
+              alt="Library HoD"
+              src={imagePreview || UrlParser(formData?.image_path)}
+            />
 
             <label className="bg-[#FDCC03] text-text px-3 py-1 rounded cursor-pointer mt-2 hover:bg-[#800000] hover:text-prim">
               Replace
@@ -194,14 +221,14 @@ const newImagePath = hodPic
                 type="file"
                 accept="image/*"
                 className="hidden"
-               onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (!file) return;
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (!file) return;
 
-                    const previewUrl = URL.createObjectURL(file);
-                    setImagePreview(previewUrl);   // ✅ only for UI
-                    setHodPic(file);               // ✅ actual file
-                  }}
+                  const previewUrl = URL.createObjectURL(file);
+                  setImagePreview(previewUrl);   // ✅ only for UI
+                  setHodPic(file);               // ✅ actual file
+                }}
               />
             </label>
           </>
@@ -209,7 +236,7 @@ const newImagePath = hodPic
           <img
             className="w-auto h-60 rounded-lg"
             alt="Library HoD"
-            src={UrlParser(formData?.image_path)}
+            src={imagePreview || UrlParser(formData?.image_path)}
           />
         )}
       </div>
@@ -283,8 +310,11 @@ const newImagePath = hodPic
             <>
               <button
                 onClick={() => {
-                  setFormData(editBackup); // restore this session only
+                  setFormData(editBackup ? JSON.parse(JSON.stringify(editBackup)) : JSON.parse(JSON.stringify(originalData)));
+                  setHodPic(null);
+                  setImagePreview(null);
                   setIsEditing(false);
+                  toast.info("Changes reverted");
                 }}
                 className="px-4 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
               >
@@ -440,11 +470,10 @@ const newImagePath = hodPic
                 onClick={handleRequestConfirm}
                 disabled={changeList.length === 0}
                 className={`px-4 py-2 rounded flex items-center gap-2
-            ${
-              changeList.length === 0
-                ? "bg-gray-300 cursor-not-allowed"
-                : "bg-[#FDCC03] hover:bg-[#800000] text-text hover:text-white"
-            }`}
+            ${changeList.length === 0
+                    ? "bg-gray-300 cursor-not-allowed"
+                    : "bg-[#FDCC03] hover:bg-[#800000] text-text hover:text-white"
+                  }`}
               >
                 <Send size={16} /> Final Request
               </button>
