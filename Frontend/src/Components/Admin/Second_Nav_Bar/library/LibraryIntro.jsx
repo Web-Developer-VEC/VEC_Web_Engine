@@ -135,8 +135,6 @@ const LibraryIntro = ({ about }) => {
       });
       return updated;
     });
-
-    toast.info(`${sectionLabel} changes reverted`);
   };
 
   const changeList = React.useMemo(() => {
@@ -183,11 +181,9 @@ const LibraryIntro = ({ about }) => {
       if (result) {
         setShowRequestModal(false);
         setShowRequest(false);
-        toast.success("Request submitted successfully!");
       }
     } catch (err) {
       console.error(err);
-      toast.error("Failed to submit request");
     }
   };
 
@@ -196,10 +192,6 @@ const LibraryIntro = ({ about }) => {
     setShowRequest(false);
     setIsEditing(false);
     setShowDiscardModal(false);
-    toast.info("❌ Changes discarded", {
-      position: "bottom-right",
-      autoClose: 2000,
-    });
   };
 
   if (!about || !formData) {

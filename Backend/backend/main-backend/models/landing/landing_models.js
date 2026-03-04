@@ -1,6 +1,7 @@
 const allowedtypes = {
   landing_data : ['page_details',
   'banner',
+  'popup',
   'department_banner',
   'notifications',
   'announcements',

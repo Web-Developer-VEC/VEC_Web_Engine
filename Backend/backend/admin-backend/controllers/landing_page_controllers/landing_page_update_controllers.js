@@ -8,7 +8,7 @@ async function updateData(tempDoc, mainCollection) {
 
     const singleObjectTypes = ["page_details","banner", "special_announcements"]
 
-    const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner"];
+    const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner", "popup", "admission"];
 
 
     if (multipleObjectTypes.includes(collection_type)) {
