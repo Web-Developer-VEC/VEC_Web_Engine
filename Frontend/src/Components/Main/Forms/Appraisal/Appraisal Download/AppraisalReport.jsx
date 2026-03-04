@@ -8,14 +8,25 @@ const deptMap = [
   "CHEMISTRY",
   "CIVIL",
   "CSE",
-  "CSECS"
+  "CSECS",
+  "EEE",
+  "EIE",
+  "ECE",
+  "ENGLISH",
+  "IT",
+  "MATHS",
+  "MECH",
+  "TAMIL",
+  "PHYSICS",
+  "MECSE",
+  "MBA",
 ];
 
 const yearList = [
-  "2025-26",
-  "2024-25",
-  "2023-24",
-  "2022-23"
+  "2025-2026",
+  "2024-2025",
+  "2023-2024",
+  "2022-2023"
 ];
 
 const AppraisalReport = () => {
@@ -27,67 +38,100 @@ const AppraisalReport = () => {
   const [loading, setLoading] = useState(false);
   const [pdfUrl, setPdfUrl] = useState("");
 
+
+  // ===============================
+  // FETCH REPORT FROM BACKEND
+  // ===============================
+
   useEffect(() => {
 
-    if (!selectedDept || !selectedYear || !selectedType) return;
+    if (!selectedDept || !selectedYear || !selectedType)
+      return;
 
     const fetchReport = async () => {
+
       try {
+
         setLoading(true);
 
-        const apiUrl = selectedType === "with_proof"
-          ? "/api/main-backend/appraisal_doc_with_proof"
-          : "/api/main-backend/appraisal_doc_without_proof";
+        const apiUrl =
+          selectedType === "with_proof"
+            ? "/api/main-backend/appraisal_doc_with_proof"
+            : "/api/main-backend/appraisal_doc_without_proof";
 
-        const response = await axios.post(
-          apiUrl,
-          {
-            department: selectedDept,
-            academic_year: selectedYear
-          },
-          {
-            responseType: "blob"
-          }
-        );
 
-        const mimeType = response.headers?.["content-type"] || "application/pdf";
-        const file = new Blob([response.data], { type: mimeType });
-        const fileURL = URL.createObjectURL(file);
+        const response = await axios.post(apiUrl, {
+
+          department: selectedDept,
+          academic_year: selectedYear,
+          include_proof: selectedType === "with_proof"
+
+        });
+
+
+        const s3Url = response.data?.pdf_Url;
+
+        if (!s3Url) {
+          console.log("PDF URL not found");
+          return;
+        }
+
+
+        // =====================
+        // VIEW PDF
+        // =====================
 
         if (selectedType === "with_proof") {
-          setPdfUrl((prev) => {
-            if (prev) URL.revokeObjectURL(prev);
-            return fileURL;
-          });
-        } else {
-          setPdfUrl((prev) => {
-            if (prev) URL.revokeObjectURL(prev);
-            return "";
-          });
-          const link = document.createElement("a");
-          link.href = fileURL;
-          link.download = "Appraisal_report.pdf";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          URL.revokeObjectURL(fileURL);
+
+          setPdfUrl(s3Url);
+
         }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
+        else {
+
+          const link = document.createElement("a");
+
+          link.href = s3Url;
+
+          link.target = "_blank";   // Open new tab
+          link.download = "Appraisal_report.pdf"; // Force download
+
+          document.body.appendChild(link);
+
+          link.click();
+
+          document.body.removeChild(link);
+
+        }
       }
+      catch (error) {
+
+        console.log("Error:", error);
+
+      }
+      finally {
+
+        setLoading(false);
+
+      }
+
     };
 
     fetchReport();
 
   }, [selectedDept, selectedYear, selectedType]);
 
-  useEffect(() => {
-    return () => {
-      if (pdfUrl) URL.revokeObjectURL(pdfUrl);
-    };
-  }, [pdfUrl]);
+
+
+  // ===============================
+  // RESET WHEN CHANGE
+  // ===============================
+
+  const resetPdf = () => {
+
+    setPdfUrl("");
+    setSelectedType("");
+
+  };
 
 
   return (
@@ -99,6 +143,7 @@ const AppraisalReport = () => {
       </h2>
 
 
+
       {/* Department + Year */}
 
       <div className="flex flex-col md:flex-row justify-center gap-4 mb-6">
@@ -106,44 +151,47 @@ const AppraisalReport = () => {
         <select
           value={selectedDept}
           onChange={(e) => {
+
             setSelectedDept(e.target.value);
-            setSelectedType("");
-            if (pdfUrl) {
-              URL.revokeObjectURL(pdfUrl);
-              setPdfUrl("");
-            }
+            resetPdf();
+
           }}
           className="px-4 py-2 border rounded"
         >
+
           <option value="">Select Department</option>
 
           {deptMap.map((dept) => (
+
             <option key={dept} value={dept}>
               {dept}
             </option>
+
           ))}
 
         </select>
 
 
+
         <select
           value={selectedYear}
           onChange={(e) => {
+
             setSelectedYear(e.target.value);
-            setSelectedType("");
-            if (pdfUrl) {
-              URL.revokeObjectURL(pdfUrl);
-              setPdfUrl("");
-            }
+            resetPdf();
+
           }}
           className="px-4 py-2 border rounded"
         >
+
           <option value="">Select Year</option>
 
           {yearList.map((year) => (
+
             <option key={year} value={year}>
               {year}
             </option>
+
           ))}
 
         </select>
@@ -152,11 +200,14 @@ const AppraisalReport = () => {
 
 
 
-      {/* Proof Buttons */}
+      {/* Buttons */}
 
       {selectedDept && selectedYear && (
 
         <div className="flex justify-center gap-4 mb-6">
+
+
+          {/* VIEW */}
 
           <button
             onClick={() => setSelectedType("with_proof")}
@@ -170,6 +221,9 @@ const AppraisalReport = () => {
           </button>
 
 
+
+          {/* DOWNLOAD */}
+
           <button
             onClick={() => setSelectedType("without_proof")}
             className={`px-6 py-3 rounded 
@@ -181,6 +235,7 @@ const AppraisalReport = () => {
             Download
           </button>
 
+
         </div>
 
       )}
@@ -188,10 +243,13 @@ const AppraisalReport = () => {
 
 
       {/* PDF Viewer */}
+
       {selectedType === "with_proof" && (
 
         loading ? (
+
           <LoadComp />
+
         ) : (
 
           pdfUrl && (
@@ -199,11 +257,12 @@ const AppraisalReport = () => {
             <div className="border p-6 mt-6 w-[81%] mx-auto bg-prim dark:bg-drkp shadow-lg rounded-lg">
 
               <h3 className="text-xl font-bold mb-4 text-center">
-                Appraisal Report
+                {selectedDept} {selectedYear} Appraisal Report
               </h3>
 
+
               <embed
-                src={`${pdfUrl}#toolbar=0`}
+                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
                 type="application/pdf"
                 width="100%"
                 height="600px"
@@ -217,6 +276,7 @@ const AppraisalReport = () => {
         )
 
       )}
+
 
     </div>
 
