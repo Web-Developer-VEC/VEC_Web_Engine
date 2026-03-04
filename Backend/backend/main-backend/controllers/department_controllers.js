@@ -1,5 +1,6 @@
 const { getDb } = require("../config/db");
 const logError = require("../middlewares/logerror");
+const {DEPARTMENT_CODE_MAP} = require("../models/top_navbar/department_models")
 
 /* ======================================================
    DEPARTMENT + STAFF MIDDLEWARE
@@ -144,4 +145,89 @@ async function getsidebar(req, res) {
   }
 }
 
-module.exports = { DeptMiddleware, getsidebar };
+
+/* ======================================================
+   GET SINGLE FACULTY BY UNIQUE ID
+====================================================== */
+
+/* ======================================================
+   GET STAFF (HOD / FACULTY / NON-TEACHING) BY UNIQUE ID
+====================================================== */
+
+/* ======================================================
+   GET STAFF BY UNIQUE ID (ONLY RETURN DATA)
+====================================================== */
+
+async function getStaffByUniqueId(req, res) {
+  const { deptId, uniqueId } = req.params;
+  let collectionName = null;
+
+  try {
+    if (!deptId || !uniqueId) {
+      return res.status(400).json({ error: "Invalid parameters" });
+    }
+
+    // 🔥 Map 001 → AIDS_001 using department model
+    const mappedDepartment = DEPARTMENT_CODE_MAP[deptId];
+
+    if (!mappedDepartment) {
+      return res.status(400).json({ error: "Invalid department id" });
+    }
+
+    const db = getDb();
+
+    // ✅ Use mapped department
+    collectionName = `${mappedDepartment}_staff`;
+
+    const documents = await db.collection(collectionName).find({}).toArray();
+
+    if (!documents.length) {
+      return res.status(404).json({ message: "Department not found" });
+    }
+
+    let foundStaff = null;
+
+    for (const doc of documents) {
+
+      if (doc.HOD) {
+        foundStaff = doc.HOD.find(f => f.unique_id === uniqueId);
+        if (foundStaff) break;
+      }
+
+      if (doc.FACULTY) {
+        foundStaff = doc.FACULTY.find(f => f.unique_id === uniqueId);
+        if (foundStaff) break;
+      }
+
+      if (doc.NON_TEACHING_FACULTY) {
+        foundStaff = doc.NON_TEACHING_FACULTY.find(
+          f => f.unique_id === uniqueId
+        );
+        if (foundStaff) break;
+      }
+    }
+
+    if (!foundStaff) {
+      return res.status(404).json({ message: "Staff not found" });
+    }
+
+    // ✅ RETURN ONLY STAFF OBJECT
+    return res.status(200).json(foundStaff);
+
+  } catch (error) {
+    console.error("Error fetching staff:", error);
+
+    await logError(
+      req,
+      error,
+      `Error fetching staff from ${collectionName}`,
+      500
+    );
+
+    return res.status(500).json({
+      error: "Internal Server Error"
+    });
+  }
+}
+
+module.exports = { DeptMiddleware, getsidebar,  getStaffByUniqueId };

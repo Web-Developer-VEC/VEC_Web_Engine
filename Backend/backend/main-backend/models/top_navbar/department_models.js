@@ -33,7 +33,15 @@ const ALLOWED_DEPARTMENTS = [
     "PS_018"
 ];
 
+
+const DEPARTMENT_CODE_MAP = ALLOWED_DEPARTMENTS.reduce((acc, dept) => {
+    const code = dept.split("_")[1];
+    acc[code] = dept;
+    return acc;
+}, {});
+
 module.exports = {
     allowedtypes,
-    ALLOWED_DEPARTMENTS
+    ALLOWED_DEPARTMENTS,
+    DEPARTMENT_CODE_MAP
 };
