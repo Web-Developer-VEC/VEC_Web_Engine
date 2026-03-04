@@ -146,17 +146,6 @@ async function getsidebar(req, res) {
 }
 
 
-/* ======================================================
-   GET SINGLE FACULTY BY UNIQUE ID
-====================================================== */
-
-/* ======================================================
-   GET STAFF (HOD / FACULTY / NON-TEACHING) BY UNIQUE ID
-====================================================== */
-
-/* ======================================================
-   GET STAFF BY UNIQUE ID (ONLY RETURN DATA)
-====================================================== */
 
 async function getStaffByUniqueId(req, res) {
   const { deptId, uniqueId } = req.params;
