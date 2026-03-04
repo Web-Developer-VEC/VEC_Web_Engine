@@ -102,6 +102,22 @@ const Head = () => {
               ],
         },
         {
+            main: "Placement",
+            cod: [0, 4],
+            cols: 1,
+            sub: [
+                {
+                    hrd: false,
+                    ttl: "About Placement Department",
+                    sup: [],
+                    lnk: "/abtplace",
+                },
+                {hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep"},
+                {hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni"},
+                {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
+            ],
+        },
+        {
             main: "Admission",
             cod: [0, 5],
             cols: 1,
@@ -150,22 +166,7 @@ const Head = () => {
                 {hrd: false, ttl: "Policy", sup: [], lnk: "/policies"},
             ]
         },
-        {
-            main: "Placement",
-            cod: [0, 4],
-            cols: 1,
-            sub: [
-                {
-                    hrd: false,
-                    ttl: "About Placement Department",
-                    sup: [],
-                    lnk: "/abtplace",
-                },
-                {hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep"},
-                {hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni"},
-                {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
-            ],
-        },
+        
     ];
 
     function max(arr) {

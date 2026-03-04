@@ -245,6 +245,8 @@ const App = () => {
 
     const isFooter = currentPath.startsWith("/hostel") || currentPath.startsWith('/QA');
 
+    
+
     return (
         <>
             <GlobalStyle />
@@ -346,7 +348,7 @@ const App = () => {
 
                     </MainContentWrapper>
                     {/* <Footer ref={footerRef}/> */}
-                    {!isHostelRoute && <Footer theme={theme} data={footer?.[0]} />}
+                    {!isFooter && <Footer theme={theme} data={footer?.[0]} />}
 
                     <SideButton />
                     <ScrollToTopButton />
