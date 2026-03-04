@@ -2,10 +2,11 @@
     {
         "HOD": [
             {
-                "Name": "DR. RAJESWARAN S",
-                "Designation": "Professor & Head",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "hod.maths@velammal.edu.in",
+                "name": "DR. RAJESWARAN S",
+                "unique_id": "VEC-012-H-001",
+                "designation": "Professor & Head",
+                "department_name": "Mathematics",
+                "mail_id": "hod.maths@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-01-096.webp",
                 "socialmedia_links": {
                     "linkedin": "http://www.linkedin.com/in/rajeswaran-subramani-03b61349",
@@ -15,250 +16,250 @@
                     "publonprofile": "",
                     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56049208900"
                 },
-                "Professional_Membership": "ISTE",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "ISTE",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "VHNSN College",
-                        "YEAR": 1984
+                        "degree": "B.Sc",
+                        "branch": "Mathematics",
+                        "institute": "VHNSN College",
+                        "year": 1984
                     },
                     {
-                        "DEGREE": "M.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "VHNSN College",
-                        "YEAR": 1986
+                        "degree": "M.Sc",
+                        "branch": "Mathematics",
+                        "institute": "VHNSN College",
+                        "year": 1986
                     },
                     {
-                        "DEGREE": "M.Phil",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "MCC, Chennai",
-                        "YEAR": 1988
+                        "degree": "M.Phil",
+                        "branch": "Mathematics",
+                        "institute": "MCC, Chennai",
+                        "year": 1988
                     },
                     {
-                        "DEGREE": "Ph.D",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Sathyabama University",
-                        "YEAR": 2015
+                        "degree": "Ph.D",
+                        "branch": "Mathematics",
+                        "institute": "Sathyabama University",
+                        "year": 2015
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "14.09.1990",
-                        "Unnamed:_1": "28.08.1996",
-                        "EXPERIENCE": "5",
-                        "Unnamed:_3": "11",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "Valliammai Polytechnic, Kattankulathur"
+                        "duration": "14.09.1990",
+                        "unnamed:_1": "28.08.1996",
+                        "experience": "5",
+                        "unnamed:_3": "11",
+                        "designation": "Lecturer",
+                        "institution": "Valliammai Polytechnic, Kattankulathur"
                     },
                     {
-                        "DURATION": "30.8.1996",
-                        "Unnamed:_1": "30.5.1999",
-                        "EXPERIENCE": "2",
-                        "Unnamed:_3": "9",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "Velammal Engineering College, Chennai"
+                        "duration": "30.8.1996",
+                        "unnamed:_1": "30.5.1999",
+                        "experience": "2",
+                        "unnamed:_3": "9",
+                        "designation": "Lecturer",
+                        "institution": "Velammal Engineering College, Chennai"
                     },
                     {
-                        "DURATION": "1.6.1999",
-                        "Unnamed:_1": "30.5.2003",
-                        "EXPERIENCE": "4",
-                        "Unnamed:_3": "0",
-                        "DESIGNATION": "Sr. Lecturer"
+                        "duration": "1.6.1999",
+                        "unnamed:_1": "30.5.2003",
+                        "experience": "4",
+                        "unnamed:_3": "0",
+                        "designation": "Sr. Lecturer"
                     },
                     {
-                        "DURATION": "1.6.2003",
-                        "Unnamed:_1": "30.5.2006",
-                        "EXPERIENCE": "3",
-                        "Unnamed:_3": "0",
-                        "DESIGNATION": "Asst. Professer"
+                        "duration": "1.6.2003",
+                        "unnamed:_1": "30.5.2006",
+                        "experience": "3",
+                        "unnamed:_3": "0",
+                        "designation": "Asst. Professer"
                     },
                     {
-                        "DURATION": "1.6.2006",
-                        "Unnamed:_1": "Till Date",
-                        "EXPERIENCE": "18",
-                        "Unnamed:_3": "3",
-                        "DESIGNATION": "Prof. & Head"
+                        "duration": "1.6.2006",
+                        "unnamed:_1": "Till Date",
+                        "experience": "18",
+                        "unnamed:_3": "3",
+                        "designation": "Prof. & Head"
                     }
                 ],
-                "PROJECTS": [
+                "projects": [
                     {
-                        "TITLE": "Nil"
+                        "title": "Nil"
                     },
                     {
-                        "TITLE": "NIL"
+                        "title": "NIL"
                     }
                 ],
-                "PATENTS": [
+                "patents": [
                     {
-                        "NAME_OF_PATENT": "Nil"
+                        "name_of_patent": "Nil"
                     }
                 ],
-                "JOURNAL_PUBLICATIONS": [
+                "journal_publications": [
                     {
-                        "AUTHORS": "S.Rajeswaran and S.Rajasekaran ,",
-                        "PAPER_TITLE": "Cellular Automata Model for Single Lane Traffic",
-                        "JOURNAL_NAME": "CIIT International Journal of Automation and Autonomous Systems",
-                        "PAGE_NO": "162-168",
-                        "VOL_NO_/_ISSUE_NO": "3,3",
-                        "MONTH_&_YEAR": "2011-04-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran and S.Rajasekaran ,",
+                        "paper_title": "Cellular Automata Model for Single Lane Traffic",
+                        "journal_name": "CIIT International Journal of Automation and Autonomous Systems",
+                        "page_no": "162-168",
+                        "vol_no_/_issue_no": "3,3",
+                        "month_&_year": "2011-04-01 00:00:00",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran and S.Rajasekaran",
-                        "PAPER_TITLE": "A Realistic Approach to the Traffic Flow Behaviors by Cellular Automata Models",
-                        "JOURNAL_NAME": "International Journal of Computer Applications",
-                        "PAGE_NO": "30-34",
-                        "VOL_NO_/_ISSUE_NO": "56,12",
-                        "MONTH_&_YEAR": "2012-10-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran and S.Rajasekaran",
+                        "paper_title": "A Realistic Approach to the Traffic Flow Behaviors by Cellular Automata Models",
+                        "journal_name": "International Journal of Computer Applications",
+                        "page_no": "30-34",
+                        "vol_no_/_issue_no": "56,12",
+                        "month_&_year": "2012-10-01 00:00:00",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran and S.Rajasekaran",
-                        "PAPER_TITLE": "Modeling and Simulation of Traffic Flow Using Cellular Automata",
-                        "JOURNAL_NAME": " International Journal of Mathematical and Computer Modelling",
-                        "PAGE_NO": "1103-1108",
-                        "VOL_NO_/_ISSUE_NO": "18,1",
-                        "MONTH_&_YEAR": "2013-01-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran and S.Rajasekaran",
+                        "paper_title": "Modeling and Simulation of Traffic Flow Using Cellular Automata",
+                        "journal_name": " International Journal of Mathematical and Computer Modelling",
+                        "page_no": "1103-1108",
+                        "vol_no_/_issue_no": "18,1",
+                        "month_&_year": "2013-01-01 00:00:00",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran and S.Rajasekaran",
-                        "PAPER_TITLE": "Analysis of  Traffic Flow in Congested Cities Using Cellular Automata",
-                        "JOURNAL_NAME": "Journal of Theoretical and Applied  Information Technology",
-                        "PAGE_NO": "608-615",
-                        "VOL_NO_/_ISSUE_NO": "60,3",
-                        "MONTH_&_YEAR": "2014-02-01 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "scopus",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran and S.Rajasekaran",
+                        "paper_title": "Analysis of  Traffic Flow in Congested Cities Using Cellular Automata",
+                        "journal_name": "Journal of Theoretical and Applied  Information Technology",
+                        "page_no": "608-615",
+                        "vol_no_/_issue_no": "60,3",
+                        "month_&_year": "2014-02-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "scopus",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran and S.Rajasekaran",
-                        "PAPER_TITLE": " Simulation of Urban Traffic at Intersection Using  Cellular Automata",
-                        "JOURNAL_NAME": " International Journal of  Applied  Engineering Research",
-                        "DOI_NUMBER": "https://www.researchgate.net/publication/288288051_Simulation_of_urban_traffic_at_intersection_based_on_cellular_automata",
-                        "PAGE_NO": "21255-21267",
-                        "VOL_NO_/_ISSUE_NO": "9,23",
-                        "MONTH_&_YEAR": "2014",
-                        "INDEXED_IN_SCI_/_SCOPUS": "scopus",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran and S.Rajasekaran",
+                        "paper_title": " Simulation of Urban Traffic at Intersection Using  Cellular Automata",
+                        "journal_name": " International Journal of  Applied  Engineering Research",
+                        "doi_number": "https://www.researchgate.net/publication/288288051_Simulation_of_urban_traffic_at_intersection_based_on_cellular_automata",
+                        "page_no": "21255-21267",
+                        "vol_no_/_issue_no": "9,23",
+                        "month_&_year": "2014",
+                        "indexed_in_sci_/_scopus": "scopus",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran",
-                        "PAPER_TITLE": "Studying Traffic flow using simulation cellular automata",
-                        "JOURNAL_NAME": "International Journal of Pure and Applied Mathematics",
-                        "DOI_NUMBER": "https://www.jatit.org/volumes/Vol60No3/18Vol60No3.pdf",
-                        "PAGE_NO": "413-421",
-                        "VOL_NO_/_ISSUE_NO": "113,6",
-                        "MONTH_&_YEAR": "1905-07-09 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran",
+                        "paper_title": "Studying Traffic flow using simulation cellular automata",
+                        "journal_name": "International Journal of Pure and Applied Mathematics",
+                        "doi_number": "https://www.jatit.org/volumes/Vol60No3/18Vol60No3.pdf",
+                        "page_no": "413-421",
+                        "vol_no_/_issue_no": "113,6",
+                        "month_&_year": "1905-07-09 00:00:00",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran and S.Rajasekaran",
-                        "PAPER_TITLE": "A Study On Mixed Traffic Flow Problem Based On Cellular Automata ",
-                        "JOURNAL_NAME": "The Global Journal of Applied Mathematics & Mathematical Sciences",
-                        "PAGE_NO": "7 to 16",
-                        "VOL_NO_/_ISSUE_NO": "5,1",
-                        "MONTH_&_YEAR": "2012-06-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran and S.Rajasekaran",
+                        "paper_title": "A Study On Mixed Traffic Flow Problem Based On Cellular Automata ",
+                        "journal_name": "The Global Journal of Applied Mathematics & Mathematical Sciences",
+                        "page_no": "7 to 16",
+                        "vol_no_/_issue_no": "5,1",
+                        "month_&_year": "2012-06-01 00:00:00",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran and S.Rajasekaran",
-                        "PAPER_TITLE": "A Study Of Vehicular Traffic Flow Modeling Based On Modified Cellular Automata",
-                        "JOURNAL_NAME": "International Organization of Scientific Research Journal of Mathematics",
-                        "PAGE_NO": "32-38",
-                        "VOL_NO_/_ISSUE_NO": "4(5)",
-                        "MONTH_&_YEAR": "2013-01-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran and S.Rajasekaran",
+                        "paper_title": "A Study Of Vehicular Traffic Flow Modeling Based On Modified Cellular Automata",
+                        "journal_name": "International Organization of Scientific Research Journal of Mathematics",
+                        "page_no": "32-38",
+                        "vol_no_/_issue_no": "4(5)",
+                        "month_&_year": "2013-01-01 00:00:00",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran and S.Rajasekaran",
-                        "PAPER_TITLE": "Analysis Of Single-Lane and Two-Lane Traffic Models by Using Cellular Automata",
-                        "JOURNAL_NAME": "International Journal of Electronics Communication and Computer Engineering",
-                        "PAGE_NO": "18-23",
-                        "VOL_NO_/_ISSUE_NO": "4(1)",
-                        "MONTH_&_YEAR": "2013-01-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran and S.Rajasekaran",
+                        "paper_title": "Analysis Of Single-Lane and Two-Lane Traffic Models by Using Cellular Automata",
+                        "journal_name": "International Journal of Electronics Communication and Computer Engineering",
+                        "page_no": "18-23",
+                        "vol_no_/_issue_no": "4(1)",
+                        "month_&_year": "2013-01-01 00:00:00",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran and S.Rajasekaran",
-                        "PAPER_TITLE": "Analyzing of Two-Lane Traffic Flow Simulation Model using Cellular Automata",
-                        "JOURNAL_NAME": "International  Journal of Computational Science and Mathematics",
-                        "PAGE_NO": "77-90",
-                        "VOL_NO_/_ISSUE_NO": "4(2)",
-                        "MONTH_&_YEAR": "2012-12-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.Rajeswaran and S.Rajasekaran",
+                        "paper_title": "Analyzing of Two-Lane Traffic Flow Simulation Model using Cellular Automata",
+                        "journal_name": "International  Journal of Computational Science and Mathematics",
+                        "page_no": "77-90",
+                        "vol_no_/_issue_no": "4(2)",
+                        "month_&_year": "2012-12-01 00:00:00",
+                        "conference_name": ""
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [
+                "conference_publications": [
                     {
-                        "AUTHORS": "S.Rajeswaran, S.Rajasekaran",
-                        "PAPER_TITLE": "Investigation of Traffic Flow Using Cellular Automata",
-                        "CONFERENCE_NAME": "International Conference on Mathematics and Computer Science",
-                        "ORGANIZED_BY": "Loyola College, Chennai, India.",
-                        "ISBN_/_ISSN_NO": "978-81-920490-0-7",
-                        "MONTH_&_YEAR": "2011-01-01"
+                        "authors": "S.Rajeswaran, S.Rajasekaran",
+                        "paper_title": "Investigation of Traffic Flow Using Cellular Automata",
+                        "conference_name": "International Conference on Mathematics and Computer Science",
+                        "organized_by": "Loyola College, Chennai, India.",
+                        "isbn_/_issn_no": "978-81-920490-0-7",
+                        "month_&_year": "2011-01-01"
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran, S.Rajasekaran",
-                        "PAPER_TITLE": "Cellular Automata Model for Single Lane Traffic",
-                        "CONFERENCE_NAME": "Proceedings of  the National Conference on Recent Developments in Mathematics and its Applications",
-                        "ORGANIZED_BY": "SRM University, Kattankulathlur ,Tamil Nadu , India ",
-                        "MONTH_&_YEAR": "2011-02-01"
+                        "authors": "S.Rajeswaran, S.Rajasekaran",
+                        "paper_title": "Cellular Automata Model for Single Lane Traffic",
+                        "conference_name": "Proceedings of  the National Conference on Recent Developments in Mathematics and its Applications",
+                        "organized_by": "SRM University, Kattankulathlur ,Tamil Nadu , India ",
+                        "month_&_year": "2011-02-01"
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran, S.Rajasekaran",
-                        "PAPER_TITLE": "A Heterogeneous Traffic Flow Model Based On Cellular Automata",
-                        "CONFERENCE_NAME": "Proceedings of the National Conference on Mathematical techniques and its Applications",
-                        "ORGANIZED_BY": "SRM University, Kattankulathlur , Tamil Nude , India",
-                        "MONTH_&_YEAR": "2012-02-01"
+                        "authors": "S.Rajeswaran, S.Rajasekaran",
+                        "paper_title": "A Heterogeneous Traffic Flow Model Based On Cellular Automata",
+                        "conference_name": "Proceedings of the National Conference on Mathematical techniques and its Applications",
+                        "organized_by": "SRM University, Kattankulathlur , Tamil Nude , India",
+                        "month_&_year": "2012-02-01"
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran, S.Rajasekaran",
-                        "PAPER_TITLE": "Simulation of Heterogeneous Traffic Flow Modeling Using Cellular Automata",
-                        "CONFERENCE_NAME": "International Conference on Mathematical Modeling and Applied Soft Computing",
-                        "ORGANIZED_BY": "CIT, Coimbatore, India",
-                        "ISBN_/_ISSN_NO": "978-81-923752-1-2",
-                        "MONTH_&_YEAR": "2012-07-01"
+                        "authors": "S.Rajeswaran, S.Rajasekaran",
+                        "paper_title": "Simulation of Heterogeneous Traffic Flow Modeling Using Cellular Automata",
+                        "conference_name": "International Conference on Mathematical Modeling and Applied Soft Computing",
+                        "organized_by": "CIT, Coimbatore, India",
+                        "isbn_/_issn_no": "978-81-923752-1-2",
+                        "month_&_year": "2012-07-01"
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran, S.Rajasekaran",
-                        "PAPER_TITLE": "Simulation of Traffic Fow at Controlled T-Intersection using Two Component Cellular Automata Model",
-                        "CONFERENCE_NAME": "International Conference on Mathematical Computer Engineering",
-                        "ORGANIZED_BY": "VIT University, Chennai, India.",
-                        "ISBN_/_ISSN_NO": "978-93-81899-64-9",
-                        "MONTH_&_YEAR": "2015-12-01"
+                        "authors": "S.Rajeswaran, S.Rajasekaran",
+                        "paper_title": "Simulation of Traffic Fow at Controlled T-Intersection using Two Component Cellular Automata Model",
+                        "conference_name": "International Conference on Mathematical Computer Engineering",
+                        "organized_by": "VIT University, Chennai, India.",
+                        "isbn_/_issn_no": "978-93-81899-64-9",
+                        "month_&_year": "2015-12-01"
                     },
                     {
-                        "AUTHORS": "S.Rajeswaran, S.Rajasekaran",
-                        "PAPER_TITLE": "Simulation of Two-lane Traffic Flow Modeling Using Cellular Automata",
-                        "CONFERENCE_NAME": "Proceedings of the International Conference on Mathematical Sciences",
-                        "ORGANIZED_BY": " Sathyabama University",
-                        "ISBN_/_ISSN_NO": "978-93-5107-261-4",
-                        "MONTH_&_YEAR": "2024-07-01"
+                        "authors": "S.Rajeswaran, S.Rajasekaran",
+                        "paper_title": "Simulation of Two-lane Traffic Flow Modeling Using Cellular Automata",
+                        "conference_name": "Proceedings of the International Conference on Mathematical Sciences",
+                        "organized_by": " Sathyabama University",
+                        "isbn_/_issn_no": "978-93-5107-261-4",
+                        "month_&_year": "2024-07-01"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [
                     {
-                        "RESEARCH_SCHOLAR_NAME": "Nil"
+                        "research_scholar_name": "Nil"
                     }
                 ],
-                "COUNT": {
-                    "Professional_Membership": "ISTE",
-                    "Sponsored_Projects": 2,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 10,
-                    "Conference_Publications": 6,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 12,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "count": {
+                    "professional_membership": "ISTE",
+                    "sponsored_projects": 2,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 10,
+                    "conference_publications": 6,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 1,
+                    "seminar_/_workshop_/_guest_lectures_attended": 12,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             }
         ]
@@ -266,10 +267,11 @@
     {
         "FACULTY": [
             {
-                "Name": "DR. GURUSAMY P",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "gurusamy@velammal.edu.in",
+                "name": "DR. GURUSAMY P",
+                "unique_id": "VEC-012-F-01",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "gurusamy@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-115.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/gurusamy-palpandy-62024438/",
@@ -279,350 +281,351 @@
                     "publonprofile": "https://www.webofscience.com/wos/author/record/LWZ-9899-2024",
                     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56622876800"
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Aditanar college of Arts and Science",
-                        "YEAR": 1987
+                        "degree": "B.Sc",
+                        "branch": "Mathematics",
+                        "institute": "Aditanar college of Arts and Science",
+                        "year": 1987
                     },
                     {
-                        "DEGREE": "M.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Aditanar college of Arts and Science",
-                        "YEAR": 1989
+                        "degree": "M.Sc",
+                        "branch": "Mathematics",
+                        "institute": "Aditanar college of Arts and Science",
+                        "year": 1989
                     },
                     {
-                        "DEGREE": "M.Phil",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Aditanar college of Arts and Science",
-                        "YEAR": 1990
+                        "degree": "M.Phil",
+                        "branch": "Mathematics",
+                        "institute": "Aditanar college of Arts and Science",
+                        "year": 1990
                     },
                     {
-                        "DEGREE": "P.Hd",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Anna University chennai",
-                        "YEAR": 2016
+                        "degree": "P.Hd",
+                        "branch": "Mathematics",
+                        "institute": "Anna University chennai",
+                        "year": 2016
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "16.06.1994",
-                        "Unnamed:_1": "20.06.2007",
-                        "EXPERIENCE": "13",
-                        "Unnamed:_3": "0",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "Arunai Engineering College, Tiruvannamalai"
+                        "duration": "16.06.1994",
+                        "unnamed:_1": "20.06.2007",
+                        "experience": "13",
+                        "unnamed:_3": "0",
+                        "designation": "Assistant Professor",
+                        "institution": "Arunai Engineering College, Tiruvannamalai"
                     },
                     {
-                        "DURATION": "28.06.2007",
-                        "Unnamed:_1": "till the date",
-                        "EXPERIENCE": "17",
-                        "Unnamed:_3": "3",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "Velammal Engineering College, Chennai - 66"
+                        "duration": "28.06.2007",
+                        "unnamed:_1": "till the date",
+                        "experience": "17",
+                        "unnamed:_3": "3",
+                        "designation": "Assistant Professor",
+                        "institution": "Velammal Engineering College, Chennai - 66"
                     }
                 ],
-                "PROJECTS": [
+                "projects": [
                     {
-                        "TITLE": "Nil",
-                        "SPONSORING_AGENCY": "Nil",
-                        "AMOUNT": "Nil",
-                        "YEAR_OF_SANCTION": "Nil",
-                        "DURATION": "Nil",
-                        "RESPONSIBILITY_(PI_/_CO_PI)": "Nil",
-                        "STATUS_(_Completed_/_Ongoing)": "Nil"
+                        "title": "Nil",
+                        "sponsoring_agency": "Nil",
+                        "amount": "Nil",
+                        "year_of_sanction": "Nil",
+                        "duration": "Nil",
+                        "responsibility_(pi_/_co_pi)": "Nil",
+                        "status_(_completed_/_ongoing)": "Nil"
                     }
                 ],
-                "PATENTS": [
+                "patents": [
                     {
-                        "NAME_OF_PATENT": "Nil",
-                        "PATENT_TYPE_(UTILITY)": "Nil",
-                        "COUNTRY": "Nil",
-                        "STATUS_(_Published_/_FER_/_Granted_)": "Nil",
-                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "Nil"
+                        "name_of_patent": "Nil",
+                        "patent_type_(utility)": "Nil",
+                        "country": "Nil",
+                        "status_(_published_/_fer_/_granted_)": "Nil",
+                        "date_of_recent_achieved_level": "Nil"
                     }
                 ],
-                "JOURNAL_PUBLICATIONS": [
+                "journal_publications": [
                     {
-                        "AUTHORS": "P Gurusamy, M Çağlar, S Sivasubramanian, LI Cotirla",
-                        "PAPER_TITLE": "The Fekete–Szegö functional associated with -th root transformation using conical domains",
-                        "JOURNAL_NAME": "Ukrains’ kyi Matematychnyi Zhurnal",
-                        "DOI_NUMBER": "10.3842/umzh.v76i7.7539",
-                        "PAGE_NO": ":951-964",
-                        "VOL_NO_/_ISSUE_NO": "76 / 7",
-                        "MONTH_&_YEAR": "2024-08-04 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "P Gurusamy, M Çağlar, S Sivasubramanian, LI Cotirla",
+                        "paper_title": "The Fekete–Szegö functional associated with -th root transformation using conical domains",
+                        "journal_name": "Ukrains’ kyi Matematychnyi Zhurnal",
+                        "doi_number": "10.3842/umzh.v76i7.7539",
+                        "page_no": ":951-964",
+                        "vol_no_/_issue_no": "76 / 7",
+                        "month_&_year": "2024-08-04 00:00:00",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "P Gurusamy, A Edwin Raj, S Sivasubramanian, R Jayasankar",
-                        "PAPER_TITLE": "Sharp bounds of some coefficient functionals over the class of functions convex in one direction",
-                        "JOURNAL_NAME": "AIP Conference Proceedings",
-                        "DOI_NUMBER": "10.1063/5.0149373",
-                        "PAGE_NO": "04002(1) to 040002(8)",
-                        "VOL_NO_/_ISSUE_NO": "2797 / 1",
-                        "MONTH_&_YEAR": "2023-07-14 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "P Gurusamy, A Edwin Raj, S Sivasubramanian, R Jayasankar",
+                        "paper_title": "Sharp bounds of some coefficient functionals over the class of functions convex in one direction",
+                        "journal_name": "AIP Conference Proceedings",
+                        "doi_number": "10.1063/5.0149373",
+                        "page_no": "04002(1) to 040002(8)",
+                        "vol_no_/_issue_no": "2797 / 1",
+                        "month_&_year": "2023-07-14 00:00:00",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "P Gurusamy, R Jayasankar, S Sivasubramanian",
-                        "PAPER_TITLE": "The Second-and Third-Order Hermitian Toeplitz Determinants for Some Subclasses of Analytic Functions Associated with Exponential Function",
-                        "JOURNAL_NAME": "Synergies in Analysis, Discrete Mathematics, Soft Computing and Modelling ",
-                        "DOI_NUMBER": "10.1007/978-981-19-7014-6_1",
-                        "PAGE_NO": "1 to 16",
-                        "VOL_NO_/_ISSUE_NO": "1 to 16",
-                        "MONTH_&_YEAR": "2023-02-03 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "P Gurusamy, R Jayasankar, S Sivasubramanian",
+                        "paper_title": "The Second-and Third-Order Hermitian Toeplitz Determinants for Some Subclasses of Analytic Functions Associated with Exponential Function",
+                        "journal_name": "Synergies in Analysis, Discrete Mathematics, Soft Computing and Modelling ",
+                        "doi_number": "10.1007/978-981-19-7014-6_1",
+                        "page_no": "1 to 16",
+                        "vol_no_/_issue_no": "1 to 16",
+                        "month_&_year": "2023-02-03 00:00:00",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "P Gurusamy, R Jayasankar",
-                        "PAPER_TITLE": "The estimates for second Hankel determinant of Ma-Minda starlike and convex functions",
-                        "JOURNAL_NAME": "AIP Conference Proceedings ",
-                        "DOI_NUMBER": "10.1063/5.0028656",
-                        "PAGE_NO": "20039",
-                        "VOL_NO_/_ISSUE_NO": "2282 / I",
-                        "MONTH_&_YEAR": "2020/10",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "P Gurusamy, R Jayasankar",
+                        "paper_title": "The estimates for second Hankel determinant of Ma-Minda starlike and convex functions",
+                        "journal_name": "AIP Conference Proceedings ",
+                        "doi_number": "10.1063/5.0028656",
+                        "page_no": "20039",
+                        "vol_no_/_issue_no": "2282 / I",
+                        "month_&_year": "2020/10",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "MURAT Ç AGLAR, Palpandy Gurusamy, HALIT ORHAN",
-                        "PAPER_TITLE": "The coefficient estimates for a class defined by Hohlov operator using conic domains",
-                        "JOURNAL_NAME": "TWMS Journal of Pure & Applied Mathematics",
-                        "PAGE_NO": "157",
-                        "VOL_NO_/_ISSUE_NO": "Vol 11 Issue 2",
-                        "MONTH_&_YEAR": "2020",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "MURAT Ç AGLAR, Palpandy Gurusamy, HALIT ORHAN",
+                        "paper_title": "The coefficient estimates for a class defined by Hohlov operator using conic domains",
+                        "journal_name": "TWMS Journal of Pure & Applied Mathematics",
+                        "page_no": "157",
+                        "vol_no_/_issue_no": "Vol 11 Issue 2",
+                        "month_&_year": "2020",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S Sivasubramanian, P Gurusamy",
-                        "PAPER_TITLE": "The Fekete–Szegö coefficient functional problems for -starlike and -convex functions related with lemniscate of Bernoulli",
-                        "JOURNAL_NAME": "Asian-European Journal of Mathematics 12(1)",
-                        "DOI_NUMBER": "10.1142/S1793557119500190",
-                        "PAGE_NO": "1950019(1) to 1950019(14)",
-                        "VOL_NO_/_ISSUE_NO": "12(1)",
-                        "MONTH_&_YEAR": "2019-04-18 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S Sivasubramanian, P Gurusamy",
+                        "paper_title": "The Fekete–Szegö coefficient functional problems for -starlike and -convex functions related with lemniscate of Bernoulli",
+                        "journal_name": "Asian-European Journal of Mathematics 12(1)",
+                        "doi_number": "10.1142/S1793557119500190",
+                        "page_no": "1950019(1) to 1950019(14)",
+                        "vol_no_/_issue_no": "12(1)",
+                        "month_&_year": "2019-04-18 00:00:00",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Murat Çağlar, Palpandy Gurusamy, Erhan Deniz",
-                        "PAPER_TITLE": "Unpredictability of initial coefficient bounds for m-fold symmetric bi-univalent starlike and convex functions defined by subordinations",
-                        "JOURNAL_NAME": "Afrika Matematika",
-                        "DOI_NUMBER": "10.1007/s13370-018-0578-0",
-                        "PAGE_NO": "793 to 802",
-                        "VOL_NO_/_ISSUE_NO": "29(3)",
-                        "MONTH_&_YEAR": "2018/9",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Murat Çağlar, Palpandy Gurusamy, Erhan Deniz",
+                        "paper_title": "Unpredictability of initial coefficient bounds for m-fold symmetric bi-univalent starlike and convex functions defined by subordinations",
+                        "journal_name": "Afrika Matematika",
+                        "doi_number": "10.1007/s13370-018-0578-0",
+                        "page_no": "793 to 802",
+                        "vol_no_/_issue_no": "29(3)",
+                        "month_&_year": "2018/9",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Huo Tang, HM Srivastava, S Sivasubramanian, P Gurusamy",
-                        "PAPER_TITLE": "The Fekete-Szegö functional problems for some subclasses of m-fold symmetric bi-univalent functions",
-                        "JOURNAL_NAME": "Journal of Mathematical Inequalities 10(4):1063-1092",
-                        "DOI_NUMBER": "10.7153/jmi-10-85",
-                        "PAGE_NO": "1063-1092",
-                        "VOL_NO_/_ISSUE_NO": "10(4)",
-                        "MONTH_&_YEAR": "2016-12-01 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Huo Tang, HM Srivastava, S Sivasubramanian, P Gurusamy",
+                        "paper_title": "The Fekete-Szegö functional problems for some subclasses of m-fold symmetric bi-univalent functions",
+                        "journal_name": "Journal of Mathematical Inequalities 10(4):1063-1092",
+                        "doi_number": "10.7153/jmi-10-85",
+                        "page_no": "1063-1092",
+                        "vol_no_/_issue_no": "10(4)",
+                        "month_&_year": "2016-12-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S Sivasubramanian, P Gurusamy",
-                        "PAPER_TITLE": "Coefficient bounds for a subclass of m - fold symmetric lemma and mu bi- convex functions",
-                        "JOURNAL_NAME": "Global Journal of Pure and Applied Mathematics",
-                        "PAGE_NO": "10 to 15",
-                        "VOL_NO_/_ISSUE_NO": "2024-02-12 00:00:00",
-                        "MONTH_&_YEAR": "1905-07-08 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S Sivasubramanian, P Gurusamy",
+                        "paper_title": "Coefficient bounds for a subclass of m - fold symmetric lemma and mu bi- convex functions",
+                        "journal_name": "Global Journal of Pure and Applied Mathematics",
+                        "page_no": "10 to 15",
+                        "vol_no_/_issue_no": "2024-02-12 00:00:00",
+                        "month_&_year": "1905-07-08 00:00:00",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Palpandy Gurusamy, Janusz Sokół, Srikandan Sivasubramanian",
-                        "PAPER_TITLE": "The Fekete–Szegö functional associated with k-th root transformation using quasi-subordination",
-                        "JOURNAL_NAME": "Comptes Rendus. Mathématique",
-                        "DOI_NUMBER": "10.1016/j.crma.2015.03.016",
-                        "PAGE_NO": "617 to 622",
-                        "VOL_NO_/_ISSUE_NO": "353 / 7",
-                        "MONTH_&_YEAR": "1905-07-07 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Palpandy Gurusamy, Janusz Sokół, Srikandan Sivasubramanian",
+                        "paper_title": "The Fekete–Szegö functional associated with k-th root transformation using quasi-subordination",
+                        "journal_name": "Comptes Rendus. Mathématique",
+                        "doi_number": "10.1016/j.crma.2015.03.016",
+                        "page_no": "617 to 622",
+                        "vol_no_/_issue_no": "353 / 7",
+                        "month_&_year": "1905-07-07 00:00:00",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S Sivasubramanian, P Gurusamy",
-                        "PAPER_TITLE": "Coefficient Estimates for Starlike and Convex classes of m-fold Symmetric Bi-univalent Functions",
-                        "JOURNAL_NAME": "Turkish Journal of Analysis and Number Theory",
-                        "DOI_NUMBER": "10.12691/tjant-3-3-3",
-                        "PAGE_NO": "83-86",
-                        "VOL_NO_/_ISSUE_NO": "3(3)",
-                        "MONTH_&_YEAR": "2015",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S Sivasubramanian, P Gurusamy",
+                        "paper_title": "Coefficient Estimates for Starlike and Convex classes of m-fold Symmetric Bi-univalent Functions",
+                        "journal_name": "Turkish Journal of Analysis and Number Theory",
+                        "doi_number": "10.12691/tjant-3-3-3",
+                        "page_no": "83-86",
+                        "vol_no_/_issue_no": "3(3)",
+                        "month_&_year": "2015",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [
+                "conference_publications": [
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "The Second-and Third-Order Hermitian Toeplitz Determinants for Some Subclasses of Analytic Functions Associated with Exponential Function",
-                        "CONFERENCE_NAME": "FIM 28: scmsps 2020",
-                        "ORGANIZED_BY": "Stella Maris College, Chennai,",
-                        "MONTH_&_YEAR": "2020-11-01 00:00:00"
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "The Second-and Third-Order Hermitian Toeplitz Determinants for Some Subclasses of Analytic Functions Associated with Exponential Function",
+                        "conference_name": "FIM 28: scmsps 2020",
+                        "organized_by": "Stella Maris College, Chennai,",
+                        "month_&_year": "2020-11-01 00:00:00"
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "The estimates for second Hankel determinant of Ma - Minda starlike and convex functions",
-                        "CONFERENCE_NAME": "National Conference on Recent Trends in Mathematics and its Applications (NCRTMA’20),",
-                        "ORGANIZED_BY": "SRM University, Vadapalani, Chennai",
-                        "MONTH_&_YEAR": "2020-03-01 00:00:00"
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "The estimates for second Hankel determinant of Ma - Minda starlike and convex functions",
+                        "conference_name": "National Conference on Recent Trends in Mathematics and its Applications (NCRTMA’20),",
+                        "organized_by": "SRM University, Vadapalani, Chennai",
+                        "month_&_year": "2020-03-01 00:00:00"
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Initial coefficient bound for m-fold symmetric bi-univalent Ma- Minda starlike and convex functions",
-                        "CONFERENCE_NAME": "National Conference on Mathematical Analysis and Computing (NCMAC’18)",
-                        "ORGANIZED_BY": "SSN College of Engineering, Chennai",
-                        "MONTH_&_YEAR": " Dec, 2018."
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Initial coefficient bound for m-fold symmetric bi-univalent Ma- Minda starlike and convex functions",
+                        "conference_name": "National Conference on Mathematical Analysis and Computing (NCMAC’18)",
+                        "organized_by": "SSN College of Engineering, Chennai",
+                        "month_&_year": " Dec, 2018."
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Coefficient bound for a subclass of m - fold symmetric lemmda bi starlike functions",
-                        "CONFERENCE_NAME": "National Conference on Recent Trends in Mathematics and its Applications (NCRTMA’16),",
-                        "ORGANIZED_BY": "SRM University, Vadapalani, Chennai",
-                        "MONTH_&_YEAR": "Feb, 2016."
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Coefficient bound for a subclass of m - fold symmetric lemmda bi starlike functions",
+                        "conference_name": "National Conference on Recent Trends in Mathematics and its Applications (NCRTMA’16),",
+                        "organized_by": "SRM University, Vadapalani, Chennai",
+                        "month_&_year": "Feb, 2016."
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Coefficient bound for a subclass of m - fold symmetric lemmda bi starlike functions",
-                        "CONFERENCE_NAME": "International Conference on Mathematical Computer Engineering (ICMCE-2015)",
-                        "ORGANIZED_BY": "VIT University, Chennai Campus. Chennai",
-                        "MONTH_&_YEAR": "December, 2015"
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Coefficient bound for a subclass of m - fold symmetric lemmda bi starlike functions",
+                        "conference_name": "International Conference on Mathematical Computer Engineering (ICMCE-2015)",
+                        "organized_by": "VIT University, Chennai Campus. Chennai",
+                        "month_&_year": "December, 2015"
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Coefficient bound for a subclass of bi - univalent starlike functions by hadamard product",
-                        "CONFERENCE_NAME": " International Conference on Mathematics and its Applications, (ICMAA-2014)",
-                        "ORGANIZED_BY": "University College of Engineering, Villupuram",
-                        "MONTH_&_YEAR": "December, 2014."
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Coefficient bound for a subclass of bi - univalent starlike functions by hadamard product",
+                        "conference_name": " International Conference on Mathematics and its Applications, (ICMAA-2014)",
+                        "organized_by": "University College of Engineering, Villupuram",
+                        "month_&_year": "December, 2014."
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Fekete - Szego coefficient functional problems for new Quasi - subordination  classes",
-                        "CONFERENCE_NAME": "International Conference on Mathematical Sciences (ICMS-2014)",
-                        "ORGANIZED_BY": "Sathyabama University. Chennai",
-                        "ISBN_/_ISSN_NO": "978-93-5107-261-4",
-                        "MONTH_&_YEAR": "July, 2014."
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Fekete - Szego coefficient functional problems for new Quasi - subordination  classes",
+                        "conference_name": "International Conference on Mathematical Sciences (ICMS-2014)",
+                        "organized_by": "Sathyabama University. Chennai",
+                        "isbn_/_issn_no": "978-93-5107-261-4",
+                        "month_&_year": "July, 2014."
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Coefficient estimates for Bi-univalent Ma - Minda starlike and convex functions",
-                        "CONFERENCE_NAME": "National Conference on Pure and Applied Mathematics (NCPAM-2014)",
-                        "ORGANIZED_BY": "VIT University, Chennai Campus. Chennai,",
-                        "ISBN_/_ISSN_NO": "978-93-83459-46-9",
-                        "MONTH_&_YEAR": "December, 2014."
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Coefficient estimates for Bi-univalent Ma - Minda starlike and convex functions",
+                        "conference_name": "National Conference on Pure and Applied Mathematics (NCPAM-2014)",
+                        "organized_by": "VIT University, Chennai Campus. Chennai,",
+                        "isbn_/_issn_no": "978-93-83459-46-9",
+                        "month_&_year": "December, 2014."
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Fekete - Szego coefficient functional associated  with k - th root transformation for certain class",
-                        "CONFERENCE_NAME": "  International Conference on Applied Mathematical Models (ICAMM 2014)",
-                        "ORGANIZED_BY": "PSG College of Technology, Coimbatore,",
-                        "MONTH_&_YEAR": "Jan, 2014."
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Fekete - Szego coefficient functional associated  with k - th root transformation for certain class",
+                        "conference_name": "  International Conference on Applied Mathematical Models (ICAMM 2014)",
+                        "organized_by": "PSG College of Technology, Coimbatore,",
+                        "month_&_year": "Jan, 2014."
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Coefficient estimates for subclass of meromorphic bi-univant functions",
-                        "CONFERENCE_NAME": "  International Conference on Mathematical Modeling and Applied Soft Computing (MMASC 2012)",
-                        "ORGANIZED_BY": "Coimbatore Institute of Technology, Coimbatore,",
-                        "MONTH_&_YEAR": "July, 2012."
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Coefficient estimates for subclass of meromorphic bi-univant functions",
+                        "conference_name": "  International Conference on Mathematical Modeling and Applied Soft Computing (MMASC 2012)",
+                        "organized_by": "Coimbatore Institute of Technology, Coimbatore,",
+                        "month_&_year": "July, 2012."
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Coefficient estimates for subclass of meromorphic bi-univant functions",
-                        "CONFERENCE_NAME": "National Conference on Mathematical Modeling in Global Perspective (NCMMGP12)",
-                        "ORGANIZED_BY": "Velammal Engineering College, Chennai",
-                        "MONTH_&_YEAR": "April, 2012."
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Coefficient estimates for subclass of meromorphic bi-univant functions",
+                        "conference_name": "National Conference on Mathematical Modeling in Global Perspective (NCMMGP12)",
+                        "organized_by": "Velammal Engineering College, Chennai",
+                        "month_&_year": "April, 2012."
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Coeeficient estimates for Meromorphic Bi-Univalent functions",
-                        "CONFERENCE_NAME": " International Conference on Mathematics in Engineering and Business Management(ICMEB 2012)",
-                        "ORGANIZED_BY": "Stella Maris College, Chennai,",
-                        "ISBN_/_ISSN_NO": "978-81-8286-015-5",
-                        "MONTH_&_YEAR": "Mar 2012."
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Coeeficient estimates for Meromorphic Bi-Univalent functions",
+                        "conference_name": " International Conference on Mathematics in Engineering and Business Management(ICMEB 2012)",
+                        "organized_by": "Stella Maris College, Chennai,",
+                        "isbn_/_issn_no": "978-81-8286-015-5",
+                        "month_&_year": "Mar 2012."
                     },
                     {
-                        "AUTHORS": "GURUSAMY P, Dr. S. Sivasubramanian",
-                        "PAPER_TITLE": "Coefficient estimates for subclass of meromorphic bi-univant functions",
-                        "CONFERENCE_NAME": "National Conference on Mathematical Modeling in Global Perspective (NCMMGP12)",
-                        "ORGANIZED_BY": "Velammal Engineering College, Chennai",
-                        "MONTH_&_YEAR": "April, 2011"
+                        "authors": "GURUSAMY P, Dr. S. Sivasubramanian",
+                        "paper_title": "Coefficient estimates for subclass of meromorphic bi-univant functions",
+                        "conference_name": "National Conference on Mathematical Modeling in Global Perspective (NCMMGP12)",
+                        "organized_by": "Velammal Engineering College, Chennai",
+                        "month_&_year": "April, 2011"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [
+                "book_publications": [
                     {
-                        "AUTHOR": "P. Gurusamy, K.Karthikeyan, R.S.Kamala",
-                        "BOOK_NAME,_EDITION": "Engineering Mathematics - I, Second ",
-                        "PUBLISHER": "Sri Krishna Publications",
-                        "MONTH_&_YEAR": "2004-07-01 00:00:00",
-                        "BOOK_/_BOOK_CHAPTER": "Book"
+                        "author": "P. Gurusamy, K.Karthikeyan, R.S.Kamala",
+                        "book_name,_edition": "Engineering Mathematics - I, Second ",
+                        "publisher": "Sri Krishna Publications",
+                        "month_&_year": "2004-07-01 00:00:00",
+                        "book_/_book_chapter": "Book"
                     },
                     {
-                        "AUTHOR": "P. Gurusamy, K.Karthikeyan, G. Mahadevan",
-                        "BOOK_NAME,_EDITION": "Engineering Mathematics - II Second ",
-                        "PUBLISHER": "Sri Krishna Publications",
-                        "MONTH_&_YEAR": "2005-01-01 00:00:00",
-                        "BOOK_/_BOOK_CHAPTER": "Book"
+                        "author": "P. Gurusamy, K.Karthikeyan, G. Mahadevan",
+                        "book_name,_edition": "Engineering Mathematics - II Second ",
+                        "publisher": "Sri Krishna Publications",
+                        "month_&_year": "2005-01-01 00:00:00",
+                        "book_/_book_chapter": "Book"
                     },
                     {
-                        "AUTHOR": "P. Gurusamy, G. Mahadevan, C.Sivagnanam",
-                        "BOOK_NAME,_EDITION": "Engineering Mathematics - III, First",
-                        "PUBLISHER": "Sri Krishna Publications",
-                        "MONTH_&_YEAR": "2005-06-01 00:00:00",
-                        "BOOK_/_BOOK_CHAPTER": "Book"
+                        "author": "P. Gurusamy, G. Mahadevan, C.Sivagnanam",
+                        "book_name,_edition": "Engineering Mathematics - III, First",
+                        "publisher": "Sri Krishna Publications",
+                        "month_&_year": "2005-06-01 00:00:00",
+                        "book_/_book_chapter": "Book"
                     },
                     {
-                        "AUTHOR": "P. Gurusamy, K. Murugesan",
-                        "BOOK_NAME,_EDITION": "Probability and Random Processes",
-                        "PUBLISHER": "Anuradha Agencies Publications",
-                        "ISBN_/_ISSN_NO": "81-87721-13-6",
-                        "MONTH_&_YEAR": "2001",
-                        "BOOK_/_BOOK_CHAPTER": "Book"
+                        "author": "P. Gurusamy, K. Murugesan",
+                        "book_name,_edition": "Probability and Random Processes",
+                        "publisher": "Anuradha Agencies Publications",
+                        "isbn_/_issn_no": "81-87721-13-6",
+                        "month_&_year": "2001",
+                        "book_/_book_chapter": "Book"
                     }
                 ],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [
+                "consultancy": [],
+                "research_scholars": [
                     {
-                        "RESEARCH_SCHOLAR_NAME": "Nil",
-                        "RESEARCH_TITLE": "Nil",
-                        "CATEGORY__(FULL_TIME_/_PART__TIME)": "Nil",
-                        "STATUS_(_ONGOING_/_COMPLETED)": "Nil",
-                        "MONTH_&_YEAR_OF_DEGREE_AWARDED": "Nil"
+                        "research_scholar_name": "Nil",
+                        "research_title": "Nil",
+                        "category__(full_time_/_part__time)": "Nil",
+                        "status_(_ongoing_/_completed)": "Nil",
+                        "month_&_year_of_degree_awarded": "Nil"
                     }
                 ],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 1,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 11,
-                    "Conference_Publications": 13,
-                    "Book_/_Book_Chapter_Published": 4,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 5,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 10,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 11,
+                    "conference_publications": 13,
+                    "book_/_book_chapter_published": 4,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 5,
+                    "seminar_/_workshop_/_guest_lectures_attended": 10,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "DR. SHANMUGAPRIYAN S",
-                "Designation": "Assistant Professor",
-                "Department_Name": "",
-                "Mail_ID": "",
+                "name": "DR. SHANMUGAPRIYAN S",
+                "unique_id": "VEC-012-F-02",
+                "designation": "Assistant Professor",
+                "department_name": "",
+                "mail_id": "",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-651.webp",
                 "socialmedia_links": {
                     "linkedin": "",
@@ -632,37 +635,38 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [],
-                "EXPERIENCE": [],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MRS. KAVITHA D",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "kavithad@velammal.edu.in",
+                "name": "MRS. KAVITHA D",
+                "unique_id": "VEC-012-F-03",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "kavithad@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-047.webp",
                 "socialmedia_links": {
                     "linkedin": "http://linkedin.com/in/kavitha-d-13155a204",
@@ -672,71 +676,72 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "ISTE",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "ISTE",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc",
-                        "BRANCH": "Mathematics ",
-                        "INSTITUTE": "Meenakshi college for Women Kodambakkam ",
-                        "YEAR": 1994
+                        "degree": "B.Sc",
+                        "branch": "Mathematics ",
+                        "institute": "Meenakshi college for Women Kodambakkam ",
+                        "year": 1994
                     },
                     {
-                        "DEGREE": "M.Sc",
-                        "BRANCH": "Mathematics ",
-                        "INSTITUTE": "Meenakshi college for Women Kodambakkam ",
-                        "YEAR": 1996
+                        "degree": "M.Sc",
+                        "branch": "Mathematics ",
+                        "institute": "Meenakshi college for Women Kodambakkam ",
+                        "year": 1996
                     },
                     {
-                        "DEGREE": "M.Phil",
-                        "BRANCH": "Mathematics ",
-                        "INSTITUTE": "Ramanujan Institute for Advanced study in Mathematics, University of Madras",
-                        "YEAR": 1997
+                        "degree": "M.Phil",
+                        "branch": "Mathematics ",
+                        "institute": "Ramanujan Institute for Advanced study in Mathematics, University of Madras",
+                        "year": 1997
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "1999",
-                        "Unnamed:_1": "2003",
-                        "EXPERIENCE": "5",
-                        "DESIGNATION": "Lecturer ",
-                        "INSTITUTION": "Sree Muthu kumaraswamy Arts and Science "
+                        "duration": "1999",
+                        "unnamed:_1": "2003",
+                        "experience": "5",
+                        "designation": "Lecturer ",
+                        "institution": "Sree Muthu kumaraswamy Arts and Science "
                     },
                     {
-                        "DURATION": "2003",
-                        "Unnamed:_1": "Till date",
-                        "EXPERIENCE": "21",
-                        "Unnamed:_3": "3",
-                        "DESIGNATION": "Assistant Professor "
+                        "duration": "2003",
+                        "unnamed:_1": "Till date",
+                        "experience": "21",
+                        "unnamed:_3": "3",
+                        "designation": "Assistant Professor "
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "ISTE",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 2,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "ISTE",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 2,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR. BALU M S",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "balu@velammal.edu.in",
+                "name": "MR. BALU M S",
+                "unique_id": "VEC-012-F-04",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "balu@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-037.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/m-s-balu-8100586/",
@@ -746,86 +751,87 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "ISTE",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "ISTE",
+                "educational_qualification": [
                     {
-                        "DEGREE": "BSC",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "LOYOLA COLLEGE",
-                        "YEAR": 1998
+                        "degree": "BSC",
+                        "branch": "MATHEMATICS",
+                        "institute": "LOYOLA COLLEGE",
+                        "year": 1998
                     },
                     {
-                        "DEGREE": "MSC",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "IIT MADRAS",
-                        "YEAR": 2001
+                        "degree": "MSC",
+                        "branch": "MATHEMATICS",
+                        "institute": "IIT MADRAS",
+                        "year": 2001
                     },
                     {
-                        "DEGREE": "MPHIL",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "PRIST UNIVERISTY",
-                        "YEAR": 2017
+                        "degree": "MPHIL",
+                        "branch": "MATHEMATICS",
+                        "institute": "PRIST UNIVERISTY",
+                        "year": 2017
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "2001-07-20 00:00:00",
-                        "Unnamed:_1": "2005-06-30 00:00:00",
-                        "EXPERIENCE": "3",
-                        "Unnamed:_3": "11",
-                        "DESIGNATION": "LECTURER",
-                        "INSTITUTION": "DHANISH AHAMED COLLEGE OF ENGINEERING"
+                        "duration": "2001-07-20 00:00:00",
+                        "unnamed:_1": "2005-06-30 00:00:00",
+                        "experience": "3",
+                        "unnamed:_3": "11",
+                        "designation": "LECTURER",
+                        "institution": "DHANISH AHAMED COLLEGE OF ENGINEERING"
                     },
                     {
-                        "DURATION": "2005-08-08 00:00:00",
-                        "Unnamed:_1": "2007-09-07 00:00:00",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "11",
-                        "DESIGNATION": "LECTURER",
-                        "INSTITUTION": "SRI RAM ENGINEERING COLLEGE"
+                        "duration": "2005-08-08 00:00:00",
+                        "unnamed:_1": "2007-09-07 00:00:00",
+                        "experience": "1",
+                        "unnamed:_3": "11",
+                        "designation": "LECTURER",
+                        "institution": "SRI RAM ENGINEERING COLLEGE"
                     },
                     {
-                        "DURATION": "2007-09-10 00:00:00",
-                        "Unnamed:_1": "TILL DATE",
-                        "EXPERIENCE": "17",
-                        "Unnamed:_3": "1",
-                        "DESIGNATION": "ASSISTANT PROFESSOR",
-                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE"
+                        "duration": "2007-09-10 00:00:00",
+                        "unnamed:_1": "TILL DATE",
+                        "experience": "17",
+                        "unnamed:_3": "1",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE"
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [
                     {
-                        "AUTHOR": "M.S.BALU",
-                        "BOOK_NAME,_EDITION": "RESOURCE MANAGEMENT TECHNIQUES"
+                        "author": "M.S.BALU",
+                        "book_name,_edition": "RESOURCE MANAGEMENT TECHNIQUES"
                     }
                 ],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "ISTE",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 2,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "ISTE",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 2,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR. MANOKARAN P",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "manokaran@velammal.edu.in",
+                "name": "MR. MANOKARAN P",
+                "unique_id": "VEC-012-F-05",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "manokaran@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-076.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/manokaran-p-3275b1121/",
@@ -835,102 +841,103 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "ISTE",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "ISTE",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "DRBCCC Hindu College, Pattabiram",
-                        "YEAR": "1998"
+                        "degree": "B.Sc",
+                        "branch": "Mathematics",
+                        "institute": "DRBCCC Hindu College, Pattabiram",
+                        "year": "1998"
                     },
                     {
-                        "DEGREE": "M.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "D G Vaishnav College, Arumbakkam",
-                        "YEAR": "2000"
+                        "degree": "M.Sc",
+                        "branch": "Mathematics",
+                        "institute": "D G Vaishnav College, Arumbakkam",
+                        "year": "2000"
                     },
                     {
-                        "DEGREE": "M.Phil",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "PRIST University, Chennai",
-                        "YEAR": "2015"
+                        "degree": "M.Phil",
+                        "branch": "Mathematics",
+                        "institute": "PRIST University, Chennai",
+                        "year": "2015"
                     },
                     {
-                        "DEGREE": "SET",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Mother Theresa University",
-                        "YEAR": "2016"
+                        "degree": "SET",
+                        "branch": "Mathematics",
+                        "institute": "Mother Theresa University",
+                        "year": "2016"
                     },
                     {
-                        "DEGREE": "Ph. D",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Anna University",
-                        "YEAR": "Pursuing"
+                        "degree": "Ph. D",
+                        "branch": "Mathematics",
+                        "institute": "Anna University",
+                        "year": "Pursuing"
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "2000-03-09 00:00:00",
-                        "Unnamed:_1": "30-09-2002",
-                        "EXPERIENCE": "2",
-                        "Unnamed:_3": "1",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "Dr.Sir ALM College of\nArts and Science,Vengal"
+                        "duration": "2000-03-09 00:00:00",
+                        "unnamed:_1": "30-09-2002",
+                        "experience": "2",
+                        "unnamed:_3": "1",
+                        "designation": "Lecturer",
+                        "institution": "Dr.Sir ALM College of\nArts and Science,Vengal"
                     },
                     {
-                        "DURATION": "2002-07-10 00:00:00",
-                        "Unnamed:_1": "14-08-2006",
-                        "EXPERIENCE": "3",
-                        "Unnamed:_3": "11",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "Sriram Engineering College, Perumalpattu"
+                        "duration": "2002-07-10 00:00:00",
+                        "unnamed:_1": "14-08-2006",
+                        "experience": "3",
+                        "unnamed:_3": "11",
+                        "designation": "Lecturer",
+                        "institution": "Sriram Engineering College, Perumalpattu"
                     },
                     {
-                        "DURATION": "21-08-2006",
-                        "Unnamed:_1": "Till Date",
-                        "EXPERIENCE": "18",
-                        "Unnamed:_3": "1",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "Velammal Engineering College, Surapet, Chennai-66"
+                        "duration": "21-08-2006",
+                        "unnamed:_1": "Till Date",
+                        "experience": "18",
+                        "unnamed:_3": "1",
+                        "designation": "Assistant Professor",
+                        "institution": "Velammal Engineering College, Surapet, Chennai-66"
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [
                     {
-                        "AUTHORS": "Prof. V. YEGNANARAYANAN, P.MANOKARAN, P.VAIDHYANATHAN",
-                        "PAPER_TITLE": "ON MAGIC LABELING OF GRAPHS",
-                        "CONFERENCE_NAME": "Intl conference on Mathematics in Engineering and Business Management",
-                        "ORGANIZED_BY": "Stella Maris College & Loyola Institute of Business Administration, Chennai",
-                        "ISBN_/_ISSN_NO": "-",
-                        "MONTH_&_YEAR": "March--2012"
+                        "authors": "Prof. V. YEGNANARAYANAN, P.MANOKARAN, P.VAIDHYANATHAN",
+                        "paper_title": "ON MAGIC LABELING OF GRAPHS",
+                        "conference_name": "Intl conference on Mathematics in Engineering and Business Management",
+                        "organized_by": "Stella Maris College & Loyola Institute of Business Administration, Chennai",
+                        "isbn_/_issn_no": "-",
+                        "month_&_year": "March--2012"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "ISTE",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 1,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 45,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "ISTE",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 1,
+                    "seminar_/_workshop_/_guest_lectures_attended": 45,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "DR. KARTHIK R",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "karthikr@velammal.edu.in",
+                "name": "DR. KARTHIK R",
+                "unique_id": "VEC-012-F-06",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "karthikr@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-048.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/karthik-rajeswaran-4247454a/",
@@ -940,152 +947,153 @@
                     "publonprofile": "",
                     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57203209564"
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.SC",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "RAJAH SERFOJI GOVT COLLEGE",
-                        "YEAR": 2000
+                        "degree": "B.SC",
+                        "branch": "MATHEMATICS",
+                        "institute": "RAJAH SERFOJI GOVT COLLEGE",
+                        "year": 2000
                     },
                     {
-                        "DEGREE": "M.SC",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "AVVM SRI PUSHPAM COLLEGE",
-                        "YEAR": 2003
+                        "degree": "M.SC",
+                        "branch": "MATHEMATICS",
+                        "institute": "AVVM SRI PUSHPAM COLLEGE",
+                        "year": 2003
                     },
                     {
-                        "DEGREE": "MPHIL",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "AVVM SRI PUSHPAM COLLEGE",
-                        "YEAR": 2007
+                        "degree": "MPHIL",
+                        "branch": "MATHEMATICS",
+                        "institute": "AVVM SRI PUSHPAM COLLEGE",
+                        "year": 2007
                     },
                     {
-                        "DEGREE": "PHD",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "KN GOVT COLLEGE",
-                        "YEAR": 2015
+                        "degree": "PHD",
+                        "branch": "MATHEMATICS",
+                        "institute": "KN GOVT COLLEGE",
+                        "year": 2015
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "23-06-2008",
-                        "Unnamed:_1": "TILL DATE",
-                        "EXPERIENCE": "17",
-                        "Unnamed:_3": "3",
-                        "DESIGNATION": "AP",
-                        "INSTITUTION": "VELAMMAL ENGG COLLEGE"
+                        "duration": "23-06-2008",
+                        "unnamed:_1": "TILL DATE",
+                        "experience": "17",
+                        "unnamed:_3": "3",
+                        "designation": "AP",
+                        "institution": "VELAMMAL ENGG COLLEGE"
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [
+                "projects": [],
+                "patents": [],
+                "journal_publications": [
                     {
-                        "AUTHORS": 1,
-                        "PAPER_TITLE": "The methodology for communication problem  in telecom sector using fuzzy sub monoid and group theory ",
-                        "JOURNAL_NAME": "IOP: Journal of Physics",
-                        "DOI_NUMBER": "10.1088/1742-6596/1964/4/042100",
-                        "PAGE_NO": "540-565",
-                        "VOL_NO_/_ISSUE_NO": "1964/9",
-                        "MONTH_&_YEAR": "2021/JUNE",
-                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": 1,
+                        "paper_title": "The methodology for communication problem  in telecom sector using fuzzy sub monoid and group theory ",
+                        "journal_name": "IOP: Journal of Physics",
+                        "doi_number": "10.1088/1742-6596/1964/4/042100",
+                        "page_no": "540-565",
+                        "vol_no_/_issue_no": "1964/9",
+                        "month_&_year": "2021/JUNE",
+                        "indexed_in_sci_/_scopus": "INDEXED IN SCOPUS ",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": 2,
-                        "PAPER_TITLE": "An Enhanced approach for decision support system using fuzzy soft set ",
-                        "JOURNAL_NAME": "IOP: Journal of Physics",
-                        "DOI_NUMBER": "10.1088/1742-6596/1964/4/042102\n\nDownloadArticle PDF",
-                        "PAGE_NO": "836-96",
-                        "VOL_NO_/_ISSUE_NO": "1964/10",
-                        "MONTH_&_YEAR": "2022/JUNE",
-                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": 2,
+                        "paper_title": "An Enhanced approach for decision support system using fuzzy soft set ",
+                        "journal_name": "IOP: Journal of Physics",
+                        "doi_number": "10.1088/1742-6596/1964/4/042102\n\nDownloadArticle PDF",
+                        "page_no": "836-96",
+                        "vol_no_/_issue_no": "1964/10",
+                        "month_&_year": "2022/JUNE",
+                        "indexed_in_sci_/_scopus": "INDEXED IN SCOPUS ",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": 3,
-                        "PAPER_TITLE": " An Innovative Algorithm for Cluster-Based Decision Support",
-                        "JOURNAL_NAME": "IOP: Journal of Physics",
-                        "DOI_NUMBER": "10.1088/1742-6596/1964/4/042102",
-                        "PAGE_NO": "731-20",
-                        "VOL_NO_/_ISSUE_NO": "1964/11",
-                        "MONTH_&_YEAR": "2023/JUNE",
-                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": 3,
+                        "paper_title": " An Innovative Algorithm for Cluster-Based Decision Support",
+                        "journal_name": "IOP: Journal of Physics",
+                        "doi_number": "10.1088/1742-6596/1964/4/042102",
+                        "page_no": "731-20",
+                        "vol_no_/_issue_no": "1964/11",
+                        "month_&_year": "2023/JUNE",
+                        "indexed_in_sci_/_scopus": "INDEXED IN SCOPUS ",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": 4,
-                        "PAPER_TITLE": "Manufacturing and expertise organisation using fuzzy cognitive maps",
-                        "JOURNAL_NAME": "Design Engineering",
-                        "PAGE_NO": "8421–8434",
-                        "VOL_NO_/_ISSUE_NO": "66",
-                        "MONTH_&_YEAR": "20220DEC",
-                        "CONFERENCE_NAME": ""
+                        "authors": 4,
+                        "paper_title": "Manufacturing and expertise organisation using fuzzy cognitive maps",
+                        "journal_name": "Design Engineering",
+                        "page_no": "8421–8434",
+                        "vol_no_/_issue_no": "66",
+                        "month_&_year": "20220DEC",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": 5,
-                        "PAPER_TITLE": "Embedding of complete multipartite graphs into cycle-of-ladders",
-                        "DOI_NUMBER": "DownloadArticle聽PDF",
-                        "PAGE_NO": "933-945",
-                        "VOL_NO_/_ISSUE_NO": "32",
-                        "MONTH_&_YEAR": "2019",
-                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": 5,
+                        "paper_title": "Embedding of complete multipartite graphs into cycle-of-ladders",
+                        "doi_number": "DownloadArticle聽PDF",
+                        "page_no": "933-945",
+                        "vol_no_/_issue_no": "32",
+                        "month_&_year": "2019",
+                        "indexed_in_sci_/_scopus": "INDEXED IN SCOPUS ",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": 6,
-                        "PAPER_TITLE": "A BIOMATHEMATICAL MODEL FOR GONADOTROPIN RELEASING HORMONE (GNRH) ANALOGUE TESTING IN THE EVALUATION OF PUBERTAL DISORDERS",
-                        "JOURNAL_NAME": "International Journal of Pure and Applied Mathematics",
-                        "DOI_NUMBER": "10.12732",
-                        "VOL_NO_/_ISSUE_NO": "109/6",
-                        "MONTH_&_YEAR": "2016/JUNE",
-                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": 6,
+                        "paper_title": "A BIOMATHEMATICAL MODEL FOR GONADOTROPIN RELEASING HORMONE (GNRH) ANALOGUE TESTING IN THE EVALUATION OF PUBERTAL DISORDERS",
+                        "journal_name": "International Journal of Pure and Applied Mathematics",
+                        "doi_number": "10.12732",
+                        "vol_no_/_issue_no": "109/6",
+                        "month_&_year": "2016/JUNE",
+                        "indexed_in_sci_/_scopus": "INDEXED IN SCOPUS ",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": 7,
-                        "PAPER_TITLE": "A Study on Mathematics Modeling using Fuzzy Logic and Artificial Neural Network for Medical Decision Making System",
-                        "JOURNAL_NAME": "IEEE",
-                        "DOI_NUMBER": "https://doi.org/10.1109/CISES58720.2023.10183534",
-                        "MONTH_&_YEAR": "2023/JULY",
-                        "INDEXED_IN_SCI_/_SCOPUS": "INDEXED IN SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": 7,
+                        "paper_title": "A Study on Mathematics Modeling using Fuzzy Logic and Artificial Neural Network for Medical Decision Making System",
+                        "journal_name": "IEEE",
+                        "doi_number": "https://doi.org/10.1109/CISES58720.2023.10183534",
+                        "month_&_year": "2023/JULY",
+                        "indexed_in_sci_/_scopus": "INDEXED IN SCOPUS ",
+                        "conference_name": ""
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [
+                "conference_publications": [
                     {
-                        "AUTHORS": 2,
-                        "PAPER_TITLE": "Multi- Objective optimization under uncertainty for Oligopolist behavior in the market”",
-                        "CONFERENCE_NAME": "International Conference on Mathematics and Computer science”",
-                        "ORGANIZED_BY": "Research Department of Mathematics, Loyola College",
-                        "ISBN_/_ISSN_NO": "ICMCS2011",
-                        "MONTH_&_YEAR": "JAN2011"
+                        "authors": 2,
+                        "paper_title": "Multi- Objective optimization under uncertainty for Oligopolist behavior in the market”",
+                        "conference_name": "International Conference on Mathematics and Computer science”",
+                        "organized_by": "Research Department of Mathematics, Loyola College",
+                        "isbn_/_issn_no": "ICMCS2011",
+                        "month_&_year": "JAN2011"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 7,
-                    "Conference_Publications": 1,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 4,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 7,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 1,
+                    "seminar_/_workshop_/_guest_lectures_attended": 4,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR. GOPIKRISHNAN S",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "gopikrishnan@velammal.edu.in",
+                "name": "MR. GOPIKRISHNAN S",
+                "unique_id": "VEC-012-F-07",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "gopikrishnan@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-043.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/gopi-krishnan-93b36265/",
@@ -1095,81 +1103,82 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "AMTI",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "AMTI",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc., ",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Sacred Heart College (Autonomous)",
-                        "YEAR": 2005
+                        "degree": "B.Sc., ",
+                        "branch": "Mathematics",
+                        "institute": "Sacred Heart College (Autonomous)",
+                        "year": 2005
                     },
                     {
-                        "DEGREE": "M.Sc.,",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Sacred Heart College (Autonomous)",
-                        "YEAR": 2007
+                        "degree": "M.Sc.,",
+                        "branch": "Mathematics",
+                        "institute": "Sacred Heart College (Autonomous)",
+                        "year": 2007
                     },
                     {
-                        "DEGREE": "M.Phil.,",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Sacred Heart College (Autonomous)",
-                        "YEAR": 2008
+                        "degree": "M.Phil.,",
+                        "branch": "Mathematics",
+                        "institute": "Sacred Heart College (Autonomous)",
+                        "year": 2008
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "2009-06-01 00:00:00",
-                        "Unnamed:_1": "2010-03-31 00:00:00",
-                        "EXPERIENCE": "0",
-                        "Unnamed:_3": "9",
-                        "DESIGNATION": "Asst. Professor",
-                        "INSTITUTION": "Don Bosco Arts and Science  College"
+                        "duration": "2009-06-01 00:00:00",
+                        "unnamed:_1": "2010-03-31 00:00:00",
+                        "experience": "0",
+                        "unnamed:_3": "9",
+                        "designation": "Asst. Professor",
+                        "institution": "Don Bosco Arts and Science  College"
                     },
                     {
-                        "DURATION": "2010-04-26 00:00:00",
-                        "Unnamed:_1": "2012-05-15 00:00:00",
-                        "EXPERIENCE": "2",
-                        "Unnamed:_3": "0",
-                        "DESIGNATION": "Asst. Professor",
-                        "INSTITUTION": "Gonzaga Arts and Science College"
+                        "duration": "2010-04-26 00:00:00",
+                        "unnamed:_1": "2012-05-15 00:00:00",
+                        "experience": "2",
+                        "unnamed:_3": "0",
+                        "designation": "Asst. Professor",
+                        "institution": "Gonzaga Arts and Science College"
                     },
                     {
-                        "DURATION": "2012-06-20 00:00:00",
-                        "Unnamed:_1": "Till date",
-                        "EXPERIENCE": "12",
-                        "Unnamed:_3": "3",
-                        "DESIGNATION": "Asst. Professor",
-                        "INSTITUTION": "Velammal Engineering College"
+                        "duration": "2012-06-20 00:00:00",
+                        "unnamed:_1": "Till date",
+                        "experience": "12",
+                        "unnamed:_3": "3",
+                        "designation": "Asst. Professor",
+                        "institution": "Velammal Engineering College"
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "AMTI",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 2,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "AMTI",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 2,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR. JANARDHANAN K",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "janardhanan@velammal.edu.in",
+                "name": "MR. JANARDHANAN K",
+                "unique_id": "VEC-012-F-08",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "janardhanan@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-062.webp",
                 "socialmedia_links": {
                     "linkedin": "",
@@ -1179,81 +1188,82 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Sacred Heart College, Tirupattur",
-                        "YEAR": "2003-2006"
+                        "degree": "B.Sc",
+                        "branch": "Mathematics",
+                        "institute": "Sacred Heart College, Tirupattur",
+                        "year": "2003-2006"
                     },
                     {
-                        "DEGREE": "M.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Sacred Heart College, Tirupattur",
-                        "YEAR": "2006-2008"
+                        "degree": "M.Sc",
+                        "branch": "Mathematics",
+                        "institute": "Sacred Heart College, Tirupattur",
+                        "year": "2006-2008"
                     },
                     {
-                        "DEGREE": "M.Phil",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Sacred Heart College, Tirupattur",
-                        "YEAR": "2009-2010"
+                        "degree": "M.Phil",
+                        "branch": "Mathematics",
+                        "institute": "Sacred Heart College, Tirupattur",
+                        "year": "2009-2010"
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "01.06.2010",
-                        "Unnamed:_1": "31.03.2011",
-                        "EXPERIENCE": "0",
-                        "Unnamed:_3": "10",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "DON BOSCO COLLEGE, Dharmapuri - 636 809"
+                        "duration": "01.06.2010",
+                        "unnamed:_1": "31.03.2011",
+                        "experience": "0",
+                        "unnamed:_3": "10",
+                        "designation": "Assistant Professor",
+                        "institution": "DON BOSCO COLLEGE, Dharmapuri - 636 809"
                     },
                     {
-                        "DURATION": "08.06.2011",
-                        "Unnamed:_1": "21.05.2012",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "0",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "Adhiyamaan College of Engineering (Autonomous), Hosur - 635 109"
+                        "duration": "08.06.2011",
+                        "unnamed:_1": "21.05.2012",
+                        "experience": "1",
+                        "unnamed:_3": "0",
+                        "designation": "Assistant Professor",
+                        "institution": "Adhiyamaan College of Engineering (Autonomous), Hosur - 635 109"
                     },
                     {
-                        "DURATION": "20.06.2012",
-                        "Unnamed:_1": "20.09.2024",
-                        "EXPERIENCE": "12",
-                        "Unnamed:_3": "4",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "Velammal Engineering College, Chennai 600 066."
+                        "duration": "20.06.2012",
+                        "unnamed:_1": "20.09.2024",
+                        "experience": "12",
+                        "unnamed:_3": "4",
+                        "designation": "Assistant Professor",
+                        "institution": "Velammal Engineering College, Chennai 600 066."
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 2,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 2,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR. VENKATESAN J",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "venkatesanj@velammal.edu.in",
+                "name": "MR. VENKATESAN J",
+                "unique_id": "VEC-012-F-09",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "venkatesanj@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-042.webp",
                 "socialmedia_links": {
                     "linkedin": "",
@@ -1263,80 +1273,81 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Presidency College",
-                        "YEAR": "2003-2006"
+                        "degree": "B.Sc",
+                        "branch": "Mathematics",
+                        "institute": "Presidency College",
+                        "year": "2003-2006"
                     },
                     {
-                        "DEGREE": "M.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Loyola College",
-                        "YEAR": "2006-2008"
+                        "degree": "M.Sc",
+                        "branch": "Mathematics",
+                        "institute": "Loyola College",
+                        "year": "2006-2008"
                     },
                     {
-                        "DEGREE": "M.Phil",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "RIAS in Mathematics",
-                        "YEAR": "2008-2009"
+                        "degree": "M.Phil",
+                        "branch": "Mathematics",
+                        "institute": "RIAS in Mathematics",
+                        "year": "2008-2009"
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "2009-06-18 00:00:00",
-                        "Unnamed:_1": "2011-04-18 00:00:00",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "10",
-                        "DESIGNATION": "LECTURER",
-                        "INSTITUTION": "K.C.S KASI NADAR COLLEGE OF ARTS & SCIENCE"
+                        "duration": "2009-06-18 00:00:00",
+                        "unnamed:_1": "2011-04-18 00:00:00",
+                        "experience": "1",
+                        "unnamed:_3": "10",
+                        "designation": "LECTURER",
+                        "institution": "K.C.S KASI NADAR COLLEGE OF ARTS & SCIENCE"
                     },
                     {
-                        "DURATION": "2011-05-07 00:00:00",
-                        "Unnamed:_1": "2013-05-02 00:00:00",
-                        "EXPERIENCE": "2",
-                        "DESIGNATION": "ASSISTANT PROFESSOR",
-                        "INSTITUTION": "GOJAN SCHOOL OF BUSINESS AND TECHNOLOGY"
+                        "duration": "2011-05-07 00:00:00",
+                        "unnamed:_1": "2013-05-02 00:00:00",
+                        "experience": "2",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "GOJAN SCHOOL OF BUSINESS AND TECHNOLOGY"
                     },
                     {
-                        "DURATION": "2013-07-22 00:00:00",
-                        "Unnamed:_1": "Till date",
-                        "EXPERIENCE": "11",
-                        "Unnamed:_3": "2",
-                        "DESIGNATION": "ASSISTANT PROFESSOR",
-                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE"
+                        "duration": "2013-07-22 00:00:00",
+                        "unnamed:_1": "Till date",
+                        "experience": "11",
+                        "unnamed:_3": "2",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE"
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MS. HEMA C",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "hema@velammal.edu.in",
+                "name": "MS. HEMA C",
+                "unique_id": "VEC-012-F-10",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "hema@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-051.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/hema-c-a3a1571b6/",
@@ -1346,79 +1357,80 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc.,",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Kunthavai Naachiyaar Govt. Arts College for Women, Thanjavur.",
-                        "YEAR": 2007
+                        "degree": "B.Sc.,",
+                        "branch": "Mathematics",
+                        "institute": "Kunthavai Naachiyaar Govt. Arts College for Women, Thanjavur.",
+                        "year": 2007
                     },
                     {
-                        "DEGREE": "B.Ed.,",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Government Educational College, Orathanadu.",
-                        "YEAR": 2008
+                        "degree": "B.Ed.,",
+                        "branch": "Mathematics",
+                        "institute": "Government Educational College, Orathanadu.",
+                        "year": 2008
                     },
                     {
-                        "DEGREE": "M.Sc.,",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Rajah serfoji Govt. Arts College, Thanjavur.",
-                        "YEAR": 2010
+                        "degree": "M.Sc.,",
+                        "branch": "Mathematics",
+                        "institute": "Rajah serfoji Govt. Arts College, Thanjavur.",
+                        "year": 2010
                     },
                     {
-                        "DEGREE": "M.Phil.,",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "Rajah serfoji Govt. Arts College, Thanjavur.",
-                        "YEAR": 2011
+                        "degree": "M.Phil.,",
+                        "branch": "Mathematics",
+                        "institute": "Rajah serfoji Govt. Arts College, Thanjavur.",
+                        "year": 2011
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "14.05.2012",
-                        "Unnamed:_1": "06.06.2014",
-                        "EXPERIENCE": "2",
-                        "Unnamed:_3": "-",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "Parisutham Institute of Technology and Science, Thanjavur."
+                        "duration": "14.05.2012",
+                        "unnamed:_1": "06.06.2014",
+                        "experience": "2",
+                        "unnamed:_3": "-",
+                        "designation": "Lecturer",
+                        "institution": "Parisutham Institute of Technology and Science, Thanjavur."
                     },
                     {
-                        "DURATION": "16.05.2014",
-                        "Unnamed:_1": "at present",
-                        "EXPERIENCE": "10",
-                        "Unnamed:_3": "4",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "Velammal Engineering College, Chennai."
+                        "duration": "16.05.2014",
+                        "unnamed:_1": "at present",
+                        "experience": "10",
+                        "unnamed:_3": "4",
+                        "designation": "Assistant Professor",
+                        "institution": "Velammal Engineering College, Chennai."
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "DR. KUPPULAKSHMI V",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "kuppulakshmi.v@velammal.edu.in",
+                "name": "DR. KUPPULAKSHMI V",
+                "unique_id": "VEC-012-F-11",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "kuppulakshmi.v@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-071.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/dr-v-kuppulakshmi-prasath-368697257/",
@@ -1428,224 +1440,225 @@
                     "publonprofile": "https://www.webofscience.com/wos/author/record/AFN-3298-2022",
                     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57226449495"
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B. sc",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "ETHIRAJ COLLEGE FOR WOMEN",
-                        "YEAR": "2006 (REGULAR)"
+                        "degree": "B. sc",
+                        "branch": "MATHEMATICS",
+                        "institute": "ETHIRAJ COLLEGE FOR WOMEN",
+                        "year": "2006 (REGULAR)"
                     },
                     {
-                        "DEGREE": "M. sc",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "ETHIRAJ COLLEGE FOR WOMEN",
-                        "YEAR": "2008(REGULAR)"
+                        "degree": "M. sc",
+                        "branch": "MATHEMATICS",
+                        "institute": "ETHIRAJ COLLEGE FOR WOMEN",
+                        "year": "2008(REGULAR)"
                     },
                     {
-                        "DEGREE": "M. phil",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "A. M JAIN COLLEGE",
-                        "YEAR": "2012(REGULAR)"
+                        "degree": "M. phil",
+                        "branch": "MATHEMATICS",
+                        "institute": "A. M JAIN COLLEGE",
+                        "year": "2012(REGULAR)"
                     },
                     {
-                        "DEGREE": "P. hD",
-                        "BRANCH": "MATHEMATICS",
-                        "INSTITUTE": "QUEEN MARYS COLLEGE",
-                        "YEAR": "2019 – 2022\n(26.12.2022)(REGULAR)"
+                        "degree": "P. hD",
+                        "branch": "MATHEMATICS",
+                        "institute": "QUEEN MARYS COLLEGE",
+                        "year": "2019 – 2022\n(26.12.2022)(REGULAR)"
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "21/07//2013",
-                        "Unnamed:_1": " 31/04/2015",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "9",
-                        "DESIGNATION": "AP",
-                        "INSTITUTION": "P.B college of engineering"
+                        "duration": "21/07//2013",
+                        "unnamed:_1": " 31/04/2015",
+                        "experience": "1",
+                        "unnamed:_3": "9",
+                        "designation": "AP",
+                        "institution": "P.B college of engineering"
                     },
                     {
-                        "DURATION": "2015-07-01 00:00:00",
-                        "Unnamed:_1": " 25/05/2018",
-                        "EXPERIENCE": "2",
-                        "Unnamed:_3": "10",
-                        "DESIGNATION": "AP",
-                        "INSTITUTION": "Rajalakshmi institute of technology"
+                        "duration": "2015-07-01 00:00:00",
+                        "unnamed:_1": " 25/05/2018",
+                        "experience": "2",
+                        "unnamed:_3": "10",
+                        "designation": "AP",
+                        "institution": "Rajalakshmi institute of technology"
                     },
                     {
-                        "DURATION": "2022-10-10 00:00:00",
-                        "Unnamed:_1": "TILL DATE",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "11",
-                        "DESIGNATION": "AP",
-                        "INSTITUTION": "Velammal Engineering College"
+                        "duration": "2022-10-10 00:00:00",
+                        "unnamed:_1": "TILL DATE",
+                        "experience": "1",
+                        "unnamed:_3": "11",
+                        "designation": "AP",
+                        "institution": "Velammal Engineering College"
                     },
                     {
-                        "DESIGNATION": "30"
+                        "designation": "30"
                     }
                 ],
-                "PROJECTS": [
+                "projects": [
                     {
-                        "TITLE": "NIL",
-                        "SPONSORING_AGENCY": "NIL"
+                        "title": "NIL",
+                        "sponsoring_agency": "NIL"
                     }
                 ],
-                "PATENTS": [
+                "patents": [
                     {
-                        "NAME_OF_PATENT": "NIL"
+                        "name_of_patent": "NIL"
                     }
                 ],
-                "JOURNAL_PUBLICATIONS": [
+                "journal_publications": [
                     {
-                        "Unnamed:_0": 1,
-                        "AUTHORS": "Kuppulakshmi V and Sugapriya C",
-                        "PAPER_TITLE": "Effective Economic Production Quantity model for penalty maintenance cost with rework allowing price discount and Shortage",
-                        "JOURNAL_NAME": "Test Engineering and Management",
-                        "DOI_NUMBER": "http://www.testmagzine.biz/index.php/testmagzine/article/view/6648",
-                        "PAGE_NO": "16267-16286",
-                        "VOL_NO_/_ISSUE_NO": "83,1",
-                        "MONTH_&_YEAR": "MAR/APRIL 2020",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "unnamed:_0": 1,
+                        "authors": "Kuppulakshmi V and Sugapriya C",
+                        "paper_title": "Effective Economic Production Quantity model for penalty maintenance cost with rework allowing price discount and Shortage",
+                        "journal_name": "Test Engineering and Management",
+                        "doi_number": "http://www.testmagzine.biz/index.php/testmagzine/article/view/6648",
+                        "page_no": "16267-16286",
+                        "vol_no_/_issue_no": "83,1",
+                        "month_&_year": "MAR/APRIL 2020",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "Unnamed:_0": 2,
-                        "AUTHORS": "Kuppulakshmi V and Sugapriya C",
-                        "PAPER_TITLE": "An imperfect integrated production with advertisement cost due to PMC under fuzzy systems",
-                        "JOURNAL_NAME": "International Journal of Psychosocial Rehabilitation",
-                        "DOI_NUMBER": "https://drive.google.com/file/d/18LhqcUjZEDUM93qm35RPKLV1Y6firwbY/view?usp=sharing",
-                        "PAGE_NO": "10613-10626",
-                        "VOL_NO_/_ISSUE_NO": "24,8",
-                        "MONTH_&_YEAR": "2020-05-01 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "UGC CARE -II Scopus Q4 (0.2)",
-                        "CONFERENCE_NAME": ""
+                        "unnamed:_0": 2,
+                        "authors": "Kuppulakshmi V and Sugapriya C",
+                        "paper_title": "An imperfect integrated production with advertisement cost due to PMC under fuzzy systems",
+                        "journal_name": "International Journal of Psychosocial Rehabilitation",
+                        "doi_number": "https://drive.google.com/file/d/18LhqcUjZEDUM93qm35RPKLV1Y6firwbY/view?usp=sharing",
+                        "page_no": "10613-10626",
+                        "vol_no_/_issue_no": "24,8",
+                        "month_&_year": "2020-05-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "UGC CARE -II Scopus Q4 (0.2)",
+                        "conference_name": ""
                     },
                     {
-                        "Unnamed:_0": 3,
-                        "AUTHORS": "V.Kuppulakshmi; C. Sugapriya; Nagarajan Deivanayagampillai",
-                        "PAPER_TITLE": "Economic fish production inventory model for perishable fish items with the deterioration rate and the added value under pentagonal fuzzy number",
-                        "JOURNAL_NAME": "Complex & Intelligent Systems",
-                        "DOI_NUMBER": "https://drive.google.com/file/d/1aUSEhbKBhPlNPA-1PcQNfFLzvAT7LnGn/view?usp=sharing",
-                        "PAGE_NO": "417-428",
-                        "VOL_NO_/_ISSUE_NO": "7,1",
-                        "MONTH_&_YEAR": "2020-10-01 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "UGC CARE -II WOS(SCI) Scopus",
-                        "CONFERENCE_NAME": ""
+                        "unnamed:_0": 3,
+                        "authors": "V.Kuppulakshmi; C. Sugapriya; Nagarajan Deivanayagampillai",
+                        "paper_title": "Economic fish production inventory model for perishable fish items with the deterioration rate and the added value under pentagonal fuzzy number",
+                        "journal_name": "Complex & Intelligent Systems",
+                        "doi_number": "https://drive.google.com/file/d/1aUSEhbKBhPlNPA-1PcQNfFLzvAT7LnGn/view?usp=sharing",
+                        "page_no": "417-428",
+                        "vol_no_/_issue_no": "7,1",
+                        "month_&_year": "2020-10-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "UGC CARE -II WOS(SCI) Scopus",
+                        "conference_name": ""
                     },
                     {
-                        "Unnamed:_0": 4,
-                        "AUTHORS": "Kuppulakshmi V, Sugapriya C & Nagarajan Deivanayagam Pillai",
-                        "PAPER_TITLE": "An inventory model for fish marketing under uncertain lockdown situation and normal backordering situation",
-                        "JOURNAL_NAME": "Journal of Advances in Management Research",
-                        "DOI_NUMBER": "https://www.emerald.com/insight/content/doi/10.1108/JAMR-09-2020-0249/full/html",
-                        "PAGE_NO": "220-239",
-                        "VOL_NO_/_ISSUE_NO": "19,2",
-                        "MONTH_&_YEAR": "2021-08-03 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "UGC CARE-II & WOS (ESCI) , SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "unnamed:_0": 4,
+                        "authors": "Kuppulakshmi V, Sugapriya C & Nagarajan Deivanayagam Pillai",
+                        "paper_title": "An inventory model for fish marketing under uncertain lockdown situation and normal backordering situation",
+                        "journal_name": "Journal of Advances in Management Research",
+                        "doi_number": "https://www.emerald.com/insight/content/doi/10.1108/JAMR-09-2020-0249/full/html",
+                        "page_no": "220-239",
+                        "vol_no_/_issue_no": "19,2",
+                        "month_&_year": "2021-08-03 00:00:00",
+                        "indexed_in_sci_/_scopus": "UGC CARE-II & WOS (ESCI) , SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "Unnamed:_0": 5,
-                        "AUTHORS": "Kuppulakshmi V, Sugapriya C & Nagarajan Deivanayagam Pillai",
-                        "PAPER_TITLE": "Production Inventory Model on Verhulst’s Demand in Fuzzy Environments",
-                        "JOURNAL_NAME": "Journal of Intelligent & Fuzzy Systems IFS-220832R1",
-                        "DOI_NUMBER": "https://content.iospress.com/articles/journal-of-intelligent-and-fuzzy-systems/ifs220832",
-                        "PAGE_NO": "801-814",
-                        "VOL_NO_/_ISSUE_NO": "44/1",
-                        "MONTH_&_YEAR": "28.10.2022",
-                        "INDEXED_IN_SCI_/_SCOPUS": "UGC CARE SCOPUS/wos(SCI)",
-                        "CONFERENCE_NAME": ""
+                        "unnamed:_0": 5,
+                        "authors": "Kuppulakshmi V, Sugapriya C & Nagarajan Deivanayagam Pillai",
+                        "paper_title": "Production Inventory Model on Verhulst’s Demand in Fuzzy Environments",
+                        "journal_name": "Journal of Intelligent & Fuzzy Systems IFS-220832R1",
+                        "doi_number": "https://content.iospress.com/articles/journal-of-intelligent-and-fuzzy-systems/ifs220832",
+                        "page_no": "801-814",
+                        "vol_no_/_issue_no": "44/1",
+                        "month_&_year": "28.10.2022",
+                        "indexed_in_sci_/_scopus": "UGC CARE SCOPUS/wos(SCI)",
+                        "conference_name": ""
                     },
                     {
-                        "Unnamed:_0": 7,
-                        "AUTHORS": "Harish Garg, Ph.D. ; C. Sugapriya; V.Kuppulakshmi, Nagarajan Deivanayagampillai",
-                        "PAPER_TITLE": "Optimization Fuzzy Inventory Lot-size with Scrap and Defective items under inspection policy",
-                        "JOURNAL_NAME": "Soft Computing SOCO-D-22-02841 ",
-                        "DOI_NUMBER": "https://link.springer.com/article/10.1007/s00500-022-07804-3     ",
-                        "PAGE_NO": "2231–2250",
-                        "VOL_NO_/_ISSUE_NO": "27",
-                        "MONTH_&_YEAR": "2023-01-01 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "UGC CARE SCOPUS/wos(SCI)",
-                        "CONFERENCE_NAME": ""
+                        "unnamed:_0": 7,
+                        "authors": "Harish Garg, Ph.D. ; C. Sugapriya; V.Kuppulakshmi, Nagarajan Deivanayagampillai",
+                        "paper_title": "Optimization Fuzzy Inventory Lot-size with Scrap and Defective items under inspection policy",
+                        "journal_name": "Soft Computing SOCO-D-22-02841 ",
+                        "doi_number": "https://link.springer.com/article/10.1007/s00500-022-07804-3     ",
+                        "page_no": "2231–2250",
+                        "vol_no_/_issue_no": "27",
+                        "month_&_year": "2023-01-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "UGC CARE SCOPUS/wos(SCI)",
+                        "conference_name": ""
                     },
                     {
-                        "Unnamed:_0": 8,
-                        "AUTHORS": " Sugapriya C;  Nagarajan Deivanayagampillai, Gobinath, M Kuppulakshmi V, ",
-                        "PAPER_TITLE": "A Multiperiod optimization model for medicine supply chains using modified interactive multi-objective fuzzy programming",
-                        "JOURNAL_NAME": "Supply chain Analytics",
-                        "DOI_NUMBER": "https://doi.org/10.1016/j.sca.2023.100048",
-                        "PAGE_NO": "100048",
-                        "VOL_NO_/_ISSUE_NO": "4",
-                        "MONTH_&_YEAR": "2023-12-01 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "UGC CARE SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "unnamed:_0": 8,
+                        "authors": " Sugapriya C;  Nagarajan Deivanayagampillai, Gobinath, M Kuppulakshmi V, ",
+                        "paper_title": "A Multiperiod optimization model for medicine supply chains using modified interactive multi-objective fuzzy programming",
+                        "journal_name": "Supply chain Analytics",
+                        "doi_number": "https://doi.org/10.1016/j.sca.2023.100048",
+                        "page_no": "100048",
+                        "vol_no_/_issue_no": "4",
+                        "month_&_year": "2023-12-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "UGC CARE SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "Unnamed:_0": 9,
-                        "AUTHORS": "Vadivelu, Kuppulakshmi & Sugapriya, C. & Deivanayagampillai, Nagarajan & Jacob, Kavikumar.",
-                        "PAPER_TITLE": "Fuzzy decision-making for cost-effective production planning in manufacturing systems",
-                        "JOURNAL_NAME": "Engineering Research Express",
-                        "DOI_NUMBER": "http://dx.doi.org/10.1088/2631-8695/ad6ad3",
-                        "PAGE_NO": "35418",
-                        "VOL_NO_/_ISSUE_NO": "6,3",
-                        "MONTH_&_YEAR": "2024-08-01 00:00:00",
-                        "INDEXED_IN_SCI_/_SCOPUS": "UGC CARE SCOPUS/wos(SCI)",
-                        "CONFERENCE_NAME": ""
+                        "unnamed:_0": 9,
+                        "authors": "Vadivelu, Kuppulakshmi & Sugapriya, C. & Deivanayagampillai, Nagarajan & Jacob, Kavikumar.",
+                        "paper_title": "Fuzzy decision-making for cost-effective production planning in manufacturing systems",
+                        "journal_name": "Engineering Research Express",
+                        "doi_number": "http://dx.doi.org/10.1088/2631-8695/ad6ad3",
+                        "page_no": "35418",
+                        "vol_no_/_issue_no": "6,3",
+                        "month_&_year": "2024-08-01 00:00:00",
+                        "indexed_in_sci_/_scopus": "UGC CARE SCOPUS/wos(SCI)",
+                        "conference_name": ""
                     },
                     {
-                        "Unnamed:_0": 10,
-                        "AUTHORS": "Deivanayagampillai, Nagarajan & Vadivelu, Kuppulakshmi & Sugapriya, C",
-                        "PAPER_TITLE": "Optimum production lot size for a perishable product under exponential demand with partial backordering and rework",
-                        "JOURNAL_NAME": "Spectrum of Mechanical Engineering and Operational Research",
-                        "DOI_NUMBER": "http://dx.doi.org/10.31181/smeor11202416",
-                        "PAGE_NO": "206-214",
-                        "VOL_NO_/_ISSUE_NO": "1,1",
-                        "MONTH_&_YEAR": "2024-08-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "unnamed:_0": 10,
+                        "authors": "Deivanayagampillai, Nagarajan & Vadivelu, Kuppulakshmi & Sugapriya, C",
+                        "paper_title": "Optimum production lot size for a perishable product under exponential demand with partial backordering and rework",
+                        "journal_name": "Spectrum of Mechanical Engineering and Operational Research",
+                        "doi_number": "http://dx.doi.org/10.31181/smeor11202416",
+                        "page_no": "206-214",
+                        "vol_no_/_issue_no": "1,1",
+                        "month_&_year": "2024-08-01 00:00:00",
+                        "conference_name": ""
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [
+                "conference_publications": [
                     {
-                        "AUTHORS": "NIL"
+                        "authors": "NIL"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [
+                "book_publications": [
                     {
-                        "AUTHOR": "V.Kuppulakshmi; C. Sugapriya; Nagarajan Deivanayagampillai; Jeganathan Kathirvel",
-                        "BOOK_NAME,_EDITION": "Analyzing Data Through Probabilistic Modeling in Statistics",
-                        "PUBLISHER": "IGI GLOBAL",
-                        "ISBN_/_ISSN_NO": "ISBN13: 9781799847069 |ISBN10: 1799847063 |EISBN13: 9781799847076 |ISBN13 Softcover: 9781799854937 DOI: 10.4018/978-1-7998-4706-9",
-                        "MONTH_&_YEAR": "2021-02-01",
-                        "BOOK_/_BOOK_CHAPTER": "BOOK CHAPTER"
+                        "author": "V.Kuppulakshmi; C. Sugapriya; Nagarajan Deivanayagampillai; Jeganathan Kathirvel",
+                        "book_name,_edition": "Analyzing Data Through Probabilistic Modeling in Statistics",
+                        "publisher": "IGI GLOBAL",
+                        "isbn_/_issn_no": "ISBN13: 9781799847069 |ISBN10: 1799847063 |EISBN13: 9781799847076 |ISBN13 Softcover: 9781799854937 DOI: 10.4018/978-1-7998-4706-9",
+                        "month_&_year": "2021-02-01",
+                        "book_/_book_chapter": "BOOK CHAPTER"
                     }
                 ],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [
+                "consultancy": [],
+                "research_scholars": [
                     {
-                        "RESEARCH_SCHOLAR_NAME": "NIL"
+                        "research_scholar_name": "NIL"
                     }
                 ],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 1,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 9,
-                    "Conference_Publications": 1,
-                    "Book_/_Book_Chapter_Published": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 10,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 9,
+                    "conference_publications": 1,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 10,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "DR. ISWARYA M",
-                "Designation": "Assistant Professor",
-                "Department_Name": "",
-                "Mail_ID": "",
+                "name": "DR. ISWARYA M",
+                "unique_id": "VEC-012-F-12",
+                "designation": "Assistant Professor",
+                "department_name": "",
+                "mail_id": "",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-653.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/iswarya-manickam-814970371/",
@@ -1655,37 +1668,38 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [],
-                "EXPERIENCE": [],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR. VIJAYAKUMAR M",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "vijayakumar.m@velammal.edu.in",
+                "name": "MR. VIJAYAKUMAR M",
+                "unique_id": "VEC-012-F-13",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "vijayakumar.m@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-040.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/vijayakumar-ph-d-ab0069279?trk=contact-info",
@@ -1695,37 +1709,38 @@
                     "publonprofile": "",
                     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57225399308&origin=recordpage"
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [],
-                "EXPERIENCE": [],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR. ANTONY GNANA ARAVIND A",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "antonygnanaaravind@velammal.edu.in",
+                "name": "MR. ANTONY GNANA ARAVIND A",
+                "unique_id": "VEC-012-F-14",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "antonygnanaaravind@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-046.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/antony-gnana-aravind-a-35b1a720b",
@@ -1735,71 +1750,72 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "The American College, Madurai.",
-                        "YEAR": "2014"
+                        "degree": "B.Sc",
+                        "branch": "Mathematics",
+                        "institute": "The American College, Madurai.",
+                        "year": "2014"
                     },
                     {
-                        "DEGREE": "M.Sc",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "St.Joseph's College, Trichy",
-                        "YEAR": "2016"
+                        "degree": "M.Sc",
+                        "branch": "Mathematics",
+                        "institute": "St.Joseph's College, Trichy",
+                        "year": "2016"
                     },
                     {
-                        "DEGREE": "M.Phil",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "St.Joseph's College, Trichy",
-                        "YEAR": "2017"
+                        "degree": "M.Phil",
+                        "branch": "Mathematics",
+                        "institute": "St.Joseph's College, Trichy",
+                        "year": "2017"
                     },
                     {
-                        "DEGREE": "PhD",
-                        "BRANCH": "Mathematics",
-                        "INSTITUTE": "SRM Institute of Science and Technology, Chennai",
-                        "YEAR": "Pursuing"
+                        "degree": "PhD",
+                        "branch": "Mathematics",
+                        "institute": "SRM Institute of Science and Technology, Chennai",
+                        "year": "Pursuing"
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "2017-01-06 00:00:00",
-                        "Unnamed:_1": "13/04/2018",
-                        "EXPERIENCE": "0",
-                        "Unnamed:_3": "11",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "Selvamm Arts and Science College, Namakkal."
+                        "duration": "2017-01-06 00:00:00",
+                        "unnamed:_1": "13/04/2018",
+                        "experience": "0",
+                        "unnamed:_3": "11",
+                        "designation": "Assistant Professor",
+                        "institution": "Selvamm Arts and Science College, Namakkal."
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MRS. JERLIN SHEEBA D",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "jerlinsheeba@velammal.edu.in",
+                "name": "MRS. JERLIN SHEEBA D",
+                "unique_id": "VEC-012-F-15",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "jerlinsheeba@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-045.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/jerlin-sheeba-02237532b",
@@ -1809,79 +1825,80 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "M.phil",
-                        "BRANCH": "Mathematics ",
-                        "INSTITUTE": "D.G.Vaishnav College ",
-                        "YEAR": 2016
+                        "degree": "M.phil",
+                        "branch": "Mathematics ",
+                        "institute": "D.G.Vaishnav College ",
+                        "year": 2016
                     },
                     {
-                        "DEGREE": "M.Sc",
-                        "BRANCH": "Mathematics ",
-                        "INSTITUTE": "Anna Adarsh college for women ",
-                        "YEAR": 2014
+                        "degree": "M.Sc",
+                        "branch": "Mathematics ",
+                        "institute": "Anna Adarsh college for women ",
+                        "year": 2014
                     },
                     {
-                        "DEGREE": "B.Sc",
-                        "BRANCH": "Mathematics ",
-                        "INSTITUTE": "Women's Christian college ",
-                        "YEAR": 2012
+                        "degree": "B.Sc",
+                        "branch": "Mathematics ",
+                        "institute": "Women's Christian college ",
+                        "year": 2012
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "2024-08-13 00:00:00",
-                        "Unnamed:_1": "Till date ",
-                        "Unnamed:_3": "1",
-                        "DESIGNATION": "Assistant Professor ",
-                        "INSTITUTION": "Velammal Engineering college "
+                        "duration": "2024-08-13 00:00:00",
+                        "unnamed:_1": "Till date ",
+                        "unnamed:_3": "1",
+                        "designation": "Assistant Professor ",
+                        "institution": "Velammal Engineering college "
                     },
                     {
-                        "DURATION": "2017-10-18 00:00:00",
-                        "Unnamed:_1": "2023-09-26 00:00:00",
-                        "EXPERIENCE": "6",
-                        "DESIGNATION": "Assistant Professor ",
-                        "INSTITUTION": "Alpha arts and science college "
+                        "duration": "2017-10-18 00:00:00",
+                        "unnamed:_1": "2023-09-26 00:00:00",
+                        "experience": "6",
+                        "designation": "Assistant Professor ",
+                        "institution": "Alpha arts and science college "
                     },
                     {
-                        "DURATION": "2015-07-01 00:00:00",
-                        "Unnamed:_1": "2016-11-01 00:00:00",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "4",
-                        "DESIGNATION": "Assistant Professor ",
-                        "INSTITUTION": "Annai Veilankanni college for women "
+                        "duration": "2015-07-01 00:00:00",
+                        "unnamed:_1": "2016-11-01 00:00:00",
+                        "experience": "1",
+                        "unnamed:_3": "4",
+                        "designation": "Assistant Professor ",
+                        "institution": "Annai Veilankanni college for women "
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR. MUTHUVEL S",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Mathematics",
-                "Mail_ID": "muthuvel.s@velammal.edu.in",
+                "name": "MR. MUTHUVEL S",
+                "unique_id": "VEC-012-F-16",
+                "designation": "Assistant Professor",
+                "department_name": "Mathematics",
+                "mail_id": "muthuvel.s@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-050.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/muthuvel-s-780a71179",
@@ -1891,69 +1908,70 @@
                     "publonprofile": "",
                     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58165763400"
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.Sc.,",
-                        "BRANCH": "Mathematics ",
-                        "INSTITUTE": "The New College, Royapettah ",
-                        "YEAR": 2017
+                        "degree": "B.Sc.,",
+                        "branch": "Mathematics ",
+                        "institute": "The New College, Royapettah ",
+                        "year": 2017
                     },
                     {
-                        "DEGREE": "M.Sc., ",
-                        "BRANCH": "Applied Mathematics ",
-                        "INSTITUTE": "Madras Institute of Technology, Anna University ",
-                        "YEAR": 2019
+                        "degree": "M.Sc., ",
+                        "branch": "Applied Mathematics ",
+                        "institute": "Madras Institute of Technology, Anna University ",
+                        "year": 2019
                     },
                     {
-                        "DEGREE": "M.Phil., ",
-                        "BRANCH": "Mathematics ",
-                        "INSTITUTE": "Madras Institute of Technology, Anna University ",
-                        "YEAR": 2020
+                        "degree": "M.Phil., ",
+                        "branch": "Mathematics ",
+                        "institute": "Madras Institute of Technology, Anna University ",
+                        "year": 2020
                     },
                     {
-                        "DEGREE": "Ph.D",
-                        "BRANCH": "Mathematics ",
-                        "INSTITUTE": "SRM Institute of Science and Technology, Vadaplani campus "
+                        "degree": "Ph.D",
+                        "branch": "Mathematics ",
+                        "institute": "SRM Institute of Science and Technology, Vadaplani campus "
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "2021-03-01 00:00:00",
-                        "Unnamed:_1": "2021-06-30 00:00:00",
-                        "Unnamed:_3": "3",
-                        "DESIGNATION": "Assistant Professor ",
-                        "INSTITUTION": "St. Joseph's Arts and Science College, Kovur "
+                        "duration": "2021-03-01 00:00:00",
+                        "unnamed:_1": "2021-06-30 00:00:00",
+                        "unnamed:_3": "3",
+                        "designation": "Assistant Professor ",
+                        "institution": "St. Joseph's Arts and Science College, Kovur "
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MRS. NISHA DEVI N",
-                "Designation": "Assistant Professor",
-                "Department_Name": "",
-                "Mail_ID": "",
+                "name": "MRS. NISHA DEVI N",
+                "unique_id": "VEC-012-F-17",
+                "designation": "Assistant Professor",
+                "department_name": "",
+                "mail_id": "",
                 "image_path": "/static/images/profile_photos/012/VEC-012-04-652.webp",
                 "socialmedia_links": {
                     "linkedin": "",
@@ -1963,35 +1981,40 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [],
-                "EXPERIENCE": [],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             }
         ]
     },
     {
         "NON_TEACHING_FACULTY": []
+    },
+    {
+        "FACULTY_PDF_PATH": {
+            "pdf_path": "/static/pdfs/faculty_list/012.pdf"
+        }
     }
 ]

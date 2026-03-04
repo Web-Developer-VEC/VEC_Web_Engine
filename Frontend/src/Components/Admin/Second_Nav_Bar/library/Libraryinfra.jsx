@@ -589,7 +589,8 @@ const LibrarySections = ({ data, lib }) => {
 
       // 🟢 ADD (INSERT)
       if (change.type === "Added") {
-        const current = members[change.index];
+        // prefer the snapshot if available
+        const current = change.newData || members[change.index];
 
         if (!current?.name || !current?.designation) return null;
 
@@ -606,8 +607,10 @@ const LibrarySections = ({ data, lib }) => {
 
       // ✏️ UPDATE
       if (change.type === "Edited") {
-        const original = originalMembers[change.index];
-        const updated = members[change.index];
+        // prefer explicit snapshots stored on the change; fall back to
+        // looking up by index in case the item was removed/added later
+        const original = change.oldData || originalMembers[change.index];
+        const updated = change.newData || members[change.index];
 
         if (!original || !updated) return null;
 
@@ -647,33 +650,58 @@ const LibrarySections = ({ data, lib }) => {
 
     const formatMemberValue = (member) => {
       if (!member) return "Member";
-      return `${member.name || "Unnamed"}${
-        member.designation ? " – " + member.designation : ""
-      }`;
+      return `${member.name || "Unnamed"}${member.designation ? " – " + member.designation : ""
+        }`;
     };
 
     // Confirm delete action
     const confirmDeleteSelected = () => {
-      const updated = members.filter((_, i) => !selectedMembers.includes(i));
-      const deleted = members.filter((_, i) => selectedMembers.includes(i));
+      // capture selected indexes now to avoid state-timing issues
+      const selIndexes = [...selectedMembers];
+      const updated = members.filter((_, i) => !selIndexes.includes(i));
+      const deleted = members.filter((_, i) => selIndexes.includes(i));
 
       setMembers(updated);
-      setSelectedMembers([]);
       setHasChanges(true);
       setShowDeleteConfirm(false);
+      // clear selection AFTER we've captured it
+      setSelectedMembers([]);
 
-      deleted.forEach((d, i) => {
-        setChanges((prev) => [
-          ...prev,
-          {
-            type: "Deleted",
-            section: "Library Advisory Committee",
-            field: "member",
-            value: d.name || "Unnamed",
-            data: d,
-            index: i,
-          },
-        ]);
+      // Remove any pending Added/Edited changes for the deleted indexes
+      setChanges((prev) => {
+        // Build a set of selected indexes for quick lookup (use captured selIndexes)
+        const sel = new Set(selIndexes);
+
+        // Filter out any prior change that refers to a deleted index
+        let cleaned = prev.filter((c) => !sel.has(c.index));
+
+        // For deleted items that are newly added (isNew), do NOT add Deleted entry
+        // build a change entry for each deleted index using the
+        // originalMembers array directly.  This ensures that if the user
+        // edited the name before deleting the row we still report the *old*
+        // value (e.g. "Balaji" instead of "Balajisss").  We also keep the
+        // index so that any undo logic that relies on this position continues
+        // to work.
+        const deletedChanges = selIndexes
+          .filter((i) => !members[i]?.isNew) // ignore newly added rows
+          .map((i) => {
+            const orig = originalMembers[i] || members[i];
+
+            return {
+              type: "Deleted",
+              section: "Library Advisory Committee",
+              field: "member",
+              value: orig?.name || "Unnamed",
+              data: orig,
+              index: i,
+            };
+          });
+
+        // Also remove any prior 'Added' changes that correspond to deleted new items
+        const deletedNewNames = new Set(deleted.filter((d) => d?.isNew).map((d) => d.name));
+        cleaned = cleaned.filter((c) => !(c.type === 'Added' && deletedNewNames.has(c.value)));
+
+        return [...cleaned, ...deletedChanges];
       });
 
       toast.info("Selected members deleted");
@@ -698,6 +726,7 @@ const LibrarySections = ({ data, lib }) => {
             field: "member",
             value: newMember.name || "Unnamed",
             data: newMember,
+            newData: newMember,
             index: updated.length - 1,
           },
         ]);
@@ -709,6 +738,7 @@ const LibrarySections = ({ data, lib }) => {
     };
 
     const handleEditChange = (index, field, value) => {
+      // update the members state first
       setMembers((prev) => {
         const updated = [...prev];
         updated[index] = { ...updated[index], [field]: value };
@@ -718,35 +748,38 @@ const LibrarySections = ({ data, lib }) => {
       setHasChanges(true);
 
       setChanges((prev) => {
-        const member = members[index];
+        // build a snapshot of the updated member using the new field value
+        const priorMember = members[index] || {};
+        const updatedMember = { ...priorMember, [field]: value };
+        const originalMember = originalMembers[index] || priorMember;
 
-        if (member?.isNew) {
+        // if this member was added during this edit session, just adjust that
+        if (priorMember?.isNew) {
           return prev.map((c) => {
             if (c.type === "Added" && c.index === index) {
               return {
                 ...c,
-                // ✅ SHOW ONLY NAME
-                value: members[index]?.name || "Unnamed",
+                // keep the displayed name in sync
+                value: updatedMember.name || "Unnamed",
+                newData: updatedMember,
               };
             }
             return c;
           });
         }
-        // 🟢 CASE 2: Editing existing member (DEDUPED)
-        const memberName =
-          originalMembers[index]?.name || members[index]?.name || "Unnamed";
 
         const existingIndex = prev.findIndex(
           (c) => c.type === "Edited" && c.index === index,
         );
 
         if (existingIndex !== -1) {
-          const updated = [...prev];
-          updated[existingIndex] = {
-            ...updated[existingIndex],
-            value: memberName,
+          const updatedChanges = [...prev];
+          updatedChanges[existingIndex] = {
+            ...updatedChanges[existingIndex],
+            value: updatedMember.name || "Unnamed",
+            newData: updatedMember,
           };
-          return updated;
+          return updatedChanges;
         }
 
         return [
@@ -755,9 +788,11 @@ const LibrarySections = ({ data, lib }) => {
             type: "Edited",
             section: "Library Advisory Committee",
             field,
-            oldValue: originalMembers?.[index]?.[field] ?? "",
-            value: memberName,
+            oldValue: originalMember[field] ?? "",
+            value: updatedMember.name || "Unnamed",
             index,
+            oldData: originalMember,
+            newData: updatedMember,
           },
         ];
       });
@@ -772,6 +807,19 @@ const LibrarySections = ({ data, lib }) => {
     };
 
     const handleSaveChanges = () => {
+      // Only proceed to saved/pending state when there are real changes
+      if (changes.length === 0) {
+        toast.warn("No changes to save");
+        return;
+      }
+
+      // Validate newly added members have required fields
+      const newInvalid = members.some((m) => m?.isNew && (!m.name || !m.designation));
+      if (newInvalid) {
+        toast.error("Please fill all fields for newly added members before saving");
+        return;
+      }
+
       setIsEditing(false);
       setHasChanges(false);
       setShowRequestBtn(true);
@@ -808,8 +856,11 @@ const LibrarySections = ({ data, lib }) => {
       try {
         await sendRequest(payload);
 
-        // ✅ Commit approved data as new backend truth
-        setOriginalMembers(JSON.parse(JSON.stringify(members)));
+        // NOTE: request is only submitted, not yet approved by superior admin.
+        // We should not overwrite `originalMembers` here because the live data
+        // on the backend hasn't changed yet. Keeping the old value ensures any
+        // subsequent delete payloads refer to the correct record.
+        // setOriginalMembers(JSON.parse(JSON.stringify(members)));
 
         // ✅ Reset UI states
         setShowRequestModal(false);
@@ -834,10 +885,15 @@ const LibrarySections = ({ data, lib }) => {
         // Undo deletion
         setMembers((prev) => [...prev, change.data]);
       } else if (change.type === "Edited") {
-        // Undo edit
+        // Undo edit. If a full snapshot is available, restore it; otherwise
+        // fall back to reverting only the single field.
         setMembers((prev) =>
           prev.map((m, i) =>
-            i === change.index ? { ...m, [change.field]: change.oldValue } : m,
+            i === change.index
+              ? change.oldData
+                ? { ...change.oldData }
+                : { ...m, [change.field]: change.oldValue }
+              : m,
           ),
         );
       }
@@ -935,16 +991,16 @@ const LibrarySections = ({ data, lib }) => {
           {/* Bottom action buttons for edit mode */}
           {isEditing && (
             <div className="mt-6 flex justify-between items-center">
-              {selectedMembers.length > 0 && (
+              {selectedMembers.length > 0 && !showDeleteConfirm && (
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[9999]">
-                <button
-                  onClick={handleDeleteSelected}
-                  className="px-6 py-2 rounded-lg bg-red-600 text-white shadow-lg hover:bg-red-700 flex items-center gap-2"
-                >
-                  <Trash2 className="w-4 h-4" />
-                  Delete Selected
-                </button>
-              </div>
+                  <button
+                    onClick={handleDeleteSelected}
+                    className="px-6 py-2 rounded-lg bg-red-600 text-white shadow-lg hover:bg-red-700 flex items-center gap-2"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                    Delete Selected
+                  </button>
+                </div>
               )}
               <div className="ml-auto flex gap-3">
                 <button
@@ -1102,11 +1158,10 @@ const LibrarySections = ({ data, lib }) => {
                   onClick={handleRequestConfirm}
                   disabled={loading || changes.length === 0}
                   className={`px-4 py-2 rounded-md flex items-center gap-2
-                  ${
-                    loading || changes.length === 0
+                  ${loading || changes.length === 0
                       ? "bg-gray-300 cursor-not-allowed"
-                      : "bg-blue-600 text-white hover:bg-blue-700"
-                  }`}
+                      : "bg-[#fdcc03] hover:bg-[#800000] text-text hover:text-prim"
+                    }`}
                 >
                   {loading ? "Submitting..." : "Final Request"}
                 </button>
@@ -1570,16 +1625,14 @@ const LibrarySections = ({ data, lib }) => {
                     className={`w-full flex justify-between items-center 
                     text-base sm:text-lg px-6 py-4 font-semibold
                     transition-all rounded-2xl text-white dark:text-drkp mb-4
-                    ${
-                      openSection === index
+                    ${openSection === index
                         ? "bg-[#FDCC03] text-black dark:bg-drks"
                         : "bg-accn dark:bg-drks"
-                    }`}
+                      }`}
                   >
                     <h2
-                      className={`${
-                        openSection === index ? "text-black" : "text-white"
-                      }`}
+                      className={`${openSection === index ? "text-black" : "text-white"
+                        }`}
                     >
                       {section.category}
                     </h2>
@@ -1600,7 +1653,7 @@ const LibrarySections = ({ data, lib }) => {
                       className="px-6 py-4 relative"
                     >
                       {/* Edit button */}
-                      {editingIndex !== index && !showRequestButtons && (
+                      {editingIndex !== index && (
                         <div className="absolute top-4 right-4">
                           <button
                             onClick={() => handleEditClick(section, index)}
@@ -1617,8 +1670,8 @@ const LibrarySections = ({ data, lib }) => {
                         </div>
                       )}
 
-                      {/* Editing form */}
-                      {(editingIndex === index || showRequestButtons) && (
+                      {/* Editing form (only when actively editing this section) */}
+                      {editingIndex === index && (
                         <div className="relative pb-24">
                           <div className="space-y-3">
                             {formData.content?.map((item, idx) => (
@@ -1769,12 +1822,22 @@ const LibrarySections = ({ data, lib }) => {
                         </div>
                       )}
 
-                      {/* Normal view */}
-                      {editingIndex !== index && !showRequestButtons && (
+                      {/* Normal view (when not editing) */}
+                      {editingIndex !== index && (
                         <>
-                          {Array.isArray(section.content) ? (
+                          {Array.isArray(
+                            // if there are pending changes for this section and no
+                            // active edit, show the draft content; otherwise use the
+                            // original section data
+                            showRequestButtons && openSection === index
+                              ? formData.content
+                              : section.content,
+                          ) ? (
                             <ul className="list-disc marker:text-accn dark:marker:text-drka pl-6 space-y-2">
-                              {section.content.map((item, idx) => (
+                              {(showRequestButtons && openSection === index
+                                ? formData.content
+                                : section.content
+                              ).map((item, idx) => (
                                 <li
                                   key={idx}
                                   className="text-text dark:text-drka"
@@ -1784,7 +1847,11 @@ const LibrarySections = ({ data, lib }) => {
                               ))}
                             </ul>
                           ) : (
-                            <p>{section.content}</p>
+                            <p>
+                              {showRequestButtons && openSection === index
+                                ? formData.content
+                                : section.content}
+                            </p>
                           )}
                         </>
                       )}
@@ -1891,7 +1958,7 @@ const LibrarySections = ({ data, lib }) => {
                                   ...item,
                                   [change.field]:
                                     originalData.content[change.index][
-                                      change.field
+                                    change.field
                                     ],
                                 };
                               }

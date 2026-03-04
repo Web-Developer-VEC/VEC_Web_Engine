@@ -45,7 +45,7 @@ export default function IQGauge({ data }) {
 
   const handleRequestConfirm = async () => {
   if (!uploadedFile) {
-    toast.info("No file selected");
+   
     return;
   }
 
@@ -78,7 +78,7 @@ export default function IQGauge({ data }) {
  console.log("appu",files);
  
   if (result) {
-    toast.success("Request submitted successfully!");
+
     setShowRequestModal(false);
     setIsEditing(false);
     setChanges([]);
@@ -116,10 +116,10 @@ export default function IQGauge({ data }) {
       {!isEditing && (
         <div className="flex justify-end pt-3 mr-8">
           <button
-            className="bg-secd text-text px-4 py-2 rounded-[10px] cursor-pointer hover:bg-[#800000] hover:text-drkt flex"
+            className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
             onClick={() => setIsEditing(true)}
           >
-            <Pencil /> Edit
+            <Pencil size={16}/> Edit
           </button>
         </div>
       )}

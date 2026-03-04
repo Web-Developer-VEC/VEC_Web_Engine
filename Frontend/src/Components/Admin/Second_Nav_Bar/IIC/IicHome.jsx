@@ -15,6 +15,7 @@ function IicHome({ data }) {
   const [isDirty, setIsDirty] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const { sendRequest, loading, error } = useAdminRequest();
 
@@ -28,6 +29,7 @@ function IicHome({ data }) {
       setIsEditing(false);
       setIsDirty(false);
       setIsSaved(false);
+      setEmptyFields([]);
     }
   }, [data]);
 
@@ -40,6 +42,7 @@ function IicHome({ data }) {
     setIsEditing(true);
     setIsDirty(false);
     setIsSaved(!!pendingContent);
+    setEmptyFields([]);
   };
 
   const handleChangeParagraph = (index, value) => {
@@ -47,11 +50,22 @@ function IicHome({ data }) {
     updatedContent[index] = value;
     setAboutContent(updatedContent);
     setIsDirty(true);
+    
+    // Update empty fields array
+    const empty = updatedContent.reduce((acc, p, idx) => {
+      if (!p.trim()) {
+        acc.push(idx);
+      }
+      return acc;
+    }, []);
+    setEmptyFields(empty);
   };
 
   const handleAddParagraph = () => {
-    setAboutContent([...aboutContent, ""]);
+    const newContent = [...aboutContent, ""];
+    setAboutContent(newContent);
     setIsDirty(true);
+    setEmptyFields([...emptyFields, newContent.length - 1]);
   };
 
   const handleRemoveParagraph = (index) => {
@@ -63,6 +77,15 @@ function IicHome({ data }) {
     const updatedContent = aboutContent.filter((_, i) => i !== index);
     setAboutContent(updatedContent);
     setIsDirty(true);
+    
+    // Update empty fields array
+    const empty = updatedContent.reduce((acc, p, idx) => {
+      if (!p.trim()) {
+        acc.push(idx);
+      }
+      return acc;
+    }, []);
+    setEmptyFields(empty);
   };
 
   const handleCancel = () => {
@@ -75,14 +98,23 @@ function IicHome({ data }) {
     setIsEditing(false);
     setIsDirty(false);
     setIsSaved(!!pendingContent);
+    setEmptyFields([]);
   };
 
   const handleSave = () => {
     // Check for empty paragraphs
-    const emptyParagraph = aboutContent.find((p) => !p.trim());
-
-    if (emptyParagraph) {
-      toast.error("Please fill all paragraphs before saving!");
+    const emptyParagraphs = aboutContent.filter((p) => !p.trim());
+    
+    if (emptyParagraphs.length > 0) {
+      // Show which paragraphs are empty
+      const emptyIndices = aboutContent.reduce((acc, p, idx) => {
+        if (!p.trim()) {
+          acc.push(idx + 1);
+        }
+        return acc;
+      }, []);
+      
+      toast.error(`Please fill all paragraphs before saving! Empty paragraphs: ${emptyIndices.join(', ')}`);
       return;
     }
 
@@ -90,6 +122,8 @@ function IicHome({ data }) {
     setIsSaved(true);
     setIsEditing(false);
     setIsDirty(false);
+    setEmptyFields([]);
+    toast.success("Changes saved successfully!");
   };
 
   const handleDiscard = () => {
@@ -97,15 +131,44 @@ function IicHome({ data }) {
     setPendingContent(null);
     setIsSaved(false);
     setIsDirty(false);
+    setEmptyFields([]);
     toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
+    // Double-check for empty paragraphs before showing modal
+    if (pendingContent) {
+      const emptyParagraphs = pendingContent.filter((p) => !p.trim());
+      if (emptyParagraphs.length > 0) {
+        const emptyIndices = pendingContent.reduce((acc, p, idx) => {
+          if (!p.trim()) {
+            acc.push(idx + 1);
+          }
+          return acc;
+        }, []);
+        toast.error(`Cannot request with empty paragraphs. Please edit and fill all fields. Empty paragraphs: ${emptyIndices.join(', ')}`);
+        return;
+      }
+    }
     setShowRequestModal(true);
   };
 
   const handleFinalRequestConfirm = async () => {
     if (!pendingContent) return;
+
+    // Final check for empty paragraphs
+    const emptyParagraphs = pendingContent.filter((p) => !p.trim());
+    if (emptyParagraphs.length > 0) {
+      const emptyIndices = pendingContent.reduce((acc, p, idx) => {
+        if (!p.trim()) {
+          acc.push(idx + 1);
+        }
+        return acc;
+      }, []);
+      toast.error(`Cannot submit request with empty paragraphs. Please go back and fill all fields. Empty paragraphs: ${emptyIndices.join(', ')}`);
+      setShowRequestModal(false);
+      return;
+    }
 
     // Build payload in the format you provided
     const payload = [
@@ -132,9 +195,12 @@ function IicHome({ data }) {
         setPendingContent(null);
         setIsSaved(false);
         setShowRequestModal(false);
+        setEmptyFields([]);
+        toast.success("Request submitted successfully!");
       }
     } catch (err) {
       console.error("IIC final request error:", err);
+      toast.error("Failed to submit request. Please try again.");
     }
   };
 
@@ -143,6 +209,8 @@ function IicHome({ data }) {
     setPendingContent(null);
     setIsSaved(false);
     setShowRequestModal(false);
+    setEmptyFields([]);
+    toast.info("Changes reverted!");
   };
 
   const getChanges = () => {
@@ -205,17 +273,28 @@ function IicHome({ data }) {
           <div className="text-text dark:text-drkt mt-4 mr-4">
             {aboutContent.map((paragraph, index) => (
               <div key={index} className="mb-4 relative">
+                <div className="flex items-center mb-1">
+                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Paragraph {index + 1} <span className="text-red-500">*</span>
+                  </label>
+                  {!paragraph.trim() && (
+                    <span className="ml-2 text-xs text-red-500">(Required)</span>
+                  )}
+                </div>
                 <textarea
                   value={paragraph}
                   onChange={(e) => handleChangeParagraph(index, e.target.value)}
-                  className="w-full p-2 border rounded min-h-[100px]"
-                  placeholder="Enter paragraph content"
+                  className={`w-full p-2 border rounded min-h-[100px] ${
+                    !paragraph.trim() ? "border-red-500 bg-red-50" : "border-gray-300"
+                  }`}
+                  placeholder="Enter paragraph content (required)"
+                  required
                 />
                 {/* Uncomment to allow removal of paragraphs
                 {aboutContent.length > 1 && (
                   <button
                     onClick={() => handleRemoveParagraph(index)}
-                    className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded hover:bg-red-600"
+                    className="absolute top-8 right-2 p-1 bg-red-500 text-white rounded hover:bg-red-600"
                     title="Remove paragraph"
                   >
                     <X size={16} />
@@ -241,13 +320,26 @@ function IicHome({ data }) {
                 {isDirty && (
                   <button
                     onClick={handleSave}
-                    className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                    className={`flex items-center gap-2 px-4 py-2 rounded ${
+                      emptyFields.length > 0 
+                        ? "bg-gray-400 cursor-not-allowed" 
+                        : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                    }`}
+                    disabled={emptyFields.length > 0}
                   >
                     <Save size={18} /> Save
                   </button>
                 )}
               </div>
             </div>
+            {emptyFields.length > 0 && (
+              <p className="text-xs text-red-500 mt-2">
+                Please fill all required fields before saving. Empty paragraphs: {emptyFields.map(i => i + 1).join(', ')}
+              </p>
+            )}
+            <p className="text-xs text-gray-500 mt-2">
+              <span className="text-red-500">*</span> Required fields
+            </p>
           </div>
         ) : (
           // View Mode
