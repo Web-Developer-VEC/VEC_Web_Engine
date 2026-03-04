@@ -16,10 +16,10 @@ const Faculties = ({ data }) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  const hod_details = data?.find((item) => item.category === "head_of_department")?.members || [];
-  const teaching_staff_details = data?.find((item) => item.category === "teaching_staff")?.members || [];
-  const non_teaching_staff_details = data?.find((item) => item.category === "non_teaching_staff")?.members || [];
-  const faculty_pdf_path = data?.find((item) => item.category === "faculty_pdf_path")?.content[0] || "";
+  const hod_details = data?.find((item) => item.type === "HOD")?.data || [];
+  const teaching_staff_details = data?.find((item) => item.type === "FACULTY")?.data || [];
+  const non_teaching_staff_details = data?.find((item) => item.type === "NON_TEACHING_FACULTY")?.data || [];
+  const faculty_pdf_path = data?.find((item) => item.type === "faculty_pdf_path")?.content[0] || "";
 
   return (
     <div className={styles.app + " p-0 md:p-12"}>
@@ -27,9 +27,9 @@ const Faculties = ({ data }) => {
           <div className={`${styles.fullWidthTile} relative`}>
             <ImageCard
               key={hod_details?.[0]?.unique_id || 0}
-              name={hod_details?.[0]?.name}
+              name={hod_details?.[0]?.Name}
               photo={hod_details?.[0]?.image_path}
-              Designation={hod_details?.[0]?.designation}
+              Designation={hod_details?.[0]?.Designation}
               Scholar={hod_details?.[0]?.socialmedia_links?.googlescholar}
               Research={hod_details?.[0]?.socialmedia_links?.researchgate}
               Orchid={hod_details?.[0]?.socialmedia_links?.orchidprofile}
@@ -63,9 +63,9 @@ const Faculties = ({ data }) => {
                 {teaching_staff_details?.map((faculty, index) => (
                   <ImageCard
                     key={faculty?.unique_id || index}
-                    name={faculty?.name}
+                    name={faculty?.Name}
                     photo={faculty?.image_path}
-                    Designation={faculty?.designation}
+                    Designation={faculty?.Designation}
                     Scholar={faculty?.socialmedia_links?.googlescholar}
                     Research={faculty?.socialmedia_links?.researchgate}
                     Orchid={faculty?.socialmedia_links?.orchidprofile}
@@ -87,9 +87,9 @@ const Faculties = ({ data }) => {
                 {non_teaching_staff_details?.map((faculty, index) => (
                   <ImageCard
                     key={faculty?.unique_id || index}
-                    name={faculty?.name}
+                    name={faculty?.Name}
                     photo={faculty?.image_path}
-                    Designation={faculty?.designation}
+                    Designation={faculty?.Designation}
                     Scholar={faculty?.socialmedia_links?.googlescholar}
                     Research={faculty?.socialmedia_links?.researchgate}
                     Orchid={faculty?.socialmedia_links?.orchidprofile}

@@ -367,9 +367,9 @@ const App = () => {
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 {/* Aptitude Routes */}
-                                <Route path="/QA/qaexam" drk element={<DetailsPage toggle={toggle} theme={theme} />}/>
-                                <Route path="/QA/confirm" element={<InstructionPage toggle={toggle} theme={theme}/>} />
-                                <Route path="/QA/questions" element={<QuestionPage toggle={toggle} theme={theme}/>} />
+                                {/* <Route path="/QA/qaexam" drk element={<DetailsPage toggle={toggle} theme={theme} />}/> */}
+                                {/* <Route path="/QA/confirm" element={<InstructionPage toggle={toggle} theme={theme}/>} /> */}
+                                {/* <Route path="/QA/questions" element={<QuestionPage toggle={toggle} theme={theme}/>} /> */}
                                 <Route path="/staff-dashboard" element={<Schedule toggle={toggle} theme={theme}/>} />
                                 <Route path="/upload" element={<UploadContainer toggle={toggle} theme={theme}/>} />
                                 <Route path="/scheduled-exam" element={<ScheduledExam toggle={toggle} theme={theme}/>} />

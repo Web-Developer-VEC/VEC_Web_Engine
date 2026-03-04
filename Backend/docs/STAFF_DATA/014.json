@@ -1,12 +1,12 @@
 [
     {
-        "type":"HOD",
-        "data":[
+        "HOD": [
             {
-                "Name": "திரு. முத்தையா மு.மு",
-                "Designation": "உதவிப்பேராசிரியர் மற்றும் தமிழ்த்துறைத் தலைவர்",
-                "Department_Name": "",
-                "Mail_ID": "",
+                "name": "திரு. முத்தையா மு.மு",
+                "unique_id": "VEC-014-H-001",
+                "designation": "உதவிப்பேராசிரியர் மற்றும் தமிழ்த்துறைத் தலைவர்",
+                "department_name": "",
+                "mail_id": "",
                 "image_path": "/static/images/profile_photos/014/VEC-014-01-180.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/muthiah-m-m-190398355/",
@@ -16,40 +16,43 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [],
-                "EXPERIENCE": [],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             }
         ]
     },
     {
-        "type":"FACULTY",
-        "data":[]
+        "FACULTY": []
     },
     {
-       "type": "NON_TEACHING_FACULTY",
-        "data": []
+        "NON_TEACHING_FACULTY": []
+    },
+    {
+        "FACULTY_PDF_PATH": {
+            "pdf_path": "/static/pdfs/faculty_list/014.pdf"
+        }
     }
 ]

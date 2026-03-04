@@ -65,15 +65,15 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
         
         {isViewmore && (
           <button
-            // onClick={() => navigate(`/facultyprofile/${uid}`)}
-            onClick={() => {
-              if (profile && profile.trim() !== "") {
-                const url = UrlParser(profile);
-                if (url) {
-                  window.open(url, "_blank", "noopener,noreferrer");
-                }
-              }
-            }}
+            onClick={() => navigate(`/facultyprofile/${uid}`)}
+            // onClick={() => {
+            //   if (profile && profile.trim() !== "") {
+            //     const url = UrlParser(profile);
+            //     if (url) {
+            //       window.open(url, "_blank", "noopener,noreferrer");
+            //     }
+            //   }
+            // }}
             className={styles.facButton + " bg-brwn dark:bg-drks hover:bg-secd text-prim dark:text-black"}>
             View More
           </button>
