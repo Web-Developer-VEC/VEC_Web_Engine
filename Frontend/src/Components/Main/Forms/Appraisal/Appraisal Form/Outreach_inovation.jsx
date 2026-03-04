@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import "./AppraisalForm.css";
 import { Eye } from "lucide-react";
 
-const Page4 = ({ selectedYear, newAcadamicYear, data, setData }) => {
+const Outreach_inovation = ({ selectedYear, newAcadamicYear, data, setData }) => {
   const fileRefs = useRef({});
 
   const defaultState = {
@@ -167,38 +167,44 @@ React.useEffect(() => {
                 }
               />
 
-              <div
-                style={{ display: "flex", gap: "4px", alignItems: "center" }}
-              >
-                <input
-                  type="file"
-                  style={{ display: "none" }}
-                  ref={(el) =>
-                    (fileRefs.current[`brand_building_admission_${key}`] = el)
-                  }
-                  onChange={(e) =>
-                    handleFileChange(
-                      "brand_building_admission",
-                      key,
-                      e.target.files[0],
-                    )
-                  }
-                />
-                <Eye
-                  style={{ cursor: "pointer" }}
-                  onClick={() =>
-                    viewFile(page4Data.brand_building_admission[key].pdf_path)
-                  }
-                />
-                <button
-                  type="button"
-                  onClick={() =>
-                    handleUploadClick(`brand_building_admission_${key}`)
-                  }
-                >
-                  Upload
-                </button>
-              </div>
+              <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+  <input
+    type="file"
+    accept="application/pdf"
+    id={`upload-brand-${key}`}
+    style={{ display: "none" }}
+    onChange={(e) =>
+      handleFileChange(
+        "brand_building_admission",
+        key,
+        e.target.files[0]
+      )
+    }
+  />
+
+  {/* Upload / Update Button */}
+  <label
+    htmlFor={`upload-brand-${key}`}
+    className="upload-btn"
+  >
+    {page4Data.brand_building_admission[key].pdf_path
+      ? "Update"
+      : "Upload"}
+  </label>
+
+  {/* Eye Icon */}
+  {page4Data.brand_building_admission[key].pdf_path && (
+    <Eye
+      style={{ cursor: "pointer", width: "18px" }}
+      onClick={() => {
+        const file =
+          page4Data.brand_building_admission[key].pdf_path;
+        const fileURL = URL.createObjectURL(file);
+        window.open(fileURL, "_blank");
+      }}
+    />
+  )}
+</div>
             </div>
           ),
         )}
@@ -260,43 +266,48 @@ React.useEffect(() => {
         />
 
         {/* upload */}
-        <div className="upload-cell">
-          <input
-            type="file"
-            style={{ display: "none" }}
-            ref={(el) =>
-              (fileRefs.current[
-                `innovation_entrepreneurship_activities_${key}`
-              ] = el)
-            }
-            onChange={(e) =>
-              handleFileChange(
-                "innovation_entrepreneurship_activities",
-                key,
-                e.target.files[0]
-              )
-            }
-          />
-          <Eye
-            style={{ cursor: "pointer" }}
-            onClick={() =>
-              viewFile(
-                page4Data.innovation_entrepreneurship_activities[key]
-                  .pdf_path
-              )
-            }
-          />
-          <button
-            type="button"
-            onClick={() =>
-              handleUploadClick(
-                `innovation_entrepreneurship_activities_${key}`
-              )
-            }
-          >
-            Upload
-          </button>
-        </div>
+       <div
+  className="upload-cell"
+  style={{ display: "flex", gap: "8px", alignItems: "center" }}
+>
+  <input
+    type="file"
+    accept="application/pdf"
+    id={`upload-innovation-${key}`}
+    style={{ display: "none" }}
+    onChange={(e) =>
+      handleFileChange(
+        "innovation_entrepreneurship_activities",
+        key,
+        e.target.files[0]
+      )
+    }
+  />
+
+  {/* Upload / Update Button */}
+  <label
+    htmlFor={`upload-innovation-${key}`}
+    className="upload-btn"
+  >
+    {page4Data.innovation_entrepreneurship_activities[key].pdf_path
+      ? "Update"
+      : "Upload"}
+  </label>
+
+  {/* Eye Icon */}
+  {page4Data.innovation_entrepreneurship_activities[key].pdf_path && (
+    <Eye
+      style={{ cursor: "pointer", width: "18px" }}
+      onClick={() => {
+        const file =
+          page4Data.innovation_entrepreneurship_activities[key]
+            .pdf_path;
+        const fileURL = URL.createObjectURL(file);
+        window.open(fileURL, "_blank");
+      }}
+    />
+  )}
+</div>
       </div>
     )
   )}
@@ -305,4 +316,4 @@ React.useEffect(() => {
   );
 };
 
-export default Page4;
+export default Outreach_inovation;
