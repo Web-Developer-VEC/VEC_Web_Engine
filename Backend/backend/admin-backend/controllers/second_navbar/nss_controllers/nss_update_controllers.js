@@ -1,4 +1,4 @@
-async function updateData( tempDoc, mainCollection) {
+async function updateData(tempDoc, mainCollection) {
   try {
     const { collection_type, meta_data, category, original_data } = tempDoc;
 
@@ -22,7 +22,7 @@ async function updateData( tempDoc, mainCollection) {
     if (singleDocTypes.includes(collection_type)) {
       let newData;
 
-      newData = Array.isArray(meta_data)?meta_data:[meta_data];
+      newData = Array.isArray(meta_data) ? meta_data : Object.values(meta_data);
 
       await mainCollection.updateOne(
         { type: collection_type },
@@ -30,7 +30,6 @@ async function updateData( tempDoc, mainCollection) {
       );
 
       return {
-       
         message: `Updated successfully for ${collection_type}`,
         data: newData,
       };
@@ -56,14 +55,14 @@ async function updateData( tempDoc, mainCollection) {
         const originalArray = Array.isArray(original_data?.content)
           ? original_data.content
           : Array.isArray(original_data)
-          ? original_data
-          : [original_data];
+            ? original_data
+            : [original_data];
 
         const metaArray = Array.isArray(meta_data?.content)
           ? meta_data.content
           : Array.isArray(meta_data)
-          ? meta_data
-          : [meta_data];
+            ? meta_data
+            : [meta_data];
 
         const updated = content.map((item) =>
           originalArray.includes(item)
@@ -111,7 +110,7 @@ async function updateData( tempDoc, mainCollection) {
       }
 
       return {
-       
+
         message: `Updated successfully in ${collection_type} - category ${category}`,
         data: meta_data,
       };
@@ -137,7 +136,7 @@ async function updateData( tempDoc, mainCollection) {
       );
 
       return {
-       
+
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };
