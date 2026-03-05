@@ -119,7 +119,6 @@ function PersonMemberDetail({
   const UrlParser = (path) =>
     path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   const hasImage = !!(person.image_path || person.photo_file);
-  const { sendRequest, loading, error } = useAdminRequest();
   const imageSrc =
     person.preview_url ||
     (person.image_path ? UrlParser(person.image_path) : "");
@@ -265,40 +264,47 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   }, []);
 
   // Validation function
-  const validateTeam = (team) => {
-    const errors = {};
-    
-    team.forEach((member, index) => {
-      if (!errors[index]) errors[index] = {};
-      
-      // Check required fields
-      if (!member.name || member.name.trim() === '') {
-        errors[index].name = 'Name is required';
-      }
-      
-      if (!member.designation || member.designation.trim() === '') {
-        errors[index].designation = 'Designation is required';
-      }
-      
-      // For main person (index 0), check content
-      if (index === 0 && (!member.content || member.content.trim() === '')) {
-        errors[index].content = 'Description is required';
-      }
-      
-      // Check if image exists
-      const hasImage = member.image_path || member.photo_file;
-      if (!hasImage) {
-        errors[index].image = 'Image is required';
-      }
-    });
-    
-    return errors;
-  };
+const validateTeam = (team) => {
+  const errors = {};
 
-  const isValidTeam = (team) => {
-    const errors = validateTeam(team);
-    return Object.keys(errors).length === 0;
-  };
+  team.forEach((member, index) => {
+    const memberErrors = {};
+
+    // Required: name
+    if (!member.name || member.name.trim() === "") {
+      memberErrors.name = "Name is required";
+    }
+
+    // Required: designation
+    if (!member.designation || member.designation.trim() === "") {
+      memberErrors.designation = "Designation is required";
+    }
+
+    // Required: content for main person (index 0)
+    if (index === 0 && (!member.content || member.content.trim() === "")) {
+      memberErrors.content = "Description is required";
+    }
+
+    // Required: image
+    const hasImage = member.image_path || member.photo_file;
+    if (!hasImage) {
+      memberErrors.image = "Image is required";
+    }
+
+    // Only assign errors if there are any
+    if (Object.keys(memberErrors).length > 0) {
+      errors[index] = memberErrors;
+    }
+  });
+
+  return errors;
+};
+
+// Utility to check if entire team is valid
+const isValidTeam = (team) => {
+  const errors = validateTeam(team);
+  return Object.keys(errors).length === 0;
+};
 
   if (!isOnline) {
     return (
@@ -631,16 +637,28 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
       )
       .filter(Boolean);
 
-    // 🔥 THIS IS THE KEY LINE
     const files = collectPlacementFiles(draftTeam);
 
     console.log("📦 PAYLOAD:", payload);
     console.log("🖼 FILES:", files);
 
-    await sendRequest(payload, files);
+    const success = await sendRequest(payload, files);
 
-    toast.success("Request submitted successfully!");
-    setShowRequestModal(false);
+    if (success) {
+      toast.success("Request submitted successfully!");
+      
+      // After successful submission, update placementTeam with the pendingDraft
+      // since these changes are now submitted (though pending approval)
+      setPlacementTeam(pendingDraft.map(x => ({ ...x })));
+      
+      // Reset pending states
+      setPendingDraft(null);
+      setPendingChanges(false);
+      
+      setShowRequestModal(false);
+    } else {
+      toast.error("Failed to submit request. Please try again.");
+    }
   };
 
   return (
