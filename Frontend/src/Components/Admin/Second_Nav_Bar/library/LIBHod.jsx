@@ -22,9 +22,9 @@ const LIBHod = ({ data }) => {
   const [originalData, setOriginalData] = useState({ ...data?.[0] });
   const [editBackup, setEditBackup] = useState(null); // ✅ backup for current edit session
   const [hodPic, setHodPic] = useState(null);
-  console.log("Hod Pic", hodPic);
   const [changeList, setChangeList] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
+  const [imagebackup, setimagebackup] = useState(false);
 
 
   useEffect(() => {
@@ -79,6 +79,11 @@ const LIBHod = ({ data }) => {
 
   // ✅ confirm final request
   const handleRequestConfirm = async () => {
+    // ✅ Double-check validation before submission
+    if (!validateRequiredFields()) {
+      return;
+    }
+
     const changes = buildHodChangeList(formData, originalData);
 
 
@@ -173,6 +178,25 @@ const LIBHod = ({ data }) => {
     }
   }, [changeList]);
 
+  // ✅ Validate all required fields
+  const validateRequiredFields = () => {
+    const requiredFields = ["name", "designation", "education_qualification", "message"];
+    const emptyFields = [];
+
+    requiredFields.forEach((field) => {
+      if (!formData[field] || formData[field].toString().trim() === "") {
+        emptyFields.push(field.replace(/_/g, " "));
+      }
+    });
+
+    if (emptyFields.length > 0) {
+      toast.error(`Please fill all required fields: ${emptyFields.join(", ")}`);
+      return false;
+    }
+
+    return true;
+  };
+
   if (!data) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -255,6 +279,7 @@ const LIBHod = ({ data }) => {
               }))
             }
             className="text-2xl font-semibold border p-1 rounded mb-2 w-full uppercase"
+            required
           />
         ) : (
           <h2 className="text-2xl font-semibold">
@@ -269,6 +294,7 @@ const LIBHod = ({ data }) => {
             value={formData?.designation}
             onChange={handleChange}
             className="text-lg border p-1 rounded mb-2 w-full"
+            required
           />
         ) : (
           <p className="text-lg text-accn dark:text-drka mb-2">
@@ -283,6 +309,7 @@ const LIBHod = ({ data }) => {
             value={formData?.education_qualification}
             onChange={handleChange}
             className="text-md border p-1 rounded mb-2 w-full"
+            required
           />
         ) : (
           <p className="text-md mb-2 text-brwn dark:text-drka">
@@ -297,6 +324,7 @@ const LIBHod = ({ data }) => {
             onChange={handleChange}
             rows={5}
             className="text-xl border p-2 rounded w-full"
+            required
           />
         ) : (
           <p className="text-xl sm:text-justify text-justify">
@@ -311,8 +339,12 @@ const LIBHod = ({ data }) => {
               <button
                 onClick={() => {
                   setFormData(editBackup ? JSON.parse(JSON.stringify(editBackup)) : JSON.parse(JSON.stringify(originalData)));
-                  setHodPic(null);
-                  setImagePreview(null);
+                  if (!imagebackup) {
+                    console.log("Hello i am from imageback block");
+                    
+                    setHodPic(null);
+                    setImagePreview(null);
+                  }
                   setIsEditing(false);
                   toast.info("Changes reverted");
                 }}
@@ -324,11 +356,20 @@ const LIBHod = ({ data }) => {
               {isChanged && (
                 <button
                   onClick={() => {
+                    // ✅ Validate all required fields before saving
+                    if (!validateRequiredFields()) {
+                      return;
+                    }
+
                     const changes = buildHodChangeList(formData, originalData);
 
                     if (changes.length === 0) {
                       toast.warn("No changes detected");
                       return;
+                    }
+
+                    if (hodPic) {
+                      setimagebackup(true);
                     }
 
                     setChangeList(changes); // 🔒 freeze changes
@@ -468,12 +509,12 @@ const LIBHod = ({ data }) => {
 
               <button
                 onClick={handleRequestConfirm}
-                disabled={changeList.length === 0}
+                disabled={changeList.length === 0 || loading}
                 className={`px-4 py-2 rounded flex items-center gap-2
-            ${changeList.length === 0
+                  ${changeList.length === 0
                     ? "bg-gray-300 cursor-not-allowed"
                     : "bg-[#FDCC03] hover:bg-[#800000] text-text hover:text-white"
-                  }`}
+                  } ${loading ? "cursor-wait" : "cursor-pointer"}`}
               >
                 <Send size={16} /> Final Request
               </button>

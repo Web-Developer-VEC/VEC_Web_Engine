@@ -263,7 +263,7 @@ const handleUndoChange = (id) => {
     newData = newData.filter(
       (row) => row._id !== change.row._id
     );
-  } 
+  }
 
   if (change.action === "Delete") {
     // add back deleted row
