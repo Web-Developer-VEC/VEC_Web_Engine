@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "திரு. முத்தையா மு.மு",
                 "unique_id": "VEC-014-H-001",
@@ -45,13 +46,16 @@
         ]
     },
     {
-        "FACULTY": []
+        "type":"FACULTY",
+"data": []
     },
     {
-        "NON_TEACHING_FACULTY": []
+        "type":"NON_TEACHING_FACULTY",
+"data": []
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/014.pdf"
         }
     }

@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "MR. BASKARAN V",
                 "unique_id": "VEC-010-H-001",
@@ -140,7 +141,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "MS. SUGAPRIYA S",
                 "unique_id": "VEC-010-F-01",
@@ -1162,7 +1164,8 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": [
+        "type":"NON_TEACHING_FACULTY",
+"data": [
             {
                 "name": "MRS. INDUMATHI S",
                 "unique_id": "VEC-010-NF-01",
@@ -1207,7 +1210,8 @@
         ]
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/010.pdf"
         }
     }

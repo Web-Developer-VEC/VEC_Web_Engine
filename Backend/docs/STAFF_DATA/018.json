@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. SURESHKUMAR K",
                 "unique_id": "VEC-018-H-001",
@@ -45,7 +46,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. SRINATH S",
                 "unique_id": "VEC-018-F-01",
@@ -2247,7 +2249,8 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": [
+        "type":"NON_TEACHING_FACULTY",
+"data": [
             {
                 "name": "MR. GNANASEKAR R",
                 "unique_id": "VEC-018-NF-01",
@@ -2415,7 +2418,8 @@
         ]
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/018.pdf"
         }
     }

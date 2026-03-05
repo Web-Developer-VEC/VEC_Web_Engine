@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. JEEVAA KATIRAVAN",
                 "unique_id": "VEC-011-H-001",
@@ -45,7 +46,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. SATHYA PRIYA J",
                 "unique_id": "VEC-011-F-01",
@@ -3080,7 +3082,8 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": [
+        "type":"NON_TEACHING_FACULTY",
+"data": [
             {
                 "name": "MRS. VIJAYA LAKSHMI R",
                 "unique_id": "VEC-011-NF-01",
@@ -3207,7 +3210,8 @@
         ]
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/011.pdf"
         }
     }

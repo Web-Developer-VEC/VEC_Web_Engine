@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. SHAHIL KIRUPAVATHY S",
                 "unique_id": "VEC-015-H-001",
@@ -45,7 +46,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. RAMESH KUMAR V",
                 "unique_id": "VEC-015-F-01",
@@ -793,7 +795,8 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": [
+        "type":"NON_TEACHING_FACULTY",
+"data": [
             {
                 "name": "MR. RAVI KUMAR C",
                 "unique_id": "VEC-015-NF-01",
@@ -838,7 +841,8 @@
         ]
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/015.pdf"
         }
     }

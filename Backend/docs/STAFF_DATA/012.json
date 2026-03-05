@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. RAJESWARAN S",
                 "unique_id": "VEC-012-H-001",
@@ -265,7 +266,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. GURUSAMY P",
                 "unique_id": "VEC-012-F-01",
@@ -2010,10 +2012,12 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": []
+        "type":"NON_TEACHING_FACULTY",
+"data": []
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/012.pdf"
         }
     }

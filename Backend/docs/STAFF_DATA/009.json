@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. MARY JOANS S",
                 "unique_id": "VEC-009-H-001",
@@ -668,7 +669,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. LEENA JASMINE J S",
                 "unique_id": "VEC-009-F-01",
@@ -5406,7 +5408,8 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": [
+        "type":"NON_TEACHING_FACULTY",
+"data": [
             {
                 "name": "MRS. DHANALAKSHMI G",
                 "unique_id": "VEC-009-NF-01",
@@ -5533,7 +5536,8 @@
         ]
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/009.pdf"
         }
     }

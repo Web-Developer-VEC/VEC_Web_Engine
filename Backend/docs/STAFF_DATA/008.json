@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. BRIJET Z",
                 "unique_id": "VEC-008-H-001",
@@ -331,7 +332,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. SIVARAJ S N",
                 "unique_id": "VEC-008-F-01",
@@ -1114,7 +1116,8 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": [
+        "type":"NON_TEACHING_FACULTY",
+"data": [
             {
                 "name": "MR. VENKATESAN A",
                 "unique_id": "VEC-008-NF-01",
@@ -1200,7 +1203,8 @@
         ]
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/008.pdf"
         }
     }
