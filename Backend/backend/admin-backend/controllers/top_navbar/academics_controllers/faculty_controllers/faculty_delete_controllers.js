@@ -1,30 +1,3 @@
-﻿function findMemberIndex(data = [], target = {}, key = "") {
-  const targetName = target.name || "";
-  const targetMail = target.mail_id || "";
-  const targetUniqueId = target.unique_id || "";
-
-  return data.findIndex((member) => {
-    const memberUniqueId = member.unique_id || "";
-    if (targetUniqueId && memberUniqueId) {
-      return memberUniqueId === targetUniqueId;
-    }
-
-    if (key === "HOD") {
-      return member.name === targetName;
-    }
-
-    if (targetMail) {
-      return member.name === targetName && member.mail_id === targetMail;
-    }
-
-    return member.name === targetName;
-  });
-}
-
-/**
- * Delete faculty data
- * Supports: HOD, FACULTY, NON_TEACHING_FACULTY
- */
 async function deleteData(tempDoc, mainCollection) {
   try {
     const { collection_type, action, meta_data } = tempDoc;
@@ -65,16 +38,37 @@ async function deleteData(tempDoc, mainCollection) {
       };
     }
 
-    const targetName = meta_data.name || "";
-    if (!targetName) {
-      throw new Error("meta_data with name is required to identify member to delete");
+    const targetName = String(meta_data.name || "").trim();
+    const targetMail = String(meta_data.mail_id || "").trim();
+    const targetUniqueId = String(meta_data.unique_id || "").trim();
+
+    if (!targetName && !targetUniqueId) {
+      throw new Error("meta_data with unique_id or name is required to identify member to delete");
     }
 
     const data = Array.isArray(doc.data) ? doc.data : [];
-    const memberIndex = findMemberIndex(data, meta_data, key);
+    const memberIndex = data.findIndex((member) => {
+      const memberUniqueId = String(member.unique_id || "").trim();
+      if (targetUniqueId && memberUniqueId) {
+        return memberUniqueId === targetUniqueId;
+      }
+
+      if (key === "HOD") {
+        return String(member.name || "").trim() === targetName;
+      }
+
+      if (targetMail) {
+        return (
+          String(member.name || "").trim() === targetName &&
+          String(member.mail_id || "").trim() === targetMail
+        );
+      }
+
+      return String(member.name || "").trim() === targetName;
+    });
 
     if (memberIndex === -1) {
-      throw new Error(`${key} member "${targetName}" not found`);
+      throw new Error(`${key} member "${targetName || targetUniqueId}" not found`);
     }
 
     const updatedData = data.filter((_, index) => index !== memberIndex);
@@ -86,7 +80,7 @@ async function deleteData(tempDoc, mainCollection) {
 
     return {
       success: true,
-      message: `${key} member "${targetName}" deleted successfully`,
+      message: `${key} member "${targetName || targetUniqueId}" deleted successfully`,
       type: key,
       modifiedCount: result.modifiedCount,
     };
