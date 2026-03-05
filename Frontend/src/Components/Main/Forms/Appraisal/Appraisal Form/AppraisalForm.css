@@ -1,0 +1,630 @@
+input,
+textarea {
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 14px;
+  width: 100%;
+}
+
+
+.container {
+  font-family: "Times New Roman", serif;
+  padding: 20px 0;
+  margin-top: 4rem;
+
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.top-info div {
+  margin-bottom: 8px;
+}
+
+.top-info label {
+  display: inline-block;
+  width: 320px;
+  font-weight: bold;
+}
+
+.top-info input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 300px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 6px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.left {
+  text-align: left;
+}
+
+
+/* SECTION WRAPPER */
+.section {
+  margin-top: 30px;
+  font-family: "Times New Roman", serif;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2rem;
+
+}
+
+/* Section Title */
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Header Row */
+.form-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  font-weight: bold;
+  padding: 8px 0;
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+}
+
+/* Each Form Row */
+.form-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Label Styling */
+.form-row label {
+  font-size: 14px;
+}
+
+/* Input Styling */
+.form-row input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+
+.form-input input{
+   border: 1px solid #999;
+  border-radius: 4px;
+}
+
+/* Focus effect */
+.form-row input:focus {
+  border-color: #000;
+  outline: none;
+}
+
+
+
+
+/* Multi column dynamic layout */
+.form-grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+
+.grid-9 {
+  grid-template-columns: 2fr repeat(7, 1fr) 0.2fr;
+}
+
+.grid-6 {
+  grid-template-columns: 2fr repeat(4, 1fr) 1fr;
+}
+
+.grid-5 {
+  --template-columns: 2fr repeat(3, 1fr) 1fr;
+}
+
+.form-label {
+  font-size: 14px;
+}
+
+.section-subheader {
+  display: grid;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+
+/* ================= PAGE 2 SAFE GRID ================= */
+
+.p2-header {
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  padding: 8px 0;
+  margin-bottom: 10px;
+}
+
+.p2-row {
+  margin-bottom: 15px;
+}
+
+.p2-row label {
+  font-size: 14px;
+}
+
+/* Label + 4 inputs */
+.p2-grid-5 {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  gap: 15px;
+  align-items: center;
+}
+
+/* Label + 10 inputs */
+.p2-grid-10 {
+  display: grid;
+  grid-template-columns: 2fr repeat(10, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+
+.section-group-header {
+  display: grid;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.group-title {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+
+.grid-11 {
+  grid-template-columns: 2.5fr repeat(9, 1fr) 1.5fr;
+}
+
+.section-group-header {
+  display: grid;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.group-title {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+
+
+.grid-8 {
+  grid-template-columns: 2.8fr repeat(7, 1fr);
+}
+.grid-8g {
+  grid-template-columns: 2fr repeat(5, 1fr) 1fr;
+}
+.grid-8c {
+  grid-template-columns: 2.2fr repeat(3, 2.1fr) 1fr 0.8fr;
+}
+
+.grid-9b {
+  grid-template-columns: 0.6fr 3fr repeat(6, 1fr) 1.5fr;
+}
+
+
+.grid-9-upload {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 2fr) 2fr 0.5fr; 
+  gap: 8px;
+  align-items: center;
+} 
+
+
+.section-group-header {
+  display: grid;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.group-title {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+
+.grid-4-upload {
+  grid-template-columns: 2fr 1fr 1fr 0.3fr;
+}
+
+.grid-6-upload {
+  grid-template-columns: 2.5fr repeat(4, 1fr) 0.5fr;
+}
+
+.grid-12-upload {
+  grid-template-columns: 2.5fr repeat(9, 1fr) 1.2fr 1fr;
+}
+
+
+
+.grid-6 {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr) 0.5fr;
+  align-items: center;
+  gap: 10px;
+}
+.grid-6a {
+  display: grid;
+  grid-template-columns:
+    0.5fr   /* S.No */
+    3fr     /* Particulars */
+    repeat(2, 1fr) /* Number + % (dynamic inputs) */
+    0.8fr;  /* Upload */
+  align-items: center;
+  gap: 10px;
+}
+
+.grid-6v {
+  display: grid;
+  grid-template-columns:
+    0.5fr   /* S.No */
+    3fr     /* Particular */
+    1fr     /* Odd */
+    1fr     /* Even */
+    0.7fr;  /* Upload */
+  align-items: center;
+  gap: 10px;
+} 
+
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 0.33fr;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.grid-11 {
+  display: grid;
+  grid-template-columns:
+    0.5fr      /* S.No */
+    2.5fr      /* Particulars */
+    repeat(8, 1fr) /* 4 years × (Number + %) */
+    1fr;       /* Commitment */
+  align-items: center;
+  gap: 8px;
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns:
+    0.6fr            /* S.No */
+    3fr              /* Particulars */
+    repeat(8, 1fr)   /* 4 years (Number + %) */
+    1fr              /* Commitment */
+    1fr;             /* Upload */
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.header-main div,
+.header-sub div {
+  font-weight: bold;
+  text-align: center;
+}
+
+.grid-12 input {
+  width: 100%;
+  padding: 4px;
+  text-align: center;
+  border: 1px solid #000;   /* Black border */
+  border-radius: 4px;     
+}
+
+
+.grid-4 input {
+  width: 100%;
+  padding: 6px;
+  text-align: center;
+  border: 1px solid #000;      /* Black border */
+  border-radius: 3px;
+  outline: none;
+}
+
+.grid-4 input:focus {
+  border: 2px solid #1976d2;   /* Blue focus effect */
+  background-color: #f5faff;
+}
+
+
+.grid-5 {
+  display: grid;
+  grid-template-columns:
+    3fr   /* Particulars */
+    1fr   /* AY 2024-25 */
+    1fr   /* Commitment */
+    0.33fr;  /* Upload */
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.grid-5 input {
+  width: 100%;
+  padding: 6px;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 3px;
+  outline: none;
+}
+
+.grid-5 input:focus {
+  /* border: 2px solid #1976d2; */
+  /* background-color: #f5faff; */
+}
+
+.section-subheader div {
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-input {
+  padding: 6px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+select {
+  padding: 6px 10px;
+  border: 1px solid #000;     /* Black border */
+  border-radius: 4px;
+  outline: none;
+  background-color: #fff;
+
+  cursor: pointer;
+}
+
+select:focus {
+  border: 2px solid #1976d2;  /* Blue border on click */
+  background-color: #f5faff;
+}
+
+select {
+  padding: 6px 10px;
+  border: 1px solid black;
+  border-radius: 0;
+}
+
+#department {
+  width: 300px;          /* Increase width */
+  /* padding: 8px 8px; */
+  border: 1px solid #000;
+  /* border-radius: 4px; */
+  background-color: #fff;
+  outline: none;
+
+  white-space: nowrap;   /* Prevent text wrapping */
+  overflow: hidden;      /* Hide overflow line */
+  text-overflow: ellipsis; 
+}
+
+
+#year{
+  width: 300px;
+}
+
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr; /* same as header */
+  align-items: center;
+  gap: 20px;
+}
+
+.form-row {
+  padding: 14px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.label-cell {
+  padding-right: 20px;
+}
+
+.input-cell input {
+  width: 180px;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  background-color: #eee;
+}
+
+
+
+/* ⭐ END SEM CLEAN GRID */
+.grid-z {
+  display: grid;
+  grid-template-columns:
+    2fr        /* Label */
+    repeat(8, 1.2fr) /* 8 year boxes */
+    1.3fr        /* undertaking */
+    1.2fr;       /* upload */
+  gap: 12px;
+  align-items: center;
+}
+
+
+/* ===== SDP HEADER ===== */
+
+.grid-sdp-header {
+  display: grid;
+  grid-template-columns:
+     8fr
+    repeat(2,1fr)0.5fr;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* sub header */
+.grid-sdp-sub {
+  display: grid;
+  grid-template-columns:
+  2.5fr 
+    repeat(5, 0.6fr)
+    1fr 1fr;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* rows */
+.grid-sdp-row {
+  display: grid;
+  grid-template-columns:
+    400px
+    repeat(6, 95px)
+    100px;
+  gap: 12px;
+}
+
+
+/* ===== INNOVATION TABLE (NAAC STYLE) ===== */
+
+.grid-innov-header {
+  display: grid;
+  grid-template-columns:
+    3fr   /* Particulars */
+    1fr   /* AY */
+    1.4fr /* Commitment */
+    0.6fr; /* Upload */
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+.grid-innov-row {
+  display: grid;
+  grid-template-columns:
+    3fr
+    1fr
+    1.4fr
+    0.6fr;
+  gap: 8px;
+  align-items: center;
+}
+
+/* upload alignment */
+.upload-cell {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.section input,
+.section textarea {
+  border: 1px solid #000;   /* solid black */
+  border-radius: 0;         /* sharp edges like table */
+  background-color: #fff;
+  padding: 6px 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-input input {
+  border: 1px solid #000 !important;
+  background: #fff;
+}
+
+/* ===== NAAC GRID ===== */
+.naac-grid {
+  display: grid;
+  grid-template-columns:
+    60px
+    1.5fr
+    120px
+    120px
+    140px
+    140px;
+  align-items: center;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.center {
+  text-align: center;
+  font-weight: 600;
+}
+
+.data-row input {
+  border: 1px solid #222;
+  padding: 4px;
+  height: 32px;
+}
+
+
+.data-row {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+/* remove border from last row */
+.data-row:last-child {
+  border-bottom: none;
+}
+
+.readonly-cell {
+  height: 32px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+}
+
+.upload-cell {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+
+.upload-btn {
+  background-color: #fdcc03;
+  color: black;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.upload-btn:hover {
+  background-color: #800000;
+  color: white;
+}
+
+
