@@ -115,7 +115,7 @@ async function insertFile(tempDoc, tempCollection) {
     { $set: { meta_data: meta, updatedAt: new Date() } }
   );
 
-  return { tempId: tempDoc._id, meta_data: meta };
+  return {  success: true,tempId: tempDoc._id, meta_data: meta };
 }
 catch(error){
    return {
@@ -252,7 +252,7 @@ async function updateFile(tempDoc, tempCollection) {
     }
   );
 
-  return { tempId: tempDoc._id, meta_data: meta, original_data: original };
+  return {  success: true,tempId: tempDoc._id, meta_data: meta, original_data: original };
 }
 catch(error){
    return {
@@ -315,7 +315,7 @@ try{
     }
   );
 
-  return { tempId: tempDoc._id, original_data: original };
+  return {  success: true,tempId: tempDoc._id, original_data: original };
 }
 catch(error){
    return {
@@ -398,7 +398,7 @@ async function deleteFile(tempDoc, tempCollection) {
     }
   );
 
-  return { tempId: tempDoc._id, meta_data: meta };
+  return {  success: true,tempId: tempDoc._id, meta_data: meta };
 }
 catch(error){
    return {
