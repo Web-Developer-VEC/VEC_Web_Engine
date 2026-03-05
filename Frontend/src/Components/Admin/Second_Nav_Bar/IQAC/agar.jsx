@@ -16,6 +16,7 @@ export default function IqaQar({ iqacData }) {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [changesLog, setChangesLog] = useState([]); // 🔹 track all changes
   const { sendRequest, loading, error } = useAdminRequest();
+  const [pendingData, setPendingData] = useState(null);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -126,27 +127,38 @@ export default function IqaQar({ iqacData }) {
   };
 
   const handleSave = () => {
+    setPendingData(deepClone(editableData)); // save draft
     setEditMode(false);
-    // Don't update originalData here - keep it for comparison in buildPayload
-    toast.success("Changes saved. Submit request for approval.");
+    setHasChanges(false);
+    toast.success("Changes saved as draft!");
   };
 
   const handleCancel = () => {
-    setEditableData(deepClone(originalData));
-    setUploadedFiles({});
-    setHasChanges(false);
-    setEditMode(false);
-    setSelectedRows([]);
-    setChangesLog([]);
+    if (pendingData) {
+  setEditableData(deepClone(pendingData));
+
+  // 🔥 Recalculate changesLog properly
+  const recalculated = buildPayload(originalData, pendingData, {}).payload;
+
+  setChangesLog(
+    recalculated.map((item, index) => ({
+      id: Date.now() + index,
+      action: item.action,
+      section: "IQAC",
+      title: item.meta_data?.year || "AQAR",
+    }))
+  );
+}
   };
 
-  const handleDiscard = () => {
-    setEditableData(deepClone(originalData));
-    setUploadedFiles({});
-    setHasChanges(false);
-    setChangesLog([]);
-    toast.info("Changes discarded.");
-  };
+ const handleDiscard = () => {
+  setEditableData(deepClone(originalData));  // revert to server state
+  setUploadedFiles({});
+  setHasChanges(false);
+  setChangesLog([]);
+  setPendingData(null);  
+  toast.info("Changes discarded.");
+};
 
   const buildPayload = (originalData, editableData, uploadedFiles) => {
     const payload = [];
@@ -221,19 +233,54 @@ export default function IqaQar({ iqacData }) {
     if (response) {
       setShowRequestModal(false);
       setHasChanges(false);
-      setOriginalData(deepClone(editableData));
+      setOriginalData(deepClone(pendingData || editableData));
+      setEditableData(deepClone(pendingData || editableData));
+      setPendingData(null);
       setChangesLog([]);
       setUploadedFiles({});
     }
   };
 
-  const handleUndoChange = (id) => {
-    setChangesLog((prev) => prev.filter((c) => c.id !== id));
-    toast.info("Change removed from request list.");
-  };
+const handleUndoChange = (id) => {
+  const change = changesLog.find((c) => c.id === id);
+  if (!change) return;
 
-  console.log(changesLog);
-  
+  let newData = [...editableData];
+
+  if (change.action === "Edit") {
+    // revert this row to original version
+    const originalRow = originalData.find(
+      (row) => row._id === change.row._id
+    );
+
+    newData = newData.map((row) =>
+      row._id === change.row._id ? { ...originalRow } : row
+    );
+  }
+
+  if (change.action === "Insert") {
+    // remove inserted row
+    newData = newData.filter(
+      (row) => row._id !== change.row._id
+    );
+  }
+
+  if (change.action === "Delete") {
+    // add back deleted row
+    newData.push(change.row);
+  }
+
+  setEditableData(newData);
+  setPendingData(newData);
+
+  // remove only this change from log
+  setChangesLog((prev) => prev.filter((c) => c.id !== id));
+
+  toast.info("Change reverted.");
+};
+
+
+
 
   return (
     <>
@@ -390,21 +437,21 @@ export default function IqaQar({ iqacData }) {
             </div>
           )}
 
-          {!editMode && hasChanges && (
-            <div className="flex justify-end gap-4 mb-6">
-              <button
-                onClick={handleDiscard}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
-              >
-                Discard Changes
-              </button>
-              <button
-                onClick={() => setShowRequestModal(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-[10px]"
-              >
-                <Send size={16} /> Request
-              </button>
-            </div>
+          {!editMode && pendingData && (
+          <div className="flex justify-end gap-4 mb-6">
+            <button
+              onClick={handleDiscard}
+              className="px-4 py-2 bg-gray-400 text-white rounded"
+            >
+              Discard Changes
+            </button>
+            <button
+              onClick={() => setShowRequestModal(true)}
+              className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-[10px]"
+            >
+              <Send size={16} /> Request
+            </button>
+          </div>
           )}
 
           <ToastContainer position="bottom-right" autoClose={3000} />

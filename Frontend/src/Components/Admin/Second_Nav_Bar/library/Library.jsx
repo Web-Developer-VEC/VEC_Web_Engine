@@ -4,24 +4,24 @@ import LibrarySections from "./Libraryinfra";
 import Banner from "../../Banner";
 import axios from "axios";
 import SideNav from "../SideNav";
-import LIBMemb from "./LIBMemb"; // Adjust path if needed
-import LIBFacl from "./LIBFacl";
 import LIBHod from "./LIBHod";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
+import LIBMembership from "./LIBMembership";
+import LIBFaculty from "./LIBFaculty";
 
-const AdminLibraryLayout = ({ toggle, theme }) => {
+const AdminLibrary = ({ toggle, theme }) => {
   const [libraryData, setLibraryData] = useState(null);
   const [lib, setLib] = useState("About");
   const navigate = useNavigate();
   const navData = {
     About: <LibraryIntro about={libraryData} />,
     "HOD's message": <LIBHod lib={lib} data={libraryData} />,
-    Staff: <LIBFacl lib={lib} faculty={libraryData} />,
+    Staff: <LIBFaculty lib={lib} faculty={libraryData} />,
     "Advisory committee members": (
       <LibrarySections data={libraryData} lib={lib} />
     ),
-    "Membership Details": <LIBMemb lib={lib} data={libraryData} />,
+    "Membership Details": <LIBMembership lib={lib} data={libraryData} />,
     Collection: {
       Books: <LibrarySections data={libraryData} lib={lib} />,
       Journals: <LibrarySections data={libraryData} lib={lib} />,
@@ -120,4 +120,4 @@ const AdminLibraryLayout = ({ toggle, theme }) => {
   );
 };
 
-export default AdminLibraryLayout;
+export default AdminLibrary;
