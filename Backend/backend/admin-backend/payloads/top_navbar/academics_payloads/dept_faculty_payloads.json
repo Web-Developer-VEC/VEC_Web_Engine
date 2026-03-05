@@ -2999,5 +2999,14 @@
     "title": "Delete Non-Teaching Section",
     "action": "delete",
     "meta_data": []
+  }, 
+  {
+    "collectionName": "AIDS_001_staff",
+    "collection_type": "FACULTY_PDF_PATH",
+    "title": "Faculty List PDF Update",
+    "action": "update",
+    "meta_data": {
+      "pdf_path": "/static/pdfs/faculty_list/faculty_list_001.pdf"
+    }
   }
 ]

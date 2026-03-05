@@ -9,8 +9,8 @@ const {
  * Move file inside S3 (copy + delete).
  */
 async function moveFile(srcKey, destKey) {
-  console.log("📦 Moving:", { srcKey, destKey });
-
+console.log("📦 Moving:", { srcKey, destKey });
+try{
   await s3.send(
     new CopyObjectCommand({
       Bucket: bucketName,
@@ -28,6 +28,12 @@ async function moveFile(srcKey, destKey) {
 
   return `/${destKey}`; 
 }
+
+catch (err) {
+    throw new Error(`S3 move failed for ${srcKey}`);
+  }
+}
+
 
 
 function normalizeKey(key) {
@@ -62,6 +68,7 @@ function normalizeKey(key) {
  * Insert: promote temp → static
  */
 async function insertFile(tempDoc, tempCollection) {
+  try{
   const meta = { ...(tempDoc.meta_data || {}) };
 
   for (const [key, value] of Object.entries(meta)) {
@@ -110,11 +117,20 @@ async function insertFile(tempDoc, tempCollection) {
 
   return { tempId: tempDoc._id, meta_data: meta };
 }
+catch(error){
+   return {
+    success: false,
+    message: error.message,
+  };
+}
+}
 
 /**
  * Update: move old → history, new temp → static
  */
 async function updateFile(tempDoc, tempCollection) {
+  try{
+  
   const meta = { ...(tempDoc.meta_data || {}) };
   const original = { ...(tempDoc.original_data || {}) };
 
@@ -139,8 +155,10 @@ async function updateFile(tempDoc, tempCollection) {
           const srcKey = await normalizeKey(p.replace(/^\//, ""));
           if (srcKey.startsWith("static/")) {
             const destKey = srcKey.replace(/^static\//, "history/static/");
-            await moveFile(srcKey, destKey);
-            console.log("Hari String",destKey)
+            const hari = await moveFile(srcKey, destKey);
+            console.log(hari)
+
+          
             return  `/${destKey}`;
           }
           return p;
@@ -152,7 +170,6 @@ async function updateFile(tempDoc, tempCollection) {
           if (pathStr.startsWith("static/")) {
             const destKey = pathStr.replace(/^static\//, "history/static/");
             await moveFile(pathStr, destKey);
-            console.log("Hari Object",destKey)
             return { ...p, pdf_path:  `/${destKey}` };
           }
           return p;
@@ -237,9 +254,17 @@ async function updateFile(tempDoc, tempCollection) {
 
   return { tempId: tempDoc._id, meta_data: meta, original_data: original };
 }
+catch(error){
+   return {
+    success: false,
+    message: error.message,
+  };
+}
+}
 
 
 async function updateOriginalData(tempDoc, tempCollection) {
+try{
   const original = { ...(tempDoc.original_data || {}) };
 
   // Move original_data files → history
@@ -292,11 +317,19 @@ async function updateOriginalData(tempDoc, tempCollection) {
 
   return { tempId: tempDoc._id, original_data: original };
 }
+catch(error){
+   return {
+    success: false,
+    message: error.message,
+  };
+}
+}
 
 
 
 
 async function deleteFile(tempDoc, tempCollection) {
+  try{
  
   const meta = { ...(tempDoc.meta_data || {}) };
   const original = { ...(tempDoc.original_data || {}) };
@@ -366,6 +399,13 @@ async function deleteFile(tempDoc, tempCollection) {
   );
 
   return { tempId: tempDoc._id, meta_data: meta };
+}
+catch(error){
+   return {
+    success: false,
+    message: error.message,
+  };
+}
 }
 
 
