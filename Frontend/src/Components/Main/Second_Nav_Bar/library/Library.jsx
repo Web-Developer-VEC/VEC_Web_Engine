@@ -10,7 +10,7 @@ import LIBHod from "./LIBHod";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 
-const LibraryLayout = ({toggle, theme}) => {
+const Library = ({toggle, theme}) => {
   const [libraryData, setLibraryData] = useState(null);
     const [lib, setLib] = useState("About")
     const navigate = useNavigate();
@@ -116,4 +116,4 @@ const LibraryLayout = ({toggle, theme}) => {
   );
 };
 
-export default LibraryLayout;
+export default Library;

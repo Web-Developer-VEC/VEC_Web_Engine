@@ -14,7 +14,7 @@ const UrlParser = (path) => {
     : `${BASE_URL}${path}`;
 };
 
-const LIBFacl = ({ faculty }) => {
+const LIBFaculty = ({ faculty }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [facultyList, setFacultyList] = useState([]);
   const [tempList, setTempList] = useState([]);
@@ -84,7 +84,6 @@ const LIBFacl = ({ faculty }) => {
         return;
       }
     }
-    toast.success("Changes saved");
     setFacultyList([...tempList]);
     setIsEditing(false);
     setShowRequestBtn(true);
@@ -198,7 +197,6 @@ const LIBFacl = ({ faculty }) => {
     // 3️⃣ SEND TO BACKEND
     await sendRequest(payload, files);
 
-    toast.success("Request submitted successfully!");
     setShowRequestModal(false);
     setShowRequestBtn(false);
   };
@@ -585,4 +583,4 @@ const LIBFacl = ({ faculty }) => {
   );
 };
 
-export default LIBFacl;
+export default LIBFaculty;
