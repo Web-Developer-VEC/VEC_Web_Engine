@@ -22,8 +22,10 @@ function handleTempAction(insertData, updateData, deleteData) {
         switch (tempDoc.action) {
           case "insert":
             fileResult = await insertFile(tempDoc, tempCollection);
+            console.log("fileResult insert",fileResult.success)
 
             if (fileResult?.success === false) {
+              console.log("false case break")
               result = fileResult;
               break;
             }
@@ -34,8 +36,10 @@ function handleTempAction(insertData, updateData, deleteData) {
 
           case "update":
             fileResult = await updateFile(tempDoc, tempCollection);
+            console.log("fileResult update",fileResult.success)
 
             if (fileResult?.success === false) {
+              console.log("false case break")
               result = fileResult;
               break;
             }
@@ -49,9 +53,11 @@ function handleTempAction(insertData, updateData, deleteData) {
             const deletetemp = structuredClone(tempDoc);
 
             fileResult = await deleteFile(tempDoc, tempCollection);
+            console.log("fileResult delete",fileResult.success)
 
             if (fileResult?.success === false) {
               result = fileResult;
+              console.log("false case break")
               break;
             }
 
