@@ -16,6 +16,8 @@ export default function IqaPra({ iqacData }) {
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [changesLog, setChangesLog] = useState([]);
   const { sendRequest, loading, error } = useAdminRequest();
+  const [pendingData, setPendingData] = useState(null);
+
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -161,28 +163,81 @@ export default function IqaPra({ iqacData }) {
 
   // Save changes
   const handleSave = () => {
+    setPendingData(deepClone(editableData)); // save draft
     setIsEditMode(false);
-    // Don't update originalData here - keep it for comparison in buildPayload
-    toast.success("Changes saved. You can now request approval or discard.");
+    setHasChanges(false);
+    toast.success("Changes saved as draft!");
   };
 
   // Cancel edit mode
   const handleCancel = () => {
-    setEditableData(deepClone(originalData));
-    setSelectedRows([]);
-    setHasChanges(false);
-    setIsEditMode(false);
+    if (pendingData) {
+      setEditableData(deepClone(pendingData));
+
+      // 🔥 Recalculate changesLog properly
+      const recalculated = buildPayload(originalData, pendingData, {}).payload;
+
+      setChangesLog(
+        recalculated.map((item, index) => ({
+          id: Date.now() + index,
+          action: item.action,
+          section: "IQAC",
+          title: item.meta_data?.year || "AQAR",
+        }))
+      );
+    }
   };
 
   // Discard changes
   const handleDiscardChanges = () => {
-    setEditableData(deepClone(originalData));
+    setEditableData(deepClone(originalData));  // revert to server state
     setUploadedFiles({});
-    setSelectedRows([]);
     setHasChanges(false);
     setChangesLog([]);
-    toast.info("All changes discarded.");
+    setPendingData(null);
+    toast.info("Changes discarded.");
   };
+
+  const handleUndoChange = (id) => {
+    const change = changesLog.find((c) => c.id === id);
+    if (!change) return;
+
+    let newData = [...editableData];
+
+    if (change.action === "Edit") {
+      // revert to original row
+      const originalRow = originalData.find(
+        (row) => row._id === change.row._id
+      );
+
+      if (originalRow) {
+        newData = newData.map((row) =>
+          row._id === change.row._id ? { ...originalRow } : row
+        );
+      }
+    }
+
+    if (change.action === "Insert") {
+      // remove inserted row
+      newData = newData.filter(
+        (row) => row._id !== change.row._id
+      );
+    }
+
+    if (change.action === "Delete") {
+      // restore deleted row at original position
+      newData.splice(change.rowIndex, 0, change.row);
+    }
+
+    setEditableData(newData);
+    setPendingData(newData);
+
+    // remove only this change
+    setChangesLog((prev) => prev.filter((c) => c.id !== id));
+
+    toast.info("Change reverted.");
+  };
+
 
   const buildPayload = (originalData, editableData, uploadedFiles) => {
     const payload = [];
@@ -257,7 +312,9 @@ export default function IqaPra({ iqacData }) {
     if (response) {
       setShowRequestModal(false);
       setHasChanges(false);
-      setOriginalData(deepClone(editableData));
+      setOriginalData(deepClone(pendingData || editableData));
+      setEditableData(deepClone(pendingData || editableData));
+      setPendingData(null);
       setChangesLog([]);
       setUploadedFiles({});
     }
@@ -462,7 +519,7 @@ export default function IqaPra({ iqacData }) {
             </div>
           )}
 
-          {!isEditMode && hasChanges && (
+          {!isEditMode && pendingData && (
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleDiscardChanges}
@@ -512,9 +569,7 @@ export default function IqaPra({ iqacData }) {
                         <td className="px-2 py-1">{log.title}</td>
                         <td className="text-center px-2 py-1">
                           <button
-                            onClick={() =>
-                              setChangesLog((prev) => prev.filter((c) => c.id !== log.id))
-                            }
+                            onClick={() => handleUndoChange(log.id)}
                             className="text-red-500 hover:text-red-700"
                           >
                             <X />
