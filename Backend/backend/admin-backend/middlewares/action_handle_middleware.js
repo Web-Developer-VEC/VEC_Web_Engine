@@ -90,7 +90,6 @@ function handleTempAction(insertData, updateData, deleteData) {
       return res.json({
         trueResults,
         falseResults,
-
       });
 
     } catch (error) {
