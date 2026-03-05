@@ -586,7 +586,7 @@ export default function IqaPra({ iqacData }) {
                   )}
                 </tbody>
               </table>
-            </div>
+            </div> 
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}

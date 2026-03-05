@@ -279,8 +279,8 @@ const handleUndoChange = (id) => {
   toast.info("Change reverted.");
 };
 
-  console.log(changesLog);
-  
+
+
 
   return (
     <>
