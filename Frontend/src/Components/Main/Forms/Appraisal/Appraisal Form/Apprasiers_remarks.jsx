@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AppraisalForm.css";
 
-const Page5 = ({ selectedYear, newAcadamicYear, data, setData }) => {
+const Apprasiers_remarks = ({ selectedYear, newAcadamicYear, data, setData }) => {
 
 
   /* ================= STATE ================= */
@@ -192,4 +192,4 @@ const handleAppraiserChange = (index, field, value) => {
   );
 };
 
-export default Page5;
+export default Apprasiers_remarks;

@@ -216,11 +216,12 @@ export default function AdminJournal({ theme, toggle }) {
   };
 
   const handleCancelSession = () => {
-    setJournal(JSON.parse(JSON.stringify(savedDataRef.current)));
-    setSessionChanges([]);
-    setIsEditing(false);
-    toast.info("Session changes discarded.");
-  };
+  setJournal(JSON.parse(JSON.stringify(savedDataRef.current)));
+  setSessionChanges([]);
+  setSelectedToDelete(new Set());   // <-- add this
+  setIsEditing(false);
+  toast.info("Session changes discarded.");
+};
 
   const handleDiscardAll = () => {
     setJournal(JSON.parse(JSON.stringify(originalRef.current)));
@@ -250,57 +251,72 @@ const handleFinalRequestConfirm = async () => {
   const filesToUpload = [];
 
   for (const change of allChanges) {
+
+    // ---------------- INSERT ----------------
     if (change.action === "add") {
       const entry = change.changes;
+      const year = entry.year.new;
+      const pdfName = entry.pdf_path.new;
 
       payload.push({
-        action: "insert",
         collectionName: "research",
-        title: "Journal Publication",
         collection_type: "Journal Publication",
+        category: "overall_research",
+        action: "insert",
+        title: `Insert Journal Publication ${year}`,
         meta_data: {
-          year: entry.year.new,
-          pdf_path: `/static/pdfs/overall_research/${entry.year.new}/${entry.pdf_path.new}`
-        }
+          year: year,
+          pdf_path: pdfName
+            ? `/static/pdfs/overall_research/${year}/${pdfName}`
+            : ""
+        },
+        original_data: {}
       });
-
-      if (newPdf instanceof File) {
-        filesToUpload.push(newPdf);
-      }
     }
 
+    // ---------------- UPDATE ----------------
     if (change.action === "edit") {
       const entry = change.changes;
 
+      const oldYear = entry.year.old;
+      const newYear = entry.year.new;
+      const oldPdf = entry.pdf_path.old;
+      const newPdfName = entry.pdf_path.new;
+
       payload.push({
-        action: "update",
         collectionName: "research",
-        title: "Journal Publication",
         collection_type: "Journal Publication",
-        original_data: {
-          year: entry.year.old,
-          pdf_path: entry.pdf_path.old
-        },
+        category: "overall_research",
+        action: "update",
+        title: `Update Journal Publication ${oldYear}`,
         meta_data: {
-          year: entry.year.new,
-          pdf_path: `/static/pdfs/overall_research/${entry.year.new}/${entry.pdf_path.new}`
+          year: newYear,
+          pdf_path: newPdfName
+            ? `/static/pdfs/overall_research/${newYear}/${newPdfName}`
+            : ""
+        },
+        original_data: {
+          year: oldYear,
+          pdf_path: oldPdf || ""
         }
       });
-
-      if (newPdf instanceof File) {
-        filesToUpload.push(newPdf);
-      }
     }
 
+    // ---------------- DELETE ----------------
     if (change.action === "delete") {
+      const deletedItem = change.changes.deleted;
+
       payload.push({
-        action: "delete",
         collectionName: "research",
-        title: "Journal Publication",
         collection_type: "Journal Publication",
+        category: "overall_research",
+        action: "delete",
+        title: `Delete Journal Publication ${deletedItem?.year}`,
         meta_data: {
-          year: change.key
-        }
+          year: deletedItem?.year || "",
+          pdf_path: deletedItem?.pdf_path || ""
+        },
+        original_data: {}
       });
     }
   }

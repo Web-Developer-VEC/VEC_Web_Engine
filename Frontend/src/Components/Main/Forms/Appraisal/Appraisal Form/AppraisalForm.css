@@ -128,9 +128,6 @@ td {
   align-items: center;
 }
 
-.grid-4 {
-  grid-template-columns: 2fr repeat(3, 1fr) 1fr;
-}
 
 .grid-9 {
   grid-template-columns: 2fr repeat(7, 1fr) 0.2fr;
@@ -264,23 +261,11 @@ td {
   grid-template-columns: 2.5fr repeat(4, 1fr) 0.5fr;
 }
 
-.grid-6-upload {
-  grid-template-columns: 2.5fr repeat(4, 1fr) 0.5fr;
-}
-
 .grid-12-upload {
   grid-template-columns: 2.5fr repeat(9, 1fr) 1.2fr 1fr;
 }
 
-.grid-6-upload {
-  grid-template-columns: 
-    3fr   /* Label */
-    1fr   /* Odd */
-    1fr   /* Even */
-    1fr   /* Consolidated */
-    1fr   /* Commitment */
-    0.5fr;  /* Upload */
-}
+
 
 .grid-6 {
   display: grid;
@@ -499,8 +484,8 @@ select {
 .grid-sdp-header {
   display: grid;
   grid-template-columns:
-     7fr
-    repeat(2, 1fr) 0.5fr;
+     8fr
+    repeat(2,1fr)0.5fr;
   align-items: center;
   text-align: center;
   font-weight: bold;
@@ -522,9 +507,9 @@ select {
   display: grid;
   grid-template-columns:
     400px
-    repeat(15, 95px)
-    260px;
-  gap: 4px;
+    repeat(6, 95px)
+    100px;
+  gap: 12px;
 }
 
 
@@ -604,6 +589,17 @@ select {
   height: 32px;
 }
 
+
+.data-row {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+/* remove border from last row */
+.data-row:last-child {
+  border-bottom: none;
+}
+
 .readonly-cell {
   height: 32px;
   border: 1px solid #ccc;
@@ -615,3 +611,20 @@ select {
   gap: 4px;
   align-items: center;
 }
+
+
+.upload-btn {
+  background-color: #fdcc03;
+  color: black;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.upload-btn:hover {
+  background-color: #800000;
+  color: white;
+}
+
+
