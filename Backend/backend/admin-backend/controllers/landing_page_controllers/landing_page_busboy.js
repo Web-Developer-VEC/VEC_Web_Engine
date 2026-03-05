@@ -58,6 +58,20 @@ async function landingpageHandler(fileStream, docs, req, cb, filename, mimetype)
         type = "images";
         last =`events/${ meta_data?.title}`;
     }
+    else if (collection_type === "popup"){
+      if(extname === ".pdf"){
+         mimeType = effectivepdfMime;
+            ext = path.extname(realpdfname) || ".pdf";
+            type = "pdfs";
+            last =`popup/${ meta_data?.name}`;
+
+      }else{
+        mimeType = effectiveimageMime;
+        ext = path.extname(realimagename) || ".jpg";
+        type = "images";
+        last =`popup/${ meta_data?.name}`;
+      }
+    }
     else if (collection_type === "announcements") {
       mimeType = effectivepdfMime;
             ext = path.extname(realpdfname) || ".pdf";

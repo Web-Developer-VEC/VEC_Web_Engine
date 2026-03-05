@@ -64,8 +64,8 @@ const HostelPage = lazy(() => import("./Components/Main/Second_Nav_Bar/Hostel/Ho
 const AdminHostelPage = lazy(() => import("./Components/Admin/Second_Nav_Bar/Hostel/Hostel.jsx"));
 const GrievanceForm = lazy(() => import("./Components/Main/Second_Nav_Bar/Helpdesk/Grievences.jsx"));
 const AdminGrievanceForm = lazy(() => import("./Components/Admin/Second_Nav_Bar/Helpdesk/admin_Grievences.jsx"));
-const LibraryLayout = lazy(() => import("./Components/Main/Second_Nav_Bar/library/LibraryLayout.jsx"));
-const AdminLibraryLayout = lazy(() => import("./Components/Admin/Second_Nav_Bar/library/LibraryLayout.jsx"));
+const Library = lazy(() => import("./Components/Main/Second_Nav_Bar/library/Library.jsx"));
+const AdminLibrary = lazy(() => import("./Components/Admin/Second_Nav_Bar/library/Library.jsx"));
 const AdminPrinc = lazy(() => import("./Components/Admin/Top_Nav_Bar/Administration/Princ.jsx"));
 const AdminDean = lazy(() => import("./Components/Admin/Top_Nav_Bar/Administration/dean.jsx"));
 const AdminCardPage = lazy(() => import("./Components/Admin/Top_Nav_Bar/Administration/admin.jsx"));
@@ -166,7 +166,7 @@ export const routeConfig = {
   //                     Second Nav Bar
   // --------------------------------------------------
 
-  "/library": { normal: LibraryLayout, admin: AdminLibraryLayout },
+  "/library": { normal: Library, admin: AdminLibrary },
   "/iqac": { normal: IQAC, admin: AdminIQAC },
   '/incubation': { normal: Incub, admin: AdminIncub },
   "/ecell": { normal: Ecell, admin: AdminEcell },
