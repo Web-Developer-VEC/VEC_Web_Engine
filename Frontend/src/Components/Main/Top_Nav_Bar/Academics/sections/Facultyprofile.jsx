@@ -129,8 +129,6 @@ const ProfileSection = ({data}) => {
   ];
   
   const socials = social.filter(item => item.url !== null);
-
-  const highestDegree = data?.educational_qualification?.[0]?.degree || "";
   
   return (
     <div className="faculty-profile-container">
@@ -161,7 +159,7 @@ const ProfileSection = ({data}) => {
             <div className="faculty-profile-info">
               <div className='faculty-profile-information'>
                 <h1 className="faculty-profile-name">{data?.name}</h1>
-                <h3 className="faculty-profile-qualification">{highestDegree}</h3>
+                {/* <h3 className="faculty-profile-qualification">{data?.qualification}</h3> */}
                 <p className="faculty-profile-designation">{data?.designation}</p>
                 <p className="faculty-profile-designation">Department Of {data?.department_name}</p>
               </div>
@@ -739,7 +737,7 @@ const Tiles = ({ data }) => {
 
 
 const Facultyprofile = ({theme, toggle}) => {
-  const { uid } = useParams();
+  const { uid, deptId } = useParams();
   const [facultyData, setProfileData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -748,11 +746,11 @@ const Facultyprofile = ({theme, toggle}) => {
     const fetchData = async () => {
       try {
         setError(null);
-        const response = await axios.get(`/api/staffprofile/${uid}`);
+        const response = await axios.get(`/api/main-backend/${deptId}/staff/${uid}`);
         setProfileData(response.data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error.message);
+        console.error("Error fetching data:", error);
         setError("Failed to fetch data.");
         setLoading(true)
       }

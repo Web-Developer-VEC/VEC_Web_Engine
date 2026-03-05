@@ -177,7 +177,7 @@ const DepartmentPage = ({ theme, toggle }) => {
       case "Vision&Mission":
         return <VisionMission data={sectionData} />;
       case "Faculties":
-        return <Faculties data={sectionData} />;
+        return <Faculties data={sectionData} deptID={deptID} />;
       case "Activities":
         return <Activities data={sectionData} />;
       case "Pedagogy":

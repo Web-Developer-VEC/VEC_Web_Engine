@@ -7,7 +7,7 @@ import { FaGoogleScholar } from "react-icons/fa6";
 
 
 
-function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid, profile, isViewmore}) {
+function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publon, Scopus, Linkedin, firstTile ,uid, profile, isViewmore, deptID }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   
   const UrlParser = (path) => {
@@ -65,7 +65,7 @@ function ImageCard ({ name, photo, Designation, Scholar, Research, Orchid, Publo
         
         {isViewmore && (
           <button
-            onClick={() => navigate(`/facultyprofile/${uid}`)}
+            onClick={() => navigate(`/facultyprofile/${deptID}/${uid}`)}
             // onClick={() => {
             //   if (profile && profile.trim() !== "") {
             //     const url = UrlParser(profile);

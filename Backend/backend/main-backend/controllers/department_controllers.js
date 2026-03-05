@@ -1,6 +1,6 @@
 const { getDb } = require("../config/db");
 const logError = require("../middlewares/logerror");
-const {DEPARTMENT_CODE_MAP} = require("../models/top_navbar/department_models")
+const { DEPARTMENT_CODE_MAP, deptIdMap, deptMap } = require("../models/top_navbar/department_models")
 
 /* ======================================================
    DEPARTMENT + STAFF MIDDLEWARE
@@ -57,10 +57,21 @@ function DeptMiddleware(allowedTypes, ALLOWED_DEPARTMENTS) {
           });
         }
 
+        const data = [{
+            "category": "banner_name_and_image",
+            "content": [
+              {
+                "about_the_department_image_path": "/static/images/department_data/aids.webp",
+                "name": `${deptMap[deptId]}`,
+                "dept_id": `${deptIdMap[deptId]}`
+              }
+            ]
+          }, ...staffData]
+
         return res.status(200).json({
           department_id: deptId,
           type: "faculty",
-          data: staffData,
+          data: data,
         });
       }
 
@@ -178,18 +189,18 @@ async function getStaffByUniqueId(req, res) {
 
     for (const doc of documents) {
 
-      if (doc.HOD) {
-        foundStaff = doc.HOD.find(f => f.unique_id === uniqueId);
+      if (doc.type === "HOD") {
+        foundStaff = doc.data.find(f => f.unique_id === uniqueId);
         if (foundStaff) break;
       }
 
-      if (doc.FACULTY) {
-        foundStaff = doc.FACULTY.find(f => f.unique_id === uniqueId);
+      if (doc.type === "FACULTY") {
+        foundStaff = doc.data.find(f => f.unique_id === uniqueId);
         if (foundStaff) break;
       }
 
-      if (doc.NON_TEACHING_FACULTY) {
-        foundStaff = doc.NON_TEACHING_FACULTY.find(
+      if (doc.type === "NON_TEACHING_FACULTY") {
+        foundStaff = doc.data.find(
           f => f.unique_id === uniqueId
         );
         if (foundStaff) break;

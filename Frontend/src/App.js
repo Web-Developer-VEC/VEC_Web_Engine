@@ -308,7 +308,7 @@ const App = () => {
                                 <Route path="/programs" drk element={<Programmes toggle={toggle} theme={theme}/>} />
                                 <Route path="/acadamic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme}/>} />
                                 <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme}/>}/>
-                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
+                                <Route path="/facultyprofile/:deptId/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
                                 <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
                                 <Route path="/m_e" drk element={<ME toggle={toggle} theme={theme}/>}/>
                                 <Route path="/mba" drk element={<MBA toggle={toggle} theme={theme}/>}/>
