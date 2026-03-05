@@ -220,6 +220,7 @@ export default function AdminConsultancy({ theme, toggle }) {
     setSessionChanges([]);
     setIsEditing(false);
     setIsContentEditable(true);
+    setSelectedToDelete(new Set());
     toast.info("Session changes discarded.");
   };
 

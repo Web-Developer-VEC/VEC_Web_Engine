@@ -1,4 +1,4 @@
-﻿async function updateData(tempDoc, mainCollection) {
+async function updateData(tempDoc, mainCollection) {
   try {
     const { collection_type, action, meta_data, original_data } = tempDoc;
 
@@ -34,7 +34,7 @@
 
       const result = await mainCollection.updateOne(
         { type: key },
-        { $set: { data: [{ pdf_path: pdfPath }] } }
+        { $set: { data: { pdf_path: pdfPath } } }
       );
 
       return {
@@ -85,25 +85,28 @@
     }
 
     const data = Array.isArray(doc.data) ? doc.data : [];
-    const originalName = original_data.name || "";
-    const originalMail = original_data.mail_id || "";
-    const originalUniqueId = original_data.unique_id || "";
+    const targetName = String(original_data.name || "").trim();
+    const targetMail = String(original_data.mail_id || "").trim();
+    const targetUniqueId = String(original_data.unique_id || "").trim();
 
     const memberIndex = data.findIndex((member) => {
-      const memberUniqueId = member.unique_id || "";
-      if (originalUniqueId && memberUniqueId) {
-        return memberUniqueId === originalUniqueId;
+      const memberUniqueId = String(member.unique_id || "").trim();
+      if (targetUniqueId && memberUniqueId) {
+        return memberUniqueId === targetUniqueId;
       }
 
       if (key === "HOD") {
-        return member.name === originalName;
+        return String(member.name || "").trim() === targetName;
       }
 
-      if (originalMail) {
-        return member.name === originalName && member.mail_id === originalMail;
+      if (targetMail) {
+        return (
+          String(member.name || "").trim() === targetName &&
+          String(member.mail_id || "").trim() === targetMail
+        );
       }
 
-      return member.name === originalName;
+      return String(member.name || "").trim() === targetName;
     });
 
     if (memberIndex === -1) {
@@ -111,14 +114,23 @@
     }
 
     const updatedData = [...data];
-    updatedData[memberIndex] = meta_data;
+
+    // Keep stable unique_id unless a new one is explicitly provided.
+    const preservedUniqueId = String(data[memberIndex]?.unique_id || "").trim();
+    const incomingUniqueId = String(meta_data?.unique_id || "").trim();
+    const nextMember = {
+      ...(meta_data || {}),
+      ...(preservedUniqueId && !incomingUniqueId ? { unique_id: preservedUniqueId } : {}),
+    };
+
+    updatedData[memberIndex] = nextMember;
 
     const result = await mainCollection.updateOne(
       { type: key },
       { $set: { data: updatedData } }
     );
 
-    const memberName = meta_data.name || original_data.name;
+    const memberName = nextMember.name || original_data.name;
 
     return {
       success: true,

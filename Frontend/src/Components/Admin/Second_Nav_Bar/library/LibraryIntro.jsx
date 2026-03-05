@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { motion } from "framer-motion";
 import LoadComp from "../../LoadComp";
-import { ArrowDown, Pencil, Send, Save } from "lucide-react";
+import { Pencil, Send, Save } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
@@ -51,65 +51,19 @@ const LibraryIntro = ({ about }) => {
     originalData,
     generalInstructions,
   }) => {
-    // 🟢 INSERT
-    if (action === "insert") {
-      return {
-        collectionName: "library",
-        collection_type: "about_the_library",
-        action: "insert",
-        title: "update about library",
-        meta_data: {
-          Area: formData.Area,
-          no_of_books: formData.no_of_books,
-          vision: formData.vision,
-          mission: formData.mission,
-          general_instructions: generalInstructions || [],
-        },
-      };
-    }
+    const original = {... originalData, general_instructions: generalInstructions || []};
+    const meta = {... formData, general_instructions: generalInstructions || []};
 
     // 🔵 UPDATE
-    if (action === "update") {
-      const meta_data = {};
-      Object.keys(formData).forEach((key) => {
-        if (formData[key] !== originalData[key]) {
-          meta_data[key] = formData[key];
-        }
-      });
 
-      return {
-        collectionName: "library",
-        collection_type: "about_the_library",
-        action: "update",
-        title: "update about library",
-        meta_data,
-        original_data: {
-          Area: originalData.Area,
-          no_of_books: originalData.no_of_books,
-          vision: originalData.vision,
-          mission: originalData.mission,
-          general_instructions: generalInstructions || [],
-        },
-      };
-    }
-
-    // 🔴 DELETE (optional – future use)
-    if (action === "delete") {
-      return {
-        collectionName: "library",
-        collection_type: "about_the_library",
-        action: "delete",
-        title: "delete about library",
-        meta_data: {
-          Area: formData.Area,
-          no_of_books: formData.no_of_books,
-          vision: formData.vision,
-          mission: formData.mission,
-        },
-      };
-    }
-
-    return null;
+    return {
+      collectionName: "library",
+      collection_type: "about_the_library",
+      action: "update",
+      title: "update about library",
+      meta_data: meta,
+      original_data: original
+    };
   };
 
   const SECTION_FIELD_MAP = {
@@ -123,6 +77,7 @@ const LibraryIntro = ({ about }) => {
     Vision: ["vision"],
     Mission: ["mission"],
   };
+
   const handleRevertSection = (sectionLabel) => {
     if (!originalData) return;
 
@@ -153,6 +108,11 @@ const LibraryIntro = ({ about }) => {
   const hasLibraryChanges = changeList.length > 0;
 
   const handleRequestConfirm = async () => {
+    // Validate required fields before submission
+    if (!validateRequiredFields()) {
+      return;
+    }
+
     let action = "update";
 
     // If originalData is missing → INSERT
@@ -192,6 +152,36 @@ const LibraryIntro = ({ about }) => {
     setShowRequest(false);
     setIsEditing(false);
     setShowDiscardModal(false);
+    toast.info("Changes discarded");
+  };
+
+  const validateRequiredFields = () => {
+    const requiredFields = [
+      "vision",
+      "mission",
+      "Area",
+      "no_of_books",
+      "no_of_titles",
+      "no_of_journals",
+      "no_of_online_journals",
+    ];
+
+    const emptyFields = [];
+
+    requiredFields.forEach((field) => {
+      if (!formData[field] || formData[field].toString().trim() === "") {
+        emptyFields.push(field.split("_").join(" ")); 
+      }
+    });
+
+    if (emptyFields.length > 0) {
+      toast.error(
+        `Please fill all required fields: ${emptyFields.join(", ")}`
+      );
+      return false;
+    }
+
+    return true;
   };
 
   if (!about || !formData) {
@@ -252,6 +242,7 @@ const LibraryIntro = ({ about }) => {
                   value={formData.no_of_books}
                   onChange={handleChange}
                   className="border p-1 rounded w-24 bg-gray-200"
+                  required
                 />
               ) : (
                 <span className="font-semibold text-text dark:text-drkt">
@@ -266,6 +257,7 @@ const LibraryIntro = ({ about }) => {
                   value={formData.no_of_titles}
                   onChange={handleChange}
                   className="border p-1 rounded w-24 bg-gray-200"
+                  required
                 />
               ) : (
                 <span className="font-semibold text-text dark:text-drkt">
@@ -284,6 +276,7 @@ const LibraryIntro = ({ about }) => {
                   value={formData.no_of_journals}
                   onChange={handleChange}
                   className="border p-1 rounded w-24 bg-gray-200"
+                  required
                 />
               ) : (
                 <span className="font-semibold text-text dark:text-drkt">
@@ -298,6 +291,7 @@ const LibraryIntro = ({ about }) => {
                   value={formData.no_of_online_journals}
                   onChange={handleChange}
                   className="border p-1 rounded w-24 bg-gray-200"
+                  required
                 />
               ) : (
                 <span className="font-semibold text-text dark:text-drkt">
@@ -334,6 +328,7 @@ const LibraryIntro = ({ about }) => {
                 onChange={handleChange}
                 className="w-full border p-2 rounded bg-gray-200 text-sm sm:text-base"
                 rows={7}
+                required
               />
             ) : (
               <p className="text-sm sm:text-base text-black-800 leading-relaxed text-justify">
@@ -353,6 +348,7 @@ const LibraryIntro = ({ about }) => {
                 onChange={handleChange}
                 className="w-full border p-2 rounded bg-gray-200 text-sm sm:text-base"
                 rows={7}
+                required
               />
             ) : (
               <p className="text-sm sm:text-base text-gray-800 leading-relaxed text-justify">
@@ -393,9 +389,10 @@ const LibraryIntro = ({ about }) => {
                   <button
                     className="bg-[#FDcc03] text-text flex items-center gap-2 px-4 py-2 rounded-lg shadow-md hover:bg-[#800000] transition hover:text-prim"
                     onClick={() => {
-                      console.log("Updated Data:", formData);
-                      setIsEditing(false);
-                      setShowRequest(true);
+                      if (validateRequiredFields()) {
+                        setIsEditing(false);
+                        setShowRequest(true);
+                      }
                     }}
                   >
                     <Save size={18} /> Save
@@ -435,6 +432,7 @@ const LibraryIntro = ({ about }) => {
           </div>
         </div>
       </div>
+      
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[650px]">
