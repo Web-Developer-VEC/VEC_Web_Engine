@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. GANAPATHY SUNDARAM E",
                 "unique_id": "VEC-013-H-001",
@@ -45,7 +46,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. SATISH KUMAR S",
                 "unique_id": "VEC-013-F-01",
@@ -3168,7 +3170,8 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": [
+        "type":"NON_TEACHING_FACULTY",
+"data": [
             {
                 "name": "MR. PRASAD J",
                 "unique_id": "VEC-013-NF-01",
@@ -3336,7 +3339,8 @@
         ]
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/013.pdf"
         }
     }

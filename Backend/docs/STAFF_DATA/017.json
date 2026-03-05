@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. NIRMALRAJ A",
                 "unique_id": "VEC-017-H-001",
@@ -45,7 +46,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. KERINAB BEENU G H",
                 "unique_id": "VEC-017-F-01",
@@ -418,10 +420,12 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": []
+        "type":"NON_TEACHING_FACULTY",
+"data": []
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/017.pdf"
         }
     }

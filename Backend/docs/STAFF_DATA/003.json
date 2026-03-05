@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. MOHAMED SIKKANDER A",
                 "unique_id": "VEC-003-H-001",
@@ -45,7 +46,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. KAVITHA K",
                 "unique_id": "VEC-003-F-01",
@@ -1407,7 +1409,8 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": [
+        "type":"NON_TEACHING_FACULTY",
+"data": [
             {
                 "name": "MR. KUMAR V",
                 "unique_id": "VEC-003-NF-01",
@@ -1452,7 +1455,8 @@
         ]
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/003.pdf"
         }
     }

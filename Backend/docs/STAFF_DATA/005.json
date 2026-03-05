@@ -1,6 +1,7 @@
 [
     {
-        "HOD": [
+        "type":"HOD",
+"data": [
             {
                 "name": "DR. MURUGESHWARI B",
                 "unique_id": "VEC-005-H-001",
@@ -45,7 +46,8 @@
         ]
     },
     {
-        "FACULTY": [
+        "type":"FACULTY",
+"data": [
             {
                 "name": "DR. JEYABALARAJA V",
                 "unique_id": "VEC-005-F-01",
@@ -4866,7 +4868,8 @@
         ]
     },
     {
-        "NON_TEACHING_FACULTY": [
+        "type":"NON_TEACHING_FACULTY",
+"data": [
             {
                 "name": "MRS. MAHESWARI P",
                 "unique_id": "VEC-005-NF-01",
@@ -4993,7 +4996,8 @@
         ]
     },
     {
-        "FACULTY_PDF_PATH": {
+        "type":"FACULTY_PDF_PATH",
+"data": {
             "pdf_path": "/static/pdfs/faculty_list/005.pdf"
         }
     }
