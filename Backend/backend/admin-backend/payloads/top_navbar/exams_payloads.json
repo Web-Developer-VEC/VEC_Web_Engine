@@ -158,10 +158,10 @@
     "collection_type": "regulation",
     "action": "delete",
     "title": "delete",
-    "category": "2023",
+    "category": "Regulation 2023",
     "meta_data": {
-      "name": "PG - ME",
-      "pdf_path": "/static/pdfs/regulation_docs/2023_me.pdf"
+      "name": "PG - MBA",
+      "pdf_path": "/static/pdfs/regulation_docs/2023_mba.pdf"
     }
   },
   {
