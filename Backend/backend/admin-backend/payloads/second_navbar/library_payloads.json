@@ -27,24 +27,24 @@
       "image_path": "/static/images/library/faculty/Dinesh T.webp"
     }
   },
-  {
-    "collectionName": "library",
-    "collection_type": "Faculty_Staff",
-    "action": "update",
-    "title": "Update faculty info",
-    "meta_data": {
-      "name": "Dinesh T",
-      "designation": "Senior Library Assistant",
-      "educational_qualification": "M.A., M.L.I.Sc",
-      "image_path": "/static/images/library/faculty/Dinesh T.webp"
+    {
+      "collectionName": "library",
+      "collection_type": "Faculty_Staff",
+      "action": "update",
+      "title": "Update faculty info",
+      "meta_data": {
+        "name": "Dinesh T",
+        "designation": "Senior Library Assistant",
+        "educational_qualification": "M.A., M.L.I.Sc",
+        "image_path": "/static/images/library/faculty/Dinesh T.webp"
+      },
+      "original_data": {
+        "name": "Dinesh T",
+        "designation": "Library Assistant",
+        "educational_qualification": "M.A., M.L.I.Sc",
+        "image_path": "/static/images/library/faculty/Dinesh T.png"
+      }
     },
-    "original_data": {
-      "name": "Dinesh T",
-      "designation": "Library Assistant",
-      "educational_qualification": "M.A., M.L.I.Sc",
-      "image_path": "/static/images/library/faculty/Dinesh T.png"
-    }
-  },
   {
     "collectionName": "library",
     "collection_type": "Faculty_Staff",

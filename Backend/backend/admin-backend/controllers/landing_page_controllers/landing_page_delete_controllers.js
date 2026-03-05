@@ -8,7 +8,7 @@ async function deleteData(tempDoc, mainCollection) {
 
         const doc = await mainCollection.findOne({ type: collection_type });
 
-        const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner"];
+        const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner", "popup"];
 
         if (multipleObjectTypes.includes(collection_type)) {
 

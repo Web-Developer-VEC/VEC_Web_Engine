@@ -1,11 +1,7 @@
-/**
- * Insert faculty data into the correct document by type
- */
-async function insertData(tempDoc, mainCollection) {
+﻿async function insertData(tempDoc, mainCollection) {
   try {
     const { collection_type, meta_data } = tempDoc;
 
-    // ==================== Validation ====================
     if (!collection_type || !meta_data) {
       throw new Error("collection_type and meta_data are required");
     }
@@ -16,7 +12,6 @@ async function insertData(tempDoc, mainCollection) {
       throw new Error(`Invalid collection_type: ${collection_type}`);
     }
 
-    // ==================== Find the correct document by type ====================
     const doc = await mainCollection.findOne({ type: key });
 
     if (!doc) {
@@ -25,20 +20,31 @@ async function insertData(tempDoc, mainCollection) {
       );
     }
 
-    // ==================== Check for duplicates ====================
-    if (meta_data.Name && meta_data.Mail_ID) {
-      const existing = doc.data?.find(
-        member => member.Name === meta_data.Name && member.Mail_ID === meta_data.Mail_ID
-      );
+    const name = meta_data.name || "";
+    const mail = meta_data.mail_id || "";
+    const uniqueId = meta_data.unique_id || "";
 
-      if (existing) {
-        throw new Error(
-          `Duplicate entry: ${key} member "${meta_data.Name}" (${meta_data.Mail_ID}) already exists`
-        );
+    const existing = (doc.data || []).find((member) => {
+      const memberUniqueId = member.unique_id || "";
+      if (uniqueId && memberUniqueId) {
+        return memberUniqueId === uniqueId;
       }
+
+      if (key === "HOD") {
+        return member.name === name;
+      }
+
+      if (mail) {
+        return member.name === name && member.mail_id === mail;
+      }
+
+      return member.name === name;
+    });
+
+    if (existing) {
+      throw new Error(`Duplicate entry: ${key} member "${name}" already exists`);
     }
 
-    // ==================== Insert into data array ====================
     const result = await mainCollection.updateOne(
       { type: key },
       { $push: { data: meta_data } }
@@ -52,17 +58,14 @@ async function insertData(tempDoc, mainCollection) {
       throw new Error(`Matched document but failed to insert into ${key}`);
     }
 
-    console.log(`✅ Inserted into ${key}: ${meta_data.Name || 'New member'}`);
-
     return {
       success: true,
-      message: `Successfully inserted ${meta_data.Name || 'member'} into ${key}`,
+      message: `Successfully inserted ${name || "member"} into ${key}`,
       type: key,
-      modifiedCount: result.modifiedCount
+      modifiedCount: result.modifiedCount,
     };
-
   } catch (error) {
-    console.error("❌ Error in insertData:", error);
+    console.error("Error in insertData:", error);
     throw error;
   }
 }
