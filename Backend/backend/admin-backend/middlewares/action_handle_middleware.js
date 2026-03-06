@@ -1,8 +1,8 @@
-const { insertFile, updateFile, deleteFile , updateOriginalData} = require("./file_handle_middleware");
+const { insertFile, updateFile, deleteFile , updateOriginalData } = require("./file_handle_middleware");
 
 function handleTempAction(insertData, updateData, deleteData) {
   return async function (req, res) {
-    // Support single-doc (old) and multi-doc (new) modes
+
     const approvedDocs = req.approvedDocs || [
       {
         tempDoc: req.tempDoc,
@@ -11,7 +11,8 @@ function handleTempAction(insertData, updateData, deleteData) {
       },
     ];
 
-    const results = [];
+    const trueResults = [];
+    const falseResults = [];
 
     try {
       for (const { tempDoc, mainCollection, tempCollection } of approvedDocs) {
@@ -21,51 +22,88 @@ function handleTempAction(insertData, updateData, deleteData) {
         switch (tempDoc.action) {
           case "insert":
             fileResult = await insertFile(tempDoc, tempCollection);
+            console.log("fileResult insert",fileResult.success)
+
+            if (fileResult?.success === false) {
+              console.log("false case break")
+              result = fileResult;
+              break;
+            }
+
             tempDoc.meta_data = fileResult.meta_data;
             result = await insertData(tempDoc, mainCollection);
             break;
 
           case "update":
             fileResult = await updateFile(tempDoc, tempCollection);
+            console.log("fileResult update",fileResult.success)
+
+            if (fileResult?.success === false) {
+              console.log("false case break")
+              result = fileResult;
+              break;
+            }
+
             tempDoc.meta_data = fileResult.meta_data;
             result = await updateData(tempDoc, mainCollection);
-            result1 = await updateOriginalData(tempDoc,tempCollection)
+            await updateOriginalData(tempDoc, tempCollection);
             break;
 
           case "delete":
-            let deletetemp =  structuredClone(tempDoc); // its to send the original data with old path for deletion
+            const deletetemp = structuredClone(tempDoc);
+
             fileResult = await deleteFile(tempDoc, tempCollection);
+            console.log("fileResult delete",fileResult.success)
+
+            if (fileResult?.success === false) {
+              result = fileResult;
+              console.log("false case break")
+              break;
+            }
+
             tempDoc.meta_data = fileResult.meta_data;
             result = await deleteData(deletetemp, mainCollection);
             break;
 
           default:
-            results.push({ id: tempDoc._id, error: "Invalid action" });
+            falseResults.push({
+              id: tempDoc._id,
+              error: "Invalid action",
+            });
             continue;
         }
 
-        // Mark request as approved in temp collection
+        // Mark request as approved
         await tempCollection.updateOne(
           { _id: tempDoc._id },
           { $set: { status: "approved" } }
         );
 
-        results.push({
+        const formattedResult = {
           id: tempDoc._id,
-          success: true,
           action: tempDoc.action,
           ...result,
-        });
+        };
+
+        // 🔥 Split based on success
+        if (result?.success === false) {
+          falseResults.push(formattedResult);
+        } else {
+          trueResults.push(formattedResult);
+        }
       }
 
       return res.json({
-        success: true,
-        results,
-        bulkResults: req.bulkResults || undefined, // optional summary from middleware
+        trueResults,
+        falseResults,
       });
+
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ success: false, error: error.message });
+      return res.status(500).json({
+        success: false,
+        error: error.message,
+      });
     }
   };
 }

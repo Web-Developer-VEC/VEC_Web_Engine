@@ -6,7 +6,7 @@ import LoadComp from "../../LoadComp";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
-const LIBMemb = ({ data }) => {
+const LIBMembership = ({ data }) => {
   const members =
     data.find((sec) => sec.category === "Member Details")?.content || [];
   const books =
@@ -138,41 +138,48 @@ const LIBMemb = ({ data }) => {
   };
 
   const getMembershipChanges = (originalRows, currentRows) => {
-    const originalContent = originalRows.map((r) => r.member);
-    const newContent = currentRows.map((r) => r.member);
+    // fallback for nulls
+    originalRows = originalRows || [];
+    currentRows = currentRows || [];
 
-    // 🟢 INSERT
-    if (originalContent.length === 0 && newContent.length > 0) {
+    // compare by serialised row objects (member/book/cd)
+    const origJson = JSON.stringify(
+      originalRows.map(({ member, book, cd }) => ({ member, book, cd })),
+    );
+    const currJson = JSON.stringify(
+      currentRows.map(({ member, book, cd }) => ({ member, book, cd })),
+    );
+
+    // nothing changed
+    if (origJson === currJson) return [];
+
+    // determine action type
+    if (originalRows.length === 0 && currentRows.length > 0) {
       return [
         {
           action: "Added",
-          newData: newContent,
+          newData: currentRows.map(({ member, book, cd }) => ({ member, book, cd })),
         },
       ];
     }
 
-    // 🔴 DELETE
-    if (newContent.length === 0 && originalContent.length > 0) {
+    if (currentRows.length === 0 && originalRows.length > 0) {
       return [
         {
           action: "Deleted",
-          oldData: originalContent,
+          oldData: originalRows.map(({ member, book, cd }) => ({ member, book, cd })),
         },
       ];
     }
 
-    // 🔵 UPDATE
-    if (JSON.stringify(originalContent) !== JSON.stringify(newContent)) {
-      return [
-        {
-          action: "Edited",
-          newData: newContent,
-          oldData: originalContent,
-        },
-      ];
-    }
-
-    return [];
+    // in all other cases where content differs, treat as update
+    return [
+      {
+        action: "Edited",
+        newData: currentRows.map(({ member, book, cd }) => ({ member, book, cd })),
+        oldData: originalRows.map(({ member, book, cd }) => ({ member, book, cd })),
+      },
+    ];
   };
 
   const handleCancel = () => {
@@ -207,6 +214,7 @@ const LIBMemb = ({ data }) => {
     setPendingRows(null);
     setIsSaved(false);
     setIsDirty(false);
+    toast.info("Changes discarded");
   };
 
   const handleRequest = () => {
@@ -235,7 +243,6 @@ const LIBMemb = ({ data }) => {
 
     await sendRequest(payload);
 
-    toast.success("Request submitted successfully!");
     setShowRequestModal(false);
   };
 
@@ -281,13 +288,18 @@ const LIBMemb = ({ data }) => {
       pendingRows.map((row, index) => [row.id, { row, index }]),
     );
 
+    console.log("Pending",pendingMap);
+    console.log("Comitted Map", committedMap);
+    
+    
+
     // 🔴 Deleted
     committedMap.forEach(({ row, index }, id) => {
       if (!pendingMap.has(id)) {
         changes.push({
           action: "Deleted",
           section: "Membership Details",
-          changes: `Row ${index + 1}`,
+          changes: `${row.member || "Unnamed"} (Books: ${row.book}, CD: ${row.cd})`,
           rowIndex: index,
         });
       }
@@ -299,7 +311,7 @@ const LIBMemb = ({ data }) => {
         changes.push({
           action: "Added",
           section: "Membership Details",
-          changes: `Row ${index + 1}`,
+          changes: `${row.member || "Unnamed"} (Books: ${row.book}, CD: ${row.cd})`,
           rowIndex: index,
         });
       }
@@ -318,7 +330,7 @@ const LIBMemb = ({ data }) => {
           changes.push({
             action: "Edited",
             section: "Membership Details",
-            changes: `Row ${index + 1}`,
+            changes: `${oldRow.member || "Unnamed"} → ${newRow.member || "Unnamed"}`,
             rowIndex: index,
           });
         }
@@ -329,6 +341,9 @@ const LIBMemb = ({ data }) => {
   };
 
   const changes = getChanges();
+
+  console.log(changes);
+  
 
   const hasChecked = rows.some((r) => r.checked);
 
@@ -444,6 +459,18 @@ const LIBMemb = ({ data }) => {
             </table>
           </div>
 
+          {/* Delete Button */}
+          {isEditing && hasChecked && (
+            <div className="flex justify-center mt-6">
+              <button
+                onClick={() => setShowDeleteConfirm(true)}
+                className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+              >
+                Delete Selected
+              </button>
+            </div>
+          )}
+
           {/* Footer Buttons */}
           {isEditing && (
             <div className="flex justify-end gap-3 mt-6">
@@ -461,18 +488,6 @@ const LIBMemb = ({ data }) => {
                   <Save size={18} /> Save
                 </button>
               )}
-            </div>
-          )}
-
-          {/* Delete Button */}
-          {isEditing && hasChecked && (
-            <div className="flex justify-center mt-6">
-              <button
-                onClick={() => setShowDeleteConfirm(true)}
-                className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-              >
-                Delete Selected
-              </button>
             </div>
           )}
 
@@ -597,4 +612,4 @@ const LIBMemb = ({ data }) => {
   );
 };
 
-export default LIBMemb;
+export default LIBMembership;

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Plus, Eye, X } from "lucide-react";
+import { Plus, Eye,Pencil, X } from "lucide-react";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import axios from "axios";
@@ -697,7 +697,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 onClick={handleEditClick}
                 className="absolute top-4 right-12 bg-[#fdcc03] hover:bg-[#800000] hover:text-white font-semibold text-black px-3 py-2 rounded flex items-center gap-2 transition"
               >
-                Edit
+                    <Pencil /> Edit
               </button>
             )}
           </div>

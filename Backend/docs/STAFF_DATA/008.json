@@ -2,10 +2,11 @@
     {
         "HOD": [
             {
-                "Name": "DR. BRIJET Z",
-                "Designation": "Professor & Head",
-                "Department_Name": "Electronics & Instrumentation Engineering",
-                "Mail_ID": "hod.ei@vlammal.edu.in",
+                "name": "DR. BRIJET Z",
+                "unique_id": "VEC-008-H-001",
+                "designation": "Professor & Head",
+                "department_name": "Electronics & Instrumentation Engineering",
+                "mail_id": "hod.ei@vlammal.edu.in",
                 "image_path": "/static/images/profile_photos/008/VEC-008-01-191.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/brijet-z-952880203",
@@ -15,316 +16,316 @@
                     "publonprofile": "",
                     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56168883600"
                 },
-                "Professional_Membership": "ISTE ,ISA",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "ISTE ,ISA",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B,E",
-                        "BRANCH": "ELEXCTRICAL AND ELECRONICS ENGINEERING",
-                        "INSTITUTE": "NOORUL ISLAM COLLEGE OF ENGINEERING",
-                        "YEAR": 1998
+                        "degree": "B,E",
+                        "branch": "ELEXCTRICAL AND ELECRONICS ENGINEERING",
+                        "institute": "NOORUL ISLAM COLLEGE OF ENGINEERING",
+                        "year": 1998
                     },
                     {
-                        "DEGREE": "M.E",
-                        "BRANCH": "PROCESS CONTROL",
-                        "INSTITUTE": "ANNAMALAI UNIVERSITY",
-                        "YEAR": 2001
+                        "degree": "M.E",
+                        "branch": "PROCESS CONTROL",
+                        "institute": "ANNAMALAI UNIVERSITY",
+                        "year": 2001
                     },
                     {
-                        "DEGREE": "PHD",
-                        "BRANCH": "PROCESS CONTROL",
-                        "INSTITUTE": "ANNA UNIVERSITY",
-                        "YEAR": 2018
+                        "degree": "PHD",
+                        "branch": "PROCESS CONTROL",
+                        "institute": "ANNA UNIVERSITY",
+                        "year": 2018
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "02.07.1998",
-                        "Unnamed:_1": "15.07.1999",
-                        "EXPERIENCE": "1",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "JayamathaEngineeringCollege"
+                        "duration": "02.07.1998",
+                        "unnamed:_1": "15.07.1999",
+                        "experience": "1",
+                        "designation": "Lecturer",
+                        "institution": "JayamathaEngineeringCollege"
                     },
                     {
-                        "DURATION": "14.06.2000",
-                        "Unnamed:_1": "11.11.2001",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "4",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "R.M.KEngineeringCollege"
+                        "duration": "14.06.2000",
+                        "unnamed:_1": "11.11.2001",
+                        "experience": "1",
+                        "unnamed:_3": "4",
+                        "designation": "Lecturer",
+                        "institution": "R.M.KEngineeringCollege"
                     },
                     {
-                        "DURATION": "12.11.2001",
-                        "Unnamed:_1": "10.03.2003",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "4",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "JayamathaEngineeringCollege"
+                        "duration": "12.11.2001",
+                        "unnamed:_1": "10.03.2003",
+                        "experience": "1",
+                        "unnamed:_3": "4",
+                        "designation": "Lecturer",
+                        "institution": "JayamathaEngineeringCollege"
                     },
                     {
-                        "DURATION": "9.06.2003",
-                        "Unnamed:_1": "2.05.2005",
-                        "EXPERIENCE": "2",
-                        "Unnamed:_3": "11",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "Velammal \tEngineering College"
+                        "duration": "9.06.2003",
+                        "unnamed:_1": "2.05.2005",
+                        "experience": "2",
+                        "unnamed:_3": "11",
+                        "designation": "Lecturer",
+                        "institution": "Velammal \tEngineering College"
                     },
                     {
-                        "DURATION": "3.05.2005",
-                        "Unnamed:_1": "30.03.2007",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "10",
-                        "DESIGNATION": "Sr. Lecturer",
-                        "INSTITUTION": "Velammal \tEngineering College"
+                        "duration": "3.05.2005",
+                        "unnamed:_1": "30.03.2007",
+                        "experience": "1",
+                        "unnamed:_3": "10",
+                        "designation": "Sr. Lecturer",
+                        "institution": "Velammal \tEngineering College"
                     },
                     {
-                        "DURATION": "31.03.2007",
-                        "Unnamed:_1": "30.11.2019",
-                        "EXPERIENCE": "12",
-                        "Unnamed:_3": "7",
-                        "DESIGNATION": "Asst.professor",
-                        "INSTITUTION": "Velammal \tEngineering College"
+                        "duration": "31.03.2007",
+                        "unnamed:_1": "30.11.2019",
+                        "experience": "12",
+                        "unnamed:_3": "7",
+                        "designation": "Asst.professor",
+                        "institution": "Velammal \tEngineering College"
                     },
                     {
-                        "DURATION": "1.12.2019",
-                        "Unnamed:_1": "31.01.2020",
-                        "Unnamed:_3": "2",
-                        "DESIGNATION": "Associate Professor& Head",
-                        "INSTITUTION": "Velammal \tEngineering College"
+                        "duration": "1.12.2019",
+                        "unnamed:_1": "31.01.2020",
+                        "unnamed:_3": "2",
+                        "designation": "Associate Professor& Head",
+                        "institution": "Velammal \tEngineering College"
                     },
                     {
-                        "DURATION": "1.02.2020",
-                        "Unnamed:_1": "TILLDATE",
-                        "Unnamed:_3": "5",
-                        "DESIGNATION": "Professor & Head",
-                        "INSTITUTION": "Velammal \tEngineering College"
+                        "duration": "1.02.2020",
+                        "unnamed:_1": "TILLDATE",
+                        "unnamed:_3": "5",
+                        "designation": "Professor & Head",
+                        "institution": "Velammal \tEngineering College"
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [
+                "projects": [],
+                "patents": [
                     {
-                        "NAME_OF_PATENT": "COMPUTER VISION BASED ASSISTIVE DEVICE WITH DEPTH CAMERA, IMU AND HAPTIC FEEDBACK FOR VISUALLY IMPARED NAVIGATION",
-                        "PATENT_TYPE_(UTILITY)": "Utility",
-                        "COUNTRY": "India",
-                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
-                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "202441101947 / 03/01/2025\n"
+                        "name_of_patent": "COMPUTER VISION BASED ASSISTIVE DEVICE WITH DEPTH CAMERA, IMU AND HAPTIC FEEDBACK FOR VISUALLY IMPARED NAVIGATION",
+                        "patent_type_(utility)": "Utility",
+                        "country": "India",
+                        "status_(_published_/_fer_/_granted_)": "Published",
+                        "date_of_recent_achieved_level": "202441101947 / 03/01/2025\n"
                     },
                     {
-                        "NAME_OF_PATENT": "GAN POWERED SMART MIRROR WITH 3D, SKIN ANALYSIS AND CLOTHING RECOGNITION\nCAMERAS FOR PERSONALIZED BEAUTY AND FASHION",
-                        "PATENT_TYPE_(UTILITY)": "Utility",
-                        "COUNTRY": "India",
-                        "STATUS_(_Published_/_FER_/_Granted_)": "Published",
-                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "202441101935 / 17/01/2025"
+                        "name_of_patent": "GAN POWERED SMART MIRROR WITH 3D, SKIN ANALYSIS AND CLOTHING RECOGNITION\nCAMERAS FOR PERSONALIZED BEAUTY AND FASHION",
+                        "patent_type_(utility)": "Utility",
+                        "country": "India",
+                        "status_(_published_/_fer_/_granted_)": "Published",
+                        "date_of_recent_achieved_level": "202441101935 / 17/01/2025"
                     },
                     {
-                        "NAME_OF_PATENT": " NETWORK GATEWAY DEVICE",
-                        "PATENT_TYPE_(UTILITY)": "Design",
-                        "COUNTRY": "India",
-                        "STATUS_(_Published_/_FER_/_Granted_)": "Granted",
-                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "400851-001 / 29/11/2023"
+                        "name_of_patent": " NETWORK GATEWAY DEVICE",
+                        "patent_type_(utility)": "Design",
+                        "country": "India",
+                        "status_(_published_/_fer_/_granted_)": "Granted",
+                        "date_of_recent_achieved_level": "400851-001 / 29/11/2023"
                     }
                 ],
-                "JOURNAL_PUBLICATIONS": [
+                "journal_publications": [
                     {
-                        "AUTHORS": "V. Karthika,Z. Brijet,N.Bharathi",
-                        "PAPER_TITLE": "Design of Optimal Controller for Fluid Catalytic Cracking Unit",
-                        "JOURNAL_NAME": "Procedia Engineering",
-                        "DOI_NUMBER": "https://doi.org/10.1016/j.proeng.2012.06.146",
-                        "PAGE_NO": "1150-1160",
-                        "VOL_NO_/_ISSUE_NO": "VOL 38",
-                        "MONTH_&_YEAR": "2012",
-                        "CONFERENCE_NAME": ""
+                        "authors": "V. Karthika,Z. Brijet,N.Bharathi",
+                        "paper_title": "Design of Optimal Controller for Fluid Catalytic Cracking Unit",
+                        "journal_name": "Procedia Engineering",
+                        "doi_number": "https://doi.org/10.1016/j.proeng.2012.06.146",
+                        "page_no": "1150-1160",
+                        "vol_no_/_issue_no": "VOL 38",
+                        "month_&_year": "2012",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Z. Brijet, Dr. N. Bharathi, Ankitha Susan George ",
-                        "PAPER_TITLE": "Real Coded GA Tuned Decentralized Decoupled PID for Fluid Catalytic Cracking Unit",
-                        "JOURNAL_NAME": "Australian Journal of Basic and Applied Sciences",
-                        "PAGE_NO": "379-385",
-                        "VOL_NO_/_ISSUE_NO": "9(16)",
-                        "MONTH_&_YEAR": "2015-05-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Z. Brijet, Dr. N. Bharathi, Ankitha Susan George ",
+                        "paper_title": "Real Coded GA Tuned Decentralized Decoupled PID for Fluid Catalytic Cracking Unit",
+                        "journal_name": "Australian Journal of Basic and Applied Sciences",
+                        "page_no": "379-385",
+                        "vol_no_/_issue_no": "9(16)",
+                        "month_&_year": "2015-05-01 00:00:00",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Z. Brijet, N. Bharathi, G.Shanmugapriya",
-                        "PAPER_TITLE": "Design of Model Predictive Controller\nfor Fluid catalytic Cracking Unit",
-                        "JOURNAL_NAME": "InternationalJournalOfControl Theory and Application",
-                        "PAGE_NO": "1917-1926",
-                        "VOL_NO_/_ISSUE_NO": "8(6)",
-                        "MONTH_&_YEAR": "2015",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Z. Brijet, N. Bharathi, G.Shanmugapriya",
+                        "paper_title": "Design of Model Predictive Controller\nfor Fluid catalytic Cracking Unit",
+                        "journal_name": "InternationalJournalOfControl Theory and Application",
+                        "page_no": "1917-1926",
+                        "vol_no_/_issue_no": "8(6)",
+                        "month_&_year": "2015",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Z.Brijet,B.Santhosh Kumar,\nN.Bharathi",
-                        "PAPER_TITLE": "Vehicle Anti-Theft System Using Fingerprint Recognition Technique",
-                        "JOURNAL_NAME": "JournalofChemicalandPharmaceuticalSciences",
-                        "DOI_NUMBER": "10.33094/5.2017.11.36.41",
-                        "PAGE_NO": "pp. 36-41",
-                        "VOL_NO_/_ISSUE_NO": "Vol.1, No. 1, \n\n",
-                        "MONTH_&_YEAR": "2017",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Z.Brijet,B.Santhosh Kumar,\nN.Bharathi",
+                        "paper_title": "Vehicle Anti-Theft System Using Fingerprint Recognition Technique",
+                        "journal_name": "JournalofChemicalandPharmaceuticalSciences",
+                        "doi_number": "10.33094/5.2017.11.36.41",
+                        "page_no": "pp. 36-41",
+                        "vol_no_/_issue_no": "Vol.1, No. 1, \n\n",
+                        "month_&_year": "2017",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "T Suresh, Z Brijet",
-                        "PAPER_TITLE": "Reconfigurable processing element array architectures for an area efficient multiplier architecture",
-                        "JOURNAL_NAME": "Asian journal of informationtechnology",
-                        "DOI_NUMBER": "10.3923/ajit.2016.900.907",
-                        "PAGE_NO": "900-907",
-                        "VOL_NO_/_ISSUE_NO": "15(5)",
-                        "MONTH_&_YEAR": "2016",
-                        "CONFERENCE_NAME": ""
+                        "authors": "T Suresh, Z Brijet",
+                        "paper_title": "Reconfigurable processing element array architectures for an area efficient multiplier architecture",
+                        "journal_name": "Asian journal of informationtechnology",
+                        "doi_number": "10.3923/ajit.2016.900.907",
+                        "page_no": "900-907",
+                        "vol_no_/_issue_no": "15(5)",
+                        "month_&_year": "2016",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Z. Brijet, N. Bharathi,S.Fanisha",
-                        "PAPER_TITLE": "AGAapproachfor\noptimumtuningofnon linear PID controllerforFluid\nCatalytic\nCrackingUnit\n",
-                        "JOURNAL_NAME": "InternationalJournalOfControl Theory and Application",
-                        "PAGE_NO": "333-342",
-                        "VOL_NO_/_ISSUE_NO": "Volume(10) Issue16 ",
-                        "MONTH_&_YEAR": "2017-05-01 00:00:00",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Z. Brijet, N. Bharathi,S.Fanisha",
+                        "paper_title": "AGAapproachfor\noptimumtuningofnon linear PID controllerforFluid\nCatalytic\nCrackingUnit\n",
+                        "journal_name": "InternationalJournalOfControl Theory and Application",
+                        "page_no": "333-342",
+                        "vol_no_/_issue_no": "Volume(10) Issue16 ",
+                        "month_&_year": "2017-05-01 00:00:00",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Mrs.Z.Brijet , M.B.Sri Padmadarshan, S.Vigneshwaran, P.B.Mohankrishna",
-                        "PAPER_TITLE": "Fuzzy Based PID for Calciner Temperature Control",
-                        "JOURNAL_NAME": "International Journal of Pure and Applied Mathematics",
-                        "DOI_NUMBER": "url: http://www.ijpam.eu",
-                        "PAGE_NO": "14563-14570",
-                        "VOL_NO_/_ISSUE_NO": "Vol.119, Issue 12",
-                        "MONTH_&_YEAR": "2018",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Mrs.Z.Brijet , M.B.Sri Padmadarshan, S.Vigneshwaran, P.B.Mohankrishna",
+                        "paper_title": "Fuzzy Based PID for Calciner Temperature Control",
+                        "journal_name": "International Journal of Pure and Applied Mathematics",
+                        "doi_number": "url: http://www.ijpam.eu",
+                        "page_no": "14563-14570",
+                        "vol_no_/_issue_no": "Vol.119, Issue 12",
+                        "month_&_year": "2018",
+                        "indexed_in_sci_/_scopus": "SCOPUS ",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "T.Suresh, P. Gunasekhar, Z. Brijet, Jasti Tejas",
-                        "PAPER_TITLE": "Glove Sensor with AI system for Deaf and Blind People to Ease of Communication",
-                        "JOURNAL_NAME": "International Journal of Innovative Technology and Exploring Engineering",
-                        "DOI_NUMBER": "10.35940/ijitee.\nA1077.1191S19\n",
-                        "PAGE_NO": "390-394",
-                        "VOL_NO_/_ISSUE_NO": "Volume-9, Issue-1S",
-                        "MONTH_&_YEAR": "Nov-19",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": "T.Suresh, P. Gunasekhar, Z. Brijet, Jasti Tejas",
+                        "paper_title": "Glove Sensor with AI system for Deaf and Blind People to Ease of Communication",
+                        "journal_name": "International Journal of Innovative Technology and Exploring Engineering",
+                        "doi_number": "10.35940/ijitee.\nA1077.1191S19\n",
+                        "page_no": "390-394",
+                        "vol_no_/_issue_no": "Volume-9, Issue-1S",
+                        "month_&_year": "Nov-19",
+                        "indexed_in_sci_/_scopus": "SCOPUS ",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Z. Brijet N.Bharathi",
-                        "PAPER_TITLE": "Design of type-2 fuzzy logic controller for fluid catalytic cracking unit",
-                        "JOURNAL_NAME": "International Journal of Manufacturing Technology and Management",
-                        "DOI_NUMBER": "https://doi.org/10.1504/IJMTM.2021.114700",
-                        "PAGE_NO": "51-68",
-                        "VOL_NO_/_ISSUE_NO": "Vol.35 No.1",
-                        "MONTH_&_YEAR": "Apr-21",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Z. Brijet N.Bharathi",
+                        "paper_title": "Design of type-2 fuzzy logic controller for fluid catalytic cracking unit",
+                        "journal_name": "International Journal of Manufacturing Technology and Management",
+                        "doi_number": "https://doi.org/10.1504/IJMTM.2021.114700",
+                        "page_no": "51-68",
+                        "vol_no_/_issue_no": "Vol.35 No.1",
+                        "month_&_year": "Apr-21",
+                        "indexed_in_sci_/_scopus": "SCOPUS ",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Z.Brijet,T.Suresh,.BlessinSheeba",
-                        "PAPER_TITLE": "CMVHHO-DKMLC: A Chaotic Multi Verse Harris Hawks optimization (CMV-HHO) algorithm based deep kernel optimized machine learning classifier for medical diagnosis",
-                        "JOURNAL_NAME": "Biomedical Signal Processing and Control (Elsevier)",
-                        "DOI_NUMBER": "10.1016/j.bspc.2021.103034",
-                        "VOL_NO_/_ISSUE_NO": "Vol. 70",
-                        "MONTH_&_YEAR": "Sep-21",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Z.Brijet,T.Suresh,.BlessinSheeba",
+                        "paper_title": "CMVHHO-DKMLC: A Chaotic Multi Verse Harris Hawks optimization (CMV-HHO) algorithm based deep kernel optimized machine learning classifier for medical diagnosis",
+                        "journal_name": "Biomedical Signal Processing and Control (Elsevier)",
+                        "doi_number": "10.1016/j.bspc.2021.103034",
+                        "vol_no_/_issue_no": "Vol. 70",
+                        "month_&_year": "Sep-21",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Z.Brijet,T.Suresh,",
-                        "PAPER_TITLE": "Optimized Fault Tolerant core-based ASIC design",
-                        "JOURNAL_NAME": "International Journal of Manufacturing Technology and Management",
-                        "DOI_NUMBER": "https://doi.org/10.1504/IJMTM.2021.121573",
-                        "PAGE_NO": "485-493",
-                        "VOL_NO_/_ISSUE_NO": "Vol.35, No 6",
-                        "MONTH_&_YEAR": "Mar-22",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS ",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Z.Brijet,T.Suresh,",
+                        "paper_title": "Optimized Fault Tolerant core-based ASIC design",
+                        "journal_name": "International Journal of Manufacturing Technology and Management",
+                        "doi_number": "https://doi.org/10.1504/IJMTM.2021.121573",
+                        "page_no": "485-493",
+                        "vol_no_/_issue_no": "Vol.35, No 6",
+                        "month_&_year": "Mar-22",
+                        "indexed_in_sci_/_scopus": "SCOPUS ",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "T Suresh, Z Brijet",
-                        "PAPER_TITLE": "Optimization assisted convolutional neural network for detection of thyroid",
-                        "JOURNAL_NAME": "Concurrency and Computation-Practice & Experience",
-                        "DOI_NUMBER": "https://doi.org/10.1002/cpe.7268",
-                        "PAGE_NO": "1532-0626",
-                        "VOL_NO_/_ISSUE_NO": "Vol. 34",
-                        "MONTH_&_YEAR": "23-Aug",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "T Suresh, Z Brijet",
+                        "paper_title": "Optimization assisted convolutional neural network for detection of thyroid",
+                        "journal_name": "Concurrency and Computation-Practice & Experience",
+                        "doi_number": "https://doi.org/10.1002/cpe.7268",
+                        "page_no": "1532-0626",
+                        "vol_no_/_issue_no": "Vol. 34",
+                        "month_&_year": "23-Aug",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "T Suresh, Z Brijet, TD Subha",
-                        "PAPER_TITLE": "Imbalanced medical disease dataset classification using enhanced generative adversarial network",
-                        "JOURNAL_NAME": "Computer Methods in Biomechanics and Biomedical Engineering",
-                        "DOI_NUMBER": "https://doi.org/10.1080/10255842.2022.2134729",
-                        "PAGE_NO": "1702-1718",
-                        "VOL_NO_/_ISSUE_NO": "Vol. 26",
-                        "MONTH_&_YEAR": "22-Aug",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "T Suresh, Z Brijet, TD Subha",
+                        "paper_title": "Imbalanced medical disease dataset classification using enhanced generative adversarial network",
+                        "journal_name": "Computer Methods in Biomechanics and Biomedical Engineering",
+                        "doi_number": "https://doi.org/10.1080/10255842.2022.2134729",
+                        "page_no": "1702-1718",
+                        "vol_no_/_issue_no": "Vol. 26",
+                        "month_&_year": "22-Aug",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "Z Brijet, T Suresh",
-                        "PAPER_TITLE": "Optimum control of undergrate pressure of clinker cooler by optimizing the proportional integral derivative controller parameters using honey badger algorithm technique",
-                        "JOURNAL_NAME": "Optimum control applications and methods",
-                        "DOI_NUMBER": "https://doi.org/10.1002/cpe.7268",
-                        "PAGE_NO": "2938-2959",
-                        "VOL_NO_/_ISSUE_NO": "Vol. 44",
-                        "MONTH_&_YEAR": "AUG-23",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Z Brijet, T Suresh",
+                        "paper_title": "Optimum control of undergrate pressure of clinker cooler by optimizing the proportional integral derivative controller parameters using honey badger algorithm technique",
+                        "journal_name": "Optimum control applications and methods",
+                        "doi_number": "https://doi.org/10.1002/cpe.7268",
+                        "page_no": "2938-2959",
+                        "vol_no_/_issue_no": "Vol. 44",
+                        "month_&_year": "AUG-23",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [
+                "conference_publications": [
                     {
-                        "AUTHORS": "BRIJET Z",
-                        "PAPER_TITLE": "Design of OptimaL  Controller  for Quadruple Tank System",
-                        "CONFERENCE_NAME": "International Conference on System Dynamics  and Control",
-                        "ORGANIZED_BY": "Manipal  Institute Of Technology",
-                        "MONTH_&_YEAR": "19-22Aug ,2010"
+                        "authors": "BRIJET Z",
+                        "paper_title": "Design of OptimaL  Controller  for Quadruple Tank System",
+                        "conference_name": "International Conference on System Dynamics  and Control",
+                        "organized_by": "Manipal  Institute Of Technology",
+                        "month_&_year": "19-22Aug ,2010"
                     },
                     {
-                        "AUTHORS": "BRIJET Z",
-                        "PAPER_TITLE": "Design of Ultra Filtration process using DCS",
-                        "CONFERENCE_NAME": "International Conference on SystemDynamic sand Control",
-                        "ORGANIZED_BY": "Manipal  Institute Of Technology",
-                        "MONTH_&_YEAR": "19-22Aug ,2010"
+                        "authors": "BRIJET Z",
+                        "paper_title": "Design of Ultra Filtration process using DCS",
+                        "conference_name": "International Conference on SystemDynamic sand Control",
+                        "organized_by": "Manipal  Institute Of Technology",
+                        "month_&_year": "19-22Aug ,2010"
                     },
                     {
-                        "AUTHORS": "BRIJET Z",
-                        "PAPER_TITLE": "Realcoded Gatuned Fuzzy Logi cController for Fluid Catalytic Cracking Unit",
-                        "CONFERENCE_NAME": "ICMOC-2012",
-                        "ORGANIZED_BY": "NoorulIslamUniversity",
-                        "MONTH_&_YEAR": "10-12April 2011-2012"
+                        "authors": "BRIJET Z",
+                        "paper_title": "Realcoded Gatuned Fuzzy Logi cController for Fluid Catalytic Cracking Unit",
+                        "conference_name": "ICMOC-2012",
+                        "organized_by": "NoorulIslamUniversity",
+                        "month_&_year": "10-12April 2011-2012"
                     },
                     {
-                        "AUTHORS": "BRIJET Z",
-                        "PAPER_TITLE": "DesignandImplementation Of Model Predictive Controller for Fluid Catalytic Cracking Unit ",
-                        "CONFERENCE_NAME": "Internationa lConference  on EmergingEngineering Trends-2K13",
-                        "ORGANIZED_BY": "Magna Engineering College",
-                        "MONTH_&_YEAR": "10-12April 2013"
+                        "authors": "BRIJET Z",
+                        "paper_title": "DesignandImplementation Of Model Predictive Controller for Fluid Catalytic Cracking Unit ",
+                        "conference_name": "Internationa lConference  on EmergingEngineering Trends-2K13",
+                        "organized_by": "Magna Engineering College",
+                        "month_&_year": "10-12April 2013"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [
+                "book_publications": [
                     {
-                        "AUTHOR": "DR.V.R.RAVI,DR.Z.BRIJET",
-                        "BOOK_NAME,_EDITION": "COMPUTER CONTROL OF PROCESS",
-                        "PUBLISHER": "SAI PUBLISHER",
-                        "ISBN_/_ISSN_NO": "978-93-82010-51-7",
-                        "MONTH_&_YEAR": "2017-04-01",
-                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                        "author": "DR.V.R.RAVI,DR.Z.BRIJET",
+                        "book_name,_edition": "COMPUTER CONTROL OF PROCESS",
+                        "publisher": "SAI PUBLISHER",
+                        "isbn_/_issn_no": "978-93-82010-51-7",
+                        "month_&_year": "2017-04-01",
+                        "book_/_book_chapter": "BOOK"
                     }
                 ],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "ISTE ,ISA",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 1,
-                    "Patent_Published": 2,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 14,
-                    "Conference_Publications": 4,
-                    "Book_/_Book_Chapter_Published": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "ISTE ,ISA",
+                    "sponsored_projects": 0,
+                    "patent_granted": 1,
+                    "patent_published": 2,
+                    "patent_filed": 0,
+                    "journal_publications": 14,
+                    "conference_publications": 4,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 2,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             }
         ]
@@ -332,10 +333,11 @@
     {
         "FACULTY": [
             {
-                "Name": "DR. SIVARAJ S N",
-                "Designation": "Associate Professor",
-                "Department_Name": "Electronics & Instrumentation Engineering",
-                "Mail_ID": "sivaraj@velammal.edu.in",
+                "name": "DR. SIVARAJ S N",
+                "unique_id": "VEC-008-F-01",
+                "designation": "Associate Professor",
+                "department_name": "Electronics & Instrumentation Engineering",
+                "mail_id": "sivaraj@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/008/VEC-008-04-172.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/s-n-sivaraj/",
@@ -345,174 +347,175 @@
                     "publonprofile": "",
                     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57221226827"
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "Ph.D",
-                        "BRANCH": "PROCESS CONTROL",
-                        "INSTITUTE": "ANNA UNIVERSITY",
-                        "YEAR": 2019
+                        "degree": "Ph.D",
+                        "branch": "PROCESS CONTROL",
+                        "institute": "ANNA UNIVERSITY",
+                        "year": 2019
                     },
                     {
-                        "DEGREE": "M.E",
-                        "BRANCH": "PROCESS CONTROL AND INSTRUMENTATION",
-                        "INSTITUTE": "ANNAMALAI UNIVERSITY",
-                        "YEAR": 2006
+                        "degree": "M.E",
+                        "branch": "PROCESS CONTROL AND INSTRUMENTATION",
+                        "institute": "ANNAMALAI UNIVERSITY",
+                        "year": 2006
                     },
                     {
-                        "DEGREE": "B.E",
-                        "BRANCH": "ELECTRONICS AND INSTRUMENTATION",
-                        "INSTITUTE": "ANNAMALAI UNIVERSITY",
-                        "YEAR": 2002
+                        "degree": "B.E",
+                        "branch": "ELECTRONICS AND INSTRUMENTATION",
+                        "institute": "ANNAMALAI UNIVERSITY",
+                        "year": 2002
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "2006-07-03 00:00:00",
-                        "Unnamed:_1": "TILL DATE",
-                        "EXPERIENCE": "2",
-                        "Unnamed:_3": "0.5",
-                        "DESIGNATION": "LECTURER",
-                        "INSTITUTION": "RAJARAJESWARI ENGINEERING COLLEGE"
+                        "duration": "2006-07-03 00:00:00",
+                        "unnamed:_1": "TILL DATE",
+                        "experience": "2",
+                        "unnamed:_3": "0.5",
+                        "designation": "LECTURER",
+                        "institution": "RAJARAJESWARI ENGINEERING COLLEGE"
                     },
                     {
-                        "DURATION": "2002-06-08 00:00:00",
-                        "Unnamed:_1": "2004-06-22 00:00:00",
-                        "EXPERIENCE": "18",
-                        "Unnamed:_3": "7",
-                        "DESIGNATION": "ASSISTANT PROFESSOR",
-                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE"
+                        "duration": "2002-06-08 00:00:00",
+                        "unnamed:_1": "2004-06-22 00:00:00",
+                        "experience": "18",
+                        "unnamed:_3": "7",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE"
                     }
                 ],
-                "PROJECTS": [
+                "projects": [
                     {
-                        "TITLE": "Internal climatic control of green house/climatic chamber by controlling temperature & humidity inside the chamber",
-                        "SPONSORING_AGENCY": "AICTE",
-                        "AMOUNT": "9.89 LAKHS",
-                        "YEAR_OF_SANCTION": "2013",
-                        "DURATION": "3 YEARS",
-                        "RESPONSIBILITY_(PI_/_CO_PI)": "CO PI",
-                        "STATUS_(_Completed_/_Ongoing)": "COMPLETED"
+                        "title": "Internal climatic control of green house/climatic chamber by controlling temperature & humidity inside the chamber",
+                        "sponsoring_agency": "AICTE",
+                        "amount": "9.89 LAKHS",
+                        "year_of_sanction": "2013",
+                        "duration": "3 YEARS",
+                        "responsibility_(pi_/_co_pi)": "CO PI",
+                        "status_(_completed_/_ongoing)": "COMPLETED"
                     }
                 ],
-                "PATENTS": [
+                "patents": [
                     {
-                        "NAME_OF_PATENT": "IoT Based Automation For The Purpose of Monitoring Temperature & Vibration in Processes & Preventing Accidents.",
-                        "PATENT_TYPE_(UTILITY)": "UTILITY",
-                        "COUNTRY": "INDIA",
-                        "STATUS_(_Published_/_FER_/_Granted_)": "PUBLISHED",
-                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2023-09-01"
+                        "name_of_patent": "IoT Based Automation For The Purpose of Monitoring Temperature & Vibration in Processes & Preventing Accidents.",
+                        "patent_type_(utility)": "UTILITY",
+                        "country": "INDIA",
+                        "status_(_published_/_fer_/_granted_)": "PUBLISHED",
+                        "date_of_recent_achieved_level": "2023-09-01"
                     },
                     {
-                        "NAME_OF_PATENT": "Radial Pen Plotter",
-                        "PATENT_TYPE_(UTILITY)": "DESIGN",
-                        "COUNTRY": "INDIA",
-                        "STATUS_(_Published_/_FER_/_Granted_)": "PUBLISHED",
-                        "DATE_OF_RECENT_ACHIEVED_LEVEL": "2024-05-03"
+                        "name_of_patent": "Radial Pen Plotter",
+                        "patent_type_(utility)": "DESIGN",
+                        "country": "INDIA",
+                        "status_(_published_/_fer_/_granted_)": "PUBLISHED",
+                        "date_of_recent_achieved_level": "2024-05-03"
                     }
                 ],
-                "JOURNAL_PUBLICATIONS": [
+                "journal_publications": [
                     {
-                        "AUTHORS": "Sivaraj Subramanian Natarajana*, Vijayakarthick Muthukumaranb , & Sathishbabu Santhanamc",
-                        "PAPER_TITLE": "Enhancing frequency regulation in Nuclear-renewable hybrid energy systems through optimally configured FOPID controllers and adaptive pelican optimization algorithm",
-                        "JOURNAL_NAME": "Indian Journal of Engineering and Material Sciences\nISSN: 0971-4588, E-ISSN: 0975-1017\nIndian Journal of Engineering and Material Sciences\nISSN: 0971-4588, E-ISSN: 0975-1017\n",
-                        "DOI_NUMBER": "https://doi.org/10.56042/ijems.v31i3.7422 ",
-                        "PAGE_NO": "405-415",
-                        "VOL_NO_/_ISSUE_NO": "31",
-                        "MONTH_&_YEAR": "JUNE 2024",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Sivaraj Subramanian Natarajana*, Vijayakarthick Muthukumaranb , & Sathishbabu Santhanamc",
+                        "paper_title": "Enhancing frequency regulation in Nuclear-renewable hybrid energy systems through optimally configured FOPID controllers and adaptive pelican optimization algorithm",
+                        "journal_name": "Indian Journal of Engineering and Material Sciences\nISSN: 0971-4588, E-ISSN: 0975-1017\nIndian Journal of Engineering and Material Sciences\nISSN: 0971-4588, E-ISSN: 0975-1017\n",
+                        "doi_number": "https://doi.org/10.56042/ijems.v31i3.7422 ",
+                        "page_no": "405-415",
+                        "vol_no_/_issue_no": "31",
+                        "month_&_year": "JUNE 2024",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "1 S. Srinivasan\n2 M.S. Vinmathi\n3 S.N. Sivaraj\n4 A. Karthikayen\n5 C. Alakesan\n6 M. Preetha",
-                        "PAPER_TITLE": "A Novel Approach Integrating IoT and WSN with Predictive Modeling and Optimization for Enhancing Efficiency and Sustainability in Smart Cities",
-                        "JOURNAL_NAME": "Journal of Electrical Systems ",
-                        "DOI_NUMBER": "https://doi.org/10.52783/jes.2393 ",
-                        "PAGE_NO": " 2228-22237\n",
-                        "VOL_NO_/_ISSUE_NO": "Vol 20 NO.4\n",
-                        "MONTH_&_YEAR": "2024",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "1 S. Srinivasan\n2 M.S. Vinmathi\n3 S.N. Sivaraj\n4 A. Karthikayen\n5 C. Alakesan\n6 M. Preetha",
+                        "paper_title": "A Novel Approach Integrating IoT and WSN with Predictive Modeling and Optimization for Enhancing Efficiency and Sustainability in Smart Cities",
+                        "journal_name": "Journal of Electrical Systems ",
+                        "doi_number": "https://doi.org/10.52783/jes.2393 ",
+                        "page_no": " 2228-22237\n",
+                        "vol_no_/_issue_no": "Vol 20 NO.4\n",
+                        "month_&_year": "2024",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S.N.Sivaraj1*, M.Vijayakarthick2\n\n, N.Vinoth2\n\n, S.Sathishbabu3",
-                        "PAPER_TITLE": "Real Time Virtual Instrumentation based Control of Climatic Condition in a 4 x 2 MIMO Climatic Chamber through Expert System",
-                        "JOURNAL_NAME": "Journal of Harbin Engineering University ISSN: 1006-7043",
-                        "DOI_NUMBER": "https://harbinengineeringjournal.com/index.php/journal/article/view/259",
-                        "PAGE_NO": "15-19",
-                        "VOL_NO_/_ISSUE_NO": " Vol 44 No. 6",
-                        "MONTH_&_YEAR": "JUNE 2023",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S.N.Sivaraj1*, M.Vijayakarthick2\n\n, N.Vinoth2\n\n, S.Sathishbabu3",
+                        "paper_title": "Real Time Virtual Instrumentation based Control of Climatic Condition in a 4 x 2 MIMO Climatic Chamber through Expert System",
+                        "journal_name": "Journal of Harbin Engineering University ISSN: 1006-7043",
+                        "doi_number": "https://harbinengineeringjournal.com/index.php/journal/article/view/259",
+                        "page_no": "15-19",
+                        "vol_no_/_issue_no": " Vol 44 No. 6",
+                        "month_&_year": "JUNE 2023",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "M. Vijayakarthick 1,*, E. Sivaraman 2, S. Sathishbabu 3, N.\n\nVinoth 1, and S.N. Sivaraj 4",
-                        "PAPER_TITLE": "Modelling and Predictive Analytics of COVID-19 Transmission Using Gustafson–Kessel Fuzzy Clustering Approach",
-                        "JOURNAL_NAME": "The Computer Journal\nISSN 0010 – 4620, E-ISSN 1460-2067\n",
-                        "DOI_NUMBER": "https://doi.org/10.1093/comjnl/bxac022",
-                        "PAGE_NO": "3240 - 3249",
-                        "VOL_NO_/_ISSUE_NO": "Vol.65, No.12",
-                        "MONTH_&_YEAR": "DEC 2022",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "M. Vijayakarthick 1,*, E. Sivaraman 2, S. Sathishbabu 3, N.\n\nVinoth 1, and S.N. Sivaraj 4",
+                        "paper_title": "Modelling and Predictive Analytics of COVID-19 Transmission Using Gustafson–Kessel Fuzzy Clustering Approach",
+                        "journal_name": "The Computer Journal\nISSN 0010 – 4620, E-ISSN 1460-2067\n",
+                        "doi_number": "https://doi.org/10.1093/comjnl/bxac022",
+                        "page_no": "3240 - 3249",
+                        "vol_no_/_issue_no": "Vol.65, No.12",
+                        "month_&_year": "DEC 2022",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "1Mr.S.N.Sivaraj,\n\n2Dr.N.Bharathi, 3Dr. V.R.Ravi and 3Mr.B.Karthikeyan",
-                        "PAPER_TITLE": "Implementation of real time climatic control inside a chamber by controlling temperature and relative humidity using output averaging method.",
-                        "JOURNAL_NAME": "International Journal of Applied Engineering Research, ISSN 0973-4562",
-                        "DOI_NUMBER": "https://www.ripublication.com/Volume/ijaerv10n55spl.htm",
-                        "PAGE_NO": "903-906",
-                        "VOL_NO_/_ISSUE_NO": "Vol. 10 No.55",
-                        "MONTH_&_YEAR": "2015",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "1Mr.S.N.Sivaraj,\n\n2Dr.N.Bharathi, 3Dr. V.R.Ravi and 3Mr.B.Karthikeyan",
+                        "paper_title": "Implementation of real time climatic control inside a chamber by controlling temperature and relative humidity using output averaging method.",
+                        "journal_name": "International Journal of Applied Engineering Research, ISSN 0973-4562",
+                        "doi_number": "https://www.ripublication.com/Volume/ijaerv10n55spl.htm",
+                        "page_no": "903-906",
+                        "vol_no_/_issue_no": "Vol. 10 No.55",
+                        "month_&_year": "2015",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "C.V.Dayakar 1\n\n, S. N. Sivaraj2\n\n, B. Karthikeyan 3\n\n, S.Gunasekar4",
-                        "PAPER_TITLE": "Wind Turbine Gearbox Condition Monitoring using PLC and SCADA",
-                        "JOURNAL_NAME": "International Journal of Applied Engineering Research, ISSN 0973-4562",
-                        "DOI_NUMBER": "https://www.ripublication.com/Volume/ijaerv10n44spl.htm",
-                        "PAGE_NO": "30681-30684",
-                        "VOL_NO_/_ISSUE_NO": "Vol. 10 No.44",
-                        "MONTH_&_YEAR": "2015",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "C.V.Dayakar 1\n\n, S. N. Sivaraj2\n\n, B. Karthikeyan 3\n\n, S.Gunasekar4",
+                        "paper_title": "Wind Turbine Gearbox Condition Monitoring using PLC and SCADA",
+                        "journal_name": "International Journal of Applied Engineering Research, ISSN 0973-4562",
+                        "doi_number": "https://www.ripublication.com/Volume/ijaerv10n44spl.htm",
+                        "page_no": "30681-30684",
+                        "vol_no_/_issue_no": "Vol. 10 No.44",
+                        "month_&_year": "2015",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [
+                "conference_publications": [],
+                "book_publications": [
                     {
-                        "AUTHOR": "S.N. Sivaraj, B. Vishal and G.K. Kamaleshwar",
-                        "BOOK_NAME,_EDITION": "Recent trends in Instrumentation and control",
-                        "PUBLISHER": "Allied Publishers Pvt Ltd",
-                        "ISBN_/_ISSN_NO": "978-93-89934-36-6",
-                        "MONTH_&_YEAR": 2024,
-                        "BOOK_/_BOOK_CHAPTER": "BOOK CHAPTER"
+                        "author": "S.N. Sivaraj, B. Vishal and G.K. Kamaleshwar",
+                        "book_name,_edition": "Recent trends in Instrumentation and control",
+                        "publisher": "Allied Publishers Pvt Ltd",
+                        "isbn_/_issn_no": "978-93-89934-36-6",
+                        "month_&_year": 2024,
+                        "book_/_book_chapter": "BOOK CHAPTER"
                     }
                 ],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 1,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 2,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 6,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 2,
+                    "patent_filed": 0,
+                    "journal_publications": 6,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR.DAYAKAR C V",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Electronics & Instrumentation Engineering",
-                "Mail_ID": "dayakar@velammal.edu.in",
+                "name": "MR.DAYAKAR C V",
+                "unique_id": "VEC-008-F-02",
+                "designation": "Assistant Professor",
+                "department_name": "Electronics & Instrumentation Engineering",
+                "mail_id": "dayakar@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/008/VEC-008-04-174.webp",
                 "socialmedia_links": {
                     "linkedin": "",
@@ -522,107 +525,108 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.E.",
-                        "BRANCH": "ELECTRONICS AND COMMUNICATION ENGINEERING",
-                        "INSTITUTE": "SRI SAI RAM ENGINEERING COLLEGE, CHENNAI",
-                        "YEAR": 2001
+                        "degree": "B.E.",
+                        "branch": "ELECTRONICS AND COMMUNICATION ENGINEERING",
+                        "institute": "SRI SAI RAM ENGINEERING COLLEGE, CHENNAI",
+                        "year": 2001
                     },
                     {
-                        "DEGREE": "M.TECH",
-                        "BRANCH": "INSTRUMENTATION AND CONTROL",
-                        "INSTITUTE": "JNTU KAKINADA",
-                        "YEAR": 2007
+                        "degree": "M.TECH",
+                        "branch": "INSTRUMENTATION AND CONTROL",
+                        "institute": "JNTU KAKINADA",
+                        "year": 2007
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "01.09.2001",
-                        "Unnamed:_1": "27.06.2007",
-                        "EXPERIENCE": "5",
-                        "Unnamed:_3": "9",
-                        "DESIGNATION": "LECTURER",
-                        "INSTITUTION": "NARAYANA ENGINEERING COLLEGE, GUDUR, NELLORE DIST"
+                        "duration": "01.09.2001",
+                        "unnamed:_1": "27.06.2007",
+                        "experience": "5",
+                        "unnamed:_3": "9",
+                        "designation": "LECTURER",
+                        "institution": "NARAYANA ENGINEERING COLLEGE, GUDUR, NELLORE DIST"
                     },
                     {
-                        "DURATION": "28.06.2007",
-                        "Unnamed:_1": "TILL DATE",
-                        "EXPERIENCE": "17",
-                        "Unnamed:_3": "7",
-                        "DESIGNATION": "ASSISTANT PROFESSOR",
-                        "INSTITUTION": "VELAMMAL ENGINEERING COLLEGE, CHENNAI"
+                        "duration": "28.06.2007",
+                        "unnamed:_1": "TILL DATE",
+                        "experience": "17",
+                        "unnamed:_3": "7",
+                        "designation": "ASSISTANT PROFESSOR",
+                        "institution": "VELAMMAL ENGINEERING COLLEGE, CHENNAI"
                     }
                 ],
-                "PROJECTS": [
+                "projects": [
                     {
-                        "AMOUNT": "NIL"
+                        "amount": "NIL"
                     }
                 ],
-                "PATENTS": [
+                "patents": [
                     {
-                        "NAME_OF_PATENT": "NIL"
+                        "name_of_patent": "NIL"
                     }
                 ],
-                "JOURNAL_PUBLICATIONS": [
+                "journal_publications": [
                     {
-                        "JOURNAL_NAME": "NIL"
+                        "journal_name": "NIL"
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [
+                "conference_publications": [
                     {
-                        "AUTHORS": "Padma S, Ayushi jha ",
-                        "CONFERENCE_NAME": "NIL"
+                        "authors": "Padma S, Ayushi jha ",
+                        "conference_name": "NIL"
                     },
                     {
-                        "AUTHORS": "P.U.Ilavarasi, S.Padma, R.Thennarasu,R.Aravindan "
+                        "authors": "P.U.Ilavarasi, S.Padma, R.Thennarasu,R.Aravindan "
                     },
                     {
-                        "AUTHORS": "S.Padma, P.u.Ilavarasi, M.Byju, M.saranraj"
+                        "authors": "S.Padma, P.u.Ilavarasi, M.Byju, M.saranraj"
                     },
                     {
-                        "AUTHORS": "S.Padma,P.U.Ilavarasi,Amith Infant.B, Anusan "
+                        "authors": "S.Padma,P.U.Ilavarasi,Amith Infant.B, Anusan "
                     },
                     {
-                        "AUTHORS": "S.Padma,K.Vijayalakshmi, G.Sangameshwaran, "
+                        "authors": "S.Padma,K.Vijayalakshmi, G.Sangameshwaran, "
                     },
                     {
-                        "AUTHORS": "Arshiya Fathima, Nargis banu, K.V.Kandasamy, S.Padma"
+                        "authors": "Arshiya Fathima, Nargis banu, K.V.Kandasamy, S.Padma"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [
+                "book_publications": [
                     {
-                        "AUTHOR": "NIL"
+                        "author": "NIL"
                     }
                 ],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [
+                "consultancy": [],
+                "research_scholars": [
                     {
-                        "RESEARCH_SCHOLAR_NAME": "NIL"
+                        "research_scholar_name": "NIL"
                     }
                 ],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 1,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 1,
-                    "Conference_Publications": 6,
-                    "Book_/_Book_Chapter_Published": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 20,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 1,
+                    "conference_publications": 6,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 2,
+                    "seminar_/_workshop_/_guest_lectures_attended": 20,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "DR. ANUSANKARI S",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Electronics & Instrumentation Engineering",
-                "Mail_ID": "anusankari@velammal.edu.in",
+                "name": "DR. ANUSANKARI S",
+                "unique_id": "VEC-008-F-03",
+                "designation": "Assistant Professor",
+                "department_name": "Electronics & Instrumentation Engineering",
+                "mail_id": "anusankari@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/008/VEC-008-04-128.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/anusankari-s-54964292",
@@ -632,192 +636,193 @@
                     "publonprofile": "",
                     "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57193494173"
                 },
-                "Professional_Membership": "ISTE",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "ISTE",
+                "educational_qualification": [
                     {
-                        "DEGREE": "B.E.",
-                        "BRANCH": "INSTRUMENTATION\n AND CONTROL\n ENGINEERING",
-                        "INSTITUTE": "SETHU\n INSTITUTE OF\n TECHNOLOGY\n PULLUR\n KARIAPATTI",
-                        "YEAR": "2002-05-01"
+                        "degree": "B.E.",
+                        "branch": "INSTRUMENTATION\n AND CONTROL\n ENGINEERING",
+                        "institute": "SETHU\n INSTITUTE OF\n TECHNOLOGY\n PULLUR\n KARIAPATTI",
+                        "year": "2002-05-01"
                     },
                     {
-                        "DEGREE": "M.Tech",
-                        "BRANCH": "CONTROL\n SYSTEMS AND\n INSTRUMENTATION",
-                        "INSTITUTE": "SASTRA DEEMED UNIVERSITY THIRUMALAISAMUDRAM THANJAVUR",
-                        "YEAR": "2004-06-01"
+                        "degree": "M.Tech",
+                        "branch": "CONTROL\n SYSTEMS AND\n INSTRUMENTATION",
+                        "institute": "SASTRA DEEMED UNIVERSITY THIRUMALAISAMUDRAM THANJAVUR",
+                        "year": "2004-06-01"
                     },
                     {
-                        "DEGREE": "Ph. D.",
-                        "BRANCH": "SENSORS\n AND\n INSTRUMENTATION",
-                        "INSTITUTE": "ANNA\n UNIVERSITY",
-                        "YEAR": "2020-11-01"
+                        "degree": "Ph. D.",
+                        "branch": "SENSORS\n AND\n INSTRUMENTATION",
+                        "institute": "ANNA\n UNIVERSITY",
+                        "year": "2020-11-01"
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "23.06.2004 ",
-                        "Unnamed:_1": "29.10.2005",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "4",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "Shanmugha Arts, Science, Technology and Research Academy, Thanjavur"
+                        "duration": "23.06.2004 ",
+                        "unnamed:_1": "29.10.2005",
+                        "experience": "1",
+                        "unnamed:_3": "4",
+                        "designation": "Lecturer",
+                        "institution": "Shanmugha Arts, Science, Technology and Research Academy, Thanjavur"
                     },
                     {
-                        "DURATION": "5.12.2005 ",
-                        "Unnamed:_1": "21.4.2007",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "4",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "Jaya engineering college, Chennai"
+                        "duration": "5.12.2005 ",
+                        "unnamed:_1": "21.4.2007",
+                        "experience": "1",
+                        "unnamed:_3": "4",
+                        "designation": "Lecturer",
+                        "institution": "Jaya engineering college, Chennai"
                     },
                     {
-                        "DURATION": "23.6.2008 ",
-                        "Unnamed:_1": "10.2.2010",
-                        "EXPERIENCE": "1",
-                        "Unnamed:_3": "7",
-                        "INSTITUTION": "Velammal Engineering college"
+                        "duration": "23.6.2008 ",
+                        "unnamed:_1": "10.2.2010",
+                        "experience": "1",
+                        "unnamed:_3": "7",
+                        "institution": "Velammal Engineering college"
                     },
                     {
-                        "DURATION": "11.2.2010 ",
-                        "Unnamed:_1": "31.05.2017",
-                        "EXPERIENCE": "7",
-                        "Unnamed:_3": "4",
-                        "DESIGNATION": "Assistant Professor - II "
+                        "duration": "11.2.2010 ",
+                        "unnamed:_1": "31.05.2017",
+                        "experience": "7",
+                        "unnamed:_3": "4",
+                        "designation": "Assistant Professor - II "
                     },
                     {
-                        "DURATION": "1.06.2017",
-                        "Unnamed:_1": "Till Date",
-                        "EXPERIENCE": "7",
-                        "Unnamed:_3": "3",
-                        "DESIGNATION": "Assistant Professor - III"
+                        "duration": "1.06.2017",
+                        "unnamed:_1": "Till Date",
+                        "experience": "7",
+                        "unnamed:_3": "3",
+                        "designation": "Assistant Professor - III"
                     }
                 ],
-                "PROJECTS": [
+                "projects": [
                     {
-                        "TITLE": "NIL"
+                        "title": "NIL"
                     }
                 ],
-                "PATENTS": [
+                "patents": [
                     {
-                        "NAME_OF_PATENT": "NIL"
+                        "name_of_patent": "NIL"
                     }
                 ],
-                "JOURNAL_PUBLICATIONS": [
+                "journal_publications": [
                     {
-                        "AUTHORS": "S. Anusankari, A. Balaji Ganesh, R. Subasri ",
-                        "PAPER_TITLE": "Assessment of meat freshness via optical measurement of Carbon Dioxide using Fluorescent capillary coating ",
-                        "JOURNAL_NAME": "Food Analytical methods ",
-                        "DOI_NUMBER": "https://doi.org/10.1007/s12161-024-02681-y",
-                        "PAGE_NO": "ON -LINE",
-                        "MONTH_&_YEAR": "2024-09-01",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S. Anusankari, A. Balaji Ganesh, R. Subasri ",
+                        "paper_title": "Assessment of meat freshness via optical measurement of Carbon Dioxide using Fluorescent capillary coating ",
+                        "journal_name": "Food Analytical methods ",
+                        "doi_number": "https://doi.org/10.1007/s12161-024-02681-y",
+                        "page_no": "ON -LINE",
+                        "month_&_year": "2024-09-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S. Anusankari, A. Balaji Ganesh, R. Subasri & N. Deepa",
-                        "PAPER_TITLE": "Optical determination of carbon dioxide and oxygen by a fluorescent membrane to evaluate the freshness of meat products",
-                        "JOURNAL_NAME": "Instrumentation Science & Technology",
-                        "DOI_NUMBER": "https://doi.org/10.1080/10739149.2019.1622132",
-                        "PAGE_NO": "640-665",
-                        "VOL_NO_/_ISSUE_NO": "VOL 47 / ISSUE 6",
-                        "MONTH_&_YEAR": "2019-05-01",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCI",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S. Anusankari, A. Balaji Ganesh, R. Subasri & N. Deepa",
+                        "paper_title": "Optical determination of carbon dioxide and oxygen by a fluorescent membrane to evaluate the freshness of meat products",
+                        "journal_name": "Instrumentation Science & Technology",
+                        "doi_number": "https://doi.org/10.1080/10739149.2019.1622132",
+                        "page_no": "640-665",
+                        "vol_no_/_issue_no": "VOL 47 / ISSUE 6",
+                        "month_&_year": "2019-05-01",
+                        "indexed_in_sci_/_scopus": "SCI",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S. Anusankari, A. BalajiGanesh, N. Deepa, M. Jayashree, S. Kumudha, \nS. Priya, K. Vaishnavi",
-                        "PAPER_TITLE": "Synthesis of Sol-Gel for pH and DO Measurement Based on Evanescent Wave Fiber Sensor",
-                        "JOURNAL_NAME": "International Journal of Applied Engineering Research",
-                        "DOI_NUMBER": "ISSN 0973-4562  No.56",
-                        "PAGE_NO": "2015",
-                        "VOL_NO_/_ISSUE_NO": "Vol. 10",
-                        "MONTH_&_YEAR": "2015-11-01",
-                        "INDEXED_IN_SCI_/_SCOPUS": "-",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S. Anusankari, A. BalajiGanesh, N. Deepa, M. Jayashree, S. Kumudha, \nS. Priya, K. Vaishnavi",
+                        "paper_title": "Synthesis of Sol-Gel for pH and DO Measurement Based on Evanescent Wave Fiber Sensor",
+                        "journal_name": "International Journal of Applied Engineering Research",
+                        "doi_number": "ISSN 0973-4562  No.56",
+                        "page_no": "2015",
+                        "vol_no_/_issue_no": "Vol. 10",
+                        "month_&_year": "2015-11-01",
+                        "indexed_in_sci_/_scopus": "-",
+                        "conference_name": ""
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [
+                "conference_publications": [
                     {
-                        "AUTHORS": "K. KUMAR, S. ANUSANKARI",
-                        "PAPER_TITLE": "APPLICATION OF LABVIEW FOR MONITORING AND CONTROL OF CORROSION",
-                        "CONFERENCE_NAME": " NCICCA 2005\n",
-                        "ORGANIZED_BY": " ARULMIGU\n KALASALINGAM\n COLLEGE OF\n ENGINEERING",
-                        "ISBN_/_ISSN_NO": "-",
-                        "MONTH_&_YEAR": " 02-04-2005"
+                        "authors": "K. KUMAR, S. ANUSANKARI",
+                        "paper_title": "APPLICATION OF LABVIEW FOR MONITORING AND CONTROL OF CORROSION",
+                        "conference_name": " NCICCA 2005\n",
+                        "organized_by": " ARULMIGU\n KALASALINGAM\n COLLEGE OF\n ENGINEERING",
+                        "isbn_/_issn_no": "-",
+                        "month_&_year": " 02-04-2005"
                     },
                     {
-                        "AUTHORS": "C. CHITRA, A. GOWTHAMI, G. NIRANJANA, V. SWATHY PRIYA, S. ANUSANKARI",
-                        "PAPER_TITLE": " MICROCONTROLLER\n BASED OPTICAL\n SENSOR FOR THE\n ESTIMATION OF\n CORROSION OF\n METALS",
-                        "CONFERENCE_NAME": "COMPC 10\n",
-                        "ORGANIZED_BY": " VELAMMAL\n ENGINEERING\n COLLEGE",
-                        "ISBN_/_ISSN_NO": "938004372",
-                        "MONTH_&_YEAR": " 29-01-2010"
+                        "authors": "C. CHITRA, A. GOWTHAMI, G. NIRANJANA, V. SWATHY PRIYA, S. ANUSANKARI",
+                        "paper_title": " MICROCONTROLLER\n BASED OPTICAL\n SENSOR FOR THE\n ESTIMATION OF\n CORROSION OF\n METALS",
+                        "conference_name": "COMPC 10\n",
+                        "organized_by": " VELAMMAL\n ENGINEERING\n COLLEGE",
+                        "isbn_/_issn_no": "938004372",
+                        "month_&_year": " 29-01-2010"
                     },
                     {
-                        "AUTHORS": "S. ANUSANKARI, A. BALAJI GANESH, N. DEEPA, M. JAYAHREE, S. KUMUDHA, S.PRIYA, K. VAISHNAVI",
-                        "PAPER_TITLE": " SYNTHESIS OF\n SOLGEL FOR PH\n AND DO\n MEASUREMENT\n BASED ON\n EVANESCENT WAVE\n FIBER SENSOR",
-                        "CONFERENCE_NAME": " NCSGC 2015\n ",
-                        "ORGANIZED_BY": " VELAMMAL\n ENGINEERING\n COLLEGE",
-                        "ISBN_/_ISSN_NO": "-",
-                        "MONTH_&_YEAR": " 10-04-2015"
+                        "authors": "S. ANUSANKARI, A. BALAJI GANESH, N. DEEPA, M. JAYAHREE, S. KUMUDHA, S.PRIYA, K. VAISHNAVI",
+                        "paper_title": " SYNTHESIS OF\n SOLGEL FOR PH\n AND DO\n MEASUREMENT\n BASED ON\n EVANESCENT WAVE\n FIBER SENSOR",
+                        "conference_name": " NCSGC 2015\n ",
+                        "organized_by": " VELAMMAL\n ENGINEERING\n COLLEGE",
+                        "isbn_/_issn_no": "-",
+                        "month_&_year": " 10-04-2015"
                     },
                     {
-                        "AUTHORS": "S. ANUSANKARI, A. BALAJI GANESH, K. KESAVAN, S.GOMATHI",
-                        "PAPER_TITLE": "ARRAYED\n WAVEGUIDE BASED\n INTERROGATOR\n USING FIBER\n BRAGG GRATING\n SENSOR FOR\n STRAIN AND\n VIBRATION\n MEASUREMENT",
-                        "CONFERENCE_NAME": " ICAMME 14 ",
-                        "ORGANIZED_BY": "SRI\n KRISHNA\n COLLEG OF\n ENGINEERING\n AND\n TECHNOLOGY",
-                        "ISBN_/_ISSN_NO": "-",
-                        "MONTH_&_YEAR": " 28-12-2017"
+                        "authors": "S. ANUSANKARI, A. BALAJI GANESH, K. KESAVAN, S.GOMATHI",
+                        "paper_title": "ARRAYED\n WAVEGUIDE BASED\n INTERROGATOR\n USING FIBER\n BRAGG GRATING\n SENSOR FOR\n STRAIN AND\n VIBRATION\n MEASUREMENT",
+                        "conference_name": " ICAMME 14 ",
+                        "organized_by": "SRI\n KRISHNA\n COLLEG OF\n ENGINEERING\n AND\n TECHNOLOGY",
+                        "isbn_/_issn_no": "-",
+                        "month_&_year": " 28-12-2017"
                     },
                     {
-                        "AUTHORS": "S. ANUSANKARI, ABISHYA DAVID, R. SUBASRI, A. BALAJI GANESH,",
-                        "PAPER_TITLE": " DUAL SENSING OF\n PH AND DO USING\n OPTO SOL\n FLUORESCENCE\n SPECTRAL\n ANALYSIS",
-                        "CONFERENCE_NAME": "ICACCCT 16",
-                        "ORGANIZED_BY": "SYED AMMAL\n ENGINEERING\n COLLEGE",
-                        "ISBN_/_ISSN_NO": " 978-1-4673-9544-1",
-                        "MONTH_&_YEAR": " 27-05-2016"
+                        "authors": "S. ANUSANKARI, ABISHYA DAVID, R. SUBASRI, A. BALAJI GANESH,",
+                        "paper_title": " DUAL SENSING OF\n PH AND DO USING\n OPTO SOL\n FLUORESCENCE\n SPECTRAL\n ANALYSIS",
+                        "conference_name": "ICACCCT 16",
+                        "organized_by": "SYED AMMAL\n ENGINEERING\n COLLEGE",
+                        "isbn_/_issn_no": " 978-1-4673-9544-1",
+                        "month_&_year": " 27-05-2016"
                     },
                     {
-                        "AUTHORS": "S.PADMA, Z. BRIJET, A. LAKSHMISANGEETHA, S. ANUSANKARI, R. THILAGAVATHY",
-                        "PAPER_TITLE": "Renewable Energy \nSource \nPowered Home \nAutomation \nsystem Using IOT ",
-                        "CONFERENCE_NAME": "ICCET-21 ",
-                        "ORGANIZED_BY": "Prince \nVenkateshwa\n ra \nPadmavathy \nEngineering \nCollege ",
-                        "ISBN_/_ISSN_NO": "-",
-                        "MONTH_&_YEAR": "11.04.2021"
+                        "authors": "S.PADMA, Z. BRIJET, A. LAKSHMISANGEETHA, S. ANUSANKARI, R. THILAGAVATHY",
+                        "paper_title": "Renewable Energy \nSource \nPowered Home \nAutomation \nsystem Using IOT ",
+                        "conference_name": "ICCET-21 ",
+                        "organized_by": "Prince \nVenkateshwa\n ra \nPadmavathy \nEngineering \nCollege ",
+                        "isbn_/_issn_no": "-",
+                        "month_&_year": "11.04.2021"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [
+                "book_publications": [
                     {
-                        "AUTHOR": "NIL"
+                        "author": "NIL"
                     }
                 ],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [
+                "consultancy": [],
+                "research_scholars": [
                     {
-                        "RESEARCH_SCHOLAR_NAME": "NIL"
+                        "research_scholar_name": "NIL"
                     }
                 ],
-                "COUNT": {
-                    "Professional_Membership": "ISTE",
-                    "Sponsored_Projects": 1,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 3,
-                    "Conference_Publications": 6,
-                    "Book_/_Book_Chapter_Published": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 2,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 23,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 9,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "count": {
+                    "professional_membership": "ISTE",
+                    "sponsored_projects": 1,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 3,
+                    "conference_publications": 6,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 2,
+                    "seminar_/_workshop_/_guest_lectures_attended": 23,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 9,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MRS. PADMA S",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Electronics & Instrumentation Engineering",
-                "Mail_ID": "padma@velammal.edu.in",
+                "name": "MRS. PADMA S",
+                "unique_id": "VEC-008-F-04",
+                "designation": "Assistant Professor",
+                "department_name": "Electronics & Instrumentation Engineering",
+                "mail_id": "padma@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/008/VEC-008-04-072.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/padma-s-905b15203/",
@@ -827,177 +832,178 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "ISA",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "ISA",
+                "educational_qualification": [
                     {
-                        "DEGREE": "M.E",
-                        "BRANCH": "POWER ELECTRONICS AND DRIVES",
-                        "INSTITUTE": "MADHA ENGINEERNG COLLEGE,ANNAUNIVERSITY",
-                        "YEAR": 2011
+                        "degree": "M.E",
+                        "branch": "POWER ELECTRONICS AND DRIVES",
+                        "institute": "MADHA ENGINEERNG COLLEGE,ANNAUNIVERSITY",
+                        "year": 2011
                     },
                     {
-                        "DEGREE": "B.E",
-                        "BRANCH": "INSTRUMENTATION AND CONTROL",
-                        "INSTITUTE": "SETHU INSTITUTE OF TECHNOLOGY ",
-                        "YEAR": 2003
+                        "degree": "B.E",
+                        "branch": "INSTRUMENTATION AND CONTROL",
+                        "institute": "SETHU INSTITUTE OF TECHNOLOGY ",
+                        "year": 2003
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "1.6.2017",
-                        "Unnamed:_1": "TILL DATE",
-                        "EXPERIENCE": "7",
-                        "Unnamed:_3": "3",
-                        "DESIGNATION": "ASSISTANT PROFESSOR-II",
-                        "INSTITUTION": "Velammal Engineering college"
+                        "duration": "1.6.2017",
+                        "unnamed:_1": "TILL DATE",
+                        "experience": "7",
+                        "unnamed:_3": "3",
+                        "designation": "ASSISTANT PROFESSOR-II",
+                        "institution": "Velammal Engineering college"
                     },
                     {
-                        "DURATION": "2011-06-20 00:00:00",
-                        "Unnamed:_1": "31.5.2017",
-                        "EXPERIENCE": "5",
-                        "Unnamed:_3": "11",
-                        "DESIGNATION": "ASSISTANT PROFESSOR-I",
-                        "INSTITUTION": "Velammal Engineering college"
+                        "duration": "2011-06-20 00:00:00",
+                        "unnamed:_1": "31.5.2017",
+                        "experience": "5",
+                        "unnamed:_3": "11",
+                        "designation": "ASSISTANT PROFESSOR-I",
+                        "institution": "Velammal Engineering college"
                     },
                     {
-                        "DURATION": "2006-10-16 00:00:00",
-                        "Unnamed:_1": "2007-09-03 00:00:00",
-                        "EXPERIENCE": "0",
-                        "Unnamed:_3": "11",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "K.L.N College of engineering ,Madurai"
+                        "duration": "2006-10-16 00:00:00",
+                        "unnamed:_1": "2007-09-03 00:00:00",
+                        "experience": "0",
+                        "unnamed:_3": "11",
+                        "designation": "Lecturer",
+                        "institution": "K.L.N College of engineering ,Madurai"
                     },
                     {
-                        "DURATION": "2003-12-18 00:00:00",
-                        "Unnamed:_1": "2006-10-12 00:00:00",
-                        "EXPERIENCE": "2",
-                        "Unnamed:_3": "10",
-                        "DESIGNATION": "Lecturer",
-                        "INSTITUTION": "Mookambigai Engineering College, Trichy"
+                        "duration": "2003-12-18 00:00:00",
+                        "unnamed:_1": "2006-10-12 00:00:00",
+                        "experience": "2",
+                        "unnamed:_3": "10",
+                        "designation": "Lecturer",
+                        "institution": "Mookambigai Engineering College, Trichy"
                     }
                 ],
-                "PROJECTS": [
+                "projects": [
                     {
-                        "TITLE": "Fishing Enbloc using vibration specific to Acoustic Frequency",
-                        "SPONSORING_AGENCY": "TNSCST",
-                        "AMOUNT": 7500,
-                        "YEAR_OF_SANCTION": "2019-2020",
-                        "DURATION": "1 year ",
-                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
-                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                        "title": "Fishing Enbloc using vibration specific to Acoustic Frequency",
+                        "sponsoring_agency": "TNSCST",
+                        "amount": 7500,
+                        "year_of_sanction": "2019-2020",
+                        "duration": "1 year ",
+                        "responsibility_(pi_/_co_pi)": "PI",
+                        "status_(_completed_/_ongoing)": "Completed"
                     },
                     {
-                        "TITLE": "Audible fish lure system ",
-                        "SPONSORING_AGENCY": "IEDC ",
-                        "AMOUNT": 200000,
-                        "YEAR_OF_SANCTION": "2021-2022",
-                        "DURATION": "1 year ",
-                        "RESPONSIBILITY_(PI_/_CO_PI)": "PI",
-                        "STATUS_(_Completed_/_Ongoing)": "Completed"
+                        "title": "Audible fish lure system ",
+                        "sponsoring_agency": "IEDC ",
+                        "amount": 200000,
+                        "year_of_sanction": "2021-2022",
+                        "duration": "1 year ",
+                        "responsibility_(pi_/_co_pi)": "PI",
+                        "status_(_completed_/_ongoing)": "Completed"
                     }
                 ],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [
+                "patents": [],
+                "journal_publications": [
                     {
-                        "AUTHORS": "Rajalakshmi S, Padma S , K.C Aarthi , P.Rajeswari",
-                        "PAPER_TITLE": "Ensemble Deep support vector machine for classification Cirrhosis",
-                        "JOURNAL_NAME": "Chinese Journal of Computational Mechanics",
-                        "DOI_NUMBER": "2023, ",
-                        "PAGE_NO": "486-492",
-                        "VOL_NO_/_ISSUE_NO": "44/ 5",
-                        "MONTH_&_YEAR": 2023,
-                        "INDEXED_IN_SCI_/_SCOPUS": "Scopus",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Rajalakshmi S, Padma S , K.C Aarthi , P.Rajeswari",
+                        "paper_title": "Ensemble Deep support vector machine for classification Cirrhosis",
+                        "journal_name": "Chinese Journal of Computational Mechanics",
+                        "doi_number": "2023, ",
+                        "page_no": "486-492",
+                        "vol_no_/_issue_no": "44/ 5",
+                        "month_&_year": 2023,
+                        "indexed_in_sci_/_scopus": "Scopus",
+                        "conference_name": ""
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [
+                "conference_publications": [
                     {
-                        "AUTHORS": "Padma S, Ayushi jha ",
-                        "PAPER_TITLE": "IOT enabled Temperature controlled water Bottle",
-                        "CONFERENCE_NAME": "  International Conference on Computational intelligence and Industry 5.0",
-                        "ORGANIZED_BY": "Velammal Institute of Technology",
-                        "ISBN_/_ISSN_NO": "978-81-967851-7-8",
-                        "MONTH_&_YEAR": "3 rd April 2024"
+                        "authors": "Padma S, Ayushi jha ",
+                        "paper_title": "IOT enabled Temperature controlled water Bottle",
+                        "conference_name": "  International Conference on Computational intelligence and Industry 5.0",
+                        "organized_by": "Velammal Institute of Technology",
+                        "isbn_/_issn_no": "978-81-967851-7-8",
+                        "month_&_year": "3 rd April 2024"
                     },
                     {
-                        "AUTHORS": "Padma.S, Brijet.Z, Lakshmi sangeetha, Anusankari,Thilagavathy",
-                        "PAPER_TITLE": "Renewable energy source powerd home automation system using IOT",
-                        "CONFERENCE_NAME": "International Conference on contemporary Engineering and Technology ",
-                        "ORGANIZED_BY": "Sri Prince Venkateshwara Padmavathy Engineering college",
-                        "MONTH_&_YEAR": "10-11 April 2021"
+                        "authors": "Padma.S, Brijet.Z, Lakshmi sangeetha, Anusankari,Thilagavathy",
+                        "paper_title": "Renewable energy source powerd home automation system using IOT",
+                        "conference_name": "International Conference on contemporary Engineering and Technology ",
+                        "organized_by": "Sri Prince Venkateshwara Padmavathy Engineering college",
+                        "month_&_year": "10-11 April 2021"
                     },
                     {
-                        "AUTHORS": "P.U.Ilavarasi, S.Padma, R.Thennarasu,R.Aravindan ",
-                        "PAPER_TITLE": "Design of stress monitor using wearable medical Technology",
-                        "CONFERENCE_NAME": "International Journal of scientific &Engineering Research ",
-                        "ISBN_/_ISSN_NO": " Issue 3, 2229-5518",
-                        "MONTH_&_YEAR": "2018-03-01 00:00:00"
+                        "authors": "P.U.Ilavarasi, S.Padma, R.Thennarasu,R.Aravindan ",
+                        "paper_title": "Design of stress monitor using wearable medical Technology",
+                        "conference_name": "International Journal of scientific &Engineering Research ",
+                        "isbn_/_issn_no": " Issue 3, 2229-5518",
+                        "month_&_year": "2018-03-01 00:00:00"
                     },
                     {
-                        "AUTHORS": "S.Padma, P.u.Ilavarasi, M.Byju, M.saranraj",
-                        "PAPER_TITLE": "PI based Interleaved SEPIC Converter for PV Applications",
-                        "CONFERENCE_NAME": "International conference on Contemporary Topics in Electrical and Electronics Engineering ",
-                        "ORGANIZED_BY": "Karpagam college of Engineering",
-                        "ISBN_/_ISSN_NO": "2229-5518",
-                        "MONTH_&_YEAR": "27&28 -02-2018"
+                        "authors": "S.Padma, P.u.Ilavarasi, M.Byju, M.saranraj",
+                        "paper_title": "PI based Interleaved SEPIC Converter for PV Applications",
+                        "conference_name": "International conference on Contemporary Topics in Electrical and Electronics Engineering ",
+                        "organized_by": "Karpagam college of Engineering",
+                        "isbn_/_issn_no": "2229-5518",
+                        "month_&_year": "27&28 -02-2018"
                     },
                     {
-                        "AUTHORS": "S.Padma,P.U.Ilavarasi,Amith Infant.B, Anusan ",
-                        "PAPER_TITLE": "Monitoring of solar energy using IOT ",
-                        "CONFERENCE_NAME": "Green Technologies for power genertaion , communication and Instrumentation ",
-                        "ORGANIZED_BY": "St.Peters University",
-                        "ISBN_/_ISSN_NO": "2393-8366",
-                        "MONTH_&_YEAR": "2017-06-01 00:00:00"
+                        "authors": "S.Padma,P.U.Ilavarasi,Amith Infant.B, Anusan ",
+                        "paper_title": "Monitoring of solar energy using IOT ",
+                        "conference_name": "Green Technologies for power genertaion , communication and Instrumentation ",
+                        "organized_by": "St.Peters University",
+                        "isbn_/_issn_no": "2393-8366",
+                        "month_&_year": "2017-06-01 00:00:00"
                     },
                     {
-                        "AUTHORS": "S.Padma,K.Vijayalakshmi, G.Sangameshwaran, ",
-                        "PAPER_TITLE": "Power generation uisng hybrid renewable energy resources for domestic applications",
-                        "CONFERENCE_NAME": "IEEE WISPNET 2016",
-                        "ORGANIZED_BY": "SSN College of Engineering",
-                        "ISBN_/_ISSN_NO": "978-1-4673-9339-3",
-                        "MONTH_&_YEAR": "2016-09-15 00:00:00"
+                        "authors": "S.Padma,K.Vijayalakshmi, G.Sangameshwaran, ",
+                        "paper_title": "Power generation uisng hybrid renewable energy resources for domestic applications",
+                        "conference_name": "IEEE WISPNET 2016",
+                        "organized_by": "SSN College of Engineering",
+                        "isbn_/_issn_no": "978-1-4673-9339-3",
+                        "month_&_year": "2016-09-15 00:00:00"
                     },
                     {
-                        "AUTHORS": "Arshiya Fathima, Nargis banu, K.V.Kandasamy, S.Padma",
-                        "PAPER_TITLE": "stand alone Hybrid energy harnessing system for light load applications ",
-                        "CONFERENCE_NAME": "International conference  on Green computing ,Communication and conservation of energy ",
-                        "ORGANIZED_BY": "R.M.D Engineering college",
-                        "ISBN_/_ISSN_NO": "978-1-4673-6126-2",
-                        "MONTH_&_YEAR": "2nd june 2014"
+                        "authors": "Arshiya Fathima, Nargis banu, K.V.Kandasamy, S.Padma",
+                        "paper_title": "stand alone Hybrid energy harnessing system for light load applications ",
+                        "conference_name": "International conference  on Green computing ,Communication and conservation of energy ",
+                        "organized_by": "R.M.D Engineering college",
+                        "isbn_/_issn_no": "978-1-4673-6126-2",
+                        "month_&_year": "2nd june 2014"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [
+                "book_publications": [
                     {
-                        "AUTHOR": "K.V.Kandasamy &S.PADMA",
-                        "BOOK_NAME,_EDITION": "POWER ELLECTRONICS",
-                        "PUBLISHER": "SriKrishna Publications",
-                        "MONTH_&_YEAR": 2016,
-                        "BOOK_/_BOOK_CHAPTER": "BOOK"
+                        "author": "K.V.Kandasamy &S.PADMA",
+                        "book_name,_edition": "POWER ELLECTRONICS",
+                        "publisher": "SriKrishna Publications",
+                        "month_&_year": 2016,
+                        "book_/_book_chapter": "BOOK"
                     }
                 ],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "ISA",
-                    "Sponsored_Projects": 2,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 1,
-                    "Conference_Publications": 7,
-                    "Book_/_Book_Chapter_Published": 1,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "ISA",
+                    "sponsored_projects": 2,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 1,
+                    "conference_publications": 7,
+                    "book_/_book_chapter_published": 1,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MRS. JAYABHARATHI C",
-                "Designation": "Assistant Professor",
-                "Department_Name": "Electronics & Instrumentation Engineering",
-                "Mail_ID": "jayabharathi@velammal.edu.in",
+                "name": "MRS. JAYABHARATHI C",
+                "unique_id": "VEC-008-F-05",
+                "designation": "Assistant Professor",
+                "department_name": "Electronics & Instrumentation Engineering",
+                "mail_id": "jayabharathi@velammal.edu.in",
                 "image_path": "/static/images/profile_photos/008/VEC-008-04-011.webp",
                 "socialmedia_links": {
                     "linkedin": "https://www.linkedin.com/in/jaya-bharathi-a976a3121/",
@@ -1007,102 +1013,102 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [
+                "professional_membership": "",
+                "educational_qualification": [
                     {
-                        "DEGREE": "Post Graduate",
-                        "BRANCH": "ME - Control and \nInstrumentation Engineering",
-                        "INSTITUTE": "Kongu Engineering College, \nPerundurai ",
-                        "YEAR": 2018
+                        "degree": "Post Graduate",
+                        "branch": "ME - Control and \nInstrumentation Engineering",
+                        "institute": "Kongu Engineering College, \nPerundurai ",
+                        "year": 2018
                     },
                     {
-                        "DEGREE": "Under Graduate",
-                        "BRANCH": "BE - Electronics and \nInstrumentation Engineering ",
-                        "INSTITUTE": "Kongu Engineering College, \nPerundurai ",
-                        "YEAR": 2016
+                        "degree": "Under Graduate",
+                        "branch": "BE - Electronics and \nInstrumentation Engineering ",
+                        "institute": "Kongu Engineering College, \nPerundurai ",
+                        "year": 2016
                     }
                 ],
-                "EXPERIENCE": [
+                "experience": [
                     {
-                        "DURATION": "2022-07-13 00:00:00",
-                        "Unnamed:_1": " 10/09/2023",
-                        "EXPERIENCE": "1 year",
-                        "Unnamed:_3": "2 months",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "Erode Senguthur Engineering \nCollege, Erode"
+                        "duration": "2022-07-13 00:00:00",
+                        "unnamed:_1": " 10/09/2023",
+                        "experience": "1 year",
+                        "unnamed:_3": "2 months",
+                        "designation": "Assistant Professor",
+                        "institution": "Erode Senguthur Engineering \nCollege, Erode"
                     },
                     {
-                        "DURATION": "2018-06-18 00:00:00",
-                        "Unnamed:_1": " 11/05/2019",
-                        "EXPERIENCE": "-",
-                        "Unnamed:_3": "11 months",
-                        "DESIGNATION": "Assistant Professor",
-                        "INSTITUTION": "M.A.M College of Engineering, \nTrichy"
+                        "duration": "2018-06-18 00:00:00",
+                        "unnamed:_1": " 11/05/2019",
+                        "experience": "-",
+                        "unnamed:_3": "11 months",
+                        "designation": "Assistant Professor",
+                        "institution": "M.A.M College of Engineering, \nTrichy"
                     }
                 ],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [
+                "projects": [],
+                "patents": [],
+                "journal_publications": [
                     {
-                        "AUTHORS": "Mythili S, Pousia S, Kalamani M, Hindhuja V, Nimisha C and Jayabharathi C ",
-                        "PAPER_TITLE": " A handy diagnostic tool for early congestive heart failure \nprediction using Catboost classifier",
-                        "JOURNAL_NAME": "Springer link: HIS \n2022: Hybrid Intelligent \nSystems",
-                        "PAGE_NO": "1041-1052",
-                        "VOL_NO_/_ISSUE_NO": "Volume No. - 647",
-                        "MONTH_&_YEAR": "May & 2023",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "Mythili S, Pousia S, Kalamani M, Hindhuja V, Nimisha C and Jayabharathi C ",
+                        "paper_title": " A handy diagnostic tool for early congestive heart failure \nprediction using Catboost classifier",
+                        "journal_name": "Springer link: HIS \n2022: Hybrid Intelligent \nSystems",
+                        "page_no": "1041-1052",
+                        "vol_no_/_issue_no": "Volume No. - 647",
+                        "month_&_year": "May & 2023",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     },
                     {
-                        "AUTHORS": "S Pousia, S Mythili, M Kalamani, R Manjith, JP Shri Tharanyaa, C Jayabharathi",
-                        "PAPER_TITLE": "Hybrid Convolutional Multilayer Perceptron for Cyber Physical Systems (HCMP-CPS)",
-                        "JOURNAL_NAME": "Springer link: HIS \n2022: Hybrid Intelligent \nSystems",
-                        "PAGE_NO": "1053-1063",
-                        "VOL_NO_/_ISSUE_NO": "Volume No. - 647",
-                        "MONTH_&_YEAR": "May & 2023",
-                        "INDEXED_IN_SCI_/_SCOPUS": "SCOPUS",
-                        "CONFERENCE_NAME": ""
+                        "authors": "S Pousia, S Mythili, M Kalamani, R Manjith, JP Shri Tharanyaa, C Jayabharathi",
+                        "paper_title": "Hybrid Convolutional Multilayer Perceptron for Cyber Physical Systems (HCMP-CPS)",
+                        "journal_name": "Springer link: HIS \n2022: Hybrid Intelligent \nSystems",
+                        "page_no": "1053-1063",
+                        "vol_no_/_issue_no": "Volume No. - 647",
+                        "month_&_year": "May & 2023",
+                        "indexed_in_sci_/_scopus": "SCOPUS",
+                        "conference_name": ""
                     }
                 ],
-                "CONFERENCE_PUBLICATIONS": [
+                "conference_publications": [
                     {
-                        "AUTHORS": "Mythili S, Pousia S, Kalamani M, Hindhuja V, Nimisha C and Jayabharathi C ",
-                        "PAPER_TITLE": " A handy diagnostic tool for early congestive heart failure \nprediction using Catboost classifier",
-                        "CONFERENCE_NAME": "22nd International Conference on Hybrid Intelligent Systems",
-                        "ORGANIZED_BY": "Machine Intelligence Research Labs (MIR Labs)\nScientific Network for Innovation and Research Excellence\nAuburn, Washington, USA",
-                        "MONTH_&_YEAR": "December 2022"
+                        "authors": "Mythili S, Pousia S, Kalamani M, Hindhuja V, Nimisha C and Jayabharathi C ",
+                        "paper_title": " A handy diagnostic tool for early congestive heart failure \nprediction using Catboost classifier",
+                        "conference_name": "22nd International Conference on Hybrid Intelligent Systems",
+                        "organized_by": "Machine Intelligence Research Labs (MIR Labs)\nScientific Network for Innovation and Research Excellence\nAuburn, Washington, USA",
+                        "month_&_year": "December 2022"
                     },
                     {
-                        "AUTHORS": "S Pousia, S Mythili, M Kalamani, R Manjith, JP Shri Tharanyaa, C Jayabharathi",
-                        "PAPER_TITLE": "Hybrid Convolutional Multilayer Perceptron for Cyber Physical Systems (HCMP-CPS)",
-                        "CONFERENCE_NAME": "22nd International Conference on Hybrid Intelligent Systems",
-                        "ORGANIZED_BY": "Machine Intelligence Research Labs (MIR Labs)\nScientific Network for Innovation and Research Excellence\nAuburn, Washington, USA",
-                        "MONTH_&_YEAR": "December 2022"
+                        "authors": "S Pousia, S Mythili, M Kalamani, R Manjith, JP Shri Tharanyaa, C Jayabharathi",
+                        "paper_title": "Hybrid Convolutional Multilayer Perceptron for Cyber Physical Systems (HCMP-CPS)",
+                        "conference_name": "22nd International Conference on Hybrid Intelligent Systems",
+                        "organized_by": "Machine Intelligence Research Labs (MIR Labs)\nScientific Network for Innovation and Research Excellence\nAuburn, Washington, USA",
+                        "month_&_year": "December 2022"
                     },
                     {
-                        "PAPER_TITLE": "Design of Decentralized Control with Decoupler and Tracking \nController for Two Input and Two Output (TITO) System",
-                        "CONFERENCE_NAME": "International Conference on Recent \nAdvances in Engineering and Technology",
-                        "ORGANIZED_BY": "Arunachala College of Engineering for Women, \nKanyakumari",
-                        "MONTH_&_YEAR": "March 2018"
+                        "paper_title": "Design of Decentralized Control with Decoupler and Tracking \nController for Two Input and Two Output (TITO) System",
+                        "conference_name": "International Conference on Recent \nAdvances in Engineering and Technology",
+                        "organized_by": "Arunachala College of Engineering for Women, \nKanyakumari",
+                        "month_&_year": "March 2018"
                     }
                 ],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 2,
-                    "Conference_Publications": 3,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 6,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 2,
+                    "conference_publications": 3,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 6,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             }
         ]
@@ -1110,10 +1116,11 @@
     {
         "NON_TEACHING_FACULTY": [
             {
-                "Name": "MR. VENKATESAN A",
-                "Designation": "Lab Instructor",
-                "Department_Name": "",
-                "Mail_ID": "",
+                "name": "MR. VENKATESAN A",
+                "unique_id": "VEC-008-NF-01",
+                "designation": "Lab Instructor",
+                "department_name": "",
+                "mail_id": "",
                 "image_path": "/static/images/profile_photos/008/VEC-008-05-006.webp",
                 "socialmedia_links": {
                     "linkedin": "",
@@ -1123,37 +1130,38 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [],
-                "EXPERIENCE": [],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             },
             {
-                "Name": "MR.GOKUL RAJ J",
-                "Designation": "Lab Instructor",
-                "Department_Name": "",
-                "Mail_ID": "",
+                "name": "MR.GOKUL RAJ J",
+                "unique_id": "VEC-008-NF-02",
+                "designation": "Lab Instructor",
+                "department_name": "",
+                "mail_id": "",
                 "image_path": "/static/images/profile_photos/008/VEC-008-05-007.webp",
                 "socialmedia_links": {
                     "linkedin": "",
@@ -1163,32 +1171,37 @@
                     "publonprofile": "",
                     "scopus": ""
                 },
-                "Professional_Membership": "",
-                "EDUCATIONAL_QUALIFICATION": [],
-                "EXPERIENCE": [],
-                "PROJECTS": [],
-                "PATENTS": [],
-                "JOURNAL_PUBLICATIONS": [],
-                "CONFERENCE_PUBLICATIONS": [],
-                "BOOK_PUBLICATIONS": [],
-                "CONSULTANCY": [],
-                "RESEARCH_SCHOLARS": [],
-                "COUNT": {
-                    "Professional_Membership": "",
-                    "Sponsored_Projects": 0,
-                    "Patent_Granted": 0,
-                    "Patent_Published": 0,
-                    "Patent_Filed": 0,
-                    "Journal_Publications": 0,
-                    "Conference_Publications": 0,
-                    "Book_/_Book_Chapter_Published": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Delivered": 0,
-                    "Seminar_/_Workshop_/_Guest_Lectures_Attended": 0,
-                    "Conference_/_Seminar_/_Workshop_/_Guest_Lectures_Organized": 0,
-                    "PHD_Produced": 0,
-                    "PHD_Pursuing": 0
+                "professional_membership": "",
+                "educational_qualification": [],
+                "experience": [],
+                "projects": [],
+                "patents": [],
+                "journal_publications": [],
+                "conference_publications": [],
+                "book_publications": [],
+                "consultancy": [],
+                "research_scholars": [],
+                "count": {
+                    "professional_membership": "",
+                    "sponsored_projects": 0,
+                    "patent_granted": 0,
+                    "patent_published": 0,
+                    "patent_filed": 0,
+                    "journal_publications": 0,
+                    "conference_publications": 0,
+                    "book_/_book_chapter_published": 0,
+                    "seminar_/_workshop_/_guest_lectures_delivered": 0,
+                    "seminar_/_workshop_/_guest_lectures_attended": 0,
+                    "conference_/_seminar_/_workshop_/_guest_lectures_organized": 0,
+                    "phd_produced": 0,
+                    "phd_pursuing": 0
                 }
             }
         ]
+    },
+    {
+        "FACULTY_PDF_PATH": {
+            "pdf_path": "/static/pdfs/faculty_list/008.pdf"
+        }
     }
 ]

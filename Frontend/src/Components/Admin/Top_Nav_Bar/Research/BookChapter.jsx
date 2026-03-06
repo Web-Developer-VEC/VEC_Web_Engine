@@ -217,6 +217,7 @@ export default function AdminBookChapter({ theme, toggle }) {
     setBookChapter(JSON.parse(JSON.stringify(savedDataRef.current)));
     setSessionChanges([]);
     setIsEditing(false);
+    setSelectedToDelete(new Set());
     toast.info("Session changes discarded.");
   };
 
@@ -551,13 +552,7 @@ const handleUndoChange = (idx) => {
                   </label>
                 </div>
 
-                <input
-                  type="text"
-                  placeholder="Or enter PDF path"
-                  value={typeof newPdf === "string" ? newPdf : ""}
-                  onChange={(e) => setNewPdf(e.target.value)}
-                  className="w-1/2 mb-3 p-2 border rounded"
-                />
+              
 
                 {newPdf && (
                   <Eye

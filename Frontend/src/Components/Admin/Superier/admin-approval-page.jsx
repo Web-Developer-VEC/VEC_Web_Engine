@@ -70,7 +70,7 @@ export default function AdminApprovalPage() {
       admissions: "admissionadmin",
       exams: "examsadmin",
       placement: "placementadmin",
-      research: "researchadmin",
+      research: "overallresearchadmin",
       accreditations_and_ranking: "accreditations_and_ranking_admin",
       ecell: "ecelladmin",
       gallery: "galleryadmin",
@@ -138,11 +138,24 @@ export default function AdminApprovalPage() {
           itemApprovals
         );
       }
-      toast.success("Approvals submitted successfully");
+      
+      // ✅ Success: Show success toast and navigate back
+      toast.success("✅ Changes approved successfully!");
+      
+      // Navigate back to dashboard after brief delay
+      setTimeout(() => {
+        navigate("/admin_dashboard", { 
+          state: { 
+            approvalSuccess: true,
+            approvedCollection: request?.collection,
+            approvedRequestId: request?._id
+          } 
+        });
+      }, 1500);
     }
     catch (error) {
       console.error(error);
-      toast.error("Failed to submit approvals");
+      toast.error("❌ Failed to submit approvals. Please try again.");
     }
     finally {
       setLoading(false);

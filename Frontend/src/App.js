@@ -15,6 +15,7 @@ import { useNavigate } from "react-router";
 import DynamicTitle from "./Header.jsx"; // This seems to be just a title updater, keep eager
 import { routeConfig } from "./routeConfig.js";
 import { getRouteElement } from "./getRouteElement.js";
+import AdminSideButton from "./Components/Admin/sideButton.jsx";
 
 // Lazy load components
 const Boot = lazy(() => import("./Components/Main/Landing Comp/BootUp"));
@@ -38,6 +39,10 @@ const HitLogs = lazy(() => import("./Components/Developer_stuffs/AnalyticsDashbo
 const EnquiryWeb = lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx"));
 const AuthPage = lazy(() => import("./Components/Admin/Auth/auth.jsx"));
 const Career = lazy(() => import("./Components/Main/Landing Comp/career.jsx"));
+
+/* General Forms */
+const AppraisalReport = React.lazy(() => import("./Components/Main/Forms/Appraisal/Appraisal Download/AppraisalReport.jsx"));
+const AppraisalForm = React.lazy(() => import("./Components/Main/Forms/Appraisal/Appraisal Form/AppraisalForm.jsx"));
 
 const GlobalStyle = createGlobalStyle`
     /* Global Cursor Style */
@@ -215,6 +220,9 @@ const App = () => {
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme} />} />
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme} />} />
                                 <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme} />}></Route>
+                                {/*  General Forms  */}
+                                <Route path="/appraisalreport" element={<AppraisalReport />} />
+                                <Route path="/appraisalform" element={<AppraisalForm />} />
 
                                 {/* Admin based route */}
                                 {Object.keys(routeConfig).map((path) => (
@@ -240,7 +248,7 @@ const App = () => {
                         </Suspense>
                     )}
 
-                    <SideButton />
+                    {session && session.routes.includes("/") && currentPath === "/" ? <AdminSideButton /> : <SideButton />}
                     <ScrollToTopButton />
                 </>
             </AppContainer>
