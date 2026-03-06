@@ -30,8 +30,9 @@ try{
 }
 
 catch (err) {
-    throw new Error(`S3 move failed for ${srcKey}`);
-  }
+    console.error("S3 ERROR:", err);
+  throw new Error(`S3 move failed for ${srcKey}: ${err.message}`);
+}
 }
 
 
@@ -115,9 +116,10 @@ async function insertFile(tempDoc, tempCollection) {
     { $set: { meta_data: meta, updatedAt: new Date() } }
   );
 
-  return {  success: true,tempId: tempDoc._id, meta_data: meta };
+  return { success: true, tempId: tempDoc._id, meta_data: meta };
 }
 catch(error){
+  console.error("FILE HANDLER ERROR:", error);
    return {
     success: false,
     message: error.message,
@@ -255,6 +257,7 @@ async function updateFile(tempDoc, tempCollection) {
   return {  success: true,tempId: tempDoc._id, meta_data: meta, original_data: original };
 }
 catch(error){
+  console.error("FILE HANDLER ERROR:", error);
    return {
     success: false,
     message: error.message,
@@ -318,6 +321,7 @@ try{
   return {  success: true,tempId: tempDoc._id, original_data: original };
 }
 catch(error){
+  console.error("FILE HANDLER ERROR:", error);
    return {
     success: false,
     message: error.message,
@@ -401,6 +405,7 @@ async function deleteFile(tempDoc, tempCollection) {
   return {  success: true,tempId: tempDoc._id, meta_data: meta };
 }
 catch(error){
+   console.error("FILE HANDLER ERROR:", error);
    return {
     success: false,
     message: error.message,
