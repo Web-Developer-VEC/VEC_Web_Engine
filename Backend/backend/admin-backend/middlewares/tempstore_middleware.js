@@ -109,7 +109,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           { type: collection_type },
           { projection: { data: 1 } }
         );
-
+  
 
         let pdf_path = [];
 
@@ -169,13 +169,9 @@ module.exports = async function storeTempMiddleware(req, res, next) {
             .map((f) => f.location || `/${f.key}`)
           : [];
 
-        // console.log("📂 Docs from busboy:", docs);
-        // console.log("📂 Uploaded files (S3):", req.uploadedFiles);
-        // console.log("pdf path ", pdf_path);
-        // console.log("image path ", image_path);
-
-
+    
         const notdoc = Array.isArray(existingDoc.data) ? existingDoc.data : [existingDoc.data];
+        
 
         if (action === "update") {
 
@@ -184,13 +180,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
             for (const item of notdoc) {
               const matches = findMatchingItem(item, original_data, "pdf_path");
-              // const matches = Object.keys(original_data).filter(k=>k!=="pdf_path").every(
-              //   k=> item[k] === original_data[k]
-              // );
-
-              console.log("Hari", original_data.pdf_path);
-              console.log("Dinesh", item.pdf_path)
-              console.log("Ajith", matches)
+             
 
               if (matches) {
 
@@ -208,7 +198,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
               //   k=> item[k] === original_data[k]
 
               // );
-              console.log("Main", item, "Original", original_data)
+          
 
               if (matches) {
                 image_path = Array.isArray(item.image_path)
