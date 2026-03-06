@@ -19,7 +19,7 @@
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.3",
     "body-parser": "^1.20.3",
-    "busboy": "^0.3.1",
+    "busboy": "^1.6.0",
     "compression": "^1.8.1",
     "connect-mongo": "^5.1.0",
     "cors": "^2.8.5",
