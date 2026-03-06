@@ -38,7 +38,7 @@ async function insertData(tempDoc, mainCollection) {
         );
       }
 
-      return { message: `Insertion successful in ${collection_type} (category: ${category})` };
+      return { success: true,  message: `Insertion successful in ${collection_type} (category: ${category})` };
     }
 
     // Handle single-object collections
@@ -49,7 +49,7 @@ async function insertData(tempDoc, mainCollection) {
         { $set: { data: new_data } }
       );
 
-      return { message: `Insertion successful in ${collection_type}` };
+      return { success: true,  message: `Insertion successful in ${collection_type}` };
     }
 
     // Handle multiple-object collections
@@ -59,14 +59,14 @@ async function insertData(tempDoc, mainCollection) {
         { $push: { data: meta_data } }
       );
 
-      return { message: `Insertion successful in ${collection_type}` };
+      return { success: true,  message: `Insertion successful in ${collection_type}` };
     }
 
     // ---------- FALLBACK ----------
     throw new Error("Invalid collection type");
   } catch (error) {
     console.error("Error in insertData:", error.message);
-    throw error;
+    return { success: false, error: error.message };
   }
 }
 
