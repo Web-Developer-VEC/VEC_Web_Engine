@@ -26,7 +26,7 @@ async function updateData(tempDoc, mainCollection) {
         { $set: { data: [meta_data] } }
       );
       return {
-       
+        success: true, 
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -107,7 +107,7 @@ async function updateData(tempDoc, mainCollection) {
       }
 
       return {
-       
+        success: true, 
         message: `Updated successfully in ${collection_type} - category ${category}`,
         data: meta_data,
       };
@@ -132,7 +132,7 @@ async function updateData(tempDoc, mainCollection) {
       );
 
       return {
-       
+        success: true, 
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };
