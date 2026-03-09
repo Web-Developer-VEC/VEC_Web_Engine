@@ -265,6 +265,10 @@ async function updateFile(tempDoc, tempCollection) {
             const destKey = srcKey.replace(/^temp\/static\//, "static/");
             await moveFile(srcKey, destKey);
             return  `/${destKey}`;
+          }else if (srcKey.startsWith("static/")){
+            const locKey = await normalizeKey(p.replace(/^\//, "history/"))
+            const destKey = srcKey.replace(/^static\//, "static/")
+            await moveFile(locKey, destKey);
           }
           return p;
         }
@@ -276,6 +280,10 @@ async function updateFile(tempDoc, tempCollection) {
             const destKey = pathStr.replace(/^temp\/static\//, "static/");
             await moveFile(pathStr, destKey);
             return { ...p, pdf_path: `/${destKey}`};
+          }else if (srcKey.startsWith("static/")){
+            const locKey = await normalizeKey(p.replace(/^\//, "history/"))
+            const destKey = srcKey.replace(/^static\//, "static/")
+            await moveFile(locKey, destKey);
           }
           return p;
         }
@@ -353,11 +361,13 @@ async function revertUpdateFile(tempDoc, tempCollection) {
 
             const srcKey = await normalizeKey(p.replace(/^\//, ""));
 
-            if (srcKey.startsWith("history/static/")) {
+            if (srcKey.startsWith("static/")) {
 
-              const destKey = srcKey.replace(/^history\/static\//, "static/");
+              const newKey = srcKey.replace(/^static\//, "history/static/");
 
-              await moveFile(srcKey, destKey);
+              const destKey = srcKey.replace(/^static\//, "static/");
+
+              await moveFile(newKey, destKey);
 
               return `/${destKey}`;
             }
@@ -370,11 +380,13 @@ async function revertUpdateFile(tempDoc, tempCollection) {
 
             let pathStr = await normalizeKey(p.pdf_path.replace(/^\//, ""));
 
-            if (pathStr.startsWith("history/static/")) {
+            if (pathStr.startsWith("static/")) {
 
-              const destKey = pathStr.replace(/^history\/static\//, "static/");
+              const newKey = srcKey.replace(/^static\//, "history/static/");
 
-              await moveFile(pathStr, destKey);
+              const destKey = pathStr.replace(/^static\//, "static/");
+
+              await moveFile(newKey, destKey);
 
               return { ...p, pdf_path: `/${destKey}` };
             }
