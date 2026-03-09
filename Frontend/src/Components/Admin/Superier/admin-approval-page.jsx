@@ -144,7 +144,7 @@ export default function AdminApprovalPage() {
       
       // Navigate back to dashboard after brief delay
       setTimeout(() => {
-        navigate("/admin_dashboard", { 
+        navigate("/admin_dash", { 
           state: { 
             approvalSuccess: true,
             approvedCollection: request?.collection,
