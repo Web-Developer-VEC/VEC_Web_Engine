@@ -20,7 +20,7 @@ async function insertData(tempDoc, mainCollection) {
         { $push: { data: meta_data } }
       );
 
-      return { message: "Inserted successfully" };
+      return { success:true, message: "Inserted successfully" };
     }
 
     /* ---------------- CATEGORY BASED TYPES ---------------- */
@@ -49,7 +49,7 @@ async function insertData(tempDoc, mainCollection) {
         { $push: { [updateField]: meta_data } }
       );
 
-      return { message: "Inserted into existing category" };
+      return { success:true, message: "Inserted into existing category" };
     }
 
     /* ---------- NEW CATEGORY → CREATE ---------- */
@@ -86,7 +86,7 @@ async function insertData(tempDoc, mainCollection) {
       { $push: { data: newCategoryObject } }
     );
 
-    return { message: "New category created and inserted" };
+    return { success:true, message: "New category created and inserted" };
 
   } catch (error) {
     throw new Error(`Insert failed: ${error.message}`);

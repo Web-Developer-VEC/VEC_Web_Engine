@@ -17,7 +17,7 @@ async function deleteData(tempDoc, mainCollection) {
       const doc = await mainCollection.findOne({ type: collection_type });
       if (!doc) {
         return {
-          status: 404,
+          success:false, 
           message: `No document found for type ${collection_type}`,
         };
       }
@@ -25,7 +25,7 @@ async function deleteData(tempDoc, mainCollection) {
       const categoryExists = doc.data.find((c) => c.category === category);
       if (!categoryExists) {
         return {
-          status: 404,
+          success: false, 
           message: `Category ${category} not found in ${collection_type}`,
         };
       }
@@ -68,20 +68,20 @@ async function deleteData(tempDoc, mainCollection) {
       }
 
       return {
-        status: 200,
+        success:true, 
         message: `Delete successful for ${collection_type} - category ${category}`,
         deleted: itemsToDelete,
       };
     }
 
     return {
-      status: 400,
+      success: false, 
       message: `Delete not supported for collection_type ${collection_type}`,
     };
   } catch (error) {
     console.error("❌ Error deleting vision_and_mission data:", error);
     return {
-      status: 500,
+      success: false, 
       message: "Server error",
       details: error.message,
     };
