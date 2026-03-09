@@ -245,6 +245,8 @@ const App = () => {
 
     const isFooter = currentPath.startsWith("/hostel") || currentPath.startsWith('/QA');
 
+    
+
     return (
         <>
             <GlobalStyle />
@@ -274,7 +276,7 @@ const App = () => {
                                 <Route path="/clg-org" dork element={<CollegeOrgChart toggle={toggle} theme={theme}/>}/>
                                 <Route path="/departments" drk element={<AcademicDepartments toggle={toggle} theme={theme}/>}/>
                                 <Route path="/programs" drk element={<Programmes toggle={toggle} theme={theme}/>} />
-                                <Route path="/acadamic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme}/>} />
+                                <Route path="/academic_cal" drk element={<Acadamiccal toggle={toggle} theme={theme}/>} />
                                 <Route path="/dept/:deptID" drk element={<DepartmentPage toggle={toggle} theme={theme}/>}/>
                                 <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme}/>}></Route>
                                 <Route path="/ug" drk element={<UgAdmission toggle={toggle} theme={theme}/>}/>
@@ -346,7 +348,7 @@ const App = () => {
 
                     </MainContentWrapper>
                     {/* <Footer ref={footerRef}/> */}
-                    {!isHostelRoute && <Footer theme={theme} data={footer?.[0]} />}
+                    {!isFooter && <Footer theme={theme} data={footer?.[0]} />}
 
                     <SideButton />
                     <ScrollToTopButton />

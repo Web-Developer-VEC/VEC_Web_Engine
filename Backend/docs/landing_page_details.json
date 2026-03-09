@@ -177,51 +177,58 @@
       }
     ]
   },
-  {
+   {
     "type": "announcements",
     "data": [
       {
         "unique_id": "announcement_1",
-        "announcement_name": "Circular - Revaluation (after photocopy) - SEE Nov. 2025",
-        "pdf_path": "/static/pdfs/announcements/Circular revaluation after Photocopy_SEE NOV. 2025.pdf",
-        "date": "2025-07-28",
+        "announcement_name": "Circular - Review after Revaluation - SEE Nov. 2025 (For Higher Sem.)",
+        "pdf_path": "/static/pdfs/announcements/Circular_Review after Revaluation_SEE NOV. 2025 (Higher Sem.).pdf",
+        "date": "2026-02-26",
         "status": "active"
       },
       {
         "unique_id": "announcement_2",
+        "announcement_name": "Circular - Revaluation (Photocopy) - SEE Nov. 2025 (For I Sem. (R) & II Sem. (Arr.))",
+        "pdf_path": "/static/pdfs/announcements/Circular_Photocopy_Revaluation_SEE NOV. 2025 (I SEM.(R2023)).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_3",
         "announcement_name": "Circular - Revaluation (Photocopy) - SEE Nov. 2025 ",
         "pdf_path": "/static/pdfs/announcements/Revaluation (Photocopy)_SEE Nov. 2025_06-01-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_3",
+        "unique_id": "announcement_4",
         "announcement_name": "B.E./B.Tech./M.E./MBA - Exam Schedule - SEE Nov. 2025 (R2023) [I Sem. (Regular & II Sem. (Arr.)]",
         "pdf_path": "/static/pdfs/announcements/B.E.B.Tech.-Exam Schedule-SEE Nov. 2025 (R2023) [I Sem. (Regular & II Sem. (Arr.)].pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_4",
+        "unique_id": "announcement_5",
         "announcement_name": "Notification 1 - B.E./B.Tech.-Rescheduled date-SEE Nov.2025 - R2019 & R2019A (Batches : 2019-23, 2020-24, 2021-25, 2022-26)",
         "pdf_path": "/static/pdfs/announcements/Rescheduled date_08-11-2025 to 28th Oct. & 13th Nov. 2025.pdf",
         "date": "2025-07-28",
         "status": "active"
       },{
-        "unique_id": "announcement_5",
+        "unique_id": "announcement_6",
         "announcement_name": "Notification 2 - MBA - Rescheduled date - SEE - Nov. 2025 (R2023) For batch 2024-2026",
         "pdf_path": "/static/pdfs/announcements/Rescheduled date_8th, 10th Dec. to 29th, 31st Dec. 2025 - MBA.pdf",
         "date": "2025-07-28",
         "status": "active"
       },{
-        "unique_id": "announcement_6",
+        "unique_id": "announcement_7",
         "announcement_name": "Notification 3 - MBA - Rescheduled date - SEE - Nov. 2025 (R2023) For batch 2024-2026",
         "pdf_path": "/static/pdfs/announcements/MBA_Rescheduled date_29-12-2025 to 30-12-2025-1.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
        {
-        "unique_id": "announcement_7",
+        "unique_id": "announcement_8",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028",
         "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028) - updated (1).pdf",
         "date": "2025-07-28",
@@ -229,28 +236,28 @@
       },
       
       {
-        "unique_id": "announcement_8",
+        "unique_id": "announcement_9",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026",
         "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_9",
+        "unique_id": "announcement_11",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019) - For batches 2019-2023 & 2020-2024",
         "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019) - For batches 2019-2023 & 2020-2024.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_10",
+        "unique_id": "announcement_12",
         "announcement_name": "M.E.(CSE) -Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026",
         "pdf_path": "/static/pdfs/announcements/M.E.(CSE) -Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_11",
+        "unique_id": "announcement_13",
         "announcement_name": "MBA-Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026",
         "pdf_path": "/static/pdfs/announcements/MBA-Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026.pdf",
         "date": "2025-07-28",
@@ -602,6 +609,29 @@
         "content": "Cognebula’26 features a dynamic lineup of 6 technical events, 6 non-technical events, and 1 full-day workshop, offering participants a perfect blend of technical expertise, creativity, and hands-on learning.",
         "image_path": "/static/images/events/cognebula.jpeg",
         "link": "https://cognebula.com/",
+        "status": "True"
+      },
+      {
+        
+        "start_date":"04 MAR",
+        "end_date": "04 MAR, 2026",
+        "date": "04-03-2026",
+        "title": "NCAIBIA’26",
+        "department": "Artificial Intelligence & Data Science",
+        "content": "3rd NATIONAL CONFERENCE",
+        "image_path": "/static/images/events/NCAIBIA'26 (1).pdf",
+        "link": "",
+        "status": "True"
+      },
+      {
+        "start_date":"17 MAR",
+        "end_date": "17 MAR, 2026",
+        "date": "17-03-2026",
+        "title": "ICECT 2026",
+        "department": "Computer Science & Engineering",
+        "content": "International Conference on Emerging Computing Technologies - AI, IOT, Cloud, Quantum Computing & Beyond",
+        "image_path":"/static/images/events/updatedbrochure.pdf",
+        "link": "",
         "status": "True"
       }
     ]
