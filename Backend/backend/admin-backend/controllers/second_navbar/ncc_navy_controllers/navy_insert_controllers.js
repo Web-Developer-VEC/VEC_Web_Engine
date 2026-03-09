@@ -22,7 +22,7 @@ async function insertData( tempDoc, mainCollection) {
         { upsert: true }
       );
       return {
-       
+        success: true,
         message: `Overwritten successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -36,7 +36,7 @@ async function insertData( tempDoc, mainCollection) {
         { upsert: true }
       );
       return {
-       
+        success: true,
         message: `Inserted successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -102,7 +102,7 @@ async function insertData( tempDoc, mainCollection) {
       }
 
       return {
-       
+        success: true,
         message: `Insert successful for ${collection_type} - category ${category}`,
         data: meta_data,
       };

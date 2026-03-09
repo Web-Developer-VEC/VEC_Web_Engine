@@ -31,6 +31,7 @@ async function insertData(tempDoc, mainCollection) {
       );
 
       return {
+        success:true, 
         message: `Pedagogy content inserted successfully for ${category} - ${meta_data.year}`,
       };
     }
@@ -42,6 +43,7 @@ async function insertData(tempDoc, mainCollection) {
     );
 
     return {
+      success:true, 
       message: `New year ${meta_data.year} inserted successfully for ${category}`,
     };
   }
@@ -52,7 +54,7 @@ async function insertData(tempDoc, mainCollection) {
     { $push: { data: { category, content: [{ ...meta_data, content: insert }] } } }
   );
 
-  return { message: `New category ${category} inserted successfully` };
+  return { success:true,  message: `New category ${category} inserted successfully` };
 }
 
 module.exports = { insertData };

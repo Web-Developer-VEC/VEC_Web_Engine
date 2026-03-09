@@ -101,7 +101,7 @@ async function insertData(tempDoc, mainCollection) {
     throw new Error("Invalid collection type");
   } catch (error) {
     console.error(error);
-    throw error; // ❌ no res.json, just throw
+    return { success: false, error: error.message };
   }
 }
 

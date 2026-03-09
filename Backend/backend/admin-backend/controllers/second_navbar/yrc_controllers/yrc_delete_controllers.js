@@ -15,6 +15,7 @@ async function deleteData(tempDoc, mainCollection) {
         { $set: { data: [] } }
       );
       return {
+        success: true,
         message: `Deleted entire document for ${collection_type}`,
       };
     }
@@ -29,6 +30,7 @@ async function deleteData(tempDoc, mainCollection) {
         { $pull: { data: meta_data } }
       );
       return {
+        success: true,
         message: `Deleted one document from ${collection_type}`,
         deleted: meta_data,
       };
@@ -51,7 +53,7 @@ async function deleteData(tempDoc, mainCollection) {
           { $pull: { data: { category } } }
         );
 
-        return { message: "The entire category is deleted" };
+        return {success: true, message: "The entire category is deleted" };
       }
       //   else if (Array.isArray(content) && typeof content[0] === "string") {
       //     // Delete string items
@@ -70,7 +72,7 @@ async function deleteData(tempDoc, mainCollection) {
       { $pull: { "data.$.members": { name: meta_data.name } } }
     );
         return {
-         
+          success: true,
           message: `Delete successful for ${collection_type} - category ${category}`,
           data: meta_data,
         };

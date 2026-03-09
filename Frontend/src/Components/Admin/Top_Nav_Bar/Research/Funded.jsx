@@ -219,6 +219,7 @@ export default function AdminFunded({ theme, toggle }) {
     setFunded(JSON.parse(JSON.stringify(savedDataRef.current)));
     setSessionChanges([]);
     setIsEditing(false);
+    setSelectedToDelete(new Set());
     toast.info("Session changes discarded.");
   };
 
@@ -551,14 +552,14 @@ const handleUndoChange = (idx) => {
                   </label>
                 </div>
 
-                {/* Also allow manual path input when not uploading file */}
+                {/* Also allow manual path input when not uploading file
                 <input
                   type="text"
                   placeholder="Or enter PDF path"
                   value={typeof newPdf === "string" ? newPdf : ""}
                   onChange={(e) => setNewPdf(e.target.value)}
                   className="w-1/2 mb-3 p-2 border rounded"
-                />
+                /> */}
 
                 {newPdf && (
                   <p className="text-xs text-center mt-1">
