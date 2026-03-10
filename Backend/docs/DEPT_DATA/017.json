@@ -274,21 +274,6 @@
             "pdf_path":"/static/pdfs/faculty_profile/017/VEC-017-04-632.pdf"
           },
             {
-            "name":"Mr. CHAKKARAVARTHY KUMARESAN R",
-            "designation":"Assistant Professor",
-            "unique_id":"VEC-017-04-633",
-            "socialmedia_links":{
-              "linkedin":"",
-              "googlescholar":"",
-              "researchgate":"",
-              "orchidprofile":"",
-              "publonprofile":"",
-              "scopus":""
-            },
-            "image_path":"/static/images/profile_photos/017/VEC-017-04-633.webp",
-            "pdf_path":"/static/pdfs/faculty_profile/017/VEC-017-04-633.pdf"
-          },
-            {
             "name":"Mrs. JENIFER HEPZIBA I",
             "designation":"Assistant Professor",
             "unique_id":"VEC-017-04-179",

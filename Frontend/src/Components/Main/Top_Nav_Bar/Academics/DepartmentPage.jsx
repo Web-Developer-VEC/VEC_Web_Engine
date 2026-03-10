@@ -176,8 +176,16 @@ const DepartmentPage = ({ theme, toggle }) => {
         return <HeadDepartment data={sectionData} />;
       case "Vision&Mission":
         return <VisionMission data={sectionData} />;
-      case "Faculties":
-        return <Faculties data={sectionData} />;
+     case "Faculties":
+        let facultyData = sectionData;
+
+        if (deptID === "017") {
+          facultyData = sectionData?.filter(
+            item => item.category !== "head_of_department"
+          );
+        }
+
+        return <Faculties data={facultyData} />;
       case "Activities":
         return <Activities data={sectionData} />;
       case "Pedagogy":
