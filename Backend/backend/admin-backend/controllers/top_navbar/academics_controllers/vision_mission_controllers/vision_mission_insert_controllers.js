@@ -69,21 +69,21 @@ async function insertData(tempDoc, mainCollection) {
       }
 
       return {
-        status: 200,
+        success:true, 
         message: `Insert successful for ${collection_type} - category ${category}`,
         data: newItems,
       };
     }
 
     return {
-      status: 200,
+      success:true, 
       message: `Insert successful for ${collection_type} - category ${category}`,
       data: meta_data,
     };
   } catch (error) {
     console.error("❌ Error inserting vision_and_mission data:", error);
     return {
-      status: 500,
+      success:false, 
       message: "Server error",
       details: error.message,
     };

@@ -178,7 +178,7 @@ if (collection_type === "general_info") {
     throw new Error("Invalid collection type");
   } catch (error) {
     console.error(error);
-    throw error; // ❌ don't send response here
+    return { success: false, error: error.message };
   }
 }
 

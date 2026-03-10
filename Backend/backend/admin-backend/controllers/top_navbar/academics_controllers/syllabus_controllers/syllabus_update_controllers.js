@@ -22,7 +22,7 @@ async function updateData(tempDoc, mainCollection) {
     }
   );
 
-  return { message: "Semester updated successfully" };
+  return {success:true,  message: "Semester updated successfully" };
 }
 
 module.exports = { updateData };

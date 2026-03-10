@@ -131,7 +131,7 @@ export default function AdminProfilePage() {
   const userSession = JSON.parse(sessionStorage.getItem("userSession") || "{}");
   const navigate = useNavigate();
 
-  const [pendingRequests, setPendingRequests] = useState(null);
+  const [pendingRequests, setPendingRequests] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -139,9 +139,7 @@ export default function AdminProfilePage() {
         const responce = await axios.get('/api/admin-backend/adminrequest');
 
         console.log("Responce",responce.data);
-        setPendingRequests(responce.data[0])
-
-        // setPendingRequests(responce.data);
+        setPendingRequests(responce.data)
       } catch (error) {
         console.error("Error fetching the Admin pending request",error);
       }
@@ -268,17 +266,17 @@ export default function AdminProfilePage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">Pending Requests</h3>
-                    <p className="text-sm text-gray-500">{pendingRequests?.requests?.length} requests awaiting approval</p>
+                    <p className="text-sm text-gray-500">{pendingRequests?.requests?.length || 0} requests awaiting approval</p>
                   </div>
                 </div>
                 <div className="px-3 py-1 bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 text-sm font-bold rounded-full border border-orange-200">
-                  {pendingRequests?.requests?.length}
+                  {pendingRequests?.requests?.length || 0}
                 </div>
               </div>
             </div>
 
             <div className="p-6">
-              {pendingRequests?.requests?.length === 0 ? (
+              {pendingRequests?.requests?.length === 0 || pendingRequests?.length === 0 ? (
                 <div className="text-center py-12">
                   <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="w-8 h-8 text-white" />
@@ -364,7 +362,7 @@ export default function AdminProfilePage() {
                         <div className="flex items-center justify-between">
                           <a
                             href={route}
-                            className="flex items-center space-x-4 text-gray-700 hover:text-green-700 transition-colors flex-1 cursor-pointer"
+                            className="flex items-center space-x-4 text-gray-700 hover:text-green-700 transition-colors flex-1 cursor-pointer no-underline"
                           >
                             <div className="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full group-hover:scale-125 transition-transform"></div>
                             <span className="font-semibold group-hover:text-green-700">

@@ -107,7 +107,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50">
-      <div className="relative bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-600 shadow-xl">
+      <div className="relative bg-brwn shadow-xl">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative px-8 py-12">
           <div className="flex items-center justify-between">
@@ -291,7 +291,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
                 <button
-                  className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+                  className="bg-secd hover:bg-brwn text-text hover:text-prim px-6 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 shadow-lg"
                   onClick={handleViewMore}
                 >
                   View More

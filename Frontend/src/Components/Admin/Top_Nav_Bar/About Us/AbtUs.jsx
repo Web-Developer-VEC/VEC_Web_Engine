@@ -968,7 +968,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
       {/* Request Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[450px]">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[650px]">
             <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">Final Request for the Changes</h2>
             <p className="text-sm text-red-500 mb-4">
               Note: Your changes will stay pending until approved by the superior admin. Once approved, they will be applied
