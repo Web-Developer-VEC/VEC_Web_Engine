@@ -647,6 +647,18 @@
         "image_path":"/static/images/events/updatedbrochure.pdf",
         "link": "",
         "status": "True"
+      },
+      {
+        
+        "start_date":"30 MAR",
+        "end_date": "30 MAR, 2026",
+        "date": "30-03-2026",
+        "title": "NCCET 2026",
+        "department": "Electronics & Instrumentation Engineering",
+        "content": "NATIONAL CONFERENCE ON CONVERGING ENGINEERING TECHNOLOGIES",
+        "image_path": "/static/images/events/EIE - CONFERENCE  BROCHURE.pdf",
+        "link": "",
+        "status": "True"
       }
     ]
   }
