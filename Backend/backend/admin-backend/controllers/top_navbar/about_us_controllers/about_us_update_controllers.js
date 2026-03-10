@@ -30,7 +30,7 @@ async function updatedData(tempDoc, mainCollection) {
           { $set: { "data.content": meta_data } }
         );
 
-        return { message: "Content updated successfully" };
+        return { success:true, message: "Content updated successfully" };
       }
 
       // ---------- PDF ----------
@@ -51,7 +51,7 @@ async function updatedData(tempDoc, mainCollection) {
         if (result.matchedCount === 0) {
           throw new Error(`PDF "${original_data.name}" not found`);
         }
-        return { message: "PDF updated successfully" };
+        return { success:true, message: "PDF updated successfully" };
       }
     }
 
@@ -67,7 +67,7 @@ async function updatedData(tempDoc, mainCollection) {
         { $set: updateFields }
       );
 
-      return { message: `Updated ${collection_type}` };
+      return { success:true, message: `Updated ${collection_type}` };
     }
 
     // ---------- AISHE (FIXED) ----------
@@ -102,7 +102,7 @@ async function updatedData(tempDoc, mainCollection) {
         throw new Error("AISHE item not found for update");
       }
 
-      return { message: `AISHE item updated in ${category}` };
+      return { success:true, message: `AISHE item updated in ${category}` };
     }
   } catch (error) {
     throw new Error(`Error updating data: ${error.message}`);

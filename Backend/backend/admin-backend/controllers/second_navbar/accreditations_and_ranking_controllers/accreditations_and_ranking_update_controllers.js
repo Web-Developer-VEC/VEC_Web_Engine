@@ -25,7 +25,7 @@ async function updateData(tempDoc, mainCollection) {
         );
       }
 
-      return { message: "NBA department updated successfully" };
+      return { success: true,  message: "NBA department updated successfully" };
     }
 
     // ========== 2. QS Rating ==========
@@ -35,7 +35,7 @@ async function updateData(tempDoc, mainCollection) {
         { $set: { data: [meta_data] } } // always overwrite with new certificate
       );
 
-      return { message: "QS rating updated successfully" };
+      return { success: true,  message: "QS rating updated successfully" };
     }
 
     // ========== 3. NAAC ==========
@@ -50,7 +50,7 @@ async function updateData(tempDoc, mainCollection) {
         { arrayFilters: [{ "con.name": original_data.name }] }
       );
 
-      return { message: "NAAC category updated successfully" };
+      return { success: true,  message: "NAAC category updated successfully" };
     }
 
     // ========== 4. NIRF ==========
@@ -76,7 +76,7 @@ async function updateData(tempDoc, mainCollection) {
         );
       }
 
-      return { message: "NIRF year data updated successfully" };
+      return { success: true,  message: "NIRF year data updated successfully" };
     }
 
     // ---------- FALLBACK ----------

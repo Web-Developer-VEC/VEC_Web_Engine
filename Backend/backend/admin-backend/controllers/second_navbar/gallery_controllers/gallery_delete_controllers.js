@@ -1,7 +1,9 @@
 async function deleteData(tempDoc, mainCollection) {
-  const { collection_type, category, meta_data } = tempDoc;
-
-  if (!collection_type || !category) {
+  try {
+    
+    const { collection_type, category, meta_data } = tempDoc;
+    
+    if (!collection_type || !category) {
     throw new Error("collection_type and category are required");
   }
 
@@ -37,11 +39,18 @@ async function deleteData(tempDoc, mainCollection) {
   );
 
   return {
+    success: true, 
     message:
       !meta_data || (typeof meta_data === "object" && Object.keys(meta_data).length === 0)
         ? "Category deleted successfully"
         : "Image(s) deleted successfully"
   };
+} catch (error) {
+
+  console.error(error);
+  return { success: false, error: error.message };
+  
+}
 }
 
 module.exports = { deleteData };

@@ -42,7 +42,7 @@ async function updateData(tempDoc, mainCollection) {
       );
     }
 
-    return { message: `Research data updated successfully for category ${category} and year ${meta_data.year}` };
+    return {success:true,  message: `Research data updated successfully for category ${category} and year ${meta_data.year}` };
   }
 }
 

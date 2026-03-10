@@ -1,15 +1,18 @@
 async function insertData(tempDoc, mainCollection) {
-  const { collection_type, category, meta_data } = tempDoc;
 
-  if (!collection_type || !category || !meta_data) {
-    throw new Error("collection_type, category, and filePaths are required");
-  }
+  try {
+    
+    const { collection_type, category, meta_data } = tempDoc;
+    
+    if (!collection_type || !category || !meta_data) {
+      throw new Error("collection_type, category, and filePaths are required");
+    }
 
-  const filePaths = meta_data.image_path; // fixed: use key string not var
+    const filePaths = meta_data.image_path; // fixed: use key string not var
 
-  const existingDoc = await mainCollection.findOne({ type: collection_type });
+    const existingDoc = await mainCollection.findOne({ type: collection_type });
 
-  if (!existingDoc) {
+    if (!existingDoc) {
     // Create new document with type + category + images
     await mainCollection.insertOne({
       type: collection_type,
@@ -18,7 +21,7 @@ async function insertData(tempDoc, mainCollection) {
         image_path: Array.isArray(filePaths) ? filePaths : [filePaths]
       }]
     });
-    return { created: true, message: "New type and category created" };
+    return { success : true, message: "New type and category created" };
   }
 
   // 🔹 Find category inside existing data
@@ -37,13 +40,19 @@ async function insertData(tempDoc, mainCollection) {
     existingDoc.data[categoryIndex].image_path = Array.from(new Set([...existingImages, ...newImages]));
     console.log("1.",existingImages,"2.",newImages)
   }
-
+  
   await mainCollection.updateOne(
     { type: collection_type },
     { $set: { data: existingDoc.data } }
   );
+  
+  return {  success: true,  message: "Image(s) inserted successfully" };
+} catch (error) {
 
-  return { created: false, message: "Image(s) inserted successfully" };
+  console.error(error);
+  return { success: false, error: error.message };
+  
+}
 }
 
 module.exports = { insertData };

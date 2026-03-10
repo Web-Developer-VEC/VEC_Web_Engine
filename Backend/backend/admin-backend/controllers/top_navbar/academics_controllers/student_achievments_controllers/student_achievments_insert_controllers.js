@@ -26,7 +26,7 @@ async function insertData(tempDoc, mainCollection) {
             );
             
 
-            return{message:`thet data is inserted successfully in the ${collection_type}`}
+            return{success:true, message:`thet data is inserted successfully in the ${collection_type}`}
         }
         else if(category === "student_achievements_content"){
 
@@ -38,6 +38,7 @@ async function insertData(tempDoc, mainCollection) {
         )
 
         return {
+            success:true, 
           message: `The data is inserted successfully in the ${collection_type}`
         };
       }else{

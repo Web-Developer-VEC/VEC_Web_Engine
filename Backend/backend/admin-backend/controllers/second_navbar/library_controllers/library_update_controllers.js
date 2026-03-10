@@ -34,6 +34,7 @@ async function updateData(tempDoc, mainCollection) {
         { $set: { data: [meta_data] } }
       );
       return {
+        success: true, 
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -118,6 +119,7 @@ async function updateData(tempDoc, mainCollection) {
       }
 
       return {
+        success: true, 
         message: `Updated successfully in ${collection_type} - category ${category}`,
         data: meta_data,
       };
@@ -153,6 +155,7 @@ async function updateData(tempDoc, mainCollection) {
       );
 
       return {
+        success: true, 
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -162,7 +165,7 @@ async function updateData(tempDoc, mainCollection) {
     throw new Error("No matching case found");
   } catch (error) {
     console.error("Error updating data:", error);
-    throw error; // ❌ Pass error up to handleTempAction
+    return { success: false, error: error.message };
   }
 }
 

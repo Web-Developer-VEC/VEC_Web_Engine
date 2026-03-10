@@ -19,7 +19,7 @@ async function deleteData(tempDoc, mainCollection) {
         { $pull: { data: meta_data } }
       );
 
-      return { message: "Deleted successfully" };
+      return { success: true, message: "Deleted successfully" };  
     }
 
     /* ---------------- CATEGORY BASED TYPES ---------------- */
@@ -29,22 +29,6 @@ async function deleteData(tempDoc, mainCollection) {
 
     if (!category) throw new Error("Missing category");
 
-    const categoryExists = doc.data.find(
-      (item) => item.category === category
-    );
-    if (!categoryExists) throw new Error("Category not found");
-
-    /* ---------- DELETE ENTIRE CATEGORY ---------- */
-    if (Object.keys(meta_data).length === 0) {
-      await mainCollection.updateOne(
-        { type: collection_type },
-        { $pull: { data: { category } } }
-      );
-
-      return { message: "Category deleted" };
-    }
-
-    /* ---------- DELETE SINGLE ITEM ---------- */
     const field =
       collection_type === "COE"
         ? "members"
@@ -52,20 +36,37 @@ async function deleteData(tempDoc, mainCollection) {
         ? "links"
         : "content";
 
-    const updatedArray = categoryExists[field].filter(
-      (item) =>
-        !Object.keys(meta_data).every(
-          (key) => item[key] === meta_data[key]
-        )
+    const categoryExists = doc.data.find(
+      (item) => item.category === category
     );
+
+    if (!categoryExists) throw new Error("Category not found");
+
+    const deleteItems = meta_data[field] || [];
+
+    /* ---------- DELETE ENTIRE CATEGORY IF ALL ITEMS MATCH ---------- */
+
+    if (deleteItems.length === categoryExists[field].length) {
+      await mainCollection.updateOne(
+        { type: collection_type },
+        { $pull: { data: { category } } }
+      );
+
+      return { success: true, message: "Category deleted successfully" };
+    }
+
+    /* ---------- DELETE PARTIAL ITEMS ---------- */
 
     await mainCollection.updateOne(
-      { type: collection_type },
-      { $set: { [`data.$[elem].${field}`]: updatedArray } },
-      { arrayFilters: [{ "elem.category": category }] }
+      { type: collection_type, "data.category": category },
+      {
+        $pull: {
+          [`data.$.${field}`]: { $in: deleteItems }
+        }
+      }
     );
 
-    return { message: "Item deleted successfully" };
+    return { success: true, message: "Items deleted successfully" };
 
   } catch (error) {
     throw new Error(`Delete failed: ${error.message}`);
