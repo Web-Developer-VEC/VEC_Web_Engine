@@ -262,6 +262,20 @@
         "pdf_path": "/static/pdfs/announcements/MBA-Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
+      },
+      {
+        "unique_id": "announcement_14",
+        "announcement_name": "SEE Timetable_April 2026_For batches_2019-2023 & 2020-2024",
+        "pdf_path": "/static/pdfs/announcements/SEE Timetable_April 2026_For batches_2019-2023 & 2020-2024.pdf",
+        "date": "2026-03-10",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_15",
+        "announcement_name": "SEE Timetable_April 2026_For batches_2021-2025 & 2022-2026",
+        "pdf_path": "/static/pdfs/announcements/SEE Timetable_April 2026_For batches_2021-2025 & 2022-2026.pdf",
+        "date": "2026-03-10",
+        "status": "active"
       }
     ]
   },
