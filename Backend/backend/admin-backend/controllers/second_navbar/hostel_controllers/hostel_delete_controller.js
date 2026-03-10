@@ -58,7 +58,7 @@ async function deleteData(tempDoc, mainCollection) {
     throw new Error("Invalid collection type");
   } catch (error) {
     console.error(error);
-    throw error; // ❌ don't send res.json here
+    return { success: false, error: error.message };
   }
 }
 

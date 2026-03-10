@@ -3,13 +3,13 @@ import Banner from '../../Banner';
 import LoadComp from '../../LoadComp';
 import axios from 'axios';
 import { useNavigate } from "react-router";
-import { MdUndo } from "react-icons/md";
-import { Trash2 } from 'lucide-react'
+import { Pencil, Trash2 } from 'lucide-react'
 import { FaBook, FaLinkedin, FaOrcid, FaResearchgate } from 'react-icons/fa';
 import { FaGoogleScholar } from 'react-icons/fa6';
 import { SiPublons } from 'react-icons/si';
 import { useAdminRequest } from '../../../hooks/useAdminRequest';
 import { X } from "lucide-react";
+import { toast, ToastContainer } from "react-toastify";
 
 const SOCIAL_LINKS_CONFIG = [
   { key: "linkedin", label: "LinkedIn", icon: FaLinkedin, backendKey: "LinkedIn Profile" },
@@ -455,6 +455,7 @@ const AdminPrinc = ({ theme, toggle }) => {
         headerText="Principal's Desk"
         subHeaderText="Leading with vision and commitment to excellence in education and innovation."
       />
+      <ToastContainer position="bottom-right" />
 
       {!data ? (
         <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
@@ -467,8 +468,9 @@ const AdminPrinc = ({ theme, toggle }) => {
             <div className='flex justify-end top-0 right-0'>
               <button
                 onClick={handleEditClick}
-                className="px-3 py-2 bg-yellow-400 p-2 rounded shadow-md hover:bg-yellow-500"
+                className="px-3 py-2 bg-yellow-400 p-2 rounded shadow-md hover:bg-yellow-500 flex items-center gap-2"
               >
+                <Pencil size={16} />
                 Edit
               </button>
             </div>

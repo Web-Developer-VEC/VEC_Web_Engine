@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
 import { Trash2, Plus, Check, X, Clock, TrendingUp, Users, FileText, Activity, Power, Phone } from "lucide-react"
 import PastRequestsPage from "./pastReq"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import axios from "axios"
 import { LogOut } from "react-feather"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 export default function AdminDashboard() {
   const [currentView, setCurrentView] = useState("dashboard")
@@ -12,6 +14,7 @@ export default function AdminDashboard() {
 
   const adminDetails = JSON.parse(sessionStorage.getItem("userSession"))
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [pastDecisions, setPastDecisions] = useState([
     {
@@ -50,6 +53,18 @@ export default function AdminDashboard() {
     }
     fetchData()
   }, [])
+
+  // ✅ Handle approval success - remove approved request from list
+  useEffect(() => {
+    if (location?.state?.approvalSuccess && location?.state?.approvedRequestId) {
+      setPendingRequests((prev) =>
+        prev.filter((req) => req._id !== location?.state?.approvedRequestId)
+      );
+      toast.success("🎉 Request has been processed and removed from pending list");
+      // Clear the location state to prevent duplicate removals
+      navigate(location.pathname, { replace: true });
+    }
+  }, [location?.state?.approvalSuccess, location?.state?.approvedRequestId, navigate, location.pathname])
 
   useEffect(() => {
   const handleClickOutside = (event) => {
@@ -92,7 +107,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50">
-      <div className="relative bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-600 shadow-xl">
+      <div className="relative bg-brwn shadow-xl">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative px-8 py-12">
           <div className="flex items-center justify-between">
@@ -276,7 +291,7 @@ export default function AdminDashboard() {
                   </div>
                 </div>
                 <button
-                  className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+                  className="bg-secd hover:bg-brwn text-text hover:text-prim px-6 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-105 shadow-lg"
                   onClick={handleViewMore}
                 >
                   View More
@@ -343,6 +358,7 @@ export default function AdminDashboard() {
           </div>
         </div>
       </div>
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </div>
   )
 }

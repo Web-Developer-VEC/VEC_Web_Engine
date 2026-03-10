@@ -32,7 +32,7 @@ async function insertData(tempDoc, mainCollection) {
     }
   );
 
-  return { message: "MoU inserted successfully" };
+  return {success:true,  message: "MoU inserted successfully" };
 }
 
 

@@ -43,7 +43,7 @@ async function insertData(tempDoc, mainCollection) {
       {$push:{data:meta_data}}
     );
 
-    return{message:`The data is inserted into the ${collection_type}`}
+    return{success:true, message:`The data is inserted into the ${collection_type}`}
    }
 
     throw new Error("Invalid collection type logic branch reached.");

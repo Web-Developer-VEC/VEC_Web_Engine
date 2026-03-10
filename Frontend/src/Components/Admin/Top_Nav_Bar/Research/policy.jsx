@@ -237,6 +237,7 @@ export default function AdminPolicies({ theme, toggle }) {
     setPolicies(JSON.parse(JSON.stringify(savedDataRef.current)));
     setSessionChanges([]);
     setIsEditing(false);
+    setSelectedToDelete(new Set());
     toast.info("Session changes discarded.");
   };
 

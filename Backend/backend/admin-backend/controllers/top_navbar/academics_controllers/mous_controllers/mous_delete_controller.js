@@ -18,7 +18,7 @@ async function deleteData(tempDoc, mainCollection) {
     }
   );
 
-  return { message: "MoU deleted successfully" };
+  return {success:true,  message: "MoU deleted successfully" };
 }
 
 

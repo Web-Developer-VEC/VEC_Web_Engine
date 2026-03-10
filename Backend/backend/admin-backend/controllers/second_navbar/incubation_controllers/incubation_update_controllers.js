@@ -51,7 +51,7 @@ async function updateData(tempDoc, mainCollection) {
         );
       }
 
-      return { message: `the data is updated successfully in projects type` };
+      return { success: true,  message: `the data is updated successfully in projects type` };
     }
 
     if (singleObject.includes(collection_type)) {
@@ -63,7 +63,7 @@ async function updateData(tempDoc, mainCollection) {
         { $set: { data: new_data } }
       );
 
-      return { message: `Update done for ${collection_type}` };
+      return { success: true,  message: `Update done for ${collection_type}` };
     }
 
     if (multipleObject.includes(collection_type)) {
@@ -80,14 +80,14 @@ async function updateData(tempDoc, mainCollection) {
         { arrayFilters: [{ elem: original_data }] } // matches element exactly
       );
 
-      return { message: `Update done for ${collection_type}` };
+      return { success: true,  message: `Update done for ${collection_type}` };
     }
 
     // ---------- FALLBACK ----------
     throw new Error("Invalid collection type");
   } catch (error) {
     console.error("Error in updateData:", error.message);
-    throw error;
+    return { success: false, error: error.message };
   }
 }
 

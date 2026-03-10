@@ -15,7 +15,7 @@ async function deleteData(tempDoc, mainCollection) {
         { type: collection_type },
         { $pull: { data: { category: category } } }
       );
-      return { message: `Category ${category} deleted successfully` };
+      return { success:true, message: `Category ${category} deleted successfully` };
     }
 
     const doc = await mainCollection.findOne({ type: collection_type });
@@ -66,6 +66,7 @@ async function deleteData(tempDoc, mainCollection) {
     }
 
     return {
+      success:true, 
       message: `${arrayField} data deleted successfully for category ${category} and year ${meta_data.year}`,
     };
   }

@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./AppraisalForm.css";
-import Page1 from "./Page1.jsx";
-import Page2 from "./Page2.jsx";
-import Page3 from "./Page3.jsx";
-import Page4 from "./Page4.jsx";
-import Page5 from "./Page5.jsx";
+import Page1 from "./Academic_analytics.jsx";
+import Page2 from "./Research_activities.jsx";
+import Page3 from "./Student_development.jsx";
+import Page4 from "./Outreach_inovation.jsx";
+import Page5 from "./Apprasiers_remarks.jsx";
 import axios from "axios";
+import Academic_analytics from "./Academic_analytics.jsx";
+import Research_activities from "./Research_activities.jsx";
+import Student_development from "./Student_development.jsx";
+import Outreach_inovation from "./Outreach_inovation.jsx";
+import Apprasiers_remarks from "./Apprasiers_remarks.jsx";
 
 const AppraisalForm = () => {
   /* ================= MAIN FORM STATE ================= */
@@ -277,35 +282,34 @@ const handleSubmit = async (e) => {
 
       {/* ================= PAGES ================= */}
 
-      <Page1
-        selectedYear={selectedYear}
+      <Academic_analytics selectedYear={selectedYear}
         newAcadamicYear={newAcadamicYear}
         data={formState.page1}
         setData={(data) => updatePageData("page1", data)}
       />
 
-      <Page2
+      <Research_activities
         selectedYear={selectedYear}
         newAcadamicYear={newAcadamicYear}
         data={formState.page2}
         setData={(data) => updatePageData("page2", data)}
       />
 
-      <Page3
+      <Student_development
         selectedYear={selectedYear}
         newAcadamicYear={newAcadamicYear}
         data={formState.page3}
         setData={(data) => updatePageData("page3", data)}
       />
 
-      <Page4
+      <Outreach_inovation
         selectedYear={selectedYear}
         newAcadamicYear={newAcadamicYear}
         data={formState.page4}
         setData={(data) => updatePageData("page4", data)}
       />
 
-      <Page5
+      <Apprasiers_remarks
         selectedYear={selectedYear}
         newAcadamicYear={newAcadamicYear}
         data={formState.page5}
@@ -314,7 +318,7 @@ const handleSubmit = async (e) => {
 
       {/* ================= SUBMIT ================= */}
 
-      <div className="px-4 py-2 text-text bg-secd border rounded w-fit mt-4">
+      <div className="px-4 py-2 text-text bg-secd border rounded w-fit mt-4 flex mx-auto">
         <button type="submit">Submit</button>
       </div>
     </form>
