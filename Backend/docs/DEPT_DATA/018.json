@@ -194,7 +194,7 @@
               "researchgate": "https://www.researchgate.net/profile/Sureshkumar-Kumaravel-2?ev=hdr_xprf"
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-03-500.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           }
         ]
       },
@@ -214,7 +214,7 @@
                 "scopus": "https://tinyurl.com/743phucx"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-02-165.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Dr. GEETHA R",
@@ -229,7 +229,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-185.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Dr. RAGHURAMAN S",
@@ -244,7 +244,7 @@
                 "scopus": "https://www.scopus.com/results/authorNamesList.uri?..."
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-109.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Mrs. SELVE V",
@@ -259,7 +259,7 @@
                 "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57941486900"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-149.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Dr. ANGALAPARAMESWARI G",
@@ -274,7 +274,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-164.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Dr. SUNITHA D",
@@ -289,7 +289,7 @@
                 "scopus": "https://www.scopus.com/home.uri"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-159.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Dr. VIDHYA K",
@@ -304,7 +304,7 @@
                 "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-178.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Mrs. KASIRATHI N",
@@ -319,7 +319,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-187.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Mr. JAGADEESH BABU V",
@@ -334,7 +334,7 @@
                 "scopus": "https://www.editorialmanager.com/dwt/default2.aspx"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-117.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Mr. RENGARAJAN V",
@@ -349,7 +349,7 @@
                 "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-184.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Mrs. VIJAYALAKSHMI M",
@@ -364,7 +364,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-502.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             },
             {
               "name": "Mrs. DEVIKA B",
@@ -379,7 +379,7 @@
                 "scopus": "https://www.scopus.com/home.uri"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-501.webp",
-              "resume_pdf": ""
+              "pdf_path": ""
             }
         ]
       },
@@ -399,7 +399,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-05-008.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           },
           {
             "name": "Mr. RAJENDRAN.P",
@@ -414,7 +414,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-05-009.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           },
           {
             "name": "Mr. RANGARAJAN K",
@@ -429,7 +429,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-05-010.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           },
           {
             "name": "Mr. SELVAKUMAR.P",
@@ -444,7 +444,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-05-019.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           }
         ]
       }

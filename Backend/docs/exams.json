@@ -269,6 +269,10 @@
         {
           "name": "Application Form - Transcript Certificate",
           "pdf_path": "/static/pdfs/all_forms/Application-for-Transcripts_VEC_UPDATED_03-07-2023.pdf"
+        },
+        {
+          "name":"Application Form - Password Reset for student login",
+          "pdf_path":"/static/pdfs/all_forms/Scanned copy_Format for Password Rester in IMS Student Login.pdf"
         }
        
       ]

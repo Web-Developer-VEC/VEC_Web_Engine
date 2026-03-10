@@ -23,7 +23,7 @@ const SideButton = () => {  // Changed from sideButton to SideButton
 
   return (
     <>
-      <a href="https://admission.velammal.edu.in/" target="_blank" rel="noopener noreferrer" className="appluBtn appluBtn_right vertcalview-1"> APPLY NOW </a>
+      <a href="https://admission.velammal.edu.in/" target="_blank" rel="noopener noreferrer" className="appluBtn appluBtn_right vertcalview-1 no-underline"> APPLY NOW </a>
 
       <button id="enquireNowBtn" className="enquire-now-btns vertcalview" onClick={() => setShowPopup(true)}>Enquire Now !</button>
 

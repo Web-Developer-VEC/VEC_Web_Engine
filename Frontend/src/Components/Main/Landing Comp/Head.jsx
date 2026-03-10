@@ -72,7 +72,7 @@ const Head = () => {
             sub: [
                 {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
                 {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
-                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
+                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "/v_m"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
                 {hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer"}, // Link to footer
             ],
@@ -98,8 +98,24 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "acadamic_cal" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/academic_cal" },
               ],
+        },
+        {
+            main: "Placement",
+            cod: [0, 4],
+            cols: 1,
+            sub: [
+                {
+                    hrd: false,
+                    ttl: "About Placement Department",
+                    sup: [],
+                    lnk: "/abtplace",
+                },
+                {hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep"},
+                {hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni"},
+                {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
+            ],
         },
         {
             main: "Admission",
@@ -150,22 +166,7 @@ const Head = () => {
                 {hrd: false, ttl: "Policy", sup: [], lnk: "/policies"},
             ]
         },
-        {
-            main: "Placement",
-            cod: [0, 4],
-            cols: 1,
-            sub: [
-                {
-                    hrd: false,
-                    ttl: "About Placement Department",
-                    sup: [],
-                    lnk: "/abtplace",
-                },
-                {hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep"},
-                {hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni"},
-                {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
-            ],
-        },
+        
     ];
 
     function max(arr) {

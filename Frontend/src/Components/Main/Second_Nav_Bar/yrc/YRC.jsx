@@ -17,17 +17,13 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 const UrlParser = (path) => {
   return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
+
 const YRC = ({toggle,theme}) => {
   // const [yrcEvent, setYrcEvent] = useState(null);
   const [yrcData, setYrcData] = useState(null);
   const [yrc, setYrc] = useState("About YRC");
   const navigate = useNavigate();
-  
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-  
-  const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
-  };
+
   const navData = {
     "About YRC": <YRCAbout data={yrcData}/>,
     "News & Updates": <NotificationBox1 data={yrcData}/>,

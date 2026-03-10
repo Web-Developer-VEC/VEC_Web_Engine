@@ -17,7 +17,7 @@ const titleMap = {
   "/clg-org": "Organization Chart VEC",
   "/departments": "Academics VEC",
   "/programs": "Programs VEC",
-  "/acadamic_cal": "Academic Calendar VEC",
+  "/academic_cal": "Academic Calendar VEC",
   "/ug": "VEC - UG Admission",
   "/m_e": "VEC - ME Admission",
   "/mba": "VEC - MBA Admission",
