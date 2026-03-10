@@ -659,6 +659,17 @@
         "image_path": "/static/images/events/EIE - CONFERENCE  BROCHURE.pdf",
         "link": "",
         "status": "True"
+      },
+      {
+        "start_date":"28 MAR",
+        "end_date": "28 MAR, 2026",
+        "date": "28-03-2026",
+        "title": "AIMS 2K26",
+        "department": "Mechanical Engineering",
+        "content": "National Conference on Advancements in Mechanical Sciences",
+        "image_path":"/static/images/events/MECH CONF.jpeg",
+        "link": "",
+        "status": "True"
       }
     ]
   }
