@@ -27,7 +27,7 @@ async function updatedData(tempDoc, mainCollection) {
 
         await mainCollection.updateOne(
           { type: "about_vec" },
-          { $set: { "data.content": meta_data } }
+          { $set: { "data.content": meta_data.content } }
         );
 
         return { success:true, message: "Content updated successfully" };
