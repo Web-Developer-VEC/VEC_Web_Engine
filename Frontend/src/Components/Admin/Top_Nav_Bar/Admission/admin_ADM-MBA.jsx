@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import axios from "axios";
 import "./ADM-MBA.css";
 import { FaLink } from "react-icons/fa";
@@ -35,16 +35,15 @@ const AdminMBA = ({ theme, toggle }) => {
   const [changeList, setChangeList] = useState([]);
   const [isSaved, setIsSaved] = useState(false);
 
-  console.log(govLinkFile);
+  const originalRef = useRef(null);
+  const committedRef = useRef(null);
 
-  // ================= MBA PAYLOAD BUILDER =================
   const buildMbaAdmissionPayload = ({
     action,
     year,
     newData = {},
     oldData = {},
   }) => {
-    /* -------------------- ADD / INSERT -------------------- */
     if (action === "Added") {
       return {
         collectionName: "admissions",
@@ -52,19 +51,17 @@ const AdminMBA = ({ theme, toggle }) => {
         action: "insert",
         title: "Insert MBA Intake Data",
         meta_data: {
-            year,
-       
-                MBA: {
-                  "Government Quota Intakes": String(newData.government),
-                  "Management Quota Intakes": String(newData.management),
-                  "Total Intakes": String(newData.total),
-                },
-            
+          year,
+          MBA: {
+            "Government Quota Intakes": String(newData.government),
+            "Management Quota Intakes": String(newData.management),
+            "Total Intakes": String(newData.total),
           },
+        },
+        admin: { status: "pending" },
       };
     }
 
-    /* -------------------- EDIT / UPDATE INTAKE -------------------- */
     if (action === "Edited") {
       return {
         collectionName: "admissions",
@@ -73,31 +70,27 @@ const AdminMBA = ({ theme, toggle }) => {
         title: "Update MBA Intake Numbers",
 
         meta_data: {
-            year,
-           
-                MBA: {
-                  "Government Quota Intakes": String(newData.government),
-                  "Management Quota Intakes": String(newData.management),
-                  "Total Intakes": String(newData.total),
-                },
-             
+          year,
+          MBA: {
+            "Government Quota Intakes": String(newData.government),
+            "Management Quota Intakes": String(newData.management),
+            "Total Intakes": String(newData.total),
+          },
         },
 
         original_data: {
-            year,
-          
-            
-                MBA: {
-                  "Government Quota Intakes": String(oldData.government),
-                  "Management Quota Intakes": String(oldData.management),
-                  "Total Intakes": String(oldData.total),
-                },
-           
+          year,
+          MBA: {
+            "Government Quota Intakes": String(oldData.government),
+            "Management Quota Intakes": String(oldData.management),
+            "Total Intakes": String(oldData.total),
           },
+        },
+
+        admin: { status: "pending" },
       };
     }
 
-    /* -------------------- YEAR UPDATE -------------------- */
     if (action === "YearEdited") {
       return {
         collectionName: "admissions",
@@ -106,69 +99,71 @@ const AdminMBA = ({ theme, toggle }) => {
         title: "Update MBA Year Only",
 
         meta_data: {
-            year: newData.year,
+          year: newData.year,
         },
 
         original_data: {
-            year: oldData.year,
+          year: oldData.year,
         },
+
+        admin: { status: "pending" },
       };
     }
 
-if (action === "GovLinkEdited") {
-  return {
-    collectionName: "admissions",
-    collection_type: "mba",
-    action: "update",
-    title: "Update MBA Government Link",
+    if (action === "GovLinkEdited") {
+      return {
+        collectionName: "admissions",
+        collection_type: "mba",
+        action: "update",
+        title: "Update MBA Government Link",
 
-    meta_data: {
-      year,
-      MBA_Government: {
-        MBA_Government_link_name: newData.linkName,
-        pdf_path: newData.pdfPath ?? oldData.pdfPath,
-      },
-    },
+        meta_data: {
+          year,
+          MBA_Government: {
+            MBA_Government_link_name: newData.linkName,
+            pdf_path: newData.pdfPath ?? oldData.pdfPath,
+          },
+        },
 
-    original_data: {
-      year,
-      MBA_Government: {
-        MBA_Government_link_name: oldData.linkName,
-        pdf_path: oldData.pdfPath,
-      },
-    },
-  };
-}
+        original_data: {
+          year,
+          MBA_Government: {
+            MBA_Government_link_name: oldData.linkName,
+            pdf_path: oldData.pdfPath,
+          },
+        },
 
+        admin: { status: "pending" },
+      };
+    }
 
-   /* -------------------- MANAGEMENT LINK UPDATE -------------------- */
-if (action === "MgmtLinkEdited") {
-  return {
-    collectionName: "admissions",
-    collection_type: "mba",
-    action: "update",
-    title: "Update MBA Management Link",
+    if (action === "MgmtLinkEdited") {
+      return {
+        collectionName: "admissions",
+        collection_type: "mba",
+        action: "update",
+        title: "Update MBA Management Link",
 
-    meta_data: {
-      year,
-      MBA_Management: {
-        MBA_Management_link_name: newData.linkName,
-        pdf_path: newData.pdfPath ?? oldData.pdfPath,
-      },
-    },
+        meta_data: {
+          year,
+          MBA_Management: {
+            MBA_Management_link_name: newData.linkName,
+            pdf_path: newData.pdfPath ?? oldData.pdfPath,
+          },
+        },
 
-    original_data: {
-      year,
-      MBA_Management: {
-        MBA_Management_link_name: oldData.linkName,
-        pdf_path: oldData.pdfPath,
-      },
-    },
-  };
-}
+        original_data: {
+          year,
+          MBA_Management: {
+            MBA_Management_link_name: oldData.linkName,
+            pdf_path: oldData.pdfPath,
+          },
+        },
 
+        admin: { status: "pending" },
+      };
+    }
 
-    /* -------------------- DELETE MBA -------------------- */
     if (action === "Deleted") {
       return {
         collectionName: "admissions",
@@ -183,20 +178,12 @@ if (action === "MgmtLinkEdited") {
             },
           ],
         },
+        admin: { status: "pending" },
       };
     }
 
     return null;
   };
-
-  // const files = [
-  //   { field: "mba_gov_pdf", file: govLinkFile },
-  //   { field: "mba_mgmt_pdf", file: mgmtLinkFile },
-  // ];
-
-  // await sendRequest(payloads, files);
-
-  const originalRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -207,7 +194,14 @@ if (action === "MgmtLinkEdited") {
 
         const data = response.data?.data || {};
         setMbaData(data);
-        originalRef.current = data;
+
+        originalRef.current = JSON.parse(JSON.stringify(data));
+
+        committedRef.current = {
+          data: JSON.parse(JSON.stringify(data)),
+          savedGovLinkFile: null,
+          savedMgmtLinkFile: null,
+        };
 
         setEditableYear(data?.year || "");
         const initialRows = [
@@ -247,6 +241,51 @@ if (action === "MgmtLinkEdited") {
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
+
+  const hasUnsavedChanges = useMemo(() => {
+    if (!isEditing) return false;
+    const committed = committedRef.current?.data || {};
+    const committedGovFile = committedRef.current?.savedGovLinkFile;
+    const committedMgmtFile = committedRef.current?.savedMgmtLinkFile;
+
+    if (editableYear !== (committed.year || "")) return true;
+
+    const row = editableRows[0] || {};
+    if (
+      String(row.governmentQuota || "") !==
+        String(committed.MBA?.["Government Quota Intakes"] || "") ||
+      String(row.managementQuota || "") !==
+        String(committed.MBA?.["Management Quota Intakes"] || "")
+    )
+      return true;
+
+    if (
+      (govLinkName || "") !==
+      (committed.MBA_Government?.MBA_Government_link_name || "")
+    )
+      return true;
+    if (
+      (mgmtLinkName || "") !==
+      (committed.MBA_Management?.MBA_Management_link_name || "")
+    )
+      return true;
+
+    if (govLinkFile !== committedGovFile) return true;
+    if (mgmtLinkFile !== committedMgmtFile) return true;
+
+    return false;
+  }, [
+    isEditing,
+    editableYear,
+    editableRows,
+    govLinkName,
+    mgmtLinkName,
+    govLinkFile,
+    mgmtLinkFile,
+    committedRef.current?.data,
+    committedRef.current?.savedGovLinkFile,
+    committedRef.current?.savedMgmtLinkFile,
+  ]);
 
   if (!isOnline) {
     return (
@@ -291,9 +330,10 @@ if (action === "MgmtLinkEdited") {
     if (!url) return;
     window.open(url, "_blank", "noopener,noreferrer");
   };
+
   const collectChangeList = () => {
     const changes = [];
-    const original = originalRef.current || {};
+    const original = committedRef.current?.data || originalRef.current || {};
 
     const originalRow = {
       course: "Master of Business Administration (MBA)",
@@ -304,12 +344,10 @@ if (action === "MgmtLinkEdited") {
 
     const currentRow = editableRows[0];
 
-    /* ---------------- YEAR ---------------- */
     if (editableYear !== original?.year) {
       changes.push({ type: "edited", section: "Year" });
     }
 
-    /* ---------------- INTAKE ---------------- */
     if (
       currentRow.governmentQuota !== originalRow.governmentQuota ||
       currentRow.managementQuota !== originalRow.managementQuota ||
@@ -321,11 +359,10 @@ if (action === "MgmtLinkEdited") {
       });
     }
 
-    /* ---------------- GOVERNMENT LINK ---------------- */
     if (
       govLinkName.trim() !==
         (original?.MBA_Government?.MBA_Government_link_name || "") ||
-      govLinkFile
+      govLinkFile !== committedRef.current?.savedGovLinkFile
     ) {
       changes.push({
         type: "edited",
@@ -333,11 +370,10 @@ if (action === "MgmtLinkEdited") {
       });
     }
 
-    /* ---------------- MANAGEMENT LINK ---------------- */
     if (
       mgmtLinkName.trim() !==
         (original?.MBA_Management?.MBA_Management_link_name || "") ||
-      mgmtLinkFile
+      mgmtLinkFile !== committedRef.current?.savedMgmtLinkFile
     ) {
       changes.push({
         type: "edited",
@@ -345,7 +381,6 @@ if (action === "MgmtLinkEdited") {
       });
     }
 
-    /* ---------------- DELETE MBA ---------------- */
     if (deletedRows.length > 0) {
       changes.push({
         type: "deleted",
@@ -368,6 +403,7 @@ if (action === "MgmtLinkEdited") {
 
     setEditableRows(updatedRows);
   };
+
   const handlePdfChange = (file, type) => {
     if (!file) return;
 
@@ -380,10 +416,14 @@ if (action === "MgmtLinkEdited") {
     const futurePath = `/static/pdfs/admission/${file.name}`;
 
     if (type === "GOV") {
+      if (govPreviewUrl) {
+        try {
+          URL.revokeObjectURL(govPreviewUrl);
+        } catch (e) {}
+      }
       setGovLinkFile(file);
       setGovPreviewUrl(previewUrl);
 
-      // ✅ Update UI data immediately
       setMbaData((prev) => ({
         ...prev,
         MBA_Government: {
@@ -395,6 +435,11 @@ if (action === "MgmtLinkEdited") {
     }
 
     if (type === "MGMT") {
+      if (mgmtPreviewUrl) {
+        try {
+          URL.revokeObjectURL(mgmtPreviewUrl);
+        } catch (e) {}
+      }
       setMgmtLinkFile(file);
       setMgmtPreviewUrl(previewUrl);
 
@@ -408,10 +453,77 @@ if (action === "MgmtLinkEdited") {
       }));
     }
   };
-const handleCancel = () => {
-  setIsEditing(false);
-  toast.info("Exited edit mode.");
-};
+
+  const handleCancel = () => {
+    const committed = committedRef.current || {};
+    const committedData = committed.data || originalRef.current || {};
+
+    setEditableYear(committedData?.year || "");
+
+    const restoredRows = [
+      {
+        course: "Master of Business Administration (MBA)",
+        governmentQuota:
+          committedData?.MBA?.["Government Quota Intakes"] || "",
+        managementQuota:
+          committedData?.MBA?.["Management Quota Intakes"] || "",
+        totalIntake: committedData?.MBA?.["Total Intakes"] || "",
+        isSelected: false,
+      },
+    ];
+    setEditableRows(restoredRows);
+
+    setGovLinkName(
+      committedData?.MBA_Government?.MBA_Government_link_name || ""
+    );
+    setMgmtLinkName(
+      committedData?.MBA_Management?.MBA_Management_link_name || ""
+    );
+
+    if (govPreviewUrl) {
+      try {
+        URL.revokeObjectURL(govPreviewUrl);
+      } catch (e) {}
+    }
+    if (mgmtPreviewUrl) {
+      try {
+        URL.revokeObjectURL(mgmtPreviewUrl);
+      } catch (e) {}
+    }
+
+    if (committed.savedGovLinkFile) {
+      setGovLinkFile(committed.savedGovLinkFile);
+      try {
+        setGovPreviewUrl(URL.createObjectURL(committed.savedGovLinkFile));
+      } catch (e) {
+        setGovPreviewUrl(null);
+      }
+    } else {
+      setGovLinkFile(null);
+      setGovPreviewUrl(
+        committedData?.MBA_Government?.preview_url || null
+      );
+    }
+
+    if (committed.savedMgmtLinkFile) {
+      setMgmtLinkFile(committed.savedMgmtLinkFile);
+      try {
+        setMgmtPreviewUrl(URL.createObjectURL(committed.savedMgmtLinkFile));
+      } catch (e) {
+        setMgmtPreviewUrl(null);
+      }
+    } else {
+      setMgmtLinkFile(null);
+      setMgmtPreviewUrl(
+        committedData?.MBA_Management?.preview_url || null
+      );
+    }
+
+    setDeletedRows([]);
+    setIsEditing(false);
+
+    toast.info("Edits cancelled — restored last saved values.");
+  };
 
   const handleSave = () => {
     if (!editableYear.trim()) {
@@ -436,7 +548,6 @@ const handleCancel = () => {
       return;
     }
 
-    // ✅ IMPORTANT: compute changes BEFORE mutating anything
     const changes = collectChangeList();
 
     if (changes.length === 0) {
@@ -444,7 +555,45 @@ const handleCancel = () => {
       return;
     }
 
-    setChangeList(changes); // ✅ store diff
+    const row = editableRows[0] || {
+      governmentQuota: "",
+      managementQuota: "",
+      totalIntake: "",
+    };
+
+    const savedData = {
+      ... (mbaData || {}),
+      year: editableYear,
+      MBA: {
+        "Government Quota Intakes": String(row.governmentQuota),
+        "Management Quota Intakes": String(row.managementQuota),
+        "Total Intakes": String(row.totalIntake),
+      },
+      MBA_Government: {
+        ...(mbaData?.MBA_Government || {}),
+        MBA_Government_link_name: govLinkName,
+        pdf_path: govLinkFile
+          ? `/static/pdfs/admission/${govLinkFile.name}`
+          : mbaData?.MBA_Government?.pdf_path,
+      },
+      MBA_Management: {
+        ...(mbaData?.MBA_Management || {}),
+        MBA_Management_link_name: mgmtLinkName,
+        pdf_path: mgmtLinkFile
+          ? `/static/pdfs/admission/${mgmtLinkFile.name}`
+          : mbaData?.MBA_Management?.pdf_path,
+      },
+    };
+
+    setMbaData(savedData);
+
+    committedRef.current = {
+      data: JSON.parse(JSON.stringify(savedData)),
+      savedGovLinkFile: govLinkFile ?? committedRef.current?.savedGovLinkFile ?? null,
+      savedMgmtLinkFile: mgmtLinkFile ?? committedRef.current?.savedMgmtLinkFile ?? null,
+    };
+
+    setChangeList(changes);
     setIsEditing(false);
     setIsSaved(true);
 
@@ -462,7 +611,6 @@ const handleCancel = () => {
     setEditableRows((prev) => {
       const rowsToDelete = prev.filter((row) => row.isSelected);
 
-      // Only add deleted rows that are not already in deletedRows
       setDeletedRows((prevDeleted) => [
         ...prevDeleted,
         ...rowsToDelete
@@ -476,13 +624,11 @@ const handleCancel = () => {
       ]);
       setShowDeleteModal(false);
 
-      // Remove selected rows from table
       return prev.filter((row) => !row.isSelected);
     });
   };
 
   const handleDiscardChanges = () => {
-    if (window.confirm("Discard all unsaved changes?")) {
       const original = originalRef.current || {};
 
       setEditableYear(original?.year || "");
@@ -504,21 +650,39 @@ const handleCancel = () => {
       setMgmtLinkFile(null);
 
       setChangeList([]);
-      setDeletedRows([]); // clear deleted rows
+      setDeletedRows([]);
       setIsSaved(false);
       setIsEditing(false);
 
+      setMbaData(JSON.parse(JSON.stringify(original)));
+      committedRef.current = {
+        data: JSON.parse(JSON.stringify(original)),
+        savedGovLinkFile: null,
+        savedMgmtLinkFile: null,
+      };
+
+      if (govPreviewUrl) {
+        try {
+          URL.revokeObjectURL(govPreviewUrl);
+        } catch (e) {}
+        setGovPreviewUrl(null);
+      }
+      if (mgmtPreviewUrl) {
+        try {
+          URL.revokeObjectURL(mgmtPreviewUrl);
+        } catch (e) {}
+        setMgmtPreviewUrl(null);
+      }
+
       toast.info("All changes discarded");
-    }
   };
 
   const handleUndoChange = (idx) => {
     const change = changeList[idx];
-    const original = originalRef.current || {};
+    const original = committedRef.current?.data || originalRef.current || {};
 
     if (!change) return;
 
-    // Handle different types of changes
     switch (change.type) {
       case "edited":
         if (change.section === "Year") {
@@ -527,8 +691,7 @@ const handleCancel = () => {
           setGovLinkName(
             original?.MBA_Government?.MBA_Government_link_name || "",
           );
-          setGovLinkFile(null);
-          // Also reset the editable row quotas
+          setGovLinkFile(committedRef.current?.savedGovLinkFile || null);
           setEditableRows((prev) =>
             prev.map((row, i) =>
               i === 0
@@ -544,8 +707,7 @@ const handleCancel = () => {
           setMgmtLinkName(
             original?.MBA_Management?.MBA_Management_link_name || "",
           );
-          setMgmtLinkFile(null);
-          // Also reset the editable row quotas
+          setMgmtLinkFile(committedRef.current?.savedMgmtLinkFile || null);
           setEditableRows((prev) =>
             prev.map((row, i) =>
               i === 0
@@ -558,7 +720,6 @@ const handleCancel = () => {
             ),
           );
         } else {
-          // Revert individual course edits
           setEditableRows((prev) =>
             prev.map((row) => {
               if (row.course === change.section) {
@@ -581,14 +742,12 @@ const handleCancel = () => {
         break;
 
       case "added":
-        // Remove the added row
         setEditableRows((prev) =>
           prev.filter((row) => row.course !== change.section),
         );
         break;
 
       case "deleted":
-        // Restore the deleted row
         setEditableRows((prev) => [
           ...prev,
           {
@@ -599,7 +758,6 @@ const handleCancel = () => {
             isSelected: false,
           },
         ]);
-        // Remove from deletedRows
         setDeletedRows((prev) =>
           prev.filter((row) => row.course !== change.section),
         );
@@ -609,149 +767,192 @@ const handleCancel = () => {
         break;
     }
 
-    // Remove the change from the list
     setChangeList((prev) => prev.filter((_, i) => i !== idx));
-    toast.info("Change reverted to original data.");
+    toast.info("Change reverted to last saved data.");
   };
-const handleFinalRequest = async () => {
-  const changes = collectChangeList();
-  if (!changes.length) {
-    toast.warn("No changes to submit");
-    return;
-  }
 
-  const payloads = [];
-  const files = [];
-  const original = originalRef.current || {};
-  const row = editableRows[0];
+  const handleFinalRequest = async () => {
+    const committed = committedRef.current || {};
+    const committedData = committed.data || {};
+    const original = originalRef.current || {};
 
-  /* ---------------- CHECK WHAT CHANGED ---------------- */
+    const pendingChanges =
+      changeList && changeList.length
+        ? changeList
+        : (() => {
+            const changes = [];
 
-  const hasYearChange = changes.some(c => c.section === "Year");
+            if ((committedData.year || "") !== (original.year || "")) {
+              changes.push({ type: "edited", section: "Year" });
+            }
 
-  const hasIntakeChange = changes.some(
-    c => c.section === "Master of Business Administration (MBA)"
-  );
+            const cGov = committedData?.MBA?.["Government Quota Intakes"] || "";
+            const cMgmt = committedData?.MBA?.["Management Quota Intakes"] || "";
+            const cTotal = committedData?.MBA?.["Total Intakes"] || "";
+            const oGov = original?.MBA?.["Government Quota Intakes"] || "";
+            const oMgmt = original?.MBA?.["Management Quota Intakes"] || "";
+            const oTotal = original?.MBA?.["Total Intakes"] || "";
 
-  const hasGovLinkChange = changes.some(
-    c => c.section === "Government Quota"
-  );
+            if (String(cGov) !== String(oGov) || String(cMgmt) !== String(oMgmt) || String(cTotal) !== String(oTotal)) {
+              changes.push({
+                type: "edited",
+                section: "Master of Business Administration (MBA)",
+              });
+            }
 
-  const hasMgmtLinkChange = changes.some(
-    c => c.section === "Management Quota"
-  );
+            const cGovName = committedData?.MBA_Government?.MBA_Government_link_name || "";
+            const oGovName = original?.MBA_Government?.MBA_Government_link_name || "";
+            const govFileSaved = !!committed.savedGovLinkFile;
+            const govPathChanged = (committedData?.MBA_Government?.pdf_path || "") !== (original?.MBA_Government?.pdf_path || "");
+            if (cGovName !== oGovName || govFileSaved || govPathChanged) {
+              changes.push({ type: "edited", section: "Government Quota" });
+            }
 
-  const hasDelete = changes.some(c => c.type === "deleted");
+            const cMgmtName = committedData?.MBA_Management?.MBA_Management_link_name || "";
+            const oMgmtName = original?.MBA_Management?.MBA_Management_link_name || "";
+            const mgmtFileSaved = !!committed.savedMgmtLinkFile;
+            const mgmtPathChanged = (committedData?.MBA_Management?.pdf_path || "") !== (original?.MBA_Management?.pdf_path || "");
+            if (cMgmtName !== oMgmtName || mgmtFileSaved || mgmtPathChanged) {
+              changes.push({ type: "edited", section: "Management Quota" });
+            }
 
-  /* ---------------- COMBINED YEAR + INTAKE ---------------- */
+            if ((deletedRows || []).length > 0) {
+              changes.push({
+                type: "deleted",
+                section: "Master of Business Administration (MBA)",
+              });
+            }
 
-  if (hasYearChange || hasIntakeChange) {
-    payloads.push({
-      collectionName: "admissions",
-      collection_type: "mba",
-      action: "update",
-      title: "Update MBA Admission",
+            return changes;
+          })();
 
-      meta_data: {
-          year: editableYear,
-              MBA: {
-                "Government Quota Intakes": String(row.governmentQuota),
-                "Management Quota Intakes": String(row.managementQuota),
-                "Total Intakes": String(row.totalIntake),
-              },
-          
-      },
-
-      original_data: {
-          year: original.year,
-            
-              MBA: {
-                "Government Quota Intakes":
-                  original?.MBA?.["Government Quota Intakes"],
-                "Management Quota Intakes":
-                  original?.MBA?.["Management Quota Intakes"],
-                "Total Intakes":
-                  original?.MBA?.["Total Intakes"],
-              },
-      },
-
-      admin: { status: "pending" },
-    });
-  }
-
-  /* ---------------- GOVERNMENT LINK ---------------- */
-
-  if (hasGovLinkChange) {
-    payloads.push(
-      buildMbaAdmissionPayload({
-        action: "GovLinkEdited",
-        year: editableYear,
-        newData: {
-          linkName: govLinkName,
-          pdfPath: govLinkFile
-            ? `/static/pdfs/admission/${govLinkFile.name}`
-            : undefined,
-        },
-        oldData: {
-          linkName: original?.MBA_Government?.MBA_Government_link_name,
-          pdfPath: original?.MBA_Government?.pdf_path,
-        },
-      })
-    );
-
-    if (govLinkFile) {
-      files.push({  file: govLinkFile });
+    if (!pendingChanges.length) {
+      toast.warn("No changes to submit");
+      return;
     }
-  }
 
-  /* ---------------- MANAGEMENT LINK ---------------- */
+    const payloads = [];
+    const files = [];
+    try {
+      const hasYearChange = pendingChanges.some((c) => c.section === "Year");
+      const hasIntakeChange = pendingChanges.some((c) => c.section === "Master of Business Administration (MBA)");
+      const hasGovChange = pendingChanges.some((c) => c.section === "Government Quota");
+      const hasMgmtChange = pendingChanges.some((c) => c.section === "Management Quota");
+      const hasDelete = pendingChanges.some((c) => c.type === "deleted");
 
-  if (hasMgmtLinkChange) {
-    payloads.push(
-      buildMbaAdmissionPayload({
-        action: "MgmtLinkEdited",
-        year: editableYear,
-        newData: {
-          linkName: mgmtLinkName,
-          pdfPath: mgmtLinkFile
-            ? `/static/pdfs/admission/${mgmtLinkFile.name}`
-            : undefined,
-        },
-        oldData: {
-          linkName: original?.MBA_Management?.MBA_Management_link_name,
-          pdfPath: original?.MBA_Management?.pdf_path,
-        },
-      })
-    );
+      if (hasYearChange || hasIntakeChange) {
+        const row = {
+          government: committedData?.MBA?.["Government Quota Intakes"] || "",
+          management: committedData?.MBA?.["Management Quota Intakes"] || "",
+          total: committedData?.MBA?.["Total Intakes"] || "",
+        };
 
-    if (mgmtLinkFile) {
-      files.push({  file: mgmtLinkFile });
+        payloads.push({
+          collectionName: "admissions",
+          collection_type: "mba",
+          action: "update",
+          title: "Update MBA Admission",
+          meta_data: {
+            year: committedData?.year,
+            MBA: {
+              "Government Quota Intakes": String(row.government),
+              "Management Quota Intakes": String(row.management),
+              "Total Intakes": String(row.total),
+            },
+          },
+          original_data: {
+            year: original?.year,
+            MBA: {
+              "Government Quota Intakes":
+                original?.MBA?.["Government Quota Intakes"],
+              "Management Quota Intakes":
+                original?.MBA?.["Management Quota Intakes"],
+              "Total Intakes": original?.MBA?.["Total Intakes"],
+            },
+          },
+          admin: { status: "pending" },
+        });
+      }
+
+      if (hasGovChange) {
+        payloads.push(
+          buildMbaAdmissionPayload({
+            action: "GovLinkEdited",
+            year: committedData?.year,
+            newData: {
+              linkName:
+                committedData?.MBA_Government?.MBA_Government_link_name ||
+                govLinkName,
+              pdfPath: committed.savedGovLinkFile
+                ? `/static/pdfs/admission/${committed.savedGovLinkFile.name}`
+                : committedData?.MBA_Government?.pdf_path,
+            },
+            oldData: {
+              linkName: original?.MBA_Government?.MBA_Government_link_name,
+              pdfPath: original?.MBA_Government?.pdf_path,
+            },
+          })
+        );
+
+        if (committed.savedGovLinkFile) {
+          files.push({ field: "mba_gov_pdf", file: committed.savedGovLinkFile });
+        }
+      }
+
+      if (hasMgmtChange) {
+        payloads.push(
+          buildMbaAdmissionPayload({
+            action: "MgmtLinkEdited",
+            year: committedData?.year,
+            newData: {
+              linkName:
+                committedData?.MBA_Management?.MBA_Management_link_name ||
+                mgmtLinkName,
+              pdfPath: committed.savedMgmtLinkFile
+                ? `/static/pdfs/admission/${committed.savedMgmtLinkFile.name}`
+                : committedData?.MBA_Management?.pdf_path,
+            },
+            oldData: {
+              linkName: original?.MBA_Management?.MBA_Management_link_name,
+              pdfPath: original?.MBA_Management?.pdf_path,
+            },
+          })
+        );
+
+        if (committed.savedMgmtLinkFile) {
+          files.push({ field: "mba_mgmt_pdf", file: committed.savedMgmtLinkFile });
+        }
+      }
+
+      if (hasDelete) {
+        payloads.push(
+          buildMbaAdmissionPayload({
+            action: "Deleted",
+            year: committedData?.year,
+          })
+        );
+      }
+
+      console.log("FINAL MBA PAYLOADS (to send):", payloads);
+      console.log("FILES (to send):", files);
+
+      await sendRequest(payloads, files);
+
+      toast.success("MBA Admission request submitted successfully!");
+      setShowPopup(false);
+      setIsSaved(false);
+      setChangeList([]);
+
+      committedRef.current = {
+        ...committedRef.current,
+        savedGovLinkFile: null,
+        savedMgmtLinkFile: null,
+      };
+    } catch (err) {
+      console.error("Final request failed:", err);
+      toast.error("Failed to submit MBA admission request. See console for details.");
     }
-  }
-
-  /* ---------------- DELETE ---------------- */
-
-  if (hasDelete) {
-    payloads.push(
-      buildMbaAdmissionPayload({
-        action: "Deleted",
-        year: editableYear,
-      })
-    );
-  }
-
-  console.log("FINAL MBA PAYLOADS:", payloads);
-  console.log("FILES:", files);
-
-  await sendRequest(payloads, files);
-
-  toast.success("MBA Admission request submitted successfully!");
-  setShowPopup(false);
-  setIsSaved(false);
-};
-
-
-  // console.log("Changes", changeList);
+  };
 
   return (
     <>
@@ -798,7 +999,6 @@ const handleFinalRequest = async () => {
                 </button>
               )}
             </div>
-            {/* GOVERNMENT QUOTA */}
             <div>
               <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">
                 GOVERNMENT QUOTA
@@ -814,13 +1014,13 @@ const handleFinalRequest = async () => {
               {isEditing ? (
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-start gap-3">
-                  <input
-                    type="text"
-                    className="admin-mba"
-                    value={govLinkName}
-                    onChange={(e) => setGovLinkName(e.target.value)}
-                    placeholder="Enter Link Name"
-                  />
+                    <input
+                      type="text"
+                      className="admin-mba"
+                      value={govLinkName}
+                      onChange={(e) => setGovLinkName(e.target.value)}
+                      placeholder="Enter Link Name"
+                    />
 
                     <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
                       <span>Replace</span>
@@ -838,15 +1038,9 @@ const handleFinalRequest = async () => {
                         type="button"
                         onClick={() => {
                           if (govLinkFile) {
-                            console.log("Ajith");
-
-                            // If new file selected
                             const fileURL = URL.createObjectURL(govLinkFile);
                             window.open(fileURL, "_blank");
                           } else if (MBA_Government?.pdf_path) {
-                            console.log("Aji");
-
-                            // If backend link exists
                             window.open(
                               UrlParser(MBA_Government.pdf_path),
                               "_blank",
@@ -861,8 +1055,7 @@ const handleFinalRequest = async () => {
                       </button>
                     </div>
                   </div>
-                  </div>
-                
+                </div>
               ) : (
                 <button
                   className="text-blue-600 dark:text-drka"
@@ -876,7 +1069,6 @@ const handleFinalRequest = async () => {
               )}
             </div>
 
-            {/* MANAGEMENT QUOTA */}
             <div>
               <p className="text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1 text-[24px] w-fit font-bold mb-2 mt-2">
                 MANAGEMENT QUOTA
@@ -892,13 +1084,13 @@ const handleFinalRequest = async () => {
               {isEditing ? (
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-start gap-3">
-                  <input
-                    type="text"
-                    className="admin-mba"
-                    value={mgmtLinkName}
-                    onChange={(e) => setMgmtLinkName(e.target.value)}
-                    placeholder="Enter Link Name"
-                  />
+                    <input
+                      type="text"
+                      className="admin-mba"
+                      value={mgmtLinkName}
+                      onChange={(e) => setMgmtLinkName(e.target.value)}
+                      placeholder="Enter Link Name"
+                    />
                     <label className="bg-secd w-[100px] text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
                       <span>Replace</span>
                       <input
@@ -914,20 +1106,15 @@ const handleFinalRequest = async () => {
                       <button
                         type="button"
                         onClick={() => {
-                          // If a new file has been uploaded, show it
                           if (mgmtLinkFile) {
                             const fileURL = URL.createObjectURL(mgmtLinkFile);
                             window.open(fileURL, "_blank", "noopener,noreferrer");
-                          }
-                          // Otherwise show the old PDF from backend
-                          else if (MBA_Management?.pdf_path) {
+                          } else if (MBA_Management?.pdf_path) {
                             const url = MBA_Management.pdf_path.startsWith("http")
                               ? MBA_Management.pdf_path
                               : `${BASE_URL || ""}${MBA_Management.pdf_path}`;
                             window.open(url, "_blank", "noopener,noreferrer");
-                          }
-                          // If no PDF exists
-                          else {
+                          } else {
                             alert("No PDF available to view");
                           }
                         }}
@@ -937,8 +1124,7 @@ const handleFinalRequest = async () => {
                       </button>
                     </div>
                   </div>
-                  </div>
-              
+                </div>
               ) : (
                 <button
                   className="text-blue-600 dark:text-drka"
@@ -952,7 +1138,6 @@ const handleFinalRequest = async () => {
               )}
             </div>
 
-            {/* Intake Table */}
             <div className="mba-content">
               <center>
                 <h4 className="text-accn dark:text-drka font-bold">
@@ -976,26 +1161,12 @@ const handleFinalRequest = async () => {
                     <th>Government Quota Intake</th>
                     <th>Management Quota Intake</th>
                     <th>Total Intake</th>
-                    {/* {isEditing && <th>Actions</th>} */}
                   </tr>
                 </thead>
                 <tbody>
                   {editableRows.map((row, index) => (
                     <tr key={index}>
-                      <td>
-                        {/* {isEditing ? (
-                          <input
-                            type="text"
-                            value={row.course}
-                            onChange={(e) =>
-                              handleRowChange(index, "course", e.target.value)
-                            }
-                            className="admin-mbanu"
-                          />
-                        ) : ( */}
-                          {row.course}
-                        {/* )} */}
-                      </td>
+                      <td>{row.course}</td>
                       <td>
                         {isEditing ? (
                           <input
@@ -1033,49 +1204,13 @@ const handleFinalRequest = async () => {
                         )}
                       </td>
                       <td>{row.totalIntake}</td>
-                      {/* {isEditing && (
-                        <td className="text-center">
-                          <input
-                            type="checkbox"
-                            checked={row.isSelected || false} // track selected rows
-                            onChange={(e) =>
-                              handleCheckboxChange(index, e.target.checked)
-                            }
-                            className="w-4 h-4 cursor-pointer"
-                          />
-                        </td>
-                      )} */}
                     </tr>
                   ))}
-                  {isEditing && (
-                    <tr>
-                      {/* <td colSpan={5}>
-                        <div className="flex justify-center items-center gap-2">
-                          <button
-                            onClick={handleAddNew}
-                            className="flex items-center gap-1 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-                          >
-                            <Plus size={16} /> Add
-                          </button>
-
-                          {editableRows.some((row) => row.isSelected) && (
-                            <button
-                              onClick={() => setShowDeleteModal(true)} // Open modal
-                              className="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                            >
-                              <Trash2 size={16} /> Delete
-                            </button>
-                          )}
-                        </div>
-                      </td> */}
-                    </tr>
-                  )}
                 </tbody>
               </table>
             </div>
           </div>
 
-          {/* Save button */}
           {isEditing && (
             <div className="flex gap-2 mt-4 justify-end mr-12">
               <button
@@ -1084,18 +1219,17 @@ const handleFinalRequest = async () => {
               >
                 Cancel
               </button>
-              <button
-                onClick={() => {
-                  handleSave(true);
-                }}
-                className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-black rounded-lg shadow-md hover:bg-yellow-500 transition "
-              >
-                Save
-              </button>
+              {hasUnsavedChanges && (
+                <button
+                  onClick={handleSave}
+                  className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-black rounded-lg shadow-md hover:bg-yellow-500 transition "
+                >
+                  Save
+                </button>
+              )}
             </div>
           )}
 
-          {/* Request changes button */}
           {!isEditing && isSaved && (
             <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
               <button
@@ -1140,7 +1274,6 @@ const handleFinalRequest = async () => {
           </div>
         </div>
       )}
-      {/* Final request popup */}
       {showPopup && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
@@ -1169,18 +1302,12 @@ const handleFinalRequest = async () => {
                   changeList.map((req, idx) => (
                     <tr key={idx} className="border-b">
                       <td className="p-2 flex items-center space-x-2">
-                        {req.type === "added"}
-                        {req.type === "deleted"}
-                        {req.type === "edited"}
                         <span className="capitalize">{req.type}</span>
                       </td>
                       <td className="border p-2"> MBA</td>
                       <td className="p-2 capitalize border">{req.section}</td>
                       <td className="p-2 border">
-                        <button
-                          onClick={() => handleUndoChange(idx)}
-                          className=""
-                        >
+                        <button onClick={() => handleUndoChange(idx)} className="">
                           <X />
                         </button>
                       </td>
@@ -1210,6 +1337,7 @@ const handleFinalRequest = async () => {
           </div>
         </div>
       )}
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 };

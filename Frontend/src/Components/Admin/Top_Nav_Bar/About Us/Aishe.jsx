@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Banner from "../../Banner";
-import { Eye, X } from "lucide-react";
+import { Eye, Pencil, X } from "lucide-react";
 import "./AbtYr.css";
 import axios from "axios";
 import AisheSideNav from "./aishe_nav";
@@ -1140,8 +1140,9 @@ const AdminAishe = ({ toggle, theme }) => {
       {!editMode && (
         <button
           onClick={handleEditClick}
-          className="p-2 bg-secd hover:bg-yellow-500 font-semibold text-black rounded flex items-center gap-2"
+          className="p-2 bg-secd hover:bg-yellow-500 font-semibold text-black rounded flex items-center gap-2 flex items-center"
         >
+          <Pencil size={16} />
           Edit
         </button>
       )}
