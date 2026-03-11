@@ -20,7 +20,7 @@ async function updateData(tempDoc, mainCollection) {
     }
   );
 
-  return { message: "MoU updated successfully" };
+  return {success:true, message: "MoU updated successfully" };
 }
 
 module.exports = { updateData };

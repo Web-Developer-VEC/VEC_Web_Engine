@@ -24,7 +24,7 @@ async function deleteData(tempDoc, mainCollection) {
         throw new Error(`PDF "${meta_data.name}" not found`);
       }
 
-      return { message: "about_vec PDF deleted successfully" };
+      return { success:true, message: "about_vec PDF deleted successfully" };
     }
 
     // ---------- AISHE (FIXED) ----------
@@ -40,7 +40,7 @@ async function deleteData(tempDoc, mainCollection) {
           { $pull: { data: { category } } }
         );
 
-        return { message: `AISHE category ${category} deleted` };
+        return { success:true, message: `AISHE category ${category} deleted` };
       }
 
       // ✅ Delete single item by name
@@ -57,7 +57,7 @@ async function deleteData(tempDoc, mainCollection) {
         throw new Error(`AISHE item not found in ${category}`);
       }
 
-      return { message: `AISHE item deleted from ${category}` };
+      return { success:true, message: `AISHE item deleted from ${category}` };
     }
   } catch (error) {
     throw new Error(`Error deleting data: ${error.message}`);

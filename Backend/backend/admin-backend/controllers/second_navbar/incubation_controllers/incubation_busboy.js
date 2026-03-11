@@ -1,5 +1,6 @@
 const { s3, bucketName } = require("../../../config/s3");
 const { PutObjectCommand } = require("@aws-sdk/client-s3");
+const path = require("path");
 
 async function incubationHandler(fileStream, docs, req, cb, filename, mimetype) {
   try {
@@ -17,7 +18,7 @@ async function incubationHandler(fileStream, docs, req, cb, filename, mimetype) 
       fileStream.resume();
       return cb(new Error("Only images or PDFs are allowed"));
     }
-    ext = path.extname(realimagename) || "";
+    ext = path.extname(realFilename) || "";
 
     const collection_type = docs[0]?.collection_type;
     let s3Key;
@@ -25,12 +26,12 @@ async function incubationHandler(fileStream, docs, req, cb, filename, mimetype) 
     let folder;
 
     if (collection_type === "facilities") {
-      ext = path.extname(realpdfname) || "";
+      ext = path.extname(realFilename) || "";
       name = docs[0].meta_data.name;
       folder = `temp/static/images/incubation/${name}${ext}`;
       s3Key = folder;
     }else if(collection_type === "incubation_committee"){
-      ext = path.extname(realpdfname) || "";
+      ext = path.extname(realFilename) || "";
       name = docs[0].meta_data.name;
       folder = `temp/static/images/incubation/commitee/${name}${ext}`;
       s3Key = folder;

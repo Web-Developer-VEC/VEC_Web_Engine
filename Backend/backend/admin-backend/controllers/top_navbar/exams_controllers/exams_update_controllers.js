@@ -19,7 +19,7 @@ async function updatedData(tempDoc, mainCollection) {
         { $set: { "data.$": meta_data } }
       );
 
-      return { message: "Updated successfully" };
+      return { success:true, message: "Updated successfully" };
     }
 
     /* ---------------- CATEGORY BASED TYPES ---------------- */
@@ -55,7 +55,7 @@ async function updatedData(tempDoc, mainCollection) {
       { arrayFilters: [{ "elem.category": category }] }
     );
 
-    return { message: "Updated successfully" };
+    return { success:true, message: "Updated successfully" };
 
   } catch (error) {
     throw new Error(`Update failed: ${error.message}`);
