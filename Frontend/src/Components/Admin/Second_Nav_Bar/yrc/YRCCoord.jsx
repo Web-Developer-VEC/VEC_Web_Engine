@@ -340,7 +340,7 @@ if (
         collectionName: "yrc",
         collection_type: "team",
         action: "insert",
-        category: "student_coordinators",
+        category: "student_coordinator",
         title: "add Student Coordinator",
         meta_data: {
           name: pStu.name,
@@ -357,7 +357,7 @@ if (
         collectionName: "yrc",
         collection_type: "team",
         action: "update",
-        category: "student_coordinators",
+        category: "student_coordinator",
         title: "update Student Coordinator",
         original_data: {
           name: cStu.name,
@@ -383,7 +383,7 @@ if (
         collectionName: "yrc",
         collection_type: "team",
         action: "delete",
-        category: "student_coordinators",
+        category: "student_coordinator",
         title: "delete Student Coordinator",
         original_data: {
           name: cStu.name,

@@ -11,7 +11,11 @@ import "./Couroselnss.css";
 import LoadComp from "../../LoadComp";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+const deepCopy = (data) =>
+  data.map((item) => ({
+    ...item,
+    _file: item._file || null
+  }));
 
 const CarouselNSS = ({ data }) => {
   const swiperRef = useRef(null);
@@ -168,7 +172,10 @@ const CarouselNSS = ({ data }) => {
       return;
     }
 
-    const pending = deepCopy(items);
+    const pending = items.map((item) => ({
+  ...item,
+  _file: item._file || null
+}));
     setPendingItems(pending); // Save draft
     setIsSaved(true);
     setIsEditing(false);
@@ -298,6 +305,7 @@ const CarouselNSS = ({ data }) => {
     }
 
     try {
+      console.log("Submitting payload:", payload, "Files:", filesToSend);
       const result = await sendRequest(payload, filesToSend);
       if (result) {
         // On success, commit pendingItems as new committedItems

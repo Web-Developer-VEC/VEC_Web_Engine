@@ -192,6 +192,7 @@ catch(error){
 async function updateFile(tempDoc, tempCollection) {
   try{
   
+  console.log("🔄 Updating files for tempDoc:", tempDoc._id);
   const meta = { ...(tempDoc.meta_data || {}) };
   const original = { ...(tempDoc.original_data || {}) };
 
@@ -246,8 +247,27 @@ async function updateFile(tempDoc, tempCollection) {
 
   // 2️⃣ Promote new temp files → static
   for (const [key, value] of Object.entries(meta)) {
-    if (key !== "pdf_path" && key !== "image_path") continue;
-    if (!value) continue;
+
+  // Case 1: direct pdf_path
+  if (key !== "pdf_path" && key !== "image_path") {
+    continue;
+  }
+
+  // Case 2: nested object containing pdf_path
+  if (typeof value === "object" && value !== null) {
+    if (value.pdf_path) {
+
+      let pathStr = await normalizeKey(value.pdf_path.replace(/^\//, ""));
+
+      if (pathStr.startsWith("history/static/")) {
+        const destKey = pathStr.replace(/^history\/static\//, "static/");
+        await moveFile(pathStr, destKey);
+
+        meta[key].pdf_path = `/${destKey}`;
+      }
+    }
+  }
+  if (!value) continue;
    
 
     const isArray = Array.isArray(value);
@@ -280,9 +300,9 @@ async function updateFile(tempDoc, tempCollection) {
             const destKey = pathStr.replace(/^temp\/static\//, "static/");
             await moveFile(pathStr, destKey);
             return { ...p, pdf_path: `/${destKey}`};
-          }else if (srcKey.startsWith("static/")){
-            const locKey = await normalizeKey(p.replace(/^\//, "history/"))
-            const destKey = srcKey.replace(/^static\//, "static/")
+          }else if (pathStr.startsWith("static/")){
+            const locKey = await normalizeKey(`history/${pathStr}`)
+            const destKey = pathStr.replace(/^static\//, "static/")
             await moveFile(locKey, destKey);
           }
           return p;
