@@ -359,7 +359,7 @@ const AdminHandbook = ({ theme, toggle }) => {
         target.entries.push({
           collectionName: "administration",
           collection_type: collectionType,
-          action: "add",
+          action: "insert",
           title: `Add ${collectionType} - ${meta.year}`,
           category: "administration",
           meta_data: meta,
