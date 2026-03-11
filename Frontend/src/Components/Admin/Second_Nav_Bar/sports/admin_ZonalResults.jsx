@@ -13,10 +13,10 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [showDiscardModal, setShowDiscardModal] = useState(false);
   const [showRequestButtons, setShowRequestButtons] = useState(false);
-  const [originalYear] = useState(initialYear);
+ const [originalYear, setOriginalYear] = useState(initialYear);
   const [changes, setChanges] = useState([]);
   const { sendRequest, loading, error } = useAdminRequest();
-  const haschanges = changes.length > 0;
+  const haschanges = changes.length > 0 || currentYear !== originalYear;
 
   const [results, setResults] = useState(
     Array.isArray(data)
@@ -28,6 +28,10 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
         }))
       : []
   );
+  useEffect(() => {
+  setOriginalYear(initialYear);
+  setCurrentYear(initialYear);
+}, [initialYear]);
 
   const [originalResults, setOriginalResults] = useState(results);
   const positionOptions = ["Winner", "Runner", "Third"];
@@ -95,6 +99,7 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
           c.index === index
             ? {
                 ...c,
+                rowId: updatedResults[index]?.id ?? c.rowId,
                 meta_data: {
                   ...c.meta_data,
                   [field]: value,
@@ -110,6 +115,7 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
           type: "updated",
           section: "Zonal Results",
           index,
+          rowId: updatedResults[index]?.id,
           meta_data: {
             game: updatedResults[index].game,
             position: updatedResults[index].position,
@@ -123,26 +129,35 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
     });
   };
 
-  const handleRevertChange = (index) => {
-    const change = changes[index];
-    if (!change) return;
+const handleRevertChange = (index) => {
+  const change = changes[index];
+  if (!change) return;
 
-    if (change.type === "added") {
-      setResults((prev) => prev.filter((r) => r !== change.data));
-    } else if (change.type === "deleted") {
-      // Restore deleted row
-      setResults((prev) => [...prev, { game: "", position: "", selected: false }]);
-    } else if (change.type === "updated") {
-      const orig = originalResults[change.index];
-      if (orig) {
-        setResults((prev) =>
-          prev.map((r, i) => (i === change.index ? orig : r))
-        );
-      }
+  if (change.type === "added") {
+    setResults((prev) => prev.filter((r) => r.id !== change.rowId));
+
+  } else if (change.type === "deleted") {
+    setResults((prev) => {
+      const updated = [...prev];
+      updated.splice(change.index, 0, change.data);
+      return updated;
+    });
+
+  } else if (change.type === "updated") {
+    const orig = originalResults[change.index];
+    if (orig) {
+      setResults((prev) =>
+        prev.map((r, i) => (i === change.index ? orig : r))
+      );
     }
 
-    setChanges((prev) => prev.filter((_, i) => i !== index));
-  };
+  } else if (change.type === "year_updated") {
+    // 🔥 restore original year
+    setCurrentYear(change.original_data.year);
+  }
+
+  setChanges((prev) => prev.filter((_, i) => i !== index));
+};
 
   const handleSelectRow = (index) => {
     const updatedResults = [...results];
@@ -153,12 +168,12 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
   const handleSave = () => {
     for (const row of results) {
       if (!row.game.trim() || !row.position.trim()) {
-        toast.error("All fields are mandatory!");
+  
         return;
       }
     }
     if (!currentYear) {
-      toast.error("Year is mandatory!");
+
       return;
     }
     
@@ -185,24 +200,72 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
     if (onSave) {
       onSave();
     }
-    
-    toast.success("Changes saved successfully!");
+
   };
 
-  const handleDeleteSelected = () => {
-    const deletedItems = results.filter((r) => r.selected);
-    setResults(results.filter((r) => !r.selected));
-    setChanges((prev) => [
-      ...prev,
-      ...deletedItems.map((d) => ({
+  const handleCancel = () => {
+    // If only the year was edited (and not saved to changes), restore it.
+    if (changes.length === 0) {
+      if (currentYear !== originalYear) {
+        setCurrentYear(originalYear);
+      }
+      setEditMode(false);
+      return;
+    }
+
+    // Revert only the most recently edited row/year that is tracked in changes
+    const lastIdx = [...changes]
+      .map((ch, idx) => ({ ch, idx }))
+      .reverse()
+      .find((item) => item.ch.type === "updated" || item.ch.type === "year_updated");
+
+    if (!lastIdx) {
+      setEditMode(false);
+      return;
+    }
+
+    const { ch, idx } = lastIdx;
+
+    if (ch.type === "updated") {
+      const rowId = ch.rowId ?? results[ch.index]?.id;
+      if (rowId && ch.original_data) {
+        setResults((prev) =>
+          prev.map((row) =>
+            row.id === rowId ? { ...row, ...ch.original_data } : row
+          )
+        );
+      }
+    }
+
+    if (ch.type === "year_updated" && ch.original_data?.year) {
+      setCurrentYear(ch.original_data.year);
+    }
+
+    setChanges((prev) => prev.filter((_, i) => i !== idx));
+    setEditMode(false);
+  };
+const handleDeleteSelected = () => {
+  const deletedRows = [];
+
+  const remaining = results.filter((row, index) => {
+    if (row?.selected) {
+      deletedRows.push({
         type: "deleted",
         section: "Zonal Results",
-        fields: [`Game: ${d.game}, Position: ${d.position}`],
-      }))
-    ]);
-    setShowDeleteModal(false);
-    toast.success("Selected rows deleted successfully!");
-  };
+        index,
+        data: row
+      });
+      return false;
+    }
+    return true;
+  });
+
+  setResults(remaining);
+  setChanges(prev => [...prev, ...deletedRows]);
+
+  setShowDeleteModal(false);
+
+};
 
   const handleAddRow = () => {
     const newRow = {
@@ -228,7 +291,7 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
   const handleFinalRequest = async () => {
     try {
       if (changes.length === 0) {
-        toast.error("No changes to request.");
+
         return;
       }
 
@@ -303,13 +366,12 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
 
       await sendRequest(payloads);
 
-      toast.success("Request sent successfully!");
       setChanges([]);
       setShowRequestModal(false);
       setShowRequestButtons(false);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to send request.");
+ 
     }
   };
 
@@ -330,8 +392,6 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
     setShowRequestButtons(false);
     setShowDiscardModal(false);
     setShowRequestModal(false);
-
-    toast.info("Changes discarded!");
   };
 
   const selectedCount = results.filter((r) => r.selected).length;
@@ -486,7 +546,7 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
       {editMode && (
         <div className="flex justify-end gap-2 mt-4">
           <button
-            onClick={() => setEditMode(false)}
+            onClick={handleCancel}
             className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
           >
             Cancel
@@ -520,29 +580,31 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
         </div>
       )}
 
-      {/* Modals */}
-      {showDeleteModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
-          <div className="bg-white p-6 rounded shadow-lg w-[350px]">
-            <h2 className="font-semibold mb-4">Confirm Delete</h2>
-            <p>Are you sure you want to delete the selected items?</p>
-            <div className="flex justify-end gap-3 mt-4">
-              <button
-                className="px-4 py-2 bg-gray-300 rounded"
-                onClick={() => setShowDeleteModal(false)}
-              >
-                Cancel
-              </button>{" "}
-              <button
-                className="px-4 py-2 bg-red-600 text-white rounded"
-                onClick={handleDeleteSelected}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+   {/* Modals */}
+{showDeleteModal && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black/20 z-50">
+    <div className="bg-white p-6 rounded shadow-lg w-[350px]">
+      <h2 className="font-semibold mb-4">Confirm Delete</h2>
+      <p>Are you sure you want to delete the selected items?</p>
+
+      <div className="flex justify-end gap-3 mt-4">
+        <button
+          className="px-4 py-2 bg-gray-300 rounded"
+          onClick={() => setShowDeleteModal(false)}
+        >
+          Cancel
+        </button>
+
+        <button
+          className="px-4 py-2 bg-red-600 text-white rounded"
+          onClick={handleDeleteSelected}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
       
       {showDiscardModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
@@ -619,8 +681,8 @@ const ZonalResults = ({ data, year: initialYear, onChangesChange, onSave }) => {
                               }`
                             : ch.type === "updated"
                             ? `Game: ${ch.meta_data.game}, Position: ${ch.meta_data.position}`
-                            : ch.fields
-                            ? ch.fields.join(", ")
+                            : ch.type === "deleted"
+                            ? `Game: ${ch.data?.game || "-"}, Position: ${ch.data?.position || "-"}`
                             : "—"}
                         </td>
                         <td className="p-2 border">
