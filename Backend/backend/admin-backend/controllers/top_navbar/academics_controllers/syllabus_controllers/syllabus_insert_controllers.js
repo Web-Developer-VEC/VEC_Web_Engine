@@ -32,7 +32,7 @@ async function insertData(tempDoc, mainCollection) {
       }
     );
 
-    return { message: "New year added successfully" };
+    return { success:true,  message: "New year added successfully" };
   }
 
   /* ---------------- DUPLICATE CHECK ---------------- */
@@ -68,10 +68,10 @@ async function insertData(tempDoc, mainCollection) {
       }
     );
 
-    return { message: "Semester inserted successfully" };
+    return { success:true,  message: "Semester inserted successfully" };
   }
 
-  return { message: "Nothing to insert" };
+  return { success:false, message: "Nothing to insert" };
 }
 
 module.exports = { insertData };

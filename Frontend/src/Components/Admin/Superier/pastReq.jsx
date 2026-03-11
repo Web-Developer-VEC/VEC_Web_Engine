@@ -65,7 +65,7 @@ export default function PastRequestsPage({ onBack, onRequestClick }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50">
       {/* Header */}
-      <div className="relative bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-600 shadow-xl">
+      <div className="relative bg-brwn shadow-xl">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative px-8 py-12">
           <div className="flex items-center justify-between">
@@ -88,7 +88,7 @@ export default function PastRequestsPage({ onBack, onRequestClick }) {
             </div>
             <div className="flex items-center gap-4">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                <p className="text-white font-semibold">Total: {pastRequests.length}</p>
+                <p className="text-white font-semibold m-auto">Total: {pastRequests.length}</p>
               </div>
             </div>
           </div>

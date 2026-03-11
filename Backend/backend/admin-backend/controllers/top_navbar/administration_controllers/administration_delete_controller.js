@@ -37,6 +37,7 @@ async function deleteData(deletetemp, mainCollection) {
           );
 
           return {
+            success:true, 
             message: `The entire ${category} is deleted in ${collection_type}`,
           };
         } else {
@@ -58,7 +59,7 @@ async function deleteData(deletetemp, mainCollection) {
             { $pull: { "data": { name: meta_data.name } } }
           );
 
-      return { message: `The data is updated into the ${collection_type}` };
+      return { success:true, message: `The data is updated into the ${collection_type}` };
     } else if (
       collection_type === "HandBook"
     ) {
@@ -67,7 +68,7 @@ async function deleteData(deletetemp, mainCollection) {
             { $pull: { data: { year: meta_data.year } } }
           );
 
-      return { message: `The data is updated into the ${collection_type}` };
+      return { success:true, message: `The data is updated into the ${collection_type}` };
     }
 
     throw new Error("Invalid collection type logic branch reached.");

@@ -28,7 +28,7 @@ async function insertData(tempDoc, mainCollection) {
         { $push: { "data.about_us_pdf": meta_data } }
       );
 
-      return { message: "The data is inserted into about_vec pdf links" };
+      return { success:true, message: "The data is inserted into about_vec pdf links" };
     }
 
     // ---------- SINGLE DOC TYPES ----------
@@ -37,7 +37,7 @@ async function insertData(tempDoc, mainCollection) {
         { type: collection_type },
         { $set: { data: meta_data } }
       );
-      return { message: `Inserted data into ${collection_type}` };
+      return { success:true, message: `Inserted data into ${collection_type}` };
     }
 
     // ---------- AISHE (FIXED) ----------
@@ -55,7 +55,7 @@ async function insertData(tempDoc, mainCollection) {
           { $push: { "data.$.content": meta_data } }
         );
 
-        return { message: `Inserted AISHE item into ${category}` };
+        return { success:true, message: `Inserted AISHE item into ${category}` };
       }
 
     await mainCollection.updateOne(
@@ -70,7 +70,7 @@ async function insertData(tempDoc, mainCollection) {
       }
     );
 
-      return { message: `Inserted new AISHE category ${category}` };
+      return { success:true, message: `Inserted new AISHE category ${category}` };
     }
   } catch (error) {
     throw new Error(`Error inserting data: ${error.message}`);
