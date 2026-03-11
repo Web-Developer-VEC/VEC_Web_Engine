@@ -1,97 +1,164 @@
-import React, { forwardRef, useState, useEffect } from "react";
+import React, { forwardRef, useState, useEffect, useMemo } from "react";
 import "./Footer.css";
-import insta from '../../Assets/insta-logo.png';
-import linkedin from '../../Assets/linkedin-logo.png';
-import x from '../../Assets/X-logo.png';
-import facebook from '../../Assets/facebook-logo.png';
+import insta from "../../Assets/insta-logo.png";
+import linkedin from "../../Assets/linkedin-logo.png";
+import x from "../../Assets/X-logo.png";
+import facebook from "../../Assets/facebook-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Pencil } from "lucide-react";
+import { useAdminRequest } from "../../hooks/useAdminRequest"; // <-- adjust path if needed
 
 const AdminFooter = forwardRef((props, ref) => {
-  const color = (props.theme === "light") ? "rgb(253,204,3)" : "rgb(255, 87, 34)";
   const data = props.data;
   const navigate = useNavigate();
-  
-  // State management
+
+  const { sendRequest, loading: requestLoading } = useAdminRequest();
+
+  // UI state
   const [isEditing, setIsEditing] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
   const [confirmPopup, setConfirmPopup] = useState(false);
-  const [editedData, setEditedData] = useState({});
-  const [originalData, setOriginalData] = useState({});
-  const [tempSaved, setTempSaved] = useState(false); // track if changes were saved temporarily
+  const [tempSaved, setTempSaved] = useState(false);
 
-  // Initialize data when component mounts or props change
+
+  const [baseData, setBaseData] = useState(null);
+  const [editedData, setEditedData] = useState(null);
+
+  // Normalize to stable payload shape (prevents undefined / missing arrays)
+  const normalizeFooterMeta = (obj = {}) => {
+    return {
+      email: obj.email ?? "",
+      address: Array.isArray(obj.address) ? obj.address : ["", "", "", ""],
+      phone_number: obj.phone_number ?? "",
+      student_affairs_contact: obj.student_affairs_contact ?? "",
+      addmission_contact: Array.isArray(obj.addmission_contact)
+        ? obj.addmission_contact
+        : ["", ""],
+      instagram: obj.instagram ?? "",
+      linkedin: obj.linkedin ?? "",
+      twitter: obj.twitter ?? "",
+      facebook: obj.facebook ?? "",
+    };
+  };
+
+  // Initialize from props.data
   useEffect(() => {
-    if (data) {
-      setOriginalData(data);
-      setEditedData(data);
-    }
+    if (!data) return;
+
+    // snapshot original (deep copy to avoid accidental shared mutations)
+    const snapshot = JSON.parse(JSON.stringify(data));
+
+    setBaseData(snapshot);
+    setEditedData(snapshot);
+
+    setIsEditing(false);
+    setHasChanges(false);
+    setTempSaved(false);
+    setConfirmPopup(false);
   }, [data]);
 
-  // Handle input changes
+  const normalizedBase = useMemo(
+    () => normalizeFooterMeta(baseData || {}),
+    [baseData]
+  );
+  const normalizedEdited = useMemo(
+    () => normalizeFooterMeta(editedData || {}),
+    [editedData]
+  );
+
   const handleInputChange = (field, value, index = null) => {
     setHasChanges(true);
     setTempSaved(false);
 
-    if (index !== null) {
-      // Handle array fields (like address, admission contacts)
-      const updatedArray = [...editedData[field]];
-      updatedArray[index] = value;
-      setEditedData({ ...editedData, [field]: updatedArray });
-    } else {
-      // Handle normal fields
-      setEditedData({ ...editedData, [field]: value });
-    }
+    setEditedData((prev) => {
+      const safePrev = prev || {};
+      if (index !== null) {
+        const updatedArray = Array.isArray(safePrev[field])
+          ? [...safePrev[field]]
+          : [];
+        updatedArray[index] = value;
+        return { ...safePrev, [field]: updatedArray };
+      }
+      return { ...safePrev, [field]: value };
+    });
   };
 
-  // Save changes temporarily
+  // "Save" should only mean: admin finished editing locally and is ready to request
+  // It MUST NOT change baseData.
   const handleSave = () => {
-    setOriginalData(editedData); // save to local original
     setHasChanges(false);
     setIsEditing(false);
-    setTempSaved(true); // mark as temp saved
+    setTempSaved(true);
   };
 
-  // Cancel editing (revert to last saved state)
+  // Cancel editing: revert editedData back to baseData (original from backend)
   const handleCancel = () => {
-    setEditedData(originalData);
+    setEditedData(JSON.parse(JSON.stringify(baseData || {})));
     setHasChanges(false);
     setIsEditing(false);
     setTempSaved(false);
   };
 
-  // Discard changes completely
+  // Discard changes completely (same as cancel, but from the "tempSaved" state)
   const handleDiscard = () => {
-    setEditedData(data);
+    setEditedData(JSON.parse(JSON.stringify(baseData || {})));
     setHasChanges(false);
     setTempSaved(false);
   };
 
-  // Request approval
   const handleRequest = () => {
     setConfirmPopup(true);
   };
 
-  // Final confirmation
-  const handleConfirmRequest = () => {
-    console.log("Changes requested for approval:", editedData);
-    setConfirmPopup(false);
-    setIsEditing(false);
-    setHasChanges(false);
-    setTempSaved(false);
+  const buildFooterPayload = () => {
+    return {
+      collectionName: "landing_page_details",
+      collection_type: "page_details",
+      action: "update",
+      title: "update in page_details (footer/contact)",
+      meta_data: normalizedEdited, // changed/new values
+      original_data: normalizedBase, // original values (must not change)
+    };
   };
 
-  // Render input field based on type
+  const handleConfirmRequest = async () => {
+    try {
+      const payload = buildFooterPayload();
+
+      console.log("Submitting footer payload:", payload);
+
+      const res = await sendRequest(payload);
+
+      if (res?.success) {
+        setConfirmPopup(false);
+        setIsEditing(false);
+        setHasChanges(false);
+        setTempSaved(false);
+      }
+    } catch (e) {
+      console.error("Failed to submit footer payload:", e);
+    }
+  };
+
   const renderInputField = (field, value, index = null, type = "text") => {
     return (
       <input
         type={type}
-        value={value}
+        value={value ?? ""}
         onChange={(e) => handleInputChange(field, e.target.value, index)}
         className="footer-input"
       />
     );
   };
+
+  const changesSummary = useMemo(() => {
+    const same =
+      JSON.stringify(normalizedEdited) === JSON.stringify(normalizedBase);
+    return same ? "No changes" : "Multiple changes";
+  }, [normalizedEdited, normalizedBase]);
+
+  // While data is loading
+  if (!editedData) return null;
 
   return (
     <>
@@ -103,13 +170,14 @@ const AdminFooter = forwardRef((props, ref) => {
           relative"
         ref={ref}
       >
-        {/* Edit Button (only when not editing) */}
+        {/* Edit Button */}
         {!isEditing && (
           <button
             className="absolute top-2 right-8 bg-secd dark:bg-drks text-text dark:text-drkt px-3 py-1 rounded-md flex items-center gap-2 hover:bg-brwn hover:text-prim"
             onClick={() => setIsEditing(true)}
+            disabled={requestLoading}
           >
-            <Pencil /> Edit
+            <Pencil size={16} /> Edit
           </button>
         )}
 
@@ -117,12 +185,16 @@ const AdminFooter = forwardRef((props, ref) => {
         <div className="contact-details basis-1/4 ml-4">
           <div className="block md:flex lg:block justify-around">
             <div className="mt-4">
-              <h3 className="text-secd dark:text-drks font-bold" style={{ padding: "0 20px", marginTop: "5px" }}>
+              <h3
+                className="text-secd dark:text-drks font-bold"
+                style={{ padding: "0 20px", marginTop: "5px" }}
+              >
                 Contact Address
               </h3>
+
               {isEditing ? (
                 <div>
-                  {editedData.address?.map((line, index) => (
+                  {(editedData.address || ["", "", "", ""]).map((line, index) => (
                     <div key={index}>
                       {renderInputField("address", line, index)}
                     </div>
@@ -130,16 +202,20 @@ const AdminFooter = forwardRef((props, ref) => {
                 </div>
               ) : (
                 <p style={{ marginTop: "-2%", fontSize: "17px", color: "white" }}>
-                  {editedData?.address?.[0]}<br />
-                  {editedData?.address?.[1]}<br />
-                  {editedData?.address?.[2]}<br />
+                  {editedData?.address?.[0]}
+                  <br />
+                  {editedData?.address?.[1]}
+                  <br />
+                  {editedData?.address?.[2]}
+                  <br />
                   {editedData?.address?.[3]}
                 </p>
               )}
             </div>
+
             <div>
               <p style={{ marginTop: "27px" }}>
-                Contact:
+                Contact:{" "}
                 {isEditing ? (
                   renderInputField("phone_number", editedData.phone_number)
                 ) : (
@@ -152,10 +228,14 @@ const AdminFooter = forwardRef((props, ref) => {
                   </a>
                 )}
               </p>
+
               <p>
-                Student Affair:
+                Student Affair:{" "}
                 {isEditing ? (
-                  renderInputField("student_affairs_contact", editedData.student_affairs_contact)
+                  renderInputField(
+                    "student_affairs_contact",
+                    editedData.student_affairs_contact
+                  )
                 ) : (
                   <a
                     href={`tel:${editedData.student_affairs_contact}`}
@@ -166,12 +246,21 @@ const AdminFooter = forwardRef((props, ref) => {
                   </a>
                 )}
               </p>
+
               <p>
-                For Admissions:
+                For Admissions:{" "}
                 {isEditing ? (
                   <div>
-                    {renderInputField("addmission_contact", editedData.addmission_contact?.[0], 0)}
-                    {renderInputField("addmission_contact", editedData.addmission_contact?.[1], 1)}
+                    {renderInputField(
+                      "addmission_contact",
+                      editedData.addmission_contact?.[0],
+                      0
+                    )}
+                    {renderInputField(
+                      "addmission_contact",
+                      editedData.addmission_contact?.[1],
+                      1
+                    )}
                   </div>
                 ) : (
                   <>
@@ -193,6 +282,7 @@ const AdminFooter = forwardRef((props, ref) => {
                   </>
                 )}
               </p>
+
               <div>
                 <a
                   href="/Term_and_Conditions"
@@ -203,13 +293,26 @@ const AdminFooter = forwardRef((props, ref) => {
                   Privacy, Terms and Conditions
                 </a>
               </div>
+
               <div className="logo-container my-2">
                 {isEditing ? (
                   <div>
-                    <p>Instagram URL: {renderInputField("instagram", editedData.instagram)}</p>
-                    <p>LinkedIn URL: {renderInputField("linkedin", editedData.linkedin)}</p>
-                    <p>Twitter URL: {renderInputField("twitter", editedData.twitter)}</p>
-                    <p>Facebook URL: {renderInputField("facebook", editedData.facebook)}</p>
+                    <p>
+                      Instagram URL:{" "}
+                      {renderInputField("instagram", editedData.instagram)}
+                    </p>
+                    <p>
+                      LinkedIn URL:{" "}
+                      {renderInputField("linkedin", editedData.linkedin)}
+                    </p>
+                    <p>
+                      Twitter URL:{" "}
+                      {renderInputField("twitter", editedData.twitter)}
+                    </p>
+                    <p>
+                      Facebook URL:{" "}
+                      {renderInputField("facebook", editedData.facebook)}
+                    </p>
                   </div>
                 ) : (
                   <>
@@ -232,7 +335,7 @@ const AdminFooter = forwardRef((props, ref) => {
           </div>
         </div>
 
-        {/* Map Section */}
+        {/* Map */}
         <div className="footer-map basis-1/3 md:h-[20vh] lg:h-[45vh] mt-10">
           <iframe
             className="px-3 w-full h-full"
@@ -248,10 +351,14 @@ const AdminFooter = forwardRef((props, ref) => {
 
         {/* Quick Links */}
         <div className="quick-links basis-1/3 px-4 mt-4">
-          <h3 className="text-secd dark:text-drks font-bold text-center md:text-left">Quick Links</h3>
+          <h3 className="text-secd dark:text-drks font-bold text-center md:text-left">
+            Quick Links
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div>
-              <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Profile</h4>
+              <h4 className="quick-head font-semibold text-lg text-center lg:text-left">
+                Profile
+              </h4>
               <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
                 <li><Link to="/abt-us">About Us</Link></li>
                 <li><Link to="/abt-yr">AISHE</Link></li>
@@ -262,8 +369,11 @@ const AdminFooter = forwardRef((props, ref) => {
                 <li><Link to="/iic">IIC</Link></li>
               </ul>
             </div>
+
             <div>
-              <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Academics</h4>
+              <h4 className="quick-head font-semibold text-lg text-center lg:text-left">
+                Academics
+              </h4>
               <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
                 <li><a href="/departments">Departments</a></li>
                 <li><a href="/programs">Programmes</a></li>
@@ -274,12 +384,15 @@ const AdminFooter = forwardRef((props, ref) => {
                 <li><a href="/sports">Sports</a></li>
               </ul>
             </div>
+
             <div>
-              <h4 className="quick-head font-semibold text-lg text-center lg:text-left">Important</h4>
+              <h4 className="quick-head font-semibold text-lg text-center lg:text-left">
+                Important
+              </h4>
               <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
-                <li><a href="https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" target="_blank">Student Login</a></li>
-                <li><a href="https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" target="_blank">Faculty Login</a></li>
-                <li><a href="https://easycollege.in/vecengg/college/webpayindex.aspx" target="_blank">Fees Payment</a></li>
+                <li><a href="https://vecchennai.org/studentlogin/login.php?done=/studentlogin/" target="_blank" rel="noreferrer">Student Login</a></li>
+                <li><a href="https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" target="_blank" rel="noreferrer">Faculty Login</a></li>
+                <li><a href="https://easycollege.in/vecengg/college/webpayindex.aspx" target="_blank" rel="noreferrer">Fees Payment</a></li>
                 <li><a href="/grievances">Grievances</a></li>
                 <li><a href="/admin_auth">Login</a></li>
               </ul>
@@ -287,43 +400,25 @@ const AdminFooter = forwardRef((props, ref) => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center w-full">
-          <p className="text-center">
-            <a
-              href="/webteam"
-              rel="noopener noreferrer"
-              className="text-secd dark:text-drks ml-5 text-center text-md mt-4 font-medium m-auto cursor-pointer"
-            >
-              © WebOps VEC
-            </a>, Velammal Engineering College, Chennai
-          </p>
-        </div>
-
-        {/* Action Buttons at Bottom */}
+        {/* Bottom Action Buttons */}
         {isEditing ? (
-          <div className="w-full flex justify-center gap-4 p-4 mt-4">
-            {!hasChanges ? (
+          <div className="w-full flex gap-4 p-4 ml-4">
+            <button
+              onClick={handleCancel}
+              className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md"
+              disabled={requestLoading}
+            >
+              Cancel
+            </button>
+
+            {hasChanges && (
               <button
-                onClick={handleCancel}
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md"
+                onClick={handleSave}
+                className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-md"
+                disabled={requestLoading}
               >
-                Cancel
+                Save
               </button>
-            ) : (
-              <>
-                <button
-                  onClick={handleCancel}
-                  className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleSave}
-                  className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-md"
-                >
-                  Save
-                </button>
-              </>
             )}
           </div>
         ) : (
@@ -332,18 +427,34 @@ const AdminFooter = forwardRef((props, ref) => {
               <button
                 onClick={handleDiscard}
                 className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md"
+                disabled={requestLoading}
               >
                 Discard Changes
               </button>
               <button
                 onClick={handleRequest}
                 className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-md"
+                disabled={requestLoading}
               >
                 Request
               </button>
             </div>
           )
         )}
+
+        <div className="flex flex-col items-center justify-center w-full mt-3">
+          <p className="text-center">
+            <a
+              href="/webteam"
+              rel="noopener noreferrer"
+              className="text-secd dark:text-drks ml-5 text-center text-md mt-4 font-medium m-auto cursor-pointer"
+            >
+              © WebOps VEC
+            </a>
+            , Velammal Engineering College, Chennai
+          </p>
+        </div>
+        
       </footer>
 
       {/* Confirmation Popup */}
@@ -354,9 +465,10 @@ const AdminFooter = forwardRef((props, ref) => {
               Final Request for the Changes
             </h2>
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin. 
+              Note: Your changes will stay pending until approved by the superior admin.
               Once approved, they will be applied automatically to the live site.
             </p>
+
             <div className="max-h-[200px] overflow-y-auto mb-4">
               <table className="w-full text-left text-text dark:text-drkt">
                 <thead>
@@ -369,24 +481,27 @@ const AdminFooter = forwardRef((props, ref) => {
                 <tbody>
                   <tr>
                     <td className="py-1 text-blue-600">✎ Edited</td>
-                    <td className="py-1">Contact Information</td>
-                    <td className="py-1 text-[12px] text-center">Multiple changes</td>
+                    <td className="py-1">Footer / Contact Information</td>
+                    <td className="py-1 text-[12px] text-center">{changesSummary}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setConfirmPopup(false)}
                 className="px-4 py-2 rounded bg-gray-400 text-white"
+                disabled={requestLoading}
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmRequest}
                 className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+                disabled={requestLoading}
               >
-                Final Request
+                {requestLoading ? "Submitting..." : "Final Request"}
               </button>
             </div>
           </div>

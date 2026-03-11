@@ -23,7 +23,6 @@ async function sportsHandler(fileStream, docs, req, cb, filename, mimetype) {
     const ext = path.extname(realFilename) || ".jpg";
    
     if(collection_type=== "hod" || collection_type=== "faculty" ){
-      console.log("dinesh",meta_data.title);
     const folder = `temp/static/images/sports/${collection_type}/`;
     s3Key = folder + meta_data.name + ext;
     }

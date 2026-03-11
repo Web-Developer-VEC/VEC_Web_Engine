@@ -38,7 +38,13 @@ export default function AdminApprovalPage() {
     }))
   }
 
-  // ✅ Approve / reject items using collection + id
+  // ✅ Lookup approval status for collection + id
+  const getApprovalStatus = (collection, id) => {
+    return itemApprovals.find(
+      (item) => item.collectionName === collection && item.id === id
+    )?.status;
+  };
+  
   const handleItemApproval = (collection, id, approved, type) => {
     setItemApprovals((prev) => {
       const existing = prev.find((item) => item.collectionName === collection && item.id === id)
@@ -49,17 +55,40 @@ export default function AdminApprovalPage() {
       }
 
       // Otherwise, set/overwrite with new status
-      const filtered = prev.filter((item) => !(item.collection === collection && item.id === id))
+      const filtered = prev.filter((item) => !(item.collectionName === collection && item.id === id))
       return [...filtered, { collectionName: collection, id, status: approved ? "approved" : "rejected", type }]
     })
   }
 
-  // ✅ Lookup approval status for collection + id
-  const getApprovalStatus = (collection, id) => {
-    return itemApprovals.find(
-      (item) => item.collectionName === collection && item.id === id
-    )?.status;
-  };
+  const normalizeResult = (data) => {
+    const trueResults = Array.isArray(data?.trueResults) ? data.trueResults : []
+    const falseResults = Array.isArray(data?.falseResults) ? data.falseResults : []
+    return { trueResults, falseResults }
+  }
+
+  const pruneRequestBySuccessIds = (prevRequest, successIds) => {
+    if (!prevRequest?.data) return prevRequest
+
+    const filterSection = (arr = []) =>
+      arr.filter((item) => !successIds.has(String(item?._id)))
+
+    return {
+      ...prevRequest,
+      data: {
+        ...prevRequest.data,
+        insert: filterSection(prevRequest.data.insert),
+        update: filterSection(prevRequest.data.update),
+        delete: filterSection(prevRequest.data.delete),
+      },
+    }
+  }
+
+  const hasRemainingItems = (req) => {
+    const insertLen = req?.data?.insert?.length || 0
+    const updateLen = req?.data?.update?.length || 0
+    const deleteLen = req?.data?.delete?.length || 0
+    return insertLen + updateLen + deleteLen > 0
+  }
 
   const handleSubmitReview = async () => {
     setLoading(true);
@@ -92,72 +121,117 @@ export default function AdminApprovalPage() {
     };
 
     try {
-      const isDepartmentCollection =
-        /^[A-Z]+_\d+$/.test(request.collection);
+      const isDepartmentCollection = /^[A-Z]+_\d+$/.test(request.collection);
+      let responsePayloads = [];
 
       // ====================================
       // Case 1: Department collections
       // ====================================
       if (isDepartmentCollection) {
         const grouped = itemApprovals.reduce((acc, item) => {
-
           if (!item.type) return acc;
-
-          if (!acc[item.type]) {
-            acc[item.type] = [];
-          }
-
+          if (!acc[item.type]) acc[item.type] = [];
           acc[item.type].push(item);
           return acc;
         }, {});
 
-        await Promise.all(
+        const responses = await Promise.all(
           Object.entries(grouped).map(([type, approvals]) => {
             const endpoint = `${type.toLowerCase().replaceAll("_", "")}admin`;
-
-            return axios.post(
-              `/api/admin-backend/${endpoint}`,
-              approvals
-            );
+            return axios.post(`/api/admin-backend/${endpoint}`, approvals);
           })
         );
-      }
 
-      // ====================================
-      // Case 2: Normal collections
-      // ====================================
-      else {
+        responsePayloads = responses.map((r) => r?.data);
+      } else {
+        // ====================================
+        // Case 2: Normal collections
+        // ====================================
         const endpoint = endpointMap[request.collection];
+        if (!endpoint) throw new Error("Unknown collection endpoint");
 
-        if (!endpoint) {
-          throw new Error("Unknown collection endpoint");
-        }
-
-        await axios.post(
-          `/api/admin-backend/${endpoint}`,
-          itemApprovals
-        );
+        const response = await axios.post(`/api/admin-backend/${endpoint}`, itemApprovals);
+        responsePayloads = [response?.data];
       }
-      
-      // ✅ Success: Show success toast and navigate back
-      toast.success("✅ Changes approved successfully!");
-      
-      // Navigate back to dashboard after brief delay
-      setTimeout(() => {
-        navigate("/admin_dashboard", { 
-          state: { 
-            approvalSuccess: true,
-            approvedCollection: request?.collection,
-            approvedRequestId: request?._id
-          } 
+
+      // Aggregate results from all endpoint responses
+      const aggregated = responsePayloads.reduce(
+        (acc, payload) => {
+          const { trueResults, falseResults } = normalizeResult(payload);
+          acc.trueResults.push(...trueResults);
+          acc.falseResults.push(...falseResults);
+          return acc;
+        },
+        { trueResults: [], falseResults: [] }
+      );
+
+      const successIds = new Set(aggregated.trueResults.map((r) => String(r.id)));
+      const failedResults = aggregated.falseResults;
+      const failedIds = new Set(failedResults.map((r) => String(r.id)));
+
+      const successCount = aggregated.trueResults.length;
+      const failCount = failedResults.length;
+      const attemptedCount = itemApprovals.length;
+
+      // ✅ Full success
+      if (successCount > 0 && failCount === 0) {
+        toast.success(`✅ All ${successCount} items processed successfully!`);
+        setTimeout(() => {
+          navigate("/admin_dash", {
+            state: {
+              approvalSuccess: true,
+              approvedCollection: request?.collection,
+              approvedRequestId: request?._id,
+            },
+          });
+        }, 1200);
+        return;
+      }
+
+      // ✅ Partial success
+      if (successCount > 0 && failCount > 0) {
+        toast.warn(`⚠️ Partial success: ${successCount}/${attemptedCount} processed, ${failCount} failed.`);
+
+        // show up to first 2 detailed errors for cleaner UX
+        failedResults.slice(0, 2).forEach((f) => {
+          toast.error(`❌ ${f.action?.toUpperCase() || "ACTION"} failed (${f.id}): ${f.message}`);
         });
-      }, 1500);
-    }
-    catch (error) {
+
+        // Keep only failed approvals selected (easy retry)
+        setItemApprovals((prev) => prev.filter((item) => failedIds.has(String(item.id))));
+
+        // Remove successful items from current UI so user only sees pending failed ones
+        setrequest((prevReq) => {
+          const updated = pruneRequestBySuccessIds(prevReq, successIds);
+
+          // If no items remain after pruning, close request from dashboard
+          if (!hasRemainingItems(updated)) {
+            setTimeout(() => {
+              navigate("/admin_dash", {
+                state: {
+                  approvalSuccess: true,
+                  approvedCollection: request?.collection,
+                  approvedRequestId: request?._id,
+                },
+              });
+            }, 1000);
+          }
+
+          return updated;
+        });
+
+        return;
+      }
+
+      // ❌ All failed
+      toast.error(`❌ None of the ${attemptedCount} items were processed. Please retry.`);
+      failedResults.slice(0, 2).forEach((f) => {
+        toast.error(`${f.action?.toUpperCase() || "ACTION"} failed (${f.id}): ${f.message}`);
+      });
+    } catch (error) {
       console.error(error);
       toast.error("❌ Failed to submit approvals. Please try again.");
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -205,6 +279,7 @@ export default function AdminApprovalPage() {
   const formatFieldName = (fieldName) => {
     if (fieldName === "image_path") return "Images"
     if (fieldName === "pdf_path") return "Pdf"
+    if (fieldName === "image_name") return "Name"
     return fieldName.charAt(0).toUpperCase() + fieldName.slice(1).replace(/([A-Z_])/g, " $1").replace(/_/g, " ")
   }
 
@@ -341,7 +416,7 @@ export default function AdminApprovalPage() {
     }
 
     // Handle image/pdf paths (single strings only - arrays handled above)
-    if (fieldName?.toLowerCase().includes('image') && value && typeof value === 'string') {
+    if (fieldName?.toLowerCase().includes('image') && !fieldName?.toLowerCase().includes('image_name') && value && typeof value === 'string') {
       return (
         <a 
           href={UrlParser(value)} 

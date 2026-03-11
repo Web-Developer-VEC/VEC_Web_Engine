@@ -31,6 +31,7 @@ async function updateData(tempDoc, mainCollection) {
         );
 
         return {
+          success:true, 
           message: `The data is updated successfully in the ${collection_type}`
         };
       } else if(category === "student_achievements_content"){
@@ -42,6 +43,7 @@ async function updateData(tempDoc, mainCollection) {
           {$set:{"data.$.content":new_data}}
         );
         return {
+          success:true, 
           message: `The data is updated successfully in the ${collection_type}`
         };
       }

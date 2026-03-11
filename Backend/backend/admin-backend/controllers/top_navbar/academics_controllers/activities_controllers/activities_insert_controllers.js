@@ -41,14 +41,14 @@ async function insertData(tempDoc, mainCollection) {
           }
         );
 
-        return { message: `The insertion is successfully done for ${category}` };
+        return {success:true,  message: `The insertion is successfully done for ${category}` };
       } else {
         await mainCollection.updateOne(
           { type: collection_type, "data.category": category },
           { $push: { "data.$.content": meta_data } }
         );
 
-        return { message: `The new insertion is successfully done for ${category}` };
+        return {success:true, message: `The new insertion is successfully done for ${category}` };
       }
     } else {
       await mainCollection.updateOne(
@@ -56,7 +56,7 @@ async function insertData(tempDoc, mainCollection) {
         { $push: { data: { category, content: [meta_data] } } }
       );
 
-      return { message: `The new category ${category} is added successfully` };
+      return {success:true, message: `The new category ${category} is added successfully` };
     }
   }
 }

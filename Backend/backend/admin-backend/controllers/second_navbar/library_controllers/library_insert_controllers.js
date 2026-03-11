@@ -30,6 +30,7 @@ async function insertData(tempDoc, mainCollection) {
         { upsert: true }
       );
       return {
+        success: true, 
         message: `Overwritten successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -43,6 +44,7 @@ async function insertData(tempDoc, mainCollection) {
         { upsert: true }
       );
       return {
+        success: true, 
         message: `Inserted successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -118,6 +120,7 @@ async function insertData(tempDoc, mainCollection) {
       }
 
       return {
+        success: true, 
         message: `Insert successful for ${collection_type} - category ${category}`,
         data: meta_data,
       };
@@ -127,7 +130,7 @@ async function insertData(tempDoc, mainCollection) {
     throw new Error("Unknown collection_type");
   } catch (error) {
     console.error("Error inserting data:", error);
-    throw error; // ❌ Let handleTempAction manage error response
+    return { success: false, error: error.message };
   }
 }
 
