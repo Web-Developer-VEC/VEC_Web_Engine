@@ -178,28 +178,36 @@ const Sportsfaculties = ({ data: initialData }) => {
     return change?.type || null;  // "added" | "edited" | "deleted" | null
   };
 
-  const handleSave = () => {
-    const invalid = facultyData.some(
-      (f) => !f.name || !f.qualification || !f.designation || !f.image_path
-    );
-    if (invalid) {
-      toast.error("All fields are mandatory.");
-      return;
-    }
-    // setOriginalData(facultyData);
-    toast.success("Changes saved! You can request or discard now.");
-    setShowRequestButtons(true);
-    setEditFac(false);
-  };
+ const handleSave = () => {
+  const invalid = facultyData.some(
+    (f) => !f.name || !f.qualification || !f.designation || !f.image_path
+  );
 
-  const handleCancelEdit = () => {
-    setFacultyData(originalData);
-    setSelectedItems([]);
-    setChangeList([]);
-    setImagePreviews({});
-    setEditFac(false)
-    toast.info("Current edits cancelled, reverted to last saved data.");
-  };
+  if (invalid) {
+    return;
+  }
+
+  // Update last saved state
+  setOriginalData(facultyData.map(item => ({ ...item })));
+
+
+  setShowRequestButtons(true);
+  setEditFac(false);
+};
+
+const handleCancelEdit = () => {
+  // Restore the last saved data
+  setFacultyData(originalData.map(item => ({ ...item })));
+
+  // Reset temporary states
+  setSelectedItems([]);
+  setChangeList([]);
+  setImagePreviews({});
+
+  // Exit edit mode
+  setEditFac(false);
+  setShowRequestButtons(false);
+};
 
   const handleDiscard = () => {
     setFacultyData([...originalData]);
@@ -209,7 +217,7 @@ const Sportsfaculties = ({ data: initialData }) => {
     setImagePreviews({});
     setEditFac(false);
     setShowDiscardModal(false);
-    toast.info("All changes discarded, back to original data.");
+
   };
 
   const addNewCard = () => {
@@ -235,11 +243,9 @@ const Sportsfaculties = ({ data: initialData }) => {
     });
 
     if (locked.length) {
-      toast.error("Finish editing selected faculties before deleting.");
       return;
     }
     if (selectedItems.length === 0) {
-      toast.info("No faculty selected.");
       return;
     }
     const deletedItems = facultyData.filter((item) =>
@@ -254,7 +260,6 @@ const Sportsfaculties = ({ data: initialData }) => {
     ]);
     setSelectedItems([]);
     setShowDeleteModal(false);
-    toast.success("Selected faculties deleted.");
   };
 
   const revertField = (changeIdx) => {
@@ -312,7 +317,6 @@ const Sportsfaculties = ({ data: initialData }) => {
         setShowRequestModal(false);    // close request popup
         setShowRequestButtons(false);  // hide request/discard buttons
         setEditFac(false);             // back to normal view (Edit button shows)
-        toast.info("All changes reverted.");
       }
 
       return nextChanges;
@@ -323,7 +327,6 @@ const Sportsfaculties = ({ data: initialData }) => {
   const handleRequestConfirm = async () => {
 
     if (!changeList.length) {
-      toast.info("No changes to submit.");
       return;
     }
 
@@ -407,7 +410,6 @@ const Sportsfaculties = ({ data: initialData }) => {
 
       if (result) {
         console.log("REQUEST SUBMITTED", payload);
-        toast.success("Final request submitted");
 
         setShowRequestModal(false);
         setChangeList([]);
@@ -416,7 +418,6 @@ const Sportsfaculties = ({ data: initialData }) => {
       }
     } catch (err) {
       console.error("Request failed:", err);
-      toast.error("Request submission failed");
     }
   };
 
@@ -702,17 +703,34 @@ const SportsHOD = ({ data }) => {
   const [hasChanges, setHasChanges] = useState(false);
   const [formData, setFormData] = useState({ ...data?.[0] });
   const [originalData, setOriginalData] = useState({ ...data?.[0] });
+  const [editSnapshot, setEditSnapshot] = useState(null);
   const { sendRequest, loading, error } = useAdminRequest();
   const [hodPreview, setHodPreview] = useState(null);
   const [hodImageFile, setHodImageFile] = useState(null);
+
+  const cloneHodChanges = (list = []) => list.map((change) => ({ ...change }));
 
 
   useEffect(() => {
     if (data?.[0]) {
       setFormData(data[0]);
       setOriginalData(data[0]);
+      setEditSnapshot(null);
     }
   }, [data]);
+
+  const handleStartEdit = () => {
+    setEditSnapshot({
+      formData: { ...formData },
+      changes: cloneHodChanges(changes),
+      hasChanges,
+      showRequest,
+      hodPreview,
+      hodImageFile,
+    });
+
+    setIsEditing(true);
+  };
 
   // ✅ Detect changes
   useEffect(() => {
@@ -735,7 +753,7 @@ const SportsHOD = ({ data }) => {
     const diff = [];
     if (!originalData) return diff;
 
-    Object.keys(formData).forEach((key) => {
+    ["name", "designation", "qualification", "message", "image_path"].forEach((key) => {
       if (formData[key] !== originalData[key]) {
         diff.push({
           field: key,
@@ -747,21 +765,20 @@ const SportsHOD = ({ data }) => {
     return diff;
   };
 
-  const handleDiscardChanges = () => {
-    setFormData({ ...originalData });
+ const handleDiscardChanges = () => {
+  setFormData({ ...originalData });
 
-    // 🔥 Ensure preview + file are cleared
-    setHodPreview(null);
-    setHodImageFile(null);
+  setHodPreview(null);
+  setHodImageFile(null);
 
-    setIsEditing(false);
-    setShowRequest(false);
-    setHasChanges(false);
-    setShowRequestModal(false);
-    setShowDiscardModal(false);
+  setIsEditing(false);
+  setShowRequest(false);
+  setHasChanges(false);
+  setShowRequestModal(false);
+  setShowDiscardModal(false);
 
-    toast.info("Changes discarded");
-  };
+  toast.info("Changes discarded.");
+};
 
 
 
@@ -786,6 +803,64 @@ const SportsHOD = ({ data }) => {
     setHasChanges(true);
   };
 
+ const handleCancelEdit = () => {
+  if (editSnapshot) {
+    setFormData({ ...editSnapshot.formData });
+    setChanges(cloneHodChanges(editSnapshot.changes));
+    setHasChanges(editSnapshot.hasChanges);
+    setShowRequest(editSnapshot.showRequest);
+    setHodPreview(editSnapshot.hodPreview || null);
+    setHodImageFile(editSnapshot.hodImageFile || null);
+  } else {
+    setFormData({ ...originalData });
+    setChanges([]);
+    setHasChanges(false);
+    setShowRequest(false);
+    setHodPreview(null);
+    setHodImageFile(null);
+  }
+
+  setIsEditing(false);
+  setShowRequestModal(false);
+  setShowDiscardModal(false);
+  setEditSnapshot(null);
+
+
+};
+
+ const handleRevertHodChange = (index) => {
+  const change = changes[index];
+  if (!change) return;
+
+  setFormData((prev) => ({
+    ...prev,
+    [change.field]: change.oldValue,
+  }));
+
+  if (change.field === "image_path") {
+    setHodPreview(null);
+    setHodImageFile(null);
+  }
+
+  setChanges((prev) => {
+    const next = prev.filter((_, i) => i !== index);
+
+    if (next.length === 0) {
+      setFormData({ ...originalData });
+      setHodPreview(null);
+      setHodImageFile(null);
+      setShowRequestModal(false);
+      setShowRequest(false);
+      setIsEditing(false);
+      setHasChanges(false);
+     
+      return next;
+    }
+
+    setHasChanges(true);
+    return next;
+  });
+};
 
   const handleRequestConfirm = async () => {
 
@@ -824,7 +899,7 @@ const SportsHOD = ({ data }) => {
 
       if (result) {
         console.log("INTRAMURAL REQUEST SUBMITTED", payload);
-        toast.success("Final request submitted");
+  
 
         setShowRequestModal(false);
         setShowRequest(false);
@@ -834,7 +909,6 @@ const SportsHOD = ({ data }) => {
       }
     } catch (err) {
       console.error("Request failed:", err);
-      toast.error("Request submission failed");
     }
   };
 
@@ -855,7 +929,7 @@ const SportsHOD = ({ data }) => {
       {!isEditing && (showRequest || !isEditing) && (
         <div className="absolute top-1 right-10">
           <button
-            onClick={() => setIsEditing(true)}
+            onClick={handleStartEdit}
             className="flex items-center gap-2 px-4 py-2 mt-2 bg-secd text-text hover:bg-brwn hover:text-prim  rounded-xl shadow-md "
           >
             <Pencil size={18} />
@@ -954,7 +1028,7 @@ const SportsHOD = ({ data }) => {
           {isEditing ? (
             <>
               <button
-                onClick={() => setShowDiscardModal(true)}
+                onClick={handleCancelEdit}
                 className="px-4 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
               >
                 Cancel
@@ -972,16 +1046,16 @@ const SportsHOD = ({ data }) => {
                     if (!formData?.image_path?.trim()) missing.push("Image");
 
                     if (missing.length > 0) {
-                      toast.error(
-                        `⚠ Please fill the following field(s): ${missing.join(", ")}`
-                      );
+                     
                       return;
                     }
 
-                    const diff = detectChanges();
-                    setChanges(diff);
-                    setIsEditing(false);
-                    setShowRequest(true);
+                  const diff = detectChanges();
+
+setChanges(diff);
+
+setIsEditing(false);
+setShowRequest(true);
                   }}
                   className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
                 >
@@ -1076,35 +1150,7 @@ const SportsHOD = ({ data }) => {
                                       change.field}
                         </span>
                         <button
-                          onClick={() => {
-                            // Revert field value
-                            setFormData((prev) => ({
-                              ...prev,
-                              [change.field]: originalData[change.field],
-                            }));
-
-                            // If undoing image, clear preview + file
-                            if (change.field === "image_path") {
-                              setHodPreview(null);
-                              setHodImageFile(null);
-                            }
-
-                            // Update changes list and auto-exit if empty
-                            setChanges((prev) => {
-                              const next = prev.filter((_, i) => i !== index);
-
-                              if (next.length === 0) {
-                                // 🔥 No more pending changes → exit request mode
-                                setShowRequestModal(false);
-                                setShowRequest(false);
-                                setIsEditing(false);
-                                setHasChanges(false);
-                                toast.info("All changes reverted.");
-                              }
-
-                              return next;
-                            });
-                          }}
+                          onClick={() => handleRevertHodChange(index)}
                           className="text-red-500 hover:text-red-700 font-bold"
                         >
                           ✕

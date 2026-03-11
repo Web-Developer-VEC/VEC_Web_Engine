@@ -220,7 +220,6 @@ const AdminWinnerSlider = ({ data }) => {
 
     /* ---------------- GUARD ---------------- */
     if (!payloads.length) {
-      toast.warn("No changes to submit");
       return;
     }
 
@@ -229,7 +228,6 @@ const AdminWinnerSlider = ({ data }) => {
       console.log("Request sent:", payloads);
       console.log("file:", files)
 
-      toast.success("Winners request submitted");
 
       const deepCopy = JSON.parse(JSON.stringify(tempWinners));
 
@@ -243,9 +241,7 @@ const AdminWinnerSlider = ({ data }) => {
       setShowRequestButtons(false);
       setEditWinners(false);
     } catch (err) {
-      console.error(err);
-      toast.error("Failed to submit request");
-    }
+      console.error(err);   }
   };
   const handleUndo = ({ type, id }) => {
     if (type === "added") {
@@ -627,7 +623,7 @@ const AdminWinnerSlider = ({ data }) => {
             </div>
             <div className="flex justify-end gap-2">
               <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-white">Cancel</button>
-              <button disabled={loading} onClick={handleFinalRequest} className="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white">Final Request</button>
+              <button disabled={loading} onClick={handleFinalRequest} className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"> {loading? "Processing..." : "Final Request"}</button>
             </div>
           </div>
         </div>
@@ -647,32 +643,32 @@ const AdminWinnerSlider = ({ data }) => {
         </div>
       )}
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded shadow-lg w-[350px]">
-            <h2 className="font-semibold mb-4">Confirm Delete</h2>
-            <p>Are you sure you want to delete selected items?</p>
+  <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50">
+    <div className="bg-white p-6 rounded shadow-lg w-[350px]">
+      <h2 className="font-semibold mb-4">Confirm Delete</h2>
+      <p>Are you sure you want to delete selected items?</p>
 
-            <div className="flex justify-end gap-3 mt-4">
-              <button
-                className="px-4 py-2 bg-gray-300 rounded"
-                onClick={() => setShowDeleteModal(false)}
-              >
-                Cancel
-              </button>
+      <div className="flex justify-end gap-3 mt-4">
+        <button
+          className="px-4 py-2 bg-gray-300 rounded"
+          onClick={() => setShowDeleteModal(false)}
+        >
+          Cancel
+        </button>
 
-              <button
-                className="px-4 py-2 bg-red-600 text-white rounded"
-                onClick={() => {
-                  handleDeleteSelected();
-                  setShowDeleteModal(false);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+        <button
+          className="px-4 py-2 bg-red-600 text-white rounded"
+          onClick={() => {
+            handleDeleteSelected();
+            setShowDeleteModal(false);
+          }}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
     </>
   );

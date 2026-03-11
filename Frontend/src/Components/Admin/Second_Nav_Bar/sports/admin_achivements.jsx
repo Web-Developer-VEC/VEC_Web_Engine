@@ -153,12 +153,13 @@ const Achievements1 = ({ data }) => {
     }
 
     // build formatted arrays same as earlier shape
-    const formatted = (z.images || []).map((img, idx) => ({
-      id: img.id ?? idx + 1,
-      image: img.image ?? "",
-      text: `Coordinator Image ${idx + 1}`,
-      newFile: img.newFile ?? null,
-    }));
+   const formatted = (z.images || []).map((img, idx) => ({
+  id: img.id ?? idx + 1,
+  image: img.image ?? "",
+  text: `Coordinator Image ${idx + 1}`,
+  newFile: img.newFile ?? null,
+  isNew: img.isNew ?? false
+}));
     setTempData(formatted);
     setSavedData(formatted);
     setZone(z.zone ?? "");
@@ -187,39 +188,42 @@ const Achievements1 = ({ data }) => {
     });
   };
   
-  const handleImageUpload = (id, file) => {
-    const imageUrl = URL.createObjectURL(file);
-    setTempData((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, image: imageUrl, newFile: file } : item,
-      ),
-    );
-    setZones((prev) =>
-      prev.map((z, zIdx) =>
-        zIdx === currentZoneIndex
-          ? {
-              ...z,
-              images: z.images.map((img) =>
-                img.id === id
-                  ? { ...img, image: imageUrl, newFile: file }
-                  : img,
-              ),
-            }
-          : z,
-      ),
-    );
+const handleImageUpload = (id, file) => {
+  const imageUrl = URL.createObjectURL(file);
 
-    const isNew = tempData.find((i) => i.id === id)?.isNew;
+  const currentImg = zones[currentZoneIndex]?.images?.find((i) => i.id === id);
+  const isNew = currentImg?.isNew;
 
-    upsertChange({
-      action: isNew ? "add" : "update",
-      section: `ANNA UNIVERSITY ZONE-${zone}`,
-      field: "image",
-      imageIndex: id,
-      newValue: file.name,
-      oldValue: isNew ? null : "existing image"
-    });
-  };
+  setTempData((prev) =>
+    prev.map((item) =>
+      item.id === id ? { ...item, image: imageUrl, newFile: file } : item
+    )
+  );
+
+  setZones((prev) =>
+    prev.map((z, zIdx) =>
+      zIdx === currentZoneIndex
+        ? {
+            ...z,
+            images: z.images.map((img) =>
+              img.id === id
+                ? { ...img, image: imageUrl, newFile: file }
+                : img
+            ),
+          }
+        : z
+    )
+  );
+
+  upsertChange({
+    action: isNew ? "add" : "update",
+    section: `ANNA UNIVERSITY ZONE-${zone}`,
+    field: "image",
+    imageIndex: id,
+    newValue: file.name,
+    oldValue: isNew ? null : "existing image",
+  });
+};
 
   // Handler for Zonal Results changes
   const handleZonalResultsChange = (newData, newYear) => {
@@ -318,96 +322,105 @@ const Achievements1 = ({ data }) => {
   };
 
   const handleAddRow = () => {
-    const newId = tempData.length
-      ? Math.max(...tempData.map((a) => a.id)) + 1
-      : 1;
+  // Use timestamp to guarantee uniqueness even after deletions
+  const newId = Date.now();
 
-    const newImage = { id: newId, image: "", newFile: null, isNew: true };
+  const newImage = { id: newId, image: "", newFile: null, isNew: true };
 
-    setTempData((prev) => [...prev, newImage]);
+  setTempData((prev) => [...prev, newImage]);
 
-    setZones((prev) =>
-      prev.map((z, idx) =>
-        idx === currentZoneIndex
-          ? { ...z, images: [...z.images, newImage] }
-          : z,
-      ),
+  setZones((prev) =>
+    prev.map((z, idx) =>
+      idx === currentZoneIndex
+        ? { ...z, images: [...z.images, newImage] }
+        : z,
+    ),
+  );
+
+  upsertChange({
+    action: "add",
+    section: `ANNA UNIVERSITY ZONE-${zone}`,
+    field: "image",
+    imageIndex: newId,   // unique per new image
+    newValue: "New Image",
+    oldValue: null,
+  });
+};
+
+const upsertChange = (newChange) => {
+  setChanges((prev) => {
+    const existingIndex = prev.findIndex(
+      (ch) =>
+        ch.section === newChange.section &&
+        ch.field === newChange.field &&
+        ch.imageIndex === newChange.imageIndex  // always compare imageIndex for images
     );
 
-    upsertChange({
-      action: "add",
-      section: `ANNA UNIVERSITY ZONE-${zone}`,
-      field: "image",
-      imageIndex: newId,
-      newValue: "New Image",
-      oldValue: null
-    });
-  };
+    // add → delete: cancel each other out (same image ID)
+    if (
+      existingIndex !== -1 &&
+      prev[existingIndex]?.action === "add" &&
+      newChange.action === "delete"
+    ) {
+      return prev.filter((_, i) => i !== existingIndex);
+    }
 
-  const upsertChange = (newChange) => {
-    setChanges((prev) => {
-      // Check if this change already exists
-      const existingIndex = prev.findIndex(
-        (ch) =>
-          ch.section === newChange.section &&
-          ch.field === newChange.field &&
-          (newChange.imageIndex === undefined || ch.imageIndex === newChange.imageIndex)
-      );
+    // update → replace with latest
+    if (existingIndex !== -1 && newChange.action === "update") {
+      const updated = [...prev];
+      updated[existingIndex] = newChange;
+      return updated;
+    }
 
-      // If it's an add followed by delete, remove it completely
-      if (existingIndex !== -1 && prev[existingIndex]?.action === "add" && newChange.action === "delete") {
-        return prev.filter((_, i) => i !== existingIndex);
-      }
+    // new change (including new "add" with a brand new imageIndex)
+    if (existingIndex === -1) {
+      return [...prev, newChange];
+    }
 
-      // For updates, replace the existing change with the new one (to keep latest values)
-      if (existingIndex !== -1 && newChange.action === "update") {
-        const newChanges = [...prev];
-        newChanges[existingIndex] = newChange;
-        return newChanges;
-      }
-
-      // For new changes, add them
-      if (existingIndex === -1) {
-        return [...prev, newChange];
-      }
-
-      return prev;
-    });
-  };
+    return prev;
+  });
+};
 
   const handleDeleteSelected = () => {
-    setTempData((prev) => {
-      selected.forEach((id) => {
-        const item = prev.find((i) => i.id === id);
-        if (item?.isNew) {
-          setChanges((changes) =>
-            changes.filter(
-              (ch) =>
-                !(
-                  ch.field === "image" &&
-                  ch.imageIndex === id &&
-                  ch.action === "add"
-                ),
-            ),
-          );
-        } else {
-          upsertChange({
-            action: "delete",
-            section: `ANNA UNIVERSITY ZONE-${zone}`,
-            field: "image",
-            imageIndex: id,
-            newValue: null,
-            oldValue: `Image ${id}`
-          });
-        }
+  setZones((prevZones) =>
+    prevZones.map((z, idx) => {
+      if (idx !== currentZoneIndex) return z;
+
+      const remainingImages = z.images.filter(
+        (img) => !selected.includes(img.id)
+      );
+
+      return { ...z, images: remainingImages };
+    })
+  );
+
+  setTempData((prev) => prev.filter((item) => !selected.includes(item.id)));
+
+  selected.forEach((id) => {
+    const item = tempData.find((i) => i.id === id);
+
+    if (item?.isNew) {
+      setChanges((changes) =>
+        changes.filter(
+          (ch) =>
+            !(ch.field === "image" && ch.imageIndex === id && ch.action === "add")
+        )
+      );
+    } else {
+      upsertChange({
+        action: "delete",
+        section: `ANNA UNIVERSITY ZONE-${zone}`,
+        field: "image",
+        imageIndex: id,
+        newValue: null,
+        oldValue: `Image ${id}`,
       });
+    }
+  });
 
-      return prev.filter((item) => !selected.includes(item.id));
-    });
-
-    setSelected([]);
-    setShowDeleteModal(false);
-  };
+  setSelected([]);
+  setShowDeleteModal(false);
+};
 
   const handleDiscardChanges = () => {
     setChanges([]);
@@ -441,74 +454,173 @@ const Achievements1 = ({ data }) => {
     setShowRequestButtons(false);
     setShowRequestModal(false);
     setShowDeleteModal(false);
-    toast.info("Changes discarded. Reverted to original data.");
+
   };
 
-  const handleRevertChange = (change, index) => {
-    setChanges((prev) => prev.filter((_, i) => i !== index));
+const handleRevertChange = (change, index) => {
+  // Remove change from list
+  setChanges((prev) => prev.filter((_, i) => i !== index));
 
-    if (change.section === "Zonal Results") {
-      // Revert Zonal Results changes
-      if (change.field === "data") {
-        setZonalResultsData(originalZonalResults);
-      }
-      if (change.field === "year") {
-        setZonalResultsYear(originalZonalResultsYear);
-      }
-    } else {
-      // Revert coordinator changes
-      setZones((prevZones) => {
-        const updatedZones = [...prevZones];
-        const originalZone = originalZones[currentZoneIndex];
-        const currentZone = updatedZones[currentZoneIndex];
+  /* ---------- ZONAL RESULTS ---------- */
+  if (change.section === "Zonal Results") {
+    if (change.field === "data") {
+      setZonalResultsData(originalZonalResults);
+    }
+    if (change.field === "year") {
+      setZonalResultsYear(originalZonalResultsYear);
+    }
+    return;
+  }
 
-        if (!originalZone || !currentZone) return prevZones;
+  /* ---------- FIND ZONE ---------- */
+  const zoneNumber = change.section?.split("ZONE-")[1];
 
-        switch (change.action) {
-          case "add":
-            if (change.field === "new_zone") {
-              updatedZones.pop();
-              setCurrentZoneIndex(0);
-            } else {
-              currentZone.images = originalZone.images;
-            }
-            break;
+  // Search in CURRENT zones first, fallback to originalZones
+  const zoneIndex = zones.findIndex(
+    (z) => String(z.zone) === String(zoneNumber)
+  );
 
-          case "delete":
-            currentZone.images = originalZone.images;
-            break;
+  // Also find in originalZones
+  const originalZoneIndex = originalZones.findIndex(
+    (z) => String(z.zone) === String(zoneNumber)
+  );
 
-          case "update":
-            if (change.field === "image") {
-              currentZone.images = originalZone.images;
-            }
-            if (change.field === "zone") {
-              currentZone.zone = originalZone.zone;
-              setZone(originalZone.zone);
-            }
-            if (change.field === "year") {
-              currentZone.year = originalZone.year;
-              setYear(originalZone.year);
-            }
-            break;
+  if (zoneIndex === -1 && change.field !== "new_zone") return;
 
-          default:
-            break;
+  const originalZone = originalZones[originalZoneIndex];
+
+  setZones((prevZones) => {
+    const updatedZones = [...prevZones];
+
+    switch (change.field) {
+
+      /* ---------- ZONE NAME REVERT ---------- */
+      case "zone": {
+        updatedZones[zoneIndex] = {
+          ...updatedZones[zoneIndex],
+          zone: originalZone?.zone ?? change.oldValue,
+        };
+
+        // Update UI inputs only if this is the currently viewed zone
+        if (zoneIndex === currentZoneIndex) {
+          setZone(originalZone?.zone ?? change.oldValue);
+          setSavedZone(originalZone?.zone ?? change.oldValue);
         }
+        break;
+      }
 
-        return updatedZones;
-      });
-      
-      const restored = originalZones[currentZoneIndex];
-      if (restored) {
-        setTempData(restored.images);
-        setSavedData(restored.images);
-        setZone(restored.zone);
-        setYear(restored.year);
+      /* ---------- YEAR REVERT ---------- */
+      case "year": {
+        updatedZones[zoneIndex] = {
+          ...updatedZones[zoneIndex],
+          year: originalZone?.year ?? change.oldValue,
+        };
+
+        // Update UI inputs only if this is the currently viewed zone
+        if (zoneIndex === currentZoneIndex) {
+          setYear(originalZone?.year ?? change.oldValue);
+          setSavedYear(originalZone?.year ?? change.oldValue);
+        }
+        break;
+      }
+
+   /* ---------- IMAGE REVERT ---------- */
+case "image": {
+  if (!originalZone) break;
+
+  setZones((prevZones) => {
+    const updatedZones = prevZones.map((z, i) => ({ ...z, images: [...z.images] }));
+
+    if (change.action === "delete") {
+      // Find the specific original image and restore ONLY that one
+      const originalImg = originalZone.images.find(
+        (img) => img.id === change.imageIndex
+      );
+
+      if (originalImg) {
+        const alreadyExists = updatedZones[zoneIndex].images.find(
+          (img) => img.id === change.imageIndex
+        );
+
+        if (!alreadyExists) {
+          // Re-insert at original position
+          const originalPos = originalZone.images.findIndex(
+            (img) => img.id === change.imageIndex
+          );
+          updatedZones[zoneIndex].images.splice(originalPos, 0, {
+            ...originalImg,
+            newFile: null,
+          });
+        }
+      }
+    } else if (change.action === "add") {
+      // Undo an add: remove that specific new image
+      updatedZones[zoneIndex].images = updatedZones[zoneIndex].images.filter(
+        (img) => img.id !== change.imageIndex
+      );
+    } else if (change.action === "update") {
+      // Undo an update: restore original image at that index
+      const originalImg = originalZone.images.find(
+        (img) => img.id === change.imageIndex
+      );
+      if (originalImg) {
+        updatedZones[zoneIndex].images = updatedZones[zoneIndex].images.map(
+          (img) => img.id === change.imageIndex
+            ? { ...originalImg, newFile: null }
+            : img
+        );
       }
     }
-  };
 
+    // Sync tempData and savedData if viewing this zone
+    if (zoneIndex === currentZoneIndex) {
+      setTempData([...updatedZones[zoneIndex].images]);
+      setSavedData([...updatedZones[zoneIndex].images]);
+    }
+
+    return updatedZones;
+  });
+
+  break; // break here, outside setZones
+}
+
+      /* ---------- NEW ZONE REVERT ---------- */
+      case "new_zone": {
+        // Remove the newly added zone (it's always at the end)
+        updatedZones.pop();
+
+        // Navigate back to zone index 0 safely
+        const safeIndex = 0;
+        setCurrentZoneIndex(safeIndex);
+
+        // Sync inputs to zone at safeIndex
+        const fallbackZone = updatedZones[safeIndex];
+        if (fallbackZone) {
+          setZone(fallbackZone.zone ?? "");
+          setYear(fallbackZone.year ?? "");
+          setSavedZone(fallbackZone.zone ?? "");
+          setSavedYear(fallbackZone.year ?? "");
+
+          const restoredImages = (fallbackZone.images || []).map((img, idx) => ({
+            id: img.id ?? idx + 1,
+            image: img.image ?? "",
+            newFile: null,
+            isNew: img.isNew ?? false,
+          }));
+
+          setTempData(restoredImages);
+          setSavedData(restoredImages);
+        }
+        break;
+      }
+
+      default:
+        break;
+    }
+
+    return updatedZones;
+  });
+};
   const handleCancel = () => {
     setEditMode(false);
     setSelected([]);
@@ -517,47 +629,83 @@ const Achievements1 = ({ data }) => {
   };
 
   // Fixed: Added zone changes with actual values
-  const handleZoneChange = (e) => {
-    const value = e.target.value;
-    const oldValue = zone; // Get current value before change
-    setZone(value);
-    updateCurrentZone({ zone: value });
-    
-    // Add to changes array with actual values
-    if (value !== savedZone) {
-      upsertChange({
-        action: "update",
-        section: `ANNA UNIVERSITY ZONE-${value}`,
-        field: "zone",
-        oldValue: oldValue,
-        newValue: value
-      });
+const handleZoneChange = (e) => {
+  const value = e.target.value;
+
+  setZone(value);
+  updateCurrentZone({ zone: value });
+
+  setChanges((prev) => {
+    const sectionName = `ANNA UNIVERSITY ZONE-${savedZone}`;
+
+    const existingIndex = prev.findIndex(
+      (ch) => ch.field === "zone"
+    );
+
+    // If zone change already exists → update it
+    if (existingIndex !== -1) {
+      const updated = [...prev];
+      updated[existingIndex] = {
+        ...updated[existingIndex],
+        newValue: value,
+      };
+      return updated;
     }
-  };
+
+    // Otherwise add new change
+    return [
+      ...prev,
+      {
+        action: "update",
+        section: sectionName,
+        field: "zone",
+        oldValue: savedZone,
+        newValue: value,
+      },
+    ];
+  });
+};
 
   // Fixed: Added year changes with actual values
-  const handleYearChange = (e) => {
-    const value = e.target.value;
-    const oldValue = year; // Get current value before change
-    setYear(value);
-    updateCurrentZone({ year: value });
-    
-    // Add to changes array if different from saved
-    if (value !== savedYear) {
-      upsertChange({
+ const handleYearChange = (e) => {
+  const value = e.target.value;
+
+  setYear(value);
+  updateCurrentZone({ year: value });
+
+  setChanges((prev) => {
+    const existing = prev.find(
+      (ch) =>
+        ch.field === "year" &&
+        ch.section === `ANNA UNIVERSITY ZONE-${zone}`
+    );
+
+    if (existing) {
+      return prev.map((ch) =>
+        ch.field === "year" &&
+        ch.section === `ANNA UNIVERSITY ZONE-${zone}`
+          ? { ...ch, newValue: value }
+          : ch
+      );
+    }
+
+    return [
+      ...prev,
+      {
         action: "update",
         section: `ANNA UNIVERSITY ZONE-${zone}`,
         field: "year",
-        oldValue: oldValue,
-        newValue: value
-      });
-    }
-  };
+        oldValue: savedYear,   // always original value
+        newValue: value,
+      },
+    ];
+  });
+};
 
   // Fixed: Updated handleSave to include actual values
   const handleSave = () => {
     if (!zone || !year) {
-      toast.error("Zone and Year are mandatory!");
+     
       return;
     }
 
@@ -576,15 +724,15 @@ const Achievements1 = ({ data }) => {
         });
       }
 
-      if (year !== savedYear) {
-        newChanges.push({
-          action: "update",
-          section: sectionName,
-          field: "year",
-          oldValue: savedYear,
-          newValue: year
-        });
-      }
+    if (year !== savedYear) {
+  newChanges.push({
+    action: "update",
+    section: sectionName,
+    field: "year",
+    oldValue: savedYear,
+    newValue: year
+  });
+}
     }
 
     // Check for Zonal Results changes
@@ -617,135 +765,132 @@ const Achievements1 = ({ data }) => {
     setShowRequestButtons(true);
   };
   
-  const handleFinalRequestConfirm = async () => {
-    if (!changes.length) {
-      toast.warn("No changes to submit");
+const handleFinalRequestConfirm = async () => {
+  if (!changes.length) {
+  
+    return;
+  }
+
+  const payload = [];
+  const files = [];
+
+  changes.forEach((change) => {
+    if (change.section === "Zonal Results") {
+      console.log("Zonal Results change:", change);
       return;
     }
 
-    const payload = [];
-    const files = [];
+    const zoneNumber = change.section?.split("ZONE-")[1];
 
-    changes.forEach((change) => {
-      // Handle Zonal Results changes separately
-      if (change.section === "Zonal Results") {
-        // You'll need to implement the payload structure for Zonal Results
-        // based on your API requirements
-        console.log("Zonal Results change:", change);
-        return;
-      }
+    const zoneIndex = zones.findIndex(
+      (z) => String(z.zone) === String(zoneNumber)
+    );
 
-      // 🔎 Extract zone number from section
-      const zoneNumber = change.section?.split("ZONE-")[1];
-      const zoneIndex = zones.findIndex(
-        (z) => String(z.zone) === String(zoneNumber)
-      );
+    const currentZone = zones[zoneIndex];
+    const originalZone = originalZones[zoneIndex];
 
-      const currentZone = zones[zoneIndex];
-      const originalZone = originalZones[zoneIndex];
+    if (!currentZone) return;
 
-      if (!currentZone) return;
+    /* ---------------- NEW ZONE ---------------- */
 
-      // 🆕 NEW ZONE
-      if (change.field === "new_zone") {
-        const imagePaths = [];
-        const imageFiles = [];
+    if (change.field === "new_zone") {
+      const imagePaths = [];
 
-        currentZone.images.forEach((img) => {
-          if (img.newFile) {
-            const path = `/static/images/sports/coordinates/${img.newFile.name}`;
-            imagePaths.push(path);
-            imageFiles.push(img.newFile);
-          } else if (img.image) {
-            imagePaths.push(img.image);
-          }
-        });
+      currentZone.images.forEach((img) => {
+        if (img.newFile) {
+          const path = `/static/images/sports/coordinates/${img.newFile.name}`;
+          imagePaths.push(path);
+          files.push(img.newFile);
+        } else if (img.image) {
+          imagePaths.push(img.image);
+        }
+      });
 
-        const req = buildAchievementsPayload({
-          action: "add",
-          isNewZone: true,
-          newData: {
-            zone: currentZone.zone,
-            year: currentZone.year,
-            image_path: imagePaths, // ✅ NOT EMPTY
-          },
-        });
+      const req = buildAchievementsPayload({
+        action: "add",
+        isNewZone: true,
+        newData: {
+          zone: currentZone.zone,
+          year: currentZone.year,
+          image_path: imagePaths,
+        },
+      });
 
-        if (req) payload.push(req);
-        files.push(...imageFiles); // ✅ push all files together
-        return;
-      }
+      if (req) payload.push(req);
+      return;
+    }
 
-      // 🖼 IMAGE CHANGES
-      if (change.field === "image") {
-        const newImage = currentZone.images?.find(
-          (img) => img.id === change.imageIndex
-        );
+    /* ---------------- IMAGE CHANGES ---------------- */
 
-        const oldImage = originalZone?.images?.find(
-          (img) => img.id === change.imageIndex
-        );
+    if (change.field === "image") {
+     const imagePaths = currentZone.images.map((img) => {
+  if (img.newFile) {
+    return `/static/images/sports/coordinates/${img.newFile.name}`;
+  }
 
-        const newData = newImage
-          ? {
-              zone: currentZone.zone,
-              year: currentZone.year,
-              image_path: [
-                newImage.newFile
-                  ? `/static/images/sports/coordinates/${newImage.newFile.name}`
-                  : newImage.image,
-              ],
-              newFile: newImage.newFile,
-            }
-          : null;
+  // remove S3 base url if present
+  return img.image.replace(BASE_URL, "");
+});
 
-        const oldData = oldImage
-          ? {
-              zone: originalZone.zone,
-              year: originalZone.year,
-              image_path: oldImage.image,
-            }
-          : null;
+    const oldPaths =
+  originalZone?.images?.map((img) =>
+    img.image.replace(BASE_URL, "")
+  ) || [];
 
-        const req = buildAchievementsPayload({
-          action: change.action,
-          newData,
-          oldData,
-        });
+      const req = buildAchievementsPayload({
+        action: change.action,
+        newData: {
+          zone: currentZone.zone,
+          year: currentZone.year,
+          image_path: imagePaths,
+        },
+        oldData: {
+          zone: originalZone?.zone,
+          year: originalZone?.year,
+          image_path: oldPaths,
+        },
+      });
 
-        if (req) payload.push(req);
-        if (newData?.newFile) files.push(newData.newFile);
+      if (req) payload.push(req);
 
-        return;
-      }
+      currentZone.images.forEach((img) => {
+        if (img.newFile) files.push(img.newFile);
+      });
 
-      if (change.field === "zone" || change.field === "year") {
-        const req = buildAchievementsPayload({
-          action: "update",
-          newData: {
-            zone: currentZone.zone,
-            year: currentZone.year,
-            image_path: null,
-          },
-          oldData: {
-            zone: originalZone.zone,
-            year: originalZone.year,
-            image_path: null,
-          },
-        });
+      return;
+    }
 
-        if (req) payload.push(req);
-      }
-    });
+    /* ---------------- ZONE / YEAR UPDATE ---------------- */
 
-    console.log("📦 ACHIEVEMENTS PAYLOAD:", payload);
-    console.log("🖼 FILES:", files);
+    if (change.field === "zone" || change.field === "year") {
+      const req = buildAchievementsPayload({
+        action: "update",
+        newData: {
+          zone: currentZone.zone,
+          year: currentZone.year,
+          image_path:
+            currentZone.images?.map((img) => img.image) || [],
+        },
+        oldData: {
+          zone: originalZone?.zone,
+          year: originalZone?.year,
+          image_path:
+            originalZone?.images?.map((img) => img.image) || [],
+        },
+      });
 
-    await sendRequest(payload, files);
+      if (req) payload.push(req);
+    }
+  });
 
-    toast.success("Request submitted successfully!");
-    setShowRequestModal(false);
-  };
+  console.log("📦 ACHIEVEMENTS PAYLOAD:", payload);
+  console.log("🖼 FILES:", files);
+
+  await sendRequest(payload, files);
+
+
+  setShowRequestModal(false);
+};
 
   const updateCurrentZone = (updates) => {
     setZones((prev) =>
