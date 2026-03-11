@@ -249,8 +249,8 @@ async function updateFile(tempDoc, tempCollection) {
   for (const [key, value] of Object.entries(meta)) {
 
   // Case 1: direct pdf_path
-  if (key === "pdf_path" || key === "image_path") {
-    await handleFileMove(meta, key, value);
+  if (key !== "pdf_path" && key !== "image_path") {
+    continue;
   }
 
   // Case 2: nested object containing pdf_path
