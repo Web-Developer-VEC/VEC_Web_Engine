@@ -25,18 +25,17 @@ async function administrationHandler(fileStream, docs, req, cb, filename, mimety
           typeof filename === "string" ? filename : filename?.filename || ""
         ).toLowerCase();
     
-    
-        if (extname === ".pdf") {
-          if (!effectivepdfMime.startsWith("application/pdf")) {
-            fileStream.resume();
-            return cb(new Error("Only PDFs are allowed"));
-          }
-        } else {
-          if (!effectiveimageMime.startsWith("image/")) {
-            fileStream.resume();
-            return cb(new Error("Only images are allowed"));
-          }
-        }
+    const allowedImages = [".jpg", ".jpeg", ".png", ".webp", ".gif"];
+
+if (extname === ".pdf") {
+  if (mimetype !== "application/pdf") {
+    fileStream.resume();
+    return cb(new Error("Only PDFs are allowed"));
+  }
+} else if (!allowedImages.includes(extname)) {
+  fileStream.resume();
+  return cb(new Error("Only images are allowed"));
+}
 
 
     const collection_type = docs[0]?.collection_type;

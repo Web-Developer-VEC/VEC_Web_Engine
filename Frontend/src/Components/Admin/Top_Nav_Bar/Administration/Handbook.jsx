@@ -42,6 +42,7 @@ const ConfirmModal = ({ show, message, onCancel, onConfirm, type = "confirm" }) 
   );
 };
 
+
 /* ---------- Handbook Card ---------- */
 const HandbookButton = ({ year, pdfspath, editable, onOpen, onEdit, onToggleSelect, checked }) => (
   <div className="relative flex flex-col items-center">
@@ -94,7 +95,7 @@ const EditModal = ({ initialData, onClose, onSave }) => {
   };
 
   const handlePreview = () => {
-    if (form.pdf_path && form.pdf_path !== "#") window.open(form.pdf_path, "_blank", "noopener,noreferrer");
+    if (form.pdf_path && form.pdf_path !== "#") window.open(UrlParser(form.pdf_path), "_blank", "noopener,noreferrer");
   };
 
   const handleSave = () => {
@@ -256,7 +257,7 @@ const AdminHandbook = ({ theme, toggle }) => {
 
   const handleDelete = (index) => {
     const prevItem = handBook[index];
-    addChange({ type: "Deleted", label: `Handbook ${prevItem?.year || index + 1}`, index, prevItem });
+    addChange({ type: "delete", label: `Handbook ${prevItem?.year || index + 1}`, index, prevItem });
     setHandbook((prev) => prev.filter((_, i) => i !== index));
   };
 
@@ -272,8 +273,8 @@ const AdminHandbook = ({ theme, toggle }) => {
       const newHr = { ...prev, ...form };
       if (form._file) newHr._file = form._file;
       setHrHandbook(newHr);
-      if (prev && prev.id) addChange({ type: "Updated", label: "HR Handbook", prevItem: prev, newItem: newHr, collection_type: "HRHandBook" });
-      else addChange({ type: "Added", label: "HR Handbook", item: newHr, collection_type: "HRHandBook" });
+      if (prev && prev.id) addChange({ type: "update", label: "HR Handbook", prevItem: prev, newItem: newHr, collection_type: "HRHandBook" });
+      else addChange({ type: "insert", label: "HR Handbook", item: newHr, collection_type: "HRHandBook" });
       setShowModal(false);
       return;
     }
@@ -285,12 +286,12 @@ const AdminHandbook = ({ theme, toggle }) => {
       if (form._file) newItem._file = form._file;
       updated[editData.index] = newItem;
       setHandbook(updated);
-      addChange({ type: "Updated", label: form.year || prev.year, index: editData.index, prevItem: prev, newItem });
+      addChange({ type: "update", label: form.year || prev.year, index: editData.index, prevItem: prev, newItem });
     } else {
       const newItem = { ...form };
       if (form._file) newItem._file = form._file;
       setHandbook((p) => [...(p || []), newItem]);
-      addChange({ type: "Added", label: form.year, item: newItem });
+      addChange({ type: "insert", label: form.year, item: newItem });
     }
     setShowModal(false);
   };
@@ -313,15 +314,15 @@ const AdminHandbook = ({ theme, toggle }) => {
     let reverted = [...(handBook || [])];
     for (let i = editModeChanges.length - 1; i >= 0; i--) {
       const c = editModeChanges[i];
-      if (c.type === "Added") {
+      if (c.type === "insert") {
         reverted = reverted.filter((it) => it.id !== c.item?.id);
-      } else if (c.type === "Updated") {
+      } else if (c.type === "update") {
         if (typeof c.index === "number" && reverted[c.index]) reverted[c.index] = c.prevItem;
         else if (c.prevItem?.id) {
           const idx = reverted.findIndex((it) => it.id === c.prevItem.id);
           if (idx !== -1) reverted[idx] = c.prevItem;
         }
-      } else if (c.type === "Deleted") {
+      } else if (c.type === "delete") {
         const insertIndex = c.index <= reverted.length ? c.index : reverted.length;
         reverted.splice(insertIndex, 0, c.prevItem);
       }
@@ -346,7 +347,7 @@ const AdminHandbook = ({ theme, toggle }) => {
       const target = groups[collectionType] || groups.HandBook;
       const pdfFolder = collectionType === "HRHandBook" ? "hr_handbook" : "handbook";
 
-      if (c.type === "Added") {
+      if (c.type === "insert") {
         const item = c.item || {};
         const meta = { year: item.year || "" };
         if (item._file && typeof item._file === "object") {
@@ -365,12 +366,13 @@ const AdminHandbook = ({ theme, toggle }) => {
           meta_data: meta,
           original_data: {},
         });
-      } else if (c.type === "Updated") {
+      } else if (c.type === "update") {
         const prev = c.prevItem || {};
         const nw = c.newItem || {};
         const meta = {};
         const original = {};
-        if ((prev.year || "") !== (nw.year || "")) { meta.year = nw.year || ""; original.year = prev.year || ""; }
+        if ((prev.year || "") !== (nw.year || ""))
+           { meta.year = nw.year || ""; original.year = prev.year || ""; }
 
         if (nw._file && typeof nw._file === "object") {
           const safe = buildSafeName(nw._file);
@@ -383,6 +385,10 @@ const AdminHandbook = ({ theme, toggle }) => {
           meta.pdf_path = nw.pdf_path || nw.url || "";
           original.pdf_path = prev.pdf_path || prev.url || "";
         }
+   
+       
+      
+        
 
         if (Object.keys(meta).length) {
           target.entries.push({
@@ -395,7 +401,7 @@ const AdminHandbook = ({ theme, toggle }) => {
             original_data: original,
           });
         }
-      } else if (c.type === "Deleted") {
+      } else if (c.type === "delete") {
         const prev = c.prevItem || {};
         target.entries.push({
           collectionName: "administration",
@@ -448,8 +454,8 @@ const AdminHandbook = ({ theme, toggle }) => {
 
       // Both succeeded: optimistic updates for file paths
       const updatedHandbook = (handBook || []).map((it) => {
-        const added = combined.find((c) => c.type === "Added" && c.item?.id === it.id);
-        const upd = combined.find((c) => c.type === "Updated" && ((c.newItem?.id && c.newItem.id === it.id) || (c.prevItem?.id && c.prevItem.id === it.id)));
+        const added = combined.find((c) => c.type === "insert" && c.item?.id === it.id);
+        const upd = combined.find((c) => c.type === "update" && ((c.newItem?.id && c.newItem.id === it.id) || (c.prevItem?.id && c.prevItem.id === it.id)));
         if (added && added.item && added.item._file) {
           const safe = buildSafeName(added.item._file);
           return { ...it, pdf_path: `/static/pdfs/handbook/${safe}`, _new: false };
@@ -462,8 +468,8 @@ const AdminHandbook = ({ theme, toggle }) => {
       });
 
       let updatedHr = hrHandbook;
-      const hrAdded = combined.find((c) => (c.collection_type === "HRHandBook" || c.label === "HR Handbook") && c.type === "Added");
-      const hrUpdated = combined.find((c) => (c.collection_type === "HRHandBook" || c.label === "HR Handbook") && c.type === "Updated");
+      const hrAdded = combined.find((c) => (c.collection_type === "HRHandBook" || c.label === "HR Handbook") && c.type === "insert");
+      const hrUpdated = combined.find((c) => (c.collection_type === "HRHandBook" || c.label === "HR Handbook") && c.type === "update");
       if (hrAdded && hrAdded.item && hrAdded.item._file) {
         const safe = buildSafeName(hrAdded.item._file);
         updatedHr = { ...(hrHandbook || {}), pdf_path: `/static/pdfs/hr_handbook/${safe}` };
@@ -492,7 +498,7 @@ const AdminHandbook = ({ theme, toggle }) => {
     const indices = [...selectedIds].sort((a, b) => b - a);
     indices.forEach((idx) => {
       const prevItem = handBook[idx];
-      addChange({ type: "Deleted", label: `Handbook ${prevItem?.year || idx + 1}`, index: idx, prevItem });
+      addChange({ type: "delete", label: `Handbook ${prevItem?.year || idx + 1}`, index: idx, prevItem });
     });
     setHandbook((prev) => prev.filter((_, i) => !selectedIds.includes(i)));
     setSelectedIds([]);
@@ -500,9 +506,9 @@ const AdminHandbook = ({ theme, toggle }) => {
   };
 
   const getChanges = () => (pendingChanges || []).map((c, idx) => {
-    if (c.type === "Added") return { id: idx, action: "insert", category: c.label || c.item?.year || "New Handbook", files: c.item?._file ? [c.item._file] : [], links: (c.item?.pdf_path || c.item?.url) ? [c.item.pdf_path || c.item.url] : [], raw: c };
-    if (c.type === "Updated") return { id: idx, action: "update", category: c.label || c.newItem?.year || "Updated Handbook", files: c.newItem?._file ? [c.newItem._file] : [], links: (c.newItem?.pdf_path || c.newItem?.url) ? [c.newItem.pdf_path || c.newItem.url] : [], raw: c, original: c.prevItem };
-    if (c.type === "Deleted") return { id: idx, action: "delete", category: c.label || c.prevItem?.year || "Deleted Handbook", files: [], links: [], raw: c, original: c.prevItem };
+    if (c.type === "insert") return { id: idx, action: "insert", category: c.label || c.item?.year || "New Handbook", files: c.item?._file ? [c.item._file] : [], links: (c.item?.pdf_path || c.item?.url) ? [c.item.pdf_path || c.item.url] : [], raw: c };
+    if (c.type === "update") return { id: idx, action: "update", category: c.label || c.newItem?.year || "Updated Handbook", files: c.newItem?._file ? [c.newItem._file] : [], links: (c.newItem?.pdf_path || c.newItem?.url) ? [c.newItem.pdf_path || c.newItem.url] : [], raw: c, original: c.prevItem };
+    if (c.type === "delete") return { id: idx, action: "delete", category: c.label || c.prevItem?.year || "Deleted Handbook", files: [], links: [], raw: c, original: c.prevItem };
     return { id: idx, action: "update", category: c.label || "Change", files: [], links: [], raw: c };
   });
 
@@ -519,14 +525,14 @@ const AdminHandbook = ({ theme, toggle }) => {
     setHandbook((prev) => {
       if (!prev) return prev;
       const copy = [...prev];
-      if (c.type === "Added") return copy.filter((it) => !(it.id === c.item?.id));
-      if (c.type === "Updated") {
+      if (c.type === "insert") return copy.filter((it) => !(it.id === c.item?.id));
+      if (c.type === "update") {
         if (c.prevItem?.id) {
           const idx2 = copy.findIndex((it) => it.id === c.prevItem.id);
           if (idx2 !== -1) { copy[idx2] = c.prevItem; return copy; }
         } else if (typeof c.index === "number" && copy[c.index]) { copy[c.index] = c.prevItem; return copy; }
       }
-      if (c.type === "Deleted") {
+      if (c.type === "delete") {
         const insertIndex = c.index <= copy.length ? c.index : copy.length;
         copy.splice(insertIndex, 0, c.prevItem);
         return copy;
@@ -535,9 +541,9 @@ const AdminHandbook = ({ theme, toggle }) => {
     });
 
     if (c.collection_type === "HRHandBook") {
-      if (c.type === "Added") setHrHandbook(null);
-      else if (c.type === "Updated") setHrHandbook(c.prevItem || null);
-      else if (c.type === "Deleted") setHrHandbook(c.prevItem || null);
+      if (c.type === "insert") setHrHandbook(null);
+      else if (c.type === "update") setHrHandbook(c.prevItem || null);
+      else if (c.type === "delete") setHrHandbook(c.prevItem || null);
     }
   };
 
@@ -736,9 +742,9 @@ const AdminHandbook = ({ theme, toggle }) => {
 
                               // HR Handbook undo handling
                               if (c.collection_type === "HRHandBook") {
-                                if (c.type === "Added") setHrHandbook(null);
-                                else if (c.type === "Updated") setHrHandbook(c.prevItem || null);
-                                else if (c.type === "Deleted") setHrHandbook(c.prevItem || null);
+                                if (c.type === "insert") setHrHandbook(null);
+                                else if (c.type === "update") setHrHandbook(c.prevItem || null);
+                                else if (c.type === "delete") setHrHandbook(c.prevItem || null);
                               }
                             }}
                           >
