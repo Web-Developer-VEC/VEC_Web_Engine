@@ -73,7 +73,9 @@ const allRoutes = [
   "/webteam",
   "/web_contact",
   "/admin_dash",
-  "/admin_approval"
+  "/admin_approval",
+  "/rankholders",
+  "/contact_us",
 ];
 
 
