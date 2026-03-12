@@ -582,18 +582,21 @@ pushFacilityChange(
     setHasEdits(true);
   };
 
-  // VALIDATION: all fields mandatory for current facility
-  const validateCurrentFacility = () => {
+ const validateCurrentFacility = () => {
   if (!currentFacility) return false;
 
-  // category + heading are mandatory
-  const categoryValid = (currentFacility.category || "").trim().length > 0;
-  const nameValid = (currentFacility.name || "").trim().length > 0;
+const toStr = (val) => {
+  if (Array.isArray(val)) return (val[0] || "");
+  return String(val || "");
+};
+
+  const categoryValid = toStr(currentFacility.category).trim().length > 0;
+  const nameValid = toStr(currentFacility.name).trim().length > 0;
+
   if (!categoryValid || !nameValid) return false;
 
   if (!currentRows || currentRows.length === 0) return false;
 
-  // image is mandatory, text is OPTIONAL
   for (const r of currentRows) {
     const imageOk = !!(r.image || r.origImagePath);
     if (!imageOk) return false;
