@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import LoadComp from "../../../LoadComp";
-import { Pencil, Trash2, Plus, Save, Send, X, PlusCircle } from "lucide-react";
-import { FaUpload } from "react-icons/fa6";
+import { Pencil, Trash2, Plus, Send, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => structuredClone(v);
+const deepCopy = (v) => structuredClone(v); // keep for pure-data cloning, but avoid for items with File/_file
 
 const AlumniSlider1 = ({ data }) => {
   const [items, setItems] = useState([]);
@@ -24,7 +22,7 @@ const AlumniSlider1 = ({ data }) => {
   const [isHovered, setIsHovered] = useState(false);
   const { sendRequest, loading, error } = useAdminRequest();
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "";
 
   const UrlParser = (path) => {
     if (!path) return "/placeholder.jpg";
@@ -36,23 +34,37 @@ const AlumniSlider1 = ({ data }) => {
 
   // Initialize data
   useEffect(() => {
-    if (data && data.length > 0) {
+    if (Array.isArray(data) && data.length > 0) {
       const formattedData = data.map((item, idx) => ({
         id: idx,
         image_path: item.image_path || "",
         description: item.description || "",
         selected: false
       }));
-      
+
+      // structuredClone is OK here because no File/_file in backend data
       const copy = deepCopy(formattedData);
       setCommittedItems(copy);
-      setItems(deepCopy(copy));
+      // use shallow copy to keep behavior consistent
+      setItems(copy.map(i => ({ ...i })));
       setPendingItems(null);
       setIsEditing(false);
       setIsDirty(false);
       setIsSaved(false);
       setSelectedItems([]);
       setSelectAll(false);
+      setActiveIndex(0);
+    } else if (Array.isArray(data) && data.length === 0) {
+      // backend returned empty array — keep UI available
+      setCommittedItems([]);
+      setItems([]);
+      setPendingItems(null);
+      setIsEditing(false);
+      setIsDirty(false);
+      setIsSaved(false);
+      setSelectedItems([]);
+      setSelectAll(false);
+      setActiveIndex(0);
     }
   }, [data]);
 
@@ -60,24 +72,27 @@ const AlumniSlider1 = ({ data }) => {
   useEffect(() => {
     if (isHovered || items.length === 0 || isEditing) return;
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % items.length);
+      setActiveIndex((prev) => (items.length > 0 ? (prev + 1) % items.length : 0));
     }, 3000);
     return () => clearInterval(interval);
   }, [isHovered, items, isEditing]);
 
   const handlePrev = () => {
+    if (items.length === 0) return;
     setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
   };
 
   const handleNext = () => {
+    if (items.length === 0) return;
     setActiveIndex((prev) => (prev + 1) % items.length);
   };
 
   const handleStartEdit = () => {
+    // preserve File and preview_url by doing shallow copies
     if (pendingItems) {
-      setItems(deepCopy(pendingItems));
+      setItems(pendingItems.map(i => ({ ...i })));
     } else {
-      setItems(deepCopy(committedItems));
+      setItems(committedItems.map(i => ({ ...i })));
     }
     setIsEditing(true);
     setIsDirty(false);
@@ -102,26 +117,29 @@ const AlumniSlider1 = ({ data }) => {
   };
 
   const handleAddItem = () => {
-    setItems((prev) => [...prev.map((item) => ({ ...item })), { 
-      id: Date.now(), 
-      image_path: "",
-      description: "",
-      selected: false
-    }]);
+    setItems((prev) => [
+      ...prev.map((item) => ({ ...item })),
+      {
+        id: Date.now(),
+        image_path: "",
+        description: "",
+        selected: false
+      }
+    ]);
     setIsDirty(true);
   };
 
   const handleItemSelect = (index) => {
-    const updatedItems = items.map((item, i) => 
+    const updatedItems = items.map((item, i) =>
       i === index ? { ...item, selected: !item.selected } : item
     );
-    
+
     setItems(updatedItems);
-    
+
     const selectedIndices = updatedItems
-      .map((item, i) => item.selected ? i : -1)
+      .map((item, i) => (item.selected ? i : -1))
       .filter(i => i !== -1);
-    
+
     setSelectedItems(selectedIndices);
     setSelectAll(selectedIndices.length === updatedItems.length && updatedItems.length > 0);
   };
@@ -129,10 +147,10 @@ const AlumniSlider1 = ({ data }) => {
   const handleSelectAll = () => {
     const newSelectAll = !selectAll;
     setSelectAll(newSelectAll);
-    
+
     const updatedItems = items.map(item => ({ ...item, selected: newSelectAll }));
     setItems(updatedItems);
-    
+
     setSelectedItems(newSelectAll ? items.map((_, i) => i) : []);
   };
 
@@ -147,10 +165,10 @@ const AlumniSlider1 = ({ data }) => {
 
   const handleCancel = () => {
     if (pendingItems) {
-      setItems(deepCopy(pendingItems));
+      setItems(pendingItems.map(i => ({ ...i })));
       toast.info("Cancelled edits. Draft preserved!");
     } else {
-      setItems(deepCopy(committedItems));
+      setItems(committedItems.map(i => ({ ...i })));
       toast.info("Cancelled. Reverted to original data!");
     }
 
@@ -163,8 +181,8 @@ const AlumniSlider1 = ({ data }) => {
 
   const handleSave = () => {
     // Check for empty fields
-    const invalidItem = items.find(item => 
-      !item.image_path?.trim() || 
+    const invalidItem = items.find(item =>
+      !item.image_path?.trim() ||
       !item.description?.trim()
     );
 
@@ -173,7 +191,8 @@ const AlumniSlider1 = ({ data }) => {
       return;
     }
 
-    const pending = deepCopy(items);
+    // preserve _file and preview_url by shallow-copying
+    const pending = items.map(i => ({ ...i }));
     setPendingItems(pending);
     setIsSaved(true);
     setIsEditing(false);
@@ -184,7 +203,7 @@ const AlumniSlider1 = ({ data }) => {
   };
 
   const handleDiscard = () => {
-    setItems(deepCopy(committedItems));
+    setItems(committedItems.map(i => ({ ...i })));
     setPendingItems(null);
     setIsSaved(false);
     setIsDirty(false);
@@ -197,126 +216,136 @@ const AlumniSlider1 = ({ data }) => {
     setShowRequestModal(true);
   };
 
-const handleImageUpload = (e, index) => {
-  const file = e.target.files[0];
-  if (!file) return;
+  const handleImageUpload = (e, index) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const previewUrl = URL.createObjectURL(file);
+    const previewUrl = URL.createObjectURL(file);
 
-  setItems(prev =>
-    prev.map((item, i) =>
-      i === index
-        ? {
-            ...item,
-            _file: file, // actual file for uploading
-            image_path: `/static/images/ncc/navy/${file.name}`, // final path saved in DB
-            preview_url: previewUrl, // temporary preview in UI
-          }
-        : item
-    )
-  );
+    setItems(prev =>
+      prev.map((item, i) =>
+        i === index
+          ? {
+              ...item,
+              _file: file, // actual file for uploading
+              image_path: `/static/images/ncc/navy/${file.name}`, // candidate path
+              preview_url: previewUrl, // temporary preview in UI
+            }
+          : item
+      )
+    );
 
-  setIsDirty(true);
-};
+    setIsDirty(true);
+  };
 
+  const handleFinalRequestConfirm = async () => {
+    if (!pendingItems) return;
 
-  
-const handleFinalRequestConfirm = async () => {
-  if (!pendingItems) return;
+    const payload = [];
 
-  const payload = [];
+    const committedMap = new Map(committedItems.map(i => [i.id, i]));
+    const pendingMap = new Map(pendingItems.map(i => [i.id, i]));
 
-  const committedMap = new Map(committedItems.map(i => [i.id, i]));
-  const pendingMap = new Map(pendingItems.map(i => [i.id, i]));
+    // -------- DELETED ITEMS ----------
+    committedMap.forEach((oldItem, id) => {
+      if (!pendingMap.has(id)) {
+        payload.push({
+          collectionName: "ncc_navy",
+          collection_type: "awards",
+          action: "delete",
+          title: "delete awards",
+          meta_data: {
+            image_path: oldItem.image_path,
+            title: oldItem.title,
+            description: oldItem.description,
+          },
+        });
+      }
+    });
 
-  // -------- DELETED ITEMS ----------
-  committedMap.forEach((oldItem, id) => {
-    if (!pendingMap.has(id)) {
-      payload.push({
-        collectionName: "ncc_navy",
-        collection_type: "awards",
-        action: "delete",
-        title: "delete awards",
-        meta_data: {
-          image_path: oldItem.image_path,
-          title: oldItem.title,
-          description: oldItem.description,
-        },
-      });
+    // -------- INSERT & UPDATE ----------
+    pendingMap.forEach((item, id) => {
+      const oldItem = committedMap.get(id);
+
+      const imagePath =
+        item._file
+          ? `/static/images/ncc/navy/${item._file.name}`
+          : item.image_path;
+
+      const metaData = {
+        image_path: imagePath,
+        title: item.title,
+        description: item.description,
+      };
+
+      // INSERT
+      if (!oldItem) {
+        payload.push({
+          collectionName: "ncc_navy",
+          collection_type: "awards",
+          action: "insert",
+          title: "Add awards",
+          meta_data: metaData,
+        });
+      }
+
+      // UPDATE
+      else if (
+        oldItem.title !== item.title ||
+        oldItem.description !== item.description ||
+        oldItem.image_path !== imagePath
+      ) {
+        payload.push({
+          collectionName: "ncc_navy",
+          collection_type: "awards",
+          action: "update",
+          title: "update awards",
+          original_data: {
+            image_path: oldItem.image_path,
+            title: oldItem.title,
+            description: oldItem.description,
+          },
+          meta_data: metaData,
+        });
+      }
+    });
+
+    if (payload.length === 0) {
+      toast.info("No changes to submit");
+      return;
     }
-  });
 
-  // -------- INSERT & UPDATE ----------
-  pendingMap.forEach((item, id) => {
-    const oldItem = committedMap.get(id);
+    // Collect all uploaded files (shallow copies preserved _file)
+    const files = pendingItems
+      .filter(i => i._file)
+      .map(i => i._file);
 
-    const imagePath =
-      item._file
-        ? `/static/images/ncc/navy/${item._file.name}`
-        : item.image_path;
+    try {
+      const result = await sendRequest(payload, files);
 
-    const metaData = {
-      image_path: imagePath,
-      title: item.title,
-      description: item.description,
-    };
+      if (result) {
+        // After success: commit pendingItems but remove _file & preview_url
+        const committedClean = pendingItems.map(i => {
+          const copy = { ...i };
+          if (copy._file) delete copy._file;
+          if (copy.preview_url) delete copy.preview_url;
+          return copy;
+        });
 
-    // INSERT
-    if (!oldItem) {
-      payload.push({
-        collectionName: "ncc_navy",
-        collection_type: "awards",
-        action: "insert",
-        title: "Add awards",
-        meta_data: metaData,
-      });
+        setCommittedItems(committedClean.map(i => ({ ...i })));
+        setItems(committedClean.map(i => ({ ...i })));
+        setPendingItems(null);
+        setIsSaved(false);
+        setShowRequestModal(false);
+        toast.success("Request submitted successfully!");
+      } else {
+        toast.error("Request failed.");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Request error.");
     }
-
-    // UPDATE
-    else if (
-      oldItem.title !== item.title ||
-      oldItem.description !== item.description ||
-      oldItem.image_path !== imagePath
-    ) {
-      payload.push({
-        collectionName: "ncc_navy",
-        collection_type: "awards",
-        action: "update",
-        title: "update awards",
-        original_data: {
-          image_path: oldItem.image_path,
-          title: oldItem.title,
-          description: oldItem.description,
-        },
-        meta_data: metaData,
-      });
-    }
-  });
-
-  if (payload.length === 0) {
-    toast.info("No changes to submit");
-    return;
-  }
-
-  // Collect all uploaded files
-  const files = pendingItems
-    .filter(i => i._file)
-    .map(i => i._file);
-console.log("files",files);
-
-  const result = await sendRequest(payload, files);
-
-  if (result) {
-    setCommittedItems(deepCopy(pendingItems));
-    setItems(deepCopy(pendingItems));
-    setPendingItems(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Request submitted successfully!");
-  }
-};
-
-
+  };
 
   const revertChange = (itemId) => {
     if (!pendingItems) return;
@@ -327,17 +356,14 @@ console.log("files",files);
     if (!committedItem) {
       updated = pendingItems.filter(item => item.id !== itemId);
     } else if (!pendingItems.find(item => item.id === itemId)) {
-      updated = [...pendingItems, deepCopy(committedItem)];
+      updated = [...pendingItems, { ...committedItem }];
     } else {
-      updated = pendingItems.map(item => item.id === itemId ? deepCopy(committedItem) : item);
+      updated = pendingItems.map(item => item.id === itemId ? { ...committedItem } : item);
     }
 
     setPendingItems(updated);
-    setItems(deepCopy(updated));
+    setItems(updated.map(i => ({ ...i })));
   };
-
-
-
 
   const getChanges = () => {
     if (!pendingItems) return [];
@@ -388,7 +414,8 @@ console.log("files",files);
 
   const changes = getChanges();
 
-  if (!data || data.length === 0) {
+  // show loader only while loading
+  if (loading) {
     return (
       <div className="text-center text-gray-600 mt-10">
         <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
@@ -402,11 +429,11 @@ console.log("files",files);
     <>
       <div className="relative w-full max-w-4xl mx-auto mt-5">
         <ToastContainer position="bottom-right" autoClose={2000} />
-        
+
         {/* Header */}
         <div className="relative mb-4 flex justify-between items-center">
           <h2 className="text-2xl font-bold text-brwn dark:text-drkt">Awards & Achievements</h2>
-          
+
           {/* Edit button on right - Only show when not editing */}
           {!isEditing && (
             <button
@@ -446,14 +473,14 @@ console.log("files",files);
                       <td className="border border-black px-4 py-3 text-center">{i + 1}</td>
                       <td className="border border-black px-4 py-3 text-center">
                         <div className="flex flex-col items-center gap-2">
-                          {item.image_path && (
+                          {(item.preview_url || item.image_path) && (
                             <img
-                                src={
+                              src={
                                 item.preview_url
                                   ? item.preview_url
                                   : item.image_path
-                                  ? UrlParser(item.image_path)
-                                  : "/placeholder.jpg"
+                                    ? UrlParser(item.image_path)
+                                    : "/placeholder.jpg"
                               }
                               alt={item.description || "Award Image"}
                               className="w-24 h-24 object-contain rounded border"
@@ -492,19 +519,19 @@ console.log("files",files);
                 </tbody>
               </table>
             </div>
-            
+
             {/* Buttons outside the table container */}
             <div className="mt-4">
               {/* Add Row Button */}
               <div className="flex justify-start mb-3">
-                <button 
-                  className="flex items-center gap-1 px-3 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim" 
+                <button
+                  className="flex items-center gap-1 px-3 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
                   onClick={handleAddItem}
                 >
                   <Plus size={16} /> Add New
                 </button>
               </div>
-              
+
               {/* Delete Selected Button */}
               {selectedItems.length > 0 && (
                 <div className="flex justify-center my-2">
@@ -516,7 +543,7 @@ console.log("files",files);
                   </button>
                 </div>
               )}
-              
+
               {/* Cancel & Save Buttons */}
               <div className="flex justify-end items-center gap-3 mt-4 pb-5">
                 <button
@@ -544,72 +571,87 @@ console.log("files",files);
             onMouseLeave={() => setIsHovered(false)}
           >
             <div className="relative overflow-hidden rounded-lg shadow-lg">
-              <div
-                className="flex transition-transform duration-700 ease-in-out"
-                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-              >
-                {items.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
-                    style={{
-                      opacity: activeIndex === index ? 1 : 0.5,
-                      transition: "opacity 0.5s ease-in-out",
-                    }}
-                  >
-                    <img
-                                                    src={
-                                item.preview_url
-                                  ? item.preview_url
-                                  : item.image_path
-                                  ? UrlParser(item.image_path)
-                                  : "/placeholder.jpg"
-                              }
-                      alt={`Award ${index + 1}`}
-                      className="w-full h-80 object-contain rounded-t-lg"
-                    />
-                    <div className="p-4 text-center rounded-b-lg">
-                      <p className="text-lg font-semibold text-text dark:text-drkt">
-                        {item.description}
-                      </p>
-                    </div>
+              {items.length === 0 ? (
+                <div className="min-h-[220px] flex items-center justify-center border rounded-md bg-white/50">
+                  <div className="text-center text-gray-600">
+                    <p className="mb-2">No awards to show.</p>
+                    <p className="text-sm">Click <strong>Edit</strong> to add awards.</p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ) : (
+                <div
+                  className="flex transition-transform duration-700 ease-in-out"
+                  style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+                >
+                  {items.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex-shrink-0 w-full transition-opacity duration-500 ease-in-out"
+                      style={{
+                        opacity: activeIndex === index ? 1 : 0.5,
+                        transition: "opacity 0.5s ease-in-out",
+                      }}
+                    >
+                      <img
+                        src={
+                          item.preview_url
+                            ? item.preview_url
+                            : item.image_path
+                              ? UrlParser(item.image_path)
+                              : "/placeholder.jpg"
+                        }
+                        alt={`Award ${index + 1}`}
+                        className="w-full h-80 object-contain rounded-t-lg"
+                      />
+                      <div className="p-4 text-center rounded-b-lg">
+                        <p className="text-lg font-semibold text-text dark:text-drkt">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* Prev and Next buttons */}
-              <button
-                onClick={handlePrev}
-                className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
-              >
-                &#10094;
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
-              >
-                &#10095;
-              </button>
+              {items.length > 0 && (
+                <>
+                  <button
+                    onClick={handlePrev}
+                    className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
+                  >
+                    &#10094;
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-all"
+                  >
+                    &#10095;
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Pagination Dots */}
-            <div className="flex justify-center space-x-2 mt-4 mb-4">
-              {items.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2.5 h-2.5 rounded-full ${
-                    activeIndex === index ? "bg-blue-500" : "bg-gray-300"
-                  } transition-all`}
-                  onClick={() => setActiveIndex(index)}
-                />
-              ))}
-            </div>
+            {items.length > 0 && (
+              <div className="flex justify-center space-x-2 mt-4 mb-4">
+                {items.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`w-2.5 h-2.5 rounded-full ${
+                      activeIndex === index ? "bg-blue-500" : "bg-gray-300"
+                    } transition-all`}
+                    onClick={() => setActiveIndex(index)}
+                  />
+                ))}
+              </div>
+            )}
 
             {/* Discard/Request buttons when saved draft exists */}
             {isSaved && (
               <div className="flex justify-end gap-3 mt-6 pb-5">
-                <button 
-                  onClick={handleDiscard} 
+                <button
+                  onClick={handleDiscard}
                   className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
                 >
                   Discard Changes

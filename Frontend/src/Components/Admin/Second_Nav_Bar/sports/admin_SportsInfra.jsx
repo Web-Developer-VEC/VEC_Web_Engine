@@ -24,14 +24,12 @@ const SportsInfra = ({ data: initialData }) => {
   const filesRef = useRef([]);
   const [isDirty, setIsDirty] = useState(false);
 
-
-
-  console.log('====================================');
+  console.log("====================================");
   console.log("Ajith", changes);
-  console.log('====================================');
+  console.log("====================================");
 
   useEffect(() => {
-    const dataWithId = (initialData || []).map(item => ({
+    const dataWithId = (initialData || []).map((item) => ({
       ...item,
       id: item.id || Date.now() + Math.random(),
     }));
@@ -41,10 +39,9 @@ const SportsInfra = ({ data: initialData }) => {
     setInitialSnapshot(JSON.parse(JSON.stringify(dataWithId)));
   }, [initialData]);
 
-
   const handleSelect = (id, isChecked) => {
     setSelectedItems((prev) =>
-      isChecked ? [...prev, id] : prev.filter((itemId) => itemId !== id)
+      isChecked ? [...prev, id] : prev.filter((itemId) => itemId !== id),
     );
   };
   const addNewCard = () => {
@@ -66,9 +63,8 @@ const SportsInfra = ({ data: initialData }) => {
           type: "added",
           section: "Untitled",
           data: newCard,
-          originalIndex: sportsData.length,   // 🧷 insertion point
-        }
-
+          originalIndex: sportsData.length, // 🧷 insertion point
+        },
       ]);
 
       return next;
@@ -77,8 +73,8 @@ const SportsInfra = ({ data: initialData }) => {
   };
 
   const getCardAction = (id) => {
-    const change = changes.find(c => c.id === id);
-    return change?.type || null;  // "added" | "updated" | "deleted" | null
+    const change = changes.find((c) => c.id === id);
+    return change?.type || null; // "added" | "updated" | "deleted" | null
   };
 
   // const buildSportsInfrastructurePayload = ({
@@ -153,7 +149,6 @@ const SportsInfra = ({ data: initialData }) => {
     newData = {},
     oldData = {},
   }) => {
-
     /* -------------------- INSERT -------------------- */
     if (action === "Added") {
       return {
@@ -216,71 +211,68 @@ const SportsInfra = ({ data: initialData }) => {
   };
 
   const handleDeleteSelected = () => {
-
     // 🚫 Block delete if card is already being edited or newly added
-    const locked = selectedItems.filter(id => {
+    const locked = selectedItems.filter((id) => {
       const action = getCardAction(id);
       return action === "added" || action === "updated";
     });
 
     if (locked.length) {
-      toast.error("Finish editing the selected cards before deleting them.");
+
       return;
     }
 
     if (selectedItems.length === 0) {
-      toast.info("No items selected to delete.");
       return;
     }
 
-    const deletedItems = sportsData.filter(item =>
-      selectedItems.includes(item.id)
+    const deletedItems = sportsData.filter((item) =>
+      selectedItems.includes(item.id),
     );
 
-    setSportsData(prev =>
-      prev.filter(item => !selectedItems.includes(item.id))
+    setSportsData((prev) =>
+      prev.filter((item) => !selectedItems.includes(item.id)),
     );
 
-    setChanges(prev => [
+    setChanges((prev) => [
       ...prev,
-      ...deletedItems.map(d => {
-        const originalIndex = sportsData.findIndex(item => item.id === d.id);
+      ...deletedItems.map((d) => {
+        const originalIndex = sportsData.findIndex((item) => item.id === d.id);
         return {
           id: d.id,
           type: "deleted",
           section: d.title || "Untitled",
           data: d,
-          originalIndex
+          originalIndex,
         };
-      })
+      }),
     ]);
 
     setSelectedItems([]);
     setShowDeleteModal(false);
-    toast.success("Selected items deleted.");
     setIsDirty(true);
-
   };
-
 
   // -------------------- SAVE --------------------
   const handleSave = () => {
-    const invalidNewCards = sportsData.filter(c => c.isNew && !isCardValid(c));
+    const invalidNewCards = sportsData.filter(
+      (c) => c.isNew && !isCardValid(c),
+    );
     if (invalidNewCards.length) {
-      toast.error("Fill all fields before saving");
       return;
     }
 
     // Update baseline for next edits
-    setOriginalData(JSON.parse(JSON.stringify(sportsData.map(c => ({ ...c, isNew: false })))));
+    setOriginalData(
+      JSON.parse(
+        JSON.stringify(sportsData.map((c) => ({ ...c, isNew: false }))),
+      ),
+    );
 
     setEditMode(false);
     setShowRequestButtons(true);
     setChanges([]);
-
-    toast.success("Changes saved!");
     setIsDirty(false);
-
   };
 
   // -------------------- DISCARD --------------------
@@ -293,9 +285,8 @@ const SportsInfra = ({ data: initialData }) => {
     filesRef.current = [];
     setEditMode(false);
     setShowRequestButtons(false);
-    toast.info("All changes since page load were discarded.");
+    toast.info("All changes discarded.");
     setIsDirty(false);
-
   };
 
   // const confirmDiscard = () => {
@@ -352,20 +343,15 @@ const SportsInfra = ({ data: initialData }) => {
   // };
 
   const isCardValid = (card) => {
-    return (
-      card.title?.trim() &&
-      card.description?.trim() &&
-      card.image_path
-    );
+    return card.title?.trim() && card.description?.trim() && card.image_path;
   };
-
 
   const generatePayloadsAuto = () => {
     const payloads = [];
 
     // UPDATE & ADD
-    sportsData.forEach(item => {
-      const original = initialSnapshot.find(o => o.id === item.id);
+    sportsData.forEach((item) => {
+      const original = initialSnapshot.find((o) => o.id === item.id);
 
       // ADD
       if (!original) {
@@ -373,7 +359,7 @@ const SportsInfra = ({ data: initialData }) => {
           buildSportsInfrastructurePayload({
             action: "Added",
             newData: item,
-          })
+          }),
         );
         return;
       }
@@ -389,19 +375,19 @@ const SportsInfra = ({ data: initialData }) => {
             action: "Edited",
             newData: item,
             oldData: original,
-          })
+          }),
         );
       }
     });
 
     // DELETE
-    initialSnapshot.forEach(orig => {
-      if (!sportsData.find(s => s.id === orig.id)) {
+    initialSnapshot.forEach((orig) => {
+      if (!sportsData.find((s) => s.id === orig.id)) {
         payloads.push(
           buildSportsInfrastructurePayload({
             action: "Deleted",
             oldData: orig,
-          })
+          }),
         );
       }
     });
@@ -454,14 +440,13 @@ const SportsInfra = ({ data: initialData }) => {
     const payloads = generatePayloadsAuto();
     const files = [];
 
-    sportsData.forEach(item => {
+    sportsData.forEach((item) => {
       if (item.image_file) {
         files.push(item.image_file);
       }
     });
 
     if (!payloads.length) {
-      toast.warn("No changes to submit");
       return;
     }
 
@@ -469,8 +454,6 @@ const SportsInfra = ({ data: initialData }) => {
     console.log("FILES:", files);
 
     await sendRequest(payloads, files);
-
-    toast.success("Sports Infrastructure request submitted!");
 
     // ✅ Mark current state as new baseline
     setInitialSnapshot(JSON.parse(JSON.stringify(sportsData)));
@@ -482,84 +465,86 @@ const SportsInfra = ({ data: initialData }) => {
     setChanges([]);
     filesRef.current = [];
     setIsDirty(false);
-
-
   };
 
-
-
-
   const handleRevertChange = (index) => {
-    setChanges(prevChanges => {
-      const change = prevChanges[index];
-      if (!change) return prevChanges;
+    const change = changes[index];
+    if (!change) return;
 
-      // First, revert the actual data
-      setSportsData(prevData => {
-        let data = [...prevData];
+    setSportsData((prev) => {
+      let data = [...prev];
 
-        // 🔴 Undo ADD → remove new card
-        if (change.type === "added") {
-          return data.filter(item => item.id !== change.id);
-        }
-
-        // 🔵 Undo UPDATE → restore original
-        if (change.type === "updated") {
-          return data.map(item =>
-            item.id === change.id ? { ...change.original } : item
-          );
-        }
-
-        // ⚫ Undo DELETE → restore at original position
-        if (change.type === "deleted") {
-          const before = data.slice(0, change.originalIndex);
-          const after = data.slice(change.originalIndex);
-          return [...before, change.data, ...after];
-        }
-
-        return data;
-      });
-
-      // Now remove this change from list
-      const nextChanges = prevChanges.filter((_, i) => i !== index);
-
-      // 🧠 If this was the LAST change → exit request mode
-      if (nextChanges.length === 0) {
-        setShowRequestModal(false);     // close modal
-        setShowRequestButtons(false);   // hide Request/Discard buttons
-        setEditMode(false);             // back to normal view (Edit button shows)
-        setIsDirty(false);
-        toast.info("All changes reverted.");
+      // UNDO ADD
+      if (change.type === "added") {
+        data = data.filter((item) => item.id !== change.id);
       }
 
-      return nextChanges;
+      // UNDO UPDATE
+      if (change.type === "updated") {
+        const original = initialSnapshot.find((item) => item.id === change.id);
+        if (!original) return data;
+
+        data = data.map((item) =>
+          item.id === change.id ? { ...original } : item,
+        );
+
+        setImagePreviews((prev) => {
+          const copy = { ...prev };
+          delete copy[change.id];
+          return copy;
+        });
+      }
+
+      // UNDO DELETE
+      if (change.type === "deleted") {
+        const original = initialSnapshot.find((item) => item.id === change.id);
+        if (!original) return data;
+
+        const before = data.slice(0, change.originalIndex);
+        const after = data.slice(change.originalIndex);
+
+        data = [...before, original, ...after];
+      }
+
+      return data;
     });
+
+    const updatedChanges = changes.filter((_, i) => i !== index);
+    setChanges(updatedChanges);
+
+    if (updatedChanges.length === 0) {
+      setShowRequestModal(false);
+      setShowRequestButtons(false);
+      setEditMode(false);
+      setIsDirty(false);
+    }
   };
 
   const handleInputChange = (id, index, field, value) => {
-
     const action = getCardAction(id);
     if (action === "deleted") {
-      toast.warn("Undo delete before editing this card.");
       return;
     }
     setIsDirty(true);
-    setSportsData(prev => {
+    setSportsData((prev) => {
       const next = prev.map((item, i) =>
-        i === index ? { ...item, [field]: value } : item
+        i === index ? { ...item, [field]: value } : item,
       );
 
       const updatedCard = next[index];
-      const originalItem = originalData.find(o => o.id === id);
+      const originalItem = originalData.find((o) => o.id === id);
 
-      setChanges(prevChanges => {
-
+      setChanges((prevChanges) => {
         // 🟡 NEW CARD — always keep it "added"
         if (updatedCard.isNew) {
-          return prevChanges.map(c =>
+          return prevChanges.map((c) =>
             c.type === "added" && c.id === id
-              ? { ...c, section: updatedCard.title || "Untitled", data: updatedCard }
-              : c
+              ? {
+                  ...c,
+                  section: updatedCard.title || "Untitled",
+                  data: updatedCard,
+                }
+              : c,
           );
         }
 
@@ -569,22 +554,26 @@ const SportsInfra = ({ data: initialData }) => {
           updatedCard.description === originalItem.description &&
           updatedCard.image_path === originalItem.image_path
         ) {
-          return prevChanges.filter(c => !(c.type === "updated" && c.id === id));
+          return prevChanges.filter(
+            (c) => !(c.type === "updated" && c.id === id),
+          );
         }
 
-        const existing = prevChanges.find(c => c.type === "updated" && c.id === id);
+        const existing = prevChanges.find(
+          (c) => c.type === "updated" && c.id === id,
+        );
 
         if (existing) {
-          return prevChanges.map(c =>
+          return prevChanges.map((c) =>
             c.id === id
               ? {
-                ...c,
-                section: updatedCard.title || "Untitled",
-                fields: Array.from(new Set([...c.fields, field])),
-                data: updatedCard,
-                original: c.original || { ...originalItem }
-              }
-              : c
+                  ...c,
+                  section: updatedCard.title || "Untitled",
+                  fields: Array.from(new Set([...c.fields, field])),
+                  data: updatedCard,
+                  original: c.original || { ...originalItem },
+                }
+              : c,
           );
         }
 
@@ -596,8 +585,8 @@ const SportsInfra = ({ data: initialData }) => {
             section: updatedCard.title || "Untitled",
             fields: [field],
             data: updatedCard,
-            original: { ...originalItem }
-          }
+            original: { ...originalItem },
+          },
         ];
       });
 
@@ -612,18 +601,14 @@ const SportsInfra = ({ data: initialData }) => {
     filesRef.current = [];
     setEditMode(false);
     setShowRequestButtons(false);
-    toast.info("Changes since last save were cancelled.");
     setIsDirty(false);
-
   };
 
   const handleImageChange = (index, file) => {
-
     const id = sportsData[index].id;
     const action = getCardAction(id);
 
     if (action === "deleted") {
-      toast.warn("Undo delete before editing this card.");
       return;
     }
     const previewUrl = URL.createObjectURL(file);
@@ -633,11 +618,11 @@ const SportsInfra = ({ data: initialData }) => {
       const next = prev.map((item, i) =>
         i === index
           ? {
-            ...item,
-            image_path: serverPath,
-            image_file: file   // ⭐ ADD THIS LINE
-          }
-          : item
+              ...item,
+              image_path: serverPath,
+              image_file: file, // ⭐ ADD THIS LINE
+            }
+          : item,
       );
 
       const updatedCard = next[index];
@@ -653,25 +638,25 @@ const SportsInfra = ({ data: initialData }) => {
           return prevChanges.map((c) =>
             c.type === "added" && c.id === updatedCard.id
               ? { ...c, data: updatedCard }
-              : c
+              : c,
           );
         }
         // 🟢 EXISTING CARD
         const originalItem = originalData.find((o) => o.id === updatedCard.id);
         const existing = prevChanges.find(
-          (c) => c.type === "updated" && c.id === updatedCard.id
+          (c) => c.type === "updated" && c.id === updatedCard.id,
         );
 
         if (existing) {
           return prevChanges.map((c) =>
             c.id === updatedCard.id
               ? {
-                ...c,
-                fields: Array.from(new Set([...c.fields, "Image"])),
-                data: updatedCard,
-                original: c.original || { ...originalItem },
-              }
-              : c
+                  ...c,
+                  fields: Array.from(new Set([...c.fields, "Image"])),
+                  data: updatedCard,
+                  original: c.original || { ...originalItem },
+                }
+              : c,
           );
         }
 
@@ -693,11 +678,7 @@ const SportsInfra = ({ data: initialData }) => {
 
     filesRef.current.push({ field: "sports_infra_image", file });
     setIsDirty(true);
-
   };
-
-
-
 
   const formatAction = (type) => {
     if (!type) return "";
@@ -716,8 +697,8 @@ const SportsInfra = ({ data: initialData }) => {
             className="flex items-center gap-2 px-4 py-2 mt-4 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mr-20"
             onClick={() => {
               setEditMode(true);
-              setShowRequestButtons(false)
-              setIsDirty(false)
+              setShowRequestButtons(false);
+              setIsDirty(false);
             }}
           >
             <Pencil size={16} /> Edit
@@ -747,7 +728,9 @@ const SportsInfra = ({ data: initialData }) => {
                       <>
                         <div className="mt-2">
                           <label className="bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer">
-                            <span>{card.image_path ? "Replace" : "Upload"}</span>
+                            <span>
+                              {card.image_path ? "Replace" : "Upload"}
+                            </span>
                             <input
                               type="file"
                               accept="image/*"
@@ -763,26 +746,39 @@ const SportsInfra = ({ data: initialData }) => {
                           type="text"
                           value={card.title}
                           onChange={(e) =>
-                            handleInputChange(card.id, index + i, "title", e.target.value.toUpperCase())
+                            handleInputChange(
+                              card.id,
+                              index + i,
+                              "title",
+                              e.target.value.toUpperCase(),
+                            )
                           }
                           className="w-full border p-2 rounded mt-2"
                         />
                         <textarea
                           value={card.description}
                           onChange={(e) =>
-                            handleInputChange(card.id, index + i, "description", e.target.value)
+                            handleInputChange(
+                              card.id,
+                              index + i,
+                              "description",
+                              e.target.value,
+                            )
                           }
                           className="w-full border p-2 rounded mt-2"
                         />
                         <div className="absolute top-2 right-2 flex gap-2">
                           <input
                             type="checkbox"
-                            disabled={["added", "updated"].includes(getCardAction(card.id))}
+                            disabled={["added", "updated"].includes(
+                              getCardAction(card.id),
+                            )}
                             checked={selectedItems.includes(card.id)}
-                            onChange={(e) => handleSelect(card.id, e.target.checked)}
+                            onChange={(e) =>
+                              handleSelect(card.id, e.target.checked)
+                            }
                             className="w-6 h-8 accent-blue-500 cursor-pointer"
                           />
-
                         </div>
                       </>
                     ) : (
@@ -799,7 +795,7 @@ const SportsInfra = ({ data: initialData }) => {
                 );
               })}
             </div>
-          ) : null
+          ) : null,
         )}
 
         {/* ADD NEW CARD */}
@@ -856,18 +852,49 @@ const SportsInfra = ({ data: initialData }) => {
           <button
             className="px-4 py-2 bg-[#FDCC03] text-white rounded flex items-center gap-2"
             onClick={() => {
-              const payloads = generatePayloadsAuto();
+              const autoChanges = [];
 
-              const autoChanges = payloads.map((p, i) => ({
-                id: i,
-                type:
-                  p.action === "insert" ? "added" :
-                    p.action === "update" ? "updated" :
-                      "deleted",
-                data: p.meta_data,
-                original: p.original_data,
-                originalIndex: i
-              }));
+              // ADDED + UPDATED
+              sportsData.forEach((item, index) => {
+                const original = initialSnapshot.find((o) => o.id === item.id);
+
+                if (!original) {
+                  autoChanges.push({
+                    id: item.id,
+                    type: "added",
+                    data: item,
+                    originalIndex: index,
+                  });
+                  return;
+                }
+
+                if (
+                  item.title !== original.title ||
+                  item.description !== original.description ||
+                  item.image_path !== original.image_path
+                ) {
+                  autoChanges.push({
+                    id: item.id,
+                    type: "updated",
+                    data: item,
+                    original: original,
+                    originalIndex: index,
+                  });
+                }
+              });
+
+              // DELETED
+              initialSnapshot.forEach((orig, index) => {
+                if (!sportsData.find((s) => s.id === orig.id)) {
+                  autoChanges.push({
+                    id: orig.id,
+                    type: "deleted",
+                    data: orig,
+                    original: orig,
+                    originalIndex: index,
+                  });
+                }
+              });
 
               setChanges(autoChanges);
               setShowRequestModal(true);
@@ -875,7 +902,6 @@ const SportsInfra = ({ data: initialData }) => {
           >
             <Send size={16} /> Request
           </button>
-
         </div>
       )}
 
@@ -909,7 +935,8 @@ const SportsInfra = ({ data: initialData }) => {
           <div className="bg-white p-6 rounded-xl w-[400px]">
             <h2 className="text-lg font-semibold mb-4">Discard Changes?</h2>
             <p className="text-sm text-gray-600 mb-6">
-              Are you sure you want to discard all your changes? This action cannot be undone.
+              Are you sure you want to discard all your changes? This action
+              cannot be undone.
             </p>
 
             <div className="flex justify-end gap-2">
@@ -921,7 +948,7 @@ const SportsInfra = ({ data: initialData }) => {
               </button>
               <button
                 onClick={() => {
-                  handleDiscard();          // 👈 actually discard
+                  handleDiscard(); // 👈 actually discard
                   setShowDiscardModal(false);
                 }}
                 className="px-4 py-2 rounded bg-red-500 hover:bg-red-600 text-white"
@@ -933,87 +960,86 @@ const SportsInfra = ({ data: initialData }) => {
         </div>
       )}
 
-
       {/* REQUEST MODAL */}
-      {showRequestModal && (() => {
-        const payloads = generatePayloadsAuto();
-        return (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-            <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
-              <h2 className="text-xl text-center font-bold mb-4 text-gray-800">
-                Final Request
-              </h2>
-              <p className="text-sm text-red-500 mb-4">
-                Note: Your changes will stay pending until approved by the superior
-                admin. Once approved, they will go live.
-              </p>
+      {showRequestModal &&
+        (() => {
+          const payloads = generatePayloadsAuto();
+          return (
+            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+              <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+                <h2 className="text-xl text-center font-bold mb-4 text-gray-800">
+                  Final Request
+                </h2>
+                <p className="text-sm text-red-500 mb-4">
+                  Note: Your changes will stay pending until approved by the
+                  superior admin. Once approved, they will go live.
+                </p>
 
-              {changes.length > 0 ? (
-                <table className="w-full text-center text-sm border">
-                  <thead className="bg-gray-200">
-                    <tr>
-                      <th className="border p-2">Action</th>
-                      <th className="border p-2">Section</th>
-                      <th className="border p-2">Title</th>
-                      <th className="border p-2">Undo</th> {/* ✅ ADD */}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {changes.map((change, i) => (
-                      <tr key={i}>
-                        <td className="border p-2 font-semibold">
-                          {change.type === "added"
-                            ? "Added"
-                            : change.type === "updated"
-                              ? "Edited"
-                              : "Deleted"}
-                        </td>
-
-                        <td className="border p-2">Infrastructure</td>
-
-                        <td className="border p-2">
-                          {change.data?.title || "Untitled"}
-                        </td>
-
-                        {/* ✅ UNDO BUTTON */}
-                        <td className="border p-2">
-                          <button
-                            onClick={() => handleRevertChange(i)}
-                            className="text-red-500 hover:text-red-700 font-bold"
-                          >
-                            ✕
-                          </button>
-                        </td>
+                {changes.length > 0 ? (
+                  <table className="w-full text-center text-sm border">
+                    <thead className="bg-gray-200">
+                      <tr>
+                        <th className="border p-2">Action</th>
+                        <th className="border p-2">Section</th>
+                        <th className="border p-2">Title</th>
+                        <th className="border p-2">Undo</th> {/* ✅ ADD */}
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              ) : (
-                <p className="text-gray-600">No changes detected.</p>
-              )}
+                    </thead>
+                    <tbody>
+                      {changes.map((change, i) => (
+                        <tr key={i}>
+                          <td className="border p-2 font-semibold">
+                            {change.type === "added"
+                              ? "Added"
+                              : change.type === "updated"
+                                ? "Edited"
+                                : "Deleted"}
+                          </td>
 
+                          <td className="border p-2">Infrastructure</td>
 
-              <div className="flex justify-end gap-2 mt-6">
-                <button
-                  onClick={() => setShowRequestModal(false)}
-                  className="px-4 py-2 rounded bg-gray-400 text-white"
-                >
-                  Cancel
-                </button>
-                {changes.length > 0 && (
-                  <button
-                    disabled={loading}
-                    onClick={handleFinalRequest}
-                    className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white"
-                  >
-                    Final Request
-                  </button>
+                          <td className="border p-2">
+                            {change.data?.title || "Untitled"}
+                          </td>
+
+                          {/* ✅ UNDO BUTTON */}
+                          <td className="border p-2">
+                            <button
+                              onClick={() => handleRevertChange(i)}
+                              className="text-red-500 hover:text-red-700 font-bold"
+                            >
+                              ✕
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                ) : (
+                  <p className="text-gray-600">No changes detected.</p>
                 )}
+
+                <div className="flex justify-end gap-2 mt-6">
+                  <button
+                    onClick={() => setShowRequestModal(false)}
+                    className="px-4 py-2 rounded bg-gray-400 text-white"
+                  >
+                    Cancel
+                  </button>
+                  {changes.length > 0 && (
+                    <button
+                      disabled={loading}
+                      onClick={handleFinalRequest}
+                      className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white"
+                    >
+                      Final Request
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })()}
+          );
+        })()}
 
       <ToastContainer position="bottom-right" autoClose={3000} />
     </>
