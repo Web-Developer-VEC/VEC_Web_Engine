@@ -495,7 +495,7 @@ const AdminCardPage = ({ theme, toggle }) => {
         entries.push({
           collectionName: "administration",
           collection_type: "admin_office",
-          action: "add",
+          action: "insert",
           title: `Add Admin Office Member - ${m.name || ""}`,
           category: "administration",
           meta_data: meta,

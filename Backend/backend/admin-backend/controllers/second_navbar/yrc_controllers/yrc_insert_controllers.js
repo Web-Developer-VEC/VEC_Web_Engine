@@ -6,7 +6,9 @@ async function insertData( tempDoc, mainCollection) {
     if (!collection_type || !meta_data) {
       throw new Error("collection_type and meta_data are required");
     }
-
+if (meta_data.image_path && Array.isArray(meta_data.image_path)) {
+      meta_data.image_path = meta_data.image_path[0];
+    }
     // 2️⃣ Define type categories
     const singleDocTypes = ["about", "news_updates"];
     const multiDocTypes = ["events","awards"];

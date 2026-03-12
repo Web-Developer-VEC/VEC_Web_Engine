@@ -311,7 +311,7 @@ if (
     collectionName: "yrc",
     collection_type: "team",
     action: "update",
-    category: "faculty_coordinators",
+    category: "faculty_coordinator",
     title: "update Faculty Coordinator",
     original_data: {
       name: committedFaculty.name,
