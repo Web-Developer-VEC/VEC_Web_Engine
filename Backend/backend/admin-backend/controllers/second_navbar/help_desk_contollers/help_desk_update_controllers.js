@@ -2,7 +2,7 @@ async function updateData(tempDoc, mainCollection) {
 
   try {
     
-    const { collection_type, category, meta_data } = tempDoc;
+    const { collection_type, category, meta_data} = tempDoc;
     
     if (!collection_type || !category || !meta_data) {
       throw new Error("collection_type, category, and meta_data are required");
@@ -16,6 +16,17 @@ async function updateData(tempDoc, mainCollection) {
   const categoryIndex = existingDoc.data.findIndex(c => c.category === category);
   if (categoryIndex === -1) {
     throw new Error("Category not found");
+  }
+
+  if(category === "another"){
+    const metaData = Object.values(meta_data);
+
+    await mainCollection.updateOne(
+      {type: collection_type, "data.category": "another"},
+      {$set: {"data.$.content": metaData }}
+    );
+
+    return { success: true,  message: "Data updated successfully" };
   }
   
   // Merge the existing content with the new meta_data
