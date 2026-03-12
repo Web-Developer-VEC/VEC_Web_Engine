@@ -115,28 +115,36 @@ const computeFinalChanges = (updatedData) => {
     const updatedMap = new Map(updated.map(w => [w.id, w]));
 
     // Added
-    updated.forEach(w => {
-      if (!origMap.has(w.id)) {
-        finalChanges.push({
-          action: "Add",
-          section,
-          name: w.warden_name || "New Warden",
-        });
-      } else {
-        checkDiff(origMap.get(w.id), w, section);
-      }
+updated.forEach(w => {
+  if (!origMap.has(w.id)) {
+    finalChanges.push({
+      action: "Add",
+      section,
+      id: w.id,
+      name: w.warden_name || "New Warden",
     });
+  }
+});
 
     // Deleted
-    orig.forEach(w => {
-      if (!updatedMap.has(w.id)) {
-        finalChanges.push({
-          action: "Delete",
-          section,
-          name: w.warden_name || "Warden",
-        });
-      }
+orig.forEach(w => {
+  if (!updatedMap.has(w.id)) {
+
+    // if it was added in this session and later removed → ignore
+    const wasAdded = changes.some(
+      c => c.action === "Add" && c.id === w.id
+    );
+
+    if (wasAdded) return;
+
+    finalChanges.push({
+      action: "Delete",
+      section,
+      id: w.id,
+      name: w.warden_name || "Warden",
     });
+  }
+});
   });
 
   return finalChanges;
@@ -237,9 +245,22 @@ const handleSave = () => {
     setSelectedItems([]);
   };
 
-  const handleRequest = () => {
-    setShowRequestModal(true);
-  };
+const handleRequest = () => {
+  const computed = computeFinalChanges({
+    chief,
+    chiefDeputy,
+    boysWardens,
+    girlsWardens
+  });
+
+  if (computed.length === 0) {
+    toast.info("No changes detected");
+    return;
+  }
+
+  setChanges(computed);
+  setShowRequestModal(true);
+};
 
   // updated handleChange: accepts wardenId (or for chief/chiefDeputy it ignores id)
   const handleChange = (section, wardenId, field, value) => {
@@ -268,10 +289,44 @@ const handleSave = () => {
     // setHasChanges(true);
   };
 
-  const undoChange = (change) => {
-    // simple: revert everything (you can implement per-change revert later)
-    handleDiscardChanges();
-  };
+const undoChange = (change) => {
+  if (change.action !== "Delete") return;
+
+  const sectionKey =
+    change.section === "Boys Wardens"
+      ? "boysWardens"
+      : change.section === "Girls Wardens"
+      ? "girlsWardens"
+      : null;
+
+  if (!sectionKey) return;
+
+  // find original warden
+  const originalWarden = originalData?.[sectionKey]?.find(
+    (w) => w.warden_name === change.name
+  );
+
+  if (!originalWarden) return;
+
+  // restore only that warden
+  if (sectionKey === "boysWardens") {
+    setBoysWardens((prev) => [...prev, originalWarden]);
+  } else if (sectionKey === "girlsWardens") {
+    setGirlsWardens((prev) => [...prev, originalWarden]);
+  }
+
+  // remove that change row from modal
+  setChanges((prev) =>
+    prev.filter(
+      (c) =>
+        !(
+          c.action === change.action &&
+          c.section === change.section &&
+          c.name === change.name
+        )
+    )
+  );
+};
 
   const sectionToCategory = {
   boysWardens: "male_warden",

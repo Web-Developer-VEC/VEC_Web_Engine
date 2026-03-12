@@ -32,6 +32,8 @@ const CarouselNSS = ({ data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const { sendRequest, loading } = useAdminRequest();
+  
+  console.log("Initial data for CarouselNSS:", data);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -412,15 +414,15 @@ const CarouselNSS = ({ data }) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 
-  if (!data || data.length === 0) {
-    return (
-      <div className="text-center text-gray-600 mt-10">
-        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-          <LoadComp />
-        </div>
-      </div>
-    );
-  }
+  // if (!data || data.length === 0) {
+  //   return (
+  //     <div className="text-center text-gray-600 mt-10">
+  //       <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+  //         <LoadComp />
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
