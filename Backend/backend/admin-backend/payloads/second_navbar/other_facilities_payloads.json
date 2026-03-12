@@ -79,5 +79,39 @@
       "description": "A spacious and well-equipped auditorium with modern audio-visual facilities, ideal for large events and gatherings with accommodation around 2500",
       "image_path": "/static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"
     }
+  },
+
+
+  {
+  "collectionName": "other_facilities",
+  "collection_type": "other_facilities",
+  "action": "delete",
+  "title": "delete Anna Auditorium category",
+  "category": "Anna Auditorium",
+  "meta_data": {}
+},
+
+{
+  "collectionName": "other_facilities",
+  "collection_type": "other_facilities",
+  "action": "delete",
+  "title": "delete Anna Auditorium image",
+  "category": "Anna Auditorium",
+  "meta_data": {
+    "image_path": "/static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"
   }
+},
+
+{
+  "collectionName": "other_facilities",
+  "collection_type": "other_facilities",
+  "action": "delete",
+  "title": "delete Vivekananda Hall",
+  "category": "Seminar Halls",
+  "meta_data": {
+    "name": "Vivekananda Hall"
+  }
+}
+
+
 ]
