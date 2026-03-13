@@ -46,6 +46,7 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
   const [isSendingRequest, setIsSendingRequest] = useState(false);
 
   const [deleteConfirm, setDeleteConfirm] = useState(null);
+  
 
   const BASE_PAYLOAD = {
     collectionName: "placement",
@@ -77,33 +78,49 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
     },
   });
 
-  const buildUpdatePdfPayload = ({ year, pdf_path, original_pdf_path }) => ({
-    ...BASE_PAYLOAD,
-    action: "update",
-    title: "update details",
-    original_data: {
-      section: "year_wise_pdfs",
-      year,
-      ...(original_pdf_path !== undefined ? { pdf_path: original_pdf_path } : {}),
-    },
-    meta_data: {
-      section: "year_wise_pdfs",
-      year,
-      pdf_path,
-    },
-  });
+const buildUpdatePdfPayload = ({ year, new_year, pdf_path, original_pdf_path }) => ({
+  action: "update",
+  collectionName: "placement",
+  title: "update details",
+  collection_type: "placement_details",
 
-  const buildDeletePayload = ({ section, year, original_values, original_pdf_path }) => ({
-    ...BASE_PAYLOAD,
-    action: "delete",
-    title: "delete details",
-    meta_data: {
-      section,
-      year,
-      ...(original_values !== undefined ? { values: original_values } : {}),
-      ...(original_pdf_path !== undefined ? { pdf_path: original_pdf_path } : {}),
-    },
-  });
+  original_data: {
+    section: "year_wise_pdfs",
+    year: year,
+    pdf_path: original_pdf_path
+  },
+
+  meta_data: {
+    section: "year_wise_pdfs",
+    year: new_year ?? year,
+    pdf_path: pdf_path
+  }
+});
+
+const buildDeletePayload = ({ section, id, year, values, pdf_path }) => ({
+  ...BASE_PAYLOAD,
+  action: "delete",
+  title: "delete details",
+  meta_data: {
+    section,
+    ...(id !== undefined ? { id } : {}), // ✅ add id
+    year,
+    ...(values !== undefined ? { values } : {}),
+    ...(pdf_path !== undefined ? { pdf_path } : {}),
+  },
+});
+
+const buildInsertYearPdfPayload = ({ year, pdf_path }) => ({
+  action: "insert",
+  collectionName: "placement",
+  title: "insert details",
+  collection_type: "placement_details",
+  meta_data: {
+    section: "year_wise_pdfs",
+    year,
+    pdf_path
+  }
+});
 
   /* ------------------------ utils / URL ------------------------ */
 
@@ -122,22 +139,41 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await axios.post("/api/main-backend/placement", {
-          type: "placement_details",
-        });
-        const data = resp.data?.data || null;
-        setPlacementData(data);
-        setOriginalData(deepClone(data));
-        setPendingData(null);
-        setLoading(false);
-      } catch (err) {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [navigate]);
+  let mounted = true;
+
+  const fetchData = async () => {
+    try {
+      const resp = await axios.post("/api/main-backend/placement", {
+        type: "placement_details",
+      });
+
+      const data = resp.data?.data || null;
+
+      console.log("pdf item:", placementData?.year_wise_pdfs?.[0]);
+      if (!mounted) return;
+
+      setPlacementData(data);
+      setOriginalData(deepClone(data));
+      // IMPORTANT: don't blindly clear pendingData here unless you really want to wipe pending UI
+      // setPendingData(null);
+      setLoading(false);
+    } catch (err) {
+      if (!mounted) return;
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+
+  // ✅ refresh when tab becomes active again (helps after admin approval)
+  const onFocus = () => fetchData();
+  window.addEventListener("focus", onFocus);
+
+  return () => {
+    mounted = false;
+    window.removeEventListener("focus", onFocus);
+  };
+}, []);
 
   useEffect(() => {
     const onOnline = () => setIsOnline(true);
@@ -184,48 +220,57 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
     const changes = [];
     if (!base || !compare) return changes;
 
-    // ---- year_wise_pdfs: match by year label (no index edit UI for year label other than text itself)
-    // If they rename the year label for pdf, it will still look like delete+insert. If you want rename => update,
-    // you must have a stable id from backend. Not available in provided data. So we keep year-label matching.
-    const basePdfs = base.year_wise_pdfs || [];
-    const compPdfs = compare.year_wise_pdfs || [];
+    // ---- year_wise_pdfs: match by index to detect rename/replace as UPDATE
+const basePdfs = Array.isArray(base.year_wise_pdfs) ? base.year_wise_pdfs : [];
+const compPdfs = Array.isArray(compare.year_wise_pdfs) ? compare.year_wise_pdfs : [];
 
-    const basePdfMap = new Map(basePdfs.map((p) => [p.year, p]));
-    const compPdfMap = new Map(compPdfs.map((p) => [p.year, p]));
+const minLen = Math.min(basePdfs.length, compPdfs.length);
 
-    for (const [year, p1] of basePdfMap.entries()) {
-      if (!compPdfMap.has(year)) {
-        changes.push({
-          kind: "year_pdf",
-          action: "delete",
-          year,
-          original_pdf_path: p1.pdf_path ?? "",
-        });
-      }
-    }
+// updates (rename and/or pdf replace)
+for (let i = 0; i < minLen; i++) {
+  const p1 = basePdfs[i] || {};
+  const p2 = compPdfs[i] || {};
 
-    for (const [year, p2] of compPdfMap.entries()) {
-      if (!basePdfMap.has(year)) {
-        changes.push({
-          kind: "year_pdf",
-          action: "insert",
-          year,
-          pdf_path: p2.pdf_path ?? "",
-        });
-      } else {
-        const p1 = basePdfMap.get(year);
-        if ((p1.pdf_path ?? "") !== (p2.pdf_path ?? "")) {
-          changes.push({
-            kind: "year_pdf",
-            action: "update",
-            year,
-            pdf_path: p2.pdf_path ?? "",
-            original_pdf_path: p1.pdf_path ?? "",
-          });
-        }
-      }
-    }
+  const yearChanged = (p1.year ?? "") !== (p2.year ?? "");
+  const pathChanged = (p1.pdf_path ?? "") !== (p2.pdf_path ?? "");
 
+  if (yearChanged || pathChanged) {
+    changes.push({
+  kind: "year_pdf",
+  action: "update",
+  year: p1.year,
+  new_year: p2.year,
+  pdf_path: p2.pdf_path,
+  original_pdf_path: p1.pdf_path
+});
+  }
+}
+
+// inserts (new items added at the end or start depending on your UI)
+if (compPdfs.length > basePdfs.length) {
+  for (let i = basePdfs.length; i < compPdfs.length; i++) {
+    const p = compPdfs[i] || {};
+    changes.push({
+      kind: "year_pdf",
+      action: "insert",
+      year: p.year ?? "",
+      pdf_path: p.pdf_path ?? ""
+    });
+  }
+}
+
+// deletes
+if (basePdfs.length > compPdfs.length) {
+  for (let i = compPdfs.length; i < basePdfs.length; i++) {
+    const p = basePdfs[i] || {};
+    changes.push({
+      kind: "year_pdf",
+      action: "delete",
+      year: p.year ?? "",
+      original_pdf_path: p.pdf_path ?? ""
+    });
+  }
+}
     // ---- sections: department_wise + statistics (match by index to prevent insert+delete on edits)
     const sections = ["department_wise", "statistics"];
     sections.forEach((section) => {
@@ -317,36 +362,36 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
     changes.forEach((c) => {
       // YEAR PDF changes
       if (c.kind === "year_pdf") {
-        if (c.action === "insert") {
-          payloads.push(
-            buildInsertPlacementDetailsPayload({
-              year_wise_pdfs: [
-                {
-                  year: c.year,
-                  pdf_path: c.pdf_path ?? "",
-                },
-              ],
-            }),
-          );
-        } else if (c.action === "update") {
-          payloads.push(
-            buildUpdatePdfPayload({
-              year: c.year,
-              pdf_path: c.pdf_path ?? "",
-              original_pdf_path: c.original_pdf_path ?? "",
-            }),
-          );
-        } else if (c.action === "delete") {
-          payloads.push(
-            buildDeletePayload({
-              section: "year_wise_pdfs",
-              year: c.year,
-              original_pdf_path: c.original_pdf_path ?? "",
-            }),
-          );
-        }
-        return;
-      }
+  if (c.action === "insert") {
+    payloads.push(
+      buildInsertYearPdfPayload({
+        id: c.id,
+        year: c.year,
+        pdf_path: c.pdf_path ?? "",
+      }),
+    );
+  } else if (c.action === "update") {
+    payloads.push(
+      buildUpdatePdfPayload({
+        id: c.id,
+        year: c.year,
+        new_year: c.new_year,
+        pdf_path: c.pdf_path ?? "",
+        original_pdf_path: c.original_pdf_path ?? "",
+      }),
+    );
+  } else if (c.action === "delete") {
+    payloads.push(
+      buildDeletePayload({
+        section: "year_wise_pdfs",
+        id: c.id,
+        year: c.year,
+        pdf_path: c.original_pdf_path ?? "",
+      }),
+    );
+  }
+  return;
+}
 
       // Section changes
       if (c.kind === "section_year") {
@@ -368,14 +413,12 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
 
         if (c.action === "delete") {
           payloads.push(
-            buildDeletePayload({
-              section: c.section,
-              year: c.year,
-              original_values: Array.isArray(c.original_values)
-                ? c.original_values
-                : [],
-            }),
-          );
+  buildDeletePayload({
+    section: c.section,
+    year: c.year,
+    values: Array.isArray(c.original_values) ? c.original_values : [],
+  }),
+);
           return;
         }
 
@@ -522,17 +565,12 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
     setYearPopupPreviewUrl("");
   };
 
-  const collectPlacementDetailPdfFiles = () => {
-    if (!pendingData?.year_wise_pdfs) return [];
-
-    return pendingData.year_wise_pdfs
-      .filter((y) => y.__file instanceof File)
-      .map((y) => ({
-        key: `placement_pdf_${y.id}`,
-        file: y.__file,
-        collection: "placement_docs",
-      }));
-  };
+const collectPlacementDetailPdfFiles = () => {
+  if (!pendingData?.year_wise_pdfs) return [];
+  return pendingData.year_wise_pdfs
+    .filter((y) => y.__file instanceof File)
+    .map((y) => y.__file);
+};
 
   const toggleSelectTopYearIndex = (idx) => {
     setSelectedTopYearIndexes((prev) =>
@@ -798,33 +836,42 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
     setDeleteConfirm(null);
   };
 
-  const handleSave = () => {
-    if (!editedData) return;
+const handleSave = () => {
+  if (!editedData) return;
 
-    const changes = computeStructuredChanges(originalData || {}, editedData);
-    if (!changes.length) return;
+  const changes = computeStructuredChanges(originalData || {}, editedData);
+  if (!changes.length) return;
 
-    setPendingData(deepClone(editedData));
-    setPlacementData(deepClone(editedData));
-    setEditedData(null);
-    setEditSnapshot(null);
-    setEditMode(false);
-    setSelectedTopYearIndexes([]);
-    setSelectedCols({ department_wise: [], statistics: [] });
-    setSelectedRowIndexesBySection({ department_wise: [], statistics: [] });
-  };
+  // ✅ DO NOT deepClone here because it will drop File objects (__file)
+  setPendingData(editedData);
+  setPlacementData(editedData);
 
-  const discardAllPending = () => {
-    setPendingData(null);
-    setPlacementData(deepClone(originalData));
-    setEditedData(null);
-    setEditSnapshot(null);
-    setEditMode(false);
-    setSelectedTopYearIndexes([]);
-    setSelectedCols({ department_wise: [], statistics: [] });
-    setSelectedRowIndexesBySection({ department_wise: [], statistics: [] });
-    toast.error("changes discarded");
-  };
+  // ✅ FIX: allow "Request" button to show again for new saved edits
+  setRequestSent(false);
+
+  setEditedData(null);
+  setEditSnapshot(null);
+  setEditMode(false);
+  setSelectedTopYearIndexes([]);
+  setSelectedCols({ department_wise: [], statistics: [] });
+  setSelectedRowIndexesBySection({ department_wise: [], statistics: [] });
+};
+
+const discardAllPending = () => {
+  setPendingData(null);
+  setPlacementData(deepClone(originalData)); // originalData from backend has no File objects
+
+  // ✅ recommended: reset request state
+  setRequestSent(false);
+
+  setEditedData(null);
+  setEditSnapshot(null);
+  setEditMode(false);
+  setSelectedTopYearIndexes([]);
+  setSelectedCols({ department_wise: [], statistics: [] });
+  setSelectedRowIndexesBySection({ department_wise: [], statistics: [] });
+  toast.error("changes discarded");
+};
 
   const handleRequest = () => {
     const changes = getChangesBetweenOriginalAndPending();
@@ -835,33 +882,37 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
     setShowRequestModal(true);
   };
 
-  const handleRequestConfirm = async () => {
-    try {
-      const payload = buildPlacementDetailsPayloadsFromChanges();
-
-      if (!payload.length) {
-        toast.warn("No changes to submit");
-        return;
-      }
-
-      const files = collectPlacementDetailPdfFiles();
-      setPendingData((prev) => {
-        const copy = deepClone(prev);
-        copy.year_wise_pdfs.forEach((y) => delete y.__file);
-        return copy;
-      });
-
-      await sendRequest(payload, files);
-
-      toast.success("Request submitted successfully!");
-      setShowRequestModal(false);
-      setPendingData(null);
-      setYearPdfFiles({});
-    } catch (err) {
-      console.error(err);
-      toast.error("Request failed. Please try again.");
+ const handleRequestConfirm = async () => {
+  try {
+    const payload = buildPlacementDetailsPayloadsFromChanges();
+    if (!payload.length) {
+      toast.warn("No changes to submit");
+      return;
     }
-  };
+
+    console.log("REQUEST PAYLOAD:", payload);
+
+    const files = collectPlacementDetailPdfFiles();
+
+    await sendRequest(payload, files);
+
+    toast.success("Request submitted successfully!");
+    setShowRequestModal(false);
+    setPendingData(null);
+    setRequestSent(true);
+
+    // ✅ REFRESH from DB after submitting
+    const resp = await axios.post("/api/main-backend/placement", {
+      type: "placement_details",
+    });
+    const data = resp.data?.data || null;
+    setPlacementData(data);
+    setOriginalData(deepClone(data));
+  } catch (err) {
+    console.error(err);
+    toast.error("Request failed. Please try again.");
+  }
+};
 
   // ✅ Request modal should show insert/update/delete ONLY (no double entries)
   function buildYearWiseRequestRows() {
