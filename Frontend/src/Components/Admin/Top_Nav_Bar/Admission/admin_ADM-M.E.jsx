@@ -37,6 +37,13 @@ const AdminME = ({ theme, toggle }) => {
   // Popup & changes state
   const [showPopup, setShowPopup] = useState(false);
   const [changeList, setChangeList] = useState([]);
+
+  // ---- EDIT SESSION SNAPSHOTS (new) ----
+  const [editSnapshot, setEditSnapshot] = useState(null);
+  const [editChangeListSnapshot, setEditChangeListSnapshot] = useState(null);
+  const [editSelectedRowsSnapshot, setEditSelectedRowsSnapshot] = useState(null);
+  // ---------------------------------------
+
   const buildPgAdmissionPayloadConfirm = ({
     change,
     pendingData,
@@ -256,6 +263,7 @@ const AdminME = ({ theme, toggle }) => {
     };
     fetchData();
   }, [navigate]);
+
   const handleDiscardChanges = () => {
     if (!originalData) return;
 
@@ -266,6 +274,11 @@ const AdminME = ({ theme, toggle }) => {
     setpgEdit(false); // Exit edit mode
     setSavedOnce(false); // Reset save flag
     setShowDeleteModal(false); // Close delete modal if open
+
+    // clear any session snapshots
+    setEditSnapshot(null);
+    setEditChangeListSnapshot(null);
+    setEditSelectedRowsSnapshot(null);
 
     toast.info("All changes discarded and original data restored.");
   };
@@ -388,94 +401,117 @@ const AdminME = ({ theme, toggle }) => {
   };
 
   // ✅ Undo change (restores state)
-const handleUndoChange = (label) => {
-  if (!originalData) return;
+  const handleUndoChange = (label) => {
+    if (!originalData) return;
 
-  let updated = { ...pgData };
+    let updated = { ...pgData };
 
-  /* -------------------- UNDO YEAR -------------------- */
-  if (label === "Year") {
-    updated.year = originalData.year;
-  }
+    /* -------------------- UNDO YEAR -------------------- */
+    if (label === "Year") {
+      updated.year = originalData.year;
+    }
 
-  /* -------------------- UNDO INTAKE -------------------- */
-  if (label === "Intake") {
-    updated.PG = JSON.parse(JSON.stringify(originalData.PG));
-  }
+    /* -------------------- UNDO INTAKE -------------------- */
+    if (label === "Intake") {
+      updated.PG = JSON.parse(JSON.stringify(originalData.PG));
+    }
 
-  setpgData(updated);
-  // toast.info(`${label} reverted`);
-};
-
-const handleFinalRequestConfirm = async () => {
-  if (!originalData) return;
-
-  const originalPG = JSON.stringify(originalData.PG || []);
-  const currentPG = JSON.stringify(pgData.PG || []);
-
-  const originalYear = originalData.year;
-  const currentYear = pgData.year;
-
-  const intakeChanged = originalPG !== currentPG;
-  const yearChanged = originalYear !== currentYear;
-
-  if (!intakeChanged && !yearChanged) {
-    // toast.warn("No changes to submit");
-    return;
-  }
-
-  /* ------------------------------------------
-     🔥 ALWAYS SEND SINGLE COMBINED PAYLOAD
-  ------------------------------------------ */
-
-  const payload = {
-    collectionName: "admissions",
-    collection_type: "pg",
-    action: "update",
-    title: "Update PG Admission",
-
-    meta_data: {
-      data: {
-        year: currentYear,
-        PG: pgData.PG,
-      },
-    },
-
-    original_data: {
-      data: {
-        year: originalYear,
-        PG: originalData.PG,
-      },
-    },
-
-    admin: { status: "pending" },
+    setpgData(updated);
+    // toast.info(`${label} reverted`);
   };
 
-  console.log("📦 FINAL COMBINED PAYLOAD:", payload);
+  const handleFinalRequestConfirm = async () => {
+    if (!originalData) return;
 
-  try {
-    await sendRequest([payload]); // send as array if your API expects array
+    const originalPG = JSON.stringify(originalData.PG || []);
+    const currentPG = JSON.stringify(pgData.PG || []);
 
-    toast.success("request submitted successfully!");
+    const originalYear = originalData.year;
+    const currentYear = pgData.year;
 
-    setOriginalData(JSON.parse(JSON.stringify(pgData)));
-    setChangeList([]);
-    setSavedOnce(false);
-    setShowPopup(false);
-  } catch (error) {
-    toast.error("Failed to submit request");
-  }
-};
+    const intakeChanged = originalPG !== currentPG;
+    const yearChanged = originalYear !== currentYear;
 
+    if (!intakeChanged && !yearChanged) {
+      // toast.warn("No changes to submit");
+      return;
+    }
 
+    /* ------------------------------------------
+       🔥 ALWAYS SEND SINGLE COMBINED PAYLOAD
+    ------------------------------------------ */
+
+    const payload = {
+      collectionName: "admissions",
+      collection_type: "pg",
+      action: "update",
+      title: "Update PG Admission",
+
+      meta_data: {
+        data: {
+          year: currentYear,
+          PG: pgData.PG,
+        },
+      },
+
+      original_data: {
+        data: {
+          year: originalYear,
+          PG: originalData.PG,
+        },
+      },
+
+      admin: { status: "pending" },
+    };
+
+    console.log("📦 FINAL COMBINED PAYLOAD:", payload);
+
+    try {
+      await sendRequest([payload]); // send as array if your API expects array
+
+      toast.success("request submitted successfully!");
+
+      setOriginalData(JSON.parse(JSON.stringify(pgData)));
+      setChangeList([]);
+      setSavedOnce(false);
+      setShowPopup(false);
+    } catch (error) {
+      toast.error("Failed to submit request");
+    }
+  };
+
+  // ===== NEW: create snapshot when entering edit mode =====
+  const handleStartEdit = () => {
+    setEditSnapshot(JSON.parse(JSON.stringify(pgData)));
+    setEditChangeListSnapshot(JSON.parse(JSON.stringify(changeList || [])));
+    setEditSelectedRowsSnapshot(Array.isArray(selectedRows) ? [...selectedRows] : []);
+    setpgEdit(true);
+  };
+  // ========================================================
 
   const handleCancel = () => {
-    setpgData(originalData); // restore the original fetched data
-    setChangeList([]); // clear change logs
-    setSelectedRows([]); // clear any selected checkboxes
-    setpgEdit(false); // exit edit mode
-    setSavedOnce(false); // reset save flag
-    // toast.info("All changes discarded.");
+    // If an edit-session snapshot exists, restore only the session's changes
+    if (editSnapshot) {
+      setpgData(JSON.parse(JSON.stringify(editSnapshot)));
+      setChangeList(editChangeListSnapshot ? JSON.parse(JSON.stringify(editChangeListSnapshot)) : []);
+      setSelectedRows(editSelectedRowsSnapshot ? [...editSelectedRowsSnapshot] : []);
+    } else if (originalData) {
+      // fallback: restore originalData
+      setpgData(JSON.parse(JSON.stringify(originalData)));
+      setChangeList([]);
+      setSelectedRows([]);
+    }
+
+    setpgEdit(false);
+    setHasChanges(false);
+
+    // DO NOT reset savedOnce here — cancel should not act like discard.
+    // clear edit-session snapshots
+    setEditSnapshot(null);
+    setEditChangeListSnapshot(null);
+    setEditSelectedRowsSnapshot(null);
+
+    // toast.info("All changes in this edit session discarded.");
   };
 
   // ✅ Online/offline detection
@@ -512,6 +548,13 @@ const handleFinalRequestConfirm = async () => {
 
     setpgEdit(false);
     setSavedOnce(true);
+
+    // clear edit-session snapshot (we committed the session to current UI)
+    setEditSnapshot(null);
+    setEditChangeListSnapshot(null);
+    setEditSelectedRowsSnapshot(null);
+
+    // note: originalData not updated here because your flow updates it on final request
     // toast.success("Changes saved locally!");
   };
 
@@ -591,7 +634,7 @@ const handleFinalRequestConfirm = async () => {
                 <div className="flex justify-end">
                   <button
                     className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg mt-4 mr-10"
-                    onClick={() => setpgEdit(true)}
+                    onClick={handleStartEdit}
                   >
                     <Pencil size={16} /> Edit
                   </button>
@@ -647,29 +690,7 @@ const handleFinalRequestConfirm = async () => {
                     return (
                       <tr key={rowIndex} className="bg-prim dark:bg-drkp">
                         <td>
-                          {/* {pgedit ? (
-                            <input
-                              type="text"
-                              value={courseName}
-                              className="admin-mein"
-                              onBlur={(e) =>
-                                handleCourseNameChange(rowIndex, e.target.value)
-                              }
-                              onChange={(e) => {
-                                const dataCopy = { ...pgData };
-                                const pgArray = [...dataCopy.PG];
-                                const [, details] = Object.entries(
-                                  pgArray[rowIndex],
-                                )[0];
-                                pgArray[rowIndex] = {
-                                  [e.target.value]: details,
-                                };
-                                setpgData({ ...dataCopy, PG: pgArray });
-                              }}
-                            />
-                          ) : ( */}
-                          {/* )} */}
-                            {courseName}
+                          {courseName}
                         </td>
                         <td>
                           {pgedit ? (
@@ -712,50 +733,12 @@ const handleFinalRequestConfirm = async () => {
                           )}
                         </td>
                         <td>{courseDetails["Total Intakes"]}</td>
-                        {/* {pgedit && (
-                          <td className="text-center">
-                            <input
-                              type="checkbox"
-                              checked={selectedRows?.includes(rowIndex)}
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  setSelectedRows((prev) => [
-                                    ...prev,
-                                    rowIndex,
-                                  ]);
-                                } else {
-                                  setSelectedRows((prev) =>
-                                    prev.filter((i) => i !== rowIndex),
-                                  );
-                                }
-                              }}
-                            />
-                          </td>
-                        )} */}
                       </tr>
                     );
                   })}
                   {pgedit && (
                     <tr>
-                      {/* <td colSpan={5}>
-                        <div className="flex justify-center items-center gap-2">
-                          <button
-                            onClick={handleAddNewRow}
-                            className="flex items-center gap-1 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-                          >
-                            <Plus size={16} /> Add
-                          </button>
-
-                          {selectedRows.length > 0 && (
-                            <button
-                              onClick={() => setShowDeleteModal(true)}
-                              className="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                            >
-                              <Trash2 size={16} /> Delete
-                            </button>
-                          )}
-                        </div>
-                      </td> */}
+                      {/* placeholder for add/delete UI if needed */}
                     </tr>
                   )}
                 </tbody>

@@ -25,6 +25,7 @@ async function deleteData(tempDoc, mainCollection) {
         { $set: { data: [] } }
       );
       return {
+        success: true, 
         message: `Deleted entire document for ${collection_type}`,
       };
     }
@@ -40,6 +41,7 @@ async function deleteData(tempDoc, mainCollection) {
         { $pull: { data: meta_data } }
       );
       return {
+        success: true, 
         message: `Deleted one document from ${collection_type}`,
         deleted: meta_data,
       };
@@ -91,6 +93,7 @@ async function deleteData(tempDoc, mainCollection) {
       }
 
       return {
+        success: true, 
         message: `Delete successful for ${collection_type} - category ${category}`,
         data: meta_data,
       };
@@ -99,7 +102,7 @@ async function deleteData(tempDoc, mainCollection) {
     throw new Error("Invalid delete request");
   } catch (error) {
     console.error("Error deleting data:", error);
-    throw error; // ❌ Pass error up to handleTempAction
+    return { success: false, error: error.message };
   }
 }
 

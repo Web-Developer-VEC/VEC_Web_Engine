@@ -30,6 +30,7 @@ async function updateData(tempDoc, mainCollection) {
         );
 
         return {
+          success:true, 
           message: `The data is updated successfully in the ${collection_type}`
         };
       }

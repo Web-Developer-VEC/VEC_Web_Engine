@@ -313,7 +313,7 @@
     "type": "team",
     "data": [
       {
-        "category": "faculty_coordinatores",
+        "category": "faculty_coordinators",
         "members": [
           {
             "name": "Sub. LT DHANALAKSHMI R",
@@ -323,7 +323,7 @@
         ]
       },
       {
-        "category": "student_coordinatores",
+        "category": "student_coordinators",
         "members": [
           {
             "name": "ADITHYA JAISWAL",

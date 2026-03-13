@@ -42,7 +42,7 @@ async function insertData(tempDoc, mainCollection) {
         }
       );
 
-      return { message: `Research appended for ${category} (${meta_data.year})` };
+      return {success:true,  message: `Research appended for ${category} (${meta_data.year})` };
     } else {
       // ✅ create new year entry
       await mainCollection.updateOne(
@@ -57,7 +57,7 @@ async function insertData(tempDoc, mainCollection) {
         }
       );
 
-      return { message: `New year created for ${category} (${meta_data.year})` };
+      return {success:true,  message: `New year created for ${category} (${meta_data.year})` };
     }
   } else {
     // ✅ create new category + year
@@ -66,7 +66,7 @@ async function insertData(tempDoc, mainCollection) {
       { $push: { data: { category, content: [meta_data] } } }
     );
 
-    return { message: `New category created: ${category}` };
+    return {success:true,  message: `New category created: ${category}` };
   }
 }
 

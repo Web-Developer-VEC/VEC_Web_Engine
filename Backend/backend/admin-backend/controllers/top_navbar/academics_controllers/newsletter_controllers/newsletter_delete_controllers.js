@@ -28,6 +28,7 @@ async function deleteData(tempDoc, mainCollection) {
         );
 
         return {
+          success:true, 
           message: `The data is deleted successfully from ${collection_type}`
         };
       } else {
@@ -38,6 +39,7 @@ async function deleteData(tempDoc, mainCollection) {
         );
 
         return {
+          success:true, 
           message: `The category is deleted successfully from ${collection_type}`
         };
       }

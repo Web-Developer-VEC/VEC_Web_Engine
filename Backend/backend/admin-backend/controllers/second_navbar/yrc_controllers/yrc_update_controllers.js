@@ -31,7 +31,7 @@ async function updateData( tempDoc, mainCollection) {
       );
 
       return {
-       
+        success: true,
         message: `Updated successfully for ${collection_type}`,
         data: newData,
       };
@@ -79,7 +79,7 @@ async function updateData( tempDoc, mainCollection) {
       // Case B: Array of objects → match by name
       else if (Array.isArray(content) && content[0]?.name) {
         if (!original_data)
-          return { status: 400, message: "original_data required" };
+          return { success: false, message: "original_data required" };
 
         const originalArray = Array.isArray(original_data)
           ? original_data
@@ -110,7 +110,7 @@ async function updateData( tempDoc, mainCollection) {
       }
 
       return {
-       
+        success: true,
         message: `Updated successfully in ${collection_type} - category ${category}`,
         data: meta_data,
       };
@@ -136,7 +136,7 @@ async function updateData( tempDoc, mainCollection) {
       );
 
       return {
-       
+        success: true,
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };

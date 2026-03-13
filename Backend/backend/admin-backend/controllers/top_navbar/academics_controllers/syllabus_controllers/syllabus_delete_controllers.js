@@ -21,7 +21,7 @@ async function deleteData(tempDoc, mainCollection) {
       }
     );
 
-    return { message: "Year deleted successfully" };
+    return { success:true,  message: "Year deleted successfully" };
   }
 
   /* -------- DELETE SEMESTER -------- */
@@ -42,7 +42,7 @@ async function deleteData(tempDoc, mainCollection) {
     }
   );
 
-  return { message: "Semester file deleted successfully" };
+  return {success:true,  message: "Semester file deleted successfully" };
 }
 
 module.exports = { deleteData };

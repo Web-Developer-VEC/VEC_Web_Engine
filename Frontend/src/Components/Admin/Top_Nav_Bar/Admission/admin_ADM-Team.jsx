@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import axios from "axios";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
-import { Pencil, Plus, Trash2, PlusCircle, SquarePen, X } from "lucide-react";
+import { Pencil, Plus, Trash2, X } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
@@ -23,27 +23,87 @@ const AdminADMteam = ({ theme, toggle }) => {
   const [imageFiles, setImageFiles] = useState({});
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  // new ref: committedRef holds the *last saved* state (deep clone of admissionteamData at Save)
+  const committedRef = useRef(null);
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "";
   const navigate = useNavigate();
 
-  const UrlParser = (path) =>
-    path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
 
   const generateId = () => Date.now() + Math.floor(Math.random() * 1000);
 
-  // Fetch data
+  // helper deep clone (JSON-safe)
+  const deepClone = (v) => JSON.parse(JSON.stringify(v));
+
+  // compute diff between original array and committed array (by id)
+  const computeDiff = (originalArr = [], committedArr = []) => {
+    const result = [];
+    const origMap = new Map(originalArr.map((o) => [o.id, o]));
+    const commMap = new Map(committedArr.map((c) => [c.id, c]));
+
+    // additions & edits
+    for (const [id, commItem] of commMap.entries()) {
+      const origItem = origMap.get(id);
+      if (!origItem) {
+        result.push({
+          type: "added",
+          section: commItem.name || "New Team Member",
+          fields: {},
+          data: commItem,
+        });
+        continue;
+      }
+
+      // compare fields
+      const editedFields = {};
+      ["name", "designation", "image_path"].forEach((field) => {
+        const a = origItem[field] ?? "";
+        const b = commItem[field] ?? "";
+        if (String(a) !== String(b)) {
+          editedFields[field] = { before: a, after: b };
+        }
+      });
+
+      if (Object.keys(editedFields).length > 0) {
+        result.push({
+          type: "edited",
+          section: commItem.name || "Team Member",
+          fields: editedFields,
+          data: commItem,
+        });
+      }
+    }
+
+    // deletions
+    for (const [id, origItem] of origMap.entries()) {
+      if (!commMap.has(id)) {
+        result.push({
+          type: "deleted",
+          section: origItem.name,
+          fields: {},
+          data: origItem,
+        });
+      }
+    }
+
+    return result;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.post(`/api/main-backend/admission`, {
           type: "admission_team",
         });
-        const dataWithIds = (response.data.data || []).map((item) => ({
-          ...item,
-          id: item.id || generateId(),
-        }));
-        setAdmissionteamData(dataWithIds);
-        setOriginalData(dataWithIds);
+        const raw = response.data.data || [];
+        const dataWithIds = raw.map((item) => ({ ...item, id: item.id || generateId() }));
+
+        setAdmissionteamData(deepClone(dataWithIds));
+        setOriginalData(deepClone(dataWithIds));
+        // committedRef initially equals original fetched data (no local saves yet)
+        committedRef.current = deepClone(dataWithIds);
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -58,7 +118,6 @@ const AdminADMteam = ({ theme, toggle }) => {
     fetchData();
   }, [navigate]);
 
-  // Online/offline detection
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
@@ -70,7 +129,8 @@ const AdminADMteam = ({ theme, toggle }) => {
     };
   }, []);
 
-  // Track changes
+  // trackChange now compares against **committedRef.current** (last saved),
+  // so nested edits are transient relative to the last save
   const trackChange = (index, field, value) => {
     setAdmissionteamData((prev) => {
       const updated = [...prev];
@@ -79,36 +139,52 @@ const AdminADMteam = ({ theme, toggle }) => {
       updated[index] = { ...updated[index], [field]: value };
       const item = updated[index];
 
-      // ✅ If item is NEW → just update state, nothing else
+      // baseline is last saved state (committedRef) or originalData if no commit yet
+      const baselineArr = committedRef.current ?? originalData;
+      const baselineItem = baselineArr.find((b) => b.id === item.id) || {};
+
+      // if item is flagged as new, update added change entry if present (or keep transient)
       if (item.isNew) {
+        setChangeList((prevChanges) => {
+          // find an existing "added" for the same id; update it
+          const idx = prevChanges.findIndex((c) => c.type === "added" && c.data?.id === item.id);
+          if (idx >= 0) {
+            const copy = [...prevChanges];
+            copy[idx] = { ...copy[idx], data: item };
+            return copy;
+          }
+          // else, keep whatever existing pending changeList is (we do not push here)
+          return prevChanges;
+        });
         return updated;
       }
-if (field === "imageFile") {
-  console.log("IMAGE STORED AT INDEX:", index, value);
-}
 
-      // 🔁 EXISTING item → track edits
-      const original = originalData.find((o) => o.id === item.id) || {};
+      // compute edited fields vs baseline (last saved)
       const editedFields = {};
-
       ["name", "designation", "image_path", "imageFile"].forEach((key) => {
-        if (item[key] !== original[key]) {
-          editedFields[key] = {
-            before: original[key] || "",
-            after: item[key] || "",
-          };
+        const before = baselineItem[key] ?? "";
+        const after = item[key] ?? "";
+        // for File objects, we compare by presence/reference
+        if (key === "imageFile") {
+          if (
+            (baselineItem.imageFile && !item.imageFile) ||
+            (!baselineItem.imageFile && item.imageFile) ||
+            (baselineItem.imageFile && item.imageFile && baselineItem.imageFile !== item.imageFile)
+          ) {
+            editedFields[key] = { before: baselineItem.image_path ?? "", after: item.image_path ?? "" };
+          }
+        } else {
+          if (String(before) !== String(after)) {
+            editedFields[key] = { before: before || "", after: after || "" };
+          }
         }
       });
 
       setChangeList((prevChanges) => {
-        const existingIndex = prevChanges.findIndex(
-          (c) => c.data?.id === item.id && c.type === "edited",
-        );
-
+        // if nothing changed relative to baseline, remove any existing 'edited' entry for this item
+        const existingIndex = prevChanges.findIndex((c) => c.type === "edited" && c.data?.id === item.id);
         if (Object.keys(editedFields).length === 0) {
-          return existingIndex >= 0
-            ? prevChanges.filter((_, i) => i !== existingIndex)
-            : prevChanges;
+          return existingIndex >= 0 ? prevChanges.filter((_, i) => i !== existingIndex) : prevChanges;
         }
 
         const newChange = {
@@ -119,11 +195,10 @@ if (field === "imageFile") {
         };
 
         if (existingIndex >= 0) {
-          const updatedChanges = [...prevChanges];
-          updatedChanges[existingIndex] = newChange;
-          return updatedChanges;
+          const copy = [...prevChanges];
+          copy[existingIndex] = newChange;
+          return copy;
         }
-
         return [...prevChanges, newChange];
       });
 
@@ -131,13 +206,7 @@ if (field === "imageFile") {
     });
   };
 
-  const buildAdmissionTeamPayload = ({
-    action,
-    newData,
-    oldData,
-    deleteImageOnly = false,
-  }) => {
-    /* -------- INSERT -------- */
+  const buildAdmissionTeamPayload = ({ action, newData, oldData, deleteImageOnly = false }) => {
     if (action === "insert") {
       return {
         collectionName: "admissions",
@@ -149,10 +218,10 @@ if (field === "imageFile") {
           designation: newData.designation,
           image_path: newData.image_path || "",
         },
+        admin: { status: "pending" },
       };
     }
 
-    /* -------- UPDATE -------- */
     if (action === "update") {
       return {
         collectionName: "admissions",
@@ -169,10 +238,10 @@ if (field === "imageFile") {
           designation: oldData.designation,
           image_path: oldData.image_path || "",
         },
+        admin: { status: "pending" },
       };
     }
 
-    /* -------- DELETE IMAGE ONLY -------- */
     if (action === "delete" && deleteImageOnly) {
       return {
         collectionName: "admissions",
@@ -183,10 +252,10 @@ if (field === "imageFile") {
           name: newData.name,
           image_path: newData.image_path,
         },
+        admin: { status: "pending" },
       };
     }
 
-    /* -------- DELETE MEMBER -------- */
     if (action === "delete") {
       return {
         collectionName: "admissions",
@@ -196,20 +265,17 @@ if (field === "imageFile") {
         meta_data: {
           name: newData.name,
         },
+        admin: { status: "pending" },
       };
     }
 
     return null;
   };
 
-  // Selection
   const handleSelect = (id, isChecked) => {
-    setSelectedItems((prev) =>
-      isChecked ? [...prev, id] : prev.filter((itemId) => itemId !== id),
-    );
+    setSelectedItems((prev) => (isChecked ? [...prev, id] : prev.filter((itemId) => itemId !== id)));
   };
 
-  // Add new member
   const addNewCard = () => {
     const newMember = {
       id: generateId(),
@@ -232,39 +298,26 @@ if (field === "imageFile") {
     ]);
   };
 
-  // Delete selected members
   const handleDeleteSelected = () => {
     if (selectedItems.length === 0) {
       toast.info("No team member selected.");
       return;
     }
-    const deletedItems = admissionteamData.filter((item) =>
-      selectedItems.includes(item.id),
-    );
-    setAdmissionteamData((prev) =>
-      prev.filter((item) => !selectedItems.includes(item.id)),
-    );
+    const deletedItems = admissionteamData.filter((item) => selectedItems.includes(item.id));
+    setAdmissionteamData((prev) => prev.filter((item) => !selectedItems.includes(item.id)));
     setChangeList((prev) => {
       let updated = [...prev];
 
       deletedItems.forEach((d) => {
-        // 🟢 If NEW item → remove completely
         if (d.isNew) {
-          // Remove its "added" entry
-          updated = updated.filter(
-            (c) => !(c.data?.id === d.id && c.type === "added"),
-          );
-          return; // do not add delete entry
+          // remove earlier 'added' transient change
+          updated = updated.filter((c) => !(c.data?.id === d.id && c.type === "added"));
+          return;
         }
 
-        // 🔵 If EXISTING item
+        // remove any existing 'edited' for this id
+        updated = updated.filter((c) => !(c.data?.id === d.id && c.type === "edited"));
 
-        // Remove any previous "edited"
-        updated = updated.filter(
-          (c) => !(c.data?.id === d.id && c.type === "edited"),
-        );
-
-        // Add delete entry
         updated.push({
           type: "deleted",
           section: d.name,
@@ -275,18 +328,17 @@ if (field === "imageFile") {
 
       return updated;
     });
+
+    setSelectedItems([]);
   };
 
-  // Revert change
   const revertField = (changeIdx) => {
     setChangeList((prevChanges) => {
       const change = prevChanges[changeIdx];
       if (!change) return prevChanges;
 
       if (change.type === "added") {
-        setAdmissionteamData((prev) =>
-          prev.filter((f) => f.id !== change.data.id),
-        );
+        setAdmissionteamData((prev) => prev.filter((f) => f.id !== change.data.id));
         return prevChanges.filter((_, i) => i !== changeIdx);
       }
 
@@ -296,14 +348,15 @@ if (field === "imageFile") {
       }
 
       if (change.type === "edited") {
+        // Revert fields back to committedRef (last saved) if available; otherwise originalData
+        const baselineArr = committedRef.current ?? originalData;
         setAdmissionteamData((prev) => {
           const updated = [...prev];
           const idxF = updated.findIndex((f) => f.id === change.data.id);
+          const baseline = baselineArr.find((b) => b.id === change.data.id) || {};
           if (idxF >= 0) {
             Object.keys(change.fields).forEach((field) => {
-              updated[idxF][field] =
-                originalData.find((o) => o.id === change.data.id)?.[field] ||
-                "";
+              updated[idxF][field] = baseline[field] ?? "";
             });
           }
           return updated;
@@ -315,35 +368,54 @@ if (field === "imageFile") {
     });
   };
 
-  // Save changes
   const handleSave = () => {
-    const invalid = admissionteamData.some(
-      (f) => !f.name?.trim() || !f.designation?.trim(),
-    );
+    const invalid = admissionteamData.some((f) => !f.name?.trim() || !f.designation?.trim());
 
     if (invalid) {
       toast.error("Name and designation are required");
       return;
     }
 
+    // When saving, commit the current UI data as the last saved state
+    committedRef.current = deepClone(admissionteamData);
+
+    // Collect any saved image files from admissionteamData and store in committedRef.savedFiles
+    const savedFiles = {};
+    admissionteamData.forEach((item) => {
+      if (item.imageFile) {
+        savedFiles[item.id] = item.imageFile;
+      }
+    });
+    committedRef.current.savedFiles = savedFiles;
+
+    // Build the persistent changeList as diff between originalData (fetched) and new committed data
+    const pending = computeDiff(originalData, committedRef.current);
+    setChangeList(pending);
+
     setShowRequestButtons(true);
     setTeamCardEdit(false);
+
+    toast.success("Changes saved locally.");
   };
 
-  // Discard all changes
   const handleDiscard = () => {
-    setAdmissionteamData([...originalData]);
+    // Restore everything to original fetched state
+    setAdmissionteamData(deepClone(originalData));
     setSelectedItems([]);
     setChangeList([]);
     setImagePreviews({});
     setShowRequestButtons(false);
     setTeamCardEdit(false);
+
+    // committedRef resets to originalData as well
+    committedRef.current = deepClone(originalData);
+
     toast.info("All changes discarded, back to original data.");
   };
 
-  // Request approval
   const handleRequestConfirm = async () => {
     try {
+      // make sure changeList is computed relative to originalData
       if (!changeList || changeList.length === 0) {
         toast.warn("No changes to submit");
         return;
@@ -352,66 +424,65 @@ if (field === "imageFile") {
       const requests = [];
       const files = [];
 
-   changeList.forEach((change) => {
-  const current = admissionteamData.find(
-    (m) => m.id === change.data.id
-  );
-  const original = originalData.find(
-    (o) => o.id === change.data.id
-  );
+      // use committedRef.current.savedFiles for files if present
+      const savedFiles = (committedRef.current && committedRef.current.savedFiles) || {};
 
-  if (!current) return;
+      changeList.forEach((change) => {
+        const current = (committedRef.current || []).find((m) => m.id === change.data.id) || admissionteamData.find((m) => m.id === change.data.id);
+        const original = originalData.find((o) => o.id === change.data.id);
 
-  /* INSERT */
-  if (change.type === "added") {
-    requests.push(
-      buildAdmissionTeamPayload({
-        action: "insert",
-        newData: current,
-      })
-    );
+        if (change.type === "added") {
+          requests.push(
+            buildAdmissionTeamPayload({
+              action: "insert",
+              newData: current,
+            })
+          );
 
-    if (current.imageFile) {
-      files.push(current.imageFile);
-    }
-  }
+          // if file was saved for this id, attach it
+          if (savedFiles[change.data.id]) {
+            files.push(savedFiles[change.data.id]);
+          } else if (current?.imageFile) {
+            files.push(current.imageFile);
+          }
+        }
 
-  /* UPDATE */
-  if (change.type === "edited") {
-    requests.push(
-      buildAdmissionTeamPayload({
-        action: "update",
-        newData: current,
-        oldData: original,
-      })
-    );
+        if (change.type === "edited") {
+          requests.push(
+            buildAdmissionTeamPayload({
+              action: "update",
+              newData: current,
+              oldData: original || {},
+            })
+          );
 
-    if (current.imageFile) {
-      files.push(current.imageFile);
-    }
-  }
+          if (savedFiles[change.data.id]) {
+            files.push(savedFiles[change.data.id]);
+          } else if (current?.imageFile) {
+            files.push(current.imageFile);
+          }
+        }
 
-  /* DELETE */
-  if (change.type === "deleted") {
-    requests.push(
-      buildAdmissionTeamPayload({
-        action: "delete",
-        newData: change.data,
-      })
-    );
-  }
-});
-
+        if (change.type === "deleted") {
+          requests.push(
+            buildAdmissionTeamPayload({
+              action: "delete",
+              newData: change.data,
+            })
+          );
+        }
+      });
 
       console.log("🚀 REQUESTS:", requests);
       console.log("📂 FILES:", files);
 
-      // 🔥 PASS FILES HERE
       await sendRequest(requests, files);
 
       toast.success("Request submitted successfully!");
 
-      setOriginalData([...admissionteamData]);
+      // Update originalData to the committed state (since admin will review)
+      setOriginalData(deepClone(committedRef.current || admissionteamData));
+      // reset change tracking
       setChangeList([]);
       setShowRequestModal(false);
       setShowRequestButtons(false);
@@ -422,6 +493,8 @@ if (field === "imageFile") {
     }
   };
 
+  const hasUnsavedChanges = useMemo(() => changeList.length > 0, [changeList]);
+
   if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center">
@@ -430,7 +503,6 @@ if (field === "imageFile") {
     );
   }
 
-  // Split first 2 cards and the rest
   const firstTwoCards = admissionteamData.slice(0, 1);
   const remainingCards = admissionteamData.slice(1);
 
@@ -464,7 +536,6 @@ if (field === "imageFile") {
         </div>
       ) : (
         <div className="regulation-container flex flex-col items-center">
-          {/* First two cards */}
           <div className="flex justify-center gap-6 mb-6 flex-wrap">
             {firstTwoCards.map((member, index) => (
               <TeamCard
@@ -483,7 +554,6 @@ if (field === "imageFile") {
             ))}
           </div>
 
-          {/* Remaining cards */}
           <div className="flex flex-wrap justify-center gap-6">
             {remainingCards.map((member, index) => (
               <TeamCard
@@ -512,7 +582,6 @@ if (field === "imageFile") {
             )}
           </div>
 
-          {/* Delete Selected */}
           {teamCardEdit && selectedItems.length > 0 && (
             <div className="flex justify-center mt-4">
               <button
@@ -523,25 +592,21 @@ if (field === "imageFile") {
               </button>
             </div>
           )}
+
           {showDeleteModal && (
             <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[1000]">
               <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[420px] shadow-lg">
                 <h2 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white">
                   Confirm Delete
                 </h2>
-
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                   Are you sure you want to delete the selected team member
                   {selectedItems.length > 1 ? "s" : ""}?
                 </p>
                 <div className="flex justify-end gap-3">
-                  <button
-                    className="px-4 py-2 bg-gray-300 rounded-md"
-                    onClick={() => setShowDeleteModal(false)}
-                  >
+                  <button className="px-4 py-2 bg-gray-300 rounded-md" onClick={() => setShowDeleteModal(false)}>
                     Cancel
                   </button>
-
                   <button
                     className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
                     onClick={() => {
@@ -556,32 +621,35 @@ if (field === "imageFile") {
             </div>
           )}
 
-          {/* Save / Cancel Buttons */}
           {teamCardEdit && !showRequestButtons && (
-            <div className="mt-4 flex justify-end gap-3 w-full">
+            <div className="mt-4 flex justify-end gap-3 w-full mr-14 mb-14">
               <button
                 className="px-4 py-2 bg-gray-400 text-white rounded"
                 onClick={() => {
-                  setAdmissionteamData([...originalData]);
+                  // Cancel should revert to last saved state committedRef.current (not originalData)
+                  const committed = committedRef.current ?? originalData;
+                  setAdmissionteamData(deepClone(committed));
                   setSelectedItems([]);
-                  setChangeList([]);
+                  // after nested cancel we should keep pending changeList as before save (transient),
+                  // but now restore changeList and showRequestButtons from committed baseline
+                  const pending = computeDiff(originalData, committedRef.current ?? committed);
+                  setChangeList(pending);
+                  setShowRequestButtons(pending.length > 0);
+                  // clear transient image previews (they will be recreated if committed saved files exist)
                   setImagePreviews({});
                   setTeamCardEdit(false);
-                  toast.info("Edits cancelled.");
                 }}
               >
                 Cancel
               </button>
-              <button
-                className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
-                onClick={handleSave}
-              >
-                Save
-              </button>
+              {hasUnsavedChanges && (
+                <button className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg" onClick={handleSave}>
+                  Save
+                </button>
+              )}
             </div>
           )}
 
-          {/* Request Modal */}
           {showRequestModal && (
             <RequestModal
               changeList={changeList}
@@ -592,19 +660,12 @@ if (field === "imageFile") {
             />
           )}
 
-          {/* Request / Discard buttons after save */}
           {showRequestButtons && (
-            <div className="flex justify-end w-full  gap-3 mt-4 mr-12">
-              <button
-                className="px-4 py-2 bg-gray-300 rounded-md"
-                onClick={handleDiscard}
-              >
-                Discard chnages
+            <div className="flex justify-end w-full gap-3 mt-4 mr-12 mb-12">
+              <button className="px-4 py-2 bg-gray-300 rounded-md" onClick={handleDiscard}>
+                Discard changes
               </button>
-              <button
-                className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded flex items-center gap-2"
-                onClick={() => setShowRequestModal(true)}
-              >
+              <button className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded flex items-center gap-2" onClick={() => setShowRequestModal(true)}>
                 Request
               </button>
             </div>
@@ -616,134 +677,75 @@ if (field === "imageFile") {
   );
 };
 
-// TeamCard Component
-const TeamCard = ({
-  member,
-  index,
-  teamCardEdit,
-  selectedItems,
-  handleSelect,
-  trackChange,
-  imagePreviews,
-  setImagePreviews,
-  setImageFiles,
-  UrlParser,
-}) => {
+const TeamCard = ({ member, index, teamCardEdit, selectedItems, handleSelect, trackChange, imagePreviews, setImagePreviews, setImageFiles, UrlParser }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Preview
     const previewUrl = URL.createObjectURL(file);
     setImagePreviews((prev) => ({
       ...prev,
       [member.id]: previewUrl,
     }));
 
-    // Static backend path
     const imagePath = `/static/images/admission_team/${file.name}`;
 
-    // 🔥 Store BOTH path and file
+    // We update both image_path (string) and imageFile (File object) on the item
     trackChange(index, "image_path", imagePath);
     trackChange(index, "imageFile", file);
   };
 
   return (
     <div className="relative border-2 border-secd dark:border-drks rounded-md flex flex-col items-center p-4 w-60 bg-prim dark:bg-drkp shadow hover:shadow-lg transition-shadow">
-      <img
-        src={imagePreviews[member.id] || UrlParser(member.image_path)}
-        alt={member.name}
-        className="rounded-md w-36 h-44 object-cover mb-2"
-      />
+      <img src={imagePreviews[member.id] || UrlParser(member.image_path)} alt={member.name} className="rounded-md w-36 h-44 object-cover mb-2" />
       {teamCardEdit ? (
         <>
           <label className="bg-secd text-text hover:bg-brwn hover:text-prim px-3 py-1 rounded cursor-pointer mb-2">
             <span>{member.image_path ? "Replace" : "Upload"}</span>
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleImageChange}
-            />
+            <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
           </label>
-          <input
-            type="text"
-            value={member.name}
-            placeholder="Name"
-            className="w-full border p-2 rounded mb-2"
-            onChange={(e) => trackChange(index, "name", e.target.value)}
-          />
-          <input
-            type="text"
-            value={member.designation}
-            placeholder="Designation"
-            className="w-full border p-2 rounded mb-2"
-            onChange={(e) => trackChange(index, "designation", e.target.value)}
-          />
+          <input type="text" value={member.name} placeholder="Name" className="w-full border p-2 rounded mb-2" onChange={(e) => trackChange(index, "name", e.target.value)} />
+          <input type="text" value={member.designation} placeholder="Designation" className="w-full border p-2 rounded mb-2" onChange={(e) => trackChange(index, "designation", e.target.value)} />
           <div className="absolute top-2 right-2">
-            <input
-              type="checkbox"
-              checked={selectedItems.includes(member.id)}
-              onChange={(e) => handleSelect(member.id, e.target.checked)}
-              className="w-5 h-5 accent-blue-500 cursor-pointer"
-            />
+            <input type="checkbox" checked={selectedItems.includes(member.id)} onChange={(e) => handleSelect(member.id, e.target.checked)} className="w-5 h-5 accent-blue-500 cursor-pointer" />
           </div>
         </>
       ) : (
         <>
-          <h3 className="font-semibold text-brwn dark:text-drkt text-center text-[18px]">
-            {member.name}
-          </h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-            {member.designation}
-          </p>
+          <h3 className="font-semibold text-brwn dark:text-drkt text-center text-[18px]">{member.name}</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 text-center">{member.designation}</p>
         </>
       )}
     </div>
   );
 };
 
-// RequestModal Component
-const RequestModal = ({
-  changeList,
-  revertField,
-  handleRequestConfirm,
-  closeModal,
-  loading,
-}) => (
+const RequestModal = ({ changeList, revertField, handleRequestConfirm, closeModal, loading }) => (
   <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
     <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
-      <h2 className="text-xl font-bold mb-4 text-gray-800"> Request Changes</h2>
+      <h2 className="text-xl font-bold mb-4 text-gray-800">Request Changes</h2>
       <p className="text-red-600 mb-4">
-        <span className="font-medium">Note:</span> Your changes will stay
-        pending until approved by the superior admin. Once approved, they will
-        be applied automatically to the live site.
+        <span className="font-medium">Note:</span> Your changes will stay pending until approved by the superior admin. Once approved, they will be applied automatically to the live site.
       </p>
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b">
             <th className="text-left p-2 border">Action</th>
             <th className="text-left p-2 border">Section</th>
-            <th className="text-left p-2 border">changes</th>
+            <th className="text-left p-2 border">Changes</th>
             <th className="text-left p-2 border">Undo</th>
           </tr>
         </thead>
         <tbody>
           {changeList.map((c, idx) => (
             <tr key={idx} className="border-b">
-              <td className=" border p-2">
-                {c.type === "added"}
-                {c.type === "deleted"}
-                {c.type === "edited"}
+              <td className="border p-2">
                 <span className="capitalize ml-1">{c.type}</span>
               </td>
               <td className="p-2 border">Admin-team</td>
-              <td>{c.section}</td>
+              <td className="p-2 border">{c.section}</td>
               <td className="p-2 border">
-                <button
-                  className=" p-1 rounded hover:bg-gray-100"
-                  onClick={() => revertField(idx)}
-                >
+                <button className="p-1 rounded hover:bg-gray-100" onClick={() => revertField(idx)}>
                   <X />
                 </button>
               </td>
@@ -752,19 +754,10 @@ const RequestModal = ({
         </tbody>
       </table>
       <div className="flex justify-end gap-3 mt-4">
-        <button
-          className="px-4 py-2 bg-gray-300 rounded-md"
-          onClick={closeModal}
-        >
+        <button className="px-4 py-2 bg-gray-300 rounded-md" onClick={closeModal}>
           Cancel
         </button>
-        <button
-          disabled={loading}
-          className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
-            loading ? "cursor-progress" : "hover:bg-[#800000]"
-          }`}
-          onClick={handleRequestConfirm}
-        >
+        <button disabled={loading} className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${loading ? "cursor-progress" : "hover:bg-[#800000]"}`} onClick={handleRequestConfirm}>
           {loading ? "Processing..." : "Final Request"}
         </button>
       </div>

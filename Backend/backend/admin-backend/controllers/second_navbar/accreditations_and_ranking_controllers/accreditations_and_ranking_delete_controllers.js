@@ -20,14 +20,14 @@ async function deleteData(tempDoc, mainCollection) {
             { $pull: { "data.$.pdfs": { name: pdf.name } } }
           );
         }
-        return { message: `Selected PDFs deleted in ${meta_data.department}` };
+        return { success: true, message: `Selected PDFs deleted in ${meta_data.department}` };
       } else {
         // Delete entire department
         await mainCollection.updateOne(
           { type: collection_type },
           { $pull: { data: { id: meta_data.id } } }
         );
-        return { message: `Entire department ${meta_data.department} deleted` };
+        return { success: true,  message: `Entire department ${meta_data.department} deleted` };
       }
     }
 
@@ -39,14 +39,14 @@ async function deleteData(tempDoc, mainCollection) {
           { type: collection_type, "data.category": category },
           { $pull: { "data.$.content": { name: meta_data.name } } }
         );
-        return { message: "NAAC content deleted successfully" };
+        return { success: true,  message: "NAAC content deleted successfully" };
       } else {
         // Delete entire category
         await mainCollection.updateOne(
           { type: collection_type },
           { $pull: { data: { category } } }
         );
-        return { message: `Entire NAAC category '${category}' deleted` };
+        return { success: true,  message: `Entire NAAC category '${category}' deleted` };
       }
     }
 
@@ -59,7 +59,7 @@ async function deleteData(tempDoc, mainCollection) {
           { type: collection_type },
           { $pull: { data: { category } } }
         );
-        return { message: `Entire NIRF category '${category}' deleted` };
+        return { success: true,  message: `Entire NIRF category '${category}' deleted` };
       }
 
       if (meta_data.content && meta_data.content.length > 0) {
@@ -74,14 +74,14 @@ async function deleteData(tempDoc, mainCollection) {
             { $pull: { "data.$.content": { name: pdf.name } } }
           );
         }
-        return { message: `Selected PDFs deleted in NIRF ${category} ${meta_data.year}` };
+        return { success: true,  message: `Selected PDFs deleted in NIRF ${category} ${meta_data.year}` };
       } else {
         // Delete entire year
         await mainCollection.updateOne(
           { type: collection_type },
           { $pull: { data: { category, year: meta_data.year } } }
         );
-        return { message: `Entire NIRF year ${meta_data.year} deleted` };
+        return { success: true,  message: `Entire NIRF year ${meta_data.year} deleted` };
       }
     }
 

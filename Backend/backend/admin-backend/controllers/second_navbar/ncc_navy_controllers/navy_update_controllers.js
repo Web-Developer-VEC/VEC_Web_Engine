@@ -25,7 +25,7 @@ async function updateData( tempDoc, mainCollection) {
         { $set: { data: [meta_data] } }
       );
       return {
-       
+        success: true,
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -45,7 +45,7 @@ async function updateData( tempDoc, mainCollection) {
       // Case A: Array of strings
       if (Array.isArray(content) && typeof content[0] === "string") {
         if (!original_data)
-          return { status: 400, message: "original_data required" };
+          return { success: false, message: "original_data required" };
 
         // Unwrap { content: [...] } if present
         const originalArray = Array.isArray(original_data?.content)
@@ -106,7 +106,7 @@ async function updateData( tempDoc, mainCollection) {
       }
 
       return {
-       
+        success: true,
         message: `Updated successfully in ${collection_type} - category ${category}`,
         data: meta_data,
       };
@@ -132,7 +132,7 @@ async function updateData( tempDoc, mainCollection) {
       );
 
       return {
-       
+        success: true,
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };

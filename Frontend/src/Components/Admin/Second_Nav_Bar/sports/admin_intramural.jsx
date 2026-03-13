@@ -8,58 +8,44 @@ import { toast, ToastContainer } from "react-toastify";
 const Intramural = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+
+
   const [achievements, setAchievements] = useState([]);
   const [initialSnapshot, setInitialSnapshot] = useState([]);
+  const [tempAchievements, setTempAchievements] = useState([]);
+  const { sendRequest,loading } = useAdminRequest();
   const [editintra, setEditintra] = useState(false);
   const [selected, setSelected] = useState([]);
-  const [tempAchievements, setTempAchievements] = useState([]);
-  const [imagePreviews, setImagePreviews] = useState({});
-  const { sendRequest, loading, error } = useAdminRequest();
   const [isDirty, setIsDirty] = useState(false);
 
-
-  // New states
   const [showRequestButtons, setShowRequestButtons] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [showDiscardModal, setShowDiscardModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [changes, setChanges] = useState([]); // ✅ track changes
+
+  const [changes, setChanges] = useState([]);
   const hasChanges = changes.length > 0;
 
-  // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+  // ─── UrlParser ──────────────────────────────────────────────────────────────
   const UrlParser = (path) => {
     if (!path) return "";
-
-    // If already relative
     if (path.startsWith("/static")) return path;
-
-    // Convert S3 full URL to relative path
     const staticIndex = path.indexOf("/static");
-    if (staticIndex !== -1) {
-      return path.substring(staticIndex);
-    }
-
+    if (staticIndex !== -1) return path.substring(staticIndex);
     return path;
   };
 
+  // ─── makePreview ────────────────────────────────────────────────────────────
+  // Builds the <img src> string from a DB-relative path
+  const makePreview = (serverPath) =>
+    serverPath ? `${BASE_URL}${serverPath}` : "";
 
-  const isSameAsOriginal = (id, currentRow) => {
-    const original = initialSnapshot.find(o => o.id === id);
-    if (!original) return false;
-
-    return (
-      original.text === currentRow.text &&
-      original.image === currentRow.image
-    );
-  };
-
-
-  // Initialize data
+  // ─── Format data on load ────────────────────────────────────────────────────
   useEffect(() => {
     if (!data) {
       setAchievements([]);
@@ -68,22 +54,21 @@ const Intramural = ({ data }) => {
       return;
     }
 
-    const formattedData = data?.map((image, index) => {
+    const formattedData = data.map((image, index) => {
       const serverPath = UrlParser(image?.image_path);
-
       return {
-        id: image._id || index + 1,
+        // Use a stable numeric id so revert math never breaks
+        id: index + 1,
+        _mongoId: image._id,          // keep original DB id for payloads if needed
         text: image?.title || "No Title",
-        image: serverPath,
-        preview: `${BASE_URL}${serverPath}`,
-
+        image: serverPath,            // DB-relative path  ← NEVER overwrite this on upload
+        original_image: serverPath,   // permanent DB snapshot of image path
+        original_text: image?.title || "No Title", // permanent DB snapshot of text
+        preview: makePreview(serverPath), // <img src> for display
+        newFile: null,
         isNew: false,
-        isEdited: false,
-        isDeleted: false,
       };
-
     });
-
 
     const deepCopy = JSON.parse(JSON.stringify(formattedData));
 
@@ -92,183 +77,292 @@ const Intramural = ({ data }) => {
     setInitialSnapshot(deepCopy);
   }, [data]);
 
-  // Carousel auto-play
+  // ─── Carousel auto-play ─────────────────────────────────────────────────────
   useEffect(() => {
     if (isHovered || achievements.length === 0) return;
-
     const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % achievements.length);
+      setActiveIndex((prev) => (prev + 1) % achievements.length);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [isHovered, achievements]);
 
   const handlePrev = () => {
     if (achievements.length === 0) return;
-    setActiveIndex(
-      (prevIndex) => (prevIndex - 1 + achievements.length) % achievements.length
-    );
+    setActiveIndex((prev) => (prev - 1 + achievements.length) % achievements.length);
   };
 
   const handleNext = () => {
     if (achievements.length === 0) return;
-    setActiveIndex((prevIndex) => (prevIndex + 1) % achievements.length);
+    setActiveIndex((prev) => (prev + 1) % achievements.length);
   };
 
-  // ---- Edit Mode Handlers ----
+  // ─── handleInputChange ──────────────────────────────────────────────────────
   const handleInputChange = (id, field, value) => {
-    setIsDirty(true); // 🔥 mark changed
-
-    setTempAchievements(prev =>
-      prev.map(item => {
-        if (item.id !== id) return item;
-
-        if (selected.includes(id)) {
-          toast.warn("You cannot edit a selected item. Unselect it first.");
-          return item;
-        }
-
-        const updated = { ...item, [field]: value };
-        const reverted = isSameAsOriginal(id, updated);
-
-        return {
-          ...updated,
-          isEdited: !reverted,
-        };
-      })
-    );
-  };
-
-
-
-  const handleImageUpload = (id, file) => {
     if (selected.includes(id)) {
-      toast.warn("You cannot edit a selected item. Unselect it first.");
       return;
     }
+
     setIsDirty(true);
+
+    setTempAchievements((prev) =>
+      prev.map((item) =>
+        item.id !== id ? item : { ...item, [field]: value }
+      )
+    );
+
+    // Skip change tracking for newly added rows (not in initialSnapshot)
+    const isAdded = changes.find((c) => c.id === id && c.action === "Added");
+    if (isAdded) return;
+
+    const snapshotRow = initialSnapshot.find((o) => o.id === id);
+    if (!snapshotRow) return;
+
+    setChanges((prev) => {
+      const alreadyEdited = prev.find(
+        (c) => c.id === id && c.action === "Edited"
+      );
+
+      // Already tracking an edit for this row → nothing more to add
+      if (alreadyEdited) return prev;
+
+      // First edit on this row → record the full snapshot as oldValue
+      return [
+        ...prev,
+        { id, action: "Edited", oldValue: { ...snapshotRow } },
+      ];
+    });
+  };
+
+  // ─── handleImageUpload ──────────────────────────────────────────────────────
+  const handleImageUpload = (id, file) => {
+    if (!file) return;
+    if (selected.includes(id)) {
+      return;
+    }
+
+    setIsDirty(true);
+
     const previewUrl = URL.createObjectURL(file);
     const serverPath = `/static/images/sports/intramural/${file.name}`;
 
-    setTempAchievements(prev =>
-      prev.map(item => {
-        if (item.id !== id) return item;
-
-        const updated = {
-          ...item,
-          image: serverPath,
-          preview: previewUrl,
-          newFile: file,
-        };
-
-        return {
-          ...updated,
-          isEdited: !isSameAsOriginal(id, updated),
-        };
-      })
+    setTempAchievements((prev) =>
+      prev.map((item) =>
+        item.id !== id
+          ? item
+          : {
+              ...item,
+              image: serverPath,    // new DB path (used in payload)
+              preview: previewUrl,  // blob URL for <img> preview
+              newFile: file,
+            }
+      )
     );
+
+    // Skip change tracking for newly added rows
+    const isAdded = changes.find((c) => c.id === id && c.action === "Added");
+    if (isAdded) return;
+
+    const snapshotRow = initialSnapshot.find((o) => o.id === id);
+    if (!snapshotRow) return;
+
+    setChanges((prev) => {
+      const alreadyEdited = prev.find(
+        (c) => c.id === id && c.action === "Edited"
+      );
+      if (alreadyEdited) return prev;
+
+      return [
+        ...prev,
+        { id, action: "Edited", oldValue: { ...snapshotRow } },
+      ];
+    });
   };
 
-
-
-
-
+  // ─── handleAddRow ───────────────────────────────────────────────────────────
   const handleAddRow = () => {
     const newId = tempAchievements.length
       ? Math.max(...tempAchievements.map((a) => a.id)) + 1
       : 1;
+
     const newRow = {
       id: newId,
       text: "",
       image: "",
+      original_image: "",
+      original_text: "",
       preview: "",
       newFile: null,
       isNew: true,
-      isEdited: false,
-      isDeleted: false,
     };
+
     setIsDirty(true);
     setTempAchievements((prev) => [...prev, newRow]);
-
     setChanges((prev) => [
       ...prev,
-      { action: "Added", section: "Intramural Achievements", field: `image - ${newId}` },
+      { id: newId, action: "Added", oldValue: null },
     ]);
   };
+
+  // ─── handleDeleteSelected ───────────────────────────────────────────────────
   const handleDeleteSelected = () => {
     if (selected.length === 0) return;
 
-    // mark dirty
     setIsDirty(true);
 
-    // 🔥 ADD DELETE LOGS TO REQUEST BOX
-    setChanges(prev => [
-      ...prev,
-      ...selected.map(id => ({
-        action: "Deleted",
-        section: "Intramural Achievements",
-        field: `image - ${id}`,
-      }))
-    ]);
-
-    // 🔥 REMOVE FROM TEMP DATA
-    setTempAchievements(prev =>
-      prev.filter(item => !selected.includes(item.id))
+    setTempAchievements((prev) =>
+      prev.filter((item) => !selected.includes(item.id))
     );
+
+    setChanges((prev) => {
+      let updated = [...prev];
+
+      selected.forEach((id) => {
+        // If row was newly added → just remove its "Added" entry, no Delete needed
+        const addedEntry = updated.find(
+          (c) => c.id === id && c.action === "Added"
+        );
+        if (addedEntry) {
+          updated = updated.filter((c) => c.id !== id);
+          return;
+        }
+
+        // Remove any existing Edited entry for this row
+        updated = updated.filter((c) => c.id !== id);
+
+        // Find snapshot for this row (the true DB state)
+        const snapshotRow = initialSnapshot.find((o) => o.id === id);
+        if (!snapshotRow) return;
+
+        // Push a Deleted entry with the full snapshot as oldValue
+        updated.push({
+          id,
+          action: "Deleted",
+          oldValue: { ...snapshotRow },
+        });
+      });
+
+      return updated;
+    });
 
     setSelected([]);
     setShowDeleteModal(false);
   };
 
+ 
+  const handleRevertChanges = (changeIndex) => {
+    const change = changes[changeIndex];
+    if (!change) return;
 
+    setTempAchievements((prev) => {
+      if (change.action === "Added") {
+        // Remove the newly added row
+        return prev.filter((item) => item.id !== change.id);
+      }
 
+      if (change.action === "Edited") {
+        const snap = change.oldValue; // full snapshot row
 
+        return prev.map((item) => {
+          if (item.id !== change.id) return item;
+
+          // Revoke blob URL if a new file was previewed
+          if (item.newFile && item.preview?.startsWith("blob:")) {
+            URL.revokeObjectURL(item.preview);
+          }
+
+          // Restore all fields from the snapshot
+          return {
+            ...item,
+            text: snap.text,
+            image: snap.original_image,       // DB path
+            original_image: snap.original_image,
+            original_text: snap.original_text,
+            preview: makePreview(snap.original_image), // rebuild <img src>
+            newFile: null,
+            isNew: false,
+          };
+        });
+      }
+
+      if (change.action === "Deleted") {
+        const snap = change.oldValue;
+
+        // Find the original position from initialSnapshot
+        const originalIndex = initialSnapshot.findIndex(
+          (o) => o.id === change.id
+        );
+
+        // Re-insert at original position (or end if not found)
+        const restored = {
+          ...snap,
+          preview: makePreview(snap.original_image),
+          newFile: null,
+          isNew: false,
+        };
+
+        if (originalIndex === -1) return [...prev, restored];
+
+        const copy = [...prev];
+        copy.splice(originalIndex, 0, restored);
+        return copy;
+      }
+
+      return prev;
+    });
+
+    // Remove this entry from changes[]
+    setChanges((prev) => prev.filter((_, i) => i !== changeIndex));
+  };
+
+  // ─── handleSave ─────────────────────────────────────────────────────────────
   const handleSave = () => {
     if (!isDirty) {
-      toast.warn("No changes made!");
       return;
     }
 
-    const updatedChanges = [];
-    toast.success("Changes saved locally. Please submit a request to apply.");
+    const invalid = tempAchievements.some(
+      (item) => !item.text.trim() || !item.image
+    );
+    if (invalid) {
+      return;
+    }
 
-    tempAchievements.forEach(item => {
-      const original = initialSnapshot.find(o => o.id === item.id);
-
-      if (!original) {
-        updatedChanges.push({ action: "Added", section: "Intramural Achievements", field: `image - ${item.id}` });
-      }
-      else if (original.text !== item.text || original.image !== item.image) {
-        updatedChanges.push({ action: "Edited", section: "Intramural Achievements", field: `image - ${item.id}` });
-      }
-    });
-
-    initialSnapshot.forEach(item => {
-      if (!tempAchievements.find(t => t.id === item.id)) {
-        updatedChanges.push({ action: "Deleted", section: "Intramural Achievements", field: `image - ${item.id}` });
-      }
-    });
-
-    setChanges(updatedChanges);
-    setAchievements(tempAchievements);
     setEditintra(false);
     setShowRequestButtons(true);
     setIsDirty(false);
   };
 
-
-
+  // ─── handleCancel ───────────────────────────────────────────────────────────
+  // Full cancel: revert everything back to initialSnapshot
   const handleCancel = () => {
-    setTempAchievements(achievements);
-    setEditintra(false);
-    setIsDirty(false);
-  };
-
-  const confirmDiscard = () => {
     const deepCopy = JSON.parse(JSON.stringify(initialSnapshot));
 
-    setAchievements(deepCopy);
-    setTempAchievements(deepCopy);
+    // Rebuild previews (can't JSON.stringify blob URLs anyway)
+    const restored = deepCopy.map((item) => ({
+      ...item,
+      preview: makePreview(item.original_image),
+      newFile: null,
+    }));
+
+    setTempAchievements(restored);
+    setChanges([]);
+    setSelected([]);
+    setIsDirty(false);
+    setEditintra(false);
+    setShowRequestButtons(false);
+  };
+
+  // ─── confirmDiscard ─────────────────────────────────────────────────────────
+  const confirmDiscard = () => {
+    const deepCopy = JSON.parse(JSON.stringify(initialSnapshot));
+    const restored = deepCopy.map((item) => ({
+      ...item,
+      preview: makePreview(item.original_image),
+      newFile: null,
+    }));
+
+    setAchievements(restored);
+    setTempAchievements(restored);
     setSelected([]);
     setCurrentPage(1);
     setShowRequestButtons(false);
@@ -278,72 +372,45 @@ const Intramural = ({ data }) => {
     setShowDiscardModal(false);
   };
 
-  // Pagination logic
+  // ─── Pagination ─────────────────────────────────────────────────────────────
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = tempAchievements.slice(indexOfFirstRow, indexOfLastRow);
   const totalPages = Math.ceil(tempAchievements.length / rowsPerPage);
 
-  /* ==================== BUILD PAYLOAD ==================== */
-  const buildSportsInfrastructurePayload = ({
-    action,
-    newData = {},
-    oldData = {},
-  }) => {
-    /* -------------------- INSERT -------------------- */
+  // ─── Payload builder ────────────────────────────────────────────────────────
+  const buildPayload = ({ action, newData = {}, oldData = {} }) => {
+    const base = {
+      collectionName: "sports",
+      collection_type: "intramural",
+    };
+
     if (action === "Added") {
       return {
-        collectionName: "sports",
-        collection_type: "intramural",
+        ...base,
         action: "insert",
-        title: "Insertion of Infrastructure",
-
-        meta_data: {
-          title: newData.title,
-          description: newData.description,
-          image_path: newData.image_path,
-        },
-
+        title: "Insertion of Intramural Achievement",
+        meta_data: { title: newData.title, image_path: newData.image_path },
         original_data: null,
       };
     }
 
-    /* -------------------- UPDATE -------------------- */
     if (action === "Edited") {
       return {
-        collectionName: "sports",
-        collection_type: "intramural",
+        ...base,
         action: "update",
-        title: "Updation of Infrastructure",
-
-        meta_data: {
-          title: newData.title,
-          description: newData.description,
-          image_path: newData.image_path,
-        },
-
-        original_data: {
-          title: oldData.title,
-          description: oldData.description,
-          image_path: oldData.image_path,
-        },
+        title: "Updation of Intramural Achievement",
+        meta_data: { title: newData.title, image_path: newData.image_path },
+        original_data: { title: oldData.title, image_path: oldData.image_path },
       };
     }
 
-    /* -------------------- DELETE -------------------- */
     if (action === "Deleted") {
       return {
-        collectionName: "sports",
-        collection_type: "intramural",
+        ...base,
         action: "delete",
-        title: "Deletion of Infrastructure",
-
-        meta_data: {
-          title: oldData.title,
-          description: oldData.description,
-          image_path: oldData.image_path,
-        },
-
+        title: "Deletion of Intramural Achievement",
+        meta_data: { title: oldData.title, image_path: oldData.image_path },
         original_data: null,
       };
     }
@@ -351,126 +418,109 @@ const Intramural = ({ data }) => {
     return null;
   };
 
-  /* ==================== HANDLE FINAL REQUEST ==================== */
+  // ─── handleFinalRequest ─────────────────────────────────────────────────────
   const handleFinalRequest = async () => {
-    if (!tempAchievements.length && !initialSnapshot.length) {
-      toast.warn("No changes to submit");
-      console.log("N changs");
-
+    if (!changes.length) {
       return;
     }
-    console.log("TEMP ACHIEVEMENTS:", tempAchievements);
+
     const payloads = [];
     const files = [];
 
-    // Compare tempAchievements with initialSnapshot to build payloads
-    const snapshotMap = new Map(initialSnapshot.map(a => [a.id, a]));
-    const tempMap = new Map(tempAchievements.map(t => [t.id, t]));
+    changes.forEach((change) => {
+      const currentItem = tempAchievements.find((i) => i.id === change.id);
 
-    const validItems = tempAchievements.filter(item => {
-      // 🚫 ignore added then deleted
-      if (item.isNew && item.isDeleted) return false;
-      return true;
-    });
+      // ── ADD ──────────────────────────────────────────────────────────────
+      if (change.action === "Added") {
+        if (!currentItem) return;
 
+        const imagePath = currentItem.newFile
+          ? `/static/images/sports/intramural/${currentItem.newFile.name}`
+          : currentItem.image;
 
-    // ---- ADDED ----
-    validItems.forEach((item) => {
-      if (!snapshotMap.has(item.id)) {
         payloads.push(
-          buildSportsInfrastructurePayload({
+          buildPayload({
             action: "Added",
-            newData: {
-              title: item.text,
-              image_path: item.image,
-            },
+            newData: { title: currentItem.text, image_path: imagePath },
           })
         );
-
-        if (item.newFile) {
-          files.push(item.newFile);
-        }
+        if (currentItem.newFile) files.push(currentItem.newFile);
       }
-    });
 
-    // ---- UPDATED ----
-    validItems.forEach((item) => {
-      const original = snapshotMap.get(item.id);
-      if (original && (original.text !== item.text || original.image !== item.image)) {
+      // ── EDIT ─────────────────────────────────────────────────────────────
+      if (change.action === "Edited") {
+        if (!currentItem) return;
+
+        const newImagePath = currentItem.newFile
+          ? `/static/images/sports/intramural/${currentItem.newFile.name}`
+          : currentItem.image;
+
+        // oldData comes from change.oldValue (the snapshot captured at first edit)
         payloads.push(
-          buildSportsInfrastructurePayload({
+          buildPayload({
             action: "Edited",
-            newData: {
-              title: item.text,
-              image_path: item.image,
-            },
+            newData: { title: currentItem.text, image_path: newImagePath },
             oldData: {
-              title: original.text,
-              description: original.text,
-              image_path: original.image,
+              title: change.oldValue.original_text,
+              image_path: change.oldValue.original_image,
             },
           })
         );
-
-        if (item.newFile) {
-          files.push(item.newFile);
-        }
+        if (currentItem.newFile) files.push(currentItem.newFile);
       }
-    });
 
-    // ---- DELETED ----
-    initialSnapshot.forEach((item) => {
-      if (!tempMap.has(item.id)) {
+      // ── DELETE ───────────────────────────────────────────────────────────
+      if (change.action === "Deleted") {
         payloads.push(
-          buildSportsInfrastructurePayload({
+          buildPayload({
             action: "Deleted",
             oldData: {
-              title: item.text,
-              image_path: item.image,
+              title: change.oldValue.original_text,
+              image_path: change.oldValue.original_image,
             },
           })
         );
       }
     });
 
-    console.log("FINAL PAYLOADS:", payloads);
-    console.log("FILES TO UPLOAD:", files);
+    console.log("📦 PAYLOADS:", payloads);
+    console.log("🖼 FILES:", files);
 
     if (!payloads.length) {
-      toast.warn("No changes to submit");
-      console.log("Hello");
-
       return;
     }
 
     try {
       await sendRequest(payloads, files);
+     
 
-      toast.success("Request submitted!");
-
-      // ✅ NEW baseline = current edited data
+      // New baseline = current temp state
       const deepCopy = JSON.parse(JSON.stringify(tempAchievements));
+      const restored = deepCopy.map((item) => ({
+        ...item,
+        preview: makePreview(item.image),
+        original_image: item.image,
+        original_text: item.text,
+        newFile: null,
+        isNew: false,
+      }));
 
-      setInitialSnapshot(deepCopy);
-      setAchievements(deepCopy);
-      setTempAchievements(deepCopy);
+      setInitialSnapshot(restored);
+      setAchievements(restored);
+      setTempAchievements(restored);
 
-      // Reset UI states
       setShowRequestModal(false);
       setShowRequestButtons(false);
       setChanges([]);
       setSelected([]);
       setIsDirty(false);
-
-    } catch (error) {
-      console.error("Error submitting request:", error);
-      toast.error("Failed to submit request");
+    } catch (err) {
+      console.error("Error submitting request:", err);
+   
     }
-
-
-
   };
 
+  // ─── Render ─────────────────────────────────────────────────────────────────
   return (
     <>
       {/* Edit Button */}
@@ -487,14 +537,16 @@ const Intramural = ({ data }) => {
           </button>
         )}
       </div>
+
       <ToastContainer position="bottom-right" autoClose={3000} />
+
       {data ? (
         <div className="relative w-full max-w-4xl mx-auto mb-10 mt-10">
           <h2 className="text-center text-accn dark:text-drkt text-3xl font-bold mb-4">
             Intramural Achievements {data?.year}
           </h2>
 
-          {/* ---- Carousel View ---- */}
+          {/* ── Carousel (uses `achievements` — never changed during edit) ── */}
           {!editintra &&
             (achievements.length > 0 ? (
               <div
@@ -513,8 +565,8 @@ const Intramural = ({ data }) => {
                         style={{ opacity: activeIndex === index ? 1 : 0.5 }}
                       >
                         <img
-                          src={item.preview || `${BASE_URL}${item.image}`}
-                          alt="preview"
+                          src={item.preview || makePreview(item.image)}
+                          alt="achievement"
                           className="w-full h-80 object-contain rounded-t-lg"
                         />
                         <div className="p-4 text-center rounded-b-lg">
@@ -544,8 +596,9 @@ const Intramural = ({ data }) => {
                   {achievements.map((_, index) => (
                     <button
                       key={index}
-                      className={`w-2.5 h-2.5 rounded-full ${activeIndex === index ? "bg-blue-500" : "bg-gray-300"
-                        } transition-all`}
+                      className={`w-2.5 h-2.5 rounded-full ${
+                        activeIndex === index ? "bg-blue-500" : "bg-gray-300"
+                      } transition-all`}
                       onClick={() => setActiveIndex(index)}
                     />
                   ))}
@@ -557,9 +610,9 @@ const Intramural = ({ data }) => {
               </p>
             ))}
 
-          {/* ---- Edit Mode ---- */}
+          {/* ── Edit Mode Table (uses `tempAchievements`) ── */}
           {editintra && (
-            <div className="overflow-x-auto border rounded-lg shadow-md p-4 bg-white dark:bg-gray-800 ">
+            <div className="overflow-x-auto border rounded-lg shadow-md p-4 bg-white dark:bg-gray-800">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-gray-100 dark:bg-gray-700">
@@ -584,7 +637,7 @@ const Intramural = ({ data }) => {
                       <td className="p-2 flex items-center gap-2">
                         {item.preview || item.image ? (
                           <img
-                            src={item.preview || item.image}
+                            src={item.preview || makePreview(item.image)}
                             alt="preview"
                             className="w-20 h-20 object-cover rounded"
                           />
@@ -607,24 +660,21 @@ const Intramural = ({ data }) => {
                         <input
                           type="checkbox"
                           checked={selected.includes(item.id)}
-                          disabled={item.isEdited && !item.isNew} // 🔥 disable if edited
                           onChange={() =>
-                            setSelected(prev =>
+                            setSelected((prev) =>
                               prev.includes(item.id)
-                                ? prev.filter(s => s !== item.id)
+                                ? prev.filter((s) => s !== item.id)
                                 : [...prev, item.id]
                             )
                           }
                         />
-
-
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
 
-              {/* Pagination Controls */}
+              {/* Pagination */}
               <div className="flex justify-between items-center mt-4">
                 <button
                   disabled={currentPage === 1}
@@ -645,7 +695,7 @@ const Intramural = ({ data }) => {
                 </button>
               </div>
 
-              {/* Table Bottom Controls */}
+              {/* Row Actions */}
               <div className="flex justify-center items-center mt-4">
                 <div className="flex gap-2">
                   <button
@@ -664,31 +714,29 @@ const Intramural = ({ data }) => {
                   )}
                 </div>
               </div>
-            </div>
-          )}
 
-          {editintra && (
-            <div className="flex gap-2 mt-4 justify-end mr-12">
-              <button
-                onClick={handleCancel}
-                className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
-              >
-                Cancel
-              </button>
-              {editintra && isDirty && (
+              <div className="flex gap-2 mt-4 justify-end mr-2">
                 <button
-                  onClick={handleSave}
-                  className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-black rounded-lg shadow-md hover:bg-yellow-500 transition"
+                  onClick={handleCancel}
+                  className="px-4 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
                 >
-                  Save
+                  Cancel
                 </button>
-              )}
-
-
+                {isDirty && (
+                  <button
+                    onClick={handleSave}
+                    className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-black rounded-lg shadow-md hover:bg-yellow-500 transition"
+                  >
+                    Save
+                  </button>
+                )}
+              </div>
             </div>
           )}
+
+          {/* Delete Modal */}
           {showDeleteModal && (
-            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+            <div className="fixed inset-0 flex items-center justify-center bg-white/40 z-50">
               <div className="bg-white p-6 rounded shadow-lg w-[350px]">
                 <h2 className="font-semibold mb-4">Confirm Delete</h2>
                 <p>Are you sure you want to delete the selected items?</p>
@@ -709,20 +757,32 @@ const Intramural = ({ data }) => {
               </div>
             </div>
           )}
+
+          {/* Discard Modal */}
           {showDiscardModal && (
             <div className="fixed inset-0 flex items-center justify-center bg-white/40 z-50">
               <div className="bg-white p-6 rounded shadow-lg w-[350px]">
                 <h2 className="font-semibold mb-4">Discard Changes?</h2>
                 <p>All your unsaved changes will be lost.</p>
                 <div className="flex justify-end gap-3 mt-4">
-                  <button className="px-4 py-2 bg-gray-300 rounded" onClick={() => setShowDiscardModal(false)}>Cancel</button>
-                  <button className="px-4 py-2 bg-red-600 text-white rounded" onClick={confirmDiscard}>Discard</button>
+                  <button
+                    className="px-4 py-2 bg-gray-300 rounded"
+                    onClick={() => setShowDiscardModal(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="px-4 py-2 bg-red-600 text-white rounded"
+                    onClick={confirmDiscard}
+                  >
+                    Discard
+                  </button>
                 </div>
               </div>
             </div>
           )}
 
-          {/* ---- Request Buttons ---- */}
+          {/* Request Buttons */}
           {showRequestButtons && !editintra && (
             <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
               <button
@@ -746,7 +806,7 @@ const Intramural = ({ data }) => {
         </div>
       )}
 
-      {/* ---- Request Modal ---- */}
+      {/* ── Request Modal ── */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[750px] max-h-[80vh] overflow-y-auto">
@@ -754,8 +814,9 @@ const Intramural = ({ data }) => {
               Request Changes
             </h2>
             <p className="text-sm text-red-600 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin.
-              Once approved, they will be applied automatically to the live site.
+              Note: Your changes will stay pending until approved by the
+              superior admin. Once approved, they will be applied automatically
+              to the live site.
             </p>
 
             <table className="w-full text-sm text-text dark:text-drkt border">
@@ -764,40 +825,65 @@ const Intramural = ({ data }) => {
                   <th className="py-2 border">Action</th>
                   <th className="py-2 border">Section</th>
                   <th className="py-2 border">Item</th>
-                  <th className="py-2 border">Remove</th>
+                  <th className="py-2 border">Undo</th>
                 </tr>
               </thead>
               <tbody>
                 {changes.length > 0 ? (
-                  changes.map((change, index) => (
-                    <tr key={index} className="border text-center">
-                      <td
-                        className={`py-2 font-semibold ${change.action === "Added"
-                          ? "text-green-600"
-                          : change.action === "Updated"
-                            ? "text-blue-600"
-                            : "text-red-600"
+                  changes.map((change, index) => {
+                    const currentItem = tempAchievements.find(
+                      (i) => i.id === change.id
+                    );
+
+                    // Build a readable label for the "Item" column
+                    let label = "";
+                    if (change.action === "Added") {
+                      label = currentItem?.text || `New Row (id ${change.id})`;
+                    } else if (change.action === "Edited") {
+                      label =
+                        change.oldValue?.original_text ||
+                        `Row (id ${change.id})`;
+                    } else if (change.action === "Deleted") {
+                      label =
+                        change.oldValue?.original_text ||
+                        `Row (id ${change.id})`;
+                    }
+
+                    return (
+                      <tr key={index} className="border text-center">
+                        <td
+                          className={`py-2 border font-semibold ${
+                            change.action === "Added"
+                              ? "text-green-600"
+                              : change.action === "Edited"
+                              ? "text-blue-600"
+                              : "text-red-600"
                           }`}
-                      >
-                        {change.action}
-                      </td>
-                      <td className=" border py-2">{change.section}</td>
-                      <td className=" border py-2">{change.field}</td>
-                      <td className="py-2 border ">
-                        <button
-                          onClick={() =>
-                            setChanges((prev) => prev.filter((_, i) => i !== index))
-                          }
-                          className="text-red-500 hover:text-red-700 font-bold"
                         >
-                          ✕
-                        </button>
-                      </td>
-                    </tr>
-                  ))
+                          {change.action}
+                        </td>
+                        <td className="border py-2">
+                          Intramural Achievements
+                        </td>
+                        <td className="border py-2">
+                          <span className="px-2 py-1 bg-yellow-100 text-black rounded-md">
+                            {label}
+                          </span>
+                        </td>
+                        <td className="py-2 border">
+                          <button
+                            onClick={() => handleRevertChanges(index)}
+                            className="text-red-500 hover:text-red-700 font-bold"
+                          >
+                            ✕
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
                 ) : (
                   <tr>
-                    <td colSpan="4" className="py-4 text-gray-500">
+                    <td colSpan="4" className="py-4 text-gray-500 text-center">
                       No changes detected
                     </td>
                   </tr>
@@ -817,13 +903,12 @@ const Intramural = ({ data }) => {
                 className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-yellow-500 text-black font-medium"
                 disabled={loading || changes.length === 0}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>
         </div>
       )}
-
     </>
   );
 };

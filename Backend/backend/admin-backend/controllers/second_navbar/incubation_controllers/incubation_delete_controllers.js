@@ -37,10 +37,10 @@ async function deleteData(tempDoc, mainCollection) {
           { $pull: { data: { category: category } } }
         );
   
-        return { message: "the entire category is deleted for projects" };
+        return { success: true,  message: "the entire category is deleted for projects" };
       }
       
-      return { message: `the data is deleted successfully in projects type` };
+      return { success: true,  message: `the data is deleted successfully in projects type` };
     }
 
     if (multipleObject.includes(collection_type)) {
@@ -50,14 +50,14 @@ async function deleteData(tempDoc, mainCollection) {
         { $pull: { data: meta_data } }
       );
 
-      return { message: `Item deleted from ${collection_type}` };
+      return { success: true,  message: `Item deleted from ${collection_type}` };
     }
 
     // ---------- FALLBACK ----------
     throw new Error("Invalid collection type");
   } catch (error) {
     console.error("Error in deleteData:", error.message);
-    throw error;
+    return { success: false, error: error.message };
   }
 }
 
