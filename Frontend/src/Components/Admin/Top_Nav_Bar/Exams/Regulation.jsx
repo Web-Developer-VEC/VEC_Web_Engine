@@ -13,10 +13,13 @@ const AdminREGULATION = ({ theme, toggle }) => {
   const { sendRequest, loading: requestLoading, error: requestError } = useAdminRequest();
 
   const [regulationData, setRegulationData] = useState([]);
-  const [initialData, setInitialData] = useState([]);
+  const [initialData, setInitialData] = useState([]); // Data from server
+  const [savedData, setSavedData] = useState([]); // Last saved/requested data
   const initialMapRef = useRef(new Map());
+  const savedMapRef = useRef(new Map());
 
   const [hasChanges, setHasChanges] = useState(false);
+  const [hasChangesFromSaved, setHasChangesFromSaved] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isLoading, setLoading] = useState(true);
 
@@ -44,7 +47,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
   // Request modal states
   const [showRequestModal, setShowRequestModal] = useState(false);
 
-  // ✅ NEW: Discard confirmation for "Discard Changes" (after Save)
+  // Discard confirmation for "Discard Changes" (after Save)
   const [showDiscardConfirm, setShowDiscardConfirm] = useState(false);
 
   const navigate = useNavigate();
@@ -56,9 +59,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
     return `${BASE_URL}${path}`;
   };
 
-  // -----------------------------
   // Stable key logic (for diff)
-  // -----------------------------
   const makeKey = () => `${Date.now()}_${Math.random().toString(16).slice(2)}`;
 
   const normalizeReg = (reg) => ({
@@ -88,6 +89,35 @@ const AdminREGULATION = ({ theme, toggle }) => {
       links: (r.links || []).map((l) => ({ ...l })),
     }));
 
+  // Fetch regulation data
+  const fetchRegulationData = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post("/api/main-backend/exam", {
+        type: "regulation",
+      });
+      const data = response.data.data || [];
+
+      const keyed = data.map((r) => normalizeReg(r));
+
+      setRegulationData(keyed);
+      setInitialData(deepCloneRegs(keyed));
+      setSavedData(deepCloneRegs(keyed));
+      initialMapRef.current = buildMapByKey(keyed);
+      savedMapRef.current = buildMapByKey(keyed);
+
+      setLoading(false);
+    } catch (error) {
+      console.error("Error Fetching Regulation data", error);
+      if (error.response?.data?.status === 429) {
+        navigate("/ratelimit", {
+          state: { msg: error.response.data.message },
+        });
+      }
+      setLoading(false);
+    }
+  };
+
   // Online/offline
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -100,36 +130,12 @@ const AdminREGULATION = ({ theme, toggle }) => {
     };
   }, []);
 
-  // Fetch regulation data
+  // Initial fetch
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.post("/api/main-backend/exam", {
-          type: "regulation",
-        });
-        const data = response.data.data || [];
-
-        const keyed = data.map((r) => normalizeReg(r));
-
-        setRegulationData(keyed);
-        setInitialData(deepCloneRegs(keyed));
-        initialMapRef.current = buildMapByKey(keyed);
-
-        setLoading(false);
-      } catch (error) {
-        console.error("Error Fetching Regulation data", error);
-        if (error.response?.data?.status === 429) {
-          navigate("/ratelimit", {
-            state: { msg: error.response.data.message },
-          });
-        }
-        setLoading(true);
-      }
-    };
-    fetchData();
+    fetchRegulationData();
   }, [navigate]);
 
-  // Detect changes vs baseline (by __key)
+  // Detect changes vs baseline (by __key) - for showing "Save" button
   useEffect(() => {
     const baseMap = initialMapRef.current;
     const curMap = buildMapByKey(regulationData);
@@ -155,8 +161,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
     setHasChanges(changed);
 
-    // ✅ NEW: if request modal is open and changes become empty, auto close and restore original page state
-    // This happens when user clicks Undo for everything, leaving no diffs.
+    // if request modal is open and changes become empty, auto close and restore original page state
     if (!changed && showRequestModal) {
       setShowRequestModal(false);
       setIsDone(false);
@@ -165,6 +170,33 @@ const AdminREGULATION = ({ theme, toggle }) => {
       toast.info("No pending changes. Returning to original page.");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [regulationData]);
+
+  // Detect changes vs saved data - for showing "Cancel" behavior
+  useEffect(() => {
+    const savedMap = savedMapRef.current;
+    const curMap = buildMapByKey(regulationData);
+
+    let changed = false;
+
+    for (const [key, cur] of curMap.entries()) {
+      const saved = savedMap.get(key);
+      if (!saved || JSON.stringify(saved) !== JSON.stringify(cur)) {
+        changed = true;
+        break;
+      }
+    }
+
+    if (!changed) {
+      for (const [key] of savedMap.entries()) {
+        if (!curMap.has(key)) {
+          changed = true;
+          break;
+        }
+      }
+    }
+
+    setHasChangesFromSaved(changed);
   }, [regulationData]);
 
   // Checkbox selection
@@ -193,10 +225,10 @@ const AdminREGULATION = ({ theme, toggle }) => {
     setSelectedRegs([]);
   };
 
-  // Cancel editing => revert all changes
+  // Cancel editing => revert to saved data (last saved state), not initial server data
   const handleCancel = () => {
-    const baseline = deepCloneRegs(initialData);
-    setRegulationData(baseline);
+    const saved = deepCloneRegs(savedData);
+    setRegulationData(saved);
 
     setIsEditing(false);
     setIsDone(false);
@@ -213,7 +245,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
     ]);
     setPopupFiles([null, null, null]);
 
-    toast.info("Changes reverted.");
+    toast.info("Reverted to last saved state.");
   };
 
   // Save changes (stage for request)
@@ -222,18 +254,24 @@ const AdminREGULATION = ({ theme, toggle }) => {
       toast.info("No changes to save.");
       return;
     }
+    
+    // Update saved data to current regulation data
+    const currentSaved = deepCloneRegs(regulationData);
+    setSavedData(currentSaved);
+    savedMapRef.current = buildMapByKey(currentSaved);
+    
     setIsEditing(false);
     setIsDone(true);
     toast.success("Saved. Now click Request to send for approval.");
   };
 
-  // ✅ Confirmation flow for "Discard Changes" (after Save)
+  // Confirmation flow for "Discard Changes" (after Save)
   const requestDiscardChanges = () => setShowDiscardConfirm(true);
 
   const confirmDiscardChanges = () => {
-    const clonedData = deepCloneRegs(initialData);
+    const saved = deepCloneRegs(savedData);
 
-    setRegulationData(clonedData);
+    setRegulationData(saved);
     setIsEditing(false);
     setIsDone(false);
 
@@ -292,9 +330,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
     toast.success("Selected items removed (pending request).");
   };
 
-  // -----------------------------
-  // Diff for request modal (Inserted/Updated/Deleted)
-  // -----------------------------
+  // Diff for request modal (Inserted/Updated/Deleted) - Now at regulation level
   const requestChanges = useMemo(() => {
     const baseMap = initialMapRef.current;
     const curMap = buildMapByKey(regulationData);
@@ -304,15 +340,33 @@ const AdminREGULATION = ({ theme, toggle }) => {
     for (const [key, cur] of curMap.entries()) {
       const base = baseMap.get(key);
       if (!base) {
-        changes.push({ type: "Inserted", key, section: cur.category, current: cur, original: null });
+        changes.push({ 
+          type: "Inserted", 
+          key, 
+          section: cur.category, 
+          current: cur, 
+          original: null 
+        });
       } else if (JSON.stringify(base) !== JSON.stringify(cur)) {
-        changes.push({ type: "Updated", key, section: cur.category, current: cur, original: base });
+        changes.push({ 
+          type: "Updated", 
+          key, 
+          section: cur.category, 
+          current: cur, 
+          original: base 
+        });
       }
     }
 
     for (const [key, base] of baseMap.entries()) {
       if (!curMap.has(key)) {
-        changes.push({ type: "Deleted", key, section: base.category, current: null, original: base });
+        changes.push({ 
+          type: "Deleted", 
+          key, 
+          section: base.category, 
+          current: null, 
+          original: base 
+        });
       }
     }
 
@@ -341,43 +395,70 @@ const AdminREGULATION = ({ theme, toggle }) => {
     }
   };
 
-  // Payload generation (strip __key)
-  const stripKey = (reg) => ({
-    category: reg?.category ?? "",
-    links: Array.isArray(reg?.links)
-      ? reg.links.map((l) => ({ name: l?.name ?? "", pdf_path: l?.pdf_path ?? "" }))
-      : [],
-  });
-
+  // Updated payload generation to match the required format - Now at regulation level
   const buildPayloads = () => {
-    return requestChanges.map((c) => {
-      if (c.type === "Inserted") {
-        return {
+    const payloads = [];
+
+    requestChanges.forEach((change) => {
+      if (change.type === "Inserted") {
+        // For insert, send the entire regulation with all links
+        payloads.push({
           collectionName: "exams",
           collection_type: "regulation",
           action: "insert",
-          title: "insert in regulation",
-          meta_data: stripKey(c.current),
-        };
+          title: "insert",
+          category: change.current.category,
+          meta_data: {
+            links: change.current.links.map(link => ({
+              name: link.name,
+              pdf_path: link.pdf_path
+            }))
+          }
+        });
       }
-      if (c.type === "Updated") {
-        return {
+      
+      else if (change.type === "Updated") {
+        // For update, send the entire regulation with all links
+        payloads.push({
           collectionName: "exams",
           collection_type: "regulation",
           action: "update",
-          title: "update in regulation",
-          original_data: stripKey(c.original),
-          meta_data: stripKey(c.current),
-        };
+          title: "update",
+          category: change.current.category,
+          meta_data: {
+            links: change.current.links.map(link => ({
+              name: link.name,
+              pdf_path: link.pdf_path
+            }))
+          },
+          original_data: {
+            links: change.original.links.map(link => ({
+              name: link.name,
+              pdf_path: link.pdf_path
+            }))
+          }
+        });
       }
-      return {
-        collectionName: "exams",
-        collection_type: "regulation",
-        action: "delete",
-        title: "delete in regulation",
-        meta_data: stripKey(c.original),
-      };
+      
+      else if (change.type === "Deleted") {
+        // For delete, send the entire regulation with all links
+        payloads.push({
+          collectionName: "exams",
+          collection_type: "regulation",
+          action: "delete",
+          title: "delete",
+          category: change.original.category,
+          meta_data: {
+            links: change.original.links.map(link => ({
+              name: link.name,
+              pdf_path: link.pdf_path
+            }))
+          }
+        });
+      }
     });
+
+    return payloads;
   };
 
   const handleConfirmRequest = async () => {
@@ -389,6 +470,18 @@ const AdminREGULATION = ({ theme, toggle }) => {
     }
 
     const payloads = buildPayloads();
+    
+    // Validate payloads before sending
+    const invalidPayloads = payloads.filter(p => 
+      !p.category || !p.meta_data || !p.meta_data.links
+    );
+    
+    if (invalidPayloads.length > 0) {
+      console.error("Invalid payloads:", invalidPayloads);
+      toast.error("Some operations are missing required data. Please try again.");
+      return;
+    }
+    
     const filesToSend = popupFiles.filter(Boolean);
 
     const res = await sendRequest(payloads, filesToSend);
@@ -400,20 +493,20 @@ const AdminREGULATION = ({ theme, toggle }) => {
       return;
     }
 
-    // After success: set new baseline to current
-    const nextBaseline = deepCloneRegs(regulationData);
-    setInitialData(nextBaseline);
-    initialMapRef.current = buildMapByKey(nextBaseline);
-
+    toast.success("Request submitted successfully. Refreshing data...");
+    
+    // Close modal and reset states
     setIsDone(false);
     setShowRequestModal(false);
     setPopupFiles([null, null, null]);
-    toast.success("Request submitted successfully.");
+    
+    // Refresh data from server to get the approved changes
+    await fetchRegulationData();
+    
+    toast.success("Data refreshed with approved changes.");
   };
 
-  // -----------------------------
   // Popup helpers (Trash + file name)
-  // -----------------------------
   const clearProgrammePdf = (idx) => {
     setNewLinks((prev) => {
       const next = [...prev];
@@ -446,6 +539,38 @@ const AdminREGULATION = ({ theme, toggle }) => {
     });
   };
 
+  // Helper function to get filename from path or file
+  const getDisplayFileName = (link, index, isOriginal = false) => {
+    // For updated items, check if there's a new file uploaded
+    if (!isOriginal && popupFiles[index]) {
+      return popupFiles[index].name;
+    }
+    
+    // For original items or if no new file
+    if (link?.pdf_path) {
+      // Handle blob URLs
+      if (link.pdf_path.startsWith('blob:')) {
+        // Try to find matching file in popupFiles
+        const fileIndex = popupFiles.findIndex(f => f && URL.createObjectURL(f) === link.pdf_path);
+        if (fileIndex !== -1 && popupFiles[fileIndex]) {
+          return popupFiles[fileIndex].name;
+        }
+        return 'New file';
+      }
+      
+      // Regular path - extract filename
+      const parts = link.pdf_path.split('/');
+      const filename = parts[parts.length - 1];
+      
+      // If it's a valid filename with extension, return it
+      if (filename && filename.includes('.')) {
+        return filename;
+      }
+      return 'Document';
+    }
+    return 'No file';
+  };
+
   if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
@@ -466,7 +591,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
 
       {isLoading ? (
         <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
-          <LoadComp txt={""} />
+          <LoadComp txt={"Loading regulations..."} />
         </div>
       ) : (
         <div className="regulation-container mt-10">
@@ -547,7 +672,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
                   Cancel
                 </button>
 
-                {hasChanges && (
+                {hasChangesFromSaved && (
                   <button
                     className="px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] flex items-center gap-2 hover:text-prim"
                     onClick={handleSave}
@@ -732,7 +857,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
         </div>
       )}
 
-      {/* ✅ NEW: Discard Confirmation */}
+      {/* Discard Confirmation */}
       {showDiscardConfirm && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-[420px]">
@@ -762,7 +887,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
         </div>
       )}
 
-      {/* Request Changes Modal */}
+      {/* Request Changes Modal - Updated to show regulation-level changes */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
@@ -775,8 +900,8 @@ const AdminREGULATION = ({ theme, toggle }) => {
               <thead className="bg-gray-200">
                 <tr>
                   <th className="border p-2">Action</th>
-                  <th className="border p-2">Section</th>
-                  <th className="border p-2">Changes</th>
+                  <th className="border p-2">Category</th>
+                  <th className="border p-2">Programmes</th>
                   <th className="border p-2">Undo</th>
                 </tr>
               </thead>
@@ -791,7 +916,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
                   requestChanges.map((c) => (
                     <tr key={`${c.type}-${c.key}`}>
                       <td
-                        className={`border p-2 ${
+                        className={`border p-2 font-semibold ${
                           c.type === "Deleted"
                             ? "text-red-600"
                             : c.type === "Inserted"
@@ -801,18 +926,69 @@ const AdminREGULATION = ({ theme, toggle }) => {
                       >
                         {c.type}
                       </td>
-                      <td className="border p-2">{c.section}</td>
-                      <td className="border p-2">
-                        {(c.current?.links || c.original?.links || []).map((l) => l.name).join(", ")}
+                      <td className="border p-2 font-medium">{c.section}</td>
+                      <td className="border p-2 text-left">
+                        {c.type === "Updated" && c.original && c.current ? (
+                          <div className="space-y-2">
+                            {c.current.links.map((currentLink, idx) => {
+                              const originalLink = c.original.links[idx];
+                              const hasChanged = JSON.stringify(originalLink) !== JSON.stringify(currentLink);
+                              
+                              return (
+                                <div key={idx} className={hasChanged ? "bg-yellow-50 p-2 rounded" : ""}>
+                                  <div className="font-medium">{currentLink.name}</div>
+                                  {hasChanged ? (
+                                    <div className="text-xs mt-1">
+                                      <span className="line-through text-gray-400 mr-2">
+                                        PDF: {getDisplayFileName(originalLink, idx, true)}
+                                      </span>
+                                      <span className="text-green-600 font-medium">
+                                        → {getDisplayFileName(currentLink, idx, false)}
+                                      </span>
+                                    </div>
+                                  ) : (
+                                    <div className="text-xs text-gray-600">
+                                      PDF: {getDisplayFileName(originalLink, idx, true)}
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        ) : c.type === "Inserted" ? (
+                          <div className="space-y-1">
+                            {c.current?.links.map((link, idx) => (
+                              <div key={idx} className="text-green-600">
+                                <span className="font-medium">{link.name}</span>
+                                <div className="text-xs">
+                                  PDF: {getDisplayFileName(link, idx, false)}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        ) : c.type === "Deleted" ? (
+                          <div className="space-y-1">
+                            {c.original?.links.map((link, idx) => (
+                              <div key={idx} className="text-red-600">
+                                <span className="font-medium">{link.name}</span>
+                                <div className="text-xs">
+                                  PDF: {getDisplayFileName(link, idx, true)}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <span>No changes</span>
+                        )}
                       </td>
                       <td className="border p-2">
                         <button
                           onClick={() => undoRequestChange(c)}
-                          className="p-1 rounded hover:bg-gray-100"
+                          className="p-1 rounded hover:bg-gray-100 transition-colors"
                           title="Undo"
                           disabled={requestLoading}
                         >
-                          <X size={16} className="text-red-500" />
+                          <X size={20} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
@@ -821,17 +997,17 @@ const AdminREGULATION = ({ theme, toggle }) => {
               </tbody>
             </table>
 
-            <div className="flex justify-end gap-2 mt-6">
+            <div className="flex justify-end gap-3 mt-6">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500 transition-colors"
                 disabled={requestLoading}
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmRequest}
-                className="px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000] flex items-center gap-2"
+                className="px-4 py-2 rounded bg-[#fdcc03] text-gray-800 hover:bg-[#e6b800] flex items-center gap-2 transition-colors"
                 disabled={requestLoading}
               >
                 {requestLoading ? "Submitting..." : "Confirm Request"}
