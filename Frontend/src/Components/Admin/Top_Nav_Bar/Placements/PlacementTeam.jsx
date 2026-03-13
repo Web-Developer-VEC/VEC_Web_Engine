@@ -12,14 +12,19 @@ import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 function PersonDetail({ person, isEditable, onChange, errors = {} }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) =>
-    path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const UrlParser = (path) => {
+  if (!path || typeof path !== "string") return "";
+  if (path.startsWith("http")) return path;
+  return `${BASE_URL}${path}`;
+};
   if (!person) return null;
 
   const hasImage = !!(person.image_path || person.photo_file);
-  const imageSrc =
-    person.preview_url ||
-    (person.image_path ? UrlParser(person.image_path) : "");
+const imageSrc =
+  person?.preview_url ||
+  (typeof person?.image_path === "string"
+    ? `${UrlParser(person.image_path)}?t=${Date.now()}`
+    : "");
 
   return (
     <div
@@ -116,9 +121,11 @@ function PersonMemberDetail({
   const UrlParser = (path) =>
     path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   const hasImage = !!(person.image_path || person.photo_file);
-  const imageSrc =
-    person.preview_url ||
-    (person.image_path ? UrlParser(person.image_path) : "");
+const imageSrc =
+  person?.preview_url ||
+  (typeof person?.image_path === "string"
+    ? `${UrlParser(person.image_path)}?t=${Date.now()}`
+    : "");
 
   return (
     <div
@@ -281,59 +288,55 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
    * This is why Arun Ramaswami content wasn't changing after approval.
    */
   const buildPlacementPayload = ({ action, newData, oldData }) => {
-    const metaFrom = (obj) => ({
-      name: obj?.name ?? "",
-      designation: obj?.designation ?? "",
-      qualification: obj?.qualification ?? "",
-      content: obj?.content ?? "",
-    });
+  const metaFrom = (obj) => ({
+    name: obj?.name ?? "",
+    designation: obj?.designation ?? "",
+    qualification: obj?.qualification ?? "",
+    content: obj?.content ?? "",
 
-    if (action === "Added") {
-      return {
-        action: "insert",
-        collectionName: "placement",
-        title: "placement_team_insert",
-        collection_type: "placement_team",
-        meta_data: metaFrom(newData),
-      };
-    }
+    // CRITICAL for useAdminRequest file matching
+    image_path: obj?.image_path ?? "",
+  });
 
-    if (action === "Edited") {
-      return {
-        action: "update",
-        collectionName: "placement",
-        title: "placement_team_update",
-        collection_type: "placement_team",
-        meta_data: metaFrom(newData),
-        original_data: metaFrom(oldData),
-      };
-    }
+  if (action === "Added") {
+    return {
+      action: "insert",
+      collectionName: "placement",
+      title: "placement_team_insert",
+      collection_type: "placement_team",
+      meta_data: metaFrom(newData),
+    };
+  }
 
-    if (action === "Deleted") {
-      return {
-        action: "delete",
-        collectionName: "placement",
-        title: "placement_team_delete",
-        collection_type: "placement_team",
-        meta_data: metaFrom(oldData),
-      };
-    }
+  if (action === "Edited") {
+    return {
+      action: "update",
+      collectionName: "placement",
+      title: "placement_team_update",
+      collection_type: "placement_team",
+      meta_data: metaFrom(newData),
+      original_data: metaFrom(oldData),
+    };
+  }
 
-    return null;
-  };
+  if (action === "Deleted") {
+    return {
+      action: "delete",
+      collectionName: "placement",
+      title: "placement_team_delete",
+      collection_type: "placement_team",
+      meta_data: metaFrom(oldData),
+    };
+  }
 
-  const collectPlacementFiles = (draft) => {
-    const files = [];
-    draft.forEach((member, index) => {
-      if (member?.photo_file instanceof File) {
-        files.push({
-          key: `placement_image_${index}`,
-          file: member.photo_file,
-        });
-      }
-    });
-    return files;
-  };
+  return null;
+};
+
+const collectPlacementFiles = (draft) => {
+  return (draft || [])
+    .filter((member) => member?.photo_file instanceof File)
+    .map((member) => member.photo_file);
+};
 
   const enterEdit = () => {
     setEditMode(true);
@@ -344,29 +347,38 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
     setValidationErrors({});
   };
 
-  const handleFieldChange = (idx, field, value) => {
-    setDraftTeam((prev) => {
-      const copy = prev.map((x) => ({ ...x }));
-      if (!copy[idx]) copy[idx] = {};
+ const handleFieldChange = (idx, field, value) => {
+  setDraftTeam((prev) => {
+    const copy = prev.map((x) => ({ ...x }));
+    if (!copy[idx]) copy[idx] = {};
 
-      if (field === "photo_file") {
-        copy[idx].photo_file = value;
-        if (value) copy[idx].preview_url = URL.createObjectURL(value);
-      } else {
-        copy[idx][field] = value;
-      }
-      return copy;
-    });
+    if (!copy[idx]._uid) copy[idx]._uid = genUID();
 
-    setValidationErrors((prev) => {
-      const newErrors = { ...prev };
-      if (newErrors[idx] && newErrors[idx][field]) {
-        delete newErrors[idx][field];
-        if (Object.keys(newErrors[idx]).length === 0) delete newErrors[idx];
+    if (field === "photo_file") {
+      copy[idx].photo_file = value;
+
+      if (value) {
+        copy[idx].preview_url = URL.createObjectURL(value);
+
+        // correct backend path
+        copy[idx].image_path = `/static/images/placement_team/${value.name}`;
       }
-      return newErrors;
-    });
-  };
+    } else {
+      copy[idx][field] = value;
+    }
+
+    return copy;
+  });
+
+  setValidationErrors((prev) => {
+    const newErrors = { ...prev };
+    if (newErrors[idx] && newErrors[idx][field]) {
+      delete newErrors[idx][field];
+      if (Object.keys(newErrors[idx]).length === 0) delete newErrors[idx];
+    }
+    return newErrors;
+  });
+};
 
   // mandatory validation removed
   const handleSave = () => {
@@ -417,18 +429,20 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
   };
 
   const handleAddNewMember = () => {
-    setDraftTeam((prev) => [
-      ...prev,
-      {
-        _uid: genUID(),
-        name: "",
-        designation: "",
-        qualification: "",
-        image_path: "",
-        content: "",
-      },
-    ]);
-  };
+  const uid = genUID();
+  setDraftTeam((prev) => [
+    ...prev,
+    {
+      _uid: uid,
+      name: "",
+      designation: "",
+      qualification: "",
+      image_path: "",
+      image_upload_key: "",
+      content: "",
+    },
+  ]);
+};
 
   const getChanges = (baseDraft = pendingDraft) => {
     const changes = [];
@@ -459,10 +473,14 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
     draftMap.forEach(({ item, index }, uid) => {
       if (origMap.has(uid)) {
         const originalItem = origMap.get(uid).item;
-        if (JSON.stringify(originalItem) !== JSON.stringify(item)) {
-          changes.push({ action: "Edited", section: "Placement Team", data: item, index });
-        }
-      }
+        const clean = (obj) => {
+  const { photo_file, preview_url, ...rest } = obj || {};
+  return rest;
+};
+
+if (JSON.stringify(clean(originalItem)) !== JSON.stringify(clean(item))) {
+  changes.push({ action: "Edited", section: "Placement Team", data: item, index });
+}}
     });
 
     return changes;
