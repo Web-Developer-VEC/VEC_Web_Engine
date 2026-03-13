@@ -42,15 +42,15 @@ async function deleteData(tempDoc, mainCollection) {
 
       if (meta_data.image_path && cat.image_path) {
 
-        const images = Array.isArray(cat.image_path)
-          ? cat.image_path
-          : [cat.image_path];
+         const images = Array.isArray(cat.image_path)
+    ? cat.image_path
+    : [cat.image_path];
 
-        const filtered = images.filter(
-          (img) => img !== meta_data.image_path
-        );
+  const removeImages = Array.isArray(meta_data.image_path)
+    ? meta_data.image_path
+    : [meta_data.image_path];
 
-        cat.image_path = filtered.length === 1 ? filtered[0] : filtered;
+  cat.image_path = images.filter(img => !removeImages.includes(img));
       }
     }
 
