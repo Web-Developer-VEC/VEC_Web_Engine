@@ -22,7 +22,7 @@ async function updateData( tempDoc, mainCollection) {
     if (singleDocTypes.includes(collection_type)) {
       let newData;
 
-      newData = Array.isArray(meta_data)?meta_data:[meta_data];
+      newData = Array.isArray(meta_data)?meta_data:Object.values(meta_data);
 
       await mainCollection.updateOne(
         { type: collection_type },

@@ -6,7 +6,7 @@ import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import { FaPlus, FaPaperPlane } from "react-icons/fa";
 import { MdUndo } from "react-icons/md";
-import { Trash2, Pencil, X } from "lucide-react"; // Import Pencil icon + X icon
+import { Trash2, Pencil, X } from "lucide-react";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 import { toast } from "react-toastify";
 
@@ -16,13 +16,15 @@ const ConfirmModal = ({
   onCancel,
   onConfirm,
   message,
-  type = "default", // type: 'delete', 'confirm'
+  type = "default",
 }) => {
   if (!show) return null;
   return (
     <div className="fixed inset-0 flex items-center justify-center z-[2000] scrabble-bg bg-black bg-opacity-50">
       <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-[420px] max-w-[92vw] relative">
-        <p className="text-lg font-semibold mb-6 text-center text-brwn">{message}</p>
+        <p className="text-lg font-semibold mb-6 text-center text-brwn">
+          {message}
+        </p>
         <div className="flex justify-center gap-4">
           {type === "delete" ? (
             <>
@@ -67,18 +69,18 @@ const EditableCard = ({
   isMain,
   selected,
   onSelect,
-  editMode
+  editMode,
 }) => {
   const handleImageChange = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
     const url = URL.createObjectURL(file);
-    // set both imageFile (for upload) and image_path (for preview consistency)
     onChange({ ...data, imageFile: file, image_path: url });
   };
 
-  // If image exists and isn't just a placeholder, show "Replace Photo", else "Upload Photo"
-  const showReplace = !!data.image_path && !["", "https://via.placeholder.com/150"].includes(data.image_path);
+  const showReplace =
+    !!data.image_path &&
+    !["", "https://via.placeholder.com/150"].includes(data.image_path);
 
   return (
     <div
@@ -100,7 +102,12 @@ const EditableCard = ({
       />
       <label className="mt-2 bg-yellow-400 text-black text-xs px-3 py-1 cursor-pointer shadow-md hover:bg-yellow-500 rounded">
         {showReplace ? "Replace Photo" : "Upload Photo"}
-        <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="hidden"
+        />
       </label>
       <input
         type="text"
@@ -127,7 +134,7 @@ const Card = ({
   isMain,
   selected,
   onSelect,
-  editMode
+  editMode,
 }) => (
   <div
     className={`${isMain ? "admin-card-ao" : "admin-card"} border-2 border-secd dark:border-drks relative flex flex-col items-center p-4 w-60 rounded`}
@@ -142,8 +149,12 @@ const Card = ({
       />
     )}
     <img src={image_path} alt={name} className="admin-card-image rounded-md" />
-    <h3 className="admin-card-name text-accn dark:text-drkt mt-2 font-[poppins] text-center">{name}</h3>
-    <p className="admin-card-designation font-[poppins] text-gray-600 dark:text-drka text-center">{designation}</p>
+    <h3 className="admin-card-name text-accn dark:text-drkt mt-2 font-[poppins] text-center">
+      {name}
+    </h3>
+    <p className="admin-card-designation font-[poppins] text-gray-600 dark:text-drka text-center">
+      {designation}
+    </p>
   </div>
 );
 
@@ -158,9 +169,10 @@ const AddCard = ({ label, onAdd }) => (
 );
 
 const AdminCardPage = ({ theme, toggle }) => {
-  const [adminData, setAdminData] = useState([]); // original from backend
-  const [tempData, setTempData] = useState({ admin: [], staff: [] }); // editing buffer
-  const [lastSavedData, setLastSavedData] = useState(null);
+  const [adminData, setAdminData] = useState([]);
+  const [tempData, setTempData] = useState({ admin: [], staff: [] });
+  const [originalData, setOriginalData] = useState({ admin: [], staff: [] }); // This should never change after initial fetch
+  const [lastSavedData, setLastSavedData] = useState(null); // This is the last saved state
   const [isLoading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [editMode, setEditMode] = useState(false);
@@ -171,17 +183,23 @@ const AdminCardPage = ({ theme, toggle }) => {
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [selectedIds, setSelectedIds] = useState([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [sessionChanges, setSessionChanges] = useState([]);
+  const [allChanges, setAllChanges] = useState([]); // This accumulates all changes across sessions
 
   const bottomRef = useRef(null);
   const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  // Robust UrlParser: preserve absolute URLs, blobs, data URLs; otherwise prefix BASE_URL if provided
   const UrlParser = (path) => {
     if (!path) return "";
     if (typeof path !== "string") return String(path);
-    if (path.startsWith("http") || path.startsWith("blob:") || path.startsWith("data:")) return path;
+    if (
+      path.startsWith("http") ||
+      path.startsWith("blob:") ||
+      path.startsWith("data:")
+    )
+      return path;
     const base = BASE_URL ? String(BASE_URL).replace(/\/$/, "") : "";
     if (!base) return path;
     return `${base}${path.startsWith("/") ? "" : "/"}${path}`;
@@ -194,13 +212,15 @@ const AdminCardPage = ({ theme, toggle }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.post(`/api/main-backend/administration`, { type: "admin_office" });
-        // res.data.data is expected to be an array of admin office members
+        const res = await axios.post(`/api/main-backend/administration`, {
+          type: "admin_office",
+        });
         const dataArr = res.data?.data || [];
-        // map to consistent shape using image_path (matches JSON key)
         const formatted = dataArr.map((d, i) => ({
           id: d.id ?? i,
-          image_path: UrlParser(d.image_path || d.photo_path || d.photo || d.image || ""),
+          image_path: UrlParser(
+            d.image_path || d.photo_path || d.photo || d.image || "",
+          ),
           name: d.name || "",
           designation: d.designation || "",
         }));
@@ -210,10 +230,13 @@ const AdminCardPage = ({ theme, toggle }) => {
           staff: formatted.slice(2),
         };
         setTempData(deepClone(initial));
+        setOriginalData(deepClone(initial));
         setLastSavedData(deepClone(initial));
       } catch (error) {
         if (error?.response?.data?.status === 429) {
-          navigate("/ratelimit", { state: { msg: error.response.data.message } });
+          navigate("/ratelimit", {
+            state: { msg: error.response.data.message },
+          });
         } else {
           console.error("Failed fetching administration:", error);
         }
@@ -244,19 +267,100 @@ const AdminCardPage = ({ theme, toggle }) => {
     setEditMode(true);
     setDeletedHistory([]);
     setSelectedIds([]);
+    setSessionChanges([]);
+  };
+
+  // Helper function to check if a member has any data
+  const hasMemberData = (member) => {
+    return (
+      member.name?.trim() || 
+      member.designation?.trim() || 
+      member.image_path || 
+      member.imageFile
+    );
+  };
+
+  // Compare current data with last saved data to determine if there are actual changes in this session
+  const hasActualChanges = () => {
+    const current = tempData;
+    const lastSaved = lastSavedData || originalData;
+
+    // Check if lengths are different (added or deleted members)
+    if (current.admin.length !== lastSaved.admin.length || 
+        current.staff.length !== lastSaved.staff.length) {
+      // But only count if the new members have actual data
+      if (current.admin.length > lastSaved.admin.length) {
+        const newAdmins = current.admin.filter(
+          a => !lastSaved.admin.some(la => la.id === a.id)
+        );
+        if (newAdmins.some(hasMemberData)) return true;
+      }
+      if (current.staff.length > lastSaved.staff.length) {
+        const newStaff = current.staff.filter(
+          s => !lastSaved.staff.some(ls => ls.id === s.id)
+        );
+        if (newStaff.some(hasMemberData)) return true;
+      }
+      if (current.admin.length < lastSaved.admin.length ||
+          current.staff.length < lastSaved.staff.length) {
+        // Check if deleted members had data
+        const deletedMembers = [
+          ...lastSaved.admin.filter(la => !current.admin.some(ca => ca.id === la.id)),
+          ...lastSaved.staff.filter(ls => !current.staff.some(cs => cs.id === ls.id))
+        ];
+        if (deletedMembers.some(hasMemberData)) return true;
+      }
+    }
+
+    // Check for changes in existing members
+    for (let i = 0; i < current.admin.length; i++) {
+      const currentMember = current.admin[i];
+      const lastSavedMember = lastSaved.admin.find(la => la.id === currentMember.id);
+      
+      if (lastSavedMember) {
+        if (currentMember.name !== lastSavedMember.name ||
+            currentMember.designation !== lastSavedMember.designation ||
+            currentMember.image_path !== lastSavedMember.image_path ||
+            currentMember.imageFile) {
+          return true;
+        }
+      }
+    }
+
+    for (let i = 0; i < current.staff.length; i++) {
+      const currentMember = current.staff[i];
+      const lastSavedMember = lastSaved.staff.find(ls => ls.id === currentMember.id);
+      
+      if (lastSavedMember) {
+        if (currentMember.name !== lastSavedMember.name ||
+            currentMember.designation !== lastSavedMember.designation ||
+            currentMember.image_path !== lastSavedMember.image_path ||
+            currentMember.imageFile) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   };
 
   const handleAddMember = () => {
-    setTempData((prev) => (({
+    const newId = Date.now();
+    const newMember = {
+      id: newId,
+      image_path: "",
+      name: "",
+      designation: "",
+      _new: true,
+    };
+
+    setTempData((prev) => ({
       ...prev,
-      staff: [
-        ...prev.staff,
-        { id: Date.now(), image_path: "", name: "", designation: "", _new: true },
-      ],
-    })));
-    setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+      staff: [...prev.staff, newMember],
+    }));
   };
 
+  // Handle field changes
   const handleChange = (type, idx, updated) => {
     setTempData((prev) => {
       const updatedType = [...prev[type]];
@@ -267,53 +371,34 @@ const AdminCardPage = ({ theme, toggle }) => {
 
   const handleSelect = (id) => {
     setSelectedIds((prev) =>
-      prev.includes(id)
-        ? prev.filter((sid) => sid !== id)
-        : [...prev, id]
+      prev.includes(id) ? prev.filter((sid) => sid !== id) : [...prev, id],
     );
   };
 
   const handleDeleteSelected = () => {
+    if (selectedIds.length === 0) return;
     setShowDeleteModal(true);
   };
+  
   const confirmDeleteSelected = () => {
-    if (selectedIds.length === 0) {
-      setShowDeleteModal(false);
-      return;
-    }
     setTempData((prev) => {
       const newAdmin = prev.admin.filter((m) => !selectedIds.includes(m.id));
       const newStaff = prev.staff.filter((m) => !selectedIds.includes(m.id));
-      const deleted = [
-        ...prev.admin
-          .map((m, idx) =>
-            selectedIds.includes(m.id)
-              ? { member: m, index: idx, type: "admin" }
-              : null
-          )
-          .filter(Boolean),
-        ...prev.staff
-          .map((m, idx) =>
-            selectedIds.includes(m.id)
-              ? { member: m, index: idx, type: "staff" }
-              : null
-          )
-          .filter(Boolean),
-      ];
-      setDeletedHistory((h) => [...h, ...deleted]);
       return { admin: newAdmin, staff: newStaff };
     });
+
     setSelectedIds([]);
     setShowDeleteModal(false);
   };
-
+  
   const handleCancel = () => {
-    if (hasUnsavedChanges()) {
+    if (hasActualChanges()) {
       setShowCancelModal(true);
     } else {
       setEditMode(false);
       setDeletedHistory([]);
       setSelectedIds([]);
+      setSessionChanges([]);
     }
   };
 
@@ -322,81 +407,205 @@ const AdminCardPage = ({ theme, toggle }) => {
     setEditMode(false);
     setDeletedHistory([]);
     setSelectedIds([]);
+    setSessionChanges([]);
     setShowCancelModal(false);
   };
 
+  // Helper function to build change objects
+  const buildChangeObjects = () => {
+    const changes = [];
+    const current = tempData;
+    const lastSaved = lastSavedData || originalData;
+
+    // Find deleted members
+    [...lastSaved.admin, ...lastSaved.staff].forEach((savedMember) => {
+      const stillExists = [...current.admin, ...current.staff].some(
+        m => m.id === savedMember.id
+      );
+      if (!stillExists && hasMemberData(savedMember)) {
+        changes.push({
+          id: savedMember.id,
+          type: "delete",
+          data: savedMember,
+          changes: { deleted: true },
+        });
+      }
+    });
+
+    // Find added and updated members
+    [...current.admin, ...current.staff].forEach((currMember) => {
+      const savedMember = [...lastSaved.admin, ...lastSaved.staff].find(
+        m => m.id === currMember.id
+      );
+
+      if (!savedMember && hasMemberData(currMember)) {
+        // New member with data
+        changes.push({
+          id: currMember.id,
+          type: "insert",
+          data: currMember,
+          changes: {
+            name: { old: "", new: currMember.name },
+            designation: { old: "", new: currMember.designation },
+            image: currMember.imageFile ? { file: currMember.imageFile } : null,
+          },
+        });
+      } else if (savedMember) {
+        // Check for updates
+        const changeObj = {
+          id: currMember.id,
+          type: "update",
+          data: currMember,
+          changes: {},
+        };
+
+        if (currMember.name !== savedMember.name) {
+          changeObj.changes.name = { old: savedMember.name, new: currMember.name };
+        }
+        if (currMember.designation !== savedMember.designation) {
+          changeObj.changes.designation = { old: savedMember.designation, new: currMember.designation };
+        }
+        if (currMember.image_path !== savedMember.image_path || currMember.imageFile) {
+          changeObj.changes.image = { 
+            old: savedMember.image_path, 
+            new: currMember.image_path,
+            file: currMember.imageFile 
+          };
+        }
+
+        if (Object.keys(changeObj.changes).length > 0) {
+          changes.push(changeObj);
+        }
+      }
+    });
+
+    return changes;
+  };
+
+  // Save changes
   const handleSave = () => {
-    const mergedData = [...(tempData.admin || []), ...(tempData.staff || [])];
-    for (const m of mergedData) {
+    // Validate all members have name and designation
+    const allMembers = [...tempData.admin, ...tempData.staff];
+    for (const m of allMembers) {
       if (!m.name?.trim() || !m.designation?.trim()) {
         toast.error("Name and designation are required for all members.");
         return;
       }
     }
-    if (!hasUnsavedChanges()) {
-      setEditMode(false);
-      setIsSaved(false);
-      setSelectedIds([]);
+
+    if (!hasActualChanges()) {
+      toast.info("No changes to save.");
       return;
     }
-    setLastSavedData(deepClone(tempData));
+
+    // Build change objects for this session
+    const sessionChangeObjects = buildChangeObjects();
+
+    // Merge session changes into allChanges
+    setAllChanges((prev) => {
+      const newChanges = [...prev];
+      
+      sessionChangeObjects.forEach((sessionChange) => {
+        // Check if this member already has a change in allChanges
+        const existingIndex = newChanges.findIndex(
+          (c) => c.id === sessionChange.id
+        );
+
+        if (existingIndex >= 0) {
+          // If it's a delete, remove any existing changes for this member
+          if (sessionChange.type === "delete") {
+            newChanges[existingIndex] = sessionChange;
+          } else {
+            // Update existing change
+            newChanges[existingIndex] = {
+              ...newChanges[existingIndex],
+              ...sessionChange,
+              changes: {
+                ...newChanges[existingIndex].changes,
+                ...sessionChange.changes,
+              },
+            };
+          }
+        } else {
+          // Add new change
+          newChanges.push(sessionChange);
+        }
+      });
+
+      return newChanges;
+    });
+
+    // Create a deep copy of current tempData for lastSavedData
+    const savedData = {
+      admin: tempData.admin.map((m) => {
+        const cloned = { ...m };
+        if (m.imageFile) {
+          cloned.imageFile = m.imageFile;
+        }
+        return cloned;
+      }),
+      staff: tempData.staff.map((m) => {
+        const cloned = { ...m };
+        if (m.imageFile) {
+          cloned.imageFile = m.imageFile;
+        }
+        return cloned;
+      }),
+    };
+
+    // Update lastSavedData with current tempData
+    setLastSavedData(savedData);
+
+    // Mark as saved and exit edit mode
     setIsSaved(true);
     setEditMode(false);
     setSelectedIds([]);
+
     toast.success("Changes saved locally. Submit request to apply.");
   };
 
   const handleDiscardAll = () => setShowDiscardModal(true);
+
   const confirmDiscardAll = () => {
-    const original = {
-      admin: adminData.slice(0, 2),
-      staff: adminData.slice(2),
-    };
-    setTempData(deepClone(original));
-    setLastSavedData(deepClone(original));
+    setTempData(deepClone(originalData));
+    setLastSavedData(deepClone(originalData));
+    setAllChanges([]);
+    setSessionChanges([]);
     setIsSaved(false);
     setShowDiscardModal(false);
     setSelectedIds([]);
+    setDeletedHistory([]);
   };
 
   const getChanges = () => {
-    const mergedTemp = [...(tempData.admin || []), ...(tempData.staff || [])];
-    const mergedOriginal = [...adminData];
-    const byIdOriginal = new Map(mergedOriginal.map((m) => [m.id, m]));
-    const byIdTemp = new Map(mergedTemp.map((m) => [m.id, m]));
     const changes = [];
-
-    mergedTemp.forEach((m) => {
-      if (!byIdOriginal.has(m.id) || m._new) {
+    
+    allChanges.forEach((change) => {
+      if (change.type === "insert") {
         changes.push({
-          type: "Added",
-          id: m.id,
-          label: m.name || "(new member)"
+          type: "insert",
+          id: change.id,
+          label: change.data.name || "New Member",
+          details: "New member will be added",
         });
-      } else {
-        const o = byIdOriginal.get(m.id);
-        const fieldsChanged = [];
-        if ((o.name || "") !== (m.name || "")) fieldsChanged.push("name");
-        if ((o.designation || "") !== (m.designation || "")) fieldsChanged.push("designation");
-        if (m.imageFile || (o.image_path || "") !== (m.image_path || "")) fieldsChanged.push("photo");
-        if (fieldsChanged.length) {
-          changes.push({
-            type: "Updated",
-            id: m.id,
-            label: m.name || o.name,
-            fields: fieldsChanged
-          });
-        }
-      }
-    });
+      } else if (change.type === "update") {
+        const fields = Object.keys(change.changes || {})
+          .filter((key) => key !== "image" || change.changes.image?.file)
+          .map((key) => key === "image" ? "photo" : key)
+          .join(", ");
 
-    mergedOriginal.forEach((m, idx) => {
-      if (!byIdTemp.has(m.id)) {
         changes.push({
-          type: "Deleted",
-          id: m.id,
-          label: m.name,
-          index: idx
+          type: "update",
+          id: change.id,
+          label: change.data.name || "Member",
+          details: fields || "Fields updated",
+        });
+      } else if (change.type === "delete") {
+        changes.push({
+          type: "delete",
+          id: change.id,
+          label: change.data.name || "Member",
+          details: "Member will be removed",
         });
       }
     });
@@ -404,63 +613,51 @@ const AdminCardPage = ({ theme, toggle }) => {
     return changes;
   };
 
-  const handleUndo = (change) => {
-    const updateBoth = (fn) => {
-      setTempData(prev => fn(prev));
-      setLastSavedData(prev => fn(prev));
-    };
+  const handleUndo = (changeToUndo) => {
+    // Remove this change from allChanges
+    const newAllChanges = allChanges.filter((c) => c.id !== changeToUndo.id);
 
-    if (change.type === "Added") {
-      updateBoth(prev => {
-        const key = prev.admin.some(m => m.id === change.id) ? "admin" : "staff";
-        return {
-          ...prev,
-          [key]: prev[key].filter((m) => m.id !== change.id),
-        };
-      });
-      return;
-    }
-    if (change.type === "Deleted") {
-      const historyIdx = deletedHistory.findIndex(h => h.member.id === change.id);
-      if (historyIdx < 0) return;
-      const history = deletedHistory[historyIdx];
+    // Reconstruct lastSavedData from originalData and remaining changes
+    let reconstructedData = deepClone(originalData);
 
-      updateBoth(prev => {
-        const arr = [...prev[history.type]];
-        arr.splice(history.index, 0, history.member);
-        return { ...prev, [history.type]: arr };
-      });
+    // Apply all remaining changes to reconstruct the state
+    newAllChanges.forEach((change) => {
+      if (change.type === "insert") {
+        // Add member
+        const targetType = reconstructedData.admin.length < 2 ? "admin" : "staff";
+        if (!reconstructedData[targetType]) reconstructedData[targetType] = [];
+        reconstructedData[targetType].push(change.data);
+      } else if (change.type === "update") {
+        // Apply update
+        const member = 
+          reconstructedData.admin.find((m) => m.id === change.id) ||
+          reconstructedData.staff.find((m) => m.id === change.id);
+        if (member) {
+          Object.assign(member, change.data);
+          if (change.changes?.image?.file) {
+            member.imageFile = change.changes.image.file;
+          }
+        }
+      } else if (change.type === "delete") {
+        // Remove deleted member
+        reconstructedData.admin = reconstructedData.admin.filter(
+          (m) => m.id !== change.id
+        );
+        reconstructedData.staff = reconstructedData.staff.filter(
+          (m) => m.id !== change.id
+        );
+      }
+    });
 
-      setDeletedHistory(prev => prev.filter((_, idx) => idx !== historyIdx));
-      return;
-    }
-    if (change.type === "Updated") {
-      const original = adminData.find((m) => m.id === change.id);
-      if (!original) return;
-      updateBoth(prev => {
-        const key = prev.admin.some(m => m.id === change.id) ? "admin" : "staff";
-        return {
-          ...prev,
-          [key]: prev[key].map((m) =>
-            m.id === change.id ? { ...original, imageFile: undefined } : m
-          ),
-        };
-      });
-    }
-  };
+    setAllChanges(newAllChanges);
+    setLastSavedData(deepClone(reconstructedData));
+    setTempData(deepClone(reconstructedData));
 
-  // ---- NEW: Auto-close request modal (and return to original page with Edit button) when no changes remain
-  useEffect(() => {
-    if (!showConfirmModal) return;
-    if (getChanges().length === 0) {
-      setShowConfirmModal(false);
+    if (newAllChanges.length === 0) {
       setIsSaved(false);
-      setSelectedIds([]);
-      setDeletedHistory([]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showConfirmModal, tempData, adminData, deletedHistory]);
-  // ---- END NEW
+    setShowConfirmModal(false);
+  };
 
   const makeSafeFileName = (file) => {
     if (!file) return "";
@@ -472,86 +669,96 @@ const AdminCardPage = ({ theme, toggle }) => {
   const buildEntriesAndFiles = () => {
     const entries = [];
     const filesToSend = [];
-    const mergedTemp = [...(lastSavedData?.admin || tempData.admin || []), ...(lastSavedData?.staff || tempData.staff || [])];
+    
+    allChanges.forEach((change) => {
+      if (change.type === "insert") {
+        // New member
+        const member = change.data;
+        let meta = {
+          name: member.name || "",
+          designation: member.designation || "",
+        };
 
-    const mergedSubmitted = [...(tempData.admin || []), ...(tempData.staff || [])];
-    const originalById = new Map(adminData.map(m => [m.id, m]));
-
-
-    mergedSubmitted.forEach((m, idx) => {
-      const orig = originalById.get(m.id);
-
-      if (!orig || m._new) {
-        let meta = { name: m.name || "", designation: m.designation || "" };
-        if (m.imageFile) {
-          const safe = makeSafeFileName(m.imageFile);
+        if (member.imageFile) {
+          const safe = makeSafeFileName(member.imageFile);
           meta.image_path = `/static/images/admin_office/${safe}`;
-          const renamed = new File([m.imageFile], safe, { type: m.imageFile.type });
+          const renamed = new File([member.imageFile], safe, {
+            type: member.imageFile.type,
+          });
           filesToSend.push(renamed);
         } else {
-          meta.image_path = m.image_path || "";
+          meta.image_path = member.image_path || "";
         }
 
         entries.push({
           collectionName: "administration",
           collection_type: "admin_office",
           action: "insert",
-          title: `Add Admin Office Member - ${m.name || ""}`,
+          title: `Insert Admin Office Member - ${member.name || ""}`,
           category: "administration",
           meta_data: meta,
-          original_data: {}
+          original_data: {},
         });
-      } else {
-        // Possibly updated
-        const fieldsChanged = [];
-        if ((orig.name || "") !== (m.name || "")) fieldsChanged.push("name");
-        if ((orig.designation || "") !== (m.designation || "")) fieldsChanged.push("designation");
-        if (m.imageFile || ((orig.image_path || "") !== (m.image_path || ""))) fieldsChanged.push("photo");
+      } else if (change.type === "update") {
+        // Updated member
+        const member = change.data;
+        const original = 
+          originalData.admin.find((m) => m.id === change.id) ||
+          originalData.staff.find((m) => m.id === change.id);
 
-        if (fieldsChanged.length) {
-          let meta = {};
-          if (fieldsChanged.includes("name")) meta.name = m.name || "";
-          if (fieldsChanged.includes("designation")) meta.designation = m.designation || "";
-          if (fieldsChanged.includes("photo")) {
-            if (m.imageFile) {
-              const safe = makeSafeFileName(m.imageFile);
-              meta.image_path = `/static/images/admin_office/${safe}`;
-              const renamed = new File([m.imageFile], safe, { type: m.imageFile.type });
-              filesToSend.push(renamed);
-            } else {
-              meta.image_path = m.image_path || "";
-            }
+        if (!original) return;
+
+        const meta = {};
+        if (change.changes?.name) meta.name = member.name;
+        if (change.changes?.designation) meta.designation = member.designation;
+        
+        if (change.changes?.image) {
+          if (member.imageFile) {
+            const safe = makeSafeFileName(member.imageFile);
+            meta.image_path = `/static/images/admin_office/${safe}`;
+            const renamed = new File([member.imageFile], safe, {
+              type: member.imageFile.type,
+            });
+            filesToSend.push(renamed);
+          } else if (member.image_path !== original.image_path) {
+            meta.image_path = member.image_path;
           }
-          entries.push({
-            collectionName: "administration",
-            collection_type: "admin_office",
-            action: "update",
-            title: `Update Admin Office Member - ${m.name || ""}`,
-            category: "administration",
-            meta_data: meta,
-            original_data: {
-              id: orig.id,
-              name: orig.name || "",
-              designation: orig.designation || "",
-              image_path: orig.image_path || ""
-            }
-          });
         }
-      }
-    });
 
-    const submittedIds = new Set(mergedSubmitted.map(m => m.id));
-    adminData.forEach((orig) => {
-      if (!submittedIds.has(orig.id)) {
-        // Deleted
+        entries.push({
+          collectionName: "administration",
+          collection_type: "admin_office",
+          action: "update",
+          title: `Update Admin Office Member - ${member.name || ""}`,
+          category: "administration",
+          meta_data: meta,
+          original_data: {
+            id: original.id,
+            name: original.name || "",
+            designation: original.designation || "",
+            image_path: original.image_path || "",
+          },
+        });
+      } else if (change.type === "delete") {
+        // Deleted member
+        const member = change.data;
         entries.push({
           collectionName: "administration",
           collection_type: "admin_office",
           action: "delete",
-          title: `Delete Admin Office Member - ${orig.name || ""}`,
+          title: `Delete Admin Office Member - ${member.name || ""}`,
           category: "administration",
-          meta_data: { id: orig.id, name: orig.name || "", designation: orig.designation || "" },
-          original_data: { id: orig.id, name: orig.name || "", designation: orig.designation || "", image_path: orig.image_path || "" }
+          meta_data: {
+            id: member.id,
+            name: member.name || "",
+            designation: member.designation || "",
+          },
+          original_data: {
+            id: member.id,
+            name: member.name || "",
+            designation: member.designation || "",
+            image_path: member.image_path || "",
+          },
         });
       }
     });
@@ -569,43 +776,55 @@ const AdminCardPage = ({ theme, toggle }) => {
         return;
       }
 
-      const result = await sendRequest(entries, filesToSend.length ? filesToSend : null);
+      console.log("Request entries:", entries);
+      console.log("Files:", filesToSend);
+
+      const result = await sendRequest(
+        entries,
+        filesToSend.length ? filesToSend : null,
+      );
 
       if (result?.success) {
-        const mergedSubmitted = [...(tempData.admin || []), ...(tempData.staff || [])];
-
-        const updatedAdminData = mergedSubmitted.map((m) => {
-          if (m.imageFile) {
-            const safe = makeSafeFileName(m.imageFile);
-            return {
-              id: m.id,
-              name: m.name,
-              designation: m.designation,
-              image_path: `/static/images/admin_office/${safe}`
-            };
-          }
-          return {
-            id: m.id,
-            name: m.name,
-            designation: m.designation,
-            image_path: m.image_path || ""
-          };
-        });
+        // After successful request, update originalData to match the current state
+        const currentMembers = [
+          ...(tempData?.admin || []),
+          ...(tempData?.staff || []),
+        ];
+        const updatedAdminData = currentMembers.map((m) => ({
+          id: m.id,
+          name: m.name,
+          designation: m.designation,
+          image_path: m.image_path || "",
+        }));
 
         setAdminData(updatedAdminData);
-        const snapshot = {
+
+        // Update original data to the new state
+        const newOriginal = {
           admin: updatedAdminData.slice(0, 2),
           staff: updatedAdminData.slice(2),
         };
-        setLastSavedData(deepClone(snapshot));
+
+        setOriginalData(deepClone(newOriginal));
+        setLastSavedData(deepClone(newOriginal));
+        setAllChanges([]); // Clear all changes after successful request
+        setSessionChanges([]);
         setDeletedHistory([]);
         setSelectedIds([]);
         setIsSaved(false);
         setShowConfirmModal(false);
+
         toast.success("Request submitted successfully.");
       } else {
         if (result?.status === 429 || result?.data?.status === 429) {
-          navigate('/ratelimit', { state: { msg: result?.message || result?.data?.message || "Rate limit exceeded" } });
+          navigate("/ratelimit", {
+            state: {
+              msg:
+                result?.message ||
+                result?.data?.message ||
+                "Rate limit exceeded",
+            },
+          });
           return;
         }
         toast.error(result?.message || "Failed to submit request.");
@@ -679,23 +898,28 @@ const AdminCardPage = ({ theme, toggle }) => {
                   {...m}
                   isMain
                   selected={false}
-                  onSelect={() => { }}
+                  onSelect={() => {}}
                   editMode={false}
                 />
-              )
+              ),
             )}
             {editMode && tempData.admin.length < 2 && (
               <AddCard
                 label="Add Superior"
-                onAdd={() =>
-                  setTempData((prev) => (({
+                onAdd={() => {
+                  const newId = Date.now();
+                  const newMember = {
+                    id: newId,
+                    image_path: "",
+                    name: "",
+                    designation: "",
+                    _new: true,
+                  };
+                  setTempData((prev) => ({
                     ...prev,
-                    admin: [
-                      ...prev.admin,
-                      { id: Date.now(), image_path: "", name: "", designation: "", _new: true },
-                    ],
-                  })))
-                }
+                    admin: [...prev.admin, newMember],
+                  }));
+                }}
               />
             )}
           </div>
@@ -716,14 +940,12 @@ const AdminCardPage = ({ theme, toggle }) => {
                   key={m.id}
                   {...m}
                   selected={false}
-                  onSelect={() => { }}
+                  onSelect={() => {}}
                   editMode={false}
                 />
-              )
+              ),
             )}
-            {editMode && (
-              <AddCard label="Add Member" onAdd={handleAddMember} />
-            )}
+            {editMode && <AddCard label="Add Member" onAdd={handleAddMember} />}
           </div>
 
           {/* BOTTOM BUTTONS */}
@@ -747,7 +969,7 @@ const AdminCardPage = ({ theme, toggle }) => {
                   >
                     Cancel
                   </button>
-                  {hasUnsavedChanges() && (
+                  {hasActualChanges() && (
                     <button
                       onClick={handleSave}
                       className="px-4 py-2 bg-secd font-[poppins] rounded flex items-center gap-2 hover:bg-yellow-500"
@@ -760,10 +982,10 @@ const AdminCardPage = ({ theme, toggle }) => {
               {isSaved && !editMode && (
                 <>
                   <button
-                    onClick={confirmDiscardAll}
-                    className="px-4 py-2 mt-bg-brwn text-white font-[poppins] rounded hover:text-brown-500"
+                    onClick={handleDiscardAll}
+                    className="px-4 py-2 bg-red-500 text-white font-[poppins] rounded hover:bg-red-600"
                   >
-                    Discard All Changes
+                    Discard All
                   </button>
                   <button
                     onClick={() => setShowConfirmModal(true)}
@@ -779,7 +1001,7 @@ const AdminCardPage = ({ theme, toggle }) => {
         </div>
       )}
 
-      {/* Confirm delete modal for selected cards */}+*-+
+      {/* Confirm delete modal for selected cards */}
       <ConfirmModal
         show={showDeleteModal}
         message={`Are you sure you want to delete the selected member${selectedIds.length > 1 ? "s" : ""}?`}
@@ -795,18 +1017,19 @@ const AdminCardPage = ({ theme, toggle }) => {
         onConfirm={confirmCancel}
         type="confirm"
       />
+
       <ConfirmModal
         show={showDiscardModal}
-        message="Are you sure you want to discard all changes?"
+        message="Are you sure you want to discard all saved changes?"
         onCancel={() => setShowDiscardModal(false)}
         onConfirm={confirmDiscardAll}
         type="confirm"
       />
 
-      {/* Confirm request modal (REPLACED as per your provided code) */}
+      {/* Confirm request modal */}
       {showConfirmModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
               Final Request for the Changes
             </h2>
@@ -816,45 +1039,40 @@ const AdminCardPage = ({ theme, toggle }) => {
               to the live site.
             </p>
 
-            <div className="max-h-[200px] overflow-y-auto mb-4">
+            <div className="max-h-[300px] overflow-y-auto mb-4">
               {getChanges().length > 0 ? (
-                <table className="w-full text-left text-text dark:text-drkt">
-                  <thead>
+                <table className="w-full text-left text-text dark:text-drkt border">
+                  <thead className="bg-gray-100">
                     <tr>
-                      <th className="py-1">Action</th>
-                      <th className="py-1">Section</th>
-                      <th className="py-1">Changes</th>
-                      <th className="py-1">Undo</th>
+                      <th className="py-2 px-3 border">Action</th>
+                      <th className="py-2 px-3 border">Member</th>
+                      <th className="py-2 px-3 border">Details</th>
+                      <th className="py-2 px-3 border">Undo</th>
                     </tr>
                   </thead>
                   <tbody>
                     {getChanges().map((g, i) => (
-                      <tr key={i}>
-                        <td className="py-1">
-                          {g.type === "Added" && (
-                            <span className="text-green-600">+ Added</span>
+                      <tr key={i} className="even:bg-white odd:bg-gray-50">
+                        <td className="py-2 px-3 border">
+                          {g.type === "insert" && (
+                            <span className="text-green-600">+ Insert</span>
                           )}
-                          {g.type === "Updated" && (
-                            <span className="text-blue-600">✎ Edited</span>
+                          {g.type === "update" && (
+                            <span className="text-blue-600">✎ Update</span>
                           )}
-                          {g.type === "Deleted" && (
-                            <span className="text-red-600">– Deleted</span>
+                          {g.type === "delete" && (
+                            <span className="text-red-600">– Delete</span>
                           )}
                         </td>
-
-                        <td className="py-1">{g.label}</td>
-
-                        <td className="py-1">
-                          {g.type === "Added" && "New member"}
-                          {g.type === "Deleted" && "Removed member"}
-                          {g.type === "Updated" && (g.fields?.length ? g.fields.length : 0) + " fields"}
-                        </td>
-
-                        <td>
+                        <td className="py-2 px-3 border">{g.label}</td>
+                        <td className="py-2 px-3 border">{g.details}</td>
+                        <td className="py-2 px-3 border text-center">
                           <button
                             onClick={() => handleUndo(g)}
+                            className="text-red-500 font-bold hover:text-red-700"
+                            title="Undo this change"
                           >
-                            <X />
+                            <X size={18} />
                           </button>
                         </td>
                       </tr>
@@ -862,7 +1080,9 @@ const AdminCardPage = ({ theme, toggle }) => {
                   </tbody>
                 </table>
               ) : (
-                <p className="text-gray-400">No gallery changes found.</p>
+                <p className="text-gray-400 text-center py-4">
+                  No changes found.
+                </p>
               )}
             </div>
 
