@@ -24,32 +24,42 @@ async function deleteData(tempDoc, mainCollection) {
         throw new Error(`PDF "${meta_data.name}" not found`);
       }
 
-      return { success:true, message: "about_vec PDF deleted successfully" };
+      return { success: true, message: "about_vec PDF deleted successfully" };
     }
 
-    // ---------- AISHE (FIXED) ----------
+    // ---------- AISHE ----------
     if (categoryBasedtypes.includes(collection_type)) {
       if (!category) {
         throw new Error("Category is required for AISHE");
       }
 
-      // ✅ Delete entire category
+      // ✅ Case 1: Entire category delete
       if (meta_data.category === category) {
         await mainCollection.updateOne(
           { type: "AISHE" },
           { $pull: { data: { category } } }
         );
 
-        return { success:true, message: `AISHE category ${category} deleted` };
+        return { success: true, message: `AISHE category ${category} deleted` };
       }
 
-      // ✅ Delete single item by name
+      // ✅ Case 2: Single object delete → clear pdf_path only
       const result = await mainCollection.updateOne(
-        { type: "AISHE", "data.category": category },
         {
-          $pull: {
-            "data.$.content": { name: meta_data.name },
+          type: "AISHE",
+          "data.category": category,
+          "data.content.name": meta_data.name,
+        },
+        {
+          $set: {
+            "data.$[cat].content.$[item].pdf_path": "",
           },
+        },
+        {
+          arrayFilters: [
+            { "cat.category": category },
+            { "item.name": meta_data.name },
+          ],
         }
       );
 
@@ -57,7 +67,10 @@ async function deleteData(tempDoc, mainCollection) {
         throw new Error(`AISHE item not found in ${category}`);
       }
 
-      return { success:true, message: `AISHE item deleted from ${category}` };
+      return {
+        success: true,
+        message: `pdf_path cleared for ${meta_data.name}`,
+      };
     }
   } catch (error) {
     throw new Error(`Error deleting data: ${error.message}`);
