@@ -91,7 +91,7 @@ const computeFinalChanges = (updatedData) => {
       orig.warden_name !== updated.warden_name ||
       orig.designation !== updated.designation ||
       orig.phone_number !== updated.phone_number ||
-      orig.image_path !== updated.image_path;
+      updated.imageFile || updated.previewImage;
 
     if (hasChanged) {
       finalChanges.push({
@@ -102,49 +102,56 @@ const computeFinalChanges = (updatedData) => {
     }
   };
 
-  // Chief & Deputy
   checkDiff(originalData?.chief, updatedData?.chief, "Chief");
   checkDiff(originalData?.chiefDeputy, updatedData?.chiefDeputy, "Chief Deputy");
 
-  // Boys & Girls
   [
     { section: "Boys Wardens", orig: originalData?.boysWardens, updated: updatedData.boysWardens },
     { section: "Girls Wardens", orig: originalData?.girlsWardens, updated: updatedData.girlsWardens },
   ].forEach(({ section, orig = [], updated = [] }) => {
+
     const origMap = new Map(orig.map(w => [w.id, w]));
     const updatedMap = new Map(updated.map(w => [w.id, w]));
 
-    // Added
-updated.forEach(w => {
-  if (!origMap.has(w.id)) {
-    finalChanges.push({
-      action: "Add",
-      section,
-      id: w.id,
-      name: w.warden_name || "New Warden",
+    updated.forEach(w => {
+      const origWarden = origMap.get(w.id);
+
+      if (!origWarden) {
+        finalChanges.push({
+          action: "Add",
+          section,
+          id: w.id,
+          name: w.warden_name || "New Warden",
+        });
+        return;
+      }
+
+      const hasChanged =
+        w.warden_name !== origWarden.warden_name ||
+        w.designation !== origWarden.designation ||
+        w.phone_number !== origWarden.phone_number ||
+        w.imageFile || w.previewImage;
+
+      if (hasChanged) {
+        finalChanges.push({
+          action: "Edit",
+          section,
+          id: w.id,
+          name: w.warden_name || "Warden",
+        });
+      }
     });
-  }
-});
 
-    // Deleted
-orig.forEach(w => {
-  if (!updatedMap.has(w.id)) {
-
-    // if it was added in this session and later removed → ignore
-    const wasAdded = changes.some(
-      c => c.action === "Add" && c.id === w.id
-    );
-
-    if (wasAdded) return;
-
-    finalChanges.push({
-      action: "Delete",
-      section,
-      id: w.id,
-      name: w.warden_name || "Warden",
+    orig.forEach(w => {
+      if (!updatedMap.has(w.id)) {
+        finalChanges.push({
+          action: "Delete",
+          section,
+          id: w.id,
+          name: w.warden_name || "Warden",
+        });
+      }
     });
-  }
-});
   });
 
   return finalChanges;
@@ -206,13 +213,15 @@ const handleSave = () => {
   if (updatedData.chiefDeputy?.previewImage)
     updatedData.chiefDeputy.image_path = updatedData.chiefDeputy.previewImage;
 
-  updatedData.boysWardens = updatedData.boysWardens.map((w) =>
-    w.previewImage ? { ...w, image_path: w.previewImage } : w
-  );
+updatedData.boysWardens = updatedData.boysWardens.map((w) => ({
+  ...w,
+  image_path: w.image_path, // keep original path
+}));
 
-  updatedData.girlsWardens = updatedData.girlsWardens.map((w) =>
-    w.previewImage ? { ...w, image_path: w.previewImage } : w
-  );
+updatedData.girlsWardens = updatedData.girlsWardens.map((w) => ({
+  ...w,
+  image_path: w.image_path, // keep original path
+}));
 
   setChief(updatedData.chief);
   setChiefDeputy(updatedData.chiefDeputy);
@@ -340,21 +349,19 @@ const undoChange = (change) => {
 const handleFinalRequest = async () => {
   const payloads = [];
   const files = [];
-
-  const buildImagePath = (fileOrPath) =>
-    typeof fileOrPath === "string" && !fileOrPath.startsWith("blob:")
-      ? fileOrPath
-      : `/static/images/warden_profile_photos/${Date.now()}.webp`;
+const buildImagePath = (file) => {
+  if (!file) return "";
+  return `/static/images/warden_profile_photos/${file.name}`;
+};
 
   const processSingleWarden = (sectionKey, originalWarden, updatedWarden) => {
   if (!originalWarden || !updatedWarden) return;
 
   const category = sectionToCategory[sectionKey];
 
-  const imagePath =
-    updatedWarden.image_path !== originalWarden.image_path
-      ? buildImagePath(updatedWarden.image_path)
-      : originalWarden.image_path;
+const imagePath = updatedWarden.imageFile
+  ? buildImagePath(updatedWarden.imageFile, updatedWarden.warden_name)
+  : originalWarden.image_path;
 
   const hasChanged =
     updatedWarden.warden_name !== originalWarden.warden_name ||
@@ -387,9 +394,9 @@ const handleFinalRequest = async () => {
     },
   });
 
-  if (updatedWarden.imageFile) {
-    files.push({ file: updatedWarden.imageFile, for: payloads.length - 1 });
-  }
+if (updatedWarden.imageFile) {
+  files.push(updatedWarden.imageFile);
+}
 };
 
 
@@ -402,7 +409,7 @@ const handleFinalRequest = async () => {
     // ---------- INSERT ----------
     updatedList.forEach(w => {
       if (!origMap.has(w.id)) {
-        const imagePath = buildImagePath(w.image_path);
+        const imagePath = buildImagePath(w.imageFile);
 
         payloads.push({
           collection_type: "warden",
@@ -418,10 +425,9 @@ const handleFinalRequest = async () => {
           },
         });
 
-        if (w.imageFile) {
-          files.push(w.imageFile);
-
-        }
+if (w.imageFile) {
+  files.push(w.imageFile);
+}
       }
     });
 
@@ -430,16 +436,15 @@ updatedList.forEach(w => {
   const orig = origMap.get(w.id);
   if (!orig) return;
 
-  const imagePath =
-    w.image_path !== orig.image_path
-      ? buildImagePath(w.image_path)
-      : orig.image_path;
+const imagePath = w.imageFile
+  ? buildImagePath(w.imageFile, w.warden_name)
+  : orig.image_path;
 
-  const hasChanged =
-    w.warden_name !== orig.warden_name ||
-    w.designation !== orig.designation ||
-    w.phone_number !== orig.phone_number ||
-    imagePath !== orig.image_path;
+const hasChanged =
+  w.warden_name !== orig.warden_name ||
+  w.designation !== orig.designation ||
+  w.phone_number !== orig.phone_number ||
+  w.imageFile; // image changed
 
   if (!hasChanged) return;
 
@@ -467,9 +472,9 @@ updatedList.forEach(w => {
     },
   });
 
-  if (w.imageFile) {
-    files.push({ file: w.imageFile, for: payloads.length - 1 });
-  }
+if (w.imageFile) {
+  files.push(w.imageFile);
+}
 });
 
 
@@ -822,12 +827,17 @@ if (
               <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-white">
                 Cancel
               </button>
-              <button
-                onClick={handleFinalRequest}
-                className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] flex items-center gap-2 hover:text-prim"
-              >
-                Confirm Request
-              </button>
+<button
+  onClick={handleFinalRequest}
+  disabled={loading}
+  className={`px-4 py-2 rounded flex items-center gap-2
+    ${loading
+      ? "bg-gray-400 cursor-not-allowed text-white"
+      : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+    }`}
+>
+  {loading ? "Submitting..." : "Confirm Request"}
+</button>
             </div>
           </div>
         </div>
