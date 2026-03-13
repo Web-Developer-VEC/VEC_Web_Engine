@@ -494,74 +494,92 @@ const handleRequestConfirm = async () => {
       : facility.image_path || "";
 
   // ---------- INSERT ----------
-  detected.added.forEach(item => {
-    const facility = facilitiesData.find(f => f.id === item.id);
-    if (!facility) return;
+detected.added.forEach(item => {
+  const facility = facilitiesData.find(f => f.id === item.id);
+  if (!facility) return;
 
-    const imagePath = buildImagePath(facility);
+  let imagePath = facility.image_path;
 
-    payloads.push({
-      action: "insert",
-      collectionName: "hostel_details",
-      collection_type: "hostel_facilities",
-      category: null,
-      title: "Insert Hostel Facilities",
-      meta_data: {
-        title: facility.title,
-        description: facility.description,
-        image_path: imagePath,
-      },
-    });
+  if (facility.imageFile) {
+    const uniqueName = `${Date.now()}_${facility.imageFile.name}`;
 
-    if (facility.imageFile) {
-      files.push(facility.imageFile); // ✅ REAL FILE
-    }
+    const renamedFile = new File(
+      [facility.imageFile],
+      uniqueName,
+      { type: facility.imageFile.type }
+    );
+
+    files.push(renamedFile);
+
+    imagePath = `/static/images/hostel/${uniqueName}`;
+  }
+
+  payloads.push({
+    action: "insert",
+    collectionName: "hostel_details",
+    collection_type: "hostel_facilities",
+    category: null,
+    title: "Insert Hostel Facilities",
+    meta_data: {
+      title: facility.title,
+      description: facility.description,
+      image_path: imagePath,
+    },
   });
+});
 
   // ---------- UPDATE (SEND FULL DATA) ----------
-  detected.modified.forEach(item => {
-    const current = facilitiesData.find(f => f.id === item.id);
-    const original = originalData.find(o => o.id === item.id);
-    if (!current || !original) return;
+// ---------- UPDATE (SEND FULL DATA) ----------
+detected.modified.forEach(item => {
+  const current = facilitiesData.find(f => f.id === item.id);
+  const original = originalData.find(o => o.id === item.id);
+  if (!current || !original) return;
 
-    const imagePath =
-      current.imageFile
-        ? `/static/images/hostel/${Date.now()}_${current.imageFile.name}`
-        : original.image_path;
+  let imagePath = original.image_path;
 
-    payloads.push({
-      action: "update",
-      collectionName: "hostel_details",
-      collection_type: "hostel_facilities",
-      category: null,
-      title: "Update Hostel Facilities",
-      original_data: {
-        title: original.title,
-        description: original.description,
-        image_path: original.image_path,
-      },
-      meta_data: {
-        title: current.title,
-        description: current.description,
-        image_path: imagePath,
-      },
-    });
+  if (current.imageFile) {
+    const uniqueName = `${Date.now()}_${current.imageFile.name}`;
 
-    if (current.imageFile) {
-      files.push(current.imageFile);
-    }
+    const renamedFile = new File(
+      [current.imageFile],
+      uniqueName,
+      { type: current.imageFile.type }
+    );
+
+    files.push(renamedFile);
+
+    imagePath = `/static/images/hostel/${uniqueName}`;
+  }
+
+  payloads.push({
+    action: "update",
+    collectionName: "hostel_details",
+    collection_type: "hostel_facilities",
+    category: null,
+    title: "Update Hostel Facilities",
+    original_data: {
+      title: original.title,
+      description: original.description,
+      image_path: original.image_path,
+    },
+    meta_data: {
+      title: current.title,
+      description: current.description,
+      image_path: imagePath,
+    },
   });
+});
 
   // ---------- DELETE ----------
+// ---------- DELETE ----------
 // ---------- DELETE ----------
 detected.deleted.forEach(item => {
   const original = originalData.find(o => o.id === item.id);
   if (!original) return;
 
-  // 🔥 NORMALIZE image_path (array → string)
   const imagePath = Array.isArray(original.image_path)
-    ? original.image_path[original.image_path.length - 1] // take latest
-    : original.image_path;
+    ? original.image_path[original.image_path.length - 1]
+    : original.image_path || "";
 
   payloads.push({
     action: "delete",
@@ -572,7 +590,7 @@ detected.deleted.forEach(item => {
     meta_data: {
       title: original.title,
       description: original.description,
-      image_path: imagePath, // ✅ ALWAYS STRING
+      image_path: imagePath,
     },
   });
 });
@@ -587,6 +605,9 @@ console.log("files",files);
   await sendRequest(payloads, files);
 
   toast.success("Request submitted successfully!");
+  // ✅ Update original data so next edits compare correctly
+  setOriginalData(JSON.parse(JSON.stringify(facilitiesData)));
+  setInitialSnapshot(JSON.parse(JSON.stringify(facilitiesData)));
 
   setShowRequestModal(false);
   setChangesSaved(false);
