@@ -43,7 +43,7 @@
     "pdfkit": "^0.17.2",
     "pdfkit-table": "^0.1.99",
     "pdfmake": "^0.2.10",
-    "puppeteer": "^24.37.5",
+    "puppeteer": "^24.39.1",
     "qrcode": "^1.5.4",
     "sanitize-html": "^2.17.0",
     "sharp": "^0.34.3",
