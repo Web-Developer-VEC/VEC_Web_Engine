@@ -185,14 +185,14 @@
     "data": [
       {
         "unique_id": "announcement_14",
-        "announcement_name": "SEE Timetable_April 2026_For batches_2019-2023 & 2020-2024",
+        "announcement_name": "REIVSED SEE Timetable April 2026 For batches 2019-2023 & 2020-2024",
         "pdf_path": "/static/pdfs/announcements/REIVSED_SEE Timetable_April 2026_For batches_2019-2023 & 2020-2024.pdf",
         "date": "2026-03-17",
         "status": "active"
       },
       {
         "unique_id": "announcement_15",
-        "announcement_name": "SEE Timetable_April 2026_For batches_2021-2025 & 2022-2026",
+        "announcement_name": "REIVSED SEE Timetable April 2026 For batches 2021-2025 & 2022-2026",
         "pdf_path": "/static/pdfs/announcements/REVISED_SEE Timetable_April 2026_For batches_2021-2025 & 2022-2026.pdf",
         "date": "2026-03-17",
         "status": "active"
