@@ -184,6 +184,12 @@
     "type": "announcements",
     "data": [
       {
+        "unique_id": "announcement_16",
+        "announcement_name": "SEE Timetable - April / May 2026 - For batches 2023-2027 & 2024-2028",
+        "pdf_path": "/static/pdfs/announcements/SEE Timetable_April_May 2026_For batches_2023-2027 & 2024-2028.pdf",
+        "date": "2026-03-17",
+        "status": "active"
+      },{
         "unique_id": "announcement_14",
         "announcement_name": "REIVSED SEE Timetable April 2026 For batches 2019-2023 & 2020-2024",
         "pdf_path": "/static/pdfs/announcements/REIVSED_SEE Timetable_April 2026_For batches_2019-2023 & 2020-2024.pdf",
