@@ -21,6 +21,8 @@ import DynamicTitle from "./Header.jsx";
 const LandingPage = React.lazy(() => import("./Landing.jsx"));
 const TermsandCon = React.lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
 const Career = React.lazy(() => import("./Components/Main/Landing Comp/career.jsx"));
+// import NotifyCard from "./Components/Main/NotifyCard/NotifyCard";
+const NotifyCard = React.lazy(() => import("./Components/Main/Landing Comp/NotifyCard.jsx"))
 
 /* AboutUs Pages */
 const AbtUs = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx"));
