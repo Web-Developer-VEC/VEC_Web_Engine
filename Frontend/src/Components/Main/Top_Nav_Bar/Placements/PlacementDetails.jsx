@@ -150,7 +150,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                 </tbody>
                                 </table>
                             </div>
-                            </div>
+                        </div>
 
 
                         {/* Placement Statistics */}
@@ -186,7 +186,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                 </tbody>
                                 </table>
                             </div>
-                            </div>                  
+                        </div>                  
                     </>
                 )}
 
