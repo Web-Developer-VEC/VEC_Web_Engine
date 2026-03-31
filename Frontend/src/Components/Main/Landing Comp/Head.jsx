@@ -27,7 +27,7 @@ const Head = () => {
     // const [scroll, setScroll] = useState(0)
     // const [hdr, setHdr] = useState("")
 
-    const nacs = [Naac, Acrd, Nord, iquage, Tnea, tuvindia]
+    const nacs = [Naac, Acrd, tuvindia, iquage, Tnea]
     const hdrs = [
         { ttl: "Library", lnk: "/library" },
         { ttl: "IQAC", lnk: "/iqac" },
