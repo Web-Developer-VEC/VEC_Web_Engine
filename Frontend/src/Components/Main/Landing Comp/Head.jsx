@@ -6,6 +6,7 @@ import Nord from '../../Assets/1723802229690.png'
 import Naac from '../../Assets/1723802229711.png'
 import Acrd from '../../Assets/1723802229732.png'
 import iquage from '../../Assets/iquage.png'
+import tuvindia from '../../Assets/tuvindia.jpeg'
 import Tnea from '../../Assets/TNEA-Code.png'
 import Inta from '../../Assets/instagram.png'
 import Fcbk from '../../Assets/facebook.png'
@@ -26,7 +27,7 @@ const Head = () => {
     // const [scroll, setScroll] = useState(0)
     // const [hdr, setHdr] = useState("")
 
-    const nacs = [Naac, Acrd, Nord, iquage, Tnea]
+    const nacs = [Naac, Acrd, tuvindia, iquage, Tnea]
     const hdrs = [
         { ttl: "Library", lnk: "/library" },
         { ttl: "IQAC", lnk: "/iqac" },
@@ -92,6 +93,18 @@ const Head = () => {
             ], 
         },
         {
+            main: "Admission",
+            cod: [0, 5],
+            cols: 1,
+            sub: [
+                {hrd: false, ttl: "B.E/B.Tech Admission", sup: [], lnk: "/ug"},
+                {hrd: false, ttl: "M.E Admission", sup: [], lnk: "/m_e"},
+                {hrd: false, ttl: "MBA Admission", sup: [], lnk: "/mba"},
+                {hrd: false, ttl: "Ph.D Admission", sup: [], lnk: "/phd"},
+                {hrd:false,ttl: "Admission Team",sup:[],lnk:"/admission-team"}
+            ],
+        },
+        {
             main: "Academics",
             cod: [0, 3],
             cols: 1,
@@ -101,6 +114,7 @@ const Head = () => {
                 { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/academic_cal" },
               ],
         },
+        
         {
             main: "Placement",
             cod: [0, 4],
@@ -117,18 +131,7 @@ const Head = () => {
                 {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
             ],
         },
-        {
-            main: "Admission",
-            cod: [0, 5],
-            cols: 1,
-            sub: [
-                {hrd: false, ttl: "B.E/B.Tech Admission", sup: [], lnk: "/ug"},
-                {hrd: false, ttl: "M.E Admission", sup: [], lnk: "/m_e"},
-                {hrd: false, ttl: "MBA Admission", sup: [], lnk: "/mba"},
-                {hrd: false, ttl: "Ph.D Admission", sup: [], lnk: "/phd"},
-                {hrd:false,ttl: "Admission Team",sup:[],lnk:"/admission-team"}
-            ],
-        },
+        
         {
             main: "Exams",
             cod: [0, 6],
@@ -224,7 +227,7 @@ const Head = () => {
                         </div>
                     </a>
                     <div className="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
-                         ml-2 flex xl:w-[25vw] lg:w-[50vw]">
+                         ml-2 flex xl:w-[30vw] lg:w-[50vw]">
                         {nacs.map((nac, i) => (
                             <div className="duration-200 self-center ease-linear ml-0 lg:ml-8 xl:ml-2" data-carousel-item="" key={i}>
                                 <img src={nac} className="block mt-2 h-full w-[5vmax] lg:w-[400px] xl:w-[7vmax] p-1" alt="naac"
@@ -232,7 +235,7 @@ const Head = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='xl:flex flex-nowrap hidden ml-[70px] right-0 justify-end grow text-[clamp(1rem,1.125rem+1vw,1.15rem)]
+                    <div className='xl:flex flex-nowrap hidden ml-[10px] right-0 justify-end grow text-[clamp(1rem,1.125rem+1vw,1.15rem)]
                     max-w-[63.5%]
                         w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition'>
                         {navs.map((nvt, ind) => (

@@ -13,11 +13,13 @@ import Contact from './Components/Main/Landing Comp/ContactIcon'
 import Chat from './Components/Main/Landing Comp/ChatPopup'
 import Footer from './Components/Main/Landing Comp/Footer';
 import ScrollToTopButton from './Components/Main/ScrollToTopButton';
+import NotifyCard from './Components/Main/Landing Comp/NotifyCard';
 
 
 const LandingPage = ({theme, load, toggle, pageData}) => {
 
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const [showPopup, setShowPopup] = useState(true);
 
     const pageDetails = pageData?.find((item) => item.type === "page_details")?.data || [];
     const bannerData = pageData?.find((item) => item.type === "banner")?.data || [];
@@ -71,7 +73,10 @@ const LandingPage = ({theme, load, toggle, pageData}) => {
                     <Footer theme={theme} data={pageDetails[0]}/>
                 </div>
             </div>
-            <ScrollToTopButton/>
+            <ScrollToTopButton/>,
+             {showPopup && (
+        <NotifyCard onClose={() => setShowPopup(false)} />
+      )}
         </div>
     );
 };

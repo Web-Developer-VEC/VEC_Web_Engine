@@ -91,19 +91,32 @@ export const PlacementDetails = ({ theme, toggle }) => {
                         {/* Year-wise PDF Reports */}
                         <div className="placement-yearwise font-[poppins] card-plc bg-prim dark:bg-drkts">
                             <h4 className='text-text bg-secd dark:drks'>Placement Details Year Wise</h4>
-                            <div className="place-Sylgrid">
-                                {placementData?.year_wise_pdfs?.map((year, index) => (
-                                    <button
-                                        key={index}
-                                        className="place-course-button bg-secd dark:bg-drks text-text"
-                                        onClick={() => openModal(UrlParser(year.pdf_path))}
-                                    >
-                                        <div className="place-course">{year.year}</div>
-                                    </button>
-                                ))}
+                           <div className="place-Sylgrid">
 
-                            
-                            </div>
+  {/* FIRST ITEM (TOP CENTER) */}
+  {placementData?.year_wise_pdfs?.[0] && (
+    <div className="top-item">
+      <button
+        className="place-course-button bg-secd dark:bg-drks text-text"
+        onClick={() => openModal(UrlParser(placementData.year_wise_pdfs[0].pdf_path))}
+      >
+        {placementData.year_wise_pdfs[0].year}
+      </button>
+    </div>
+  )}
+
+  {/* REMAINING ITEMS */}
+  {placementData?.year_wise_pdfs?.slice(1).map((year, index) => (
+    <button
+      key={index}
+      className="place-course-button bg-secd dark:bg-drks text-text"
+      onClick={() => openModal(UrlParser(year.pdf_path))}
+    >
+      {year.year}
+    </button>
+  ))}
+
+</div>
 
                             {showModal && (
                                 <div className="place-modal-overlay" onClick={closeModal}>
@@ -115,7 +128,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                             )}
 
                             <div className='pt-8 ml-8  flex justify-start'>
-                                ★ - Placement is still in progress 
+                                ★ - Placement data has on 20 dec 2025
                             </div>
                         </div>
                         
@@ -150,7 +163,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                 </tbody>
                                 </table>
                             </div>
-                            </div>
+                        </div>
 
 
                         {/* Placement Statistics */}
@@ -186,7 +199,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                 </tbody>
                                 </table>
                             </div>
-                            </div>                  
+                        </div>                  
                     </>
                 )}
 

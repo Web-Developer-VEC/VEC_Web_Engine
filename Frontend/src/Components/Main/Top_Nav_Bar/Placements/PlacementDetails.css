@@ -168,13 +168,21 @@
 }
 
 /* Grid Layout for Courses */
+
+
 .place-Sylgrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 40px;
   justify-content: center;
 }
 
+/* Top item wrapper */
+.top-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 /* Syllabus Header */
 .place-syllabus-header {
   text-align: center;
@@ -233,7 +241,7 @@
     width: 90%;
     left: 0;
     padding: 1.5rem 1rem;
-    margin: 0 auto;
+    margin: 30px auto 0 auto;
   }
 
   /* Ensure two buttons are always in one row */
