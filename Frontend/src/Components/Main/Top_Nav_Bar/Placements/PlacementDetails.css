@@ -168,13 +168,21 @@
 }
 
 /* Grid Layout for Courses */
+
+
 .place-Sylgrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 40px;
   justify-content: center;
 }
 
+/* Top item wrapper */
+.top-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 /* Syllabus Header */
 .place-syllabus-header {
   text-align: center;
