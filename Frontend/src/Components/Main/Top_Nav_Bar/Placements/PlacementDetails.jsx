@@ -128,7 +128,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                             )}
 
                             <div className='pt-8 ml-8  flex justify-start'>
-                                ★ - Placement data has on 20 dec 2025
+                                ★ - Placement data has on 20 March 2026
                             </div>
                         </div>
                         
