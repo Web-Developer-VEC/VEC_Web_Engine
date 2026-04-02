@@ -93,17 +93,24 @@ export const PlacementDetails = ({ theme, toggle }) => {
                             <h4 className='text-text bg-secd dark:drks'>Placement Details Year Wise</h4>
                            <div className="place-Sylgrid">
 
-  {/* FIRST ITEM (TOP CENTER) */}
-  {placementData?.year_wise_pdfs?.[0] && (
-    <div className="top-item">
-      <button
-        className="place-course-button bg-secd dark:bg-drks text-text"
-        onClick={() => openModal(UrlParser(placementData.year_wise_pdfs[0].pdf_path))}
-      >
-        {placementData.year_wise_pdfs[0].year}
-      </button>
+{/* FIRST ITEM (TOP CENTER) */}
+{placementData?.year_wise_pdfs?.[0] && (
+  <div className="top-item relative flex justify-center items-center">
+    
+    <button
+      className="place-course-button bg-secd dark:bg-drks text-text"
+      onClick={() => openModal(UrlParser(placementData.year_wise_pdfs[0].pdf_path))}
+    >
+      {placementData.year_wise_pdfs[0].year}
+    </button>
+
+    {/* ⭐ Text positioned beside without affecting center */}
+    <div className="placement-note">
+      ★ - Placement data has on 20 Dec 2025
     </div>
-  )}
+
+  </div>
+)}
 
   {/* REMAINING ITEMS */}
   {placementData?.year_wise_pdfs?.slice(1).map((year, index) => (
@@ -127,9 +134,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                 </div>
                             )}
 
-                            <div className='pt-8 ml-8  flex justify-start'>
-                                ★ - Placement data has on 20 March 2026
-                            </div>
+                           
                         </div>
                         
                         {/* Placement Department-wise Data */}
