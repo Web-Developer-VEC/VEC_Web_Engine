@@ -28,6 +28,7 @@ const LandingPage = ({theme, load, toggle, pageData}) => {
     const announcements = pageData?.find((item) => item.type === "announcements")?.data || [];
     const specialAnnouncements = pageData?.find((item) => item.type === "special_announcements")?.data || [];
     const events = pageData?.find((item) => item.type === "events")?.data || [];
+    const newscard = pageData?.find((item) => item.type === "news_card")?.data || [];
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -74,9 +75,9 @@ const LandingPage = ({theme, load, toggle, pageData}) => {
                 </div>
             </div>
             <ScrollToTopButton/>,
-             {showPopup && (
-        <NotifyCard onClose={() => setShowPopup(false)} />
-      )}
+            {showPopup && (
+                <NotifyCard onClose={() => setShowPopup(false)} data={newscard} />
+            )}
         </div>
     );
 };

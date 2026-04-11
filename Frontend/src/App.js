@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback, useEffect, Suspense } from "react";
-import { Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Router, Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled, { createGlobalStyle } from "styled-components";
 import Cookies from "universal-cookie";
@@ -21,8 +21,6 @@ import DynamicTitle from "./Header.jsx";
 const LandingPage = React.lazy(() => import("./Landing.jsx"));
 const TermsandCon = React.lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
 const Career = React.lazy(() => import("./Components/Main/Landing Comp/career.jsx"));
-// import NotifyCard from "./Components/Main/NotifyCard/NotifyCard";
-const NotifyCard = React.lazy(() => import("./Components/Main/Landing Comp/NotifyCard.jsx"))
 
 /* AboutUs Pages */
 const AbtUs = React.lazy(() => import("./Components/Main/Top_Nav_Bar/About Us/AbtUs.jsx"));
@@ -236,18 +234,7 @@ const App = () => {
         );
     }
 
-    // Determine if timer should show
-    const showTimer = currentPath === "/QA/questions";
-
-    // Render header
-    const renderHeader = () => {
-            if (currentPath.startsWith('/hostel')) return <HostelHeader />;
-            return <Head />;
-}
-
     const isFooter = currentPath.startsWith("/hostel") || currentPath.startsWith('/QA');
-
-    
 
     return (
         <>
@@ -340,7 +327,8 @@ const App = () => {
                                 <Route path="/appraisalreport" element={<AppraisalReport />} />
                                 <Route path="/appraisalform" element={<AppraisalForm />} />
 
-
+                                {/*  conditional routes  */}
+                                <Route path="/vec-connect/*" element={<Navigate to="/" replace />} />
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
                                 {/* Rate limit page */}

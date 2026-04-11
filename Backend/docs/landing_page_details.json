@@ -630,5 +630,14 @@
         "status": "True"
       }
     ]
+  },
+  {
+    "type": "news_card",
+    "data": [
+      {
+        "type": "image",
+        "image_path": "/static/images/newscard/schlorship.png"
+      }
+    ]
   }
 ]

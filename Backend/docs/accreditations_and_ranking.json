@@ -43,24 +43,6 @@
     "data": [
       {
         "id": 1,
-        "department": "B.E. Civil Engineering",
-        "pdfs": [
-          {
-            "name": "2018 - 21",
-            "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
-          },
-          {
-            "name": "2021 - 22",
-            "pdf_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
-          },
-          {
-            "name": "2022 - 25",
-            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
-          }
-        ]
-      },
-      {
-        "id": 2,
         "department": "B.E. Computer Science and Engineering",
         "pdfs": [
           {
@@ -78,7 +60,7 @@
         ]
       },
       {
-        "id": 3,
+        "id": 2,
         "department": "B.E. Electrical and Electronics Engineering",
         "pdfs": [
           {
@@ -100,7 +82,7 @@
         ]
       },
       {
-        "id": 4,
+        "id": 3,
         "department": "B.E. Electronics and Communication Engineering",
         "pdfs": [
           {
@@ -118,7 +100,7 @@
         ]
       },
       {
-        "id": 5,
+        "id": 4,
         "department": "B.E. Electrical and Instrumentation Engineering",
         "pdfs": [
           {
@@ -136,7 +118,7 @@
         ]
       },
       {
-        "id": 6,
+        "id": 5,
         "department": "B.Tech. Information Technology",
         "pdfs": [
           {
@@ -154,7 +136,7 @@
         ]
       },
       {
-        "id": 7,
+        "id": 6,
         "department": "B.E. Mechanical Engineering",
         "pdfs": [
           {
@@ -172,14 +154,37 @@
         ]
       },
       {
+        "id": 7,
+        "department": "B.E. Civil Engineering / NBA Application No: 11668 * Under Progress",
+        "pdfs": [
+          {
+            "name": "2018 - 21",
+            "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+          },
+          {
+            "name": "2021 - 22",
+            "pdf_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
+          },
+          {
+            "name": "2022 - 25",
+            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+          }
+        ]
+      },
+      {
         "id": 8,
-        "department": "B.E Automobile Engineering",
+        "department": "B.E. Automobile Engineering / NBA Application No: 11668 * Under Progress",
         "pdfs": [
           {
             "name": "2019 - 22",
             "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           }
         ]
+      },
+      {
+        "id": 9,
+        "department": "B.Tech. Artificial Intelligence and Data Science / NBA Application No: 11668 * Under Progress",
+        "pdfs": []
       }
     ]
   },
