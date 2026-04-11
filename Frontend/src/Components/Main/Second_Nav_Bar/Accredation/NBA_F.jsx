@@ -82,13 +82,13 @@ const NBA_F = ({ data }) => {
                       <tr key={item.id} className="border-t">
                         <td className="px-4 py-2">{item.id}</td>
                         <td className="px-4 py-2">
-                          {item.department?.split(':').map((line, i) => (
+                          {item.department?.split('/').map((line, i) => (
                             <div key={i}>{line}</div>
                           ))}
                         </td>
                         <td className="px-4 py-2">
                           <ul className="list-disc list-inside">
-                            {Array.isArray(item.pdfs) &&
+                            {Array.isArray(item.pdfs) && item.pdfs.length > 0 ? (
                               item.pdfs.map((pdf, index) => (
                                 <li key={index}>
                                   <button
@@ -98,7 +98,9 @@ const NBA_F = ({ data }) => {
                                     {pdf.name}
                                   </button>
                                 </li>
-                              ))}
+                              ))) : (
+                              <p className="text-gray-500 pl-[60px]">-</p>
+                            )}
                           </ul>
                         </td>
                       </tr>
