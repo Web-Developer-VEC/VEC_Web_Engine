@@ -3,7 +3,7 @@ import "./NotifyCards.css";
 
 import scholar from "../../Assets/Scholarship-brochure.png";
 
-const NotifyCard = ({ onClose = () => {} }) => {
+const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   const [visible, setVisible] = useState(false);
   const [closing, setClosing] = useState(false);
   const [idx, setIdx] = useState(0);
@@ -13,8 +13,14 @@ const NotifyCard = ({ onClose = () => {} }) => {
   const imageLoaderRef = useRef(null);
   const closeTimerRef = useRef(null);
 
-  const slides = [{ type: "image", src: scholar }];
+  const slides = data.length > 0 ? data : [{ type: "image", image_path: scholar }];
   const showArrows = slides.length > 1;
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const UrlParser = (path) => {
+      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  };
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 2500);
@@ -119,7 +125,7 @@ const NotifyCard = ({ onClose = () => {} }) => {
 
     const slide = slides[idx];
 
-    if (slide.type === "image" && slide.src) {
+    if (slide.type === "image" && slide.image_path) {
       const img = new Image();
       imageLoaderRef.current = img;
 
@@ -156,7 +162,7 @@ const NotifyCard = ({ onClose = () => {} }) => {
         });
       };
 
-      img.src = slide.src;
+      img.src = UrlParser(slide.image_path);
     } else {
       setModalStyle({});
     }
@@ -247,14 +253,14 @@ const NotifyCard = ({ onClose = () => {} }) => {
         <div className="nc-media">
           {isImage ? (
             <img
-              src={slides[idx].src}
+              src={UrlParser(slides[idx].image_path)}
               alt={`slide-${idx + 1}`}
               className="nc-media-content"
               draggable="false"
             />
           ) : (
             <iframe
-              src={slides[idx].src}
+              src={UrlParser(slides[idx].image_path)}
               title="pdf"
               className="nc-media-content"
             />
