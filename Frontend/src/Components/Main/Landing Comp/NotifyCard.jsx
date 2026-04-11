@@ -12,10 +12,14 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   const closeTimerRef = useRef(null);
   const [slides, setSlides] = useState([]);
 
+  console.log(data);
+  
+
   useEffect(() => {
     if (!data || !data.length) return;
     setSlides(data);
   }, [data]);
+
   const showArrows = slides.length > 1;
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
