@@ -6,6 +6,32 @@
   transition: all 0.3s ease-in-out;
 }
 
+.placement-note {
+  position: absolute;
+  left: 57%;   /* adjust this to control distance from button */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ✅ Mobile Fix */
+@media (max-width: 768px) {
+  .placement-note {
+    position: static;          /* remove absolute */
+    transform: none;
+    margin-top: 8px;
+    text-align: center;
+    white-space: normal;       /* allow wrapping */
+    font-size: 13px;
+  }
+
+  .top-item {
+    flex-direction: column;    /* stack vertically */
+    gap: 6px;
+  }
+}
+
 /* Placement Section Styling */
 .placement-percent {
   margin: 3rem;
@@ -168,13 +194,21 @@
 }
 
 /* Grid Layout for Courses */
+
+
 .place-Sylgrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 40px;
   justify-content: center;
 }
 
+/* Top item wrapper */
+.top-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 /* Syllabus Header */
 .place-syllabus-header {
   text-align: center;
