@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import "./NotifyCards.css";
-
-import scholar from "../../Assets/Scholarship-brochure.png";
 
 const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   const [visible, setVisible] = useState(false);
@@ -13,7 +11,7 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   const imageLoaderRef = useRef(null);
   const closeTimerRef = useRef(null);
 
-  const slides = data.length > 0 ? data : [{ type: "image", image_path: scholar }];
+  const slides = data;
   const showArrows = slides.length > 1;
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -23,9 +21,11 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   };
 
   useEffect(() => {
+    if (!slides.length) return;
+
     const t = setTimeout(() => setVisible(true), 2500);
     return () => clearTimeout(t);
-  }, []);
+  }, [slides.length]);
 
   const handleClose = useCallback(
     (e) => {
@@ -205,7 +205,7 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   const onEnter = () => setIsHover(true);
   const onLeave = () => setIsHover(false);
 
-  if (!visible) return null;
+  if (!visible || !slides.length) return null;
 
   const isImage = slides[idx].type === "image";
 
