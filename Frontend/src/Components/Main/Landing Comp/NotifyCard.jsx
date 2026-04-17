@@ -145,7 +145,6 @@ const NotifyCard = ({ onClose = () => {} }) => {
 
         setModalStyle({
           width: `${desiredWidth}px`,
-          height: `${desiredHeight}px`,
         });
       };
 
