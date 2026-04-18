@@ -12,7 +12,7 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   const closeTimerRef = useRef(null);
   const [slides, setSlides] = useState([]);
 
-  console.log(data);
+ 
   
 
   useEffect(() => {
@@ -159,7 +159,7 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
 
         setModalStyle({
           width: `${desiredWidth}px`,
-          height: `${desiredHeight}px`,
+          
         });
       };
 
