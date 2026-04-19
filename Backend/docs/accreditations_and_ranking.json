@@ -274,6 +274,27 @@
             "pdf_path": "/static/pdfs/nirf/NIRF-2025-STG.pdf"
           }
         ]
+      },{
+        "category": "NIRF 2026",
+        "year": "2026",
+        "content": [
+          {
+            "name": "Overall",
+            "pdf_path": "/static/pdfs/nirf/NIRF OVERALL 2026.pdf"
+          },
+          {
+            "name": "Engineering",
+            "pdf_path": "/static/pdfs/nirf/NIRF ENGINEERING 2026.pdf"
+          },
+          {
+            "name": "Innovation",
+            "pdf_path": "/static/pdfs/nirf/NIRF INNOVATION 2026.pdf"
+          },
+          {
+            "name": "SDG",
+            "pdf_path": "/static/pdfs/nirf/NIRF SDG 2026.pdf"
+          }
+        ]
       }
     ]
   },
