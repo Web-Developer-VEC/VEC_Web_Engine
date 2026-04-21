@@ -155,8 +155,12 @@
       },
       {
         "id": 7,
-        "department": "B.E. Civil Engineering / NBA Application No: 11668 * Under Progress",
+        "department": "B.E. Civil Engineering",
         "pdfs": [
+          {
+            "name": "NBA Application No: 11668 * Under Progress",
+            "pdf_path": ""
+          },
           {
             "name": "2018 - 21",
             "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
@@ -173,8 +177,12 @@
       },
       {
         "id": 8,
-        "department": "B.E. Automobile Engineering / NBA Application No: 11668 * Under Progress",
+        "department": "B.E. Automobile Engineering",
         "pdfs": [
+          {
+            "name": "NBA Application No: 11668 * Under Progress",
+            "pdf_path": ""
+          },
           {
             "name": "2019 - 22",
             "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
@@ -183,8 +191,13 @@
       },
       {
         "id": 9,
-        "department": "B.Tech. Artificial Intelligence and Data Science / NBA Application No: 11668 * Under Progress",
-        "pdfs": []
+        "department": "B.Tech. Artificial Intelligence and Data Science",
+        "pdfs": [
+          {
+            "name": "NBA Application No: 11668 * Under Progress",
+            "pdf_path": ""
+          }
+        ]
       }
     ]
   },
