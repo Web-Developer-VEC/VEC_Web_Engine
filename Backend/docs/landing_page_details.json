@@ -184,6 +184,20 @@
     "type": "announcements",
     "data": [
       {
+        "unique_id": "announcement_9",
+        "announcement_name": "Circular_Revaluation (For Photocopy)_SEE May 2026 (8th Sem.)",
+        "pdf_path": "/static/pdfs/announcements/Circular_Revaluation (For Photocopy)_SEE May 2026.pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_10",
+        "announcement_name": "Circular_Revaluation (After Photocopy)_SEE May 2026 (8th Sem.)",
+        "pdf_path": "/static/pdfs/announcements/Circular_Revaluation (After Photocopy)_SEE May 2026.pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
         "unique_id": "announcement_1",
         "announcement_name": "SEE Timetable - April / May 2026 - For batches 2023-2027 & 2024-2028",
         "pdf_path": "/static/pdfs/announcements/SEE Timetable_April_May 2026_For batches_2023-2027 & 2024-2028.pdf",
@@ -238,6 +252,7 @@
         "date": "2025-07-28",
         "status": "active"
       }
+   
     ]
   },
   {
