@@ -87,18 +87,32 @@ const NBA_F = ({ data }) => {
                           ))}
                         </td>
                         <td className="px-4 py-2">
-                          <ul className="list-disc list-inside">
+                          <ul className="list-inside">
                             {Array.isArray(item.pdfs) && item.pdfs.length > 0 ? (
-                              item.pdfs.map((pdf, index) => (
-                                <li key={index}>
-                                  <button
-                                    onClick={() => handlePdfClick(pdf)}
-                                    className="text-brwn dark:text-drka no-underline bg-transparent border-none p-0 cursor-pointer font-inherit"
+                              item.pdfs.map((pdf, index) => {
+                                const hasPdf = pdf?.pdf_path?.trim();
+
+                                return (
+                                  <li
+                                    key={index}
+                                    className={hasPdf ? "list-disc" : "list-none"}
                                   >
-                                    {pdf.name}
-                                  </button>
-                                </li>
-                              ))) : (
+                                    {hasPdf ? (
+                                      <button
+                                        onClick={() => handlePdfClick(pdf)}
+                                        className="text-brwn dark:text-drka no-underline bg-transparent border-none p-0 cursor-pointer font-inherit"
+                                      >
+                                        {pdf.name}
+                                      </button>
+                                    ) : (
+                                      <span className="">
+                                        {pdf.name}
+                                      </span>
+                                    )}
+                                  </li>
+                                );
+                              })
+                            ) : (
                               <p className="text-gray-500 pl-[60px]">-</p>
                             )}
                           </ul>
