@@ -13,7 +13,7 @@ import { useLocation, useNavigate } from "react-router";
 const Accredation = ({toggle,theme}) => {
 
     const location = useLocation();
-    const [naac,setNaac] = useState("NAAC");
+    const [naac,setNaac] = useState("NBA");
     const [accdata, setAccData] = useState(null);
     const navigate = useNavigate();
     useEffect(() => {
@@ -59,9 +59,9 @@ const Accredation = ({toggle,theme}) => {
       fetchData();
     }, [naac])
 
-    const navData = {
-        "NAAC": <Naac data={accdata}/>,
+    const navData = {  
         "NBA": <NBA_F data={accdata}/>,
+        "NAAC": <Naac data={accdata}/>,
         "NIRF":<NIRF  data={accdata}/>,
         "QS Rating": <IQauge data={accdata}/>
     };

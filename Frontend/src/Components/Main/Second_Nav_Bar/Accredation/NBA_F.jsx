@@ -93,10 +93,8 @@ const NBA_F = ({ data }) => {
                                 const hasPdf = pdf?.pdf_path?.trim();
 
                                 return (
-                                  <li
-                                    key={index}
-                                    className={hasPdf ? "list-disc" : "list-none"}
-                                  >
+                                  <li key={index} className="flex items-start gap-2 ">
+  <span className="mt-[0px]">•</span>
                                     {hasPdf ? (
                                       <button
                                         onClick={() => handlePdfClick(pdf)}
