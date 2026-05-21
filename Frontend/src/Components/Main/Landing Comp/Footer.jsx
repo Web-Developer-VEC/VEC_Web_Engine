@@ -77,10 +77,10 @@ const Footer = forwardRef((props, ref) => {
                         <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
                             <li><Link to="/abt-us">About Us</Link></li>
                             <li><Link to="/abt-yr">AISHE</Link></li>
-                            <li><Link to="/Accredation" state={{ section: "NBA" }}>NBA</Link></li>
-                            <li><Link to="/Accredation" state={{ section: "NAAC" }}>NAAC</Link></li>
-                            <li><Link to="/Accredation" state={{ section: "NIRF" }}>NIRF</Link></li>
-                            <li><Link to="/Accredation" state={{ section: "QS Rating" }}>QS Rating</Link></li>
+                            <li><Link to="/Accreditation" state={{ section: "NBA" }}>NBA</Link></li>
+                            <li><Link to="/Accreditation" state={{ section: "NAAC" }}>NAAC</Link></li>
+                            <li><Link to="/Accreditation" state={{ section: "NIRF" }}>NIRF</Link></li>
+                            <li><Link to="/Accreditation" state={{ section: "QS Rating" }}>QS Rating</Link></li>
                             <li><Link to="/iic">IIC</Link></li>
                         </ul>
                     </div>

@@ -289,7 +289,7 @@ const App = () => {
                                 <Route path="/Funded" drk element={<Funded toggle={toggle} theme={theme}/>}/>
                                 <Route path="/Book_Chapter" drk element={<BookChapter toggle={toggle} theme={theme}/>}/>
                                 
-                                <Route path="/Accredation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
+                                <Route path="/Accreditation"drk element={<Accredation toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iqac" drk element={<IQAC toggle={toggle} theme={theme}/>}/>
                                 <Route path="/iic" drk element={<Iic toggle={toggle} theme={theme}/>}/> 
                                 <Route path="/ecell" drk element={<Ecell toggle={toggle} theme={theme}/>}/>

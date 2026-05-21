@@ -43,6 +43,54 @@
     "data": [
       {
         "id": 1,
+        "department": "B.Tech. Artificial Intelligence and Data Science",
+        "pdfs": [
+          {
+            "name": "2026 DCS Report - NBA Application No: 11668* Under Progress",
+            "pdf_path": "/static/pdfs/nba/AI&DS DCS Report.pdf"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "department": "B.E. Automobile Engineering",
+        "pdfs": [
+          
+          {
+            "name": "2026 DCS Report - NBA Application No: 11668* Under Progress",
+            "pdf_path": "/static/pdfs/nba/Auto DCS Report.pdf"
+          },
+          {
+            "name": "2019 - 22",
+            "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "department": "B.E. Civil Engineering",
+        "pdfs": [
+         
+          {
+            "name": "2026 DCS Report - NBA Application No: 11668* Under Progress",
+            "pdf_path": "/static/pdfs/nba/Civil DCS Report.pdf"
+          },
+          {
+            "name": "2022 - 25",
+            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
+          },
+          {
+            "name": "2021 - 22",
+            "pdf_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
+          },
+          {
+            "name": "2018 - 21",
+            "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+          }
+        ]
+      },
+      {
+        "id": 4,
         "department": "B.E. Computer Science and Engineering",
         "pdfs": [
           {
@@ -60,7 +108,7 @@
         ]
       },
       {
-        "id": 2,
+        "id": 5,
         "department": "B.E. Electrical and Electronics Engineering",
         "pdfs": [
           {
@@ -82,7 +130,7 @@
         ]
       },
       {
-        "id": 3,
+        "id": 6,
         "department": "B.E. Electronics and Communication Engineering",
         "pdfs": [
           {
@@ -100,7 +148,7 @@
         ]
       },
       {
-        "id": 4,
+        "id": 7,
         "department": "B.E. Electrical and Instrumentation Engineering",
         "pdfs": [
           {
@@ -118,9 +166,10 @@
         ]
       },
       {
-        "id": 5,
+        "id": 8,
         "department": "B.Tech. Information Technology",
         "pdfs": [
+          
           {
              "name": "2025 - 28",
             "pdf_path": "/static/pdfs/nba/CSE, EIE, IT, ECE, EEE , Mech upto 2028.pdf"
@@ -129,14 +178,15 @@
             "name": "2022 - 25",
             "pdf_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
           },
-          {
+           {
+          
             "name": "2019 - 22",
             "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           }
         ]
       },
       {
-        "id": 6,
+        "id": 9,
         "department": "B.E. Mechanical Engineering",
         "pdfs": [
           {
@@ -151,56 +201,11 @@
             "name": "2019 - 22",
             "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           }
-        ]
-      },
-      {
-        "id": 7,
-        "department": "B.E. Civil Engineering",
-        "pdfs": [
-         
-          {
-            "name": "Application No:  11668-25/02/26 in process",
-            "pdf_path": ""
-          }, {
-            "name": "2022 - 25",
-            "pdf_path": "/static/pdfs/nba/5 departments NBA certificate 2023.pdf"
-          },
-          {
-            "name": "2021 - 22",
-            "pdf_path": "/static/pdfs/nba/2.Velammal Engg. College10_8_2021_14_28_16.pdf"
-          },
-          {
-            "name": "2018 - 21",
-            "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
-          }
-        ]
-      },
-      {
-        "id": 8,
-        "department": "B.E. Automobile Engineering",
-        "pdfs": [
-          
-          {
-            "name": "Application No:  11668-25/02/26 in process",
-            "pdf_path": ""
-          },
-           {
-          
-            "name": "2019 - 22",
-            "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
-          }
-        ]
-      },
-      {
-        "id": 9,
-        "department": "B.Tech. Artificial Intelligence and Data Science",
-        "pdfs": [
-          {
-            "name": "Application No:  11668-25/02/26 in process",
-            "pdf_path": ""
-          }
                 ]
       }
+      
+      
+      
     ]
   },
   {
