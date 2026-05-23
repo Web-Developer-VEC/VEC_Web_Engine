@@ -258,21 +258,6 @@
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-03-012.pdf"
           },
           {
-            "name": "Dr. PONNRAJAKUMARI M",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-009-04-021",
-            "socialmedia_links": {
-              "linkedin": "http://www.linkedin.com/in/ponnrajakumari-m-137331204/",
-              "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=yc195xQAAAAJ",
-              "researchgate": "https://www.researchgate.net/profile/Ponnrajakumari-Mahalingam",
-              "orchidprofile": "https://orcid.org/0000-0002-7090-8191",
-              "publonprofile": "",
-              "scopus": ""
-            },
-            "image_path": "/static/images/profile_photos/009/VEC-009-04-021.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-021.pdf"
-          },
-          {
             "name": "Dr. LAVANYA K",
             "designation": "Assistant Professor",
             "unique_id": "VEC-009-04-029",
@@ -631,6 +616,54 @@
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-655.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-655.pdf"
+          },
+
+          {
+            "name": "Dr. HIMAYAVARDHINI J",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-800",
+            "socialmedia_links": {
+              "linkedin": "www.linkedin.com/in/himayavardhini-j-47b70020b/",
+              "googlescholar": "https://scholar.google.com/citations?user=xf2VLcwAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0006-1965-6706",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-800.webp",
+            "pdf_path": ""
+          },
+
+          {
+            "name": "Mrs. PRABHAVATHY M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-900",
+            "socialmedia_links": {
+              "linkedin": "www.linkedin.com/in/prabhavathy-mahalingam-7b39257b",
+              "googlescholar": "https://scholar.google.com/citations?user=3v9ZEREAAAAJ&amp;hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0000-0002-9164-0366",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-900.webp",
+            "pdf_path": ""
+          },
+
+          {
+            "name": "Mrs. ARCHANA M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-200",
+            "socialmedia_links": {
+              "linkedin": "www.linkedin.com/in/archana-mohan-30553b79/",
+              "googlescholar": "https://scholar.google.com/citations?user=7x9kJJEAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0001-2332-1590",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-200.webp",
+            "pdf_path": ""
           }
         ]
       },
@@ -668,7 +701,7 @@
             "pdf_path": ""
           },
           {
-            "name": "Mrs. RAJESWARI T",
+            "name": "Mrs. SELVAPRIYA R",
             "designation": "Lab Instructor",
             "unique_id": "VEC-009-05-006",
             "socialmedia_links": {

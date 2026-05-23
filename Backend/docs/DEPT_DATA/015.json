@@ -316,6 +316,54 @@
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-078.webp",
         "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-078.pdf"
+      },
+
+       {
+        "name": "Dr. KALAIYARASI S",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-100",
+        "socialmedia_links": {
+          "linkedin": "www.linkedin.com/in/kalaiyarasi-s-471b5a3b6",
+          "googlescholar": "https://scholar.google.com/citations?view_op=new_profile&hl=en",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0003-8389-8214",
+          "publonprofile": "https://www.webofscience.com/wos/author/record/POS-7371-2026",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57191261824"
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-100.webp",
+        "pdf_path": ""
+      },
+
+       {
+        "name": "Dr. ARUN K J",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-400",
+        "socialmedia_links": {
+          "linkedin": "www.linkedin.com/in/dr-arun-k-j-1501a2232",
+          "googlescholar": "https://scholar.google.com/citations?user=ioJzla8AAAAJ&hl=en",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0000-9565-2578",
+          "publonprofile": "https://www.webofscience.com/wos/author/record/PLS-1751-2026",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55816833000 "
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-400.webp",
+        "pdf_path": ""
+      },
+
+      {
+        "name": "Dr. HEMALATHA K",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-300",
+        "socialmedia_links": {
+          "linkedin": "www.linkedin.com/in/hemalatha-k-89795b3b6",
+          "googlescholar": "https://scholar.google.com/citations?user=JTQulHUAAAAJ",
+          "researchgate": "https://www.researchgate.net/profile/Hemalatha-Kothandaraman?ev=hdr_xprf",
+          "orchidprofile": "",
+          "publonprofile": "https://www.webofscience.com/wos/author/record/PNI-8080-2026",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57981792200"
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-300.webp",
+        "pdf_path": ""
       }
     ]
   },

@@ -305,21 +305,6 @@
             "pdf_path": "/static/pdfs/faculty_profile/011/VEC-011-04-161.pdf"
           },
           {
-            "name": "Mrs. VIMALA IMOGEN P",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-011-04-166",
-            "socialmedia_links": {
-              "linkedin": "https://www.linkedin.com/in/vimala-imogen-207261272/",
-              "googlescholar": "https://scholar.google.com/citations?user=OkDS79AAAAAJ&hl=en&authuser=2",
-              "researchgate": "https://www.researchgate.net/profile/Vimala-Imogen?ev=hdr_xprf",
-              "orchidprofile": "",
-              "publonprofile": "",
-              "scopus": ""
-            },
-            "image_path": "/static/images/profile_photos/011/VEC-011-04-166.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/011/VEC-011-04-166.pdf"
-          },
-          {
             "name": "Mrs. REVATHY S P",
             "designation": "Assistant Professor",
             "unique_id": "VEC-011-04-069",
@@ -424,21 +409,7 @@
             "image_path": "/static/images/profile_photos/011/VEC-011-04-018.webp",
             "pdf_path": "static/pdfs/faculty_profile/011/VEC-011-04-018.pdf"
           },
-          {
-            "name": "Mrs. RANGINI M",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-011-04-157",
-            "socialmedia_links": {
-              "linkedin": "https://www.linkedin.com/in/rangini-m-2a9aa4319",
-              "googlescholar": "https://scholar.google.com/citations?user=g2M-I-8AAAAJ&hl=en&oi=ao",
-              "researchgate": "https://www.webofscience.com/wos/author/record/HGC-7275-2022",
-              "orchidprofile": "https://orcid.org/0000-0001-8262-3815",
-              "publonprofile": "",
-              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55792600800"
-            },
-            "image_path": "/static/images/profile_photos/011/VEC-011-04-157.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/011/VEC-011-04-157.pdf"
-          },
+          
           {
             "name": "Mrs. SANTHANA ARUMUGA SANKARI M",
             "designation": "Assistant Professor",
@@ -482,6 +453,21 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-609.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mrs. SARANYA T V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-100",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/saranya-t-v-68659b79/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&pli=1&authuser=1&user=Bce_B0EAAAAJ",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0004-6461-9379",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-100.webp",
             "pdf_path": ""
           }
         ]

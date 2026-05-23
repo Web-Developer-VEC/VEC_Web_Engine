@@ -430,6 +430,22 @@
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-652.webp",
       "pdf_path": ""
+    },
+
+    {
+      "name": "Mrs. JEEVITHA R",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-012-04-700",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/012/VEC-012-04-700.webp",
+      "pdf_path": ""
     }
         ]
       },
