@@ -186,26 +186,28 @@
       {
         "category": "head_of_department",
         "members": [
-          {
-            "name": "Dr. RAJALAKSHMI S",
-            "designation": "Associate Professor & Head",
-            "unique_id": "VEC-006-03-039",
-            "socialmedia_links": {
-              "linkedin": "https://www.linkedin.com/in/rajalakshmi-srinivasan-a14927161/",
-              "googlescholar": "https://scholar.google.com/citations?user=vQoy5VEAAAAJ&hl=en",
-              "researchgate": "https://www.researchgate.net/profile/S-Rajalakshmi-2",
-              "orchidprofile": "https://orcid.org/0000-0002-2963-9057",
-              "publonprofile": "",
-              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58321740200"
-            },
-            "image_path": "/static/images/profile_photos/006/VEC-006-03-039.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-03-039.pdf"
-          }
         ]
       },
       {
         "category": "teaching_staff",
         "members": [
+          {
+              "name": "Dr. ABISHA A",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-006-04-100",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/abishaajith/",
+                "googlescholar": "https://scholar.google.com/citations?user=OvKnN9EAAAAJ&hl=en&authuser=2",
+                "researchgate": "https://www.researchgate.net/scientific-contributions/A-Abisha-2200769834",
+                "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-0464-2073",
+                "publonprofile": "",
+                "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57271928100"
+              },
+              "image_path": "/static/images/profile_photos/006/VEC-006-04-100.webp",
+              "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-100.pdf"
+            },
+
+
             {
               "name": "Ms. AKSAYA DHARANI K",
               "designation": "Assistant Professor",
@@ -295,6 +297,38 @@
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-644.webp",
               "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-644.pdf"
+            },
+
+            {
+              "name": "Mrs. SUGAPRIYA I",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-006-04-200",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/sugapriya-i-80b096219",
+                "googlescholar": "https://scholar.google.com/citations?hl=en&amp;user=V-YG9VIAAAAJ",
+                "researchgate": "https://www.researchgate.net/profile/Sugapriya-I-Irudhaya-Selvaraj",
+                "orchidprofile": "https://orcid.org/0009-0004-5686-2299",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/006/VEC-006-04-200.webp",
+              "pdf_path": ""
+            },
+
+             {
+              "name": "Mrs. SHANTHI R",
+              "designation": "Assistant Professor",
+              "unique_id": "VEC-006-04-300",
+              "socialmedia_links": {
+                "linkedin": "https://www.linkedin.com/in/shanthi-r-4a9779408",
+                "googlescholar": "https://scholar.google.com/citations?user=I401KXoAAAAJ&hl=en",
+                "researchgate": "https://www.researchgate.net/profile/Shanthi-Ramadoss",
+                "orchidprofile": "https://orcid.org/0009-0004-4391-9153",
+                "publonprofile": "",
+                "scopus": ""
+              },
+              "image_path": "/static/images/profile_photos/006/VEC-006-04-300.webp",
+              "pdf_path": ""
             }
         ]
       },
