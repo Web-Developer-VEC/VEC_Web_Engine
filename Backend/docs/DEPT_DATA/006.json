@@ -312,7 +312,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-200.webp",
-              "pdf_path": ""
+              "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-200.pdf"
             },
 
              {
@@ -328,7 +328,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-300.webp",
-              "pdf_path": ""
+              "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-300.pdf"
             }
         ]
       },

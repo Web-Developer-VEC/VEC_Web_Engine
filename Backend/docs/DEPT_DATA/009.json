@@ -631,7 +631,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-800.webp",
-            "pdf_path": ""
+            "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-800.pdf"
           },
 
           {
@@ -647,7 +647,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-900.webp",
-            "pdf_path": ""
+            "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-900.pdf"
           },
 
           {
@@ -663,7 +663,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-200.webp",
-            "pdf_path": ""
+            "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-200.pdf"
           }
         ]
       },
