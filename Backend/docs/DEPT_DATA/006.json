@@ -186,11 +186,27 @@
       {
         "category": "head_of_department",
         "members": [
+           {
+            "name": "Dr. RAJALAKSHMI S",
+            "designation": "Associate Professor and Head",
+            "unique_id": "VEC-006-03-039",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/rajalakshmi-srinivasan-a14927161/",
+              "googlescholar": "https://scholar.google.com/citations?user=vQoy5VEAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/S-Rajalakshmi-2",
+              "orchidprofile": "https://orcid.org/0000-0002-2963-9057",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58321740200"
+            },
+            "image_path": "/static/images/profile_photos/006/VEC-006-03-039.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-03-039.pdf"
+          }
         ]
       },
       {
         "category": "teaching_staff",
         "members": [
+  
           {
               "name": "Dr. ABISHA A",
               "designation": "Assistant Professor",
