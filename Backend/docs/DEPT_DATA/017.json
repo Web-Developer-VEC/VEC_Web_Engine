@@ -137,21 +137,21 @@
         "content": [
           {
             "department_id": "017",
-            "name": "Dr. NIRMALRAJ A",
+            "name": "Dr. Srikanth P",
             "department_name": "Master of Business Administration (MBA) ",
             "unique_id": "VEC-017-01-205",
-            "pdf_path":"/static/pdfs/faculty_profile/017/VEC-017-01-205.pdf",
+            "pdf_path":"",
             "qualification": ["B.Com.", "MBA.", "Ph.D"],
             "hod_message":["At VEC, we provide our learners—who come from diverse backgrounds—with ample opportunities for academic exploration and holistic development."," We recognize the growing need for business leaders who are well-versed in business principles, technology, and managerial skills. Therefore, our program offers a comprehensive overview of essential business concepts and industry-relevant technical practices, equipping learners with the knowledge and expertise required to excel in today's dynamic business landscape."],
-            "hod_image": "/static/images/hods/mba.webp",
+            "hod_image": "/static/images/profile_photos/017/VEC-017-01-205.webp",
             "designation": "Professor & Head, Dept of Master of Business Administration",
             "Social_media_links": {
-              "linkedin": "https://in.linkedin.com/in/nirmal-raj-a-a8201419",
-              "googlescholar": "https://scholar.google.co.in/citations?user=kECK4sYAAAAJ&hl=en",
-              "researchgate": "https://www.researchgate.net/profile/Nirmal-Amal-Raj",
-              "orchidprofile":"https://orcid.org/0009-0001-6856-7412",
+              "linkedin": "https://www.linkedin.com/in/dr-srikanth-parthasarathy-00431255/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=CJBkREQAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Srikanth-Parthasarathy",
+              "orchidprofile":"https://orcid.org/0000-0002-8617-812X",
               "publonprofile": "",
-              "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=59511587500"
+              "scopus":  "https://www.scopus.com/authid/detail.uri?authorId=55769750100"
             }
           }
         ]
@@ -180,19 +180,19 @@
       {
         "category": "head_of_department",
         "members": [{
-            "name":"Dr. NIRMALRAJ A",
+            "name":"Dr. Srikanth P",
             "designation":"Professor & Head",
             "unique_id":"VEC-017-01-205",
             "socialmedia_links":{
-              "linkedin":"https://in.linkedin.com/in/nirmal-raj-a-a8201419",
-              "googlescholar":"https://scholar.google.co.in/citations?user=kECK4sYAAAAJ&hl=en",
-              "researchgate":"https://www.researchgate.net/profile/Nirmal-Amal-Raj",
-              "orchidprofile":"https://orcid.org/0009-0001-6856-7412",
+              "linkedin":"https://www.linkedin.com/in/dr-srikanth-parthasarathy-00431255/",
+              "googlescholar":"https://scholar.google.com/citations?hl=en&user=CJBkREQAAAAJ",
+              "researchgate":"https://www.researchgate.net/profile/Srikanth-Parthasarathy",
+              "orchidprofile":"https://orcid.org/0000-0002-8617-812X",
               "publonprofile":"",
-              "scopus":"https://www.scopus.com/authid/detail.uri?authorId=59511587500"
+              "scopus":"https://www.scopus.com/authid/detail.uri?authorId=55769750100"
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-01-205.webp",
-            "pdf_path":"/static/pdfs/faculty_profile/017/VEC-017-01-205.pdf"
+            "pdf_path":""
           }]
       },
       {
