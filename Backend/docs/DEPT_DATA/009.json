@@ -139,7 +139,10 @@
             "department_name": "Electronics and Communication Engineering (ECE)",
             "unique_id": "VEC-009-01-090",
             "pdf_path": "",
-            "qualification": ["M.E.","Ph.D"],
+            "qualification": [
+              "M.E.",
+              "Ph.D"
+            ],
             "hod_message": [
               "Department of ECE at Velammal Engineering College has proved its excellence in the field of Teaching, Research, placement and Student Activities since its establishment from 1995 onwards. Creative engineers solve practical problems to find out a solution for a societal problem. Also to crack society’s utmost challenges, country desires ECE engineers with entrepreneurial state of mind who can apply curiosity and creativity to the technical skillets in order to come up with truly novel ideas. Students in our department are trained with relevant practice through labs and projects for building the problem-solving skills, keeping industry requirements in view."
             ],
@@ -182,7 +185,7 @@
             "designation": "Professor & Head",
             "unique_id": "VEC-009-01-102",
             "socialmedia_links": {
-              "linkedin": "", 
+              "linkedin": "",
               "googlescholar": "https://scholar.google.com/citations?user=CXHND6AAAAAJ&hl=en",
               "researchgate": "https://www.researchgate.net/profile/Mary-Joans",
               "orchidprofile": "https://orcid.org/0009-0008-2908-5438",
@@ -617,7 +620,6 @@
             "image_path": "/static/images/profile_photos/009/VEC-009-04-655.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-655.pdf"
           },
-
           {
             "name": "Dr. HIMAYAVARDHINI J",
             "designation": "Assistant Professor",
@@ -633,7 +635,6 @@
             "image_path": "/static/images/profile_photos/009/VEC-009-04-800.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-800.pdf"
           },
-
           {
             "name": "Mrs. PRABHAVATHY M",
             "designation": "Assistant Professor",
@@ -664,6 +665,21 @@
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-200.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-200.pdf"
+          },
+          {
+            "name": "Mrs. JAISAKTHI R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-205",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-205.webp",
+            "pdf_path": ""
           }
         ]
       },
@@ -733,55 +749,55 @@
       },
       {
         "category": "curriculum",
-        "content":[
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
               {
-                "heading":"Curriculum & Syllabus",
-                "syllabus":[
-                {
-                  "year": "R - 2023",
-                  "docs":[
-                    {
-                    "name":"I Semester",
-                      "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM I WITH TW & SDG .pdf"
+                "year": "R - 2023",
+                "docs": [
+                  {
+                    "name": "I Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM I WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"II Semester",
-                      "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM II WITH TW & SDG .pdf"
+                  {
+                    "name": "II Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM II WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"III Semester",
-                      "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM III WITH TW & SDG .pdf"
+                  {
+                    "name": "III Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM III WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"IV Semester",
-                      "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM IV WITH TW & SDG .pdf"
+                  {
+                    "name": "IV Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM IV WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"V Semester",
-                      "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM V WITH TW & SDG .pdf"
+                  {
+                    "name": "V Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM V WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"VI Semester",
-                      "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM VI WITH TW & SDG .pdf"
+                  {
+                    "name": "VI Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM VI WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"VII Semester",
-                      "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM VII WITH TW & SDG .pdf"
+                  {
+                    "name": "VII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM VII WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"VIII Semester",
-                      "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM VIII WITH TW & SDG.pdf"
+                  {
+                    "name": "VIII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM VIII WITH TW & SDG.pdf"
                   },
-                    {
-                    "name":"Elective Courses",
-                      "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) PROFESSIONAL ELECTIVE OPEN ELCTIVE AND MANDATORY COURSE WITH TW & SDG .pdf"
+                  {
+                    "name": "Elective Courses",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) PROFESSIONAL ELECTIVE OPEN ELCTIVE AND MANDATORY COURSE WITH TW & SDG .pdf"
                   }
                 ]
-                },
-                {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/009/reg_21.pdf"
-                }
+              },
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/009/reg_21.pdf"
+              }
             ]
           }
         ]
@@ -804,20 +820,28 @@
         "category": "newsletter",
         "content": [
           {
-            "year":"2025" ,
-            "pdf_path":[ "/static/pdfs/newsletter/009/2025.pdf" ]
+            "year": "2025",
+            "pdf_path": [
+              "/static/pdfs/newsletter/009/2025.pdf"
+            ]
           },
           {
-            "year":"2024" ,
-            "pdf_path":[ "/static/pdfs/newsletter/009/2024.pdf" ]
+            "year": "2024",
+            "pdf_path": [
+              "/static/pdfs/newsletter/009/2024.pdf"
+            ]
           },
           {
-            "year":"2023" ,
-            "pdf_path":[ "/static/pdfs/newsletter/009/2023.pdf" ]
+            "year": "2023",
+            "pdf_path": [
+              "/static/pdfs/newsletter/009/2023.pdf"
+            ]
           },
           {
-            "year":"2022" ,
-            "pdf_path":[ "/static/pdfs/newsletter/009/2022.pdf" ]
+            "year": "2022",
+            "pdf_path": [
+              "/static/pdfs/newsletter/009/2022.pdf"
+            ]
           }
         ]
       }
@@ -865,7 +889,7 @@
                 "name": "Symposium",
                 "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Symposium.pdf"
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Conference.pdf"
               },
@@ -876,7 +900,7 @@
             ]
           },
           {
-            "year":"2023 - 2024",
+            "year": "2023 - 2024",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
@@ -902,7 +926,7 @@
                 "name": "Symposium",
                 "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Symposium.pdf"
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Conference.pdf"
               },
@@ -911,13 +935,13 @@
                 "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Value Added Course.pdf"
               }
             ]
-           },
+          },
           {
             "year": "2022 - 2023",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path":"/static/pdfs/dept_activities/009/2022-2023/Guest Lecture.pdf"
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
@@ -939,7 +963,7 @@
                 "name": "Symposium",
                 "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Symposium.pdf"
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Conference.pdf"
               },
@@ -969,7 +993,7 @@
       {
         "category": "Pedagogy Initiatives",
         "content": [
-                    {
+          {
             "year": "2024 - 2025",
             "content": [
               {
