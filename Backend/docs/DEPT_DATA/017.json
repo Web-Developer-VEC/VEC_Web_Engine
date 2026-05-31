@@ -318,6 +318,48 @@
             },
             "image_path":"/static/images/profile_photos/017/VEC-017-04-634.webp",
             "pdf_path":"/static/pdfs/faculty_profile/017/VEC-017-04-634.pdf"
+          },{
+            "name":"Dr. DEVIPRIYA S",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-635",
+            "socialmedia_links":{
+              "linkedin":"",
+              "googlescholar":"https://scholar.google.com/citations?user=YH9Y040AAAAJ&hl=en",
+              "researchgate":"",
+              "orchidprofile":"",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-635.webp",
+            "pdf_path":"/static/pdfs/faculty_profile/017/VEC-017-04-635.pdf"
+          },{
+            "name":"Mrs. SANGEETHA P",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-636",
+            "socialmedia_links":{
+              "linkedin":"http://www.linkedin.com/in/sangeetha-lenin-257928215",
+              "googlescholar":"https://scholar.google.com/citations?hl=en&pli=1&authuser=1&user=7G-jjRoAAAAJ",
+              "researchgate":"",
+              "orchidprofile":"https://orcid.org/0009-0004-9586-0974",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-636.webp",
+            "pdf_path":"/static/pdfs/faculty_profile/017/VEC-017-04-636.pdf"
+          },{
+            "name":"Dr. JENIFER RUTH MALARVIZHI S",
+            "designation":"Assistant Professor",
+            "unique_id":"VEC-017-04-637",
+            "socialmedia_links":{
+              "linkedin":"",
+              "googlescholar":"https://scholar.google.com/citations?user=8eg34ZwAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/Jenifer-Malarvizhi-S?ev=hdr_xprf",
+              "orchidprofile":"https://orcid.org/0000-0001-8217-4247",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/017/VEC-017-04-637.webp",
+            "pdf_path":"/static/pdfs/faculty_profile/017/VEC-017-04-637.pdf"
           }
         ]
       },
