@@ -68,7 +68,7 @@ const NBA_F = ({ data }) => {
 
           <div className="table-data px-4 md:px-12 lg:px-24">
             <div className="overflow-x-auto border rounded-lg shadow-md">
-              <table className="w-[1000px] department-table">
+              <table className="w-[1100px] department-table">
                 <thead className="bg-gry">
                   <tr>
                     <th className="text-left px-4 py-2 text-text">S.No</th>
@@ -80,25 +80,54 @@ const NBA_F = ({ data }) => {
                   {Array.isArray(data) &&
                     data.map((item) => (
                       <tr key={item.id} className="border-t">
-                        <td className="px-4 py-2">{item.id}</td>
-                        <td className="px-4 py-2">
+                        <td className="text-center">{item.id}</td>
+                        <td className="text-left">
                           {item.department?.split('/').map((line, i) => (
                             <div key={i}>{line}</div>
                           ))}
                         </td>
-                        <td className="px-4 py-2">
-                          <ul className="list-disc list-inside">
+                        <td className="">
+                          <ul className="list-inside pl-1 mb-0">
                             {Array.isArray(item.pdfs) && item.pdfs.length > 0 ? (
-                              item.pdfs.map((pdf, index) => (
-                                <li key={index}>
-                                  <button
-                                    onClick={() => handlePdfClick(pdf)}
-                                    className="text-brwn dark:text-drka no-underline bg-transparent border-none p-0 cursor-pointer font-inherit"
-                                  >
-                                    {pdf.name}
-                                  </button>
-                                </li>
-                              ))) : (
+                              item.pdfs.map((pdf, index) => {
+                                const hasPdf = pdf?.pdf_path?.trim();
+
+                                return (
+                                  <li key={index} className="flex items-start gap-2">
+                                    <span className="mt-[0px]">•</span>
+                                    {hasPdf ? (
+                                      <>
+                                        {pdf.name.includes("DCS") ? (
+                                          <>
+                                            {pdf.name.split("DCS")[0]}
+
+                                            <button
+                                              onClick={() => handlePdfClick(pdf)}
+                                              className="text-brwn dark:text-drka no-underline bg-transparent border-none p-0 cursor-pointer font-inherit"
+                                            >
+                                              DCS
+                                            </button>
+
+                                            {pdf.name.split("DCS")[1]}
+                                          </>
+                                        ) : (
+                                          <button
+                                            onClick={() => handlePdfClick(pdf)}
+                                            className="text-brwn dark:text-drka no-underline bg-transparent border-none p-0 cursor-pointer font-inherit"
+                                          >
+                                            {pdf.name}
+                                          </button>
+                                        )}
+                                      </>
+                                    ) : (
+                                      <span className="">
+                                        {pdf.name}
+                                      </span>
+                                    )}
+                                  </li>
+                                );
+                              })
+                            ) : (
                               <p className="text-gray-500 pl-[60px]">-</p>
                             )}
                           </ul>

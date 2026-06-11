@@ -31,7 +31,7 @@ const Head = () => {
     const hdrs = [
         { ttl: "Library", lnk: "/library" },
         { ttl: "IQAC", lnk: "/iqac" },
-        { ttl:"Accreditations & Ranking",lnk:"/Accredation"},
+        { ttl:"Accreditations & Ranking",lnk:"/Accreditation"},
         { ttl: "IIC", lnk: "/iic" },
         { ttl: "Incubation Cell", lnk: "/incubation" },
         { ttl: "Alumni", lnk: "/alumni" },

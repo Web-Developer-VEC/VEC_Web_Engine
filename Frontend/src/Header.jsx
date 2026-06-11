@@ -34,7 +34,7 @@ const titleMap = {
   "/abtplace": "VEC - Placement",
   "/place-team": "VEC - Placement Team",
   "/place-dep": "VEC - Placement Department",
-  "/Accredation": "Accreditation VEC",
+  "/Accreditation": "Accreditation VEC",
   "/iqac": "IQAC - VEC",
   "/iic": "IIC - VEC",
   "/ecell": "E-Cell - VEC",

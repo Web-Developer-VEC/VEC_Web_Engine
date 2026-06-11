@@ -218,6 +218,21 @@
     "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-03-168.pdf"
   },
   {
+              "name":"Dr. CHINNASAMY SUBRAMANIAN S",
+              "designation":"Assistant Professor",
+              "unique_id":"VEC-013-04-133",
+              "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/chinnasamy-s-50117425/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar":"https://scholar.google.com/citations?user=WNV3nmsAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/Chinnasamy-Subramanian-S",
+              "orchidprofile":"https://orcid.org/0000-0002-2447-5807",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/013/VEC-013-04-133.webp",
+            "pdf_path":"/static/pdfs/faculty_profile/013/VEC-013-04-133.pdf"
+          },
+  {
     "name": "Dr. THENNARASU P",
     "designation": "Assistant Professor",
     "unique_id": "VEC-002-04-155",
