@@ -9,7 +9,7 @@ const logError = require("./logerror");
 // CONFIG
 // ==============================
 
-const bucketName = process.env.AWS_BUCKET_NAME;
+const bucketName = process.env.AWS_S3_NAME;
 
 const baseUrl =
     `https://${bucketName}.s3.${process.env.AWS_REGION}.amazonaws.com`;

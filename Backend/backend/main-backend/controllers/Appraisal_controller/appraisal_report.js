@@ -417,6 +417,9 @@ const generateAppraisalDoc = async (req, res) => {
                 
                 .section-title { font-size: 11pt; font-weight: bold; margin: 20px 0 10px 0; text-decoration: underline; }
                 a { color: #0563C1; text-decoration: underline; font-weight: bold; }
+                 * {
+    font-family: "Times New Roman", Times, serif !important;
+  }
             </style>
         </head>
         <body>
@@ -775,8 +778,8 @@ ${rRow([
                                 <td class="text-center">${safe(item?.name_and_designation)}</td>
                                 <td class="text-center">${safe(item?.remarks)}</td>
                             </tr>`).join('')
-                : `<tr><td class="text-center">1</td><td class="text-center">-</td><td class="text-center">-</td></tr>
-                           <tr><td class="text-center">2</td><td class="text-center">-</td><td class="text-center">-</td></tr>`}
+                : `<tr><td class="text-center">1</td><td class="text-center"></td><td class="text-center"></td></tr>
+                           <tr><td class="text-center">2</td><td class="text-center"></td><td class="text-center"></td></tr>`}
                 </table>
             </div>
 
@@ -813,7 +816,7 @@ ${rRow([
         });
 
     } catch (error) {
-        console.error("Error generating appraisal report:", error);
+        console.log("Error generating appraisal report:", error);
         return res.status(500).json({ message: "Error generating report" });
     }
 };

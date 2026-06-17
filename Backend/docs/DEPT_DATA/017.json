@@ -198,22 +198,7 @@
       {
         "category": "teaching_staff",
         "members": [
-          {
-            "name":"Dr. KERINAB BEENU G H",
-            "designation":"Professor",
-            "unique_id":"VEC-017-02-188",
-            "socialmedia_links":{
-              "linkedin":"https://www.linkedin.com/in/dr-beenu-george-stanley-466727154",
-              "googlescholar":"https://scholar.google.com/citations?hl=en&user=RU-1t5MAAAAJ",
-              "researchgate":"https://www.researchgate.net/profile/Ghkerinab-Beenu",
-              "orchidprofile":"https://orcid.org/0000-0001-5759-0089",
-              "publonprofile":"https://www.webofscience.com/wos/author/record/AGC-8119-2022",
-              "scopus":""
-            },
-            "image_path":"/static/images/profile_photos/017/VEC-017-02-188.webp",
-            "pdf_path":"/static/pdfs/faculty_profile/017/VEC-017-02-188.pdf"
-          },
-            {
+         {
             "name":"Dr. REVATHI D",
             "designation":"Associate Professor",
             "unique_id":"VEC-017-03-175",

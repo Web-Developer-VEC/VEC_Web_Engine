@@ -331,7 +331,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57191261824"
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-100.webp",
-        "pdf_path": ""
+        "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-100.pdf"
       },
 
        {
@@ -347,7 +347,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55816833000 "
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-400.webp",
-        "pdf_path": ""
+        "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-400.pdf"
       },
 
       {
@@ -363,7 +363,7 @@
           "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57981792200"
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-300.webp",
-        "pdf_path": ""
+        "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-300.pdf"
       }
     ]
   },

@@ -362,7 +362,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-163.webp",
-            "pdf_path": ""
+            "pdf_path": "/static/pdfs/faculty_profile/011/VEC-011-04-138.pdf"
           },
           {
             "name": "Mrs. ABINAYA S P",
@@ -392,7 +392,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-01-526.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/011/VEC-011-01-526.pdf"
+            "pdf_path": "/static/pdfs/faculty_profile/011/VEC-011-04-526.pdf"
           },
           {
             "name": "Mrs. SATHYA V",
@@ -423,7 +423,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-607.webp",
-            "pdf_path": ""
+            "pdf_path": "static/pdfs/faculty_profile/011/VEC-011-04-607.pdf"
           },
           {
             "name": "Mrs. MALATHI V",
@@ -438,7 +438,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-608.webp",
-            "pdf_path": ""
+            "pdf_path": "static/pdfs/faculty_profile/011/VEC-011-04-608.pdf"
           },
           {
             "name": "Mrs. HERLINZIA C P",
@@ -453,7 +453,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-609.webp",
-            "pdf_path": ""
+            "pdf_path": "static/pdfs/faculty_profile/011/VEC-011-04-609.pdf"
           },
           {
             "name": "Mrs. SARANYA T V",
@@ -468,7 +468,21 @@
               "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
             },
             "image_path": "/static/images/profile_photos/011/VEC-011-04-100.webp",
-            "pdf_path": ""
+            "pdf_path": "static/pdfs/faculty_profile/011/VEC-011-04-100.pdf"
+          }, {
+            "name": "Mrs. AISWARYA S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-011-04-777",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/aiswarya-sekar-4144785b/",
+              "googlescholar": "https://scholar.google.com/citations?user=jHznVzwAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0006-8899-9972",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/011/VEC-011-04-777.webp",
+            "pdf_path": "static/pdfs/faculty_profile/011/VEC-011-04-777.pdf"
           }
         ]
       },
