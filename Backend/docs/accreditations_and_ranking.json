@@ -70,6 +70,7 @@
         "id": 3,
         "department": "B.E. Civil Engineering",
         "pdfs": [
+         
           {
             "name": "2026 DCS Report - NBA Application No: 11668* Under Progress",
             "pdf_path": "/static/pdfs/nba/Civil DCS Report.pdf"
@@ -168,6 +169,7 @@
         "id": 8,
         "department": "B.Tech. Information Technology",
         "pdfs": [
+          
           {
              "name": "2025 - 28",
             "pdf_path": "/static/pdfs/nba/CSE, EIE, IT, ECE, EEE , Mech upto 2028.pdf"
@@ -176,7 +178,8 @@
             "name": "2022 - 25",
             "pdf_path": "/static/pdfs/nba/IT & Mech Accreditation Ext Certificate.pdf"
           },
-          {
+           {
+          
             "name": "2019 - 22",
             "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           }
@@ -198,7 +201,7 @@
             "name": "2019 - 22",
             "pdf_path": "/static/pdfs/nba/1.Velammal Engg. College_22_3_2019_19_5_33.pdf"
           }
-        ]
+                ]
       }
       
       

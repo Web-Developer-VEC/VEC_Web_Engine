@@ -183,13 +183,49 @@
   {
     "type": "announcements",
     "data": [
-      {
-        "unique_id": "announcement_1",
-        "announcement_name": "SEE Timetable - April / May 2026 - For batches 2023-2027 & 2024-2028",
-        "pdf_path": "/static/pdfs/announcements/SEE Timetable_April_May 2026_For batches_2023-2027 & 2024-2028.pdf",
+       {
+        "unique_id": "announcement_13",
+        "announcement_name": "Circular- Reschedule - SEE May 2026 - 28-05-2026 to 05-06-2026",
+        "pdf_path": "/static/pdfs/announcements/Rescheduled Date_SEE May 2026_28-05-2026 to 05-06-2026.pdf",
         "date": "2026-03-17",
         "status": "active"
-      },{
+      } ,
+      {
+        "unique_id": "announcement_1",
+        "announcement_name": "SEE May 2026 - Updated Exam Timetable for B.E.B.Tech. 2023-2027 & 2024-2028 batch with I year courses",
+        "pdf_path": "/static/pdfs/announcements/SEE May 2026 - Updated Exam Timetable for B.E.B.Tech. 2023-2027 & 2024-2028 batch with I year courses.pdf",
+        "date": "2026-03-17",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_11",
+        "announcement_name": "SEE MAY 2026 - Exam Timetable for B.E.B.Tech. 2025-2029 batch (R2023A)",
+        "pdf_path": "/static/pdfs/announcements/SEE MAY 2026 - Exam Timetable for B.E.B.Tech. 2025-2029 batch (R2023A).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_12",
+        "announcement_name": "SEE May 2026 - Exam Timetable for MBA  M.E. 2025-2027 batch (R2023A) & 2024-2026 batch (R2023)",
+        "pdf_path": "/static/pdfs/announcements/SEE May 2026 - Exam Timetable for MBA  M.E. 2025-2027 batch (R2023A) & 2024-2026 batch (R2023).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_9",
+        "announcement_name": "Circular_Revaluation (For Photocopy)_SEE May 2026 (8th Sem.)",
+        "pdf_path": "/static/pdfs/announcements/Circular_Revaluation (For Photocopy)_SEE May 2026.pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_10",
+        "announcement_name": "Circular_Revaluation (After Photocopy)_SEE May 2026 (8th Sem.)",
+        "pdf_path": "/static/pdfs/announcements/Circular_Revaluation (After Photocopy)_SEE May 2026.pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
         "unique_id": "announcement_2",
         "announcement_name": "REIVSED SEE Timetable April 2026 For batches 2019-2023 & 2020-2024",
         "pdf_path": "/static/pdfs/announcements/REIVSED_SEE Timetable_April 2026_For batches_2019-2023 & 2020-2024.pdf",
@@ -238,6 +274,7 @@
         "date": "2025-07-28",
         "status": "active"
       }
+   
     ]
   },
   {

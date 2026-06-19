@@ -232,21 +232,6 @@
         "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-148.pdf"
       },
       {
-        "name": "Dr. VINOTHKUMAR M",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-057",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/m-vinoth-kumar-45bba7168?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-          "googlescholar": "https://scholar.google.com/citations?user=oIYjsvUAAAAJ&hl=en",
-          "researchgate": "https://www.researchgate.net/profile/Vinothkumar-Mohan-2?ev=hdr_xprf",
-          "orchidprofile": "https://orcid.org/0009-0005-6008-3201",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-057.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-057.pdf"
-      },
-      {
         "name": "Mr. ANAND V",
         "designation": "Assistant Professor",
         "unique_id": "VEC-010-04-065",
@@ -321,7 +306,21 @@
         "image_path": "/static/images/profile_photos/010/VEC-010-04-606.webp",
         "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-606.pdf"
       },
-    
+    {
+        "name": "Dr. SREELATHA",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-101",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-101.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-101.pdf"
+      },
      {
         "name": "Mrs. MEENA M",
         "designation": "Assistant Professor",
