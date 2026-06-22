@@ -57,51 +57,47 @@
         "content": [
           {
             "header": "PO 1: Engineering knowledge",
-            "content": "Apply the knowledge of mathematics, science, engineering fundamentals, and an engineering specialization for the solution of complex engineering problems."
+            "content": "Apply knowledge of mathematics, natural science, computing, engineering fundamentals and an engineering specialization as specified in WK1 to WK4 respectively to develop to the solution of complex engineering problems."
           },
           {
             "header": "PO 2: Problem analysis",
-            "content": "Identify, formulate, research literature, and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences, and engineering sciences."
+            "content": "Identify, formulate, review research literature and analyze complex engineering problems reaching substantiated conclusions with consideration for sustainable development. (WK1 to WK4)"
           },
           {
             "header": "PO 3: Design/development of solutions",
-            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+            "content": "Design creative solutions for complex engineering problems and design/develop systems/components/processes to meet identified needs with consideration for the public health and safety, whole-life cost, net zero carbon, culture, society and environment as required. (WK5)"
           },
           {
             "header": "PO 4: Conduct investigations of complex problems",
-            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+            "content": "Conduct investigations of complex engineering problems using research-based knowledge including design of experiments, modelling, analysis & interpretation of data to provide valid conclusions. (WK8)."
           },
           {
-            "header": "PO 5: Modern tool usage",
-            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+            "header": "PO 5: Engineering Tool Usage",
+            "content": "Create, select and apply appropriate techniques, resources and modern engineering & IT tools, including prediction and modelling recognizing their limitations to solve complex engineering problems. (WK2 and WK6)"
           },
           {
-            "header": "PO 6: The engineer and society",
-            "content": "Apply reasoning informed by the contextual knowledge to assess societal, health, safety, legal and cultural issues and the consequent responsibilities relevant to the professional engineering practice."
+            "header": "PO 6: The Engineer and The World",
+            "content": "Analyze and evaluate societal and environmental aspects while solving complex engineering problems for its impact on sustainability with reference to economy, health, safety, legal framework, culture and environment. (WK1, WK5, and WK7)."
           },
           {
-            "header": "PO 7: Environment and sustainability",
-            "content": "Understand the impact of the professional engineering solutions in societal and environmental contexts, and demonstrate the knowledge of, and need for sustainable development."
+            "header": "PO 7: Ethics",
+            "content": "Apply ethical principles and commit to professional ethics, human values, diversity and inclusion; adhere to national & international laws. (WK9)."
           },
           {
-            "header": "PO 8: Ethics",
-            "content": "Apply ethical principles and commit to professional ethics and responsibilities and norms of the engineering practice."
+            "header": "PO 8: Individual and Collaborative Team work",
+            "content": "Function effectively as an individual, and as a member or leader in diverse/multi-disciplinary teams."
           },
           {
-            "header": "PO 9: Individual and team work",
-            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+            "header": "PO 9: Communication",
+            "content": "Communicate effectively and inclusively within the engineering community and society at large, such as being able to comprehend and write effective reports and design documentation, make effective presentations considering cultural, language, and learning differences."
           },
           {
-            "header": "PO 10: Communication",
-            "content": "Communicate effectively on complex engineering activities with the engineering community and with the society at large, such as, being able to comprehend and write effective reports and design documentation, make effective presentations, and give and receive clear instructions."
+            "header": "PO 10: Project Management and Finance",
+            "content": "Apply knowledge and understanding of engineering management principles and economic decision-making and apply these to one’s own work, as a member and leader in a team, and to manage projects and in multidisciplinary environments."
           },
           {
-            "header": "PO 11: Project management and finance",
-            "content": "Demonstrate knowledge and understanding of the engineering and management principles and apply these to one’s own work, as a member and leader in a team, to manage projects and in multidisciplinary environments."
-          },
-          {
-            "header": "PO 12: Life-long learning",
-            "content": "Recognize the need for, and have the preparation and ability to engage in independent and life-long learning in the broadest context of technological change."
+            "header": "PO 11: Life-Long Learning",
+            "content": "Recognize the need for, and have the preparation and ability for i) independent and life-long learning ii) adaptability to new and emerging technologies and iii) critical thinking in the broadest context of technological change. (WK8)"
           }
         ]
       },
@@ -110,11 +106,11 @@
         "content": [
           {
             "header": "PSO 1",
-            "content": "Apply the concepts of Artificial Intelligence to provide solutions for the real time problems and to integrate the professional skills with recent tools and technologies to cope with the dynamic AI needs."
+            "content": "Graduates will have an ability to apply the concepts of Artificial Intelligence to provide solutions for the real time problems and to integrate the professional skills with recent tools and technologies to cope with the dynamic AI needs."
           },
           {
             "header": "PSO 2",
-            "content": "Create a concrete foundation and enlighten the innovation, research and entrepreneur skills in the field of Artificial Intelligence and Data science."
+            "content": "Graduates will have an ability to create a concrete foundation and enlighten the innovation, research and entrepreneur skills in the field of Artificial Intelligence and Data science."
           }
         ]
       }

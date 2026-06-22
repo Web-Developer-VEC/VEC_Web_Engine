@@ -203,14 +203,6 @@
       "category": "student",
       "content": [
         {
-          "name": "NPTEL Course Registration form for credit transfer",
-          "pdf_path": "/static/pdfs/all_forms/Applicationform_NPTEL_Course.pdf"
-        },
-        {
-          "name": "Application Form - NPTEL Credit Transfer",
-          "pdf_path": "/static/pdfs/all_forms/Applicationform-NPTEL_Credit_transfer.pdf"
-        },
-        {
           "name": "Application form - CGPA to Percentage Conversion",
           "pdf_path": "/static/pdfs/all_forms/Application_for_CGPA_to_Percentage_conversion.pdf"
         },
