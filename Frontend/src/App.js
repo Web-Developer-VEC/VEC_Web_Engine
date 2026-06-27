@@ -333,6 +333,10 @@ const App = () => {
                                 <Route path="*" element={<NotFound />} />
                                 {/* Rate limit page */}
                                 <Route path="/ratelimit" element={<RateLimitReach />} />
+
+                                {/*Redirect To Home*/}
+                                <Route path="/Accredation" element={<Navigate to="/" replace />} />
+
                             </Routes>
                         </Suspense>
 
