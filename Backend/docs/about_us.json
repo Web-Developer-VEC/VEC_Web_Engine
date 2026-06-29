@@ -61,7 +61,7 @@
     "type": "vision_and_mission",
     "data": {
       "vision": "To educate the student community through theory and practice, preparing them to contribute to society and lead in emerging technologies on a global scale, with human values upheld by our dedicated team.",
-      "mission": ["Provide world-class education in engineering, technology, and management.","Foster research, creativity, and innovation among students and faculty.","Develop leadership, intrapreneurship, and entrepreneurial skills.","Nurture teamwork, collaboration, and professional ethics.","Ensure stakeholder satisfaction through academic excellence, industry engagement, and community service."],
+      "mission": ["Provide world-class education in engineering, technology, and management.","Foster research, creativity, and innovation among students and faculty.","Develop leadership, intrapreneurship, and entrepreneurial skills.","Nurture teamwork, collaboration, and professional ethics.","Ensure stakeholder satisfaction through academic excellence, industry engagement, and community service"],
       "image_path": "/static/images/visionandmission/VM.webp"
     }
   },
