@@ -176,6 +176,21 @@
       {
         "category": "teaching_staff",
         "members": [
+    {
+      "name": "Dr. SURESHKUMAR S",
+      "designation": "Associate Professor",
+      "unique_id": "VEC-012-04-707",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "https://scholar.google.com/citations?user=ldCXWlwAAAAJ&hl=en",
+        "researchgate": "",
+        "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-1907-6510",
+        "publonprofile": "",
+        "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57210017089"
+      },
+      "image_path": "/static/images/profile_photos/012/VEC-012-04-707.webp",
+      "pdf_path": ""
+    },
           {
       "name": "Dr. GURUSAMY P",
       "designation": "Assistant Professor",
@@ -205,21 +220,6 @@
       },
       "unique_id": "VEC-012-04-651",
       "pdf_path": ""
-    },
-    {
-      "name": "Mrs. KAVITHA D",
-      "designation": "Assistant Professor",
-      "image_path": "/static/images/profile_photos/012/VEC-012-04-047.webp",
-      "socialmedia_links": {
-        "linkedin": "http://linkedin.com/in/kavitha-d-13155a204",
-        "googlescholar": "",
-        "researchgate": "",
-        "orchidprofile": "",
-        "publonprofile": "",
-        "scopus": ""
-      },
-      "unique_id": "VEC-012-04-047",
-      "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-047.pdf"
     },
     {
       "name": "Mr. BALU M S",
@@ -355,21 +355,6 @@
       },
       "image_path": "/static/images/profile_photos/012/VEC-012-04-653.webp",
       "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-653.pdf"
-    },
-    {
-      "name": "Mr. VIJAYAKUMAR M",
-      "designation": "Assistant Professor",
-      "unique_id": "VEC-012-04-040",
-      "socialmedia_links": {
-        "linkedin": "https://www.linkedin.com/in/vijayakumar-ph-d-ab0069279?trk=contact-info",
-        "googlescholar": "",
-        "researchgate": "https://www.researchgate.net/profile/Vijayakumar-m-6",
-        "orchidprofile": "https://orcid.org/0000-0003-2823-1524",
-        "publonprofile": "",
-        "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57225399308&origin=recordpage"
-      },
-      "image_path": "/static/images/profile_photos/012/VEC-012-04-040.webp",
-      "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-040.pdf"
     },
     {
       "name": "Mr. ANTONY GNANA ARAVIND A",
