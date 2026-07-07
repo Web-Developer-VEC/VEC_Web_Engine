@@ -35,7 +35,7 @@ async function insertData( tempDoc, mainCollection) {
         { $set: { data: [meta_data] } },
         { upsert: true }
       );
-      return { status: 200, message: `Overwritten successfully for ${collection_type}`, data: meta_data };
+      return {  success: true,  message: `Overwritten successfully for ${collection_type}`, data: meta_data };
     }
 
     // 4️⃣ Multi-document type → append
@@ -46,7 +46,7 @@ async function insertData( tempDoc, mainCollection) {
         { upsert: true }
       );
       return {
-        status: 200,
+        success: true, 
         message: `Inserted successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -120,7 +120,7 @@ async function insertData( tempDoc, mainCollection) {
       }
 
       return {
-        status: 200,
+         success: true, 
         message: `Insert successful for ${collection_type} - category ${category}`,
         data: meta_data,
       };

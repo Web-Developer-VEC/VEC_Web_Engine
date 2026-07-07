@@ -11,7 +11,11 @@ import "./Couroselnss.css";
 import LoadComp from "../../LoadComp";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
-const deepCopy = (v) => JSON.parse(JSON.stringify(v));
+const deepCopy = (data) =>
+  data.map((item) => ({
+    ...item,
+    _file: item._file || null
+  }));
 
 const CarouselNSS = ({ data }) => {
   const swiperRef = useRef(null);
@@ -28,6 +32,8 @@ const CarouselNSS = ({ data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const { sendRequest, loading } = useAdminRequest();
+  
+  console.log("Initial data for CarouselNSS:", data);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -168,7 +174,10 @@ const CarouselNSS = ({ data }) => {
       return;
     }
 
-    const pending = deepCopy(items);
+    const pending = items.map((item) => ({
+  ...item,
+  _file: item._file || null
+}));
     setPendingItems(pending); // Save draft
     setIsSaved(true);
     setIsEditing(false);
@@ -298,6 +307,7 @@ const CarouselNSS = ({ data }) => {
     }
 
     try {
+      console.log("Submitting payload:", payload, "Files:", filesToSend);
       const result = await sendRequest(payload, filesToSend);
       if (result) {
         // On success, commit pendingItems as new committedItems
@@ -404,15 +414,15 @@ const CarouselNSS = ({ data }) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 
-  if (!data || data.length === 0) {
-    return (
-      <div className="text-center text-gray-600 mt-10">
-        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-          <LoadComp />
-        </div>
-      </div>
-    );
-  }
+  // if (!data || data.length === 0) {
+  //   return (
+  //     <div className="text-center text-gray-600 mt-10">
+  //       <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+  //         <LoadComp />
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>

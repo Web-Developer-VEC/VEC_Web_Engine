@@ -22,7 +22,7 @@ async function updateData(tempDoc, mainCollection) {
         {$set:{data:meta_data}}
       );
 
-      return{message:`The data is updated in the ${collection_type}`}
+      return{success:true, message:`The data is updated in the ${collection_type}`}
     }
 
 
@@ -55,7 +55,7 @@ async function updateData(tempDoc, mainCollection) {
       {arrayFilters:[{"elem.name":original_data.name}]}
     );
 
-    return{message:`The data is updated into the ${collection_type}`}
+    return{success:true, message:`The data is updated into the ${collection_type}`}
    }
    else if(collection_type === "HandBook" ){
 
@@ -65,7 +65,7 @@ async function updateData(tempDoc, mainCollection) {
       {arrayFilters:[{"elem.year":original_data.year}]}
     );
 
-    return{message:`The data is updated into the ${collection_type}`}
+    return{success:true, message:`The data is updated into the ${collection_type}`}
    }
 
     throw new Error("Invalid collection type logic branch reached.");

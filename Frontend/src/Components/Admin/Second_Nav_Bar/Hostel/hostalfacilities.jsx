@@ -30,6 +30,7 @@ const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${pat
   const [changesSaved, setChangesSaved] = useState(false);
 
   const [selectedItems, setSelectedItems] = useState([]);
+  const [savedSnapshot, setSavedSnapshot] = useState(null);
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [newFacility, setNewFacility] = useState({
@@ -39,6 +40,8 @@ const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${pat
     imageURL: ""
   });
   const [tempId, setTempId] = useState(null);
+  const [savedDeletedSnapshot, setSavedDeletedSnapshot] = useState([]);
+
   const { sendRequest, loading, error } = useAdminRequest();
 
   // Initialize when hostelData arrives
@@ -445,25 +448,32 @@ const invalidIds = (() => {
 
 
   // Save = create a draft snapshot of changes but DO NOT overwrite originalData
-  const handleSave = () => {
-    const detected = computeChanges(facilitiesData, originalData, deletedFacilities);
-    const hasReal =
-      detected.modified.length > 0 || detected.added.length > 0 || detected.deleted.length > 0;
-    if (!hasReal) {
-      toast.info("No changes to save");
-      return;
-    }
+const handleSave = () => {
+  const detected = computeChanges(facilitiesData, originalData, deletedFacilities);
 
-    // Keep originalData intact so computeChanges can still detect differences
-    setChanges(detected);
-    setChangesSaved(true);
+  const hasReal =
+    detected.modified.length > 0 ||
+    detected.added.length > 0 ||
+    detected.deleted.length > 0;
 
-    // Do NOT clear deletedFacilities here — we need them for Request popup
-    setHasChanges(false);
-    setEditMode(false);
-    setSelectedItems([]);
-    toast.success("Changes saved (pending request)");
-  };
+  if (!hasReal) {
+    toast.info("No changes to save");
+    return;
+  }
+
+  setChanges(detected);
+  setChangesSaved(true);
+
+  // snapshot edit1 state
+  setSavedSnapshot(JSON.parse(JSON.stringify(facilitiesData)));
+  setSavedDeletedSnapshot(JSON.parse(JSON.stringify(deletedFacilities)));
+
+  setHasChanges(false);
+  setEditMode(false);
+  setSelectedItems([]);
+
+  toast.success("Changes saved (pending request)");
+};
 
 const findFileFromBlobURL = (blobUrl) => {
   // Only works if you still have access to file objects
@@ -484,74 +494,92 @@ const handleRequestConfirm = async () => {
       : facility.image_path || "";
 
   // ---------- INSERT ----------
-  detected.added.forEach(item => {
-    const facility = facilitiesData.find(f => f.id === item.id);
-    if (!facility) return;
+detected.added.forEach(item => {
+  const facility = facilitiesData.find(f => f.id === item.id);
+  if (!facility) return;
 
-    const imagePath = buildImagePath(facility);
+  let imagePath = facility.image_path;
 
-    payloads.push({
-      action: "insert",
-      collectionName: "hostel_details",
-      collection_type: "hostel_facilities",
-      category: null,
-      title: "Insert Hostel Facilities",
-      meta_data: {
-        title: facility.title,
-        description: facility.description,
-        image_path: imagePath,
-      },
-    });
+  if (facility.imageFile) {
+    const uniqueName = `${Date.now()}_${facility.imageFile.name}`;
 
-    if (facility.imageFile) {
-      files.push(facility.imageFile); // ✅ REAL FILE
-    }
+    const renamedFile = new File(
+      [facility.imageFile],
+      uniqueName,
+      { type: facility.imageFile.type }
+    );
+
+    files.push(renamedFile);
+
+    imagePath = `/static/images/hostel/${uniqueName}`;
+  }
+
+  payloads.push({
+    action: "insert",
+    collectionName: "hostel_details",
+    collection_type: "hostel_facilities",
+    category: null,
+    title: "Insert Hostel Facilities",
+    meta_data: {
+      title: facility.title,
+      description: facility.description,
+      image_path: imagePath,
+    },
   });
+});
 
   // ---------- UPDATE (SEND FULL DATA) ----------
-  detected.modified.forEach(item => {
-    const current = facilitiesData.find(f => f.id === item.id);
-    const original = originalData.find(o => o.id === item.id);
-    if (!current || !original) return;
+// ---------- UPDATE (SEND FULL DATA) ----------
+detected.modified.forEach(item => {
+  const current = facilitiesData.find(f => f.id === item.id);
+  const original = originalData.find(o => o.id === item.id);
+  if (!current || !original) return;
 
-    const imagePath =
-      current.imageFile
-        ? `/static/images/hostel/${Date.now()}_${current.imageFile.name}`
-        : original.image_path;
+  let imagePath = original.image_path;
 
-    payloads.push({
-      action: "update",
-      collectionName: "hostel_details",
-      collection_type: "hostel_facilities",
-      category: null,
-      title: "Update Hostel Facilities",
-      original_data: {
-        title: original.title,
-        description: original.description,
-        image_path: original.image_path,
-      },
-      meta_data: {
-        title: current.title,
-        description: current.description,
-        image_path: imagePath,
-      },
-    });
+  if (current.imageFile) {
+    const uniqueName = `${Date.now()}_${current.imageFile.name}`;
 
-    if (current.imageFile) {
-      files.push(current.imageFile);
-    }
+    const renamedFile = new File(
+      [current.imageFile],
+      uniqueName,
+      { type: current.imageFile.type }
+    );
+
+    files.push(renamedFile);
+
+    imagePath = `/static/images/hostel/${uniqueName}`;
+  }
+
+  payloads.push({
+    action: "update",
+    collectionName: "hostel_details",
+    collection_type: "hostel_facilities",
+    category: null,
+    title: "Update Hostel Facilities",
+    original_data: {
+      title: original.title,
+      description: original.description,
+      image_path: original.image_path,
+    },
+    meta_data: {
+      title: current.title,
+      description: current.description,
+      image_path: imagePath,
+    },
   });
+});
 
   // ---------- DELETE ----------
+// ---------- DELETE ----------
 // ---------- DELETE ----------
 detected.deleted.forEach(item => {
   const original = originalData.find(o => o.id === item.id);
   if (!original) return;
 
-  // 🔥 NORMALIZE image_path (array → string)
   const imagePath = Array.isArray(original.image_path)
-    ? original.image_path[original.image_path.length - 1] // take latest
-    : original.image_path;
+    ? original.image_path[original.image_path.length - 1]
+    : original.image_path || "";
 
   payloads.push({
     action: "delete",
@@ -562,7 +590,7 @@ detected.deleted.forEach(item => {
     meta_data: {
       title: original.title,
       description: original.description,
-      image_path: imagePath, // ✅ ALWAYS STRING
+      image_path: imagePath,
     },
   });
 });
@@ -577,6 +605,9 @@ console.log("files",files);
   await sendRequest(payloads, files);
 
   toast.success("Request submitted successfully!");
+  // ✅ Update original data so next edits compare correctly
+  setOriginalData(JSON.parse(JSON.stringify(facilitiesData)));
+  setInitialSnapshot(JSON.parse(JSON.stringify(facilitiesData)));
 
   setShowRequestModal(false);
   setChangesSaved(false);
@@ -618,15 +649,38 @@ console.log("files",files);
     toast.info("Recent unsaved changes reverted");
   };
 
-  const handleCancel = () => {
-    if (changesSaved) {
-      setEditMode(false);
-      setHasChanges(false);
-      toast.info("Edit cancelled — saved changes remain pending");
-    } else {
-      cancelUnsavedChanges();
-    }
-  };
+const handleCancel = () => {
+
+  // CASE: edit2 cancel → revert to edit1
+  if (changesSaved && savedSnapshot) {
+
+    const restoredFacilities = JSON.parse(JSON.stringify(savedSnapshot));
+    const restoredDeleted = JSON.parse(JSON.stringify(savedDeletedSnapshot));
+
+    setFacilitiesData(restoredFacilities);
+    setDeletedFacilities(restoredDeleted);
+
+    const recomputed = computeChanges(
+      restoredFacilities,
+      originalData,
+      restoredDeleted
+    );
+
+    setChanges(recomputed);
+
+    setEditMode(false);
+    setHasChanges(false);
+    setSelectedItems([]);
+
+    toast.info("Reverted to last saved changes");
+    return;
+  }
+
+  // CASE: edit1 cancel
+  if (!changesSaved) {
+    cancelUnsavedChanges();
+  }
+};
 
   const togglePageView = () => {
     setIsPageView(!isPageView);

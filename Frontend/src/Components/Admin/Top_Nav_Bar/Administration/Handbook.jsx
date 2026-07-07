@@ -8,7 +8,6 @@ import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import { FaPaperPlane } from "react-icons/fa";
 import { Eye } from "lucide-react";
-import { MdUndo } from "react-icons/md";
 import { Pencil } from "lucide-react";
 import { X } from "lucide-react";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
@@ -87,17 +86,30 @@ const EditModal = ({ initialData, onClose, onSave }) => {
 
   const handleFileChange = (e) => {
     const f = e.target.files?.[0];
-    if (f) {
-      const blobUrl = URL.createObjectURL(f);
-      setForm((prev) => ({ ...prev, pdf_path: blobUrl, _file: f }));
+    if (!f) return;
+    
+    // Check if it's a PDF
+    if (f.type !== 'application/pdf') {
+      toast.error('Only PDF files are allowed');
+      e.target.value = ''; // Clear the input
+      return;
     }
+    
+    const blobUrl = URL.createObjectURL(f);
+    setForm((prev) => ({ ...prev, pdf_path: blobUrl, _file: f }));
   };
 
   const handlePreview = () => {
-    if (form.pdf_path && form.pdf_path !== "#") window.open(form.pdf_path, "_blank", "noopener,noreferrer");
+    if (form.pdf_path && form.pdf_path !== "#") window.open(UrlParser(form.pdf_path), "_blank", "noopener,noreferrer");
   };
 
   const handleSave = () => {
+    // Final validation before saving
+    if (form._file && form._file.type !== 'application/pdf') {
+      toast.error('Only PDF files are allowed');
+      return;
+    }
+    
     const payload = { ...form };
     if (!payload.id) payload.id = generateId();
     onSave(payload);
@@ -143,7 +155,13 @@ const EditModal = ({ initialData, onClose, onSave }) => {
                 <Eye size={20} />
               </button>
 
-              <input ref={fileInputRef} type="file" accept="application/pdf" onChange={handleFileChange} className="hidden" />
+              <input 
+                ref={fileInputRef} 
+                type="file" 
+                accept=".pdf,application/pdf" 
+                onChange={handleFileChange} 
+                className="hidden" 
+              />
             </div>
           </div>
         </div>
@@ -249,14 +267,14 @@ const AdminHandbook = ({ theme, toggle }) => {
   const handleAdd = () => { setEditData(null); setShowModal(true); };
   const handleEdit = (item, index) => { setEditData({ ...item, index, kind: "handbook" }); setShowModal(true); };
   const handleEditHr = () => {
-    if (!hrHandbook) setEditData({ year: "HR Handbook", pdf_path: "#", kind: "hr" });
+    if (!hrHandbook) setEditData({ year: "HR Handbook", pdf_path: "#", kind: "hr", id: generateId() });
     else setEditData({ ...hrHandbook, kind: "hr", prevItem: hrHandbook });
     setShowModal(true);
   };
 
   const handleDelete = (index) => {
     const prevItem = handBook[index];
-    addChange({ type: "Deleted", label: `Handbook ${prevItem?.year || index + 1}`, index, prevItem });
+    addChange({ type: "delete", label: `Handbook ${prevItem?.year || index + 1}`, index, prevItem, collection_type: "HandBook" });
     setHandbook((prev) => prev.filter((_, i) => i !== index));
   };
 
@@ -265,6 +283,12 @@ const AdminHandbook = ({ theme, toggle }) => {
   };
 
   const handleSaveModal = (form) => {
+    // Validate PDF before saving
+    if (form._file && form._file.type !== 'application/pdf') {
+      toast.error('Only PDF files are allowed');
+      return;
+    }
+    
     if (!form.id) form.id = generateId();
 
     if (editData && editData.kind === "hr") {
@@ -272,8 +296,8 @@ const AdminHandbook = ({ theme, toggle }) => {
       const newHr = { ...prev, ...form };
       if (form._file) newHr._file = form._file;
       setHrHandbook(newHr);
-      if (prev && prev.id) addChange({ type: "Updated", label: "HR Handbook", prevItem: prev, newItem: newHr, collection_type: "HRHandBook" });
-      else addChange({ type: "Added", label: "HR Handbook", item: newHr, collection_type: "HRHandBook" });
+      if (prev && prev.id) addChange({ type: "update", label: "HR Handbook", prevItem: prev, newItem: newHr, collection_type: "HRHandBook" });
+      else addChange({ type: "insert", label: "HR Handbook", item: newHr, collection_type: "HRHandBook" });
       setShowModal(false);
       return;
     }
@@ -285,12 +309,12 @@ const AdminHandbook = ({ theme, toggle }) => {
       if (form._file) newItem._file = form._file;
       updated[editData.index] = newItem;
       setHandbook(updated);
-      addChange({ type: "Updated", label: form.year || prev.year, index: editData.index, prevItem: prev, newItem });
+      addChange({ type: "update", label: form.year || prev.year, index: editData.index, prevItem: prev, newItem, collection_type: "HandBook" });
     } else {
       const newItem = { ...form };
       if (form._file) newItem._file = form._file;
       setHandbook((p) => [...(p || []), newItem]);
-      addChange({ type: "Added", label: form.year, item: newItem });
+      addChange({ type: "insert", label: form.year, item: newItem, collection_type: "HandBook" });
     }
     setShowModal(false);
   };
@@ -313,15 +337,15 @@ const AdminHandbook = ({ theme, toggle }) => {
     let reverted = [...(handBook || [])];
     for (let i = editModeChanges.length - 1; i >= 0; i--) {
       const c = editModeChanges[i];
-      if (c.type === "Added") {
+      if (c.type === "insert") {
         reverted = reverted.filter((it) => it.id !== c.item?.id);
-      } else if (c.type === "Updated") {
+      } else if (c.type === "update") {
         if (typeof c.index === "number" && reverted[c.index]) reverted[c.index] = c.prevItem;
         else if (c.prevItem?.id) {
           const idx = reverted.findIndex((it) => it.id === c.prevItem.id);
           if (idx !== -1) reverted[idx] = c.prevItem;
         }
-      } else if (c.type === "Deleted") {
+      } else if (c.type === "delete") {
         const insertIndex = c.index <= reverted.length ? c.index : reverted.length;
         reverted.splice(insertIndex, 0, c.prevItem);
       }
@@ -344,9 +368,9 @@ const AdminHandbook = ({ theme, toggle }) => {
     changes.forEach((c) => {
       const collectionType = c.collection_type || (c.label === "HR Handbook" ? "HRHandBook" : "HandBook");
       const target = groups[collectionType] || groups.HandBook;
-      const pdfFolder = collectionType === "HRHandBook" ? "hr_handbook" : "handbook";
+      const pdfFolder = collectionType === "HRHandBook" ? "hr_handbook" : "Handbook";
 
-      if (c.type === "Added") {
+      if (c.type === "insert") {
         const item = c.item || {};
         const meta = { year: item.year || "" };
         if (item._file && typeof item._file === "object") {
@@ -359,18 +383,19 @@ const AdminHandbook = ({ theme, toggle }) => {
         target.entries.push({
           collectionName: "administration",
           collection_type: collectionType,
-          action: "add",
-          title: `Add ${collectionType} - ${meta.year}`,
+          action: "insert",
+          title: `Insert ${collectionType} - ${meta.year}`,
           category: "administration",
           meta_data: meta,
           original_data: {},
         });
-      } else if (c.type === "Updated") {
+      } else if (c.type === "update") {
         const prev = c.prevItem || {};
         const nw = c.newItem || {};
         const meta = {};
         const original = {};
-        if ((prev.year || "") !== (nw.year || "")) { meta.year = nw.year || ""; original.year = prev.year || ""; }
+        if ((prev.year || "") !== (nw.year || ""))
+           { meta.year = nw.year || ""; original.year = prev.year || ""; }
 
         if (nw._file && typeof nw._file === "object") {
           const safe = buildSafeName(nw._file);
@@ -395,7 +420,7 @@ const AdminHandbook = ({ theme, toggle }) => {
             original_data: original,
           });
         }
-      } else if (c.type === "Deleted") {
+      } else if (c.type === "delete") {
         const prev = c.prevItem || {};
         target.entries.push({
           collectionName: "administration",
@@ -448,8 +473,8 @@ const AdminHandbook = ({ theme, toggle }) => {
 
       // Both succeeded: optimistic updates for file paths
       const updatedHandbook = (handBook || []).map((it) => {
-        const added = combined.find((c) => c.type === "Added" && c.item?.id === it.id);
-        const upd = combined.find((c) => c.type === "Updated" && ((c.newItem?.id && c.newItem.id === it.id) || (c.prevItem?.id && c.prevItem.id === it.id)));
+        const added = combined.find((c) => c.type === "insert" && c.item?.id === it.id);
+        const upd = combined.find((c) => c.type === "update" && ((c.newItem?.id && c.newItem.id === it.id) || (c.prevItem?.id && c.prevItem.id === it.id)));
         if (added && added.item && added.item._file) {
           const safe = buildSafeName(added.item._file);
           return { ...it, pdf_path: `/static/pdfs/handbook/${safe}`, _new: false };
@@ -462,8 +487,8 @@ const AdminHandbook = ({ theme, toggle }) => {
       });
 
       let updatedHr = hrHandbook;
-      const hrAdded = combined.find((c) => (c.collection_type === "HRHandBook" || c.label === "HR Handbook") && c.type === "Added");
-      const hrUpdated = combined.find((c) => (c.collection_type === "HRHandBook" || c.label === "HR Handbook") && c.type === "Updated");
+      const hrAdded = combined.find((c) => (c.collection_type === "HRHandBook" || c.label === "HR Handbook") && c.type === "insert");
+      const hrUpdated = combined.find((c) => (c.collection_type === "HRHandBook" || c.label === "HR Handbook") && c.type === "update");
       if (hrAdded && hrAdded.item && hrAdded.item._file) {
         const safe = buildSafeName(hrAdded.item._file);
         updatedHr = { ...(hrHandbook || {}), pdf_path: `/static/pdfs/hr_handbook/${safe}` };
@@ -492,7 +517,7 @@ const AdminHandbook = ({ theme, toggle }) => {
     const indices = [...selectedIds].sort((a, b) => b - a);
     indices.forEach((idx) => {
       const prevItem = handBook[idx];
-      addChange({ type: "Deleted", label: `Handbook ${prevItem?.year || idx + 1}`, index: idx, prevItem });
+      addChange({ type: "delete", label: `Handbook ${prevItem?.year || idx + 1}`, index: idx, prevItem, collection_type: "HandBook" });
     });
     setHandbook((prev) => prev.filter((_, i) => !selectedIds.includes(i)));
     setSelectedIds([]);
@@ -500,9 +525,9 @@ const AdminHandbook = ({ theme, toggle }) => {
   };
 
   const getChanges = () => (pendingChanges || []).map((c, idx) => {
-    if (c.type === "Added") return { id: idx, action: "insert", category: c.label || c.item?.year || "New Handbook", files: c.item?._file ? [c.item._file] : [], links: (c.item?.pdf_path || c.item?.url) ? [c.item.pdf_path || c.item.url] : [], raw: c };
-    if (c.type === "Updated") return { id: idx, action: "update", category: c.label || c.newItem?.year || "Updated Handbook", files: c.newItem?._file ? [c.newItem._file] : [], links: (c.newItem?.pdf_path || c.newItem?.url) ? [c.newItem.pdf_path || c.newItem.url] : [], raw: c, original: c.prevItem };
-    if (c.type === "Deleted") return { id: idx, action: "delete", category: c.label || c.prevItem?.year || "Deleted Handbook", files: [], links: [], raw: c, original: c.prevItem };
+    if (c.type === "insert") return { id: idx, action: "insert", category: c.label || c.item?.year || "New Handbook", files: c.item?._file ? [c.item._file] : [], links: (c.item?.pdf_path || c.item?.url) ? [c.item.pdf_path || c.item.url] : [], raw: c };
+    if (c.type === "update") return { id: idx, action: "update", category: c.label || c.newItem?.year || "Updated Handbook", files: c.newItem?._file ? [c.newItem._file] : [], links: (c.newItem?.pdf_path || c.newItem?.url) ? [c.newItem.pdf_path || c.newItem.url] : [], raw: c, original: c.prevItem };
+    if (c.type === "delete") return { id: idx, action: "delete", category: c.label || c.prevItem?.year || "Deleted Handbook", files: [], links: [], raw: c, original: c.prevItem };
     return { id: idx, action: "update", category: c.label || "Change", files: [], links: [], raw: c };
   });
 
@@ -519,14 +544,14 @@ const AdminHandbook = ({ theme, toggle }) => {
     setHandbook((prev) => {
       if (!prev) return prev;
       const copy = [...prev];
-      if (c.type === "Added") return copy.filter((it) => !(it.id === c.item?.id));
-      if (c.type === "Updated") {
+      if (c.type === "insert") return copy.filter((it) => !(it.id === c.item?.id));
+      if (c.type === "update") {
         if (c.prevItem?.id) {
           const idx2 = copy.findIndex((it) => it.id === c.prevItem.id);
           if (idx2 !== -1) { copy[idx2] = c.prevItem; return copy; }
         } else if (typeof c.index === "number" && copy[c.index]) { copy[c.index] = c.prevItem; return copy; }
       }
-      if (c.type === "Deleted") {
+      if (c.type === "delete") {
         const insertIndex = c.index <= copy.length ? c.index : copy.length;
         copy.splice(insertIndex, 0, c.prevItem);
         return copy;
@@ -535,22 +560,20 @@ const AdminHandbook = ({ theme, toggle }) => {
     });
 
     if (c.collection_type === "HRHandBook") {
-      if (c.type === "Added") setHrHandbook(null);
-      else if (c.type === "Updated") setHrHandbook(c.prevItem || null);
-      else if (c.type === "Deleted") setHrHandbook(c.prevItem || null);
+      if (c.type === "insert") setHrHandbook(null);
+      else if (c.type === "update") setHrHandbook(c.prevItem || null);
+      else if (c.type === "delete") setHrHandbook(c.prevItem || null);
     }
   };
 
-  // ---- NEW: Auto close request modal + return to original page (Edit button visible) when no changes left
+  // Auto close request modal when no changes left
   useEffect(() => {
     if (!showConfirmModal) return;
     if (getChanges().length === 0) {
       setShowConfirmModal(false);
       setIsSaved(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showConfirmModal, pendingChanges, editModeChanges]);
-  // ---- END NEW
 
   const confirmDiscardAll = () => {
     setHandbook(originalHandbook);
@@ -656,10 +679,10 @@ const AdminHandbook = ({ theme, toggle }) => {
 
       <ConfirmModal show={showDiscardModal} message="Are you sure you want to discard all changes?" onCancel={() => setShowDiscardModal(false)} onConfirm={confirmDiscardAll} type="confirm" />
 
-      {/* Confirm request modal (REPLACED as per your provided code) */}
+      {/* Confirm request modal */}
       {showConfirmModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
               Final Request for the Changes
             </h2>
@@ -668,81 +691,45 @@ const AdminHandbook = ({ theme, toggle }) => {
               superior admin. Once approved, they will be applied automatically
               to the live site.
             </p>
-            <div className="max-h-[200px] overflow-y-auto mb-4">
+            <div className="max-h-[300px] overflow-y-auto mb-4">
               {getChanges().length > 0 ? (
-                <table className="w-full text-left text-text dark:text-drkt">
-                  <thead>
+                <table className="w-full text-left text-text dark:text-drkt border">
+                  <thead className="bg-gray-100">
                     <tr>
-                      <th className="py-1">Action</th>
-                      <th className="py-1">Section</th>
-                      <th className="py-1">Changes</th>
-                      <th className="py-1">Undo</th>
+                      <th className="py-2 px-3 border">Action</th>
+                      <th className="py-2 px-3 border">Section</th>
+                      <th className="py-2 px-3 border">Changes</th>
+                      <th className="py-2 px-3 border">Undo</th>
                     </tr>
                   </thead>
                   <tbody>
                     {getChanges().map((g, i) => (
-                      <tr key={i}>
-                        <td className="py-1">
+                      <tr key={i} className="even:bg-white odd:bg-gray-50">
+                        <td className="py-2 px-3 border">
                           {g.action === "insert" && (
-                            <span className="text-green-600">+ Added</span>
+                            <span className="text-green-600">+ Insert</span>
                           )}
                           {g.action === "update" && (
-                            <span className="text-blue-600">✎ Edited</span>
+                            <span className="text-blue-600">✎ Update</span>
                           )}
                           {g.action === "delete" && (
-                            <span className="text-red-600">– Deleted</span>
+                            <span className="text-red-600">– Delete</span>
                           )}
                         </td>
-                        <td className="py-1">{g.category}</td>
-                        <td className="py-1">
-                          {g.files.length} images
+                        <td className="py-2 px-3 border">{g.category}</td>
+                        <td className="py-2 px-3 border">
+                          {g.files.length} {g.files.length === 1 ? 'file' : 'files'}
                           {g.links.length > 0
-                            ? `, ${g.links.length} links`
+                            ? `, ${g.links.length} ${g.links.length === 1 ? 'link' : 'links'}`
                             : ""}
                         </td>
-                        <td>
+                        <td className="py-2 px-3 border text-center">
                           <button
-                            onClick={() => {
-                              // Remove this change from pendingChanges
-                              setPendingChanges(prev => prev.filter((_, idx) => idx !== g.id));
-
-                              // Restore UI state for handbook/HR handbook
-                              const c = g.raw;
-
-                              // If it was an "insert", remove the added item from handbook
-                              if (g.action === "insert") {
-                                setHandbook(prev => (prev || []).filter(it => it.id !== c.item?.id));
-                              }
-
-                              // If it was a "delete", restore the deleted item
-                              if (g.action === "delete" && g.original) {
-                                setHandbook(prev => {
-                                  const copy = [...(prev || [])];
-                                  const insertIndex = (c.index <= copy.length ? c.index : copy.length);
-                                  copy.splice(insertIndex, 0, g.original);
-                                  return copy;
-                                });
-                              }
-
-                              // If it was an "update", restore original item
-                              if (g.action === "update" && g.original) {
-                                setHandbook(prev => {
-                                  const copy = [...(prev || [])];
-                                  const idx2 = copy.findIndex(it => it.id === g.original.id);
-                                  if (idx2 !== -1) copy[idx2] = g.original;
-                                  return copy;
-                                });
-                              }
-
-                              // HR Handbook undo handling
-                              if (c.collection_type === "HRHandBook") {
-                                if (c.type === "Added") setHrHandbook(null);
-                                else if (c.type === "Updated") setHrHandbook(c.prevItem || null);
-                                else if (c.type === "Deleted") setHrHandbook(c.prevItem || null);
-                              }
-                            }}
+                            onClick={() => handleUndo(g)}
+                            className="text-red-500 font-bold hover:text-red-700"
+                            title="Undo this change"
                           >
-                            <X />
+                            <X size={18} />
                           </button>
                         </td>
                       </tr>
@@ -750,7 +737,9 @@ const AdminHandbook = ({ theme, toggle }) => {
                   </tbody>
                 </table>
               ) : (
-                <p className="text-gray-400">No changes found.</p>
+                <p className="text-gray-400 text-center py-4">
+                  No changes found.
+                </p>
               )}
             </div>
             <div className="flex justify-end gap-2">

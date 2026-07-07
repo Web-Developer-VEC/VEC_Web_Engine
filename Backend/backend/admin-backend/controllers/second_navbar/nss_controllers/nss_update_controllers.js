@@ -22,7 +22,7 @@ async function updateData( tempDoc, mainCollection) {
     if (singleDocTypes.includes(collection_type)) {
       let newData;
 
-      newData = Array.isArray(meta_data)?meta_data:[meta_data];
+      newData = Array.isArray(meta_data)?meta_data:Object.values(meta_data);
 
       await mainCollection.updateOne(
         { type: collection_type },
@@ -30,7 +30,7 @@ async function updateData( tempDoc, mainCollection) {
       );
 
       return {
-       
+        success: true,
         message: `Updated successfully for ${collection_type}`,
         data: newData,
       };
@@ -111,7 +111,7 @@ async function updateData( tempDoc, mainCollection) {
       }
 
       return {
-       
+        success: true,
         message: `Updated successfully in ${collection_type} - category ${category}`,
         data: meta_data,
       };
@@ -137,7 +137,7 @@ async function updateData( tempDoc, mainCollection) {
       );
 
       return {
-       
+        success: true,
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };

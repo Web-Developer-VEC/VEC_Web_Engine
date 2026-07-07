@@ -39,6 +39,7 @@ const req_collection = new Set([
     "sports",
     "transport",
     "webteam",
+    "help_desk",
     "yrc"
 ])
 

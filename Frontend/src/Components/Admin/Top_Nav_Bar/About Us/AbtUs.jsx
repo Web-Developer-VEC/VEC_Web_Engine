@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Plus, Eye,Pencil, X } from "lucide-react";
+import { Plus, Eye, X, PencilLine } from "lucide-react";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import axios from "axios";
@@ -8,6 +8,7 @@ import "./AbtUs.css";
 import { useNavigate } from "react-router";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 import { toast, ToastContainer } from "react-toastify";
+import { Pencil} from "lucide-react";
 
 const AdminAbtUs = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -185,14 +186,21 @@ const AdminAbtUs = ({ theme, toggle }) => {
   };
 
   // -------------------- PDF modal --------------------
-  const openPdfModal = (index = null) => {
-    if (index === null) {
-      setShowPdfModal({ open: true, index: null, name: "", file: null, error: "" });
-    } else {
-      const item = pdfLinks[index] || { name: "", url: "" };
-      setShowPdfModal({ open: true, index, name: item.name || "", file: null, error: "" });
-    }
-  };
+const openPdfModal = (index = null) => {
+  if (index === null) {
+    setShowPdfModal({ open: true, index: null, name: "", file: null, error: "" });
+  } else {
+    const item = pdfLinks[index] || { name: "", url: "", file: null };
+
+    setShowPdfModal({
+      open: true,
+      index,
+      name: item.name || "",
+      file: item.file || null,   // ✅ keep replaced file
+      error: "",
+    });
+  }
+};
 
   const closePdfModal = () =>
     setShowPdfModal({ open: false, index: null, name: "", file: null, error: "" });
@@ -552,6 +560,32 @@ const AdminAbtUs = ({ theme, toggle }) => {
     return { entries, filesToSend };
   };
 
+  const syncUiWithBackendAfterRequest = (updatedBackend) => {
+
+  // convert backend content to textarea string
+  const contentStr = contentArrayToString(updatedBackend?.content);
+
+  // convert backend pdfs again fresh
+  const freshPdfLinks = normalizePdfLinksFromBackend(updatedBackend);
+
+  // 🔥 VERY IMPORTANT
+  setEditedContent(contentStr);
+  setPdfLinks(freshPdfLinks.map((p) => ({ ...p })));
+
+  // reset all pending edit states
+  setEditedImages({ 0: null, 1: null, 2: null });
+  setSelectedPdfNames([]);
+
+  setEditSessionSnapshot(null);
+  setPostSaveSnapshot(null);
+  setPendingBaselineSnapshot(null);
+
+  setSavedChanges(false);
+  setChanged(false);
+  setEditMode(false);
+  setShowRequestModal(false);
+};
+
   const confirmRequest = async () => {
     const oldData = abtUsData || {};
     const newSnapshot = postSaveSnapshot || getCurrentSnapshot();
@@ -577,9 +611,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
           about_us_pdf: newBackend.about_us_pdf,
         };
 
-        setAbtUsData(updatedBackend);
-
-        resetPendingUiState();
+setAbtUsData(updatedBackend);
+syncUiWithBackendAfterRequest(updatedBackend);
       } else {
         if (result?.status === 429 || result?.data?.status === 429) {
           navigate("/ratelimit", {
@@ -639,20 +672,31 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
   // -------------------- edit flow --------------------
   const handleEditClick = () => {
-    setEditSessionSnapshot(getCurrentSnapshot());
+    setEditSessionSnapshot(deepClone(getCurrentSnapshot()));
     setEditMode(true);
     setChanged(false);
     setSelectedPdfNames([]);
   };
 
-  const handleCancel = () => {
-    if (changed) setShowCancelConfirm(true);
-    else {
-      setEditMode(false);
-      setChanged(false);
-      setSelectedPdfNames([]);
-    }
-  };
+const handleCancel = () => {
+  // Always restore the snapshot taken when Edit started
+  if (editSessionSnapshot) {
+    setEditedContent(editSessionSnapshot.content || "");
+    setEditedImages({
+      ...(editSessionSnapshot.images || { 0: null, 1: null, 2: null }),
+    });
+
+    setPdfLinks(
+      Array.isArray(editSessionSnapshot.pdfLinks)
+        ? editSessionSnapshot.pdfLinks.map((p) => ({ ...p }))
+        : []
+    );
+  }
+
+  setEditMode(false);
+  setChanged(false);
+  setSelectedPdfNames([]);
+};
 
   const handleSave = () => {
     if (!pendingBaselineSnapshot) {
@@ -667,7 +711,26 @@ const AdminAbtUs = ({ theme, toggle }) => {
     setSelectedPdfNames([]);
   };
 
-  const handleDiscardAll = () => setShowDiscardConfirm(true);
+  const handleDiscardAll = () => {
+  if (!pendingBaselineSnapshot) return;
+
+  // Restore backend baseline
+  setEditedContent(pendingBaselineSnapshot.content || "");
+  setEditedImages({ 0: null, 1: null, 2: null });
+  setPdfLinks(
+    Array.isArray(pendingBaselineSnapshot.pdfLinks)
+      ? pendingBaselineSnapshot.pdfLinks.map((p) => ({ ...p }))
+      : []
+  );
+
+  // Reset request state
+  setSavedChanges(false);
+  setChanged(false);
+  setPostSaveSnapshot(null);
+  setPendingBaselineSnapshot(null);
+
+  toast.success("Changes discarded successfully");
+};
 
   // -------------------- render --------------------
   if (!isOnline) {
@@ -697,8 +760,9 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 onClick={handleEditClick}
                 className="absolute top-4 right-12 bg-[#fdcc03] hover:bg-[#800000] hover:text-white font-semibold text-black px-3 py-2 rounded flex items-center gap-2 transition"
               >
-                    <Pencil /> Edit
+               <Pencil size={20} /> Edit
               </button>
+              
             )}
           </div>
 
@@ -743,7 +807,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
                       onLoad={() => setLoading((prev) => ({ ...prev, [`img${i + 1}`]: false }))}
                     />
 
-                    {editMode && (
+                    {/* {editMode && (
                       <label className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity cursor-pointer z-20">
                         <span className="text-white text-center font-bold text-lg">Change Image</span>
                         <input
@@ -759,7 +823,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
                           className="hidden"
                         />
                       </label>
-                    )}
+                    )} */}
                   </div>
                 ))}
               </div>
@@ -780,7 +844,11 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 />
               ) : (
                 <p className="text-[16px] lg:text-[16px] text-justify font-[Poppins] leading-relaxed tracking-wide">
-                  {Array.isArray(abtUsData?.content) ? abtUsData?.content?.join("\n") : abtUsData?.content}
+                  {savedChanges
+                    ? editedContent
+                    : Array.isArray(abtUsData?.content)
+                    ? abtUsData?.content.join("\n")
+                    : abtUsData?.content}
                 </p>
               )}
             </div>
@@ -833,7 +901,15 @@ const AdminAbtUs = ({ theme, toggle }) => {
                     {!editMode && (
                       <div
                         className="absolute left-0 top-0 w-full h-full"
-                        onClick={() => window.open(UrlParser(pdf.url), "_blank")}
+                        onClick={() => {
+                        if (pdf.file instanceof File) {
+                          const blobUrl = URL.createObjectURL(pdf.file);
+                          window.open(blobUrl, "_blank");
+                          setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+                        } else if (pdf.url) {
+                          window.open(UrlParser(pdf.url), "_blank");
+                        }
+                      }}
                       />
                     )}
                   </div>
@@ -855,7 +931,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
                   editMode ? "scale-110" : ""
                 }`}
                 onClick={() => {
-                  if (!editMode) navigate("/abt-yr");
+                  if (editMode || !editMode) navigate("/abt-yr");
                 }}
               >
                 AISHE
@@ -968,7 +1044,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
       {/* Request Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[450px]">
+          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[650px]">
             <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">Final Request for the Changes</h2>
             <p className="text-sm text-red-500 mb-4">
               Note: Your changes will stay pending until approved by the superior admin. Once approved, they will be applied

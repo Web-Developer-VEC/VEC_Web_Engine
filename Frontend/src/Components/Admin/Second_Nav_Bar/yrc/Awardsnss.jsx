@@ -44,27 +44,32 @@ const Awardsnss = ({ data }) => {
   };
 
   // Initialize data
-  useEffect(() => {
-    if (data && data.length > 0) {
-      const formattedData = data.map((item, idx) => ({
-        id: idx,
-        image_path: item.image_path || "",
-        title: item.title || "",
-        description: item.description || "",
-        selected: false
-      }));
-      
-      const copy = deepCopy(formattedData);
-      setCommittedItems(copy);
-      setItems(deepCopy(copy));
-      setPendingItems(null);
-      setIsEditing(false);
-      setIsDirty(false);
-      setIsSaved(false);
-      setSelectedItems([]);
-      setSelectAll(false);
+useEffect(() => {
+  if (data && data.length > 0) {
+
+    const awardsData = data.filter(item => item.title || item.image_path);
+
+    if (awardsData.length === 0) {
+      setItems([]);
+      setCommittedItems([]);
+      return;
     }
-  }, [data]);
+
+const formattedData = awardsData.map((item, idx) => ({
+  id: idx,
+  image_path: Array.isArray(item.image_path)
+    ? item.image_path[0]
+    : item.image_path || "",
+  title: item.title || "",
+  description: item.description || "",
+  selected: false
+}));
+
+    const copy = deepCopy(formattedData);
+    setCommittedItems(copy);
+    setItems(deepCopy(copy));
+  }
+}, [data]);
 
   // Auto-slide functionality
   useEffect(() => {
@@ -448,15 +453,28 @@ const handleImageUpload = (e, index) => {
 
   const changes = getChanges();
 
-  if (!data || data.length === 0) {
-    return (
-      <div className="text-center text-gray-600 mt-10">
-        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-          <LoadComp />
-        </div>
-      </div>
-    );
-  }
+  // if (!data || data.length === 0) {
+  //   return (
+  //     <div className="text-center text-gray-600 mt-10">
+  //       <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+  //         <LoadComp />
+  //       </div>
+  //     </div>
+  //   );
+  // }
+  if (items.length === 0 && !isEditing && !isSaved) {
+  return (
+    <div className="text-center py-10">
+      <p className="text-gray-500 text-lg">No awards available.</p>
+      <button
+        onClick={handleStartEdit}
+        className="mt-3 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+      >
+        Add Award
+      </button>
+    </div>
+  );
+}
 
   return (
     <>

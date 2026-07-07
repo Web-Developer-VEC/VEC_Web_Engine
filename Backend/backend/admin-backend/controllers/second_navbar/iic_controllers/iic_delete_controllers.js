@@ -3,7 +3,7 @@ async function deleteData(tempDoc, mainCollection) {
     const { collection_type, category, meta_data } = tempDoc;
 
     if (!collection_type)
-      return { status: 400, message: "collection_type is required" };
+      return {  success: false,  message: "collection_type is required" };
 
     const singleDocTypes = ["home", "contact"];
     const multiDocTypes = [
@@ -32,7 +32,7 @@ async function deleteData(tempDoc, mainCollection) {
         { $set: { data: [] } }
       );
       return {
-        status: 200,
+         success: true, 
         message: `Deleted entire document for ${collection_type}`,
       };
     }
@@ -40,15 +40,13 @@ async function deleteData(tempDoc, mainCollection) {
     // 2️⃣ Multi-doc → delete item by unique key or full object
     if (multiDocTypes.includes(collection_type)) {
       if (!meta_data || Object.keys(meta_data).length === 0)
-        return res
-          .status(400)
-          .json({ message: "meta_data required to delete specific item" });
+        return { success: false,  message: "meta_data required to delete specific item" };
 
       await mainCollection.updateOne(
         { type: collection_type },
         { $pull: { data: meta_data } }
       );
-      return {status:200,
+      return { success: true, 
         message: `Deleted one document from ${collection_type}`,
         deleted: meta_data,
       };
@@ -57,12 +55,12 @@ async function deleteData(tempDoc, mainCollection) {
     // 3️⃣ Category-based
     if (categoryBasedTypes.includes(collection_type)) {
       if (!category)
-        return res.status(400).json({ message: "category is required" });
+        return { success: false,  message: "category is required" };
 
       const doc = await mainCollection.findOne({ type: collection_type });
       const categoryExists = doc?.data?.find((c) => c.category === category);
       if (!categoryExists)
-        return { status:200, message: `Category ${category} not found` };
+        return {  success: true,  message: `Category ${category} not found` };
 
       const content = collection_type === "student_representation" ? categoryExists.members: categoryExists.content;
 
@@ -105,16 +103,16 @@ async function deleteData(tempDoc, mainCollection) {
         );
       }
 
-      return { status:200,
+      return {  success: true, 
         message: `Delete successful for ${collection_type} - category ${category}`,
         data: meta_data,
       };
     }
 
-    return { status:400, message: "Invalid delete request" };
+    return {  success: false,  message: "Invalid delete request" };
   } catch (error) {
     console.error("Error deleting data:", error);
-    return { status:400, message: "Internal server error" };
+    return {  success: false,  message: "Internal server error" };
   }
 }
 
