@@ -79,7 +79,7 @@ async function insertData(tempDoc, mainCollection) {
     { $set: { data: existingDoc.data } }
   );
 
-  return { success: false, message: "Data inserted successfully" };
+  return { success: true, message: "Data inserted successfully" };
 } catch (error) {
   console.error(error);
   return { success: false, error: error.message };
