@@ -31,6 +31,7 @@ const Forms = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/forms.jsx")
 const AdminForms = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/forms.jsx"));
 const Coe = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/Coe.jsx"));
 const RankHonder = lazy(() => import("./Components/Main/Top_Nav_Bar/Exams/rankhonder.jsx"));
+const AdminRankHonder = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/rankhonder.jsx"));
 const AdminCoe = lazy(() => import("./Components/Admin/Top_Nav_Bar/Exams/Coe.jsx"));
 const UgAdmission = lazy(() => import("./Components/Main/Top_Nav_Bar/Admission/UgAdmission.jsx"));
 const AdminUgAdmission = lazy(() => import("./Components/Admin/Top_Nav_Bar/Admission/admin_UgAdmission.jsx"));
@@ -148,7 +149,7 @@ export const routeConfig = {
   "/Syllabus": { normal: Syllabus, admin: AdminSyllabus },
   "/form": { normal: Forms, admin: AdminForms },
   "/coe": { normal: Coe, admin: AdminCoe },
-  "/rankholders": { normal: RankHonder, admin: RankHonder },
+  "/rankholders": { normal: RankHonder, admin: AdminRankHonder },
 
   // Research Routes
   "/Consultancy": { normal: Consultancy, admin: AdminConsultancy },

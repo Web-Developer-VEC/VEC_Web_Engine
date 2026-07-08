@@ -10,6 +10,7 @@ async function getTempRequests(req, res) {
     // loop through all allowed collections
     for (const collectionName of req_collection) {
       const tempCollection = db.collection(collectionName);
+    
 
       // fetch pending docs
       const pendingRequests = await tempCollection

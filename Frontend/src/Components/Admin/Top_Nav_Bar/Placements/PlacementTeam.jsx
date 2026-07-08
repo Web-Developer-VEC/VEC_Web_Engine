@@ -12,14 +12,19 @@ import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 function PersonDetail({ person, isEditable, onChange, errors = {} }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) =>
-    path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const UrlParser = (path) => {
+  if (!path || typeof path !== "string") return "";
+  if (path.startsWith("http")) return path;
+  return `${BASE_URL}${path}`;
+};
   if (!person) return null;
 
   const hasImage = !!(person.image_path || person.photo_file);
-  const imageSrc =
-    person.preview_url ||
-    (person.image_path ? UrlParser(person.image_path) : "");
+const imageSrc =
+  person?.preview_url ||
+  (typeof person?.image_path === "string"
+    ? `${UrlParser(person.image_path)}?t=${Date.now()}`
+    : "");
 
   return (
     <div
@@ -30,7 +35,7 @@ function PersonDetail({ person, isEditable, onChange, errors = {} }) {
         <img src={imageSrc} alt={person?.name} className="person-image" />
         {isEditable && (
           <div className="new-upload-below">
-            <label className={`new-upload-label ${!hasImage && !person?.image_path && !person?.photo_file ? 'border-2 border-red-500' : ''} bg-blue-500 text-white px-3 py-1 rounded cursor-pointer`}>
+            <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
               {hasImage ? "Replace" : "Upload"}
               <input
                 type="file"
@@ -39,56 +44,54 @@ function PersonDetail({ person, isEditable, onChange, errors = {} }) {
                 onChange={(e) => onChange("photo_file", e.target.files[0])}
               />
             </label>
-            {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image}</p>}
+            {errors.image && (
+              <p className="text-red-500 text-sm mt-1">{errors.image}</p>
+            )}
           </div>
         )}
       </div>
 
-      <div className="person-content" style={{ width: '100%' }}>
+      <div className="person-content" style={{ width: "100%" }}>
         {isEditable ? (
           <>
-            <div style={{ width: '100%', marginBottom: '15px' }}>
+            <div style={{ width: "100%", marginBottom: "15px" }}>
               <input
-                className={`person-input ${errors.name ? 'border-red-500' : ''}`}
-                style={{
-                  width: '100%',
-                  maxWidth: '100%',
-                  boxSizing: 'border-box'
-                }}
+                className={`person-input ${errors.name ? "border-red-500" : ""}`}
+                style={{ width: "100%", maxWidth: "100%", boxSizing: "border-box" }}
                 value={person.name || ""}
                 onChange={(e) => onChange("name", e.target.value)}
-                placeholder="Name *"
+                placeholder="Name"
               />
               {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
             </div>
-            <div style={{ width: '100%', marginBottom: '15px' }}>
+
+            <div style={{ width: "100%", marginBottom: "15px" }}>
               <input
-                className={`person-input ${errors.designation ? 'border-red-500' : ''}`}
-                style={{
-                  width: '100%',
-                  maxWidth: '100%',
-                  boxSizing: 'border-box'
-                }}
+                className={`person-input ${
+                  errors.designation ? "border-red-500" : ""
+                }`}
+                style={{ width: "100%", maxWidth: "100%", boxSizing: "border-box" }}
                 value={person.designation || ""}
                 onChange={(e) => onChange("designation", e.target.value)}
-                placeholder="Designation *"
+                placeholder="Designation"
               />
-              {errors.designation && <p className="text-red-500 text-sm">{errors.designation}</p>}
+              {errors.designation && (
+                <p className="text-red-500 text-sm">{errors.designation}</p>
+              )}
             </div>
-            <div style={{ width: '100%' }}>
+
+            <div style={{ width: "100%" }}>
               <textarea
-                className={`person-textarea ${errors.content ? 'border-red-500' : ''}`}
-                style={{
-                  width: '100%',
-                  maxWidth: '100%',
-                  boxSizing: 'border-box'
-                }}
+                className={`person-textarea ${errors.content ? "border-red-500" : ""}`}
+                style={{ width: "100%", maxWidth: "100%", boxSizing: "border-box" }}
                 rows={9}
                 value={person.content || ""}
                 onChange={(e) => onChange("content", e.target.value)}
-                placeholder="Description / Content *"
+                placeholder="Description / Content"
               />
-              {errors.content && <p className="text-red-500 text-sm">{errors.content}</p>}
+              {errors.content && (
+                <p className="text-red-500 text-sm">{errors.content}</p>
+              )}
             </div>
           </>
         ) : (
@@ -113,19 +116,22 @@ function PersonMemberDetail({
   checked,
   onCheck,
   errors = {},
-  index
 }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) =>
     path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   const hasImage = !!(person.image_path || person.photo_file);
-  const imageSrc =
-    person.preview_url ||
-    (person.image_path ? UrlParser(person.image_path) : "");
-    
+const imageSrc =
+  person?.preview_url ||
+  (typeof person?.image_path === "string"
+    ? `${UrlParser(person.image_path)}?t=${Date.now()}`
+    : "");
+
   return (
     <div
-      className={`person-detail ${isImageLeft ? "left" : "right"} dark:bg-drkts new-card-wrap`}
+      className={`person-detail ${
+        isImageLeft ? "left" : "right"
+      } dark:bg-drkts new-card-wrap`}
       style={{ position: "relative" }}
     >
       {isEditable && (
@@ -142,7 +148,7 @@ function PersonMemberDetail({
         <img src={imageSrc} alt={person?.name} className="person-image" />
         {isEditable && (
           <div className="new-upload-below">
-            <label className={`new-upload-label ${!hasImage && !person?.image_path && !person?.photo_file ? 'border-2 border-red-500' : ''} bg-blue-500 text-white px-3 py-1 rounded cursor-pointer`}>
+            <label className="new-upload-label bg-blue-500 text-white px-3 py-1 rounded cursor-pointer">
               {hasImage ? "Replace" : "Upload"}
               <input
                 type="file"
@@ -151,7 +157,9 @@ function PersonMemberDetail({
                 onChange={(e) => onChange("photo_file", e.target.files[0])}
               />
             </label>
-            {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image}</p>}
+            {errors.image && (
+              <p className="text-red-500 text-sm mt-1">{errors.image}</p>
+            )}
           </div>
         )}
       </div>
@@ -161,20 +169,27 @@ function PersonMemberDetail({
           <>
             <div className="flex items-center justify-between">
               <input
-                className={`w-[100%] p-1 rounded border ${errors.name ? 'border-red-500' : ''}`}
+                className={`w-[100%] p-1 rounded border ${
+                  errors.name ? "border-red-500" : ""
+                }`}
                 value={person.name || ""}
                 onChange={(e) => onChange("name", e.target.value)}
-                placeholder="Name *"
+                placeholder="Name"
               />
             </div>
             {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+
             <input
-              className={`w-full mt-2 p-1 rounded border ${errors.designation ? 'border-red-500' : ''}`}
+              className={`w-full mt-2 p-1 rounded border ${
+                errors.designation ? "border-red-500" : ""
+              }`}
               value={person.designation || ""}
               onChange={(e) => onChange("designation", e.target.value)}
-              placeholder="Designation *"
+              placeholder="Designation"
             />
-            {errors.designation && <p className="text-red-500 text-sm">{errors.designation}</p>}
+            {errors.designation && (
+              <p className="text-red-500 text-sm">{errors.designation}</p>
+            )}
           </>
         ) : (
           <>
@@ -188,36 +203,31 @@ function PersonMemberDetail({
 }
 
 export const AdminPlacementTeam = ({ toggle, theme }) => {
-  // saved (server) version:
   const [placementTeam, setPlacementTeam] = useState([]);
-  // current in-editor draft (when editMode true):
   const [draftTeam, setDraftTeam] = useState([]);
-  // saved-by-user draft that is pending approval (when user clicks Save)
   const [pendingDraft, setPendingDraft] = useState(null);
 
-  // snapshot of the draft when entering edit mode — used so Cancel reverts only session edits
   const [initialDraft, setInitialDraft] = useState(null);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [editMode, setEditMode] = useState(false);
-  const [pendingChanges, setPendingChanges] = useState(false); // true when pendingDraft exists
-  const [selectedItems, setSelectedItems] = useState([]); // indexes of selected members in draftTeam.slice(1)
+  const [pendingChanges, setPendingChanges] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]);
   const [showMultiDeleteConfirm, setShowMultiDeleteConfirm] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
-  const { sendRequest, loading, error } = useAdminRequest();
+
+  const { sendRequest, loading } = useAdminRequest();
   const navigate = useNavigate();
 
-  // returns whether the draft differs from saved placementTeam (unsaved edits vs server)
-  const hasServerDiff = (d = draftTeam) =>
-    JSON.stringify(placementTeam) !== JSON.stringify(d);
-
-  // returns whether the draft differs from initialDraft (i.e., session unsaved changes)
   const hasSessionChanges = () => {
     if (!initialDraft) return false;
     return JSON.stringify(initialDraft) !== JSON.stringify(draftTeam);
   };
+
+  const genUID = () =>
+    Math.random().toString(36).slice(2) + Date.now().toString(36);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -248,6 +258,7 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   useEffect(() => {
@@ -263,49 +274,6 @@ export const AdminPlacementTeam = ({ toggle, theme }) => {
     };
   }, []);
 
-  // Validation function
-const validateTeam = (team) => {
-  const errors = {};
-
-  team.forEach((member, index) => {
-    const memberErrors = {};
-
-    // Required: name
-    if (!member.name || member.name.trim() === "") {
-      memberErrors.name = "Name is required";
-    }
-
-    // Required: designation
-    if (!member.designation || member.designation.trim() === "") {
-      memberErrors.designation = "Designation is required";
-    }
-
-    // Required: content for main person (index 0)
-    if (index === 0 && (!member.content || member.content.trim() === "")) {
-      memberErrors.content = "Description is required";
-    }
-
-    // Required: image
-    const hasImage = member.image_path || member.photo_file;
-    if (!hasImage) {
-      memberErrors.image = "Image is required";
-    }
-
-    // Only assign errors if there are any
-    if (Object.keys(memberErrors).length > 0) {
-      errors[index] = memberErrors;
-    }
-  });
-
-  return errors;
-};
-
-// Utility to check if entire team is valid
-const isValidTeam = (team) => {
-  const errors = validateTeam(team);
-  return Object.keys(errors).length === 0;
-};
-
   if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
@@ -313,142 +281,107 @@ const isValidTeam = (team) => {
       </div>
     );
   }
-  
+
+  /**
+   * IMPORTANT FIX:
+   * Include `content` in payload meta_data/original_data so backend can update description.
+   * This is why Arun Ramaswami content wasn't changing after approval.
+   */
   const buildPlacementPayload = ({ action, newData, oldData }) => {
-    // 🟢 INSERT
-    if (action === "Added") {
-      return {
-        action: "insert",
-        collectionName: "placement",
-        title: "placement_team_insert",
-        collection_type: "placement_team",
-        meta_data: {
-          name: newData.name,
-          designation: newData.designation,
-          qualification: newData.qualification || "",
-          photo_path: newData.image_path || "", // backend will replace if file sent
-        },
-      };
-    }
+  const metaFrom = (obj) => ({
+    name: obj?.name ?? "",
+    designation: obj?.designation ?? "",
+    qualification: obj?.qualification ?? "",
+    content: obj?.content ?? "",
 
-    // 🔵 UPDATE
-    if (action === "Edited") {
-      return {
-        action: "update",
-        collectionName: "placement",
-        title: "placement_team_update",
-        collection_type: "placement_team",
-        original_data: {
-          name: oldData?.name, // identifier
-        },
-        meta_data: {
-          name: newData.name,
-          designation: newData.designation,
-          qualification: newData.qualification || "",
-          photo_path: newData.image_path || "",
-        },
-      };
-    }
+    // CRITICAL for useAdminRequest file matching
+    image_path: obj?.image_path ?? "",
+  });
 
-    // 🔴 DELETE
-    if (action === "Deleted") {
-      return {
-        action: "delete",
-        collectionName: "placement",
-        title: "placement_team_delete",
-        collection_type: "placement_team",
-        meta_data: {
-          name: oldData?.name,
-        },
-      };
-    }
+  if (action === "Added") {
+    return {
+      action: "insert",
+      collectionName: "placement",
+      title: "placement_team_insert",
+      collection_type: "placement_team",
+      meta_data: metaFrom(newData),
+    };
+  }
 
-    return null;
-  };
-  
-  const collectPlacementFiles = (draft) => {
-    const files = [];
+  if (action === "Edited") {
+    return {
+      action: "update",
+      collectionName: "placement",
+      title: "placement_team_update",
+      collection_type: "placement_team",
+      meta_data: metaFrom(newData),
+      original_data: metaFrom(oldData),
+    };
+  }
 
-    draft.forEach((member, index) => {
-      if (member?.photo_file instanceof File) {
-        files.push({
-          key: `placement_image_${index}`,
-          file: member.photo_file,
-        });
-      }
-    });
+  if (action === "Deleted") {
+    return {
+      action: "delete",
+      collectionName: "placement",
+      title: "placement_team_delete",
+      collection_type: "placement_team",
+      meta_data: metaFrom(oldData),
+    };
+  }
 
-    return files;
-  };
+  return null;
+};
 
-  // ---------- Editable handlers ----------
+const collectPlacementFiles = (draft) => {
+  return (draft || [])
+    .filter((member) => member?.photo_file instanceof File)
+    .map((member) => member.photo_file);
+};
+
   const enterEdit = () => {
     setEditMode(true);
-    // choose base: pendingDraft (if user previously saved) else placementTeam
     const base = pendingDraft ? pendingDraft : placementTeam;
     const snapshot = (base || []).map((x) => ({ ...x }));
-    setInitialDraft(snapshot); // snapshot of state at edit-session start
+    setInitialDraft(snapshot);
     setDraftTeam(snapshot.map((x) => ({ ...x })));
     setValidationErrors({});
   };
 
-  const exitEdit = () => {
-    // revert unsaved edits only — now we revert to initialDraft (session start)
-    if (initialDraft) {
-      setDraftTeam(initialDraft.map((x) => ({ ...x })));
+ const handleFieldChange = (idx, field, value) => {
+  setDraftTeam((prev) => {
+    const copy = prev.map((x) => ({ ...x }));
+    if (!copy[idx]) copy[idx] = {};
+
+    if (!copy[idx]._uid) copy[idx]._uid = genUID();
+
+    if (field === "photo_file") {
+      copy[idx].photo_file = value;
+
+      if (value) {
+        copy[idx].preview_url = URL.createObjectURL(value);
+
+        // correct backend path
+        copy[idx].image_path = `/static/images/placement_team/${value.name}`;
+      }
     } else {
-      setDraftTeam((placementTeam || []).map((x) => ({ ...x })));
+      copy[idx][field] = value;
     }
-    setSelectedItems([]);
-    setEditMode(false);
-    setInitialDraft(null);
-    setValidationErrors({});
-  };
 
-  const handleFieldChange = (idx, field, value) => {
-    setDraftTeam((prev) => {
-      const copy = prev.map((x) => ({ ...x }));
-      if (!copy[idx]) copy[idx] = {};
+    return copy;
+  });
 
-      if (field === "photo_file") {
-        copy[idx].photo_file = value;
+  setValidationErrors((prev) => {
+    const newErrors = { ...prev };
+    if (newErrors[idx] && newErrors[idx][field]) {
+      delete newErrors[idx][field];
+      if (Object.keys(newErrors[idx]).length === 0) delete newErrors[idx];
+    }
+    return newErrors;
+  });
+};
 
-        // create preview blob url
-        if (value) {
-          copy[idx].preview_url = URL.createObjectURL(value);
-        }
-      } else {
-        copy[idx][field] = value;
-      }
-
-      return copy;
-    });
-
-    // Clear validation error for this field when user starts typing/uploading
-    setValidationErrors(prev => {
-      const newErrors = { ...prev };
-      if (newErrors[idx] && newErrors[idx][field]) {
-        delete newErrors[idx][field];
-        
-        // If no errors left for this index, remove the index entirely
-        if (Object.keys(newErrors[idx]).length === 0) {
-          delete newErrors[idx];
-        }
-      }
-      return newErrors;
-    });
-  };
-
+  // mandatory validation removed
   const handleSave = () => {
-    // Validate all fields before saving
-    const errors = validateTeam(draftTeam);
-    
-    if (Object.keys(errors).length > 0) {
-      setValidationErrors(errors);
-      toast.error("Please fill in all required fields");
-      return;
-    }
-    
     setPendingDraft(draftTeam.map((x) => ({ ...x })));
     setPendingChanges(true);
     setEditMode(false);
@@ -469,20 +402,14 @@ const isValidTeam = (team) => {
   };
 
   const handleCancel = () => {
-    if (hasSessionChanges()) {
+    if (initialDraft && JSON.stringify(initialDraft) !== JSON.stringify(draftTeam)) {
       setDraftTeam(initialDraft.map((x) => ({ ...x })));
-      setEditMode(false);
-      setSelectedItems([]);
-      setInitialDraft(null);
-    } else {
-      setEditMode(false);
-      setInitialDraft(null);
     }
+    setEditMode(false);
+    setSelectedItems([]);
+    setInitialDraft(null);
     setValidationErrors({});
   };
-  
-  const genUID = () =>
-    Math.random().toString(36).slice(2) + Date.now().toString(36);
 
   const toggleSelectItem = (memberIndex, checked) => {
     setSelectedItems((prev) => {
@@ -495,26 +422,27 @@ const isValidTeam = (team) => {
 
   const confirmMultiDelete = () => {
     setShowMultiDeleteConfirm(false);
-    // selectedItems correspond to indexes inside draftTeam.slice(1)
     setDraftTeam((prev) =>
-      prev.filter((_, idx) => !(idx >= 1 && selectedItems.includes(idx - 1))),
+      prev.filter((_, idx) => !(idx >= 1 && selectedItems.includes(idx - 1)))
     );
     setSelectedItems([]);
   };
 
-  // Add a new blank member at the end
   const handleAddNewMember = () => {
-    setDraftTeam((prev) => [
-      ...prev,
-      {
-        _uid: genUID(),
-        name: "",
-        designation: "",
-        image_path: "",
-        content: "",
-      },
-    ]);
-  };
+  const uid = genUID();
+  setDraftTeam((prev) => [
+    ...prev,
+    {
+      _uid: uid,
+      name: "",
+      designation: "",
+      qualification: "",
+      image_path: "",
+      image_upload_key: "",
+      content: "",
+    },
+  ]);
+};
 
   const getChanges = (baseDraft = pendingDraft) => {
     const changes = [];
@@ -530,43 +458,29 @@ const isValidTeam = (team) => {
       draftMap.set(item._uid, { item, index });
     });
 
-    // 🔴 Deleted
     origMap.forEach(({ item, index }, uid) => {
       if (!draftMap.has(uid)) {
-        changes.push({
-          action: "Deleted",
-          section: "Placement Team",
-          data: item,
-          index,
-        });
+        changes.push({ action: "Deleted", section: "Placement Team", data: item, index });
       }
     });
 
-    // 🟢 Added
     draftMap.forEach(({ item, index }, uid) => {
       if (!origMap.has(uid)) {
-        changes.push({
-          action: "Added",
-          section: "Placement Team",
-          data: item,
-          index,
-        });
+        changes.push({ action: "Added", section: "Placement Team", data: item, index });
       }
     });
 
-    // 🔵 Edited
     draftMap.forEach(({ item, index }, uid) => {
       if (origMap.has(uid)) {
         const originalItem = origMap.get(uid).item;
-        if (JSON.stringify(originalItem) !== JSON.stringify(item)) {
-          changes.push({
-            action: "Edited",
-            section: "Placement Team",
-            data: item,
-            index,
-          });
-        }
-      }
+        const clean = (obj) => {
+  const { photo_file, preview_url, ...rest } = obj || {};
+  return rest;
+};
+
+if (JSON.stringify(clean(originalItem)) !== JSON.stringify(clean(item))) {
+  changes.push({ action: "Edited", section: "Placement Team", data: item, index });
+}}
     });
 
     return changes;
@@ -575,6 +489,7 @@ const isValidTeam = (team) => {
   const handleRevertChange = (change) => {
     setPendingDraft((prevPending) => {
       const working = (prevPending || []).map((x) => ({ ...x }));
+
       if (!prevPending) {
         setDraftTeam((prev) => {
           const copy = prev.map((x) => ({ ...x }));
@@ -598,28 +513,15 @@ const isValidTeam = (team) => {
       } else if (change.action === "Edited") {
         working[change.index] = { ...(placementTeam[change.index] || {}) };
       } else if (change.action === "Deleted") {
-        working.splice(change.index, 0, {
-          ...(placementTeam[change.index] || {}),
-        });
+        working.splice(change.index, 0, { ...(placementTeam[change.index] || {}) });
       }
+
       setDraftTeam(working.map((x) => ({ ...x })));
       return working;
     });
   };
 
   const handleFinalRequestConfirm = async () => {
-    // Validate all fields before final request
-    if (pendingDraft) {
-      const errors = validateTeam(pendingDraft);
-      
-      if (Object.keys(errors).length > 0) {
-        setValidationErrors(errors);
-        toast.error("Please fill in all required fields before submitting request");
-        setShowRequestModal(false);
-        return;
-      }
-    }
-    
     const changes = getChanges(pendingDraft);
 
     if (changes.length === 0) {
@@ -633,7 +535,7 @@ const isValidTeam = (team) => {
           action: change.action,
           newData: change.data,
           oldData: placementTeam[change.index],
-        }),
+        })
       )
       .filter(Boolean);
 
@@ -646,15 +548,11 @@ const isValidTeam = (team) => {
 
     if (success) {
       toast.success("Request submitted successfully!");
-      
-      // After successful submission, update placementTeam with the pendingDraft
-      // since these changes are now submitted (though pending approval)
-      setPlacementTeam(pendingDraft.map(x => ({ ...x })));
-      
-      // Reset pending states
+
+      // optimistic update in UI
+      setPlacementTeam(pendingDraft.map((x) => ({ ...x })));
       setPendingDraft(null);
       setPendingChanges(false);
-      
       setShowRequestModal(false);
     } else {
       toast.error("Failed to submit request. Please try again.");
@@ -672,15 +570,9 @@ const isValidTeam = (team) => {
       />
 
       <div className="place-container pb-60 pt-10">
-        <div
-          className="Placement-App"
-          style={{ marginTop: "30px", position: "relative" }}
-        >
-          {/* Edit button top-right (visible when not editing) */}
+        <div className="Placement-App" style={{ marginTop: "30px", position: "relative" }}>
           {!editMode && (
-            <div
-              style={{ position: "absolute", right: 12, top: -50, zIndex: 50 }}
-            >
+            <div style={{ position: "absolute", right: 12, top: -50, zIndex: 50 }}>
               <button
                 onClick={enterEdit}
                 className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
@@ -698,12 +590,12 @@ const isValidTeam = (team) => {
             </div>
           ) : (
             <>
-              {/* Main person */}
               <PersonDetail
                 person={
                   draftTeam[0] || {
                     name: "",
                     designation: "",
+                    qualification: "",
                     content: "",
                     image_path: "",
                   }
@@ -713,26 +605,20 @@ const isValidTeam = (team) => {
                 errors={validationErrors[0] || {}}
               />
 
-              {/* Members list */}
               <div className="placement-members">
                 {draftTeam.slice(1).map((person, index) => (
-                  // use stable key based on index to avoid remount when name changes
                   <PersonMemberDetail
                     key={`member-${index}`}
                     person={person}
                     isImageLeft={index % 2 === 0}
                     isEditable={editMode}
-                    onChange={(field, value) =>
-                      handleFieldChange(index + 1, field, value)
-                    }
+                    onChange={(field, value) => handleFieldChange(index + 1, field, value)}
                     checked={selectedItems.includes(index)}
                     onCheck={(checked) => toggleSelectItem(index, checked)}
                     errors={validationErrors[index + 1] || {}}
-                    index={index + 1}
                   />
                 ))}
 
-                {/* ADD NEW MEMBER CARD centered and same size */}
                 {editMode && (
                   <div
                     className="person-detail centered-card dark:bg-drkts new-card-wrap flex items-center justify-center cursor-pointer hover:bg-gray-200"
@@ -753,7 +639,6 @@ const isValidTeam = (team) => {
                 )}
               </div>
 
-              {/* Multi-delete center bottom (visible only while editing and items selected) */}
               {editMode && selectedItems.length > 0 && (
                 <div className="absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 z-40">
                   <button
@@ -765,7 +650,6 @@ const isValidTeam = (team) => {
                 </div>
               )}
 
-              {/* Bottom right action buttons */}
               <div
                 style={{
                   position: "absolute",
@@ -776,7 +660,6 @@ const isValidTeam = (team) => {
                   zIndex: 60,
                 }}
               >
-                {/* CANCEL (left) - visible in edit mode */}
                 {editMode && (
                   <button
                     onClick={handleCancel}
@@ -786,7 +669,6 @@ const isValidTeam = (team) => {
                   </button>
                 )}
 
-                {/* SAVE (right) - visible only while editing and there are unsaved session changes */}
                 {editMode && hasSessionChanges() && (
                   <button
                     onClick={handleSave}
@@ -796,7 +678,6 @@ const isValidTeam = (team) => {
                   </button>
                 )}
 
-                {/* After saving (not editing) show Discard & Request */}
                 {!editMode && pendingChanges && (
                   <>
                     <button
@@ -816,16 +697,12 @@ const isValidTeam = (team) => {
                 )}
               </div>
 
-              {/* Multi-delete Confirmation Modal */}
               {showMultiDeleteConfirm && (
                 <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[1000]">
                   <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[420px]">
-                    <h3 className="text-lg font-semibold mb-3">
-                      Confirm Delete
-                    </h3>
+                    <h3 className="text-lg font-semibold mb-3">Confirm Delete</h3>
                     <p className="mb-4">
-                      Are you sure you want to delete {selectedItems.length}{" "}
-                      selected item(s)?
+                      Are you sure you want to delete {selectedItems.length} selected item(s)?
                     </p>
                     <div className="flex justify-end gap-2 mt-[20px]">
                       <button
@@ -845,7 +722,6 @@ const isValidTeam = (team) => {
                 </div>
               )}
 
-              {/* Final Request Modal (shows changes from pendingDraft) */}
               {showRequestModal && (
                 <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
                   <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px]">
@@ -853,8 +729,7 @@ const isValidTeam = (team) => {
                       Request
                     </h2>
                     <p className="text-sm text-red-500 mb-4">
-                      Note: Your changes will stay pending until approved by the
-                      superior admin. Once approved they will go live.
+                      Note: Your changes will stay pending until approved by the superior admin. Once approved they will go live.
                     </p>
 
                     <div className="max-h-[250px] overflow-y-auto mb-4">
@@ -875,8 +750,8 @@ const isValidTeam = (team) => {
                                   change.action === "Added"
                                     ? "text-green-600"
                                     : change.action === "Deleted"
-                                      ? "text-red-600"
-                                      : "text-blue-600"
+                                    ? "text-red-600"
+                                    : "text-blue-600"
                                 }`}
                               >
                                 {change.action}
@@ -908,7 +783,6 @@ const isValidTeam = (team) => {
                       </table>
                     </div>
 
-                    {/* Footer */}
                     <div className="flex justify-end gap-2">
                       <button
                         onClick={() => setShowRequestModal(false)}
@@ -934,7 +808,6 @@ const isValidTeam = (team) => {
         </div>
       </div>
 
-      {/* Toast container */}
       <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );

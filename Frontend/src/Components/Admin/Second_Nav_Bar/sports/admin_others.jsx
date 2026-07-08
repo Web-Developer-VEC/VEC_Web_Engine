@@ -343,7 +343,6 @@ const Others = ({ data }) => {
 
   const handleFinalRequestConfirm = async () => {
     if (!changes.length) {
-       toast.error("Failed to send request: No changes detected.");
       return;
     }
 
@@ -413,7 +412,6 @@ const Others = ({ data }) => {
     console.log("🖼 FILES:", files);
 
     await sendRequest(payload, files);
-    toast.success("Request submitted successfully!");
     setShowRequestModal(false);
   };
 

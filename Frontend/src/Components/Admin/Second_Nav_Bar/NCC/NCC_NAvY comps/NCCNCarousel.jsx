@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./NCCNCarousel.css";
 import LoadComp from "../../../LoadComp";
-import { Pencil, Trash2, Plus, Save, Send, X, PlusCircle } from "lucide-react";
-import { FaUpload, FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
+import { Pencil, Trash2, Plus, Send, X } from "lucide-react";
+import { FaRegCircleLeft, FaRegCircleRight } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../../hooks/useAdminRequest";
-
 
 const deepCopy = (v) => structuredClone(v);
 
@@ -23,14 +22,10 @@ const NCCNCarousel = ({ data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
-  const [uploadFiles, setUploadFiles] = useState([]);
 
-  const [imageFiles, setImageFiles] = useState({});
+  const { sendRequest, loading } = useAdminRequest();
 
- const { sendRequest, loading, error } = useAdminRequest();
-
-
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "";
 
   const UrlParser = (path) => {
     if (!path) return "/placeholder.jpg";
@@ -40,9 +35,9 @@ const NCCNCarousel = ({ data }) => {
     return `${BASE_URL}${path}`;
   };
 
-  // Initialize data
+  // Initialize data (from backend prop 'data')
   useEffect(() => {
-    if (data && data.length > 0) {
+    if (Array.isArray(data) && data.length > 0) {
       const formattedData = data.map((item, idx) => ({
         id: idx,
         image_path: item.image_path || "",
@@ -50,11 +45,20 @@ const NCCNCarousel = ({ data }) => {
         description: item.description || "",
         selected: false
       }));
-      
+
       const copy = deepCopy(formattedData);
       setCommittedItems(copy);
-      setItems(deepCopy(copy));
-      setPendingItems(deepCopy(items));
+      setItems(copy.map(i => ({ ...i })));
+      setPendingItems(null);
+      setIsEditing(false);
+      setIsDirty(false);
+      setIsSaved(false);
+      setSelectedItems([]);
+      setSelectAll(false);
+    } else if (Array.isArray(data) && data.length === 0) {
+      // Backend returned empty array: keep UI available to add items
+      setCommittedItems([]);
+      setItems([]);
       setPendingItems(null);
       setIsEditing(false);
       setIsDirty(false);
@@ -66,27 +70,31 @@ const NCCNCarousel = ({ data }) => {
 
   // Auto-slide functionality
   useEffect(() => {
-    if (isAutoPlay && !isEditing) {
+    if (isAutoPlay && !isEditing && items.length > 0) {
       const interval = setInterval(() => {
         nextSlide();
       }, 3000);
       return () => clearInterval(interval);
     }
-  }, [currentIndex, isAutoPlay, isEditing]);
+  }, [currentIndex, isAutoPlay, isEditing, items.length]);
 
   const prevSlide = () => {
+    if (items.length === 0) return;
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
+    if (items.length === 0) return;
     setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
   };
 
   const handleStartEdit = () => {
+    // When starting edit, load pending if present, otherwise committed.
     if (pendingItems) {
-      setItems(deepCopy(pendingItems));
+      // shallow copy to preserve _file and preview_url references
+      setItems(pendingItems.map(i => ({ ...i })));
     } else {
-      setItems(deepCopy(committedItems));
+      setItems(committedItems.map(i => ({ ...i })));
     }
     setIsEditing(true);
     setIsDirty(false);
@@ -111,27 +119,30 @@ const NCCNCarousel = ({ data }) => {
   };
 
   const handleAddItem = () => {
-    setItems((prev) => [...prev.map((item) => ({ ...item })), { 
-      id: Date.now(), 
-      image_path: "",
-      title: "",
-      description: "",
-      selected: false
-    }]);
+    setItems((prev) => [
+      ...prev.map((item) => ({ ...item })),
+      {
+        id: Date.now(),
+        image_path: "",
+        title: "",
+        description: "",
+        selected: false
+      }
+    ]);
     setIsDirty(true);
   };
 
   const handleItemSelect = (index) => {
-    const updatedItems = items.map((item, i) => 
+    const updatedItems = items.map((item, i) =>
       i === index ? { ...item, selected: !item.selected } : item
     );
-    
+
     setItems(updatedItems);
-    
+
     const selectedIndices = updatedItems
-      .map((item, i) => item.selected ? i : -1)
+      .map((item, i) => (item.selected ? i : -1))
       .filter(i => i !== -1);
-    
+
     setSelectedItems(selectedIndices);
     setSelectAll(selectedIndices.length === updatedItems.length && updatedItems.length > 0);
   };
@@ -139,10 +150,10 @@ const NCCNCarousel = ({ data }) => {
   const handleSelectAll = () => {
     const newSelectAll = !selectAll;
     setSelectAll(newSelectAll);
-    
+
     const updatedItems = items.map(item => ({ ...item, selected: newSelectAll }));
     setItems(updatedItems);
-    
+
     setSelectedItems(newSelectAll ? items.map((_, i) => i) : []);
   };
 
@@ -157,10 +168,10 @@ const NCCNCarousel = ({ data }) => {
 
   const handleCancel = () => {
     if (pendingItems) {
-      setItems(deepCopy(pendingItems));
+      setItems(pendingItems.map(i => ({ ...i })));
       toast.info("Cancelled edits. Draft preserved!");
     } else {
-      setItems(deepCopy(committedItems));
+      setItems(committedItems.map(i => ({ ...i })));
       toast.info("Cancelled. Reverted to original data!");
     }
 
@@ -173,9 +184,9 @@ const NCCNCarousel = ({ data }) => {
 
   const handleSave = () => {
     // Check for empty fields
-    const invalidItem = items.find(item => 
-      !item.image_path?.trim() || 
-      !item.title?.trim() || 
+    const invalidItem = items.find(item =>
+      !item.image_path?.trim() ||
+      !item.title?.trim() ||
       !item.description?.trim()
     );
 
@@ -184,7 +195,8 @@ const NCCNCarousel = ({ data }) => {
       return;
     }
 
-    const pending = deepCopy(items);
+    // IMPORTANT: Preserve File and preview_url references. Don't use structuredClone here.
+    const pending = items.map(i => ({ ...i }));
     setPendingItems(pending);
     setIsSaved(true);
     setIsEditing(false);
@@ -195,7 +207,7 @@ const NCCNCarousel = ({ data }) => {
   };
 
   const handleDiscard = () => {
-    setItems(deepCopy(committedItems));
+    setItems(committedItems.map(i => ({ ...i })));
     setPendingItems(null);
     setIsSaved(false);
     setIsDirty(false);
@@ -209,116 +221,125 @@ const NCCNCarousel = ({ data }) => {
   };
 
   const buildImagePath = (fileOrPath) => {
-  if (!fileOrPath) return "";
+    if (!fileOrPath) return "";
 
-  // already stored path
-  if (typeof fileOrPath === "string" && !fileOrPath.startsWith("data:")) {
-    return fileOrPath.startsWith("/")
-      ? fileOrPath
-      : `/static/images/ncc/navy/${fileOrPath}`;
-  }
-
-  // base64 or preview → filename fallback
-  return "";
-};
-
-
-const handleFinalRequestConfirm = async () => {
-  if (!pendingItems) return;
-
-  const payload = [];
-
-  const committedMap = new Map(committedItems.map(i => [i.id, i]));
-  const pendingMap = new Map(pendingItems.map(i => [i.id, i]));
-
-  // -------- DELETED ITEMS ----------
-  committedMap.forEach((oldItem, id) => {
-    if (!pendingMap.has(id)) {
-      payload.push({
-        collectionName: "ncc_navy",
-        collection_type: "events",
-        action: "delete",
-        title: "delete events",
-        meta_data: {
-          image_path: oldItem.image_path,
-          title: oldItem.title,
-          description: oldItem.description,
-        },
-      });
-    }
-  });
-
-  // -------- INSERT & UPDATE ----------
-  pendingMap.forEach((item, id) => {
-    const oldItem = committedMap.get(id);
-
-    const imagePath =
-      item._file
-        ? `/static/images/ncc/navy/${item._file.name}`
-        : item.image_path;
-
-    const metaData = {
-      image_path: imagePath,
-      title: item.title,
-      description: item.description,
-    };
-
-    // INSERT
-    if (!oldItem) {
-      payload.push({
-        collectionName: "ncc_navy",
-        collection_type: "events",
-        action: "insert",
-        title: "Add events",
-        meta_data: metaData,
-      });
+    // already stored path
+    if (typeof fileOrPath === "string" && !fileOrPath.startsWith("data:")) {
+      return fileOrPath.startsWith("/")
+        ? fileOrPath
+        : `/static/images/ncc/navy/${fileOrPath}`;
     }
 
-    // UPDATE
-    else if (
-      oldItem.title !== item.title ||
-      oldItem.description !== item.description ||
-      oldItem.image_path !== imagePath
-    ) {
-      payload.push({
-        collectionName: "ncc_navy",
-        collection_type: "events",
-        action: "update",
-        title: "update events",
-        original_data: {
-          image_path: oldItem.image_path,
-          title: oldItem.title,
-          description: oldItem.description,
-        },
-        meta_data: metaData,
-      });
+    // base64 or preview → filename fallback
+    return "";
+  };
+
+  const handleFinalRequestConfirm = async () => {
+    if (!pendingItems) return;
+
+    const payload = [];
+
+    const committedMap = new Map(committedItems.map(i => [i.id, i]));
+    const pendingMap = new Map(pendingItems.map(i => [i.id, i]));
+
+    // -------- DELETED ITEMS ----------
+    committedMap.forEach((oldItem, id) => {
+      if (!pendingMap.has(id)) {
+        payload.push({
+          collectionName: "ncc_navy",
+          collection_type: "events",
+          action: "delete",
+          title: "delete events",
+          meta_data: {
+            image_path: oldItem.image_path,
+            title: oldItem.title,
+            description: oldItem.description,
+          },
+        });
+      }
+    });
+
+    // -------- INSERT & UPDATE ----------
+    pendingMap.forEach((item, id) => {
+      const oldItem = committedMap.get(id);
+
+      const imagePath =
+        item._file
+          ? `/static/images/ncc/navy/${item._file.name}`
+          : item.image_path;
+
+      const metaData = {
+        image_path: imagePath,
+        title: item.title,
+        description: item.description,
+      };
+
+      console.log(metaData)
+       console.log("img",metaData.image_path)
+
+      // INSERT
+      if (!oldItem) {
+        payload.push({
+          collectionName: "ncc_navy",
+          collection_type: "events",
+          action: "insert",
+          title: "Add events",
+          meta_data: metaData,
+        });
+      }
+
+      // UPDATE
+      else if (
+        oldItem.title !== item.title ||
+        oldItem.description !== item.description ||
+        oldItem.image_path !== imagePath
+      ) {
+        payload.push({
+          collectionName: "ncc_navy",
+          collection_type: "events",
+          action: "update",
+          title: "update events",
+          original_data: {
+            image_path: oldItem.image_path,
+            title: oldItem.title,
+            description: oldItem.description,
+          },
+          meta_data: metaData,
+        });
+      }
+    });
+
+    if (payload.length === 0) {
+      toast.info("No changes to submit");
+      return;
     }
-  });
 
-  if (payload.length === 0) {
-    toast.info("No changes to submit");
-    return;
-  }
+    // Collect all uploaded files (preserved because we used shallow copies)
+    const files = pendingItems
+      .filter(i => i._file)
+      .map(i => i._file);
 
-  // Collect all uploaded files
-  const files = pendingItems
-    .filter(i => i._file)
-    .map(i => i._file);
+    console.log("PAYLOAD", payload)
+    const result = await sendRequest(payload, files);
 
-    console.log("files",files);
-    
-  const result = await sendRequest(payload, files);
+    if (result) {
+      // After request success: update committedItems to pending but remove _file & preview_url
+      const committedClean = pendingItems.map(i => {
+        const copy = { ...i };
+        // keep image_path (server path value assigned earlier), remove preview and file refs
+        if (copy._file) delete copy._file;
+        if (copy.preview_url) delete copy.preview_url;
+        return copy;
+      });
 
-  if (result) {
-    setCommittedItems(deepCopy(pendingItems));
-    setItems(deepCopy(pendingItems));
-    setPendingItems(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    toast.success("Request submitted successfully!");
-  }
-};
-
+      setCommittedItems(committedClean.map(i => ({ ...i })));
+      setItems(committedClean.map(i => ({ ...i })));
+      setPendingItems(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+      toast.success("Request submitted successfully!");
+    }
+  };
 
   const revertChange = (itemId) => {
     if (!pendingItems) return;
@@ -335,31 +356,30 @@ const handleFinalRequestConfirm = async () => {
     }
 
     setPendingItems(updated);
-    setItems(deepCopy(updated));
+    setItems(updated.map(i => ({ ...i })));
   };
 
-const handleImageUpload = (e, index) => {
-  const file = e.target.files[0];
-  if (!file) return;
+  const handleImageUpload = (e, index) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const previewUrl = URL.createObjectURL(file);
+    const previewUrl = URL.createObjectURL(file);
 
-  setItems(prev =>
-    prev.map((item, i) =>
-      i === index
-        ? {
+    setItems(prev =>
+      prev.map((item, i) =>
+        i === index
+          ? {
             ...item,
-            _file: file, // actual file for uploading
-            image_path: `/static/images/ncc/navy/${file.name}`, // final path saved in DB
+            _file: file, // actual file for uploading (preserve)
+            image_path: `/static/images/ncc/navy/${file.name}`, // final path saved in DB (candidate)
             preview_url: previewUrl, // temporary preview in UI
           }
-        : item
-    )
-  );
+          : item
+      )
+    );
 
-  setIsDirty(true);
-};
-
+    setIsDirty(true);
+  };
 
   const getChanges = () => {
     if (!pendingItems) return [];
@@ -411,7 +431,8 @@ const handleImageUpload = (e, index) => {
 
   const changes = getChanges();
 
-  if (!data || data.length === 0) {
+  // show loader only while loading
+  if (loading) {
     return (
       <div className="text-center text-gray-600 mt-10">
         <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
@@ -421,15 +442,34 @@ const handleImageUpload = (e, index) => {
     );
   }
 
+  // inline nav button style
+  const navBtnBase = {
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    width: "44px",
+    height: "44px",
+    borderRadius: "50%",
+    background: "rgba(0,0,0,0.6)",
+    color: "#fff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "none",
+    cursor: "pointer",
+    zIndex: 20,
+    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+  };
+
   return (
     <>
       <div className="ncc-carousel-wrap relative">
         <ToastContainer position="bottom-right" autoClose={2000} />
-        
+
         {/* Header */}
         <div className="relative mb-4 flex justify-between items-center">
           <h2 className="text-2xl font-bold text-brwn dark:text-drkt">NCCN Events</h2>
-          
+
           {/* Edit button on right - Only show when not editing */}
           {!isEditing && (
             <button
@@ -470,14 +510,14 @@ const handleImageUpload = (e, index) => {
                       <td className="border border-black px-4 py-3 text-center">{i + 1}</td>
                       <td className="border border-black px-4 py-3 text-center">
                         <div className="flex flex-col items-center gap-2">
-                          {item.image_path && (
+                          { (item.preview_url || item.image_path) && (
                             <img
                               src={
                                 item.preview_url
                                   ? item.preview_url
                                   : item.image_path
-                                  ? UrlParser(item.image_path)
-                                  : "/placeholder.jpg"
+                                    ? UrlParser(item.image_path)
+                                    : "/placeholder.jpg"
                               }
                               alt={item.title || "Event Image"}
                               className="w-24 h-24 object-cover rounded border"
@@ -524,19 +564,19 @@ const handleImageUpload = (e, index) => {
                 </tbody>
               </table>
             </div>
-            
+
             {/* Buttons outside the table container */}
             <div className="mt-4">
               {/* Add Row Button */}
               <div className="flex justify-start mb-3">
-                <button 
-                  className="flex items-center gap-1 px-3 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim" 
+                <button
+                  className="flex items-center gap-1 px-3 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
                   onClick={handleAddItem}
                 >
                   <Plus size={16} /> Add New
                 </button>
               </div>
-              
+
               {/* Delete Selected Button */}
               {selectedItems.length > 0 && (
                 <div className="flex justify-center my-2">
@@ -548,7 +588,7 @@ const handleImageUpload = (e, index) => {
                   </button>
                 </div>
               )}
-              
+
               {/* Cancel & Save Buttons */}
               <div className="flex justify-end items-center gap-3 mt-4">
                 <button
@@ -572,28 +612,69 @@ const handleImageUpload = (e, index) => {
         ) : (
           // View Mode - Carousel Display
           <>
-            <div className="ncc-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-              {items.map((slide, index) => (
-                <div className="ncc-carousel-slide" key={index}>
-                  <img 
-                   alt={slide.title} />
-                  <div className="ncc-carousel-text">
-                    <h3>{slide.title}</h3>
-                    <p>{slide.description}</p>
+            {/* carousel wrapper */}
+            <div className="relative">
+              {items.length === 0 ? (
+                <div className="min-h-[220px] flex items-center justify-center border rounded-md bg-white/50">
+                  <div className="text-center text-gray-600">
+                    <p className="mb-2">No events to show.</p>
+                    <p className="text-sm">Click <strong>Edit</strong> to add events.</p>
                   </div>
                 </div>
-              ))}
+              ) : (
+                <div className="ncc-carousel-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                  {items.map((slide, index) => (
+                    <div className="ncc-carousel-slide" key={index}>
+                      <img
+                        src={
+                          slide.preview_url
+                            ? slide.preview_url
+                            : slide.image_path
+                              ? UrlParser(slide.image_path)
+                              : "/placeholder.jpg"
+                        }
+                        alt={slide.title}
+                      />
+                      <div className="ncc-carousel-text">
+                        <h3>{slide.title}</h3>
+                        <p>{slide.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* navigation buttons */}
+              {items.length > 0 && (
+                <>
+                  <button
+                    onClick={prevSlide}
+                    aria-label="Previous slide"
+                    title="Previous"
+                    style={{ ...navBtnBase, left: 12 }}
+                    className="ncc-carousel-nav-btn"
+                  >
+                    <FaRegCircleLeft size={22} />
+                  </button>
+
+                  <button
+                    onClick={nextSlide}
+                    aria-label="Next slide"
+                    title="Next"
+                    style={{ ...navBtnBase, right: 12 }}
+                    className="ncc-carousel-nav-btn"
+                  >
+                    <FaRegCircleRight size={22} />
+                  </button>
+                </>
+              )}
             </div>
-            
-            {/* Navigation Buttons */}
-            <button className="ncc-carousel-btn ncc-carousel-btn-left" onClick={prevSlide}>&#10094;</button>
-            <button className="ncc-carousel-btn ncc-carousel-btn-right" onClick={nextSlide}>&#10095;</button>
-            
+
             {/* Discard/Request buttons when saved draft exists */}
             {isSaved && (
               <div className="flex justify-end gap-3 mt-6">
-                <button 
-                  onClick={handleDiscard} 
+                <button
+                  onClick={handleDiscard}
                   className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
                 >
                   Discard Changes

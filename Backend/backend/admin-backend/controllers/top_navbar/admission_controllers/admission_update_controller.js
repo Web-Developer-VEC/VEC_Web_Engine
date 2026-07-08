@@ -1,6 +1,6 @@
 async function updateData(tempDoc, mainCollection) {
   try {
-    const { collection_type, meta_data, original_data, category } = tempDoc;
+    const { collection_type, meta_data, original_data } = tempDoc;
 
     if (!collection_type || !meta_data || !original_data) {
       throw new Error("Type, newData and originalData required");
@@ -32,10 +32,21 @@ async function updateData(tempDoc, mainCollection) {
 
       const { data } = doc;
       const newData = meta_data.data || meta_data;
-      const oldData = original_data.data || original_data;
 
       // -------------------------------------------------
-      // PDF UPDATE (UG & MBA)
+      // GLOBAL YEAR UPDATE
+      // -------------------------------------------------
+      if (newData.year && data.year !== newData.year) {
+        await mainCollection.updateOne(
+          { type: collection_type },
+          { $set: { "data.year": newData.year } }
+        );
+
+        data.year = newData.year;
+      }
+
+      // -------------------------------------------------
+      // QUOTA LINK NAME UPDATE (NO pdf_path update)
       // -------------------------------------------------
       if (
         !meta_data?.data &&
@@ -46,6 +57,7 @@ async function updateData(tempDoc, mainCollection) {
           meta_data?.MBA_Management
         )
       ) {
+
         let quotaKey = null;
 
         if (collection_type === "ug") {
@@ -65,46 +77,35 @@ async function updateData(tempDoc, mainCollection) {
         }
 
         if (!quotaKey) {
-          throw new Error("PDF updates are allowed only for UG and MBA");
+          throw new Error("Quota updates allowed only for UG and MBA");
         }
 
-        const tempPdfPath = meta_data[quotaKey].pdf_path;
-        if (!tempPdfPath) {
-          throw new Error("PDF path missing in meta_data");
+        const quotaData = meta_data[quotaKey];
+
+        // detect link name key dynamically
+        const linkNameKey = Object.keys(quotaData).find(k =>
+          k.includes("link_name")
+        );
+
+        const updateObj = {};
+
+        if (linkNameKey) {
+          updateObj[`data.${quotaKey}.${linkNameKey}`] = quotaData[linkNameKey];
         }
 
-        const finalPdfPath = tempPdfPath.replace(/^\/temp/, "");
+        if (newData.year) {
+          updateObj["data.year"] = newData.year;
+        }
 
         await mainCollection.updateOne(
           { type: collection_type },
-          { $set: { [`data.${quotaKey}.pdf_path`]: finalPdfPath } }
+          { $set: updateObj }
         );
 
         return {
           success: true,
-          message: `${collection_type.toUpperCase()} ${quotaKey} PDF updated successfully`,
-          data: { pdf_path: finalPdfPath },
-        };
-      }
-
-      // -------------------------------------------------
-      // YEAR ONLY UPDATE
-      // -------------------------------------------------
-      if (
-        Object.keys(newData).length === 1 &&
-        newData.year &&
-        oldData.year &&
-        data.year === oldData.year
-      ) {
-        await mainCollection.updateOne(
-          { type: collection_type, "data.year": oldData.year },
-          { $set: { "data.year": newData.year } }
-        );
-
-        return {
-          success: true,
-          message: "Admissions year updated successfully",
-          data: { year: newData.year },
+          message: `${quotaKey} link updated successfully`,
+          data: updateObj
         };
       }
 
@@ -132,17 +133,8 @@ async function updateData(tempDoc, mainCollection) {
         throw new Error("Admissions structure not found");
       }
 
-      // Update year if changed
-      if (data.year !== year) {
-        await mainCollection.updateOne(
-          { type: collection_type },
-          { $set: { "data.year": year } }
-        );
-        data.year = year;
-      }
-
       // =========================
-      // MBA (OBJECT STRUCTURE)
+      // MBA OBJECT STRUCTURE
       // =========================
       if (collection_type === "mba" && typeof data[arrayKey] === "object") {
 
@@ -179,6 +171,7 @@ async function updateData(tempDoc, mainCollection) {
       });
 
       let updatedArr = data[arrayKey].map(item => {
+
         const key = Object.keys(item)[0];
 
         const updateObj = newData[arrayKey].find(
@@ -196,7 +189,9 @@ async function updateData(tempDoc, mainCollection) {
       });
 
       newData[arrayKey].forEach(uObj => {
+
         const key = Object.keys(uObj)[0];
+
         if (!updatedArr.some(item => Object.keys(item)[0] === key)) {
           updatedArr.push(uObj);
         }
@@ -215,59 +210,9 @@ async function updateData(tempDoc, mainCollection) {
     }
 
     // =================================================
-    // ADMISSION TEAM
-    // =================================================
-    if (collection_type === "admission_team") {
-
-      const index = doc.data.findIndex(item =>
-        Object.keys(original_data).every(k => item[k] === original_data[k])
-      );
-
-      if (index === -1) throw new Error("Admission team member not found");
-
-      doc.data[index] = { ...doc.data[index], ...meta_data };
-
-      await mainCollection.updateOne(
-        { type: "admission_team" },
-        { $set: { data: doc.data } }
-      );
-
-      return {
-        success: true,
-        message: "Admission team member updated successfully",
-        data: doc.data[index],
-      };
-    }
-
-    // =================================================
-    // PHD
-    // =================================================
-    if (collection_type === "phd") {
-
-      if (
-        doc.data &&
-        Object.keys(original_data).every(k => doc.data[k] === original_data[k])
-      ) {
-        doc.data = { ...doc.data, ...meta_data };
-
-        await mainCollection.updateOne(
-          { type: "phd" },
-          { $set: { data: doc.data } }
-        );
-
-        return {
-          success: true,
-          message: "PhD data updated successfully",
-          data: doc.data,
-        };
-      } else {
-        throw new Error("PhD data not found");
-      }
-    }
-
-    // =================================================
     // GENERIC FALLBACK
     // =================================================
+
     let updated = false;
 
     if (Array.isArray(doc.data)) {
@@ -294,6 +239,7 @@ async function updateData(tempDoc, mainCollection) {
     }
 
     if (updated) {
+
       await mainCollection.updateOne(
         { type: collection_type },
         { $set: { data: doc.data } }
@@ -308,6 +254,7 @@ async function updateData(tempDoc, mainCollection) {
     throw new Error("Invalid collection type or data to update not found");
 
   } catch (error) {
+
     console.error("Update error:", error);
     throw error;
   }
