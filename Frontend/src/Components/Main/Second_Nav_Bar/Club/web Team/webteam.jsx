@@ -5,6 +5,7 @@ import SideNav from "../../SideNav"
 import axios from "axios"
 import EnquiryWeb from "./enquiryWeb"
 import { useNavigate } from "react-router";
+import { useLocation } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -85,10 +86,6 @@ const ProfileCard = ({ member }) => {
               {member?.name}
             </h3>
             <p  className=" font-medium text-[16px] text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block" >{member?.club_designation}</p>
-           
-            {/* <p className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block">
-              {member?.year}
-            </p> */}
             <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium"> {member?.year}  </p>
             <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium"> {member?.department} </p>
           </div>
@@ -195,6 +192,18 @@ export default function Webteam({ toggle, theme }) {
   const [webtab, setWebtab] = useState("Pilot")
   const [webdata, setWebData] = useState(null)
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get("tab");
+
+    if (tab == "copilot") {
+      setWebtab("Co-Pilot");
+    } else {
+      setWebtab("Pilot");
+    }
+  }, [location.search]);
 
   const navData = {
     "Enquiry Now": <EnquiryWeb />,
