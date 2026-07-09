@@ -50,7 +50,7 @@ export default function IQGauge({ data }) {
   }
 
   const oldPdfPath = Array.isArray(data) ? data[0]?.pdf_path : null;
-  const newPdfPath = `/static/pdfs/qs+rating/${uploadedFile.file.name}`;
+  const newPdfPath = `/static/pdfs/qs rating/${uploadedFile.file.name}`;
 
   const payload = [
     {

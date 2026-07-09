@@ -14,7 +14,19 @@ export default function AdminPolicies({ theme, toggle }) {
   const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
+  const UrlParser = (path) => {
+    if (!path) return "";
+
+    if (path instanceof File) {
+      return URL.createObjectURL(path);
+    }
+
+    if (typeof path === "string") {
+      return path.startsWith("http") ? path : `${BASE_URL}${path}`;
+    }
+
+    return "";
+  };
 
   // Editing & change tracking (mirrors AdminJournal)
   const [isEditing, setIsEditing] = useState(false);
@@ -40,8 +52,8 @@ export default function AdminPolicies({ theme, toggle }) {
   // refs to keep original/saved data
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
-  const { sendRequest, loading: loadings , error } = useAdminRequest();
-  
+  const { sendRequest, loading: loadings, error } = useAdminRequest();
+
 
   // -------------------- Fetch --------------------
   useEffect(() => {
@@ -50,8 +62,8 @@ export default function AdminPolicies({ theme, toggle }) {
         const res = await axios.post("/api/main-backend/research", { type: "Policy" });
         const data = res.data?.data || [];
         setPolicies(data);
-        originalRef.current = JSON.parse(JSON.stringify(data));
-        savedDataRef.current = JSON.parse(JSON.stringify(data));
+        originalRef.current = structuredClone((data));
+        savedDataRef.current = structuredClone((data));
       } catch (err) {
         console.error("Error fetching Policy data", err);
         if (err.response?.data?.status === 429) {
@@ -71,7 +83,7 @@ export default function AdminPolicies({ theme, toggle }) {
   };
 
   const handleEditButton = (index) => {
-    
+
     const entry = policies[index];
     setEditIndex(index);
     setNewName(entry?.name ?? "");
@@ -102,7 +114,8 @@ export default function AdminPolicies({ theme, toggle }) {
     // - Else if newPdf is string (existing path) => use it
     // - Else if editing and newPdf is null, fallback to existing journal entry pdf_path
     let pdfValue = null;
-    if (newPdf instanceof File) pdfValue = newPdf.name;
+
+    if (newPdf instanceof File) pdfValue = newPdf;
     else if (typeof newPdf === "string" && newPdf !== "") pdfValue = newPdf;
     else if (editIndex !== null) pdfValue = policies[editIndex]?.pdf_path ?? "";
 
@@ -152,7 +165,7 @@ export default function AdminPolicies({ theme, toggle }) {
   };
 
   const toggleSelectToDelete = (index) => {
-   
+
     setSelectedToDelete((prev) => {
       const nxt = new Set(prev);
       if (nxt.has(index)) nxt.delete(index);
@@ -177,29 +190,36 @@ export default function AdminPolicies({ theme, toggle }) {
     let newPolicies = [...policies];
     let newSession = [...sessionChanges];
 
-    if (deleteMode === "single") {
-      const idx = deleteTargetIndex;
-      if (idx == null) return;
-      newSession.push({
+    const processDelete = (idx) => {
+      const item = newPolicies[idx];
 
-        action: "delete",
-        section: "Policy",
-        key: newPolicies[idx]?.name,
-        changes: { deleted: newPolicies[idx] },
-      });
+      const addIndex = newSession.findIndex(
+        (c) => c.action === "add" && c.key === item?.name
+      );
+
+      if (addIndex !== -1) {
+        // cancel add + delete
+        newSession.splice(addIndex, 1);
+      } else {
+        newSession.push({
+          action: "delete",
+          section: "Policy",
+          key: item?.name,
+          changes: { deleted: item },
+        });
+      }
+
       newPolicies.splice(idx, 1);
+    };
+
+    if (deleteMode === "single") {
+      processDelete(deleteTargetIndex);
     }
 
     if (deleteMode === "multiple") {
       const toDelete = Array.from(selectedToDelete).sort((a, b) => b - a);
       for (const idx of toDelete) {
-        newSession.push({
-          action: "delete",
-          section: "Policy",
-          key: newPolicies[idx]?.name,
-          changes: { deleted: newPolicies[idx] },
-        });
-        newPolicies.splice(idx, 1);
+        processDelete(idx);
       }
     }
 
@@ -209,10 +229,7 @@ export default function AdminPolicies({ theme, toggle }) {
     setDeleteConfirmOpen(false);
     setDeleteMode(null);
     setDeleteTargetIndex(null);
-
-    toast.success("Deleted in session");
   };
-
   const cancelDelete = () => {
     setDeleteConfirmOpen(false);
     setDeleteMode(null);
@@ -225,16 +242,64 @@ export default function AdminPolicies({ theme, toggle }) {
       toast.info("No changes to save.");
       return;
     }
-    savedDataRef.current = JSON.parse(JSON.stringify(policies));
-    setAllChanges((prev) => [...prev, ...sessionChanges]);
+
+    setAllChanges((prev) => {
+      let updated = [...prev];
+
+      for (const change of sessionChanges) {
+        const existingIndex = updated.findIndex(
+          (c) => c.key === change.key && c.section === change.section
+        );
+
+        if (
+          existingIndex !== -1 &&
+          updated[existingIndex].action === "add" &&
+          change.action === "delete"
+        ) {
+          updated.splice(existingIndex, 1);
+          continue;
+        }
+
+        if (
+          existingIndex !== -1 &&
+          updated[existingIndex].action === "delete" &&
+          change.action === "add"
+        ) {
+          updated[existingIndex] = {
+            action: "edit",
+            section: change.section,
+            key: change.key,
+            changes: change.changes
+          };
+          continue;
+        }
+
+        if (
+          existingIndex !== -1 &&
+          updated[existingIndex].action === "edit" &&
+          change.action === "edit"
+        ) {
+          updated[existingIndex].changes = {
+            ...updated[existingIndex].changes,
+            ...change.changes
+          };
+          continue;
+        }
+
+        updated.push(change);
+      }
+
+      return updated;
+    });
+
+    savedDataRef.current = structuredClone(policies);
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(true);
-    toast.success("Session saved. You can Request now.");
   };
 
   const handleCancelSession = () => {
-    setPolicies(JSON.parse(JSON.stringify(savedDataRef.current)));
+    setPolicies(structuredClone((savedDataRef.current)));
     setSessionChanges([]);
     setIsEditing(false);
     setSelectedToDelete(new Set());
@@ -242,8 +307,8 @@ export default function AdminPolicies({ theme, toggle }) {
   };
 
   const handleDiscardAll = () => {
-    setPolicies(JSON.parse(JSON.stringify(originalRef.current)));
-    savedDataRef.current = JSON.parse(JSON.stringify(originalRef.current));
+    setPolicies(structuredClone((originalRef.current)));
+    savedDataRef.current = structuredClone((originalRef.current));
     setSessionChanges([]);
     setAllChanges([]);
     setIsEditing(false);
@@ -260,143 +325,150 @@ export default function AdminPolicies({ theme, toggle }) {
   };
 
   const handleFinalRequestConfirm = async () => {
-  if (!allChanges.length) {
-    toast.info("No changes to submit.");
-    return;
-  }
-
-  const payload = [];
-  const filesToUpload = [];
-
-  for (const change of allChanges) {
-
-    // ---------- INSERT ----------
-    if (change.action === "add") {
-      const { name, pdf_path } = change.changes;
-
-      const finalPath = `/static/pdfs/overall_research/${name.new}/${pdf_path.new}`;
-
-      payload.push({
-        action: "insert",
-        collectionName: "research",
-        title: "Policy",
-        collection_type: "Policy",
-        meta_data: {
-          name: name.new,
-          pdf_path: finalPath
-        }
-      });
-
-      if (pdf_path.new instanceof File) {
-        filesToUpload.push(pdf_path.new);
-      }
+    if (!allChanges.length) {
+      toast.info("No changes to submit.");
+      return;
     }
 
-    // ---------- UPDATE ----------
-    if (change.action === "edit") {
-      const { name, pdf_path } = change.changes;
+    const payload = [];
+    const filesToUpload = [];
 
-      const finalPath = `/static/pdfs/overall_research/${name.new}/${pdf_path.new}`;
+    for (const change of allChanges) {
 
-      payload.push({
-        action: "update",
-        collectionName: "research",
-        title: "Policy",
-        collection_type: "Policy",
-        original_data: {
-          name: name.old,
-          pdf_path: pdf_path.old
-        },
-        meta_data: {
-          name: name.new,
-          pdf_path: finalPath
-        }
-      });
+      // ---------- INSERT ----------
+      if (change.action === "add") {
+        const { name, pdf_path } = change.changes;
 
-      if (pdf_path.new instanceof File) {
-        filesToUpload.push(pdf_path.new);
-      }
-    }
+        const fileName =
+          pdf_path.new instanceof File ? pdf_path.new.name : pdf_path.new;
 
-    // ---------- DELETE ----------
-    if (change.action === "delete") {
-      payload.push({
-        action: "delete",
-        collectionName: "research",
-        title: "Policy",
-        collection_type: "Policy",
-        meta_data: {
-          name: change.key
-        }
-      });
-    }
-  }
+        const finalPath = `/static/pdfs/overall_research/${name.new}/${fileName}`;
 
-  try {
-    const result = await sendRequest(payload, filesToUpload);
-
-    if (result) {
-  console.log("FINAL REQUEST SUBMITTED", { payload });
-
-  toast.success("Final request submitted");
-
-  setShowRequestModal(false);
-  setAllChanges([]);
-  setSessionChanges([]);
-  setIsEditing(false);
-  setIsSavedOnce(false);
-
-  // update saved references with current policies
-  originalRef.current = JSON.parse(JSON.stringify(policies));
-  savedDataRef.current = JSON.parse(JSON.stringify(policies));
-}
-
-  } catch (err) {
-    console.error("Final request failed:", err);
-    toast.error("Request submission failed");
-  }
-};
-
-
-
-const handleUndoChange = (idx) => {
-  setAllChanges((prev) => {
-    const change = prev[idx];
-
-    if (change) {
-      setPolicies((data) => {
-        let newData = [...data];
-
-        if (change.action === "edit") {
-          const targetIndex = newData.findIndex((d) => d.year === change.changes.year.new);
-          if (targetIndex !== -1) {
-            newData[targetIndex] = {
-              ...newData[targetIndex],
-              year: change.changes.year.old,
-              pdf_path: change.changes.pdf_path.old,
-            };
+        payload.push({
+          action: "insert",
+          collectionName: "research",
+          title: "Policy",
+          collection_type: "Policy",
+          meta_data: {
+            name: name.new,
+            pdf_path: finalPath
           }
-        }
+        });
 
-        if (change.action === "add") {
-          // Remove the newly added item
-          newData = newData.filter((d) => d.year !== change.key);
+        if (pdf_path.new instanceof File) {
+          filesToUpload.push(pdf_path.new);
         }
+      }
 
-        if (change.action === "delete") {
-          // Re-insert the deleted item
-          newData = [...newData, change.changes.deleted];
+      // ---------- UPDATE ----------
+      if (change.action === "edit") {
+        const { name, pdf_path } = change.changes;
+
+        const fileName =
+          pdf_path.new instanceof File ? pdf_path.new.name : pdf_path.new;
+
+        const finalPath = `/static/pdfs/overall_research/${name.new}/${fileName}`;
+
+        payload.push({
+          action: "update",
+          collectionName: "research",
+          title: "Policy",
+          collection_type: "Policy",
+          original_data: {
+            name: name.old,
+            pdf_path: pdf_path.old
+          },
+          meta_data: {
+            name: name.new,
+            pdf_path: finalPath
+          }
+        });
+
+        if (pdf_path.new instanceof File) {
+          filesToUpload.push(pdf_path.new);
         }
+      }
 
-        return newData;
-      });
+      // ---------- DELETE ----------
+      if (change.action === "delete") {
+        payload.push({
+          action: "delete",
+          collectionName: "research",
+          title: "Policy",
+          collection_type: "Policy",
+          meta_data: {
+            name: change.key
+          }
+        });
+      }
     }
 
-    return prev.filter((_, i) => i !== idx); // remove from log
-  });
+    try {
+      const result = await sendRequest(payload, filesToUpload);
 
-  toast.info("Change reverted");
-};
+      if (result) {
+        console.log("FINAL REQUEST SUBMITTED", { payload });
+
+        toast.success("Final request submitted");
+
+        setShowRequestModal(false);
+        setAllChanges([]);
+        setSessionChanges([]);
+        setIsEditing(false);
+        setIsSavedOnce(false);
+
+        // update saved references with current policies
+        originalRef.current = structuredClone(policies);
+        savedDataRef.current = structuredClone(policies);
+      }
+
+    } catch (err) {
+      console.error("Final request failed:", err);
+      toast.error("Request submission failed");
+    }
+  };
+
+
+
+  const handleUndoChange = (idx) => {
+    setAllChanges((prev) => {
+      const change = prev[idx];
+
+      if (change) {
+        setPolicies((data) => {
+          let newData = [...data];
+
+          if (change.action === "edit") {
+            const targetIndex = newData.findIndex(
+              (d) => d.name === change.changes.name.new
+            );
+
+            if (targetIndex !== -1) {
+              newData[targetIndex] = {
+                ...newData[targetIndex],
+                name: change.changes.name.old,
+                pdf_path: change.changes.pdf_path.old,
+              };
+            }
+          }
+
+          if (change.action === "add") {
+            newData = newData.filter((d) => d.name !== change.key);
+          }
+
+          if (change.action === "delete") {
+            newData = [...newData, change.changes.deleted];
+          }
+
+          return newData;
+        });
+      }
+
+      return prev.filter((_, i) => i !== idx);
+    });
+
+    toast.info("Change reverted");
+  };
 
 
   // Preview the selected (newPdf) file or existing path in popup
@@ -452,7 +524,7 @@ const handleUndoChange = (idx) => {
                 key={i}
                 className="px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
                 onClick={() => handlePdfClick(policy)}
-               
+
               >
                 {policy.name}
               </div>
@@ -467,9 +539,9 @@ const handleUndoChange = (idx) => {
               <div className="flex items-center gap-2 px-2 py-2" key={index}>
                 <div
                   className="relative px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
-                  onClick={() => handleEditButton(index)}   
+                  onClick={() => handleEditButton(index)}
                 >
-                  
+
                   {policy.name}
                   <input
                     type="checkbox"
@@ -477,14 +549,14 @@ const handleUndoChange = (idx) => {
                     onClick={(e) => e.stopPropagation()}
                     onChange={() => toggleSelectToDelete(index)}
                     className="absolute top-2 right-2"
-                    
+
                   />
                 </div>
               </div>
             ))}
 
             <button className="px-4 h-14 mt-2 py-2 bg-secd hover:bg-brwn text-text hover:text-prim rounded-xl flex flex-row items-center" onClick={handleAddNewButton}>
-             <Plus/> Add new
+              <Plus /> Add new
             </button>
 
           </div>
@@ -517,7 +589,7 @@ const handleUndoChange = (idx) => {
 
           {!isEditing && isSavedOnce && (
             <>
-              <button className="bg-red-500 px-3 py-2 rounded text-prim" onClick={handleDiscardAll}>
+              <button className="bg-gray-400 hover:bg-gray-500 text-prim px-2 py-2 rounded" onClick={handleDiscardAll}>
                 Discard All
               </button>
               <button className="bg-secd text-text px-3 py-2 flex flex-row rounded hover:bg-brwn hover:text-prim" onClick={handleRequest}>
@@ -528,7 +600,7 @@ const handleUndoChange = (idx) => {
         </div>
 
         {/* Add/Edit Popup */}
-        {showPopup  && selectedToDelete.size === 0 && (
+        {showPopup && selectedToDelete.size === 0 && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-96">
               <h2 className="text-lg font-semibold mb-4 text-center">
@@ -635,11 +707,50 @@ const handleUndoChange = (idx) => {
                           </td>
                           <td className="py-2 px-3 border text-center">{change.section}</td>
                           <td className="py-2 px-3 border text-[13px] text-center">
-                            {change.action === "delete" ? (
-                              <div>Item deleted</div>
-                            ) : (
-                              <div>{Object.keys(change.changes || {}).filter((f) => change.changes[f].old !== change.changes[f].new).map((field) => field).join(", ")}</div>
-                            )}
+                            <div>
+
+                              {change.action === "delete" && (
+                                <span>{change.changes?.deleted?.name}</span>
+                              )}
+
+                              {change.action === "edit" && (() => {
+                                const changes = change.changes || {};
+                                const nameChanged = changes.name?.old !== changes.name?.new;
+                                const pdfChanged = changes.pdf_path?.old !== changes.pdf_path?.new;
+
+                                if (pdfChanged && !nameChanged) {
+                                  return <div>{changes.name.old} - PDF updated</div>;
+                                }
+
+                                if (nameChanged && !pdfChanged) {
+                                  return <div>{changes.name.old} → {changes.name.new}</div>;
+                                }
+
+                                if (nameChanged && pdfChanged) {
+                                  return (
+                                    <>
+                                      <div>{changes.name.old} → {changes.name.new}</div>
+                                      <div>PDF updated</div>
+                                    </>
+                                  );
+                                }
+
+                                return null;
+                              })()}
+
+                              {change.action === "add" && (
+                                <span>
+                                  {change.changes?.name?.new}
+                                  {change.changes?.pdf_path?.new && (
+                                    ` (${change.changes.pdf_path.new instanceof File
+                                      ? change.changes.pdf_path.new.name
+                                      : change.changes.pdf_path.new
+                                    })`
+                                  )}
+                                </span>
+                              )}
+
+                            </div>
                           </td>
                           <td className="py-2 px-3 border text-center">
                             <button className="text-red-500" onClick={() => handleUndoChange(idx)}>
@@ -657,7 +768,16 @@ const handleUndoChange = (idx) => {
                 <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-prim">
                   Cancel
                 </button>
-                <button onClick={handleFinalRequestConfirm} className="px-4 py-2 rounded bg-secd text-black hover:bg-brwn hover:text-prim">
+                <button
+                  onClick={(e) => {
+                    const btn = e.currentTarget;
+                    btn.disabled = true;
+                    btn.innerText = "Loading...";
+
+                    handleFinalRequestConfirm();
+                  }}
+                  className="px-4 py-2 rounded bg-secd text-black hover:bg-brwn hover:text-prim"
+                >
                   Final Request
                 </button>
               </div>

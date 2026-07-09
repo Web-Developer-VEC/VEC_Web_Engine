@@ -49,13 +49,21 @@ async function handleTempApproval(req, res, next) {
           mainCollection: getDb().collection(collectionName),
         });
         results.push({ id, collectionName, status: "queued-for-approval" });
-      } else if (status === "rejected") {
-        await tempCollection.updateOne(
-          { _id: new ObjectId(id) },
-          { $set: { status: "rejected" } }
-        );
-        results.push({ id, collectionName, status: "rejected" });
-      } else {
+      }  else if (status === "rejected") {
+  approvedDocs.push({
+    tempDoc,
+    collectionName,
+    tempCollection,
+    mainCollection: null,
+    status: "rejected",
+  });
+
+  results.push({
+    id,
+    collectionName,
+    status: "queued-for-rejection",
+  });
+} else {
         results.push({ id, collectionName, error: "Invalid action, must be approved or rejected" });
       }
     }
@@ -66,9 +74,11 @@ async function handleTempApproval(req, res, next) {
       req.bulkResults = results;
       return next();
     }
-
+    
+    console.log(results)
     // Otherwise just return results here
     return res.json({ results });
+
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Server error", details: error.message });
