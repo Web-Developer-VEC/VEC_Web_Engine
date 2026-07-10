@@ -1819,7 +1819,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
                           <td className="p-2 border">{req.section}</td>
                           <td className="p-2 border">
                             <button onClick={() => handleUndoChange(idx)}>
-                              <X />
+                              <X size={16} className="text-red-500 hover:text-red-700" />
                             </button>
                           </td>
                         </tr>

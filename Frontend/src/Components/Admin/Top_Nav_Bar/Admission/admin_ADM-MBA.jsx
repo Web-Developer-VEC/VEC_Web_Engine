@@ -1308,7 +1308,7 @@ const AdminMBA = ({ theme, toggle }) => {
                       <td className="p-2 capitalize border">{req.section}</td>
                       <td className="p-2 border">
                         <button onClick={() => handleUndoChange(idx)} className="">
-                          <X />
+                          <X size={16} className="text-red-500 hover:text-red-700" />
                         </button>
                       </td>
                     </tr>

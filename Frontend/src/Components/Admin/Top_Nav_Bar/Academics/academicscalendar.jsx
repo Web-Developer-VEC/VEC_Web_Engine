@@ -69,13 +69,13 @@ const getChanges = () => {
 
   // Deleted
   originalData.forEach((item) => {
-    if (!editMap.has(item.__uid)) {
-      changes.push({
-        type: "delete",
-        year: item.year
-      });
-    }
-  });
+  if (!editMap.has(item.__uid)) {
+    changes.push({
+      type: "delete",
+      year: item.year
+    });
+  }
+});
 
   return changes;
 };
@@ -716,6 +716,7 @@ const handleDeleteSelected = () => {
                   <th className="py-2 border">Action</th>
                   <th className="py-2 border">Section</th>
                   <th className="py-2 border">Changes</th>
+                  <th className="py-2 border">Undo</th>
                 </tr>
               </thead>
               <tbody>
@@ -736,39 +737,53 @@ const handleDeleteSelected = () => {
                           ? "Deleted"
                           : change.type}
                       </span>
-
+                      </td>
+                      <td>
                       {/* ✅ X Button rollback */}
                       <button
                         onClick={() => {
-                          const updated = [...editedData];
-                          const orig = originalData[change.index];
+                          const change = changes[index];
 
-                          if (change.type === "delete") {
-                            if (orig) {
-                              updated.splice(change.index, 0, orig);
-                            }
-                          } else {
-                            if (orig) {
-                              if (change.type === "year") {
-                                updated[change.index].year = orig.year;
-                              } else if (change.type === "odd") {
-                                updated[change.index].oddFile = null;
-                                updated[change.index].oddPreview =
-                                  orig.pdf_path?.[0] || null
-                              } else if (change.type === "even") {
-                                updated[change.index].evenFile = null;
-                                updated[change.index].evenPreview =
-                                  orig.pdf_path?.[1] || null
-                              }
-                            } else {
-                              updated.splice(change.index, 1);
-                            }
-                          }
+                          setEditedData((prev) => {
+                            const updated = [...prev];
 
-                          setEditedData(updated);
-                          setChanges((prev) =>
-                            prev.filter((_, i) => i !== index)
-                          );
+                            const rowIndex = updated.findIndex(
+                              (item) => item.year === change.year
+                            );
+
+                            if (rowIndex === -1) return prev;
+
+                            const original = originalData.find(
+                              (item) => item.__uid === updated[rowIndex].__uid
+                            );
+
+                            if (!original) return prev;
+
+                            switch (change.type) {
+                              case "year":
+                                updated[rowIndex].year = original.year;
+                                break;
+
+                              case "odd":
+                                updated[rowIndex].oddFile = null;
+                                updated[rowIndex].oddPreview = null;
+                                updated[rowIndex].oddRemoved = false;
+                                updated[rowIndex].pdf_path[0] = original.pdf_path?.[0] || "";
+                                break;
+
+                              case "even":
+                                updated[rowIndex].evenFile = null;
+                                updated[rowIndex].evenPreview = null;
+                                updated[rowIndex].evenRemoved = false;
+                                updated[rowIndex].pdf_path[1] = original.pdf_path?.[1] || "";
+                                break;
+
+                              default:
+                                break;
+                            }
+
+                            return updated;
+                          });
                         }}
                         className="ml-2 text-red-500 hover:text-red-700"
                       >

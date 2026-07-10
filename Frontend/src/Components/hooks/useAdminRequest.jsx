@@ -115,7 +115,7 @@ export function useAdminRequest() {
         );
       }
 
-      toast.success("Request submitted successfully");
+      
       return { success: true };
     } catch (err) {
       if (axios.isCancel(err)) {
