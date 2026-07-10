@@ -8,6 +8,8 @@ import { PartyPopper, Trash2 } from "lucide-react";
 import { FaBook, FaLinkedin, FaOrcid, FaResearchgate } from "react-icons/fa";
 import { FaGoogleScholar } from "react-icons/fa6";
 import { SiPublons } from "react-icons/si";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 import { X } from "lucide-react";
 
@@ -594,6 +596,7 @@ const AdminPrinc = ({ theme, toggle }) => {
 
   return (
     <>
+      <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false} />
       <Banner
         toggle={toggle}
         theme={theme}
