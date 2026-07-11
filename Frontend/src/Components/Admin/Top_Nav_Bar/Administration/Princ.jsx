@@ -98,12 +98,20 @@ const AdminPrinc = ({ theme, toggle }) => {
     });
     return out;
   }
-
   function localToBackendLinks(localLinks) {
     const out = {};
+
     SOCIAL_LINKS_CONFIG.forEach(({ key, backendKey }) => {
+      if (
+        backendKey === "Orcid Profile" ||
+        backendKey === "Publons Profile"
+      ) {
+        return; // Skip these fields
+      }
+
       out[backendKey] = localLinks?.[key] || "";
     });
+
     return out;
   }
 
@@ -444,8 +452,8 @@ const AdminPrinc = ({ theme, toggle }) => {
       const newData = editableData || {};
 
       const payloadEntries = buildPayloadEntriesFromChanges(oldData, newData);
-     console.log(payloadEntries);
-     
+      console.log(payloadEntries);
+
       const fileToSend = editableData?.newImageFile || null;
 
       const result = await sendRequest(payloadEntries, fileToSend);
@@ -519,8 +527,6 @@ const AdminPrinc = ({ theme, toggle }) => {
         social_links: oldLinks,
       },
     };
-
-      console.log("sathish kuamr ",payload);
 
     if (
       JSON.stringify(payload.meta_data) !==
@@ -634,8 +640,8 @@ const AdminPrinc = ({ theme, toggle }) => {
                 className="h-[25vh] lg:h-[45vh] w-auto rounded-xl object-cover"
                 src={UrlParser(
                   editableData?.image_path ||
-                    editableData?.image ||
-                    editableData?.photo,
+                  editableData?.image ||
+                  editableData?.photo,
                 )}
                 alt="Principal"
               />
