@@ -120,7 +120,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full h-12 bg-[#fdcc03] hover:bg-[#800000] focus:bg-[#800000] text-black hover:text-white focus:text-white font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+        className="w-full h-12 bg-[#fdcc03] hover:bg-[#800000] focus:bg-[#800000] text-white hover:text-white focus:text-white font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
       >
         {loading ? "Signing in..." : "Sign In to Admin Portal"}
       </button>
