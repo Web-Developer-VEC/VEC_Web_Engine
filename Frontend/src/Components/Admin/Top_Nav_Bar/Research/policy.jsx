@@ -409,7 +409,7 @@ export default function AdminPolicies({ theme, toggle }) {
       if (result) {
         console.log("FINAL REQUEST SUBMITTED", { payload });
 
-        toast.success("Final request submitted");
+        //toast.success("Final request submitted");
 
         setShowRequestModal(false);
         setAllChanges([]);
