@@ -547,8 +547,7 @@ if (JSON.stringify(clean(originalItem)) !== JSON.stringify(clean(item))) {
     const success = await sendRequest(payload, files);
 
     if (success) {
-      toast.success("Request submitted successfully!");
-
+     
       // optimistic update in UI
       setPlacementTeam(pendingDraft.map((x) => ({ ...x })));
       setPendingDraft(null);

@@ -12,6 +12,15 @@ import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const deepClone = (obj) => JSON.parse(JSON.stringify(obj));
 
+const YEAR_RE = /^\d{4}-\d{2}$/;
+
+const isValidYearLabel = (value) => {
+  return YEAR_RE.test(String(value).trim());
+};
+
+const normalizeYearInput = (value) => {
+  return value.replace(/[^\d-]/g, "").slice(0, 10);
+};
 export const AdminPlacementDetails = ({ theme, toggle }) => {
   const [showPdfModal, setShowPdfModal] = useState(false);
   const [pdfLink, setPdfLink] = useState("");
@@ -46,7 +55,6 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
   const [isSendingRequest, setIsSendingRequest] = useState(false);
 
   const [deleteConfirm, setDeleteConfirm] = useState(null);
-  
 
   const BASE_PAYLOAD = {
     collectionName: "placement",
@@ -62,7 +70,12 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
     meta_data: metaData,
   });
 
-  const buildUpdateSectionPayload = ({ section, year, values, original_values }) => ({
+  const buildUpdateSectionPayload = ({
+    section,
+    year,
+    values,
+    original_values,
+  }) => ({
     ...BASE_PAYLOAD,
     action: "update",
     title: "update details",
@@ -78,49 +91,54 @@ export const AdminPlacementDetails = ({ theme, toggle }) => {
     },
   });
 
-const buildUpdatePdfPayload = ({ year, new_year, pdf_path, original_pdf_path }) => ({
-  action: "update",
-  collectionName: "placement",
-  title: "update details",
-  collection_type: "placement_details",
-
-  original_data: {
-    section: "year_wise_pdfs",
-    year: year,
-    pdf_path: original_pdf_path
-  },
-
-  meta_data: {
-    section: "year_wise_pdfs",
-    year: new_year ?? year,
-    pdf_path: pdf_path
-  }
-});
-
-const buildDeletePayload = ({ section, id, year, values, pdf_path }) => ({
-  ...BASE_PAYLOAD,
-  action: "delete",
-  title: "delete details",
-  meta_data: {
-    section,
-    ...(id !== undefined ? { id } : {}), // ✅ add id
+  const buildUpdatePdfPayload = ({
     year,
-    ...(values !== undefined ? { values } : {}),
-    ...(pdf_path !== undefined ? { pdf_path } : {}),
-  },
-});
+    new_year,
+    pdf_path,
+    original_pdf_path,
+  }) => ({
+    action: "update",
+    collectionName: "placement",
+    title: "update details",
+    collection_type: "placement_details",
 
-const buildInsertYearPdfPayload = ({ year, pdf_path }) => ({
-  action: "insert",
-  collectionName: "placement",
-  title: "insert details",
-  collection_type: "placement_details",
-  meta_data: {
-    section: "year_wise_pdfs",
-    year,
-    pdf_path
-  }
-});
+    original_data: {
+      section: "year_wise_pdfs",
+      year: year,
+      pdf_path: original_pdf_path,
+    },
+
+    meta_data: {
+      section: "year_wise_pdfs",
+      year: new_year ?? year,
+      pdf_path: pdf_path,
+    },
+  });
+
+  const buildDeletePayload = ({ section, id, year, values, pdf_path }) => ({
+    ...BASE_PAYLOAD,
+    action: "delete",
+    title: "delete details",
+    meta_data: {
+      section,
+      ...(id !== undefined ? { id } : {}), // ✅ add id
+      year,
+      ...(values !== undefined ? { values } : {}),
+      ...(pdf_path !== undefined ? { pdf_path } : {}),
+    },
+  });
+
+  const buildInsertYearPdfPayload = ({ year, pdf_path }) => ({
+    action: "insert",
+    collectionName: "placement",
+    title: "insert details",
+    collection_type: "placement_details",
+    meta_data: {
+      section: "year_wise_pdfs",
+      year,
+      pdf_path,
+    },
+  });
 
   /* ------------------------ utils / URL ------------------------ */
 
@@ -139,41 +157,41 @@ const buildInsertYearPdfPayload = ({ year, pdf_path }) => ({
   };
 
   useEffect(() => {
-  let mounted = true;
+    let mounted = true;
 
-  const fetchData = async () => {
-    try {
-      const resp = await axios.post("/api/main-backend/placement", {
-        type: "placement_details",
-      });
+    const fetchData = async () => {
+      try {
+        const resp = await axios.post("/api/main-backend/placement", {
+          type: "placement_details",
+        });
 
-      const data = resp.data?.data || null;
+        const data = resp.data?.data || null;
 
-      console.log("pdf item:", placementData?.year_wise_pdfs?.[0]);
-      if (!mounted) return;
+        console.log("pdf item:", placementData?.year_wise_pdfs?.[0]);
+        if (!mounted) return;
 
-      setPlacementData(data);
-      setOriginalData(deepClone(data));
-      // IMPORTANT: don't blindly clear pendingData here unless you really want to wipe pending UI
-      // setPendingData(null);
-      setLoading(false);
-    } catch (err) {
-      if (!mounted) return;
-      setLoading(false);
-    }
-  };
+        setPlacementData(data);
+        setOriginalData(deepClone(data));
+        // IMPORTANT: don't blindly clear pendingData here unless you really want to wipe pending UI
+        // setPendingData(null);
+        setLoading(false);
+      } catch (err) {
+        if (!mounted) return;
+        setLoading(false);
+      }
+    };
 
-  fetchData();
+    fetchData();
 
-  // ✅ refresh when tab becomes active again (helps after admin approval)
-  const onFocus = () => fetchData();
-  window.addEventListener("focus", onFocus);
+    // ✅ refresh when tab becomes active again (helps after admin approval)
+    const onFocus = () => fetchData();
+    window.addEventListener("focus", onFocus);
 
-  return () => {
-    mounted = false;
-    window.removeEventListener("focus", onFocus);
-  };
-}, []);
+    return () => {
+      mounted = false;
+      window.removeEventListener("focus", onFocus);
+    };
+  }, []);
 
   useEffect(() => {
     const onOnline = () => setIsOnline(true);
@@ -216,130 +234,127 @@ const buildInsertYearPdfPayload = ({ year, pdf_path }) => ({
    *
    * Only when column count changes, we emit inserts/deletes for extra columns.
    */
-  const computeStructuredChanges = (base, compare) => {
-    const changes = [];
-    if (!base || !compare) return changes;
-
-    // ---- year_wise_pdfs: match by index to detect rename/replace as UPDATE
+  // ---- year_wise_pdfs: match by id/year, not index
+const computeStructuredChanges = (base, compare) => {
+  const changes = [];
 const basePdfs = Array.isArray(base.year_wise_pdfs) ? base.year_wise_pdfs : [];
 const compPdfs = Array.isArray(compare.year_wise_pdfs) ? compare.year_wise_pdfs : [];
 
-const minLen = Math.min(basePdfs.length, compPdfs.length);
+const getPdfKey = (item) => item?.id || item?.year;
 
-// updates (rename and/or pdf replace)
-for (let i = 0; i < minLen; i++) {
-  const p1 = basePdfs[i] || {};
-  const p2 = compPdfs[i] || {};
+const basePdfMap = new Map(basePdfs.map((p) => [getPdfKey(p), p]));
+const compPdfMap = new Map(compPdfs.map((p) => [getPdfKey(p), p]));
 
-  const yearChanged = (p1.year ?? "") !== (p2.year ?? "");
-  const pathChanged = (p1.pdf_path ?? "") !== (p2.pdf_path ?? "");
+compPdfs.forEach((p2) => {
+  const key = getPdfKey(p2);
+  const p1 = basePdfMap.get(key);
 
-  if (yearChanged || pathChanged) {
-    changes.push({
-  kind: "year_pdf",
-  action: "update",
-  year: p1.year,
-  new_year: p2.year,
-  pdf_path: p2.pdf_path,
-  original_pdf_path: p1.pdf_path
-});
-  }
-}
-
-// inserts (new items added at the end or start depending on your UI)
-if (compPdfs.length > basePdfs.length) {
-  for (let i = basePdfs.length; i < compPdfs.length; i++) {
-    const p = compPdfs[i] || {};
+  if (!p1) {
     changes.push({
       kind: "year_pdf",
       action: "insert",
-      year: p.year ?? "",
-      pdf_path: p.pdf_path ?? ""
+      id: p2.id,
+      year: p2.year ?? "",
+      pdf_path: p2.pdf_path ?? "",
+    });
+    return;
+  }
+
+  if ((p1.year ?? "") !== (p2.year ?? "") || (p1.pdf_path ?? "") !== (p2.pdf_path ?? "")) {
+    changes.push({
+      kind: "year_pdf",
+      action: "update",
+      id: p2.id,
+      year: p1.year,
+      new_year: p2.year,
+      pdf_path: p2.pdf_path,
+      original_pdf_path: p1.pdf_path,
     });
   }
-}
+});
 
-// deletes
-if (basePdfs.length > compPdfs.length) {
-  for (let i = compPdfs.length; i < basePdfs.length; i++) {
-    const p = basePdfs[i] || {};
+basePdfs.forEach((p1) => {
+  const key = getPdfKey(p1);
+
+  if (!compPdfMap.has(key)) {
     changes.push({
       kind: "year_pdf",
       action: "delete",
-      year: p.year ?? "",
-      original_pdf_path: p.pdf_path ?? ""
+      id: p1.id,
+      year: p1.year ?? "",
+      original_pdf_path: p1.pdf_path ?? "",
     });
   }
-}
+});
     // ---- sections: department_wise + statistics (match by index to prevent insert+delete on edits)
-    const sections = ["department_wise", "statistics"];
-    sections.forEach((section) => {
-      const bSec = base?.[section];
-      const cSec = compare?.[section];
-      if (!bSec || !cSec) return;
+    // ---- sections: department_wise + statistics
+const sections = ["department_wise", "statistics"];
 
-      const baseYears = Array.isArray(bSec.years) ? bSec.years : [];
-      const compYears = Array.isArray(cSec.years) ? cSec.years : [];
+sections.forEach((section) => {
+  const bSec = base?.[section];
+  const cSec = compare?.[section];
+  if (!bSec || !cSec) return;
 
-      const minLen = Math.min(baseYears.length, compYears.length);
+  const baseYears = Array.isArray(bSec.years) ? bSec.years : [];
+  const compYears = Array.isArray(cSec.years) ? cSec.years : [];
 
-      // 1) For shared indexes: treat any difference as UPDATE (not delete/insert)
-      for (let i = 0; i < minLen; i++) {
-        const y1 = baseYears[i] || { year: "", values: [] };
-        const y2 = compYears[i] || { year: "", values: [] };
+  const matchedBaseIndexes = new Set();
 
-        const year1 = y1.year ?? "";
-        const year2 = y2.year ?? "";
+  compYears.forEach((y2, compIndex) => {
+    const year2 = y2.year ?? "";
+    const v2 = Array.isArray(y2.values) ? y2.values : [];
 
-        const v1 = Array.isArray(y1.values) ? y1.values : [];
-        const v2 = Array.isArray(y2.values) ? y2.values : [];
+    let baseIndex = baseYears.findIndex(
+      (y1, idx) => !matchedBaseIndexes.has(idx) && y1.year === year2
+    );
 
-        const yearChanged = year1 !== year2;
-        const valuesChanged = !arraysEqual(v1, v2);
+    if (baseIndex === -1 && baseYears[compIndex] && !matchedBaseIndexes.has(compIndex)) {
+      baseIndex = compIndex;
+    }
 
-        if (yearChanged || valuesChanged) {
-          changes.push({
-            kind: "section_year",
-            action: "update",
-            section,
-            // IMPORTANT: for update we should target the ORIGINAL year in original_data,
-            // but send NEW year+values in meta_data (same as your payload file examples).
-            year: year1,
-            new_year: year2,
-            values: v2,
-            original_values: v1,
-          });
-        }
-      }
+    if (baseIndex === -1) {
+      changes.push({
+        kind: "section_year",
+        action: "insert",
+        section,
+        year: year2,
+        values: v2,
+      });
+      return;
+    }
 
-      // 2) Extra columns in compare => INSERT
-      if (compYears.length > baseYears.length) {
-        for (let i = baseYears.length; i < compYears.length; i++) {
-          const y2 = compYears[i] || { year: "", values: [] };
-          changes.push({
-            kind: "section_year",
-            action: "insert",
-            section,
-            year: y2.year ?? "",
-            values: Array.isArray(y2.values) ? y2.values : [],
-          });
-        }
-      }
+    matchedBaseIndexes.add(baseIndex);
 
-      // 3) Extra columns removed from compare => DELETE
-      if (baseYears.length > compYears.length) {
-        for (let i = compYears.length; i < baseYears.length; i++) {
-          const y1 = baseYears[i] || { year: "", values: [] };
-          changes.push({
-            kind: "section_year",
-            action: "delete",
-            section,
-            year: y1.year ?? "",
-            original_values: Array.isArray(y1.values) ? y1.values : [],
-          });
-        }
-      }
-    });
+    const y1 = baseYears[baseIndex];
+    const year1 = y1.year ?? "";
+    const v1 = Array.isArray(y1.values) ? y1.values : [];
+
+    if (year1 !== year2 || JSON.stringify(v1) !== JSON.stringify(v2)) {
+      changes.push({
+        kind: "section_year",
+        action: "update",
+        section,
+        year: year1,
+        new_year: year2,
+        values: v2,
+        original_values: v1,
+      });
+    }
+  });
+
+  baseYears.forEach((y1, idx) => {
+    if (!matchedBaseIndexes.has(idx)) {
+      changes.push({
+        kind: "section_year",
+        action: "delete",
+        section,
+        year: y1.year ?? "",
+        original_values: Array.isArray(y1.values) ? y1.values : [],
+      });
+    }
+  });
+});
+        
 
     return changes;
   };
@@ -362,36 +377,36 @@ if (basePdfs.length > compPdfs.length) {
     changes.forEach((c) => {
       // YEAR PDF changes
       if (c.kind === "year_pdf") {
-  if (c.action === "insert") {
-    payloads.push(
-      buildInsertYearPdfPayload({
-        id: c.id,
-        year: c.year,
-        pdf_path: c.pdf_path ?? "",
-      }),
-    );
-  } else if (c.action === "update") {
-    payloads.push(
-      buildUpdatePdfPayload({
-        id: c.id,
-        year: c.year,
-        new_year: c.new_year,
-        pdf_path: c.pdf_path ?? "",
-        original_pdf_path: c.original_pdf_path ?? "",
-      }),
-    );
-  } else if (c.action === "delete") {
-    payloads.push(
-      buildDeletePayload({
-        section: "year_wise_pdfs",
-        id: c.id,
-        year: c.year,
-        pdf_path: c.original_pdf_path ?? "",
-      }),
-    );
-  }
-  return;
-}
+        if (c.action === "insert") {
+          payloads.push(
+            buildInsertYearPdfPayload({
+              id: c.id,
+              year: c.year,
+              pdf_path: c.pdf_path ?? "",
+            }),
+          );
+        } else if (c.action === "update") {
+          payloads.push(
+            buildUpdatePdfPayload({
+              id: c.id,
+              year: c.year,
+              new_year: c.new_year,
+              pdf_path: c.pdf_path ?? "",
+              original_pdf_path: c.original_pdf_path ?? "",
+            }),
+          );
+        } else if (c.action === "delete") {
+          payloads.push(
+            buildDeletePayload({
+              section: "year_wise_pdfs",
+              id: c.id,
+              year: c.year,
+              pdf_path: c.original_pdf_path ?? "",
+            }),
+          );
+        }
+        return;
+      }
 
       // Section changes
       if (c.kind === "section_year") {
@@ -413,12 +428,12 @@ if (basePdfs.length > compPdfs.length) {
 
         if (c.action === "delete") {
           payloads.push(
-  buildDeletePayload({
-    section: c.section,
-    year: c.year,
-    values: Array.isArray(c.original_values) ? c.original_values : [],
-  }),
-);
+            buildDeletePayload({
+              section: c.section,
+              year: c.year,
+              values: Array.isArray(c.original_values) ? c.original_values : [],
+            }),
+          );
           return;
         }
 
@@ -565,12 +580,12 @@ if (basePdfs.length > compPdfs.length) {
     setYearPopupPreviewUrl("");
   };
 
-const collectPlacementDetailPdfFiles = () => {
-  if (!pendingData?.year_wise_pdfs) return [];
-  return pendingData.year_wise_pdfs
-    .filter((y) => y.__file instanceof File)
-    .map((y) => y.__file);
-};
+  const collectPlacementDetailPdfFiles = () => {
+    if (!pendingData?.year_wise_pdfs) return [];
+    return pendingData.year_wise_pdfs
+      .filter((y) => y.__file instanceof File)
+      .map((y) => y.__file);
+  };
 
   const toggleSelectTopYearIndex = (idx) => {
     setSelectedTopYearIndexes((prev) =>
@@ -836,42 +851,41 @@ const collectPlacementDetailPdfFiles = () => {
     setDeleteConfirm(null);
   };
 
-const handleSave = () => {
-  if (!editedData) return;
+  const handleSave = () => {
+    if (!editedData) return;
 
-  const changes = computeStructuredChanges(originalData || {}, editedData);
-  if (!changes.length) return;
+    const changes = computeStructuredChanges(originalData || {}, editedData);
+    if (!changes.length) return;
 
-  // ✅ DO NOT deepClone here because it will drop File objects (__file)
-  setPendingData(editedData);
-  setPlacementData(editedData);
+    // ✅ DO NOT deepClone here because it will drop File objects (__file)
+    setPendingData(editedData);
+    setPlacementData(editedData);
 
-  // ✅ FIX: allow "Request" button to show again for new saved edits
-  setRequestSent(false);
+    // ✅ FIX: allow "Request" button to show again for new saved edits
+    setRequestSent(false);
 
-  setEditedData(null);
-  setEditSnapshot(null);
-  setEditMode(false);
-  setSelectedTopYearIndexes([]);
-  setSelectedCols({ department_wise: [], statistics: [] });
-  setSelectedRowIndexesBySection({ department_wise: [], statistics: [] });
-};
+    setEditedData(null);
+    setEditSnapshot(null);
+    setEditMode(false);
+    setSelectedTopYearIndexes([]);
+    setSelectedCols({ department_wise: [], statistics: [] });
+    setSelectedRowIndexesBySection({ department_wise: [], statistics: [] });
+  };
 
-const discardAllPending = () => {
-  setPendingData(null);
-  setPlacementData(deepClone(originalData)); // originalData from backend has no File objects
+  const discardAllPending = () => {
+    setPendingData(null);
+    setPlacementData(deepClone(originalData)); // originalData from backend has no File objects
 
-  // ✅ recommended: reset request state
-  setRequestSent(false);
-
-  setEditedData(null);
-  setEditSnapshot(null);
-  setEditMode(false);
-  setSelectedTopYearIndexes([]);
-  setSelectedCols({ department_wise: [], statistics: [] });
-  setSelectedRowIndexesBySection({ department_wise: [], statistics: [] });
-  toast.error("changes discarded");
-};
+    // ✅ recommended: reset request state
+    setRequestSent(false);
+    setEditedData(null);
+    setEditSnapshot(null);
+    setEditMode(false);
+    setSelectedTopYearIndexes([]);
+    setSelectedCols({ department_wise: [], statistics: [] });
+    setSelectedRowIndexesBySection({ department_wise: [], statistics: [] });
+    toast.error("changes discarded");
+  };
 
   const handleRequest = () => {
     const changes = getChangesBetweenOriginalAndPending();
@@ -882,43 +896,44 @@ const discardAllPending = () => {
     setShowRequestModal(true);
   };
 
- const handleRequestConfirm = async () => {
-  try {
-    const payload = buildPlacementDetailsPayloadsFromChanges();
-    if (!payload.length) {
-      toast.warn("No changes to submit");
-      return;
+  const handleRequestConfirm = async () => {
+    try {
+      const payload = buildPlacementDetailsPayloadsFromChanges();
+      if (!payload.length) {
+        toast.warn("No changes to submit");
+        return;
+      }
+
+      console.log("REQUEST PAYLOAD:", payload);
+
+      const files = collectPlacementDetailPdfFiles();
+
+      await sendRequest(payload, files);
+
+      
+      setShowRequestModal(false);
+      setPendingData(null);
+      setRequestSent(true);
+
+      // ✅ REFRESH from DB after submitting
+      const resp = await axios.post("/api/main-backend/placement", {
+        type: "placement_details",
+      });
+      const data = resp.data?.data || null;
+      setPlacementData(data);
+      setOriginalData(deepClone(data));
+    } catch (err) {
+      console.error(err);
+      toast.error("Request failed. Please try again.");
     }
-
-    console.log("REQUEST PAYLOAD:", payload);
-
-    const files = collectPlacementDetailPdfFiles();
-
-    await sendRequest(payload, files);
-
-    toast.success("Request submitted successfully!");
-    setShowRequestModal(false);
-    setPendingData(null);
-    setRequestSent(true);
-
-    // ✅ REFRESH from DB after submitting
-    const resp = await axios.post("/api/main-backend/placement", {
-      type: "placement_details",
-    });
-    const data = resp.data?.data || null;
-    setPlacementData(data);
-    setOriginalData(deepClone(data));
-  } catch (err) {
-    console.error(err);
-    toast.error("Request failed. Please try again.");
-  }
-};
+  };
 
   // ✅ Request modal should show insert/update/delete ONLY (no double entries)
   function buildYearWiseRequestRows() {
     const changes = getChanges();
 
-    const actionLabel = (a) => (a === "insert" ? "Insert" : a === "update" ? "Update" : "Delete");
+    const actionLabel = (a) =>
+      a === "insert" ? "Insert" : a === "update" ? "Update" : "Delete";
 
     const changeLabel = (c) => {
       if (c.kind === "year_pdf") return `Year Wise PDF: "${c.year}"`;
@@ -931,7 +946,11 @@ const discardAllPending = () => {
               : c.section;
 
         // If year renamed, show old -> new for clarity
-        if (c.action === "update" && c.new_year !== undefined && c.new_year !== c.year) {
+        if (
+          c.action === "update" &&
+          c.new_year !== undefined &&
+          c.new_year !== c.year
+        ) {
           return `${secLabel} : "${c.year}" → "${c.new_year}"`;
         }
         return `${secLabel} : "${c.year}"`;
@@ -957,17 +976,25 @@ const discardAllPending = () => {
       const yearLabel = c.year;
 
       if (c.action === "insert") {
-        const idx = (copy.year_wise_pdfs || []).findIndex((x) => x.year === yearLabel);
+        const idx = (copy.year_wise_pdfs || []).findIndex(
+          (x) => x.year === yearLabel,
+        );
         if (idx !== -1) copy.year_wise_pdfs.splice(idx, 1);
       } else if (c.action === "delete") {
-        const orig = (originalData.year_wise_pdfs || []).find((x) => x.year === yearLabel);
+        const orig = (originalData.year_wise_pdfs || []).find(
+          (x) => x.year === yearLabel,
+        );
         if (orig) {
           copy.year_wise_pdfs = copy.year_wise_pdfs || [];
           copy.year_wise_pdfs.push(deepClone(orig));
         }
       } else if (c.action === "update") {
-        const orig = (originalData.year_wise_pdfs || []).find((x) => x.year === yearLabel);
-        const idx = (copy.year_wise_pdfs || []).findIndex((x) => x.year === yearLabel);
+        const orig = (originalData.year_wise_pdfs || []).find(
+          (x) => x.year === yearLabel,
+        );
+        const idx = (copy.year_wise_pdfs || []).findIndex(
+          (x) => x.year === yearLabel,
+        );
         if (orig && idx !== -1) copy.year_wise_pdfs[idx] = deepClone(orig);
       }
 
@@ -982,7 +1009,9 @@ const discardAllPending = () => {
       const origYears = Array.isArray(originalData?.[sec]?.years)
         ? originalData[sec].years
         : [];
-      const pendingYears = Array.isArray(copy?.[sec]?.years) ? copy[sec].years : [];
+      const pendingYears = Array.isArray(copy?.[sec]?.years)
+        ? copy[sec].years
+        : [];
 
       if (c.action === "insert") {
         // remove inserted column by matching last known year label
@@ -999,9 +1028,12 @@ const discardAllPending = () => {
         const origIdx = origYears.findIndex((y) => y.year === c.year);
         if (origIdx !== -1) {
           // If pending index exists at same position, replace; else try find by new year
-          if (pendingYears[origIdx]) pendingYears[origIdx] = deepClone(origYears[origIdx]);
+          if (pendingYears[origIdx])
+            pendingYears[origIdx] = deepClone(origYears[origIdx]);
           else {
-            const idx = pendingYears.findIndex((y) => y.year === (c.new_year ?? c.year));
+            const idx = pendingYears.findIndex(
+              (y) => y.year === (c.new_year ?? c.year),
+            );
             if (idx !== -1) pendingYears[idx] = deepClone(origYears[origIdx]);
           }
         }
@@ -1066,7 +1098,9 @@ const discardAllPending = () => {
               </h4>
               <div className="place-Sylgrid">
                 {editMode && (
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div
+                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                  >
                     <button
                       className="place-course-button bg-secd text-text"
                       onClick={openYearPopupToAdd}
@@ -1126,15 +1160,25 @@ const discardAllPending = () => {
             </div>
 
             {showYearPopup && (
-              <div className="popup-overlay" onClick={() => setShowYearPopup(false)}>
-                <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-                  <h3>{yearPopupIndex === null ? "Add Year PDF" : "Edit Year"}</h3>
+              <div
+                className="popup-overlay"
+                onClick={() => setShowYearPopup(false)}
+              >
+                <div
+                  className="popup-content"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <h3>
+                    {yearPopupIndex === null ? "Add Year PDF" : "Edit Year"}
+                  </h3>
 
                   <label className="block mt-2">Year label</label>
                   <input
                     type="text"
                     value={yearPopupLabel}
-                    onChange={(e) => setYearPopupLabel(e.target.value)}
+                    onChange={(e) =>
+                      setYearPopupLabel(normalizeYearInput(e.target.value))
+                    }
                     className="edit-input"
                     placeholder="e.g. 2024-25"
                   />
@@ -1186,7 +1230,7 @@ const discardAllPending = () => {
                     }}
                   >
                     <button
-                      className="cancel-btn-t"
+                      className="popup-btn"
                       onClick={() => {
                         setShowYearPopup(false);
                         setYearPopupFile(null);
@@ -1197,7 +1241,7 @@ const discardAllPending = () => {
                     >
                       Cancel
                     </button>
-                    <button className="save-btnn" onClick={applyYearPopup}>
+                    <button className="popup-btn" onClick={applyYearPopup}>
                       Apply
                     </button>
                   </div>
@@ -1223,9 +1267,14 @@ const discardAllPending = () => {
                           {editMode && (
                             <input
                               type="checkbox"
-                              checked={selectedCols.department_wise?.includes(cIdx)}
+                              checked={selectedCols.department_wise?.includes(
+                                cIdx,
+                              )}
                               onChange={() =>
-                                toggleSelectColInSection("department_wise", cIdx)
+                                toggleSelectColInSection(
+                                  "department_wise",
+                                  cIdx,
+                                )
                               }
                               title="Select column for this table"
                               style={{ position: "absolute", top: 8, right: 8 }}
@@ -1247,7 +1296,7 @@ const discardAllPending = () => {
                                   setEditedData((prev) => {
                                     const copy = deepClone(prev);
                                     copy.department_wise.years[cIdx].year =
-                                      e.target.value;
+                                      normalizeYearInput(e.target.value);
                                     return copy;
                                   });
                                 }}
@@ -1271,66 +1320,72 @@ const discardAllPending = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {(view?.department_wise?.departments || []).map((dept, rIdx) => (
-                      <tr key={rIdx}>
-                        <td style={{ position: "relative" }}>
-                          {editMode && (
-                            <input
-                              type="checkbox"
-                              checked={selectedRowIndexesBySection.department_wise?.includes(
-                                rIdx,
-                              )}
-                              onChange={() => toggleSelectRow("department_wise", rIdx)}
-                              title="Select row for batch actions"
-                              style={{
-                                position: "absolute",
-                                top: 6,
-                                right: 6,
-                              }}
-                            />
-                          )}
-                          <div style={{ paddingRight: 28 }}>
-                            {editMode ? (
+                    {(view?.department_wise?.departments || []).map(
+                      (dept, rIdx) => (
+                        <tr key={rIdx}>
+                          <td style={{ position: "relative" }}>
+                            {editMode && (
                               <input
-                                className="edit-input"
-                                value={dept}
-                                onChange={(e) => {
-                                  setEditedData((prev) => {
-                                    const copy = deepClone(prev);
-                                    copy.department_wise.departments[rIdx] =
-                                      e.target.value;
-                                    return copy;
-                                  });
+                                type="checkbox"
+                                checked={selectedRowIndexesBySection.department_wise?.includes(
+                                  rIdx,
+                                )}
+                                onChange={() =>
+                                  toggleSelectRow("department_wise", rIdx)
+                                }
+                                title="Select row for batch actions"
+                                style={{
+                                  position: "absolute",
+                                  top: 6,
+                                  right: 6,
                                 }}
                               />
-                            ) : (
-                              dept
                             )}
-                          </div>
-                        </td>
-
-                        {(view?.department_wise?.years || []).map((col, cIdx) => (
-                          <td key={cIdx}>
-                            {editMode ? (
-                              <input
-                                className="edit-input"
-                                value={col.values[rIdx] ?? ""}
-                                onChange={(e) =>
-                                  handleCellChange(
-                                    "department_wise",
-                                    rIdx,
-                                    cIdx,
-                                    e.target.value,
-                                  )
-                                }
-                              />
-                            ) : (
-                              col.values[rIdx]
-                            )}
+                            <div style={{ paddingRight: 28 }}>
+                              {editMode ? (
+                                <input
+                                  className="edit-input"
+                                  value={dept}
+                                  onChange={(e) => {
+                                    setEditedData((prev) => {
+                                      const copy = deepClone(prev);
+                                      copy.department_wise.departments[rIdx] =
+                                        e.target.value;
+                                      return copy;
+                                    });
+                                  }}
+                                />
+                              ) : (
+                                dept
+                              )}
+                            </div>
                           </td>
-                        ))}
-                      </tr>
-                    ))}
+
+                          {(view?.department_wise?.years || []).map(
+                            (col, cIdx) => (
+                              <td key={cIdx}>
+                                {editMode ? (
+                                  <input
+                                    className="edit-input"
+                                    value={col.values[rIdx] ?? ""}
+                                    onChange={(e) =>
+                                      handleCellChange(
+                                        "department_wise",
+                                        rIdx,
+                                        cIdx,
+                                        e.target.value,
+                                      )
+                                    }
+                                  />
+                                ) : (
+                                  col.values[rIdx]
+                                )}
+                              </td>
+                            ),
+                          )}
+                        </tr>
+                      ),
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -1412,7 +1467,8 @@ const discardAllPending = () => {
                                 onChange={(e) => {
                                   setEditedData((prev) => {
                                     const copy = deepClone(prev);
-                                    copy.statistics.years[cIdx].year = e.target.value;
+                                    copy.statistics.years[cIdx].year =
+                                      normalizeYearInput(e.target.value);
                                     return copy;
                                   });
                                 }}
@@ -1445,7 +1501,9 @@ const discardAllPending = () => {
                               checked={selectedRowIndexesBySection.statistics?.includes(
                                 rIdx,
                               )}
-                              onChange={() => toggleSelectRow("statistics", rIdx)}
+                              onChange={() =>
+                                toggleSelectRow("statistics", rIdx)
+                              }
                               title="Select row for batch actions"
                               style={{ position: "absolute", top: 6, right: 6 }}
                             />
@@ -1458,7 +1516,8 @@ const discardAllPending = () => {
                                 onChange={(e) => {
                                   setEditedData((prev) => {
                                     const copy = deepClone(prev);
-                                    copy.statistics.particulars[rIdx] = e.target.value;
+                                    copy.statistics.particulars[rIdx] =
+                                      e.target.value;
                                     return copy;
                                   });
                                 }}
@@ -1632,7 +1691,9 @@ const discardAllPending = () => {
                               <td className="py-2">
                                 <button
                                   onClick={() =>
-                                    row.rawChanges.forEach((c) => handleRevertChange(c))
+                                    row.rawChanges.forEach((c) =>
+                                      handleRevertChange(c),
+                                    )
                                   }
                                   className="text-red-500 hover:text-red-700 font-bold"
                                 >
