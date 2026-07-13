@@ -186,21 +186,21 @@ const AdminAbtUs = ({ theme, toggle }) => {
   };
 
   // -------------------- PDF modal --------------------
-const openPdfModal = (index = null) => {
-  if (index === null) {
-    setShowPdfModal({ open: true, index: null, name: "", file: null, error: "" });
-  } else {
-    const item = pdfLinks[index] || { name: "", url: "", file: null };
+  const openPdfModal = (index = null) => {
+    if (index === null) {
+      setShowPdfModal({ open: true, index: null, name: "", file: null, error: "" });
+    } else {
+      const item = pdfLinks[index] || { name: "", url: "", file: null };
 
-    setShowPdfModal({
-      open: true,
-      index,
-      name: item.name || "",
-      file: item.file || null,   // ✅ keep replaced file
-      error: "",
-    });
-  }
-};
+      setShowPdfModal({
+        open: true,
+        index,
+        name: item.name || "",
+        file: item.file || null,   // ✅ keep replaced file
+        error: "",
+      });
+    }
+  };
 
   const closePdfModal = () =>
     setShowPdfModal({ open: false, index: null, name: "", file: null, error: "" });
@@ -296,14 +296,14 @@ const openPdfModal = (index = null) => {
     // Solution: Use PDF name as unique identifier for comparison
     const basePdfs = Array.isArray(baseline.pdfLinks) ? baseline.pdfLinks : [];
     const currPdfs = Array.isArray(current.pdfLinks) ? current.pdfLinks : [];
-    
+
     // Create maps by name for comparison
     const baseMap = new Map(basePdfs.map((p) => [p.name, p]));
     const currMap = new Map(currPdfs.map((p) => [p.name, p]));
-    
+
     // Get all unique PDF names from both baseline and current
     const allPdfNames = new Set([...baseMap.keys(), ...currMap.keys()]);
-    
+
     allPdfNames.forEach((pdfName) => {
       const b = baseMap.get(pdfName) || null;
       const c = currMap.get(pdfName) || null;
@@ -465,7 +465,7 @@ const openPdfModal = (index = null) => {
       const newFile = newSnapshot.images?.[i];
       const oldPath = oldBackend.image_path?.[i] || "";
       const newPath = newBackend.image_path?.[i] || "";
-      
+
       if (newFile) {
         // Image was replaced
         const safeName = makeSafeFileName(newFile);
@@ -487,14 +487,14 @@ const openPdfModal = (index = null) => {
     // 3. Handle PDF changes - use NAME-based comparison (not index-based)
     const oldPdfList = oldBackend.about_us_pdf || [];
     const newPdfList = newBackend.about_us_pdf || [];
-    
+
     // Create maps by name for comparison (same as requestRows)
     const oldPdfMap = new Map(oldPdfList.map((p) => [p.name, p]));
     const newPdfMap = new Map(newPdfList.map((p) => [p.name, p]));
-    
+
     // Get all unique PDF names
     const allPdfNames = new Set([...oldPdfMap.keys(), ...newPdfMap.keys()]);
-    
+
     allPdfNames.forEach((pdfName) => {
       const oldItem = oldPdfMap.get(pdfName) || null;
       const newItem = newPdfMap.get(pdfName) || null;
@@ -562,29 +562,29 @@ const openPdfModal = (index = null) => {
 
   const syncUiWithBackendAfterRequest = (updatedBackend) => {
 
-  // convert backend content to textarea string
-  const contentStr = contentArrayToString(updatedBackend?.content);
+    // convert backend content to textarea string
+    const contentStr = contentArrayToString(updatedBackend?.content);
 
-  // convert backend pdfs again fresh
-  const freshPdfLinks = normalizePdfLinksFromBackend(updatedBackend);
+    // convert backend pdfs again fresh
+    const freshPdfLinks = normalizePdfLinksFromBackend(updatedBackend);
 
-  // 🔥 VERY IMPORTANT
-  setEditedContent(contentStr);
-  setPdfLinks(freshPdfLinks.map((p) => ({ ...p })));
+    // 🔥 VERY IMPORTANT
+    setEditedContent(contentStr);
+    setPdfLinks(freshPdfLinks.map((p) => ({ ...p })));
 
-  // reset all pending edit states
-  setEditedImages({ 0: null, 1: null, 2: null });
-  setSelectedPdfNames([]);
+    // reset all pending edit states
+    setEditedImages({ 0: null, 1: null, 2: null });
+    setSelectedPdfNames([]);
 
-  setEditSessionSnapshot(null);
-  setPostSaveSnapshot(null);
-  setPendingBaselineSnapshot(null);
+    setEditSessionSnapshot(null);
+    setPostSaveSnapshot(null);
+    setPendingBaselineSnapshot(null);
 
-  setSavedChanges(false);
-  setChanged(false);
-  setEditMode(false);
-  setShowRequestModal(false);
-};
+    setSavedChanges(false);
+    setChanged(false);
+    setEditMode(false);
+    setShowRequestModal(false);
+  };
 
   const confirmRequest = async () => {
     const oldData = abtUsData || {};
@@ -611,8 +611,8 @@ const openPdfModal = (index = null) => {
           about_us_pdf: newBackend.about_us_pdf,
         };
 
-setAbtUsData(updatedBackend);
-syncUiWithBackendAfterRequest(updatedBackend);
+        setAbtUsData(updatedBackend);
+        syncUiWithBackendAfterRequest(updatedBackend);
       } else {
         if (result?.status === 429 || result?.data?.status === 429) {
           navigate("/ratelimit", {
@@ -678,25 +678,25 @@ syncUiWithBackendAfterRequest(updatedBackend);
     setSelectedPdfNames([]);
   };
 
-const handleCancel = () => {
-  // Always restore the snapshot taken when Edit started
-  if (editSessionSnapshot) {
-    setEditedContent(editSessionSnapshot.content || "");
-    setEditedImages({
-      ...(editSessionSnapshot.images || { 0: null, 1: null, 2: null }),
-    });
+  const handleCancel = () => {
+    // Always restore the snapshot taken when Edit started
+    if (editSessionSnapshot) {
+      setEditedContent(editSessionSnapshot.content || "");
+      setEditedImages({
+        ...(editSessionSnapshot.images || { 0: null, 1: null, 2: null }),
+      });
 
-    setPdfLinks(
-      Array.isArray(editSessionSnapshot.pdfLinks)
-        ? editSessionSnapshot.pdfLinks.map((p) => ({ ...p }))
-        : []
-    );
-  }
+      setPdfLinks(
+        Array.isArray(editSessionSnapshot.pdfLinks)
+          ? editSessionSnapshot.pdfLinks.map((p) => ({ ...p }))
+          : []
+      );
+    }
 
-  setEditMode(false);
-  setChanged(false);
-  setSelectedPdfNames([]);
-};
+    setEditMode(false);
+    setChanged(false);
+    setSelectedPdfNames([]);
+  };
 
   const handleSave = () => {
     if (!pendingBaselineSnapshot) {
@@ -712,25 +712,25 @@ const handleCancel = () => {
   };
 
   const handleDiscardAll = () => {
-  if (!pendingBaselineSnapshot) return;
+    if (!pendingBaselineSnapshot) return;
 
-  // Restore backend baseline
-  setEditedContent(pendingBaselineSnapshot.content || "");
-  setEditedImages({ 0: null, 1: null, 2: null });
-  setPdfLinks(
-    Array.isArray(pendingBaselineSnapshot.pdfLinks)
-      ? pendingBaselineSnapshot.pdfLinks.map((p) => ({ ...p }))
-      : []
-  );
+    // Restore backend baseline
+    setEditedContent(pendingBaselineSnapshot.content || "");
+    setEditedImages({ 0: null, 1: null, 2: null });
+    setPdfLinks(
+      Array.isArray(pendingBaselineSnapshot.pdfLinks)
+        ? pendingBaselineSnapshot.pdfLinks.map((p) => ({ ...p }))
+        : []
+    );
 
-  // Reset request state
-  setSavedChanges(false);
-  setChanged(false);
-  setPostSaveSnapshot(null);
-  setPendingBaselineSnapshot(null);
+    // Reset request state
+    setSavedChanges(false);
+    setChanged(false);
+    setPostSaveSnapshot(null);
+    setPendingBaselineSnapshot(null);
 
-  toast.success("Changes discarded successfully");
-};
+    toast.success("Changes discarded successfully");
+  };
 
   // -------------------- render --------------------
   if (!isOnline) {
@@ -758,11 +758,11 @@ const handleCancel = () => {
             {!editMode && (
               <button
                 onClick={handleEditClick}
-                className="absolute top-4 right-12 bg-[#fdcc03] hover:bg-[#800000] hover:text-white font-semibold text-black px-3 py-2 rounded flex items-center gap-2 transition"
+                className="absolute top-4 right-12 bg-[#fdcc03] hover:bg-[#800000] hover:text-white font-semibold text-[#000000] px-3 py-2 rounded flex items-center gap-2 transition"
               >
-               <Pencil size={20} /> Edit
+                <Pencil size={20} /> Edit
               </button>
-              
+
             )}
           </div>
 
@@ -780,13 +780,12 @@ const handleCancel = () => {
                 {[0, 1, 2].map((i) => (
                   <div
                     key={i}
-                    className={`absolute ${
-                      i === 0
-                        ? "w-[40%] h-[60%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]"
-                        : i === 1
+                    className={`absolute ${i === 0
+                      ? "w-[40%] h-[60%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]"
+                      : i === 1
                         ? "w-[40%] h-[90%] left-[15%] top-[10%] rounded-bl-[3rem]"
                         : "w-[25%] h-[40%] left-[40%] top-[45%] rounded-tl-[3rem] rounded-br-[3rem]"
-                    } border-[2vmin] border-white overflow-hidden`}
+                      } border-[2vmin] border-white overflow-hidden`}
                   >
                     {loading[`img${i + 1}`] && (
                       <div className="absolute inset-0 flex justify-center items-center">
@@ -795,9 +794,8 @@ const handleCancel = () => {
                     )}
 
                     <img
-                      className={`absolute w-full h-full object-cover transition-opacity duration-500 ${
-                        loading[`img${i + 1}`] ? "opacity-0" : "opacity-100"
-                      }`}
+                      className={`absolute w-full h-full object-cover transition-opacity duration-500 ${loading[`img${i + 1}`] ? "opacity-0" : "opacity-100"
+                        }`}
                       src={
                         editedImages[i]
                           ? URL.createObjectURL(editedImages[i])
@@ -847,8 +845,8 @@ const handleCancel = () => {
                   {savedChanges
                     ? editedContent
                     : Array.isArray(abtUsData?.content)
-                    ? abtUsData?.content.join("\n")
-                    : abtUsData?.content}
+                      ? abtUsData?.content.join("\n")
+                      : abtUsData?.content}
                 </p>
               )}
             </div>
@@ -865,11 +863,9 @@ const handleCancel = () => {
                   // pdf conrtainer 
                   <div
                     key={index}
-                    className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white transition ${
-                      editMode ? "scale-110" : ""
-                    } ${editMode ? "cursor-pointer" : "cursor-pointer"} ${
-                      editMode && isSelected ? "ring-2 ring-red-500" : ""
-                    }`}
+                    className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition ${editMode ? "scale-110" : ""
+                      } ${editMode ? "cursor-pointer" : "cursor-pointer"} ${editMode && isSelected ? "ring-2 ring-red-500" : ""
+                      }`}
                     // IMPORTANT: Only allow opening edit modal when not in "multi-select" mode
                     onClick={
                       editMode && !hasSelection
@@ -902,14 +898,14 @@ const handleCancel = () => {
                       <div
                         className="absolute left-0 top-0 w-full h-full"
                         onClick={() => {
-                        if (pdf.file instanceof File) {
-                          const blobUrl = URL.createObjectURL(pdf.file);
-                          window.open(blobUrl, "_blank");
-                          setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
-                        } else if (pdf.url) {
-                          window.open(UrlParser(pdf.url), "_blank");
-                        }
-                      }}
+                          if (pdf.file instanceof File) {
+                            const blobUrl = URL.createObjectURL(pdf.file);
+                            window.open(blobUrl, "_blank");
+                            setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+                          } else if (pdf.url) {
+                            window.open(UrlParser(pdf.url), "_blank");
+                          }
+                        }}
                       />
                     )}
                   </div>
@@ -927,12 +923,15 @@ const handleCancel = () => {
 
               {/* AISHE link */}
               <div
-                className={`relative cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-black hover:bg-[#800000] hover:text-white transition ${
-                  editMode ? "scale-110" : ""
-                }`}
-                onClick={() => {
-                  if (editMode || !editMode) navigate("/abt-yr");
+                className="relative cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-[#000000] hover:bg-[#800000] transition"
+
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "white";
                 }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "black";
+                }}
+                onClick={() => navigate("/abt-yr")}
               >
                 AISHE
               </div>
@@ -1033,9 +1032,21 @@ const handleCancel = () => {
               <button onClick={closePdfModal} className="px-3 py-1 bg-gray-400 hover:bg-gray-600 text-white rounded transition">
                 Cancel
               </button>
-              <button onClick={savePdfModal} className="px-3 py-1 bg-[#fdcc03] hover:bg-[#800000] hover:text-white text-black rounded transition">
-                Save
-              </button>
+              <button
+                onClick={savePdfModal}
+                className="px-3 py-1 bg-[#fdcc03] rounded transition"
+                style={{ color: "black" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#800000";
+                    e.currentTarget.style.color = "white";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "#fdcc03";
+                    e.currentTarget.style.color = "black";
+                  }}
+                >
+                  Save
+                </button>
             </div>
           </div>
         </div>
@@ -1052,28 +1063,41 @@ const handleCancel = () => {
             </p>
 
             <div className="max-h-[200px] overflow-y-auto mb-4">
-              <table className="w-full text-left text-text dark:text-drkt">
-                <thead>
+              <table className="w-full border border-gray-300 text-left text-text dark:text-drkt">
+                <thead className="bg-gray-200">
                   <tr>
-                    <th className="py-1">Action</th>
-                    <th className="py-1">Section</th>
-                    <th className="py-1">Changes</th>
-                    <th className="py-1">Undo</th>
+                    <th className="border p-2">Action</th>
+                    <th className="border p-2">Section</th>
+                    <th className="border p-2">Changes</th>
+                    <th className="border p-2">Undo</th>
                   </tr>
                 </thead>
                 <tbody>
                   {requestRows.map((r) => (
                     <tr key={r.key}>
-                      <td className="py-1">
+                      <td className="border border-gray-700 py-2 px-3">
                         {r.action === "insert" && <span className="text-green-600">+ Added</span>}
                         {r.action === "update" && <span className="text-blue-600">✎ Edited</span>}
                         {r.action === "delete" && <span className="text-red-600">– Deleted</span>}
                       </td>
-                      <td className="py-1">{r.section}</td>
-                      <td className="py-1">{r.changes}</td>
-                      <td className="py-1">
-                        <button type="button" onClick={() => undoRow(r)} disabled={reqLoading} title="Undo this change">
-                          <X />
+
+                      <td className="border border-gray-700 py-2 px-3">
+                        {r.section}
+                      </td>
+
+                      <td className="border border-gray-700 py-2 px-3">
+                        {r.changes}
+                      </td>
+
+                      <td className="border border-gray-700 py-2 px-3">
+                        <button
+                          type="button"
+                          onClick={() => undoRow(r)}
+                          disabled={reqLoading}
+                          title="Undo this change"
+                          className="p-1 rounded hover:bg-red-100"
+                        >
+                          <X className="text-red-600" />
                         </button>
                       </td>
                     </tr>
@@ -1084,18 +1108,17 @@ const handleCancel = () => {
 
             <div className="flex justify-end gap-2">
               <button
-                onClick={() => setShowRequestModal(false)}
-                className={`px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition ${reqLoading ? "cursor-not-allowed" : ""}`}
-                disabled={reqLoading}
-              >
-                Cancel
-              </button>
-              <button
                 onClick={confirmRequest}
-                className={`px-4 py-2 rounded bg-[#fdcc03] hover:bg-[#800000] text-black hover:text-white transition ${
-                  reqLoading ? "cursor-progress" : ""
-                }`}
-                disabled={reqLoading}
+                className="px-4 py-2 rounded bg-[#fdcc03] transition"
+                style={{ color: "black" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#800000";
+                  e.currentTarget.style.color = "white";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#fdcc03";
+                  e.currentTarget.style.color = "black";
+                }}
               >
                 {reqLoading ? "Processing..." : "Final Request"}
               </button>
@@ -1123,7 +1146,7 @@ const handleCancel = () => {
                 className="px-4 py-2 rounded bg-red-600 text-white"
                 onClick={confirmDeleteSelected}
               >
-                Delete
+                Delete 
               </button>
             </div>
           </div>
