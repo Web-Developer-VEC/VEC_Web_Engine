@@ -134,7 +134,7 @@ export default function AdminConsultancy({ theme, toggle }) {
         },
       });
 
-      toast.success("Entry added (session)");
+      //toast.success("Entry added (session)");
     }
 
     setNewYear("");
@@ -398,7 +398,7 @@ export default function AdminConsultancy({ theme, toggle }) {
       if (result) {
         console.log("FINAL REQUEST SUBMITTED", { payload, acadamicRes });
 
-        toast.success("Final request submitted");
+        //toast.success("Final request submitted");
 
         setShowRequestModal(false);
         setAllChanges([]);

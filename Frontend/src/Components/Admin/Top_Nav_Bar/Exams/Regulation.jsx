@@ -262,7 +262,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
     
     setIsEditing(false);
     setIsDone(true);
-    toast.success("Saved. Now click Request to send for approval.");
   };
 
   // Confirmation flow for "Discard Changes" (after Save)
