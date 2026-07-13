@@ -155,7 +155,7 @@ savedDataRef.current = structuredClone(data);
         },
       });
 
-      toast.success("Entry added (session)");
+      //toast.success("Entry added (session)");
     }
 
     setNewYear("");

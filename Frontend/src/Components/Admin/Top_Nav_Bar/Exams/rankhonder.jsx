@@ -225,8 +225,6 @@ const handleRequestConfirm = async () => {
     // keep your required signature
     await sendRequest(payload, files);
 
-    toast.success("Request submitted successfully!");
-
     // update local state after success
     setOriginalData(deepCopy(pendingData));
     setTempData(deepCopyWithFiles(pendingData));
@@ -418,7 +416,7 @@ const handleSaveAsDraft = () => {
   setSelectedCategories(new Set());
   setSelectedPdfs(new Set());
 
-  toast.success("Changes saved as draft!");
+
   setChanges(getChanges());
 };
 
