@@ -335,14 +335,24 @@ td > div, th > div {
   color: white;
 }
 
-.cancel-btn {
-  background-color: #6c757d;
-  color: white;
+.cancel-btn-t {
+    background: #f4c400;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.cancel-btn:hover {
-  background-color: #5a6268;
+.cancel-btn-t:hover {
+    background: #7b4f00;
+    color: #fff;
 }
+
+
 
 .delete-btn {
   background-color: #dc3545;
@@ -364,4 +374,23 @@ td > div, th > div {
   background-color: #2d2d2d;
   color: #e0e0e0;
   border-color: #4a4a4a;
+}
+
+.popup-btn {
+    background: #f4c400;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    min-width: 110px;
+    height: 54px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.popup-btn:hover {
+    background:rgb(96, 9, 9);
+    color: #fff;
 }

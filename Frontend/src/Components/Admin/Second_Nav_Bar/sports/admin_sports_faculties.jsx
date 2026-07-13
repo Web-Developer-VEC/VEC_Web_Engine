@@ -56,74 +56,74 @@ const Sportsfaculties = ({ data: initialData }) => {
     );
   };
   const trackChange = (index, field, value) => {
-  setFacultyData(prev => {
-    const updated = [...prev];
-    updated[index] = { ...updated[index], [field]: value };
-    const faculty = updated[index];
+    setFacultyData(prev => {
+      const updated = [...prev];
+      updated[index] = { ...updated[index], [field]: value };
+      const faculty = updated[index];
 
-    const original = originalData.find(o => o.id === faculty.id);
+      const original = originalData.find(o => o.id === faculty.id);
 
-    setChangeList(prevChanges => {
-      let newChanges = [...prevChanges];
+      setChangeList(prevChanges => {
+        let newChanges = [...prevChanges];
 
-      // 🟢 IF NEW FACULTY → update added entry
-      if (faculty.isNew) {
+        // 🟢 IF NEW FACULTY → update added entry
+        if (faculty.isNew) {
+          const existingIndex = newChanges.findIndex(
+            c => c.type === "added" && c.data.id === faculty.id
+          );
+
+          if (existingIndex >= 0) {
+            newChanges[existingIndex] = {
+              ...newChanges[existingIndex],
+              section: faculty.name || "New Faculty",
+              data: faculty
+            };
+          }
+
+          return newChanges;
+        }
+
+        // 🔵 EXISTING FACULTY EDIT
+        const editedFields = {};
+
+        ["name", "qualification", "designation", "image_path"].forEach(key => {
+          if (faculty[key] !== original?.[key]) {
+            editedFields[key] = {
+              before: original?.[key] || "",
+              after: faculty[key] || ""
+            };
+          }
+        });
+
         const existingIndex = newChanges.findIndex(
-          c => c.type === "added" && c.data.id === faculty.id
+          c => c.type === "edited" && c.data.id === faculty.id
         );
 
+        if (Object.keys(editedFields).length === 0) {
+          if (existingIndex >= 0) {
+            return newChanges.filter((_, i) => i !== existingIndex);
+          }
+          return newChanges;
+        }
+
+        const newChange = {
+          type: "edited",
+          section: faculty.name || "Faculty",
+          fields: editedFields,
+          data: faculty
+        };
+
         if (existingIndex >= 0) {
-          newChanges[existingIndex] = {
-            ...newChanges[existingIndex],
-            section: faculty.name || "New Faculty",
-            data: faculty
-          };
+          newChanges[existingIndex] = newChange;
+          return newChanges;
         }
 
-        return newChanges;
-      }
-
-      // 🔵 EXISTING FACULTY EDIT
-      const editedFields = {};
-
-      ["name", "qualification", "designation", "image_path"].forEach(key => {
-        if (faculty[key] !== original?.[key]) {
-          editedFields[key] = {
-            before: original?.[key] || "",
-            after: faculty[key] || ""
-          };
-        }
+        return [...newChanges, newChange];
       });
 
-      const existingIndex = newChanges.findIndex(
-        c => c.type === "edited" && c.data.id === faculty.id
-      );
-
-      if (Object.keys(editedFields).length === 0) {
-        if (existingIndex >= 0) {
-          return newChanges.filter((_, i) => i !== existingIndex);
-        }
-        return newChanges;
-      }
-
-      const newChange = {
-        type: "edited",
-        section: faculty.name || "Faculty",
-        fields: editedFields,
-        data: faculty
-      };
-
-      if (existingIndex >= 0) {
-        newChanges[existingIndex] = newChange;
-        return newChanges;
-      }
-
-      return [...newChanges, newChange];
+      return updated;
     });
-
-    return updated;
-  });
-};
+  };
 
 
 
@@ -151,20 +151,20 @@ const Sportsfaculties = ({ data: initialData }) => {
 
     // 🧠 2) ALSO inject file into changeList immediately
     setChangeList(prev => {
-  return prev.map(change => {
-    if (change.data.id === facultyId) {
-      return {
-        ...change,
-        data: {
-          ...change.data,
-          image_path: finalPath,
-          image_file: file
+      return prev.map(change => {
+        if (change.data.id === facultyId) {
+          return {
+            ...change,
+            data: {
+              ...change.data,
+              image_path: finalPath,
+              image_file: file
+            }
+          };
         }
-      };
-    }
-    return change;
-  });
-});
+        return change;
+      });
+    });
 
 
     // 🧠 3) Track path change
@@ -178,36 +178,36 @@ const Sportsfaculties = ({ data: initialData }) => {
     return change?.type || null;  // "added" | "edited" | "deleted" | null
   };
 
- const handleSave = () => {
-  const invalid = facultyData.some(
-    (f) => !f.name || !f.qualification || !f.designation || !f.image_path
-  );
+  const handleSave = () => {
+    const invalid = facultyData.some(
+      (f) => !f.name || !f.qualification || !f.designation || !f.image_path
+    );
 
-  if (invalid) {
-    return;
-  }
+    if (invalid) {
+      return;
+    }
 
-  // Update last saved state
-  setOriginalData(facultyData.map(item => ({ ...item })));
+    // Update last saved state
+    setOriginalData(facultyData.map(item => ({ ...item })));
 
 
-  setShowRequestButtons(true);
-  setEditFac(false);
-};
+    setShowRequestButtons(true);
+    setEditFac(false);
+  };
 
-const handleCancelEdit = () => {
-  // Restore the last saved data
-  setFacultyData(originalData.map(item => ({ ...item })));
+  const handleCancelEdit = () => {
+    // Restore the last saved data
+    setFacultyData(originalData.map(item => ({ ...item })));
 
-  // Reset temporary states
-  setSelectedItems([]);
-  setChangeList([]);
-  setImagePreviews({});
+    // Reset temporary states
+    setSelectedItems([]);
+    setChangeList([]);
+    setImagePreviews({});
 
-  // Exit edit mode
-  setEditFac(false);
-  setShowRequestButtons(false);
-};
+    // Exit edit mode
+    setEditFac(false);
+    setShowRequestButtons(false);
+  };
 
   const handleDiscard = () => {
     setFacultyData([...originalData]);
@@ -765,20 +765,20 @@ const SportsHOD = ({ data }) => {
     return diff;
   };
 
- const handleDiscardChanges = () => {
-  setFormData({ ...originalData });
+  const handleDiscardChanges = () => {
+    setFormData({ ...originalData });
 
-  setHodPreview(null);
-  setHodImageFile(null);
+    setHodPreview(null);
+    setHodImageFile(null);
 
-  setIsEditing(false);
-  setShowRequest(false);
-  setHasChanges(false);
-  setShowRequestModal(false);
-  setShowDiscardModal(false);
+    setIsEditing(false);
+    setShowRequest(false);
+    setHasChanges(false);
+    setShowRequestModal(false);
+    setShowDiscardModal(false);
 
-  toast.info("Changes discarded.");
-};
+    toast.info("Changes discarded.");
+  };
 
 
 
@@ -803,64 +803,64 @@ const SportsHOD = ({ data }) => {
     setHasChanges(true);
   };
 
- const handleCancelEdit = () => {
-  if (editSnapshot) {
-    setFormData({ ...editSnapshot.formData });
-    setChanges(cloneHodChanges(editSnapshot.changes));
-    setHasChanges(editSnapshot.hasChanges);
-    setShowRequest(editSnapshot.showRequest);
-    setHodPreview(editSnapshot.hodPreview || null);
-    setHodImageFile(editSnapshot.hodImageFile || null);
-  } else {
-    setFormData({ ...originalData });
-    setChanges([]);
-    setHasChanges(false);
-    setShowRequest(false);
-    setHodPreview(null);
-    setHodImageFile(null);
-  }
-
-  setIsEditing(false);
-  setShowRequestModal(false);
-  setShowDiscardModal(false);
-  setEditSnapshot(null);
-
-
-};
-
- const handleRevertHodChange = (index) => {
-  const change = changes[index];
-  if (!change) return;
-
-  setFormData((prev) => ({
-    ...prev,
-    [change.field]: change.oldValue,
-  }));
-
-  if (change.field === "image_path") {
-    setHodPreview(null);
-    setHodImageFile(null);
-  }
-
-  setChanges((prev) => {
-    const next = prev.filter((_, i) => i !== index);
-
-    if (next.length === 0) {
+  const handleCancelEdit = () => {
+    if (editSnapshot) {
+      setFormData({ ...editSnapshot.formData });
+      setChanges(cloneHodChanges(editSnapshot.changes));
+      setHasChanges(editSnapshot.hasChanges);
+      setShowRequest(editSnapshot.showRequest);
+      setHodPreview(editSnapshot.hodPreview || null);
+      setHodImageFile(editSnapshot.hodImageFile || null);
+    } else {
       setFormData({ ...originalData });
+      setChanges([]);
+      setHasChanges(false);
+      setShowRequest(false);
       setHodPreview(null);
       setHodImageFile(null);
-      setShowRequestModal(false);
-      setShowRequest(false);
-      setIsEditing(false);
-      setHasChanges(false);
-     
-      return next;
     }
 
-    setHasChanges(true);
-    return next;
-  });
-};
+    setIsEditing(false);
+    setShowRequestModal(false);
+    setShowDiscardModal(false);
+    setEditSnapshot(null);
+
+
+  };
+
+  const handleRevertHodChange = (index) => {
+    const change = changes[index];
+    if (!change) return;
+
+    setFormData((prev) => ({
+      ...prev,
+      [change.field]: change.oldValue,
+    }));
+
+    if (change.field === "image_path") {
+      setHodPreview(null);
+      setHodImageFile(null);
+    }
+
+    setChanges((prev) => {
+      const next = prev.filter((_, i) => i !== index);
+
+      if (next.length === 0) {
+        setFormData({ ...originalData });
+        setHodPreview(null);
+        setHodImageFile(null);
+        setShowRequestModal(false);
+        setShowRequest(false);
+        setIsEditing(false);
+        setHasChanges(false);
+
+        return next;
+      }
+
+      setHasChanges(true);
+      return next;
+    });
+  };
 
   const handleRequestConfirm = async () => {
 
@@ -899,7 +899,7 @@ const SportsHOD = ({ data }) => {
 
       if (result) {
         console.log("INTRAMURAL REQUEST SUBMITTED", payload);
-  
+
 
         setShowRequestModal(false);
         setShowRequest(false);
@@ -1046,16 +1046,16 @@ const SportsHOD = ({ data }) => {
                     if (!formData?.image_path?.trim()) missing.push("Image");
 
                     if (missing.length > 0) {
-                     
+
                       return;
                     }
 
-                  const diff = detectChanges();
+                    const diff = detectChanges();
 
-setChanges(diff);
+                    setChanges(diff);
 
-setIsEditing(false);
-setShowRequest(true);
+                    setIsEditing(false);
+                    setShowRequest(true);
                   }}
                   className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg"
                 >
@@ -1130,6 +1130,7 @@ setShowRequest(true);
                   <th className="py-2 border">Action</th>
                   <th className="py-2 border">Section</th>
                   <th className="py-2 border">Changes</th>
+                  <th className="py-2 border">Undo</th>
                 </tr>
               </thead>
               <tbody>
@@ -1149,13 +1150,15 @@ setShowRequest(true);
                                     change.field === "image_file" ? null :
                                       change.field}
                         </span>
-                        <button
-                          onClick={() => handleRevertHodChange(index)}
-                          className="text-red-500 hover:text-red-700 font-bold"
-                        >
-                          ✕
-                        </button> 
+
                       </td>
+                      <td className="py-2"> <button
+                        onClick={() => handleRevertHodChange(index)}
+                        className="text-red-500 hover:text-red-700 font-bold"
+                      >
+                        ✕
+                      </button> </td>
+
                     </tr>
                   ))}
               </tbody>
