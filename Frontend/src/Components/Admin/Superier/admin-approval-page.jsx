@@ -17,8 +17,7 @@ export default function AdminApprovalPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const BASE_URL = "https://vectest123.s3.ap-south-1.amazonaws.com"
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
 
   useEffect(() => {
