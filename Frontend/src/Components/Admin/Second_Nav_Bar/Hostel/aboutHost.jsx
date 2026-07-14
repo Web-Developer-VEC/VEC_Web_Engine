@@ -92,7 +92,7 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
     setUploadedFile(null);
     setHasChanges(false);
     setIsEditing(false);
-    toast.info("Recent unsaved changes reverted");
+
   };
 
   // Save current unsaved changes into "originalData" (commit)
@@ -162,7 +162,7 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
     setHasChanges(false);
     setChangesSaved(true);
     setIsEditing(false);
-    toast.success("Changes saved");
+
   };
 
   // Discard all saved changes -> reset to initialSnapshot (the state when component mounted)
@@ -179,76 +179,76 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
     setChangesSaved(false);
     setIsEditing(false);
     setChangeLog([]);
-    toast.info("All saved changes discarded");
+
   };
 
   // Open request modal (if there are saved changes)
   const openRequestModal = () => {
     if (!changesSaved || changeLog.length === 0) {
-      toast.info("No saved changes to request");
+
       return;
     }
     setShowRequestModal(true);
   };
 
   // When user confirms the final request
-const handleRequestConfirm = async () => {
-  if (!originalData) return;
+  const handleRequestConfirm = async () => {
+    if (!originalData) return;
 
-  setIsRequesting(true);   // 🔥 START LOADING
+    setIsRequesting(true);   // 🔥 START LOADING
 
-  try {
+    try {
 
-    const oldAbout = initialSnapshot?.about_us || "";
-    const oldImagePath = initialSnapshot?.image_path || "";
+      const oldAbout = initialSnapshot?.about_us || "";
+      const oldImagePath = initialSnapshot?.image_path || "";
 
-    let newImagePath = originalData.image_path;
+      let newImagePath = originalData.image_path;
 
-    if (uploadedFile?.file) {
-      newImagePath = `/static/images/hostel/${uploadedFile.file.name}`;
+      if (uploadedFile?.file) {
+        newImagePath = `/static/images/hostel/${uploadedFile.file.name}`;
+      }
+
+      const payload = [
+        {
+          action: "update",
+          collectionName: "hostel_details",
+          collection_type: "about",
+          title: "Hostel About",
+          category: null,
+
+          original_data: {
+            about_us: oldAbout,
+            image_path: oldImagePath,
+          },
+
+          meta_data: {
+            about_us: originalData.about_us,
+            image_path: newImagePath,
+          },
+        },
+      ];
+
+      const result = await sendRequest(
+        payload,
+        uploadedFile?.file || null
+      );
+
+      if (result) {
+        toast.success("Request submitted successfully!");
+        setShowRequestModal(false);
+        setChangesSaved(false);
+        setChangeLog([]);
+        setUploadedFile(null);
+        setTempImageFile(null);
+        setHasChanges(false);
+      }
+
+    } catch (err) {
+      toast.error("Request Failed!");
     }
 
-    const payload = [
-      {
-        action: "update",
-        collectionName: "hostel_details",
-        collection_type: "about",
-        title: "Hostel About",
-        category: null,
-
-        original_data: {
-          about_us: oldAbout,
-          image_path: oldImagePath,
-        },
-
-        meta_data: {
-          about_us: originalData.about_us,
-          image_path: newImagePath,
-        },
-      },
-    ];
-
-    const result = await sendRequest(
-      payload,
-      uploadedFile?.file || null
-    );
-
-    if (result) {
-      toast.success("Request submitted successfully!");
-      setShowRequestModal(false);
-      setChangesSaved(false);
-      setChangeLog([]);
-      setUploadedFile(null);
-      setTempImageFile(null);
-      setHasChanges(false);
-    }
-
-  } catch (err) {
-    toast.error("Request Failed!");
-  }
-
-  setIsRequesting(false);  // 🔥 STOP LOADING
-};
+    setIsRequesting(false);  // 🔥 STOP LOADING
+  };
 
 
   // Toggle Page View (kept for compatibility; this toggles editing appropriately)
@@ -315,7 +315,7 @@ const handleRequestConfirm = async () => {
       });
     }
 
-    toast.info("Change reverted");
+
   };
 
   // If no data loaded
@@ -393,64 +393,54 @@ const handleRequestConfirm = async () => {
           </div>
         </div>
 
-        {/* Bottom controls while editing: Cancel (left) and Save (right) */}
-        {isEditing && (
-          <div className="absolute bottom-4 right-4 flex gap-2 items-center z-[60]">
-            {/* Cancel (left) */}
-            <button
-              onClick={cancelUnsavedChanges}
-              className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
-            >
-              Cancel
-            </button>
-
-            {/* Save (right) - only visible when there are unsaved changes */}
-            {hasChanges && (
-              <button
-                onClick={handleSave}
-                className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-              >
-                Save
-              </button>
-            )}
-          </div>
-        )}
-
-        {/* After Save: show Discard Changes + Request (bottom-right) */}
-        {!isEditing && changesSaved && changeLog.length > 0 && (
-          <div className="flex justify-end gap-3 mt-6">
-            <button
-              onClick={handleDiscardAll}
-              className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
-            >
-              Discard Changes
-            </button>
-            <button
-              onClick={openRequestModal}
-              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-            >
-              <Send size={16} /> Request
-            </button>
-          </div>
-        )}
 
         {/* Optional Page View / Save bar (kept for compatibility with your earlier logic) */}
-        {hasChanges && !isEditing && (
-          <div className="page-view-button-container fixed bottom-20 right-4 z-[50] mr-9">
-            {!isPageView ? (
-              <button className="page-view-btn px-4 py-2 rounded bg-[#fdcc03] text-text" onClick={togglePageView}>
-                Save (open editor)
-              </button>
-            ) : (
-              <button className="exit-page-view-btn mt-2 px-4 py-2 rounded bg-gray-400 text-white" onClick={togglePageView}>
-                Back To Edit
-              </button>
-            )}
-          </div>
-        )}
+
       </section>
 
+
+      {/* Bottom controls while editing: Cancel (left) and Save (right) */}
+      {isEditing && (
+        <div className="flex justify-end gap-3 px-6 py-4">
+          <button
+            onClick={cancelUnsavedChanges}
+            className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+          >
+            Cancel
+          </button>
+
+          {hasChanges && (
+            <button
+              onClick={handleSave}
+              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+            >
+              Save
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Bottom controls after Save */}
+      {!isEditing && changesSaved && changeLog.length > 0 && (
+        <div className="w-full flex justify-end gap-3 px-6 py-4">
+          <button
+            onClick={handleDiscardAll}
+            className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+          >
+            Discard Changes
+          </button>
+
+          <button
+            onClick={openRequestModal}
+            className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+          >
+            <Send size={16} />
+            Request
+          </button>
+        </div>
+      )}
       <ToastContainer position="bottom-right" autoClose={3000} />
+
 
       {/* Final Request Modal (updated to the requested layout) */}
       {showRequestModal && (
@@ -530,14 +520,14 @@ const handleRequestConfirm = async () => {
                 Cancel
               </button>
               {changeLog.length > 0 && (
-              <button
+                <button
                   onClick={handleRequestConfirm}
                   disabled={isRequesting}
                   className={`px-4 py-2 rounded flex items-center gap-2
                   ${isRequesting
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-[#fdcc03] hover:bg-[#800000] hover:text-prim"
-                  } text-text`}
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-[#fdcc03] hover:bg-[#800000] hover:text-prim"
+                    } text-text`}
                 >
                   {isRequesting ? (
                     <>
