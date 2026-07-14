@@ -162,17 +162,3 @@ export const ShowPopup = ({ changes = [], handleUndo, handleRequest, setShowPopu
     </div>
   );
 }
-// Toast notifications
-export function discardChanges() {
-  toast.info("Changes discarded", {
-    position: "top-right",
-    autoClose: 3000,
-  });
-}
-
-export function saveChanges() {
-  toast.success("Changes saved", {
-    position: "top-right",
-    autoClose: 3000,
-  });
-}
