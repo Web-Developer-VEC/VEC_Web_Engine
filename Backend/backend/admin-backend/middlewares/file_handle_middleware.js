@@ -278,30 +278,29 @@ async function updateFile(tempDoc, tempCollection) {
         meta.links = updatedLinks;
         continue;
       }
-      console.log("😂Priyan: ", tempDoc.collection_type, ["ug", "mba"].includes(tempDoc.collection_type));
 
-      if (tempDoc.collection_type === "admissions" && ["ug", "mba"].includes(tempDoc.collection_type) && key === "data") {
-        console.log("😂Priyan: ");
+      if (
+        tempDoc.collection === "admissions" &&
+        ["ug", "mba"].includes(tempDoc.collection_type) &&
+        value &&
+        typeof value === "object" &&
+        value.pdf_path
+      ) {
+        const srcKey = await normalizeKey(value.pdf_path.replace(/^\//, ""));
 
-        for (const [subKey, item] of Object.entries(value)) {
-          if (!item || typeof item !== "object" || !item.pdf_path) continue;
+        if (srcKey.startsWith("temp/static/")) {
+          const destKey = srcKey.replace(/^temp\/static\//, "static/");
+          await moveFile(srcKey, destKey);
 
-          const srcKey = await normalizeKey(item.pdf_path.replace(/^\//, ""));
-
-          if (srcKey.startsWith("temp/static/")) {
-            const destKey = srcKey.replace(/^temp\/static\//, "static/");
-            await moveFile(srcKey, destKey);
-
-            item.pdf_path = `/${destKey}`;
-          } else if (srcKey.startsWith("static/")) {
-            const historyKey = `history/${srcKey}`;
-            await moveFile(historyKey, srcKey);
-          }
+          value.pdf_path = `/${destKey}`;
+        } else if (srcKey.startsWith("static/")) {
+          const historyKey = `history/${srcKey}`;
+          await moveFile(historyKey, srcKey);
         }
-        meta.links = updatedLinks;
+
+        meta[key] = value;
         continue;
-      }
-      // Case 1: direct pdf_path
+      }      // Case 1: direct pdf_path
       if (key !== "pdf_path" && key !== "image_path") {
         continue;
       }
@@ -383,16 +382,17 @@ async function updateFile(tempDoc, tempCollection) {
     }
 
     // 3️⃣ Save updated metadata & original_data
-    await tempCollection.updateOne(
-      { _id: tempDoc._id },
-      {
-        $set: {
-          meta_data: meta,
-          original_data: original,
-          updatedAt: new Date(),
-        },
-      }
-    );
+    await tempCollection.updateOne
+      (
+        { _id: tempDoc._id },
+        {
+          $set: {
+            meta_data: meta,
+            original_data: original,
+            updatedAt: new Date(),
+          },
+        }
+      );
 
     return { success: true, tempId: tempDoc._id, meta_data: meta, original_data: original };
   }
