@@ -10,7 +10,7 @@ import { useAdminRequest } from "../../../hooks/useAdminRequest";
 import "./Forms.css";
 
 const deepCopy = (data) => {
-  const copyCategory = (list) =>
+  const copyCategory = (list) =>  
     list.map((item) => ({
       ...item,
       file: item.file ?? null, // ✅ PRESERVE File
@@ -163,7 +163,6 @@ const AdminForms = ({ theme, toggle }) => {
     setIsDirty(false);
     setSelectedRows({ student: new Set(), faculty: new Set() });
 
-    toast.success("Changes saved as draft!");
   };
 
   const handleCancel = () => {
@@ -315,7 +314,7 @@ const AdminForms = ({ theme, toggle }) => {
     try {
       await sendRequest(payload, files);
 
-      toast.success("Request sent successfully!");
+     
 
       setOriginalData(deepCopy(pendingData));
       setTempData(deepCopy(pendingData));
@@ -700,6 +699,7 @@ const AdminForms = ({ theme, toggle }) => {
 
   return (
     <>
+      <toastContainer position="bottom-right" autoClose={2000} />
       <Banner
         toggle={toggle}
         theme={theme}
@@ -807,10 +807,10 @@ const AdminForms = ({ theme, toggle }) => {
                 <table className="w-full text-center text-sm border dark:border-gray-600">
                   <thead className="bg-gray-200 dark:bg-gray-700">
                     <tr>
-                      <th className="border dark:border-gray-600 p-2">Action</th>
-                      <th className="border dark:border-gray-600 p-2">Section</th>
-                      <th className="border dark:border-gray-600 p-2">Changes</th>
-                      <th className="border dark:border-gray-600 p-2">Actions</th>
+                     <th className="border p-2">Action</th>
+                    <th className="border p-2">Section</th>
+                    <th className="border p-2">Changes</th>
+                    <th className="border p-2">Undo</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -819,25 +819,17 @@ const AdminForms = ({ theme, toggle }) => {
                         <td className="border dark:border-gray-600 p-2 text-blue-600 dark:text-blue-400">{ch.action}</td>
                         <td className="border dark:border-gray-600 p-2">{ch.section}</td>
                         <td className="border dark:border-gray-600 p-2">{ch.changes}</td>
-                        <td className="border dark:border-gray-600 p-2">
-                          <div className="flex justify-center gap-2">
-                            <button
-                              onClick={() => handleFinalView(ch.rowId)}
-                              className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
-                              title="View file"
-                            >
-                              <Eye size={18} className="text-blue-600" />
-                            </button>
+                      
 
-                            <button
-                              onClick={() => revertChange(ch.rowId)}
-                              className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
-                              title="Revert this change"
-                            >
-                              <X size={16} className="text-red-500" />
-                            </button>
-                          </div>
-                        </td>
+<td className="border dark:border-gray-600 p-2 text-center">
+  <button
+    onClick={() => revertChange(ch.rowId)}
+    className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+    title="Undo"
+  >
+    <X size={16} className="text-red-500" />
+  </button>
+</td>
                       </tr>
                     ))}
                   </tbody>
