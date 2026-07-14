@@ -17,9 +17,39 @@ async function updateData(tempDoc, mainCollection) {
     const singleDocTypes = ["about", "news_updates"];
     const multiDocTypes = ["events"];
     const categoryBasedTypes = ["team"];
+    
+    if (collection_type === "about") {
+      const existingDoc = await mainCollection.findOne({
+        type: collection_type,
+      });
+
+      if (!existingDoc) {
+        throw new Error("Document not found");
+      }
+
+      const updatedData = {
+        ...(existingDoc.data?.[0] || {}),
+        ...meta_data,
+      };
+
+      await mainCollection.updateOne(
+        { type: collection_type },
+        {
+          $set: {
+            data: [updatedData],
+          },
+        }
+      );
+
+      return {
+        success: true,
+        message: "About updated successfully",
+        data: [updatedData],
+      };
+    }
 
     // 4️⃣ Single-doc types → overwrite entire data array
-    if (singleDocTypes.includes(collection_type)) {
+    if (collection_type === "news_updates") {
       let newData;
 
       newData = Array.isArray(meta_data) ? meta_data : Object.values(meta_data);
