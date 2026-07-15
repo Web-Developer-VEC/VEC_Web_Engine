@@ -100,7 +100,19 @@ async function examHandler(fileStream, docs, req, cb, filename, mimetype) {
     });
 
     /* 🔥 REGULATION FIX: inject pdf_path directly */
-    if (["regulation", "all_forms"].includes(collection_type)) {
+    if (collection_type === "regulation") {
+        const fileName = path.basename(realName);
+
+        const link = meta_data.links.find(
+          (item) => path.basename(item.pdf_path) === fileName
+        );
+
+        if (link) {
+          link.pdf_path = `/${s3Key}`;
+      }
+      
+      
+    } else if (collection_type === "all_forms") {
       meta_data.pdf_path = `/${s3Key}`;
     }
 
