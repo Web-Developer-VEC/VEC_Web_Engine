@@ -67,6 +67,7 @@ export default function Startup({ data }) {
       });
       originalRef.current = JSON.parse(JSON.stringify(withUids));
       sessionBaseRef.current = JSON.parse(JSON.stringify(withUids));
+      
       setEditableData(withUids);
       setSelectedRows(new Set());
       setIsEditing(false);
@@ -117,7 +118,6 @@ export default function Startup({ data }) {
     setIsEditing(false);
     setIsSavedOnce(true);
     sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
-    toast.success("Changes saved. Now you can Request.");
   };
 
   const handleCancelSession = () => {
@@ -309,7 +309,6 @@ export default function Startup({ data }) {
     sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
     setIsEditing(false);
     setIsSavedOnce(false);
-    toast.success("Request submitted.");
   };
 
   const handleUndoChange = (change) => {

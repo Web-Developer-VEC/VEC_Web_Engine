@@ -344,7 +344,6 @@ const handleFinalRequestConfirm = async () => {
     setIsSaved(false);
     setShowRequestModal(false);
 
-    toast.success("Final request submitted successfully!");
   } catch (err) {
     console.error(err);
     toast.error("Failed to submit request");
@@ -689,7 +688,7 @@ const formatForDisplay = (yyyymmdd) => {
             </div>
 
             {/* Discard/Request buttons when saved draft exists */}
-            {isSaved && (
+            {isSaved &&  changes.length > 0 && (
               <div className="flex justify-end gap-3 mt-6">
                 <button 
                   onClick={handleDiscard} 
