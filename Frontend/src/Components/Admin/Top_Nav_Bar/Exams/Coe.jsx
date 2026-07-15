@@ -233,16 +233,20 @@ const AdminCoe = ({ toggle, theme }) => {
     const memberName = updated[sIdx].members[mIdx].name;
     const key = memberKey(updated[sIdx].members[mIdx]);
 
-    setChanges((prev) => [
-      ...prev.filter((c) => !(c.sIdx === sIdx && c.mKey === key)),
-      {
-        action: "Edited",
-        section: updated[sIdx].category,
-        sIdx,
-        mKey: key,
-        name: memberName || "(Unnamed)",
-      },
-    ]);
+    setChanges((prev) => {
+      const existing = prev.find((c) => c.sIdx === sIdx && c.mKey === key);
+
+      return [
+        ...prev.filter((c) => !(c.sIdx === sIdx && c.mKey === key)),
+        {
+          action: existing?.action === "Added" ? "Added" : "Edited",
+          section: updated[sIdx].category,
+          sIdx,
+          mKey: key,
+          name: memberName || "(Unnamed)",
+        },
+      ];
+    });
   };
 
   const handleImageUpload = (sIdx, mIdx, file) => {
@@ -261,16 +265,20 @@ const AdminCoe = ({ toggle, theme }) => {
     const memberName = updated[sIdx].members[mIdx].name;
     const key = memberKey(updated[sIdx].members[mIdx]);
 
-    setChanges((prev) => [
-      ...prev.filter((c) => !(c.sIdx === sIdx && c.mKey === key)),
-      {
-        action: "Image Changed",
-        section: updated[sIdx].category,
-        sIdx,
-        mKey: key,
-        name: memberName || "(Unnamed)",
-      },
-    ]);
+    setChanges((prev) => {
+      const existing = prev.find((c) => c.sIdx === sIdx && c.mKey === key);
+
+      return [
+        ...prev.filter((c) => !(c.sIdx === sIdx && c.mKey === key)),
+        {
+          action: existing?.action === "Added" ? "Added" : "Image Changed",
+          section: updated[sIdx].category,
+          sIdx,
+          mKey: key,
+          name: memberName || "(Unnamed)",
+        },
+      ];
+    });
   };
 
   const handleCheckboxChange = (sIdx, mIdx) => {

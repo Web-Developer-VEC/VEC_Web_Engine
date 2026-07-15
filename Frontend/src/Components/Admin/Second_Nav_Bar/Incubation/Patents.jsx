@@ -191,7 +191,6 @@ export default function Patents({ data }) {
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(true);
-    toast.success("Changes saved. Now you can Request or Edit again.");
   };
 
   const handleCancelSession = () => {
