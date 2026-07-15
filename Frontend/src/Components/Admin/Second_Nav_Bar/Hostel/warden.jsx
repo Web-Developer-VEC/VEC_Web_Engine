@@ -18,7 +18,7 @@ export default function AdminWarden({ hostelData }) {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [originalData, setOriginalData] = useState(null);
   const [changes, setChanges] = useState([]);
-  
+
 
   // selection & delete states
   const [selectedItems, setSelectedItems] = useState([]); // array of ids like "boysWardens-wdn_102"
@@ -47,18 +47,18 @@ export default function AdminWarden({ hostelData }) {
   }, [hostelData]);
 
   const isDataEqual = (a, b) => {
-  return JSON.stringify(a) === JSON.stringify(b);
-};
+    return JSON.stringify(a) === JSON.stringify(b);
+  };
 
-  
-useEffect(() => {
-  if (!isEditing || !editData || !originalData) {
-    setHasChanges(false);
-    return;
-  }
 
-  setHasChanges(!isDataEqual(editData, originalData));
-}, [editData, originalData, isEditing]);
+  useEffect(() => {
+    if (!isEditing || !editData || !originalData) {
+      setHasChanges(false);
+      return;
+    }
+
+    setHasChanges(!isDataEqual(editData, originalData));
+  }, [editData, originalData, isEditing]);
 
   const handleEdit = () => {
     const dataCopy = {
@@ -81,162 +81,169 @@ useEffect(() => {
     setSelectedItems([]);
   };
 
-const computeFinalChanges = (updatedData) => {
-  const finalChanges = [];
+  const computeFinalChanges = (updatedData) => {
+    const finalChanges = [];
 
-  const checkDiff = (orig, updated, sectionName) => {
-    if (!orig || !updated) return;
-
-    const hasChanged =
-      orig.warden_name !== updated.warden_name ||
-      orig.designation !== updated.designation ||
-      orig.phone_number !== updated.phone_number ||
-      updated.imageFile || updated.previewImage;
-
-    if (hasChanged) {
-      finalChanges.push({
-        action: "Edit",
-        section: sectionName,
-        name: updated.warden_name || "Warden",
-      });
-    }
-  };
-
-  checkDiff(originalData?.chief, updatedData?.chief, "Chief");
-  checkDiff(originalData?.chiefDeputy, updatedData?.chiefDeputy, "Chief Deputy");
-
-  [
-    { section: "Boys Wardens", orig: originalData?.boysWardens, updated: updatedData.boysWardens },
-    { section: "Girls Wardens", orig: originalData?.girlsWardens, updated: updatedData.girlsWardens },
-  ].forEach(({ section, orig = [], updated = [] }) => {
-
-    const origMap = new Map(orig.map(w => [w.id, w]));
-    const updatedMap = new Map(updated.map(w => [w.id, w]));
-
-    updated.forEach(w => {
-      const origWarden = origMap.get(w.id);
-
-      if (!origWarden) {
-        finalChanges.push({
-          action: "Add",
-          section,
-          id: w.id,
-          name: w.warden_name || "New Warden",
-        });
-        return;
-      }
+    const checkDiff = (orig, updated, sectionName) => {
+      if (!orig || !updated) return;
 
       const hasChanged =
-        w.warden_name !== origWarden.warden_name ||
-        w.designation !== origWarden.designation ||
-        w.phone_number !== origWarden.phone_number ||
-        w.imageFile || w.previewImage;
+        orig.warden_name !== updated.warden_name ||
+        orig.designation !== updated.designation ||
+        orig.phone_number !== updated.phone_number ||
+        updated.imageFile || updated.previewImage;
 
       if (hasChanged) {
         finalChanges.push({
           action: "Edit",
-          section,
-          id: w.id,
-          name: w.warden_name || "Warden",
+          section: sectionName,
+          id: updated.id,
+          name: updated.warden_name || "Warden",
+          original: { ...orig },
+          current: { ...updated },
         });
       }
+    };
+
+    checkDiff(originalData?.chief, updatedData?.chief, "Chief");
+    checkDiff(originalData?.chiefDeputy, updatedData?.chiefDeputy, "Chief Deputy");
+
+    [
+      { section: "Boys Wardens", orig: originalData?.boysWardens, updated: updatedData.boysWardens },
+      { section: "Girls Wardens", orig: originalData?.girlsWardens, updated: updatedData.girlsWardens },
+    ].forEach(({ section, orig = [], updated = [] }) => {
+
+      const origMap = new Map(orig.map(w => [w.id, w]));
+      const updatedMap = new Map(updated.map(w => [w.id, w]));
+
+      updated.forEach(w => {
+        const origWarden = origMap.get(w.id);
+
+        if (!origWarden) {
+          finalChanges.push({
+            action: "Insert",
+            section,
+            id: w.id,
+            name: w.warden_name || "New Warden",
+            current: { ...w },
+          });
+          return;
+        }
+
+        const hasChanged =
+          w.warden_name !== origWarden.warden_name ||
+          w.designation !== origWarden.designation ||
+          w.phone_number !== origWarden.phone_number ||
+          w.imageFile || w.previewImage;
+
+        if (hasChanged) {
+          finalChanges.push({
+            action: "Edit",
+            section,
+            id: w.id,
+            name: w.warden_name || "Warden",
+            original: { ...origWarden },
+            current: { ...w },
+          });
+        }
+      });
+
+      orig.forEach(w => {
+        if (!updatedMap.has(w.id)) {
+          finalChanges.push({
+            action: "Delete",
+            section,
+            id: w.id,
+            name: w.warden_name || "Warden",
+            original: { ...w },
+          });
+        }
+      });
     });
 
-    orig.forEach(w => {
-      if (!updatedMap.has(w.id)) {
-        finalChanges.push({
-          action: "Delete",
-          section,
-          id: w.id,
-          name: w.warden_name || "Warden",
-        });
-      }
-    });
-  });
-
-  return finalChanges;
-};
-
-
-const validateRequiredFields = (data) => {
-  const errors = [];
-
-  const validateOne = (warden, label) => {
-    if (!warden) return;
-
-    if (!warden.warden_name?.trim()) {
-      errors.push(`${label}: Name is required`);
-    }
-
-    if (!warden.designation?.trim()) {
-      errors.push(`${label}: Designation is required`);
-    }
-
-    // image is required (either existing image_path or new previewImage)
-    if (!warden.image_path && !warden.previewImage) {
-      errors.push(`${label}: Image is required`);
-    }
+    return finalChanges;
   };
 
-  validateOne(data.chief, "Chief");
-  validateOne(data.chiefDeputy, "Chief Deputy");
 
-  data.boysWardens.forEach((w, i) =>
-    validateOne(w, `Boys Warden ${i + 1}`)
-  );
+  const validateRequiredFields = (data) => {
+    const errors = [];
 
-  data.girlsWardens.forEach((w, i) =>
-    validateOne(w, `Girls Warden ${i + 1}`)
-  );
+    const validateOne = (warden, label) => {
+      if (!warden) return;
 
-  return errors;
-};
+      if (!warden.warden_name?.trim()) {
+        errors.push(`${label}: Name is required`);
+      }
 
+      if (!warden.designation?.trim()) {
+        errors.push(`${label}: Designation is required`);
+      }
 
-const handleSave = () => {
-  if (!editData) return;
+      // image is required (either existing image_path or new previewImage)
+      if (!warden.image_path && !warden.previewImage) {
+        errors.push(`${label}: Image is required`);
+      }
+    };
 
-  const validationErrors = validateRequiredFields(editData);
+    validateOne(data.chief, "Chief");
+    validateOne(data.chiefDeputy, "Chief Deputy");
 
-  if (validationErrors.length > 0) {
-    validationErrors.forEach((msg) =>
-      toast.error(msg, { autoClose: 3000 })
+    data.boysWardens.forEach((w, i) =>
+      validateOne(w, `Boys Warden ${i + 1}`)
     );
-    return; // ⛔ STOP SAVE
-  }
 
-  const updatedData = { ...editData };
+    data.girlsWardens.forEach((w, i) =>
+      validateOne(w, `Girls Warden ${i + 1}`)
+    );
 
-  if (updatedData.chief?.previewImage)
-    updatedData.chief.image_path = updatedData.chief.previewImage;
+    return errors;
+  };
 
-  if (updatedData.chiefDeputy?.previewImage)
-    updatedData.chiefDeputy.image_path = updatedData.chiefDeputy.previewImage;
 
-updatedData.boysWardens = updatedData.boysWardens.map((w) => ({
-  ...w,
-  image_path: w.image_path, // keep original path
-}));
+  const handleSave = () => {
+    if (!editData) return;
 
-updatedData.girlsWardens = updatedData.girlsWardens.map((w) => ({
-  ...w,
-  image_path: w.image_path, // keep original path
-}));
+    const validationErrors = validateRequiredFields(editData);
 
-  setChief(updatedData.chief);
-  setChiefDeputy(updatedData.chiefDeputy);
-  setBoysWardens(updatedData.boysWardens);
-  setGirlsWardens(updatedData.girlsWardens);
+    if (validationErrors.length > 0) {
+      validationErrors.forEach((msg) =>
+        toast.error(msg, { autoClose: 3000 })
+      );
+      return; // ⛔ STOP SAVE
+    }
 
-  setIsEditing(false);
-  setEditData(null);
-  setShowPostSaveActions(true);
+    const updatedData = { ...editData };
 
-  setChanges(prev => [
-  ...prev,
-  ...computeFinalChanges(updatedData)
-]);
-};
+    if (updatedData.chief?.previewImage)
+      updatedData.chief.image_path = updatedData.chief.previewImage;
+
+    if (updatedData.chiefDeputy?.previewImage)
+      updatedData.chiefDeputy.image_path = updatedData.chiefDeputy.previewImage;
+
+    updatedData.boysWardens = updatedData.boysWardens.map((w) => ({
+      ...w,
+      image_path: w.image_path, // keep original path
+    }));
+
+    updatedData.girlsWardens = updatedData.girlsWardens.map((w) => ({
+      ...w,
+      image_path: w.image_path, // keep original path
+    }));
+
+    setChief(updatedData.chief);
+    setChiefDeputy(updatedData.chiefDeputy);
+    setBoysWardens(updatedData.boysWardens);
+    setGirlsWardens(updatedData.girlsWardens);
+
+    setIsEditing(false);
+    setEditData(null);
+    setShowPostSaveActions(true);
+
+    setChanges(prev => [
+      ...prev,
+      ...computeFinalChanges(updatedData)
+    ]);
+  };
 
 
   const handleDiscardChanges = () => {
@@ -254,22 +261,22 @@ updatedData.girlsWardens = updatedData.girlsWardens.map((w) => ({
     setSelectedItems([]);
   };
 
-const handleRequest = () => {
-  const computed = computeFinalChanges({
-    chief,
-    chiefDeputy,
-    boysWardens,
-    girlsWardens
-  });
+  const handleRequest = () => {
+    const computed = computeFinalChanges({
+      chief,
+      chiefDeputy,
+      boysWardens,
+      girlsWardens
+    });
 
-  if (computed.length === 0) {
-    toast.info("No changes detected");
-    return;
-  }
+    if (computed.length === 0) {
+      toast.info("No changes detected");
+      return;
+    }
 
-  setChanges(computed);
-  setShowRequestModal(true);
-};
+    setChanges(computed);
+    setShowRequestModal(true);
+  };
 
   // updated handleChange: accepts wardenId (or for chief/chiefDeputy it ignores id)
   const handleChange = (section, wardenId, field, value) => {
@@ -298,125 +305,204 @@ const handleRequest = () => {
     // setHasChanges(true);
   };
 
-const undoChange = (change) => {
-  if (change.action !== "Delete") return;
+  const undoChange = (change) => {
+    // ---------- ADD ----------
+    if (change.action === "Insert") {
+      if (change.section === "Boys Wardens") {
+        setBoysWardens((prev) =>
+          prev.filter((w) => w.id !== change.id)
+        );
+      } else if (change.section === "Girls Wardens") {
+        setGirlsWardens((prev) =>
+          prev.filter((w) => w.id !== change.id)
+        );
+      }
 
-  const sectionKey =
-    change.section === "Boys Wardens"
-      ? "boysWardens"
-      : change.section === "Girls Wardens"
-      ? "girlsWardens"
-      : null;
-
-  if (!sectionKey) return;
-
-  // find original warden
-  const originalWarden = originalData?.[sectionKey]?.find(
-    (w) => w.warden_name === change.name
-  );
-
-  if (!originalWarden) return;
-
-  // restore only that warden
-  if (sectionKey === "boysWardens") {
-    setBoysWardens((prev) => [...prev, originalWarden]);
-  } else if (sectionKey === "girlsWardens") {
-    setGirlsWardens((prev) => [...prev, originalWarden]);
-  }
-
-  // remove that change row from modal
-  setChanges((prev) =>
-    prev.filter(
-      (c) =>
-        !(
-          c.action === change.action &&
-          c.section === change.section &&
-          c.name === change.name
+      setChanges((prev) =>
+        prev.filter(
+          (c) => !(c.action === change.action && c.id === change.id)
         )
-    )
-  );
-};
+      );
+
+      return;
+    }
+
+    // ---------- EDIT ----------
+    if (change.action === "Edit") {
+      if (change.section === "Chief") {
+        setChief(change.original);
+      }
+      else if (change.section === "Chief Deputy") {
+        setChiefDeputy(change.original);
+      }
+      else if (change.section === "Boys Wardens") {
+        setBoysWardens((prev) =>
+          prev.map((w) =>
+            w.id === change.id ? change.original : w
+          )
+        );
+      }
+      else if (change.section === "Girls Wardens") {
+        setGirlsWardens((prev) =>
+          prev.map((w) =>
+            w.id === change.id ? change.original : w
+          )
+        );
+      }
+
+      setChanges((prev) =>
+        prev.filter(
+          (c) => !(c.action === change.action && c.id === change.id)
+        )
+      );
+
+      return;
+    }
+
+    // ---------- DELETE ----------
+    if (change.action === "Delete") {
+      if (change.section === "Boys Wardens") {
+        setBoysWardens((prev) => [...prev, change.original]);
+      }
+      else if (change.section === "Girls Wardens") {
+        setGirlsWardens((prev) => [...prev, change.original]);
+      }
+
+      setChanges((prev) =>
+        prev.filter(
+          (c) => !(c.action === change.action && c.id === change.id)
+        )
+      );
+    }
+  };
 
   const sectionToCategory = {
-  boysWardens: "male_warden",
-  girlsWardens: "female_warden",
-  chief: "warden",
-  chiefDeputy: "warden",
-};
+    boysWardens: "male_warden",
+    girlsWardens: "female_warden",
+    chief: "warden",
+    chiefDeputy: "warden",
+  };
 
 
 
-const handleFinalRequest = async () => {
-  const payloads = [];
-  const files = [];
-const buildImagePath = (file) => {
-  if (!file) return "";
-  return `/static/images/warden_profile_photos/${file.name}`;
-};
+  const handleFinalRequest = async () => {
+    const payloads = [];
+    const files = [];
+    const buildImagePath = (file) => {
+      if (!file) return "";
+      return `/static/images/warden_profile_photos/${file.name}`;
+    };
 
-  const processSingleWarden = (sectionKey, originalWarden, updatedWarden) => {
-  if (!originalWarden || !updatedWarden) return;
+    const processSingleWarden = (sectionKey, originalWarden, updatedWarden) => {
+      if (!originalWarden || !updatedWarden) return;
 
-  const category = sectionToCategory[sectionKey];
+      const category = sectionToCategory[sectionKey];
 
-const imagePath = updatedWarden.imageFile
-  ? buildImagePath(updatedWarden.imageFile, updatedWarden.warden_name)
-  : originalWarden.image_path;
+      const imagePath = updatedWarden.imageFile
+        ? buildImagePath(updatedWarden.imageFile, updatedWarden.warden_name)
+        : originalWarden.image_path;
 
-  const hasChanged =
-    updatedWarden.warden_name !== originalWarden.warden_name ||
-    updatedWarden.designation !== originalWarden.designation ||
-    updatedWarden.phone_number !== originalWarden.phone_number ||
-    imagePath !== originalWarden.image_path;
+      const hasChanged =
+        updatedWarden.warden_name !== originalWarden.warden_name ||
+        updatedWarden.designation !== originalWarden.designation ||
+        updatedWarden.phone_number !== originalWarden.phone_number ||
+        imagePath !== originalWarden.image_path;
 
-  if (!hasChanged) return;
+      if (!hasChanged) return;
 
-  payloads.push({
-    collection_type: "warden",
-    action: "update",
-    collectionName: "hostel_details",
-    category,
-    title: "Update Hostel Warden",
+      payloads.push({
+        collection_type: "warden",
+        action: "update",
+        collectionName: "hostel_details",
+        category,
+        title: "Update Hostel Warden",
 
-    original_data: {
-      warden_name: originalWarden.warden_name,
-      designation: originalWarden.designation,
-      phone_number: originalWarden.phone_number,
-      image_path: originalWarden.image_path,
-    },
+        original_data: {
+          warden_name: originalWarden.warden_name,
+          designation: originalWarden.designation,
+          phone_number: originalWarden.phone_number,
+          image_path: originalWarden.image_path,
+        },
 
-    // ✅ FULL UPDATED DATA
-    meta_data: {
-      warden_name: updatedWarden.warden_name,
-      designation: updatedWarden.designation,
-      phone_number: updatedWarden.phone_number,
-      image_path: imagePath,
-    },
-  });
+        // ✅ FULL UPDATED DATA
+        meta_data: {
+          warden_name: updatedWarden.warden_name,
+          designation: updatedWarden.designation,
+          phone_number: updatedWarden.phone_number,
+          image_path: imagePath,
+        },
+      });
 
-if (updatedWarden.imageFile) {
-  files.push(updatedWarden.imageFile);
-}
-};
+      if (updatedWarden.imageFile) {
+        files.push(updatedWarden.imageFile);
+      }
+    };
 
 
-  const processSection = (sectionKey, originalList = [], updatedList = []) => {
-    const category = sectionToCategory[sectionKey];
+    const processSection = (sectionKey, originalList = [], updatedList = []) => {
+      const category = sectionToCategory[sectionKey];
 
-    const origMap = new Map(originalList.map(w => [w.id, w]));
-    const updatedMap = new Map(updatedList.map(w => [w.id, w]));
+      const origMap = new Map(originalList.map(w => [w.id, w]));
+      const updatedMap = new Map(updatedList.map(w => [w.id, w]));
 
-    // ---------- INSERT ----------
-    updatedList.forEach(w => {
-      if (!origMap.has(w.id)) {
-        const imagePath = buildImagePath(w.imageFile);
+      // ---------- INSERT ----------
+      updatedList.forEach(w => {
+        if (!origMap.has(w.id)) {
+          const imagePath = buildImagePath(w.imageFile);
+
+          payloads.push({
+            collection_type: "warden",
+            action: "insert",
+            collectionName: "hostel_details",
+            category,
+            title: "Insert Hostel Warden",
+            meta_data: {
+              warden_name: w.warden_name,
+              designation: w.designation,
+              phone_number: w.phone_number,
+              image_path: imagePath,
+            },
+          });
+
+          if (w.imageFile) {
+            files.push(w.imageFile);
+          }
+        }
+      });
+
+      // ---------- UPDATE (SEND FULL UPDATED DATA) ----------
+      updatedList.forEach(w => {
+        const orig = origMap.get(w.id);
+        if (!orig) return;
+
+        const imagePath = w.imageFile
+          ? buildImagePath(w.imageFile, w.warden_name)
+          : orig.image_path;
+
+        const hasChanged =
+          w.warden_name !== orig.warden_name ||
+          w.designation !== orig.designation ||
+          w.phone_number !== orig.phone_number ||
+          w.imageFile; // image changed
+
+        if (!hasChanged) return;
 
         payloads.push({
           collection_type: "warden",
-          action: "insert",
+          action: "update",
           collectionName: "hostel_details",
           category,
-          title: "Insert Hostel Warden",
+          title: "Update Hostel Warden",
+
+          // 🔍 ORIGINAL (for audit / approval)
+          original_data: {
+            warden_name: orig.warden_name,
+            designation: orig.designation,
+            phone_number: orig.phone_number,
+            image_path: orig.image_path,
+          },
+
+          // ✅ FULL UPDATED STATE (NOT PARTIAL)
           meta_data: {
             warden_name: w.warden_name,
             designation: w.designation,
@@ -425,102 +511,55 @@ if (updatedWarden.imageFile) {
           },
         });
 
-if (w.imageFile) {
-  files.push(w.imageFile);
-}
-      }
-    });
-
-// ---------- UPDATE (SEND FULL UPDATED DATA) ----------
-updatedList.forEach(w => {
-  const orig = origMap.get(w.id);
-  if (!orig) return;
-
-const imagePath = w.imageFile
-  ? buildImagePath(w.imageFile, w.warden_name)
-  : orig.image_path;
-
-const hasChanged =
-  w.warden_name !== orig.warden_name ||
-  w.designation !== orig.designation ||
-  w.phone_number !== orig.phone_number ||
-  w.imageFile; // image changed
-
-  if (!hasChanged) return;
-
-  payloads.push({
-    collection_type: "warden",
-    action: "update",
-    collectionName: "hostel_details",
-    category,
-    title: "Update Hostel Warden",
-
-    // 🔍 ORIGINAL (for audit / approval)
-    original_data: {
-      warden_name: orig.warden_name,
-      designation: orig.designation,
-      phone_number: orig.phone_number,
-      image_path: orig.image_path,
-    },
-
-    // ✅ FULL UPDATED STATE (NOT PARTIAL)
-    meta_data: {
-      warden_name: w.warden_name,
-      designation: w.designation,
-      phone_number: w.phone_number,
-      image_path: imagePath,
-    },
-  });
-
-if (w.imageFile) {
-  files.push(w.imageFile);
-}
-});
+        if (w.imageFile) {
+          files.push(w.imageFile);
+        }
+      });
 
 
-    // ---------- DELETE ----------
-    originalList.forEach(w => {
-      if (!updatedMap.has(w.id)) {
-        payloads.push({
-          collection_type: "warden",
-          action: "delete",
-          collectionName: "hostel_details",
-          category,
-          title: "Delete Hostel Warden",
-          meta_data: {
-            warden_name: w.warden_name,
-            designation: w.designation,
-            phone_number: w.phone_number,
-            image_path: w.image_path,
-          },
-        });
-      }
-    });
+      // ---------- DELETE ----------
+      originalList.forEach(w => {
+        if (!updatedMap.has(w.id)) {
+          payloads.push({
+            collection_type: "warden",
+            action: "delete",
+            collectionName: "hostel_details",
+            category,
+            title: "Delete Hostel Warden",
+            meta_data: {
+              warden_name: w.warden_name,
+              designation: w.designation,
+              phone_number: w.phone_number,
+              image_path: w.image_path,
+            },
+          });
+        }
+      });
+    };
+
+    processSingleWarden("chief", originalData.chief, chief);
+    processSingleWarden("chiefDeputy", originalData.chiefDeputy, chiefDeputy);
+
+    processSection("boysWardens", originalData.boysWardens, boysWardens);
+    processSection("girlsWardens", originalData.girlsWardens, girlsWardens);
+
+    if (payloads.length === 0) {
+      toast.info("No changes to submit");
+      return;
+    }
+    console.log("files", files);
+
+    try {
+      await sendRequest(payloads, files); // 🔥 SINGLE REQUEST
+
+      toast.success("Request submitted successfully!");
+      setShowRequestModal(false);
+      setShowPostSaveActions(false);
+      setChanges([]);
+    } catch (err) {
+      toast.error("Failed to submit request");
+    }
   };
-  
-  processSingleWarden("chief", originalData.chief, chief);
-processSingleWarden("chiefDeputy", originalData.chiefDeputy, chiefDeputy);
-
-processSection("boysWardens", originalData.boysWardens, boysWardens);
-processSection("girlsWardens", originalData.girlsWardens, girlsWardens);
-
-if (payloads.length === 0) {
-  toast.info("No changes to submit");
-  return;
-}
-console.log("files",files);
-
-try {
-  await sendRequest(payloads, files); // 🔥 SINGLE REQUEST
-
-  toast.success("Request submitted successfully!");
-  setShowRequestModal(false);
-  setShowPostSaveActions(false);
-  setChanges([]);
-} catch (err) {
-  toast.error("Failed to submit request");
-}
-};
 
 
 
@@ -559,8 +598,8 @@ try {
       // Multi delete
       if (showMultiDeleteConfirm && selectedItems.length > 0) {
         const removal = new Set(
-  selectedItems.map((id) => id.substring(id.indexOf("-") + 1))
-);
+          selectedItems.map((id) => id.substring(id.indexOf("-") + 1))
+        );
 
         ["boysWardens", "girlsWardens"].forEach((section) => {
           if (updated[section]) {
@@ -585,18 +624,18 @@ try {
     setShowMultiDeleteConfirm(false);
   };
 
-if (
-  chief === null ||
-  chiefDeputy === null ||
-  boysWardens === null ||
-  girlsWardens === null
-) {
-  return (
-    <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-      <LoadComp />
-    </div>
-  );
-}
+  if (
+    chief === null ||
+    chiefDeputy === null ||
+    boysWardens === null ||
+    girlsWardens === null
+  ) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
+    );
+  }
 
   const renderWardenCard = (warden, section) => {
     const isSelectableSection = section === "boysWardens" || section === "girlsWardens";
@@ -604,7 +643,7 @@ if (
 
     return (
       <div key={warden?.id ?? `${section}-top`} className="warden-card-flex relative">
-                {/* top-right checkbox (only show for boys/girls and only in edit mode) */}
+        {/* top-right checkbox (only show for boys/girls and only in edit mode) */}
         {isEditing && isSelectableSection && (
           <label className="absolute top-2 right-2 flex items-center cursor-pointer">
             <input
@@ -640,9 +679,8 @@ if (
               />
               <label
                 htmlFor={`replace-image-${section}-${warden.id}`}
-                className={`mt-2 px-3 py-1 text-xs rounded cursor-pointer transition ${
-                  warden.previewImage || warden.image_path ? "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim" : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                }`}
+                className={`mt-2 px-3 py-1 text-xs rounded cursor-pointer transition ${warden.previewImage || warden.image_path ? "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim" : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  }`}
               >
                 {warden.previewImage || warden.image_path ? "Replace" : "Upload"}
               </label>
@@ -684,7 +722,7 @@ if (
               />
 
 
-              
+
             </>
           ) : (
             <>
@@ -746,11 +784,29 @@ if (
       </div>
 
       {/* edit/save controls */}
+      {/* Multi-delete action when editing and items selected */}
+      {isEditing && selectedItems.length > 0 && (
+        <div className="hos-delete-action flex justify-center mt-6 mb-4">
+          <button
+            onClick={() => setShowMultiDeleteConfirm(true)}
+            className="px-4 py-2 rounded bg-red-600 text-white flex items-center gap-2"
+          >
+            <Trash2 size={16} />
+            Delete Selected ({selectedItems.length})
+          </button>
+        </div>
+      )}
+
+      {/* Edit / Save Controls */}
       {isEditing && (
         <div className="w-full flex justify-end gap-4 mt-6 mb-2 pr-9">
-          <button className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 transition" onClick={handleCancel}>
+          <button
+            className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 transition"
+            onClick={handleCancel}
+          >
             Cancel
           </button>
+
           {hasChanges && (
             <button
               className="px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition"
@@ -762,18 +818,7 @@ if (
         </div>
       )}
 
-      {/* Multi-delete action when editing and items selected */}
-      {isEditing && selectedItems.length > 0 && (
-        <div className="hos-delete-action flex justify-center mt-6 mb-4">
-          <button
-            onClick={() => setShowMultiDeleteConfirm(true)}
-            className="px-4 py-2 rounded bg-red-600 text-white flex items-center gap-2"
-          >
-            <Trash2 size={16} /> Delete ({selectedItems.length})
-          </button>
-        </div>
-      )}
-
+      {/* Request / Discard */}
       {!isEditing && showPostSaveActions && (
         <div className="w-full flex justify-end gap-4 mt-6 mb-2 pr-9">
           <button
@@ -782,11 +827,13 @@ if (
           >
             Discard Changes
           </button>
+
           <button
             className="px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim flex items-center gap-2 transition"
             onClick={handleRequest}
           >
-            <Send size={16} /> Request
+            <Send size={16} />
+            Request
           </button>
         </div>
       )}
@@ -827,17 +874,17 @@ if (
               <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-white">
                 Cancel
               </button>
-<button
-  onClick={handleFinalRequest}
-  disabled={loading}
-  className={`px-4 py-2 rounded flex items-center gap-2
+              <button
+                onClick={handleFinalRequest}
+                disabled={loading}
+                className={`px-4 py-2 rounded flex items-center gap-2
     ${loading
-      ? "bg-gray-400 cursor-not-allowed text-white"
-      : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-    }`}
->
-  {loading ? "Submitting..." : "Confirm Request"}
-</button>
+                    ? "bg-gray-400 cursor-not-allowed text-white"
+                    : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  }`}
+              >
+                {loading ? "Submitting..." : "Confirm Request"}
+              </button>
             </div>
           </div>
         </div>

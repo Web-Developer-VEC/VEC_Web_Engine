@@ -184,7 +184,7 @@ const CarouselNSS = ({ data }) => {
     setIsDirty(false);
     setSelectedItems([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
+   
   };
 
   const handleDiscard = () => {
@@ -318,7 +318,7 @@ const CarouselNSS = ({ data }) => {
         setShowRequestModal(false);
         setIsEditing(false);
         setIsDirty(false);
-        toast.success("Final request submitted!");
+        
       } else {
         toast.error("Request failed. Check console for details.");
       }
@@ -339,10 +339,23 @@ const CarouselNSS = ({ data }) => {
       updated = pendingItems.filter((item) => item.id !== itemId);
     } else if (!pendingItems.find((item) => item.id === itemId)) {
       // Item was deleted → restore it
-      updated = [...pendingItems, deepCopy(committedItem)];
+      updated = [
+  ...pendingItems,
+  {
+    ...committedItem,
+    _file: committedItem._file || null,
+  },
+];
     } else {
       // Item was edited → reset to committed version
-      updated = pendingItems.map((item) => (item.id === itemId ? deepCopy(committedItem) : item));
+      updated = pendingItems.map((item) =>
+  item.id === itemId
+    ? {
+        ...committedItem,
+        _file: committedItem._file || null,
+      }
+    : item
+);
     }
 
     setPendingItems(updated);

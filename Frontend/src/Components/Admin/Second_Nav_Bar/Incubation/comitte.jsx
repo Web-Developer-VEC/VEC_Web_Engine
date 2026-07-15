@@ -254,7 +254,6 @@ export default function Committe({ data }) {
     const res = await sendRequest(payloads);
     if (!res) return;
 
-    toast.success(res.message || "Final request submitted");
     setShowRequestModal(false);
 
     // after successful submit, reset original snapshot
@@ -324,7 +323,7 @@ export default function Committe({ data }) {
     setSelectedRows(new Set());
     setDeleteConfirmOpen(false);
     setIndexToDelete(null);
-    toast.success("Members deleted in this session.");
+    
   };
 
   const cancelDelete = () => {
@@ -343,7 +342,7 @@ export default function Committe({ data }) {
     setIsEditing(false);
     setIsSavedOnce(true);
 
-    toast.success("Changes saved. You can now Request or Edit again.");
+   
   };
 
   const handleCancelSession = () => {
