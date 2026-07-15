@@ -139,7 +139,7 @@ const NotificationBox = ({ data }) => {
     setIsDirty(false);
     setSelectedItems([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
+
   };
 
   const handleDiscard = () => {
@@ -184,7 +184,7 @@ const NotificationBox = ({ data }) => {
         setPendingItems(null);
         setIsSaved(false);
         setShowRequestModal(false);
-        toast.success("Final request submitted!");
+        
       } else {
         toast.error("Final request failed. Check console for details.");
       }
