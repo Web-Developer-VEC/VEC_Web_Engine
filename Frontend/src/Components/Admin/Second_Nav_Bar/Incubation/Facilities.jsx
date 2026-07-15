@@ -182,7 +182,7 @@ export default function Facilities({ data }) {
     setSessionChanges((prev) => [...prev, ...ch]);
     setSelectedRows(new Set());
     setDeleteConfirmOpen(false);
-    toast.success("Members deleted in this session.");
+    
   };
 
   // ---- Save / cancel / discard ----
@@ -198,7 +198,7 @@ export default function Facilities({ data }) {
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(true);
-    toast.success("Changes saved locally. You can now Request.");
+    
   };
 
   const handleCancelSession = () => {
@@ -387,7 +387,6 @@ export default function Facilities({ data }) {
         return;
       }
 
-      toast.success(res.message || "Request submitted!");
 
       // after successful request, update original snapshot to current editableData
       originalRef.current = deepCopy(editableData);

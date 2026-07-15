@@ -456,7 +456,11 @@ const AdminCoe = ({ toggle, theme }) => {
 
   return (
     <>
-      <ToastContainer position="bottom-right" autoClose={2500} hideProgressBar={false} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2500}
+        hideProgressBar={false}
+      />
       <Banner
         toggle={toggle}
         theme={theme}
@@ -464,8 +468,7 @@ const AdminCoe = ({ toggle, theme }) => {
         headerText="office of controller of examinations"
         subHeaderText="COE"
       />
-      
-      
+
       <div className="relative py-10 px-4 md:px-20 bg-prim dark:bg-drkp justify-center font-[Poppins]">
         {!isEditing && !requestMode && (
           <button
@@ -718,8 +721,6 @@ const AdminCoe = ({ toggle, theme }) => {
                     key={key}
                     className="relative flex bg-prim dark:bg-text w-full sm:w-[90%] md:w-[45%] lg:w-[430px] border-2 border-yellow-500 rounded-xl p-3 sm:p-4 gap-3"
                   >
-                          
-                    
                     {isEditing && (
                       <input
                         type="checkbox"
@@ -745,7 +746,6 @@ const AdminCoe = ({ toggle, theme }) => {
                           No Image
                         </div>
                       )}
-                      
 
                       {isEditing && (
                         <>
@@ -777,7 +777,6 @@ const AdminCoe = ({ toggle, theme }) => {
                         </>
                       )}
                     </div>
-                   
 
                     <div className="flex flex-col flex-1 justify-center">
                       {isEditing ? (
