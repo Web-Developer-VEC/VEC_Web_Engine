@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import Banner from "../../Banner";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Pencil, Send, X, Plus } from "lucide-react";
 import { useAdminRequest } from "../../../hooks/useAdminRequest"; // <-- adjust path if needed
 
@@ -165,12 +167,15 @@ const AdminCoe = ({ toggle, theme }) => {
 
   const { sendRequest, loading: requestLoading } = useAdminRequest();
 
-  const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
+  const UrlParser = (path) =>
+    path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post("/api/main-backend/exam", { type: "COE" });
+        const response = await axios.post("/api/main-backend/exam", {
+          type: "COE",
+        });
         const data = response.data.data;
 
         // IMPORTANT: assign stable client_id keys once, so edits don't look like deletes
@@ -181,7 +186,9 @@ const AdminCoe = ({ toggle, theme }) => {
       } catch (error) {
         console.error("Error fetching coe data", error);
         if (error.response?.data?.status === 429) {
-          navigate("/ratelimit", { state: { msg: error.response.data.message } });
+          navigate("/ratelimit", {
+            state: { msg: error.response.data.message },
+          });
         }
       }
     };
@@ -269,7 +276,9 @@ const AdminCoe = ({ toggle, theme }) => {
   const handleCheckboxChange = (sIdx, mIdx) => {
     const key = memberKey(coeData?.[sIdx]?.members?.[mIdx]);
     if (!key) return;
-    setSelectedMembers((prev) => (prev.includes(key) ? prev.filter((id) => id !== key) : [...prev, key]));
+    setSelectedMembers((prev) =>
+      prev.includes(key) ? prev.filter((id) => id !== key) : [...prev, key],
+    );
   };
 
   const handleDeleteConfirmed = () => {
@@ -321,12 +330,17 @@ const AdminCoe = ({ toggle, theme }) => {
     }
 
     if (change.action === "Image Changed" || change.action === "Edited") {
-      const originalMember = originalData?.[sIdx]?.members?.find((m) => memberKey(m) === change.mKey);
-      if (originalMember && curIdx !== -1) sec.members[curIdx] = deepClone(originalMember);
+      const originalMember = originalData?.[sIdx]?.members?.find(
+        (m) => memberKey(m) === change.mKey,
+      );
+      if (originalMember && curIdx !== -1)
+        sec.members[curIdx] = deepClone(originalMember);
     }
 
     if (change.action === "Deleted") {
-      const originalMember = originalData?.[sIdx]?.members?.find((m) => memberKey(m) === change.mKey);
+      const originalMember = originalData?.[sIdx]?.members?.find(
+        (m) => memberKey(m) === change.mKey,
+      );
       if (originalMember) {
         // insert back (best-effort) at end
         sec.members.push(deepClone(originalMember));
@@ -334,7 +348,16 @@ const AdminCoe = ({ toggle, theme }) => {
     }
 
     setCoeData(updated);
-    setChanges((prev) => prev.filter((c) => !(c.sIdx === change.sIdx && c.mKey === change.mKey && c.action === change.action)));
+    setChanges((prev) =>
+      prev.filter(
+        (c) =>
+          !(
+            c.sIdx === change.sIdx &&
+            c.mKey === change.mKey &&
+            c.action === change.action
+          ),
+      ),
+    );
   };
 
   const handleCancel = () => {
@@ -351,7 +374,7 @@ const AdminCoe = ({ toggle, theme }) => {
       section.members.forEach((member) => {
         delete member.newImageFile;
         delete member.imagePreview;
-      })
+      }),
     );
 
     setCoeData(resetData);
@@ -376,14 +399,16 @@ const AdminCoe = ({ toggle, theme }) => {
   const requestRows = useMemo(() => {
     return (changes || []).map((c, idx) => ({
       action:
-        c.action === "Added" ? "insert" :
-        c.action === "Deleted" ? "delete" :
-        "update",
+        c.action === "Added"
+          ? "insert"
+          : c.action === "Deleted"
+            ? "delete"
+            : "update",
       category: c.section,
       files: c.action === "Image Changed" ? [1] : [],
       links: [],
       _idx: idx,
-      _raw: c
+      _raw: c,
     }));
   }, [changes]);
 
@@ -431,6 +456,11 @@ const AdminCoe = ({ toggle, theme }) => {
 
   return (
     <>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2500}
+        hideProgressBar={false}
+      />
       <Banner
         toggle={toggle}
         theme={theme}
@@ -463,7 +493,11 @@ const AdminCoe = ({ toggle, theme }) => {
               >
                 <div className="flex flex-col items-center">
                   <img
-                    src={member.imagePreview ? member.imagePreview : UrlParser(member.image_path)}
+                    src={
+                      member.imagePreview
+                        ? member.imagePreview
+                        : UrlParser(member.image_path)
+                    }
                     alt={member.name}
                     className="w-[100px] h-[120px] object-cover rounded"
                   />
@@ -475,11 +509,15 @@ const AdminCoe = ({ toggle, theme }) => {
                         type="file"
                         accept="image/*"
                         className="hidden"
-                        onChange={(e) => handleImageUpload(0, index, e.target.files?.[0])}
+                        onChange={(e) =>
+                          handleImageUpload(0, index, e.target.files?.[0])
+                        }
                       />
                       <button
                         className="mt-2 px-3 py-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition"
-                        onClick={() => document.getElementById(`file-0-${index}`).click()}
+                        onClick={() =>
+                          document.getElementById(`file-0-${index}`).click()
+                        }
                       >
                         Replace
                       </button>
@@ -493,27 +531,49 @@ const AdminCoe = ({ toggle, theme }) => {
                       <input
                         type="text"
                         value={member.name}
-                        onChange={(e) => handleFieldChange(0, index, "name", e.target.value)}
+                        onChange={(e) =>
+                          handleFieldChange(0, index, "name", e.target.value)
+                        }
                         className="border rounded px-2 py-1 text-sm w-[250px]"
                       />
                       <input
                         type="text"
                         value={member.qualification}
-                        onChange={(e) => handleFieldChange(0, index, "qualification", e.target.value)}
+                        onChange={(e) =>
+                          handleFieldChange(
+                            0,
+                            index,
+                            "qualification",
+                            e.target.value,
+                          )
+                        }
                         className="border rounded px-2 py-1 text-sm w-full"
                       />
                       <input
                         type="text"
                         value={member.position}
-                        onChange={(e) => handleFieldChange(0, index, "position", e.target.value)}
+                        onChange={(e) =>
+                          handleFieldChange(
+                            0,
+                            index,
+                            "position",
+                            e.target.value,
+                          )
+                        }
                         className="border rounded px-2 py-1 text-sm w-full"
                       />
                     </>
                   ) : (
                     <>
-                      <p className="font-bold text-sm md:text-[18px] text-text dark:text-drkt">{member.name}</p>
-                      <p className="text-sm text-brwn dark:text-drka">{member.qualification}</p>
-                      <p className="text-sm text-brwn dark:text-drka">{member.position}</p>
+                      <p className="font-bold text-sm md:text-[18px] text-text dark:text-drkt">
+                        {member.name}
+                      </p>
+                      <p className="text-sm text-brwn dark:text-drka">
+                        {member.qualification}
+                      </p>
+                      <p className="text-sm text-brwn dark:text-drka">
+                        {member.position}
+                      </p>
                     </>
                   )}
                 </div>
@@ -541,7 +601,11 @@ const AdminCoe = ({ toggle, theme }) => {
                   >
                     <div className="flex flex-col items-center">
                       <img
-                        src={member.imagePreview ? member.imagePreview : UrlParser(member.image_path)}
+                        src={
+                          member.imagePreview
+                            ? member.imagePreview
+                            : UrlParser(member.image_path)
+                        }
                         alt={member.name}
                         className="w-[100px] h-[120px] object-cover rounded"
                       />
@@ -553,11 +617,21 @@ const AdminCoe = ({ toggle, theme }) => {
                             type="file"
                             accept="image/*"
                             className="hidden"
-                            onChange={(e) => handleImageUpload(sIdx + 1, index, e.target.files?.[0])}
+                            onChange={(e) =>
+                              handleImageUpload(
+                                sIdx + 1,
+                                index,
+                                e.target.files?.[0],
+                              )
+                            }
                           />
                           <button
                             className="mt-2 px-3 py-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition"
-                            onClick={() => document.getElementById(`file-${sIdx + 1}-${index}`).click()}
+                            onClick={() =>
+                              document
+                                .getElementById(`file-${sIdx + 1}-${index}`)
+                                .click()
+                            }
                           >
                             Replace
                           </button>
@@ -571,29 +645,54 @@ const AdminCoe = ({ toggle, theme }) => {
                           <input
                             type="text"
                             value={member.name}
-                            onChange={(e) => handleFieldChange(sIdx + 1, index, "name", e.target.value)}
+                            onChange={(e) =>
+                              handleFieldChange(
+                                sIdx + 1,
+                                index,
+                                "name",
+                                e.target.value,
+                              )
+                            }
                             className="border rounded px-2 py-1 text-sm w-[250px]"
                           />
                           <input
                             type="text"
                             value={member.qualification}
                             onChange={(e) =>
-                              handleFieldChange(sIdx + 1, index, "qualification", e.target.value)
+                              handleFieldChange(
+                                sIdx + 1,
+                                index,
+                                "qualification",
+                                e.target.value,
+                              )
                             }
                             className="border rounded px-2 py-1 text-sm w-full"
                           />
                           <input
                             type="text"
                             value={member.position}
-                            onChange={(e) => handleFieldChange(sIdx + 1, index, "position", e.target.value)}
+                            onChange={(e) =>
+                              handleFieldChange(
+                                sIdx + 1,
+                                index,
+                                "position",
+                                e.target.value,
+                              )
+                            }
                             className="border rounded px-2 py-1 text-sm w-full"
                           />
                         </>
                       ) : (
                         <>
-                          <p className="font-bold text-sm md:text-[18px] text-text dark:text-drkt">{member.name}</p>
-                          <p className="text-sm text-brwn dark:text-drka">{member.qualification}</p>
-                          <p className="text-sm text-brwn dark:text-drka">{member.position}</p>
+                          <p className="font-bold text-sm md:text-[18px] text-text dark:text-drkt">
+                            {member.name}
+                          </p>
+                          <p className="text-sm text-brwn dark:text-drka">
+                            {member.qualification}
+                          </p>
+                          <p className="text-sm text-brwn dark:text-drka">
+                            {member.position}
+                          </p>
                         </>
                       )}
                     </div>
@@ -610,7 +709,9 @@ const AdminCoe = ({ toggle, theme }) => {
             key={sIdx + 3}
             className="bg-[color-mix(in_srgb,theme(colors.prim)_90%,black)] dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,white)] w-full md:w-fit ml-auto mr-auto shadow-md rounded-lg mb-10 p-6 md:p-10"
           >
-            <h2 className="text-2xl font-bold text-[#800000] dark:text-drkt text-center mb-6">{section.category}</h2>
+            <h2 className="text-2xl font-bold text-[#800000] dark:text-drkt text-center mb-6">
+              {section.category}
+            </h2>
 
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 px-2 md:px-0">
               {section.members.map((member, mIdx) => {
@@ -632,7 +733,11 @@ const AdminCoe = ({ toggle, theme }) => {
                     <div className="flex flex-col items-center">
                       {member.imagePreview || member.image_path ? (
                         <img
-                          src={member.imagePreview ? member.imagePreview : UrlParser(member.image_path)}
+                          src={
+                            member.imagePreview
+                              ? member.imagePreview
+                              : UrlParser(member.image_path)
+                          }
                           alt={member.name}
                           className="w-[80px] h-[100px] object-cover rounded"
                         />
@@ -649,13 +754,25 @@ const AdminCoe = ({ toggle, theme }) => {
                             type="file"
                             accept="image/*"
                             className="hidden"
-                            onChange={(e) => handleImageUpload(sIdx + 3, mIdx, e.target.files?.[0])}
+                            onChange={(e) =>
+                              handleImageUpload(
+                                sIdx + 3,
+                                mIdx,
+                                e.target.files?.[0],
+                              )
+                            }
                           />
                           <button
                             className="mt-2 px-3 py-1 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition"
-                            onClick={() => document.getElementById(`file-${sIdx + 3}-${mIdx}`).click()}
+                            onClick={() =>
+                              document
+                                .getElementById(`file-${sIdx + 3}-${mIdx}`)
+                                .click()
+                            }
                           >
-                            {member.image_path || member.imagePreview ? "Replace" : "Upload"}
+                            {member.image_path || member.imagePreview
+                              ? "Replace"
+                              : "Upload"}
                           </button>
                         </>
                       )}
@@ -668,21 +785,42 @@ const AdminCoe = ({ toggle, theme }) => {
                             type="text"
                             placeholder="Name"
                             value={member.name}
-                            onChange={(e) => handleFieldChange(sIdx + 3, mIdx, "name", e.target.value)}
+                            onChange={(e) =>
+                              handleFieldChange(
+                                sIdx + 3,
+                                mIdx,
+                                "name",
+                                e.target.value,
+                              )
+                            }
                             className="border rounded px-2 py-1 text-sm w-[250px]"
                           />
                           <input
                             type="text"
                             placeholder="Qualification"
                             value={member.qualification}
-                            onChange={(e) => handleFieldChange(sIdx + 3, mIdx, "qualification", e.target.value)}
+                            onChange={(e) =>
+                              handleFieldChange(
+                                sIdx + 3,
+                                mIdx,
+                                "qualification",
+                                e.target.value,
+                              )
+                            }
                             className="border rounded px-2 py-1 text-sm w-full"
                           />
                           <input
                             type="text"
                             placeholder="Designation"
                             value={member.position}
-                            onChange={(e) => handleFieldChange(sIdx + 3, mIdx, "position", e.target.value)}
+                            onChange={(e) =>
+                              handleFieldChange(
+                                sIdx + 3,
+                                mIdx,
+                                "position",
+                                e.target.value,
+                              )
+                            }
                             className="border rounded px-2 py-1 text-sm w-full"
                           />
                         </>
@@ -693,10 +831,16 @@ const AdminCoe = ({ toggle, theme }) => {
                           </p>
 
                           {member.qualification && (
-                            <p className="text-sm text-brwn dark:text-drka">{member.qualification}</p>
+                            <p className="text-sm text-brwn dark:text-drka">
+                              {member.qualification}
+                            </p>
                           )}
 
-                          {member.position && <p className="text-sm text-brwn dark:text-drka">{member.position}</p>}
+                          {member.position && (
+                            <p className="text-sm text-brwn dark:text-drka">
+                              {member.position}
+                            </p>
+                          )}
                         </>
                       )}
                     </div>
@@ -722,8 +866,7 @@ const AdminCoe = ({ toggle, theme }) => {
         {/* Buttons */}
         {isEditing && (
           <div className="flex flex-col items-center gap-4 mt-6">
-
-             {selectedMembers.length > 0 && (
+            {selectedMembers.length > 0 && (
               <button
                 onClick={() => setShowDeleteModal(true)}
                 className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
@@ -748,7 +891,7 @@ const AdminCoe = ({ toggle, theme }) => {
                   Save
                 </button>
               )}
-            </div>           
+            </div>
           </div>
         )}
 
@@ -774,7 +917,9 @@ const AdminCoe = ({ toggle, theme }) => {
         {showDeleteModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
             <div className="bg-white dark:bg-drkp p-6 rounded-lg shadow-lg text-center max-w-sm">
-              <h2 className="text-lg font-bold mb-4 text-drkt">Confirm Delete</h2>
+              <h2 className="text-lg font-bold mb-4 text-drkt">
+                Confirm Delete
+              </h2>
               <p className="mb-6 text-gray-700 dark:text-gray-300">
                 Are you sure you want to delete the selected faculty members?
               </p>
@@ -805,8 +950,8 @@ const AdminCoe = ({ toggle, theme }) => {
               </h2>
               <p className="text-sm text-red-500 mb-4">
                 Note: Your changes will stay pending until approved by the
-                superior admin. Once approved, they will be applied automatically
-                to the live site.
+                superior admin. Once approved, they will be applied
+                automatically to the live site.
               </p>
 
               <div className="max-h-[200px] overflow-y-auto mb-4">
@@ -837,7 +982,9 @@ const AdminCoe = ({ toggle, theme }) => {
                           <td className="py-1">{g.category}</td>
                           <td className="py-1">
                             {g.files.length} images
-                            {g.links.length > 0 ? `, ${g.links.length} links` : ""}
+                            {g.links.length > 0
+                              ? `, ${g.links.length} links`
+                              : ""}
                           </td>
                           <td>
                             <button
@@ -845,7 +992,9 @@ const AdminCoe = ({ toggle, theme }) => {
                                 const raw = g._raw;
 
                                 // Remove this change from list
-                                setChanges((prev) => prev.filter((_, idx) => idx !== g._idx));
+                                setChanges((prev) =>
+                                  prev.filter((_, idx) => idx !== g._idx),
+                                );
 
                                 // Apply undo
                                 undoChange(raw);

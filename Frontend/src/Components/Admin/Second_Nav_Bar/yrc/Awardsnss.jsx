@@ -351,7 +351,6 @@ const handleFinalRequestConfirm = async () => {
     setIsSaved(false);
     setShowRequestModal(false);
 
-    toast.success("Final request submitted successfully!");
   } catch (err) {
     console.error(err);
     toast.error("Failed to submit request");

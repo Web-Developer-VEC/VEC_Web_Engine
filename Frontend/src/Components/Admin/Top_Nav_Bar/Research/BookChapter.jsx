@@ -153,7 +153,7 @@ export default function AdminBookChapter({ theme, toggle }) {
         },
       });
 
-      toast.success("Entry added (session)");
+     // toast.success("Entry added (session)");
     }
 
     setNewYear("");
@@ -412,7 +412,7 @@ export default function AdminBookChapter({ theme, toggle }) {
       if (result) {
         console.log("FINAL REQUEST SUBMITTED", { payload, bookChapter });
 
-        toast.success("Final request submitted");
+       // toast.success("Final request submitted");
 
         setShowRequestModal(false);
         setAllChanges([]);
