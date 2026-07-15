@@ -184,7 +184,6 @@ const handleFinalRequestConfirm = async () => {
 
   try {
     const result = await sendRequest(payload); // Send using the hook
-    toast.success("Request confirmed and sent successfully!");
     if (result) {
       // Update local states after successful request
       setCommittedData(JSON.parse(JSON.stringify(pendingData)));
