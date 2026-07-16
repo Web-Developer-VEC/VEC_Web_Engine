@@ -149,7 +149,6 @@ const IICContact = ({ data }) => {
     setPendingData(null);
     setIsSaved(false);
     setIsDirty(false);
-    toast.info("Changes discarded!");
   };
 
   // Open request modal; modalData is a copy of pendingData (draft) for UI manipulations
@@ -237,6 +236,7 @@ const IICContact = ({ data }) => {
       const ok = res === true || (res && (res.success === true || res.status === "ok" || res.status === "success"));
       if (ok) {
         // commit
+        toast.success("Request sent successfully!");
         setOriginalData(deepCopy(modalData));
         setTempData(deepCopy(modalData));
         setPendingData(null);
