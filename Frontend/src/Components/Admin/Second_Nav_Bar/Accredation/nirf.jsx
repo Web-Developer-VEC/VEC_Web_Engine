@@ -534,7 +534,7 @@ const NIRF = ({ data }) => {
     setSelectedItems([]);
     setHasChanges(true);
     setDeleteConfirm(null);
-  
+
   };
 
   // Revert single change (Undo)
@@ -633,7 +633,7 @@ const NIRF = ({ data }) => {
 
     } catch (err) {
       console.error("Revert failed", err);
-   
+
     }
   };
   const handleRevertAllForYear = (item) => {
@@ -710,7 +710,7 @@ const NIRF = ({ data }) => {
     setHasChanges(false);
     setSelectedItems([]);
     setRequestSent(false);
-  
+
   };
   const collectNirfFiles = () => {
     const files = [];
@@ -772,7 +772,7 @@ const NIRF = ({ data }) => {
       setChangeLog([]);
       setEditMode(false);
       setHasChanges(false);
-  
+
     }
   };
 
@@ -830,24 +830,27 @@ const NIRF = ({ data }) => {
   }
 
   return (
-    
+
     <div className="nirf-page relative">
       <div>
         {!editMode && (
-        <div className="flex justify-end px-6 py-4  mr-4">
-          <button
-            onClick={handleEditToggle}
-            className="flex items-center px-4 py-2 rounded-lg bg-[#fdcc06] text-black hover:bg-[#800000] transition-colors"
-          >
-            <Pencil size={16} /> Edit
-          </button>
-        </div>
-      )}
+          <div className="flex justify-end px-6 py-4  mr-4">
+            <button
+              onClick={handleEditToggle}
+              className="group bg-[#FDCC03] px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-300 hover:bg-[#800000]"
+            >
+              <Pencil className="text-black group-hover:!text-white transition-colors duration-300" size={16} />
+              <span className="text-black group-hover:!text-white transition-colors duration-300">
+                Edit
+              </span>
+            </button>
+          </div>
+        )}
       </div>
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* EDIT button: always top-right when not in edit mode (fixes left-bottom issue) */}
-    
+
 
       <div className="nirf-intro dark:bg-drkb border-l-4 border-secd dark:border-drks">
         <h1 className="nirf-header text-brwn dark:text-drkt">
@@ -863,17 +866,20 @@ const NIRF = ({ data }) => {
       <h2 className="nirf-title text-brwn dark:text-drkt">
         NATIONAL INSTITUTIONAL RANKING FRAMEWORK
       </h2>
-
-      <div className="nirf-grid-2">
-        {editMode && (
-          <div
+      {editMode && (
+        <div className="nirf-add-year-container">
+          <button
             onClick={handleAddYear}
-            className="adminnirf-year flex items-center justify-center cursor-pointer border-2 border-dashed border-gray-400 text-gray-500 hover:bg-gray-100"
+            className="nirf-add-year-btn"
             title="Add Year"
           >
-            <Plus size={28} />
-          </div>
-        )}
+            <Plus size={24} />
+            <span>Add Year</span>
+          </button>
+        </div>
+      )}
+      <div className="nirf-grid-2">
+
 
         {(() => {
           const sorted = [...editableData].slice().sort((a, b) => {
@@ -905,17 +911,17 @@ const NIRF = ({ data }) => {
                       checked={selectedItems.includes(yearIndex)}
                       onChange={() => toggleItemSelection(yearIndex)}
                       disabled={hasYearEdits(item.__id)}
-                      className={`h-5 w-5 ${
-                        hasYearEdits(item.__id)
-                          ? "cursor-not-allowed opacity-50"
-                          : ""
-                      }`}
+                      className={`h-5 w-5 ${hasYearEdits(item.__id)
+                        ? "cursor-not-allowed opacity-50"
+                        : ""
+                        }`}
                     />
                   </div>
                 )}
 
                 {editMode ? (
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex flex-col md:flex-row gap-2">
+
                     <input
                       type="text"
                       value={item?.year}
@@ -927,7 +933,7 @@ const NIRF = ({ data }) => {
                           e.target.value,
                         )
                       }
-                      className="border p-1 rounded text-sm"
+                      className="border p-1 rounded text-sm w-full"
                       placeholder="Enter year"
                     />
                   </div>
@@ -941,8 +947,9 @@ const NIRF = ({ data }) => {
                   editMode ? (
                     <div
                       key={`${item.__id}-doc-${docIndex}`}
-                      className="flex items-center gap-2 mb-2 text-sm"
+                      className="flex items-center gap-2 mb-2 text-sm w-full"
                     >
+
                       <input
                         type="text"
                         value={cat?.name}
@@ -954,9 +961,9 @@ const NIRF = ({ data }) => {
                             e.target.value,
                           )
                         }
-                        className="border p-1 rounded flex-1"
+                        className="border p-1 rounded flex-1 min-w-0"
                       />
-                      <label className="px-3 py-1 bg-[#fdcc03] text-white rounded cursor-pointer hover:bg-[#800000]">
+                      <label className="px-2 py-1 text-sm md:px-3 md:py-1 md:text-base bg-[#fdcc03] text-white rounded cursor-pointer hover:bg-[#800000] whitespace-nowrap">
                         {cat?.pdf_path ? "Replace" : "Upload"}
                         <input
                           type="file"
@@ -971,27 +978,30 @@ const NIRF = ({ data }) => {
                           }
                         />
                       </label>
-                      {cat?.pdf_path && (
+                      <div className="flex items-center gap-2">
+                        {cat?.pdf_path && (
+                          <button
+                            type="button"
+                            onClick={() => handlePdfClick(cat)}
+                            className="text-blue-600"
+                          >
+                            <Eye size={18} />
+                          </button>
+                        )}
+
                         <button
-                          type="button"
-                          onClick={() => handlePdfClick(cat)}
-                          className="text-blue-600"
+                          onClick={() =>
+                            setDeleteConfirm({
+                              type: "doc",
+                              yearIndex,
+                              docIndex,
+                            })
+                          }
+                          className="text-red-500 p-0"
                         >
-                          <Eye size={18} />
+                          <Trash2 size={16} strokeWidth={1.8} />
                         </button>
-                      )}
-                      <button
-                        onClick={() =>
-                          setDeleteConfirm({
-                            type: "doc",
-                            yearIndex,
-                            docIndex,
-                          })
-                        }
-                        className="text-red-500"
-                      >
-                        <Trash2 />
-                      </button>
+                      </div>
                     </div>
                   ) : (
                     <div
@@ -1034,35 +1044,46 @@ const NIRF = ({ data }) => {
         </a>
       </p>
 
-      {editMode && selectedItems.length > 0 && (
-        <div className="absolute bottom-4 left-1/2 mb-2 transform -translate-x-1/2 justify-center">
-          <button
-            onClick={() =>
-              setDeleteConfirm({ type: "multiple", items: selectedItems })
-            }
-            className="px-4 py-2 rounded bg-red-600 text-white flex items-center gap-2"
-          >
-            <Trash2 size={16} /> Delete({selectedItems.length})
-          </button>
-        </div>
-      )}
-
       {editMode && (
-        <div className="absolute bottom-4 right-6 flex gap-2 mb-2">
-          <button
-            onClick={handleCancel}
-            className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
-          >
-            Cancel
-          </button>
-          {hasChanges && (
-            <button
-              onClick={handleSave}
-              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-            >
-              Save
-            </button>
+        <div className="relative w-full h-14 mt-10 mb-6">
+
+          {/* Delete Button - Center */}
+          {selectedItems.length > 0 && (
+            <div className="absolute left-1/2 -translate-x-1/2">
+              <button
+                onClick={() =>
+                  setDeleteConfirm({
+                    type: "multiple",
+                    items: selectedItems,
+                  })
+                }
+                className="px-4 py-2 rounded bg-red-600 text-white flex items-center gap-2 hover:bg-red-700"
+              >
+                <Trash2 size={16} />
+                Delete({selectedItems.length})
+              </button>
+            </div>
           )}
+
+          {/* Right Side Buttons */}
+          <div className="absolute right-0 top-8 flex gap-3">
+            <button
+              onClick={handleCancel}
+              className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+            >
+              Cancel
+            </button>
+
+            {hasChanges && (
+              <button
+                onClick={handleSave}
+                className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-white"
+              >
+                Save
+              </button>
+            )}
+          </div>
+
         </div>
       )}
 
@@ -1169,13 +1190,12 @@ const NIRF = ({ data }) => {
                     return (
                       <tr key={item.id} className="border-t align-top">
                         <td
-                          className={`py-2 ${
-                            item.action === "Added"
-                              ? "text-green-600"
-                              : item.action === "Deleted"
-                                ? "text-red-600"
-                                : "text-blue-600"
-                          }`}
+                          className={`py-2 ${item.action === "Added"
+                            ? "text-green-600"
+                            : item.action === "Deleted"
+                              ? "text-red-600"
+                              : "text-blue-600"
+                            }`}
                         >
                           {item.action}
                         </td>
@@ -1228,17 +1248,17 @@ const NIRF = ({ data }) => {
               </table>
             </div>
 
-            <div className="flex justify-end gap-2">
+            <div className="flex justify-end gap-3 mt-6">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-6 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
               >
                 Cancel
               </button>
               <button
                 onClick={handleRequestConfirm}
                 disabled={loadings}
-                className="px-4 py-2 rounded bg-[#fdcc03] dark:drks hover:bg-[#800000] text-text hover:text-prim"
+                className="px-6 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition-all duration-300"
               >
                 {loadings ? "Submitting..." : "Final Request"}
               </button>
