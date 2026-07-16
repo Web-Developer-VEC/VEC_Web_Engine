@@ -218,7 +218,7 @@ const LIBjournalsdetails = ({ data }) => {
               onClick={handleSave}
               className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
             >
-              <Save size={18} /> Save
+               Save
             </button>
           )}
         </div>
@@ -519,7 +519,7 @@ const LIBbookdetails = ({ data }) => {
               onClick={handleSave}
               className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
             >
-              <Save size={18} /> Save
+               Save
             </button>
           )}
         </div>

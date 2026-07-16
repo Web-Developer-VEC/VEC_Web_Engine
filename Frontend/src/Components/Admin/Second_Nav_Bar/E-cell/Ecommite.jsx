@@ -157,7 +157,7 @@ const handleSave = () => {
   setIsEditing(false);
   setIsSavedOnce(true);
 
-  toast.success("Changes saved successfully.");
+  // toast.success("Changes saved successfully.");
 };
 
 
@@ -166,7 +166,7 @@ const handleSave = () => {
     setEditableData(JSON.parse(JSON.stringify(savedDataRef.current)));
     setSessionChanges([]);
     setIsEditing(false);
-    toast.info("Session changes discarded. Previous saves preserved.");
+    // toast.info("Session changes discarded. Previous saves preserved.");
   };
 
   // Discard all changes
@@ -177,7 +177,7 @@ const handleSave = () => {
     setAllChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
-    toast.info("All changes discarded and data reset.");
+    // toast.info("All changes discarded and data reset.");
   };
 
   // Open request modal
@@ -276,7 +276,7 @@ const handleFinalRequestConfirm = async () => {
   try {
     await sendRequest(payload);
 
-    toast.success("Request sent for admin approval");
+    // toast.success("Request sent for admin approval");
 
     setShowRequestModal(false);
     setAllChanges([]);
@@ -364,7 +364,7 @@ const confirmDelete = () => {
           <h1 className="title-h3">COMMITTEE MEMBERS</h1>
          {!isEditing && (
           <button
-            className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
+            className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200"
             onClick={() => setIsEditing(true)}
           >
             <Pencil className="mr-2" /> Edit
@@ -447,14 +447,14 @@ const confirmDelete = () => {
           {isEditing && (
             <>
               <button
-                className="bg-gray-500 px-3 py-2 rounded text-white"
+                className="bg-gray-400 hover:bg-gray-600 px-3 py-2 rounded text-white transition duration-200"
                 onClick={handleCancelSession}
                 >
                 Cancel
               </button>
                 {sessionChanges.length > 0 && (
                   <button
-                    className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
+                    className="bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white px-3 py-2 rounded-lg transition duration-200"
                     onClick={handleSave}
                   >
                     Save
@@ -465,13 +465,13 @@ const confirmDelete = () => {
           {!isEditing && isSavedOnce && (
             <>
               <button
-                className="bg-red-500 px-3 py-2 rounded text-prim"
+                className="bg-gray-400 hover:bg-gray-600 px-3 py-2 rounded text-white transition duration-200"
                 onClick={handleDiscardAll}
               >
                 Discard All
               </button>
               <button
-                className="bg-secd text-text px-3 py-2 flex flex-row rounded hover:bg-brwn hover:text-prim "
+                className="bg-[#fdcc03] text-black px-3 py-2 flex flex-row rounded hover:bg-[#800000] hover:!text-white transition duration-200"
                 onClick={handleRequest}
               >
                 <Send /> Request
@@ -546,13 +546,13 @@ const confirmDelete = () => {
             <div className="flex justify-end gap-3 mt-4">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200"
               >
                 Cancel
               </button>
               <button
                 onClick={handleFinalRequestConfirm}
-                className="px-4 py-2 rounded bg-yellow-400 text-black"
+                className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition duration-200"
               >
                 Final Request
               </button>
@@ -571,7 +571,7 @@ const confirmDelete = () => {
             </p>
             <div className="flex justify-center gap-4">
               <button
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200"
                 onClick={cancelDelete}
               >
                 Cancel
