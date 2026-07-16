@@ -15,6 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
+
 const Naac = ({ data }) => {
   const [openSection, setOpenSection] = useState(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -29,7 +30,9 @@ const Naac = ({ data }) => {
 
   // Change log: each entry { id, action: "Added"|"Edited"|"Deleted", sectionIndex?, itemIndex?, sectionName?, data: {...}, prevData?: {...}, tempId? }
   const [changeLog, setChangeLog] = useState([]);
-
+  useEffect(() => {
+    console.log("Current changeLog:", changeLog);
+  }, [changeLog]);
   // Delete confirmation
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const [showMultiDeleteConfirm, setShowMultiDeleteConfirm] = useState(false);
@@ -135,10 +138,13 @@ const Naac = ({ data }) => {
   const handleRequestConfirm = async () => {
     const changes = getChanges();
 
+    console.log("Changes:", changes);
+    console.log("ChangeLog:", changeLog);
+
     if (changes.length === 0) {
+      console.log("No changes found");
       return;
     }
-
     // 1️⃣ Build payload
     const payload = changes.map(buildNaacPayload).filter(Boolean);
 
@@ -199,7 +205,7 @@ const Naac = ({ data }) => {
         collectionName: "accreditations_and_ranking",
         collection_type: "naac",
         action: "insert",
-        title: "insert in naaac",
+        title: "insert in naac",
         category: sectionName,
         meta_data: {
           name: item?.name || "",
@@ -228,7 +234,7 @@ const Naac = ({ data }) => {
         collectionName: "accreditations_and_ranking",
         collection_type: "naac",
         action: "update",
-        title: "update in naaac",
+        title: "update in naac",
         category: sectionName,
 
         original_data: {
@@ -254,7 +260,7 @@ const Naac = ({ data }) => {
         collectionName: "accreditations_and_ranking",
         collection_type: "naac",
         action: "delete",
-        title: "delete in naaac",
+        title: "delete in naac",
         category: sectionName,
 
         meta_data: {
@@ -505,6 +511,7 @@ const Naac = ({ data }) => {
   };
 
   const handleFileChange = (sectionIndex, itemIndex, file) => {
+    console.log("handleFileChange called", sectionIndex, itemIndex, file);
     if (!file) return;
 
     const updated = [...editableData];
@@ -527,13 +534,13 @@ const Naac = ({ data }) => {
         prev.map((c) =>
           c.tempId === item._tempId && c.action === "Added"
             ? {
-                ...c,
-                sectionName: updated[sectionIndex]?.category,
-                data: {
-                  name: item.name,
-                  pdf_path: newPdfPath,
-                },
-              }
+              ...c,
+              sectionName: updated[sectionIndex]?.category,
+              data: {
+                name: item.name,
+                pdf_path: newPdfPath,
+              },
+            }
             : c,
         ),
       );
@@ -587,7 +594,7 @@ const Naac = ({ data }) => {
           pdf_path: newPdfPath,
         },
       });
-
+      console.log("ChangeLog after push:", clone);
       return clone;
     });
   };
@@ -610,13 +617,13 @@ const Naac = ({ data }) => {
         prev.map((c) =>
           c.tempId === item._tempId && c.action === "Added"
             ? {
-                ...c,
-                sectionName: updated[sectionIndex]?.category,
-                data: {
-                  name: value,
-                  pdf_path: item.pdf_path || "",
-                },
-              }
+              ...c,
+              sectionName: updated[sectionIndex]?.category,
+              data: {
+                name: value,
+                pdf_path: item.pdf_path || "",
+              },
+            }
             : c,
         ),
       );
@@ -872,11 +879,10 @@ const Naac = ({ data }) => {
                     onClick={() => toggleSection(index)}
                     className={`w-full flex justify-between items-center px-6 py-4 text-xl font-semibold
                     transition-all rounded-2xl mb-4
-                    ${
-                      openSection === index
+                    ${openSection === index
                         ? "bg-secd text-text dark:bg-brwn "
                         : "bg-accn dark:bg-drks text-white "
-                    }`}
+                      }`}
                   >
                     {/* {editMode ? (
                       <input
@@ -1071,13 +1077,12 @@ const Naac = ({ data }) => {
                       {getChanges().map((change) => (
                         <tr key={change.id} className="border-t text-sm">
                           <td
-                            className={`py-2 font-semibold ${
-                              change.action === "Added"
-                                ? "text-green-600"
-                                : change.action === "Deleted"
-                                  ? "text-red-600"
-                                  : "text-blue-600"
-                            }`}
+                            className={`py-2 font-semibold ${change.action === "Added"
+                              ? "text-green-600"
+                              : change.action === "Deleted"
+                                ? "text-red-600"
+                                : "text-blue-600"
+                              }`}
                           >
                             {change.action === "Added" && "Added"}
                             {change.action === "Edited" && "Edited"}
