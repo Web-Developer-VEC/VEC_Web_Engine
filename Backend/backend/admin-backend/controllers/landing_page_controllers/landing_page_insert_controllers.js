@@ -10,7 +10,7 @@ async function insertData(tempDoc, mainCollection) {
 
         const singleObjectTypes = ["page_details","banner", "special_announcements"]
 
-        const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner", "popup", "admission"];
+        const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner", "popup", "admission", "news_card"];
 
         if (multipleObjectTypes.includes(collection_type)) {
 

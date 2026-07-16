@@ -255,5 +255,52 @@
       "website_link": "",
       "status": "True"
     }
+  },
+  {
+    "collectionName": "landing_page_details",
+    "collection_type": "news_card",
+    "action": "insert",
+    "title": "insert in news_card",
+    "meta_data": {
+      "type": "image",
+      "image_path": null,
+      "pdf_path": null,
+      "status": "True",
+      "title": "Priyan"
+    }
+  },
+  {
+    "collectionName": "landing_page_details",
+    "collection_type": "news_card",
+    "action": "update",
+    "title": "update in news_card",
+    "original_data": {
+       "type": "image",
+      "image_path": null,
+      "pdf_path": null,
+      "status": "True",
+      "title": "Priyan"
+    },
+    "meta_data": {
+       "type": "image",
+      "image_path": null,
+      "pdf_path": null,
+      "status": "True",
+      "title": "Prabhu"
+    }
+  },
+  {
+    "collectionName": "landing_page_details",
+    "collection_type": "news_card",
+    "action": "delete",
+    "title": "delete in news_card",
+    "meta_data": {
+       "type": "image",
+      "image_path": null,
+      "pdf_path": null,
+      "status": "False",
+      "title": "Prabhu"
+    }
   }
 ]
+
