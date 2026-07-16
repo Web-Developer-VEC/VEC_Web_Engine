@@ -19,7 +19,7 @@ async function updatedData(tempDoc, mainCollection) {
         { $set: { "data.$": meta_data } }
       );
 
-      return { success:true, message: "Updated successfully" };
+      return { success: true, message: "Updated successfully" };
     }
 
     /* ---------------- CATEGORY BASED TYPES ---------------- */
@@ -38,24 +38,43 @@ async function updatedData(tempDoc, mainCollection) {
       collection_type === "COE"
         ? "members"
         : collection_type === "regulation"
-        ? "links"
-        : "content";
+          ? "links"
+          : "content";
+    
 
-    const updatedArray = categoryExists[field].map((item) =>
-      Object.keys(original_data).every(
-        (key) => item[key] === original_data[key]
-      )
-        ? { ...item, ...meta_data }
-        : item
-    );
+    let updatedArray = [...categoryExists[field]];
 
+    if (collection_type === "regulation") {
+      original_data.links.forEach((oldItem, index) => {
+        const newItem = meta_data.links[index];
+
+        const itemIndex = updatedArray.findIndex((item) =>
+          Object.keys(oldItem).every((key) => item[key] === oldItem[key])
+        );
+
+        if (itemIndex !== -1) {
+          updatedArray[itemIndex] = {
+            ...updatedArray[itemIndex],
+            ...newItem
+          };
+        }
+      });
+    } else {
+      updatedArray = categoryExists[field].map((item) =>
+        Object.keys(original_data).every(
+          (key) => item[key] === original_data[key]
+        )
+          ? { ...item, ...meta_data }
+          : item
+      );
+    }
     await mainCollection.updateOne(
       { type: collection_type },
       { $set: { [`data.$[elem].${field}`]: updatedArray } },
       { arrayFilters: [{ "elem.category": category }] }
     );
 
-    return { success:true, message: "Updated successfully" };
+    return { success: true, message: "Updated successfully" };
 
   } catch (error) {
     throw new Error(`Update failed: ${error.message}`);

@@ -250,7 +250,6 @@ const Pedagogy = ({ data = [] }) => {
     setEditIndex(null);
     setShowAddModal(false);
     setNewPedagogy({ name: "", pdf_path: "", link: "" });
-    toast.success("Changes saved as draft!");
   };
 
 
@@ -315,9 +314,6 @@ const Pedagogy = ({ data = [] }) => {
 
     try {
       await sendRequest(payloads, files);
-
-      toast.success("Pedagogy request submitted!");
-
       setOriginalData(deepCopy(pendingData));
       setTempData(deepCopy(pendingData));
       setPendingData(null);
