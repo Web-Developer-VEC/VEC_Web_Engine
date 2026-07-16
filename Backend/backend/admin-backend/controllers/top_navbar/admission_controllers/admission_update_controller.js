@@ -64,16 +64,16 @@ async function updateData(tempDoc, mainCollection) {
           quotaKey = meta_data.BE_Government
             ? "BE_Government"
             : meta_data.BE_Management
-            ? "BE_Management"
-            : null;
+              ? "BE_Management"
+              : null;
         }
 
         if (collection_type === "mba") {
           quotaKey = meta_data.MBA_Government
             ? "MBA_Government"
             : meta_data.MBA_Management
-            ? "MBA_Management"
-            : null;
+              ? "MBA_Management"
+              : null;
         }
 
         if (!quotaKey) {
@@ -93,6 +93,10 @@ async function updateData(tempDoc, mainCollection) {
           updateObj[`data.${quotaKey}.${linkNameKey}`] = quotaData[linkNameKey];
         }
 
+        if (quotaData.pdf_path) {
+          updateObj[`data.${quotaKey}.pdf_path`] = quotaData.pdf_path;
+        }
+
         if (newData.year) {
           updateObj["data.year"] = newData.year;
         }
@@ -101,7 +105,6 @@ async function updateData(tempDoc, mainCollection) {
           { type: collection_type },
           { $set: updateObj }
         );
-
         return {
           success: true,
           message: `${quotaKey} link updated successfully`,
