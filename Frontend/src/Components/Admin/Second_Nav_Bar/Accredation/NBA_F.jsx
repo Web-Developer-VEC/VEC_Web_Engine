@@ -170,10 +170,9 @@ const NBA_F = ({ data }) => {
 
   useEffect(() => {
     if (Array.isArray(data)) {
-      const dataCopy = JSON.parse(JSON.stringify(data));
-      setEditableData(dataCopy);
-      originalDataRef.current = dataCopy;
-      lastSavedStateRef.current = dataCopy; // Initialize last saved state
+      setEditableData(JSON.parse(JSON.stringify(data)));
+      originalDataRef.current = JSON.parse(JSON.stringify(data));
+      lastSavedStateRef.current = JSON.parse(JSON.stringify(data));
     }
   }, [data]);
 
@@ -206,7 +205,7 @@ const NBA_F = ({ data }) => {
       // If unsaved changes exist, revert them
       setEditableData(JSON.parse(JSON.stringify(lastSavedStateRef.current)));
       setHasChanges(false);
- 
+
     } else {
     }
 
@@ -245,7 +244,7 @@ const NBA_F = ({ data }) => {
   };
 
   const handleAddRow = () => {
-    const updated = [...editableData];
+    const updated = JSON.parse(JSON.stringify(editableData));
     const newRow = {
       id: updated.length + 1,
       department: "",
@@ -266,7 +265,7 @@ const NBA_F = ({ data }) => {
   };
 
   const handleDeleteRow = (rowIndex) => {
-    const updated = [...editableData];
+    const updated = structuredClone(editableData);
     const deletedRow = updated[rowIndex];
     updated.splice(rowIndex, 1);
     setEditableData(updated);
@@ -323,9 +322,9 @@ const NBA_F = ({ data }) => {
         prevLogs.map((c) =>
           c.tempId === row._tempId && c.action === "Added"
             ? {
-                ...c,
-                data: { ...c.data, department: value },
-              }
+              ...c,
+              data: { ...c.data, department: value },
+            }
             : c,
         ),
       );
@@ -343,7 +342,7 @@ const NBA_F = ({ data }) => {
   };
 
   const handleAddPdf = (rowIndex) => {
-    const updated = [...editableData];
+    const updated = structuredClone(editableData);
     const row = updated[rowIndex];
 
     if (!Array.isArray(row.pdfs)) row.pdfs = [];
@@ -373,109 +372,109 @@ const NBA_F = ({ data }) => {
     });
   };
 
- const handleFileUpload = (rowIndex, pdfIndex, file) => {
-  const updated = [...editableData];
-  const row = updated[rowIndex];
-  const item = row?.pdfs?.[pdfIndex];
+  const handleFileUpload = (rowIndex, pdfIndex, file) => {
+    const updated = structuredClone(editableData);
+    const row = updated[rowIndex];
+    const item = row?.pdfs?.[pdfIndex];
 
-  if (!item) return;
+    if (!item) return;
 
-  const isNewRow = !!row._tempId;
-  const isNewPdf = !!item._tempId;
+    const isNewRow = !!row._tempId;
+    const isNewPdf = !!item._tempId;
 
-  const prevData = { pdf_path: item.pdf_path, file: item.file };
+    const prevData = { pdf_path: item.pdf_path, file: item.file };
 
-  const blobUrl = URL.createObjectURL(file);
+    const blobUrl = URL.createObjectURL(file);
 
-  // ✅ Always update state first
-  item.pdf_path = blobUrl;
-  item.file = file;
+    // ✅ Always update state first
+    item.pdf_path = blobUrl;
+    item.file = file;
 
-  setEditableData(updated);
-  setHasChanges(true);
+    setEditableData(updated);
+    setHasChanges(true);
 
-  // 🚫 If row is newly added → no logging
-  if (isNewRow) return;
+    // 🚫 If row is newly added → no logging
+    if (isNewRow) return;
 
-  // 🚫 If pdf is newly added → update Added log only
-  if (isNewPdf) {
-    setChangeLog((prev) =>
-      prev.map((c) =>
-        c.tempId === item._tempId && c.action === "Added"
-          ? { ...c, data: { ...c.data, name: item.name } }
-          : c
-      )
-    );
-    return;
-  }
-
-  // 🔵 Existing pdf → log Edited
-  upsertEditedLog(
-    (c) =>
-      c.type === "fileReplace" &&
-      c.rowIndex === rowIndex &&
-      c.pdfIndex === pdfIndex,
-    {
-      action: "Edited",
-      type: "fileReplace",
-      rowIndex,
-      pdfIndex,
-      prevData,
-      data: { name: item.name },
+    // 🚫 If pdf is newly added → update Added log only
+    if (isNewPdf) {
+      setChangeLog((prev) =>
+        prev.map((c) =>
+          c.tempId === item._tempId && c.action === "Added"
+            ? { ...c, data: { ...c.data, name: item.name } }
+            : c
+        )
+      );
+      return;
     }
-  );
-};
+
+    // 🔵 Existing pdf → log Edited
+    upsertEditedLog(
+      (c) =>
+        c.type === "fileReplace" &&
+        c.rowIndex === rowIndex &&
+        c.pdfIndex === pdfIndex,
+      {
+        action: "Edited",
+        type: "fileReplace",
+        rowIndex,
+        pdfIndex,
+        prevData,
+        data: { name: item.name },
+      }
+    );
+  };
 
 
   const handlePdfNameChange = (rowIndex, pdfIndex, value) => {
-  const updated = [...editableData];
-  const row = updated[rowIndex];
-  const item = row?.pdfs?.[pdfIndex];
+    const updated = structuredClone(editableData);
+    const row = updated[rowIndex];
+    const item = row?.pdfs?.[pdfIndex];
 
-  if (!item) return;
+    if (!item) return;
 
-  const isNewRow = !!row._tempId;
-  const isNewPdf = !!item._tempId;
+    const isNewRow = !!row._tempId;
+    const isNewPdf = !!item._tempId;
 
-  const prevName = item.name;
+    const prevName = item.name;
 
-  // ✅ Always update state first
-  item.name = value;
+    // ✅ Always update state first
+    item.name = value;
 
-  setEditableData(updated);
-  setHasChanges(true);
+    setEditableData(updated);
+    setHasChanges(true);
 
-  // 🚫 If row is newly added → do NOT log anything
-  if (isNewRow) return;
+    // 🚫 If row is newly added → do NOT log anything
+    if (isNewRow) return;
 
-  // 🚫 If pdf is newly added in existing row → update Added log only
-  if (isNewPdf) {
-    setChangeLog((prev) =>
-      prev.map((c) =>
-        c.tempId === item._tempId && c.action === "Added"
-          ? { ...c, data: { ...c.data, name: value } }
-          : c
-      )
-    );
-    return;
-  }
-
-  // 🔵 Existing PDF → log Edited
-  upsertEditedLog(
-    (c) =>
-      c.type === "pdfName" &&
-      c.rowIndex === rowIndex &&
-      c.pdfIndex === pdfIndex,
-    {
-      action: "Edited",
-      type: "pdfName",
-      rowIndex,
-      pdfIndex,
-      prevData: { name: prevName },
-      data: { name: value },
+    // 🚫 If pdf is newly added in existing row → update Added log only
+    if (isNewPdf) {
+      setChangeLog((prev) =>
+        prev.map((c) =>
+          c.tempId === item._tempId && c.action === "Added"
+            ? { ...c, data: { ...c.data, name: value } }
+            : c
+        )
+      );
+      return;
     }
-  );
-};
+
+    // 🔵 Existing PDF → log Edited
+    upsertEditedLog(
+      (c) =>
+        c.type === "pdfName" &&
+        c.rowIndex === rowIndex &&
+        c.pdfIndex === pdfIndex,
+      {
+        action: "Edited",
+        type: "pdfName",
+        rowIndex,
+        pdfIndex,
+        prevData: { name: prevName },
+        data: { name: value },
+      }
+    );
+  };
 
 
   const handleDeletePdf = (rowIndex, pdfIndex) => {
@@ -537,7 +536,7 @@ const NBA_F = ({ data }) => {
       setChangeLog([]);
       setEditMode(false);
       setHasChanges(false);
-  
+
     }
   };
 
@@ -961,9 +960,9 @@ const NBA_F = ({ data }) => {
                     deleteConfirm.type === "multiple"
                       ? handleDeleteSelected()
                       : handleDeletePdf(
-                          deleteConfirm.rowIndex,
-                          deleteConfirm.pdfIndex,
-                        )
+                        deleteConfirm.rowIndex,
+                        deleteConfirm.pdfIndex,
+                      )
                   }
                   className="px-4 py-2 rounded bg-red-600 text-white"
                 >
@@ -1001,13 +1000,12 @@ const NBA_F = ({ data }) => {
                       <tr key={change.id} className="border-t">
                         {/* Action */}
                         <td
-                          className={`py-2 ${
-                            change.action === "Added"
+                          className={`py-2 ${change.action === "Added"
                               ? "text-green-600"
                               : change.action === "Deleted"
                                 ? "text-red-600"
                                 : "text-blue-600"
-                          }`}
+                            }`}
                         >
                           {change.action}
                         </td>
