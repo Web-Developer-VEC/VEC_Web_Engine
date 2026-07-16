@@ -31,7 +31,7 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
         Zone: item.Zone || "",
         selected: false
       }));
-      
+
       const copy = deepCopy(formattedData);
       setCommittedRows(copy);
       setRows(deepCopy(copy));
@@ -62,10 +62,10 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
   };
 
   const handleAddRow = () => {
-    setRows((prev) => [...prev.map((r) => ({ ...r })), { 
-      id: Date.now(), 
-      mentee_institute: "", 
-      State: "", 
+    setRows((prev) => [...prev.map((r) => ({ ...r })), {
+      id: Date.now(),
+      mentee_institute: "",
+      State: "",
       Zone: "",
       selected: false
     }]);
@@ -73,16 +73,16 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
   };
 
   const handleRowSelect = (index) => {
-    const updatedRows = rows.map((row, i) => 
+    const updatedRows = rows.map((row, i) =>
       i === index ? { ...row, selected: !row.selected } : row
     );
-    
+
     setRows(updatedRows);
-    
+
     const selectedIndices = updatedRows
       .map((row, i) => row.selected ? i : -1)
       .filter(i => i !== -1);
-    
+
     setSelectedRows(selectedIndices);
     setSelectAll(selectedIndices.length === updatedRows.length && updatedRows.length > 0);
   };
@@ -90,10 +90,10 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
   const handleSelectAll = () => {
     const newSelectAll = !selectAll;
     setSelectAll(newSelectAll);
-    
+
     const updatedRows = rows.map(row => ({ ...row, selected: newSelectAll }));
     setRows(updatedRows);
-    
+
     setSelectedRows(newSelectAll ? rows.map((_, i) => i) : []);
   };
 
@@ -125,8 +125,8 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
   const handleSave = () => {
     // Check for empty fields
     const invalidRow = rows.find(row =>
-      !row.mentee_institute?.trim() || 
-      !row.State?.trim() || 
+      !row.mentee_institute?.trim() ||
+      !row.State?.trim() ||
       !row.Zone?.trim()
     );
 
@@ -151,7 +151,6 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
     setIsDirty(false);
     setSelectedRows([]);
     setSelectAll(false);
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
@@ -160,7 +159,7 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
 
   const buildPayload = () => {
     if (!pendingRows) return [];
-    
+
     const payload = [];
     const committedMap = new Map(committedRows.map(r => [r.id, r]));
     const pendingMap = new Map(pendingRows.map(r => [r.id, r]));
@@ -233,17 +232,17 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
 
   const handleFinalRequestConfirm = async () => {
     if (!pendingRows) return;
-    
+
     const payload = buildPayload();
-    
+
     if (payload.length === 0) {
       return;
     }
 
     console.log("Submitting mentee payload:", payload);
-    
+
     const result = await sendRequest(payload, []);
-    
+
     if (result) {
       // Update committed rows with pending rows
       setCommittedRows(deepCopy(pendingRows));
@@ -251,28 +250,71 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
       setPendingRows(null);
       setIsSaved(false);
       setShowRequestModal(false);
-    } 
+    }
   };
 
   const revertChange = (rowId) => {
     if (!pendingRows) return;
 
-    const committedRow = committedRows.find(r => r.id === rowId);
+    const committedRow = committedRows.find((r) => r.id === rowId);
     let updated;
 
     if (!committedRow) {
-      // Row was newly added → remove it
-      updated = pendingRows.filter(r => r.id !== rowId);
-    } else if (!pendingRows.find(r => r.id === rowId)) {
-      // Row was deleted → restore it
+      // Undo an added row
+      updated = pendingRows.filter((r) => r.id !== rowId);
+    } else if (!pendingRows.some((r) => r.id === rowId)) {
+      // Undo a deleted row
       updated = [...pendingRows, deepCopy(committedRow)];
     } else {
-      // Row was edited → reset to committed version
-      updated = pendingRows.map(r => r.id === rowId ? deepCopy(committedRow) : r);
+      // Undo an edited row
+      updated = pendingRows.map((r) =>
+        r.id === rowId ? deepCopy(committedRow) : r
+      );
     }
 
     setPendingRows(updated);
     setRows(deepCopy(updated));
+
+    // ---------- NEW CODE ----------
+    const committedMap = new Map(committedRows.map((r) => [r.id, r]));
+    const updatedMap = new Map(updated.map((r) => [r.id, r]));
+
+    let hasChanges = false;
+
+    // Check deleted / edited
+    for (const [id, oldRow] of committedMap) {
+      if (!updatedMap.has(id)) {
+        hasChanges = true;
+        break;
+      }
+
+      const newRow = updatedMap.get(id);
+
+      if (
+        oldRow.mentee_institute !== newRow.mentee_institute ||
+        oldRow.State !== newRow.State ||
+        oldRow.Zone !== newRow.Zone
+      ) {
+        hasChanges = true;
+        break;
+      }
+    }
+
+    // Check added rows
+    if (!hasChanges) {
+      for (const [id] of updatedMap) {
+        if (!committedMap.has(id)) {
+          hasChanges = true;
+          break;
+        }
+      }
+    }
+
+    if (!hasChanges) {
+      setPendingRows(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+    }
   };
 
   const getChanges = () => {
@@ -351,7 +393,7 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
             {title || "Mentee Institution"}
           </h2>
           {/* Edit button on right */}
-          {!isEditing  && (
+          {!isEditing && (
             <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
               <button
                 onClick={handleStartEdit}
@@ -488,7 +530,7 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
             </div>
           </>
         )}
-        
+
         {isSaved && (
           <div className="flex justify-end gap-3 mt-6">
             <button onClick={handleDiscard} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500">
@@ -546,8 +588,8 @@ const IICMentee = ({ title, data, collectionType = "mentee" }) => {
                 <p className="text-gray-600">No changes detected.</p>
               )}
               <div className="flex justify-end gap-2 mt-6">
-                <button 
-                  onClick={() => setShowRequestModal(false)} 
+                <button
+                  onClick={() => setShowRequestModal(false)}
                   className="px-4 py-2 rounded bg-gray-400 text-prim"
                   disabled={requestLoading}
                 >

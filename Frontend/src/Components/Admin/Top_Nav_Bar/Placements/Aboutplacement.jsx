@@ -334,7 +334,7 @@ const AdminAboutplacement = ({ theme, toggle }) => {
       // ✅ CORRECT: use the hook function directly
       await sendRequest(payload);
 
-      toast.success("✅ Request submitted successfully!");
+     
       setShowRequestModal(false);
       setPendingData(null);
 

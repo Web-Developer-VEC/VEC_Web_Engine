@@ -30,7 +30,7 @@ export default function IicFacnir({ data }) {
     const renderNIRContent = () => {
         return (
             <div className="nir-container">
-                <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">Yukthi National Innovation Repository (NIR)</h2>
+                <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">Yukti National Innovation Repository (NIR)</h2>
                 {nirSectionsArray.map((section, index) => (
                     <div key={index} className="nir-section">
                         <h3 className="nir-heading">{section.heading}</h3>

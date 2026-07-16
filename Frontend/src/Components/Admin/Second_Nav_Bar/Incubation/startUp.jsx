@@ -37,18 +37,19 @@ export default function Startup({ data }) {
     return `${day}.${month}.${year}`;
   };
 
-  const normalizeStartupRow = (row) => {
+const normalizeStartupRow = (row) => {
   const directors =
     Array.isArray(row?.directors)
       ? row.directors.map((d) => String(d).trim()).filter(Boolean)
       : typeof row?.directors === "string"
-        ? row.directors
-            .split(",")
-            .map((d) => d.trim())
-            .filter(Boolean)
-        : [];
+      ? row.directors
+          .split(",")
+          .map((d) => d.trim())
+          .filter(Boolean)
+      : [];
 
   return {
+    s_no: Number(row?.s_no) || 0,
     start_up_name: row?.start_up_name ?? "",
     directors,
     type: row?.type ?? "",
@@ -67,6 +68,7 @@ export default function Startup({ data }) {
       });
       originalRef.current = JSON.parse(JSON.stringify(withUids));
       sessionBaseRef.current = JSON.parse(JSON.stringify(withUids));
+      
       setEditableData(withUids);
       setSelectedRows(new Set());
       setIsEditing(false);
@@ -117,7 +119,6 @@ export default function Startup({ data }) {
     setIsEditing(false);
     setIsSavedOnce(true);
     sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
-    toast.success("Changes saved. Now you can Request.");
   };
 
   const handleCancelSession = () => {
@@ -222,7 +223,7 @@ export default function Startup({ data }) {
   };
 
   const deepEqualForRows = (a, b) => {
-  const ignoreFields = ["s_no"]; // 👈 ignore serial number
+  const ignoreFields = [];
 
   const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
 
@@ -309,7 +310,6 @@ export default function Startup({ data }) {
     sessionBaseRef.current = JSON.parse(JSON.stringify(editableData));
     setIsEditing(false);
     setIsSavedOnce(false);
-    toast.success("Request submitted.");
   };
 
   const handleUndoChange = (change) => {
@@ -603,7 +603,7 @@ export default function Startup({ data }) {
                           ) : (
                             <ul className="list-disc pl-5">
                               {Object.entries(change.original_data || {})
-                                .filter(([field]) => field !== "s_no") // 👈 ignore SL No here also
+                                .filter(() => true) 
                                 .map(([field, oldVal]) => {
                                 const newVal = (change.meta_data || {})[field];
                                 if (String(oldVal ?? "") === String(newVal ?? "")) return null;

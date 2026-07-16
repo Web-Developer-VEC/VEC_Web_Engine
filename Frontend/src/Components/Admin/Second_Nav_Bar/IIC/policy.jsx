@@ -6,10 +6,10 @@ import LoadComp from "../../LoadComp";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const deepCopy = (arr) =>
-  arr.map((item) => ({
-    ...item,
-    file: item.file ?? null, // ✅ preserve File reference
-  }));
+    arr.map((item) => ({
+        ...item,
+        file: item.file ?? null, // ✅ preserve File reference
+    }));
 
 
 export default function IicFacPolicy({ data }) {
@@ -23,7 +23,7 @@ export default function IicFacPolicy({ data }) {
     const [selectedRows, setSelectedRows] = useState(new Set());
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [pendingData, setPendingData] = useState(null);
-    const { sendRequest, loading: loadings , error } = useAdminRequest();
+    const { sendRequest, loading: loadings, error } = useAdminRequest();
 
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -71,47 +71,47 @@ export default function IicFacPolicy({ data }) {
         setSelectedRows(new Set());
     };
 
-const handleSave = () => {
-  if (!isDirty) {
-    return;
-  }
-
-  const invalidItem = tempData.find((item) => !item.name?.trim() || !item.pdf_path?.trim());
-  if (invalidItem) {
-    toast.error("Please fill all PDF names and upload files before saving!");
-    return;
-  }
-
-  setPendingData(deepCopy(tempData));
-  setIsSaved(true);
-  setIsEditing(false);
-  setIsDirty(false);
-  setSelectedRows(new Set());
-};
-
-const handleCancel = () => {
-    if (pendingData) {
-        // If there is a draft, revert tempData to pendingData
-        setTempData(deepCopy(pendingData));
-        if (activePdf) {
-            const resetPdf = pendingData.find((x) => x.id === activePdf.id);
-            setActivePdf(resetPdf || null);
+    const handleSave = () => {
+        if (!isDirty) {
+            return;
         }
 
-    } else {
-        // No draft, revert to original data
-        setTempData(deepCopy(originalData));
-        if (activePdf) {
-            const resetPdf = originalData.find((x) => x.id === activePdf.id);
-            setActivePdf(resetPdf || null);
+        const invalidItem = tempData.find((item) => !item.name?.trim() || !item.pdf_path?.trim());
+        if (invalidItem) {
+            toast.error("Please fill all PDF names and upload files before saving!");
+            return;
         }
-    }
 
-    setIsEditing(false);
-    setIsSaved(!!pendingData); // If draft exists, keep "isSaved = true"
-    setIsDirty(false);
-    setSelectedRows(new Set());
-};
+        setPendingData(deepCopy(tempData));
+        setIsSaved(true);
+        setIsEditing(false);
+        setIsDirty(false);
+        setSelectedRows(new Set());
+    };
+
+    const handleCancel = () => {
+        if (pendingData) {
+            // If there is a draft, revert tempData to pendingData
+            setTempData(deepCopy(pendingData));
+            if (activePdf) {
+                const resetPdf = pendingData.find((x) => x.id === activePdf.id);
+                setActivePdf(resetPdf || null);
+            }
+
+        } else {
+            // No draft, revert to original data
+            setTempData(deepCopy(originalData));
+            if (activePdf) {
+                const resetPdf = originalData.find((x) => x.id === activePdf.id);
+                setActivePdf(resetPdf || null);
+            }
+        }
+
+        setIsEditing(false);
+        setIsSaved(!!pendingData); // If draft exists, keep "isSaved = true"
+        setIsDirty(false);
+        setSelectedRows(new Set());
+    };
 
     const handleDiscard = () => {
         setTempData(deepCopy(originalData));
@@ -119,113 +119,111 @@ const handleCancel = () => {
         setIsSaved(false);
         setIsDirty(false);
         setSelectedRows(new Set());
-        toast.info("Changes discarded!");
     };
 
     const handleRequest = () => setShowRequestModal(true);
 
     const buildPolicyPayload = () => {
-  if (!pendingData) return { payload: [], files: [] };
+        if (!pendingData) return { payload: [], files: [] };
 
-  const payload = [];
-  const files = [];
+        const payload = [];
+        const files = [];
 
-  const originalMap = new Map(originalData.map((i) => [i.id, i]));
-  const pendingMap = new Map(pendingData.map((i) => [i.id, i]));
+        const originalMap = new Map(originalData.map((i) => [i.id, i]));
+        const pendingMap = new Map(pendingData.map((i) => [i.id, i]));
 
-  // INSERT & UPDATE
-  for (const [id, newItem] of pendingMap.entries()) {
-    const oldItem = originalMap.get(id);
+        // INSERT & UPDATE
+        for (const [id, newItem] of pendingMap.entries()) {
+            const oldItem = originalMap.get(id);
 
-    const serverPath = `/static/pdfs/iic/policy/${
-      newItem.file?.name || newItem.pdf_path?.split("/").pop()
-    }`;
+            const serverPath = `/static/pdfs/iic/policy/${newItem.file?.name || newItem.pdf_path?.split("/").pop()
+                }`;
 
-    // INSERT
-    if (!oldItem) {
-      payload.push({
-        collectionName: "iic",
-        collection_type: "policy",
-        action: "insert",
-        title: "Insert policy item",
-        meta_data: {
-          name: newItem.name,
-          pdf_path: serverPath,
-        },
-      });
+            // INSERT
+            if (!oldItem) {
+                payload.push({
+                    collectionName: "iic",
+                    collection_type: "policy",
+                    action: "insert",
+                    title: "Insert policy item",
+                    meta_data: {
+                        name: newItem.name,
+                        pdf_path: serverPath,
+                    },
+                });
 
-      if (newItem.file) files.push(newItem.file);
-    }
+                if (newItem.file) files.push(newItem.file);
+            }
 
-    // UPDATE
-    else if (
-      oldItem.name !== newItem.name ||
-      oldItem.pdf_path !== newItem.pdf_path
-    ) {
-      payload.push({
-        collectionName: "iic",
-        collection_type: "policy",
-        action: "update",
-        title: "Update policy item",
-        meta_data: {
-          name: newItem.name,
-          pdf_path: serverPath,
-        },
-        original_data: {
-          name: oldItem.name,
-          pdf_path: oldItem.pdf_path,
-        },
-      });
+            // UPDATE
+            else if (
+                oldItem.name !== newItem.name ||
+                oldItem.pdf_path !== newItem.pdf_path
+            ) {
+                payload.push({
+                    collectionName: "iic",
+                    collection_type: "policy",
+                    action: "update",
+                    title: "Update policy item",
+                    meta_data: {
+                        name: newItem.name,
+                        pdf_path: serverPath,
+                    },
+                    original_data: {
+                        name: oldItem.name,
+                        pdf_path: oldItem.pdf_path,
+                    },
+                });
 
-      if (newItem.file) files.push(newItem.file);
-    }
-  }
+                if (newItem.file) files.push(newItem.file);
+            }
+        }
 
-  // DELETE
-  for (const [id, oldItem] of originalMap.entries()) {
-    if (!pendingMap.has(id)) {
-      payload.push({
-        collectionName: "iic",
-        collection_type: "policy",
-        action: "delete",
-        title: "Delete policy item",
-        meta_data: {
-          name: oldItem.name,
-          pdf_path: oldItem.pdf_path,
-        },
-      });
-    }
-  }
+        // DELETE
+        for (const [id, oldItem] of originalMap.entries()) {
+            if (!pendingMap.has(id)) {
+                payload.push({
+                    collectionName: "iic",
+                    collection_type: "policy",
+                    action: "delete",
+                    title: "Delete policy item",
+                    meta_data: {
+                        name: oldItem.name,
+                        pdf_path: oldItem.pdf_path,
+                    },
+                });
+            }
+        }
 
-  return { payload, files };
-};
+        return { payload, files };
+    };
 
 
-const handleFinalRequestConfirm = async () => {
-  if (!pendingData || loadings) return;
+    const handleFinalRequestConfirm = async () => {
+        if (!pendingData || loadings) return;
 
-  const { payload, files } = buildPolicyPayload();
+        const { payload, files } = buildPolicyPayload();
 
-  if (payload.length === 0) {
-    return;
-  }
+        if (payload.length === 0) {
+            return;
+        }
 
-  console.log("📦 Policy Payload:", payload);
-  console.log("📁 Policy Files:", files);
+        console.log("📦 Policy Payload:", payload);
+        console.log("📁 Policy Files:", files);
 
-  try {
-    const result = await sendRequest(payload, files);
+        try {
+            const result = await sendRequest(payload, files);
 
-    if (result) {
-      setOriginalData(deepCopy(pendingData));
-      setTempData(deepCopy(pendingData));
-      setPendingData(null);
-      setIsSaved(false);
-      setShowRequestModal(false);
-    }
-  } catch (err) {
-  }
-};
+            if (result) {
+                setOriginalData(deepCopy(pendingData));
+                setTempData(deepCopy(pendingData));
+                setPendingData(null);
+                setIsSaved(false);
+                setShowRequestModal(false);
+            }
+        } catch (err) {
+        }
+    };
 
 
     const handleChange = (index, key, value) => {
@@ -238,48 +236,48 @@ const handleFinalRequestConfirm = async () => {
         setIsDirty(true);
     };
 
-const handleFileChange = (index, file) => {
-  const previewUrl = URL.createObjectURL(file);
+    const handleFileChange = (index, file) => {
+        const previewUrl = URL.createObjectURL(file);
 
-  setTempData((prev) => {
-    const updated = [...prev];
-    updated[index] = {
-      ...updated[index],
-      pdf_path: previewUrl, // preview
-      file: file,           // ✅ REAL FILE
+        setTempData((prev) => {
+            const updated = [...prev];
+            updated[index] = {
+                ...updated[index],
+                pdf_path: previewUrl, // preview
+                file: file,           // ✅ REAL FILE
+            };
+            return updated;
+        });
+
+        setIsDirty(true);
     };
-    return updated;
-  });
-
-  setIsDirty(true);
-};
 
 
     const hasRealChanges = (current, original) => {
-  if (current.length !== original.length) return true;
+        if (current.length !== original.length) return true;
 
-  const map = new Map(original.map((i) => [i.id, i]));
+        const map = new Map(original.map((i) => [i.id, i]));
 
-  return current.some((item) => {
-    const old = map.get(item.id);
-    if (!old) return true;
-    return (
-      old.name !== item.name ||
-      old.pdf_path !== item.pdf_path
-    );
-  });
-};
+        return current.some((item) => {
+            const old = map.get(item.id);
+            if (!old) return true;
+            return (
+                old.name !== item.name ||
+                old.pdf_path !== item.pdf_path
+            );
+        });
+    };
 
 
-const handleAddPdf = () => {
-  const updated = [
-    ...tempData,
-    { id: Date.now(), name: "New Policy", pdf_path: "", selected: false },
-  ];
+    const handleAddPdf = () => {
+        const updated = [
+            ...tempData,
+            { id: Date.now(), name: "New Policy", pdf_path: "", selected: false },
+        ];
 
-  setTempData(updated);
-  setIsDirty(hasRealChanges(updated, originalData));
-};
+        setTempData(updated);
+        setIsDirty(hasRealChanges(updated, originalData));
+    };
 
 
     const toggleSelectRow = (index) => {
@@ -289,23 +287,23 @@ const handleAddPdf = () => {
         setSelectedRows(nxt);
     };
 
-const confirmDelete = () => {
-  setTempData((prev) => {
-    const updated = prev.filter((_, i) => !selectedRows.has(i));
+    const confirmDelete = () => {
+        setTempData((prev) => {
+            const updated = prev.filter((_, i) => !selectedRows.has(i));
 
-    if (activePdf && !updated.some((item) => item.id === activePdf.id)) {
-      setActivePdf(null);
-    }
+            if (activePdf && !updated.some((item) => item.id === activePdf.id)) {
+                setActivePdf(null);
+            }
 
-    // ✅ recompute dirty correctly
-    setIsDirty(hasRealChanges(updated, originalData));
+            // ✅ recompute dirty correctly
+            setIsDirty(hasRealChanges(updated, originalData));
 
-    return updated;
-  });
+            return updated;
+        });
 
-  setSelectedRows(new Set());
-  setShowDeleteModal(false);
-};
+        setSelectedRows(new Set());
+        setShowDeleteModal(false);
+    };
 
 
     const getChanges = () => {
@@ -331,15 +329,50 @@ const confirmDelete = () => {
 
     const revertChange = (rowId) => {
         if (!pendingData) return;
+
         const oldItem = originalData.find((o) => o.id === rowId);
+
         let reverted;
+
         if (oldItem) {
-            reverted = pendingData.map((item) => (item.id === rowId ? deepCopy(oldItem) : item));
+            // Restore original item
+            reverted = pendingData.map((item) =>
+                item.id === rowId
+                    ? {
+                        ...oldItem,
+                        file: null,
+                    }
+                    : item
+            );
         } else {
+            // Undo insert
             reverted = pendingData.filter((item) => item.id !== rowId);
         }
+
         setPendingData(reverted);
         setTempData(deepCopy(reverted));
+
+        // Calculate remaining changes
+        const originalMap = new Map(originalData.map((i) => [i.id, i]));
+
+        const remainingChanges = reverted.filter((item) => {
+            const old = originalMap.get(item.id);
+
+            if (!old) return true;
+
+            return (
+                old.name !== item.name ||
+                old.pdf_path !== item.pdf_path
+            );
+        });
+
+        if (remainingChanges.length === 0) {
+            setShowRequestModal(false);
+            setPendingData(null);
+            setTempData(deepCopy(originalData));
+            setIsSaved(false);
+            setIsDirty(false);
+        }
     };
 
     const changes = getChanges();
@@ -357,22 +390,22 @@ const confirmDelete = () => {
             <ToastContainer position="bottom-right" autoClose={2000} />
 
             {/* Header */}
-<div className="relative mb-6 w-full">
-  {/* Title centered */}
-<h1 className="text-accn dark:text-drkt text-4xl mb-4 font-bold">Policy</h1>
+            <div className="relative mb-6 w-full">
+                {/* Title centered */}
+                <h1 className="text-accn dark:text-drkt text-4xl mb-4 font-bold">Policy</h1>
 
-  {/* Edit button on right */}
-  {!isEditing && (
-    <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
-      <button
-        onClick={handleEdit}
-        className="flex items-center gap-2 px-4 py-2 bg-secd dark:bg-drks text-text dark:text-prim rounded hover:bg-accn hover:text-prim dark:hover:bg-brwn"
-      >
-        <Pencil size={18} /> Edit
-      </button>
-    </div>
-  )}
-</div>
+                {/* Edit button on right */}
+                {!isEditing && (
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+                        <button
+                            onClick={handleEdit}
+                            className="flex items-center gap-2 px-4 py-2 bg-secd dark:bg-drks text-text dark:text-prim rounded hover:bg-accn hover:text-prim dark:hover:bg-brwn"
+                        >
+                            <Pencil size={18} /> Edit
+                        </button>
+                    </div>
+                )}
+            </div>
 
             {/* Policy Buttons */}
             <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,prim)] height">
@@ -382,11 +415,10 @@ const confirmDelete = () => {
                             <button
                                 type="button"
                                 onClick={() => handleButtonClick(item)}
-                                className={`px-6 py-3 font-semibold rounded-xl w-100 ${
-                                    activePdf?.id === item?.id
+                                className={`px-6 py-3 font-semibold rounded-xl w-100 ${activePdf?.id === item?.id
                                         ? "bg-[#800000] text-prim"
                                         : "bg-secd dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-cewn"
-                                }`}
+                                    }`}
                             >
                                 {isEditing ? (
                                     <div className="relative uppercase">
@@ -500,7 +532,7 @@ const confirmDelete = () => {
                                     onClick={handleSave}
                                     className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
                                 >
-                                     Save
+                                    Save
                                 </button>
                             )}
                         </div>
@@ -579,15 +611,14 @@ const confirmDelete = () => {
                             </button>
                             {changes.length > 0 && (
                                 <button
-                                onClick={handleFinalRequestConfirm}
-                                disabled={loadings}
-                                className={`px-4 py-2 rounded ${
-                                    loadings
-                                    ? "bg-gray-400 cursor-not-allowed text-white"
-                                    : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                                }`}
+                                    onClick={handleFinalRequestConfirm}
+                                    disabled={loadings}
+                                    className={`px-4 py-2 rounded ${loadings
+                                            ? "bg-gray-400 cursor-not-allowed text-white"
+                                            : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                                        }`}
                                 >
-                                {loadings ? "Processing..." : "Final Request"}
+                                    {loadings ? "Processing..." : "Final Request"}
                                 </button>
 
                             )}

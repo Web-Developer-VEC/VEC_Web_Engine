@@ -166,7 +166,7 @@ export default function Seedmoney({ data }) {
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(true);
-    toast.success("Changes saved. Now you can Request or Edit again.");
+  
   };
 
   const handleCancelSession = () => {
@@ -325,7 +325,6 @@ export default function Seedmoney({ data }) {
     const res = await sendRequest(payloads);
     if (!res) return;
 
-    toast.success(res.message || "Final request submitted");
     setShowRequestModal(false);
 
     // reset trackers

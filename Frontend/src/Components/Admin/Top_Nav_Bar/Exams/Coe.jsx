@@ -233,16 +233,20 @@ const AdminCoe = ({ toggle, theme }) => {
     const memberName = updated[sIdx].members[mIdx].name;
     const key = memberKey(updated[sIdx].members[mIdx]);
 
-    setChanges((prev) => [
-      ...prev.filter((c) => !(c.sIdx === sIdx && c.mKey === key)),
-      {
-        action: "Edited",
-        section: updated[sIdx].category,
-        sIdx,
-        mKey: key,
-        name: memberName || "(Unnamed)",
-      },
-    ]);
+    setChanges((prev) => {
+      const existing = prev.find((c) => c.sIdx === sIdx && c.mKey === key);
+
+      return [
+        ...prev.filter((c) => !(c.sIdx === sIdx && c.mKey === key)),
+        {
+          action: existing?.action === "Added" ? "Added" : "Edited",
+          section: updated[sIdx].category,
+          sIdx,
+          mKey: key,
+          name: memberName || "(Unnamed)",
+        },
+      ];
+    });
   };
 
   const handleImageUpload = (sIdx, mIdx, file) => {
@@ -261,16 +265,20 @@ const AdminCoe = ({ toggle, theme }) => {
     const memberName = updated[sIdx].members[mIdx].name;
     const key = memberKey(updated[sIdx].members[mIdx]);
 
-    setChanges((prev) => [
-      ...prev.filter((c) => !(c.sIdx === sIdx && c.mKey === key)),
-      {
-        action: "Image Changed",
-        section: updated[sIdx].category,
-        sIdx,
-        mKey: key,
-        name: memberName || "(Unnamed)",
-      },
-    ]);
+    setChanges((prev) => {
+      const existing = prev.find((c) => c.sIdx === sIdx && c.mKey === key);
+
+      return [
+        ...prev.filter((c) => !(c.sIdx === sIdx && c.mKey === key)),
+        {
+          action: existing?.action === "Added" ? "Added" : "Image Changed",
+          section: updated[sIdx].category,
+          sIdx,
+          mKey: key,
+          name: memberName || "(Unnamed)",
+        },
+      ];
+    });
   };
 
   const handleCheckboxChange = (sIdx, mIdx) => {
@@ -456,7 +464,11 @@ const AdminCoe = ({ toggle, theme }) => {
 
   return (
     <>
-      <ToastContainer position="bottom-right" autoClose={2500} hideProgressBar={false} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2500}
+        hideProgressBar={false}
+      />
       <Banner
         toggle={toggle}
         theme={theme}
@@ -464,8 +476,7 @@ const AdminCoe = ({ toggle, theme }) => {
         headerText="office of controller of examinations"
         subHeaderText="COE"
       />
-      
-      
+
       <div className="relative py-10 px-4 md:px-20 bg-prim dark:bg-drkp justify-center font-[Poppins]">
         {!isEditing && !requestMode && (
           <button
@@ -718,8 +729,6 @@ const AdminCoe = ({ toggle, theme }) => {
                     key={key}
                     className="relative flex bg-prim dark:bg-text w-full sm:w-[90%] md:w-[45%] lg:w-[430px] border-2 border-yellow-500 rounded-xl p-3 sm:p-4 gap-3"
                   >
-                          
-                    
                     {isEditing && (
                       <input
                         type="checkbox"
@@ -745,7 +754,6 @@ const AdminCoe = ({ toggle, theme }) => {
                           No Image
                         </div>
                       )}
-                      
 
                       {isEditing && (
                         <>
@@ -777,7 +785,6 @@ const AdminCoe = ({ toggle, theme }) => {
                         </>
                       )}
                     </div>
-                   
 
                     <div className="flex flex-col flex-1 justify-center">
                       {isEditing ? (
