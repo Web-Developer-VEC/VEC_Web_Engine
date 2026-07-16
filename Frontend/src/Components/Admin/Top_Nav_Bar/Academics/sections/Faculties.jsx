@@ -230,7 +230,7 @@ export default function Faculties({ data }) {
       designation: "",
       image_path: "",
       socialmedia_links: {},
-      resume_pdf: "",
+      pdf_path: "",
     };
 
     if (section === "teaching") {
@@ -496,7 +496,7 @@ export default function Faculties({ data }) {
               Linkedin={hod?.socialmedia_links?.linkedin}
               firstTile={true}
               uid={hod?.unique_id ?? "hod"}
-              profile={hod?.resume_pdf}
+              profile={hod?.pdf_path}
               isEdit={isEditing}
               teaching={true}
               onChange={(field, value, uid) => handleHodChange(field, value)}
@@ -540,7 +540,7 @@ export default function Faculties({ data }) {
                 Scopus={faculty?.socialmedia_links?.scopus}
                 Linkedin={faculty?.socialmedia_links?.linkedin}
                 uid={getId(faculty)}
-                profile={faculty?.resume_pdf}
+                profile={faculty?.pdf_path}
                 firstTile={false}
                 isViewmore={true}
                 teaching={true}
@@ -575,7 +575,7 @@ export default function Faculties({ data }) {
                 Scopus={faculty?.socialmedia_links?.scopus}
                 Linkedin={faculty?.socialmedia_links?.linkedin}
                 uid={getId(faculty)}
-                profile={faculty?.resume_pdf}
+                profile={faculty?.pdf_path}
                 isViewmore={false}
                 teaching={false}
                 isEdit={isEditing}

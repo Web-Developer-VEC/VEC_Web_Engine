@@ -140,7 +140,7 @@
             "name": "Dr. SURESH KUMAR K",
             "department_name": "Electrical & Electronics Engineering (EEE)",
             "unique_id": "VEC-007-01-125",
-            "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-03-500.pdf",
+            "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-03-500.pdf",
             "qualification": [
               "M.E.",
               "Ph.D"
@@ -148,7 +148,7 @@
             "hod_message": [
               "In the era of engineering and technology, the role of electrical student engineers is not only to pursue academic excellence but also to motivate and empower to be lifelong learners, critical thinkers, and productive members of an ever-changing global society. In this direction, the department provides an excellent environment for our students and faculties to work with zeal and enthusiasm with an aim to give their best. The department also provides facilities to carry out research in the emerging technology areas. The commitment and passion for learning and teaching by the students as well as faculties will definitely lead our future budding engineers to be industry ready."
             ],
-            "hod_image": "/static/images/hods/eee.webp",
+            "image_path": "/static/images/hods/eee.webp",
             "designation": "Professor & Head",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/sureshkumar-k-19111860/",
@@ -198,7 +198,7 @@
               "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-03-500.webp",
-            "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-03-500.pdf"
+            "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-03-500.pdf"
           }
         ]
       },
@@ -218,7 +218,7 @@
                 "scopus": "https://tinyurl.com/743phucx"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-02-165.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-02-165.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-02-165.pdf"
             },
             {
               "name": "Dr. GEETHA R",
@@ -233,7 +233,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-185.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-185.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-185.pdf"
             },
             {
               "name": "Dr. RAGHURAMAN S",
@@ -248,7 +248,7 @@
                 "scopus": "https://www.scopus.com/results/authorNamesList.uri?..."
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-109.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-109.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-109.pdf"
             },
             {
               "name": "Mrs. SELVE V",
@@ -263,7 +263,7 @@
                 "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57941486900"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-149.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-149.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-149.pdf"
             },
             {
               "name": "Dr. ANGALAPARAMESWARI G",
@@ -278,7 +278,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-164.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-164.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-164.pdf"
             },
             {
               "name": "Dr. SUNITHA D",
@@ -293,7 +293,7 @@
                 "scopus": "https://www.scopus.com/home.uri"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-159.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-159.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-159.pdf"
             },
             {
               "name": "Dr. VIDHYA K",
@@ -308,7 +308,7 @@
                 "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-178.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-178.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-178.pdf"
             },
             {
               "name": "Mrs. KASIRATHI N",
@@ -323,7 +323,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-187.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-187.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-187.pdf"
             },
             {
               "name": "Mr. JAGADEESH BABU V",
@@ -338,7 +338,7 @@
                 "scopus": "https://www.editorialmanager.com/dwt/default2.aspx"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-117.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-117.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-117.pdf"
             },
             {
               "name": "Mr. RENGARAJAN V",
@@ -353,7 +353,7 @@
                 "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-184.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-184.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-184.pdf"
             },
             {
               "name": "Mrs. VIJAYALAKSHMI M",
@@ -368,7 +368,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-502.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-502.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-502.pdf"
             },
              
             {
@@ -384,7 +384,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-100.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-100.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-100.pdf"
             },
             {
               "name": "Mrs. DEVIKA B",
@@ -399,7 +399,7 @@
                 "scopus": "https://www.scopus.com/home.uri"
               },
               "image_path": "/static/images/profile_photos/007/VEC-007-04-501.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/007/VEC-007-04-501.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/007/VEC-007-04-501.pdf"
             }
            
         ]
@@ -420,7 +420,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-05-008.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           },
           {
             "name": "Mr. RAJENDRAN.P",
@@ -435,7 +435,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-05-009.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           },
           {
             "name": "Mr. RANGARAJAN K",
@@ -450,7 +450,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-05-010.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           },
           {
             "name": "Mr. SELVAKUMAR.P",
@@ -465,7 +465,7 @@
               "scopus": ""
             },
             "image_path": "/static/images/profile_photos/007/VEC-007-05-019.webp",
-            "resume_pdf": ""
+            "pdf_path": ""
           }
         ]
       }

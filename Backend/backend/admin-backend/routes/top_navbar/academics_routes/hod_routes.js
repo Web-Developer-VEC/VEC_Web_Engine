@@ -15,7 +15,7 @@ router.post(
     '/hodadmin',
     checkRole(["super_admin"]),
     handleTempApproval,
-    handleTempAction(updateData),   
+    handleTempAction(null,updateData,null),   
     );
 
 
