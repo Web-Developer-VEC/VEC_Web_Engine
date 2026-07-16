@@ -394,5 +394,5 @@ const Head = () => {
     )
 }
 
-
+// Static problem in hrhandbook link, should be fixed to point to the correct URL.
 export default Head;
