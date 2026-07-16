@@ -21,22 +21,22 @@ async function landingpageHandler(fileStream, docs, req, cb, filename, mimetype)
     const effectivepdfMime =
       mimetype || filename?.mimeType || "application/pdf";
 
-     const extname = path.extname(
-          typeof filename === "string" ? filename : filename?.filename || ""
-        ).toLowerCase();
-    
-    
-        if (extname === ".pdf") {
-          if (!effectivepdfMime.startsWith("application/pdf")) {
-            fileStream.resume();
-            return cb(new Error("Only PDFs are allowed"));
-          }
-        } else {
-          if (!effectiveimageMime.startsWith("image/")) {
-            fileStream.resume();
-            return cb(new Error("Only images are allowed"));
-          }
-        }
+    const extname = path.extname(
+      typeof filename === "string" ? filename : filename?.filename || ""
+    ).toLowerCase();
+
+
+    if (extname === ".pdf") {
+      if (!effectivepdfMime.startsWith("application/pdf")) {
+        fileStream.resume();
+        return cb(new Error("Only PDFs are allowed"));
+      }
+    } else {
+      if (!effectiveimageMime.startsWith("image/")) {
+        fileStream.resume();
+        return cb(new Error("Only images are allowed"));
+      }
+    }
 
 
     const collection_type = docs[0]?.collection_type;
@@ -50,34 +50,46 @@ async function landingpageHandler(fileStream, docs, req, cb, filename, mimetype)
     }
     const fileBuffer = Buffer.concat(chunks);
 
-    let last, folder, s3Key, command, type,mimeType;
+    let last, folder, s3Key, command, type, mimeType;
     let ext;
     if (collection_type === "events") {
       mimeType = effectiveimageMime;
-        ext = path.extname(realimagename) || ".jpg";
-        type = "images";
-        last =`events/${ meta_data?.title}`;
+      ext = path.extname(realimagename) || ".jpg";
+      type = "images";
+      last = `events/${meta_data?.title}`;
     }
-    else if (collection_type === "popup"){
-      if(extname === ".pdf"){
-         mimeType = effectivepdfMime;
-            ext = path.extname(realpdfname) || ".pdf";
-            type = "pdfs";
-            last =`popup/${ meta_data?.name}`;
+    else if (collection_type === "popup") {
+      if (extname === ".pdf") {
+        mimeType = effectivepdfMime;
+        ext = path.extname(realpdfname) || ".pdf";
+        type = "pdfs";
+        last = `popup/${meta_data?.name}`;
 
-      }else{
+      } else {
         mimeType = effectiveimageMime;
         ext = path.extname(realimagename) || ".jpg";
         type = "images";
-        last =`popup/${ meta_data?.name}`;
+        last = `popup/${meta_data?.name}`;
       }
     }
     else if (collection_type === "announcements") {
       mimeType = effectivepdfMime;
-            ext = path.extname(realpdfname) || ".pdf";
-            type = "pdfs";
-            last =`announcements/${ meta_data?.announcement_name}`;
-    } 
+      ext = path.extname(realpdfname) || ".pdf";
+      type = "pdfs";
+      last = `announcements/${meta_data?.announcement_name}`;
+    } else if (collection_type === "news_card") {
+      if (extname === ".pdf") {
+        mimeType = effectivepdfMime;
+        ext = path.extname(realpdfname) || ".pdf";
+        type = "pdfs";
+        last = `newscard/${meta_data?.title}`;
+      } else {
+        mimeType = effectiveimageMime;
+        ext = path.extname(realimagename) || ".jpg";
+        type = "images";
+        last = `newscard/${meta_data?.title}`;
+      }
+    }
     else {
       return cb(new Error("Unsupported collection type"));
     }

@@ -154,7 +154,6 @@ function IICFaculty({ data }) {
     setIsDirty(false);
     setSelectedRows(new Set());
     setSelectAll(false);
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
@@ -244,7 +243,7 @@ function IICFaculty({ data }) {
         setIsDirty(false);
       }
     } catch (err) {
-      console.error("Final request error (faculty):", err);
+      console.error("Final request error (faculty):", err);    
     }
   };
 
@@ -349,6 +348,7 @@ function IICFaculty({ data }) {
 
   return (
     <>
+      <ToastContainer position="bottom-right" autoClose={3000} newestOnTop closeOnClick pauseOnHover />
       <div className="p-8 relative">
         {/* Header with Edit Button */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-6">
@@ -546,7 +546,6 @@ function IICFaculty({ data }) {
           </div>
         )}
 
-        <ToastContainer position="bottom-right" autoClose={2000} />
       </div>
     </>
   );
@@ -575,16 +574,15 @@ const IICStudent = ({ data = [] }) => {
           categoryBlock.members?.map((member, memIdx) => ({
             id: member.id || `${idx}-${memIdx}`,
             name: member.name || "",
-            // mail_id: member.mail_id || "",
-            // phone: member.phone || "",
-            // sex: member.sex || "",
+            mail_id: member["mail id"] || "",
+            phone: member.phone || "",
+            sex: member.sex || "",
             responsibility: member.responsibility || "",
             dept: member.dept || "",
             year: member.year || "",
             selected: false,
           })) || [],
       }));
-
       const copy = deepCopy(formattedData);
       setCommittedRows(copy);
       setRows(deepCopy(copy));
@@ -681,13 +679,13 @@ const IICStudent = ({ data = [] }) => {
 
   const handleSave = () => {
     const invalidItem = rows.some((category) =>
-      category.members.some((member) => 
-        !member.name?.trim() || 
+      category.members.some((member) =>
+        !member.name?.trim() ||
         // !member.mail_id?.trim() || 
         // !member.phone?.trim() || 
         // !member.sex?.trim() || 
-        !member.responsibility?.trim() || 
-        !member.dept?.trim() || 
+        !member.responsibility?.trim() ||
+        !member.dept?.trim() ||
         !member.year?.trim()
       )
     );
@@ -713,7 +711,6 @@ const IICStudent = ({ data = [] }) => {
     setIsDirty(false);
     setSelectedRows(new Set());
     setSelectAll(false);
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
@@ -722,13 +719,13 @@ const IICStudent = ({ data = [] }) => {
 
   const buildPayload = () => {
     if (!pendingRows) return [];
-    
+
     const payload = [];
-    
+
     // Create maps for easy lookup
     const committedFlat = [];
     const pendingFlat = [];
-    
+
     // Flatten committed rows
     committedRows.forEach((categoryBlock, catIdx) => {
       categoryBlock.members.forEach((member, memIdx) => {
@@ -740,7 +737,7 @@ const IICStudent = ({ data = [] }) => {
         });
       });
     });
-    
+
     // Flatten pending rows
     pendingRows.forEach((categoryBlock, catIdx) => {
       categoryBlock.members.forEach((member, memIdx) => {
@@ -752,11 +749,11 @@ const IICStudent = ({ data = [] }) => {
         });
       });
     });
-    
+
     // Create maps by id
     const committedMap = new Map(committedFlat.map(m => [m.id, m]));
     const pendingMap = new Map(pendingFlat.map(m => [m.id, m]));
-    
+
     // Check for deleted members
     committedFlat.forEach(oldMember => {
       if (!pendingMap.has(oldMember.id)) {
@@ -778,7 +775,7 @@ const IICStudent = ({ data = [] }) => {
         });
       }
     });
-    
+
     // Check for added and updated members
     pendingFlat.forEach(newMember => {
       if (!committedMap.has(newMember.id)) {
@@ -791,9 +788,9 @@ const IICStudent = ({ data = [] }) => {
           category: newMember.category,
           meta_data: {
             name: newMember.name,
-            // mail_id: newMember.mail_id,
-            // phone: newMember.phone,
-            // sex: newMember.sex,
+            mail_id: newMember.mail_id,
+            phone: newMember.phone,
+            sex: newMember.sex,
             year: newMember.year,
             dept: newMember.dept,
             responsibility: newMember.responsibility
@@ -804,13 +801,14 @@ const IICStudent = ({ data = [] }) => {
         // Check if member was updated
         if (
           oldMember.name !== newMember.name ||
-          // oldMember.mail_id !== newMember.mail_id ||
-          // oldMember.phone !== newMember.phone ||
-          // oldMember.sex !== newMember.sex ||
+          oldMember.mail_id !== newMember.mail_id ||
+          oldMember.phone !== newMember.phone ||
+          oldMember.sex !== newMember.sex ||
           oldMember.year !== newMember.year ||
           oldMember.dept !== newMember.dept ||
           oldMember.responsibility !== newMember.responsibility
         ) {
+          console.log("kldha",oldMember,newMember)
           payload.push({
             collectionName: "iic",
             collection_type: "student_representation",
@@ -819,18 +817,18 @@ const IICStudent = ({ data = [] }) => {
             category: newMember.category,
             meta_data: {
               name: newMember.name,
-              // mail_id: newMember.mail_id,
-              // phone: newMember.phone,
-              // sex: newMember.sex,
+              "mail id": newMember.mail_id,
+              phone: newMember.phone,
+              sex: newMember.sex,
               year: newMember.year,
               dept: newMember.dept,
-              responsibility: newMember.responsibility
+              responsibility: newMember.responsibility,
             },
             original_data: {
               name: oldMember.name,
-              // mail_id: oldMember.mail_id,
-              // phone: oldMember.phone,
-              // sex: oldMember.sex,
+             "mail id" : oldMember.mail_id,
+              phone: oldMember.phone,
+              sex: oldMember.sex,
               year: oldMember.year,
               dept: oldMember.dept,
               responsibility: oldMember.responsibility
@@ -839,31 +837,33 @@ const IICStudent = ({ data = [] }) => {
         }
       }
     });
-    
+
     return payload;
   };
 
   const handleFinalRequestConfirm = async () => {
     if (!pendingRows) return;
-    
+
     const payload = buildPayload();
-    
+
     if (payload.length === 0) {
       return;
     }
 
     console.log("Submitting student payload:", payload);
-    
+
     const result = await sendRequest(payload, []);
-    
+
     if (result) {
       // Update committed rows with pending rows
+
+
       setCommittedRows(deepCopy(pendingRows));
       setRows(deepCopy(pendingRows));
       setPendingRows(null);
       setIsSaved(false);
       setShowRequestModal(false);
-     }
+    }
   };
 
   // Advanced change tracking with revert functionality
@@ -980,6 +980,7 @@ const IICStudent = ({ data = [] }) => {
 
   return (
     <div className="p-2 relative">
+      <ToastContainer position="bottom-right" autoClose={3000} newestOnTop closeOnClick pauseOnHover />
       <div className="flex flex-col md:flex-row items-center justify-between mb-6">
         {/* Title centered */}
         <div className="flex-1 flex justify-center md:justify-center">
@@ -1179,8 +1180,8 @@ const IICStudent = ({ data = [] }) => {
               <p className="text-gray-600">No changes detected.</p>
             )}
             <div className="flex justify-end gap-2 mt-6">
-              <button 
-                onClick={() => setShowRequestModal(false)} 
+              <button
+                onClick={() => setShowRequestModal(false)}
                 className="px-4 py-2 rounded bg-gray-400 text-prim"
                 disabled={requestLoading}
               >
@@ -1220,7 +1221,6 @@ const IICStudent = ({ data = [] }) => {
         </div>
       )}
 
-      <ToastContainer position="bottom-right" autoClose={2000} />
     </div>
   );
 };

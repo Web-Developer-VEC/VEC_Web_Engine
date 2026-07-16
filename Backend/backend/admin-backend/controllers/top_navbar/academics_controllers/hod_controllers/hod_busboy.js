@@ -73,7 +73,7 @@ async function hodHandler(fileStream, docs, req, cb, filename, mimetype) {
       location: `/${s3Key}`,
       mimetype: effectiveMime,
       department: folderId,
-      type: isPdf ? "resume_pdf" : "hod_image",
+      type: isPdf ? "pdf_path" : "image_path",
     });
 
     cb(null, data);
