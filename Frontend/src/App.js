@@ -310,7 +310,6 @@ const App = () => {
                                 <Route path="/grievances" drk element={<GrievanceForm toggle={toggle} theme={theme} />}/>
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />}/>
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
-                                <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme}/>}/>
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
                                 <Route path="/hostel/warden/*" element={<WardenLayout />} />
@@ -333,6 +332,10 @@ const App = () => {
                                 <Route path="*" element={<NotFound />} />
                                 {/* Rate limit page */}
                                 <Route path="/ratelimit" element={<RateLimitReach />} />
+
+                                {/*Redirect To Home*/}
+                                <Route path="/Accredation" element={<Navigate to="/" replace />} />
+
                             </Routes>
                         </Suspense>
 
