@@ -123,7 +123,6 @@ function IicHome({ data }) {
     setIsEditing(false);
     setIsDirty(false);
     setEmptyFields([]);
-    toast.success("Changes saved successfully!");
   };
 
   const handleDiscard = () => {
@@ -132,7 +131,6 @@ function IicHome({ data }) {
     setIsSaved(false);
     setIsDirty(false);
     setEmptyFields([]);
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
@@ -196,7 +194,6 @@ function IicHome({ data }) {
         setIsSaved(false);
         setShowRequestModal(false);
         setEmptyFields([]);
-        toast.success("Request submitted successfully!");
       }
     } catch (err) {
       console.error("IIC final request error:", err);
@@ -210,7 +207,6 @@ function IicHome({ data }) {
     setIsSaved(false);
     setShowRequestModal(false);
     setEmptyFields([]);
-    toast.info("Changes reverted!");
   };
 
   const getChanges = () => {

@@ -62,9 +62,8 @@ function IicEco({ data, isEditing, onUpdate }) {
                     type="text"
                     value={point}
                     onChange={(e) => handleChange(i, e.target.value)}
-                    className={`w-full p-2 border rounded ${
-                      !point.trim() ? "border-red-500 bg-red-50" : "border-gray-300"
-                    }`}
+                    className={`w-full p-2 border rounded ${!point.trim() ? "border-red-500 bg-red-50" : "border-gray-300"
+                      }`}
                     placeholder="Function point (required)"
                     required
                   />
@@ -82,6 +81,18 @@ function IicEco({ data, isEditing, onUpdate }) {
             {/* <button onClick={handleAddPoint} className="flex items-center gap-1 mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600">
                 <Plus size={16} /> Add Point
               </button> */}
+            <div className="flex justify-center mt-5">
+              <button
+                onClick={handleAddPoint}
+                className="flex items-center gap-2 px-5 py-2 rounded-lg
+               bg-[#fdcc03] text-text font-medium
+               hover:bg-[#800000] hover:text-white
+               transition-all duration-300 shadow-md"
+              >
+                <PlusCircle size={18} />
+                Add Function
+              </button>
+            </div>
           </div>
         ) : (
           <p className="text-justify">
@@ -143,7 +154,7 @@ function IicEst({ data }) {
   // Check for empty fields across all categories
   const checkEmptyFields = (itemsList) => {
     const empty = {};
-    
+
     itemsList.forEach(item => {
       if (item.category === "vision" || item.category === "mission") {
         // Single text field
@@ -165,7 +176,7 @@ function IicEst({ data }) {
         }
       }
     });
-    
+
     return empty;
   };
 
@@ -199,7 +210,7 @@ function IicEst({ data }) {
     });
     setItems(updated);
     setIsDirty(true);
-    
+
     // Update empty fields
     setEmptyFields(checkEmptyFields(updated));
   };
@@ -245,11 +256,11 @@ function IicEst({ data }) {
     // Validate all fields are filled
     const emptyFieldsObj = checkEmptyFields(items);
     const hasEmptyFields = Object.keys(emptyFieldsObj).length > 0;
-    
+
     if (hasEmptyFields) {
       // Create detailed error message
       const emptyMessages = [];
-      
+
       Object.entries(emptyFieldsObj).forEach(([category, value]) => {
         if (category === "vision") {
           emptyMessages.push("Vision statement");
@@ -265,7 +276,7 @@ function IicEst({ data }) {
           }
         }
       });
-      
+
       toast.error(`Please fill all required fields: ${emptyMessages.join(', ')}`);
       return;
     }
@@ -285,7 +296,6 @@ function IicEst({ data }) {
     setIsEditing(false);
     setIsDirty(false);
     setEmptyFields({});
-    toast.success("Changes saved successfully!");
   };
 
   const handleDiscard = () => {
@@ -294,7 +304,6 @@ function IicEst({ data }) {
     setIsSaved(false);
     setIsDirty(false);
     setEmptyFields({});
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
@@ -410,7 +419,6 @@ function IicEst({ data }) {
         setIsEditing(false);
         setIsDirty(false);
         setEmptyFields({});
-        toast.success("Request submitted successfully!");
       }
     } catch (err) {
       console.error("IIC establishment final request error:", err);
@@ -427,7 +435,7 @@ function IicEst({ data }) {
     setPendingItems(updated);
     setItems(deepCopy(updated));
     setEmptyFields(checkEmptyFields(updated));
-    
+
     // if no remaining differences, clear draft
     const remaining = (() => {
       const cm = new Map((committedItems || []).map((it) => [it.category, it]));
@@ -446,8 +454,8 @@ function IicEst({ data }) {
     if (!remaining) {
       setPendingItems(null);
       setIsSaved(false);
+      setShowRequestModal(false);
     }
-    toast.info(`${category} changes reverted!`);
   };
 
   // Category convenience variables for rendering
@@ -513,15 +521,14 @@ function IicEst({ data }) {
                       type="text"
                       value={point}
                       onChange={(e) => handleChange("majorfocus", i, e.target.value)}
-                      className={`w-full p-2 border rounded ${
-                        !point.trim() ? "border-red-500 bg-red-50" : "border-gray-300"
-                      }`}
+                      className={`w-full p-2 border rounded ${!point.trim() ? "border-red-500 bg-red-50" : "border-gray-300"
+                        }`}
                       placeholder="Major focus point (required)"
                       required
                     />
                   </div>
-                  <button 
-                    onClick={() => handleRemovePoint("majorfocus", i)} 
+                  <button
+                    onClick={() => handleRemovePoint("majorfocus", i)}
                     className="p-2 text-red-500 hover:text-red-700 mt-6"
                     title="Remove point"
                   >
@@ -530,7 +537,18 @@ function IicEst({ data }) {
                 </div>
               ))}
             {/* Add button intentionally commented per original layout */}
-            {/* <button onClick={() => handleAddPoint("majorfocus")} className="flex items-center gap-1 mt-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"><Plus size={16} /> Add Point</button> */}
+            <div className="flex justify-center mt-5">
+              <button
+                onClick={() => handleAddPoint("majorfocus")}
+                className="flex items-center gap-2 px-5 py-2 rounded-lg
+               bg-[#fdcc03] text-text font-medium
+               hover:bg-[#800000] hover:text-white
+               transition-all duration-300 shadow-md"
+              >
+                <PlusCircle size={18} />
+                Add Major Focus
+              </button>
+            </div>
           </div>
         ) : (
           <p className="text-justify">
@@ -565,11 +583,10 @@ function IicEst({ data }) {
               <textarea
                 value={Array.isArray(vision) ? vision[0] || "" : vision || ""}
                 onChange={(e) => handleChange("vision", 0, e.target.value)}
-                className={`w-full p-2 border rounded min-h-[100px] ${
-                  !String(Array.isArray(vision) ? vision[0] || "" : vision || "").trim() 
-                    ? "border-red-500 bg-red-50" 
-                    : "border-gray-300"
-                }`}
+                className={`w-full p-2 border rounded min-h-[100px] ${!String(Array.isArray(vision) ? vision[0] || "" : vision || "").trim()
+                  ? "border-red-500 bg-red-50"
+                  : "border-gray-300"
+                  }`}
                 placeholder="Vision statement (required)"
                 required
               />
@@ -597,11 +614,10 @@ function IicEst({ data }) {
               <textarea
                 value={Array.isArray(mission) ? mission[0] || "" : mission || ""}
                 onChange={(e) => handleChange("mission", 0, e.target.value)}
-                className={`w-full p-2 border rounded min-h-[100px] ${
-                  !String(Array.isArray(mission) ? mission[0] || "" : mission || "").trim() 
-                    ? "border-red-500 bg-red-50" 
-                    : "border-gray-300"
-                }`}
+                className={`w-full p-2 border rounded min-h-[100px] ${!String(Array.isArray(mission) ? mission[0] || "" : mission || "").trim()
+                  ? "border-red-500 bg-red-50"
+                  : "border-gray-300"
+                  }`}
                 placeholder="Mission statement (required)"
                 required
               />
@@ -633,13 +649,12 @@ function IicEst({ data }) {
             Cancel
           </button>
           {isDirty && (
-            <button 
-              onClick={handleSave} 
-              className={`flex items-center gap-2 px-4 py-2 rounded ${
-                hasEmptyFields 
-                  ? "bg-gray-400 cursor-not-allowed" 
-                  : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-              }`}
+            <button
+              onClick={handleSave}
+              className={`flex items-center gap-2 px-4 py-2 rounded ${hasEmptyFields
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                }`}
               disabled={hasEmptyFields}
             >
               <Save size={18} /> Save
