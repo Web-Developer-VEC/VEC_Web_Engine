@@ -41,64 +41,64 @@
       ]
     }
   },
-{
-  "collectionName": "iic",
-  "collection_type": "establishment",
-  "action": "update",
-  "title": "Update vision - establishment",
-  "category": "vision",
-  "meta_data": {
-    "content": [
-      "Updated: To create a strong innovation-driven ecosystem that bridges academia, industry, and society."
-    ]
+  {
+    "collectionName": "iic",
+    "collection_type": "establishment",
+    "action": "update",
+    "title": "Update vision - establishment",
+    "category": "vision",
+    "meta_data": {
+      "content": [
+        "Updated: To create a strong innovation-driven ecosystem that bridges academia, industry, and society."
+      ]
+    },
+    "original_data": {
+      "content": [
+        "To facilitate a conducive environment with the intention of making innovation reach society and industries for national development."
+      ]
+    }
   },
-  "original_data": {
-    "content": [
-      "To facilitate a conducive environment with the intention of making innovation reach society and industries for national development."
-    ]
-  }
-},
-{
-  "collectionName": "iic",
-  "collection_type": "establishment",
-  "action": "update",
-  "title": "Update mission - establishment",
-  "category": "mission",
-  "meta_data": {
-    "content": [
-      "Updated: To empower students and faculty to convert innovative ideas into sustainable start-ups and enterprises."
-    ]
+  {
+    "collectionName": "iic",
+    "collection_type": "establishment",
+    "action": "update",
+    "title": "Update mission - establishment",
+    "category": "mission",
+    "meta_data": {
+      "content": [
+        "Updated: To empower students and faculty to convert innovative ideas into sustainable start-ups and enterprises."
+      ]
+    },
+    "original_data": {
+      "content": [
+        "To enable students and faculty to establish start-ups and market innovative products through enhanced coordination and planning."
+      ]
+    }
   },
-  "original_data": {
-    "content": [
-      "To enable students and faculty to establish start-ups and market innovative products through enhanced coordination and planning."
-    ]
-  }
-},
-{
-  "collectionName": "iic",
-  "collection_type": "establishment",
-  "action": "update",
-  "title": "Update function - establishment",
-  "category": "function",
-  "meta_data": {
-    "content": [
-      "Updated: To conduct structured innovation programs aligned with MIC guidelines.",
-      "To strengthen mentoring and industry interactions.",
-      "To enhance visibility of innovation activities through digital platforms."
-    ]
+  {
+    "collectionName": "iic",
+    "collection_type": "establishment",
+    "action": "update",
+    "title": "Update function - establishment",
+    "category": "function",
+    "meta_data": {
+      "content": [
+        "Updated: To conduct structured innovation programs aligned with MIC guidelines.",
+        "To strengthen mentoring and industry interactions.",
+        "To enhance visibility of innovation activities through digital platforms."
+      ]
+    },
+    "original_data": {
+      "content": [
+        "To conduct innovation and entrepreneurship activities prescribed by MIC.",
+        "To identify and reward innovations and share success stories.",
+        "To organize workshops, seminars, and mentoring sessions.",
+        "To network with national entrepreneurship organizations.",
+        "To create an institutional innovation portal.",
+        "To organize hackathons and idea competitions."
+      ]
+    }
   },
-  "original_data": {
-    "content": [
-      "To conduct innovation and entrepreneurship activities prescribed by MIC.",
-      "To identify and reward innovations and share success stories.",
-      "To organize workshops, seminars, and mentoring sessions.",
-      "To network with national entrepreneurship organizations.",
-      "To create an institutional innovation portal.",
-      "To organize hackathons and idea competitions."
-    ]
-  }
-},
   {
     "collectionName": "iic",
     "collection_type": "faculty",
@@ -133,7 +133,6 @@
       "designation": "President"
     }
   },
-
   {
     "collectionName": "iic",
     "collection_type": "expert_representation",
@@ -170,7 +169,7 @@
   },
   {
     "collectionName": "iic",
-    "collection_type":  "student_representation",
+    "collection_type": "student_representation",
     "action": "insert",
     "title": "Insert TARAKESHWARAN S - IIC",
     "category": "IIC",
@@ -180,28 +179,28 @@
       "phone": "8870982120",
       "sex": "Male",
       "year": "IV Year",
-      "dept":  "CSE",
+      "dept": "CSE",
       "responsibility": "Student President"
     }
   },
   {
     "collectionName": "iic",
-    "collection_type":  "student_representation",
+    "collection_type": "student_representation",
     "action": "update",
     "title": "Update TARAKESHWARAN S - IIC",
     "category": "IIC",
     "meta_data": {
-      "name": "DINESH S",
-      "mail_id": "tarakeshwaran.sampath@gmail.com",
-      "phone":  "8870982121",
+      "name": "Priyan S",
+      "mail id": "tarakeshwaran.sampath@gmail.com",
+      "phone": "8870982120",
       "sex": "Male",
       "year": "IV Year",
       "dept": "CSE",
-      "responsibility":  "Student President"
+      "responsibility": "Student President"
     },
     "original_data": {
-      "name": "Priyan S",
-      "mail_id": "tarakeshwaran.sampath@gmail. com",
+      "name": "TARAKESHWARAN S",
+      "mail id": "tarakeshwaran.sampath@gmail.com",
       "phone": "8870982120",
       "sex": "Male",
       "year": "IV Year",
@@ -210,19 +209,19 @@
     }
   },
   {
-    "collectionName":  "iic",
+    "collectionName": "iic",
     "collection_type": "student_representation",
     "action": "delete",
     "title": "Delete TARAKESHWARAN S - IIC",
     "category": "IIC",
     "meta_data": {
-      "name":  "TARAKESHWARAN S",
-      "mail_id":  "tarakeshwaran.sampath@gmail.com",
+      "name": "TARAKESHWARAN S",
+      "mail_id": "tarakeshwaran.sampath@gmail.com",
       "phone": "8870982120",
       "sex": "Male",
       "year": "IV Year",
       "dept": "CSE",
-      "responsibility":  "Student President"
+      "responsibility": "Student President"
     }
   },
   {
@@ -263,7 +262,6 @@
       "number_of_participants": "206"
     }
   },
-
   {
     "collectionName": "iic",
     "collection_type": "iic4",
@@ -302,7 +300,6 @@
       "number_of_participants": "119"
     }
   },
-
   {
     "collectionName": "iic",
     "collection_type": "iic5",
@@ -340,8 +337,7 @@
       "date": "15-09-2022",
       "number_of_participants": "82"
     }
-  }
-  ,
+  },
   {
     "collectionName": "iic",
     "collection_type": "iic6",
@@ -380,7 +376,6 @@
       "number_of_participants": "124"
     }
   },
-
   {
     "collectionName": "iic",
     "collection_type": "iic7",
@@ -418,8 +413,7 @@
       "date": "03.10.2024",
       "number_of_participants": "45"
     }
-  }
-  ,
+  },
   {
     "collectionName": "iic",
     "collection_type": "kapila",
@@ -427,7 +421,7 @@
     "title": "Insert kapila item",
     "meta_data": {
       "name": "KAPILA Scheme Document",
-      "path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
+      "pdf_path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
     }
   },
   {
@@ -437,11 +431,11 @@
     "title": "Update kapila item",
     "meta_data": {
       "name": "KAPILA Scheme Document (updated)",
-      "path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
+      "pdf_path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
     },
     "original_data": {
       "name": "KAPILA Scheme Document",
-      "path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
+      "pdf_path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
     }
   },
   {
@@ -451,10 +445,9 @@
     "title": "Delete kapila item",
     "meta_data": {
       "name": "KAPILA Scheme Document",
-      "path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
+      "pdf_path": "/static/pdfs/iic/kapila/kapila Scheme document.pdf"
     }
   },
-
   {
     "collectionName": "iic",
     "collection_type": "mentee",
@@ -493,15 +486,16 @@
       "Zone": "Southern/SRO"
     }
   },
-
   {
     "collectionName": "iic",
     "collection_type": "yukti",
     "action": "insert",
     "title": "Insert yukti registration_statistics",
     "category": "registration_statistics",
-    "meta_data":
-        { "name": "Total Individuals Registered", "count": "2270" }
+    "meta_data": {
+      "name": "Total Individuals Registered",
+      "count": "2270"
+    }
   },
   {
     "collectionName": "iic",
@@ -509,24 +503,26 @@
     "action": "update",
     "title": "Update yukti registration_statistics",
     "category": "registration_statistics",
-    "meta_data": 
-        { "name": "Total Individuals Registered", "count": "2271" },
-    "original_data": 
-        { "name": "Total Individuals Registered", "count": "2270" }
+    "meta_data": {
+      "name": "Total Individuals Registered",
+      "count": "2271"
     },
+    "original_data": {
+      "name": "Total Individuals Registered",
+      "count": "2270"
+    }
+  },
   {
     "collectionName": "iic",
     "collection_type": "yukti",
     "action": "delete",
     "title": "Delete yukti registration_statistics",
     "category": "innovation_metrics",
-    "meta_data":
-       {
-          "name": "Startups Incubated",
-          "count": 32
-        }
+    "meta_data": {
+      "name": "Startups Incubated",
+      "count": 32
+    }
   },
-
   {
     "collectionName": "iic",
     "collection_type": "certificate",
@@ -562,7 +558,6 @@
       "image_path": "/static/images/iic/certificate/1.webp"
     }
   },
-
   {
     "collectionName": "iic",
     "collection_type": "policy",

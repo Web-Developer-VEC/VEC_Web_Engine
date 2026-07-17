@@ -6,10 +6,10 @@ import LoadComp from "../../LoadComp";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const deepCopy = (arr) =>
-  arr.map((item) => ({
-    ...item,
-    file: item.file ?? null, // ✅ preserve File reference
-  }));
+    arr.map((item) => ({
+        ...item,
+        file: item.file ?? null, // ✅ preserve File reference
+    }));
 
 
 export default function IicFacCertificate({ data }) {
@@ -23,7 +23,7 @@ export default function IicFacCertificate({ data }) {
     const [selectedRows, setSelectedRows] = useState(new Set());
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [pendingData, setPendingData] = useState(null);
-    const { sendRequest, loading: loadings , error } = useAdminRequest();
+    const { sendRequest, loading: loadings, error } = useAdminRequest();
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -70,50 +70,50 @@ export default function IicFacCertificate({ data }) {
         setSelectedRows(new Set());
     };
 
-const handleSave = () => {
-  if (!isDirty) {
-    return;
-  }
-
-  const invalidItem = tempData.find((item) => !item.name?.trim() || !item.pdf_path?.trim());
-  if (invalidItem) {
-    toast.error("Please fill all PDF names and upload files before saving!");
-    return;
-  }
-
-  setPendingData(deepCopy(tempData));
-  setIsSaved(true);
-  setIsEditing(false);
-  setIsDirty(false);
-  setSelectedRows(new Set());
-};
-
-const handleCancel = () => {
-    if (pendingData) {
-        // Revert to draft if it exists
-        setTempData(deepCopy(pendingData));
-
-        if (activePdf) {
-            const resetPdf = pendingData.find((x) => x.id === activePdf.id);
-            setActivePdf(resetPdf || null);
+    const handleSave = () => {
+        if (!isDirty) {
+            return;
         }
-    } else {
-        // No draft, revert to original
-        const resetData = deepCopy(originalData);
-        setTempData(resetData);
 
-        if (activePdf) {
-            const resetPdf = resetData.find((x) => x.id === activePdf.id);
-            setActivePdf(resetPdf || null);
+        const invalidItem = tempData.find((item) => !item.name?.trim() || !item.pdf_path?.trim());
+        if (invalidItem) {
+            toast.error("Please fill all PDF names and upload files before saving!");
+            return;
         }
-    }
 
-    setIsEditing(false);
-    setIsDirty(false);
-    setSelectedRows(new Set());
-    // isSaved depends on pendingData
-    setIsSaved(!!pendingData);
-};
+        setPendingData(deepCopy(tempData));
+        setIsSaved(true);
+        setIsEditing(false);
+        setIsDirty(false);
+        setSelectedRows(new Set());
+    };
+
+    const handleCancel = () => {
+        if (pendingData) {
+            // Revert to draft if it exists
+            setTempData(deepCopy(pendingData));
+
+            if (activePdf) {
+                const resetPdf = pendingData.find((x) => x.id === activePdf.id);
+                setActivePdf(resetPdf || null);
+            }
+        } else {
+            // No draft, revert to original
+            const resetData = deepCopy(originalData);
+            setTempData(resetData);
+
+            if (activePdf) {
+                const resetPdf = resetData.find((x) => x.id === activePdf.id);
+                setActivePdf(resetPdf || null);
+            }
+        }
+
+        setIsEditing(false);
+        setIsDirty(false);
+        setSelectedRows(new Set());
+        // isSaved depends on pendingData
+        setIsSaved(!!pendingData);
+    };
 
 
     const handleDiscard = () => {
@@ -122,170 +122,164 @@ const handleCancel = () => {
         setIsSaved(false);
         setIsDirty(false);
         setSelectedRows(new Set());
-        toast.info("Changes discarded!");
     };
 
     const handleRequest = () => setShowRequestModal(true);
 
     const buildCertificatePayload = () => {
-  if (!pendingData) return { payload: [], files: [] };
+        if (!pendingData) return { payload: [], files: [] };
 
-  const payload = [];
-  const files = [];
+        const payload = [];
+        const files = [];
 
-  const originalMap = new Map(originalData.map((i) => [i.id, i]));
-  const pendingMap = new Map(pendingData.map((i) => [i.id, i]));
+        const originalMap = new Map(originalData.map((i) => [i.id, i]));
+        const pendingMap = new Map(pendingData.map((i) => [i.id, i]));
 
-  // INSERT & UPDATE
-  for (const [id, newItem] of pendingMap.entries()) {
-    const oldItem = originalMap.get(id);
+        // INSERT & UPDATE
+        for (const [id, newItem] of pendingMap.entries()) {
+            const oldItem = originalMap.get(id);
 
-    const serverPath = `/static/images/iic/certificate/${
-      newItem.file?.name || newItem.pdf_path?.split("/").pop()
-    }`;
+            const serverPath = `/static/images/iic/certificate/${newItem.file?.name || newItem.pdf_path?.split("/").pop()
+                }`;
 
-    // INSERT
-    if (!oldItem) {
-      payload.push({
-        collectionName: "iic",
-        collection_type: "certificate",
-        action: "insert",
-        title: "Insert certificate item",
-        meta_data: {
-          year: newItem.name,
-          image_path: serverPath,
-        },
-      });
+            // INSERT
+            if (!oldItem) {
+                payload.push({
+                    collectionName: "iic",
+                    collection_type: "certificate",
+                    action: "insert",
+                    title: "Insert certificate item",
+                    meta_data: {
+                        year: newItem.name,
+                        image_path: serverPath,
+                    },
+                });
 
-      if (newItem.file) files.push(newItem.file);
-    }
+                if (newItem.file) files.push(newItem.file);
+            }
 
-    // UPDATE
-    else if (
-      oldItem.name !== newItem.name ||
-      oldItem.pdf_path !== newItem.pdf_path
-    ) {
-      payload.push({
-        collectionName: "iic",
-        collection_type: "certificate",
-        action: "update",
-        title: "Update certificate item",
-        meta_data: {
-          year: newItem.name,
-          image_path: serverPath,
-        },
-        original_data: {
-          year: oldItem.name,
-          image_path: oldItem.pdf_path,
-        },
-      });
+            // UPDATE
+            else if (
+                oldItem.name !== newItem.name ||
+                oldItem.pdf_path !== newItem.pdf_path
+            ) {
+                payload.push({
+                    collectionName: "iic",
+                    collection_type: "certificate",
+                    action: "update",
+                    title: "Update certificate item",
+                    meta_data: {
+                        year: newItem.name,
+                        image_path: serverPath,
+                    },
+                    original_data: {
+                        year: oldItem.name,
+                        image_path: oldItem.pdf_path,
+                    },
+                });
 
-      if (newItem.file) files.push(newItem.file);
-    }
-  }
+                if (newItem.file) files.push(newItem.file);
+            }
+        }
 
-  // DELETE
-  for (const [id, oldItem] of originalMap.entries()) {
-    if (!pendingMap.has(id)) {
-      payload.push({
-        collectionName: "iic",
-        collection_type: "certificate",
-        action: "delete",
-        title: "Delete certificate item",
-        meta_data: {
-          year: oldItem.name,
-          image_path: oldItem.pdf_path,
-        },
-      });
-    }
-  }
+        // DELETE
+        for (const [id, oldItem] of originalMap.entries()) {
+            if (!pendingMap.has(id)) {
+                payload.push({
+                    collectionName: "iic",
+                    collection_type: "certificate",
+                    action: "delete",
+                    title: "Delete certificate item",
+                    meta_data: {
+                        year: oldItem.name,
+                        image_path: oldItem.pdf_path,
+                    },
+                });
+            }
+        }
 
-  return { payload, files };
-};
-
-
-const handleFinalRequestConfirm = async () => {
-  if (!pendingData) return;
-
-  const { payload, files } = buildCertificatePayload();
-
-  if (payload.length === 0) {
-    return;
-  }
-
-  console.log("📦 Certificate Payload:", payload);
-  console.log("📁 Certificate Files:", files);
-
-  files.forEach((f, i) => {
-    console.log(`File ${i}:`, f instanceof File, f?.name);
-  });
-
-  try {
-    const result = await sendRequest(payload, files);
-
-    if (result) {
-      setOriginalData(deepCopy(pendingData));
-      setTempData(deepCopy(pendingData));
-      setPendingData(null);
-      setIsSaved(false);
-      setShowRequestModal(false);
-    }
-  } catch {
-    
-  }
-};
-
-
-  const handleChange = (index, key, value) => {
-    setTempData((prev) => {
-      const updated = [...prev];
-      if (key === "name") value = capitalizeWords(value);
-      updated[index] = { ...updated[index], [key]: value };
-      return updated;
-    });
-    setIsDirty(true);
-  };
-const handleFileChange = (index, file) => {
-  const previewUrl = URL.createObjectURL(file);
-
-  setTempData((prev) => {
-    const updated = [...prev];
-    updated[index] = {
-      ...updated[index],
-      pdf_path: previewUrl, // preview only
-      file: file,           // ✅ THIS WAS MISSING
+        return { payload, files };
     };
-    return updated;
-  });
-
-  setIsDirty(true);
-};
-const hasRealChanges = (current, original) => {
-  if (current.length !== original.length) return true;
-
-  const map = new Map(original.map((i) => [i.id, i]));
-
-  return current.some((item) => {
-    const old = map.get(item.id);
-    if (!old) return true;
-
-    return (
-      old.name !== item.name ||
-      old.pdf_path !== item.pdf_path
-    );
-  });
-};
 
 
-const handleAddPdf = () => {
-  const updated = [
-    ...tempData,
-    { id: Date.now(), name: "New Certificate", pdf_path: "", selected: false },
-  ];
+    const handleFinalRequestConfirm = async () => {
+        if (!pendingData) return;
 
-  setTempData(updated);
-  setIsDirty(hasRealChanges(updated, originalData));
-};
+        const { payload, files } = buildCertificatePayload();
+
+        if (payload.length === 0) {
+            return;
+        }
+        files.forEach((f, i) => {
+            console.log(`File ${i}:`, f instanceof File, f?.name);
+        });
+
+        try {
+            const result = await sendRequest(payload, files);
+
+            if (result) {
+                setOriginalData(deepCopy(pendingData));
+                setTempData(deepCopy(pendingData));
+                setPendingData(null);
+                setIsSaved(false);
+                setShowRequestModal(false);
+            }
+        } catch {
+
+        }
+    };
+
+
+    const handleChange = (index, key, value) => {
+        setTempData((prev) => {
+            const updated = [...prev];
+            if (key === "name") value = capitalizeWords(value);
+            updated[index] = { ...updated[index], [key]: value };
+            return updated;
+        });
+        setIsDirty(true);
+    };
+    const handleFileChange = (index, file) => {
+        const previewUrl = URL.createObjectURL(file);
+
+        setTempData((prev) => {
+            const updated = [...prev];
+            updated[index] = {
+                ...updated[index],
+                pdf_path: previewUrl, // preview only
+                file: file,           // ✅ THIS WAS MISSING
+            };
+            return updated;
+        });
+
+        setIsDirty(true);
+    };
+    const hasRealChanges = (current, original) => {
+        if (current.length !== original.length) return true;
+
+        const map = new Map(original.map((i) => [i.id, i]));
+
+        return current.some((item) => {
+            const old = map.get(item.id);
+            if (!old) return true;
+
+            return (
+                old.name !== item.name ||
+                old.pdf_path !== item.pdf_path
+            );
+        });
+    };
+
+
+    const handleAddPdf = () => {
+        const updated = [
+            ...tempData,
+            { id: Date.now(), name: "New Certificate", pdf_path: "", selected: false },
+        ];
+
+        setTempData(updated);
+        setIsDirty(hasRealChanges(updated, originalData));
+    };
 
 
     const toggleSelectRow = (index) => {
@@ -295,23 +289,23 @@ const handleAddPdf = () => {
         setSelectedRows(nxt);
     };
 
-const confirmDelete = () => {
-  setTempData((prev) => {
-    const updated = prev.filter((_, i) => !selectedRows.has(i));
+    const confirmDelete = () => {
+        setTempData((prev) => {
+            const updated = prev.filter((_, i) => !selectedRows.has(i));
 
-    if (activePdf && !updated.some((item) => item.id === activePdf.id)) {
-      setActivePdf(null);
-    }
+            if (activePdf && !updated.some((item) => item.id === activePdf.id)) {
+                setActivePdf(null);
+            }
 
-    // ✅ recompute dirty correctly
-    setIsDirty(hasRealChanges(updated, originalData));
+            // ✅ recompute dirty correctly
+            setIsDirty(hasRealChanges(updated, originalData));
 
-    return updated;
-  });
+            return updated;
+        });
 
-  setSelectedRows(new Set());
-  setShowDeleteModal(false);
-};
+        setSelectedRows(new Set());
+        setShowDeleteModal(false);
+    };
 
 
     const getChanges = () => {
@@ -337,15 +331,56 @@ const confirmDelete = () => {
 
     const revertChange = (rowId) => {
         if (!pendingData) return;
-        const oldItem = originalData.find((o) => o.id === rowId);
-        let reverted;
-        if (oldItem) {
-            reverted = pendingData.map((item) => (item.id === rowId ? deepCopy(oldItem) : item));
+
+        const originalItem = originalData.find((o) => o.id === rowId);
+
+        let reverted = [...pendingData];
+
+        if (originalItem) {
+            const exists = reverted.some((item) => item.id === rowId);
+
+            if (exists) {
+                // Undo edit
+                reverted = reverted.map((item) =>
+                    item.id === rowId
+                        ? {
+                            ...originalItem,
+                            file: null,
+                        }
+                        : item
+                );
+            } else {
+                // Undo delete
+                reverted.push({
+                    ...originalItem,
+                    file: null,
+                });
+
+                // Restore original order
+                reverted.sort(
+                    (a, b) =>
+                        originalData.findIndex((x) => x.id === a.id) -
+                        originalData.findIndex((x) => x.id === b.id)
+                );
+            }
         } else {
-            reverted = pendingData.filter((item) => item.id !== rowId);
+            // Undo newly added certificate
+            reverted = reverted.filter((item) => item.id !== rowId);
         }
+
         setPendingData(reverted);
         setTempData(deepCopy(reverted));
+
+        // Auto close modal if no changes remain
+        const noChanges =
+            JSON.stringify(reverted.map(({ file, ...r }) => r)) ===
+            JSON.stringify(originalData.map(({ file, ...r }) => r));
+
+        if (noChanges) {
+            setPendingData(null);
+            setIsSaved(false);
+            setShowRequestModal(false);
+        }
     };
 
     const changes = getChanges();
@@ -363,24 +398,24 @@ const confirmDelete = () => {
             <ToastContainer position="bottom-right" autoClose={2000} />
 
             {/* Header */}
-<div className="relative mb-6 w-full">
-  {/* Title centered */}
-  <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">
-    IIC Certificate
-  </h2>
+            <div className="relative mb-6 w-full">
+                {/* Title centered */}
+                <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">
+                    IIC Certificate
+                </h2>
 
-  {/* Edit button on right */}
-  {!isEditing && (
-    <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
-      <button
-        onClick={handleEdit}
-        className="flex items-center gap-2 px-4 py-2 bg-secd dark:bg-drks text-text dark:text-prim rounded hover:bg-accn hover:text-prim dark:hover:bg-brwn"
-      >
-        <Pencil size={18} /> Edit
-      </button>
-    </div>
-  )}
-</div>
+                {/* Edit button on right */}
+                {!isEditing && (
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+                        <button
+                            onClick={handleEdit}
+                            className="flex items-center gap-2 px-4 py-2 bg-secd dark:bg-drks text-text dark:text-prim rounded hover:bg-accn hover:text-prim dark:hover:bg-brwn"
+                        >
+                            <Pencil size={18} /> Edit
+                        </button>
+                    </div>
+                )}
+            </div>
 
 
             {/* Certificate Buttons */}
@@ -391,10 +426,9 @@ const confirmDelete = () => {
                             type="button"
                             onClick={() => handleButtonClick(item)}
                             className={`px-6 py-3 font-semibold rounded-xl hover:text-prim transition-all
-                                ${
-                                    activePdf?.id === item?.id
-                                        ? "bg-[#800000] text-prim"
-                                        : "bg-secd dark:bg-drks"
+                                ${activePdf?.id === item?.id
+                                    ? "bg-[#800000] text-prim"
+                                    : "bg-secd dark:bg-drks"
                                 }
                                 hover:bg-[#a00000]`}
                         >
@@ -451,26 +485,26 @@ const confirmDelete = () => {
                         <div className="mb-4 text-center">
                             <label className="bg-[#fdcc03] text-text px-3 py-2 rounded cursor-pointer hover:bg-[#800000] hover:text-prim">
                                 Change Certificate
-                            <input
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={(e) => {
-                                const file = e.target.files[0];
-                                if (!file) return;
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={(e) => {
+                                        const file = e.target.files[0];
+                                        if (!file) return;
 
-                                // Optional safety check
-                                if (!file.type.startsWith("image/")) {
-                                toast.error("Please upload an image file");
-                                return;
-                                }
+                                        // Optional safety check
+                                        if (!file.type.startsWith("image/")) {
+                                            toast.error("Please upload an image file");
+                                            return;
+                                        }
 
-                                const index = tempData.findIndex((x) => x.id === activePdf.id);
-                                if (index !== -1) {
-                                handleFileChange(index, file);
-                                }
-                            }}
-                            />
+                                        const index = tempData.findIndex((x) => x.id === activePdf.id);
+                                        if (index !== -1) {
+                                            handleFileChange(index, file);
+                                        }
+                                    }}
+                                />
 
                             </label>
                         </div>
@@ -516,7 +550,7 @@ const confirmDelete = () => {
                                     onClick={handleSave}
                                     className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
                                 >
-                                     Save
+                                    Save
                                 </button>
                             )}
                         </div>
@@ -594,16 +628,15 @@ const confirmDelete = () => {
                                 Cancel
                             </button>
                             {changes.length > 0 && (
-                               <button
-                                onClick={handleFinalRequestConfirm}
-                                disabled={loadings}
-                                className={`px-4 py-2 rounded ${
-                                    loadings
-                                    ? "bg-gray-400 cursor-not-allowed text-white"
-                                    : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                                }`}
+                                <button
+                                    onClick={handleFinalRequestConfirm}
+                                    disabled={loadings}
+                                    className={`px-4 py-2 rounded ${loadings
+                                            ? "bg-gray-400 cursor-not-allowed text-white"
+                                            : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                                        }`}
                                 >
-                                {loadings ? "Processing..." : "Final Request"}
+                                    {loadings ? "Processing..." : "Final Request"}
                                 </button>
                             )}
                         </div>

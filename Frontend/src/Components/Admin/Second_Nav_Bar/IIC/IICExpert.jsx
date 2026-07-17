@@ -108,10 +108,8 @@ function IICExpert({ data = [] }) {
   const handleCancel = () => {
     if (pendingRows) {
       setRows(deepCopy(pendingRows));
-      toast.info("Cancelled edits. Draft preserved!");
     } else {
       setRows(deepCopy(committedRows));
-      toast.info("Cancelled. Reverted to original data!");
     }
 
     setIsEditing(false);
@@ -136,7 +134,6 @@ function IICExpert({ data = [] }) {
     setIsDirty(false);
     setSelectedRows(new Set());
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -146,7 +143,6 @@ function IICExpert({ data = [] }) {
     setIsDirty(false);
     setSelectedRows(new Set());
     setSelectAll(false);
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
@@ -234,7 +230,6 @@ function IICExpert({ data = [] }) {
         setShowRequestModal(false);
         setIsEditing(false);
         setIsDirty(false);
-        toast.success("Final request submitted!");
       } else {
         toast.error("Request failed. Check console for details.");
       }
