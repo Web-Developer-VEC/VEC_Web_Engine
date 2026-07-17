@@ -15,7 +15,29 @@ const HeadDepartment = ({ data }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const { sendRequest, loading: requestLoading } = useAdminRequest();
 
-  const UrlParser = (path) => path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const UrlParser = (path) => {
+  console.log("UrlParser received:", path, typeof path);
+
+  if (!path) return "";
+
+  if (Array.isArray(path)) {
+    path = path[0];
+  }
+
+  if (typeof path !== "string") {
+    console.log("INVALID PATH:", path);
+    return "";
+  }
+
+  if (path.startsWith("blob:")) return path;
+  if (path.startsWith("http")) return path;
+
+  if (BASE_URL && path.startsWith("/")) {
+    return `${BASE_URL}${path}`;
+  }
+
+  return path;
+};
 
   // Department mapping
   const deptMap = {
@@ -53,9 +75,10 @@ const HeadDepartment = ({ data }) => {
     Hod_message: Array.isArray(hod_details?.[0]?.hod_message)
       ? hod_details[0].hod_message[0]
       : (hod_details?.[0]?.hod_message || ""),
-    Image: hod_details?.[0]?.hod_image || "",
+    Image: hod_details?.[0]?.image_path || "",
+    ImageFile: null,
     Social_media_links: hod_details?.[0]?.Social_media_links || {},
-    resume: hod_details?.[0]?.resume_pdf || ""
+    resume: hod_details?.[0]?.pdf_path || ""
   });
 
   const profiles = [
@@ -89,8 +112,33 @@ const HeadDepartment = ({ data }) => {
   };
 
   const handleSave = () => {
-    setSavedData(JSON.parse(JSON.stringify(formData))); // Save snapshot
-    setGlobalSaved(true); // mark global save
+    // Required field validation
+    if (!formData.Name.trim()) {
+      return;
+    }
+
+    if (
+      !formData.Qualification ||
+      formData.Qualification.length === 0 ||
+      formData.Qualification.join("").trim() === ""
+    ) {
+      return;
+    }
+
+    if (!formData.designation.trim()) {
+      return;
+    }
+
+    if (!formData.Hod_message.trim()) {
+      return;
+    }
+    setSavedData({
+      ...formData,
+      Qualification: [...formData.Qualification],
+      Social_media_links: { ...formData.Social_media_links },
+      ImageFile: formData.ImageFile
+    });
+    setGlobalSaved(true);
     setIsEditing(false);
     setIsDirty(false);
     setShowLinkEditor(false);
@@ -113,10 +161,12 @@ const HeadDepartment = ({ data }) => {
       name: savedData.Name,
       department_name: hod_details?.[0]?.department_name || "",
       unique_id: savedData.uid,
-      resume_pdf: savedData.resume,
+      pdf_path: savedData.resume,
       qualification: savedData.Qualification,
       hod_message: [savedData.Hod_message],
-      hod_image: savedData.Image,
+      image_path: savedData.ImageFile
+        ? `/static/images/hods/${savedData.ImageFile.name}`
+        : savedData.Image,
       designation: savedData.designation,
       Social_media_links: savedData.Social_media_links
     };
@@ -126,10 +176,12 @@ const HeadDepartment = ({ data }) => {
       name: initialData.Name,
       department_name: hod_details?.[0]?.department_name || "",
       unique_id: initialData.uid,
-      resume_pdf: initialData.resume,
+      pdf_path: initialData.resume,
       qualification: initialData.Qualification,
       hod_message: Array.isArray(initialData.Hod_message) ? initialData.Hod_message : [initialData.Hod_message],
-      hod_image: initialData.Image,
+      image_path: initialData.ImageFile
+        ? `/static/images/hods/${initialData.ImageFile.name}`
+        : initialData.Image,
       designation: initialData.designation,
       Social_media_links: initialData.Social_media_links
     };
@@ -150,18 +202,27 @@ const HeadDepartment = ({ data }) => {
     const payload = buildPayload();
 
     if (!payload) {
-      toast.info("No changes to request");
       setShowRequestModal(false);
       return;
     }
 
     try {
-      await sendRequest([payload], []);
-      toast.success("Request sent successfully!");
-      
+      const files = [];
+
+      if (savedData.ImageFile) {
+        files.push(savedData.ImageFile);
+      }
+
+      await sendRequest([payload], files);
       // Update baseline
       setInitialData({ ...savedData });
-      setBackupData(JSON.parse(JSON.stringify(savedData)));
+      // setBackupData(JSON.parse(JSON.stringify(savedData)));
+      setBackupData({
+        ...savedData,
+        Qualification: [...savedData.Qualification],
+        Social_media_links: { ...savedData.Social_media_links },
+        ImageFile: savedData.ImageFile
+      });
       setSavedData(null);
       setGlobalSaved(false);
       setShowRequestModal(false);
@@ -178,7 +239,7 @@ const HeadDepartment = ({ data }) => {
       <ToastContainer position="bottom-right" autoClose={3000} />
       {formData.Hod_message ? (
         <div className={styles.messageContent + " text-text dark:text-drkt relative"}>
-          
+
           {/* Top Edit button always visible if global save clicked */}
           {(globalSaved || !isEditing) && (
             <button
@@ -194,9 +255,12 @@ const HeadDepartment = ({ data }) => {
             <div className={styles.hodInfo}>
               {isEditing ? (
                 <>
-                  <input type="text" value={formData.Name} onChange={(e) => handleChange("Name", e.target.value)} className="border px-2 py-1 mb-2 w-full"/>
-                  <input type="text" value={formData.Qualification.join(", ")} onChange={(e) => handleChange("Qualification", e.target.value.split(",").map(q => q.trim()))} className="border px-2 py-1 mb-2 w-full"/>
-                  <input type="text" value={formData.designation} onChange={(e) => handleChange("designation", e.target.value)} className="border px-2 py-1 mb-2 w-full"/>
+                  <label className="font-medium mb-1 block"> Name <span className="text-red-500">*</span></label>
+                  <input type="text" required value={formData.Name} onChange={(e) => handleChange("Name", e.target.value)} className="border px-2 py-1 mb-2 w-full" />
+                  <label className="font-medium mb-1 block"> Qualification <span className="text-red-500">*</span></label>
+                  <input type="text" required value={formData.Qualification.join(", ")} onChange={(e) => handleChange("Qualification", e.target.value.split(",").map(q => q.trim()))} className="border px-2 py-1 mb-2 w-full" />
+                  <label className="font-medium mb-1 block"> Designation <span className="text-red-500">*</span></label>
+                  <input type="text" required value={formData.designation} onChange={(e) => handleChange("designation", e.target.value)} className="border px-2 py-1 mb-2 w-full" />
                 </>
               ) : (
                 <>
@@ -211,7 +275,7 @@ const HeadDepartment = ({ data }) => {
             <div className={styles.hodMessage + " text-text dark:text-drkt"}>
               <h3 className={styles.messageTitle + " + text-[#800000] dark:text-drkt border-b-2 border-secd dark:border-drks"}>HOD's Message</h3>
               {isEditing ? (
-                <textarea value={formData.Hod_message} onChange={(e) => handleChange("Hod_message", e.target.value)} className="border p-2 w-full h-48"/>
+                <textarea required value={formData.Hod_message} onChange={(e) => handleChange("Hod_message", e.target.value)} className="border p-2 w-full h-48" />
               ) : (
                 <p className={styles.messageBody}>{formData.Hod_message}</p>
               )}
@@ -220,7 +284,11 @@ const HeadDepartment = ({ data }) => {
 
           <div className={`${styles.imageColumn} mb-24`}>
             {formData.Image ? (
-              <img src={formData.Image?.startsWith("blob:") ? formData.Image : UrlParser(formData.Image)} alt="Head of Department" className={styles.hodImage}/>
+              <img
+  src={UrlParser(formData.Image)}
+  alt="Head of Department"
+  className={styles.hodImage}
+/>
             ) : (<p>No image available</p>)}
 
             {/* Upload button */}
@@ -229,11 +297,18 @@ const HeadDepartment = ({ data }) => {
                 <input type="file" accept="image/*" id="hod-image-upload" className="hidden"
                   onChange={(e) => {
                     const file = e.target.files[0];
-                    if (file) {
-                      const previewUrl = URL.createObjectURL(file);
-                      setFormData((prev) => ({ ...prev, Image: previewUrl }));
-                      setIsDirty(true);
-                    }
+
+                    if (!file) return;
+
+                    const previewUrl = URL.createObjectURL(file);
+
+                    setFormData(prev => ({
+                      ...prev,
+                      Image: previewUrl,      // preview only
+                      ImageFile: file         // keep the original file
+                    }));
+
+                    setIsDirty(true);
                   }}
                 />
                 <label htmlFor="hod-image-upload" className="px-3 py-1 bg-[#fdcc03] text-text rounded cursor-pointer hover:bg-[#800000] hover:text-prim">Replace Image</label>
@@ -267,7 +342,7 @@ const HeadDepartment = ({ data }) => {
               <>
                 <button onClick={handleDiscard} className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">Discard</button>
                 <button onClick={handleRequest} className="px-4 py-2 flex items-center gap-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim">
-                  <Send size={16}/> Request
+                  <Send size={16} /> Request
                 </button>
               </>
             ) : (
@@ -286,7 +361,7 @@ const HeadDepartment = ({ data }) => {
                   onClick={() => setShowLinkEditor(false)}
                   className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
                 >
-                  <X size={20}/>
+                  <X size={20} />
                 </button>
                 <h2 className="text-xl font-bold mb-4 text-center">Edit Social Links</h2>
 
@@ -353,19 +428,19 @@ const HeadDepartment = ({ data }) => {
                   </button>
 
                   {/* Show Save only if any social link changed */}
-                  {profiles.some(profile => 
+                  {profiles.some(profile =>
                     (formData.Social_media_links[profile.key] || "") !== (initialData.Social_media_links[profile.key] || "")
                   ) && (
-                    <button
-                      onClick={() => {
-                        setShowLinkEditor(false);
-                        setIsDirty(true);
-                      }}
-                      className="px-4 py-2 flex items-center gap-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
-                    >
-                      Save
-                    </button>
-                  )}
+                      <button
+                        onClick={() => {
+                          setShowLinkEditor(false);
+                          setIsDirty(true);
+                        }}
+                        className="px-4 py-2 flex items-center gap-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim"
+                      >
+                        Save
+                      </button>
+                    )}
                 </div>
               </div>
             </div>
@@ -393,8 +468,13 @@ const HeadDepartment = ({ data }) => {
                   <tbody>
                     {/* Base Fields */}
                     {Object.keys(initialData).map((field) => {
-                      if (field === "Social_media_links" || field === "Image") return null;
-                      const oldVal = Array.isArray(initialData[field]) ? initialData[field].join(", ") : initialData[field];
+                      if (
+                        field === "Social_media_links" ||
+                        field === "Image" ||
+                        field === "ImageFile"
+                      ) {
+                        return null;
+                      } const oldVal = Array.isArray(initialData[field]) ? initialData[field].join(", ") : initialData[field];
                       const newVal = Array.isArray(savedData[field]) ? savedData[field].join(", ") : savedData[field];
                       if (oldVal !== newVal) {
                         return (
@@ -481,9 +561,8 @@ const HeadDepartment = ({ data }) => {
                   </button>
                   <button
                     onClick={handleRequestConfirm}
-                    className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-white ${
-                      requestLoading ? "cursor-progress opacity-70" : ""
-                    }`}
+                    className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-white ${requestLoading ? "cursor-progress opacity-70" : ""
+                      }`}
                     disabled={requestLoading}
                   >
                     {requestLoading ? "Sending..." : "Confirm Request"}
@@ -498,7 +577,7 @@ const HeadDepartment = ({ data }) => {
           <LoadComp />
         </div>
       )}
-      
+
     </>
   );
 };

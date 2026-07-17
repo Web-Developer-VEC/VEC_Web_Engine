@@ -337,6 +337,31 @@
   },
   {
     "collectionName": "library",
+    "collection_type": "membership_details",
+    "action": "update",
+    "title": "Update membership_details",
+    "category": "no_of_books",
+    "meta_data": {
+      "content": [
+        "80",
+        "6",
+        "6",
+        "6",
+        "3"
+      ]
+    },
+    "original_data": {
+      "content": [
+        "8",
+        "6",
+        "6",
+        "6",
+        "3"
+      ]
+    }
+  },
+  {
+    "collectionName": "library",
     "collection_type": "library_resources",
     "action": "update",
     "title": "update of library_resources",
