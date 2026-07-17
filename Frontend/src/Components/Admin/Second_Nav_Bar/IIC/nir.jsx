@@ -85,6 +85,38 @@ export default function IicFacnir({ data }) {
     });
   };
 
+  const handleNameChange = (sIdx, iIdx, value) => {
+    setRows((prev) => {
+      const updated = deepCopy(prev);
+      updated[sIdx].content[iIdx].name = value;
+      return updated;
+    });
+  };
+
+  const handleAddItem = (sectionIndex) => {
+    setRows((prev) => {
+      const updated = deepCopy(prev);
+
+      updated[sectionIndex].content.push({
+        id: `new-${Date.now()}`,
+        name: "",
+        count: "",
+      });
+
+      return updated;
+    });
+  };
+
+  const handleDeleteItem = (sectionIndex, itemIndex) => {
+    setRows((prev) => {
+      const updated = deepCopy(prev);
+
+      updated[sectionIndex].content.splice(itemIndex, 1);
+
+      return updated;
+    });
+  };
+
   const handleSave = () => {
     // basic validation: ensure counts are present (do not block if zeros allowed)
     // Here we treat empty string as allowed (you can change to require numeric)
@@ -107,7 +139,6 @@ export default function IicFacnir({ data }) {
     // clear draft and revert working copy to original
     setPending(null);
     setRows(deepCopy(original));
-    toast.info("Draft discarded.");
   };
 
   const handleRequest = () => {
@@ -242,6 +273,16 @@ export default function IicFacnir({ data }) {
     setPending(updated);
     setRows(deepCopy(updated));
 
+    // Check if there are any changes left
+    const stillHasChanges =
+      JSON.stringify(updated) !== JSON.stringify(original);
+
+    if (!stillHasChanges) {
+      setPending(null);
+      setShowRequestModal(false);
+      setEditing(false); // optional
+    }
+
     // if pending now equals original, clear draft
     if (JSON.stringify(updated) === JSON.stringify(original)) {
       setPending(null);
@@ -261,48 +302,103 @@ export default function IicFacnir({ data }) {
     const origMapByHeading = new Map((original || []).map((sec) => [sec.heading, sec]));
     const pendMapByHeading = new Map((pending || []).map((sec) => [sec.heading, sec]));
 
-    // Detect deleted sections (present in original but not in pending)
-    for (const [heading, origSec] of origMapByHeading.entries()) {
-      if (!pendMapByHeading.has(heading)) {
-        const cat = headingToCategory(heading);
-        payload.push({
-          collectionName: "iic",
-          collection_type: "yukti",
-          action: "delete",
-          title: `Delete yukti ${cat}`,
-          category: cat,
-          meta_data: { content: deepCopy(origSec.content) },
-        });
-      }
-    }
-
-    // Detect inserts and updates
     for (const [heading, pendSec] of pendMapByHeading.entries()) {
-      const origSec = origMapByHeading.get(heading) || null;
-      const cat = headingToCategory(heading);
+
+      const origSec = origMapByHeading.get(heading);
+      const category = headingToCategory(heading);
+
+      // New section
       if (!origSec) {
-        // Insert whole section
-        payload.push({
-          collectionName: "iic",
-          collection_type: "yukti",
-          action: "insert",
-          title: `Insert yukti ${cat}`,
-          category: cat,
-          meta_data: { content: deepCopy(pendSec.content) },
+
+        pendSec.content.forEach(item => {
+          payload.push({
+            collectionName: "iic",
+            collection_type: "yukti",
+            action: "insert",
+            title: `Insert yukti ${category}`,
+            category,
+
+            meta_data: {
+              name: item.name,
+              count: item.count
+            }
+          });
         });
-      } else {
-        // Compare serialized content; if different -> update
-        const origContent = JSON.stringify(origSec.content || []);
-        const pendContent = JSON.stringify(pendSec.content || []);
-        if (origContent !== pendContent) {
+
+        continue;
+      }
+      // Compare every item individually
+
+      const maxLength = Math.max(
+        origSec.content.length,
+        pendSec.content.length
+      );
+
+      for (let i = 0; i < maxLength; i++) {
+
+        const oldItem = origSec.content[i];
+        const newItem = pendSec.content[i];
+
+        // Added
+        if (!oldItem && newItem) {
+
+          payload.push({
+            collectionName: "iic",
+            collection_type: "yukti",
+            action: "insert",
+            title: `Insert yukti ${category}`,
+            category,
+
+            meta_data: {
+              name: newItem.name,
+              count: newItem.count
+            }
+          });
+
+          continue;
+        }
+
+        // Deleted
+        if (oldItem && !newItem) {
+
+          payload.push({
+            collectionName: "iic",
+            collection_type: "yukti",
+            action: "delete",
+            title: `Delete yukti ${category}`,
+            category,
+
+            meta_data: {
+              name: oldItem.name,
+              count: oldItem.count
+            }
+          });
+
+          continue;
+        }
+
+        // Updated
+        if (
+          oldItem.name !== newItem.name ||
+          String(oldItem.count) !== String(newItem.count)
+        ) {
+
           payload.push({
             collectionName: "iic",
             collection_type: "yukti",
             action: "update",
-            title: `Update yukti ${cat}`,
-            category: cat,
-            meta_data: { content: deepCopy(pendSec.content) },
-            original_data: { content: deepCopy(origSec.content) },
+            title: `Update yukti ${category}`,
+            category,
+
+            meta_data: {
+              name: newItem.name,
+              count: newItem.count
+            },
+
+            original_data: {
+              name: oldItem.name,
+              count: oldItem.count
+            }
           });
         }
       }
@@ -346,7 +442,7 @@ export default function IicFacnir({ data }) {
       <div className="relative mb-6 w-full">
         {/* Title centered */}
         <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">
-          Yukthi National Innovation Repository (NIR)
+          Yukti National Innovation Repository (NIR)
         </h2>
 
         {/* Edit button on right */}
@@ -365,23 +461,55 @@ export default function IicFacnir({ data }) {
       {/* Sections */}
       {rows.map((section, sIdx) => (
         <div key={sIdx} className="nir-section mb-6">
-          <h3 className="nir-heading text-xl font-semibold mb-2">{section.heading}</h3>
-          <div className="nir-buttons grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="nir-heading text-xl font-semibold">
+              {section.heading}
+            </h3>
+
+            {editing && (
+              <button
+                onClick={() => handleAddItem(sIdx)}
+                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+              >
+                + Add
+              </button>
+            )}
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {section.content.map((item, iIdx) => (
               <div
                 key={item.id}
-                className="iic-action-button bg-secd text-center m-auto dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-brwn rounded-xl border-2 border-accn dark:border-drka p-4"
+                className="relative bg-[#FDCC03] rounded-xl shadow-lg w-full max-w-[380px] mx-auto p-4 min-h-[90px] flex items-center"
               >
+                {editing && (
+                  <button
+                    onClick={() => handleDeleteItem(sIdx, iIdx)}
+                    className="absolute top-2 right-2 w-7 h-7 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-700"
+                  >
+                    ✕
+                  </button>
+                )}
                 {editing ? (
                   <>
-                    <div className="font-semibold mb-2 p-2">{item.name}:</div>
-                    <input
-                      type="text"
-                      value={item.count}
-                      onChange={(e) => handleCountChange(sIdx, iIdx, e.target.value)}
-                      className="border p-1 rounded text-center w-full bg-prim dark:bg-drkp hover:text-text"
-                      placeholder="Count"
-                    />
+                    <div className="flex items-center w-full gap-3">
+
+                      <input
+                        type="text"
+                        value={item.name}
+                        onChange={(e) => handleNameChange(sIdx, iIdx, e.target.value)}
+                        placeholder="Title"
+                        className="flex-1min-w-0 border rounded-lg px-3 py-2 bg-white"
+                      />
+
+                      <input
+                        type="text"
+                        value={item.count}
+                        onChange={(e) => handleCountChange(sIdx, iIdx, e.target.value)}
+                        placeholder="Count"
+                        className="w-28 border rounded-lg px-3 py-2 text-center bg-white shrink-0"
+                      />
+
+                    </div>
                   </>
                 ) : (
                   <span>
