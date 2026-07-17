@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import LoadComp from "../../LoadComp";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
-
+import { ToastContainer, toast } from "react-toastify";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const UrlParser = (path) => {
@@ -20,8 +20,11 @@ export default function IqaGal({ iqacData, onRefresh }) {
   const deepClone = (data) =>
     (Array.isArray(data) ? data : []).map((item) => ({
       ...item,
-      image_path: Array.isArray(item.image_path) ? [...item.image_path] : [],
-      // do not clone transient fields into persisted snapshots
+      image_path: Array.isArray(item.image_path)
+        ? [...item.image_path]
+        : [],
+      _files: item._files ? [...item._files] : [],
+      _newFiles: item._newFiles ? [...item._newFiles] : [],
     }));
 
   // Local editing state
@@ -34,6 +37,7 @@ export default function IqaGal({ iqacData, onRefresh }) {
 
   // Popups/state
   const [confirmPopup, setConfirmPopup] = useState(false);
+  const [changes, setChanges] = useState([]);
   const [deleteConfirm, setDeleteConfirm] = useState(null); // { type, category, path? }
   const [addPopup, setAddPopup] = useState(false);
   const [newCategory, setNewCategory] = useState("");
@@ -106,11 +110,11 @@ export default function IqaGal({ iqacData, onRefresh }) {
         prev.map((item) =>
           item.category === deleteConfirm.category
             ? {
-                ...item,
-                image_path: (item.image_path || []).filter(
-                  (path) => path !== deleteConfirm.path
-                ),
-              }
+              ...item,
+              image_path: (item.image_path || []).filter(
+                (path) => path !== deleteConfirm.path
+              ),
+            }
             : item
         )
       );
@@ -147,13 +151,13 @@ export default function IqaGal({ iqacData, onRefresh }) {
       prev.map((item) =>
         item.category === category
           ? {
-              ...item,
-              image_path: [
-                ...(item.image_path || []),
-                ...fileArray.map((f) => URL.createObjectURL(f)), // preview only
-              ],
-              _newFiles: [...(item._newFiles || []), ...fileArray], // transient
-            }
+            ...item,
+            image_path: [
+              ...(item.image_path || []),
+              ...fileArray.map((f) => URL.createObjectURL(f)), // preview only
+            ],
+            _newFiles: [...(item._newFiles || []), ...fileArray], // transient
+          }
           : item
       )
     );
@@ -161,7 +165,12 @@ export default function IqaGal({ iqacData, onRefresh }) {
 
   // Save edits locally (still not sent for approval)
   const handleSave = () => {
+    const { payload } = buildPayload(galleryData, originalData);
+
+    setChanges(payload);
+    console.log(galleryData);
     setSavedData(deepClone(galleryData));
+    console.log(deepClone(galleryData));
     setIsEditing(false);
   };
 
@@ -210,10 +219,12 @@ export default function IqaGal({ iqacData, onRefresh }) {
         payload.push({
           collectionName: "iqac",
           collection_type: "gallery",
-          action: "delete",
-          title: "deletion of gallery images",
+          action: "delete_category",
+          title: "deletion of gallery category",
           category: orig.category,
-          meta_data: { image_path: deletedImages },
+          meta_data: {
+            image_path: orig.image_path || [],
+          },
           original_data: null,
         });
       }
@@ -257,32 +268,59 @@ export default function IqaGal({ iqacData, onRefresh }) {
       }
     });
 
+
     return { payload, files };
   };
 
   // Send final request
   const handleConfirmRequest = async () => {
-    const { payload, files } = buildPayload(savedData, originalData);
+    try {
+      const { payload, files } = buildPayload(savedData, originalData);
+      console.log("Payload Length:", payload.length);
+      console.log(payload);
+      console.log("Payload:", payload);
+      console.log("Files:", files);
+      console.log("Payload:", payload);
+      console.log("Files:", files);
 
-    if (payload.length === 0) {
-      setConfirmPopup(false);
-      return;
-    }
-
-    const response = await sendRequest(payload, files);
-
-    if (response) {
-      setConfirmPopup(false);
-
-      // IMPORTANT:
-      // This does NOT mean the live site data changed immediately.
-      // It only means "request created / queued".
-      // After approval, you must refetch from backend.
-      //
-      // So we ask parent to refetch if provided.
-      if (typeof onRefresh === "function") {
-        await onRefresh();
+      if (payload.length === 0) {
+        console.log("No payload generated");
+        toast.info("No changes found.");
+        return;
       }
+
+      console.log("Calling sendRequest...");
+
+      const response = await sendRequest(payload, files);
+      console.log("Response from sendRequest:", response);
+      console.log("Response:", response);
+
+
+      if (response) {
+        console.log("SUCCESS");
+
+        // toast.success("Request submitted successfully.");
+
+        // Reset the baseline
+        const updatedData = deepClone(savedData);
+
+        setOriginalData(updatedData);
+        setSavedData(updatedData);
+
+        setConfirmPopup(false);
+        setChanges([]);
+
+
+        // if (typeof onRefresh === "function") {
+        //   await onRefresh();
+        // }
+      } else {
+        console.log("sendRequest returned null");
+        toast.error("sendRequest returned null");
+      }
+    } catch (err) {
+      console.error("handleConfirmRequest Error:", err);
+      toast.error(err?.message || "Request failed");
     }
   };
 
@@ -313,11 +351,10 @@ export default function IqaGal({ iqacData, onRefresh }) {
             {categories.map((category) => (
               <div key={category} className="flex items-center gap-1">
                 <button
-                  className={`px-4 py-1 text-lg font-semibold rounded-lg transition-colors duration-300 ${
-                    selectedCategory === category
-                      ? "bg-accn text-white"
-                      : "bg-secd dark:bg-drks"
-                  }`}
+                  className={`px-4 py-1 text-lg font-semibold rounded-lg transition-colors duration-300 ${selectedCategory === category
+                    ? "bg-accn text-white"
+                    : "bg-secd dark:bg-drks"
+                    }`}
                   type="button"
                   onClick={() => setSelectedCategory(category)}
                 >
@@ -509,9 +546,8 @@ export default function IqaGal({ iqacData, onRefresh }) {
                   <Plus size={32} className="text-gray-400 mb-2" />
                   <span className="text-sm text-gray-500 dark:text-gray-400">
                     {newFiles.length > 0
-                      ? `${newFiles.length} image${
-                          newFiles.length > 1 ? "s" : ""
-                        } selected`
+                      ? `${newFiles.length} image${newFiles.length > 1 ? "s" : ""
+                      } selected`
                       : "Click to select images"}
                   </span>
                   <span className="text-xs text-gray-400 mt-1">
@@ -553,11 +589,10 @@ export default function IqaGal({ iqacData, onRefresh }) {
               <button
                 onClick={handleAddCategory}
                 disabled={!newCategory || newFiles.length === 0}
-                className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
-                  newCategory && newFiles.length > 0
-                    ? "bg-secd text-text hover:bg-[#800000] hover:text-drkt shadow-md hover:shadow-lg"
-                    : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                }`}
+                className={`px-5 py-2.5 rounded-lg font-medium transition-all ${newCategory && newFiles.length > 0
+                  ? "bg-secd text-text hover:bg-[#800000] hover:text-drkt shadow-md hover:shadow-lg"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  }`}
               >
                 Add Category
               </button>
@@ -578,27 +613,51 @@ export default function IqaGal({ iqacData, onRefresh }) {
               Once approved, they will be applied automatically to the live site.
             </p>
 
-            <div className="max-h-[200px] overflow-y-auto mb-4">
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                Gallery changes will be submitted for approval.
-              </p>
+            <div className="max-h-[300px] overflow-y-auto mb-4">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b">
+                    <th className="text-left py-2">Action</th>
+                    <th className="text-left py-2">Category</th>
+                    <th className="text-left py-2">Images</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {changes.map((change, index) => (
+                    <tr key={index} className="border-b">
+                      <td className="py-2">
+                        {change.action === "insert"
+                          ? "➕ Added"
+                          : change.action === "update"
+                            ? "✏ Updated"
+                            : "🗑 Deleted"}
+                      </td>
+
+                      <td>{change.category}</td>
+
+                      <td>
+                        {change.meta_data?.image_path?.length || 0} image(s)
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setConfirmPopup(false)}
-                className={`px-4 py-2 rounded bg-gray-400 text-white ${
-                  loading ? "cursor-not-allowed" : ""
-                }`}
+                className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""
+                  }`}
                 disabled={loading}
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmRequest}
-                className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${
-                  loading ? "cursor-progress" : ""
-                }`}
+                className={`px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt ${loading ? "cursor-progress" : ""
+                  }`}
                 disabled={loading}
               >
                 {loading ? "Processing..." : "Final Request"}
@@ -607,6 +666,10 @@ export default function IqaGal({ iqacData, onRefresh }) {
           </div>
         </div>
       )}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+      />
     </>
   );
 }
