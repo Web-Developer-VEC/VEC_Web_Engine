@@ -140,7 +140,7 @@
             "name": "Dr. Rajalakshmi S",
             "department_name": "Computer Science and Engineering (CYBER SECURITY)",
             "unique_id": "VEC-006-03-039",
-            "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-03-039.pdf",
+            "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-03-039.pdf",
             "qualification": [
               "M.E.",
               "Ph.D"
@@ -148,7 +148,7 @@
             "hod_message": [
               "It is my privilege to lead a dedicated team that works tirelessly to provide cutting-edge education and hands-on experience in the field of Cyber Security. Our curriculum focuses on key areas like network security, ethical hacking, and data protection, preparing students to tackle the challenges of a rapidly evolving digital world. With a strong emphasis on practical learning, industry collaboration, and innovation, we aim to equip our students with the skills necessary to secure the digital future."
             ],
-            "hod_image": "/static/images/hods/cyber.webp",
+            "image_path": "/static/images/hods/cyber.webp",
             "designation": "Associate Professor & Head, Dept of CSE(Cyber Security)",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/rajalakshmi-srinivasan-a14927161/",
@@ -199,7 +199,7 @@
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58321740200"
             },
             "image_path": "/static/images/profile_photos/006/VEC-006-03-039.webp",
-            "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-03-039.pdf"
+            "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-03-039.pdf"
           }
         ]
       },
@@ -219,7 +219,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-035.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-035.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-035.pdf"
             },
             {
               "name": "Mrs. PARVEEN BANU M",
@@ -234,7 +234,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-034.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-034.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-034.pdf"
             },
             {
               "name": "Mrs. RUBA ARUMUGAM",
@@ -249,7 +249,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-641.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-641.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-641.pdf"
             },
             {
               "name": "Mrs. PRAISEWIN C",
@@ -264,7 +264,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-642.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-642.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-642.pdf"
             },
             {
               "name": "Mrs. NIRANJANA DEVI J",
@@ -279,7 +279,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-643.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-643.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-643.pdf"
             },
             {
               "name": "Mrs. PRAMILA K",
@@ -294,7 +294,7 @@
                 "scopus": ""
               },
               "image_path": "/static/images/profile_photos/006/VEC-006-04-644.webp",
-              "resume_pdf": "/static/pdfs/faculty_profile/006/VEC-006-04-644.pdf"
+              "pdf_path": "/static/pdfs/faculty_profile/006/VEC-006-04-644.pdf"
             }
         ]
       },

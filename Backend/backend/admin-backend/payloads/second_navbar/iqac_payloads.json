@@ -298,6 +298,14 @@
         },
         "original_data": null
     },
+     {
+        "collectionName": "iqac",
+        "collection_type": "gallery",
+        "action": "delete",
+        "title": "deletion of gallery images",
+        "category": "24-25 FIRST MEETING",
+        "original_data": null
+    },
     {
         "collectionName": "iqac",
         "collection_type": "strategic_plan",

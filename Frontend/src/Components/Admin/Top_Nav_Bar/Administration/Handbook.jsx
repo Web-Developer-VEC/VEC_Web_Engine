@@ -689,10 +689,33 @@ const AdminHandbook = ({ theme, toggle }) => {
       <div className="w-full max-w-[900px] mt-4 mb-14 flex flex-col items-center">
         <h2 className="text-[32px] font-semibold mb-8 mt-5 text-brwn dark:text-drkt">HR Handbook</h2>
         <div className="flex items-center gap-4">
-          <button onClick={handleEditHr} className="flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-prim dark:bg-drkb border-2 border-secd dark:border-drks text-text dark:text-prim text-lg font-medium hover:bg-yellow-100 shadow-md transition-all duration-200 no-underline cursor-pointer w-80 whitespace-nowrap" title="Edit HR Handbook">
-            <FontAwesomeIcon icon={faBook} className="text-secd dark:text-drks" />
-            {label}
-          </button>
+          <div className="relative flex items-center">
+            <button
+              onClick={() => {
+                if (pdfPath && pdfPath !== "#") {
+                  window.open(pdfPath, "_blank", "noopener,noreferrer");
+                }
+              }}
+              className="flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-prim dark:bg-drkb border-2 border-secd dark:border-drks text-text dark:text-prim text-lg font-medium hover:bg-yellow-100 shadow-md transition-all duration-200 w-80"
+            >
+              <FontAwesomeIcon icon={faBook} className="text-secd dark:text-drks"/>
+              {label}
+            </button>
+
+            {/* Edit icon */}
+            {editMode && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEditHr();
+                }}
+                className="absolute top-2 right-2 text-brwn hover:text-red-700"
+                title="Edit HR Handbook"
+              >
+                <Pencil size={16} />
+              </button>
+            )}
+          </div>
           <div>
             {hrHandbook?.pdf_path && (
               <button onClick={() => { if (pdfPath && pdfPath !== "#") window.open(pdfPath, "_blank", "noopener,noreferrer"); }} className="px-3 py-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 whitespace-nowrap ml-2" title="Preview HR Handbook">

@@ -12,7 +12,10 @@
         ],
         "phone_number": "044 26590758",
         "student_affairs_contact": "044 26591771",
-        "addmission_contact": ["9123547550", "8939221120"],
+        "addmission_contact": [
+          "9123547550",
+          "8939221120"
+        ],
         "instagram": "https://www.instagram.com/vec_chennai/",
         "linkedin": "https://www.linkedin.com/school/velammal-engineering-college/",
         "twitter": "https://x.com/VelammalEnggC",
@@ -34,8 +37,14 @@
   {
     "type": "popup",
     "data": [
-      { "name": "College", "image_path": "/static/images/popup/college.webp" },
-      { "name": "Hostel", "image_path": "/static/images/popup/hostel.webp" },
+      {
+        "name": "College",
+        "image_path": "/static/images/popup/college.webp"
+      },
+      {
+        "name": "Hostel",
+        "image_path": "/static/images/popup/hostel.webp"
+      },
       {
         "name": "Non-Traditional",
         "image_path": "/static/images/popup/NON-TRADITIONAL.webp"
@@ -48,15 +57,21 @@
   },
   {
     "type": "admission",
-    "data":
-      { "value":true
-      }
+    "data": {
+      "value": true
+    }
   },
   {
     "type": "popup",
     "data": [
-      { "name": "College", "image_path": "/static/images/popup/college.webp" },
-      { "name": "Hostel", "image_path": "/static/images/popup/hostel.webp" },
+      {
+        "name": "College",
+        "image_path": "/static/images/popup/college.webp"
+      },
+      {
+        "name": "Hostel",
+        "image_path": "/static/images/popup/hostel.webp"
+      },
       {
         "name": "Non-Traditional",
         "image_path": "/static/images/popup/NON-TRADITIONAL.webp"
@@ -272,7 +287,6 @@
         "date": "2025-07-28",
         "status": "active"
       },
-
       {
         "unique_id": "announcement_9",
         "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026",
@@ -340,7 +354,6 @@
         "link": "",
         "status": "True"
       },
-
       {
         "start_date": "18 JUL",
         "end_date": "18 JUL, 2025",
@@ -648,6 +661,17 @@
         "image_path": "/static/images/events/cognebula.jpeg",
         "link": "https://cognebula.com/",
         "status": "True"
+      }
+    ]
+  },
+  {
+    "type": "news_card",
+    "data": [
+      {
+        "type": "image",
+        "image_path": "/static/images/newscard/Priyan.jpg",
+        "status": "False",
+        "title": "Priyan"
       }
     ]
   }
