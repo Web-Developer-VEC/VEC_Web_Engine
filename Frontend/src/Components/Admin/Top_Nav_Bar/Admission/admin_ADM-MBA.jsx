@@ -895,7 +895,7 @@ const AdminMBA = ({ theme, toggle }) => {
         );
 
         if (committed.savedGovLinkFile) {
-          files.push({ field: "mba_gov_pdf", file: committed.savedGovLinkFile });
+          files.push(committed.savedGovLinkFile);
         }
       }
 
@@ -920,7 +920,7 @@ const AdminMBA = ({ theme, toggle }) => {
         );
 
         if (committed.savedMgmtLinkFile) {
-          files.push({ field: "mba_mgmt_pdf", file: committed.savedMgmtLinkFile });
+          files.push(committed.savedMgmtLinkFile);
         }
       }
 

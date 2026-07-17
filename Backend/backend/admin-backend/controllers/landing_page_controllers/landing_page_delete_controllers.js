@@ -8,7 +8,7 @@ async function deleteData(tempDoc, mainCollection) {
 
         const doc = await mainCollection.findOne({ type: collection_type });
 
-        const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner", "popup"];
+        const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner", "popup", "news_card"];
 
         if (multipleObjectTypes.includes(collection_type)) {
 
@@ -21,10 +21,10 @@ async function deleteData(tempDoc, mainCollection) {
                 { $pull: { data: meta_data } }
             );
 
-            return { message: `Data deleted successfully into ${collection_type}`};
+            return { message: `Data deleted successfully into ${collection_type}` };
         }
 
-          } catch (error) {
+    } catch (error) {
         throw new Error(`Internal Server Error: ${error.message}`);
     }
 }
