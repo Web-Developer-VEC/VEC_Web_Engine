@@ -19,7 +19,6 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
   const [changes, setChanges] = useState([]);
   const { sendRequest, loading, error } = useAdminRequest();
 
-  
   // ✅ For deletion
   const [selected, setSelected] = useState([]);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -30,56 +29,58 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
     return path?.startsWith("blob:")
       ? path
       : path?.startsWith("http")
-      ? path
-      : `${BASE_URL}${path}`;
+        ? path
+        : `${BASE_URL}${path}`;
   };
 
-const getChanges = () => {
-  const changes = [];
+  const getChanges = () => {
+    const changes = [];
 
-  const origMap = new Map(originalData.map(r => [r.__uid, r]));
-  const editMap = new Map(editedData.map(r => [r.__uid, r]));
+    const origMap = new Map(originalData.map((r) => [r.__uid, r]));
+    const editMap = new Map(editedData.map((r) => [r.__uid, r]));
 
-  // Added or Edited
-  editedData.forEach((item) => {
-    if (!origMap.has(item.__uid)) {
-      changes.push({
-        type: "add",
-        year: item.year
-      });
-    } else {
-      const orig = origMap.get(item.__uid);
-
-      if (orig.year !== item.year) {
+    // Added or Edited
+    editedData.forEach((item) => {
+      if (!origMap.has(item.__uid)) {
         changes.push({
-          type: "year",
-          year: item.year
+          type: "add",
+          year: item.year,
+          __uid: item.__uid,
+        });
+      } else {
+        const orig = origMap.get(item.__uid);
+
+        if (orig.year !== item.year) {
+          changes.push({
+            type: "year",
+            year: item.year,
+            __uid: item.__uid,
+          });
+        }
+
+        if (item.oddFile || item.oddRemoved) {
+          changes.push({ type: "odd", year: item.year, __uid: item.__uid });
+        }
+
+        if (item.evenFile || item.evenRemoved) {
+          changes.push({ type: "even", year: item.year, __uid: item.__uid });
+        }
+      }
+    });
+
+    // Deleted
+    originalData.forEach((item) => {
+      if (!editMap.has(item.__uid)) {
+        changes.push({
+          type: "delete",
+          year: item.year,
+          __uid: item.__uid,
         });
       }
-
-      if (item.oddFile || item.oddRemoved) {
-        changes.push({ type: "odd", year: item.year });
-      }
-
-      if (item.evenFile || item.evenRemoved) {
-        changes.push({ type: "even", year: item.year });
-      }
-    }
-  });
-
-  // Deleted
-  originalData.forEach((item) => {
-  if (!editMap.has(item.__uid)) {
-    changes.push({
-      type: "delete",
-      year: item.year
     });
-  }
-});
 
-  return changes;
-};
-
+    return changes;
+  };
 
   // Fetch academic calendar data
   const fetchData = async () => {
@@ -89,17 +90,16 @@ const getChanges = () => {
       });
       const data = response.data.data;
       setAcademicData(data);
-const addUid = (arr) =>
-  arr.map((item) => ({
-    ...item,
-    __uid: item.__uid || `${Date.now()}_${Math.random()}`
-  }));
+      const addUid = (arr) =>
+        arr.map((item) => ({
+          ...item,
+          __uid: item.__uid || `${Date.now()}_${Math.random()}`,
+        }));
 
-const withUid = addUid(data);
+      const withUid = addUid(data);
 
-setEditedData(JSON.parse(JSON.stringify(withUid)));
-setOriginalData(JSON.parse(JSON.stringify(withUid)));
-
+      setEditedData(JSON.parse(JSON.stringify(withUid)));
+      setOriginalData(JSON.parse(JSON.stringify(withUid)));
     } catch (error) {
       console.error("Error fetching Calendar Data", error);
     }
@@ -110,11 +110,10 @@ setOriginalData(JSON.parse(JSON.stringify(withUid)));
   }, []);
 
   useEffect(() => {
-  const detectedChanges = getChanges();
-  setChanges(detectedChanges);
-  setHasChanges(detectedChanges.length > 0);
-}, [editedData]);
-
+    const detectedChanges = getChanges();
+    setChanges(detectedChanges);
+    setHasChanges(detectedChanges.length > 0);
+  }, [editedData]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -148,7 +147,7 @@ setOriginalData(JSON.parse(JSON.stringify(withUid)));
       const exists = prev.find((c) => c.index === i && c.type === "year");
       if (exists) {
         return prev.map((c) =>
-          c.index === i && c.type === "year" ? { ...c, newValue: value } : c
+          c.index === i && c.type === "year" ? { ...c, newValue: value } : c,
         );
       }
       return [...prev, { index: i, type: "year", newValue: value }];
@@ -178,7 +177,7 @@ setOriginalData(JSON.parse(JSON.stringify(withUid)));
       const exists = prev.find((c) => c.index === i && c.type === type);
       if (exists) {
         return prev.map((c) =>
-          c.index === i && c.type === type ? { ...c, newValue: file.name } : c
+          c.index === i && c.type === type ? { ...c, newValue: file.name } : c,
         );
       }
       return [...prev, { index: i, type, newValue: file.name }];
@@ -190,7 +189,6 @@ setOriginalData(JSON.parse(JSON.stringify(withUid)));
     setIsSaved(true);
     setIsEditing(false);
     setHasChanges(false);
-    toast.success("Changes saved locally!");
   };
 
   // Discard all changes
@@ -199,154 +197,153 @@ setOriginalData(JSON.parse(JSON.stringify(withUid)));
     setIsSaved(false);
     setHasChanges(false);
     setChanges([]);
+    toast.info("Editing cancelled. Data reverted to original.");
   };
-const buildPayload = () => {
-  const payload = [];
-  const files = [];
+  const buildPayload = () => {
+    const payload = [];
+    const files = [];
 
-  const origMap = new Map(originalData.map(r => [r.__uid, r]));
-  const editMap = new Map(editedData.map(r => [r.__uid, r]));
+    const origMap = new Map(originalData.map((r) => [r.__uid, r]));
+    const editMap = new Map(editedData.map((r) => [r.__uid, r]));
 
-  editedData.forEach((item) => {
-    const orig = origMap.get(item.__uid);
+    editedData.forEach((item) => {
+      const orig = origMap.get(item.__uid);
 
-    let newPdfPaths = [...(orig?.pdf_path || ["", ""])];
+      let newPdfPaths = [...(orig?.pdf_path || ["", ""])];
 
-    // Ensure array always has 2 slots
-    if (newPdfPaths.length < 2) {
-      newPdfPaths = [newPdfPaths[0] || "", newPdfPaths[1] || ""];
-    }
+      // Ensure array always has 2 slots
+      if (newPdfPaths.length < 2) {
+        newPdfPaths = [newPdfPaths[0] || "", newPdfPaths[1] || ""];
+      }
 
-    // ---------- ODD FILE ----------
-    if (item.oddFile) {
-      newPdfPaths[0] =
-        `/static/pdfs/academic_calendar/${item.oddFile.name}`;
-      files.push(item.oddFile);
-    } else if (item.oddRemoved) {
-      newPdfPaths[0] = "";
-    }
+      // ---------- ODD FILE ----------
+      if (item.oddFile) {
+        newPdfPaths[0] = `/static/pdfs/academic_calendar/${item.oddFile.name}`;
+        files.push(item.oddFile);
+      } else if (item.oddRemoved) {
+        newPdfPaths[0] = "";
+      }
 
-    // ---------- EVEN FILE ----------
-    if (item.evenFile) {
-      newPdfPaths[1] =
-        `/static/pdfs/academic_calendar/${item.evenFile.name}`;
-      files.push(item.evenFile);
-    } else if (item.evenRemoved) {
-      newPdfPaths[1] = "";
-    }
+      // ---------- EVEN FILE ----------
+      if (item.evenFile) {
+        newPdfPaths[1] = `/static/pdfs/academic_calendar/${item.evenFile.name}`;
+        files.push(item.evenFile);
+      } else if (item.evenRemoved) {
+        newPdfPaths[1] = "";
+      }
 
-    // ---------- INSERT ----------
-    if (!orig) {
-      payload.push({
-        collectionName: "academics",
-        collection_type: "academic_calendar",
-        action: "insert",
-        title: "insert academic calendar",
-        meta_data: {
-          year: item.year,
-          pdf_path: newPdfPaths
-        }
-      });
-      return;
-    }
+      // ---------- INSERT ----------
+      if (!orig) {
+        payload.push({
+          collectionName: "academics",
+          collection_type: "academic_calendar",
+          action: "insert",
+          title: "insert academic calendar",
+          meta_data: {
+            year: item.year,
+            pdf_path: newPdfPaths,
+          },
+        });
+        return;
+      }
 
-    // ---------- UPDATE ----------
-    if (
-      orig.year !== item.year ||
-      item.oddFile ||
-      item.evenFile ||
-      item.oddRemoved ||
-      item.evenRemoved
-    ) {
-      payload.push({
-        collectionName: "academics",
-        collection_type: "academic_calendar",
-        action: "update",
-        title: "update academic calendar",
-        meta_data: {
-          year: item.year,
-          pdf_path: newPdfPaths
-        },
-        original_data: {
-          year: orig.year,
-          pdf_path: orig.pdf_path || []
-        }
-      });
-    }
-  });
+      // ---------- UPDATE ----------
+      if (
+        orig.year !== item.year ||
+        item.oddFile ||
+        item.evenFile ||
+        item.oddRemoved ||
+        item.evenRemoved
+      ) {
+        payload.push({
+          collectionName: "academics",
+          collection_type: "academic_calendar",
+          action: "update",
+          title: "update academic calendar",
+          meta_data: {
+            year: item.year,
+            pdf_path: newPdfPaths,
+          },
+          original_data: {
+            year: orig.year,
+            pdf_path: orig.pdf_path || [],
+          },
+        });
+      }
+    });
 
-  // ---------- DELETE ----------
-  originalData.forEach((item) => {
-    if (!editMap.has(item.__uid)) {
-      payload.push({
-        collectionName: "academics",
-        collection_type: "academic_calendar",
-        action: "delete",
-        title: "delete academic year",
-        meta_data: {
-          year: item.year
-        }
-      });
-    }
-  });
+    // ---------- DELETE ----------
+    originalData.forEach((item) => {
+      if (!editMap.has(item.__uid)) {
+        payload.push({
+          collectionName: "academics",
+          collection_type: "academic_calendar",
+          action: "delete",
+          title: "delete academic year",
+          meta_data: {
+            year: item.year,
+          },
+        });
+      }
+    });
+    console.log("FINAL PAYLOAD");
+    console.log(payload);
+    console.log("FILES");
+    console.log(files);
 
-  return { payload, files };
-};
-
-
+    return { payload, files };
+  };
 
   // Handle final request from modal
-const handleRequestConfirm = async () => {
-  const { payload, files } = buildPayload();
+  const handleRequestConfirm = async () => {
+    console.log("handleRequestConfirm CALLED");
+    const { payload, files } = buildPayload();
 
-  if (!payload.length) {
-    toast.error("No changes to submit!");
-    return;
-  }
-console.log("payload",payload);
-console.log("Files",files);
+    if (!payload.length) {
+      toast.error("No changes to submit!");
+      return;
+    }
+    console.log("payload", payload);
+    console.log("Files", files);
+    
 
-  try {
-    await sendRequest(payload, files);
+    try {
+      await sendRequest(payload, files);
 
-    toast.success("Request sent successfully!");
-    setShowRequestModal(false);
+      toast.success("Request sent successfully!");
+      setShowRequestModal(false);
 
-    setChanges([]);
-    setIsSaved(false);
-    setHasChanges(false);
-    setIsEditing(false);
+      setChanges([]);
+      setIsSaved(false);
+      setHasChanges(false);
+      setIsEditing(false);
 
-    await fetchData();
-  } catch (err) {
-    console.error(err);
-    toast.error("Failed to send request");
-  }
-};
-
-
+      await fetchData();
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to send request");
+    }
+  };
 
   // ✅ Toggle checkbox selection
   const toggleSelect = (i) => {
     setSelected((prev) =>
-      prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]
+      prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i],
     );
   };
 
   // ✅ Delete selected cards
-const handleDeleteSelected = () => {
-  const updated = editedData.filter((_, i) => !selected.includes(i));
+  const handleDeleteSelected = () => {
+    const updated = editedData.filter((_, i) => !selected.includes(i));
 
-  setEditedData(updated);
-  setSelected([]);
-  setShowDeleteConfirm(false);
+    setEditedData(updated);
+    setSelected([]);
+    setShowDeleteConfirm(false);
 
-  setIsEditing(true);
-  setIsSaved(false);
+    setIsEditing(true);
+    setIsSaved(false);
 
-  toast.success("Selected items deleted!");
-};
-
+  };
 
   return (
     <>
@@ -357,7 +354,7 @@ const handleDeleteSelected = () => {
         headerText="ACADEMIC CALENDAR"
         subHeaderText="Ensuring academic clarity and structured timelines for efficient learning."
       />
-<ToastContainer position="bottom-right" autoClose={3000} />
+      <ToastContainer position="bottom-right" autoClose={3000} />
       {academicCal ? (
         <div className="nirf-page relative">
           {/* ✅ Edit Button always visible when not editing */}
@@ -384,15 +381,9 @@ const handleDeleteSelected = () => {
           <div className="max-w-6xl mx-auto px-4 py-4">
             <div className="grid grid-cols-3 md:grid-cols-3 gap-8 text-center">
               {editedData?.map((item, i) => {
-                const oddPath =
-                  item.oddPreview ||
-                  item.pdf_path?.[0] ||
-                  "";
+                const oddPath = item.oddPreview || item.pdf_path?.[0] || "";
 
-                const evenPath =
-                  item.evenPreview ||
-                  item.pdf_path?.[1] ||
-                  "";
+                const evenPath = item.evenPreview || item.pdf_path?.[1] || "";
 
                 return (
                   <div
@@ -426,134 +417,156 @@ const handleDeleteSelected = () => {
                       {isEditing && (
                         <>
                           {/* Odd Sem */}
-                            <div className="flex flex-col items-center space-y-3 text-blue-600 mt-4">
-                      {isEditing && (
-                        <>
-                          {/* Odd Sem */}
-                          <div className="flex items-center gap-3">
-                            <span className="text-black dark:text-white">
-                              Odd Sem
-                            </span>
-                            <input
-                              type="file"
-                              accept="application/pdf"
-                              id={`odd-file-${i}`}
-                              className="hidden"
-                              onChange={(e) =>
-                                handleFileReplace(i, "odd", e.target.files[0])
-                              }
-                            />
-                            <label
-                              htmlFor={`odd-file-${i}`}
-                              className="px-3 py-1 bg-[#FDCC03] text-text rounded-md shadow hover:bg-[#800000] hover:text-white cursor-pointer hover:text-prim"
-                            >
-                              {oddPath ? "Replace" : "Upload"}
-                            </label>
-                            {oddPath && (
+                          <div className="flex flex-col items-center space-y-3 text-blue-600 mt-4">
+                            {isEditing && (
                               <>
-                                <button
-                                  onClick={() =>
-                                    window.open(UrlParser(oddPath), "_blank")
-                                  }
-                                  className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-                                >
-                                  <Eye size={18} />
-                                </button>
-                                <button
-                                  onClick={() => {
-                                    const updated = [...editedData];
-                                    updated[i].oddFile = null;
-                                    updated[i].oddPreview = null;
-                                    updated[i].pdf_path[0] = "";
-                                    updated[i].oddRemoved = true;
-                                    updated[i].evenRemoved = updated[i].evenRemoved || false;
-                                    setEditedData(updated);
-                                    setHasChanges(true);
-                                  }}
-                                  className="p-2 rounded-full hover:bg-red-200 dark:hover:bg-red-900 transition"
-                                >
-                                  <Trash2 size={18} className="text-red-600" />
-                                </button>
+                                {/* Odd Sem */}
+                                <div className="flex items-center gap-3">
+                                  <span className="text-black dark:text-white">
+                                    Odd Sem
+                                  </span>
+                                  <input
+                                    type="file"
+                                    accept="application/pdf"
+                                    id={`odd-file-${i}`}
+                                    className="hidden"
+                                    onChange={(e) =>
+                                      handleFileReplace(
+                                        i,
+                                        "odd",
+                                        e.target.files[0],
+                                      )
+                                    }
+                                  />
+                                  <label
+                                    htmlFor={`odd-file-${i}`}
+                                    className="px-3 py-1 bg-[#FDCC03] text-text rounded-md shadow hover:bg-[#800000] hover:text-white cursor-pointer hover:text-prim"
+                                  >
+                                    {oddPath ? "Replace" : "Upload"}
+                                  </label>
+                                  {oddPath && (
+                                    <>
+                                      <button
+                                        onClick={() =>
+                                          window.open(
+                                            UrlParser(oddPath),
+                                            "_blank",
+                                          )
+                                        }
+                                        className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                                      >
+                                        <Eye size={18} />
+                                      </button>
+                                      <button
+                                        onClick={() => {
+                                          const updated = [...editedData];
+                                          updated[i].oddFile = null;
+                                          updated[i].oddPreview = null;
+                                          updated[i].pdf_path[0] = "";
+                                          updated[i].oddRemoved = true;
+                                          updated[i].evenRemoved =
+                                            updated[i].evenRemoved || false;
+                                          setEditedData(updated);
+                                          setHasChanges(true);
+                                        }}
+                                        className="p-2 rounded-full hover:bg-red-200 dark:hover:bg-red-900 transition"
+                                      >
+                                        <Trash2
+                                          size={18}
+                                          className="text-red-600"
+                                        />
+                                      </button>
+                                    </>
+                                  )}
+                                </div>
+
+                                {/* Even Sem */}
+                                <div className="flex items-center gap-3">
+                                  <span className="text-black dark:text-white">
+                                    Even Sem
+                                  </span>
+                                  <input
+                                    type="file"
+                                    accept="application/pdf"
+                                    id={`even-file-${i}`}
+                                    className="hidden"
+                                    onChange={(e) =>
+                                      handleFileReplace(
+                                        i,
+                                        "even",
+                                        e.target.files[0],
+                                      )
+                                    }
+                                  />
+                                  <label
+                                    htmlFor={`even-file-${i}`}
+                                    className="px-3 py-1 bg-[#FDCC03] text-black rounded-md shadow hover:bg-[#800000] hover:text-white cursor-pointer"
+                                  >
+                                    {evenPath ? "Replace" : "Upload"}
+                                  </label>
+                                  {evenPath && (
+                                    <>
+                                      <button
+                                        onClick={() =>
+                                          window.open(
+                                            UrlParser(evenPath),
+                                            "_blank",
+                                          )
+                                        }
+                                        className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                                      >
+                                        <Eye size={18} />
+                                      </button>
+                                      <button
+                                        onClick={() => {
+                                          const updated = [...editedData];
+                                          updated[i].evenFile = null;
+                                          updated[i].evenPreview = null;
+                                          updated[i].pdf_path[1] = "";
+                                          updated[i].evenRemoved = true;
+                                          updated[i].oddRemoved =
+                                            updated[i].oddRemoved || false;
+                                          setEditedData(updated);
+                                          setHasChanges(true);
+                                        }}
+                                        className="p-2 rounded-full hover:bg-red-200 dark:hover:bg-red-900 transition"
+                                      >
+                                        <Trash2
+                                          size={18}
+                                          className="text-red-600"
+                                        />
+                                      </button>
+                                    </>
+                                  )}
+                                </div>
+                              </>
+                            )}
+
+                            {!isEditing && (
+                              <>
+                                {oddPath && (
+                                  <a
+                                    href={UrlParser(oddPath)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-blue-800 dark:text-drka"
+                                  >
+                                    Odd Sem
+                                  </a>
+                                )}
+                                {evenPath && (
+                                  <a
+                                    href={UrlParser(evenPath)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-blue-800 dark:text-drka"
+                                  >
+                                    Even Sem
+                                  </a>
+                                )}
                               </>
                             )}
                           </div>
-
-                          {/* Even Sem */}
-                          <div className="flex items-center gap-3">
-                            <span className="text-black dark:text-white">
-                              Even Sem
-                            </span>
-                            <input
-                              type="file"
-                              accept="application/pdf"
-                              id={`even-file-${i}`}
-                              className="hidden"
-                              onChange={(e) =>
-                                handleFileReplace(i, "even", e.target.files[0])
-                              }
-                            />
-                            <label
-                              htmlFor={`even-file-${i}`}
-                              className="px-3 py-1 bg-[#FDCC03] text-black rounded-md shadow hover:bg-[#800000] hover:text-white cursor-pointer"
-                            >
-                              {evenPath ? "Replace" : "Upload"}
-                            </label>
-                            {evenPath && (
-                              <>
-                                <button
-                                  onClick={() =>
-                                    window.open(UrlParser(evenPath), "_blank")
-                                  }
-                                  className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-                                >
-                                  <Eye size={18} />
-                                </button>
-                                <button
-                                  onClick={() => {
-                                    const updated = [...editedData];
-                                    updated[i].evenFile = null;
-                                    updated[i].evenPreview = null;
-                                    updated[i].pdf_path[1] = "";
-                                    updated[i].evenRemoved = true;
-                                    updated[i].oddRemoved = updated[i].oddRemoved || false;
-                                    setEditedData(updated);
-                                    setHasChanges(true);
-                                  }}
-                                  className="p-2 rounded-full hover:bg-red-200 dark:hover:bg-red-900 transition"
-                                >
-                                  <Trash2 size={18} className="text-red-600" />
-                                </button>
-                              </>
-                            )}
-                          </div>
-                        </>
-                      )}
-
-                      {!isEditing && (
-                        <>
-                          {oddPath && (
-                            <a
-                              href={UrlParser(oddPath)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:text-blue-800 dark:text-drka"
-                            >
-                              Odd Sem
-                            </a>
-                          )}
-                          {evenPath && (
-                            <a
-                              href={UrlParser(evenPath)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:text-blue-800 dark:text-drka"
-                            >
-                              Even Sem
-                            </a>
-                          )}
-                        </>
-                      )}
-                    </div>
                         </>
                       )}
 
@@ -592,9 +605,16 @@ const handleDeleteSelected = () => {
                     setEditedData([
                       ...editedData,
                       {
+                        __uid: `${Date.now()}_${Math.random()}`,
                         year: "New Year",
-                        pdf_path: ["", ""]
-                      }
+                        pdf_path: ["", ""],
+                        oddFile: null,
+                        evenFile: null,
+                        oddRemoved: false,
+                        evenRemoved: false,
+                        oddPreview: null,
+                        evenPreview: null,
+                      },
                     ])
                   }
                   className="border-2 border-dashed border-gray-400 flex items-center justify-center p-6 rounded-lg cursor-pointer hover:border-yellow-500 transition"
@@ -611,17 +631,16 @@ const handleDeleteSelected = () => {
         </div>
       )}
 
-{selected.length > 0 && (
-  <div className="w-full flex justify-center my-4">
-    <button
-      onClick={() => setShowDeleteConfirm(true)}
-      className="px-5 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition flex items-center gap-2"
-    >
-      <Trash2 size={18} /> Delete ({selected.length})
-    </button>
-  </div>
-)}
-
+      {selected.length > 0 && (
+        <div className="w-full flex justify-center my-4">
+          <button
+            onClick={() => setShowDeleteConfirm(true)}
+            className="px-5 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition flex items-center gap-2"
+          >
+            <Trash2 size={18} /> Delete ({selected.length})
+          </button>
+        </div>
+      )}
 
       {/* Action Buttons */}
       {isEditing && (
@@ -632,20 +651,19 @@ const handleDeleteSelected = () => {
               setIsEditing(false);
               setHasChanges(false);
               setChanges([]);
+              //toast.info("Editing cancelled.");
             }}
             className="px-3 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
           >
             Cancel
           </button>
 
-
-
           {hasChanges && (
             <button
               onClick={handleGlobalSave}
               className="flex items-center gap-2 px-3  mr-4 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
             >
-              <Save size={18} />
+              
               <span>Save</span>
             </button>
           )}
@@ -706,8 +724,8 @@ const handleDeleteSelected = () => {
               Request
             </h2>
             <p className="text-sm text-red-600 mb-4">
-              Note: Your changes will stay pending until approved by the superior
-              admin. Once approved, they will go live.
+              Note: Your changes will stay pending until approved by the
+              superior admin. Once approved, they will go live.
             </p>
 
             <table className="w-full text-sm text-text dark:text-drkt border">
@@ -725,58 +743,105 @@ const handleDeleteSelected = () => {
                     <td className="py-2 text-blue-600 font-semibold">
                       {change.type === "delete" ? "Deleted" : "Edited"}
                     </td>
-<td className="py-2">
-  Academic Year {change.year}
-</td>
+                    <td className="py-2">Academic Year {change.year}</td>
 
                     <td className="py-2 flex items-center justify-center gap-2">
                       <span className="px-2 py-1 bg-yellow-100 text-black rounded-md">
                         {change.type === "year"
                           ? "Year"
                           : change.type === "delete"
-                          ? "Deleted"
-                          : change.type}
+                            ? "Deleted"
+                            : change.type}
                       </span>
-                      </td>
-                      <td>
+                    </td>
+                    <td>
                       {/* ✅ X Button rollback */}
                       <button
                         onClick={() => {
                           const change = changes[index];
 
                           setEditedData((prev) => {
-                            const updated = [...prev];
-
-                            const rowIndex = updated.findIndex(
-                              (item) => item.year === change.year
-                            );
-
-                            if (rowIndex === -1) return prev;
-
-                            const original = originalData.find(
-                              (item) => item.__uid === updated[rowIndex].__uid
-                            );
-
-                            if (!original) return prev;
+                            let updated = [...prev];
 
                             switch (change.type) {
-                              case "year":
-                                updated[rowIndex].year = original.year;
+                              // Undo newly added academic calendar
+                              case "add":
+                                updated = updated.filter(
+                                  (item) => item.__uid !== change.__uid,
+                                );
                                 break;
 
-                              case "odd":
-                                updated[rowIndex].oddFile = null;
-                                updated[rowIndex].oddPreview = null;
-                                updated[rowIndex].oddRemoved = false;
-                                updated[rowIndex].pdf_path[0] = original.pdf_path?.[0] || "";
-                                break;
+                              // Undo year/name change
+                              case "year": {
+                                const row = updated.find(
+                                  (item) => item.__uid === change.__uid,
+                                );
+                                if (row) {
+                                  const original = originalData.find(
+                                    (o) => o.__uid === row.__uid,
+                                  );
 
-                              case "even":
-                                updated[rowIndex].evenFile = null;
-                                updated[rowIndex].evenPreview = null;
-                                updated[rowIndex].evenRemoved = false;
-                                updated[rowIndex].pdf_path[1] = original.pdf_path?.[1] || "";
+                                  if (original) {
+                                    row.year = original.year;
+                                  }
+                                }
                                 break;
+                              }
+
+                              // Undo Odd PDF change
+                              case "odd": {
+                                const row = updated.find(
+                                  (item) => item.__uid === change.__uid,
+                                );
+                                if (row) {
+                                  const original = originalData.find(
+                                    (o) => o.__uid === row.__uid,
+                                  );
+
+                                  if (original) {
+                                    row.oddFile = null;
+                                    row.oddPreview = null;
+                                    row.oddRemoved = false;
+                                    row.pdf_path[0] =
+                                      original.pdf_path?.[0] || "";
+                                  }
+                                }
+                                break;
+                              }
+
+                              // Undo Even PDF change
+                              case "even": {
+                                const row = updated.find(
+                                  (item) => item.__uid === change.__uid,
+                                );
+                                if (row) {
+                                  const original = originalData.find(
+                                    (o) => o.__uid === row.__uid,
+                                  );
+
+                                  if (original) {
+                                    row.evenFile = null;
+                                    row.evenPreview = null;
+                                    row.evenRemoved = false;
+                                    row.pdf_path[1] =
+                                      original.pdf_path?.[1] || "";
+                                  }
+                                }
+                                break;
+                              }
+
+                              // Undo delete
+                              case "delete": {
+                                const original = originalData.find(
+                                  (o) => o.__uid === change.__uid,
+                                );
+                                if (original) {
+                                  updated.push(
+                                    JSON.parse(JSON.stringify(original)),
+                                  );
+                                }
+                                break;
+                              }
 
                               default:
                                 break;
