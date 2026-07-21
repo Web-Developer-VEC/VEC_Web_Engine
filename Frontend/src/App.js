@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback, useEffect, lazy, Suspense } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation,Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
@@ -8,7 +8,6 @@ import axios from 'axios';
 import useGoogleAnalytics from "./useAnalytics.js";
 import LandingPage from "./Landing.jsx"; // Keep eager, internal parts are lazy
 import LoadComp from "./Components/Main/LoadComp.jsx";
-import axios from 'axios';
 import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";

@@ -15,6 +15,7 @@
     "@pinecone-database/pinecone": "^4.1.0",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.7.9",
+    "busboy": "^1.6.0",
     "backend": "file:",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.3",

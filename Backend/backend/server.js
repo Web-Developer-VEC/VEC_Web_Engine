@@ -1,5 +1,4 @@
 const express = require('express');
-const compression = require('compression');
 const dotenv = require('dotenv');
 const connectToDatabase = require('./main-backend/config/db')
 const helmet = require('./main-backend/middlewares/helmet_security');
@@ -9,7 +8,7 @@ const scheduleResetCounters = require('./main-backend/middlewares/schedulers/res
 const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/schedule_mongo_healthcheck');
 const hitTracker = require('./main-backend/middlewares/hit_tracker');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo').default;
 const compression = require('compression');
 
 dotenv.config({ quiet: true });
@@ -42,8 +41,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI || "mongodb://127.0.0.1:27017/admin_sessions",
-    ttl: 24 * 60 * 60 // 1 day
+    mongoUrl: process.env.MONGO_URI,
+    ttl: 24 * 60 * 60,
   }),
   cookie: {
     secure: false, // set true if HTTPS

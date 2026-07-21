@@ -19,6 +19,7 @@
     "@testing-library/user-event": "^13.5.0",
     "assert": "^2.1.0",
     "axios": "^1.7.9",
+    "busboy": "^1.6.0",
     "bootstrap": "^5.3.3",
     "browserify-zlib": "^0.2.0",
     "date-fns": "^4.1.0",
