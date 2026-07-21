@@ -96,11 +96,11 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         const allFiles = req.uploadedFiles || [];
 
         const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE", ...(
-  ["AIDS_001","AUTO_002","CHEMISTRY_003","CIVIL_004","CSE_005","CSECS_006","EEE_007","EIE_008","ECE_009","ENGLISH_010","IT_011","MATHS_012","MECH_013","TAMIL_014","PHYSICS_015","MECSE_016","MBA_017","PS_018"].includes(collectionName)
-    ? ["research"]
-    : []
-)
-];
+          ["AIDS_001", "AUTO_002", "CHEMISTRY_003", "CIVIL_004", "CSE_005", "CSECS_006", "EEE_007", "EIE_008", "ECE_009", "ENGLISH_010", "IT_011", "MATHS_012", "MECH_013", "TAMIL_014", "PHYSICS_015", "MECSE_016", "MBA_017", "PS_018"].includes(collectionName)
+            ? ["research"]
+            : []
+        )
+        ];
 
         const skipImageFor = ["members", "library_services", "team", ...(collectionName === "ecell" ? ["gallery"] : [])]
         const mainCollection = maindb.collection(collectionName);
@@ -109,7 +109,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           { type: collection_type },
           { projection: { data: 1 } }
         );
-  
+
 
         let pdf_path = [];
 
@@ -169,24 +169,35 @@ module.exports = async function storeTempMiddleware(req, res, next) {
             .map((f) => f.location || `/${f.key}`)
           : [];
 
-    
+
+
         const notdoc = Array.isArray(existingDoc.data) ? existingDoc.data : [existingDoc.data];
-        
+
 
         if (action === "update") {
 
           if (pdf_path.length > 0) {
 
+            const forceArrayPdf = [
+              "newsletter",
+
+            ];
 
             for (const item of notdoc) {
               const matches = findMatchingItem(item, original_data, "pdf_path");
-             
+
+
+
+
 
               if (matches) {
-
-                pdf_path = Array.isArray(item.pdf_path)
-                  ? pdf_path
-                  : pdf_path[0];
+                if (forceArrayPdf.includes(collection_type)) {
+                  pdf_path = Array.isArray(pdf_path) ? pdf_path : [pdf_path];
+                } else {
+                  pdf_path = Array.isArray(item.pdf_path)
+                    ? pdf_path
+                    : pdf_path[0];
+                }
                 break;
               }
             }
@@ -198,7 +209,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
               //   k=> item[k] === original_data[k]
 
               // );
-          
+
 
               if (matches) {
                 image_path = Array.isArray(item.image_path)
@@ -210,20 +221,34 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           }
         }
         if (action === "insert") {
-          if (pdf_path.length > 0) {
-            for (const item of notdoc) {
-              pdf_path = Array.isArray(item.pdf_path)
-                ? pdf_path
-                : pdf_path[0];
 
-              break;
+          // news_card always stores string paths
+          if (collection_type === "news_card") {
+
+            if (Array.isArray(image_path) && image_path.length > 0) {
+              image_path = image_path[0];
             }
-          } else if (image_path.length > 0) {
-            for (const item of notdoc) {
-              image_path = Array.isArray(item.image_path)
-                ? image_path
-                : image_path[0];
-              break;
+
+            if (Array.isArray(pdf_path) && pdf_path.length > 0) {
+              pdf_path = pdf_path[0];
+            }
+
+          } else {
+            if (pdf_path.length > 0) {
+              for (const item of notdoc) {
+                pdf_path = Array.isArray(item.pdf_path)
+                  ? pdf_path
+                  : pdf_path[0];
+
+                break;
+              }
+            } else if (image_path.length > 0) {
+              for (const item of notdoc) {
+                image_path = Array.isArray(item.image_path)
+                  ? image_path
+                  : image_path[0];
+                break;
+              }
             }
           }
         }
