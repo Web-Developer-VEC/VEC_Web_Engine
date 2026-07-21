@@ -177,7 +177,7 @@ const AdminDepartmentPage = ({ theme, toggle }) => {
       case "Vision&Mission":
         return <VisionMission data={sectionData} />;
       case "Faculties":
-        return <Faculties data={sectionData} />;
+        return <Faculties data={sectionData[0].data} />;
       case "Activities":
         return <Activities data={sectionData} />;
       case "Pedagogy":
