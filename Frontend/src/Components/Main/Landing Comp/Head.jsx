@@ -1,47 +1,20 @@
-// import {useState, useEffect} from 'react'
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import Sidebar from './SideBar'
-import Nord from '../../Assets/1723802229690.png'
-import Naac from '../../Assets/1723802229711.png'
-import Acrd from '../../Assets/1723802229732.png'
-import iquage from '../../Assets/iquage.png'
-import Tnea from '../../Assets/TNEA-Code.png'
-import Inta from '../../Assets/instagram.png'
-import Fcbk from '../../Assets/facebook.png'
-import Twtr from '../../Assets/twitter.png'
-import Lknd from '../../Assets/linkedin.png'
-import logo from '../../Assets/NEWLOGO.png'
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
+import Naac from '../../Assets/1723802229711.png';
+import Acrd from '../../Assets/1723802229732.png';
+import Fcbk from '../../Assets/facebook.png';
+import Inta from '../../Assets/instagram.png';
+import iquage from '../../Assets/iquage.png';
+import Lknd from '../../Assets/linkedin.png';
+import logo from '../../Assets/NEWLOGO.png';
+import Tnea from '../../Assets/TNEA-Code.png';
+import tuvindia from '../../Assets/tuvindia.jpeg';
+import Twtr from '../../Assets/twitter.png';
+import Sidebar from './SideBar';
 
 const Head = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const [HrHandbook,setHrHandbook] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const responce = await axios.post('/api/main-backend/administration', {
-                    type: "HRHandBook"
-                })
-
-                const data = responce.data.data;
-                setHrHandbook(data);
-            }
-            catch (error) {
-                if (error.response?.data?.status === 429) {
-                    navigate('/ratelimit', { state: { msg: error.response.data.message } });
-                } else {
-                    console.error(error);
-                }
-            }
-        }
-
-        fetchData();
-    }, [])
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -52,7 +25,7 @@ const Head = () => {
     // const [scroll, setScroll] = useState(0)
     // const [hdr, setHdr] = useState("")
 
-    const nacs = [Naac, Acrd, Nord, iquage, Tnea]
+    const nacs = [Naac, Acrd, tuvindia, iquage, Tnea]
     const hdrs = [
         { ttl: "Library", lnk: "/library" },
         { ttl: "IQAC", lnk: "/iqac" },
@@ -98,7 +71,7 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us" },
                 { hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust" },
-                { hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m" },
+                { hrd: false, ttl: "Vision & Mission", sup: [], lnk: "/v_m" },
                 { hrd: false, ttl: "Management", sup: [], lnk: "/management" },
                 { hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer" }, // Link to footer
             ],
@@ -113,18 +86,8 @@ const Head = () => {
                 { hrd: false, ttl: "Admin Office", sup: [], lnk: "/admin" },
                 { hrd: false, ttl: "Administrative Committee", sup: [], lnk: "/committee" },
                 { hrd: false, ttl: "Handbook", sup: [], lnk: "/handbook" },
-                { hrd: false, ttl: "HR Handbook", sup: [], lnk: UrlParser(HrHandbook?.pdf_path[0]), openInNewTab: true },
+                { hrd: false, ttl: "HR Handbook", sup: [], lnk: UrlParser("/static/pdfs/handbook/HR-Handbook.pdf"), openInNewTab: true },
                 { hrd: false, ttl: "Organization Chart", sup: [], lnk: "/clg-org" },
-            ],
-        },
-        {
-            main: "Academics",
-            cod: [0, 3],
-            cols: 1,
-            sub: [
-                { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
-                { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/academic_cal" },
             ],
         },
         {
@@ -139,6 +102,34 @@ const Head = () => {
                 { hrd: false, ttl: "Admission Team", sup: [], lnk: "/admission-team" }
             ],
         },
+        {
+            main: "Academics",
+            cod: [0, 3],
+            cols: 1,
+            sub: [
+                { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
+                { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/academic_cal" },
+            ],
+        },
+
+        {
+            main: "Placement",
+            cod: [0, 4],
+            cols: 1,
+            sub: [
+                {
+                    hrd: false,
+                    ttl: "About Placement Department",
+                    sup: [],
+                    lnk: "/abtplace",
+                },
+                { hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep" },
+                { hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni" },
+                { hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team" },
+            ],
+        },
+
         {
             main: "Exams",
             cod: [0, 6],
@@ -158,9 +149,9 @@ const Head = () => {
                     lnk: "https://vecchennai.directverify.in/student/#/app/request",
                     openInNewTab: true,
                 },
-                {hrd: false, ttl: "Rank List UG & PG", sup: [], lnk: "/rankholders"},
-                {hrd: false, ttl: "Downloads", sup: [], lnk: "/form"},
-                {hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe"},
+                { hrd: false, ttl: "Rank List UG & PG", sup: [], lnk: "/rankholders" },
+                { hrd: false, ttl: "Downloads", sup: [], lnk: "/form" },
+                { hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe" },
             ],
         },
         {
@@ -176,22 +167,7 @@ const Head = () => {
                 { hrd: false, ttl: "Policy", sup: [], lnk: "/policies" },
             ]
         },
-        {
-            main: "Placement",
-            cod: [0, 4],
-            cols: 1,
-            sub: [
-                {
-                    hrd: false,
-                    ttl: "About Placement Department",
-                    sup: [],
-                    lnk: "/abtplace",
-                },
-                { hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep" },
-                { hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni" },
-                { hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team" },
-            ],
-        },
+
     ];
 
     function max(arr) {
@@ -218,7 +194,7 @@ const Head = () => {
     }
 
     const session = JSON.parse(sessionStorage.getItem("userSession"))
-    
+
     const isRouteAllowed = (link) => {
         if (!session?.routes) return true; // If no session routes, allow by default
         return session.routes.includes(link);
@@ -231,7 +207,7 @@ const Head = () => {
                     className={'flex items-center font-popp group bg-prim dark:bg-drkts text-text dark:text-drkt' +
                         'transition-all ease-in-out duration-300 w-full h-auto ' +
                         ' h-20'}>
-                    <a href={!session || !session?.role || session.role === "super_admin" ? "/" : "/admin_profile"} className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
+                    <a href="/" className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
                         <div className="z-10">
                             <img
                                 src={logo}
@@ -256,7 +232,7 @@ const Head = () => {
                         </div>
                     </a>
                     <div className="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
-                         ml-2 flex xl:w-[25vw] lg:w-[50vw]">
+                         ml-2 flex xl:w-[30vw] lg:w-[50vw]">
                         {nacs.map((nac, i) => (
                             <div className="duration-200 self-center ease-linear ml-0 lg:ml-8 xl:ml-2" data-carousel-item="" key={i}>
                                 <img src={nac} className="block mt-2 h-full w-[5vmax] lg:w-[400px] xl:w-[7vmax] p-1" alt="naac"
@@ -264,7 +240,7 @@ const Head = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='xl:flex flex-nowrap hidden ml-[70px] right-0 justify-end grow text-[clamp(1rem,1.125rem+1vw,1.15rem)]
+                    <div className='xl:flex flex-nowrap hidden ml-[10px] right-0 justify-end grow text-[clamp(1rem,1.125rem+1vw,1.15rem)]
                     max-w-[63.5%]
                         w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition'>
                         {navs.map((nvt, ind) => (
@@ -288,14 +264,13 @@ const Head = () => {
                                     style={{ gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))` }}>
                                     {griddy(nvt.sub, nvt.cod).map((sbj, i, { length }) => (
                                         <div className='group/sub relative w-full bg-prim dark:bg-drkts first:rounded-lg last:rounded-b-lg' key={i}>
-                                            <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} ${isRouteAllowed(sbj.lnk) ? "" : "cursor-not-allowed"}
-                                                     bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
+                                            <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
                                                     ${(i === length - 1) ? 'rounded-b-lg' : ''} bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% border-slate-700
                                                     w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500]` +
                                                 (sbj.hrd || sbj.ttl === "" ? '' : ' hover:bg-[position:-100%_100%]')}
-                                               style={{transitionDelay: `${((length > 10) ? 25 : 100) * i}ms`}}
-                                               key={sbj.ttl} href={`${isRouteAllowed(sbj.lnk) ? sbj.lnk : "#"}`}
-                                               target={sbj.openInNewTab ? '_blank' : '_self'}
+                                                style={{ transitionDelay: `${((length > 10) ? 25 : 100) * i}ms` }}
+                                                key={sbj.ttl} href={`${isRouteAllowed(sbj.lnk) ? sbj.lnk : "#"}`}
+                                                target={sbj.openInNewTab ? '_blank' : '_self'}
                                             ><p
                                                 className={'w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts border-slate-500 border-dashed ' +
                                                     (sbj.hrd ? 'font-bold border-b-2 text-center' : 'text-left')}>{sbj.ttl}</p>
@@ -306,14 +281,13 @@ const Head = () => {
                                                         outline-offset-2 duration-500 ease-in transiton-[ht] rounded-xl'>
                                                     {sbj.sup.map((spj, i, { length }) => (
                                                         <a className={`no-underline inline-block bg-[length:200%_100%] 
-                                                            ${isRouteAllowed(spj.lnk) ? "" : "cursor-not-allowed"}
                                                             bg-[position:0%_100%] text-slate-950 -translate-x-[-40vw] px-2
                                                             ${(i !== length - 1) ? '' : ''} bg-gradient-to-l 
                                                             from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
                                                             w-full group-hover/sub:translate-x-0 hover:delay-0 duration-200 
                                                             ease-in transition-all hover:bg-[position:-100%_100%]`}
-                                                           style={{transitionDelay: `${100 * i}ms`}}
-                                                           key={sbj.ttl + i} href={`${isRouteAllowed ? spj.lnk : "#"}`}>
+                                                            style={{ transitionDelay: `${100 * i}ms` }}
+                                                            key={sbj.ttl + i} href={`${isRouteAllowed ? spj.lnk : "#"}`}>
                                                             <p className='w-fit my-2 text-right align-middle
                                                             text-text dark:text-drkt text-nowrap'>{spj.ttl}</p>
                                                         </a>
@@ -332,21 +306,21 @@ const Head = () => {
                     {hdrs.map((hdr, index) => {
                         const isActive = location.pathname === hdr.lnk || (hdr.sub && hdr.sub.some(subItem => location.pathname === subItem.lnk));
 
-                            return !hdr.sub ? (
-                                // Single button (no submenu)
-                                <button
-                                    key={index}
-                                    onClick={() => 
-                                        hdr.lnk.startsWith('http')
-                                            ? window.open(hdr.lnk, '_blank', 'noopener,noreferrer')
-                                            : navigate(hdr.lnk)
-                                    }
-                                    disabled={!isRouteAllowed(hdr.lnk)}
-                                    className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all ${isRouteAllowed(hdr.lnk) ? "" : "cursor-not-allowed"}`}
-                                >
-                                    {hdr.ttl}
-                                    {/* Underline animation */}
-                                    <span className={`absolute bottom-0 left-0 h-[2px] bg-brwn transition-all duration-300 
+                        return !hdr.sub ? (
+                            // Single button (no submenu)
+                            <button
+                                key={index}
+                                onClick={() =>
+                                    hdr.lnk.startsWith('http')
+                                        ? window.open(hdr.lnk, '_blank', 'noopener,noreferrer')
+                                        : navigate(hdr.lnk)
+                                }
+                                disabled={!isRouteAllowed(hdr.lnk)}
+                                className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all ${isRouteAllowed(hdr.lnk) ? "" : "cursor-not-allowed"}`}
+                            >
+                                {hdr.ttl}
+                                {/* Underline animation */}
+                                <span className={`absolute bottom-0 left-0 h-[2px] bg-brwn transition-all duration-300 
                                                     ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
                                 </span>
                             </button>
@@ -355,21 +329,22 @@ const Head = () => {
                             <div key={index} className='group/nav relative transition-all rounded-xl'>
                                 <button className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all`}>
                                     {hdr.ttl}
-                                    {/* Animated underline */}
+                                    {/* Underline animation */}
                                     <span className={`absolute bottom-0 left-0 h-[2px] bg-brwn transition-all duration-300 
-                                                        ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
+                                                    ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
                                     </span>
                                 </button>
+                                ) :
                                 <div className={`grid grid-flow-row content-center rounded-lg outline 
                                                     group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
                                                     right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit w-max outline-offset-2
                                                     group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
                                                     duration-500 ease-in transiton-[ht] bg-prim dark:bg-drkts`}>
-                                        {hdr.sub.map((subItem, i) => (
-                                            <a
-                                                key={i}
-                                                href={subItem.lnk}
-                                                className={`no-underline inline-block bg-[length:200%_100%] 
+                                    {hdr.sub.map((subItem, i) => (
+                                        <a
+                                            key={i}
+                                            href={subItem.lnk}
+                                            className={`no-underline inline-block bg-[length:200%_100%] 
                                                             ${isRouteAllowed(subItem.lnk) ? "" : "cursor-not-allowed"}
                                                             bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
                                                             bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
@@ -385,20 +360,20 @@ const Head = () => {
                         );
                     })}
 
-                        {/* Payment Button */}
-                        <button 
-                            onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
-                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white dark:text-drkts px-2">
-                            Fees Payment
-                        </button>
-                        <button
-                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-prim dark:text-drkts px-2">
-                            {session && session?.role === "super_admin" && (
-                                <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer no-underline'>
-                                    Admin
-                                </a>
-                            )}
-                        </button>
+                    {/* Payment Button */}
+                    <button
+                        onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
+                        className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white dark:text-drkts px-2">
+                        Fees Payment
+                    </button>
+                    <button
+                        className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-prim dark:text-drkts px-2">
+                        {session && session?.role === "super_admin" && (
+                            <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer no-underline'>
+                                Admin
+                            </a>
+                        )}
+                    </button>
 
                     {/* Social Icons */}
                     <div className="flex group items-center justify-end grow gap-3">
@@ -414,7 +389,8 @@ const Head = () => {
                 </div>
                 <div
                     className='block xl:hidden h-fit overflow-y-hidden'>
-                    <Sidebar navs={navs} Sz="tny p-0" /></div>
+                    <Sidebar navs={navs} Sz="tny p-0" />
+                </div>
             </nav>
         </>
     )
