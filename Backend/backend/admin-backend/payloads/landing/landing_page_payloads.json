@@ -265,7 +265,7 @@
       "type": "image",
       "image_path": null,
       "pdf_path": null,
-      "status": "True",
+      "active": "True",
       "title": "Priyan"
     }
   },
@@ -275,18 +275,18 @@
     "action": "update",
     "title": "update in news_card",
     "original_data": {
-       "type": "image",
-      "image_path": null,
+      "type": "image",
+      "image_path": "/static/images/newscard/Priyan.jpg",
       "pdf_path": null,
-      "status": "True",
+      "active": "True",
       "title": "Priyan"
     },
     "meta_data": {
-       "type": "image",
-      "image_path": null,
+      "type": "pdf",
+      "image_path": "/static/images/newscard/Priyan.jpg",
       "pdf_path": null,
-      "status": "True",
-      "title": "Prabhu"
+      "active": "True",
+      "title": "Priya"
     }
   },
   {
@@ -295,12 +295,25 @@
     "action": "delete",
     "title": "delete in news_card",
     "meta_data": {
-       "type": "image",
-      "image_path": null,
+      "type": "image",
+      "image_path": "/static/images/newscard/Priyan.png",
       "pdf_path": null,
-      "status": "False",
-      "title": "Prabhu"
+      "active": "True",
+      "title": "Priyan"
+    }
+  },
+  {
+    "collectionName": "landing_page_details",
+    "collection_type": "side_buttons",
+    "action": "update",
+    "title": "update in side buttons",
+    "meta_data": {
+      "apply_button": false,
+      "enquire_button": true
+    },
+    "original_data": {
+      "apply_button": true,
+      "enquire_button": true
     }
   }
 ]
-
