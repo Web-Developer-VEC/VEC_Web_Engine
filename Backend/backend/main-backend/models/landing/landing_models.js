@@ -6,7 +6,9 @@ const allowedtypes = {
   'notifications',
   'announcements',
   'special_announcements',
-  'events'],
+  'events',
+  'news_card'
+],
 };
 
 module.exports = allowedtypes;

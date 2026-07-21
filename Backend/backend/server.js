@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const dotenv = require('dotenv');
 const connectToDatabase = require('./main-backend/config/db')
 const helmet = require('./main-backend/middlewares/helmet_security');

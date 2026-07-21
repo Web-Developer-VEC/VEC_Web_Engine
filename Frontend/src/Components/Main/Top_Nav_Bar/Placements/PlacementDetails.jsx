@@ -91,19 +91,39 @@ export const PlacementDetails = ({ theme, toggle }) => {
                         {/* Year-wise PDF Reports */}
                         <div className="placement-yearwise font-[poppins] card-plc bg-prim dark:bg-drkts">
                             <h4 className='text-text bg-secd dark:drks'>Placement Details Year Wise</h4>
-                            <div className="place-Sylgrid">
-                                {placementData?.year_wise_pdfs?.map((year, index) => (
-                                    <button
-                                        key={index}
-                                        className="place-course-button bg-secd dark:bg-drks text-text"
-                                        onClick={() => openModal(UrlParser(year.pdf_path))}
-                                    >
-                                        <div className="place-course">{year.year}</div>
-                                    </button>
-                                ))}
+                           <div className="place-Sylgrid">
 
-                            
-                            </div>
+{/* FIRST ITEM (TOP CENTER) */}
+{placementData?.year_wise_pdfs?.[0] && (
+  <div className="top-item relative flex justify-center items-center">
+    
+    <button
+      className="place-course-button bg-secd dark:bg-drks text-text"
+      onClick={() => openModal(UrlParser(placementData.year_wise_pdfs[0].pdf_path))}
+    >
+      {placementData.year_wise_pdfs[0].year}
+    </button>
+
+    {/* ⭐ Text positioned beside without affecting center */}
+    <div className="placement-note">
+      ★ - Placement data has on 20 Dec 2025
+    </div>
+
+  </div>
+)}
+
+  {/* REMAINING ITEMS */}
+  {placementData?.year_wise_pdfs?.slice(1).map((year, index) => (
+    <button
+      key={index}
+      className="place-course-button bg-secd dark:bg-drks text-text"
+      onClick={() => openModal(UrlParser(year.pdf_path))}
+    >
+      {year.year}
+    </button>
+  ))}
+
+</div>
 
                             {showModal && (
                                 <div className="place-modal-overlay" onClick={closeModal}>
@@ -114,9 +134,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                 </div>
                             )}
 
-                            <div className='pt-8 ml-8  flex justify-start'>
-                                ★ - Placement is still in progress 
-                            </div>
+                           
                         </div>
                         
                         {/* Placement Department-wise Data */}
@@ -150,7 +168,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                 </tbody>
                                 </table>
                             </div>
-                            </div>
+                        </div>
 
 
                         {/* Placement Statistics */}
@@ -186,7 +204,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
                                 </tbody>
                                 </table>
                             </div>
-                            </div>                  
+                        </div>                  
                     </>
                 )}
 

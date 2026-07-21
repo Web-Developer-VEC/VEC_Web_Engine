@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import Cookies from "universal-cookie";
+import axios from 'axios';
 import useGoogleAnalytics from "./useAnalytics.js";
 import LandingPage from "./Landing.jsx"; // Keep eager, internal parts are lazy
 import LoadComp from "./Components/Main/LoadComp.jsx";
@@ -102,7 +103,7 @@ const App = () => {
 
             } catch (error) {
                 console.error("Error fetching thhe landing page Data", error);
-                if (error.response && error.response.data.status === 429) {
+                if (error.response.data.status === 429) {
                     navigate('/ratelimit', { state: { msg: error.response.data.message } })
                 }
             }
@@ -170,6 +171,7 @@ const App = () => {
 
 
     const session = JSON.parse(sessionStorage.getItem("userSession"));
+    const isFooter = currentPath.startsWith("/hostel");
 
     return (
         <>
@@ -200,12 +202,23 @@ const App = () => {
                                             isAdmin={session && session.routes.includes("/")}
                                         />
                                     }
-                                />
+                                    />
+
+                                    {/* Admin based route */}
+                                    {Object.keys(routeConfig).map((path) => (
+                                        <Route
+                                            key={path}
+                                            path={path}
+                                            drk
+                                            element={getRouteElement(path, session, toggle, theme)}
+                                        />
+                                    ))}
                             
+                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme} />} />
                                 <Route path="/careers" drk element={<Career toggle={toggle} theme={theme} />} />
-                                {/* <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme} />} /> */}
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />} />
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme} />} />
+
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
                                 <Route path="/hostel/warden/*" element={<WardenLayout />} />
@@ -213,26 +226,20 @@ const App = () => {
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital />} />
                                 <Route path="/hostel/forget-password" element={<ForgotPassword />} />
+
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 <Route path="/admin_auth" drk element={<AuthPage toggle={toggle} theme={theme} />} />
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme} />} />
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme} />} />
-                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme} />}></Route>
                                 {/*  General Forms  */}
                                 <Route path="/appraisalreport" element={<AppraisalReport />} />
                                 <Route path="/appraisalform" element={<AppraisalForm />} />
 
-                                {/* Admin based route */}
-                                {Object.keys(routeConfig).map((path) => (
-                                    <Route
-                                        key={path}
-                                        path={path}
-                                        drk
-                                        element={getRouteElement(path, session, toggle, theme)}
-                                    />
-                                ))}
+                                {/*  conditional routes  */}
+                                <Route path="/vec-connect/*" element={<Navigate to="/" replace />} />
+                                <Route path="/Accredation" element={<Navigate to="/" replace />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
@@ -242,13 +249,10 @@ const App = () => {
                         </Suspense>
 
                     </MainContentWrapper>
-                    {!isHostelRoute && (
-                        <Suspense fallback={null}>
-                            <Footer theme={theme} data={footer?.[0]} ref={footerRef} />
-                        </Suspense>
-                    )}
+                    {/* <Footer ref={footerRef}/> */}
+                    {!isFooter && <Footer theme={theme} data={footer?.[0]} />}
 
-                    {session && session.routes.includes("/") && currentPath === "/" ? <AdminSideButton /> : <SideButton />}
+                    <SideButton />
                     <ScrollToTopButton />
                 </>
             </AppContainer>

@@ -1,6 +1,6 @@
 // import {useState, useEffect} from 'react'
-import {useLocation, useNavigate} from 'react-router-dom';
-import {ChevronDownIcon} from '@heroicons/react/24/solid'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import Sidebar from './SideBar'
 import Nord from '../../Assets/1723802229690.png'
 import Naac from '../../Assets/1723802229711.png'
@@ -12,10 +12,36 @@ import Fcbk from '../../Assets/facebook.png'
 import Twtr from '../../Assets/twitter.png'
 import Lknd from '../../Assets/linkedin.png'
 import logo from '../../Assets/NEWLOGO.png'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 const Head = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [HrHandbook,setHrHandbook] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.post('/api/main-backend/administration', {
+                    type: "HRHandBook"
+                })
+
+                const data = responce.data.data;
+                setHrHandbook(data);
+            }
+            catch (error) {
+                if (error.response?.data?.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message } });
+                } else {
+                    console.error(error);
+                }
+            }
+        }
+
+        fetchData();
+    }, [])
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -30,7 +56,7 @@ const Head = () => {
     const hdrs = [
         { ttl: "Library", lnk: "/library" },
         { ttl: "IQAC", lnk: "/iqac" },
-        { ttl:"Accreditations & Ranking",lnk:"/Accredation"},
+        { ttl: "Accreditations & Ranking", lnk: "/Accreditation" },
         { ttl: "IIC", lnk: "/iic" },
         { ttl: "Incubation Cell", lnk: "/incubation" },
         { ttl: "Alumni", lnk: "/alumni" },
@@ -42,7 +68,7 @@ const Head = () => {
         { ttl: "Hostel", lnk: "/hosLanding" },
         { ttl: "Other Facilities", lnk: "/other-facilities" },
         { ttl: "Help Desk", lnk: "/grievances" },
-        { ttl:  "Gallery",lnk:"/gallery"},
+        { ttl: "Gallery", lnk: "/gallery" },
         {
             ttl: "Login",
             lnk: "#",
@@ -60,9 +86,9 @@ const Head = () => {
             Ico: Inta,
             Fltr: "invert-[133%] sepia-[50%] saturate-[1732%] hue-rotate-[302deg] brightness-[94%] contrast-[85%]"
         },
-        {Name: "Facebook", Link: "https://www.facebook.com/velammalengineeringcollege", Ico: Fcbk, Fltr: ""},
-        {Name: "Twitter", Link: "https://x.com/VelammalEnggC", Ico: Twtr, Fltr: ""},
-        {Name: "LinkedIn", Link: "https://www.linkedin.com/school/velammal-engineering-college/", Ico: Lknd, Fltr: ""},
+        { Name: "Facebook", Link: "https://www.facebook.com/velammalengineeringcollege", Ico: Fcbk, Fltr: "" },
+        { Name: "Twitter", Link: "https://x.com/VelammalEnggC", Ico: Twtr, Fltr: "" },
+        { Name: "LinkedIn", Link: "https://www.linkedin.com/school/velammal-engineering-college/", Ico: Lknd, Fltr: "" },
     ]
     const navs = [
         {
@@ -70,11 +96,11 @@ const Head = () => {
             cod: [0, 5],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
-                {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
-                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m"},
-                {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
-                {hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer"}, // Link to footer
+                { hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us" },
+                { hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust" },
+                { hrd: false, ttl: "Vision & Mission", sup: [], lnk: "v_m" },
+                { hrd: false, ttl: "Management", sup: [], lnk: "/management" },
+                { hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer" }, // Link to footer
             ],
         },
         {
@@ -82,14 +108,14 @@ const Head = () => {
             cod: [0, 7],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "Principal", sup: [], lnk: "/principal"},
-                {hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: "/dean"},
-                {hrd: false, ttl: "Admin Office", sup: [], lnk: "/admin"},
-                {hrd: false, ttl: "Administrative Committee", sup: [], lnk: "/committee"},
-                {hrd: false, ttl:"Handbook",sup:[],lnk:"/handbook"},
-                {hrd: false, ttl:"HR Handbook",sup:[],lnk:UrlParser("/static/pdfs/handbook/HR-Handbook.pdf") , openInNewTab: true},
-                {hrd: false, ttl: "Organization Chart", sup: [], lnk: "/clg-org"},
-            ], 
+                { hrd: false, ttl: "Principal", sup: [], lnk: "/principal" },
+                { hrd: false, ttl: "Dean's & Asso Dean's", sup: [], lnk: "/dean" },
+                { hrd: false, ttl: "Admin Office", sup: [], lnk: "/admin" },
+                { hrd: false, ttl: "Administrative Committee", sup: [], lnk: "/committee" },
+                { hrd: false, ttl: "Handbook", sup: [], lnk: "/handbook" },
+                { hrd: false, ttl: "HR Handbook", sup: [], lnk: UrlParser(HrHandbook?.pdf_path[0]), openInNewTab: true },
+                { hrd: false, ttl: "Organization Chart", sup: [], lnk: "/clg-org" },
+            ],
         },
         {
             main: "Academics",
@@ -98,19 +124,19 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/acadamiccal" },
-              ],
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/academic_cal" },
+            ],
         },
         {
             main: "Admission",
             cod: [0, 5],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "B.E/B.Tech Admission", sup: [], lnk: "/ug"},
-                {hrd: false, ttl: "M.E Admission", sup: [], lnk: "/m_e"},
-                {hrd: false, ttl: "MBA Admission", sup: [], lnk: "/mba"},
-                {hrd: false, ttl: "Ph.D Admission", sup: [], lnk: "/phd"},
-                {hrd:false,ttl: "Admission Team",sup:[],lnk:"/admission-team"}
+                { hrd: false, ttl: "B.E/B.Tech Admission", sup: [], lnk: "/ug" },
+                { hrd: false, ttl: "M.E Admission", sup: [], lnk: "/m_e" },
+                { hrd: false, ttl: "MBA Admission", sup: [], lnk: "/mba" },
+                { hrd: false, ttl: "Ph.D Admission", sup: [], lnk: "/phd" },
+                { hrd: false, ttl: "Admission Team", sup: [], lnk: "/admission-team" }
             ],
         },
         {
@@ -118,7 +144,7 @@ const Head = () => {
             cod: [0, 6],
             cols: 1,
             sub: [
-                {hrd: false, ttl: "Regulation", sup: [], lnk: "/reg"},
+                { hrd: false, ttl: "Regulation", sup: [], lnk: "/reg" },
                 {
                     hrd: false,
                     ttl: "Curriculum & Syllabus",
@@ -143,11 +169,11 @@ const Head = () => {
             cols: 1,
             sub: [
 
-                {hrd: false, ttl: "Journal publication ", sup: [], lnk: "/Journal"}, //Sponseredresearch
-                {hrd: false, ttl: "Books & Book Chapters", sup: [], lnk: "/Book_Chapter"} ,//Sponseredresearch
-                {hrd: false, ttl: "Funded Projects", sup: [], lnk: "/Funded"}, //Sponseredresearch
-                {hrd: false, ttl: "Consultancy", sup: [], lnk: "/Consultancy"},  //Academic
-                {hrd: false, ttl: "Policy", sup: [], lnk: "/policies"},
+                { hrd: false, ttl: "Journal publication ", sup: [], lnk: "/Journal" }, //Sponseredresearch
+                { hrd: false, ttl: "Books & Book Chapters", sup: [], lnk: "/Book_Chapter" },//Sponseredresearch
+                { hrd: false, ttl: "Funded Projects", sup: [], lnk: "/Funded" }, //Sponseredresearch
+                { hrd: false, ttl: "Consultancy", sup: [], lnk: "/Consultancy" },  //Academic
+                { hrd: false, ttl: "Policy", sup: [], lnk: "/policies" },
             ]
         },
         {
@@ -161,9 +187,9 @@ const Head = () => {
                     sup: [],
                     lnk: "/abtplace",
                 },
-                {hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep"},
-                {hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni"},
-                {hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team"},
+                { hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep" },
+                { hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni" },
+                { hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team" },
             ],
         },
     ];
@@ -184,7 +210,7 @@ const Head = () => {
                 if (nvd[i + cld[j]]) {
                     arr.push(nvd[i + cld[j]])
                 } else {
-                    arr.push({ttl: '', sup: [], lnk: ''})
+                    arr.push({ ttl: '', sup: [], lnk: '' })
                 }
             }
         }
@@ -208,24 +234,24 @@ const Head = () => {
                     <a href={!session || !session?.role || session.role === "super_admin" ? "/" : "/admin_profile"} className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
                         <div className="z-10">
                             <img
-                            src={logo}
-                            alt="VEC Logo"
-                            className="w-[2.5rem] md:w-[3.5rem] h-auto object-contain transition-all duration-300 ease-in-out"
+                                src={logo}
+                                alt="VEC Logo"
+                                className="w-[2.5rem] md:w-[3.5rem] h-auto object-contain transition-all duration-300 ease-in-out"
                             />
                         </div>
 
                         <div className="text-center leading-tight mt-1 md:mt-1.5">
                             <span className="font-rome text-[0.75rem] md:text-[1.2rem] text-[#4B1E1E] dark:text-drks font-thin block">
-                            VELAMMAL
+                                VELAMMAL
                             </span>
                             <span className="font-rome text-[0.45rem] md:text-[0.8rem] text-gray-800 dark:text-drkt block tracking-wide">
-                            ENGINEERING COLLEGE
+                                ENGINEERING COLLEGE
                             </span>
                             <span className="font-rome text-[0.35rem] md:text-[0.65rem] text-gray-500 dark:text-drks italic block">
-                            The Wheel of Knowledge rolls on!
+                                The Wheel of Knowledge rolls on!
                             </span>
                             <span className="font-rome text-[0.35rem] md:text-[0.65rem] text-gray-500 dark:text-drks italic block">
-                            (An Autonomous Institution)
+                                (An Autonomous Institution)
                             </span>
                         </div>
                     </a>
@@ -234,7 +260,7 @@ const Head = () => {
                         {nacs.map((nac, i) => (
                             <div className="duration-200 self-center ease-linear ml-0 lg:ml-8 xl:ml-2" data-carousel-item="" key={i}>
                                 <img src={nac} className="block mt-2 h-full w-[5vmax] lg:w-[400px] xl:w-[7vmax] p-1" alt="naac"
-                                     key="naac"/>
+                                    key="naac" />
                             </div>
                         ))}
                     </div>
@@ -259,8 +285,8 @@ const Head = () => {
                                     [clip-path:polygon(0_0,100%_0,100%_0,0_0)]
                                     duration-500 ease-in transition-[th]
                                     bg-prim dark:bg-drkts`}
-                                    style={{gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))`}}>
-                                    {griddy(nvt.sub, nvt.cod).map((sbj, i, {length}) => (
+                                    style={{ gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))` }}>
+                                    {griddy(nvt.sub, nvt.cod).map((sbj, i, { length }) => (
                                         <div className='group/sub relative w-full bg-prim dark:bg-drkts first:rounded-lg last:rounded-b-lg' key={i}>
                                             <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} ${isRouteAllowed(sbj.lnk) ? "" : "cursor-not-allowed"}
                                                      bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
@@ -278,7 +304,7 @@ const Head = () => {
                                                 <div className='absolute bg-prim dark:bg-drkts top-0 left-[105%] z-10 group-hover/sub:max-h-[70vh] max-h-0 h-fit overflow-y-hidden
                                                         outline group-hover/sub:outline-secd dark:group-hover/sub:outline-drks hover:max-h-[90vh] outline-transparent
                                                         outline-offset-2 duration-500 ease-in transiton-[ht] rounded-xl'>
-                                                    {sbj.sup.map((spj, i, {length}) => (
+                                                    {sbj.sup.map((spj, i, { length }) => (
                                                         <a className={`no-underline inline-block bg-[length:200%_100%] 
                                                             ${isRouteAllowed(spj.lnk) ? "" : "cursor-not-allowed"}
                                                             bg-[position:0%_100%] text-slate-950 -translate-x-[-40vw] px-2
@@ -303,8 +329,8 @@ const Head = () => {
                 </div>
                 <div className='hidden xl:flex px-4 pt-1 pb-1.5 font-popp bg-secd dark:bg-drks text-text dark:text-drkts
                         gap-3 z-10 w-full max-h-[2.5rem] rounded-b-lg transition-all'>
-                        {hdrs.map((hdr, index) => {
-                            const isActive = location.pathname === hdr.lnk || (hdr.sub && hdr.sub.some(subItem => location.pathname === subItem.lnk));
+                    {hdrs.map((hdr, index) => {
+                        const isActive = location.pathname === hdr.lnk || (hdr.sub && hdr.sub.some(subItem => location.pathname === subItem.lnk));
 
                             return !hdr.sub ? (
                                 // Single button (no submenu)
@@ -322,19 +348,19 @@ const Head = () => {
                                     {/* Underline animation */}
                                     <span className={`absolute bottom-0 left-0 h-[2px] bg-brwn transition-all duration-300 
                                                     ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
+                                </span>
+                            </button>
+                        ) : (
+                            // Dropdown menu
+                            <div key={index} className='group/nav relative transition-all rounded-xl'>
+                                <button className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all`}>
+                                    {hdr.ttl}
+                                    {/* Animated underline */}
+                                    <span className={`absolute bottom-0 left-0 h-[2px] bg-brwn transition-all duration-300 
+                                                        ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
                                     </span>
                                 </button>
-                            ) : (
-                                // Dropdown menu
-                                <div key={index} className='group/nav relative transition-all rounded-xl'>
-                                    <button className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all`}>
-                                        {hdr.ttl}
-                                        {/* Animated underline */}
-                                        <span className={`absolute bottom-0 left-0 h-[2px] bg-brwn transition-all duration-300 
-                                                        ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
-                                        </span>
-                                    </button>
-                                    <div className={`grid grid-flow-row content-center rounded-lg outline 
+                                <div className={`grid grid-flow-row content-center rounded-lg outline 
                                                     group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
                                                     right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit w-max outline-offset-2
                                                     group-hover/nav:[clip-path:inset(-100vw_-100vw_-100vw_-0.25vw)] [clip-path:inset(10vw_0vw_0vw_0vw)] 
@@ -349,15 +375,15 @@ const Head = () => {
                                                             bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
                                                             w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500] hover:bg-[position:-100%_100%]
                                                             ${location.pathname === subItem.lnk ? 'text-brwn font-semibold' : ''}`}
-                                                target='_blank'
-                                            >
-                                                <p className='w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts'>{subItem.ttl}</p>
-                                            </a>
-                                        ))}
-                                    </div>
+                                            target='_blank'
+                                        >
+                                            <p className='w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts'>{subItem.ttl}</p>
+                                        </a>
+                                    ))}
                                 </div>
-                            );
-                        })}
+                            </div>
+                        );
+                    })}
 
                         {/* Payment Button */}
                         <button 
@@ -374,25 +400,24 @@ const Head = () => {
                             )}
                         </button>
 
-                        {/* Social Icons */}
-                        <div className="flex group items-center justify-end grow gap-3">
-                            {socls.map((socl, i) => (
-                                <a href={socl.Link} key={i} target='_blank'>
-                                    <img src={socl.Ico} alt={socl.Name}
-                                        className="h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
+                    {/* Social Icons */}
+                    <div className="flex group items-center justify-end grow gap-3">
+                        {socls.map((socl, i) => (
+                            <a href={socl.Link} key={i} target='_blank'>
+                                <img src={socl.Ico} alt={socl.Name}
+                                    className="h-[1rem] group-[.showoff]:animate-[Social_2s_ease-in-out_forwards] 
                                                     mt-1 text-transparent"
-                                        style={{ animationDelay: `${i * 1.9}s` }} />
-                                </a>
-                            ))}
-                        </div>
+                                    style={{ animationDelay: `${i * 1.9}s` }} />
+                            </a>
+                        ))}
                     </div>
+                </div>
                 <div
                     className='block xl:hidden h-fit overflow-y-hidden'>
-                    <Sidebar navs={navs} Sz="tny p-0"/></div>
+                    <Sidebar navs={navs} Sz="tny p-0" /></div>
             </nav>
         </>
     )
 }
 
-// Static problem in hrhandbook link, should be fixed to point to the correct URL.
 export default Head;

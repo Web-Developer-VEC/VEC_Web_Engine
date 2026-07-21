@@ -145,7 +145,7 @@
             "hod_message": [
               "The department of Mechanical Engineering is designed to facilitate for teaching and research in the area of Thermal and Energy, Design and Manufacturing, Material Science, Mechatronics, Industrial automation and Industrial Engineering. A highly skilled, well qualified and motivated team of 20 faculty members, including 10 Doctorates and 9 are pursuing Doctorate, imparts quality education to students and support them to reach greater heights. Faculty members support the students to do various industrial projects, innovative projects carried out through funds received from various government agencies like DST New Gen IEDC, Tamilnadu State Council for Science and Technology, Indian Society for Refrigeration and Air Conditioning etc. A separate project lab facility is established to support the students to get various hands on skill, carryout different project work in the curriculum and support to participate various student’s events. The department regularly organizes events to promote higher studies and entrepreneurship among the students. The department also offering Honours and minor degree to students in emerging thrust areas."
             ],
-            "image_path": "/static/images/hods/mech.webp",
+            "hod_image": "/static/images/hods/mech.webp",
             "designation": "Professor & Head, Dept of Mechanical Engineering",
             "Social_media_links": {
              "linkedin": "https://www.linkedin.com/in/ganapathy-sundaram-esakkimuthu-787163204/?originalSubdomain=in",
@@ -261,21 +261,7 @@
                "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-198.pdf"
 
               },
-              {
-              "name":"Dr. CHINNASAMY SUBRAMANIAN S",
-              "designation":"Assistant Professor",
-              "unique_id":"VEC-013-04-133",
-              "socialmedia_links":{
-              "linkedin":"https://www.linkedin.com/in/chinnasamy-s-50117425/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-              "googlescholar":"https://scholar.google.com/citations?user=WNV3nmsAAAAJ&hl=en",
-              "researchgate":"https://www.researchgate.net/profile/Chinnasamy-Subramanian-S",
-              "orchidprofile":"https://orcid.org/0000-0002-2447-5807",
-              "publonprofile":"",
-              "scopus":""
-            },
-            "image_path":"/static/images/profile_photos/013/VEC-013-04-133.webp",
-            "pdf_path":"/static/pdfs/faculty_profile/013/VEC-013-04-133.pdf"
-          },
+              
           {
       "name": "Mr. FRANK GLADSON T S",
       "designation": "Assistant Professor",
@@ -545,39 +531,39 @@
                   "docs":[
                     {
                     "name":"I Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER I.pdf"
                   },
                     {
                     "name":"II Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER II.pdf"
                   },
                     {
                     "name":"III Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER III.pdf"
                   },
                     {
                     "name":"IV Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER IV.pdf"
                   },
                     {
                     "name":"V Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER V.pdf"
                   },
                     {
                     "name":"VI Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER VI.pdf"
                   },
                     {
                     "name":"VII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER VII.pdf"
                   },
                     {
                     "name":"VIII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/013/SEMESTER VIII.pdf"
                   },
                     {
                     "name":"Elective Courses",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/013/PROFESSIONAL ELECTIVES , MANDATORY COURSES ,MINOR DEGREE COURSES , OPEN ELECTIVE COURSES.pdf"
                   }
                 ]
                 },
@@ -626,6 +612,12 @@
             "pdf_path": [
               "/static/pdfs/newsletter/013/JUNE 2024.pdf",
               "/static/pdfs/newsletter/013/DECEMBER 2024.pdf"
+            ]
+          },
+          {
+            "year": "2025",
+            "pdf_path": [
+              "/static/pdfs/newsletter/013/DECEMBER 2025.pdf"
             ]
           }
         ]

@@ -90,7 +90,7 @@
     "department_name": "Computer Science and Engineering (CYBER SECURITY)",
     "content": [
       { "id": "Vision&Mission", "hascontent": true },
-      { "id": "HeadDepartment", "hascontent": true },
+      { "id": "HeadDepartment", "hascontent": false },
       { "id": "Faculties", "hascontent": true },
       { "id": "Syllabus", "hascontent": true },
       { "id": "NewsLetter", "hascontent": false },

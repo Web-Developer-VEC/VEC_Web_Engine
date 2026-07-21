@@ -144,7 +144,7 @@
              "pdf_path":"/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": ["Our department was established to provide well qualified industry ready engineers in the field of Automobile Engineering. The Department has a team of highly qualified, experienced and dedicated faculty members in diversified streams to cater for all-round development of students. Indian automotive industry is growing at a very fast rate with newer designs of automobiles and change in technologies. This will be a way for moulding our students for a bright future."],
-            "image_path": "/static/images/hods/auto.webp",
+            "hod_image": "/static/images/hods/auto.webp",
             "designation": "Professor & Head, Dept of Automobile Engineering",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
@@ -217,6 +217,21 @@
     "image_path": "/static/images/profile_photos/002/VEC-002-03-168.webp",
     "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-03-168.pdf"
   },
+  {
+              "name":"Dr. CHINNASAMY SUBRAMANIAN S",
+              "designation":"Assistant Professor",
+              "unique_id":"VEC-013-04-133",
+              "socialmedia_links":{
+              "linkedin":"https://www.linkedin.com/in/chinnasamy-s-50117425/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar":"https://scholar.google.com/citations?user=WNV3nmsAAAAJ&hl=en",
+              "researchgate":"https://www.researchgate.net/profile/Chinnasamy-Subramanian-S",
+              "orchidprofile":"https://orcid.org/0000-0002-2447-5807",
+              "publonprofile":"",
+              "scopus":""
+            },
+            "image_path":"/static/images/profile_photos/013/VEC-013-04-133.webp",
+            "pdf_path":"/static/pdfs/faculty_profile/013/VEC-013-04-133.pdf"
+          },
   {
     "name": "Dr. THENNARASU P",
     "designation": "Assistant Professor",
@@ -326,39 +341,39 @@
                   "docs":[
                     {
                     "name":"I Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 1.pdf"
                   },
                     {
                     "name":"II Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 2.pdf"
                   },
                     {
                     "name":"III Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 3.pdf"
                   },
                     {
                     "name":"IV Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 4.pdf"
                   },
                     {
                     "name":"V Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 5.pdf"
                   },
                     {
                     "name":"VI Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 6.pdf"
                   },
                     {
                     "name":"VII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 7.pdf"
                   },
                     {
                     "name":"VIII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 8.pdf"
                   },
                     {
                     "name":"Elective Courses",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) ELECTIVE COURSES WITH TW & SDG.pdf"
                   }
                 ]
                 },

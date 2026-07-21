@@ -154,7 +154,7 @@
             "hod_message": [
               "People relying on yesterdays idea have no chance of survival in todays competitive environment where change is at the speed of thought. The pace of change requires continuous improvement and constant learning. Keeping this in mind, we train our students to be fully prepared for the challenges of the future."
             ],
-            "image_path": "/static/images/hods/eie.webp",
+            "hod_image": "/static/images/hods/eie.webp",
             "designation": "Professor & Head, Dept of Electronics & Instrumentation Engineering (EIE)",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/brijet-z-952880203",
@@ -347,39 +347,39 @@
                   "docs":[
                     {
                     "name":"I Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 1.pdf"
                   },
                     {
                     "name":"II Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 2.pdf"
                   },
                     {
                     "name":"III Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 3.pdf"
                   },
                     {
                     "name":"IV Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 4.pdf"
                   },
                     {
                     "name":"V Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 5.pdf"
                   },
                     {
                     "name":"VI Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 6.pdf"
                   },
                     {
                     "name":"VII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 7.pdf"
                   },
                     {
                     "name":"VIII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 8.pdf"
                   },
                     {
                     "name":"Elective Courses",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - ELECTIVE COURSES.pdf"
                   }
                 ]
                 },
