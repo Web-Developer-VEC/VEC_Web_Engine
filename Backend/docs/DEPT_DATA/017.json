@@ -143,7 +143,7 @@
             "pdf_path":"",
             "qualification": ["B.Com.", "MBA.", "Ph.D"],
             "hod_message":["At VEC, we provide our learners—who come from diverse backgrounds—with ample opportunities for academic exploration and holistic development."," We recognize the growing need for business leaders who are well-versed in business principles, technology, and managerial skills. Therefore, our program offers a comprehensive overview of essential business concepts and industry-relevant technical practices, equipping learners with the knowledge and expertise required to excel in today's dynamic business landscape."],
-            "hod_image": "/static/images/profile_photos/017/VEC-017-01-205.webp",
+            "image_path": "/static/images/profile_photos/017/VEC-017-01-205.webp",
             "designation": "Professor & Head, Dept of Master of Business Administration",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/dr-srikanth-parthasarathy-00431255/",

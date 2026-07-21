@@ -154,7 +154,7 @@
             "hod_message": [
               "People relying on yesterdays idea have no chance of survival in todays competitive environment where change is at the speed of thought. The pace of change requires continuous improvement and constant learning. Keeping this in mind, we train our students to be fully prepared for the challenges of the future."
             ],
-            "hod_image": "/static/images/hods/eie.webp",
+            "image_path": "/static/images/hods/eie.webp",
             "designation": "Professor & Head, Dept of Electronics & Instrumentation Engineering (EIE)",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/brijet-z-952880203",
