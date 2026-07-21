@@ -25,7 +25,7 @@ async function ecellHandler(fileStream, docs, req, cb, filename, mimetype) {
     const collection_type = docs[0]?.collection_type;
 
     // Determine folder path based on file type
-    let ext = path.extname(realFilename) || ""; 
+    let ext = path.extname(realFilename) || "";
     let folder;
     if (effectiveMime.startsWith("image/")) {
       folder = `temp/static/images/e_cell/${realFilename}${ext}`;
@@ -56,21 +56,12 @@ async function ecellHandler(fileStream, docs, req, cb, filename, mimetype) {
     const data = await s3.send(command);
 
     if (collection_type === "gallery") {
-      const updateData = docs[0].meta_data.image_path;
-
-      const imageArray = Array.isArray(updateData)
-        ? [...updateData]
-        : updateData
-          ? [updateData]
-          : [];
-
-      imageArray.push(`/${s3Key}`);
-
       docs[0].meta_data = {
         ...(docs[0].meta_data || {}),
-        image_path: imageArray,
+        image_path: [`/${s3Key}`],
       };
     }
+
 
     // Track uploaded files
     if (!req.uploadedFiles) req.uploadedFiles = [];

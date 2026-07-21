@@ -670,8 +670,17 @@
       {
         "type": "image",
         "image_path": "/static/images/newscard/Priyan.jpg",
-        "status": "False",
+        "active": "False",
         "title": "Priyan"
+      }
+    ]
+  },
+  {
+    "type": "side_buttons",
+    "data": [
+      {
+        "apply_button": true,
+        "enquire_button": true
       }
     ]
   }
