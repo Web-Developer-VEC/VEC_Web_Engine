@@ -37,7 +37,7 @@ const CurriculumPage = ({ data, deptId }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const { sendRequest, loading, error } = useAdminRequest();
   console.log("Loading state check", loading);
-  
+
 
   const UrlParser = (path) => {
     if (typeof path !== "string" || !path) return "";
@@ -134,6 +134,7 @@ const CurriculumPage = ({ data, deptId }) => {
 
     window.open(url, "_blank");
   };
+
 
 
 
@@ -448,15 +449,15 @@ const CurriculumPage = ({ data, deptId }) => {
   };
 
   const handleDeletePdf = () => {
-  setPopupData((prev) => ({
-    ...prev,
-    file: null,
-    pdf_path: "",
-    deletePdf: true,
-  }));
+    setPopupData((prev) => ({
+      ...prev,
+      file: null,
+      pdf_path: "",
+      deletePdf: true,
+    }));
 
-  toast.success("PDF removed");
-};
+    toast.success("PDF removed");
+  };
 
   const handlePopupView = () => {
     const {
@@ -914,54 +915,54 @@ const CurriculumPage = ({ data, deptId }) => {
   };
 
   const handleFinalRequestConfirm = async () => {
-  console.log("Final Request Button clicked");
+    console.log("Final Request Button clicked");
 
-  const sourceData = pendingData || tempData;
-  const { payload, files } = buildPayload(sourceData);
+    const sourceData = pendingData || tempData;
+    const { payload, files } = buildPayload(sourceData);
 
-  if (!payload.length) {
-    toast.error("No valid changes detected to send");
-    return;
-  }
+    if (!payload.length) {
+      toast.error("No valid changes detected to send");
+      return;
+    }
 
-  try {
-    const response = await sendRequest(payload, files);
+    try {
+      const response = await sendRequest(payload, files);
 
-    // ✅ Remove temporary frontend flags after successful request
-    const cleanedData = deepCopy(sourceData).map((section) => ({
-      ...section,
-      syllabus: (section.syllabus || []).map((item) => ({
-        ...item,
-        file: null,
-        url: item.pdf_path ? UrlParser(item.pdf_path) : "",
-        _isNew: false,
-        deletePdf: false,
-        docs: (item.docs || []).map((doc) => ({
-          ...doc,
+      // ✅ Remove temporary frontend flags after successful request
+      const cleanedData = deepCopy(sourceData).map((section) => ({
+        ...section,
+        syllabus: (section.syllabus || []).map((item) => ({
+          ...item,
           file: null,
-          url: doc.pdf_path ? UrlParser(doc.pdf_path) : "",
+          url: item.pdf_path ? UrlParser(item.pdf_path) : "",
           _isNew: false,
           deletePdf: false,
+          docs: (item.docs || []).map((doc) => ({
+            ...doc,
+            file: null,
+            url: doc.pdf_path ? UrlParser(doc.pdf_path) : "",
+            _isNew: false,
+            deletePdf: false,
+          })),
         })),
-      })),
-    }));
+      }));
 
-    setOriginalData(cleanedData);
-    setTempData(deepCopy(cleanedData));
+      setOriginalData(cleanedData);
+      setTempData(deepCopy(cleanedData));
 
-    setPendingData(null);
-    setIsSaved(false);
-    setIsDirty(false);
-    setShowRequestModal(false);
+      setPendingData(null);
+      setIsSaved(false);
+      setIsDirty(false);
+      setShowRequestModal(false);
 
-    // toast.success("Changes request sent successfully!");
+      // toast.success("Changes request sent successfully!");
 
-    console.log("Backend response:", response);
-  } catch (err) {
-    console.error("Request failed:", err);
-    toast.error(err?.response?.data?.message || "Failed to process request");
-  }
-};
+      console.log("Backend response:", response);
+    } catch (err) {
+      console.error("Request failed:", err);
+      toast.error(err?.response?.data?.message || "Failed to process request");
+    }
+  };
 
   // Check if popup has existing PDF
   const popupHasExistingPdf = (() => {
