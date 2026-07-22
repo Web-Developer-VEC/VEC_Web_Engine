@@ -100,6 +100,7 @@ const VisionMission = ({ data }) => {
   // Compute changes for request modal
   useEffect(() => {
     if (savedData) {
+      console.log("useEffect is running");
       const newChanges = [];
 
       // Check about_the_department
@@ -131,6 +132,10 @@ const VisionMission = ({ data }) => {
       newChanges.push(...missionChanges);
 
       // Check PEO
+      // Check PEO
+      console.log("Initial PEO:", initialData.peo);
+      console.log("Saved PEO:", savedData.peo);
+
       const peoChanges = detectObjectArrayChanges(
         initialData.peo,
         savedData.peo,
@@ -161,7 +166,7 @@ const VisionMission = ({ data }) => {
   // Helper: detect changes in simple arrays
   const detectArrayChanges = (original, current, category, type) => {
     const changes = [];
-    
+
     // Detect updates - compare items at same index
     const maxLen = Math.max(original.length, current.length);
     for (let i = 0; i < maxLen; i++) {
@@ -195,51 +200,69 @@ const VisionMission = ({ data }) => {
         });
       }
     }
-    
+
     return changes;
   };
 
   // Helper: detect changes in object arrays (PEO, PO, PSO)
+
   const detectObjectArrayChanges = (original, current, category) => {
-    const changes = [];
-    
-    const maxLen = Math.max(original.length, current.length);
-    for (let i = 0; i < maxLen; i++) {
-      if (i >= original.length && i < current.length) {
-        // New item inserted
-        changes.push({
-          action: "insert",
-          category,
-          field: "object",
-          index: i,
-          value: current[i],
-        });
-      } else if (i < original.length && i >= current.length) {
-        // Item deleted
-        changes.push({
-          action: "delete",
-          category,
-          field: "object",
-          index: i,
-          value: original[i],
-        });
-      } else if (
-        JSON.stringify(original[i]) !== JSON.stringify(current[i])
-      ) {
-        // Item updated
-        changes.push({
-          action: "update",
-          category,
-          field: "object",
-          index: i,
-          oldValue: original[i],
-          value: current[i],
-        });
-      }
+  const changes = [];
+
+  // Detect deleted items
+  original.forEach((oldItem) => {
+    const exists = current.find(
+      (item) => item.header === oldItem.header
+    );
+
+    if (!exists) {
+      changes.push({
+        action: "delete",
+        category,
+        field: "object",
+        value: oldItem,
+      });
     }
-    
-    return changes;
-  };
+  });
+
+  // Detect inserted items
+  current.forEach((newItem) => {
+    const exists = original.find(
+      (item) => item.header === newItem.header
+    );
+
+    if (!exists) {
+      changes.push({
+        action: "insert",
+        category,
+        field: "object",
+        value: newItem,
+      });
+    }
+  });
+
+  // Detect updated items
+  current.forEach((newItem) => {
+    const oldItem = original.find(
+      (item) => item.header === newItem.header
+    );
+
+    if (
+      oldItem &&
+      oldItem.content !== newItem.content
+    ) {
+      changes.push({
+        action: "update",
+        category,
+        field: "object",
+        oldValue: oldItem,
+        value: newItem,
+      });
+    }
+  });
+
+  return changes;
+};
 
   if (!data)
     return (
@@ -380,7 +403,7 @@ const VisionMission = ({ data }) => {
   // Send request
   const handleRequestConfirm = async () => {
     const payload = buildPayload();
-    
+
     if (payload.length === 0) {
       toast.info("No changes to request");
       setShowRequestModal(false);
@@ -388,12 +411,12 @@ const VisionMission = ({ data }) => {
     }
 
     console.log(payload);
-    
+
 
     try {
       await sendRequest(payload, []);
-      toast.success("Request sent successfully!");
-      
+      //toast.success("Request sent successfully!");
+
       // Update baseline
       setInitialData(JSON.parse(JSON.stringify(savedData)));
       setBackupData(JSON.parse(JSON.stringify(savedData)));
@@ -410,7 +433,7 @@ const VisionMission = ({ data }) => {
   // Revert individual change
   const revertChange = (changeIndex) => {
     const change = changes[changeIndex];
-    
+
     if (!change) return;
 
     if (change.category === "about_the_department") {
@@ -485,9 +508,9 @@ const VisionMission = ({ data }) => {
   return (
     <div className="main-content font-[Poppins] relative flex flex-col min-h-screen">
       <ToastContainer position="bottom-right" autoClose={3000} />
-      
+
       {/* Edit button */}
-      <div className="absolute top-0 right-4 flex gap-2 z-10">
+      <div className="w-full flex justify-end mb-4">
         {!isEditing && !requestMode && (
           <button
             className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text  rounded-lg shadow-md hover:bg-[#800000] hover:text-prim "
@@ -664,8 +687,8 @@ const VisionMission = ({ data }) => {
                 {type === "peo"
                   ? "Programme Educational Objectives"
                   : type === "po"
-                  ? "Program Outcomes"
-                  : "Program Specific Outcomes"}
+                    ? "Program Outcomes"
+                    : "Program Specific Outcomes"}
               </h2>
               <div className="accordion" id={`${type}Accordion`}>
                 {formData[type].map((item, index) => (
@@ -776,12 +799,12 @@ const VisionMission = ({ data }) => {
             Discard Changes
           </button>
           <button
-  className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
-  onClick={() => setShowRequestModal(true)}
->
-  <Send size={16} className="text-current" />
-  Request
-</button>
+            className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
+            onClick={() => setShowRequestModal(true)}
+          >
+            <Send size={16} className="text-current" />
+            Request
+          </button>
 
         </div>
       ) : null}
@@ -820,115 +843,114 @@ const VisionMission = ({ data }) => {
       )}
 
       {/* Request Modal with Undo Column */}
-{showRequestModal && (
-  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-    <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
-      <h2 className="text-xl font-bold mb-4 text-gray-800">Request Changes</h2>
-      <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
-      </p>
+      {showRequestModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
+          <div className="bg-white p-6 rounded-xl w-[800px] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-gray-800">Request Changes</h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+            </p>
 
-      {/* Changes Table */}
-      <table className="w-full border border-gray-300 text-sm">
-        <thead className="bg-gray-200">
-          <tr>
-            <th className="border p-2">Action</th>
-            <th className="border p-2">Section</th>
-            <th className="border p-2">Changes</th>
-            <th className="border p-2">Undo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {changes.length > 0 ? (
-            changes.map((change, idx) => {
-              const getCategoryName = (cat) => {
-                const names = {
-                  about_the_department: "About Department",
-                  department_vision: "Vision",
-                  department_mission: "Mission",
-                  programme_educational_objectives: "PEO",
-                  program_outcomes: "PO",
-                  program_specific_outcomes: "PSO",
-                };
-                return names[cat] || cat;
-              };
-
-              const getChangeDescription = (change) => {
-                if (change.field === "about") return "Content updated";
-                if (change.field === "text") {
-                  if (change.action === "insert") return `Added: "${change.value?.substring(0, 30)}..."`;
-                  if (change.action === "delete") return `Deleted: "${change.value?.substring(0, 30)}..."`;
-                  if (change.action === "update") return `Updated item ${change.index + 1}`;
-                }
-                if (change.field === "object") {
-                  if (change.action === "insert") return `Added: ${change.value?.header || "New item"}`;
-                  if (change.action === "delete") return `Deleted: ${change.value?.header || "Item"}`;
-                  if (change.action === "update") return `Updated: ${change.value?.header || `Item ${change.index + 1}`}`;
-                }
-                return "Modified";
-              };
-
-              return (
-                <tr key={idx}>
-                  <td className="border p-2">
-                    {change.action === "insert" && (
-                      <span className="text-green-600">+ Added</span>
-                    )}
-                    {change.action === "update" && (
-                      <span className="text-blue-600">✎ Edited</span>
-                    )}
-                    {change.action === "delete" && (
-                      <span className="text-red-600">– Deleted</span>
-                    )}
-                  </td>
-                  <td className="border p-2">{getCategoryName(change.category)}</td>
-                  <td className="border p-2 text-xs">{getChangeDescription(change)}</td>
-                  <td className="border p-2 text-center">
-                    <button
-                      onClick={() => revertChange(idx)}
-                      className="p-1 rounded hover:bg-gray-100"
-                      title="Revert this change"
-                      disabled={requestLoading}
-                    >
-                      <X size={16} className="text-red-500" />
-                    </button>
-                  </td>
+            {/* Changes Table */}
+            <table className="w-full border border-gray-300 text-sm">
+              <thead className="bg-gray-200">
+                <tr>
+                  <th className="border p-2">Action</th>
+                  <th className="border p-2">Section</th>
+                  <th className="border p-2">Changes</th>
+                  <th className="border p-2">Undo</th>
                 </tr>
-              );
-            })
-          ) : (
-            <tr>
-              <td colSpan="4" className="border p-4 text-center text-gray-500">
-                No changes to request
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+              </thead>
+              <tbody>
+                {changes.length > 0 ? (
+                  changes.map((change, idx) => {
+                    const getCategoryName = (cat) => {
+                      const names = {
+                        about_the_department: "About Department",
+                        department_vision: "Vision",
+                        department_mission: "Mission",
+                        programme_educational_objectives: "PEO",
+                        program_outcomes: "PO",
+                        program_specific_outcomes: "PSO",
+                      };
+                      return names[cat] || cat;
+                    };
 
-      {/* Modal Actions */}
-      <div className="flex justify-end gap-2 mt-6">
-        <button
-          onClick={() => setShowRequestModal(false)}
-          className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
-          disabled={requestLoading}
-        >
-          Cancel
-        </button>
-        <button
-          onClick={handleRequestConfirm}
-          className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-white ${
-            requestLoading ? "cursor-progress opacity-70" : ""
-          }`}
-          disabled={requestLoading || changes.length === 0}
-        >
-          {requestLoading ? "Sending..." : "Confirm Request"}
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-{/* Delete Confirmation Modal for Vision/Mission */}
+                    const getChangeDescription = (change) => {
+                      if (change.field === "about") return "Content updated";
+                      if (change.field === "text") {
+                        if (change.action === "insert") return `Added: "${change.value?.substring(0, 30)}..."`;
+                        if (change.action === "delete") return `Deleted: "${change.value?.substring(0, 30)}..."`;
+                        if (change.action === "update") return `Updated item ${change.index + 1}`;
+                      }
+                      if (change.field === "object") {
+                        if (change.action === "insert") return `Added: ${change.value?.header || "New item"}`;
+                        if (change.action === "delete") return `Deleted: ${change.value?.header || "Item"}`;
+                        if (change.action === "update") return `Updated: ${change.value?.header || `Item ${change.index + 1}`}`;
+                      }
+                      return "Modified";
+                    };
+
+                    return (
+                      <tr key={idx}>
+                        <td className="border p-2">
+                          {change.action === "insert" && (
+                            <span className="text-green-600">+ Added</span>
+                          )}
+                          {change.action === "update" && (
+                            <span className="text-blue-600">✎ Edited</span>
+                          )}
+                          {change.action === "delete" && (
+                            <span className="text-red-600">– Deleted</span>
+                          )}
+                        </td>
+                        <td className="border p-2">{getCategoryName(change.category)}</td>
+                        <td className="border p-2 text-xs">{getChangeDescription(change)}</td>
+                        <td className="border p-2 text-center">
+                          <button
+                            onClick={() => revertChange(idx)}
+                            className="p-1 rounded hover:bg-gray-100"
+                            title="Revert this change"
+                            disabled={requestLoading}
+                          >
+                            <X size={16} className="text-red-500" />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan="4" className="border p-4 text-center text-gray-500">
+                      No changes to request
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+
+            {/* Modal Actions */}
+            <div className="flex justify-end gap-2 mt-6">
+              <button
+                onClick={() => setShowRequestModal(false)}
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+                disabled={requestLoading}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleRequestConfirm}
+                className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-white ${requestLoading ? "cursor-progress opacity-70" : ""
+                  }`}
+                disabled={requestLoading || changes.length === 0}
+              >
+                {requestLoading ? "Sending..." : "Confirm Request"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Delete Confirmation Modal for Vision/Mission */}
       {showItemDeleteModal && deleteTarget && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 shadow-lg w-80">
