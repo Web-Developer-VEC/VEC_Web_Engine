@@ -140,7 +140,7 @@
         "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-01-191.pdf",
             "qualification": ["M.Sc.", "M. Phil."," Ph.D"],
             "hod_message":["A good education is the foundation for a better future. In VEC we ensure that every student entrusted to us will receive wholistic development and also support to unearth all the potentials found in them. The students who come to this beautiful campus enter the world as successful Engineers."],
-            "hod_image": "/static/images/hods/phy.webp",
+            "image_path": "/static/images/hods/phy.webp",
             "designation":  "Professor & Head, Dept of Physics",
             "Social_media_links": {
               "linkedin":  "https://www.linkedin.com/in/shahil-kirupavathy-0632b416/",

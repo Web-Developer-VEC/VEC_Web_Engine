@@ -145,7 +145,7 @@
             "hod_message": [
               "The department of Mechanical Engineering is designed to facilitate for teaching and research in the area of Thermal and Energy, Design and Manufacturing, Material Science, Mechatronics, Industrial automation and Industrial Engineering. A highly skilled, well qualified and motivated team of 20 faculty members, including 10 Doctorates and 9 are pursuing Doctorate, imparts quality education to students and support them to reach greater heights. Faculty members support the students to do various industrial projects, innovative projects carried out through funds received from various government agencies like DST New Gen IEDC, Tamilnadu State Council for Science and Technology, Indian Society for Refrigeration and Air Conditioning etc. A separate project lab facility is established to support the students to get various hands on skill, carryout different project work in the curriculum and support to participate various student’s events. The department regularly organizes events to promote higher studies and entrepreneurship among the students. The department also offering Honours and minor degree to students in emerging thrust areas."
             ],
-            "hod_image": "/static/images/hods/mech.webp",
+            "image_path": "/static/images/hods/mech.webp",
             "designation": "Professor & Head, Dept of Mechanical Engineering",
             "Social_media_links": {
              "linkedin": "https://www.linkedin.com/in/ganapathy-sundaram-esakkimuthu-787163204/?originalSubdomain=in",
