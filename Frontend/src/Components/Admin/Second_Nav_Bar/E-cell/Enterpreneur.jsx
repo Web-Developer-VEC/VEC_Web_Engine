@@ -56,55 +56,55 @@ export default function EnterpreN({ enterpreneur }) {
   };
 
   const handleUndoChange = (change) => {
-  let newEditableData = [...editableData];
-  let newAllChanges = [...allChanges];
+    let newEditableData = [...editableData];
+    let newAllChanges = [...allChanges];
 
-  if (change.action === "add") {
-    // Remove newly added row
-    newEditableData = newEditableData.filter((_, idx) => idx !== change.index);
-  } else if (change.action === "delete") {
-    // Restore deleted row
-    newEditableData.splice(change.index, 0, change.deletedItem);
-  } else if (change.action === "edit") {
-    // Revert edited fields
-    const oldRow = { ...newEditableData[change.index] };
-    for (const field in change.changes) {
-      oldRow[field] = change.changes[field].old;
+    if (change.action === "add") {
+      // Remove newly added row
+      newEditableData = newEditableData.filter((_, idx) => idx !== change.index);
+    } else if (change.action === "delete") {
+      // Restore deleted row
+      newEditableData.splice(change.index, 0, change.deletedItem);
+    } else if (change.action === "edit") {
+      // Revert edited fields
+      const oldRow = { ...newEditableData[change.index] };
+      for (const field in change.changes) {
+        oldRow[field] = change.changes[field].old;
+      }
+      newEditableData[change.index] = oldRow;
     }
-    newEditableData[change.index] = oldRow;
-  }
 
-  // Remove undone change from allChanges
-  newAllChanges = newAllChanges.filter((c) => c !== change);
+    // Remove undone change from allChanges
+    newAllChanges = newAllChanges.filter((c) => c !== change);
 
-  setEditableData(newEditableData);
-  setAllChanges(newAllChanges);
-};
+    setEditableData(newEditableData);
+    setAllChanges(newAllChanges);
+  };
 
 
   // Add row
-const handleAddRow = () => {
-  const newRow = {
-    _tempId: Date.now(),   // 🔑 unique id
-    name: "",
-    year: "",
-    business_name: "",
+  const handleAddRow = () => {
+    const newRow = {
+      _tempId: Date.now(),   // 🔑 unique id
+      name: "",
+      year: "",
+      business_name: "",
+    };
+
+    setEditableData((p) => [...p, newRow]);
+
+    setSessionChanges((p) => [
+      ...p,
+      {
+        tempId: newRow._tempId,
+        action: "add",
+        data: newRow,       // ✅ STORE FULL DATA
+        changes: {},
+      },
+    ]);
+
+    setIsEditing(true);
   };
-
-  setEditableData((p) => [...p, newRow]);
-
-  setSessionChanges((p) => [
-    ...p,
-    {
-      tempId: newRow._tempId,
-      action: "add",
-      data: newRow,       // ✅ STORE FULL DATA
-      changes: {},
-    },
-  ]);
-
-  setIsEditing(true);
-};
 
 
   // Field change
@@ -114,69 +114,69 @@ const handleAddRow = () => {
     newData[index] = { ...newData[index], [field]: value };
     setEditableData(newData);
 
-setSessionChanges((prev) => {
-  const cp = [...prev];
-  const row = newData[index];
+    setSessionChanges((prev) => {
+      const cp = [...prev];
+      const row = newData[index];
 
-  const existingIndex = cp.findIndex(
-    (c) =>
-      (c.tempId && c.tempId === row._tempId) ||
-      (c.index === index && c.action !== "delete")
-  );
+      const existingIndex = cp.findIndex(
+        (c) =>
+          (c.tempId && c.tempId === row._tempId) ||
+          (c.index === index && c.action !== "delete")
+      );
 
-  if (existingIndex >= 0) {
-    cp[existingIndex] = {
-      ...cp[existingIndex],
-      action: cp[existingIndex].action === "add" ? "add" : "edit",
-      data: row, // ✅ keep updated snapshot
-      changes: {
-        ...(cp[existingIndex].changes || {}),
-        [field]: { old: oldVal, new: value },
-      },
-    };
-  } else {
-    cp.push({
-      index,
-      action: savedDataRef.current[index] ? "edit" : "add",
-      data: row,
-      changes: { [field]: { old: oldVal, new: value } },
+      if (existingIndex >= 0) {
+        cp[existingIndex] = {
+          ...cp[existingIndex],
+          action: cp[existingIndex].action === "add" ? "add" : "edit",
+          data: row, // ✅ keep updated snapshot
+          changes: {
+            ...(cp[existingIndex].changes || {}),
+            [field]: { old: oldVal, new: value },
+          },
+        };
+      } else {
+        cp.push({
+          index,
+          action: savedDataRef.current[index] ? "edit" : "add",
+          data: row,
+          changes: { [field]: { old: oldVal, new: value } },
+        });
+      }
+
+      return cp;
     });
-  }
-
-  return cp;
-});
 
   };
 
   // Save session
-const handleSave = () => {
-  if (sessionChanges.length === 0) {
-    toast.info("No changes to save.");
-    return;
-  }
+  const handleSave = () => {
+    if (sessionChanges.length === 0) {
+      toast.info("No changes to save.");
+      return;
+    }
 
-  // 🚫 Block save if any required field is empty
-  const hasEmptyFields = editableData.some(
-    (row) =>
-      !row.name?.trim() ||
-      !row.year?.trim() ||
-      !row.business_name?.trim()
-  );
+    // 🚫 Block save if any required field is empty
+    const hasEmptyFields = editableData.some(
+      (row) =>
+        !row.name?.trim() ||
+        !row.year?.trim() ||
+        !row.business_name?.trim()
+    );
 
-  if (hasEmptyFields) {
-    toast.warning("Please fill all fields before saving.");
-    return; // ⛔ STOP SAVE
-  }
+    if (hasEmptyFields) {
+      toast.warning("Please fill all fields before saving.");
+      return; // ⛔ STOP SAVE
+    }
 
-  // ✅ Save allowed
-  savedDataRef.current = JSON.parse(JSON.stringify(editableData));
-  setAllChanges((prev) => [...prev, ...sessionChanges]);
-  setSessionChanges([]);
-  setIsEditing(false);
-  setIsSavedOnce(true);
+    // ✅ Save allowed
+    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
+    setAllChanges((prev) => [...prev, ...sessionChanges]);
+    setSessionChanges([]);
+    setIsEditing(false);
+    setIsSavedOnce(true);
 
-  toast.success("Changes saved successfully.");
-};
+    // toast.success("Changes saved successfully.");
+  };
 
 
   // Cancel session
@@ -184,7 +184,7 @@ const handleSave = () => {
     setEditableData(JSON.parse(JSON.stringify(savedDataRef.current)));
     setSessionChanges([]);
     setIsEditing(false);
-    toast.info("Session changes discarded. Previous saves preserved.");
+    // toast.info("Session changes discarded. Previous saves preserved.");
   };
 
   // Discard all
@@ -207,108 +207,108 @@ const handleSave = () => {
     setShowRequestModal(true);
   };
 
-const handleFinalRequestConfirm = async () => {
-  if (allChanges.length === 0) {
-    toast.info("No changes to submit");
-    return;
-  }
+  const handleFinalRequestConfirm = async () => {
+    if (allChanges.length === 0) {
+      toast.info("No changes to submit");
+      return;
+    }
 
-  const payload = allChanges
-    .map((change) => {
+    const payload = allChanges
+      .map((change) => {
 
-      /* ========== INSERT ========== */
-      if (change.action === "add") {
-        const row = change.data;
-        if (!row) return null;
+        /* ========== INSERT ========== */
+        if (change.action === "add") {
+          const row = change.data;
+          if (!row) return null;
 
-        if (!row.name || !row.year || !row.business_name) {
-          toast.warning("Empty fields found. Cannot submit.");
-          return null;
+          if (!row.name || !row.year || !row.business_name) {
+            toast.warning("Empty fields found. Cannot submit.");
+            return null;
+          }
+
+          return {
+            action: "insert",
+            collectionName: "ecell",
+            title: "Entrepreneur Insert",
+            collection_type: "enterpreneur",
+            meta_data: {
+              name: row.name,
+              business_name: row.business_name,
+              year: row.year,
+            },
+          };
         }
 
-        return {
-          action: "insert",
-          collectionName: "ecell",
-          title: "Entrepreneur Insert",
-          collection_type: "enterpreneur",
-          meta_data: {
-            name: row.name,
-            business_name: row.business_name,
-            year: row.year,
-          },
-        };
-      }
+        /* ========== UPDATE ========== */
+        if (change.action === "edit") {
+          const original = originalRef.current[change.index];
+          if (!original) return null;
 
-      /* ========== UPDATE ========== */
-      if (change.action === "edit") {
-        const original = originalRef.current[change.index];
-        if (!original) return null;
+          const updatedFields = {};
+          Object.entries(change.changes || {}).forEach(([k, v]) => {
+            if (v.old !== v.new) updatedFields[k] = v.new;
+          });
 
-        const updatedFields = {};
-        Object.entries(change.changes || {}).forEach(([k, v]) => {
-          if (v.old !== v.new) updatedFields[k] = v.new;
-        });
+          if (!Object.keys(updatedFields).length) return null;
 
-        if (!Object.keys(updatedFields).length) return null;
+          return {
+            action: "update",
+            collectionName: "ecell",
+            title: "Entrepreneur Update",
+            collection_type: "enterpreneur",
+            original_data: {
+              name: original.name,
+              business_name: original.business_name,
+              year: original.year,
+            },
+            meta_data: updatedFields,
+          };
+        }
 
-        return {
-          action: "update",
-          collectionName: "ecell",
-          title: "Entrepreneur Update",
-          collection_type: "enterpreneur",
-          original_data: {
-            name: original.name,
-            business_name: original.business_name,
-            year: original.year,
-          },
-          meta_data: updatedFields,
-        };
-      }
+        /* ========== DELETE ========== */
+        if (change.action === "delete") {
+          const member = change.deletedItem;
+          if (!member) return null;
 
-      /* ========== DELETE ========== */
-      if (change.action === "delete") {
-        const member = change.deletedItem;
-        if (!member) return null;
+          return {
+            action: "delete",
+            collectionName: "ecell",
+            title: "Entrepreneur Delete",
+            collection_type: "enterpreneur",
+            meta_data: {
+              name: member.name,
+              business_name: member.business_name,
+              year: member.year,
+            },
+          };
+        }
 
-        return {
-          action: "delete",
-          collectionName: "ecell",
-          title: "Entrepreneur Delete",
-          collection_type: "enterpreneur",
-          meta_data: {
-            name: member.name,
-            business_name: member.business_name,
-            year: member.year,
-          },
-        };
-      }
+        return null;
+      })
+      .filter(Boolean);
 
-      return null;
-    })
-    .filter(Boolean);
+    if (!payload.length) {
+      toast.info("No valid changes to submit");
+      return;
+    }
 
-  if (!payload.length) {
-    toast.info("No valid changes to submit");
-    return;
-  }
+    try {
+      await sendRequest(payload);
+      // toast.success("Request sent for admin approval");
 
-  try {
-    await sendRequest(payload);
-    toast.success("Request sent for admin approval");
+      setShowRequestModal(false);
+      setAllChanges([]);
+      setSessionChanges([]);
+      setIsEditing(false);
+      setIsSavedOnce(false);
 
-    setShowRequestModal(false);
-    setAllChanges([]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(false);
-
-    originalRef.current = structuredClone(editableData);
-    savedDataRef.current = structuredClone(editableData);
-  } catch (err) {
-    console.error(err);
-    toast.error("Failed to submit request");
-  }
-};
+      originalRef.current = structuredClone(editableData);
+      savedDataRef.current = structuredClone(editableData);
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to submit request");
+    }
+  };
 
 
 
@@ -321,41 +321,41 @@ const handleFinalRequestConfirm = async () => {
     setDeleteConfirmOpen(true);
   };
 
-const confirmDelete = () => {
-  let newData = [...editableData];
-  let newChanges = [...sessionChanges];
+  const confirmDelete = () => {
+    let newData = [...editableData];
+    let newChanges = [...sessionChanges];
 
-  const deleteRow = (idx) => {
-    // ❌ Remove ALL previous changes for this row (add/edit)
-    newChanges = newChanges.filter((c) => c.index !== idx);
+    const deleteRow = (idx) => {
+      // ❌ Remove ALL previous changes for this row (add/edit)
+      newChanges = newChanges.filter((c) => c.index !== idx);
 
-    // ✅ If row existed originally, track delete
-    if (savedDataRef.current[idx]) {
-      newChanges.push({
-        index: idx,
-        action: "delete",
-        deletedItem: newData[idx],
-      });
+      // ✅ If row existed originally, track delete
+      if (savedDataRef.current[idx]) {
+        newChanges.push({
+          index: idx,
+          action: "delete",
+          deletedItem: newData[idx],
+        });
+      }
+
+      // Remove from UI
+      newData.splice(idx, 1);
+    };
+
+    if (indexToDelete === "multiple") {
+      [...selectedRows].sort((a, b) => b - a).forEach(deleteRow);
+    } else if (typeof indexToDelete === "number") {
+      deleteRow(indexToDelete);
     }
 
-    // Remove from UI
-    newData.splice(idx, 1);
+    setEditableData(newData);
+    setSessionChanges(newChanges);
+    setSelectedRows(new Set());
+    setDeleteConfirmOpen(false);
+    setIndexToDelete(null);
+
+    toast.success("Row deleted.");
   };
-
-  if (indexToDelete === "multiple") {
-    [...selectedRows].sort((a, b) => b - a).forEach(deleteRow);
-  } else if (typeof indexToDelete === "number") {
-    deleteRow(indexToDelete);
-  }
-
-  setEditableData(newData);
-  setSessionChanges(newChanges);
-  setSelectedRows(new Set());
-  setDeleteConfirmOpen(false);
-  setIndexToDelete(null);
-
-  toast.success("Row deleted.");
-};
 
 
 
@@ -378,7 +378,7 @@ const confirmDelete = () => {
       {!isEditing && (
         <div className="flex justify-end pr-8 mt-10">
           <button
-            className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-yellow-400"
+            className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200"
             onClick={() => setIsEditing(true)}
           >
             <Pencil className="mr-2" /> Edit
@@ -460,7 +460,7 @@ const confirmDelete = () => {
         <div className="flex justify-center gap-4 py-3">
           <button
             onClick={handleAddRow}
-            className="flex items-center gap-2 px-4 py-2 bg-secd rounded text-text"
+            className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200"
           >
             <Plus /> Add New Row
           </button>
@@ -468,7 +468,7 @@ const confirmDelete = () => {
           {selectedRows.size > 0 && (
             <button
               onClick={openDeleteMultiple}
-              className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded"
+              className="bg-red-600 hover:bg-red-500 text-white px-6 py-2 rounded flex items-center gap-2 shadow-lg"
             >
               <Trash2 /> Delete Selected
             </button>
@@ -481,23 +481,22 @@ const confirmDelete = () => {
         <button
           onClick={handlePrev}
           disabled={currentPage === 0}
-          className={`px-4 py-2 rounded ${
-            currentPage === 0 ? "bg-gray-300 cursor-not-allowed" : "px-4 py-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim"
-          }`}
+          className={`px-4 py-2 rounded ${currentPage === 0 ? "bg-gray-300 cursor-not-allowed" : "px-4 py-2 rounded bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white transition duration-200"
+            }`}
         >
           Previous
         </button>
         <span>
           Page {currentPage + 1} of {totalPages}
         </span>
+
         <button
           onClick={handleNext}
           disabled={currentPage === totalPages - 1}
-          className={`px-4 py-2 rounded ${
-            currentPage === totalPages - 1
-              ? "bg-gray-300 cursor-not-allowed"
-              : "px-4 py-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim"
-          }`}
+          className={`px-4 py-2 rounded ${currentPage === totalPages - 1
+            ? "bg-gray-300 cursor-not-allowed"
+            : "px-4 py-2 rounded bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white transition duration-200"
+            }`}
         >
           Next
         </button>
@@ -505,29 +504,29 @@ const confirmDelete = () => {
 
       {/* Bottom action buttons */}
       <div className="py-4 mt-4 flex justify-end gap-4">
-          <div className="flex flex-row gap-2 mr-8">
-            {isEditing && ( 
-              <button
-              className="flex items-center bg-gray-500 px-3 py-2 rounded text-white"
+        <div className="flex flex-row gap-2 mr-8">
+          {isEditing && (
+            <button
+              className="flex items-center bg-gray-400 hover:bg-gray-600 px-3 py-2 rounded text-white transition duration-200"
               onClick={handleCancelSession}
-              >
+            >
               Cancel
             </button>
-              )}
-              {isEditing && sessionChanges.length > 0 && (
+          )}
+          {isEditing && sessionChanges.length > 0 && (
             <button
-              className="bg-secd hoverbg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
+              className="bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white px-3 py-2 rounded-lg transition duration-200"
               onClick={handleSave}
             >
               Save
             </button>
-        )}
-          </div>
+          )}
+        </div>
 
         {!isEditing && isSavedOnce && (
           <div className="flex flex-row gap-2 mr-8">
             <button
-              className="bg-red-500 px-3 py-2 rounded text-white"
+              className="bg-gray-400 hover:bg-gray-600 px-3 py-2 rounded text-white transition duration-200"
               onClick={handleDiscardAll}
             >
               Discard All
@@ -547,60 +546,60 @@ const confirmDelete = () => {
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white p-6 rounded-xl w-[560px] max-h-[80vh] overflow-y-auto shadow-lg">
             <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
-               <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
-      </p>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+            </p>
 
 
             <div className="max-h-[320px] overflow-y-auto mb-4">
               <table className="w-full text-sm text-left border">
                 <thead className="bg-gray-100">
-              
-                <tr>
-                  <th className="py-2 px-3 border">Action</th>
-                  <th className="py-2 px-3 border">Section</th>
-                  <th className="py-2 px-3 border">Changed Field</th>
-                  <th className="py-2 px-3 border">Undo</th> {/* new column */}
-                </tr>
-              </thead>
+
+                  <tr>
+                    <th className="py-2 px-3 border">Action</th>
+                    <th className="py-2 px-3 border">Section</th>
+                    <th className="py-2 px-3 border">Changed Field</th>
+                    <th className="py-2 px-3 border">Undo</th> {/* new column */}
+                  </tr>
+                </thead>
                 <tbody>
-  {allChanges.length === 0 ? (
-    <tr>
-      <td colSpan={4} className="text-center py-4">
-        No changes to submit
-      </td>
-    </tr>
-  ) : (
-    allChanges.map((change, idx) => (
-      <tr key={idx} className="even:bg-white odd:bg-gray-50">
-        <td className="py-2 px-3 border align-top text-center">
-          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
-          {change.action === "add" && <span className="text-green-600">+ Added</span>}
-          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
-        </td>
-        <td className="py-2 px-3 border align-top text-center">Entrepreneur</td>
-        <td className="py-2 px-3 border text-[13px]">
-          {change.action === "delete"
-            ? `Row ${change.index + 1} deleted`
-            : Object.keys(change.changes || {}).length === 0
-            ? "Added/changed entire row"
-            : Object.entries(change.changes)
-                .filter(([_, val]) => val.old !== val.new)
-                .map(([field]) => field.charAt(0).toUpperCase() + field.slice(1))
-                .join(", ")}
-        </td>
-        <td className="py-2 px-3 border text-center">
-          <button
-            className="text-red-500 font-bold"
-            onClick={() => handleUndoChange(change)}
-          >
-            X
-          </button>
-        </td>
-      </tr>
-    ))
-  )}
-</tbody>
+                  {allChanges.length === 0 ? (
+                    <tr>
+                      <td colSpan={4} className="text-center py-4">
+                        No changes to submit
+                      </td>
+                    </tr>
+                  ) : (
+                    allChanges.map((change, idx) => (
+                      <tr key={idx} className="even:bg-white odd:bg-gray-50">
+                        <td className="py-2 px-3 border align-top text-center">
+                          {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
+                          {change.action === "add" && <span className="text-green-600">+ Added</span>}
+                          {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
+                        </td>
+                        <td className="py-2 px-3 border align-top text-center">Entrepreneur</td>
+                        <td className="py-2 px-3 border text-[13px]">
+                          {change.action === "delete"
+                            ? `Row ${change.index + 1} deleted`
+                            : Object.keys(change.changes || {}).length === 0
+                              ? "Added/changed entire row"
+                              : Object.entries(change.changes)
+                                .filter(([_, val]) => val.old !== val.new)
+                                .map(([field]) => field.charAt(0).toUpperCase() + field.slice(1))
+                                .join(", ")}
+                        </td>
+                        <td className="py-2 px-3 border text-center">
+                          <button
+                            className="text-red-500 font-bold"
+                            onClick={() => handleUndoChange(change)}
+                          >
+                            X
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
 
               </table>
             </div>
@@ -608,13 +607,13 @@ const confirmDelete = () => {
             <div className="flex justify-end gap-3">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200"
               >
                 Cancel
               </button>
               <button
                 onClick={handleFinalRequestConfirm}
-                className="px-4 py-2 rounded bg-secd hoverbg-brwn text-text hover:text-prim  "
+                className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition duration-200"
               >
                 Final Request
               </button>
@@ -633,10 +632,16 @@ const confirmDelete = () => {
                 : "Are you sure you want to delete this row?"}
             </p>
             <div className="flex justify-center gap-4">
-              <button className="px-4 py-2 rounded bg-gray-400 text-white" onClick={cancelDelete}>
+              <button
+                className="bg-gray-400 hover:bg-gray-600 text-white px-4 py-2 rounded transition duration-200"
+                onClick={() => setDeleteConfirmOpen(false)}
+              >
                 Cancel
               </button>
-              <button className="px-4 py-2 rounded bg-red-600 text-white" onClick={confirmDelete}>
+              <button
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition duration-200"
+                onClick={confirmDelete}
+              >
                 Delete
               </button>
             </div>

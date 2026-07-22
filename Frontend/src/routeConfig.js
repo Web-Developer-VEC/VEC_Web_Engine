@@ -120,7 +120,7 @@ export const routeConfig = {
   "/abt-us": { normal: AbtUs, admin: AdminAbtUs },
   "/abt-yr": { normal: Aishe, admin: AdminAishe},
   "/trust": { normal: NewTrust, admin: NewTrust },
-  "/vm": { normal: Collegevisionmission, admin: Collegevisionmission },
+  "/v_m": { normal: Collegevisionmission, admin: Collegevisionmission },
   "/management": { normal: Management, admin: Management },
   "/committee": { normal: ExecutiveCommittee, admin: ExecutiveCommittee},
   "/clg-org": { normal: CollegeOrgChart, admin: CollegeOrgChart },
@@ -135,7 +135,7 @@ export const routeConfig = {
   "/dept/:deptID": { normal: DepartmentPage, admin: DepartmentRoute },
   "/departments": { normal: AcademicDepartments, admin: AdminAcademicDepartments },
   "/programs": { normal: Programmes, admin: AdminProgrammes },
-  "/acadamiccal": { normal: Acadamiccal, admin: AdminAcadamiccal },
+  "/academic_cal": { normal: Acadamiccal, admin: AdminAcadamiccal },
 
   // Admission Routes
   "/ug": { normal: UgAdmission, admin: AdminUgAdmission },
@@ -171,7 +171,7 @@ export const routeConfig = {
   "/iqac": { normal: IQAC, admin: AdminIQAC },
   '/incubation': { normal: Incub, admin: AdminIncub },
   "/ecell": { normal: Ecell, admin: AdminEcell },
-  "/Accredation": { normal: Accredation, admin: AdminAccredation },
+  "/Accreditation": { normal: Accredation, admin: AdminAccredation },
   "/iic": { normal: Iic, admin: AdminIic },
   "/NSS": { normal: NSS, admin: AdminNSS },
   "/NCC": { normal: NCCMAIN, admin: AdminNCCMAIN },

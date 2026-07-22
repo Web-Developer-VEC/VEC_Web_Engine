@@ -10,7 +10,10 @@
       "Our_Vision": "Department of Training & Placement aims to educate, advise, and connect students to opportunities for their career growth in order to foster their intellectual, social, and personal transformations.",
       "Our_Mission": "The department focuses on bringing the most relevant professional opportunities for the learners through various initiatives and activities.",
       "email": "placement@velammal.edu.in",
-      "phone": ["9940127839", "9444008233"]
+      "phone": [
+        "9940127839",
+        "9444008233"
+      ]
     }
   },
   {
@@ -57,27 +60,69 @@
         "years": [
           {
             "year": "2015-19",
-            "values": ["328", "785", "719", "989", "91.59", "4.10 LPA"]
+            "values": [
+              "328",
+              "785",
+              "719",
+              "989",
+              "91.59",
+              "4.10 LPA"
+            ]
           },
           {
             "year": "2016-20",
-            "values": ["227", "722", "655", "871", "90.72", "4.30 LPA"]
+            "values": [
+              "227",
+              "722",
+              "655",
+              "871",
+              "90.72",
+              "4.30 LPA"
+            ]
           },
           {
             "year": "2017-21",
-            "values": ["233", "620", "589", "897", "95.00", "4.54 LPA"]
+            "values": [
+              "233",
+              "620",
+              "589",
+              "897",
+              "95.00",
+              "4.54 LPA"
+            ]
           },
           {
             "year": "2018-22",
-            "values": ["250", "665", "643", "1059", "96.69", "4.66 LPA"]
+            "values": [
+              "250",
+              "665",
+              "643",
+              "1059",
+              "96.69",
+              "4.66 LPA"
+            ]
           },
           {
             "year": "2019-23",
-            "values": ["208", "534", "494", "651", "92.51", "6.10 LPA"]
+            "values": [
+              "208",
+              "534",
+              "494",
+              "651",
+              "92.51",
+              "6.10 LPA"
+            ]
           },
           {
             "year": "2020-24",
-            "values": ["294", "563", "471", "602", "83.66", "6.15 LPA"]
+            "values": [
+              "294",
+              "563",
+              "471",
+              "602",
+              "83.66",
+              "6.15 LPA"
+            ]
           }
         ]
       },
@@ -189,7 +234,11 @@
       },
       "year_wise_pdfs": [
         {
-          "year": "*2024-25",
+          "year": "* 2025-26",
+          "pdf_path": "/static/pdfs/placement_docs/palcements_25-26.pdf"
+        },
+        {
+          "year": "2024-25",
           "pdf_path": "/static/pdfs/placement_docs/placements_24-25.pdf"
         },
         {

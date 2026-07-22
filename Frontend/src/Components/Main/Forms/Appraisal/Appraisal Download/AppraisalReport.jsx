@@ -8,14 +8,25 @@ const deptMap = [
   "CHEMISTRY",
   "CIVIL",
   "CSE",
-  "CSECS"
+  "CSECS",
+  "EEE",
+  "EIE",
+  "ECE",
+  "ENGLISH",
+  "IT",
+  "MATHS",
+  "MECH",
+  "TAMIL",
+  "PHYSICS",
+  "MECSE",
+  "MBA",
 ];
 
 const yearList = [
-  "2025-26",
-  "2024-25",
-  "2023-24",
-  "2022-23"
+  "2025-2026",
+  "2024-2025",
+  "2023-2024",
+  "2022-2023"
 ];
 
 const AppraisalReport = () => {
@@ -153,6 +164,7 @@ const AppraisalReport = () => {
 
 
       {/* Proof Buttons */}
+      {/* Buttons */}
 
       {selectedDept && selectedYear && (
 
@@ -169,6 +181,9 @@ const AppraisalReport = () => {
             View
           </button>
 
+
+
+          {/* DOWNLOAD */}
 
           <button
             onClick={() => setSelectedType("without_proof")}
@@ -188,10 +203,13 @@ const AppraisalReport = () => {
 
 
       {/* PDF Viewer */}
+
       {selectedType === "with_proof" && (
 
         loading ? (
+
           <LoadComp />
+
         ) : (
 
           pdfUrl && (
@@ -199,11 +217,12 @@ const AppraisalReport = () => {
             <div className="border p-6 mt-6 w-[81%] mx-auto bg-prim dark:bg-drkp shadow-lg rounded-lg">
 
               <h3 className="text-xl font-bold mb-4 text-center">
-                Appraisal Report
+                {selectedDept} {selectedYear} Appraisal Report
               </h3>
 
+
               <embed
-                src={`${pdfUrl}#toolbar=0`}
+                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
                 type="application/pdf"
                 width="100%"
                 height="600px"

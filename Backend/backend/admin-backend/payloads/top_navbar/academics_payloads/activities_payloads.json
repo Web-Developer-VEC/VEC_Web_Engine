@@ -57,6 +57,16 @@
     }
   },
   {
+    "collectionName": "CSE_005",
+    "collection_type": "activities",
+    "action": "delete",
+    "title": "delete in department_activities",
+    "category": "department_activities",
+    "meta_data": {
+      "year": "1234-0987"
+    }
+  },
+  {
     "collection": "CSE_005",
     "collection_type": "activities",
     "action": "delete",

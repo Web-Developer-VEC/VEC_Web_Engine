@@ -31,7 +31,8 @@ const sport = require('../second_navbar/sport_routes');
 const web_team = require('./web_team_routes')
 const log = require('./log_routes')
 const feedback = require('../second_navbar/feedback_routes');
-const research = require('../top_navbar/research_routes')
+const research = require('../top_navbar/research_routes');
+const appraisalform = require('../forms/dept_appraisal.routes')
 
 router.use('', about_us);
 router.use('', acadamic);
@@ -61,6 +62,9 @@ router.use('', sport);
 router.use('', web_team);
 router.use('', log);
 router.use('', feedback);
-router.use('', research )
+router.use('', research );
+
+//FORM
+router.use('', appraisalform)
 
 module.exports = router;

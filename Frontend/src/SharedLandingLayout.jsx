@@ -2,7 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoadComp from './Components/Main/LoadComp';
 
-const SharedLandingLayout = ({ components, theme, load, toggle, pageData, isOnline }) => {
+const SharedLandingLayout = ({ components, theme, load, toggle, pageData, isOnline, showPopup, setShowPopup, isAdmin }) => {
     const {
         ImgSld,
         Abt,
@@ -12,7 +12,9 @@ const SharedLandingLayout = ({ components, theme, load, toggle, pageData, isOnli
         Samplereact,
         Contact,
         Footer,
-        ScrollToTopButton
+        ScrollToTopButton,
+        NotifyCard,
+        NotifySection
     } = components;
 
     const pageDetails = pageData?.find((item) => item.type === "page_details")?.data || [];
@@ -22,6 +24,7 @@ const SharedLandingLayout = ({ components, theme, load, toggle, pageData, isOnli
     const announcements = pageData?.find((item) => item.type === "announcements")?.data || [];
     const specialAnnouncements = pageData?.find((item) => item.type === "special_announcements")?.data || [];
     const events = pageData?.find((item) => item.type === "events")?.data || [];
+    const newscard = pageData?.find((item) => item.type === "news_card")?.data || [];
 
     if (!isOnline) {
         return (
@@ -44,6 +47,9 @@ const SharedLandingLayout = ({ components, theme, load, toggle, pageData, isOnli
                     <Abt />
                     <Announce anno={announcements} spc={specialAnnouncements} />
                     <Event data={events} />
+                    {isAdmin && NotifySection && (
+                        <NotifySection data={newscard} />
+                    )}
                 </div>
                 <Tracker data={bannerData} />
                 <div className='bg-prim dark:bg-drkp'>
@@ -54,6 +60,12 @@ const SharedLandingLayout = ({ components, theme, load, toggle, pageData, isOnli
                 </div>
             </div>
             <ScrollToTopButton />
+            {!isAdmin && showPopup && NotifyCard && (
+                <NotifyCard
+                    onClose={() => setShowPopup(false)}
+                    data={newscard}
+                />
+            )}
         </div>
     );
 };
