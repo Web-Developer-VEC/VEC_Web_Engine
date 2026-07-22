@@ -37,9 +37,9 @@ const Research = ({ data }) => {
   const [newYearInput, setNewYearInput] = useState("");
   const [showDeletePdfModal, setShowDeletePdfModal] = useState(false);
   const [pdfToDelete, setPdfToDelete] = useState(null);
-
+  
   const { sendRequest, loading, error } = useAdminRequest();
-
+  console.log("RD data:", data);
   const deptMap = {
     "001": "AIDS_001",
     "002": "AUTO_002",
@@ -85,6 +85,7 @@ const Research = ({ data }) => {
     }
 
     setOriginalData(depResearch);
+    console.log("Original Data:", depResearch);
     setDepartmentResearch(depResearch.map((item) => ({ ...item })));
     setYears(depResearch.map((item) => item.year));
     if (depResearch.length > 0 && !selectedYear) {
@@ -116,8 +117,12 @@ const Research = ({ data }) => {
         research: defaultResearch.map((name) => ({
           name,
           pdf_path: "",
-        })),
+        }
+      
+      )),
       };
+      console.log(newYearData);
+
 
       const updated = [...departmentResearch, newYearData]; // append
       setDepartmentResearch(updated);
@@ -184,7 +189,7 @@ const Research = ({ data }) => {
   const buildPayload = () => {
     const payload = [];
     const collectionName = deptMap[deptId] || "UNKNOWN";
-
+  
     // Helper function to get proper PDF path
     const getPdfPath = (research, year) => {
       if (!research.pdf_path) return "";
@@ -226,7 +231,8 @@ const Research = ({ data }) => {
               }))
             },
             original_data: null
-          });
+          }
+        );
         }
       } else {
         // EXISTING YEAR - Check if anything changed (Update action)
@@ -270,7 +276,7 @@ const Research = ({ data }) => {
         }
       }
     });
-
+console.log("Payload after processing current years:", payload);
     // Check for deleted years (in original but not in current) - Delete action
     originalData.forEach((originalYear) => {
       if (!processedYears.has(originalYear.year)) {

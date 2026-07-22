@@ -395,7 +395,7 @@ const LibraryIntro = ({ about }) => {
                       }
                     }}
                   >
-                    <Save size={18} /> Save
+                     Save
                   </button>
                 )}
               </div>

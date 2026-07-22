@@ -89,16 +89,38 @@ const MOU = ({ data }) => {
     setSelectedItems([]);
     // DO NOT clear savedOnce here — so previously-saved pending remains
   };
+  const validateFields = () => {
+  for (let i = 0; i < tempDetails.length; i++) {
+    const row = tempDetails[i];
+
+    if (!row.ORGANISATION_NAME?.trim()) {
+      toast.error(`Row ${i + 1}: Organisation Name is required.`);
+      return false;
+    }
+
+    if (!row.MONTH_AND_YEAR?.trim()) {
+      toast.error(`Row ${i + 1}: Start Date is required.`);
+      return false;
+    }
+
+    if (!row.VALIDITY?.trim()) {
+      toast.error(`Row ${i + 1}: End Date is required.`);
+      return false;
+    }
+  }
+
+  return true;
+};
 
   const handleSave = () => {
-    // Save the current tempDetails as mousDetails (pending)
-    const cleaned = addUids(tempDetails);
-    setMousDetails(cleaned);
-    setHasChanges(false);
-    setSavedOnce(true); // indicates there's a pending local save (needs request)
-    setEditMode(false);
-    setSelectedItems([]);
-  };
+  if (!validateFields()) return;
+  const cleaned = addUids(tempDetails);
+  setMousDetails(cleaned);
+  setHasChanges(false);
+  setSavedOnce(true);
+  setEditMode(false);
+  setSelectedItems([]);
+};
 
   const handleDiscard = () => {
     // Revert everything back to last approved (live) data
@@ -110,9 +132,6 @@ const MOU = ({ data }) => {
     setEditMode(false);
     setSelectedItems([]);
     setSavedOnce(false);
-
-    // toast: inform user changes reverted
-    toast.info("Change has been reverted");
   };
 
   const handleChange = (index, field, value) => {
@@ -188,6 +207,8 @@ const MOU = ({ data }) => {
   };
 
   const handleRequestConfirm = async () => {
+    if (!validateFields()) return;
+
     const payload = buildPayload();
 
     if (payload.length === 0) {
@@ -212,7 +233,6 @@ const MOU = ({ data }) => {
       setHasChanges(false);
       setSelectedItems([]);
       setSavedOnce(false);
-      toast.success("Request submitted successfully!");
     }
   };
 
@@ -562,14 +582,11 @@ const MOU = ({ data }) => {
               </div>
             </div>
           )}
-
-          {/* Toast container */}
           <ToastContainer position="bottom-right" autoClose={3000} />
         </>
       ) : (
         <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
           <LoadComp />
-          <ToastContainer position="bottom-right" autoClose={3000} />
         </div>
       )}
     </div>

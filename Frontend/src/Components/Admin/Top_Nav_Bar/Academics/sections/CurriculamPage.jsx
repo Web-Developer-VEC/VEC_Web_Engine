@@ -35,7 +35,9 @@ const deepCopy = (data) => {
 const CurriculumPage = ({ data, deptId }) => {
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const { sendRequest, loading: requestLoading, error } = useAdminRequest();
+  const { sendRequest, loading, error } = useAdminRequest();
+  console.log("Loading state check", loading);
+
 
   const UrlParser = (path) => {
     if (typeof path !== "string" || !path) return "";
@@ -82,6 +84,7 @@ const CurriculumPage = ({ data, deptId }) => {
     isEditing: false,
     isDoc: false,
     isCurriculum: false,
+    deletePdf: false,
   });
 
   const fileInputRef = useRef(null);
@@ -121,31 +124,41 @@ const CurriculumPage = ({ data, deptId }) => {
     };
   }, []);
 
-  // View handlers
+
+
   const handleViewClick = (pdfUrl) => {
-    if (pdfUrl) {
-      window.open(UrlParser(pdfUrl), "_blank", "noopener,noreferrer");
-    }
+    const url = UrlParser(pdfUrl);
+
+    console.log("VIEW 1 URL:", url);
+    console.log("Original pdf_path:", pdfUrl);
+
+    window.open(url, "_blank");
   };
+
+
+
 
   const handleViewWithFile = (item) => {
+    console.log("OBJECT:", item);
+
     if (!item) return;
 
-    // 1️⃣ New replaced PDF (blob)
     if (typeof item.url === "string" && item.url.startsWith("blob:")) {
-      window.open(item.url);
+      console.log("Opening Blob");
+      window.open(item.url, "_blank");
       return;
     }
 
-    // 2️⃣ Backend PDF
     if (typeof item.pdf_path === "string" && item.pdf_path.length > 0) {
-      window.open(UrlParser(item.pdf_path));
+      console.log("Opening PDF:", item.pdf_path);
+      window.open(UrlParser(item.pdf_path), "_blank");
       return;
     }
 
-    // 3️⃣ Nothing found
-    toast.error("PDF not available");
+    console.log("No PDF");
   };
+
+
 
   // Edit mode handlers
   const handleEdit = () => {
@@ -331,6 +344,7 @@ const CurriculumPage = ({ data, deptId }) => {
       isDoc: true,
       isSemester: true,
       isExtraSemester: true,
+      deletePdf: false,
     });
 
     setShowPopup(true);
@@ -388,6 +402,7 @@ const CurriculumPage = ({ data, deptId }) => {
       isEditing: true,
       isDoc: !isSemester,
       isSemester,
+      deletePdf: false,
     });
 
     setShowPopup(true);
@@ -433,6 +448,17 @@ const CurriculumPage = ({ data, deptId }) => {
     setPopupData((prev) => ({ ...prev, file }));
   };
 
+  const handleDeletePdf = () => {
+    setPopupData((prev) => ({
+      ...prev,
+      file: null,
+      pdf_path: "",
+      deletePdf: true,
+    }));
+
+    toast.success("PDF removed");
+  };
+
   const handlePopupView = () => {
     const {
       file,
@@ -458,6 +484,8 @@ const CurriculumPage = ({ data, deptId }) => {
       window.open(url, "_blank", "noopener,noreferrer");
     }
   };
+
+
 
   const handlePopupSubmit = () => {
     const {
@@ -543,7 +571,8 @@ const CurriculumPage = ({ data, deptId }) => {
             name: docName.trim(),
 
             // ✅ FIX: preserve backend pdf_path
-            pdf_path: oldDoc.pdf_path,
+            pdf_path: popupData.deletePdf ? "" : oldDoc.pdf_path,
+            deletePdf: popupData.deletePdf,
 
             url: file ? URL.createObjectURL(file) : oldDoc.url,
             file: file || null,
@@ -576,7 +605,8 @@ const CurriculumPage = ({ data, deptId }) => {
             year: year.trim(),
 
             // ✅ FIX: preserve backend pdf_path
-            pdf_path: oldItem.pdf_path,
+            pdf_path: popupData.deletePdf ? "" : oldItem.pdf_path,
+            deletePdf: popupData.deletePdf,
 
             url: file ? URL.createObjectURL(file) : oldItem.url,
             file: file || null,
@@ -620,6 +650,7 @@ const CurriculumPage = ({ data, deptId }) => {
       isDoc: false,
       isCurriculum: false,
       semesters: [],
+      deletePdf: false,
     });
   };
 
@@ -664,13 +695,13 @@ const CurriculumPage = ({ data, deptId }) => {
           });
         } else {
           // Edited Year
-          if (item.year !== originalItem.year || item.file instanceof File) {
+          if (item.year !== originalItem.year || item.file instanceof File || item.deletePdf) {
             changes.push({
               action: "Edited",
               section: section.heading,
               year: item.year,
-              // ✅ ALWAYS preserve backend path if no new file
               pdf_path: originalItem.pdf_path || "",
+              deletePdf: item.deletePdf || false,
               original_data: {
                 year: originalItem.year,
                 pdf_path: originalItem.pdf_path || "",
@@ -697,7 +728,9 @@ const CurriculumPage = ({ data, deptId }) => {
               });
             } else if (
               doc.name !== originalDoc.name ||
-              doc.file instanceof File
+              doc.file instanceof File ||
+              doc.deletePdf
+
             ) {
               // Edited doc
               changes.push({
@@ -706,6 +739,7 @@ const CurriculumPage = ({ data, deptId }) => {
                 year: item.year,
                 docName: doc.name,
                 pdf_path: originalDoc.pdf_path || "",
+                deletePdf: doc.deletePdf || false,
                 original_data: {
                   name: originalDoc.name,
                   pdf_path: originalDoc.pdf_path || "",
@@ -824,9 +858,18 @@ const CurriculumPage = ({ data, deptId }) => {
       if (change.action === "Edited") {
         const isFileReplaced = change.file instanceof File;
 
-        const newPath = isFileReplaced
-          ? `/staticpdf/curriculum/${change.file.name}`
-          : change.original_data?.pdf_path || "";
+        let newPath;
+
+        if (change.deletePdf) {
+          // User clicked the dustbin
+          newPath = "";
+        } else if (isFileReplaced) {
+          // User uploaded a new PDF
+          newPath = `/staticpdf/curriculum/${change.file.name}`;
+        } else {
+          // Keep the existing PDF
+          newPath = change.original_data?.pdf_path || "";
+        }
 
         entry = {
           ...base,
@@ -872,6 +915,8 @@ const CurriculumPage = ({ data, deptId }) => {
   };
 
   const handleFinalRequestConfirm = async () => {
+    console.log("Final Request Button clicked");
+
     const sourceData = pendingData || tempData;
     const { payload, files } = buildPayload(sourceData);
 
@@ -882,16 +927,35 @@ const CurriculumPage = ({ data, deptId }) => {
 
     try {
       const response = await sendRequest(payload, files);
-      toast.success("Changes request sent successfully!");
 
-      // Update local state after successful request
-      setOriginalData(deepCopy(sourceData));
-      setTempData(deepCopy(sourceData));
+      // ✅ Remove temporary frontend flags after successful request
+      const cleanedData = deepCopy(sourceData).map((section) => ({
+        ...section,
+        syllabus: (section.syllabus || []).map((item) => ({
+          ...item,
+          file: null,
+          url: item.pdf_path ? UrlParser(item.pdf_path) : "",
+          _isNew: false,
+          deletePdf: false,
+          docs: (item.docs || []).map((doc) => ({
+            ...doc,
+            file: null,
+            url: doc.pdf_path ? UrlParser(doc.pdf_path) : "",
+            _isNew: false,
+            deletePdf: false,
+          })),
+        })),
+      }));
+
+      setOriginalData(cleanedData);
+      setTempData(deepCopy(cleanedData));
 
       setPendingData(null);
       setIsSaved(false);
       setIsDirty(false);
       setShowRequestModal(false);
+
+      // toast.success("Changes request sent successfully!");
 
       console.log("Backend response:", response);
     } catch (err) {
@@ -915,10 +979,10 @@ const CurriculumPage = ({ data, deptId }) => {
     if (popupData.isDoc) {
       const originalDoc =
         popupData.sectionIndex !== null &&
-        popupData.itemIndex !== null &&
-        popupData.docIndex !== null
+          popupData.itemIndex !== null &&
+          popupData.docIndex !== null
           ? tempData[popupData.sectionIndex]?.syllabus[popupData.itemIndex]
-              ?.docs[popupData.docIndex]
+            ?.docs[popupData.docIndex]
           : null;
 
       if (!originalDoc) return true;
@@ -986,6 +1050,7 @@ const CurriculumPage = ({ data, deptId }) => {
       isDoc: false,
       isSemester: false,
       isCurriculum: true,
+      deletePdf: false,
 
       // ✅ Auto create 8 semesters
       semesters: romanSemesters.map((roman, index) => ({
@@ -1044,12 +1109,12 @@ const CurriculumPage = ({ data, deptId }) => {
                         ? item.docs
                         : item.pdf_path
                           ? [
-                              {
-                                name: "View",
-                                pdf_path: item.pdf_path,
-                                isView: true,
-                              },
-                            ]
+                            {
+                              name: "View",
+                              pdf_path: item.pdf_path,
+                              isView: true,
+                            },
+                          ]
                           : [];
 
                       return (
@@ -1105,11 +1170,10 @@ const CurriculumPage = ({ data, deptId }) => {
                                     }
                                   }}
                                   className={`px-4 py-2 rounded flex items-center justify-center gap-2 
-          ${
-            hasDocs
-              ? "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-              : "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
-          }`}
+          ${hasDocs
+                                      ? "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                                      : "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
+                                    }`}
                                 >
                                   {doc.isView && (
                                     <FontAwesomeIcon icon={faEye} />
@@ -1176,7 +1240,7 @@ const CurriculumPage = ({ data, deptId }) => {
                           {item.pdf_path && (
                             <button
                               className="options-btn text-text bg-secd dark:text-drkt dark:bg-drks hover:bg-accn hover:text-prim dark:hover:bg-brwn"
-                              onClick={() => handleViewClick(item.pdf_path)}
+                              onClick={() => handleViewWithFile(item)}
                             >
                               <FontAwesomeIcon
                                 icon={faEye}
@@ -1321,26 +1385,46 @@ const CurriculumPage = ({ data, deptId }) => {
             {/* File Upload Section */}
             {(popupData.isDoc || popupData.isSemester) && (
               <div className="mb-4">
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-3 mb-2">
+
+                  {/* Upload */}
                   <button
                     type="button"
                     onClick={triggerFileInput}
-                    className="px-3 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500 flex items-center gap-2 whitespace-nowrap"
+                    className="px-3 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500"
                   >
                     {popupData.file || popupData.pdf_path
                       ? "Replace PDF"
                       : "Upload PDF"}
                   </button>
+
+                  {/* Preview */}
                   {(popupData.file || popupData.pdf_path) && (
                     <button
                       type="button"
                       onClick={handlePopupView}
-                      className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                      className="px-3 py-2 rounded bg-[#fdcc03] hover:bg-[#800000] hover:text-white"
                       title="Preview PDF"
                     >
-                      <FontAwesomeIcon icon={faEye} size="lg" />
+                      <FontAwesomeIcon icon={faEye} />
                     </button>
                   )}
+
+                  {/* Delete PDF */}
+                  {(popupData.file || popupData.pdf_path) && (
+                    <button
+                      type="button"
+                      onClick={handleDeletePdf}
+                      className="p-2 rounded hover:bg-gray-100 transition-colors duration-200"
+                      title="Delete PDF"
+                    >
+                      <Trash2
+                        size={22}
+                        className="text-red-500"
+                      />
+                    </button>
+                  )}
+
                   <input
                     ref={fileInputRef}
                     type="file"
@@ -1348,6 +1432,7 @@ const CurriculumPage = ({ data, deptId }) => {
                     onChange={handleFileChange}
                     className="hidden"
                   />
+
                 </div>
                 {popupData.file && (
                   <p className="text-sm text-green-600 dark:text-green-400">
@@ -1379,6 +1464,7 @@ const CurriculumPage = ({ data, deptId }) => {
                     isDoc: false,
                     isSemester: false,
                     isCurriculum: false,
+                    deletePdf: false,
                   });
                 }}
                 className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
@@ -1445,13 +1531,12 @@ const CurriculumPage = ({ data, deptId }) => {
                         <td className="px-4 py-2">
                           <span
                             className={`inline-block px-2 py-1 rounded-full text-xs font-medium
-                            ${
-                              ch.action === "Added"
+                            ${ch.action === "Added"
                                 ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
                                 : ch.action === "Edited"
                                   ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
                                   : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
-                            }`}
+                              }`}
                           >
                             {ch.action}
                           </span>
@@ -1492,7 +1577,9 @@ const CurriculumPage = ({ data, deptId }) => {
               {changes.length > 0 && (
                 <button
                   onClick={handleFinalRequestConfirm}
-                  className="flex items-center px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  className={`flex items-center px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim ${loading ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                  disabled={loading}
                 >
                   Final Request
                 </button>
@@ -1533,6 +1620,5 @@ const CurriculumPage = ({ data, deptId }) => {
       )}
     </div>
   );
-};
-
+}
 export default CurriculumPage;

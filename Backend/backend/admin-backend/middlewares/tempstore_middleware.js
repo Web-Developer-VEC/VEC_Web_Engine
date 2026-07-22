@@ -97,7 +97,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
         const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE", ...(
           ["AIDS_001", "AUTO_002", "CHEMISTRY_003", "CIVIL_004", "CSE_005", "CSECS_006", "EEE_007", "EIE_008", "ECE_009", "ENGLISH_010", "IT_011", "MATHS_012", "MECH_013", "TAMIL_014", "PHYSICS_015", "MECSE_016", "MBA_017", "PS_018"].includes(collectionName)
-            ? ["research"]
+            ? ["research", "activities","pedagogy"]
             : []
         )
         ];
@@ -109,10 +109,15 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           { type: collection_type },
           { projection: { data: 1 } }
         );
+        const isFacultyMember =
+          collection_type === "faculty" &&
+          ["head_of_department", "teaching_staff", "non_teaching_staff"].includes(category);
 
+        const forceArrayPdf = [
+          "newsletter",
 
+        ];
         let pdf_path = [];
-
         if (action !== "delete" && !skipPdfFor.includes(collection_type)) {
 
           // SPECIAL HANDLING ONLY FOR academic_calendar
@@ -176,46 +181,61 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
         if (action === "update") {
 
+          if (isFacultyMember) {
+            if (Array.isArray(image_path) && image_path.length) {
+              image_path = image_path[0];
+            }
+          }
+
           if (pdf_path.length > 0) {
-
-            const forceArrayPdf = [
-              "newsletter",
-
-            ];
 
             for (const item of notdoc) {
               const matches = findMatchingItem(item, original_data, "pdf_path");
-
-
-
-
-
               if (matches) {
-                if (forceArrayPdf.includes(collection_type)) {
-                  pdf_path = Array.isArray(pdf_path) ? pdf_path : [pdf_path];
-                } else {
-                  pdf_path = Array.isArray(item.pdf_path)
-                    ? pdf_path
-                    : pdf_path[0];
-                }
+
+                pdf_path = Array.isArray(item.pdf_path)
+                  ? pdf_path
+                  : pdf_path[0];
                 break;
               }
             }
-          } else if (image_path.length > 0) {
-            for (const item of notdoc) {
 
-              const matches = findMatchingItem(item, original_data, "image_path");
-              // const matches = Object.keys(original_data).filter(k=>k!=="image_path").every(
-              //   k=> item[k] === original_data[k]
-
-              // );
+            if (Array.isArray(pdf_path) && pdf_path.length) {
+              pdf_path = pdf_path[0];
+            }
+          } else {
+            if (pdf_path.length > 0) {
 
 
-              if (matches) {
-                image_path = Array.isArray(item.image_path)
-                  ? image_path
-                  : image_path[0];
-                break;
+              for (const item of notdoc) {
+                const matches = findMatchingItem(item, original_data, "pdf_path");
+                if (matches) {
+                  if (forceArrayPdf.includes(collection_type)) {
+                    pdf_path = Array.isArray(pdf_path) ? pdf_path : [pdf_path];
+                  } else {
+                    pdf_path = Array.isArray(item.pdf_path)
+                      ? pdf_path
+                      : pdf_path[0];
+                  }
+                  break;
+                }
+              }
+            } else if (image_path.length > 0) {
+              for (const item of notdoc) {
+
+                const matches = findMatchingItem(item, original_data, "image_path");
+                // const matches = Object.keys(original_data).filter(k=>k!=="image_path").every(
+                //   k=> item[k] === original_data[k]
+
+                // );
+
+
+                if (matches) {
+                  image_path = Array.isArray(item.image_path)
+                    ? image_path
+                    : image_path[0];
+                  break;
+                }
               }
             }
           }
@@ -223,7 +243,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         if (action === "insert") {
 
           // news_card always stores string paths
-          if (collection_type === "news_card") {
+          if (collection_type === "news_card" || isFacultyMember) {
 
             if (Array.isArray(image_path) && image_path.length > 0) {
               image_path = image_path[0];
@@ -236,10 +256,13 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           } else {
             if (pdf_path.length > 0) {
               for (const item of notdoc) {
-                pdf_path = Array.isArray(item.pdf_path)
-                  ? pdf_path
-                  : pdf_path[0];
-
+                if (forceArrayPdf.includes(collection_type)) {
+                  pdf_path = Array.isArray(pdf_path) ? pdf_path : [pdf_path];
+                } else {
+                  pdf_path = Array.isArray(item.pdf_path)
+                    ? pdf_path
+                    : pdf_path[0];
+                }
                 break;
               }
             } else if (image_path.length > 0) {
@@ -252,6 +275,37 @@ module.exports = async function storeTempMiddleware(req, res, next) {
             }
           }
         }
+
+const indexedCollections = [
+    "other_facilities"
+];
+
+if (
+   indexedCollections.includes(collection_type) &&
+  action === "update" &&
+  meta_data.update_index !== undefined
+) {
+  const index = meta_data.update_index;
+
+  const finalNames = [...original_data.name];
+  const finalDescriptions = [...original_data.description];
+
+  finalNames[index] = meta_data.name[0];
+  finalDescriptions[index] = meta_data.description[0];
+
+  meta_data.name = finalNames;
+  meta_data.description = finalDescriptions;
+
+  if (image_path.length) {
+    const finalImages = [...original_data.image_path];
+    finalImages[index] = image_path[0];
+    image_path = finalImages;
+  }
+}
+
+        if (collection_type === "principal" && image_path.length === 1) {
+  image_path = image_path[0];
+}
 
         return {
           collection: collectionName,
@@ -311,4 +365,3 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       .json({ success: false, error: "Server error", details: err.message });
   }
 };
-
