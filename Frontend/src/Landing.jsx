@@ -34,9 +34,7 @@ const AdminComponents = {
 const LandingPage = ({ theme, load, toggle, pageData, isAdmin }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [showPopup, setShowPopup] = useState(true);
-    console.log("isAdmin:", isAdmin);
-console.log("showPopup:", showPopup);
-console.log("pageData",pageData);
+    
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
