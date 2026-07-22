@@ -236,26 +236,36 @@ const LIBFaculty = ({ faculty }) => {
   };
 
   // ✅ New function to revert individual changes
-  const handleRevertChange = (change) => {
-    if (change.action === "Added") {
-      // remove newly added faculty
-      setFacultyList((prev) => prev.filter((f) => f.name !== change.data.name));
-    } else if (change.action === "Deleted") {
-      // restore deleted faculty
-      const original = originalList.find((o) => o.name === change.data.name);
-      if (original) {
-        setFacultyList((prev) => [...prev, original]);
-      }
-    } else if (change.action === "Edited") {
-      // revert edited faculty
-      const original = originalList.find((o) => o.name === change.data.name);
-      if (original) {
-        setFacultyList((prev) =>
-          prev.map((f) => (f.name === change.data.name ? original : f)),
-        );
-      }
+const handleRevertChange = (change) => {
+  if (change.action === "Added") {
+    // Remove newly added faculty
+    setFacultyList((prev) =>
+      prev.filter((f) => f._uid !== change.data._uid)
+    );
+  } else if (change.action === "Deleted") {
+    // Restore deleted faculty
+    const original = originalList.find(
+      (o) => o._uid === change.data._uid
+    );
+
+    if (original) {
+      setFacultyList((prev) => [...prev, original]);
     }
-  };
+  } else if (change.action === "Edited") {
+    // Restore original values
+    const original = originalList.find(
+      (o) => o._uid === change.data._uid
+    );
+
+    if (original) {
+      setFacultyList((prev) =>
+        prev.map((f) =>
+          f._uid === original._uid ? original : f
+        )
+      );
+    }
+  }
+};
 
   return (
     <>
@@ -344,10 +354,11 @@ const LIBFaculty = ({ faculty }) => {
                     <input
                       type="text"
                       value={fac.name}
+                      placeholder="Name"
                       onChange={(e) =>
                         handleChange(index, "name", e.target.value)
                       }
-                      className="text-[18px] font-bold text-center border-b border-gray-400 focus:outline-none bg-transparent"
+                      className="text-[18px] font-bold text-center border-b border-gray-400 focus:outline-none bg-transparent placeholder:text-left"
                     />
                   ) : (
                     <h3 className="text-[18px] font-bold">{fac.name}</h3>
@@ -357,6 +368,7 @@ const LIBFaculty = ({ faculty }) => {
                     <input
                       type="text"
                       value={fac.educational_qualification}
+                      placeholder="Educational Qualification"
                       onChange={(e) =>
                         handleChange(
                           index,
@@ -364,7 +376,7 @@ const LIBFaculty = ({ faculty }) => {
                           e.target.value,
                         )
                       }
-                      className="mt-2 text-center border-b border-gray-400 focus:outline-none bg-transparent"
+                      className="mt-2 text-center border-b border-gray-400 focus:outline-none bg-transparent placeholder:text-left"
                     />
                   ) : (
                     <p className="mt-2 text-brwn dark:text-drka">
@@ -376,10 +388,11 @@ const LIBFaculty = ({ faculty }) => {
                     <input
                       type="text"
                       value={fac.designation}
+                      placeholder="Designation"
                       onChange={(e) =>
                         handleChange(index, "designation", e.target.value)
                       }
-                      className="text-accn dark:text-drka font-semibold mt-2 text-center border-b border-gray-400 focus:outline-none bg-transparent"
+                      className="text-accn dark:text-drka font-semibold mt-2 text-center border-b border-gray-400 focus:outline-none bg-transparent placeholder:text-left"
                     />
                   ) : (
                     <p className="text-accn dark:text-drka font-semibold mt-2">
@@ -519,6 +532,9 @@ const LIBFaculty = ({ faculty }) => {
                     <th className="py-1">Action</th>
                     <th className="py-1">Section</th>
                     <th className="py-1 text-center">Changes</th>
+                     <th className="border p-2 text-center w-[70px]">
+                          Undo
+                      </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -546,6 +562,11 @@ const LIBFaculty = ({ faculty }) => {
                       <td className="py-1 text-[12px]">
                         <div className="flex items-center justify-center gap-2">
                           <span>{change.data?.name || "Unnamed Faculty"}</span>
+                          
+                        </div>
+                      </td>
+                      <td className="py-1 text-[12px]">
+                        <div className="flex items-center justify-center gap-2">
                           <button
                             onClick={() => handleRevertChange(change)}
                             className="text-red-500 hover:text-red-700 font-bold"

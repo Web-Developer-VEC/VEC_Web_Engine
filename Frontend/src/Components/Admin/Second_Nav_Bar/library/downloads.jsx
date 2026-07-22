@@ -126,7 +126,9 @@ const LIBDownloads = ({ data }) => {
 
   const confirmDelete = () => {
     const updated = rows.map((row, i) =>
-      checkedRows.includes(i) ? { ...row, __deleted: true } : row,
+      checkedRows.includes(i)
+        ? { ...row, __deleted: true }
+        : row
     );
 
     setRows(updated);
@@ -186,7 +188,6 @@ const LIBDownloads = ({ data }) => {
 
     try {
       await sendRequest(payload);
-      toast.success("Request submitted successfully!");
 
       setCommittedRows(deepCopy(pendingRows));
       setRows(deepCopy(pendingRows));
@@ -288,7 +289,7 @@ const LIBDownloads = ({ data }) => {
             {!isEditing && (
               <button
                 onClick={handleStartEdit}
-                className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-black rounded hover:bg-[#800000]"
+               className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200"
               >
                 <Pencil size={18} />
                 Edit
@@ -308,49 +309,51 @@ const LIBDownloads = ({ data }) => {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row, idx) => (
-                  <tr key={idx}>
-                    <td className="border p-2">{idx + 1}</td>
-                    <td className="border p-2">
-                      {isEditing ? (
-                        <input
-                          className="border p-1 w-full"
-                          value={row.name}
-                          onChange={(e) => handleChange(e, idx, "name")}
-                        />
-                      ) : (
-                        row.name
-                      )}
-                    </td>
-                    <td className="border p-2">
-                      {isEditing ? (
-                        <input
-                          className="border p-1 w-full"
-                          value={row.url}
-                          onChange={(e) => handleChange(e, idx, "url")}
-                        />
-                      ) : (
-                        <a
-                          href={row.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline"
-                        >
-                          {row.url}
-                        </a>
-                      )}
-                    </td>
-                    {isEditing && (
+                {rows
+                  .filter((row) => !row.__deleted)
+                  .map((row, idx) => (
+                    <tr key={idx}>
+                      <td className="border p-2">{idx + 1}</td>
                       <td className="border p-2">
-                        <input
-                          type="checkbox"
-                          checked={checkedRows.includes(idx)}
-                          onChange={() => toggleCheckbox(idx)}
-                        />
+                        {isEditing ? (
+                          <input
+                            className="border p-1 w-full"
+                            value={row.name}
+                            onChange={(e) => handleChange(e, idx, "name")}
+                          />
+                        ) : (
+                          row.name
+                        )}
                       </td>
-                    )}
-                  </tr>
-                ))}
+                      <td className="border p-2">
+                        {isEditing ? (
+                          <input
+                            className="border p-1 w-full"
+                            value={row.url}
+                            onChange={(e) => handleChange(e, idx, "url")}
+                          />
+                        ) : (
+                          <a
+                            href={row.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:underline"
+                          >
+                            {row.url}
+                          </a>
+                        )}
+                      </td>
+                      {isEditing && (
+                        <td className="border p-2">
+                          <input
+                            type="checkbox"
+                            checked={checkedRows.includes(idx)}
+                            onChange={() => toggleCheckbox(idx)}
+                          />
+                        </td>
+                      )}
+                    </tr>
+                  ))}
                 {isEditing && (
                   <tr>
                     <td
@@ -359,7 +362,7 @@ const LIBDownloads = ({ data }) => {
                     >
                       <button
                         onClick={handleAddRow}
-                        className="flex items-center justify-center gap-2 px-4 py-2 bg-[#fdcc03] text-black rounded hover:bg-[#800000] mx-auto"
+                        className="flex items-center justify-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] mx-auto hover:text-prim"
                       >
                         <Plus size={18} /> Add Row
                       </button>
@@ -394,9 +397,9 @@ const LIBDownloads = ({ data }) => {
               {isDirty && (
                 <button
                   onClick={handleSave}
-                  className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000]"
+                   className="flex items-center bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white px-3 py-2 rounded-lg transition duration-200"
                 >
-                  <Save size={18} /> Save
+                   Save
                 </button>
               )}
             </div>
@@ -414,7 +417,7 @@ const LIBDownloads = ({ data }) => {
               {changes.length > 0 && (
                 <button
                   onClick={handleRequest}
-                  className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-white hover:bg-[#800000]"
+                  className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white"
                 >
                   <Send size={18} /> Request
                 </button>
@@ -483,7 +486,7 @@ const LIBDownloads = ({ data }) => {
                 <div className="flex justify-end gap-2 mt-6">
                   <button
                     onClick={() => setShowRequestModal(false)}
-                    className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
                   >
                     Cancel
                   </button>
@@ -515,7 +518,7 @@ const LIBDownloads = ({ data }) => {
                 <div className="flex justify-end gap-3">
                   <button
                     onClick={() => setShowDeleteConfirm(false)}
-                    className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
                   >
                     Cancel
                   </button>
