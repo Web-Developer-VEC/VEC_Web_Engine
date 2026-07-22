@@ -395,20 +395,21 @@
       },
      
       {
-        "name": "Dr. KAVITHA M",
+        "name": "Dr. VIJAYALAKSHMI K",
         "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-611",
+        "unique_id": "VEC-005-04-002",
         "socialmedia_links": {
           "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
+          "googlescholar": "https://www.scopus.com/authid/detail.uri?authorId=59289209600",
+          "researchgate": "https://www.researchgate.net/profile/Vijayalakshmi-Kailasam-2",
+          "orchidprofile": "https://orcid.org/0009-0006-7398-7848",
           "publonprofile": "",
           "scopus": ""
         },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-611.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-611.pdf"
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-002.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-002.pdf"
       },
+      
       {
         "name": "Dr. ALMELU S",
         "designation": "Assistant Professor",
@@ -424,6 +425,7 @@
         "image_path": "/static/images/profile_photos/005/VEC-005-04-720.webp",
         "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-720.pdf"
       },
+      
        {
         "name": "Mrs. MOHANAMBAL K",
         "designation": "Assistant Professor",
@@ -439,21 +441,7 @@
         "image_path": "/static/images/profile_photos/005/VEC-005-04-122.webp",
         "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-122.pdf"
       },
-       {
-        "name": "Mrs. AARTHI K C",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-129",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/aarthi-kc-537a61153/",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=ZzvYS60AAAAJ&view_op=list_works&authuser=1&gmla=ALUCkoWcdDEY5yRVftp74JiyrBGSfxU9hNztzfCA5pi1CZqluIQOZCwsJplvNDlUdKTCrXO_ExHMoIz2BuY3jGZS",
-          "researchgate": "https://www.researchgate.net/profile/Aarthi-K-C",
-          "orchidprofile": "https://orcid.org/0009-0004-7938-3346",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-129.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-129.pdf"
-      },
+       
       {
         "name": "Mrs. DAYAFLORANCE D",
         "designation": "Assistant Professor",
@@ -514,21 +502,7 @@
         "image_path": "/static/images/profile_photos/005/VEC-005-04-113.webp",
         "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-113.pdf"
       },
-      {
-        "name": "Mrs. BHARATHI SHRI C",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-101",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=CsIAfxQAAAAJ",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/0009-0006-6462-3292",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-101.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-101.pdf"
-      },
+      
       {
         "name": "Mrs. KAYALVIZHI S",
         "designation": "Assistant Professor",
@@ -574,21 +548,7 @@
         "image_path": "/static/images/profile_photos/005/VEC-005-04-105.webp",
         "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-105.pdf"
       },
-      {
-        "name": "Mr. JEYA MOHAN H",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-107",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&authuser=1&user=s0ZhhbsAAAAJ",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-107.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-107.pdf"
-      },
+      
       {
         "name": "Mrs. SARANYA P",
         "designation": "Assistant Professor",
@@ -604,21 +564,7 @@
         "image_path": "/static/images/profile_photos/005/VEC-005-04-121.webp",
         "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-121.pdf"
       },
-      {
-        "name": "Mrs. BAMA S",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-124",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-124.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-124.pdf"
-      },
+      
       {
         "name": "Mrs. CHITRA R",
         "designation": "Assistant Professor",
@@ -649,21 +595,7 @@
         "image_path": "/static/images/profile_photos/005/VEC-005-04-127.webp",
         "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-127.pdf"
       },
-      {
-        "name": "Mr. RAJESH T",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-134",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&user=UyKUiPwAAAAJ",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-134.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-134.pdf"
-      },
+      
       {
         "name": "Mrs. SHYAMALA DEVI G G",
         "designation": "Assistant Professor",
@@ -754,23 +686,8 @@
         "image_path": "/static/images/profile_photos/005/VEC-005-04-614.webp",
         "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-614.pdf"
       },
-      {
-        "name": "Mr. HARI KRISHNAN M",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-617",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-617.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-617.pdf"
-      },
        {
-        "name": "Mrs. DHIVYA S",
+        "name": "Mrs. DIVYA S",
         "designation": "Assistant Professor",
         "unique_id": "VEC-005-04-699",
         "socialmedia_links": {
@@ -783,6 +700,86 @@
         },
         "image_path": "/static/images/profile_photos/005/VEC-005-04-699.webp",
         "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-699.pdf"
+      },
+
+      {
+        "name": "Mrs. VIJAYALAKSHMI C K",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-003",
+        "socialmedia_links": {
+          "linkedin": "www.linkedin.com/in/vijayalakshmi-ck-2417543a3",
+          "googlescholar": "https://scholar.google.com/citations?view_op=new_articles&hl=en&imq=vijayalakshmi+ck#",
+          "researchgate": "https://www.researchgate.net/profile/Vijayalakshmi-C-K?ev=hdr_xprf",
+          "orchidprofile": "https://orcid.org/0009-0000-4295-4660",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-003.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-003.pdf"
+      },
+{
+        "name": "Mrs. MADHAVI VELPULA",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-004",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/madhavi-velpula-0b82636b",
+          "googlescholar": "https://scholar.google.is/citations?hl=en&authuser=1&user=S36MZScAAAAJ#d=gs_hdr_drw&t=1778127139776 ",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0000-0003-3860-104X",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-004.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-004.pdf"
+      },
+      
+      
+      {
+        "name": "Mrs. VEDAVALLI P",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-005",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/veda-valli-b82a3977/",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-005.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-005.pdf"
+      },
+      
+      
+      {
+        "name": "Mrs. RENUGA G",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-001",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/renuga-suresh-173614408/?skipRedirect=true",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0009-0001-7866-3045",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-001.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-001.pdf"
+      },
+      {
+        "name": "Mrs. GAYATHRI D",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-005-04-006",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59895774300"
+        },
+        "image_path": "/static/images/profile_photos/005/VEC-005-04-006.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-006.pdf"
       }
      
     ]
@@ -860,39 +857,39 @@
                   "docs":[
                     {
                     "name":"I Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/005/B.E.CSE (R2023) WITH TW & SDG - SEM 1.pdf"
                   },
                     {
                     "name":"II Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/005/B.E.CSE (R2023) WITH TW & SDG - SEM 2.pdf"
                   },
                     {
                     "name":"III Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/005/B.E.CSE (R2023) WITH TW & SDG - SEM 3.pdf"
                   },
                     {
                     "name":"IV Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/005/B.E.CSE (R2023) WITH TW & SDG - SEM 4.pdf"
                   },
                     {
                     "name":"V Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/005/B.E.CSE (R2023) WITH TW & SDG - SEM 5.pdf"
                   },
                     {
                     "name":"VI Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/005/B.E.CSE (R2023) WITH TW & SDG - SEM 6.pdf"
                   },
                     {
                     "name":"VII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/005/B.E.CSE (R2023) WITH TW & SDG - SEM 7.pdf"
                   },
                     {
                     "name":"VIII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/005/B.E.CSE (R2023) WITH TW & SDG - SEM 8.pdf"
                   },
                     {
                     "name":"Elective Courses",
-                      "pdf_path": "/static/pdfs/curriculum/005/reg_21.pdf"
+                      "pdf_path": "/static/pdfs/curriculum/005/B.E. CSE (R2023) ELECTIVE COURSES WITH TW & SDG.pdf"
                   }
                 ]
                 },

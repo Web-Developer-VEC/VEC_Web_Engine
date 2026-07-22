@@ -139,7 +139,7 @@ export default function AdminHome({ home }) {
     setIsSaved(true);
     setIsEditing(false);
     setIsDirty(false);
-    toast.success("Changes saved as draft");
+    // toast.success("Changes saved as draft");
   };
 
   // Cancel editing session (revert buffer to draft or committed)
@@ -147,7 +147,7 @@ export default function AdminHome({ home }) {
     setContent(deepCopy(pendingContent ?? committedContent));
     setIsEditing(false);
     setIsDirty(false);
-    toast.info("Edits cancelled");
+    // toast.info("Edits cancelled");
   };
 
   // Discard draft
@@ -156,7 +156,7 @@ export default function AdminHome({ home }) {
     setContent(deepCopy(committedContent));
     setIsSaved(false);
     setIsDirty(false);
-    toast.info("Draft discarded");
+    // toast.info("Draft discarded");
   };
 
   // -------------------------
@@ -237,11 +237,11 @@ export default function AdminHome({ home }) {
   // -------------------------
   const revertChange = (itemId) => {
     if (!itemId) {
-      toast.error("Invalid revert target");
+      // toast.error("Invalid revert target");
       return;
     }
     if (!committedContent) {
-      toast.error("No committed content to revert to");
+      // toast.error("No committed content to revert to");
       return;
     }
 
@@ -275,7 +275,7 @@ export default function AdminHome({ home }) {
       }
       setPendingContent(draft);
       setContent(deepCopy(draft));
-      toast.info("Mission restored to draft (reverted deletion)");
+      // toast.info("Mission restored to draft (reverted deletion)");
       return;
     }
 
@@ -284,7 +284,7 @@ export default function AdminHome({ home }) {
       draft.mission = (draft.mission || []).filter((m) => m.id !== itemId);
       setPendingContent(draft);
       setContent(deepCopy(draft));
-      toast.info("New mission removed from draft (reverted addition)");
+      // toast.info("New mission removed from draft (reverted addition)");
       return;
     }
 
@@ -293,11 +293,11 @@ export default function AdminHome({ home }) {
       draft.mission = (draft.mission || []).map((m) => (m.id === itemId ? deepCopy(commMap[itemId]) : m));
       setPendingContent(draft);
       setContent(deepCopy(draft));
-      toast.info("Mission reverted to original text");
+      // toast.info("Mission reverted to original text");
       return;
     }
 
-    toast.info("Nothing to revert for that item");
+    // toast.info("Nothing to revert for that item");
   };
 
   /**
@@ -346,13 +346,13 @@ export default function AdminHome({ home }) {
   const handleFinalRequestConfirm = async () => {
     const payload = generatePayload();
     if (!payload.length) {
-      toast.info("No changes to submit");
+      // toast.info("No changes to submit");
       return;
     }
 
     try {
       await sendRequest(payload);
-      toast.success("📩 Request sent for admin approval");
+      // toast.success("📩 Request sent for admin approval");
 
       // After sending, treat pending as committed locally
       const newCommitted = deepCopy(pendingContent ?? committedContent);
@@ -389,7 +389,7 @@ export default function AdminHome({ home }) {
           <div className="absolute right-0">
             <button
               onClick={handleStartEdit}
-              className="admin-about-btn-edit flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded"
+             className="admin-about-btn-edit flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition-colors duration-200"
             >
               <Pencil size={18} /> Edit
             </button>
@@ -472,10 +472,10 @@ export default function AdminHome({ home }) {
         <div className="admin-about-actions mt-6 flex justify-end gap-3 px-6 py-2">
           {isEditing && (
             <>
-              <button onClick={handleCancel} className="admin-about-btn-cancel px-4 py-2 rounded bg-gray-400 text-prim">Cancel</button>
+              <button onClick={handleCancel} className="admin-about-btn-cancel px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200">Cancel</button>
 
               {isDirty && (
-                <button onClick={handleSave} className="admin-about-btn-save flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text">
+                <button onClick={handleSave} className="admin-about-btn-save flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition-colors duration-200">
                   Save
                 </button>
               )}
@@ -484,10 +484,10 @@ export default function AdminHome({ home }) {
 
           {!isEditing && isSaved && (
             <>
-              <button onClick={handleDiscard} className="admin-about-btn-discard px-4 py-2 rounded bg-gray-400 text-prim">Discard Changes</button>
+              <button onClick={handleDiscard} className="admin-about-btn-discard px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200">Discard Changes</button>
 
               {changes.length > 0 && (
-                <button onClick={() => setShowRequestModal(true)} className="admin-about-btn-request flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text">
+                <button onClick={() => setShowRequestModal(true)} className="admin-about-btn-request flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition-colors duration-200">
                   <Send size={16} /> Request
                 </button>
               )}
@@ -547,9 +547,9 @@ export default function AdminHome({ home }) {
             )}
 
             <div className="flex justify-end gap-2 mt-6">
-              <button onClick={() => setShowRequestModal(false)} className="admin-about-btn-cancel px-4 py-2 rounded bg-gray-400 text-prim">Cancel</button>
+              <button onClick={() => setShowRequestModal(false)} className="admin-about-btn-cancel px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200">Cancel</button>
               {changes.length > 0 && (
-                <button onClick={handleFinalRequestConfirm} className="admin-about-btn-final px-4 py-2 rounded bg-[#fdcc03] text-text">Final Request</button>
+                <button onClick={handleFinalRequestConfirm}  className="admin-about-btn-final px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition-colors duration-200">Final Request</button>
               )}
             </div>
           </div>
