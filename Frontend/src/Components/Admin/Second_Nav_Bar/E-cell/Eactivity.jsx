@@ -35,7 +35,7 @@ export default function ImageGallery({ activity }) {
   const [showChangesPopup, setShowChangesPopup] = useState(false);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(new Set());
-    const { sendRequest, loading, error } = useAdminRequest();
+  const { sendRequest, loading, error } = useAdminRequest();
 
   // Initialize data with unique IDs
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function ImageGallery({ activity }) {
     setSavedData([...tempData]);
     setIsEditing(false);
     setIsSaved(true);
-    toast.success("✅ Changes saved. You can edit again or request.");
+    // toast.success("✅ Changes saved. You can edit again or request.");
   };
 
   const handleCancel = () => {
@@ -80,117 +80,117 @@ export default function ImageGallery({ activity }) {
       setIsSaved(false);
     }
 
-    toast.info("✖️ Current editing session cancelled.");
+    // toast.info("✖️ Current editing session cancelled.");
   };
 
   const handleDiscardChanges = () => {
     setTempData([...data]);
     setSavedData([...data]);
     setIsSaved(false);
-    toast.info("🗑️ All changes discarded (reset to original).");
+    // toast.info("🗑️ All changes discarded (reset to original).");
   };
 
   const handleRequest = () => {
     setShowChangesPopup(true);
   };
 
-const normalizePdfPath = (path) => {
-  if (!path) return "";
-  if (path.startsWith("/static")) return path;
-  return `/static/pdfs/e_cell/${path}`;
-};
+  const normalizePdfPath = (path) => {
+    if (!path) return "";
+    if (path.startsWith("/static")) return path;
+    return `/static/pdfs/e_cell/${path}`;
+  };
 
 
-const handleFinalRequest = async () => {
-  const changes = getChanges();
+  const handleFinalRequest = async () => {
+    const changes = getChanges();
 
-  if (changes.length === 0) {
-    toast.info("No changes to submit");
-    return;
-  }
-
-  const payload = changes.map((change) => {
-    // 🔹 INSERT
-    if (change.type === "Added") {
-      return {
-        action: "insert",
-        collectionName: "ecell",
-        title: "Activity Insert",
-        collection_type: "activity",
-        meta_data: {
-          year: change.changes.year,
-          pdf_path: normalizePdfPath(change.changes.pdf_path),
-        },
-      };
+    if (changes.length === 0) {
+      toast.info("No changes to submit");
+      return;
     }
 
-    // 🔹 UPDATE
-    if (change.type === "Edited") {
-      const original = data.find((d) => d._id === change._id);
-
-      const meta_data = {};
-      if (change.changes.year) {
-        meta_data.year = change.changes.year.new;
-      }
-      if (change.changes.pdf_path) {
-        meta_data.pdf_path = normalizePdfPath(
-          change.changes.pdf_path.new
-        );
+    const payload = changes.map((change) => {
+      // 🔹 INSERT
+      if (change.type === "Added") {
+        return {
+          action: "insert",
+          collectionName: "ecell",
+          title: "Activity Insert",
+          collection_type: "activity",
+          meta_data: {
+            year: change.changes.year,
+            pdf_path: normalizePdfPath(change.changes.pdf_path),
+          },
+        };
       }
 
-      return {
-        action: "update",
-        collectionName: "ecell",
-        title: "Activity Update",
-        collection_type: "activity",
-        original_data: {
-          year: original.year,
-          pdf_path: normalizePdfPath(original.pdf_path),
-        },
-        meta_data,
-      };
+      // 🔹 UPDATE
+      if (change.type === "Edited") {
+        const original = data.find((d) => d._id === change._id);
+
+        const meta_data = {};
+        if (change.changes.year) {
+          meta_data.year = change.changes.year.new;
+        }
+        if (change.changes.pdf_path) {
+          meta_data.pdf_path = normalizePdfPath(
+            change.changes.pdf_path.new
+          );
+        }
+
+        return {
+          action: "update",
+          collectionName: "ecell",
+          title: "Activity Update",
+          collection_type: "activity",
+          original_data: {
+            year: original.year,
+            pdf_path: normalizePdfPath(original.pdf_path),
+          },
+          meta_data,
+        };
+      }
+
+      // 🔹 DELETE
+      if (change.type === "Deleted") {
+        return {
+          action: "delete",
+          collectionName: "ecell",
+          title: "Activity Delete",
+          collection_type: "activity",
+          meta_data: {
+            year: change.changes.year,
+            pdf_path: normalizePdfPath(change.changes.pdf_path),
+          },
+        };
+      }
+
+      return null;
+    }).filter(Boolean);
+
+    console.log("FINAL PAYLOAD 👉", payload);
+
+    const files = tempData
+      .filter(item => item.pdf_file instanceof File)
+      .map(item => item.pdf_file);
+
+    console.log("PDF FILES 👉", files);
+    try {
+      await sendRequest(payload, files);
+
+
+      // toast.success("📩 Request sent for admin approval");
+
+      // lock state
+      setData([...savedData]);
+      setShowChangesPopup(false);
+      setIsSaved(false);
+      setIsEditing(false);
+    } catch (err) {
+      console.error(err);
+      // toast.error("Failed to submit request");
     }
-
-    // 🔹 DELETE
-    if (change.type === "Deleted") {
-      return {
-        action: "delete",
-        collectionName: "ecell",
-        title: "Activity Delete",
-        collection_type: "activity",
-        meta_data: {
-          year: change.changes.year,
-          pdf_path: normalizePdfPath(change.changes.pdf_path),
-        },
-      };
-    }
-
-    return null;
-  }).filter(Boolean);
-
-  console.log("FINAL PAYLOAD 👉", payload);
-
-  const files = tempData
-  .filter(item => item.pdf_file instanceof File)
-  .map(item => item.pdf_file);
-
-console.log("PDF FILES 👉", files);
-  try {
-    await sendRequest(payload, files);
-
-
-    toast.success("📩 Request sent for admin approval");
-
-    // lock state
-    setData([...savedData]);
-    setShowChangesPopup(false);
-    setIsSaved(false);
-    setIsEditing(false);
-  } catch (err) {
-    console.error(err);
-    toast.error("Failed to submit request");
-  }
-};
+  };
 
 
   const handleChanges = (index, key, value) => {
@@ -225,7 +225,7 @@ console.log("PDF FILES 👉", files);
     setTempData((prev) => prev.filter((item) => !selectedImage.has(prev.indexOf(item))));
     setSelectedImage(new Set());
     setDeleteConfirmOpen(false);
-    toast.success("🗑️ Selected activities deleted.");
+    // toast.success("🗑️ Selected activities deleted.");
   };
 
   const cancelDelete = () => {
@@ -283,34 +283,34 @@ console.log("PDF FILES 👉", files);
   }
 
   // Add this function inside ImageGallery
-const handleUndoChange = (change) => {
-  let newTempData = [...tempData];
+  const handleUndoChange = (change) => {
+    let newTempData = [...tempData];
 
-  if (change.type === "Added") {
-    // Remove newly added row
-    newTempData = newTempData.filter((item) => item._id !== change._id);
-  } else if (change.type === "Edited") {
-    // Revert edited row
-    const idx = newTempData.findIndex((item) => item._id === change._id);
-    if (idx !== -1) {
-      newTempData[idx] = { ...data.find((item) => item._id === change._id) };
+    if (change.type === "Added") {
+      // Remove newly added row
+      newTempData = newTempData.filter((item) => item._id !== change._id);
+    } else if (change.type === "Edited") {
+      // Revert edited row
+      const idx = newTempData.findIndex((item) => item._id === change._id);
+      if (idx !== -1) {
+        newTempData[idx] = { ...data.find((item) => item._id === change._id) };
+      }
+    } else if (change.type === "Deleted") {
+      // Restore deleted row
+      newTempData.push(change.changes);
     }
-  } else if (change.type === "Deleted") {
-    // Restore deleted row
-    newTempData.push(change.changes);
-  }
 
-  setTempData(newTempData);
-};
+    setTempData(newTempData);
+  };
 
-const getPdfPreviewUrl = (act) => {
-  // Case 2: newly uploaded file from local
-  if (act.pdf_file) {
-    return URL.createObjectURL(act.pdf_file);
-  }
-  // Case 1: existing PDF from cloud
-  return UrlParser(act.pdf_path);
-};
+  const getPdfPreviewUrl = (act) => {
+    // Case 2: newly uploaded file from local
+    if (act.pdf_file) {
+      return URL.createObjectURL(act.pdf_file);
+    }
+    // Case 1: existing PDF from cloud
+    return UrlParser(act.pdf_path);
+  };
 
 
   return (
@@ -324,7 +324,7 @@ const getPdfPreviewUrl = (act) => {
             </h2>
             {!isEditing && (
               <button
-                className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black"
+                className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200"
                 onClick={handleEdit}
               >
                 <Pencil className="mr-2" /> Edit
@@ -339,87 +339,87 @@ const getPdfPreviewUrl = (act) => {
                 key={act._id}
                 className="relative flex flex-col items-center justify-center p-4 border rounded shadow-md"
               >
-                <div className={`${isEditing &&  "border-secd border-2 rounded flex flex-col px-4 py-2 m-auto" }`}>
+                <div className={`${isEditing && "border-secd border-2 rounded flex flex-col px-4 py-2 m-auto"}`}>
 
-                {isEditing ? 
-                (
-                  <>
-                    <input
-                      type="text"
-                      value={act?.year || ""}
-                      placeholder="Enter year"
-                      className="w-full mb-2 border rounded p-2"
-                      onChange={(e) =>
-                        handleChanges(index, "year", e.target.value)
-                      }
-                      required
-                      />
-                  <div className="flex flex-row justify-center items-center gap-2">
-                    <div className="my-2 flex flex-row justify-center">
-<input
-  id={`pdf-upload-${index}`}
-  type="file"
-  accept="application/pdf"
-  className="hidden"
-  onChange={(e) => {
-    const file = e.target.files[0];
-    if (file) {
-      // store both file name and file object
-      handleChanges(index, "pdf_path", file.name);
-      handleChanges(index, "pdf_file", file); // new field
-    }
-  }}
-/>
+                  {isEditing ?
+                    (
+                      <>
+                        <input
+                          type="text"
+                          value={act?.year || ""}
+                          placeholder="Enter year"
+                          className="w-full mb-2 border rounded p-2"
+                          onChange={(e) =>
+                            handleChanges(index, "year", e.target.value)
+                          }
+                          required
+                        />
+                        <div className="flex flex-row justify-center items-center gap-2">
+                          <div className="my-2 flex flex-row justify-center">
+                            <input
+                              id={`pdf-upload-${index}`}
+                              type="file"
+                              accept="application/pdf"
+                              className="hidden"
+                              onChange={(e) => {
+                                const file = e.target.files[0];
+                                if (file) {
+                                  // store both file name and file object
+                                  handleChanges(index, "pdf_path", file.name);
+                                  handleChanges(index, "pdf_file", file); // new field
+                                }
+                              }}
+                            />
 
 
-                      <label
-                        htmlFor={`pdf-upload-${index}`}
-                        className="cursor-pointer bg-secd hover:bg-brwn px-2 py-2 text-text hover:text-prim rounded inline-block"
-                        >
-                       {act.pdf_path ? " Replace File " : "Upload File"}
-                      </label>
-                    </div>
-                    <p className="text-xs text-gray-500">
-                      {act?.pdf_path ? (
-                        <div className="flex flex-row items-center justify-center">
-                         
-<a
-  href={getPdfPreviewUrl(act)}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center text-blue-500 hover:underline hover:cursor-pointer"
->
-  <Eye className="w-8 h-8 ml-1 mt-2" />
-</a>
+                            <label
+                              htmlFor={`pdf-upload-${index}`}
+                              className="cursor-pointer bg-[#fdcc03] px-2 py-2 text-black hover:bg-[#800000] hover:!text-white rounded inline-block transition duration-200"
+                            >
+                              {act.pdf_path ? " Replace File " : "Upload File"}
+                            </label>
+                          </div>
+                          <p className="text-xs text-gray-500">
+                            {act?.pdf_path ? (
+                              <div className="flex flex-row items-center justify-center">
 
+                                <a
+                                  href={getPdfPreviewUrl(act)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center text-blue-500 hover:underline hover:cursor-pointer"
+                                >
+                                  <Eye className="w-8 h-8 ml-1 mt-2" />
+                                </a>
+
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </p>
                         </div>
-                      ) : (
-                        ""
-                      )}
-                    </p>
-                  </div>
 
-                    <input
-                      type="checkbox"
-                      className="absolute top-2 right-2"
-                      checked={selectedImage.has(index)}
-                      onChange={() => handleCheckBox(index)}
+                        <input
+                          type="checkbox"
+                          className="absolute top-2 right-2"
+                          checked={selectedImage.has(index)}
+                          onChange={() => handleCheckBox(index)}
+                        />
+                      </>
+                    ) : (
+                      <EcellActivity
+                        year={act?.year}
+                        pdfspath={getPdfPreviewUrl(act)}
                       />
-                  </>
-                ) : (
-                  <EcellActivity
-                  year={act?.year}
-                  pdfspath={getPdfPreviewUrl(act)}
-                  />
-                )}
+                    )}
+                </div>
               </div>
-            </div>
             ))}
 
             {isEditing && (
               <div className="w-120 h-44">
                 <button
-                  className="bg-gray-200 text-text px-3 py-8 rounded w-full h-full border-dashed border-2 hover:border-secd"
+                  className="bg-gray-200 text-black px-3 py-8 rounded w-full h-full border-dashed border-2 hover:border-[#800000] transition duration-200"
                   onClick={handleAddNew}
                 >
                   + Add New Activity
@@ -430,9 +430,9 @@ const getPdfPreviewUrl = (act) => {
 
           {/* Delete Button */}
           {isEditing && selectedImage.size > 0 && (
-            <div>
+            <div className="mt-4">
               <button
-                className="bg-red-500 text-prim rounded  flex flex-row gap-4 mt-4 p-2"
+                className="bg-red-600 hover:bg-red-500 text-white px-6 py-2 rounded flex items-center gap-2 shadow-lg"
                 onClick={handleDelete}
               >
                 <Trash2 /> Delete Selected
@@ -445,14 +445,14 @@ const getPdfPreviewUrl = (act) => {
             {isEditing && (
               <>
                 <button
-                  className="flex items-center bg-gray-500 px-3 py-2 rounded text-white"
+                  className="flex items-center bg-gray-400 hover:bg-gray-600 px-3 py-2 rounded text-white transition duration-200"
                   onClick={handleCancel}
                 >
                   Cancel
                 </button>
                 {getChanges().length > 0 && (
                   <button
-                    className="flex items-center bg-secd hover:bg-brwn text-text hover:text-prim   px-3 py-2 rounded-lg"
+                    className="flex items-center bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white px-3 py-2 rounded-lg transition duration-200"
                     onClick={handleSave}
                   >
                     Save
@@ -463,13 +463,13 @@ const getPdfPreviewUrl = (act) => {
             {!isEditing && isSaved && (
               <>
                 <button
-                  className="flex items-center bg-gray-500 px-3 py-2 rounded text-prim"
+                  className="flex items-center bg-gray-400 hover:bg-gray-600 px-3 py-2 rounded text-white transition duration-200"
                   onClick={handleDiscardChanges}
                 >
                   Discard Changes
                 </button>
                 <button
-                  className="bg-secd text-text px-3 py-2 flex flex-row rounded  hover:bg-brwn hover:text-prim "
+                  className="bg-[#fdcc03] text-black px-3 py-2 flex flex-row rounded hover:bg-[#800000] hover:!text-white transition duration-200"
                   onClick={handleRequest}
                 >
                   <Send className="mr-2" /> Request
@@ -487,22 +487,21 @@ const getPdfPreviewUrl = (act) => {
             <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-drkt text-center">
               Request
             </h2>
-             <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
-      </p>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+            </p>
 
             {getChanges().length > 0 ? (
               <table className="w-full text-left text-gray-800 dark:text-drkt text-sm">
                 <thead>
                   <tr>
-                    <th className="py-1 border">Action</th>
-                    <th className="py-1 border">Section</th>
-                    <th className="py-1 border">Changed Field</th>
-                    <th className="py-1 border">Undo</th>
-
+                    <th className="py-2 px-3 border text-center">Action</th>
+                    <th className="py-2 px-3 border text-center">Section</th>
+                    <th className="py-2 px-3 border text-left">Changed Field</th>
+                    <th className="py-2 px-3 border text-center">Undo</th>
                   </tr>
                 </thead>
-               <tbody>
+                <tbody>
                   {getChanges().map((change) => (
                     <tr key={change._id} className="even:bg-white odd:bg-gray-50">
                       <td className="py-1 border font-semibold text-center">
@@ -513,10 +512,10 @@ const getPdfPreviewUrl = (act) => {
                       <td className="py-1 border text-center">Activity</td>
                       <td className="py-1 border text-[13px] text-center">
                         {change.type === "Deleted"
-                          ? "Row deleted"
+                          ? `Year: ${change.changes.year}`
                           : change.type === "Added"
-                          ? "Added entire row"
-                          : Object.keys(change.changes).join(", ")}
+                            ? `Year: ${change.changes.year}`
+                            : `Year: ${change.changes.year?.new}`}
                       </td>
                       <td className="py-1 border text-center">
                         <button
@@ -541,13 +540,13 @@ const getPdfPreviewUrl = (act) => {
                   setShowChangesPopup(false);
                   // setIsSaved(false);
                 }}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200"
               >
                 Cancel
               </button>
               <button
                 onClick={handleFinalRequest}
-                className="px-4 py-2 rounded bg-secd hoverbg-brwn text-text hover:text-prim"
+                className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition duration-200"
               >
                 Final Request
               </button>
@@ -569,7 +568,7 @@ const getPdfPreviewUrl = (act) => {
             <div className="flex justify-end gap-3">
               <button
                 onClick={cancelDelete}
-                className="px-4 py-2 bg-gray-300 rounded text-black"
+                className="px-4 py-2 bg-gray-400 hover:bg-gray-600 rounded text-white transition duration-200"
               >
                 Cancel
               </button>

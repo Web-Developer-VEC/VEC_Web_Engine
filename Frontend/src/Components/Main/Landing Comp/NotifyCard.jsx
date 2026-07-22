@@ -1,6 +1,37 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import "./NotifyCards.css";
 
+
+const isEmptyPath = (val) =>
+  val === null ||
+  val === undefined ||
+  val === "" ||
+  val === "null" ||
+  val === "undefined";
+
+
+const normalizeSlide = (raw) => {
+  if (!raw) return raw;
+
+  const type = raw.type || (!isEmptyPath(raw.pdf_path) ? "pdf" : "image");
+
+  const primary = type === "pdf" ? raw.pdf_path : raw.image_path;
+  const image_path = !isEmptyPath(primary)
+    ? primary
+    : !isEmptyPath(raw.image_path)
+    ? raw.image_path
+    : !isEmptyPath(raw.pdf_path)
+    ? raw.pdf_path
+    : "";
+
+  const is_active =
+    typeof raw.is_active === "boolean"
+      ? raw.is_active
+      : raw.active === true || raw.active === "True" || raw.active === "true";
+
+  return { ...raw, type, image_path, is_active };
+};
+
 const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   const [visible, setVisible] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -12,20 +43,55 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   const closeTimerRef = useRef(null);
   const [slides, setSlides] = useState([]);
 
- 
-  
+  useEffect(() => {
+    if (!data || !data.length) {
+      setSlides([]);
+      return;
+    }
+   
+    const active = data
+      .map(normalizeSlide)
+      .filter((s) => s.is_active && !isEmptyPath(s.image_path));
+    setSlides(active);
+    setIdx(0);
+  }, [data]);
 
   useEffect(() => {
-    if (!data || !data.length) return;
-    setSlides(data);
-  }, [data]);
+    if (!visible) return;
+
+    const scrollY = window.scrollY;
+
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+
+      window.scrollTo(0, scrollY);
+    };
+  }, [visible]);
 
   const showArrows = slides.length > 1;
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "";
 
+  
   const UrlParser = (path) => {
-      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    if (isEmptyPath(path)) return "";
+    if (path.startsWith("http")) return path;
+
+    const base = BASE_URL.endsWith("/") ? BASE_URL.slice(0, -1) : BASE_URL;
+    const rel = path.startsWith("/") ? path : `/${path}`;
+    return `${base}${rel}`;
   };
 
   useEffect(() => {
@@ -116,6 +182,8 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
   }, [visible, closing, idx, isHover, slides.length]);
 
   const adjustModalSize = useCallback(() => {
+    if (!slides.length) return;
+
     const vw = Math.max(
       document.documentElement.clientWidth || 0,
       window.innerWidth || 0
@@ -132,8 +200,9 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
     const minHeight = 360;
 
     const slide = slides[idx];
+    if (!slide) return;
 
-    if (slide.type === "image" && slide.image_path) {
+    if (slide.type === "image" && !isEmptyPath(slide.image_path)) {
       const img = new Image();
       imageLoaderRef.current = img;
 
@@ -159,7 +228,6 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
 
         setModalStyle({
           width: `${desiredWidth}px`,
-          
         });
       };
 
@@ -215,7 +283,10 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
 
   if (!visible || !slides.length) return null;
 
-  const isImage = slides[idx].type === "image";
+  const currentSlide = slides[idx];
+  if (!currentSlide) return null;
+
+  const isImage = currentSlide.type === "image";
 
   return (
     <div
@@ -232,63 +303,30 @@ const NotifyCard = ({ onClose = () => {}, data = [] }) => {
         onMouseLeave={onLeave}
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          className="nc-close"
-          onClick={handleClose}
-          aria-label="Close popup"
-        >
-          ✖
+        <button className="nc-close" onClick={handleClose} aria-label="Close popup">
+          ×
         </button>
 
         {showArrows && (
-          <button
-            className="nc-arrow nc-arrow--left"
-            onClick={prev}
-            aria-label="Previous slide"
-          >
+          <button className="nc-arrow nc-arrow--left" onClick={prev} aria-label="Previous slide">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path
-                d="M15 18l-6-6 6-6"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         )}
 
         <div className="nc-media">
           {isImage ? (
-            <img
-              src={UrlParser(slides[idx].image_path)}
-              alt={`slide-${idx + 1}`}
-              className="nc-media-content"
-              draggable="false"
-            />
+            <img src={UrlParser(currentSlide.image_path)} alt={`slide-${idx + 1}`} className="nc-media-content" draggable="false" />
           ) : (
-            <iframe
-              src={UrlParser(slides[idx].image_path)}
-              title="pdf"
-              className="nc-media-content"
-            />
+            <iframe src={`${UrlParser(currentSlide.image_path)}#toolbar=0&navpanes=0&scrollbar=1`} title="pdf" className="nc-media-content" />
           )}
         </div>
 
         {showArrows && (
-          <button
-            className="nc-arrow nc-arrow--right"
-            onClick={next}
-            aria-label="Next slide"
-          >
+          <button className="nc-arrow nc-arrow--right" onClick={next} aria-label="Next slide">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path
-                d="M9 6l6 6-6 6"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         )}

@@ -25,6 +25,7 @@ const MainComponents = {
     Contact: lazy(() => import('./Components/Main/Landing Comp/ContactIcon')),
     Footer: lazy(() => import('./Components/Main/Landing Comp/Footer')),
     ScrollToTopButton: lazy(() => import('./Components/Main/ScrollToTopButton')),
+    NotifyCard: lazy(()=>import('./Components/Main/Landing Comp/NotifyCard'))
 };
 
 // Admin components
@@ -33,11 +34,13 @@ const AdminComponents = {
     Abt: lazy(() => import('./Components/Admin/Landing Comp/About')),
     Announce: lazy(() => import('./Components/Admin/Landing Comp/announcements')),
     Event: lazy(() => import('./Components/Admin/Landing Comp/Events')),
+    NotifySection: lazy(() => import('./Components/Admin/Landing Comp/NotifySection')),
     Tracker: lazy(() => import('./Components/Admin/Landing Comp/Tracker')),
     Samplereact: lazy(() => import('./Components/Admin/Landing Comp/Courses')),
     Contact: lazy(() => import('./Components/Admin/Landing Comp/ContactIcon')),
     Footer: lazy(() => import('./Components/Admin/Landing Comp/Footer')),
     ScrollToTopButton: lazy(() => import('./Components/Admin/ScrollToTopButton')),
+    
 };
 
 const LandingPage = ({ theme, load, toggle, pageData, isAdmin }) => {
@@ -75,6 +78,9 @@ const LandingPage = ({ theme, load, toggle, pageData, isAdmin }) => {
                 toggle={toggle}
                 pageData={pageData}
                 isOnline={isOnline}
+                showPopup={showPopup}
+                setShowPopup={setShowPopup}
+                isAdmin={isAdmin}
             />
             <div className='w-max max-w-[100vw] h-fit absolute z-50'>
                 <div className='pt-2 pb-[2vmax] bg-prim dark:bg-drkp'>
