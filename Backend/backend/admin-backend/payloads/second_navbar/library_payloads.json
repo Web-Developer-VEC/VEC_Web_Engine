@@ -311,30 +311,124 @@
     }
   },
   {
-    "collectionName": "library",
-    "collection_type": "membership_details",
-    "action": "update",
-    "title": "Update membership_details",
-    "category": "Member Details",
-    "meta_data": {
-      "content": [
-        "Professors, Associate Professors and Assistant Professors",
-        "JRF/Research Scholars",
-        "UG Students",
-        "PG Students",
-        "Skilled Non-Teaching Staff"
-      ]
-    },
-    "original_data": {
-      "content": [
-        "Professors, Associate Professors and Assistant Professors",
-        "JRF/Research Scholars",
-        "UG Students",
-        "PG Students",
-        "Skilled Non-Teaching Staff"
-      ]
-    }
+  "collectionName": "library",
+  "collection_type": "membership_details",
+  "action": "insert",
+  "title": "Add membership_details",
+  "category": "Membership details",
+  "meta_data": {
+    "content": [
+      {
+        "member_details": "Professors, Associate Professors and Assistant Professors",
+        "no_of_books": 8,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "JRF/Research Scholars",
+        "no_of_books": 6,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "UG Students",
+        "no_of_books": 6,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "PG Students",
+        "no_of_books": 6,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "Skilled Non-Teaching Staff",
+        "no_of_books": 3,
+        "periodical_back_volumes_cd": 1
+      }
+    ]
+  }
+}
+  ,{
+  "collectionName": "library",
+  "collection_type": "membership_details",
+  "action": "update",
+  "title": "Update membership_details",
+  "category": "Membership details",
+  "meta_data": {
+    "content": [
+      {
+        "member_details": "Professors, Associate Professors and Assistant Professors",
+        "no_of_books": 8,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "JRF/Research Scholars",
+        "no_of_books": 6,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "UG Students",
+        "no_of_books": 6,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "PG Students",
+        "no_of_books": 6,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "Skilled Non-Teaching Staff",
+        "no_of_books": 3,
+        "periodical_back_volumes_cd": 1
+      }
+    ]
   },
+  "original_data": {
+    "content": [
+      {
+        "member_details": "Professors, Associate Professors and Assistant Professors",
+        "no_of_books": 8,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "JRF/Research Scholars",
+        "no_of_books": 6,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "UG Students",
+        "no_of_books": 6,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "PG Students",
+        "no_of_books": 6,
+        "periodical_back_volumes_cd": 1
+      },
+      {
+        "member_details": "Skilled Non-Teaching Staff",
+        "no_of_books": 3,
+        "periodical_back_volumes_cd": 1
+      }
+    ]
+  }
+}
+,
+{  
+  "collectionName":"library",
+  "collection_type": "membership_details",
+  "action": "delete",
+  "category": "Membership details",
+  "title":"Delete membership_details",
+  "meta_data": {
+    "content": [
+      {
+        "member_details": "Professor"
+      },
+      {
+        "member_details": "Jagan"
+      }
+    ]
+  }
+},
   {
     "collectionName": "library",
     "collection_type": "library_resources",
