@@ -74,7 +74,29 @@ async function insertFile(tempDoc, tempCollection) {
 
     for (const [key, value] of Object.entries(meta)) {
       if (!value) continue;
+      if (
+        tempDoc.collection_type === "faculty" &&
+        key === "members"
+      ) {
+        const member = { ...value };
 
+        if (member.image_path?.startsWith("/temp/static/")) {
+          const src = await normalizeKey(member.image_path.slice(1));
+          const dest = src.replace(/^temp\/static\//, "static/");
+          await moveFile(src, dest);
+          member.image_path = `/${dest}`;
+        }
+
+        if (member.pdf_path?.startsWith("/temp/static/")) {
+          const src = await normalizeKey(member.pdf_path.slice(1));
+          const dest = src.replace(/^temp\/static\//, "static/");
+          await moveFile(src, dest);
+          member.pdf_path = `/${dest}`;
+        }
+
+        meta.members = member;
+        continue;
+      }
       const isArray = Array.isArray(value);
       const paths = isArray ? value : [value];
 
@@ -198,6 +220,13 @@ async function updateFile(tempDoc, tempCollection) {
 
     // 1️⃣ Move old files → history
     for (const key of new Set([...Object.keys(meta), ...Object.keys(original)])) {
+      if (
+        (tempDoc.collection_type === "faculty" && key === "members") ||
+        (tempDoc.collection_type === "hod" && key === "content")
+      ) {
+        continue;
+      }
+
       let oldValue =
         original[key] ||
         (Array.isArray(meta[key]) && meta[key].length > 0 ? meta[key] : null);
@@ -372,6 +401,149 @@ async function updateFile(tempDoc, tempCollection) {
         );
 
         meta.research = updatedResearch;
+        continue;
+      }
+
+      if (
+        tempDoc.collection_type === "hod" &&
+        key === "content" &&
+        Array.isArray(value)
+      ) {
+        const updatedContent = await Promise.all(
+          value.map(async (item, index) => {
+            const originalItem = original.content?.[index] || {};
+
+            // IMAGE
+            if (item.image_path !== originalItem.image_path) {
+
+              if (originalItem.image_path?.startsWith("/static/")) {
+                const oldSrc = await normalizeKey(
+                  originalItem.image_path.replace(/^\//, "")
+                );
+
+                const oldDest = oldSrc.replace(
+                  /^static\//,
+                  "history/static/"
+                );
+
+                await moveFile(oldSrc, oldDest);
+              }
+
+              if (item.image_path?.startsWith("/temp/static/")) {
+                const newSrc = await normalizeKey(
+                  item.image_path.replace(/^\//, "")
+                );
+
+                const newDest = newSrc.replace(
+                  /^temp\/static\//,
+                  "static/"
+                );
+
+                await moveFile(newSrc, newDest);
+
+                item.image_path = `/${newDest}`;
+              }
+            }
+
+            // PDF
+            if (item.pdf_path !== originalItem.pdf_path) {
+
+              if (originalItem.pdf_path?.startsWith("/static/")) {
+                const oldSrc = await normalizeKey(
+                  originalItem.pdf_path.replace(/^\//, "")
+                );
+
+                const oldDest = oldSrc.replace(
+                  /^static\//,
+                  "history/static/"
+                );
+
+                await moveFile(oldSrc, oldDest);
+              }
+
+              if (item.pdf_path?.startsWith("/temp/static/")) {
+                const newSrc = await normalizeKey(
+                  item.pdf_path.replace(/^\//, "")
+                );
+
+                const newDest = newSrc.replace(
+                  /^temp\/static\//,
+                  "static/"
+                );
+
+                await moveFile(newSrc, newDest);
+
+                item.pdf_path = `/${newDest}`;
+              }
+            }
+
+            return item;
+          })
+        );
+
+        meta.content = updatedContent;
+        continue;
+      }
+      if (
+        tempDoc.collection_type === "faculty" &&
+        key === "members" &&
+        value &&
+        typeof value === "object"
+      ) {
+        const member = value;
+        const originalMember = original.members;
+
+        // ---------- IMAGE ----------
+        if (member.image_path !== originalMember.image_path) {
+
+          // Move old image -> history
+          if (originalMember.image_path?.startsWith("/static/")) {
+            const oldSrc = await normalizeKey(
+              originalMember.image_path.replace(/^\//, "")
+            );
+            const oldDest = oldSrc.replace(/^static\//, "history/static/");
+            await moveFile(oldSrc, oldDest);
+            originalMember.image_path = `/${oldDest}`;
+          }
+
+          // Move new image -> static
+          if (member.image_path?.startsWith("/temp/static/")) {
+            const newSrc = await normalizeKey(
+              member.image_path.replace(/^\//, "")
+            );
+            const newDest = newSrc.replace(/^temp\/static\//, "static/");
+            await moveFile(newSrc, newDest);
+            member.image_path = `/${newDest}`;
+          }
+        }
+
+        // ---------- PDF ----------
+        if (member.pdf_path !== originalMember.pdf_path) {
+
+          // Move old pdf -> history
+          if (originalMember.pdf_path?.startsWith("/static/")) {
+            const oldSrc = await normalizeKey(
+              originalMember.pdf_path.replace(/^\//, "")
+            );
+            const oldDest = oldSrc.replace(/^static\//, "history/static/");
+            await moveFile(oldSrc, oldDest);
+            originalMember.pdf_path = `/${oldDest}`;
+          }
+
+          // Move new pdf -> static
+          if (member.pdf_path?.startsWith("/temp/static/")) {
+            const newSrc = await normalizeKey(
+              member.pdf_path.replace(/^\//, "")
+            );
+            const newDest = newSrc.replace(/^temp\/static\//, "static/");
+            await moveFile(newSrc, newDest);
+            member.pdf_path = `/${newDest}`;
+          }
+        }
+
+        meta.members = member;
+        original.members = originalMember;
+
         continue;
       }
       // Case 1: direct pdf_path
@@ -743,6 +915,48 @@ async function deleteFile(tempDoc, tempCollection) {
         );
 
         meta.content = updatedContent;
+        continue;
+      }
+      // Special handling for faculty
+      if (
+        tempDoc.collection_type === "faculty" &&
+        key === "members" &&
+        currentValue &&
+        typeof currentValue === "object"
+      ) {
+        const member = { ...currentValue };
+
+        // Move image -> history
+        if (member.image_path?.startsWith("/static/")) {
+          const srcKey = await normalizeKey(
+            member.image_path.replace(/^\//, "")
+          );
+
+          const destKey = srcKey.replace(
+            /^static\//,
+            "history/static/"
+          );
+
+          member.image_path = await moveFile(srcKey, destKey);
+        }
+
+        // Move PDF -> history
+        if (member.pdf_path?.startsWith("/static/")) {
+          const srcKey = await normalizeKey(
+            member.pdf_path.replace(/^\//, "")
+          );
+
+          const destKey = srcKey.replace(
+            /^static\//,
+            "history/static/"
+          );
+
+          member.pdf_path = await moveFile(srcKey, destKey);
+        }
+
+        meta.members = member;
+        original.members = member;
+
         continue;
       }
       if (!currentValue) continue;
