@@ -146,7 +146,7 @@
             "hod_message": [
               "Department of ECE at Velammal Engineering College has proved its excellence in the field of Teaching, Research, placement and Student Activities since its establishment from 1995 onwards. Creative engineers solve practical problems to find out a solution for a societal problem. Also to crack society’s utmost challenges, country desires ECE engineers with entrepreneurial state of mind who can apply curiosity and creativity to the technical skillets in order to come up with truly novel ideas. Students in our department are trained with relevant practice through labs and projects for building the problem-solving skills, keeping industry requirements in view."
             ],
-            "hod_image": "/static/images/hods/ece.webp",
+            "image_path": "/static/images/hods/ece.webp",
             "designation": "Professor & Head, Dept of Electronics and Communication Engineering (ECE)",
             "Social_media_links": {
               "googlescholar": "https://scholar.google.com/citations?user=CXHND6AAAAAJ&hl=en",

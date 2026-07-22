@@ -3,7 +3,7 @@
     "type": "vision_and_mission",
     "data": [
       {
-        "category": "banner_name_and_image",
+        "category": "banner_name_and_image",f
         "content": [
           {
             "about_the_department_image_path": "/static/images/department_data/it.webp",
@@ -143,7 +143,7 @@
             "hod_message": [
               "As the Head of the Department of Information Technology, it gives me immense pleasure to share that our field continues to redefine the way the world connects, learns, and evolves. With a strong foundation in education, diverse skill sets, and hands-on experience in cutting-edge technologies, students are empowered to thrive in a competitive and ever-changing digital landscape. For those passionate about developing innovative solutions and eager to engage with real-time technologies, the B.Tech. Information Technology program serves as an ideal platform to transform aspirations into impactful careers. Our future-ready curriculum, combined with valuable industry exposure, equips students to seize emerging opportunities and contribute meaningfully to the tech-driven world. On behalf of our esteemed institution, I, Dr. Jeevaa Katiravan, warmly welcome you to join hands with us in nurturing a future that is innovative, empowered, and filled with possibilities."
             ],
-            "hod_image": "/static/images/hods/it.webp",
+            "image_path": "/static/images/hods/it.webp",
             "designation":"Professor & Head, Dept of Information Technology",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/dr-jeevaa-katiravan-936b16104/",

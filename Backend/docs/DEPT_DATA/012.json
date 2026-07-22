@@ -121,7 +121,7 @@
             "hod_message": [
                 "The Department of Mathematics at VEC is highly focused on imparting quality education and supports the core departments in teaching mathematics for both UG and PG students in their quest for mathematical thinking. Mathematics is one which unifies all branches of science and technology and it reflects the spirit of rationality and plays a very significant role in shaping the career of an engineering student to meet the global challenges, making Engineers to develop mathematical thoughts and applying it to solve complex engineering problems, designing mathematical models to meet the requirements"
             ],
-            "hod_image": "/static/images/hods/math.webp",
+            "image_path": "/static/images/hods/math.webp",
             "designation": "Professor & Head, Dept of Mathematics",
             "Social_media_links": {
             "linkedin": "https://www.linkedin.com/in/rajeswaran-subramani-03b61349/",
