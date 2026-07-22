@@ -335,6 +335,45 @@ async function updateFile(tempDoc, tempCollection) {
         meta.content = updatedContent;
         continue;
       }
+      if (
+        tempDoc.collection_type === "research" &&
+        key === "research" &&
+        Array.isArray(value)
+      ) {
+        const updatedResearch = await Promise.all(
+          value.map(async (item) => {
+            if (!item.pdf_path) return item;
+
+            const srcKey = await normalizeKey(
+              item.pdf_path.replace(/^\//, "")
+            );
+
+            if (srcKey.startsWith("temp/static/")) {
+              const destKey = srcKey.replace(
+                /^temp\/static\//,
+                "static/"
+              );
+
+              await moveFile(srcKey, destKey);
+
+              return {
+                ...item,
+                pdf_path: `/${destKey}`,
+              };
+            }
+
+            if (srcKey.startsWith("static/")) {
+              const historyKey = `history/${srcKey}`;
+              await moveFile(historyKey, srcKey);
+            }
+
+            return item;
+          })
+        );
+
+        meta.research = updatedResearch;
+        continue;
+      }
       // Case 1: direct pdf_path
       if (key !== "pdf_path" && key !== "image_path") {
         continue;
