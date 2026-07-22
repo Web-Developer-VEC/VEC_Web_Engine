@@ -172,7 +172,7 @@ export default function IqaMet({ iqacData }) {
         action: actionType,
         title,
         meta_data: {
-          year: yearWithType,
+          year: row?.year || "",
           pdf_path: row?.pdf_path || "",
           type: row?.type || "",
           conducted_on: row?.conducted_on || "",
@@ -180,11 +180,11 @@ export default function IqaMet({ iqacData }) {
         original_data:
           actionType === "update"
             ? {
-                year: oldRow?.year && oldRow?.type ? `${oldRow.year} (${oldRow.type})` : oldRow?.year,
-                pdf_path: oldRow?.pdf_path || "",
-                type: oldRow?.type || "",
-                conducted_on: oldRow?.conducted_on || "",
-              }
+              year: oldRow?.year || "",
+              pdf_path: oldRow?.pdf_path || "",
+              type: oldRow?.type || "",
+              conducted_on: oldRow?.conducted_on || "",
+            }
             : null,
       };
     });

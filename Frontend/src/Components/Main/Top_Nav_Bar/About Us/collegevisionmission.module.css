@@ -83,7 +83,7 @@ body {
 /* Card Content */
 .cardContent {
   font-size: 16px;
-  text-align: justify;
+  text-align: left;
   margin-top: 10px;
 }
 

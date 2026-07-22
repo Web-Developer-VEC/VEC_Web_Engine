@@ -300,7 +300,42 @@ async function updateFile(tempDoc, tempCollection) {
 
         meta[key] = value;
         continue;
-      }      // Case 1: direct pdf_path
+      }
+      // Special handling for pedagogy
+      if (
+        tempDoc.collection_type === "pedagogy" &&
+        key === "content" &&
+        Array.isArray(value)
+      ) {
+        const updatedContent = await Promise.all(
+          value.map(async (item) => {
+            if (!item.pdf_path) return item;
+
+            const srcKey = await normalizeKey(item.pdf_path.replace(/^\//, ""));
+
+            if (srcKey.startsWith("temp/static/")) {
+              const destKey = srcKey.replace(/^temp\/static\//, "static/");
+              await moveFile(srcKey, destKey);
+
+              return {
+                ...item,
+                pdf_path: `/${destKey}`,
+              };
+            }
+
+            if (srcKey.startsWith("static/")) {
+              const historyKey = `history/${srcKey}`;
+              await moveFile(historyKey, srcKey);
+            }
+
+            return item;
+          })
+        );
+
+        meta.content = updatedContent;
+        continue;
+      }
+      // Case 1: direct pdf_path
       if (key !== "pdf_path" && key !== "image_path") {
         continue;
       }
@@ -643,7 +678,34 @@ async function deleteFile(tempDoc, tempCollection) {
       )
         ? meta[key]
         : original[key];
+      if (
+        tempDoc.collection_type === "pedagogy" &&
+        key === "content" &&
+        Array.isArray(currentValue)
+      ) {
+        const updatedContent = await Promise.all(
+          currentValue.map(async (item) => {
+            if (!item.pdf_path) return item;
 
+            const srcKey = await normalizeKey(item.pdf_path.replace(/^\//, ""));
+
+            if (srcKey.startsWith("static/")) {
+              const destKey = srcKey.replace(/^static\//, "history/static/");
+              const moved = await moveFile(srcKey, destKey);
+
+              return {
+                ...item,
+                pdf_path: moved,
+              };
+            }
+
+            return item;
+          })
+        );
+
+        meta.content = updatedContent;
+        continue;
+      }
       if (!currentValue) continue;
 
       const isArray = Array.isArray(currentValue);
