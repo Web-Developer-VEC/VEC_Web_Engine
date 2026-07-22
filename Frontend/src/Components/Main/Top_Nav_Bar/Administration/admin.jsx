@@ -152,9 +152,15 @@ const CardPage = ({theme, toggle}) => {
               name={adminData[1]?.name}
               designation={adminData[1]?.designation}
             />
+            <AdminCard
+              key={adminData[2]?.id}
+              image={UrlParser(adminData[2]?.image_path)}
+              name={adminData[2]?.name}
+              designation={adminData[2]?.designation}
+            />
             </div>
           <div className="admin-card-container">
-            {adminData.slice(2).map((card) => (
+            {adminData.slice(3).map((card) => (
               <Card
                 key={card.id}
                 image={UrlParser(card.image_path)}
