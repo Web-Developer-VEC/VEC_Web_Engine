@@ -1,15 +1,12 @@
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import SharedLandingLayout from './SharedLandingLayout';
 import LoadComp from './Components/Main/LoadComp';
-import Boot from './Components/Main/Landing Comp/BootUp';
-import ImgSld from './Components/Main/Landing Comp/ImgSld';
 import Abt from './Components/Main/Landing Comp/About';
 import Announce from './Components/Main/Landing Comp/announcements';
 import Event from './Components/Main/Landing Comp/Events';
 import Tracker from './Components/Main/Landing Comp/Tracker';
 import Samplereact from './Components/Main/Landing Comp/Courses';
 import Contact from './Components/Main/Landing Comp/ContactIcon'
-import Chat from './Components/Main/Landing Comp/ChatPopup'
 import Footer from './Components/Main/Landing Comp/Footer';
 import ScrollToTopButton from './Components/Main/ScrollToTopButton';
 import NotifyCard from './Components/Main/Landing Comp/NotifyCard';
@@ -99,24 +96,6 @@ const LandingPage = ({ theme, load, toggle, isAdmin }) => {
                 setShowPopup={setShowPopup}
                 isAdmin={isAdmin}
             />
-            <div className='w-max max-w-[100vw] h-fit absolute z-50'>
-                <div className='pt-2 pb-[2vmax] bg-prim dark:bg-drkp'>
-                    <Abt/>
-                    <Announce anno={announcements} spc={specialAnnouncements}/>
-                    <Event data={events}/>
-                </div>
-                <Tracker data={bannerData}/>
-                <div className='bg-prim dark:bg-drkp'>
-                    <Samplereact courses={departmentBanner}/>
-                    <Contact data={pageDetails[0]}/>
-                    {/* <Chat/> */}
-                    <Footer theme={theme} data={pageDetails[0]}/>
-                </div>
-            </div>
-            <ScrollToTopButton/>,
-            {showPopup && (
-                <NotifyCard onClose={() => setShowPopup(false)} data={newscard} />
-            )}
         </Suspense>
     );
 };
