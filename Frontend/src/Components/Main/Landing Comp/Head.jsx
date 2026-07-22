@@ -1,22 +1,45 @@
-// import {useState, useEffect} from 'react'
-import {useLocation, useNavigate} from 'react-router-dom';
-import {ChevronDownIcon} from '@heroicons/react/24/solid'
-import Sidebar from './SideBar'
-import Nord from '../../Assets/1723802229690.png'
-import Naac from '../../Assets/1723802229711.png'
-import Acrd from '../../Assets/1723802229732.png'
-import iquage from '../../Assets/iquage.png'
-import tuvindia from '../../Assets/tuvindia.jpeg'
-import Tnea from '../../Assets/TNEA-Code.png'
-import Inta from '../../Assets/instagram.png'
-import Fcbk from '../../Assets/facebook.png'
-import Twtr from '../../Assets/twitter.png'
-import Lknd from '../../Assets/linkedin.png'
-import logo from '../../Assets/NEWLOGO.png'
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Naac from '../../Assets/1723802229711.png';
+import Acrd from '../../Assets/1723802229732.png';
+import Fcbk from '../../Assets/facebook.png';
+import Inta from '../../Assets/instagram.png';
+import iquage from '../../Assets/iquage.png';
+import Lknd from '../../Assets/linkedin.png';
+import logo from '../../Assets/NEWLOGO.png';
+import Tnea from '../../Assets/TNEA-Code.png';
+import tuvindia from '../../Assets/tuvindia.jpeg';
+import Twtr from '../../Assets/twitter.png';
+import Sidebar from './SideBar';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Head = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [HrHandbook,setHrHandbook] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.post('/api/main-backend/administration', {
+                    type: "HRHandBook"
+                })
+
+                const data = responce.data.data;
+                setHrHandbook(data);
+            }
+            catch (error) {
+                if (error.response?.data?.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message } });
+                } else {
+                    console.error(error);
+                }
+            }
+        }
+
+        fetchData();
+    }, [])
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -88,7 +111,7 @@ const Head = () => {
                 {hrd: false, ttl: "Admin Office", sup: [], lnk: "/admin"},
                 {hrd: false, ttl: "Administrative Committee", sup: [], lnk: "/committee"},
                 {hrd: false, ttl:"Handbook",sup:[],lnk:"/handbook"},
-                {hrd: false, ttl:"HR Handbook",sup:[],lnk:UrlParser("/static/pdfs/handbook/HR-Handbook.pdf") , openInNewTab: true},
+                {hrd: false, ttl:"HR Handbook",sup:[],lnk:UrlParser(HrHandbook?.pdf_path[0]), openInNewTab: true},
                 {hrd: false, ttl: "Organization Chart", sup: [], lnk: "/clg-org"},
             ], 
         },
