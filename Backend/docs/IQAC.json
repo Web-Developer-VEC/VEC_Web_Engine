@@ -509,11 +509,6 @@
         "year": "2023-24",
         "title":["Incubator and Promoting Startup","Institutional Management Software for academics"],
         "pdf_path": "/static/pdfs/iqac/best_practices_2023-2024.pdf"
-      },
-      {
-        "year": "2024-25",
-        "title":["OBE-Aligned Teaching–Learning Process Using Active Learning Strategies"],
-        "pdf_path": "/static/pdfs/iqac/best_practice_2024-2025.pdf"
       }
     ]
   },
@@ -521,7 +516,7 @@
     "type": "institutional_distinctiveness",
     "data": [
       {
-        "pdf_path": "/static/pdfs/iqac/VEC-Institutional-distinctivenss (2).pdf"
+        "pdf_path": "/static/pdfs/iqac/VEC-Institutional-Distinctivenss.pdf"
       }
     ]
   },

@@ -1,13 +1,16 @@
-/* Main container */
+/* ===========================
+   Main Container
+=========================== */
 .NCC-main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /*margin-bottom: 50px;*/
 }
 
-/* Buttons Section */
+/* ===========================
+   Buttons Section
+=========================== */
 .NCC-main-buttons {
   display: flex;
   flex-direction: column;
@@ -18,22 +21,24 @@
   margin-top: 2vh;
 }
 
-/* NCC Army Logo */
+/* ===========================
+   NCC Logo
+=========================== */
 .NCC-main-logo {
   height: 20vh;
   width: auto;
   margin-bottom: -5px;
-  /* Slight overlap to ensure connection */
 }
 
-/* Vertical Line Below Logo */
+/* ===========================
+   Connecting Lines
+=========================== */
 .NCC-main-vertical-line {
   width: 4px;
   height: 50px;
   background-color: gray;
 }
 
-/* Horizontal Line */
 .NCC-main-horizontal-container {
   display: flex;
   justify-content: center;
@@ -48,67 +53,99 @@
   position: relative;
 }
 
-/* Split Vertical Lines (Stop Before Buttons) */
 .NCC-main-split-container {
   display: flex;
   justify-content: space-between;
   width: 220px;
   position: relative;
   margin-bottom: 20px;
-  /* Add spacing before buttons */
 }
-
 
 .NCC-main-split-line {
   width: 4px;
   height: 40px;
-  /* Reduced height to stop before buttons */
   background-color: gray;
 }
 
-/* Button Group */
+/* ===========================
+   Button Group
+=========================== */
 .NCC-main-button-group {
   display: flex;
   gap: 40px;
   justify-content: center;
   margin: 5px;
   margin-bottom: 20px;
-
 }
 
+/* ===========================
+   NCC Buttons
+=========================== */
 .NCC-main-button {
-  width: 250px; /* Set a fixed width */
-  height: 80px; /* Set a fixed height */
+  width: 250px;
+  height: 80px;
   padding: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: pre-line;
+
   font-size: 16px;
   font-weight: bold;
-  background-color: #800000;
-  color: white;
+  line-height: 1.4;
+
+  background: #800000;
+  color: #ffffff;
+  border: 2px solid #800000;
   border-radius: 8px;
-  transition: transform 0.2s;
-  border: none;
+
   cursor: pointer;
-  text-align: center;
-  display: flex;
-  align-items: center; /* Vertically center text */
-  justify-content: center; /* Horizontally center text */
-  white-space: pre-line; /* Ensures text wraps properly */
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
+/* Hover Effect */
 .NCC-main-button:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: #FDCC03;
+  color: #800000;
+  border-color: #FDCC03;
+
+  box-shadow:
+    0 0 15px rgba(253, 204, 3, 0.45),
+    0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
+/* Click Effect */
+.NCC-main-button:active {
+  transform: scale(0.98);
+}
 
+/* Keyboard Accessibility */
+.NCC-main-button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 4px rgba(253, 204, 3, 0.35),
+    0 0 20px rgba(253, 204, 3, 0.5);
+}
 
-/* Pages (NCC Army & Navy) */
+/* ===========================
+   NCC Pages
+=========================== */
 .NCC-main-page {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Back Button */
+/* ===========================
+   Back Button
+=========================== */
 .NCC-main-back-btn {
   background-color: #6c757d;
   color: white;
@@ -116,46 +153,42 @@
   border-radius: 6px;
   cursor: pointer;
   border: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s ease;
 }
 
 .NCC-main-back-btn:hover {
   background-color: #495057;
 }
-/* Back Button - Army (Right Side) */
+
+/* Army Back Button */
 .NCC-main-back-btn-army {
   align-self: flex-end;
   margin-right: 20px;
   margin-top: 10px;
 }
 
-/* Back Button - Navy (Left Side) */
+/* Navy Back Button */
 .NCC-main-back-btn-navy {
   align-self: flex-start;
   margin-left: 20px;
   margin-top: 13px;
 }
 
-/* Common Styles for Back Button */
-.NCC-main-back-btn {
-  background-color: #6c757d;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.2s;
-}
-
-.NCC-main-back-btn:hover {
-  background-color: #495057;
-}
+/* ===========================
+   Responsive
+=========================== */
 @media (max-width: 600px) {
+  .NCC-main-button-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
   .NCC-main-button {
-    width: 90%; /* Make buttons responsive */
-    height: auto; /* Allow height to adjust based on content */
-    font-size: 16px; /* Adjust font size for smaller screens */
-    padding: 10px; /* Reduce padding for better fit */
+    width: 90%;
+    max-width: 250px;
+    height: 80px;
+    font-size: 15px;
+    padding: 10px;
   }
 }
-

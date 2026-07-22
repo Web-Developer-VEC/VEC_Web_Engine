@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./infrastructure.css";
 import LoadComp from "../../../LoadComp";
 import { Pencil, Plus, Send, X, Trash2 } from "lucide-react";
@@ -12,31 +12,42 @@ const Infrastructure = ({ data }) => {
   const UrlParser = (path) =>
     path?.startsWith("http") || path?.startsWith("blob:") ? path : `${BASE_URL}${path}`;
 
-  const infrastructure_images =
-    data?.find((item) => item.category === "infrastructure_images")?.content || [];
+  const infrastructure_images = useMemo(() => {
+    return (
+      data.find(item => item.category === "infrastructure_images")
+        ?.content || []
+    );
+  }, [data]);
 
-    const attachUids = (images) =>
-      images.map((image, index) => ({
-        ...image,
-        _uid: image._uid || `${image.image_path || "img"}::${index}`
-      }));
-
-    const initialImages = attachUids(infrastructure_images);
+  const attachUids = (images) =>
+    images.map((image, index) => ({
+      ...image,
+      _uid: image._uid || `${image.image_path || "img"}::${index}`
+    }));
 
   const [deptId, setDeptId] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
-  const [editMode, setEditMode] = useState(false);
-  const [postSaveMode, setPostSaveMode] = useState(false);
-  const [secondEditMode, setSecondEditMode] = useState(false);
-  const [secondEditHasChanges, setSecondEditHasChanges] = useState(false);
-  const [editedImages, setEditedImages] = useState(initialImages);
-  const [originalImages, setOriginalImages] = useState(initialImages);
-  const [savedChanges, setSavedChanges] = useState(null);
-  const [hasChanges, setHasChanges] = useState(false);
+  const [mode, setMode] = useState("view");
+  // view | edit | review
+  const [dirty, setDirty] = useState(false);
+  const [snapshot, setSnapshot] = useState([]);
+  const [images, setImages] = useState([]);
   const [newCardData, setNewCardData] = useState({ image_name: "", image_path: "" });
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [selectedCards, setSelectedCards] = useState([]);
   const { sendRequest, loading, error } = useAdminRequest();
+  const [editMode, setEditMode] = useState(false);
+  const [postSaveMode, setPostSaveMode] = useState(false);
+  const [secondEditMode, setSecondEditMode] = useState(false);
+
+  const [secondEditHasChanges, setSecondEditHasChanges] = useState(false);
+
+  const [editedImages, setEditedImages] = useState([]);
+  const [originalImages, setOriginalImages] = useState([]);
+
+  const [savedChanges, setSavedChanges] = useState(null);
+
+  const [hasChanges, setHasChanges] = useState(false);
 
   const deptMap = {
     "001": "AIDS_001",
@@ -66,41 +77,52 @@ const Infrastructure = ({ data }) => {
     }
   }, [data]);
 
-    useEffect(() => {
-      if (!editMode && !secondEditMode && !postSaveMode) {
-        const synced = attachUids(infrastructure_images);
-        setEditedImages(synced);
-        setOriginalImages(synced);
-      }
-    }, [infrastructure_images, editMode, secondEditMode, postSaveMode]);
+  useEffect(() => {
+    console.log("SYNC EFFECT RUNNING");
+
+    if (mode !== "view") return;
+
+    const synced = attachUids(infrastructure_images);
+
+    setImages(synced);
+    setSnapshot(structuredClone(synced));
+
+  }, [infrastructure_images, mode]);
 
   const handleCardClick = (index) => {
     if (!editMode && !secondEditMode) setSelectedCard(selectedCard === index ? null : index);
   };
 
-    const toggleCardSelection = (index) => {
-      if (selectedCards.includes(index)) {
-        setSelectedCards(selectedCards.filter(i => i !== index));
-      } else {
-        setSelectedCards([...selectedCards, index]);
-      }
-    };
+  const toggleCardSelection = (index) => {
+    if (selectedCards.includes(index)) {
+      setSelectedCards(selectedCards.filter(i => i !== index));
+    } else {
+      setSelectedCards([...selectedCards, index]);
+    }
+  };
 
-    const handleDeleteSelected = () => {
-      const updated = editedImages.filter((_, i) => !selectedCards.includes(i));
-      setEditedImages(updated);
-      setSelectedCards([]);
-      if (editMode) setHasChanges(true);
-      if (secondEditMode) setSecondEditHasChanges(true);
-    };
+  const handleDeleteSelected = () => {
+    const updated = images.filter((_, i) => !selectedCards.includes(i));
+    setImages(updated);
+    setSelectedCards([]);
+    if (editMode) setHasChanges(true);
+    if (secondEditMode) setSecondEditHasChanges(true);
+  };
 
   const getActionType = (card) => {
-    const original = originalImages.find((image) => image._uid === card._uid);
+    const original = snapshot.find(
+      (image) => image._uid === card._uid
+    );
+
     if (!original) return "Insert";
-    if (original.image_name !== card.image_name || 
-        original.image_path !== card.image_path) {
+
+    if (
+      original.image_name !== card.image_name ||
+      original.image_path !== card.image_path
+    ) {
       return "Update";
     }
+
     return null;
   };
 
@@ -112,50 +134,50 @@ const Infrastructure = ({ data }) => {
     } else {
       // First edit session
       setEditMode(true);
-      setOriginalImages(editedImages.map((image) => ({ ...image })));
+      setSnapshot(structuredClone(images));
       setHasChanges(false);
     }
   };
 
   const handleCancel = () => {
-    if (secondEditMode) {
-      // Cancel during second edit → restore post-save buttons
-      setSecondEditMode(false);
-      setSecondEditHasChanges(false);
-      setEditedImages(savedChanges); // restore last saved state
-    } else {
-      // Cancel during first edit → discard unsaved changes
-      setEditedImages(originalImages.map((image) => ({ ...image })));
-      setEditMode(false);
-      setHasChanges(false);
-    }
-    setNewCardData({ image_name: "", image_path: "" });
-      setSelectedCards([]);
+
+    setImages(structuredClone(snapshot));
+
+    setEditMode(false);
+    setSecondEditMode(false);
+    setPostSaveMode(false);
+
+    setHasChanges(false);
+    setSecondEditHasChanges(false);
+
+    setSelectedCards([]);
+
+    setNewCardData({
+      image_name: "",
+      image_path: ""
+    });
+
   };
 
-  const handleSave = () => {
-    if (secondEditMode) {
-      // Save changes in second edit session
-      setSavedChanges([...editedImages]);
-      setSecondEditMode(false);
-      setSecondEditHasChanges(false);
-      setPostSaveMode(true);
-    } else {
-      // Save during first edit session
-      setSavedChanges([...editedImages]);
-      setEditMode(false);
-      setHasChanges(false);
-      setPostSaveMode(true); // show Edit + Discard/Request
-    }
-    setNewCardData({ image_name: "", image_path: "" });
-      setSelectedCards([]);
+  const handleSave = () => {  
+    setDirty(false);
+    setEditMode(false);
+    setSecondEditMode(false);
+    setPostSaveMode(true);
+    setHasChanges(false);
+    setSecondEditHasChanges(false);
+    setSelectedCards([]);
+    setNewCardData({
+      image_name: "",
+      image_path: ""
+    });
   };
 
   const handleDiscard = () => {
     setEditedImages(originalImages.map((image) => ({ ...image })));
     setSavedChanges(null);
     setPostSaveMode(false);
-      setSelectedCards([]);
+    setSelectedCards([]);
   };
 
   const handleRequest = () => {
@@ -172,16 +194,15 @@ const Infrastructure = ({ data }) => {
     setNewCardData({ image_name: "", image_path: "" });
     setShowRequestModal(false);
   };
-
   const handleReplace = (index, file) => {
     if (!file) return;
-    const newImages = [...editedImages];
-    newImages[index] = {
-      ...newImages[index],
+    const updated = [...images];
+    updated[index] = {
+      ...updated[index],
       image_path: URL.createObjectURL(file),
       newFile: file,
     };
-    setEditedImages(newImages);
+    setImages(updated);
     if (editMode) setHasChanges(true);
     if (secondEditMode) setSecondEditHasChanges(true);
   };
@@ -199,24 +220,26 @@ const Infrastructure = ({ data }) => {
       ...newCardData,
       _uid: `new-${Date.now()}-${Math.random().toString(36).slice(2)}`
     };
-    setEditedImages([...editedImages, newCard]);
+    setImages([...images, newCard]);
     setNewCardData({ image_name: "", image_path: "" });
     if (editMode) setHasChanges(true);
     if (secondEditMode) setSecondEditHasChanges(true);
   };
 
   const undoChange = (card, index) => {
-    const original = originalImages.find((image) => image._uid === card._uid);
+    const original = snapshot.find(
+      image => image._uid === card._uid
+    );
 
     if (original) {
       // Existing card → revert values
-      const updated = [...editedImages];
+      const updated = [...images];
       updated[index] = original;
-      setEditedImages(updated);
+      setImages(updated);
     } else {
       // New card → remove it entirely
-      const updated = editedImages.filter((_, i) => i !== index);
-      setEditedImages(updated);
+      const updated = images.filter((_, i) => i !== index);
+      setImages(updated);
     }
 
     if (editMode) setHasChanges(true);
@@ -230,23 +253,22 @@ const Infrastructure = ({ data }) => {
     // Helper function to get proper image path
     const getImagePath = (image) => {
       if (!image.image_path) return "";
-      
+
       // If it's a blob URL (newly uploaded file), generate the static path
       if (image.image_path.startsWith("blob:") && image.newFile) {
         // Extract filename from the file object
         const fileName = image.newFile.name;
         return `/static/images/infrastructure/${deptId}/${fileName}`;
       }
-      
+
       // Otherwise, use the existing path from database
       return image.image_path;
     };
 
-    const originalById = new Map(originalImages.map((image) => [image._uid, image]));
-    const editedById = new Map(editedImages.map((image) => [image._uid, image]));
-
+    const originalById = new Map(snapshot.map((image) => [image._uid, image]));
+    const currentById = new Map(images.map((image) => [image._uid, image]));
     // Check each edited image
-    editedImages.forEach((editedImage) => {
+    images.forEach((editedImage) => {
       const originalImage = originalById.get(editedImage._uid);
 
       if (!originalImage) {
@@ -291,8 +313,8 @@ const Infrastructure = ({ data }) => {
     });
 
     // Check for deleted cards
-    originalImages.forEach((originalImage) => {
-      if (!editedById.has(originalImage._uid)) {
+    snapshot.forEach((originalImage) => {
+      if (!currentById.has(originalImage._uid)) {
         // DELETED CARD - Delete action
         payload.push({
           collectionName,
@@ -322,14 +344,14 @@ const Infrastructure = ({ data }) => {
 
     // Collect files from editedImages
     const files = [];
-    editedImages.forEach((image) => {
+    images.forEach((image) => {
       if (image.image_path && image.image_path.startsWith("blob:") && image.newFile) {
         files.push(image.newFile);
       }
     });
 
     console.log(payload, files);
-    
+
 
     const result = await sendRequest(payload, files.length > 0 ? files : null);
 
@@ -345,10 +367,9 @@ const Infrastructure = ({ data }) => {
     }
   };
 
-
   return (
     <div className="relative -top-6">
-      {editedImages ? (
+      {images ? (
         <>
           {/* Top Edit Button */}
           {(!editMode && !secondEditMode) && (
@@ -367,17 +388,17 @@ const Infrastructure = ({ data }) => {
           </section>
 
           <main className="page-content flex flex-wrap gap-6">
-            {editedImages.map((card, index) => (
-                <div key={index} className="flex flex-col items-center relative">
-                  {(editMode || secondEditMode) && (
-                    <input
-                      type="checkbox"
-                      checked={selectedCards.includes(index)}
-                      onChange={() => toggleCardSelection(index)}
-                      className="absolute top-2 left-2 w-5 h-5 z-10 cursor-pointer"
-                    />
-                  )}
-                <div
+            {images.map((card, index) => (
+              <div key={card._uid} className="flex flex-col items-center relative">
+                {(editMode || secondEditMode) && (
+                  <input
+                    type="checkbox"
+                    checked={selectedCards.includes(index)}
+                    onChange={() => toggleCardSelection(index)}
+                    className="absolute top-2 left-2 w-5 h-5 z-10 cursor-pointer"
+                  />
+                )}
+                {/* <div
                   className={`card_infa ${selectedCard === index ? "active" : ""}`}
                   style={{
                     backgroundImage: card.image_path ? `url(${UrlParser(card.image_path)})` : "none",
@@ -405,6 +426,68 @@ const Infrastructure = ({ data }) => {
                       <h1 className="infra_title">{card.image_name}</h1>
                     )}
                   </div>
+                </div> */}
+
+                <div
+                  className={`
+        card_infa
+        ${selectedCard === index ? "active" : ""}
+        ${(editMode || secondEditMode) ? "editing" : ""}
+    `}
+                >
+
+                  <img
+                    src={UrlParser(card.image_path)}
+                    className="infra-image"
+                    alt={card.image_name}
+                  />
+
+                  <div className="overlay" />
+
+                  <div className="content">
+
+                    {(editMode || secondEditMode) ? (
+
+                      <input
+                        onFocus={() => console.log("FOCUS", index)}
+                        onBlur={() => console.log("BLUR", index)}
+                        type="text"
+                        disabled={false} readOnly={false}
+                        className="infra-title-input"
+                        value={card.image_name}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => {
+                          console.log("Typing...", e.target.value);
+
+                          const updated = [...images];
+
+                          updated[index] = {
+                            ...updated[index],
+                            image_name: e.target.value,
+                          };
+
+                          setImages(updated);
+
+                          if (editMode) {
+                            setHasChanges(true);
+                          }
+
+                          if (secondEditMode) {
+                            setSecondEditHasChanges(true);
+                          }
+                        }}
+                      />
+
+                    ) : (
+
+                      <h1 className="infra_title">
+                        {card.image_name}
+                      </h1>
+
+                    )}
+
+                  </div>
+
                 </div>
 
                 {(editMode || secondEditMode) && (
@@ -478,17 +561,17 @@ const Infrastructure = ({ data }) => {
             )}
           </main>
 
-            {/* Delete Selected Button */}
-            {(editMode || secondEditMode) && selectedCards.length > 0 && (
-              <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-8 flex justify-center">
-                <button
-                  className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition flex items-center gap-2"
-                  onClick={handleDeleteSelected}
-                >
-                  <Trash2 size={18} /> Delete Selected ({selectedCards.length})
-                </button>
-              </div>
-            )}
+          {/* Delete Selected Button */}
+          {(editMode || secondEditMode) && selectedCards.length > 0 && (
+            <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-8 flex justify-center">
+              <button
+                className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition flex items-center gap-2"
+                onClick={handleDeleteSelected}
+              >
+                <Trash2 size={18} /> Delete Selected ({selectedCards.length})
+              </button>
+            </div>
+          )}
 
           {/* Bottom Buttons */}
           <div className="absolute -bottom-8 right-8 flex gap-4">
@@ -559,12 +642,14 @@ const Infrastructure = ({ data }) => {
                   </thead>
                   <tbody>
                     {(() => {
-                      const editedById = new Map(editedImages.map((image) => [image._uid, image]));
-                      const deletedItems = originalImages.filter((image) => !editedById.has(image._uid));
+                      const currentById = new Map(images.map((image) => [image._uid, image]));
+                      const deletedItems = snapshot.filter(
+                        (image) => !currentById.has(image._uid)
+                      );
 
                       return (
                         <>
-                          {editedImages.map((card, index) => {
+                          {images.map((card, index) => {
                             const actionType = getActionType(card);
                             if (actionType) {
                               const actionColor = actionType === "Insert" ? "text-green-600" : "text-blue-600";
@@ -595,7 +680,7 @@ const Infrastructure = ({ data }) => {
                               <td className="border p-2">
                                 <button
                                   onClick={() => {
-                                    setEditedImages([...editedImages, card]);
+                                    setImages([...images, card]);
                                     if (editMode) setHasChanges(true);
                                     if (secondEditMode) setSecondEditHasChanges(true);
                                   }}

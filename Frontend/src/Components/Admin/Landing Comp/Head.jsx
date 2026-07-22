@@ -56,7 +56,7 @@ const Head = () => {
     const hdrs = [
         { ttl: "Library", lnk: "/library" },
         { ttl: "IQAC", lnk: "/iqac" },
-        { ttl:"Accreditations & Ranking",lnk:"/Accredation"},
+        { ttl:"Accreditations & Ranking",lnk:"/Accreditation"},
         { ttl: "IIC", lnk: "/iic" },
         { ttl: "Incubation Cell", lnk: "/incubation" },
         { ttl: "Alumni", lnk: "/alumni" },
@@ -98,7 +98,7 @@ const Head = () => {
             sub: [
                 {hrd: false, ttl: "About VEC", sup: [], lnk: "/abt-us"},
                 {hrd: false, ttl: "About Trust (VET)", sup: [], lnk: "/trust"},
-                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "/vm"},
+                {hrd: false, ttl: "Vision & Mission", sup: [], lnk: "/v_m"},
                 {hrd: false, ttl: "Management", sup: [], lnk: "/management"},
                 {hrd: false, ttl: "Contact Us", sup: [], lnk: "#footer"}, // Link to footer
             ],
@@ -124,7 +124,7 @@ const Head = () => {
             sub: [
                 { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
                 { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/acadamiccal" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/academic_cal" },
               ],
         },
         {

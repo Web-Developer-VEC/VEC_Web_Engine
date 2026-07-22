@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback, useEffect, lazy, Suspense } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
@@ -7,11 +7,9 @@ import Cookies from "universal-cookie";
 import useGoogleAnalytics from "./useAnalytics.js";
 import LandingPage from "./Landing.jsx"; // Keep eager, internal parts are lazy
 import LoadComp from "./Components/Main/LoadComp.jsx";
-import axios from 'axios';
 import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
-import { useNavigate } from "react-router";
 import DynamicTitle from "./Header.jsx"; // This seems to be just a title updater, keep eager
 import { routeConfig } from "./routeConfig.js";
 import { getRouteElement } from "./getRouteElement.js";
@@ -20,11 +18,9 @@ import AdminSideButton from "./Components/Admin/sideButton.jsx";
 // Lazy load components
 const Boot = lazy(() => import("./Components/Main/Landing Comp/BootUp"));
 const Head = lazy(() => import("./Components/Main/Landing Comp/Head.jsx"));
-const Footer = lazy(() => import("./Components/Main/Landing Comp/Footer.jsx"));
 const TermsandCon = lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
 const Facultyprofile = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx"));
-const Alumni = lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"));
-const OtherFacilities = lazy(() => import("./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx"));
+const Alumni = lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"))
 const WebTeam = lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/webteam.jsx"));
 const StudentLayout = lazy(() => import("./Components/Digital Hostel/Layouts/StudentDashboard.jsx"));
 const WardenLayout = lazy(() => import("./Components/Digital Hostel/Layouts/WardenDashboard.jsx"));
@@ -79,37 +75,11 @@ padding-top: 8.69%;
 `;
 
 const App = () => {
-    const footerRef = useRef(null);
     const location = useLocation();
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const cookies = new Cookies()
-    const [landingData, setLandingData] = useState(null);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
-    const navigate = useNavigate();
     useGoogleAnalytics();
-    const footer = landingData?.find((item) => item.type === "page_details")?.data || [];
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const responce = await axios.post('/api/main-backend/landing_page_data',
-                    {
-                        type: "landing_data"
-                    }
-                );
-
-                setLandingData(responce.data.data);
-
-            } catch (error) {
-                console.error("Error fetching thhe landing page Data", error);
-                if (error.response && error.response.data.status === 429) {
-                    navigate('/ratelimit', { state: { msg: error.response.data.message } })
-                }
-            }
-        }
-
-        fetchData();
-    }, []);
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -166,10 +136,8 @@ const App = () => {
         );
     }
 
-    const isHostelRoute = currentPath.startsWith("/hostel");
-
-
     const session = JSON.parse(sessionStorage.getItem("userSession"));
+    const isFooter = currentPath.startsWith("/hostel");
 
     return (
         <>
@@ -181,7 +149,7 @@ const App = () => {
                         <Boot isAuth={isAuth} isLoaded={loaded} theme={theme} />
                     </Suspense>
                 )}
-                {/* Conditionally render Head and Footer */}
+                {/* Conditionally render Head */}
                 <>
                     <Suspense fallback={<div className="h-20 bg-prim dark:bg-drkp"></div>}>
                         {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
@@ -196,16 +164,26 @@ const App = () => {
                                             load={load}
                                             toggle={toggle}
                                             theme={theme}
-                                            pageData={landingData}
                                             isAdmin={session && session.routes.includes("/")}
                                         />
                                     }
-                                />
+                                    />
+
+                                    {/* Admin based route */}
+                                    {Object.keys(routeConfig).map((path) => (
+                                        <Route
+                                            key={path}
+                                            path={path}
+                                            drk
+                                            element={getRouteElement(path, session, toggle, theme)}
+                                        />
+                                    ))}
                             
+                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme} />} />
                                 <Route path="/careers" drk element={<Career toggle={toggle} theme={theme} />} />
-                                {/* <Route path="/other-facilities" drk element={<OtherFacilities toggle={toggle} theme={theme} />} /> */}
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />} />
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme} />} />
+
                                 {/* Hostel Pages */}
                                 <Route path="/hostel/student/*" element={<StudentLayout />} />
                                 <Route path="/hostel/warden/*" element={<WardenLayout />} />
@@ -213,26 +191,20 @@ const App = () => {
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital />} />
                                 <Route path="/hostel/forget-password" element={<ForgotPassword />} />
+
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 <Route path="/admin_auth" drk element={<AuthPage toggle={toggle} theme={theme} />} />
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme} />} />
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme} />} />
-                                <Route path="/facultyprofile/:uid" drk element={<Facultyprofile toggle={toggle} theme={theme} />}></Route>
                                 {/*  General Forms  */}
                                 <Route path="/appraisalreport" element={<AppraisalReport />} />
                                 <Route path="/appraisalform" element={<AppraisalForm />} />
 
-                                {/* Admin based route */}
-                                {Object.keys(routeConfig).map((path) => (
-                                    <Route
-                                        key={path}
-                                        path={path}
-                                        drk
-                                        element={getRouteElement(path, session, toggle, theme)}
-                                    />
-                                ))}
+                                {/*  conditional routes  */}
+                                <Route path="/vec-connect/*" element={<Navigate to="/" replace />} />
+                                <Route path="/Accredation" element={<Navigate to="/" replace />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />
@@ -242,13 +214,7 @@ const App = () => {
                         </Suspense>
 
                     </MainContentWrapper>
-                    {!isHostelRoute && (
-                        <Suspense fallback={null}>
-                            <Footer theme={theme} data={footer?.[0]} ref={footerRef} />
-                        </Suspense>
-                    )}
-
-                    {session && session.routes.includes("/") && currentPath === "/" ? <AdminSideButton /> : <SideButton />}
+                    {session && session.routes.includes("/") && currentPath === "/" ? <AdminSideButton/> : <SideButton/>}
                     <ScrollToTopButton />
                 </>
             </AppContainer>
