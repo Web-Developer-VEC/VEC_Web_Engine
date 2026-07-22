@@ -7,8 +7,7 @@
     "category": "infrastructure_images",
     "meta_data": {
       "image_path": "/static/images/infrastructure/005/1.webp",
-      "image_name": "dinesh",
-      "image_content": ""
+      "image_name": "dinesh"
     }
   },
   {
@@ -19,8 +18,7 @@
     "category": "infrastructure_images",
     "meta_data": {
       "image_path": "/static/images/infrastructure/005/1.webp",
-      "image_name": "hari",
-      "image_content": ""
+      "image_name": "hari"
     },
     "original_data": {
       "image_path": "/static/images/infrastructure/001/1.webp",
@@ -35,8 +33,7 @@
     "category": "infrastructure_images",
     "meta_data": {
       "image_path": "/static/images/infrastructure/005/1.webp",
-      "image_name": "hari",
-      "image_content": ""
+      "image_name": "hari"
     }
   }
 ]

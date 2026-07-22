@@ -170,6 +170,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           : [];
 
 
+
         const notdoc = Array.isArray(existingDoc.data) ? existingDoc.data : [existingDoc.data];
 
 
@@ -179,7 +180,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
             const forceArrayPdf = [
               "newsletter",
-              
+
             ];
 
             for (const item of notdoc) {
@@ -188,13 +189,17 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
 
 
-              if (forceArrayPdf.includes(collection_type)) {
-                pdf_path = Array.isArray(pdf_path) ? pdf_path : [pdf_path];
-              } else {
-                pdf_path = Array.isArray(item.pdf_path)
-                  ? pdf_path
-                  : pdf_path[0];
-              } 
+
+              if (matches) {
+                if (forceArrayPdf.includes(collection_type)) {
+                  pdf_path = Array.isArray(pdf_path) ? pdf_path : [pdf_path];
+                } else {
+                  pdf_path = Array.isArray(item.pdf_path)
+                    ? pdf_path
+                    : pdf_path[0];
+                }
+                break;
+              }
             }
           } else if (image_path.length > 0) {
             for (const item of notdoc) {
@@ -216,20 +221,34 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           }
         }
         if (action === "insert") {
-          if (pdf_path.length > 0) {
-            for (const item of notdoc) {
-              pdf_path = Array.isArray(item.pdf_path)
-                ? pdf_path
-                : pdf_path[0];
 
-              break;
+          // news_card always stores string paths
+          if (collection_type === "news_card") {
+
+            if (Array.isArray(image_path) && image_path.length > 0) {
+              image_path = image_path[0];
             }
-          } else if (image_path.length > 0) {
-            for (const item of notdoc) {
-              image_path = Array.isArray(item.image_path)
-                ? image_path
-                : image_path[0];
-              break;
+
+            if (Array.isArray(pdf_path) && pdf_path.length > 0) {
+              pdf_path = pdf_path[0];
+            }
+
+          } else {
+            if (pdf_path.length > 0) {
+              for (const item of notdoc) {
+                pdf_path = Array.isArray(item.pdf_path)
+                  ? pdf_path
+                  : pdf_path[0];
+
+                break;
+              }
+            } else if (image_path.length > 0) {
+              for (const item of notdoc) {
+                image_path = Array.isArray(item.image_path)
+                  ? image_path
+                  : image_path[0];
+                break;
+              }
             }
           }
         }
