@@ -10,14 +10,14 @@ async function deleteData(tempDoc, mainCollection) {
 
   if (collection_type === "pedagogy") {
 
-    
+
     if (meta_data && Object.keys(meta_data).length === 0) {
       await mainCollection.updateOne(
         { type: collection_type },
         { $pull: { data: { category: category } } } // remove the whole object with matching category
       );
 
-      return { success:true, message: `Category ${category} deleted successfully` };
+      return { success: true, message: `Category ${category} deleted successfully` };
     }
 
     const doc = await mainCollection.findOne({ type: collection_type });
@@ -36,7 +36,30 @@ async function deleteData(tempDoc, mainCollection) {
       throw new Error(
         `Year ${meta_data.year} does not exist in category ${category}`
       );
+    // Delete entire year if content is missing or empty
+    if (
+      !Array.isArray(meta_data.content) ||
+      meta_data.content.length === 0
+    ) {
+      await mainCollection.updateOne(
+        { type: collection_type },
+        {
+          $pull: {
+            "data.$[d].content": {
+              year: meta_data.year,
+            },
+          },
+        },
+        {
+          arrayFilters: [{ "d.category": category }],
+        }
+      );
 
+      return {
+        success: true,
+        message: `Year ${meta_data.year} deleted successfully`,
+      };
+    }
     // Iterate over each item in meta_data.research to delete
     for (let item of meta_data.content) {
       await mainCollection.updateOne(
@@ -56,7 +79,7 @@ async function deleteData(tempDoc, mainCollection) {
     }
 
     return {
-      success:true, 
+      success: true,
       message: `Pedagogy data deleted successfully for category ${category} and year ${meta_data.year}`,
     };
   }
