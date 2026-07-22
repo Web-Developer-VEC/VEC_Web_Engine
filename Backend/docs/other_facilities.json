@@ -4,9 +4,9 @@
     "data": [
       {
         "category": "Anna Auditorium",
-        "name": "Anna Auditorium",
-        "description": "A spacious and well-equipped auditorium with modern audio-visual facilities, ideal for large events and gatherings with accommodation around 2500",
-        "image_path": "/static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"
+        "name": ["Anna Auditorium"],
+        "description": ["A spacious and well-equipped auditorium with modern audio-visual facilities, ideal for large events and gatherings with accommodation around 2500"],
+        "image_path": ["/static/images/other_facilities/Anna Auditorium/Anna Auditorium 1.webp"]
       },
       {
         "category": "Seminar Halls",
@@ -192,9 +192,9 @@
       },
       {
         "category": "Temple",
-        "name": "Temple",
+        "name": ["Temple"],
         "description": "Our college features a modern Velmurugan temple to provide better lifestyle for students and staff.",
-        "image_path": "/static/images/other_facilities/Temple/Temple.webp"
+        "image_path": ["/static/images/other_facilities/Temple/Temple.webp"]
       }
     ]
   }
