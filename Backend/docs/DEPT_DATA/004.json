@@ -157,10 +157,10 @@
             "Social_media_links": 
             {
               "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
-              "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
+              "googlescholar": "https://scholar.google.com/citations?user=zMX3IjQAAAAJ&hl=en&oi=ao",
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
-              "orchidprofile":"",
-              "researchgate":"",
+              "orchidprofile":"https://orcid.org/0009-0004-5955-1306",
+              "researchgate":"https://www.researchgate.net/profile/Jebamalar-Abraham-2?ev=hdr_xprf",
               "publonprofile": "",
               "sciprofiles":""
             }
@@ -196,12 +196,13 @@
             "unique_id": "VEC-004-01-145",
             "socialmedia_links": 
                 {
-                    "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
-                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
-                    "orchidprofile":"",
-                    "researchgate":"",
-                    "publonprofile": "",
-                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400"
+                "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
+              "googlescholar": "https://scholar.google.com/citations?user=zMX3IjQAAAAJ&hl=en&oi=ao",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
+              "orchidprofile":"https://orcid.org/0009-0004-5955-1306",
+              "researchgate":"https://www.researchgate.net/profile/Jebamalar-Abraham-2?ev=hdr_xprf",
+              "publonprofile": "",
+              "sciprofiles":""
                 },
           
             "image_path":"/static/images/profile_photos/004/VEC-004-01-145.webp",
@@ -230,7 +231,7 @@
                 "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-03-082.pdf"
             },
             {
-                "name": "Mr. RAJHARASEHWARAN T A",
+                "name": "Mr. RAJHA RAJESWARAN  T A",
                 "designation": "Assistant Professor",
                 "unique_id": "VEC-004-04-066",
                 "socialmedia_links": 
@@ -238,7 +239,7 @@
                     "linkedin": "https://www.linkedin.com/in/rajha-rajeswaran-t-a-5649744b/",
                     "googlescholar": "https://scholar.google.com/citations?hl=en&user=z1BuZYcAAAAJ",
                     "researchgate": "https://www.researchgate.net/profile/Rajha-Rajeswaran-Rajha",
-                    "orchidprofile": "",
+                    "orchidprofile": "https://orcid.org/0009-0000 7864-7435",
                     "publonprofile": "",
                     "scopus": ""
                 },
@@ -254,7 +255,7 @@
                     "linkedin": "https://www.linkedin.com/in/rajendhiran-krishnamurthy-a7a1181ba",
                     "googlescholar": "",
                     "researchgate": "https://www.researchgate.net/profile/Krajendhiran-Arul",
-                    "orchidprofile": "",
+                    "orchidprofile": "https://orcid.org/0009-0006-4139-2292",
                     "publonprofile": "",
                     "scopus": ""
                 },
@@ -262,33 +263,17 @@
                 "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-061.pdf"
             },
             {
-                "name": "Mrs. FRIEDA F S",
-                "designation": "Assistant Professor",
-                "unique_id": "VEC-004-04-601",
-                "socialmedia_links": 
-                {
-                    "linkedin": "",
-                    "googlescholar": "",
-                    "researchgate": "",
-                    "orchidprofile": "",
-                    "publonprofile": "",
-                    "scopus": ""
-                },
-                "image_path": "/static/images/profile_photos/004/VEC-004-04-601.webp",
-                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-601.pdf"
-            },
-            {
                 "name": "Mrs. PRAVEENA A",
                 "designation": "Assistant Professor",
                 "unique_id": "VEC-004-04-602",
                 "socialmedia_links": 
                 {
-                    "linkedin": "",
-                    "googlescholar": "",
-                    "researchgate": "",
-                    "orchidprofile": "",
+                    "linkedin": "https://www.linkedin.com/in/praveena-a-433a78412/",
+                    "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=id&user=qgfgWuQAAAAJ",
+                    "researchgate": "https://www.researchgate.net/scientific-contributions/Praveena-Anbazhagan-2335714319",
+                    "orchidprofile": "https://orcid.org/0009-0009-5222-3963",
                     "publonprofile": "",
-                    "scopus": ""
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59426638900"
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-602.webp",
                 "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-602.pdf"
@@ -299,12 +284,12 @@
                 "unique_id": "VEC-004-04-603",
                 "socialmedia_links": 
                 {
-                    "linkedin": "",
-                    "googlescholar": "",
-                    "researchgate": "",
-                    "orchidprofile": "",
+                    "linkedin": "https://www.linkedin.com/in/selvaprasanth-p-29541875/",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=eHl1IqQAAAAJ",
+                    "researchgate": "http://researchgate.net/profile/P-Selvaprasanth?ev=hdr_xprf",
+                    "orchidprofile": "https://orcid.org/0000-0003-4545-4789",
                     "publonprofile": "",
-                    "scopus": ""
+                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58182711500"
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-603.webp",
                 "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-603.pdf"
@@ -324,6 +309,22 @@
                 },
                 "image_path": "/static/images/profile_photos/004/VEC-004-04-100.webp",
                 "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-100.pdf"
+            },
+            {
+                "name": "Mrs. ILAKKIYA E",
+                "designation": "Assistant Professor",
+                "unique_id": "VEC-004-04-100",
+                "socialmedia_links": 
+                {
+                    "linkedin": "https://www.linkedin.com/in/ilakkiya-elangovan-26a11767",
+                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=4sJAO_8AAAAJ",
+                    "researchgate": "",
+                    "orchidprofile": "https://orcid.org/0009-0001-1012-9428",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-106.webp",
+                "pdf_path": ""
             }
         ]
       },
@@ -356,39 +357,39 @@
                   "docs":[
                     {
                     "name":"I Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 1.pdf"
                   },
                     {
                     "name":"II Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 2.pdf"
                   },
                     {
                     "name":"III Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 3.pdf"
                   },
                     {
                     "name":"IV Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 4.pdf"
                   },
                     {
                     "name":"V Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 5.pdf"
                   },
                     {
                     "name":"VI Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 6.pdf"
                   },
                     {
                     "name":"VII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 7.pdf"
                   },
                     {
                     "name":"VIII Semester",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 8.pdf"
                   },
                     {
                     "name":"Elective Courses",
-                      "pdf_path": ""
+                      "pdf_path": "/static/pdfs/curriculum/004/B.E. CIVIL (R2023) ELECTIVE COURSES WITH TW & SDG.pdf"
                   }
                 ]
                 },

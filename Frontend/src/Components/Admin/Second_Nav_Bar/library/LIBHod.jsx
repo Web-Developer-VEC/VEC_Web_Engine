@@ -74,7 +74,7 @@ const LIBHod = ({ data }) => {
     setShowRequest(false);
     setShowDiscardModal(false);
     setChangeList([]);
-    toast.info("❌ Changes discarded");
+    // toast.info("❌ Changes discarded");
   };
 
   // ✅ confirm final request
@@ -120,7 +120,7 @@ const LIBHod = ({ data }) => {
     try {
       await sendRequest(payload, hodPic);
 
-      toast.success("✅ Request submitted successfully!");
+
       setShowRequestModal(false);
       setShowRequest(false);
       setIsEditing(false);
@@ -128,7 +128,8 @@ const LIBHod = ({ data }) => {
       setHodPic(null);
       setImagePreview(null);
     } catch (err) {
-      toast.error("❌ Failed to submit request");
+
+      // toast.error("❌ Failed to submit request");
     }
   };
 
@@ -174,7 +175,7 @@ const LIBHod = ({ data }) => {
     if (showRequestModal && changeList.length === 0) {
       setShowRequestModal(false);
       setShowRequest(false);
-      toast.info("All changes reverted");
+      // toast.info("All changes reverted");
     }
   }, [changeList]);
 
@@ -341,12 +342,12 @@ const LIBHod = ({ data }) => {
                   setFormData(editBackup ? JSON.parse(JSON.stringify(editBackup)) : JSON.parse(JSON.stringify(originalData)));
                   if (!imagebackup) {
                     console.log("Hello i am from imageback block");
-                    
+
                     setHodPic(null);
                     setImagePreview(null);
                   }
                   setIsEditing(false);
-                  toast.info("Changes reverted");
+                  // toast.info("Changes reverted");
                 }}
                 className="px-4 py-2 bg-gray-400 text-white rounded-lg shadow hover:bg-gray-500 transition"
               >

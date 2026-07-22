@@ -13,7 +13,10 @@ function IqaMem({ iqacData }) {
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const { sendRequest, loading, error } = useAdminRequest();
-  const cloneDeep = (obj) => JSON.parse(JSON.stringify(obj));
+  const cloneDeep = (obj) => {
+    if (obj === undefined || obj === null) return obj;
+    return JSON.parse(JSON.stringify(obj));
+  };
 
   // 🔹 track all changes separately
   const [changes, setChanges] = useState([]);
@@ -31,16 +34,22 @@ function IqaMem({ iqacData }) {
     const memberName = newData?.name || oldData?.name || "Unknown";
 
     setChanges((prev) => {
-      // Filter out any existing changes for this specific member/action combo
-      const filtered = prev.filter(c => 
-        !(c.category === category && 
-          c.memberIdx === memberIdx && 
-          ((action === "updated" && c.action === "updated") ||
-           (action === "added" && c.action === "added") ||
-           (action === "deleted" && c.action === "deleted")))
+      const filtered = prev.filter(
+        (c) =>
+          !(
+            c.category === category &&
+            c.memberIdx === memberIdx &&
+            c.action === action
+          )
       );
 
-      // Add the new change
+      const existing = prev.find(
+        (c) =>
+          c.category === category &&
+          c.memberIdx === memberIdx &&
+          c.action === "updated"
+      );
+
       const newChange = {
         action,
         category,
@@ -48,7 +57,10 @@ function IqaMem({ iqacData }) {
         memberIdx,
         memberName,
         newData: action !== "deleted" ? cloneDeep(newData) : null,
-        oldData: action === "updated" ? cloneDeep(oldData) : null,
+        oldData:
+          action === "updated"
+            ? existing?.oldData ?? cloneDeep(oldData)
+            : null,
         timestamp: new Date().toISOString(),
       };
 
@@ -61,12 +73,25 @@ function IqaMem({ iqacData }) {
   /** ✅ handle field change */
   const handleFieldChange = (groupIdx, memberIdx, field, value) => {
     const updated = cloneDeep(data);
-    const oldData = cloneDeep(updated[groupIdx].members[memberIdx]);
+    const oldData = cloneDeep(
+      originalData[groupIdx].members[memberIdx]
+    );
+
 
     updated[groupIdx].members[memberIdx][field] = value;
+
     setData(updated);
 
-    trackChange("updated", groupIdx, memberIdx, updated[groupIdx].members[memberIdx], oldData);
+    trackChange(
+      "updated",
+      groupIdx,
+      memberIdx,
+      cloneDeep(updated[groupIdx].members[memberIdx]),
+      cloneDeep(
+        originalData?.[groupIdx]?.members?.[memberIdx] ?? null
+      )
+    );
+
   };
 
   const handleAddMember = (groupIdx) => {
@@ -162,11 +187,11 @@ function IqaMem({ iqacData }) {
 
   const handleConfirmRequest = async () => {
     if (changes.length === 0) return;
-    
+
     const payload = buildPayload();
-    
+
     const result = await sendRequest(payload);
-    
+
     if (result) {
       setConfirmPopup(false);
       setOriginalData(cloneDeep(data));
@@ -174,7 +199,7 @@ function IqaMem({ iqacData }) {
       setShowRequest(false);
       setHasChanges(false);
       setIsEditing(false);
-      toast.success("Request sent successfully!");
+      // toast.success("Request sent successfully!");
     }
   };
 
@@ -189,16 +214,16 @@ function IqaMem({ iqacData }) {
 
   const handleUndoChange = (index) => {
     const changeToUndo = changes[index];
-    
+
     // Revert the data based on the change being undone
     if (changeToUndo) {
       const revertedData = cloneDeep(originalData);
-      
+
       // Apply all changes except the one being undone
       changes.forEach((change, idx) => {
         if (idx !== index) {
           const { groupIdx, memberIdx, action, newData, oldData } = change;
-          
+
           if (action === "added") {
             // Add this member
             if (!revertedData[groupIdx].members[memberIdx]) {
@@ -220,10 +245,10 @@ function IqaMem({ iqacData }) {
           }
         }
       });
-      
+
       setData(revertedData);
     }
-    
+
     // Remove the change
     setChanges(prev => prev.filter((_, i) => i !== index));
     if (changes.length === 1) {
@@ -233,7 +258,7 @@ function IqaMem({ iqacData }) {
   };
 
   const getActionDisplay = (action) => {
-    switch(action) {
+    switch (action) {
       case "added": return { text: "➕ Added", color: "text-green-600", bgColor: "bg-green-50" };
       case "updated": return { text: "✎ Edited", color: "text-blue-600", bgColor: "bg-blue-50" };
       case "deleted": return { text: "🗑️ Deleted", color: "text-red-600", bgColor: "bg-red-50" };
@@ -271,10 +296,9 @@ function IqaMem({ iqacData }) {
                 <div
                   key={i}
                   className={`relative 
-                    ${
-                      group.members.length === 1
-                        ? "basis-full max-w-xl mx-auto"
-                        : isLast && isOdd
+                    ${group.members.length === 1
+                      ? "basis-full max-w-xl mx-auto"
+                      : isLast && isOdd
                         ? "md:basis-[48%] md:mx-auto"
                         : "md:basis-[48%]"
                     }
@@ -386,9 +410,8 @@ function IqaMem({ iqacData }) {
             </button>
             <button
               onClick={handleSave}
-              className={`px-6 py-2 bg-secd text-white rounded hover:bg-[#800000] transition-colors ${
-                !hasChanges ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+              className={`px-6 py-2 bg-secd text-white rounded hover:bg-[#800000] transition-colors ${!hasChanges ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               disabled={!hasChanges}
             >
               Save
@@ -497,11 +520,11 @@ function IqaMem({ iqacData }) {
                               )}
                               {change.action === "updated" && (
                                 <>
-                                  <span className="text-gray-500 line-through block text-xs">
+                                  {/* <span className="text-gray-500 line-through block text-xs">
                                     Old: {change.oldData?.name} - {change.oldData?.designation}
-                                  </span>
+                                  </span> */}
                                   <span className="text-blue-600 block text-sm">
-                                    New: {change.newData?.name} - {change.newData?.designation}
+                                    {change.newData?.name} - {change.newData?.designation}
                                   </span>
                                 </>
                               )}
@@ -541,18 +564,16 @@ function IqaMem({ iqacData }) {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setConfirmPopup(false)}
-                className={`px-4 py-2 rounded bg-gray-400 text-white ${
-                  loading ? "cursor-not-allowed opacity-50" : "hover:bg-gray-500"
-                } transition-colors`}
+                className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed opacity-50" : "hover:bg-gray-500"
+                  } transition-colors`}
                 disabled={loading}
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmRequest}
-                className={`px-4 py-2 rounded bg-secd text-white ${
-                  loading ? "cursor-progress opacity-50" : "hover:bg-[#800000]"
-                } transition-colors`}
+                className={`px-4 py-2 rounded bg-secd text-white ${loading ? "cursor-progress opacity-50" : "hover:bg-[#800000]"
+                  } transition-colors`}
                 disabled={changes.length === 0 || loading}
               >
                 {loading ? "Processing..." : "Final Request"}

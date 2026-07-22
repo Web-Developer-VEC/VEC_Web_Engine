@@ -1,113 +1,132 @@
 import React, { useEffect, useState } from "react";
 import styles from "./collegevisionmission.module.css";
-import { Eye, Target } from "lucide-react"; // Importing icons
+import { Eye, Target } from "lucide-react";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const Collegevisionmission = ({ theme, toggle }) => {
+  const [isOnline, setIsOnline] = useState(typeof navigator !== "undefined" ? navigator.onLine : true);
+  const [vmData, setVmData] = useState(null);
+  const navigate = useNavigate();
 
-    const [isOnline, setIsOnline] = useState(navigator.onLine);
-    const [vmData, setvmData] = useState(null);
-    const navigate = useNavigate();
- 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const responce = await axios.post('/api/main-backend/about_us',
-                    {
-                        type: "vision_and_mission"
-                    }
-                );
-                const data = responce.data.data;
-                setvmData(data);
-                
-            } catch (error) {
-                console.error("Error fetching about us data",error);
-                if (error.response.data.status === 429) {
-                    navigate('/ratelimit', { state: { msg: error.response.data.message}})
-                }
-            }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responce = await axios.post("/api/main-backend/about_us", {
+          type: "vision_and_mission",
+        });
+        const data = responce.data.data;
+        setVmData(data);
+      } catch (error) {
+        console.error("Error fetching about us data", error);
+        if (error?.response?.data?.status === 429) {
+          navigate("/ratelimit", { state: { msg: error.response.data.message } });
         }
-        fetchData();
-    }, [])
-
-    useEffect(() => {
-        const handleOnline = () => setIsOnline(true);
-        const handleOffline = () => setIsOnline(false);
-
-        window.addEventListener("online", handleOnline);
-        window.addEventListener("offline", handleOffline);
-
-        return () => {
-            window.removeEventListener("online", handleOnline);
-            window.removeEventListener("offline", handleOffline);
-        };
-    }, []);
-
-    if (!isOnline) {
-        return (
-          <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-            <LoadComp txt={"You are offline"} />
-          </div>
-        );
-    }
-
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-    const UrlParser = (path) => {
-        return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+      }
     };
+    fetchData();
+  }, [navigate]);
 
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+  if (!isOnline) {
     return (
-        <div className={`${styles.root} font-[Poppins]`}>
-
-            <Banner
-                toggle={toggle}
-                theme={theme}
-                backgroundImage="./Banners/aboutvec.webp"
-                headerText="Vision & Mission"
-                subHeaderText="Empowering a better tomorrow through innovation and integrity"
-            />
-            {vmData ? (
-                <div className={styles.visionMissionContainer}>
-                    {/* Vision Section (Left) and Photo (Rightmost) */}
-                        <div className={styles.photo}>
-                            <img src={UrlParser(vmData?.image_path)} alt="Vision Photo" className={styles.photoImage} />
-                        </div>
-                    <div className={styles.visionWrapper}>
-                        <div className={`${styles.visionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
-                            <div className={styles.cardHeader}>
-                                {/* <Eye size={24} className="text-white me-2" /> */}
-                                <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Vision</h2>
-                            </div>
-                            <p className={styles.cardContent}>
-                                {vmData?.vision}
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Mission Section (Centered below Vision, increased width) */}
-                    <div className={styles.missionWrapper}>
-                        <div className={`${styles.missionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
-                            <div className={styles.cardHeader}>
-                                {/* <Target size={24} className="text-white me-2" /> */}
-                                <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>Institute Mission</h2>
-                            </div>
-                            <p className={`${styles.cardContent} text-text dark:text-drkt`}>
-                                {vmData?.mission}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            ) : (
-                <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
-                    <LoadComp txt={""} />
-                </div>
-            )}
-        </div>
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp txt={"You are offline"} />
+      </div>
     );
+  }
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "";
+
+  const UrlParser = (path) => {
+    if (!path) return "";
+    if (path.startsWith("http")) return path;
+    return BASE_URL ? `${BASE_URL.replace(/\/$/, "")}${path}` : path;
+  };
+
+  const visionToBullets = (vision) => {
+    if (!vision) return [];
+    if (Array.isArray(vision)) return vision.map((v) => v.trim()).filter(Boolean);
+    const sentences = vision.match(/[^.!?]+[.!?]*/g) || [];
+    return sentences.map((s) => s.trim()).filter(Boolean);
+  };
+
+  return (
+    <div className={`${styles.root} font-[Poppins]`}>
+      <Banner
+        toggle={toggle}
+        theme={theme}
+        backgroundImage="./Banners/aboutvec.webp"
+        headerText="Vision & Mission"
+        subHeaderText="Empowering a better tomorrow through innovation and integrity"
+      />
+
+      {vmData ? (
+        <div className={styles.visionMissionContainer}>
+          <div className={styles.photo}>
+            <img src={UrlParser(vmData?.image_path)} alt="Vision Photo" className={styles.photoImage} />
+          </div>
+
+          <div className={styles.visionWrapper}>
+            <div className={`${styles.visionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
+              <div className={styles.cardHeader}>
+                
+                <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>
+                  Institute Vision
+                </h2>
+              </div>
+                <div className="text-base text-justify mt-2.5">
+                <ul>
+                    {visionToBullets(vmData?.vision).map((point, idx) => (
+                    <li key={`vision-${idx}`} className="leading-relaxed">
+                        {point}
+                    </li>
+                    ))}
+                </ul>
+                </div>
+            </div>
+          </div>
+
+          <div className={styles.missionWrapper}>
+            <div className={`${styles.missionCard} ${styles.card} bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks`}>
+              <div className={styles.cardHeader}>
+                
+                <h2 className={`${styles.cardTitle} text-brwn dark:text-prim border-b-2 border-secd dark:border-drks pb-1`}>
+                  Institute Mission
+                </h2>
+              </div>
+
+              <div className={`${styles.cardContent} text-text dark:text-drkt`}>
+                <ul className="list-disc list-inside space-y-2">
+                  {(Array.isArray(vmData?.mission) ? vmData.mission : []).map((m, i) => (
+                    <li key={`mission-${i}`} className="leading-relaxed">
+                      {m}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={""} />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Collegevisionmission;

@@ -314,7 +314,7 @@ export function LIBCommitteMembers({ data }) {
       setShowRequestBtn(false);
       setChanges([]);
 
-      toast.success("Request submitted successfully!");
+
     } catch (err) {
       console.error(err);
       toast.error("❌ Failed to submit request");
@@ -456,10 +456,11 @@ export function LIBCommitteMembers({ data }) {
         </div>
 
         {/* Bottom action buttons for edit mode */}
-        {isEditing && (
-          <div className="mt-6 flex justify-between items-center">
+        { isEditing && (
+          <>
+            {/* Delete button */}
             {selectedMembers.length > 0 && !showDeleteConfirm && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[9999]">
+              <div className="w-full flex justify-center mt-6">
                 <button
                   onClick={handleDeleteSelected}
                   className="px-6 py-2 rounded-lg bg-red-600 text-white shadow-lg hover:bg-red-700 flex items-center gap-2"
@@ -469,23 +470,26 @@ export function LIBCommitteMembers({ data }) {
                 </button>
               </div>
             )}
-            <div className="ml-auto flex gap-3">
+
+            {/* Cancel & Save buttons */}
+            <div className="w-full flex justify-end mt-6 gap-3">
               <button
                 onClick={handleCancelEdit}
                 className="px-4 py-2 rounded-lg bg-gray-500 text-white font-semibold shadow-lg hover:bg-gray-600 transition"
               >
                 Cancel
               </button>
+
               {hasChanges && (
                 <button
                   onClick={handleSaveChanges}
-                  className="px-4 py-2 rounded-lg bg-[#fdcc03] text-text shadow-lg hover:bg-[#800000] transition flex items-center gap-2 hover:text-prim"
+                  className="px-4 py-2 rounded-lg bg-[#fdcc03] text-text shadow-lg hover:bg-[#800000] hover:text-prim transition"
                 >
-                  <Save className="w-4 h-4" /> Save
+                  Save
                 </button>
               )}
             </div>
-          </div>
+          </>
         )}
 
         {showRequestBtn && (

@@ -15,7 +15,7 @@ export function LIBResources({ data }) {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [requestChanges, setRequestChanges] = useState([]);
   const { sendRequest, loading, error } = useAdminRequest();
-  
+
   useEffect(() => {
     if (data) {
       setFormData(deepCopy(data));
@@ -37,13 +37,13 @@ export function LIBResources({ data }) {
   const handleInputChange = (sectionIndex, contentIndex, value, field) => {
     const updated = [...formData];
     const updatedContent = [...updated[sectionIndex].content];
-    
+
     if (typeof updatedContent[contentIndex] === "string") {
       updatedContent[contentIndex] = value;
     } else {
       updatedContent[contentIndex] = { ...updatedContent[contentIndex], [field]: value };
     }
-    
+
     updated[sectionIndex] = { ...updated[sectionIndex], content: updatedContent };
     setFormData(updated);
   };
@@ -54,12 +54,12 @@ export function LIBResources({ data }) {
       ...section,
       content: section.content.map(item => {
         if (typeof item === "string") return item;
-        
+
         // If it's marked as a string, convert back
         if (item._isString) {
           return item.value;
         }
-        
+
         // For objects, remove 'selected' property
         const { selected, ...cleanItem } = item;
         return cleanItem;
@@ -77,7 +77,7 @@ export function LIBResources({ data }) {
           if (!item.trim()) {
             errors.push(`${section.category} - Item ${itemIdx + 1}: Field is empty`);
           }
-        } 
+        }
         // Handle _isString marked items
         else if (item?._isString) {
           if (!item.value || !item.value.trim()) {
@@ -102,110 +102,106 @@ export function LIBResources({ data }) {
   const getDetailedChanges = (cleanedData) => {
     const detailedChanges = [];
 
+    const getItemKey = (item) => {
+      if (typeof item === "string") return item.trim();
+
+      if (item?._isString) return item.value.trim();
+
+      return `${item.name || ""}|||${item.link || ""}`;
+    };
+
+    const formatItem = (item) => {
+      if (typeof item === "string") return item;
+      if (item?._isString) return item.value;
+      return `${item.name} - ${item.link}`;
+    };
+
     cleanedData.forEach((section, sectionIdx) => {
       const origSection = originalData[sectionIdx];
       if (!origSection) return;
 
-      const origContent = origSection.content || [];
+      const oldContent = origSection.content || [];
       const newContent = section.content || [];
 
-      const getItemKey = (item) => {
-        if (typeof item === "string") return item;
-        if (item?.name && item?.link) return `${item.name}|||${item.link}`;
-        return JSON.stringify(item);
-      };
+      // ---------- Deleted ----------
+      oldContent.forEach((oldItem) => {
+        const exists = newContent.some(
+          (newItem) => getItemKey(newItem) === getItemKey(oldItem)
+        );
 
-      const formatItem = (item) =>
-        typeof item === "string" ? item : `${item.name} - ${item.link}`;
-
-      // Build sets to track which items have been processed
-      const origKeys = origContent.map(getItemKey);
-      const newKeys = newContent.map(getItemKey);
-
-      // Track which items are still present or changed position
-      const processedOrig = new Set();
-      const processedNew = new Set();
-
-      // First pass: Find exact matches at same position (these are unchanged)
-      for (let i = 0; i < Math.min(origContent.length, newContent.length); i++) {
-        if (origKeys[i] === newKeys[i]) {
-          processedOrig.add(i);
-          processedNew.add(i);
+        if (!exists) {
+          detailedChanges.push({
+            type: "Deleted",
+            sectionName: section.category,
+            sectionIndex: sectionIdx,
+            item: oldItem,
+            displayText: formatItem(oldItem),
+          });
         }
-      }
+      });
 
-      // Second pass: Find edits at same position (modified items)
-      for (let i = 0; i < Math.min(origContent.length, newContent.length); i++) {
-        if (processedOrig.has(i) || processedNew.has(i)) continue;
+      // ---------- Added ----------
+      newContent.forEach((newItem) => {
+        const exists = oldContent.some(
+          (oldItem) => getItemKey(oldItem) === getItemKey(newItem)
+        );
 
-        const oldItem = origContent[i];
+        if (!exists) {
+          detailedChanges.push({
+            type: "Added",
+            sectionName: section.category,
+            sectionIndex: sectionIdx,
+            item: newItem,
+            displayText: formatItem(newItem),
+          });
+        }
+      });
+
+      // ---------- Edited ----------
+      const limit = Math.min(oldContent.length, newContent.length);
+
+      for (let i = 0; i < limit; i++) {
+        const oldItem = oldContent[i];
         const newItem = newContent[i];
 
-        // Check if both items exist elsewhere in the arrays
-        const oldExistsInNew = newKeys.includes(origKeys[i]);
-        const newExistsInOrig = origKeys.includes(newKeys[i]);
+        if (getItemKey(oldItem) === getItemKey(newItem)) continue;
 
-        // If neither exists elsewhere, treat as an edit at this position
-        if (!oldExistsInNew && !newExistsInOrig) {
-          if (typeof oldItem === "string" && typeof newItem === "string") {
+        // ignore if it was already classified as add/delete
+        const oldStillExists = newContent.some(
+          (x) => getItemKey(x) === getItemKey(oldItem)
+        );
+
+        const newAlreadyExisted = oldContent.some(
+          (x) => getItemKey(x) === getItemKey(newItem)
+        );
+
+        if (!oldStillExists && !newAlreadyExisted) {
+          if (
+            typeof oldItem === "object" &&
+            typeof newItem === "object" &&
+            !oldItem._isString &&
+            !newItem._isString
+          ) {
+            const parts = [];
+
+            if (oldItem.name !== newItem.name) {
+              parts.push(`Name: "${oldItem.name}" → "${newItem.name}"`);
+            }
+
+            if (oldItem.link !== newItem.link) {
+              parts.push(`Link: "${oldItem.link}" → "${newItem.link}"`);
+            }
+
             detailedChanges.push({
               type: "Edited",
               sectionName: section.category,
               sectionIndex: sectionIdx,
               oldItem,
               newItem,
-              displayText: `"${oldItem}" → "${newItem}"`,
+              displayText: parts.join(" | "),
             });
-          } else if (typeof oldItem === "object" && typeof newItem === "object") {
-            const changeParts = [];
-            if (oldItem.name !== newItem.name) {
-              changeParts.push(`Name: "${oldItem.name}" → "${newItem.name}"`);
-            }
-            if (oldItem.link !== newItem.link) {
-              changeParts.push(`Link: "${oldItem.link}" → "${newItem.link}"`);
-            }
-            if (changeParts.length > 0) {
-              detailedChanges.push({
-                type: "Edited",
-                sectionName: section.category,
-                sectionIndex: sectionIdx,
-                oldItem,
-                newItem,
-                displayText: changeParts.join(" | "),
-              });
-            }
           }
-          processedOrig.add(i);
-          processedNew.add(i);
         }
-      }
-
-      // Third pass: Find deleted items
-      for (let i = 0; i < origContent.length; i++) {
-        if (processedOrig.has(i)) continue;
-        
-        const item = origContent[i];
-        detailedChanges.push({
-          type: "Deleted",
-          sectionName: section.category,
-          sectionIndex: sectionIdx,
-          item,
-          displayText: formatItem(item),
-        });
-      }
-
-      // Fourth pass: Find added items
-      for (let i = 0; i < newContent.length; i++) {
-        if (processedNew.has(i)) continue;
-        
-        const item = newContent[i];
-        detailedChanges.push({
-          type: "Added",
-          sectionName: section.category,
-          sectionIndex: sectionIdx,
-          item,
-          displayText: formatItem(item),
-        });
       }
     });
 
@@ -215,7 +211,7 @@ export function LIBResources({ data }) {
   const handleSave = () => {
     // Validate required fields first
     const validationErrors = validateRequiredFields();
-    
+
     if (validationErrors.length > 0) {
       toast.error(
         <div>
@@ -258,7 +254,7 @@ export function LIBResources({ data }) {
       if (typeof item === "string") return false; // strings don't have selected property
       return item?.selected;
     });
-    
+
     const updatedContent = section.content.filter((item) => {
       if (typeof item === "string") return true; // keep all strings
       return !item?.selected; // remove selected objects
@@ -367,7 +363,7 @@ export function LIBResources({ data }) {
       setShowRequestButtons(false);
       setRequestChanges([]);
 
-      toast.success("Library resources request submitted!");
+      // toast.success("Library resources request submitted!");
     } catch (err) {
       console.error(err);
       toast.error("❌ Failed to submit request");
@@ -383,16 +379,16 @@ export function LIBResources({ data }) {
             <h2 className="text-4xl font-bold text-accn dark:text-drkt">
               Library Resources
             </h2>
-            
+
             {!isEditing && (
               <button
                 onClick={handleEditClick}
                 className="flex items-center gap-2 p-3
-                          bg-[#FDCC03] text-black font-medium 
-                          rounded-xl shadow-md 
-                          hover:bg-[#800000] hover:text-white 
-                          hover:shadow-lg 
-                          active:scale-95 transition-all duration-200"
+bg-[#FDCC03] text-black font-medium
+rounded-xl shadow-md
+hover:bg-[#800000] hover:!text-white
+hover:shadow-lg
+active:scale-95 transition-all duration-200"
               >
                 <Pencil size={20} />
                 <span>Edit</span>
@@ -454,7 +450,7 @@ export function LIBResources({ data }) {
                               onChange={(e) => {
                                 const updated = [...formData];
                                 const updatedContent = [...updated[index].content];
-                                
+
                                 // Handle string vs object differently
                                 if (typeof updatedContent[idx] === "string") {
                                   // For strings, create an object with the value and selected state
@@ -469,7 +465,7 @@ export function LIBResources({ data }) {
                                     selected: e.target.checked,
                                   };
                                 }
-                                
+
                                 updated[index] = { ...updated[index], content: updatedContent };
                                 setFormData(updated);
                               }}
@@ -484,7 +480,7 @@ export function LIBResources({ data }) {
                                 onChange={(e) => {
                                   const updated = [...formData];
                                   const updatedContent = [...updated[index].content];
-                                  
+
                                   if (typeof updatedContent[idx] === "string") {
                                     updatedContent[idx] = e.target.value;
                                   } else if (updatedContent[idx]._isString) {
@@ -493,7 +489,7 @@ export function LIBResources({ data }) {
                                       value: e.target.value,
                                     };
                                   }
-                                  
+
                                   updated[index] = { ...updated[index], content: updatedContent };
                                   setFormData(updated);
                                 }}
@@ -529,7 +525,7 @@ export function LIBResources({ data }) {
                           onClick={() => {
                             const updated = [...formData];
                             const currentSection = updated[index];
-                            
+
                             // Detect content type: check first non-selected item
                             const firstRealItem = currentSection.content.find(item => {
                               if (typeof item === "string") return true;
@@ -537,9 +533,9 @@ export function LIBResources({ data }) {
                               if (!item?.selected) return true;
                               return false;
                             });
-                            
+
                             const isStringSection = typeof firstRealItem === "string" || firstRealItem?._isString;
-                            
+
                             // Add appropriate type
                             if (isStringSection) {
                               updated[index] = {
@@ -552,7 +548,7 @@ export function LIBResources({ data }) {
                                 content: [...updated[index].content, { name: "", link: "" }]
                               };
                             }
-                            
+
                             setFormData(updated);
                           }}
                           className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
@@ -566,16 +562,16 @@ export function LIBResources({ data }) {
                           if (typeof item === "string") return false;
                           return item?.selected;
                         }) && (
-                          <div className="mt-4">
-                            <button
-                              onClick={() => setShowDeleteModal(index)}
-                              className="flex items-center gap-2 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-                            >
-                              <Trash2 size={18} />
-                              Delete Selected
-                            </button>
-                          </div>
-                        )}
+                            <div className="mt-4">
+                              <button
+                                onClick={() => setShowDeleteModal(index)}
+                                className="flex items-center gap-2 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                              >
+                                <Trash2 size={18} />
+                                Delete Selected
+                              </button>
+                            </div>
+                          )}
                       </div>
                     )}
 
@@ -594,7 +590,7 @@ export function LIBResources({ data }) {
                               } else {
                                 displayText = item?.name || "";
                               }
-                              
+
                               return (
                                 <li
                                   key={idx}
@@ -629,10 +625,10 @@ export function LIBResources({ data }) {
                   </button>
                   <button
                     onClick={handleSave}
-                    className="flex items-center gap-2 px-6 py-3 bg-[#fdcc03] text-black rounded-lg hover:bg-[#800000] hover:text-white font-medium"
+                    className="flex items-center gap-2 px-6 py-3 bg-[#fdcc03] text-black rounded-lg hover:bg-[#800000] hover:!text-white font-medium"
                   >
-                    <Save size={20} />
-                    Save Changes
+
+                    Save
                   </button>
                 </>
               )}
@@ -647,7 +643,7 @@ export function LIBResources({ data }) {
                   </button>
                   <button
                     onClick={handleRequest}
-                    className="flex items-center gap-2 px-6 py-3 bg-[#fdcc03] text-black rounded-lg hover:bg-[#800000] hover:text-white font-medium"
+                    className="flex items-center gap-2 px-6 py-3 bg-[#fdcc03] text-black rounded-lg hover:bg-[#800000] hover:!text-white font-medium"
                   >
                     <Send size={20} />
                     Send Request
@@ -757,12 +753,12 @@ export function LIBResources({ data }) {
                       <button
                         onClick={() => {
                           const sectionIdx = change.sectionIndex;
-                          
+
                           // Undo the specific change in formData
                           setFormData((prev) => {
                             const updated = deepCopy(prev);
                             const section = updated[sectionIdx];
-                            
+
                             if (change.type === "Added") {
                               // Remove the added item
                               const getItemKey = (item) => {
@@ -792,14 +788,14 @@ export function LIBResources({ data }) {
                                 section.content[itemIndex] = change.oldItem;
                               }
                             }
-                            
+
                             return updated;
                           });
-                          
+
                           // Remove this change from the list
                           const newChanges = requestChanges.filter((_, i) => i !== idx);
                           setRequestChanges(newChanges);
-                          
+
                           // If no changes left at all, close modal and reset state
                           if (newChanges.length === 0) {
                             setShowRequestModal(false);
@@ -831,7 +827,7 @@ export function LIBResources({ data }) {
               <button
                 onClick={handleRequestConfirm}
                 disabled={loading}
-                className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-[#800000] text-black font-medium"
+                className="px-4 py-2 rounded bg-[#FDCC03] hover:bg-[#800000] text-black font-medium hover:!text-white"
               >
                 {loading ? "Submitting..." : "Final Request"}
               </button>

@@ -23,7 +23,7 @@ async function activitiesHandler(fileStream, docs, req, cb, filename, mimetype) 
 
     if (!isPDF) {
       // Important: Resume the stream to avoid memory leaks/hanging requests
-      fileStream.resume(); 
+      fileStream.resume();
       return cb(new Error("Only PDF documents are allowed"));
     }
 
@@ -35,13 +35,14 @@ async function activitiesHandler(fileStream, docs, req, cb, filename, mimetype) 
     }
 
     const normalizedName = collectionName.toUpperCase().trim();
-    const folderId = reverseDeptMap[normalizedName]; 
+    const folderId = reverseDeptMap[normalizedName];
     let s3Key;
 
-    if(collection_type === "activities"){
-        // Changed folder naming convention from 'images' to 'documents' or 'files' for clarity
-        const folder = `temp/static/pdfs/dept_activities/${folderId}/`;
-        s3Key = folder + realFilename;
+    if (collection_type === "activities") {
+      // Changed folder naming convention from 'images' to 'documents' or 'files' for clarity
+      const year = docs[0].meta_data.year.replace(/\s*-\s*/g, "-");
+
+      const folder = `temp/static/pdfs/dept_activities/${folderId}/${year}/`; s3Key = folder + realFilename;
     }
 
     // Buffer the stream
@@ -58,8 +59,18 @@ async function activitiesHandler(fileStream, docs, req, cb, filename, mimetype) 
       Body: fileBuffer,
       ContentType: "application/pdf", // Explicitly set PDF content type
     });
-
+    const uploadedFileName = path.basename(realFilename);
     const data = await s3.send(command);
+    const location = `/${s3Key}`;
+    const activity = docs[0].meta_data.activities_tile.find(item => {
+      if (!item.pdf_path) return false;
+
+      return path.basename(item.pdf_path) === uploadedFileName;
+    });
+
+    if (activity) {
+      activity.pdf_path = `/${s3Key}`;
+    }
 
     if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
