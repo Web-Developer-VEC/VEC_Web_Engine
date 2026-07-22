@@ -227,7 +227,6 @@ export default function Gall({ gallery }) {
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(true);
-    toast.success("Changes saved (staged)");
   };
 
   const handleCancelSession = () => {
@@ -247,23 +246,43 @@ export default function Gall({ gallery }) {
     setIsEditing(false);
     setIsSavedOnce(false);
     setSelectedRows(new Set());
-    toast.info("All changes discarded");
   };
 
   const handleRequest = () => setShowRequestModal(true);
 
   // Build payload matching your backend shape — ensure image_path is an array
-  const generatePayload = () => {
+  const generatePayload = (files) => {
     return allChanges
       .map((change) => {
         if (change.action === "add") {
+
+          let imagePath = "";
+
+          if (change.item instanceof File) {
+
+            const uniqueName = change.item.name;
+
+            const renamedFile = new File(
+              [change.item],
+              uniqueName,
+              {
+                type: change.item.type,
+              }
+            );
+
+            files.push(renamedFile);
+
+            imagePath = `/static/images/e_cell/${uniqueName}`;
+          }
+
           return {
             action: "insert",
             collectionName: "ecell",
             title: "gallery insert",
             collection_type: "gallery",
             meta_data: {
-              image_path: [normalizeImagePath(change.item)],
+              image_path: [imagePath],
+
             },
           };
         }
@@ -301,15 +320,15 @@ export default function Gall({ gallery }) {
   };
 
   const handleFinalRequestConfirm = async () => {
-    const payload = generatePayload();
+    const files = [];
+    const payload = generatePayload(files);
     if (!payload.length) {
       toast.info("No changes to submit");
       return;
     }
 
     try {
-      await sendRequest(payload); // your hook will POST to admin
-      toast.success("📩 Request sent for admin approval");
+      await sendRequest(payload, files); // your hook will POST to admin
 
       // Update original references and clear persisted changes
       originalRef.current = savedDataRef.current.slice();
@@ -339,7 +358,7 @@ export default function Gall({ gallery }) {
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl text-center text-brwn dark:text-drkt my-4">Gallery</h2>
         {!isEditing && (
-          <button className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black" onClick={() => setIsEditing(true)}>
+          <button className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200" onClick={() => setIsEditing(true)}>
             <Pencil className="mr-2" /> Edit
           </button>
         )}
@@ -347,68 +366,102 @@ export default function Gall({ gallery }) {
 
       <div className="gallery-images grid grid-cols-2 md:grid-cols-3 gap-4">
         {editableData.map((imgPath, index) => (
-          <div className="gallery-item relative" key={index + "-" + (typeof imgPath === "string" ? imgPath : imgPath.name)}>
+          <div
+            className="gallery-item relative"
+            key={index + "-" + (typeof imgPath === "string" ? imgPath : imgPath.name)}
+          >
             <img
               src={buildSrc(imgPath)}
               alt={`Gallery ${index + 1}`}
-              className="gallery-image rounded-lg shadow-md"
-              onError={(e) => {
-                // fallback: try using BASE_URL + normalized path (useful if src was missing BASE_URL)
-                const norm = normalizeImagePath(imgPath);
-                if (norm && !norm.startsWith("http")) {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = `${BASE_URL}${norm}`;
-                }
-              }}
-              style={{ width: "100%", height: "auto", objectFit: "cover" }}
+              className="w-full h-full object-cover rounded-lg"
             />
+
             {isEditing && (
-              <input type="checkbox" className="absolute top-2 right-2 w-6 h-6" checked={selectedRows.has(index)} onChange={() => toggleSelectRow(index)} />
+              <input
+                type="checkbox"
+                className="absolute top-2 right-2 w-6 h-6"
+                checked={selectedRows.has(index)}
+                onChange={() => toggleSelectRow(index)}
+              />
             )}
           </div>
         ))}
-      </div>
 
-      {isEditing && (
-        <div className="mt-4 flex gap-4 items-center">
-          <label className="bg-gray-300 w-[410px] h-[350px] flex justify-center items-center border-4 border-dashed hover:border-bg-secd border-bg-text text-text px-3 py-2 rounded cursor-pointer">
-            + Add New Image
-            <input type="file" accept="image/*" onChange={handleAddNew} className="hidden" />
+        {/* ADD NEW IMAGE CARD */}
+        {isEditing && (
+          <label className="gallery-item bg-gray-300 rounded-lg border-4 border-dashed border-gray-400 hover:border-yellow-500 cursor-pointer flex items-center justify-center h-[250px]">
+            <span className="text-lg font-semibold">
+              + Add New Image
+            </span>
+
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleAddNew}
+            />
           </label>
-
-          {selectedRows.size > 0 && (
-            <button className="bg-red-600 flex justify-end mr-auto ml-40 text-white px-3 py-2 rounded" onClick={openDeleteConfirm}>
-              <Trash2 className="inline mr-2" /> Delete Selected
-            </button>
-          )}
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="py-4 mt-4 flex justify-end gap-4">
-        {isEditing && (
-          <>
-            <button className="bg-gray-500 px-3 py-2 rounded text-white" onClick={handleCancelSession}>
-              Cancel
-            </button>
-            {hasUnsavedChanges && (
-              <button className="flex items-center bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg" onClick={handleSave}>
-                Save
-              </button>
-            )}
-          </>
-        )}
-        {!isEditing && isSavedOnce && (
-          <>
-            <button className="flex items-center bg-gray-500 px-3 py-2 rounded text-white" onClick={handleDiscardAll}>
-              Discard All
-            </button>
-            <button className="bg-secd text-text px-3 py-2 flex flex-row rounded hover:bg-brwn hover:text-prim" onClick={handleRequest}>
-              <Send className="mr-2" /> Request
-            </button>
-          </>
-        )}
-      </div>
 
+        {/* Action Buttons */}
+        <div className="w-full mt-6">
+
+          {isEditing && selectedRows.size > 0 && (
+            <div className="w-full flex justify-center mb-6">
+              <button
+                onClick={openDeleteConfirm}
+                className="px-8 py-3 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition flex items-center gap-2"
+              >
+                <Trash2 size={18} />
+                Delete Selected ({selectedRows.size})
+              </button>
+            </div>
+          )}
+
+          {isEditing && (
+            <div className="w-full flex justify-end gap-4">
+              <button
+                className="px-6 py-2 rounded-md bg-gray-400 text-white shadow-md hover:bg-gray-500 transition"
+                onClick={handleCancelSession}
+              >
+                Cancel
+              </button>
+
+              {hasUnsavedChanges && (
+                <button
+                  className="flex items-center gap-2 px-6 py-2 rounded-md bg-[#fdcc03] text-black shadow-md hover:bg-[#800000] hover:!text-white transition"
+                  onClick={handleSave}
+                >
+                  Save
+                </button>
+              )}
+            </div>
+          )}
+
+          {!isEditing && isSavedOnce && (
+            <div className="w-full flex justify-end gap-4">
+              <button
+                className="px-6 py-2 rounded-md bg-gray-400 text-white shadow-md hover:bg-gray-500 transition"
+                onClick={handleDiscardAll}
+              >
+                Discard Changes
+              </button>
+
+              <button
+                className="flex items-center gap-2 px-6 py-2 bg-[#fdcc03] text-black rounded-lg shadow-md hover:bg-[#800000] hover:!text-white transition"
+                onClick={handleRequest}
+              >
+                <Send size={18} />
+                Request
+              </button>
+            </div>
+          )}
+
+        </div>
+      </div>
       {/* Final Request Modal */}
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
@@ -456,7 +509,7 @@ export default function Gall({ gallery }) {
               </table>
             </div>
             <div className="flex justify-end gap-3">
-              <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-white">
+              <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200">
                 Cancel
               </button>
               <button onClick={handleFinalRequestConfirm} className="px-4 py-2 rounded bg-secd hover:bg-brwn text-text hover:text-prim">
@@ -474,10 +527,10 @@ export default function Gall({ gallery }) {
             <h3 className="text-lg font-semibold mb-2">Confirm Delete</h3>
             <p className="text-sm mb-4">{selectedRows.size > 1 ? "Are you sure you want to delete selected images?" : "Are you sure you want to delete this image?"}</p>
             <div className="flex justify-center gap-4">
-              <button className="bg-gray-400 px-4 py-2 rounded text-white" onClick={() => setDeleteConfirmOpen(false)}>
+              <button className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200" onClick={() => setDeleteConfirmOpen(false)}>
                 Cancel
               </button>
-              <button className="bg-red-600 px-4 py-2 rounded text-white" onClick={confirmDelete}>
+              <button className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700" onClick={confirmDelete}>
                 Delete
               </button>
             </div>
