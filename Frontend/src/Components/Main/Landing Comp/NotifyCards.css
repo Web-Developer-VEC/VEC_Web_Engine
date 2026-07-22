@@ -1,0 +1,477 @@
+/* ==========================================================
+   NOTIFY CARD POPUP
+   Professional UI
+========================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ---------------- Overlay ---------------- */
+
+.nc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0);
+
+  opacity: 0;
+
+  overflow: hidden;
+  overscroll-behavior: contain;
+
+  transition:
+    opacity .35s ease,
+    background .35s ease,
+    backdrop-filter .35s ease;
+}
+
+.nc-overlay.nc-show {
+  opacity: 1;
+  background: rgba(0,0,0,.4);
+  backdrop-filter: blur(10px);
+}
+
+.nc-overlay.nc-hide {
+  opacity: 0;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(0);
+}
+
+/* ---------------- Modal ---------------- */
+
+.nc-modal {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  transform: translateY(40px) scale(.95);
+  opacity: 0;
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    opacity .35s ease;
+
+  will-change: transform, opacity;
+
+  /* Keep the border to exactly 2px, and box-sizing:border-box (set globally above)
+     ensures this border is drawn INSIDE the declared width/height instead of adding
+     to it — that mismatch was the source of the extra side gap/scroll. */
+  border: 2px solid #fff;
+  background: #111;
+  margin: 0;
+  padding: 0;
+}
+
+.nc-overlay.nc-show .nc-modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.nc-overlay.nc-hide .nc-modal {
+  transform: translateY(20px) scale(.97);
+  opacity: 0;
+}
+
+/* ==========================================================
+   IMAGE POPUP
+========================================================== */
+
+.nc-modal--image {
+  background: #111;
+  width: auto;
+  max-width: 900px;
+  max-height: 85vh;
+  padding: 0;
+}
+
+/* ==========================================================
+   PDF POPUP
+========================================================== */
+
+.nc-modal--pdf {
+  width: fit-content;
+  max-width: 92vw;
+  height: 85vh;
+  background: #fff;
+}
+
+/* ==========================================================
+   MEDIA WRAPPER
+========================================================== */
+
+.nc-media {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: flex;
+  justify-content: center;
+
+  background: #111;
+}
+
+
+.nc-modal--image .nc-media {
+  align-items: center;
+}
+
+.nc-modal--pdf .nc-media {
+  align-items: flex-start;
+  background: #fff;
+}
+
+/* ==========================================================
+   IMAGE
+========================================================== */
+
+img.nc-media-content {
+  display: block;
+  margin: 0;
+
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
+  background: transparent;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  opacity: 0;
+  transform: scale(.96);
+
+  transition:
+      opacity .35s ease,
+      transform .35s ease;
+}
+
+/* ==========================================================
+   PDF
+========================================================== */
+
+iframe.nc-media-content {
+  display: block;
+  margin: 0;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 100%;
+
+  border: none;
+
+  background: #fff;
+
+  opacity: 0;
+  transform: scale(.985);
+
+  transition:
+      opacity .35s ease,
+      transform .35s ease;
+}
+
+/* Fade In */
+
+.nc-overlay.nc-show .nc-media-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ==========================================================
+   CLOSE BUTTON
+========================================================== */
+
+.nc-close {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  z-index: 100;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  line-height: 1;
+
+  background: rgba(255,255,255,.95);
+
+  color: #222;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+
+  transition:
+      background .25s ease,
+      color .25s ease,
+      transform .25s ease;
+}
+
+.nc-close:hover {
+  background: #e53935;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* ==========================================================
+   NAVIGATION ARROWS
+========================================================== */
+
+.nc-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(.96);
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  background: rgba(255,255,255,.92);
+  color: #222;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.28);
+
+  z-index: 90;
+
+  opacity: 0;
+
+  transition:
+      transform .25s ease,
+      opacity .35s ease,
+      background .25s ease,
+      color .25s ease,
+      box-shadow .25s ease;
+}
+
+.nc-overlay.nc-show .nc-arrow {
+  opacity: 1;
+}
+
+.nc-overlay.nc-hide .nc-arrow {
+  opacity: 0;
+}
+
+.nc-arrow svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+
+.nc-arrow:hover {
+  background: #fdcc03;
+  color: #111;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 14px 34px rgba(0,0,0,.35);
+}
+
+.nc-arrow:active {
+  transform: translateY(-50%) scale(.94);
+}
+
+.nc-arrow--left {
+  left: 18px;
+}
+
+.nc-arrow--right {
+  right: 18px;
+}
+
+/* ==========================================================
+   IMAGE ONLY
+========================================================== */
+
+.nc-modal--image img {
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
+}
+
+/* ==========================================================
+   PDF ONLY
+========================================================== */
+
+.nc-modal--pdf iframe {
+  border-radius: 0;
+}
+
+/* ==========================================================
+   DESKTOP
+========================================================== */
+
+@media (min-width: 1200px) {
+  .nc-modal--image {
+    max-width: 92vw;
+    max-height: 90vh;
+  }
+
+  img.nc-media-content {
+    max-width: 92vw;
+    max-height: 90vh;
+  }
+
+  .nc-modal--pdf {
+    width: min(1250px, 95vw);
+    height: min(920px, 92vh);
+  }
+}
+
+/* ==========================================================
+   LAPTOP
+========================================================== */
+
+@media (max-width: 1199px) {
+  .nc-modal--pdf {
+    width: 95vw;
+    height: 88vh;
+  }
+
+  .nc-modal--image {
+    max-width: 94vw;
+    max-height: 88vh;
+  }
+
+  img.nc-media-content {
+    max-width: 94vw;
+    max-height: 88vh;
+  }
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 992px) {
+  .nc-overlay {
+    padding: 16px;
+  }
+
+  .nc-modal--pdf {
+    width: 96vw;
+    height: 84vh;
+  }
+
+  .nc-modal--image {
+    max-width: 95vw;
+    max-height: 84vh;
+  }
+
+  img.nc-media-content {
+    max-width: 95vw;
+    max-height: 84vh;
+  }
+
+  .nc-close {
+    width: 40px;
+    height: 40px;
+    top: 12px;
+    right: 12px;
+  }
+
+  .nc-arrow {
+    width: 42px;
+    height: 42px;
+  }
+
+  .nc-arrow--left {
+    left: 10px;
+  }
+
+  .nc-arrow--right {
+    right: 10px;
+  }
+}
+
+/* ==========================================================
+   LARGE MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+  .nc-overlay {
+    padding: 12px;
+  }
+
+  .nc-modal--pdf {
+    width: 98vw;
+    height: 80vh;
+  }
+
+  .nc-modal--image {
+    max-width: 96vw;
+    max-height: 80vh;
+  }
+
+  img.nc-media-content {
+    max-width: 96vw;
+    max-height: 80vh;
+  }
+
+  .nc-close {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .nc-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nc-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nc-arrow--left {
+    left: 8px;
+  }
+
+  .nc-arrow--right {
+    right: 8px;
+  }
+}

@@ -199,7 +199,7 @@ const AlumniSlider1 = ({ data }) => {
     setIsDirty(false);
     setSelectedItems([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
+   // toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -337,7 +337,7 @@ const AlumniSlider1 = ({ data }) => {
         setPendingItems(null);
         setIsSaved(false);
         setShowRequestModal(false);
-        toast.success("Request submitted successfully!");
+        //toast.success("Request submitted successfully!");
       } else {
         toast.error("Request failed.");
       }

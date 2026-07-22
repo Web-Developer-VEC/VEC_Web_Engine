@@ -13,6 +13,7 @@ const MainComponents = {
     Contact: lazy(() => import('./Components/Main/Landing Comp/ContactIcon')),
     Footer: lazy(() => import('./Components/Main/Landing Comp/Footer')),
     ScrollToTopButton: lazy(() => import('./Components/Main/ScrollToTopButton')),
+    NotifyCard: lazy(()=>import('./Components/Main/Landing Comp/NotifyCard'))
 };
 
 // Admin components
@@ -21,16 +22,19 @@ const AdminComponents = {
     Abt: lazy(() => import('./Components/Admin/Landing Comp/About')),
     Announce: lazy(() => import('./Components/Admin/Landing Comp/announcements')),
     Event: lazy(() => import('./Components/Admin/Landing Comp/Events')),
+    NotifySection: lazy(() => import('./Components/Admin/Landing Comp/NotifySection')),
     Tracker: lazy(() => import('./Components/Admin/Landing Comp/Tracker')),
     Samplereact: lazy(() => import('./Components/Admin/Landing Comp/Courses')),
     Contact: lazy(() => import('./Components/Admin/Landing Comp/ContactIcon')),
     Footer: lazy(() => import('./Components/Admin/Landing Comp/Footer')),
     ScrollToTopButton: lazy(() => import('./Components/Admin/ScrollToTopButton')),
+    
 };
 
 const LandingPage = ({ theme, load, toggle, pageData, isAdmin }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
-
+    const [showPopup, setShowPopup] = useState(true);
+    
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
@@ -53,6 +57,9 @@ const LandingPage = ({ theme, load, toggle, pageData, isAdmin }) => {
                 toggle={toggle}
                 pageData={pageData}
                 isOnline={isOnline}
+                showPopup={showPopup}
+                setShowPopup={setShowPopup}
+                isAdmin={isAdmin}
             />
         </Suspense>
     );

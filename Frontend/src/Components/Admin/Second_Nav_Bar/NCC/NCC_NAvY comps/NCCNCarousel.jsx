@@ -203,7 +203,7 @@ const NCCNCarousel = ({ data }) => {
     setIsDirty(false);
     setSelectedItems([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
+   // toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -337,7 +337,7 @@ const NCCNCarousel = ({ data }) => {
       setPendingItems(null);
       setIsSaved(false);
       setShowRequestModal(false);
-      toast.success("Request submitted successfully!");
+      //toast.success("Request submitted successfully!");
     }
   };
 
