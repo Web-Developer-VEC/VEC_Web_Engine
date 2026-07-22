@@ -334,7 +334,6 @@ const Head = () => {
                                                     ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
                                     </span>
                                 </button>
-                                ) :
                                 <div className={`grid grid-flow-row content-center rounded-lg outline 
                                                     group-hover/nav:outline-secd dark:group-hover/nav:outline-drks outline-transparent 
                                                     right-0 top-10 z-[500] absolute group-hover/nav:max-h-[700vh] max-h-0 h-fit w-max outline-offset-2
