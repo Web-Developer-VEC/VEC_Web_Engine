@@ -139,29 +139,39 @@
       }
     ]
   },
+{
+  "type": "membership_details",
+  "data": [
   {
-    "type": "membership_details",
-    "data": [
-      {
-        "category": "Member Details",
-        "content": [
-          "Professors, Associate Professors and Assistant Professors",
-          "JRF/Research Scholars",
-          "UG Students",
-          "PG Students",
-          "Skilled Non-Teaching Staff"
-        ]
-      },
-      {
-        "category": "no_of_books",
-        "content": ["8", "6", "6", "6", "3"]
-      },
-      {
-        "category": "periodical_back_volumes_cd",
-        "content": ["1", "1", "1", "1", "1"]
-      }
-    ]
-  },
+  "category": "Membership details",
+  "content":[
+    {
+      "member_details": "Professors, Associate Professors and Assistant Professors",
+      "no_of_books": 8,
+      "periodical_back_volumes_cd": 1
+    },
+    {
+      "member_details": "JRF/Research Scholars",
+      "no_of_books": 6,
+      "periodical_back_volumes_cd": 1
+    },
+    {
+      "member_details": "UG Students",
+      "no_of_books": 6,
+      "periodical_back_volumes_cd": 1
+    },
+    {
+      "member_details": "PG Students",
+      "no_of_books": 6,
+      "periodical_back_volumes_cd": 1
+    },
+    {
+      "member_details": "Skilled Non-Teaching Staff",
+      "no_of_books": 3,
+      "periodical_back_volumes_cd": 1
+    }
+  ]
+  }]},
   {
     "type": "Collection",
       "data": [
