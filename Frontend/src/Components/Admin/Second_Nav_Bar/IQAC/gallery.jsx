@@ -276,12 +276,7 @@ export default function IqaGal({ iqacData, onRefresh }) {
   const handleConfirmRequest = async () => {
     try {
       const { payload, files } = buildPayload(savedData, originalData);
-      console.log("Payload Length:", payload.length);
-      console.log(payload);
-      console.log("Payload:", payload);
-      console.log("Files:", files);
-      console.log("Payload:", payload);
-      console.log("Files:", files);
+   
 
       if (payload.length === 0) {
         console.log("No payload generated");
@@ -315,7 +310,6 @@ export default function IqaGal({ iqacData, onRefresh }) {
         //   await onRefresh();
         // }
       } else {
-        console.log("sendRequest returned null");
         toast.error("sendRequest returned null");
       }
     } catch (err) {
