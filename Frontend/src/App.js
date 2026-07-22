@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import Cookies from "universal-cookie";
-import axios from 'axios';
 import useGoogleAnalytics from "./useAnalytics.js";
 import LandingPage from "./Landing.jsx"; // Keep eager, internal parts are lazy
 import LoadComp from "./Components/Main/LoadComp.jsx";
@@ -21,8 +20,7 @@ const Boot = lazy(() => import("./Components/Main/Landing Comp/BootUp"));
 const Head = lazy(() => import("./Components/Main/Landing Comp/Head.jsx"));
 const TermsandCon = lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
 const Facultyprofile = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx"));
-const Alumni = lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"));
-const OtherFacilities = lazy(() => import("./Components/Main/Second_Nav_Bar/other_facilities/Other-Facilities.jsx"));
+const Alumni = lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"))
 const WebTeam = lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/webteam.jsx"));
 const StudentLayout = lazy(() => import("./Components/Digital Hostel/Layouts/StudentDashboard.jsx"));
 const WardenLayout = lazy(() => import("./Components/Digital Hostel/Layouts/WardenDashboard.jsx"));
