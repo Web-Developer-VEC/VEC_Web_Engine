@@ -51,20 +51,19 @@ async function aboutusHandler(fileStream, docs, req, cb, filename, mimetype) {
     if (meta_data.name && typeof meta_data.pdf_path === "string") {
 
       // Only process if frontend says file exists
-      if (!meta_data.pdf_path) {
-        return cb(new Error(`No uploaded file for "${meta_data.name}"`));
-      }
-
-      const frontendBase = path.basename(meta_data.pdf_path);
       const uploadBase = path.basename(realpdfname);
 
-      if (!isUpdate && frontendBase !== uploadBase) {
+if (isUpdate && meta_data.pdf_path) {
+    const frontendBase = path.basename(meta_data.pdf_path);
+
+    if (frontendBase !== uploadBase) {
         return cb(
-          new Error(
-            `Filename mismatch. Expected "${frontendBase}" got "${uploadBase}"`
-          )
+            new Error(
+                `Filename mismatch. Expected "${frontendBase}" got "${uploadBase}"`
+            )
         );
-      }
+    }
+}
 
       if (collection_type === "about_vec") {
 
