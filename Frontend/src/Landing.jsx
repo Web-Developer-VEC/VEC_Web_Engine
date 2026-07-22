@@ -13,6 +13,8 @@ import Chat from './Components/Main/Landing Comp/ChatPopup'
 import Footer from './Components/Main/Landing Comp/Footer';
 import ScrollToTopButton from './Components/Main/ScrollToTopButton';
 import NotifyCard from './Components/Main/Landing Comp/NotifyCard';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 // Main components
 const MainComponents = {
@@ -43,18 +45,11 @@ const AdminComponents = {
     
 };
 
-const LandingPage = ({ theme, load, toggle, pageData, isAdmin }) => {
+const LandingPage = ({ theme, load, toggle, isAdmin }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [showPopup, setShowPopup] = useState(true);
-
-    const pageDetails = pageData?.find((item) => item.type === "page_details")?.data || [];
-    const bannerData = pageData?.find((item) => item.type === "banner")?.data || [];
-    const departmentBanner = pageData?.find((item) => item.type === "department_banner")?.data || [];
-    const notifications = pageData?.find((item) => item.type === "notifications")?.data || [];
-    const announcements = pageData?.find((item) => item.type === "announcements")?.data || [];
-    const specialAnnouncements = pageData?.find((item) => item.type === "special_announcements")?.data || [];
-    const events = pageData?.find((item) => item.type === "events")?.data || [];
-    const newscard = pageData?.find((item) => item.type === "news_card")?.data || [];
+    const [landingData, setLandingData] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -67,6 +62,28 @@ const LandingPage = ({ theme, load, toggle, pageData, isAdmin }) => {
         };
     }, []);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.post('/api/main-backend/landing_page_data',
+                    {
+                        type: "landing_data"
+                    }
+                );
+
+                setLandingData(responce.data.data);
+
+            } catch (error) {
+                console.error("Error fetching thhe landing page Data", error);
+                if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message } })
+                }
+            }
+        }
+
+        fetchData();
+    }, []);
+
     const components = isAdmin ? AdminComponents : MainComponents;
 
     return (
@@ -76,7 +93,7 @@ const LandingPage = ({ theme, load, toggle, pageData, isAdmin }) => {
                 theme={theme}
                 load={load}
                 toggle={toggle}
-                pageData={pageData}
+                pageData={landingData}
                 isOnline={isOnline}
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}

@@ -1,4 +1,4 @@
-/* ==========================================================
+
    NOTIFY CARD POPUP
    Professional UI
 
@@ -89,7 +89,7 @@
   opacity: 0;
 }
 
-/* ==========================================================
+
    IMAGE POPUP
 
 .nc-modal--image {
@@ -100,7 +100,7 @@
   padding: 0;
 }
 
-/* ==========================================================
+
    PDF POPUP
 
 .nc-modal--pdf {
@@ -110,7 +110,7 @@
   background: #fff;
 }
 
-/* ==========================================================
+
    MEDIA WRAPPER
 
 .nc-media {
@@ -138,7 +138,7 @@
   background: #fff;
 }
 
-/* ==========================================================
+
    IMAGE
 
 img.nc-media-content {
@@ -166,7 +166,7 @@ img.nc-media-content {
       transform .35s ease;
 }
 
-/* ==========================================================
+
    PDF
 
 iframe.nc-media-content {
@@ -197,7 +197,7 @@ iframe.nc-media-content {
   transform: scale(1);
 }
 
-/* ==========================================================
+
    CLOSE BUTTON
 
 .nc-close {
@@ -243,7 +243,7 @@ iframe.nc-media-content {
   transform: scale(1.08);
 }
 
-/* ==========================================================
+
    NAVIGATION ARROWS
 
 .nc-arrow {
@@ -313,23 +313,18 @@ iframe.nc-media-content {
   right: 18px;
 }
 
-/* ==========================================================
-   IMAGE ONLY
+
 
 .nc-modal--image img {
   border-radius: 12px;
   box-shadow: 0 18px 50px rgba(0,0,0,.45);
 }
 
-/* ==========================================================
-   PDF ONLY
+
 
 .nc-modal--pdf iframe {
   border-radius: 0;
 }
-
-/* ==========================================================
-   DESKTOP
 
 @media (min-width: 1200px) {
   .nc-modal--image {
@@ -348,9 +343,6 @@ iframe.nc-media-content {
   }
 }
 
-/* ==========================================================
-   LAPTOP
-
 @media (max-width: 1199px) {
   .nc-modal--pdf {
     width: 95vw;
@@ -367,9 +359,6 @@ iframe.nc-media-content {
     max-height: 88vh;
   }
 }
-
-/* ==========================================================
-   TABLET
 
 @media (max-width: 992px) {
   .nc-overlay {
@@ -411,9 +400,6 @@ iframe.nc-media-content {
     right: 10px;
   }
 }
-
-/* ==========================================================
-   LARGE MOBILE
 
 @media (max-width: 768px) {
   .nc-overlay {
