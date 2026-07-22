@@ -151,7 +151,6 @@ export default function IicFacEvent({ title, data, collectionType }) {
     setIsDirty(false);
     setSelectedRows([]);
     setSelectAll(false);
-    toast.info("Changes discarded!");
   };
   
 

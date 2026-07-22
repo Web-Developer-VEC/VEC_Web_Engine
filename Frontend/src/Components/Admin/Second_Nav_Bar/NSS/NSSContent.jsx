@@ -139,31 +139,39 @@ const NSSContent = ({ data }) => {
       return;
     }
 
-    const aboutArray = pendingContent?.about ?? content?.about ?? committedContent?.about ?? [];
-    const originalAbout = committedContent?.about ?? [];
+const payload = [];
 
-    const singlePayload = [
-      {
+    if (JSON.stringify(committedContent.about) !== JSON.stringify(pendingContent.about)) {
+      payload.push({
         collectionName: "nss",
         collection_type: "about",
         action: "update",
         title: "update about NSS",
         category: null,
-        meta_data: {
-          about: pendingContent.about,
-          objectives: pendingContent.objectives,
-        },
-        original_data: {
-          about: committedContent.about,
-          objectives: committedContent.objectives,
-        },
-      }
-    ];
+        meta_data: { about: pendingContent.about },
+        original_data: { about: committedContent.about },
+      });
+    }
 
+    if (JSON.stringify(committedContent.objectives) !== JSON.stringify(pendingContent.objectives)) {
+      payload.push({
+        collectionName: "nss",
+        collection_type: "about",
+        action: "update",
+        title: "update objectives NSS",
+        category: null,
+        meta_data: { objectives: pendingContent.objectives },
+        original_data: { objectives: committedContent.objectives },
+      });
+    }
+
+    if (payload.length === 0) {
+      toast.error("No changes detected.");
+      return;
+    }
 
     try {
-      console.log(singlePayload);
-      const result = await sendRequest(singlePayload, []); 
+      const result = await sendRequest(payload, []); 
       if (result) {
         setCommittedContent(deepCopy(pendingContent));
         setContent(deepCopy(pendingContent));

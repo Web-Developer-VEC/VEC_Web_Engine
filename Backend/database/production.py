@@ -12,6 +12,7 @@ DOCS_DIR = os.path.join(BASE_DIR, 'docs')
 #Hostel Student Test Settings is Turned On Till Now at line 1126
 mongo_uri = "mongodb://localhost:27017/"
 db_name = "VEC"
+
 client = MongoClient(mongo_uri)
 db = client[db_name]
 logsdb = client["LOGS_VEC"]

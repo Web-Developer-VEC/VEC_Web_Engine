@@ -299,6 +299,13 @@ const Dean = ({ theme, toggle }) => {
     setIsDirty(true);
   };
   const handleItemSelect = (categoryIndex, memberIndex) => {
+    
+    const category = deanData[categoryIndex];
+
+    if (category.members.length === 1) {
+        toast.warning("At least one member must remain in this category.");
+        return;
+    }
     const key = `${categoryIndex}-${memberIndex}`;
 
     const updatedData = deanData.map((category, catIdx) => {
@@ -910,14 +917,14 @@ const Dean = ({ theme, toggle }) => {
                 ${Object.keys(fieldErrors).some((key) => key.includes(`_${categoryIndex}_`)) ? "border-2 border-red-500 shake" : ""}
               `}
             >
-              {isEditing && (
+              {/* {isEditing && (
                 <input
                   type="checkbox"
                   checked={categoryBlock.selected || false}
                   onChange={() => handleCategorySelect(categoryIndex)}
                   className="absolute top-3 left-3 w-5 h-5 z-10"
                 />
-              )}
+              )} */}
 
               {isEditing && categoryBlock.isNew ? (
                 <input

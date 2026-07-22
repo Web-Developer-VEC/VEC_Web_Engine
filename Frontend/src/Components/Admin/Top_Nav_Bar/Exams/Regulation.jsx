@@ -262,7 +262,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
     
     setIsEditing(false);
     setIsDone(true);
-    toast.success("Saved. Now click Request to send for approval.");
   };
 
   // Confirmation flow for "Discard Changes" (after Save)
@@ -409,10 +408,10 @@ const AdminREGULATION = ({ theme, toggle }) => {
           title: "insert",
           category: change.current.category,
           meta_data: {
-            links: change.current.links.map(link => ({
+          links: change.current.links.map(link => ({
               name: link.name,
               pdf_path: link.pdf_path
-            }))
+          }))
           }
         });
       }
@@ -469,7 +468,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
       return;
     }
 
-    const payloads = buildPayloads();
+    const payloads = buildPayloads();    
     
     // Validate payloads before sending
     const invalidPayloads = payloads.filter(p => 
@@ -483,17 +482,12 @@ const AdminREGULATION = ({ theme, toggle }) => {
     }
     
     const filesToSend = popupFiles.filter(Boolean);
-
+    console.log(payloads);
+    console.log(filesToSend);
     const res = await sendRequest(payloads, filesToSend);
-
-    if (!res) {
-      toast.error(
-        "Request failed. Check console Network tab: /api/admin-backend/temp. Also confirm token/cookies are valid."
-      );
-      return;
+    if (res) {
+      setPopupFiles([null, null, null]);
     }
-
-    toast.success("Request submitted successfully. Refreshing data...");
     
     // Close modal and reset states
     setIsDone(false);
@@ -502,8 +496,6 @@ const AdminREGULATION = ({ theme, toggle }) => {
     
     // Refresh data from server to get the approved changes
     await fetchRegulationData();
-    
-    toast.success("Data refreshed with approved changes.");
   };
 
   // Popup helpers (Trash + file name)
@@ -523,21 +515,26 @@ const AdminREGULATION = ({ theme, toggle }) => {
     toast.info("PDF removed (pending submit).");
   };
 
-  const handleProgrammeUpload = (idx, file) => {
-    if (!file) return;
+const handleProgrammeUpload = (idx, file) => {
+  if (!file) return;
 
-    setPopupFiles((prev) => {
-      const next = [...prev];
-      next[idx] = file;
-      return next;
-    });
+  setPopupFiles(prev => {
+    const next = [...prev];
+    next[idx] = file;
+    return next;
+  });
 
-    setNewLinks((prev) => {
-      const next = [...prev];
-      next[idx] = { ...next[idx], pdf_path: URL.createObjectURL(file) };
-      return next;
-    });
-  };
+  setNewLinks(prev => {
+    const next = [...prev];
+
+    next[idx] = {
+      ...next[idx],
+      pdf_path: file.name,    // keep the File object
+    };
+
+    return next;
+  });
+};
 
   // Helper function to get filename from path or file
   const getDisplayFileName = (link, index, isOriginal = false) => {
@@ -759,7 +756,13 @@ const AdminREGULATION = ({ theme, toggle }) => {
                     {hasPdf && (
                       <button
                         className="px-2 py-1 rounded"
-                        onClick={() => window.open(UrlParser(link.pdf_path), "_blank")}
+                        onClick={() => {
+  if (popupFiles[idx]) {
+    window.open(URL.createObjectURL(popupFiles[idx]), "_blank");
+  } else {
+    window.open(UrlParser(link.pdf_path), "_blank");
+  }
+}}
                         title="Preview PDF"
                         type="button"
                       >
@@ -813,7 +816,7 @@ const AdminREGULATION = ({ theme, toggle }) => {
                     { name: "PG - ME", pdf_path: "" },
                     { name: "PG - MBA", pdf_path: "" },
                   ]);
-                  setPopupFiles([null, null, null]);
+                  // setPopupFiles([null, null, null]);
                   setIsEditingItem(false);
                   setEditIndex(null);
                 }}

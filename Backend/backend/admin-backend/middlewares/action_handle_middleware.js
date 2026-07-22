@@ -14,11 +14,36 @@ function handleTempAction(insertData, updateData, deleteData) {
     const trueResults = [];
     const falseResults = [];
 
+
     try {
-      for (const { tempDoc, mainCollection, tempCollection } of approvedDocs) {
+      for (const { tempDoc, mainCollection, tempCollection , status } of approvedDocs) {
         let result;
         let fileResult;
         let revertfile;
+
+        if (status === "rejected") {
+  try {
+    await tempCollection.updateOne(
+      { _id: tempDoc._id },
+      { $set: { status: "rejected" } }
+    );
+
+    trueResults.push({
+      id: tempDoc._id,
+      action: "rejected",
+      success: true,
+    });
+  } catch (err) {
+    falseResults.push({
+      id: tempDoc._id,
+      action: "rejected",
+      success: false,
+      error: err.message,
+    });
+  }
+
+  continue;
+}
 
         switch (tempDoc.action) {
           case "insert":
@@ -128,6 +153,7 @@ function handleTempAction(insertData, updateData, deleteData) {
       // }
 
       // return res.status(200).json({ trueResults, falseResults });
+
       
       return res.json({
         trueResults,

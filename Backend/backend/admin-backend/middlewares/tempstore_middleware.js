@@ -96,11 +96,11 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         const allFiles = req.uploadedFiles || [];
 
         const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE", ...(
-  ["AIDS_001","AUTO_002","CHEMISTRY_003","CIVIL_004","CSE_005","CSECS_006","EEE_007","EIE_008","ECE_009","ENGLISH_010","IT_011","MATHS_012","MECH_013","TAMIL_014","PHYSICS_015","MECSE_016","MBA_017","PS_018"].includes(collectionName)
-    ? ["research"]
-    : []
-)
-];
+          ["AIDS_001", "AUTO_002", "CHEMISTRY_003", "CIVIL_004", "CSE_005", "CSECS_006", "EEE_007", "EIE_008", "ECE_009", "ENGLISH_010", "IT_011", "MATHS_012", "MECH_013", "TAMIL_014", "PHYSICS_015", "MECSE_016", "MBA_017", "PS_018"].includes(collectionName)
+            ? ["research", "activities","Pedagogy Initiatives"]
+            : []
+        )
+        ];
 
         const skipImageFor = ["members", "library_services", "team", ...(collectionName === "ecell" ? ["gallery"] : [])]
         const mainCollection = maindb.collection(collectionName);
@@ -109,10 +109,15 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           { type: collection_type },
           { projection: { data: 1 } }
         );
-  
+        const isFacultyMember =
+          collection_type === "faculty" &&
+          ["head_of_department", "teaching_staff", "non_teaching_staff"].includes(category);
 
+        const forceArrayPdf = [
+          "newsletter",
+
+        ];
         let pdf_path = [];
-
         if (action !== "delete" && !skipPdfFor.includes(collection_type)) {
 
           // SPECIAL HANDLING ONLY FOR academic_calendar
@@ -169,61 +174,94 @@ module.exports = async function storeTempMiddleware(req, res, next) {
             .map((f) => f.location || `/${f.key}`)
           : [];
 
-    
+
+
         const notdoc = Array.isArray(existingDoc.data) ? existingDoc.data : [existingDoc.data];
-        
+
 
         if (action === "update") {
-
-          if (pdf_path.length > 0) {
-
-
-            for (const item of notdoc) {
-              const matches = findMatchingItem(item, original_data, "pdf_path");
-             
-
-              if (matches) {
-
-                pdf_path = Array.isArray(item.pdf_path)
-                  ? pdf_path
-                  : pdf_path[0];
-                break;
-              }
+          if (isFacultyMember) {
+            if (Array.isArray(image_path) && image_path.length) {
+              image_path = image_path[0];
             }
-          } else if (image_path.length > 0) {
-            for (const item of notdoc) {
 
-              const matches = findMatchingItem(item, original_data, "image_path");
-              // const matches = Object.keys(original_data).filter(k=>k!=="image_path").every(
-              //   k=> item[k] === original_data[k]
+            if (Array.isArray(pdf_path) && pdf_path.length) {
+              pdf_path = pdf_path[0];
+            }
+          } else {
+            if (pdf_path.length > 0) {
 
-              // );
-          
 
-              if (matches) {
-                image_path = Array.isArray(item.image_path)
-                  ? image_path
-                  : image_path[0];
-                break;
+              for (const item of notdoc) {
+                const matches = findMatchingItem(item, original_data, "pdf_path");
+
+
+
+
+
+                if (matches) {
+                  if (forceArrayPdf.includes(collection_type)) {
+                    pdf_path = Array.isArray(pdf_path) ? pdf_path : [pdf_path];
+                  } else {
+                    pdf_path = Array.isArray(item.pdf_path)
+                      ? pdf_path
+                      : pdf_path[0];
+                  }
+                  break;
+                }
+              }
+            } else if (image_path.length > 0) {
+              for (const item of notdoc) {
+
+                const matches = findMatchingItem(item, original_data, "image_path");
+                // const matches = Object.keys(original_data).filter(k=>k!=="image_path").every(
+                //   k=> item[k] === original_data[k]
+
+                // );
+
+
+                if (matches) {
+                  image_path = Array.isArray(item.image_path)
+                    ? image_path
+                    : image_path[0];
+                  break;
+                }
               }
             }
           }
         }
         if (action === "insert") {
-          if (pdf_path.length > 0) {
-            for (const item of notdoc) {
-              pdf_path = Array.isArray(item.pdf_path)
-                ? pdf_path
-                : pdf_path[0];
 
-              break;
+          // news_card always stores string paths
+          if (collection_type === "news_card" || isFacultyMember) {
+
+            if (Array.isArray(image_path) && image_path.length > 0) {
+              image_path = image_path[0];
             }
-          } else if (image_path.length > 0) {
-            for (const item of notdoc) {
-              image_path = Array.isArray(item.image_path)
-                ? image_path
-                : image_path[0];
-              break;
+
+            if (Array.isArray(pdf_path) && pdf_path.length > 0) {
+              pdf_path = pdf_path[0];
+            }
+
+          } else {
+            if (pdf_path.length > 0) {
+              for (const item of notdoc) {
+                if (forceArrayPdf.includes(collection_type)) {
+                  pdf_path = Array.isArray(pdf_path) ? pdf_path : [pdf_path];
+                } else {
+                  pdf_path = Array.isArray(item.pdf_path)
+                    ? pdf_path
+                    : pdf_path[0];
+                }
+                break;
+              }
+            } else if (image_path.length > 0) {
+              for (const item of notdoc) {
+                image_path = Array.isArray(item.image_path)
+                  ? image_path
+                  : image_path[0];
+                break;
+              }
             }
           }
         }
@@ -286,4 +324,3 @@ module.exports = async function storeTempMiddleware(req, res, next) {
       .json({ success: false, error: "Server error", details: err.message });
   }
 };
-

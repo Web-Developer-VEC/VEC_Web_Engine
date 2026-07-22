@@ -11,10 +11,36 @@ import { Eye } from "lucide-react";
 import { Pencil } from "lucide-react";
 import { X } from "lucide-react";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
+const UrlParser = (path) => {
+  if (!path) return "";
+
+  // If backend returns an array, use the first path
+  if (Array.isArray(path)) {
+    path = path[0];
+  }
+
+  // Ensure path is a string
+  if (typeof path !== "string") {
+    return "";
+  }
+
+  // Blob URLs are for local preview
+  if (path.startsWith("blob:")) {
+    return path;
+  }
+
+  // Already a full URL (http/https)
+  if (path.startsWith("http")) {
+    return path;
+  }
+
+  // Relative path from backend
+  return `${BASE_URL}${path}`;
+};
 const generateId = () => `hb_${Date.now().toString(36)}_${Math.floor(Math.random() * 10000)}`;
 
 /* ---------- Confirm Modal ---------- */
@@ -87,14 +113,14 @@ const EditModal = ({ initialData, onClose, onSave }) => {
   const handleFileChange = (e) => {
     const f = e.target.files?.[0];
     if (!f) return;
-    
+
     // Check if it's a PDF
     if (f.type !== 'application/pdf') {
       toast.error('Only PDF files are allowed');
       e.target.value = ''; // Clear the input
       return;
     }
-    
+
     const blobUrl = URL.createObjectURL(f);
     setForm((prev) => ({ ...prev, pdf_path: blobUrl, _file: f }));
   };
@@ -109,7 +135,7 @@ const EditModal = ({ initialData, onClose, onSave }) => {
       toast.error('Only PDF files are allowed');
       return;
     }
-    
+
     const payload = { ...form };
     if (!payload.id) payload.id = generateId();
     onSave(payload);
@@ -155,12 +181,12 @@ const EditModal = ({ initialData, onClose, onSave }) => {
                 <Eye size={20} />
               </button>
 
-              <input 
-                ref={fileInputRef} 
-                type="file" 
-                accept=".pdf,application/pdf" 
-                onChange={handleFileChange} 
-                className="hidden" 
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".pdf,application/pdf"
+                onChange={handleFileChange}
+                className="hidden"
               />
             </div>
           </div>
@@ -230,11 +256,33 @@ const AdminHandbook = ({ theme, toggle }) => {
       }
 
       try {
-        const hrRes = await axios.post("/api/main-backend/administration", { type: "HRHandBook" });
-        const hrDataArr = hrRes.data.data || [];
-        const hrItem = hrDataArr.length ? ({ id: hrDataArr[0].id || generateId(), ...hrDataArr[0] }) : null;
+        // const hrRes = await axios.post("/api/main-backend/administration", { type: "HRHandBook" });
+        // const hrDataArr = hrRes.data.data || [];
+        // const hrItem = hrDataArr.length ? ({ id: hrDataArr[0].id || generateId(), ...hrDataArr[0] }) : null;
+        // setHrHandbook(hrItem);
+        // console.log(hrRes.data);
+        // console.log(hrItem);
+        // setOriginalHrHandbook(hrItem ? JSON.parse(JSON.stringify(hrItem)) : null);
+        const hrRes = await axios.post(
+          "/api/main-backend/administration",
+          { type: "HRHandBook" }
+        );
+
+        const data = hrRes.data.data;
+
+        const hrItem = data
+          ? {
+            id: generateId(),
+            kind: "hr",
+            year: "HR Handbook",
+            pdf_path: data.pdf_path || [],
+          }
+          : null;
+
         setHrHandbook(hrItem);
-        setOriginalHrHandbook(hrItem ? JSON.parse(JSON.stringify(hrItem)) : null);
+        setOriginalHrHandbook(
+          hrItem ? JSON.parse(JSON.stringify(hrItem)) : null
+        );
       } catch (error) {
         console.error("Error fetching HR handbook data", error);
         if (error?.response?.data?.status === 429) navigate("/ratelimit", { state: { msg: error.response?.data?.message } });
@@ -253,7 +301,6 @@ const AdminHandbook = ({ theme, toggle }) => {
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
-
   const addChange = (change) => setEditModeChanges((prev) => [...prev, change]);
 
   const startEditMode = () => {
@@ -288,7 +335,7 @@ const AdminHandbook = ({ theme, toggle }) => {
       toast.error('Only PDF files are allowed');
       return;
     }
-    
+
     if (!form.id) form.id = generateId();
 
     if (editData && editData.kind === "hr") {
@@ -296,8 +343,15 @@ const AdminHandbook = ({ theme, toggle }) => {
       const newHr = { ...prev, ...form };
       if (form._file) newHr._file = form._file;
       setHrHandbook(newHr);
-      if (prev && prev.id) addChange({ type: "update", label: "HR Handbook", prevItem: prev, newItem: newHr, collection_type: "HRHandBook" });
-      else addChange({ type: "insert", label: "HR Handbook", item: newHr, collection_type: "HRHandBook" });
+      // if (prev && prev.id) addChange({ type: "update", label: "HR Handbook", prevItem: prev, newItem: newHr, collection_type: "HRHandBook" });
+      // else addChange({ type: "insert", label: "HR Handbook", item: newHr, collection_type: "HRHandBook" });
+      addChange({
+        type: "update",
+        label: "HR Handbook",
+        prevItem: prev,
+        newItem: newHr,
+        collection_type: "HRHandBook",
+      });
       setShowModal(false);
       return;
     }
@@ -372,7 +426,12 @@ const AdminHandbook = ({ theme, toggle }) => {
 
       if (c.type === "insert") {
         const item = c.item || {};
-        const meta = { year: item.year || "" };
+        // const meta = { year: item.year || "" };
+        const meta = {};
+
+        if (collectionType === "HandBook") {
+          meta.year = item.year || "";
+        }
         if (item._file && typeof item._file === "object") {
           const safe = buildSafeName(item._file);
           meta.pdf_path = safe ? `/static/pdfs/${pdfFolder}/${safe}` : item.pdf_path || item.url || "";
@@ -393,20 +452,54 @@ const AdminHandbook = ({ theme, toggle }) => {
         const prev = c.prevItem || {};
         const nw = c.newItem || {};
         const meta = {};
+
+        if (collectionType === "HandBook") {
+          meta.year = nw.year || "";
+        }
+
         const original = {};
-        if ((prev.year || "") !== (nw.year || ""))
-           { meta.year = nw.year || ""; original.year = prev.year || ""; }
+
+        if (collectionType === "HandBook") {
+          original.year = prev.year || "";
+        }
 
         if (nw._file && typeof nw._file === "object") {
           const safe = buildSafeName(nw._file);
+
           if (safe) {
-            meta.pdf_path = `/static/pdfs/${pdfFolder}/${safe}`;
-            target.files.push(new File([nw._file], safe, { type: nw._file.type }));
-            original.pdf_path = prev.pdf_path || prev.url || "";
+            if (collectionType === "HRHandBook") {
+              meta.pdf_path = [`/static/pdfs/${pdfFolder}/${safe}`];
+            } else {
+              meta.pdf_path = `/static/pdfs/${pdfFolder}/${safe}`;
+            }
+
+            target.files.push(
+              new File([nw._file], safe, { type: nw._file.type })
+            );
+
+            original.pdf_path =
+              collectionType === "HRHandBook"
+                ? (Array.isArray(prev.pdf_path) ? prev.pdf_path : [])
+                : (prev.pdf_path || prev.url || "");
           }
         } else if ((prev.pdf_path || prev.url || "") !== (nw.pdf_path || nw.url || "")) {
-          meta.pdf_path = nw.pdf_path || nw.url || "";
-          original.pdf_path = prev.pdf_path || prev.url || "";
+
+          if (collectionType === "HRHandBook") {
+            meta.pdf_path = Array.isArray(nw.pdf_path)
+              ? nw.pdf_path
+              : nw.pdf_path
+                ? [nw.pdf_path]
+                : [];
+
+            original.pdf_path = Array.isArray(prev.pdf_path)
+              ? prev.pdf_path
+              : prev.pdf_path
+                ? [prev.pdf_path]
+                : [];
+          } else {
+            meta.pdf_path = nw.pdf_path || nw.url || "";
+            original.pdf_path = prev.pdf_path || prev.url || "";
+          }
         }
 
         if (Object.keys(meta).length) {
@@ -506,7 +599,6 @@ const AdminHandbook = ({ theme, toggle }) => {
       setHrHandbook(updatedHr);
       setIsSaved(false);
       setShowConfirmModal(false);
-      toast.success("Request submitted successfully.");
     } catch (err) {
       console.error("Error while sending admin request:", err);
       toast.error("Request failed.");
@@ -597,10 +689,33 @@ const AdminHandbook = ({ theme, toggle }) => {
       <div className="w-full max-w-[900px] mt-4 mb-14 flex flex-col items-center">
         <h2 className="text-[32px] font-semibold mb-8 mt-5 text-brwn dark:text-drkt">HR Handbook</h2>
         <div className="flex items-center gap-4">
-          <button onClick={handleEditHr} className="flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-prim dark:bg-drkb border-2 border-secd dark:border-drks text-text dark:text-prim text-lg font-medium hover:bg-yellow-100 shadow-md transition-all duration-200 no-underline cursor-pointer w-80 whitespace-nowrap" title="Edit HR Handbook">
-            <FontAwesomeIcon icon={faBook} className="text-secd dark:text-drks" />
-            {label}
-          </button>
+          <div className="relative flex items-center">
+            <button
+              onClick={() => {
+                if (pdfPath && pdfPath !== "#") {
+                  window.open(pdfPath, "_blank", "noopener,noreferrer");
+                }
+              }}
+              className="flex items-center justify-center gap-2 px-6 py-4 rounded-lg bg-prim dark:bg-drkb border-2 border-secd dark:border-drks text-text dark:text-prim text-lg font-medium hover:bg-yellow-100 shadow-md transition-all duration-200 w-80"
+            >
+              <FontAwesomeIcon icon={faBook} className="text-secd dark:text-drks"/>
+              {label}
+            </button>
+
+            {/* Edit icon */}
+            {editMode && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEditHr();
+                }}
+                className="absolute top-2 right-2 text-brwn hover:text-red-700"
+                title="Edit HR Handbook"
+              >
+                <Pencil size={16} />
+              </button>
+            )}
+          </div>
           <div>
             {hrHandbook?.pdf_path && (
               <button onClick={() => { if (pdfPath && pdfPath !== "#") window.open(pdfPath, "_blank", "noopener,noreferrer"); }} className="px-3 py-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 whitespace-nowrap ml-2" title="Preview HR Handbook">
@@ -615,6 +730,7 @@ const AdminHandbook = ({ theme, toggle }) => {
 
   return (
     <>
+      <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false} />
       <Banner toggle={toggle} theme={theme} backgroundImage="./Banners/administrationbanner.webp" headerText="Handbook" subHeaderText="Comprehensive manual for students and staff" />
 
       {!editMode && (

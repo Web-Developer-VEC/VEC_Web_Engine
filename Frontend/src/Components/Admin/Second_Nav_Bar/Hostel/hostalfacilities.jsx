@@ -362,7 +362,7 @@ const computeChanges = (current = [], original = [], deletedList = []) => {
       // recompute changes with the new current & existing original/deleted
       const recomputed = computeChanges(newFacilities, originalData, deletedFacilities);
       setChanges(recomputed);
-      toast.info(`Reverted add: ${data.name}`);
+      
     } else if (action === "Deleted") {
       // restore deleted item from deletedFacilities
       const found = deletedFacilities.find((d) => d.id === data.id);
@@ -375,10 +375,8 @@ const computeChanges = (current = [], original = [], deletedList = []) => {
         setDeletedFacilities(newDeleted);
         const recomputed = computeChanges(newFacilities, originalData, newDeleted);
         setChanges(recomputed);
-        toast.info(`Restored: ${data.name}`);
-      } else {
-        toast.warn("Original deleted item not found to restore");
-      }
+        
+      } 
     } else if (action === "Edited") {
       // revert modified item to originalData version
       const orig = (originalData || []).find((d) => d.id === data.id);
@@ -387,9 +385,9 @@ const computeChanges = (current = [], original = [], deletedList = []) => {
         setFacilitiesData(newFacilities);
         const recomputed = computeChanges(newFacilities, originalData, deletedFacilities);
         setChanges(recomputed);
-        toast.info(`Reverted edit: ${data.newName} → ${data.oldName}`);
+        
       } else {
-        toast.warn("Unable to find original data to revert");
+        
       }
     }
   };
@@ -472,7 +470,7 @@ const handleSave = () => {
   setEditMode(false);
   setSelectedItems([]);
 
-  toast.success("Changes saved (pending request)");
+ 
 };
 
 const findFileFromBlobURL = (blobUrl) => {
@@ -632,7 +630,7 @@ console.log("files",files);
     setShowAddModal(false);
     setNewFacility({ title: "", description: "", image: null, imageURL: "" });
     setTempId(null);
-    toast.info("All saved changes discarded");
+    
   };
 
   const cancelUnsavedChanges = () => {

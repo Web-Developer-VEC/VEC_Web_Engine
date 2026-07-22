@@ -14,7 +14,19 @@ export default function AdminConsultancy({ theme, toggle }) {
   const navigate = useNavigate();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
+  const UrlParser = (path) => {
+    if (!path) return "";
+
+    if (path instanceof File) {
+      return URL.createObjectURL(path);
+    }
+
+    if (typeof path === "string") {
+      return path.startsWith("http") ? path : `${BASE_URL}${path}`;
+    }
+
+    return "";
+  };
 
   // ---- Editing and session state (adapted from BookChapter) ----
   const [isEditing, setIsEditing] = useState(false); // same as isEditing in reference
@@ -37,7 +49,7 @@ export default function AdminConsultancy({ theme, toggle }) {
 
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
-  const { sendRequest, loading: loadings , error } = useAdminRequest();
+  const { sendRequest, loading: loadings, error } = useAdminRequest();
 
   // Admin quick toggles (kept for compatibility with existing behavior)
   const [isContentEditable, setIsContentEditable] = useState(true);
@@ -52,8 +64,8 @@ export default function AdminConsultancy({ theme, toggle }) {
         });
         const data = response.data?.data || [];
         setAcadamicRes(data);
-        originalRef.current = JSON.parse(JSON.stringify(data));
-        savedDataRef.current = JSON.parse(JSON.stringify(data));
+        originalRef.current = structuredClone(data);
+        savedDataRef.current = structuredClone(data);
       } catch (error) {
         console.error("Error fetching Consultancy data", error);
         if (error.response?.data?.status === 429) {
@@ -89,7 +101,7 @@ export default function AdminConsultancy({ theme, toggle }) {
       toast.error("Year and PDF required");
       return;
     }
-    const pdfValue = newPdf instanceof File ? newPdf.name : newPdf;
+    const pdfValue = newPdf;
 
     if (editIndex !== null) {
       const oldEntry = acadamicRes[editIndex];
@@ -122,7 +134,7 @@ export default function AdminConsultancy({ theme, toggle }) {
         },
       });
 
-      toast.success("Entry added (session)");
+      //toast.success("Entry added (session)");
     }
 
     setNewYear("");
@@ -164,28 +176,36 @@ export default function AdminConsultancy({ theme, toggle }) {
     let newData = [...acadamicRes];
     let newSession = [...sessionChanges];
 
-    if (deleteMode === "single") {
-      const idx = deleteTargetIndex;
-      if (idx == null) return;
-      newSession.push({
-        action: "delete",
-        section: "Consultancy",
-        key: newData[idx]?.year,
-        changes: { deleted: newData[idx] },
-      });
+    const processDelete = (idx) => {
+      const item = newData[idx];
+
+      const addIndex = newSession.findIndex(
+        (c) => c.action === "add" && c.key === item?.year
+      );
+
+      if (addIndex !== -1) {
+        // cancel add + delete
+        newSession.splice(addIndex, 1);
+      } else {
+        newSession.push({
+          action: "delete",
+          section: "Consultancy",
+          key: item?.year,
+          changes: { deleted: item },
+        });
+      }
+
       newData.splice(idx, 1);
+    };
+
+    if (deleteMode === "single") {
+      processDelete(deleteTargetIndex);
     }
 
     if (deleteMode === "multiple") {
       const toDelete = Array.from(selectedToDelete).sort((a, b) => b - a);
       for (const idx of toDelete) {
-        newSession.push({
-          action: "delete",
-          section: "Consultancy",
-          key: newData[idx]?.year,
-          changes: { deleted: newData[idx] },
-        });
-        newData.splice(idx, 1);
+        processDelete(idx);
       }
     }
 
@@ -195,8 +215,6 @@ export default function AdminConsultancy({ theme, toggle }) {
     setDeleteConfirmOpen(false);
     setDeleteMode(null);
     setDeleteTargetIndex(null);
-
-    toast.success("Deleted in session");
   };
 
   const cancelDelete = () => {
@@ -210,18 +228,64 @@ export default function AdminConsultancy({ theme, toggle }) {
       toast.info("No changes to save.");
       return;
     }
-    savedDataRef.current = JSON.parse(JSON.stringify(acadamicRes));
-    setAllChanges((prev) => [...prev, ...sessionChanges]);
+
+    setAllChanges((prev) => {
+      let updated = [...prev];
+
+      for (const change of sessionChanges) {
+        const existingIndex = updated.findIndex(
+          (c) => c.key === change.key && c.section === change.section
+        );
+
+        if (
+          existingIndex !== -1 &&
+          updated[existingIndex].action === "add" &&
+          change.action === "delete"
+        ) {
+          updated.splice(existingIndex, 1);
+          continue;
+        }
+
+        if (
+          existingIndex !== -1 &&
+          updated[existingIndex].action === "delete" &&
+          change.action === "add"
+        ) {
+          updated[existingIndex] = {
+            action: "edit",
+            section: change.section,
+            key: change.key,
+            changes: change.changes
+          };
+          continue;
+        }
+
+        if (
+          existingIndex !== -1 &&
+          updated[existingIndex].action === "edit" &&
+          change.action === "edit"
+        ) {
+          updated[existingIndex].changes = {
+            ...updated[existingIndex].changes,
+            ...change.changes
+          };
+          continue;
+        }
+
+        updated.push(change);
+      }
+
+      return updated;
+    });
+
+    savedDataRef.current = structuredClone(acadamicRes);
     setSessionChanges([]);
     setIsEditing(false);
     setIsSavedOnce(true);
-    setIsContentEditable(true);
-    setIsDoneClicked(false);
-    toast.success("Session saved. You can Request now.");
   };
 
   const handleCancelSession = () => {
-    setAcadamicRes(JSON.parse(JSON.stringify(savedDataRef.current)));
+    setAcadamicRes(structuredClone(savedDataRef.current));
     setSessionChanges([]);
     setIsEditing(false);
     setIsContentEditable(true);
@@ -230,8 +294,8 @@ export default function AdminConsultancy({ theme, toggle }) {
   };
 
   const handleDiscardAll = () => {
-    setAcadamicRes(JSON.parse(JSON.stringify(originalRef.current)));
-    savedDataRef.current = JSON.parse(JSON.stringify(originalRef.current));
+    setAcadamicRes(structuredClone(originalRef.current));
+    savedDataRef.current = structuredClone(originalRef.current);
     setSessionChanges([]);
     setAllChanges([]);
     setIsEditing(false);
@@ -249,144 +313,150 @@ export default function AdminConsultancy({ theme, toggle }) {
     setShowRequestModal(true);
   };
 
- const handleFinalRequestConfirm = async () => {
-  if (!allChanges.length) {
-    toast.info("No changes to submit.");
-    return;
-  }
-
-  const payload = [];
-  const filesToUpload = [];
-
-  for (const change of allChanges) {
-
-    // ---------- INSERT ----------
-    if (change.action === "add") {
-      const { year, pdf_path } = change.changes;
-
-      const finalPath = `/static/pdfs/overall_research/${year.new}/${pdf_path.new}`;
-
-      payload.push({
-        action: "insert",
-        collectionName: "research",
-        title: "consultancy",
-        collection_type: "Consultancy",
-        meta_data: {
-          year: year.new,
-          pdf_path: finalPath
-        }
-      });
-
-      if (pdf_path.new instanceof File) {
-        filesToUpload.push(pdf_path.new);
-      }
+  const handleFinalRequestConfirm = async () => {
+    if (!allChanges.length) {
+      toast.info("No changes to submit.");
+      return;
     }
 
-    // ---------- UPDATE ----------
-    if (change.action === "edit") {
-      const { year, pdf_path } = change.changes;
+    const payload = [];
+    const filesToUpload = [];
 
-      const finalPath = `/static/pdfs/overall_research/${year.new}/${pdf_path.new}`;
+    for (const change of allChanges) {
 
-      payload.push({
-        action: "update",
-        collectionName: "research",
-        title: "consultancy",
-        collection_type: "Consultancy",
-        original_data: {
-          year: year.old,
-          pdf_path: pdf_path.old
-        },
-        meta_data: {
-          year: year.new,
-          pdf_path: finalPath
-        }
-      });
+      // ---------- INSERT ----------
+      if (change.action === "add") {
+        const { year, pdf_path } = change.changes;
 
-      if (pdf_path.new instanceof File) {
-        filesToUpload.push(pdf_path.new);
-      }
-    }
+        const fileName =
+          pdf_path.new instanceof File ? pdf_path.new.name : pdf_path.new;
 
-    // ---------- DELETE ----------
-    if (change.action === "delete") {
-      payload.push({
-        action: "delete",
-        collectionName: "research",
-        title: "consultancy",
-        collection_type: "Consultancy",
-        meta_data: {
-          year: change.key
-        }
-      });
-    }
-  }
+        const finalPath = `/static/pdfs/overall_research/${year.new}/${fileName}`;
 
-  try {
-    const result = await sendRequest(payload, filesToUpload);
-
-    if (result) {
-      console.log("FINAL REQUEST SUBMITTED", { payload, acadamicRes });
-
-      toast.success("Final request submitted");
-
-      setShowRequestModal(false);
-      setAllChanges([]);
-      setSessionChanges([]);
-      setIsEditing(false);
-      setIsSavedOnce(false);
-
-      originalRef.current = JSON.parse(JSON.stringify(acadamicRes));
-      savedDataRef.current = JSON.parse(JSON.stringify(acadamicRes));
-
-      setIsContentEditable(true);
-      setIsDoneClicked(false);
-    }
-  } catch (err) {
-    console.error("Final request failed:", err);
-    toast.error("Request submission failed");
-  }
-};
-
-
-const handleUndoChange = (idx) => {
-  setAllChanges((prev) => {
-    const change = prev[idx];
-
-    if (change) {
-      setAcadamicRes((data) => {
-        let newData = [...data];
-
-        if (change.action === "edit") {
-          const targetIndex = newData.findIndex((d) => d.year === change.changes.year.new);
-          if (targetIndex !== -1) {
-            newData[targetIndex] = {
-              ...newData[targetIndex],
-              year: change.changes.year.old,
-              pdf_path: change.changes.pdf_path.old,
-            };
+        payload.push({
+          action: "insert",
+          collectionName: "research",
+          title: "consultancy",
+          collection_type: "Consultancy",
+          meta_data: {
+            year: year.new,
+            pdf_path: finalPath
           }
-        }
+        });
 
-        if (change.action === "add") {
-          // Remove the newly added item
-          newData = newData.filter((d) => d.year !== change.key);
+        if (pdf_path.new instanceof File) {
+          filesToUpload.push(pdf_path.new);
         }
+      }
 
-        if (change.action === "delete") {
-          // Re-insert the deleted item
-          newData = [...newData, change.changes.deleted];
+      // ---------- UPDATE ----------
+      if (change.action === "edit") {
+        const { year, pdf_path } = change.changes;
+
+        const fileName =
+          pdf_path.new instanceof File ? pdf_path.new.name : pdf_path.new;
+
+        const finalPath = `/static/pdfs/overall_research/${year.new}/${fileName}`;
+
+        payload.push({
+          action: "update",
+          collectionName: "research",
+          title: "consultancy",
+          collection_type: "Consultancy",
+          original_data: {
+            year: year.old,
+            pdf_path: pdf_path.old
+          },
+          meta_data: {
+            year: year.new,
+            pdf_path: finalPath
+          }
+        });
+
+        if (pdf_path.new instanceof File) {
+          filesToUpload.push(pdf_path.new);
         }
+      }
 
-        return newData;
-      });
+      // ---------- DELETE ----------
+      if (change.action === "delete") {
+        payload.push({
+          action: "delete",
+          collectionName: "research",
+          title: "consultancy",
+          collection_type: "Consultancy",
+          meta_data: {
+            year: change.key
+          }
+        });
+      }
     }
 
-    return prev.filter((_, i) => i !== idx); // remove from log
-  });
+    try {
+      const result = await sendRequest(payload, filesToUpload);
 
-  toast.info("Change reverted");
-};
+      if (result) {
+        console.log("FINAL REQUEST SUBMITTED", { payload, acadamicRes });
+
+        //toast.success("Final request submitted");
+
+        setShowRequestModal(false);
+        setAllChanges([]);
+        setSessionChanges([]);
+        setIsEditing(false);
+        setIsSavedOnce(false);
+
+        originalRef.current = structuredClone(acadamicRes);
+        savedDataRef.current = structuredClone(acadamicRes);
+
+        setIsContentEditable(true);
+        setIsDoneClicked(false);
+      }
+    } catch (err) {
+      console.error("Final request failed:", err);
+      toast.error("Request submission failed");
+    }
+  };
+
+
+  const handleUndoChange = (idx) => {
+    setAllChanges((prev) => {
+      const change = prev[idx];
+
+      if (change) {
+        setAcadamicRes((data) => {
+          let newData = [...data];
+
+          if (change.action === "edit") {
+            const targetIndex = newData.findIndex((d) => d.year === change.changes.year.new);
+            if (targetIndex !== -1) {
+              newData[targetIndex] = {
+                ...newData[targetIndex],
+                year: change.changes.year.old,
+                pdf_path: change.changes.pdf_path.old,
+              };
+            }
+          }
+
+          if (change.action === "add") {
+            // Remove the newly added item
+            newData = newData.filter((d) => d.year !== change.key);
+          }
+
+          if (change.action === "delete") {
+            // Re-insert the deleted item
+            newData = [...newData, change.changes.deleted];
+          }
+
+          return newData;
+        });
+      }
+
+      return prev.filter((_, i) => i !== idx); // remove from log
+    });
+
+    toast.info("Change reverted");
+  };
 
 
   const handleViewNewPdf = () => {
@@ -437,7 +507,7 @@ const handleUndoChange = (idx) => {
 
       <div className="mt-10">
         {/* Top Edit Button */}
-        {!isEditing && isContentEditable && (
+        {!isEditing && (
           <button
             className="flex items-center  bg-secd px-3 py-2 z-40 rounded text-text  ml-auto mr-20 my-4"
             onClick={() => {
@@ -499,24 +569,24 @@ const handleUndoChange = (idx) => {
             ))}
 
             <button className="px-4 h-14 mt-2 py-2 bg-secd hover:bg-brwn text-text hover:text-prim rounded-xl flex flex-row items-center" onClick={handleAddNewButton}>
-               <Plus/> Add new
+              <Plus /> Add new
             </button>
 
-         
+
           </div>
         )}
 
 
-           {selectedToDelete.size > 0 && (
-              <div className="flex justify-center mt-4">
-                <button
-                  className="px-4 py-2 bg-red-500 text-white rounded flex items-center"
-                  onClick={openDeleteConfirmMultiple}
-                >
-                  <Trash2 className="mr-2" size={16} /> Delete Selected
-                </button>
-              </div>
-            )}
+        {selectedToDelete.size > 0 && (
+          <div className="flex justify-center mt-4">
+            <button
+              className="px-4 py-2 bg-red-500 text-white rounded flex items-center"
+              onClick={openDeleteConfirmMultiple}
+            >
+              <Trash2 className="mr-2" size={16} /> Delete Selected
+            </button>
+          </div>
+        )}
 
         {/* FOOTER ACTIONS */}
         <div className="flex flex-row justify-end gap-4 mr-12 mb-8">
@@ -539,7 +609,7 @@ const handleUndoChange = (idx) => {
             </>
           )}
 
-         
+
         </div>
 
         {/* Old quick-mode UI preserved for compatibility with earlier file behavior */}
@@ -585,25 +655,25 @@ const handleUndoChange = (idx) => {
           </div>
         )}
 
-         {!isEditing && isSavedOnce && (
-            <div className="flex flex-row justify-end mr-12 mb-4 gap-4">
-              <button
-                className="bg-red-500 px-3 py-2 rounded text-prim"
-                onClick={handleDiscardAll}
-              >
-                Discard All
-              </button>
-              <button
-                className="bg-secd text-text px-3 py-2 flex flex-row rounded hover:bg-brwn hover:text-prim"
-                onClick={handleRequest}
-              >
-                <Send className="mr-2" /> Request
-              </button>
-            </div>
-          )}
+        {!isEditing && isSavedOnce && (
+          <div className="flex flex-row justify-end mr-12 mb-4 gap-4">
+            <button
+              className="bg-gray-400 hover:bg-gray-500 text-prim px-2 py-2 rounded"
+              onClick={handleDiscardAll}
+            >
+              Discard All
+            </button>
+            <button
+              className="bg-secd text-text px-3 py-2 flex flex-row rounded hover:bg-brwn hover:text-prim"
+              onClick={handleRequest}
+            >
+              <Send className="mr-2" /> Request
+            </button>
+          </div>
+        )}
 
         {/* Add/Edit Popup (matches reference styling & behavior) */}
-        {showPopup && selectedToDelete.size === 0 &&  (
+        {showPopup && selectedToDelete.size === 0 && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-96">
               <h2 className="text-lg font-semibold mb-4 text-center">
@@ -635,7 +705,7 @@ const handleUndoChange = (idx) => {
                     htmlFor="consultancy-pdf-upload"
                     className="cursor-pointer bg-secd hover:bg-brwn px-2 py-2 text-text hover:text-prim rounded inline-block"
                   >
-                    {newPdf ? "Replace File" : "Upload File"} 
+                    {newPdf ? "Replace File" : "Upload File"}
                   </label>
                 </div>
 
@@ -738,16 +808,50 @@ const handleUndoChange = (idx) => {
                           </td>
                           <td className="py-2 px-3 border text-center">{change.section}</td>
                           <td className="py-2 px-3 border text-[13px] text-center">
-                            {change.action === "delete" ? (
-                              <div>Item deleted</div>
-                            ) : (
-                              <div>
-                                {Object.keys(change.changes || {})
-                                  .filter((f) => change.changes[f].old !== change.changes[f].new)
-                                  .map((field) => field)
-                                  .join(", ")}
-                              </div>
-                            )}
+                            <div>
+
+                              {change.action === "delete" && (
+                                <span>{change.changes?.deleted?.year}</span>
+                              )}
+
+                              {change.action === "edit" && (() => {
+                                const changes = change.changes || {};
+                                const yearChanged = changes.year?.old !== changes.year?.new;
+                                const pdfChanged = changes.pdf_path?.old !== changes.pdf_path?.new;
+
+                                if (pdfChanged && !yearChanged) {
+                                  return <div>{changes.year.old} - PDF updated</div>;
+                                }
+
+                                if (yearChanged && !pdfChanged) {
+                                  return <div>{changes.year.old} → {changes.year.new}</div>;
+                                }
+
+                                if (yearChanged && pdfChanged) {
+                                  return (
+                                    <>
+                                      <div>{changes.year.old} → {changes.year.new}</div>
+                                      <div>PDF updated</div>
+                                    </>
+                                  );
+                                }
+
+                                return null;
+                              })()}
+
+                              {change.action === "add" && (
+                                <span>
+                                  {change.changes?.year?.new}
+                                  {change.changes?.pdf_path?.new && (
+                                    ` (${change.changes.pdf_path.new instanceof File
+                                      ? change.changes.pdf_path.new.name
+                                      : change.changes.pdf_path.new
+                                    })`
+                                  )}
+                                </span>
+                              )}
+
+                            </div>
                           </td>
                           <td className="py-2 px-3 border text-center">
                             <button className="text-red-500" onClick={() => handleUndoChange(idx)}>
@@ -769,7 +873,13 @@ const handleUndoChange = (idx) => {
                   Cancel
                 </button>
                 <button
-                  onClick={handleFinalRequestConfirm}
+                  onClick={(e) => {
+                    const btn = e.currentTarget;
+                    btn.disabled = true;
+                    btn.innerText = "Loading...";
+
+                    handleFinalRequestConfirm();
+                  }}
                   className="px-4 py-2 rounded bg-secd text-black hover:bg-brwn hover:text-prim"
                 >
                   Final Request

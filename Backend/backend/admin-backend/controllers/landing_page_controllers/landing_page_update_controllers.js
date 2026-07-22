@@ -6,9 +6,9 @@ async function updateData(tempDoc, mainCollection) {
       throw new Error("Type, meta_data, and original_data required");
     }
 
-    const singleObjectTypes = ["page_details","banner", "special_announcements"]
+    const singleObjectTypes = ["page_details","banner", "special_announcements","side_buttons"]
 
-    const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner", "popup", "admission"];
+    const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner", "popup", "admission", "news_card"];
 
 
     if (multipleObjectTypes.includes(collection_type)) {

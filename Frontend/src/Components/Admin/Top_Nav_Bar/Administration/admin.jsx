@@ -8,7 +8,8 @@ import { FaPlus, FaPaperPlane } from "react-icons/fa";
 import { MdUndo } from "react-icons/md";
 import { Trash2, Pencil, X } from "lucide-react";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Confirmation Modal Component
 const ConfirmModal = ({
@@ -61,6 +62,13 @@ const ConfirmModal = ({
       </div>
     </div>
   );
+};
+
+const toStaticPath = (path) => {
+  if (!path) return "";
+
+  const match = path.match(/\/static\/.*$/);
+  return match ? match[0] : path;
 };
 
 const EditableCard = ({
@@ -561,7 +569,6 @@ const AdminCardPage = ({ theme, toggle }) => {
     setEditMode(false);
     setSelectedIds([]);
 
-    toast.success("Changes saved locally. Submit request to apply.");
   };
 
   const handleDiscardAll = () => setShowDiscardModal(true);
@@ -709,9 +716,16 @@ const AdminCardPage = ({ theme, toggle }) => {
         if (!original) return;
 
         const meta = {};
-        if (change.changes?.name) meta.name = member.name;
-        if (change.changes?.designation) meta.designation = member.designation;
-        
+        if (change.changes?.name) {
+          meta.name = member.name;
+        } else {
+          meta.name = original.name;
+        }
+        if (change.changes?.designation) {
+          meta.designation = member.designation;
+        } else {
+          meta.designation = original.designation;
+        }
         if (change.changes?.image) {
           if (member.imageFile) {
             const safe = makeSafeFileName(member.imageFile);
@@ -723,6 +737,8 @@ const AdminCardPage = ({ theme, toggle }) => {
           } else if (member.image_path !== original.image_path) {
             meta.image_path = member.image_path;
           }
+        } else {
+          meta.image_path = toStaticPath(member.image_path);
         }
 
         entries.push({
@@ -733,10 +749,9 @@ const AdminCardPage = ({ theme, toggle }) => {
           category: "administration",
           meta_data: meta,
           original_data: {
-            id: original.id,
             name: original.name || "",
             designation: original.designation || "",
-            image_path: original.image_path || "",
+            image_path: toStaticPath(original.image_path) || "",
           },
         });
       } else if (change.type === "delete") {
@@ -754,7 +769,6 @@ const AdminCardPage = ({ theme, toggle }) => {
             designation: member.designation || "",
           },
           original_data: {
-            id: member.id,
             name: member.name || "",
             designation: member.designation || "",
             image_path: member.image_path || "",
@@ -775,9 +789,6 @@ const AdminCardPage = ({ theme, toggle }) => {
         setShowConfirmModal(false);
         return;
       }
-
-      console.log("Request entries:", entries);
-      console.log("Files:", filesToSend);
 
       const result = await sendRequest(
         entries,
@@ -814,7 +825,6 @@ const AdminCardPage = ({ theme, toggle }) => {
         setIsSaved(false);
         setShowConfirmModal(false);
 
-        toast.success("Request submitted successfully.");
       } else {
         if (result?.status === 429 || result?.data?.status === 429) {
           navigate("/ratelimit", {
@@ -845,6 +855,7 @@ const AdminCardPage = ({ theme, toggle }) => {
 
   return (
     <>
+      <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false} />
       <Banner
         toggle={toggle}
         theme={theme}

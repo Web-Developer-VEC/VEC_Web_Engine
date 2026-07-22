@@ -1,4 +1,4 @@
-async function updateData( tempDoc, mainCollection) {
+async function updateData(tempDoc, mainCollection) {
   try {
     const { collection_type, meta_data, category, original_data } = tempDoc;
 
@@ -17,12 +17,42 @@ async function updateData( tempDoc, mainCollection) {
     const singleDocTypes = ["about", "news_updates"];
     const multiDocTypes = ["events"];
     const categoryBasedTypes = ["team"];
+    
+    if (collection_type === "about") {
+      const existingDoc = await mainCollection.findOne({
+        type: collection_type,
+      });
+
+      if (!existingDoc) {
+        throw new Error("Document not found");
+      }
+
+      const updatedData = {
+        ...(existingDoc.data?.[0] || {}),
+        ...meta_data,
+      };
+
+      await mainCollection.updateOne(
+        { type: collection_type },
+        {
+          $set: {
+            data: [updatedData],
+          },
+        }
+      );
+
+      return {
+        success: true,
+        message: "About updated successfully",
+        data: [updatedData],
+      };
+    }
 
     // 4️⃣ Single-doc types → overwrite entire data array
-    if (singleDocTypes.includes(collection_type)) {
+    if (collection_type === "news_updates") {
       let newData;
 
-      newData = Array.isArray(meta_data)?meta_data:Object.values(meta_data);
+      newData = Array.isArray(meta_data) ? meta_data : Object.values(meta_data);
 
       await mainCollection.updateOne(
         { type: collection_type },
@@ -56,14 +86,14 @@ async function updateData( tempDoc, mainCollection) {
         const originalArray = Array.isArray(original_data?.content)
           ? original_data.content
           : Array.isArray(original_data)
-          ? original_data
-          : [original_data];
+            ? original_data
+            : [original_data];
 
         const metaArray = Array.isArray(meta_data?.content)
           ? meta_data.content
           : Array.isArray(meta_data)
-          ? meta_data
-          : [meta_data];
+            ? meta_data
+            : [meta_data];
 
         const updated = content.map((item) =>
           originalArray.includes(item)

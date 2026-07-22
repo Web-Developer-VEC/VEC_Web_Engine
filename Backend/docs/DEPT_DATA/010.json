@@ -113,12 +113,12 @@
             "name": "Mr. BASKARAN V",
             "department_name": "English",
             "unique_id": "VEC-010-01-140", 
-            "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf", 
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf", 
             "qualification": ["M.A.", "M.Phil"],
             "hod_message": [
              "He plays a pivotal role in steering the department towards its designated goals. His qualification includes M.A, M. Phil, and he has been teaching English for the past 32 years. If the USP of the department is the application of technology in teaching and training, he is the motivator. With his knowledge of grammar and polite demeanour he has been instrumental in fostering a conducive learning environment, encouraging both faculty and students to embrace innovative methods while maintaining a strong foundation in language proficiency."
             ],
-            "hod_image": "/static/images/hods/eng.webp",
+            "image_path": "/static/images/hods/eng.webp",
             "designation": "Assistant Professor & Head, Dept of English",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/vhod-english-47812162/",
@@ -166,7 +166,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-154.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf"
       }]
       },
       {
@@ -184,7 +184,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-150.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-150.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-150.pdf"
       },
       {
         "name": "Mr. BALAJI A",
@@ -199,7 +199,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-151.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-151.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-151.pdf"
       },
       {
         "name": "Mrs. DHANALAKSHMI R",
@@ -214,7 +214,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-171.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-171.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-171.pdf"
       },
       {
         "name": "Mrs. LATHA J",
@@ -229,22 +229,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-148.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-148.pdf"
-      },
-      {
-        "name": "Dr. VINOTHKUMAR M",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-057",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/m-vinoth-kumar-45bba7168?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-          "googlescholar": "https://scholar.google.com/citations?user=oIYjsvUAAAAJ&hl=en",
-          "researchgate": "https://www.researchgate.net/profile/Vinothkumar-Mohan-2?ev=hdr_xprf",
-          "orchidprofile": "https://orcid.org/0009-0005-6008-3201",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-057.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-057.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-148.pdf"
       },
       {
         "name": "Mr. ANAND V",
@@ -259,7 +244,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-065.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-065.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-065.pdf"
       },
       {
         "name": "Mrs. ARCHANA G M",
@@ -274,7 +259,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-146.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-146.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-146.pdf"
       },
       {
         "name": "Dr. DEEPIKA A",
@@ -289,7 +274,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-604.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-604.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-604.pdf"
       },
       {
         "name": "Mrs. RHODAS DAISY D",
@@ -304,7 +289,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-605.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-605.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-605.pdf"
       },
       {
         "name": "Mrs. GNANESHWARI R",
@@ -319,7 +304,53 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-04-606.webp",
-        "resume_pdf": "/static/pdfs/faculty_profile/010/VEC-010-04-606.pdf"
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-606.pdf"
+      },
+    {
+        "name": "Dr. SREELATHA",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-101",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "",
+          "researchgate": "",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-101.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-101.pdf"
+      },
+     {
+        "name": "Mrs. MEENA M",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-200",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/meena-murali-038624379?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+          "googlescholar": "",
+          "researchgate": "https://www.researchgate.net/profile/Meena-Murali-3?ev=hdr_xprf",
+          "orchidprofile": "",
+          "publonprofile": "",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-200.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-200.pdf"
+      },
+    
+     {
+        "name": "Mrs. SHRUTHI V",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-010-04-100",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/shruthi-venkatagiri-170a94244?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+          "googlescholar": "",
+          "researchgate": "https://www.researchgate.net/profile/Shruthi-Venkatagiri?ev=prf_overview ",
+          "orchidprofile": "",
+          "publonprofile": "https://www.webofscience.com/wos/author/record/PYY-6308-2026",
+          "scopus": ""
+        },
+        "image_path": "/static/images/profile_photos/010/VEC-010-04-100.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-100.pdf"
       }]
           },
           {
@@ -337,7 +368,7 @@
           "scopus": ""
         },
         "image_path": "/static/images/profile_photos/010/VEC-010-05-631.webp",
-        "resume_pdf": ""
+        "pdf_path": ""
       }]
       }
     ]

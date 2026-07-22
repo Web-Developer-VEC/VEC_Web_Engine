@@ -13,19 +13,19 @@ const deepCopy = (v) => structuredClone(v);
 function NCCAMembers({ data }) {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const UrlParser = (path) => {
-  if (!path) return "/placeholder.jpg"; // fallback
+  const UrlParser = (path) => {
+    if (!path) return "/placeholder.jpg"; // fallback
 
-  if (
-    path.startsWith("http") ||
-    path.startsWith("blob") ||
-    path.startsWith("data:")
-  ) {
-    return path; // absolute URL or blob/base64
-  }
+    if (
+      path.startsWith("http") ||
+      path.startsWith("blob") ||
+      path.startsWith("data:")
+    ) {
+      return path; // absolute URL or blob/base64
+    }
 
-  return `${BASE_URL}${path}`; // relative path 
-};
+    return `${BASE_URL}${path}`; // relative path 
+  };
 
 
   // State management
@@ -44,7 +44,7 @@ const UrlParser = (path) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [previewImgs, setPreviewImgs] = useState({});
   const [errors, setErrors] = useState({});
- const { sendRequest, loading, error } = useAdminRequest();
+  const { sendRequest, loading, error } = useAdminRequest();
 
   // Initialize data
   useEffect(() => {
@@ -62,7 +62,7 @@ const UrlParser = (path) => {
       setCommittedStud(deepCopy(studentsWithIds));
       setCoor(coordinator ? deepCopy(coordinator) : null);
       setStud(deepCopy(studentsWithIds));
-      
+
       setPendingCoor(null);
       setPendingStud([]);
       setIsEditing(false);
@@ -103,21 +103,21 @@ const UrlParser = (path) => {
   };
 
 
-const handleCoorPreviewChange = (file) => {
-  if (!file) return;
+  const handleCoorPreviewChange = (file) => {
+    if (!file) return;
 
-  const previewUrl = URL.createObjectURL(file);
+    const previewUrl = URL.createObjectURL(file);
 
-  setPreviewImgs((prev) => ({ ...prev, coor: previewUrl }));
+    setPreviewImgs((prev) => ({ ...prev, coor: previewUrl }));
 
-  setCoor((prev) => ({
-    ...prev,
-    image_file: file, // ✅ real file
-    image_path: `/static/images/ncc/ncc_navy/${file.name}` // ✅ final stored path
-  }));
+    setCoor((prev) => ({
+      ...prev,
+      image_file: file, // ✅ real file
+      image_path: `/static/images/ncc/ncc_navy/${file.name}` // ✅ final stored path
+    }));
 
-  setIsDirty(true);
-};
+    setIsDirty(true);
+  };
 
 
   const handleStudentPreviewChange = (index, file) => {
@@ -131,10 +131,10 @@ const handleCoorPreviewChange = (file) => {
 
 
   const handleAddStudent = () => {
-    const newStudent = { 
+    const newStudent = {
       id: String(Date.now()),
-      name: "", 
-      regiment_no: "", 
+      name: "",
+      regiment_no: "",
       year: "",
       rank: "",
       department: "",
@@ -145,45 +145,45 @@ const handleCoorPreviewChange = (file) => {
     setIsDirty(true);
   };
 
-const handleItemSelect = (index) => {
-  const id = stud[index]?.id;
-  if (!id) return;
+  const handleItemSelect = (index) => {
+    const id = stud[index]?.id;
+    if (!id) return;
 
-  setStud(prev =>
-    prev.map((s, i) =>
-      i === index ? { ...s, selected: !s.selected } : s
-    )
-  );
+    setStud(prev =>
+      prev.map((s, i) =>
+        i === index ? { ...s, selected: !s.selected } : s
+      )
+    );
 
-  setSelectedItems(prev =>
-    prev.includes(id)
-      ? prev.filter(x => x !== id)
-      : [...prev, id]
-  );
-};
+    setSelectedItems(prev =>
+      prev.includes(id)
+        ? prev.filter(x => x !== id)
+        : [...prev, id]
+    );
+  };
 
 
   const handleSelectAll = () => {
     const newSelectAll = !selectAll;
     setSelectAll(newSelectAll);
-    
+
     const updatedStud = stud.map(student => ({ ...student, selected: newSelectAll }));
     setStud(updatedStud);
-    
+
     setSelectedItems(newSelectAll ? stud.map((_, i) => i) : []);
   };
 
-const confirmDelete = () => {
-  const updated = stud.filter(
-    (student) => !selectedItems.includes(String(student.id))
-  );
+  const confirmDelete = () => {
+    const updated = stud.filter(
+      (student) => !selectedItems.includes(String(student.id))
+    );
 
-  setStud(updated);
-  setSelectedItems([]);
-  setSelectAll(false);
-  setShowDeleteModal(false);
-  setIsDirty(true);
-};
+    setStud(updated);
+    setSelectedItems([]);
+    setSelectAll(false);
+    setShowDeleteModal(false);
+    setIsDirty(true);
+  };
 
 
   const handleCancel = () => {
@@ -209,7 +209,7 @@ const confirmDelete = () => {
   const handleSave = () => {
     // Validate fields
     let newErrors = {};
-    
+
     if (!coor?.name?.trim()) {
       newErrors.coorName = "Required";
     }
@@ -255,7 +255,7 @@ const confirmDelete = () => {
     setIsDirty(false);
     setSelectedItems([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
+    //toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -275,144 +275,161 @@ const confirmDelete = () => {
     setShowRequestModal(true);
   };
 
-const cleanImageFields = (obj) => {
+ // Set to true whenever student coordinators should also have images.
+const ENABLE_STUDENT_IMAGES = false;
+
+const cleanImageFields = (obj, isStudent = false) => {
   if (!obj) return obj;
 
   const cleaned = { ...obj };
 
-  // NEVER send File objects
+  // Never send File objects
   delete cleaned.image_file;
 
-  // If image_path is blob → remove ONLY for backend payload,
-  // UI will still use previewImgs
-  if (cleaned.image_path?.startsWith("blob:")) {
-    cleaned.image_path = undefined;
+  if (isStudent && !ENABLE_STUDENT_IMAGES) {
+    // Student images are disabled for now.
+    delete cleaned.image_path;
+  } else {
+    // Keep image_path for Faculty Coordinator.
+    // If image is a blob preview, don't send it.
+    if (cleaned.image_path?.startsWith("blob:")) {
+      cleaned.image_path = undefined;
+    }
   }
 
   return cleaned;
 };
 
-const buildPayload = () => {
-  return changes.map((ch) => {
-    const isStudent = ch.section === "Student Coordinators";
+  const buildPayload = () => {
+    return changes.map((ch) => {
+      const isStudent = ch.section === "Student Coordinators";
 
-    const actionMap = {
-      Added: "insert",
-      Edited: "update",
-      Deleted: "delete",
-    };
+      const actionMap = {
+        Added: "insert",
+        Edited: "update",
+        Deleted: "delete",
+      };
 
-    const action = actionMap[ch.action];
+      const action = actionMap[ch.action];
 
-    let original_data = null;
-    let meta_data = null;
+      let original_data = null;
+      let meta_data = null;
 
-    if (ch.isCoor) {
-      // FACULTY COORDINATOR
-      if (action === "update") {
-        original_data = committedCoor;
-        meta_data = pendingCoor;
+      if (ch.isCoor) {
+        // FACULTY COORDINATOR
+        if (action === "update") {
+          original_data = committedCoor;
+          meta_data = pendingCoor;
+        }
+
+        if (action === "insert") {
+          meta_data = pendingCoor;
+        }
+
+        if (action === "delete") {
+          original_data = committedCoor;
+        }
+      } else {
+        // STUDENTS
+        const oldItem = committedStud.find(
+          (s) => String(s.id) === String(ch.itemId)
+        );
+
+        const newItem = stud.find(
+          (s) => String(s.id) === String(ch.itemId)
+        );
+
+        if (action === "update") {
+          original_data = oldItem;
+          meta_data = newItem;
+        }
+
+        if (action === "insert") {
+          meta_data = newItem;
+        }
+
+        if (action === "delete") {
+          original_data = oldItem;
+          meta_data = oldItem;
+        }
+
       }
 
-      if (action === "insert") {
-        meta_data = pendingCoor;
-      }
+      return {
+        collectionName: "ncc_army",
+        collection_type: "team",
+        action,
+        category: isStudent
+          ? "student_coordinators"
+          : "faculty_coordinators",
 
-      if (action === "delete") {
-        original_data = committedCoor;
-      }
-    } else {
-      // STUDENTS
-      const oldItem = committedStud.find(
-        (s) => String(s.id) === String(ch.itemId)
-      );
+        title:
+          action === "insert"
+            ? isStudent
+              ? "Add Student Coordinator"
+              : "Add Faculty Coordinator"
+            : action === "update"
+              ? isStudent
+                ? "Update Student Coordinator"
+                : "Update Faculty Coordinator"
+              : isStudent
+                ? "Delete Student Coordinator"
+                : "Delete Faculty Coordinator",
 
-      const newItem = stud.find(
-        (s) => String(s.id) === String(ch.itemId)
-      );
+        ...(original_data
+  ? {
+      original_data: cleanImageFields(original_data, isStudent),
+    }
+  : {}),
 
-      if (action === "update") {
-        original_data = oldItem;
-        meta_data = newItem;
-      }
+...(meta_data
+  ? {
+      meta_data: cleanImageFields(meta_data, isStudent),
+    }
+  : {}),
+      };
 
-      if (action === "insert") {
-        meta_data = newItem;
-      }
+    });
+  };
 
-      if (action === "delete") {
-        original_data = oldItem;
-        meta_data = oldItem;
-      }
 
+
+  const handleFinalRequestConfirm = async () => {
+    if (!pendingCoor && pendingStud.length === 0) return;
+
+    const payload = buildPayload();
+
+    const files = [];
+
+    // coordinator image
+    if (pendingCoor?.image_file instanceof File) {
+      files.push(pendingCoor.image_file);
     }
 
-return {
-  collectionName: "ncc_army",
-  collection_type: "team",
-  action,
-  category: isStudent
-    ? "student_coordinators"
-    : "faculty_coordinators",
+    // student images
+    pendingStud.forEach((s) => {
+      if (s?.image_file instanceof File) {
+        files.push(s.image_file);
+      }
+    });
 
-  title:
-    action === "insert"
-      ? isStudent
-        ? "Add Student Coordinator"
-        : "Add Faculty Coordinator"
-      : action === "update"
-      ? isStudent
-        ? "Update Student Coordinator"
-        : "Update Faculty Coordinator"
-      : isStudent
-      ? "Delete Student Coordinator"
-      : "Delete Faculty Coordinator",
+    try {
+      console.log("files", files)
+      await sendRequest(payload, files);
 
-  ...(original_data ? { original_data: cleanImageFields(original_data) } : {}),
-  ...(meta_data ? { meta_data: cleanImageFields(meta_data) } : {}),
-};
+     // toast.success("Request sent successfully!");
 
-  });
-};
+      setCommittedCoor(deepCopy(pendingCoor || coor));
+      setCommittedStud(deepCopy(pendingStud.length ? pendingStud : stud));
 
-
-
-const handleFinalRequestConfirm = async () => {
-  if (!pendingCoor && pendingStud.length === 0) return;
-
-  const payload = buildPayload();
-
-  const files = [];
-
-  // coordinator image
-  if (pendingCoor?.image_file instanceof File) {
-    files.push(pendingCoor.image_file);
-  }
-
-  // student images
-  pendingStud.forEach((s) => {
-    if (s?.image_file instanceof File) {
-      files.push(s.image_file);
+      setPendingCoor(null);
+      setPendingStud([]);
+      setIsSaved(false);
+      setShowRequestModal(false);
+    } catch (err) {
+      toast.error("Failed to submit request");
     }
-  });
-
-  try {
-    console.log("files",files)
-    await sendRequest(payload, files);
-
-    toast.success("Request sent successfully!");
-
-    setCommittedCoor(deepCopy(pendingCoor || coor));
-    setCommittedStud(deepCopy(pendingStud.length ? pendingStud : stud));
-
-    setPendingCoor(null);
-    setPendingStud([]);
-    setIsSaved(false);
-    setShowRequestModal(false);
-  } catch (err) {
-    toast.error("Failed to submit request");
-  }
-};
+  };
 
   const revertChange = (itemId, action, isCoor = false) => {
     const idKey = String(itemId);
@@ -460,7 +477,7 @@ const handleFinalRequestConfirm = async () => {
   };
 
   const toTitleCase = (str) =>
-  str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+    str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
 
 
@@ -566,263 +583,267 @@ const handleFinalRequestConfirm = async () => {
     );
   }
 
-return (
-  <div className={styles.pageWrapper}>
-    <ToastContainer position="bottom-right" autoClose={3000} />
+  return (
+    <div className={styles.pageWrapper}>
+      <ToastContainer position="bottom-right" autoClose={3000} />
 
-    {/* Header */}
-    <div className={styles.headerWrapper}>
-      <h2 className={styles.pageTitle}></h2>
+      {/* Header */}
+      <div className={styles.headerWrapper}>
+        <h2 className={styles.pageTitle}></h2>
 
-      {!isEditing && (
-        <div className={styles.editBtnWrapper}>
-          <button onClick={handleStartEdit} className={styles.editBtn}>
-            <Pencil size={18} />
-            Edit
-          </button>
-        </div>
-      )}
-    </div>
+        {!isEditing && (
+          <div className={styles.editBtnWrapper}>
+            <button onClick={handleStartEdit} className={styles.editBtn}>
+              <Pencil size={18} />
+              Edit
+            </button>
+          </div>
+        )}
+      </div>
 
-    {isEditing ? (
-      <>
-        <h2 className={styles.sectionTitle}>FACULTY COORDINATOR</h2>
+      {isEditing ? (
+        <>
+          <h2 className={styles.sectionTitle}>FACULTY COORDINATOR</h2>
 
-        <div className={styles.centerFlex}>
-          <div className={styles.coordinatorCard}>
-            <div className={styles.coordinatorImageWrapper}>
+          <div className={styles.centerFlex}>
+            <div className={styles.coordinatorCard}>
+              <div className={styles.coordinatorImageWrapper}>
+                <img
+                  src={
+                    previewImgs.coor
+                      ? previewImgs.coor
+                      : coor?.image_path
+                        ? UrlParser(coor.image_path)
+                        : "/placeholder-image.jpg"
+                  }
+                  alt={coor?.name || "Coordinator"}
+                  className={styles.coordinatorImage}
+                />
+
+                {isEditing && (
+                  <div className={styles.uploadWrapper}>
+                    <label className={styles.uploadBtn}>
+                      {coor?.image_path ? "Replace" : "Upload"}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className={styles.hiddenInput}
+                        onChange={(e) =>
+                          handleCoorPreviewChange(e.target.files?.[0])
+                        }
+                      />
+                    </label>
+                  </div>
+                )}
+              </div>
+
+              <div className={styles.coordinatorInfo}>
+                {isEditing ? (
+                  <>
+                    <input
+                      type="text"
+                      value={coor?.name || ""}
+                      onChange={(e) =>
+                        handleChangeCoor("name", e.target.value.toUpperCase())
+                      }
+                      className={styles.input}
+                      placeholder="Coordinator Name"
+                    />
+                    <input
+                      type="text"
+                      value={coor?.designation || ""}
+                      onChange={(e) =>
+                        handleChangeCoor("designation", toTitleCase(e.target.value))
+                      }
+                      className={styles.input}
+                      placeholder="Designation"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <h3 className={styles.coordinatorName}>{coor?.name}</h3>
+                    <p className={styles.coordinatorDesignation}>
+                      {coor?.designation}
+                    </p>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Students */}
+          <h2 className={styles.sectionTitle}>STUDENT COORDINATORS</h2>
+
+          <div className={styles.studentGrid}>
+            {stud.map((member, index) => (
+              <div key={index} className={styles.studentCard}>
+                {isEditing && (
+                  <input
+                    type="checkbox"
+                    checked={selectedItems.includes(String(member.id))}
+                    onChange={() => handleItemSelect(index)}
+                    className={styles.checkbox}
+                  />
+
+                )}
+
+                {isEditing ? (
+                  <>
+                    <input
+                      type="text"
+                      value={member?.name || ""}
+                      onChange={(e) =>
+                        handleChangeStudent(index, "name", e.target.value.toUpperCase())
+                      }
+                      className={styles.input}
+                      placeholder="Name"
+                    />
+                    <input
+                      type="text"
+                      value={member?.regiment_no || ""}
+                      onChange={(e) =>
+                        handleChangeStudent(index, "regiment_no", e.target.value.toUpperCase())
+                      }
+                      className={styles.input}
+                      placeholder="Regiment No"
+                    />
+                    <select
+                      value={member?.year || ""}
+                      onChange={(e) =>
+                        handleChangeStudent(index, "year", e.target.value)
+                      }
+                      className={styles.input}
+                    >
+                      <option value="">Select Year</option>
+                      <option value="I">I</option>
+                      <option value="II">II</option>
+                      <option value="III">III</option>
+                      <option value="IV">IV</option>
+                    </select>
+                    <input
+                      type="text"
+                      value={member?.rank || ""}
+                      onChange={(e) =>
+                        handleChangeStudent(index, "rank", e.target.value.toUpperCase())
+                      }
+                      className={styles.input}
+                      placeholder="Rank"
+                    />
+                    <input
+                      type="text"
+                      value={member?.department || ""}
+                      onChange={(e) =>
+                        handleChangeStudent(index, "department", e.target.value.toUpperCase())
+                      }
+                      className={styles.input}
+                      placeholder="Department"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <h3 className={styles.studentName}>{member?.name}</h3>
+                    <p className={styles.studentText}>{member?.regiment_no}</p>
+                    <p className={styles.studentText}>{member?.year}</p>
+                    <p className={styles.studentText}>
+                      {member?.rank} - {member?.department}
+                    </p>
+                  </>
+                )}
+              </div>
+            ))}
+
+            {isEditing && (
+              <div onClick={handleAddStudent} className={styles.addStudentCard}>
+                <PlusCircle size={40} />
+                <span>Add Student</span>
+              </div>
+            )}
+          </div>
+
+          {selectedItems.length > 0 && (
+            <div className={styles.centerActions}>
+              <button
+                onClick={() => setShowDeleteModal(true)}
+                className={styles.deleteBtn}
+              >
+                <Trash2 size={18} /> Delete Selected ({selectedItems.length})
+              </button>
+            </div>
+          )}
+
+
+
+          <div className={styles.actionRow}>
+            <button onClick={handleCancel} className={styles.cancelBtn}>
+              Cancel
+            </button>
+
+            {changes.length > 0 && isDirty && (
+              <button onClick={handleSave} className={styles.saveBtn}>
+                Save
+              </button>
+            )}
+          </div>
+        </>
+      ) : (
+        <>
+          <h2 className={styles.sectionTitle}>FACULTY COORDINATOR</h2>
+
+          <div className={styles.centerFlex}>
+            <div className={styles.coordinatorCard}>
               <img
                 src={
                   previewImgs.coor
                     ? previewImgs.coor
                     : coor?.image_path
-                    ? UrlParser(coor.image_path)
-                    : "/placeholder-image.jpg"
+                      ? UrlParser(coor.image_path)
+                      : "/placeholder-image.jpg"
                 }
-                alt={coor?.name || "Coordinator"}
+                alt={coor?.name}
                 className={styles.coordinatorImage}
               />
 
-              {isEditing && (
-                <div className={styles.uploadWrapper}>
-                  <label className={styles.uploadBtn}>
-                    {coor?.image_path ? "Replace" : "Upload"}
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className={styles.hiddenInput}
-                      onChange={(e) =>
-                        handleCoorPreviewChange(e.target.files?.[0])
-                      }
-                    />
-                  </label>
-                </div>
-              )}
-            </div>
-
-            <div className={styles.coordinatorInfo}>
-              {isEditing ? (
-                <>
-                  <input
-                    type="text"
-                    value={coor?.name || ""}
-                    onChange={(e) =>
-                      handleChangeCoor("name", e.target.value.toUpperCase())
-                    }
-                    className={styles.input}
-                    placeholder="Coordinator Name"
-                  />
-                  <input
-                    type="text"
-                    value={coor?.designation || ""}
-                    onChange={(e) =>
-                      handleChangeCoor("designation", toTitleCase(e.target.value))
-                    }
-                    className={styles.input}
-                    placeholder="Designation"
-                  />
-                </>
-              ) : (
-                <>
-                  <h3 className={styles.coordinatorName}>{coor?.name}</h3>
-                  <p className={styles.coordinatorDesignation}>
-                    {coor?.designation}
-                  </p>
-                </>
-              )}
+              <div className={styles.coordinatorInfo}>
+                <h3 className={styles.coordinatorName}>{coor?.name}</h3>
+                <p className={styles.coordinatorDesignation}>
+                  {coor?.designation}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Students */}
-        <h2 className={styles.sectionTitle}>STUDENT COORDINATORS</h2>
+          <h2 className={styles.sectionTitle}>STUDENT COORDINATORS</h2>
 
-        <div className={styles.studentGrid}>
-          {stud.map((member, index) => (
-            <div key={index} className={styles.studentCard}>
-              {isEditing && (
-<input
-  type="checkbox"
-  checked={selectedItems.includes(String(member.id))}
-  onChange={() => handleItemSelect(index)}
-  className={styles.checkbox}
-/>
-
-              )}
-
-              {isEditing ? (
-                <>
-                  <input
-                    type="text"
-                    value={member?.name || ""}
-                    onChange={(e) =>
-                      handleChangeStudent(index, "name", e.target.value.toUpperCase())
-                    }
-                    className={styles.input}
-                    placeholder="Name"
-                  />
-                  <input
-                    type="text"
-                    value={member?.regiment_no || ""}
-                    onChange={(e) =>
-                      handleChangeStudent(index, "regiment_no", e.target.value.toUpperCase())
-                    }
-                    className={styles.input}
-                    placeholder="Regiment No"
-                  />
-                  <input
-                    type="text"
-                    value={member?.year || ""}
-                    onChange={(e) =>
-                      handleChangeStudent(index, "year", e.target.value.toUpperCase())
-                    }
-                    className={styles.input}
-                    placeholder="Year"
-                  />
-                  <input
-                    type="text"
-                    value={member?.rank || ""}
-                    onChange={(e) =>
-                      handleChangeStudent(index, "rank", e.target.value.toUpperCase())
-                    }
-                    className={styles.input}
-                    placeholder="Rank"
-                  />
-                  <input
-                    type="text"
-                    value={member?.department || ""}
-                    onChange={(e) =>
-                      handleChangeStudent(index, "department", e.target.value.toUpperCase())
-                    }
-                    className={styles.input}
-                    placeholder="Department"
-                  />
-                </>
-              ) : (
-                <>
-                  <h3 className={styles.studentName}>{member?.name}</h3>
-                  <p className={styles.studentText}>{member?.regiment_no}</p>
-                  <p className={styles.studentText}>{member?.year}</p>
-                  <p className={styles.studentText}>
-                    {member?.rank} - {member?.department}
-                  </p>
-                </>
-              )}
-            </div>
-          ))}
-
-          {isEditing && (
-            <div onClick={handleAddStudent} className={styles.addStudentCard}>
-              <PlusCircle size={40} />
-              <span>Add Student</span>
-            </div>
-          )}
-        </div>
-
-        {selectedItems.length > 0 && (
-          <div className={styles.centerActions}>
-            <button
-              onClick={() => setShowDeleteModal(true)}
-              className={styles.deleteBtn}
-            >
-              <Trash2 size={18} /> Delete Selected ({selectedItems.length})
-            </button>
+          <div className={styles.studentGrid}>
+            {stud.map((member, index) => (
+              <div className={styles.studentCard} key={index}>
+                <h5 className={styles.studentName}>{member?.name}</h5>
+                <p className={styles.studentText}>{member?.regiment_no}</p>
+                <p className={styles.studentText}>{member?.year}</p>
+                <p className={styles.studentText}>
+                  {member?.rank} - {member?.department}
+                </p>
+              </div>
+            ))}
           </div>
-        )}
 
-        
-
-        <div className={styles.actionRow}>
-          <button onClick={handleCancel} className={styles.cancelBtn}>
-            Cancel
-          </button>
-
-          {changes.length > 0 && isDirty && (
-            <button onClick={handleSave} className={styles.saveBtn}>
-              Save
-            </button>
-          )}
-        </div>
-      </>
-    ) : (
-      <>
-        <h2 className={styles.sectionTitle}>FACULTY COORDINATOR</h2>
-
-        <div className={styles.centerFlex}>
-          <div className={styles.coordinatorCard}>
-            <img
-              src={
-                previewImgs.coor
-                  ? previewImgs.coor
-                  : coor?.image_path
-                  ? UrlParser(coor.image_path)
-                  : "/placeholder-image.jpg"
-              }
-              alt={coor?.name}
-              className={styles.coordinatorImage}
-            />
-
-            <div className={styles.coordinatorInfo}>
-              <h3 className={styles.coordinatorName}>{coor?.name}</h3>
-              <p className={styles.coordinatorDesignation}>
-                {coor?.designation}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <h2 className={styles.sectionTitle}>STUDENT COORDINATORS</h2>
-
-        <div className={styles.studentGrid}>
-          {stud.map((member, index) => (
-            <div className={styles.studentCard} key={index}>
-              <h5 className={styles.studentName}>{member?.name}</h5>
-              <p className={styles.studentText}>{member?.regiment_no}</p>
-              <p className={styles.studentText}>{member?.year}</p>
-              <p className={styles.studentText}>
-                {member?.rank} - {member?.department}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {isSaved && (
-          <div className={styles.actionRow}>
-            <button onClick={handleDiscard} className={styles.cancelBtn}>
-              Discard Changes
-            </button>
-
-            {changes.length > 0 && (
-              <button onClick={handleRequest} className={styles.saveBtn}>
-                <Send size={18} /> Request
+          {isSaved && (
+            <div className={styles.actionRow}>
+              <button onClick={handleDiscard} className={styles.cancelBtn}>
+                Discard Changes
               </button>
-            )}
-          </div>
-        )}
-      </>
-    )}
 
-          {showRequestModal && (
+              {changes.length > 0 && (
+                <button onClick={handleRequest} className={styles.saveBtn}>
+                  <Send size={18} /> Request
+                </button>
+              )}
+            </div>
+          )}
+        </>
+      )}
+
+      {showRequestModal && (
         <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
           <div className="bg-prim p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-4 text-gray-800">Final Request</h2>
@@ -878,7 +899,7 @@ return (
         </div>
       )}
 
-          {showDeleteModal && (
+      {showDeleteModal && (
         <div className="fixed inset-0 bg-text/50 flex items-center justify-center z-50">
           <div className="bg-prim p-6 rounded-lg shadow-lg border w-[90%] max-w-md">
             <h3 className="text-lg font-semibold mb-4 text-gray-800">Confirm Delete</h3>
@@ -902,8 +923,8 @@ return (
           </div>
         </div>
       )}
-  </div>
-);
+    </div>
+  );
 
 }
 

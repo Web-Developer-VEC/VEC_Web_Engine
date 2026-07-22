@@ -3,7 +3,7 @@
     "collectionName":"accreditations_and_ranking",
     "collection_type":"naac",
     "action":"insert",
-    "title":"insert in naaac",
+    "title":"insert in naac",
     "category":"Self Study Reports",
     "meta_data":{
             "name": "dinesh",
@@ -14,7 +14,7 @@
     "collectionName":"accreditations_and_ranking",
     "collection_type":"naac",
     "action":"update",
-    "title":"update in naaac",
+    "title":"update in naac",
     "category":"Self Study Reports",
     "original_data":{
             "name": "dinesh",
@@ -29,7 +29,7 @@
     "collectionName":"accreditations_and_ranking",
     "collection_type":"naac",
     "action":"delete",
-    "title":"delete in naaac",
+    "title":"delete in naac",
     "category":"Self Study Reports",
     "meta_data":{
             "name": "hari",

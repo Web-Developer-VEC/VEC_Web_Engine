@@ -24,38 +24,40 @@ const Faculties = ({ data }) => {
   return (
     <div className={styles.app + " p-0 md:p-12"}>
       <div className={styles.imageGallery + " w-full"}>
-          <div className={`${styles.fullWidthTile} relative`}>
-            <ImageCard
-              key={hod_details?.[0]?.unique_id || 0}
-              name={hod_details?.[0]?.name}
-              photo={hod_details?.[0]?.image_path}
-              Designation={hod_details?.[0]?.designation}
-              Scholar={hod_details?.[0]?.socialmedia_links?.googlescholar}
-              Research={hod_details?.[0]?.socialmedia_links?.researchgate}
-              Orchid={hod_details?.[0]?.socialmedia_links?.orchidprofile}
-              Publon={hod_details?.[0]?.socialmedia_links?.publonprofile}
-              Scopus={hod_details?.[0]?.socialmedia_links?.scopus}
-              Linkedin={hod_details?.[0]?.socialmedia_links?.linkedin}
-              firstTile={true}
-              uid={hod_details?.[0]?.unique_id}
-              profile={hod_details?.[0]?.pdf_path}
-              isViewmore={true}
-            />
-            <div className="absolute bottom-[10px] top-[28%] -right-[10%] xl:top-[50%] xl:left-[70%] transform -translate-x-1/2 -translate-y-1/2">
-              <button className="hover:bg-secd bg-accn hover:text-text text-prim px-2 py-2 rounded-md"  
-              onClick={() => {
-                  if (faculty_pdf_path && faculty_pdf_path.trim() !== "") {
-                    const url = UrlParser(faculty_pdf_path);
-                    if (url) {
-                      window.open(url, "_blank", "noopener,noreferrer");
+          {hod_details?.length > 0 && (
+            <div className={`${styles.fullWidthTile} relative`}>
+              <ImageCard
+                key={hod_details?.[0]?.unique_id || 0}
+                name={hod_details?.[0]?.name}
+                photo={hod_details?.[0]?.image_path}
+                Designation={hod_details?.[0]?.designation}
+                Scholar={hod_details?.[0]?.socialmedia_links?.googlescholar}
+                Research={hod_details?.[0]?.socialmedia_links?.researchgate}
+                Orchid={hod_details?.[0]?.socialmedia_links?.orchidprofile}
+                Publon={hod_details?.[0]?.socialmedia_links?.publonprofile}
+                Scopus={hod_details?.[0]?.socialmedia_links?.scopus}
+                Linkedin={hod_details?.[0]?.socialmedia_links?.linkedin}
+                firstTile={true}
+                uid={hod_details?.[0]?.unique_id}
+                profile={hod_details?.[0]?.pdf_path}
+                isViewmore={true}
+              />
+
+              <div className="absolute bottom-[10px] top-[28%] -right-[10%] xl:top-[50%] xl:left-[70%] transform -translate-x-1/2 -translate-y-1/2">
+                <button
+                  className="hover:bg-secd bg-accn hover:text-text text-prim px-2 py-2 rounded-md"
+                  onClick={() => {
+                    if (faculty_pdf_path && faculty_pdf_path.trim() !== "") {
+                      const url = UrlParser(faculty_pdf_path);
+                      if (url) window.open(url, "_blank", "noopener,noreferrer");
                     }
-                  }
-                }}
+                  }}
                 >
                   Faculty List
                 </button>
+              </div>
             </div>
-          </div>
+          )}
           {teaching_staff_details?.length > 0 && (
             <>
               <h2 className={`${styles.faculty} text-brwn dark:text-drkt`}>Faculty Members</h2>

@@ -93,7 +93,7 @@
             "name": "MOHAMED YASIR A",
             "year": "Batch 2022 - 2026",
             "department": "AI",
-            "club_designation":"Frontend Developer , UI Planner",
+            "club_designation":"Frontend Developer , Data Engineer",
             "image": "/static/images/web_team/pilot_batch/Yasir.webp",
             "social": {
               "github": "https://github.com/mdyasir8055",
@@ -228,7 +228,7 @@
             "social": {
               "github": "https://github.com/Ajith-ajay",
               "linkedin": "https://www.linkedin.com/in/ajith-g-923b25274/",
-              "portfolio": "https://myprotfoliostu.web.app/",
+              "portfolio": "https://ajithcoder-portfolio.web.app/",
               "email": "ajithajay1029@gmail.com"
             }
           },
@@ -314,7 +314,7 @@
             "social": {
               "github": "https://github.com/4274-hari",
               "linkedin": "https://www.linkedin.com/in/hariprasath4274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-              "portfolio": "",
+              "portfolio": "https://github.com/4274-hari",
               "email": "hari.velusmy@gmail.com"
             }
           },
@@ -322,12 +322,12 @@
             "name": "AJITH G",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Frontend Lead Developer , System Architect , Integration Engineer",
+            "club_designation":"Frontend Lead Developer, Integration Engineer",
             "image": "/static/images/web_team/copilot_batch/AJITH.webp",
             "social": {
               "github": "https://github.com/Ajith-ajay",
               "linkedin": "https://www.linkedin.com/in/ajith-g-923b25274/",
-              "portfolio": "https://myprotfoliostu.web.app/",
+              "portfolio": "https://ajithcoder-portfolio.web.app/",
               "email": "ajithajay1029@gmail.com"
             }
           },
@@ -353,7 +353,7 @@
             "social": {
               "github": "https://github.com/dinesh26072006",
               "linkedin": "https://www.linkedin.com/in/dinesh-prabakaran-491659306/",
-              "portfolio": "",
+              "portfolio": "https://github.com/dinesh26072006",
               "email": "dineshprabakaran2509@gmail.com"
             }
           },
@@ -366,7 +366,7 @@
             "social": {
               "github": "https://github.com/Kishanamz",
               "linkedin": "https://www.linkedin.com/in/kishan-g-1a194a29a/",
-              "portfolio": "",
+              "portfolio": "https://github.com/Kishanamz",
               "email": "kishandhanish07@gmail.com"
             }
           },
@@ -378,8 +378,8 @@
             "image": "/static/images/web_team/copilot_batch/SAI VIKAASH RK.webp",
             "social": {
               "github": "https://github.com/vcash-21",
-              "linkedin": "www.linkedin.com/in/sai-vikaash-r-k-069372306",
-              "portfolio": "",
+              "linkedin": "https://www.linkedin.com/in/sai-vikaash-r-k-069372306",
+              "portfolio": "https://github.com/vcash-21",
               "email": "saivikaash@gmail.com"
             }
           },
@@ -405,7 +405,7 @@
             "social": {
               "github": "https://github.com/Sathishkumar-290705/",
               "linkedin": "https://www.linkedin.com/in/sathish-kumar-9001b02b6/",
-              "portfolio": "",
+              "portfolio": "https://github.com/Sathishkumar-290705/",
               "email": "sathishkumar290705@gmail.com"
             }
           },
@@ -418,7 +418,7 @@
             "social": {
               "github": "https://github.com/kiruba326",
               "linkedin": "https://www.linkedin.com/in/kirubanandham-a-82ab9b301/",
-              "portfolio": "",
+              "portfolio": "https://github.com/kiruba326",
               "email": "a.kirubanandham4420062gmail.com"
             }
           },
@@ -431,7 +431,7 @@
             "social": {
               "github": "https://github.com/dakshan-18",
               "linkedin": "https://www.linkedin.com/in/dakshan-b-1b9401329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-              "portfolio": "",
+              "portfolio": "https://github.com/dakshan-18",
               "email": "dakshan195@gmail.com"
             }
           },
@@ -457,7 +457,7 @@
             "social": {
               "github": "https://github.com/Sudhakar-21",
               "linkedin": "https://www.linkedin.com/in/sudhakar-s-0b5a4a289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-              "portfolio": "",
+              "portfolio": "https://github.com/Sudhakar-21",
               "email": "subramanianm444@gmail.com"
             }
           },
@@ -465,28 +465,28 @@
             "name": "DHARMESH B",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Media Systems - Head",
+            "club_designation":"Froentend Developer",
             "image": "/static/images/web_team/copilot_batch/DHARMESH.webp",
             "social": {
               "github": "https://github.com/Dharmesh1809",
-              "linkedin": "https://www.linkedin.com/in/dharmesh-b-0a859b300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-              "portfolio": "",
+              "linkedin": "https://www.linkedin.com/in/dharmesh-b-0a859b300",
+              "portfolio": "https://github.com/Dharmesh1809",
               "email": "dharmeshb2005@gmail.com",
-              "instagram":"https://www.instagram.com/dharmesh__1809?igsh=cW8ycmlvNmcxbGxw&utm_source=qr"
+              "instagram":"https://www.instagram.com/dharmesh__1809"
             }
           },
           {
             "name": "KAVSHICK K S",
             "year": "Batch 2023  - 2027",
             "department": "AI",
-            "club_designation":"Media Systems - Engineer",
+            "club_designation":"Backend Developer, QA Tester",
             "image": "/static/images/web_team/copilot_batch/KAVSHICK.webp",
-            "social": {
+            "social":{
               "github": "https://github.com/kavshick",
-              "linkedin": "https://www.linkedin.com/in/kavshick-k-s-490165291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-              "portfolio": "",
-              "email": "kavshickks@gmail.com",
-              "instagram":"https://www.instagram.com/onlybun?igsh=N3pmZHF6dzN3dXE1&utm_source=qr"
+              "linkedin": "https://www.linkedin.com/in/kavshick-k-s-490165291",
+              "portfolio": "https://kavshick.vercel.app",
+              "email": "ksvshickks@gmail.com",
+              "instagram":"https://www.instagram.com/_onlybun_?igsh=N3pmZHF6dzN3dXE1"
             }
           },
           {
@@ -498,7 +498,7 @@
             "social": {
               "github": "https://github.com/sandysantho01",
               "linkedin": "https://www.linkedin.com/in/santhosh-kumar-04654b2b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-              "portfolio": "",
+              "portfolio": "https://github.com/sandysantho01",
               "email": "smiliesanthosh01@gmail.com",
               "instagram":"https://www.instagram.com/santhoxh._06/profilecard/?igsh=MXBuc25oM3d4cXlscg=="
             }

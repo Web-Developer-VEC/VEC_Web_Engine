@@ -185,7 +185,6 @@ const handleFinalRequestConfirm = async () => {
       setIsSaved(false);
       setShowRequestModal(false);
 
-      toast.success("Final request submitted successfully!");
     }
   } catch (err) {
     console.error(err);
@@ -435,7 +434,7 @@ return (
 
 )}
 
-{!isEditing && isSaved && (
+{!isEditing && isSaved && getChanges().length > 0 && (
   <div className="w-full mt-4">
     {/* Footer for saved changes */}
     <div className="flex justify-end items-center gap-2">

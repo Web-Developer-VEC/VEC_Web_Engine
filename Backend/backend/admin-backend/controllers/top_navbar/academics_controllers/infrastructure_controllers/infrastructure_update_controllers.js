@@ -13,6 +13,7 @@ async function updateData(tempDoc, mainCollection) {
     if (collection_type === "infrastructure") {
       if (category === "infrastructure_images") {
         // Update inside content array
+
         await mainCollection.updateOne(
           {
             type: collection_type,
@@ -24,13 +25,13 @@ async function updateData(tempDoc, mainCollection) {
           {
             arrayFilters: [
               { "cat.category": "infrastructure_images" },
-              { "cont": original_data }
+              { "cont.image_name": original_data.image_name }
             ]
           }
         );
 
         return {
-          success:true, 
+          success: true,
           message: `The data is updated successfully in the ${collection_type}`
         };
       }
