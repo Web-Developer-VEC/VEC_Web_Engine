@@ -66,49 +66,45 @@ async function updateData(tempDoc, mainCollection) {
       }
 
       // Case B: Array of objects
-      else if (Array.isArray(content) && typeof content[0] === "object") {
-        if (!original_data) throw new Error("original_data required");
+      // Case B: Array of objects
+else if (Array.isArray(content) && typeof content[0] === "object") {
+  if (!original_data) throw new Error("original_data required");
 
-        const originalArray = Array.isArray(original_data?.content)
-          ? original_data.content
-          : Array.isArray(original_data)
-          ? original_data
-          : [original_data];
-        const metaArray = Array.isArray(meta_data?.content)
-          ? meta_data.content
-          : Array.isArray(meta_data)
-          ? meta_data
-          : [meta_data];
+  const uniqueKeys = {
+    membership_details: "member_details",
+    Collection: "title",
+    library_services: "title",
+    library_resources: "title",
+  };
 
-        // If client sends full content array, replace content directly.
-        if (Array.isArray(meta_data?.content) || Array.isArray(original_data?.content)) {
-          await mainCollection.updateOne(
-            { type: collection_type, "data.category": category },
-            { $set: { "data.$.content": metaArray } }
-          );
-        } else {
-          // Otherwise update specific object(s) in-place using common keys.
-          const matchKey = content[0]?.title !== undefined
-            ? "title"
-            : content[0]?.name !== undefined
-            ? "name"
-            : null;
+  const key = uniqueKeys[collection_type];
 
-          const updated = content.map((item) => {
-            const index = originalArray.findIndex((od) =>
-              matchKey ? od?.[matchKey] === item?.[matchKey] : false
-            );
-            return index !== -1 ? { ...item, ...metaArray[index] } : item;
-          });
+  if (!key) throw new Error("No unique key configured");
 
-          await mainCollection.updateOne(
-            { type: collection_type },
-            { $set: { "data.$[elem].content": updated } },
-            { arrayFilters: [{ "elem.category": category }] }
-          );
-        }
-      }
+  const originalItem = Array.isArray(original_data.content)
+    ? original_data.content[0]
+    : original_data;
 
+  const newItem = Array.isArray(meta_data.content)
+    ? meta_data.content[0]
+    : meta_data;
+
+  const updatedContent = content.map((item) => {
+    if (item[key] === originalItem[key]) {
+      return newItem;
+    }
+    return item;
+  });
+
+  await mainCollection.updateOne(
+    { type: collection_type, "data.category": category },
+    {
+      $set: {
+        "data.$.content": updatedContent,
+      },
+    }
+  );
+}
       // Case C: Single object → overwrite
       else {
         await mainCollection.updateOne(

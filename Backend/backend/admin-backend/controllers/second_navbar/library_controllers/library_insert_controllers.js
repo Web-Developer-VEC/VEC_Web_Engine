@@ -51,81 +51,108 @@ async function insertData(tempDoc, mainCollection) {
     }
 
     // 5️⃣ Category-based → insert or merge
-    if (categoryBasedTypes.includes(collection_type)) {
-      if (!category) throw new Error("category is required");
+if (categoryBasedTypes.includes(collection_type)) {
+  if (!category) throw new Error("category is required");
 
-      const doc = await mainCollection.findOne({ type: collection_type });
-      const categoryExists = doc?.data?.find((c) => c.category === category);
+  const doc = await mainCollection.findOne({ type: collection_type });
+  const categoryExists = doc?.data?.find((c) => c.category === category);
 
-      if (categoryExists) {
-        const content = categoryExists.content;
+  if (categoryExists) {
+    const content = categoryExists.content || [];
 
-        if (Array.isArray(content) && typeof content[0] === "string") {
-          // Array of primitives → merge unique
-          const newItems = Array.isArray(meta_data?.content)
-            ? meta_data.content
-            : [meta_data];
+    // Primitive array (strings)
+    if (Array.isArray(content) && typeof content[0] === "string") {
+      const newItems = Array.isArray(meta_data.content)
+        ? meta_data.content
+        : [meta_data];
 
-          const merged = [...new Set([...content, ...newItems])];
+      const merged = [...new Set([...content, ...newItems])];
 
-          await mainCollection.updateOne(
-            { type: collection_type, "data.category": category },
-            { $set: { "data.$.content": merged } }
-          );
-        } else if (Array.isArray(content) && content[0]?.title) {
-          // Array of objects → add unique by title
-          const newItems = Array.isArray(meta_data?.content)
-            ? meta_data.content
-            : Array.isArray(meta_data)
-            ? meta_data
-            : [meta_data]; // wrap single object
-
-          newItems.forEach((newItem) => {
-            if (!content.some((item) => item.title === newItem.title)) {
-              content.push(newItem);
-            }
-          });
-
-          await mainCollection.updateOne(
-            { type: collection_type, "data.category": category },
-            { $set: { "data.$.content": content } }
-          );
-        } else {
-          // Single object → overwrite
-          await mainCollection.updateOne(
-            { type: collection_type, "data.category": category },
-            {
-              $set: {
-                "data.$.content": Array.isArray(meta_data)
-                  ? meta_data
-                  : [meta_data],
-              },
-            }
-          );
-        }
-      } else {
-        // Create new category
-        await mainCollection.updateOne(
-          { type: collection_type },
-          {
-            $push: {
-              data: {
-                category,
-                content: Array.isArray(meta_data) ? meta_data : [meta_data],
-              },
-            },
+      await mainCollection.updateOne(
+        { type: collection_type, "data.category": category },
+        {
+          $set: {
+            "data.$.content": merged,
           },
-          { upsert: true }
-        );
-      }
-
-      return {
-        success: true, 
-        message: `Insert successful for ${collection_type} - category ${category}`,
-        data: meta_data,
-      };
+        }
+      );
     }
 
+    // Object array
+    else if (Array.isArray(content) && typeof content[0] === "object") {
+      // unique field for every collection
+      const uniqueKeys = {
+        membership_details: "member_details",
+        Collection: "title",
+        library_services: "title",
+        library_resources: "title",
+      };
+
+      const uniqueKey = uniqueKeys[collection_type];
+
+      const existing = [...content];
+
+      const newItems = Array.isArray(meta_data.content)
+        ? meta_data.content
+        : [meta_data];
+
+      if (uniqueKey) {
+        newItems.forEach((newItem) => {
+          const exists = existing.some(
+            (item) => item[uniqueKey] === newItem[uniqueKey]
+          );
+
+          if (!exists) {
+            existing.push(newItem);
+          }
+        });
+      } else {
+        existing.push(...newItems);
+      }
+
+      await mainCollection.updateOne(
+        { type: collection_type, "data.category": category },
+        {
+          $set: {
+            "data.$.content": existing,
+          },
+        }
+      );
+    }
+
+    // Empty content
+    else {
+      await mainCollection.updateOne(
+        { type: collection_type, "data.category": category },
+        {
+          $set: {
+            "data.$.content": meta_data.content || [],
+          },
+        }
+      );
+    }
+  } else {
+    // Category doesn't exist
+    await mainCollection.updateOne(
+      { type: collection_type },
+      {
+        $push: {
+          data: {
+            category,
+            content: meta_data.content || [],
+          },
+        },
+      },
+      { upsert: true }
+    );
+  }
+
+  return {
+    success: true,
+    message: `Insert successful for ${collection_type} - ${category}`,
+    data: meta_data,
+  };
+}
     // 6️⃣ Unknown type fallback
     throw new Error("Unknown collection_type");
   } catch (error) {
