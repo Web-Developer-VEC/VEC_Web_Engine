@@ -31,6 +31,7 @@
     "landing": "file:",
     "lucide-react": "^0.469.0",
     "mimic-fn": "^4.0.0",
+    "pdfjs-dist": "^3.11.174",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.1",
     "react": "^18.3.1",

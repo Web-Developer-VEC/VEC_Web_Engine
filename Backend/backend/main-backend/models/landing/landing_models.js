@@ -7,7 +7,8 @@ const allowedtypes = {
   'announcements',
   'special_announcements',
   'events',
-  'news_card'
+  'news_card',
+  'side_buttons'
 ],
 };
 
