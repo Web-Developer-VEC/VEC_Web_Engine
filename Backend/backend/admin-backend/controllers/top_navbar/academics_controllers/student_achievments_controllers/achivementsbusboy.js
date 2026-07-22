@@ -30,9 +30,7 @@ async function studentAchievementsHandler(fileStream, docs, req, cb, filename, m
       return cb(new Error("Unsupported collection type"));
     }
 
-    if (!meta_data?.date) {
-      return cb(new Error("Missing date in meta_data"));
-    }
+    
 
     // ✅ Resolve folderId from model map using collectionName
     const folderId = reverseDeptMap[collectionName]; // "001"
@@ -65,7 +63,6 @@ async function studentAchievementsHandler(fileStream, docs, req, cb, filename, m
       location: `/${s3Key}`,
       mimetype: command.input.ContentType,
       event_name: meta_data?.event_name,
-      date: meta_data?.date,
       image_content: meta_data?.image_content,
       category: docs[0]?.category,
       collectionName,
