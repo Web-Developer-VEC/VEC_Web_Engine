@@ -139,6 +139,7 @@ const App = () => {
     }
 
     const session = JSON.parse(sessionStorage.getItem("userSession"));
+    const isFooter = currentPath.startsWith("/hostel");
 
     return (
         <>

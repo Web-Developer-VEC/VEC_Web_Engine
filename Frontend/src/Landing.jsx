@@ -99,6 +99,24 @@ const LandingPage = ({ theme, load, toggle, isAdmin }) => {
                 setShowPopup={setShowPopup}
                 isAdmin={isAdmin}
             />
+            <div className='w-max max-w-[100vw] h-fit absolute z-50'>
+                <div className='pt-2 pb-[2vmax] bg-prim dark:bg-drkp'>
+                    <Abt/>
+                    <Announce anno={announcements} spc={specialAnnouncements}/>
+                    <Event data={events}/>
+                </div>
+                <Tracker data={bannerData}/>
+                <div className='bg-prim dark:bg-drkp'>
+                    <Samplereact courses={departmentBanner}/>
+                    <Contact data={pageDetails[0]}/>
+                    {/* <Chat/> */}
+                    <Footer theme={theme} data={pageDetails[0]}/>
+                </div>
+            </div>
+            <ScrollToTopButton/>,
+            {showPopup && (
+                <NotifyCard onClose={() => setShowPopup(false)} data={newscard} />
+            )}
         </Suspense>
     );
 };

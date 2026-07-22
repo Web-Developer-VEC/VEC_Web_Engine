@@ -97,7 +97,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
         const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE", ...(
           ["AIDS_001", "AUTO_002", "CHEMISTRY_003", "CIVIL_004", "CSE_005", "CSECS_006", "EEE_007", "EIE_008", "ECE_009", "ENGLISH_010", "IT_011", "MATHS_012", "MECH_013", "TAMIL_014", "PHYSICS_015", "MECSE_016", "MBA_017", "PS_018"].includes(collectionName)
-            ? ["research", "activities","Pedagogy Initiatives"]
+            ? ["research", "activities","pedagogy"]
             : []
         )
         ];
