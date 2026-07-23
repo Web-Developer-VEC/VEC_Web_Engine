@@ -10,7 +10,7 @@ async function deleteData(tempDoc, mainCollection) {
     {
       $pull: {
         "data.$[d].content": {
-          ORGANISATION_NAME: meta_data.ORGANISATION_NAME,
+          organisation_name: meta_data.organisation_name,
         },
       },
     },
