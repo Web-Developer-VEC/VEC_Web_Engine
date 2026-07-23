@@ -39,38 +39,47 @@
         }
       ]
     }
-  },{
-  "collectionName": "AIDS_001",
-  "collection_type": "research",
-  "action": "update",
-  "title": "updateResearch 2023 - 2024",
-  "category": "department_research",
-  "meta_data": {
-    "year": "2023 - 2024",
-    "research": [
-      {
-        "name": "Book",
-        "pdf_path": ""
-      },
-      {
-        "name": "Journal Publications",
-        "pdf_path": ""
-      }
-    ]
   },
-  "original_data": {
-    "year": "2023 - 2024",
-    "research": [
-      {
-        "name": "Book",
-        "pdf_path": "/static/pdfs/research/001/2324/Books & Book Chapters 23-24.pdf"
-      },
-
-      {
-        "name": "Journal Publications",
-        "pdf_path": "/static/pdfs/research/001/2324/Journal Publications 23-24.pdf"
-      }
-    ]
+  {
+    "collectionName": "AIDS_001",
+    "collection_type": "research",
+    "action": "update",
+    "title": "updateResearch 2023 - 2024",
+    "category": "department_research",
+    "meta_data": {
+      "year": "2023 - 2024",
+      "research": [
+        {
+          "name": "Book",
+          "pdf_path": ""
+        },
+        {
+          "name": "Journal Publications",
+          "pdf_path": ""
+        }
+      ]
+    },
+    "original_data": {
+      "year": "2023 - 2024",
+      "research": [
+        {
+          "name": "Book",
+          "pdf_path": "/static/pdfs/research/001/2324/Books & Book Chapters 23-24.pdf"
+        },
+        {
+          "name": "Journal Publications",
+          "pdf_path": "/static/pdfs/research/001/2324/Journal Publications 23-24.pdf"
+        }
+      ]
+    }
+  },{
+    "collectionName": "AIDS_001",
+    "collection_type": "research",
+    "action": "delete",
+    "title": "Delete whole Research 2022 - 2023",
+    "category": "department_research",
+    "meta_data": {
+      "year": "2022 - 2023"
+    }
   }
-}
 ]
