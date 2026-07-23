@@ -1,17 +1,6 @@
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import SharedLandingLayout from './SharedLandingLayout';
 import LoadComp from './Components/Main/LoadComp';
-import Abt from './Components/Main/Landing Comp/About';
-import Announce from './Components/Main/Landing Comp/announcements';
-import Event from './Components/Main/Landing Comp/Events';
-import Tracker from './Components/Main/Landing Comp/Tracker';
-import Samplereact from './Components/Main/Landing Comp/Courses';
-import Contact from './Components/Main/Landing Comp/ContactIcon'
-import Footer from './Components/Main/Landing Comp/Footer';
-import ScrollToTopButton from './Components/Main/ScrollToTopButton';
-import NotifyCard from './Components/Main/Landing Comp/NotifyCard';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 // Main components
 const MainComponents = {
@@ -42,11 +31,9 @@ const AdminComponents = {
     
 };
 
-const LandingPage = ({ theme, load, toggle, isAdmin }) => {
+const LandingPage = ({ theme, load, toggle, pageData, isAdmin }) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [showPopup, setShowPopup] = useState(true);
-    const [landingData, setLandingData] = useState(null);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
@@ -59,28 +46,6 @@ const LandingPage = ({ theme, load, toggle, isAdmin }) => {
         };
     }, []);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const responce = await axios.post('/api/main-backend/landing_page_data',
-                    {
-                        type: "landing_data"
-                    }
-                );
-
-                setLandingData(responce.data.data);
-
-            } catch (error) {
-                console.error("Error fetching thhe landing page Data", error);
-                if (error.response.data.status === 429) {
-                    navigate('/ratelimit', { state: { msg: error.response.data.message } })
-                }
-            }
-        }
-
-        fetchData();
-    }, []);
-
     const components = isAdmin ? AdminComponents : MainComponents;
 
     return (
@@ -90,7 +55,7 @@ const LandingPage = ({ theme, load, toggle, isAdmin }) => {
                 theme={theme}
                 load={load}
                 toggle={toggle}
-                pageData={landingData}
+                pageData={pageData}
                 isOnline={isOnline}
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}

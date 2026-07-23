@@ -24,13 +24,14 @@ async function studentAchievementsHandler(fileStream, docs, req, cb, filename, m
 
     const collectionType = docs[0]?.collection_type;  // "student_achievements"
     const collectionName = docs[0]?.collectionName;  // e.g. "AIDS_001"
-    const meta_data = docs[0]?.meta_data;             // { event_name, date, ... }
+    const meta_data = docs[0]?.meta_data;            
 
     if (collectionType !== "student_achievements") {
       return cb(new Error("Unsupported collection type"));
     }
 
     
+  
 
     // ✅ Resolve folderId from model map using collectionName
     const folderId = reverseDeptMap[collectionName]; // "001"

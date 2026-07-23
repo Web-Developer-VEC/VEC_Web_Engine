@@ -31,27 +31,44 @@ async function facultyHandler(fileStream, docs, req, cb, filename, mimetype) {
     }
 
     const doc = docs?.[0];
+
     const collectionName = doc?.collectionName || doc?.collection_name;
-    const collectionType = String(doc?.collection_type || "").toUpperCase();
-    const staffName = doc?.meta_data?.name || "staff";
+    const collectionType = String(doc?.collection_type || "").toLowerCase();
+    const category = String(doc?.category || "").toLowerCase();
+    const action = String(doc?.action || "").toLowerCase();
+
+    const staffName = (doc?.meta_data?.members?.unique_id || "staff").toUpperCase().trim();
 
     if (!collectionName) {
       fileStream.resume();
       return cb(new Error("collectionName is missing"));
     }
 
-    if (
-      !["HOD", "FACULTY", "NON_TEACHING_FACULTY", "FACULTY_PDF_PATH"].includes(
-        collectionType
-      )
-    ) {
+    if (collectionType !== "faculty") {
       fileStream.resume();
       return cb(new Error("Invalid collection_type"));
     }
 
-    if (collectionType === "FACULTY_PDF_PATH" && !isPdf) {
+    const validCategories = [
+      "head_of_department",
+      "teaching_staff",
+      "non_teaching_staff",
+      "faculty_pdf_path",
+    ];
+
+    if (!validCategories.includes(category)) {
       fileStream.resume();
-      return cb(new Error("FACULTY_PDF_PATH accepts PDF only"));
+      return cb(new Error("Invalid category"));
+    }
+
+    if (!["insert", "update"].includes(action)) {
+      fileStream.resume();
+      return cb(new Error("Invalid action"));
+    }
+
+    if (category === "faculty_pdf_path" && !isPdf) {
+      fileStream.resume();
+      return cb(new Error("faculty_pdf_path accepts PDF only"));
     }
 
     const normalizedName = collectionName.toUpperCase().trim();
@@ -61,41 +78,50 @@ async function facultyHandler(fileStream, docs, req, cb, filename, mimetype) {
       fileStream.resume();
       console.error("Available collections:", Object.keys(reverseDeptMap));
       console.error("Received collectionName:", collectionName);
+
       return cb(
         new Error(
-          `Invalid collectionName '${collectionName}'. Expected format: DEPT_XXX_staff (e.g., AIDS_001_staff)`
+          `Invalid collectionName '${collectionName}'. Expected department name.`
         )
       );
     }
 
     let baseFolder;
     let finalFilename;
+    
+    let basefilename = doc.meta_data.members.unique_id.toUpperCase().trim();
 
-    if (collectionType === "FACULTY_PDF_PATH") {
+    if (category === "faculty_pdf_path") {
       baseFolder = "static/pdfs/faculty_list/";
+
       finalFilename = path.basename(realFilename) || `${folderId}.pdf`;
+
       if (!path.extname(finalFilename)) {
-        finalFilename = `${finalFilename}.pdf`;
+        finalFilename += ".pdf";
       }
     } else {
       baseFolder = isPdf
-        ? `static/pdfs/${collectionType.toLowerCase()}/${folderId}/`
+        ? `static/pdfs/faculty_profile/${folderId}/`
         : `static/images/profile_photos/${folderId}/`;
 
-      const ext = realFilename.includes(".")
-        ? realFilename.split(".").pop()
+      const ext = path.extname(realFilename)
+        ? path.extname(realFilename).slice(1)
         : isPdf
-        ? "pdf"
-        : "jpg";
+          ? "pdf"
+          : "jpg";
 
-      const safeName = slugify(staffName) || "staff";
-      finalFilename = `${safeName}.${ext}`;
+      const safeName = slugify(staffName);
+
+      finalFilename = `${safeName.toUpperCase()}.${ext}`;
     }
 
-    const s3Key = baseFolder + finalFilename;
+    const s3Key = "temp/" + baseFolder + finalFilename;
 
     const chunks = [];
-    for await (const chunk of fileStream) chunks.push(chunk);
+    for await (const chunk of fileStream) {
+      chunks.push(chunk);
+    }
+
     const fileBuffer = Buffer.concat(chunks);
 
     const command = new PutObjectCommand({
@@ -106,14 +132,26 @@ async function facultyHandler(fileStream, docs, req, cb, filename, mimetype) {
     });
 
     const data = await s3.send(command);
+    // Update meta_data with uploaded temp path
+    if (doc?.meta_data?.members) {
+      if (isPdf) {
+        doc.meta_data.members.pdf_path = `/${s3Key}`;
+      } else if (isImage) {
+        doc.meta_data.members.image_path = `/${s3Key}`;
+      }
+    }
+    if (!req.uploadedFiles) {
+      req.uploadedFiles = [];
+    }
 
-    if (!req.uploadedFiles) req.uploadedFiles = [];
     req.uploadedFiles.push({
       key: s3Key,
       location: `/${s3Key}`,
       mimetype: effectiveMime,
-      collectionType,
       collectionName,
+      collectionType,
+      category,
+      action,
       department: folderId,
       departmentName: facultydeptMap[folderId],
       staffName,
