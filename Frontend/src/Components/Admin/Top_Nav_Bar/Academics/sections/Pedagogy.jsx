@@ -48,14 +48,12 @@ const Pedagogy = ({ data = [] }) => {
   };
   const isLink = (path) => path?.startsWith("http");
 
-  // Load initial data
   useEffect(() => {
     if (data && data.length > 0) {
       const pedagogyCategory = data.find(item => item.category === "Pedagogy Initiatives");
       let formattedData = pedagogyCategory ? deepCopy(pedagogyCategory.content) : [];
 
-      // Add stable id to each year (just like Kapila)
-      // ✅ Also add stable id to each content item so item-level diffing works
+      
       formattedData = formattedData.map((y) => ({
         id: y.id || crypto.randomUUID(),
         ...y,
@@ -76,11 +74,7 @@ const Pedagogy = ({ data = [] }) => {
   //   setActiveYearId(prev => (prev === id ? null : id));
   // };
 
-  // ✅ UPDATED: now accepts the full pdf item instead of just a path.
-  // If this item still has a local `pdf_file` (File object) attached, it means
-  // the request hasn't been approved yet and the file doesn't actually exist
-  // on the server at `pdf_path`. In that case, open a temporary blob preview
-  // built from the local File instead of hitting the (not-yet-real) server path.
+ 
   const handlePdfClick = (pdfItem) => {
   if (!pdfItem) return;
 
