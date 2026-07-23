@@ -7,17 +7,46 @@ async function deleteData(tempDoc, mainCollection) {
   if (collection_type !== "research") {
     throw new Error("Incorrect collection type or route");
   }
+  // Delete entire year
+  if (
+    meta_data.year &&
+    (!meta_data.research || meta_data.research.length === 0)
+  ) {
+    const result = await mainCollection.updateOne(
+      { type: collection_type },
+      {
+        $pull: {
+          "data.$[d].content": {
+            year: meta_data.year,
+          },
+        },
+      },
+      {
+        arrayFilters: [
+          { "d.category": category },
+        ],
+      }
+    );
 
+    if (result.modifiedCount === 0) {
+      throw new Error(`Year ${meta_data.year} not found`);
+    }
+
+    return {
+      success: true,
+      message: `Research year ${meta_data.year} deleted successfully`,
+    };
+  }
   if (collection_type === "research") {
 
-    
+
     if (meta_data && Object.keys(meta_data).length === 0) {
       await mainCollection.updateOne(
         { type: collection_type },
         { $pull: { data: { category: category } } } // remove the whole object with matching category
       );
 
-      return {success:true,  message: `Category ${category} deleted successfully` };
+      return { success: true, message: `Category ${category} deleted successfully` };
     }
 
     const doc = await mainCollection.findOne({ type: collection_type });
@@ -56,7 +85,7 @@ async function deleteData(tempDoc, mainCollection) {
     }
 
     return {
-      success:true, 
+      success: true,
       message: `Research data deleted successfully for category ${category} and year ${meta_data.year}`,
     };
   }

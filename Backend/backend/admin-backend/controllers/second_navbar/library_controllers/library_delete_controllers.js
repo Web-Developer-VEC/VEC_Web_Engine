@@ -73,25 +73,46 @@ async function deleteData(tempDoc, mainCollection) {
           { $pull: { data: { category } } }
         );
       } else if (Array.isArray(content) && typeof content[0] === "object") {
-        // Delete object(s) by title (or other unique key)
-        const itemsToDelete = Array.isArray(meta_data.content)
-          ? meta_data.content
-          : [meta_data];
 
-        const titlesToDelete = itemsToDelete.map((item) => item.title);
+  // Unique key for each collection
+  const uniqueKeys = {
+    membership_details: "member_details",
+    Collection: "title",
+    library_services: "title",
+    library_resources: "title",
+    Faculty_Staff: "title",
+    advisors: "title",
+    Ebook_Sources: "title",
+    digital_libraries: "title",
+  };
 
-        await mainCollection.updateOne(
-          { type: collection_type, "data.category": category },
-          { $pull: { "data.$.content": { title: { $in: titlesToDelete } } } }
-        );
-      } else {
-        // Fallback: clear content
-        await mainCollection.updateOne(
-          { type: collection_type, "data.category": category },
-          { $set: { "data.$.content": [] } }
-        );
-      }
+  const uniqueKey = uniqueKeys[collection_type];
 
+  if (!uniqueKey) {
+    throw new Error(`No unique key configured for ${collection_type}`);
+  }
+
+  const itemsToDelete = Array.isArray(meta_data.content)
+    ? meta_data.content
+    : Array.isArray(meta_data)
+    ? meta_data
+    : [meta_data];
+
+  const valuesToDelete = itemsToDelete
+    .map((item) => item[uniqueKey])
+    .filter(Boolean);
+
+  await mainCollection.updateOne(
+    { type: collection_type, "data.category": category },
+    {
+      $pull: {
+        "data.$.content": {
+          [uniqueKey]: { $in: valuesToDelete },
+        },
+      },
+    }
+  );
+}
       return {
         success: true, 
         message: `Delete successful for ${collection_type} - category ${category}`,
