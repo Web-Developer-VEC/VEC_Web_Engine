@@ -95,15 +95,19 @@ async function deptresearchHandler(fileStream, docs, req, cb, filename, mimetype
     req.uploadedFiles.push(uploaded);
 
     // 🔥 MULTI-FILE SAFE ASSIGNMENT
-    const emptyIndex = meta_data.research.findIndex(
-      item => !item.pdf_path || item.pdf_path.trim() === ""
-    );
+    const index = meta_data.research.findIndex(item => {
+      const oldFileName = item.pdf_path.split("/").pop();
+      return oldFileName === realPdfName;
+    });
 
-    if (emptyIndex === -1) {
-      return cb(new Error("No empty research slot available"));
+    if (index === -1) {
+      return cb(
+        new Error(`No matching research item found for ${realPdfName}`)
+      );
     }
 
-    meta_data.research[emptyIndex].pdf_path = uploaded.location;
+    meta_data.research[index].pdf_path = uploaded.location;
+
 
     cb(null, uploaded);
 
