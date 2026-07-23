@@ -73,7 +73,7 @@ const NBA_F = ({ data }) => {
                   <tr>
                     <th className="text-left px-4 py-2 text-text">S.No</th>
                     <th className="text-left px-4 py-2 text-text">Programs</th>
-                    <th className="text-left px-4 py-2 text-text">Validity Years</th>
+                    <th className="text-left px-4 py-2 text-text">validity Years</th>
                   </tr>
                 </thead>
                 <tbody>
