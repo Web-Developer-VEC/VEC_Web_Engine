@@ -12,8 +12,8 @@ async function insertData(tempDoc, mainCollection) {
 
   // Prevent duplicate organisation
   const duplicate = categoryData.content.find(
-    c => c.ORGANISATION_NAME.toLowerCase() ===
-         meta_data.ORGANISATION_NAME.toLowerCase()
+    c => c.organisation_name.toLowerCase() ===
+      meta_data.organisation_name.toLowerCase()
   );
 
   if (duplicate) {
@@ -32,7 +32,7 @@ async function insertData(tempDoc, mainCollection) {
     }
   );
 
-  return {success:true,  message: "MoU inserted successfully" };
+  return { success: true, message: "MoU inserted successfully" };
 }
 
 
