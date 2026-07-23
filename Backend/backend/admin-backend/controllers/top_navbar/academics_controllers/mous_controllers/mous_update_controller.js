@@ -9,18 +9,18 @@ async function updateData(tempDoc, mainCollection) {
     { type: collection_type },
     {
       $set: {
-        "data.$[d].content.$[r].ORGANISATION_NAME":
-          meta_data.ORGANISATION_NAME,
-        "data.$[d].content.$[r].MONTH_AND_YEAR":
-          meta_data.MONTH_AND_YEAR,
-        "data.$[d].content.$[r].VALIDITY":
-          meta_data.VALIDITY,
+        "data.$[d].content.$[r].organisation_name":
+          meta_data.organisation_name,
+        "data.$[d].content.$[r].month_and_year":
+          meta_data.month_and_year,
+        "data.$[d].content.$[r].validity":
+          meta_data.validity,
       },
     },
     {
       arrayFilters: [
         { "d.category": category },
-        { "r.ORGANISATION_NAME": original_data.ORGANISATION_NAME },
+        { "r.organisation_name": original_data.organisation_name },
       ],
     }
   );

@@ -188,27 +188,81 @@ const Activities = ({ data }) => {
           JSON.stringify(editedYear.activities_tile);
 
         if (hasChanges) {
-          payload.push({
-            collectionName,
-            collection_type: "activities",
-            action: "update",
-            title: "update in department_activities",
-            category: "department_activities",
-            original_data: {
-              year: originalYear.year,
-              activities_tile: (originalYear.activities_tile || []).map((act) => ({
-                name: act.name,
-                pdf_path: act.pdf_path
-              }))
-            },
-            meta_data: {
+          const changedActivities = [];
+          const originalChangedActivities = [];
+
+          (editedYear.activities_tile || []).forEach((editedAct) => {
+            const originalAct = (originalYear.activities_tile || []).find(
+              (act) => act.name === editedAct.name
+            );
+
+            const newPdfPath = getPdfPath({
+              ...editedAct,
               year: editedYear.year,
-              activities_tile: (editedYear.activities_tile || []).map((act) => ({
-                name: act.name,
-                pdf_path: getPdfPath({ ...act, year: editedYear.year })
-              }))
+            });
+
+            const oldPdfPath = originalAct?.pdf_path || "";
+
+            // Only include changed PDFs
+            if (newPdfPath !== oldPdfPath) {
+
+              const action =
+                oldPdfPath === "" && newPdfPath !== ""
+                  ? "insert"
+                  : "update";
+
+              payload.push({
+                collectionName,
+                collection_type: "activities",
+                action,
+                title: `${action} in department_activities`,
+                category: "department_activities",
+
+                original_data:
+                  action === "insert"
+                    ? null
+                    : {
+                      year: originalYear.year,
+                      activities_tile: [
+                        {
+                          name: originalAct.name,
+                          pdf_path: oldPdfPath,
+                        },
+                      ],
+                    },
+
+                meta_data: {
+                  year: editedYear.year,
+                  activities_tile: [
+                    {
+                      name: editedAct.name,
+                      pdf_path: newPdfPath,
+                    },
+                  ],
+                },
+              });
             }
           });
+
+          if (changedActivities.length > 0) {
+            payload.push({
+              collectionName,
+              collection_type: "activities",
+              action: "update",
+              title: "update in department_activities",
+              category: "department_activities",
+
+              original_data: {
+                year: originalYear.year,
+                activities_tile: originalChangedActivities,
+              },
+
+              meta_data: {
+                year: editedYear.year,
+                activities_tile: changedActivities,
+              },
+            });
+          }
         }
       }
     });
@@ -319,8 +373,8 @@ const Activities = ({ data }) => {
             <button
               onClick={() => setSelectedYear(year)}
               className={`relative px-4 py-2 rounded deptevent-year-button ${selectedYear === year
-                  ? "bg-accn text-prim"
-                  : "bg-[#fdcc03] text-text dark:bg-drks"
+                ? "bg-accn text-prim"
+                : "bg-[#fdcc03] text-text dark:bg-drks"
                 }`}
             >
               {year}

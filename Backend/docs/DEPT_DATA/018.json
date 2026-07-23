@@ -186,7 +186,7 @@
             "name": "Dr. SURESHKUMAR K",
             "designation": "Associate Professor & Head in Charge",
             "unique_id": "VEC-007-03-500",
-            "socialmedia_links":  {
+            "socialmedia_links": {
               "linkedin": "https://www.linkedin.com/in/sureshkumar-k-19111860/",
               "googlescholar": "https://scholar.google.com/citations?user=4soReLkAAAAJ",
               "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar",
@@ -201,186 +201,186 @@
       {
         "category": "teaching_staff",
         "members": [
-            {
-              "name": "Dr. SRINATH S",
-              "designation": "Professor & COE",
-              "unique_id": "VEC-007-02-165",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/srinath-subbaraman-9b10b723/",
-                "googlescholar": "",
-                "researchgate": "",
-                "orchidprofile": "https://orcid.org/0000-0002-9953-9932",
-                "publonprofile": "https://www.webofscience.com/wos/author/record/N-5572-2019",
-                "scopus": "https://tinyurl.com/743phucx"
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-02-165.webp",
-              "pdf_path": ""
+          {
+            "name": "Dr. SRINATH S",
+            "designation": "Professor & COE",
+            "unique_id": "VEC-007-02-165",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/srinath-subbaraman-9b10b723/",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0000-0002-9953-9932",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/N-5572-2019",
+              "scopus": "https://tinyurl.com/743phucx"
             },
-            {
-              "name": "Dr. GEETHA R",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-185",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/geetha-raman-86a635203/",
-                "googlescholar": "https://scholar.google.com/citations?user=z5gJDvwAAAAJ&hl=en",
-                "researchgate": "",
-                "orchidprofile": "",
-                "publonprofile": "",
-                "scopus": ""
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-185.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-02-165.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Dr. GEETHA R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-185",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/geetha-raman-86a635203/",
+              "googlescholar": "https://scholar.google.com/citations?user=z5gJDvwAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
             },
-            {
-              "name": "Dr. RAGHURAMAN S",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-109",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/raghu-raman-sivalingam-930020125/",
-                "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=raghuraman+sivalingam&oq=ra",
-                "researchgate": "https://www.researchgate.net/profile/Raghuraman-Sivalingam",
-                "orchidprofile": "https://orcid.org/0000-0001-6140-8913",
-                "publonprofile": "https://www.webofscience.com/wos/author/record/1114935",
-                "scopus": "https://www.scopus.com/results/authorNamesList.uri?..."
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-109.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-185.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Dr. RAGHURAMAN S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-109",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/raghu-raman-sivalingam-930020125/",
+              "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=raghuraman+sivalingam&oq=ra",
+              "researchgate": "https://www.researchgate.net/profile/Raghuraman-Sivalingam",
+              "orchidprofile": "https://orcid.org/0000-0001-6140-8913",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/1114935",
+              "scopus": "https://www.scopus.com/results/authorNamesList.uri?..."
             },
-            {
-              "name": "Mrs. SELVE V",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-149",
-              "socialmedia_links": {
-                "linkedin": "",
-                "googlescholar": "https://scholar.google.com/citations?hl=en&user=7bJB7R8AAAAJ",
-                "researchgate": "",
-                "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-7783-9221",
-                "publonprofile": "https://publons.com/wos-op/researcher/5362541/selve-v/",
-                "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57941486900"
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-149.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-109.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mrs. SELVE V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-149",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=7bJB7R8AAAAJ",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-7783-9221",
+              "publonprofile": "https://publons.com/wos-op/researcher/5362541/selve-v/",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57941486900"
             },
-            {
-              "name": "Dr. ANGALAPARAMESWARI G",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-164",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/angala-parameswari-g-asst-professor-iii-0aa210345/",
-                "googlescholar": "https://scholar.google.com/citations?user=QJgd7cYAAAAJ&hl=en",
-                "researchgate": "https://www.researchgate.net/profile/Angala-Gandhinathan",
-                "orchidprofile": "https://orcid.org/0000-0001-7046-0078",
-                "publonprofile": "",
-                "scopus": ""
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-164.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-149.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Dr. ANGALAPARAMESWARI G",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-164",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/angala-parameswari-g-asst-professor-iii-0aa210345/",
+              "googlescholar": "https://scholar.google.com/citations?user=QJgd7cYAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Angala-Gandhinathan",
+              "orchidprofile": "https://orcid.org/0000-0001-7046-0078",
+              "publonprofile": "",
+              "scopus": ""
             },
-            {
-              "name": "Dr. SUNITHA D",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-159",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/dr-sunitha-senthil-38b05961/",
-                "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&user=2ZsplucAAAAJ",
-                "researchgate": "https://www.researchgate.net/scientific-contributions/D-Sunitha-2096230154",
-                "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-6054-841X",
-                "publonprofile": "https://publons.com/wos-op/account/unified-auth/",
-                "scopus": "https://www.scopus.com/home.uri"
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-159.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-164.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Dr. SUNITHA D",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-159",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/dr-sunitha-senthil-38b05961/",
+              "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=en&user=2ZsplucAAAAJ",
+              "researchgate": "https://www.researchgate.net/scientific-contributions/D-Sunitha-2096230154",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-6054-841X",
+              "publonprofile": "https://publons.com/wos-op/account/unified-auth/",
+              "scopus": "https://www.scopus.com/home.uri"
             },
-            {
-              "name": "Dr. VIDHYA K",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-178",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/vidhya-k-695143204/",
-                "googlescholar": "https://scholar.google.com/citations?hl=en&user=6KRDyYEAAAAJ",
-                "researchgate": "https://www.researchgate.net/profile/Vidhya-Kumar-4?ev=hdr_xprf",
-                "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-3072-5200",
-                "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5520-2025",
-                "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-178.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-159.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Dr. VIDHYA K",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-178",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/vidhya-k-695143204/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=6KRDyYEAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Vidhya-Kumar-4?ev=hdr_xprf",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0002-3072-5200",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5520-2025",
+              "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
             },
-            {
-              "name": "Mrs. KASIRATHI N",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-187",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/kasirathi-n-698393353/",
-                "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=kasirathi&btnG=",
-                "researchgate": "https://www.researchgate.net/profile/Kasirathi-Natarajan?ev=hdr_xprf",
-                "orchidprofile": "",
-                "publonprofile": "",
-                "scopus": ""
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-187.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-178.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mrs. KASIRATHI N",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-187",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/kasirathi-n-698393353/",
+              "googlescholar": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=kasirathi&btnG=",
+              "researchgate": "https://www.researchgate.net/profile/Kasirathi-Natarajan?ev=hdr_xprf",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
             },
-            {
-              "name": "Mr. JAGADEESH BABU V",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-117",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/jagadeesh-babu-jagababu007-35390365/",
-                "googlescholar": "https://scholar.google.com/citations?user=pK6RxpMAAAAJ&hl=en",
-                "researchgate": "",
-                "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0003-3278-1166",
-                "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5255-2025",
-                "scopus": "https://www.editorialmanager.com/dwt/default2.aspx"
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-117.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-187.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mr. JAGADEESH BABU V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-117",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/jagadeesh-babu-jagababu007-35390365/",
+              "googlescholar": "https://scholar.google.com/citations?user=pK6RxpMAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0000-0003-3278-1166",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5255-2025",
+              "scopus": "https://www.editorialmanager.com/dwt/default2.aspx"
             },
-            {
-              "name": "Mr. RENGARAJAN V",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-184",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/rengarajan-v-58281464/",
-                "googlescholar": "https://scholar.google.com/citations?user=iU1IeMsAAAAJ&hl=en",
-                "researchgate": "",
-                "orchidprofile": "https://orcid.org/0009-0004-5418-3946",
-                "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5720-2025",
-                "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-184.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-117.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mr. RENGARAJAN V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-184",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/rengarajan-v-58281464/",
+              "googlescholar": "https://scholar.google.com/citations?user=iU1IeMsAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0004-5418-3946",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/MHQ-5720-2025",
+              "scopus": "https://www.scopus.com/dashboard.uri?origin=&zone=TopNavBar"
             },
-            {
-              "name": "Mrs. VIJAYALAKSHMI M",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-502",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/viji-lakshmi-70b667353",
-                "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=8VaZJUAAAAJ",
-                "researchgate": "",
-                "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0000-1230-9118",
-                "publonprofile": "",
-                "scopus": ""
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-502.webp",
-              "pdf_path": ""
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-184.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mrs. VIJAYALAKSHMI M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-502",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/viji-lakshmi-70b667353",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=8VaZJUAAAAJ",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0000-1230-9118",
+              "publonprofile": "",
+              "scopus": ""
             },
-            {
-              "name": "Mrs. DEVIKA B",
-              "designation": "Assistant Professor",
-              "unique_id": "VEC-007-04-501",
-              "socialmedia_links": {
-                "linkedin": "https://www.linkedin.com/in/b-devika-087814353/",
-                "googlescholar": "",
-                "researchgate": "",
-                "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0006-3420-0686",
-                "publonprofile": "",
-                "scopus": "https://www.scopus.com/home.uri"
-              },
-              "image_path": "/static/images/profile_photos/007/VEC-007-04-501.webp",
-              "pdf_path": ""
-            }
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-502.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mrs. DEVIKA B",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-007-04-501",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/b-devika-087814353/",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0006-3420-0686",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/home.uri"
+            },
+            "image_path": "/static/images/profile_photos/007/VEC-007-04-501.webp",
+            "pdf_path": ""
+          }
         ]
       },
       {
@@ -463,71 +463,71 @@
         ]
       },
       {
-         "category": "curriculum",
-        "content":[
+        "category": "curriculum",
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus - UG",
+            "syllabus": [
               {
-                "heading":"Curriculum & Syllabus - UG",
-                "syllabus":[
-                {
-                  "year": "R - 2023",
-                  "docs":[
-                    {
-                    "name":"I Semester",
-                      "pdf_path": ""
+                "year": "R - 2023",
+                "docs": [
+                  {
+                    "name": "I Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"II Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "II Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"III Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "III Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"IV Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "IV Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"V Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "V Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VI Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VI Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VII Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VIII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VIII Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"Elective Courses",
-                      "pdf_path": ""
+                  {
+                    "name": "Elective Courses",
+                    "pdf_path": ""
                   }
                 ]
-                },
-                {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/018/reg_21.pdf"
-                }
-          ]
-        },
-        {
-          "heading": "curriculum & syllabus - PG",
-          "syllabus": [
-            {
-              "year": "R - 2019 A (Students admitted during 2021 and 2022)",
-              "pdf_path": "/static/pdfs/curriculum/007/pg_reg_21.pdf"
-            },
-            {
-              "year": "R - 2023",
-              "pdf_path": "/static/pdfs/curriculum/007/pg_reg_23.pdf"
-            }
-          ]
-        }
+              },
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/018/reg_21.pdf"
+              }
+            ]
+          },
+          {
+            "heading": "curriculum & syllabus - PG",
+            "syllabus": [
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/007/pg_reg_21.pdf"
+              },
+              {
+                "year": "R - 2023",
+                "pdf_path": "/static/pdfs/curriculum/007/pg_reg_23.pdf"
+              }
+            ]
+          }
         ]
       }
     ]
@@ -549,11 +549,17 @@
         "content": [
           {
             "year": "2023-2024",
-            "pdf_path":[ "/static/pdfs/newsletter/007/2023-2024_odd.pdf", "/static/pdfs/newsletter/007/2023-2024_even.pdf"]
+            "pdf_path": [
+              "/static/pdfs/newsletter/007/2023-2024_odd.pdf",
+              "/static/pdfs/newsletter/007/2023-2024_even.pdf"
+            ]
           },
           {
             "year": "2022-2023",
-            "pdf_path": ["/static/pdfs/newsletter/007/2022-2023_odd.pdf", "/static/pdfs/newsletter/007/2022-2023_even.pdf"]
+            "pdf_path": [
+              "/static/pdfs/newsletter/007/2022-2023_odd.pdf",
+              "/static/pdfs/newsletter/007/2022-2023_even.pdf"
+            ]
           }
         ]
       }
@@ -575,7 +581,7 @@
         "category": "department_activities",
         "content": [
           {
-            "year":"2024",
+            "year": "2024",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
@@ -601,7 +607,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -609,7 +615,8 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]},
+            ]
+          },
           {
             "year": "2023",
             "activities_tile": [
@@ -637,7 +644,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -645,7 +652,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
+            ]
           },
           {
             "year": "2022",
@@ -674,7 +681,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -682,7 +689,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
+            ]
           }
         ]
       }
@@ -714,7 +721,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-      
             "name": "M.E. Power Systems Engineering",
             "dept_id": "018"
           }
@@ -732,44 +738,37 @@
           {
             "image_path": "/static/images/student_activities/007/1.webp",
             "event_name": "SAEINDIA Electric Two Weeler Design Competition",
-            "image_content": "LakshmanRaj of EEE  won 1st prize in SAEINDIA Electric Two Weeler Design Competition -2023 and received Rs10,000 Cheque",
-            "date": "2023-07-23"
+            "image_content": "LakshmanRaj of EEE  won 1st prize in SAEINDIA Electric Two Weeler Design Competition -2023 and received Rs10,000 Cheque"
           },
           {
             "image_path": "/static/images/student_activities/007/2.webp",
             "event_name": "National Level Symposium VERSIO 22",
-            "image_content": "Best Paper Award titled 'Smart Assistance With Motion Detecting Sensor received by S Devi Priya,M Pavithraa  & A P Sritharani at National Level Symposium VERSIO 22, SRM Ramapuram Campus",
-            "date": "2022"
+            "image_content": "Best Paper Award titled 'Smart Assistance With Motion Detecting Sensor received by S Devi Priya,M Pavithraa  & A P Sritharani at National Level Symposium VERSIO 22, SRM Ramapuram Campus"
           },
           {
             "image_path": "/static/images/student_activities/007/3.webp",
             "event_name": "National Level Symposium Impulse 22",
-            "image_content": "Won 2nd  Prize in Paper Presentation titled “Smart Celling System” by Gayathri B M at National Level Symposium, Impulse 22 held  at Chennai Institute Of Technology",
-            "date": "2022"
+            "image_content": "Won 2nd  Prize in Paper Presentation titled “Smart Celling System” by Gayathri B M at National Level Symposium, Impulse 22 held  at Chennai Institute Of Technology"
           },
           {
             "image_path": "/static/images/student_activities/007/4.webp",
             "event_name": "National Level Symposium INSTRUBLITZ 22",
-            "image_content": "Won 3rd Prize in paper presentation event titled, 'Solar Charging Electric Vehicle' by T Thakshana  & M Siddharth at National Level Symposium INSTRUBLITZ 22 held at SRM Eswari Engineering College.",
-            "date": "2022"
+            "image_content": "Won 3rd Prize in paper presentation event titled, 'Solar Charging Electric Vehicle' by T Thakshana  & M Siddharth at National Level Symposium INSTRUBLITZ 22 held at SRM Eswari Engineering College."
           },
           {
             "image_path": "/static/images/student_activities/007/5.webp",
             "event_name": "National Level Symposium GENERIX 22",
-            "image_content": "Won 1st prize in paper presentation titled 'Gesture based door control system using SOC FPGA' by Joan Daniel A & Sugunesan R at National Level Symposium GENERIX 22, R.M.D Engineering College ",
-            "date": "2022"
+            "image_content": "Won 1st prize in paper presentation titled 'Gesture based door control system using SOC FPGA' by Joan Daniel A & Sugunesan R at National Level Symposium GENERIX 22, R.M.D Engineering College "
           },
           {
             "image_path": "/static/images/student_activities/007/6.webp",
             "event_name": "Gnista 22",
-            "image_content": "Won 2nd Prize in paper presentation titled  “Power Transformer Differential Protection Based on Current and Voltage Ratio” by Jayashree M & Harini R  Gnista 22 TJS Engineering College.",
-            "date": "2022"
+            "image_content": "Won 2nd Prize in paper presentation titled  “Power Transformer Differential Protection Based on Current and Voltage Ratio” by Jayashree M & Harini R  Gnista 22 TJS Engineering College."
           },
           {
             "image_path": "/static/images/student_activities/007/7.webp",
             "event_name": "IIT Madra's Carbon Zero Challenge",
-            "image_content": "Mr. Sachin gets the award along with Scarpify Ecotech Pvt Ltd team at IIT Madra's Carbon Zero Challenge",
-            "date": ""
+            "image_content": "Mr. Sachin gets the award along with Scarpify Ecotech Pvt Ltd team at IIT Madra's Carbon Zero Challenge"
           }
         ]
       }
@@ -851,9 +850,9 @@
         "content": [
           {
             "S_NO": 1,
-            "ORGANISATION_NAME": "",
-            "MONTH_AND_YEAR": "",
-            "VALIDITY": "",
+            "organisation_name": "",
+            "month_and_year": "",
+            "validity": "",
             "LOGO_PATH": "",
             "PDF_PATH": "",
             "ACTIVITIES_PLANNED": []
