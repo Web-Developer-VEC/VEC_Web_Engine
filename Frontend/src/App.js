@@ -10,10 +10,13 @@ import LoadComp from "./Components/Main/LoadComp.jsx";
 import SideButton from "./Components/Main/sideButton.jsx";
 import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
 import RateLimitReach from "./ratelimit.jsx";
+import Footer from "./Components/Main/Landing Comp/Footer.jsx";
 import DynamicTitle from "./Header.jsx"; // This seems to be just a title updater, keep eager
 import { routeConfig } from "./routeConfig.js";
 import { getRouteElement } from "./getRouteElement.js";
 import AdminSideButton from "./Components/Admin/sideButton.jsx";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 // Lazy load components
 const Boot = lazy(() => import("./Components/Main/Landing Comp/BootUp"));
@@ -79,6 +82,10 @@ const App = () => {
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const cookies = new Cookies()
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const [landingData, setLandingData] = useState(null);
+    const footer = landingData?.find((item) => item.type === "page_details")?.data || [];
+    const footerRef = useRef(null);
+    const navigate = useNavigate();
     useGoogleAnalytics();
 
     useEffect(() => {
@@ -92,6 +99,28 @@ const App = () => {
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);
         };
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.post('/api/main-backend/landing_page_data',
+                    {
+                        type: "landing_data"
+                    }
+                );
+
+                setLandingData(responce.data.data);
+
+            } catch (error) {
+                console.error("Error fetching thhe landing page Data", error);
+                if (error.response.data.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message } })
+                }
+            }
+        }
+
+        fetchData();
     }, []);
 
     if (cookies.get('theme') === undefined) cookies.set('theme', 'light')
@@ -137,8 +166,7 @@ const App = () => {
     }
 
     const session = JSON.parse(sessionStorage.getItem("userSession"));
-    const isFooter = currentPath.startsWith("/hostel");
-
+    const isFooter = currentPath === "/";
     return (
         <>
             <GlobalStyle />
@@ -152,7 +180,7 @@ const App = () => {
                 {/* Conditionally render Head */}
                 <>
                     <Suspense fallback={<div className="h-20 bg-prim dark:bg-drkp"></div>}>
-                        {currentPath.startsWith("/hostel") ? <HostelHeader /> : <Head />}
+                        <Head />
                     </Suspense>
                     <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                         <DynamicTitle />
@@ -164,6 +192,7 @@ const App = () => {
                                             load={load}
                                             toggle={toggle}
                                             theme={theme}
+                                            pageData={landingData}
                                             isAdmin={session && session.routes.includes("/")}
                                         />
                                     }
@@ -214,8 +243,14 @@ const App = () => {
                         </Suspense>
 
                     </MainContentWrapper>
+                    {!isFooter && (
+                        <Suspense fallback={null}>
+                            <Footer theme={theme} data={footer?.[0]} ref={footerRef} />
+                        </Suspense>
+                    )}
                     {session && session.routes.includes("/") && currentPath === "/" ? <AdminSideButton/> : <SideButton/>}
                     <ScrollToTopButton />
+
                 </>
             </AppContainer>
         </>

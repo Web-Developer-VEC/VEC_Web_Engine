@@ -21,13 +21,13 @@
       {
         "category": "department_vision",
         "content": [
-        "To empower engineering students with effective communication skills, critical thinking, and creative expression, enabling them to excel as global professionals, innovators, and leaders, while fostering a culture of linguistic excellence, intellectual curiosity, and lifelong learning.”"
+          "To empower engineering students with effective communication skills, critical thinking, and creative expression, enabling them to excel as global professionals, innovators, and leaders, while fostering a culture of linguistic excellence, intellectual curiosity, and lifelong learning.”"
         ]
       },
       {
         "category": "department_mission",
         "content": [
-           "To develop engineering students' communication, critical thinking, and soft skills through innovative teaching, mentoring, and assessment methods, enabling them to articulate ideas, collaborate effectively, and succeed in their academic, professional, and personal pursuits."
+          "To develop engineering students' communication, critical thinking, and soft skills through innovative teaching, mentoring, and assessment methods, enabling them to articulate ideas, collaborate effectively, and succeed in their academic, professional, and personal pursuits."
         ]
       },
       {
@@ -47,15 +47,15 @@
           },
           {
             "header": "PO 3: Design/development of solutions",
-            "content":   "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
           },
           {
             "header": "PO 4: Conduct investigations of complex problems",
-            "content":  "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
           },
           {
             "header": "PO 5: Modern tool usage",
-            "content":  "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
           },
           {
             "header": "PO 6: The engineer and society",
@@ -71,7 +71,7 @@
           },
           {
             "header": "PO 9: Individual and team work",
-            "content":  "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
           },
           {
             "header": "PO 10: Communication",
@@ -112,11 +112,14 @@
             "department_id": "010",
             "name": "Mr. BASKARAN V",
             "department_name": "English",
-            "unique_id": "VEC-010-01-140", 
-            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf", 
-            "qualification": ["M.A.", "M.Phil"],
+            "unique_id": "VEC-010-01-140",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf",
+            "qualification": [
+              "M.A.",
+              "M.Phil"
+            ],
             "hod_message": [
-             "He plays a pivotal role in steering the department towards its designated goals. His qualification includes M.A, M. Phil, and he has been teaching English for the past 32 years. If the USP of the department is the application of technology in teaching and training, he is the motivator. With his knowledge of grammar and polite demeanour he has been instrumental in fostering a conducive learning environment, encouraging both faculty and students to embrace innovative methods while maintaining a strong foundation in language proficiency."
+              "He plays a pivotal role in steering the department towards its designated goals. His qualification includes M.A, M. Phil, and he has been teaching English for the past 32 years. If the USP of the department is the application of technology in teaching and training, he is the motivator. With his knowledge of grammar and polite demeanour he has been instrumental in fostering a conducive learning environment, encouraging both faculty and students to embrace innovative methods while maintaining a strong foundation in language proficiency."
             ],
             "image_path": "/static/images/hods/eng.webp",
             "designation": "Assistant Professor & Head, Dept of English",
@@ -153,223 +156,228 @@
       },
       {
         "category": "head_of_department",
-        "members": [ {
-        "name": "Mr. BASKARAN V",
-        "designation": "Assistant Professor & Head",
-        "unique_id": "VEC-010-04-154",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/vhod-english-47812162/",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-154.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf"
-      }]
+        "members": [
+          {
+            "name": "Mr. BASKARAN V",
+            "designation": "Assistant Professor & Head",
+            "unique_id": "VEC-010-04-154",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/vhod-english-47812162/",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-154.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-154.pdf"
+          }
+        ]
       },
       {
         "category": "teaching_staff",
-        "members": [{
-        "name": "Ms. SUGAPRIYA S",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-150",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/sukhapriya-shreesughapriya-7813a260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=VMd6SjMAAAAJ",
-          "researchgate": "https://www.researchgate.net/profile/Sugapriya-Sadhasivam?ev=hdr_xprf",
-          "orchidprofile": "https://orcid.org/0009-0009-7106-817X ",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-150.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-150.pdf"
-      },
-      {
-        "name": "Mr. BALAJI A",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-151",
-        "socialmedia_links": {
-          "linkedin": "https://in.linkedin.com/in/balaji-alagurajan-43390536",
-          "googlescholar": "https://scholar.google.com/citations?user=UK0X27YAAAAJ&hl=en",
-          "researchgate": "https://www.researchgate.net/profile/Balaji-Alagurajan",
-          "orchidprofile": "https://orcid.org/0009-0001-5203-3985",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-151.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-151.pdf"
-      },
-      {
-        "name": "Mrs. DHANALAKSHMI R",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-171",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/dhanalakshmi-rangarao-english-ap-i-vec-74221a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-171.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-171.pdf"
-      },
-      {
-        "name": "Mrs. LATHA J",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-148",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/latha-jayapathy-11b6952ba/",
-          "googlescholar": "https://scholar.google.com/citations?user=wumZNXkAAAAJ&hl=en",
-          "researchgate": "https://www.researchgate.net/profile/Latha-Jayapathy?ev=hdr_xprf",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-148.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-148.pdf"
-      },
-      {
-        "name": "Mr. ANAND V",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-065",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/anand-vijayan-59a37b306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-          "googlescholar": "https://scholar.google.com/citations?view_op=new_articles&hl=en&imq=ANAND+V+(PC2133005013003)",
-          "researchgate": "https://www.researchgate.net/profile/Anand-Vijayan-8",
-          "orchidprofile": "https://orcid.org/0009-0008-2898-0510",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-065.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-065.pdf"
-      },
-      {
-        "name": "Mrs. ARCHANA G M",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-146",
-        "socialmedia_links": {
-          "linkedin": "http://www.linkedin.com/in/archana-g-m-govindasamy-murugesan-12128832b",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=vlQOgNAAAAAJ",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-146.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-146.pdf"
-      },
-      {
-        "name": "Dr. DEEPIKA A",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-604",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-604.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-604.pdf"
-      },
-      {
-        "name": "Mrs. RHODAS DAISY D",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-605",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-605.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-605.pdf"
-      },
-      {
-        "name": "Mrs. GNANESHWARI R",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-606",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-606.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-606.pdf"
-      },
-    {
-        "name": "Dr. SREELATHA",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-101",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-101.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-101.pdf"
-      },
-     {
-        "name": "Mrs. MEENA M",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-200",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/meena-murali-038624379?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-          "googlescholar": "",
-          "researchgate": "https://www.researchgate.net/profile/Meena-Murali-3?ev=hdr_xprf",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-200.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-200.pdf"
-      },
-    
-     {
-        "name": "Mrs. SHRUTHI V",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-010-04-100",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/shruthi-venkatagiri-170a94244?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-          "googlescholar": "",
-          "researchgate": "https://www.researchgate.net/profile/Shruthi-Venkatagiri?ev=prf_overview ",
-          "orchidprofile": "",
-          "publonprofile": "https://www.webofscience.com/wos/author/record/PYY-6308-2026",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-04-100.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-100.pdf"
-      }]
+        "members": [
+          {
+            "name": "Ms. SUGAPRIYA S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-150",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/sukhapriya-shreesughapriya-7813a260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=VMd6SjMAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Sugapriya-Sadhasivam?ev=hdr_xprf",
+              "orchidprofile": "https://orcid.org/0009-0009-7106-817X ",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-150.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-150.pdf"
           },
           {
-            "category": "non_teaching_staff",
-            "members": [{
-        "name": "Mrs. INDUMATHI S",
-        "designation": "Lab Instructor",
-        "unique_id": "VEC-010-05-631",
-        "socialmedia_links": {
-          "linkedin": "",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/010/VEC-010-05-631.webp",
-        "pdf_path": ""
-      }]
+            "name": "Mr. BALAJI A",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-151",
+            "socialmedia_links": {
+              "linkedin": "https://in.linkedin.com/in/balaji-alagurajan-43390536",
+              "googlescholar": "https://scholar.google.com/citations?user=UK0X27YAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Balaji-Alagurajan",
+              "orchidprofile": "https://orcid.org/0009-0001-5203-3985",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-151.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-151.pdf"
+          },
+          {
+            "name": "Mrs. DHANALAKSHMI R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-171",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/dhanalakshmi-rangarao-english-ap-i-vec-74221a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-171.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-171.pdf"
+          },
+          {
+            "name": "Mrs. LATHA J",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-148",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/latha-jayapathy-11b6952ba/",
+              "googlescholar": "https://scholar.google.com/citations?user=wumZNXkAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Latha-Jayapathy?ev=hdr_xprf",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-148.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-148.pdf"
+          },
+          {
+            "name": "Mr. ANAND V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-065",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/anand-vijayan-59a37b306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar": "https://scholar.google.com/citations?view_op=new_articles&hl=en&imq=ANAND+V+(PC2133005013003)",
+              "researchgate": "https://www.researchgate.net/profile/Anand-Vijayan-8",
+              "orchidprofile": "https://orcid.org/0009-0008-2898-0510",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-065.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-065.pdf"
+          },
+          {
+            "name": "Mrs. ARCHANA G M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-146",
+            "socialmedia_links": {
+              "linkedin": "http://www.linkedin.com/in/archana-g-m-govindasamy-murugesan-12128832b",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=vlQOgNAAAAAJ",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-146.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-146.pdf"
+          },
+          {
+            "name": "Dr. DEEPIKA A",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-604",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-604.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-604.pdf"
+          },
+          {
+            "name": "Mrs. RHODAS DAISY D",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-605",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-605.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-605.pdf"
+          },
+          {
+            "name": "Mrs. GNANESHWARI R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-606",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-606.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-606.pdf"
+          },
+          {
+            "name": "Dr. SREELATHA",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-101",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-101.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-101.pdf"
+          },
+          {
+            "name": "Mrs. MEENA M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-200",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/meena-murali-038624379?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              "googlescholar": "",
+              "researchgate": "https://www.researchgate.net/profile/Meena-Murali-3?ev=hdr_xprf",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-200.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-200.pdf"
+          },
+          {
+            "name": "Mrs. SHRUTHI V",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-010-04-100",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/shruthi-venkatagiri-170a94244?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              "googlescholar": "",
+              "researchgate": "https://www.researchgate.net/profile/Shruthi-Venkatagiri?ev=prf_overview ",
+              "orchidprofile": "",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/PYY-6308-2026",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-04-100.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/010/VEC-010-04-100.pdf"
+          }
+        ]
+      },
+      {
+        "category": "non_teaching_staff",
+        "members": [
+          {
+            "name": "Mrs. INDUMATHI S",
+            "designation": "Lab Instructor",
+            "unique_id": "VEC-010-05-631",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/010/VEC-010-05-631.webp",
+            "pdf_path": ""
+          }
+        ]
       }
     ]
   },
@@ -387,55 +395,57 @@
       },
       {
         "category": "curriculum",
-        "content":[
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
               {
-                "heading":"Curriculum & Syllabus",
-                "syllabus":[
-                {
-                  "year": "R - 2023",
-                  "docs":[
-                    {
-                    "name":"I Semester",
-                      "pdf_path": ""
+                "year": "R - 2023",
+                "docs": [
+                  {
+                    "name": "I Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"II Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "II Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"III Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "III Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"IV Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "IV Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"V Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "V Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VI Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VI Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VII Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VIII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VIII Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"Elective Courses",
-                      "pdf_path": ""
+                  {
+                    "name": "Elective Courses",
+                    "pdf_path": ""
                   }
                 ]
-                },
-                {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/010/reg_21.pdf"
-                }]}
+              },
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/010/reg_21.pdf"
+              }
+            ]
+          }
         ]
       }
     ]
@@ -447,13 +457,13 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name":"English",
+            "name": "English",
             "dept_id": "010"
           }
         ]
       },
       {
-        "category":"newsletter",
+        "category": "newsletter",
         "content": []
       }
     ]
@@ -499,7 +509,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -507,13 +517,13 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
+            ]
           }
         ]
-       }
+      }
     ]
-    },
-    {
+  },
+  {
     "type": "pedagogy",
     "data": [
       {
@@ -521,7 +531,7 @@
         "content": [
           {
             "banner_image_path": "/static/images/department_data/eng.webp",
-            "name":"English",
+            "name": "English",
             "dept_id": "010"
           }
         ]
@@ -539,29 +549,68 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name":"English",
+            "name": "English",
             "dept_id": "010"
           }
         ]
       },
       {
         "category": "student_achievements_content",
-        "content": [
-        ]
+        "content": []
       },
       {
         "category": "student_achievements_details",
         "images": [
-         {"image_path": "/static/images/student_activities/010/1.webp", "image_content": "Description of Image 10_1", "event_name": "Event 10_1", "date": "YYYY-MM-DD"},
-            {"image_path": "/static/images/student_activities/010/2.webp", "image_content": "Description of Image 10_2", "event_name": "Event 10_2", "date": "YYYY-MM-DD"},
-            {"image_path": "/static/images/student_activities/010/3.webp", "image_content": "Description of Image 10_3", "event_name": "Event 10_3", "date": "YYYY-MM-DD"},
-            {"image_path": "/static/images/student_activities/010/4.webp", "image_content": "Description of Image 10_4", "event_name": "Event 10_4", "date": "YYYY-MM-DD"},
-            {"image_path": "/static/images/student_activities/010/5.webp", "image_content": "Description of Image 10_5", "event_name": "Event 10_5", "date": "YYYY-MM-DD"},
-            {"image_path": "/static/images/student_activities/010/6.webp", "image_content": "Description of Image 10_6", "event_name": "Event 10_6", "date": "YYYY-MM-DD"},
-            {"image_path": "/static/images/student_activities/010/7.webp", "image_content": "Description of Image 10_7", "event_name": "Event 10_7", "date": "YYYY-MM-DD"},
-            {"image_path": "/static/images/student_activities/010/8.webp", "image_content": "Description of Image 10_8", "event_name": "Event 10_8", "date": "YYYY-MM-DD"},
-            {"image_path": "/static/images/student_activities/010/9.webp", "image_content": "Description of Image 10_9", "event_name": "Event 10_9", "date": "YYYY-MM-DD"},
-            {"image_path": "/static/images/student_activities/010/10.webp", "image_content": "Description of Image 10_10", "event_name": "Event 10_10", "date": "YYYY-MM-DD"}
+          {
+            "image_path": "/static/images/student_activities/010/1.webp",
+            "image_content": "Description of Image 10_1",
+            "event_name": "Event 10_1"
+          },
+          {
+            "image_path": "/static/images/student_activities/010/2.webp",
+            "image_content": "Description of Image 10_2",
+            "event_name": "Event 10_2"
+          },
+          {
+            "image_path": "/static/images/student_activities/010/3.webp",
+            "image_content": "Description of Image 10_3",
+            "event_name": "Event 10_3"
+          },
+          {
+            "image_path": "/static/images/student_activities/010/4.webp",
+            "image_content": "Description of Image 10_4",
+            "event_name": "Event 10_4"
+          },
+          {
+            "image_path": "/static/images/student_activities/010/5.webp",
+            "image_content": "Description of Image 10_5",
+            "event_name": "Event 10_5"
+          },
+          {
+            "image_path": "/static/images/student_activities/010/6.webp",
+            "image_content": "Description of Image 10_6",
+            "event_name": "Event 10_6"
+          },
+          {
+            "image_path": "/static/images/student_activities/010/7.webp",
+            "image_content": "Description of Image 10_7",
+            "event_name": "Event 10_7"
+          },
+          {
+            "image_path": "/static/images/student_activities/010/8.webp",
+            "image_content": "Description of Image 10_8",
+            "event_name": "Event 10_8"
+          },
+          {
+            "image_path": "/static/images/student_activities/010/9.webp",
+            "image_content": "Description of Image 10_9",
+            "event_name": "Event 10_9"
+          },
+          {
+            "image_path": "/static/images/student_activities/010/10.webp",
+            "image_content": "Description of Image 10_10",
+            "event_name": "Event 10_10"
+          }
         ]
       }
     ]
@@ -581,7 +630,10 @@
       {
         "category": "infrastructure_images",
         "content": [
-             {"image_path": "/static/images/infrastructure/010/1.webp", "image_name": "COMMUNICATION SKILLS LABORATORY"}
+          {
+            "image_path": "/static/images/infrastructure/010/1.webp",
+            "image_name": "COMMUNICATION SKILLS LABORATORY"
+          }
         ]
       }
     ]

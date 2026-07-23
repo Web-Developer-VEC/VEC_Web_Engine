@@ -90,37 +90,37 @@ const MOU = ({ data }) => {
     // DO NOT clear savedOnce here — so previously-saved pending remains
   };
   const validateFields = () => {
-  for (let i = 0; i < tempDetails.length; i++) {
-    const row = tempDetails[i];
+    for (let i = 0; i < tempDetails.length; i++) {
+      const row = tempDetails[i];
 
-    if (!row.ORGANISATION_NAME?.trim()) {
-      toast.error(`Row ${i + 1}: Organisation Name is required.`);
-      return false;
+      if (!row.organisation_name?.trim()) {
+        toast.error(`Row ${i + 1}: Organisation Name is required.`);
+        return false;
+      }
+
+      if (!row.month_and_year?.trim()) {
+        toast.error(`Row ${i + 1}: Start Date is required.`);
+        return false;
+      }
+
+      if (!row.validity?.trim()) {
+        toast.error(`Row ${i + 1}: End Date is required.`);
+        return false;
+      }
     }
 
-    if (!row.MONTH_AND_YEAR?.trim()) {
-      toast.error(`Row ${i + 1}: Start Date is required.`);
-      return false;
-    }
-
-    if (!row.VALIDITY?.trim()) {
-      toast.error(`Row ${i + 1}: End Date is required.`);
-      return false;
-    }
-  }
-
-  return true;
-};
+    return true;
+  };
 
   const handleSave = () => {
-  if (!validateFields()) return;
-  const cleaned = addUids(tempDetails);
-  setMousDetails(cleaned);
-  setHasChanges(false);
-  setSavedOnce(true);
-  setEditMode(false);
-  setSelectedItems([]);
-};
+    if (!validateFields()) return;
+    const cleaned = addUids(tempDetails);
+    setMousDetails(cleaned);
+    setHasChanges(false);
+    setSavedOnce(true);
+    setEditMode(false);
+    setSelectedItems([]);
+  };
 
   const handleDiscard = () => {
     // Revert everything back to last approved (live) data
@@ -157,7 +157,7 @@ const MOU = ({ data }) => {
   };
 
   const handleAddRow = () => {
-    const newRow = { ORGANISATION_NAME: "", MONTH_AND_YEAR: "", VALIDITY: "", __uid: generateUid() };
+    const newRow = { organisation_name: "", month_and_year: "", validity: "", __uid: generateUid() };
     if (!editMode) {
       // start editing with current mousDetails + new row
       setOriginalSnapshot(addUids(mousDetails));
@@ -187,9 +187,9 @@ const MOU = ({ data }) => {
       } else {
         const a = mapApproved.get(t.__uid);
         const isEdited =
-          (a.ORGANISATION_NAME || "").trim() !== (t.ORGANISATION_NAME || "").trim() ||
-          (a.MONTH_AND_YEAR || "").trim() !== (t.MONTH_AND_YEAR || "").trim() ||
-          (a.VALIDITY || "").trim() !== (t.VALIDITY || "").trim();
+          (a.organisation_name || "").trim() !== (t.organisation_name || "").trim() ||
+          (a.month_and_year || "").trim() !== (t.month_and_year || "").trim() ||
+          (a.validity || "").trim() !== (t.validity || "").trim();
         if (isEdited) {
           changes.push({ action: "Edited", section: "MOU", data: { before: a, after: t } });
         }
@@ -221,8 +221,8 @@ const MOU = ({ data }) => {
     const result = await sendRequest(payload, null);
 
     if (result) {
-      const updatedApproved = addUids(tempDetails); 
-      
+      const updatedApproved = addUids(tempDetails);
+
       setApprovedDetails(updatedApproved);
       setMousDetails(updatedApproved);
       setTempDetails(updatedApproved);
@@ -250,9 +250,9 @@ const MOU = ({ data }) => {
           title: "Insertion of MOU",
           category: "mous_details",
           meta_data: {
-            ORGANISATION_NAME: change.data?.ORGANISATION_NAME || "",
-            MONTH_AND_YEAR: change.data?.MONTH_AND_YEAR || "",
-            VALIDITY: change.data?.VALIDITY || ""
+            organisation_name: change.data?.organisation_name || "",
+            month_and_year: change.data?.month_and_year || "",
+            validity: change.data?.validity || ""
           },
           original_data: null
         });
@@ -264,14 +264,14 @@ const MOU = ({ data }) => {
           title: "Updation of MOU",
           category: "mous_details",
           meta_data: {
-            ORGANISATION_NAME: change.data?.after?.ORGANISATION_NAME || "",
-            MONTH_AND_YEAR: change.data?.after?.MONTH_AND_YEAR || "",
-            VALIDITY: change.data?.after?.VALIDITY || ""
+            organisation_name: change.data?.after?.organisation_name || "",
+            month_and_year: change.data?.after?.month_and_year || "",
+            validity: change.data?.after?.validity || ""
           },
           original_data: {
-            ORGANISATION_NAME: change.data?.before?.ORGANISATION_NAME || "",
-            MONTH_AND_YEAR: change.data?.before?.MONTH_AND_YEAR || "",
-            VALIDITY: change.data?.before?.VALIDITY || ""
+            organisation_name: change.data?.before?.organisation_name || "",
+            month_and_year: change.data?.before?.month_and_year || "",
+            validity: change.data?.before?.validity || ""
           }
         });
       } else if (change.action === "Deleted") {
@@ -282,9 +282,9 @@ const MOU = ({ data }) => {
           title: "Deletion of MOU",
           category: "mous_details",
           meta_data: {
-            ORGANISATION_NAME: change.data?.ORGANISATION_NAME || "",
-            MONTH_AND_YEAR: change.data?.MONTH_AND_YEAR || "",
-            VALIDITY: change.data?.VALIDITY || ""
+            organisation_name: change.data?.organisation_name || "",
+            month_and_year: change.data?.month_and_year || "",
+            validity: change.data?.validity || ""
           },
           original_data: null
         });
@@ -351,42 +351,42 @@ const MOU = ({ data }) => {
                           {editMode ? (
                             <input
                               type="text"
-                              value={detail?.ORGANISATION_NAME || ""}
+                              value={detail?.organisation_name || ""}
                               onChange={(e) =>
-                                handleChange(index, "ORGANISATION_NAME", e.target.value)
+                                handleChange(index, "organisation_name", e.target.value)
                               }
                               className="border px-2 py-1 rounded"
                             />
                           ) : (
-                            detail?.ORGANISATION_NAME
+                            detail?.organisation_name
                           )}
                         </td>
                         <td>
                           {editMode ? (
                             <input
                               type="text"
-                              value={detail?.MONTH_AND_YEAR || ""}
+                              value={detail?.month_and_year || ""}
                               onChange={(e) =>
-                                handleChange(index, "MONTH_AND_YEAR", e.target.value)
+                                handleChange(index, "month_and_year", e.target.value)
                               }
                               className="border px-2 py-1 rounded"
                             />
                           ) : (
-                            detail?.MONTH_AND_YEAR
+                            detail?.month_and_year
                           )}
                         </td>
                         <td>
                           {editMode ? (
                             <input
                               type="text"
-                              value={detail?.VALIDITY || ""}
+                              value={detail?.validity || ""}
                               onChange={(e) =>
-                                handleChange(index, "VALIDITY", e.target.value)
+                                handleChange(index, "validity", e.target.value)
                               }
                               className="border px-2 py-1 rounded"
                             />
-                          ) : detail?.VALIDITY ? (
-                            detail?.VALIDITY
+                          ) : detail?.validity ? (
+                            detail?.validity
                           ) : (
                             <span className="text-center">-</span>
                           )}
@@ -519,10 +519,10 @@ const MOU = ({ data }) => {
                         <tr key={idx} className="border-t">
                           <td
                             className={`py-1 ${change.action === "Added"
-                                ? "text-green-600"
-                                : change.action === "Deleted"
-                                  ? "text-red-600"
-                                  : "text-blue-600"
+                              ? "text-green-600"
+                              : change.action === "Deleted"
+                                ? "text-red-600"
+                                : "text-blue-600"
                               }`}
                           >
                             {change.action}
@@ -534,11 +534,11 @@ const MOU = ({ data }) => {
                                 <>
                                   <div>
                                     {" "}
-                                    {change.data.before?.ORGANISATION_NAME || "-"}
+                                    {change.data.before?.organisation_name || "-"}
                                   </div>
                                 </>
                               ) : (
-                                <div>{change.data?.ORGANISATION_NAME || "-"}</div>
+                                <div>{change.data?.organisation_name || "-"}</div>
                               )}
                             </div>
                           </td>
