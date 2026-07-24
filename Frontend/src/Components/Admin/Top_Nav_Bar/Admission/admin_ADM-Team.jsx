@@ -395,7 +395,6 @@ const AdminADMteam = ({ theme, toggle }) => {
     setShowRequestButtons(true);
     setTeamCardEdit(false);
 
-    toast.success("Changes saved locally.");
   };
 
   const handleDiscard = () => {
@@ -746,7 +745,7 @@ const RequestModal = ({ changeList, revertField, handleRequestConfirm, closeModa
               <td className="p-2 border">{c.section}</td>
               <td className="p-2 border">
                 <button className="p-1 rounded hover:bg-gray-100" onClick={() => revertField(idx)}>
-                  <X />
+                  <X size={16} className="text-red-500 hover:text-red-700" />
                 </button>
               </td>
             </tr>
