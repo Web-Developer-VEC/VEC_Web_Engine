@@ -395,7 +395,6 @@ const AdminADMteam = ({ theme, toggle }) => {
     setShowRequestButtons(true);
     setTeamCardEdit(false);
 
-    toast.success("Changes saved locally.");
   };
 
   const handleDiscard = () => {

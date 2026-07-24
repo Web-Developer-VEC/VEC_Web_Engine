@@ -677,7 +677,6 @@ const AdminUgAdmission = ({ theme, toggle }) => {
     setEditableLateralRows(lateralRowsReset);
 
     setIsEditing(false);
-    toast.info("Editing cancelled.");
   };
 
   const handleSave = () => {
@@ -745,7 +744,6 @@ const AdminUgAdmission = ({ theme, toggle }) => {
     collectChangeList();
     setIsEditing(false);
     setIsSaved(true);
-    toast.success("Changes saved locally. Submit for approval when ready.");
   };
 
   const startEditing = () => {
@@ -906,7 +904,46 @@ const AdminUgAdmission = ({ theme, toggle }) => {
             original?.BE_Management?.BE_Management_link_name || "",
           );
           setBeMgmtLinkFile(null);
-        } else {
+
+        }  else if (change.section === "UG") {
+
+    const originalUG = original?.UG || [];
+
+    setEditableUGRows(
+      originalUG.map((item) => {
+        const [course, details] = Object.entries(item)[0] || ["", {}];
+
+        return {
+          originalCourse: course,
+          course,
+          governmentQuota: details["Government Quota Intakes"] ?? "",
+          managementQuota: details["Management Quota Intakes"] ?? "",
+          totalIntake: details["Total Intakes"] ?? "",
+          isSelected: false,
+        };
+      })
+    );
+
+  } else if (change.section === "LATERAL") {
+
+    const originalLat = original?.UG_Lateral || [];
+
+    setEditableLateralRows(
+      originalLat.map((item) => {
+        const [course, details] = Object.entries(item)[0] || ["", {}];
+
+        return {
+          originalCourse: course,
+          course,
+          governmentQuota: details["Government Quota Intakes"] ?? "",
+          managementQuota: details["Management Quota Intakes"] ?? "",
+          totalIntake: details["Total Intakes"] ?? "",
+          isSelected: false,
+        };
+      })
+    );
+ 
+     }   else {
           const section = change.section;
           const isUG = section.endsWith("(UG)");
           const isLat = section.endsWith("(Lateral)");
@@ -1143,13 +1180,12 @@ const AdminUgAdmission = ({ theme, toggle }) => {
     }
 
     setChangeList((prev) => prev.filter((_, i) => i !== idx));
-    toast.info("Change reverted.");
   };
 
   const buildPdfPath = (file) => `/static/images/admission_team/${file.name}`;
 
   const handleRequestConfirm = async () => {
-    const changes = collectChangeList();
+    const changes = [...changeList];
 
     if (!changes.length && !beGovLinkFile && !beMgmtLinkFile) {
       toast.warn("No changes to submit");
@@ -1158,10 +1194,11 @@ const AdminUgAdmission = ({ theme, toggle }) => {
 
     const payloads = [];
 
-    if (
-      changes.some((c) => c.section === "UG") ||
-      editableYearUG !== originalRef.current?.year
-    ) {
+    const hasUGChange =
+  changes.some((c) => c.section === "UG") ||
+  changes.some((c) => c.section === "Year (UG)");
+
+if (hasUGChange) {
       payloads.push({
         collectionName: "admissions",
         collection_type: "ug",
@@ -1183,32 +1220,13 @@ const AdminUgAdmission = ({ theme, toggle }) => {
           UG: originalRef.current?.UG || [],
         },
         admin: { status: "pending" },
-      });
+     });
     }
-    const lateralYearChanged =
-      editableYearLateral !==
-      (originalRef.current?.year_lateral ?? originalRef.current?.year);
+    const hasLateralChange =
+  changes.some((c) => c.section === "LATERAL") ||
+  changes.some((c) => c.section === "Year (Lateral)");
 
-    const originalLat = originalRef.current?.UG_Lateral || [];
-
-    const isLatRowsChanged =
-      originalLat.length !== editableLateralRows.length ||
-      originalLat.some((item, index) => {
-        const [course, details] = Object.entries(item)[0] || ["", {}];
-        const row = editableLateralRows[index];
-        if (!row) return true;
-
-        return (
-          course !== row.course ||
-          Number(details["Government Quota Intakes"] || 0) !==
-            Number(row.governmentQuota || 0) ||
-          Number(details["Management Quota Intakes"] || 0) !==
-            Number(row.managementQuota || 0) ||
-          Number(details["Total Intakes"] || 0) !== Number(row.totalIntake || 0)
-        );
-      });
-
-    if (lateralYearChanged || isLatRowsChanged) {
+if (hasLateralChange) {
       payloads.push({
         collectionName: "admissions",
         collection_type: "ug",
@@ -1234,19 +1252,7 @@ const AdminUgAdmission = ({ theme, toggle }) => {
       });
     }
 
-    if (editableYearUG !== originalRef.current?.year) {
-      payloads.push(
-        buildUgAdmissionPayload({
-          action: "Update_Year",
-          newData: {
-            year: editableYearUG,
-          },
-          oldData: {
-            year: originalRef.current?.year,
-          },
-        }),
-      );
-    }
+    
 
     if (
       beGovLinkFile ||
