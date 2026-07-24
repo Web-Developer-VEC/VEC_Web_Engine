@@ -42,6 +42,9 @@ const AdminME = ({ theme, toggle }) => {
   const [editSnapshot, setEditSnapshot] = useState(null);
   const [editChangeListSnapshot, setEditChangeListSnapshot] = useState(null);
   const [editSelectedRowsSnapshot, setEditSelectedRowsSnapshot] = useState(null);
+  const hasUnsavedChanges =
+  editSnapshot &&
+  JSON.stringify(pgData) !== JSON.stringify(editSnapshot);
   // ---------------------------------------
 
   const buildPgAdmissionPayloadConfirm = ({
@@ -524,7 +527,7 @@ const AdminME = ({ theme, toggle }) => {
 
   const handleSaveClick = () => {
     if (!pgData.year || pgData.year.trim() === "") {
-      // toast.error("Please fill in the year field.");
+      toast.error("Please fill in the year field.");
       return;
     }
 
@@ -751,6 +754,7 @@ const AdminME = ({ theme, toggle }) => {
               >
                 Cancel
               </button>
+               {hasUnsavedChanges && (
               <button
                 onClick={() => {
                   handleSaveClick();
@@ -759,6 +763,7 @@ const AdminME = ({ theme, toggle }) => {
               >
                 Save
               </button>
+                 )}
             </div>
           )}
 

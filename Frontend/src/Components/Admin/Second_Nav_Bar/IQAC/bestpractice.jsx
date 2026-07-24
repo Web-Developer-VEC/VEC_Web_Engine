@@ -166,7 +166,6 @@ export default function IqaPra({ iqacData }) {
     setPendingData(deepClone(editableData)); // save draft
     setIsEditMode(false);
     setHasChanges(false);
-    toast.success("Changes saved as draft!");
   };
 
   // Cancel edit mode
@@ -190,12 +189,14 @@ export default function IqaPra({ iqacData }) {
 
   // Discard changes
   const handleDiscardChanges = () => {
+    
     setEditableData(deepClone(originalData));  // revert to server state
     setUploadedFiles({});
     setHasChanges(false);
     setChangesLog([]);
     setPendingData(null);
     toast.info("Changes discarded.");
+    
   };
 
   const handleUndoChange = (id) => {
@@ -235,7 +236,6 @@ export default function IqaPra({ iqacData }) {
     // remove only this change
     setChangesLog((prev) => prev.filter((c) => c.id !== id));
 
-    toast.info("Change reverted.");
   };
 
 
@@ -305,6 +305,7 @@ export default function IqaPra({ iqacData }) {
       editableData,
       uploadedFiles
     );
+    toast.success("The request is summitted successfully")
     console.log("Final request payload:", payload);
     console.log("Files to upload:", files);
 
