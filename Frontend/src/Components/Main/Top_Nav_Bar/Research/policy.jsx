@@ -49,23 +49,24 @@ export default function Policies({ theme, toggle }) {
                     headerText="Academic Research"
                     subHeaderText="Enrich Your Knowledge"
             />
-        <div>
-        <h1 className="research-academicresearch-title text-brwn dark:text-drkt dark:border-drks">
-          Policy
-        </h1>
+<div className="w-full px-6 md:px-12 py-10">
+  <h1 className="text-4xl font-bold text-center text-brwn dark:text-drkt mb-10">
+    Policies
+  </h1>
 
-        <div className="course-selection-container p-12">
-          {policies?.map((name, index) => (
-            <div
-              key={index}
-              className="px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
-              onClick={() => handlePdfClick(name)}
-            >
-              {name?.name}
-            </div>
-          ))}
-        </div>
-      </div>
+  <div className="flex flex-wrap justify-center gap-5">
+    {policies?.map((policy, index) => (
+      <button
+        key={index}
+        type="button"
+        onClick={() => handlePdfClick(policy)}
+        className="bg-secd hover:bg-accn dark:hover:bg-brwn hover:text-prim font-semibold rounded-xl px-8 py-4 transition-all duration-300 whitespace-nowrap shadow-md"
+      >
+        {policy.name}
+      </button>
+    ))}
+  </div>
+</div>
             </>
     );
 }
