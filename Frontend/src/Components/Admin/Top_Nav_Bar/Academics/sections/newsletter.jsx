@@ -16,6 +16,20 @@ export default function Newsletter({ data }) {
   const { sendRequest } = useAdminRequest();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const groupByYear = (list) => {
+    const grouped = new Map();
+
+    list.forEach((item) => {
+      if (!grouped.has(item.year)) {
+        grouped.set(item.year, []);
+      }
+
+      grouped.get(item.year).push(item);
+    });
+
+    return grouped;
+  };
+
   const deepCopyWithFiles = (arr) => {
     return arr.map((item) => {
       const file = item._file; // Preserve File object
@@ -43,12 +57,11 @@ export default function Newsletter({ data }) {
     "015": "PHYSICS_015",
     "016": "MECSE_016",
     "017": "MBA_017",
-    "018": "PS_018",
+    "018": "PS_018"
   };
 
   // Extract deptId from data/banner
-  const deptId =
-    data?.find((item) => item.category === "banner")?.deptId || "005";
+  const deptId = data?.find((item) => item.category === "banner")?.deptId || "005";
   const collectionName = deptMap[deptId] || "CSE_005";
 
   // UI / state
@@ -75,9 +88,15 @@ export default function Newsletter({ data }) {
   }, [pendingData, originalData]);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) =>
-    path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const UrlParser = (path) => {
+    if (!path) return "";
 
+    if (path.startsWith("http")) {
+      return encodeURI(path);
+    }
+
+    return encodeURI(`${BASE_URL}${path}`);
+  };
   // Convert blob URL to filename, or get filename from static path
   const getFilenameFromPath = (pdfPath) => {
     if (!pdfPath) return "";
@@ -94,22 +113,38 @@ export default function Newsletter({ data }) {
     if (!pendingData) return [];
 
     const payload = [];
-    const originalMap = new Map(originalData.map((it) => [it.id, it]));
-    const pendingMap = new Map(pendingData.map((it) => [it.id, it]));
-    const processedIds = new Set();
 
-    // INSERT: items in pending but not in original
-    for (const [id, newItem] of pendingMap.entries()) {
-      if (!originalMap.has(id)) {
-        processedIds.add(id);
-        // For new items with files, use the filename from _file or path
-        const filename = newItem._file
-          ? newItem._file.name
-          : getFilenameFromPath(newItem.pdf_path);
-        const staticPath = filename
-          ? `/static/pdfs/newsletter/${deptId}/${filename}`
-          : "";
+    const originalYears = groupByYear(originalData);
+    const pendingYears = groupByYear(pendingData);
 
+    const allYears = new Set([
+      ...originalYears.keys(),
+      ...pendingYears.keys(),
+    ]);
+
+    for (const year of allYears) {
+      const originalItems = originalYears.get(year) || [];
+      const pendingItems = pendingYears.get(year) || [];
+
+      const oldFiles = originalItems
+        .map(item => {
+          const filename = getFilenameFromPath(item.pdf_path);
+          return `/static/pdfs/newsletter/${deptId}/${filename}`;
+        })
+        .sort();
+
+      const newFiles = pendingItems
+        .map(item => {
+          const filename = item._file
+            ? item._file.name
+            : getFilenameFromPath(item.pdf_path);
+
+          return `/static/pdfs/newsletter/${deptId}/${filename}`;
+        })
+        .sort();
+
+      // INSERT
+      if (originalItems.length === 0 && pendingItems.length > 0) {
         payload.push({
           collectionName,
           collection_type: "newsletter",
@@ -117,81 +152,16 @@ export default function Newsletter({ data }) {
           title: "insert for newsletter",
           category: "newsletter",
           meta_data: {
-            year: newItem.year,
-            pdf_path: staticPath ? [staticPath] : [],
+            year,
+            pdf_path: newFiles,
           },
-          original_data: null,
         });
+
+        continue;
       }
-    }
 
-    // UPDATE: items present in both but with changes
-    for (const [id, newItem] of pendingMap.entries()) {
-      if (processedIds.has(id)) continue;
-
-      const oldItem = originalMap.get(id);
-      if (oldItem) {
-        // Check if any field changed (excluding _file which is internal tracking)
-        const fieldsChanged =
-          oldItem.year !== newItem.year ||
-          oldItem.name !== newItem.name ||
-          newItem._file !== undefined; // File was explicitly selected/changed
-
-        // Also check if pdf_path changed (but ignore if it's a blob URL - that's just a preview)
-        let pdfPathChanged = false;
-        const newPdfIsBlob = newItem.pdf_path?.startsWith("blob:");
-        const oldPdfIsBlob = oldItem.pdf_path?.startsWith("blob:");
-
-        // Only count pdf_path as changed if:
-        // 1. It's no longer a blob (user uploaded new file)
-        // 2. Or it changed to something other than blob URL
-        if (!newPdfIsBlob && oldItem.pdf_path !== newItem.pdf_path) {
-          pdfPathChanged = true;
-        }
-
-        if (fieldsChanged || pdfPathChanged) {
-          processedIds.add(id);
-
-          // For updated items, use new filename if file changed, otherwise keep old
-          const newFilename = newItem._file
-            ? newItem._file.name
-            : getFilenameFromPath(newItem.pdf_path);
-          const oldFilename = getFilenameFromPath(oldItem.pdf_path);
-
-          const newStaticPath = newFilename
-            ? `/static/pdfs/newsletter/${deptId}/${newFilename}`
-            : oldStaticPath;
-          const oldStaticPath = oldFilename
-            ? `/static/pdfs/newsletter/${deptId}/${oldFilename}`
-            : "";
-
-          payload.push({
-            collectionName,
-            collection_type: "newsletter",
-            action: "update",
-            title: "update for newsletter",
-            category: "newsletter",
-            meta_data: {
-              year: newItem.year,
-              pdf_path: newStaticPath ? [newStaticPath] : [],
-            },
-            original_data: {
-              year: oldItem.year,
-              pdf_path: oldStaticPath ? [oldStaticPath] : [],
-            },
-          });
-        }
-      }
-    }
-
-    // DELETE: items in original but not in pending
-    for (const [id, oldItem] of originalMap.entries()) {
-      if (!pendingMap.has(id)) {
-        const oldFilename = getFilenameFromPath(oldItem.pdf_path);
-        const oldStaticPath = oldFilename
-          ? `/static/pdfs/newsletter/${deptId}/${oldFilename}`
-          : "";
-
+      // DELETE
+      if (originalItems.length > 0 && pendingItems.length === 0) {
         payload.push({
           collectionName,
           collection_type: "newsletter",
@@ -199,10 +169,34 @@ export default function Newsletter({ data }) {
           title: "delete for newsletter",
           category: "newsletter",
           meta_data: {
-            year: oldItem.year,
-            pdf_path: oldStaticPath ? [oldStaticPath] : [],
+            year,
+            pdf_path: oldFiles,
           },
-          original_data: null,
+        });
+
+        continue;
+      }
+
+      // UPDATE
+      const changed =
+        year !== originalItems[0]?.year ||
+        JSON.stringify(oldFiles) !== JSON.stringify(newFiles);
+
+      if (changed) {
+        payload.push({
+          collectionName,
+          collection_type: "newsletter",
+          action: "update",
+          title: "update for newsletter",
+          category: "newsletter",
+          meta_data: {
+            year,
+            pdf_path: newFiles,
+          },
+          original_data: {
+            year: originalItems[0]?.year,
+            pdf_path: oldFiles,
+          },
         });
       }
     }
@@ -242,20 +236,10 @@ export default function Newsletter({ data }) {
       const payload = buildPayload();
       const files = collectFiles();
 
-      console.log("=== PAYLOAD DEBUG ===");
-      console.log("Original Data:", originalData);
-      console.log("Pending Data:", pendingData);
-      console.log("Payload:", payload);
-      console.log("Files:", files);
-      console.log("=== END DEBUG ===");
-
-      const result = await sendRequest(
-        payload,
-        files.length > 0 ? files : null,
-      );
+      const result = await sendRequest(payload, files.length > 0 ? files : null);
 
       if (result.success) {
-        toast.success("Newsletter request submitted successfully!");
+
         setOriginalData(deepCopy(pendingData));
         setTempData(deepCopyWithFiles(pendingData));
         setPendingData(null);
@@ -281,28 +265,22 @@ export default function Newsletter({ data }) {
   };
 
   // Create a stable uid for newly-created items
-  const makeUid = (prefix = "uid") =>
-    `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  const makeUid = (prefix = "uid") => `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
   // --- Load / normalize incoming data once ---
   useEffect(() => {
     if (!data) return;
-    const newsletter =
-      data?.find((item) => item.category === "newsletter")?.content || [];
+    const newsletter = data?.find((item) => item.category === "newsletter")?.content || [];
 
     // Flatten content -> items with stable id (preserve backend id if present)
     const flattened = [];
     newsletter.forEach((yearEntry) => {
       const year = String(yearEntry.year);
       // make sure pdf_path is an array
-      const paths = Array.isArray(yearEntry.pdf_path)
-        ? yearEntry.pdf_path
-        : [yearEntry.pdf_path].filter(Boolean);
+      const paths = Array.isArray(yearEntry.pdf_path) ? yearEntry.pdf_path : [yearEntry.pdf_path].filter(Boolean);
       paths.forEach((pdfPath, idx) => {
         // preserve provided id if any (rare). otherwise generate stable uid.
-        const stableId = yearEntry.id
-          ? `${yearEntry.id}-${idx}`
-          : makeUid(`nl-${year}-${idx}`);
+        const stableId = yearEntry.id ? `${yearEntry.id}-${idx}` : makeUid(`nl-${year}-${idx}`);
         flattened.push({
           id: stableId,
           year,
@@ -341,7 +319,6 @@ export default function Newsletter({ data }) {
 
   const handleSave = () => {
     if (!isDirty) {
-      toast.info("No changes to save!");
       return;
     }
 
@@ -356,13 +333,9 @@ export default function Newsletter({ data }) {
     }
 
     // Ensure all names & PDF paths are present (if your UX requires)
-    const invalid = tempData.find(
-      (x) => !x.name?.trim() || !x.pdf_path?.trim(),
-    );
+    const invalid = tempData.find((x) => !x.name?.trim() || !x.pdf_path?.trim());
     if (invalid) {
-      toast.error(
-        "Please fill all newsletter names and upload files before saving!",
-      );
+      toast.error("Please fill all newsletter names and upload files before saving!");
       return;
     }
 
@@ -373,15 +346,14 @@ export default function Newsletter({ data }) {
     setIsDirty(false);
     setSelectedYears(new Set());
     setSelectedNewsletters(new Set());
+
   };
 
   const handleCancel = () => {
     if (pendingData) {
       setTempData(deepCopyWithFiles(pendingData));
-      toast.info("Cancelled edits. Draft preserved!");
     } else {
       setTempData(deepCopy(originalData));
-      toast.info("Cancelled. Reverted to original data!");
     }
     setIsEditing(false);
     setIsDirty(false);
@@ -397,7 +369,6 @@ export default function Newsletter({ data }) {
     setIsDirty(false);
     setSelectedYears(new Set());
     setSelectedNewsletters(new Set());
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => setShowRequestModal(true);
@@ -405,11 +376,7 @@ export default function Newsletter({ data }) {
   // Change single field on an item (by stable id)
   const handleChange = (id, key, value) => {
     setTempData((prev) => {
-      const updated = prev.map((it) =>
-        it.id === id
-          ? { ...it, [key]: key === "name" ? capitalizeWords(value) : value }
-          : it,
-      );
+      const updated = prev.map((it) => (it.id === id ? { ...it, [key]: key === "name" ? capitalizeWords(value) : value } : it));
       return updated;
     });
     setIsDirty(true);
@@ -418,11 +385,7 @@ export default function Newsletter({ data }) {
   // File change: set a blob URL and track File object
   const handleFileChange = (id, file) => {
     const fakePath = URL.createObjectURL(file);
-    setTempData((prev) =>
-      prev.map((it) =>
-        it.id === id ? { ...it, pdf_path: fakePath, _file: file } : it,
-      ),
-    );
+    setTempData((prev) => prev.map((it) => (it.id === id ? { ...it, pdf_path: fakePath, _file: file } : it)));
     setIsDirty(true);
   };
 
@@ -456,12 +419,7 @@ export default function Newsletter({ data }) {
       return;
     }
     const newId = makeUid(`nl-${year}-${yearItems.length}`);
-    const newItem = {
-      id: newId,
-      year,
-      name: `Newsletter ${yearItems.length + 1}`,
-      pdf_path: "",
-    };
+    const newItem = { id: newId, year, name: `Newsletter ${yearItems.length + 1}`, pdf_path: "" };
     setTempData((prev) => [...prev, newItem]);
     setIsDirty(true);
   };
@@ -493,6 +451,7 @@ export default function Newsletter({ data }) {
     setSelectedNewsletters(nxt);
   };
 
+
   // Delete confirmation
   const confirmDelete = () => {
     if (deleteType === "year") {
@@ -506,9 +465,7 @@ export default function Newsletter({ data }) {
       });
       setSelectedYears(new Set());
     } else if (deleteType === "newsletter") {
-      setTempData((prev) =>
-        prev.filter((it) => !selectedNewsletters.has(it.id)),
-      );
+      setTempData((prev) => prev.filter((it) => !selectedNewsletters.has(it.id)));
       setSelectedNewsletters(new Set());
     }
     setShowDeleteModal(false);
@@ -528,51 +485,7 @@ export default function Newsletter({ data }) {
     setShowDeleteModal(true);
   };
 
-  // ---------- Change detection (compare by stable id) ----------
-  // const getChanges = () => {
-  //   if (!pendingData) return [];
-  //   const changes = [];
-
-  //   const originalMap = new Map(originalData.map((it) => [it.id, it]));
-  //   const pendingMap = new Map(pendingData.map((it) => [it.id, it]));
-
-  //   // Added or Edited (items present in pendingMap)
-  //   for (const [id, newItem] of pendingMap.entries()) {
-  //     const oldItem = originalMap.get(id);
-  //     if (!oldItem) {
-  //       changes.push({
-  //         action: "Added",
-  //         section: "Newsletter",
-  //         changes: `${newItem.year} - ${newItem.name}`,
-  //         rowId: id,
-  //       });
-  //     } else {
-  //       // compare relevant fields
-  //       if (oldItem.name !== newItem.name || oldItem.pdf_path !== newItem.pdf_path || oldItem.year !== newItem.year) {
-  //         changes.push({
-  //           action: "Edited",
-  //           section: "Newsletter",
-  //           changes: `${newItem.year} - ${newItem.name}`,
-  //           rowId: id,
-  //         });
-  //       }
-  //     }
-  //   }
-
-  //   // Deleted: present in originalMap but missing in pendingMap
-  //   for (const [id, oldItem] of originalMap.entries()) {
-  //     if (!pendingMap.has(id)) {
-  //       changes.push({
-  //         action: "Deleted",
-  //         section: "Newsletter",
-  //         changes: `${oldItem.year} - ${oldItem.name}`,
-  //         rowId: id,
-  //       });
-  //     }
-  //   }
-
-  //   return changes;
-  // };
+  
 
   // --- Compute changes relative to originalData ---
   const getChanges = () => {
@@ -616,9 +529,7 @@ export default function Newsletter({ data }) {
     }
 
     for (const year in deletedByYear) {
-      const totalOriginal = originalData.filter(
-        (it) => it.year === year,
-      ).length;
+      const totalOriginal = originalData.filter((it) => it.year === year).length;
       const deletedCount = deletedByYear[year].length;
 
       if (deletedCount === totalOriginal) {
@@ -645,6 +556,8 @@ export default function Newsletter({ data }) {
     return changes;
   };
 
+
+
   // --- Revert a change by rowId ---
   const revertChange = (rowId) => {
     if (!pendingData) return;
@@ -659,17 +572,14 @@ export default function Newsletter({ data }) {
     if (isAdded) {
       // Remove newly added item
       newPending = newPending.filter((item) => item.id !== rowId);
-      toast.info("Removed added item.");
     } else if (isDeleted) {
       // Restore deleted item
       newPending.push(deepCopy(oldItem));
-      toast.info("Restored deleted item.");
     } else if (isEdited) {
       // Revert edited item
       newPending = newPending.map((item) =>
-        item.id === rowId ? deepCopy(oldItem) : item,
+        item.id === rowId ? deepCopy(oldItem) : item
       );
-      toast.info("Reverted edited item.");
     } else {
       return; // should not happen
     }
@@ -690,6 +600,10 @@ export default function Newsletter({ data }) {
     if (isDeleted && oldItem.year) setActiveYear(oldItem.year);
   };
 
+
+
+
+
   // const changes = getChanges();
 
   // ---------- render ----------
@@ -706,16 +620,11 @@ export default function Newsletter({ data }) {
       <ToastContainer position="bottom-right" autoClose={2000} />
 
       <div className="relative mb-6 w-full">
-        <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">
-          Newsletter
-        </h2>
+        <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">Newsletter</h2>
 
         {!isEditing && (
           <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
-            <button
-              onClick={handleEdit}
-              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition"
-            >
+            <button onClick={handleEdit} className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition">
               <Pencil size={18} /> Edit
             </button>
           </div>
@@ -747,9 +656,7 @@ export default function Newsletter({ data }) {
                   <input
                     type="checkbox"
                     checked={selectedYears.has(year)}
-                    disabled={groupedByYear[year].some((pdf) =>
-                      selectedNewsletters.has(pdf.id),
-                    )} // disable if any newsletter is selected
+                    disabled={groupedByYear[year].some(pdf => selectedNewsletters.has(pdf.id))} // disable if any newsletter is selected
                     onChange={(e) => {
                       e.stopPropagation();
                       const nxt = new Set(selectedYears);
@@ -760,9 +667,7 @@ export default function Newsletter({ data }) {
 
                         // Deselect all newsletters of this year when selecting year
                         const nxtNewsletters = new Set(selectedNewsletters);
-                        groupedByYear[year].forEach((pdf) =>
-                          nxtNewsletters.delete(pdf.id),
-                        );
+                        groupedByYear[year].forEach(pdf => nxtNewsletters.delete(pdf.id));
                         setSelectedNewsletters(nxtNewsletters);
 
                         // Close active year
@@ -775,15 +680,13 @@ export default function Newsletter({ data }) {
                   />
                 </div>
               )}
+
             </div>
           ))}
 
         {/* Add Year UI */}
         {isEditing && !addingYear && (
-          <button
-            onClick={() => setAddingYear(true)}
-            className="flex items-center justify-center gap-2 px-4 py-3 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition"
-          >
+          <button onClick={() => setAddingYear(true)} className="flex items-center justify-center gap-2 px-4 py-3 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition">
             <Plus size={18} /> Add Year
           </button>
         )}
@@ -797,10 +700,7 @@ export default function Newsletter({ data }) {
               placeholder="Enter year"
               className="px-2 py-1 border rounded"
             />
-            <button
-              onClick={handleAddYear}
-              className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-3 py-1 rounded transition"
-            >
+            <button onClick={handleAddYear} className="bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-3 py-1 rounded transition">
               Add
             </button>
             <button
@@ -825,17 +725,13 @@ export default function Newsletter({ data }) {
             {groupedByYear[activeYear].map((pdf) => (
               <div key={pdf.id} className="relative">
                 <div className="flex justify-between items-center mb-2">
+
                   {isEditing && (
-                    <input
-                      type="checkbox"
-                      checked={selectedNewsletters.has(pdf.id)}
-                      onChange={() => toggleSelectNewsletter(pdf.id)}
-                      className="w-5 h-5 ml-2"
-                    />
+                    <input type="checkbox" checked={selectedNewsletters.has(pdf.id)} onChange={() => toggleSelectNewsletter(pdf.id)} className="w-5 h-5 ml-2" />
                   )}
                 </div>
 
-                {isEditing && (
+                {isEditing && activeYear === pdf.year && (
                   <div className="mb-4 text-center">
                     <label className="bg-[#fdcc03] text-text px-3 py-2 rounded cursor-pointer hover:bg-[#800000] hover:text-prim transition">
                       {pdf.pdf_path ? "Change Newsletter" : "Upload Newsletter"}
@@ -853,18 +749,16 @@ export default function Newsletter({ data }) {
                 )}
 
                 {pdf.pdf_path ? (
-                  <embed
-                    src={
-                      pdf.pdf_path.startsWith("blob:")
-                        ? pdf.pdf_path
-                        : UrlParser(pdf.pdf_path)
-                    }
-                    type="application/pdf"
+                  <iframe
+                    src={pdf.pdf_path.startsWith("blob:")
+                      ? pdf.pdf_path
+                      : UrlParser(pdf.pdf_path)}
+                    title={pdf.name}
                     width="100%"
-                    height="400px"
+                    height="400"
                     className="border rounded"
-                  />
-                ) : (
+                    style={{ border: "none" }}
+                  />) : (
                   <div className="border rounded h-[400px] flex items-center justify-center bg-gray-100">
                     <span className="text-gray-500">No PDF uploaded</span>
                   </div>
@@ -874,10 +768,7 @@ export default function Newsletter({ data }) {
 
             {/* Add newsletter card if < 2 */}
             {isEditing && groupedByYear[activeYear].length < 2 && (
-              <div
-                className="border-2 border-dashed rounded-lg h-[400px] flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100"
-                onClick={() => handleAddNewsletter(activeYear)}
-              >
+              <div className="border-2 border-dashed rounded-lg h-[400px] flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100" onClick={() => handleAddNewsletter(activeYear)}>
                 <Plus size={48} className="text-gray-400 mb-2" />
                 <span className="text-gray-500">Add Newsletter</span>
               </div>
@@ -890,21 +781,13 @@ export default function Newsletter({ data }) {
       {isEditing && (
         <div className="flex justify-center gap-4 mt-6">
           {selectedYears.size > 0 && (
-            <button
-              onClick={() => openDeleteModal("year")}
-              className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600"
-            >
-              <Trash2 size={18} /> Delete {selectedYears.size} Year
-              {selectedYears.size > 1 ? "s" : ""}
+            <button onClick={() => openDeleteModal("year")} className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600">
+              <Trash2 size={18} /> Delete {selectedYears.size} Year{selectedYears.size > 1 ? "s" : ""}
             </button>
           )}
           {selectedNewsletters.size > 0 && (
-            <button
-              onClick={() => openDeleteModal("newsletter")}
-              className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600"
-            >
-              <Trash2 size={18} /> Delete {selectedNewsletters.size} Newsletter
-              {selectedNewsletters.size > 1 ? "s" : ""}
+            <button onClick={() => openDeleteModal("newsletter")} className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600">
+              <Trash2 size={18} /> Delete {selectedNewsletters.size} Newsletter{selectedNewsletters.size > 1 ? "s" : ""}
             </button>
           )}
         </div>
@@ -913,17 +796,9 @@ export default function Newsletter({ data }) {
       {/* Save / Cancel */}
       {isEditing && (
         <div className="flex justify-end gap-3 mt-6">
-          <button
-            onClick={handleCancel}
-            className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition"
-          >
-            Cancel
-          </button>
+          <button onClick={handleCancel} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition">Cancel</button>
           {isDirty && (
-            <button
-              onClick={handleSave}
-              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition"
-            >
+            <button onClick={handleSave} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition">
               Save
             </button>
           )}
@@ -933,17 +808,9 @@ export default function Newsletter({ data }) {
       {/* Saved draft actions */}
       {isSaved && (
         <div className="flex justify-end gap-3 mt-6">
-          <button
-            onClick={handleDiscard}
-            className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition"
-          >
-            Discard Changes
-          </button>
+          <button onClick={handleDiscard} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition">Discard Changes</button>
           {changes.length > 0 && (
-            <button
-              onClick={handleRequest}
-              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition"
-            >
+            <button onClick={handleRequest} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition">
               <Send size={18} /> Request
             </button>
           )}
@@ -954,12 +821,9 @@ export default function Newsletter({ data }) {
       {showRequestModal && (
         <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
           <div className="bg-prim p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">
-              Final Request
-            </h2>
+            <h2 className="text-xl font-bold mb-4 text-gray-800">Final Request</h2>
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the
-              superior admin.
+              Note: Your changes will stay pending until approved by the superior admin.
             </p>
 
             {changes.length > 0 ? (
@@ -1016,41 +880,19 @@ export default function Newsletter({ data }) {
         </div>
       )}
 
+
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-text/50 flex items-center justify-center z-50">
           <div className="bg-prim p-6 rounded-lg shadow-lg border w-[90%] max-w-md">
-            <h3 className="text-lg font-semibold mb-4 text-gray-800">
-              Confirm Delete
-            </h3>
+            <h3 className="text-lg font-semibold mb-4 text-gray-800">Confirm Delete</h3>
             <p className="text-gray-600 mb-6">
-              Are you sure you want to delete{" "}
-              {deleteType === "year"
-                ? selectedYears.size
-                : selectedNewsletters.size}{" "}
-              {deleteType}
-              {deleteType === "year"
-                ? selectedYears.size > 1
-                  ? "s"
-                  : ""
-                : selectedNewsletters.size > 1
-                  ? "s"
-                  : ""}
-              ?
+              Are you sure you want to delete {deleteType === "year" ? selectedYears.size : selectedNewsletters.size} {deleteType}
+              {deleteType === "year" ? (selectedYears.size > 1 ? "s" : "") : (selectedNewsletters.size > 1 ? "s" : "")}?
             </p>
             <div className="flex justify-end gap-3">
-              <button
-                onClick={() => setShowDeleteModal(false)}
-                className="px-4 py-2 bg-gray-400 rounded-lg hover:bg-gray-600 transition"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={confirmDelete}
-                className="px-4 py-2 bg-red-600 text-prim rounded-lg hover:bg-red-700 transition"
-              >
-                Delete
-              </button>
+              <button onClick={() => setShowDeleteModal(false)} className="px-4 py-2 bg-gray-400 rounded-lg hover:bg-gray-600 transition">Cancel</button>
+              <button onClick={confirmDelete} className="px-4 py-2 bg-red-600 text-prim rounded-lg hover:bg-red-700 transition">Delete</button>
             </div>
           </div>
         </div>

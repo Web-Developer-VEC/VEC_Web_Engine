@@ -1,49 +1,43 @@
 [
-    
-    {
-  "collectionName": "AIDS_001",
-  "collection_type": "mous",
-  "action": "insert",
-  "title": "insert mou",
-  "category": "mous_details",
-  "meta_data": {
-    "ORGANISATION_NAME": "Infosys Limited",
-    "MONTH_AND_YEAR": "12-01-2025",
-    "VALIDITY": "5 Years"
-  }
-},
-
-{
-  "collectionName": "AIDS_001",
-  "collection_type": "mous",
-  "action": "update",
-  "title": "update mou",
-  "category": "mous_details",
-  "meta_data": {
-    "ORGANISATION_NAME": "Infosys Limited",
-    "MONTH_AND_YEAR": "12-01-2025",
-    "VALIDITY": "10 Years"
+  {
+    "collectionName": "AIDS_001",
+    "collection_type": "mous",
+    "action": "insert",
+    "title": "insert mou",
+    "category": "mous_details",
+    "meta_data": {
+      "organisation_name": "Infosys Limited",
+      "month_and_year": "12-01-2025",
+      "validity": "5 Years"
+    }
   },
-  "original_data": {
-    "ORGANISATION_NAME": "Infosys Limited",
-    "MONTH_AND_YEAR":"12-01-2025",
-    "VALIDITY":"5 Years"
+  {
+    "collectionName": "AIDS_001",
+    "collection_type": "mous",
+    "action": "update",
+    "title": "update mou",
+    "category": "mous_details",
+    "meta_data": {
+      "organisation_name": "Infosys Limited",
+      "month_and_year": "12-01-2025",
+      "validity": "10 Years"
+    },
+    "original_data": {
+      "organisation_name": "Infosys Limited",
+      "month_and_year": "12-01-2025",
+      "validity": "5 Years"
+    }
+  },
+  {
+    "collectionName": "AIDS_001",
+    "collection_type": "mous",
+    "action": "delete",
+    "title": "delete mou",
+    "category": "mous_details",
+    "meta_data": {
+      "organisation_name": "Infosys Limited",
+      "month_and_year": "12-01-2025",
+      "validity": "10 Years"
+    }
   }
-},
-
-{
-  "collectionName": "AIDS_001",
-  "collection_type": "mous",
-  "action": "delete",
-  "title": "delete mou",
-  "category": "mous_details",
-  "meta_data": {
-    "ORGANISATION_NAME": "Infosys Limited",
-    "MONTH_AND_YEAR":"12-01-2025",
-    "VALIDITY":"10 Years"
-  }
-}
-
-
-
 ]

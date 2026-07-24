@@ -48,16 +48,21 @@ const Pedagogy = ({ data = [] }) => {
   };
   const isLink = (path) => path?.startsWith("http");
 
-  // Load initial data
   useEffect(() => {
     if (data && data.length > 0) {
       const pedagogyCategory = data.find(item => item.category === "Pedagogy Initiatives");
       let formattedData = pedagogyCategory ? deepCopy(pedagogyCategory.content) : [];
 
-      // Add stable id to each year (just like Kapila)
+      
       formattedData = formattedData.map((y) => ({
-        id: y.id || crypto.randomUUID(),   // ✅ stable identity
+        id: y.id || crypto.randomUUID(),
         ...y,
+        content: (y.content || [])
+          .filter(Boolean)
+          .map((it) => ({
+            id: it.id || crypto.randomUUID(),
+            ...it,
+          })),
       }));
 
       setTempData(formattedData);
@@ -69,11 +74,22 @@ const Pedagogy = ({ data = [] }) => {
   //   setActiveYearId(prev => (prev === id ? null : id));
   // };
 
-  const handlePdfClick = (pdfPath) => {
-    if (pdfPath) {
-      window.open(UrlParser(pdfPath), "_blank");
-    }
-  };
+ 
+  const handlePdfClick = (pdfItem) => {
+  if (!pdfItem) return;
+
+  // Preview uploaded file before admin approval
+  if (pdfItem.pdf_file instanceof File) {
+    const blobUrl = URL.createObjectURL(pdfItem.pdf_file);
+    window.open(blobUrl, "_blank");
+    return;
+  }
+
+  // Existing server PDF
+  if (pdfItem.pdf_path) {
+    window.open(UrlParser(pdfItem.pdf_path), "_blank");
+  }
+};
   const buildPedagogyPayload = ({ action, newData = {}, oldData = {} }) => {
     const cleanContent = (content = []) =>
       content.map(({ name, pdf_path }) => ({ name, pdf_path }));
@@ -109,7 +125,7 @@ const Pedagogy = ({ data = [] }) => {
         },
         original_data: {
           year: oldData.year,
-          content: oldData.content,
+          content: cleanContent(oldData.content),
         },
       };
     }
@@ -122,7 +138,7 @@ const Pedagogy = ({ data = [] }) => {
         title: `delete pedagogy ${oldData.year}`,
         meta_data: {
           year: oldData.year,
-          content: oldData.content,
+          content: cleanContent(oldData.content),
         },
         original_data: null,
       };
@@ -130,6 +146,7 @@ const Pedagogy = ({ data = [] }) => {
 
     return null;
   };
+  
   const generatePayloadsAuto = async () => {
     if (!pendingData || !originalData) return [];
 
@@ -138,14 +155,74 @@ const Pedagogy = ({ data = [] }) => {
     const originalMap = new Map(originalData.map(y => [y.id, y]));
     const pendingMap = new Map(pendingData.map(y => [y.id, y]));
 
-    // UPDATE
+    
     for (const [id, newYear] of pendingMap.entries()) {
       const oldYear = originalMap.get(id);
-      if (!oldYear) continue;
+      if (!oldYear) continue; // brand new year, handled in INSERT block below
 
+      const oldItemsMap = new Map((oldYear.content || []).map(it => [it.id, it]));
+      const newItemsMap = new Map((newYear.content || []).map(it => [it.id, it]));
+
+      const addedItems = [];
+      const editedNewItems = [];
+      const editedOldItems = [];
+
+      for (const [itemId, newItem] of newItemsMap.entries()) {
+        const oldItem = oldItemsMap.get(itemId);
+        if (!oldItem) {
+          // ➕ item newly added inside an existing year
+          addedItems.push(newItem);
+        } else if (
+          oldItem.name !== newItem.name ||
+          oldItem.pdf_path !== newItem.pdf_path
+        ) {
+          // ✏️ item edited
+          editedNewItems.push(newItem);
+          editedOldItems.push(oldItem);
+        }
+      }
+
+      const removedItems = [];
+      for (const [itemId, oldItem] of oldItemsMap.entries()) {
+        if (!newItemsMap.has(itemId)) {
+          removedItems.push(oldItem);
+        }
+      }
+
+      // ➕ Item-level INSERT (only the new items, not the whole array)
+      if (addedItems.length > 0) {
+        const payload = buildPedagogyPayload({
+          action: "Added",
+          newData: { year: newYear.year, content: addedItems },
+        });
+        if (payload) payloads.push(payload);
+      }
+
+      // ✏️ Item-level UPDATE (only the changed items, not the whole array)
+      if (editedNewItems.length > 0) {
+        const payload = buildPedagogyPayload({
+          action: "Edited",
+          newData: { year: newYear.year, content: editedNewItems },
+          oldData: { year: oldYear.year, content: editedOldItems },
+        });
+        if (payload) payloads.push(payload);
+      }
+
+      // 🗑️ Item-level DELETE (only the removed items, not the whole array)
+      if (removedItems.length > 0) {
+        const payload = buildPedagogyPayload({
+          action: "Deleted",
+          oldData: { year: oldYear.year, content: removedItems },
+        });
+        if (payload) payloads.push(payload);
+      }
+
+      // 🔤 Year renamed but no item changes -> update year metadata only
       if (
-        oldYear.year !== newYear.year ||
-        JSON.stringify(oldYear.content) !== JSON.stringify(newYear.content)
+        oldYear.year !== newYear.year &&
+        addedItems.length === 0 &&
+        editedNewItems.length === 0 &&
+        removedItems.length === 0
       ) {
         const payload = buildPedagogyPayload({
           action: "Edited",
@@ -156,7 +233,7 @@ const Pedagogy = ({ data = [] }) => {
       }
     }
 
-    // INSERT
+    // INSERT (brand new year)
     for (const [id, newYear] of pendingMap.entries()) {
       if (!originalMap.has(id)) {
         const payload = buildPedagogyPayload({
@@ -167,7 +244,7 @@ const Pedagogy = ({ data = [] }) => {
       }
     }
 
-    // DELETE
+    // DELETE (whole year removed)
     for (const [id, oldYear] of originalMap.entries()) {
       if (!pendingMap.has(id)) {
         const payload = buildPedagogyPayload({
@@ -177,7 +254,7 @@ const Pedagogy = ({ data = [] }) => {
         if (payload) payloads.push(payload);
       }
     }
-
+    console.log("PAYLOAD",payloads);
     return payloads;
   };
   const handleEdit = () => {
@@ -232,7 +309,7 @@ const Pedagogy = ({ data = [] }) => {
     // Check all years
     const invalidItem = tempData.some(year =>
       year.content.length === 0 || // Added: year must have at least one item
-      year.content.some(item => !item.name?.trim() || (!item.pdf_path?.trim() && !item.link?.trim()))
+      year.content.some(item => !item?.name?.trim() || (!item.pdf_path?.trim() && !item.link?.trim()))
     );
 
     if (invalidItem) {
@@ -394,7 +471,7 @@ const Pedagogy = ({ data = [] }) => {
     }
 
     if (
-      !newPedagogy.name?.trim() ||
+      !newPedagogy?.name?.trim() ||
       (!newPedagogy.pdf_file && !newPedagogy.pdf_url)
     ) {
       toast.error("Please fill all required fields!");
@@ -410,11 +487,17 @@ const Pedagogy = ({ data = [] }) => {
     // /static/pdfs/pedagogy/filename.pdf
     const fileObj = newPedagogy.pdf_file || null;
     const pdfPath = newPedagogy.pdf_file
-      ? `/static/pdfs/pedagogy/${newPedagogy.pdf_file.name}`
+      ? `/static/pdfs/pedagogy/${newPedagogy.pdf_file?.name}`
       : newPedagogy.pdf_url;
 
     const newItem = {
-      name: newPedagogy.name,
+      // ✅ keep the same id when editing an existing item so it's matched
+      // correctly during diffing; assign a fresh id when adding a new item
+      id:
+        editIndex !== null && updated[yearIndex].content[editIndex]?.id
+          ? updated[yearIndex].content[editIndex].id
+          : crypto.randomUUID(),
+      name: newPedagogy?.name,
       pdf_path: pdfPath,   // ✅ only path goes to payload
       pdf_file: fileObj,   // ✅ keep file ONLY for upload
     };
@@ -581,7 +664,7 @@ const Pedagogy = ({ data = [] }) => {
         const yearIndex = updated.findIndex(y => y.year === change.section);
         if (yearIndex !== -1) {
           updated[yearIndex].content = updated[yearIndex].content.filter(
-            item => item.name !== change.changes
+            item => item?.name !== change.changes
           );
         }
       }
@@ -595,7 +678,7 @@ const Pedagogy = ({ data = [] }) => {
       } else {
         // Restore deleted item from originalData
         const originalYear = originalData.find(y => y.year === change.section);
-        const deletedItem = originalYear?.content.find(item => item.name === change.changes);
+        const deletedItem = originalYear?.content.find(item => item?.name === change.changes);
 
         if (deletedItem) {
           const yearIndex = updated.findIndex(y => y.year === change.section);
@@ -634,11 +717,11 @@ const Pedagogy = ({ data = [] }) => {
           // Find the item with the new name and revert to old name
           const yearIndex = updated.findIndex(y => y.year === change.section);
           if (yearIndex !== -1) {
-            const itemIndex = updated[yearIndex].content.findIndex(item => item.name === newName);
+            const itemIndex = updated[yearIndex].content.findIndex(item => item?.name === newName);
             if (itemIndex !== -1) {
               // Find the original item to restore all properties
               const originalYear = originalData.find(y => y.year === change.section);
-              const originalItem = originalYear?.content.find(item => item.name === oldName);
+              const originalItem = originalYear?.content.find(item => item?.name === oldName);
 
               if (originalItem) {
                 // Completely restore the original item
@@ -722,11 +805,11 @@ const Pedagogy = ({ data = [] }) => {
                   setActiveYearId(yearItem.id);
                 }}
                 className={`px-6 py-3 font-semibold rounded-xl transition-all hover:text-prim
-          ${activeYearObj === yearItem.year
+                  ${activeYearObj === yearItem.year
                     ? "bg-[#800000] text-prim"
                     : "bg-[#fdcc03] text-text"
                   }
-          hover:bg-[#800000] hover:text-white`}
+                  hover:bg-[#800000] hover:text-white`}
               >
                 {yearItem.year}
               </button>
@@ -852,7 +935,8 @@ const Pedagogy = ({ data = [] }) => {
                     <button
                       onClick={(e) => {
                         if (!isEditing) {
-                          handlePdfClick(pdfItem.pdf_path || pdfItem.link);
+                          // ✅ pass the full item so we can detect a pending (unapproved) local file
+                          handlePdfClick(pdfItem);
                         } else {
                           e.preventDefault();
                         }
@@ -867,10 +951,10 @@ const Pedagogy = ({ data = [] }) => {
                           }}
                           className="w-full bg-transparent text-center border-none focus:outline-none cursor-pointer"
                         >
-                          {pdfItem.name}
+                          {pdfItem?.name}
                         </button>
                       ) : (
-                        pdfItem.name
+                        pdfItem?.name
                       )}
                     </button>
                   </div>
@@ -919,7 +1003,7 @@ const Pedagogy = ({ data = [] }) => {
               {/* Input for Name */}
               <input
                 type="text"
-                value={newPedagogy.name}
+                value={newPedagogy?.name}
                 onChange={(e) =>
                   setNewPedagogy({
                     ...newPedagogy,
@@ -1041,7 +1125,7 @@ const Pedagogy = ({ data = [] }) => {
                   onClick={handleAddOrUpdatePedagogy}
                   className="flex-1 py-2 bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim rounded font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={
-                    !newPedagogy.name?.trim() || // must have title
+                    !newPedagogy?.name?.trim() || // must have title
                     (!newPedagogy.pdf_file && !newPedagogy.pdf_url) || // must have file OR url
                     (editIndex !== null &&
                       JSON.stringify({
