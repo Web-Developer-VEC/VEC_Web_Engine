@@ -75,7 +75,6 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
     setEditableData([...editableData]); // Keep the current saved data
     setChangeList([]); // Clear pending edits
     setgrEdit(false); // Exit edit mode
-    toast.info("Edit cancelled. Kept last saved changes.");
   };
   // Check if data is loaded before accessing its properties
   const section =
@@ -301,7 +300,6 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
 
     setChangeList(changes);
     setgrEdit(false);
-    toast.success("Changes saved locally! Click 'Request changes' to submit.");
   };
   const validateMandatoryFields = () => {
     for (let item of editableData) {
