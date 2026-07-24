@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import LoadComp from "../../LoadComp";
 
 const WinnerSlider = ({ data }) => {
+  
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -11,13 +12,15 @@ const WinnerSlider = ({ data }) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
   
-  useEffect(() => {
-    if (isHovered) return; // Stop auto-slide when hovered
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % data?.title?.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isHovered, data?.title?.length]);
+useEffect(() => {
+  if (isHovered || !data?.length) return;
+
+  const interval = setInterval(() => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % data.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [isHovered, data]);
   
   if (!data) {
     return <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
@@ -79,14 +82,14 @@ const WinnerSlider = ({ data }) => {
       </div>
 
       <div className="flex justify-center space-x-2 mt-4">
-        {data?.title?.map((_, index) => (
-          <button
-            key={index}
-            className={`w-2.5 h-2.5 rounded-full ${activeIndex === index ? "bg-blue-500" : "bg-gray-300"} transition-all`}
-            onClick={() => setActiveIndex(index)}
-          />
-        ))}
-      </div>
+  {data?.map((_, index) => (
+    <button
+      key={index}
+      className={`w-2.5 h-2.5 rounded-full ${activeIndex === index ? "bg-blue-500" : "bg-gray-300"} transition-all`}
+      onClick={() => setActiveIndex(index)}
+    />
+  ))}
+</div>
     </div>
   );
 };
