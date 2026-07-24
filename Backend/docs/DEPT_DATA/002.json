@@ -14,8 +14,7 @@
       },
       {
         "category": "about_the_department",
-        "content": 
-        [
+        "content": [
           "The department Automobile Engineering was established in the year 2012 with NBA & NAAC accreditations and ISO certification. The focus is to consistently pursue in providing innovative and quality training to the talented and dedicated students, to empower them in engineering the development of national economy, specialized in transport sector. The department has well qualified and well experienced faculty members to meet the present-day curriculum requirements both in theory and practical."
         ]
       },
@@ -27,13 +26,13 @@
       },
       {
         "category": "department_mission",
-        "content":[
-            "Maintaining state of art laboratory facilities to train the students with latest technology, to cater to industrial needs.",
-            "To create awareness on the importance of research activities   among the students.",
-            "To encourage creativity and innovation.",
-            "To produce young engineers with an ability to boldly face their future challenges.",
-            "To identify the top class R&D and academic institution in the field of automobile engineering and establish links with them for   the mutual transfer of knowledge."
-            ]
+        "content": [
+          "Maintaining state of art laboratory facilities to train the students with latest technology, to cater to industrial needs.",
+          "To create awareness on the importance of research activities   among the students.",
+          "To encourage creativity and innovation.",
+          "To produce young engineers with an ability to boldly face their future challenges.",
+          "To identify the top class R&D and academic institution in the field of automobile engineering and establish links with them for   the mutual transfer of knowledge."
+        ]
       },
       {
         "category": "programme_educational_objectives",
@@ -47,8 +46,8 @@
             "content": "Graduates will excel in Higher education / Entrepreneurship."
           },
           {
-            "header":"PEO 3",
-            "content":"Graduates will work as part of team / lead a team, use ethical attitudes in their profession and solve engineering issues in the broader social context through life-long learning."
+            "header": "PEO 3",
+            "content": "Graduates will work as part of team / lead a team, use ethical attitudes in their profession and solve engineering issues in the broader social context through life-long learning."
           }
         ]
       },
@@ -141,9 +140,14 @@
             "name": "Dr. BASKARA SETHUPATHY S",
             "department_name": "Automobile Engineering (AUTO)",
             "unique_id": "VEC-002-01-567",
-             "pdf_path":"/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf",
-            "qualification": ["M.E.", "Ph.D"],
-            "hod_message": ["Our department was established to provide well qualified industry ready engineers in the field of Automobile Engineering. The Department has a team of highly qualified, experienced and dedicated faculty members in diversified streams to cater for all-round development of students. Indian automotive industry is growing at a very fast rate with newer designs of automobiles and change in technologies. This will be a way for moulding our students for a bright future."],
+            "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf",
+            "qualification": [
+              "M.E.",
+              "Ph.D"
+            ],
+            "hod_message": [
+              "Our department was established to provide well qualified industry ready engineers in the field of Automobile Engineering. The Department has a team of highly qualified, experienced and dedicated faculty members in diversified streams to cater for all-round development of students. Indian automotive industry is growing at a very fast rate with newer designs of automobiles and change in technologies. This will be a way for moulding our students for a bright future."
+            ],
             "image_path": "/static/images/hods/auto.webp",
             "designation": "Professor & Head, Dept of Automobile Engineering",
             "Social_media_links": {
@@ -151,10 +155,10 @@
               "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en ",
               "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info ",
               "orchidprofile": "",
-                "publonprofile": "",
-                "scopus": ""
-              }
+              "publonprofile": "",
+              "scopus": ""
             }
+          }
         ]
       }
     ]
@@ -180,141 +184,138 @@
       },
       {
         "category": "head_of_department",
-        "members": [ 
-        {
-        "name": "Dr. BASKARA SETHUPATHY S",
-        "unique_id": "VEC-002-01-567",
-        "designation": "Professor & Head",
+        "members": [
+          {
+            "name": "Dr. BASKARA SETHUPATHY S",
+            "unique_id": "VEC-002-01-567",
+            "designation": "Professor & Head",
             "socialmedia_links": {
-                 "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
-                 "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en ",
-                "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info ",
-                "orchidprofile": "",
-                "publonprofile": "",
-                "scopus": ""
+              "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",
+              "googlescholar": "https://scholar.google.co.in/citations?user=OHZjX0wAAAAJ&amp;hl=en ",
+              "researchgate": "https://www.researchgate.net/profile/Baskara_Sethupathy/info ",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
             },
-          
-            "image_path":"/static/images/profile_photos/002/VEC-002-01-567.webp",
-            "pdf_path":"/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf"
-          }]
+            "image_path": "/static/images/profile_photos/002/VEC-002-01-567.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf"
+          }
+        ]
       },
       {
         "category": "teaching_staff",
-        "members": 
-        [
-  {
-    "name": "Dr. CHANDRAN V",
-    "designation": "Associate Professor",
-    "unique_id": "VEC-002-03-168",
-    "socialmedia_links": {
-      "linkedin": "https://www.linkedin.com/in/dr-v-chandran-velu-b54505117/?originalSubdomain=in",
-      "googlescholar": "",
-      "researchgate": "https://www.researchgate.net/profile/V-Chandran?ev=hdr_xprf",
-      "orchidprofile": "",
-      "publonprofile": "",
-      "scopus": ""
-    },
-    "image_path": "/static/images/profile_photos/002/VEC-002-03-168.webp",
-    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-03-168.pdf"
-  },
-  {
-              "name":"Dr. CHINNASAMY SUBRAMANIAN S",
-              "designation":"Assistant Professor",
-              "unique_id":"VEC-013-04-133",
-              "socialmedia_links":{
-              "linkedin":"https://www.linkedin.com/in/chinnasamy-s-50117425/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-              "googlescholar":"https://scholar.google.com/citations?user=WNV3nmsAAAAJ&hl=en",
-              "researchgate":"https://www.researchgate.net/profile/Chinnasamy-Subramanian-S",
-              "orchidprofile":"https://orcid.org/0000-0002-2447-5807",
-              "publonprofile":"",
-              "scopus":""
+        "members": [
+          {
+            "name": "Dr. CHANDRAN V",
+            "designation": "Associate Professor",
+            "unique_id": "VEC-002-03-168",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/dr-v-chandran-velu-b54505117/?originalSubdomain=in",
+              "googlescholar": "",
+              "researchgate": "https://www.researchgate.net/profile/V-Chandran?ev=hdr_xprf",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
             },
-            "image_path":"/static/images/profile_photos/013/VEC-013-04-133.webp",
-            "pdf_path":"/static/pdfs/faculty_profile/013/VEC-013-04-133.pdf"
+            "image_path": "/static/images/profile_photos/002/VEC-002-03-168.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-03-168.pdf"
           },
-  {
-    "name": "Dr. THENNARASU P",
-    "designation": "Assistant Professor",
-    "unique_id": "VEC-002-04-155",
-    "socialmedia_links": {
-      "linkedin": "",
-      "googlescholar": "https://scholar.google.com/citations?hl=en&user=0zYqQyAAAAAJ",
-      "researchgate": "https://www.researchgate.net/profile/Thennarasu-Palani-3?ev=hdr_xprf",
-      "orchidprofile": "https://orcid.org/0000-0001-8729-4571?lang=en",
-      "publonprofile": "",
-      "scopus": ""
-    },
-    "image_path": "/static/images/profile_photos/002/VEC-002-04-155.webp",
-    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-155.pdf"
-  },
-  {
-    "name": "Mr. YUVARAJ M",
-    "designation": "Assistant Professor",
-    "unique_id": "VEC-002-04-160",
-    "socialmedia_links": {
-      "linkedin": "https://www.linkedin.com/in/yuvaraj-maruthu-pandian-81796943/",
-      "googlescholar": "https://scholar.google.co.in/citations?user=ad1pYeEAAAAJ&hl=en",
-      "researchgate": "https://www.researchgate.net/profile/Yuvaraj_m",
-      "orchidprofile": "https://orcid.org/0000-0003-2986-5369?lang=en",
-      "publonprofile": "https://www.webofscience.com/wos/author/record/AEE-7608-2022",
-      "scopus": ""
-    },
-    "image_path": "/static/images/profile_photos/002/VEC-002-04-160.webp",
-    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-160.pdf"
-  },
-  {
-    "name": "Mr. DINESHBABU D",
-    "designation": "Assistant Professor",
-    "unique_id": "VEC-002-04-010",
-    "socialmedia_links": {
-      "linkedin": "https://www.linkedin.com/in/dineshbabu-d-463108128/",
-      "googlescholar": "https://scholar.google.com/citations?hl=en&user=BNZQRpIAAAAJ",
-      "researchgate": "",
-      "orchidprofile": "",
-      "publonprofile": "",
-      "scopus": ""
-    },
-    "image_path": "/static/images/profile_photos/002/VEC-002-04-010.webp",
-    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-010.pdf"
-  },
-  {
-    "name": "Dr. SENTHAMIL SELVAN M",
-    "designation": "Assistant Professor",
-    "unique_id": "VEC-002-03-167",
-    "socialmedia_links": {
-      "linkedin": "https://www.linkedin.com/in/dr-senthamil-selvan-murugan-01811166",
-      "googlescholar": "https://scholar.google.com/citations?user=yDeX6gQAAAAJ&hl=en",
-      "researchgate": "https://www.researchgate.net/profile/Senthamil-Murugan",
-      "orchidprofile": "https://orcid.org/0000-0002-3674-5798?lang=en",
-      "publonprofile": "https://www.webofscience.com/wos/author/record/LKL-3897-2024",
-      "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58350433000"
-    },
-    "image_path": "/static/images/profile_photos/002/VEC-002-03-167.webp",
-    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-03-167.pdf"
-  }
-]
+          {
+            "name": "Dr. CHINNASAMY SUBRAMANIAN S",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-013-04-133",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/chinnasamy-s-50117425/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar": "https://scholar.google.com/citations?user=WNV3nmsAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Chinnasamy-Subramanian-S",
+              "orchidprofile": "https://orcid.org/0000-0002-2447-5807",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/013/VEC-013-04-133.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-133.pdf"
+          },
+          {
+            "name": "Dr. THENNARASU P",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-002-04-155",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=0zYqQyAAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Thennarasu-Palani-3?ev=hdr_xprf",
+              "orchidprofile": "https://orcid.org/0000-0001-8729-4571?lang=en",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/002/VEC-002-04-155.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-155.pdf"
+          },
+          {
+            "name": "Mr. YUVARAJ M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-002-04-160",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/yuvaraj-maruthu-pandian-81796943/",
+              "googlescholar": "https://scholar.google.co.in/citations?user=ad1pYeEAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Yuvaraj_m",
+              "orchidprofile": "https://orcid.org/0000-0003-2986-5369?lang=en",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/AEE-7608-2022",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/002/VEC-002-04-160.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-160.pdf"
+          },
+          {
+            "name": "Mr. DINESHBABU D",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-002-04-010",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/dineshbabu-d-463108128/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=BNZQRpIAAAAJ",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/002/VEC-002-04-010.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-010.pdf"
+          },
+          {
+            "name": "Dr. SENTHAMIL SELVAN M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-002-03-167",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/dr-senthamil-selvan-murugan-01811166",
+              "googlescholar": "https://scholar.google.com/citations?user=yDeX6gQAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Senthamil-Murugan",
+              "orchidprofile": "https://orcid.org/0000-0002-3674-5798?lang=en",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/LKL-3897-2024",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58350433000"
+            },
+            "image_path": "/static/images/profile_photos/002/VEC-002-03-167.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-03-167.pdf"
+          }
+        ]
       },
       {
         "category": "non_teaching_staff",
-        "members": 
-        [
+        "members": [
           {
             "name": "Mr. BHARANI KUMAR M",
             "designation": "Lab Instructor",
             "unique_id": "VEC-002-05-002",
-            "socialmedia_links": 
-              {
-                "linkedin": "",
-                "googlescholar": "",
-                "researchgate": "",
-                "orchidprofile": "",
-                "publonprofile": "",
-                "scopus": ""
-              },
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
             "image_path": "/static/images/profile_photos/002/VEC-002-05-002.webp",
             "pdf_path": ""
-        }
-      ]
+          }
+        ]
       }
     ]
   },
@@ -331,62 +332,62 @@
         ]
       },
       {
-         "category": "curriculum",
-        "content":[
+        "category": "curriculum",
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
               {
-                "heading":"Curriculum & Syllabus",
-                "syllabus":[
-                {
-                  "year": "R - 2023",
-                  "docs":[
-                    {
-                    "name":"I Semester",
-                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 1.pdf"
+                "year": "R - 2023",
+                "docs": [
+                  {
+                    "name": "I Semester",
+                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 1.pdf"
                   },
-                    {
-                    "name":"II Semester",
-                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 2.pdf"
+                  {
+                    "name": "II Semester",
+                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 2.pdf"
                   },
-                    {
-                    "name":"III Semester",
-                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 3.pdf"
+                  {
+                    "name": "III Semester",
+                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 3.pdf"
                   },
-                    {
-                    "name":"IV Semester",
-                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 4.pdf"
+                  {
+                    "name": "IV Semester",
+                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 4.pdf"
                   },
-                    {
-                    "name":"V Semester",
-                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 5.pdf"
+                  {
+                    "name": "V Semester",
+                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 5.pdf"
                   },
-                    {
-                    "name":"VI Semester",
-                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 6.pdf"
+                  {
+                    "name": "VI Semester",
+                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 6.pdf"
                   },
-                    {
-                    "name":"VII Semester",
-                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 7.pdf"
+                  {
+                    "name": "VII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 7.pdf"
                   },
-                    {
-                    "name":"VIII Semester",
-                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 8.pdf"
+                  {
+                    "name": "VIII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 8.pdf"
                   },
-                    {
-                    "name":"Elective Courses",
-                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) ELECTIVE COURSES WITH TW & SDG.pdf"
+                  {
+                    "name": "Elective Courses",
+                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) ELECTIVE COURSES WITH TW & SDG.pdf"
                   }
                 ]
-                },
-                {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/002/reg_21.pdf"
-                }
-              ]
+              },
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/002/reg_21.pdf"
               }
             ]
           }
+        ]
+      }
     ]
-    },
+  },
   {
     "type": "newsletter",
     "data": [
@@ -418,9 +419,9 @@
       {
         "category": "department_activities",
         "content": [
-            {
-           "year":"2024 - 2025", 
-           "activities_tile": [
+          {
+            "year": "2024 - 2025",
+            "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -445,7 +446,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -453,11 +454,11 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
-        },
-        {
-           "year":"2023 - 2024",
-           "activities_tile": [
+            ]
+          },
+          {
+            "year": "2023 - 2024",
+            "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -482,7 +483,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -490,11 +491,11 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
-        },
-        {
-           "year":"2022 - 2023",
-           "activities_tile": [
+            ]
+          },
+          {
+            "year": "2022 - 2023",
+            "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -519,7 +520,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -527,11 +528,11 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
-        },
-        {
-          "year":"2021 - 2022", 
-          "activities_tile": [
+            ]
+          },
+          {
+            "year": "2021 - 2022",
+            "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -556,7 +557,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -564,9 +565,8 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
-        }
-
+            ]
+          }
         ]
       }
     ]
@@ -592,12 +592,10 @@
   },
   {
     "type": "student_achievements",
-    "data": 
-    [
+    "data": [
       {
         "category": "banner_name_and_image",
-        "content": 
-        [
+        "content": [
           {
             "banner_image_path": "/static/images/department_data/auto.webp",
             "name": "Automobile Engieering (AUTO)",
@@ -607,87 +605,73 @@
       },
       {
         "category": "student_achievements_content",
-        "content": 
-        []
+        "content": []
       },
       {
         "category": "student_achievements_details",
-        "images": 
-        [
-            {
+        "images": [
+          {
             "image_path": "/static/images/student_activities/002/1.webp",
             "event_name": "Supra 2015",
-            "image_content": "In 2015, our students showcased their engineering skills and innovation by participating in the SUPRA SAEINDIA event, a national-level competition where budding engineers design, build, and race a Formula-style vehicle. This hands-on experience provided our students with valuable exposure to vehicle dynamics, powertrain optimization, and design validation, fostering technical expertise and teamwork. Their participation in SUPRA 2015 reflects our commitment to nurturing industry-ready engineers equipped with practical knowledge and a passion for automotive excellence.",
-            "date": "2015-07-15"
-            },
-            {
+            "image_content": "In 2015, our students showcased their engineering skills and innovation by participating in the SUPRA SAEINDIA event, a national-level competition where budding engineers design, build, and race a Formula-style vehicle. This hands-on experience provided our students with valuable exposure to vehicle dynamics, powertrain optimization, and design validation, fostering technical expertise and teamwork. Their participation in SUPRA 2015 reflects our commitment to nurturing industry-ready engineers equipped with practical knowledge and a passion for automotive excellence."
+          },
+          {
             "image_path": "/static/images/student_activities/002/2.webp",
             "event_name": "International Go-Kart Championship",
-            "image_content": "Our department is proud to highlight the outstanding participation of our students in the International Go-Kart Championship (IGC) 2015, held at Lovely Professional University, Punjab. This prestigious event provided a platform for young engineers to design, fabricate, and race their own Go-Karts, applying their technical knowledge and innovative thinking. Our students demonstrated exceptional skills in vehicle design, powertrain integration, and performance optimization, competing against teams from across the country.",
-            "date": "2015-03-26"
-            },
-            {
+            "image_content": "Our department is proud to highlight the outstanding participation of our students in the International Go-Kart Championship (IGC) 2015, held at Lovely Professional University, Punjab. This prestigious event provided a platform for young engineers to design, fabricate, and race their own Go-Karts, applying their technical knowledge and innovative thinking. Our students demonstrated exceptional skills in vehicle design, powertrain integration, and performance optimization, competing against teams from across the country."
+          },
+          {
             "image_path": "/static/images/student_activities/002/3.webp",
             "event_name": "ATV Student Grand Prix -2K17",
-            "image_content": "Our department is thrilled to celebrate the remarkable achievement of our students in the ATV Student Grand Prix - 2K17, where they showcased their engineering expertise and innovation. Competing against top teams, our students designed and built an All-Terrain Vehicle (ATV), demonstrating excellence in vehicle dynamics, suspension, and powertrain optimization. Their dedication and technical prowess were recognized with the prestigious Best Design Award, a testament to their creativity, problem-solving skills, and teamwork. This achievement reflects our institute's commitment to fostering hands-on learning and preparing industry-ready engineers equipped with real-world experience.",
-            "date": "2017-02-04"
-            },
-            {
+            "image_content": "Our department is thrilled to celebrate the remarkable achievement of our students in the ATV Student Grand Prix - 2K17, where they showcased their engineering expertise and innovation. Competing against top teams, our students designed and built an All-Terrain Vehicle (ATV), demonstrating excellence in vehicle dynamics, suspension, and powertrain optimization. Their dedication and technical prowess were recognized with the prestigious Best Design Award, a testament to their creativity, problem-solving skills, and teamwork. This achievement reflects our institute's commitment to fostering hands-on learning and preparing industry-ready engineers equipped with real-world experience."
+          },
+          {
             "image_path": "/static/images/student_activities/002/4.webp",
             "event_name": "SAE BAJA 2018",
-            "image_content": "Our department proudly celebrates the outstanding achievement of our students in SAE BAJA 2018, where they secured third place for Best Design. This prestigious competition challenged students to design, build, and race an All-Terrain Vehicle (ATV) capable of withstanding rugged terrains and extreme conditions. Our team demonstrated exceptional skills in vehicle engineering, innovation, and design optimization, earning them national recognition. This remarkable accomplishment highlights their dedication, teamwork, and technical expertise, reinforcing our institute's commitment to practical learning and excellence in automotive engineering.",
-            "date": "2018-01-24"
-            },
-            {
+            "image_content": "Our department proudly celebrates the outstanding achievement of our students in SAE BAJA 2018, where they secured third place for Best Design. This prestigious competition challenged students to design, build, and race an All-Terrain Vehicle (ATV) capable of withstanding rugged terrains and extreme conditions. Our team demonstrated exceptional skills in vehicle engineering, innovation, and design optimization, earning them national recognition. This remarkable accomplishment highlights their dedication, teamwork, and technical expertise, reinforcing our institute's commitment to practical learning and excellence in automotive engineering."
+          },
+          {
             "image_path": "/static/images/student_activities/002/5.webp",
             "event_name": "Yoga Competition - 2018",
-            "image_content": "Our department takes immense pride in congratulating Mr. T.V. Sreesh for his outstanding achievement in the National Yoga Competition - 2018, where he secured the prestigious Gold Medal. His dedication, discipline, and exceptional skills in yoga have brought great honor to our institution. This remarkable accomplishment showcases his commitment to physical and mental well-being, inspiring fellow students to strive for excellence in both academics and extracurricular activities. We applaud his success and wish him continued achievements in the future.",
-            "date": "2018"
-            },
-            {
+            "image_content": "Our department takes immense pride in congratulating Mr. T.V. Sreesh for his outstanding achievement in the National Yoga Competition - 2018, where he secured the prestigious Gold Medal. His dedication, discipline, and exceptional skills in yoga have brought great honor to our institution. This remarkable accomplishment showcases his commitment to physical and mental well-being, inspiring fellow students to strive for excellence in both academics and extracurricular activities. We applaud his success and wish him continued achievements in the future."
+          },
+          {
             "image_path": "/static/images/student_activities/002/6.webp",
             "event_name": "SAEISS - Bicycle Design Challenge 2024",
-            "image_content": "Our department is proud to announce that our students achieved an outstanding milestone in the SAEISS Bicycle Design Challenge 2024, securing 3rd place in Best Dynamic Performance. This prestigious competition challenged teams to design and develop an innovative, high-performance bicycle with a focus on efficiency, aerodynamics, and sustainability. Our students demonstrated exceptional engineering skills, creativity, and teamwork, excelling in dynamic performance tests. This achievement highlights their dedication to practical learning and innovation, reinforcing our institute's commitment to fostering future-ready engineers.",
-            "date": "2024-02-25"
-            },
-            {
+            "image_content": "Our department is proud to announce that our students achieved an outstanding milestone in the SAEISS Bicycle Design Challenge 2024, securing 3rd place in Best Dynamic Performance. This prestigious competition challenged teams to design and develop an innovative, high-performance bicycle with a focus on efficiency, aerodynamics, and sustainability. Our students demonstrated exceptional engineering skills, creativity, and teamwork, excelling in dynamic performance tests. This achievement highlights their dedication to practical learning and innovation, reinforcing our institute's commitment to fostering future-ready engineers."
+          },
+          {
             "image_path": "/static/images/student_activities/002/7.webp",
             "event_name": "University first rank",
-            "image_content": "Our department is immensely proud to congratulate B. Hariganesh for securing the University First Rank and winning the Gold Medal in Automobile Engineering for the batch of 2017-2021. His outstanding academic performance, dedication, and passion for automotive engineering have brought great honor to our institution. This remarkable achievement reflects his hard work and commitment to excellence, serving as an inspiration for future students.",
-            "date": "2021"
-            },
-            {
+            "image_content": "Our department is immensely proud to congratulate B. Hariganesh for securing the University First Rank and winning the Gold Medal in Automobile Engineering for the batch of 2017-2021. His outstanding academic performance, dedication, and passion for automotive engineering have brought great honor to our institution. This remarkable achievement reflects his hard work and commitment to excellence, serving as an inspiration for future students."
+          },
+          {
             "image_path": "/static/images/student_activities/002/8.webp",
             "event_name": "SAE - Foundation Section Award 2023 - 2024",
-            "image_content": "Our department proudly congratulates G. Gopika, a 3rd-year Automobile Engineering student, for receiving the prestigious SAE - Foundation Section Award 2023-2024 under the Kalpana Chawla category. This esteemed recognition honors her exceptional academic performance, technical expertise, and contributions to the field of automotive engineering. Her achievement is a testament to her dedication, hard work, and passion for innovation. We celebrate her success and look forward to witnessing her future accomplishments in the industry.",
-            "date": "2024-12-21"
-            },
-            {
+            "image_content": "Our department proudly congratulates G. Gopika, a 3rd-year Automobile Engineering student, for receiving the prestigious SAE - Foundation Section Award 2023-2024 under the Kalpana Chawla category. This esteemed recognition honors her exceptional academic performance, technical expertise, and contributions to the field of automotive engineering. Her achievement is a testament to her dedication, hard work, and passion for innovation. We celebrate her success and look forward to witnessing her future accomplishments in the industry."
+          },
+          {
             "image_path": "/static/images/student_activities/002/9.webp",
             "event_name": "SAEISS - Electric Two Wheeler Design Competition",
-            "image_content": "Our department is proud to announce that our students actively participated in the SAEISS - Electric Two-Wheeler Design Competition, showcasing their expertise in sustainable mobility and innovative vehicle design. This competition provided a platform to develop an electric two-wheeler with a focus on efficiency, performance, and eco-friendly technology. Our team demonstrated exceptional skills in battery technology, powertrain integration, and aerodynamic design, gaining valuable hands-on experience in the evolving field of electric vehicles. Their participation reflects our institute's commitment to fostering innovation and industry-relevant learning in the field of automobile engineering.",
-            "date": "2025-01-25"
-            },
-            {
+            "image_content": "Our department is proud to announce that our students actively participated in the SAEISS - Electric Two-Wheeler Design Competition, showcasing their expertise in sustainable mobility and innovative vehicle design. This competition provided a platform to develop an electric two-wheeler with a focus on efficiency, performance, and eco-friendly technology. Our team demonstrated exceptional skills in battery technology, powertrain integration, and aerodynamic design, gaining valuable hands-on experience in the evolving field of electric vehicles. Their participation reflects our institute's commitment to fostering innovation and industry-relevant learning in the field of automobile engineering."
+          },
+          {
             "image_path": "/static/images/student_activities/002/10.webp",
             "event_name": "Smart India Hackathon 2024",
-            "image_content": "Our department is proud to announce that our students successfully participated in the Smart India Hackathon 2024 Grand Finale, a prestigious national-level innovation challenge. Competing against top teams from across the country, our students showcased their problem-solving abilities, technical expertise, and creativity in developing innovative solutions for real-world challenges. Their participation in this esteemed event reflects their dedication to research, innovation, and technological advancement, reinforcing our institute's commitment to fostering future-ready engineers equipped with industry-relevant skills.",
-            "date": "2024-12-11"
-            },
-            {
+            "image_content": "Our department is proud to announce that our students successfully participated in the Smart India Hackathon 2024 Grand Finale, a prestigious national-level innovation challenge. Competing against top teams from across the country, our students showcased their problem-solving abilities, technical expertise, and creativity in developing innovative solutions for real-world challenges. Their participation in this esteemed event reflects their dedication to research, innovation, and technological advancement, reinforcing our institute's commitment to fostering future-ready engineers equipped with industry-relevant skills."
+          },
+          {
             "image_path": "/static/images/student_activities/002/11.webp",
             "event_name": "MSME, Idea Hackathon 3.0",
-            "image_content": "Our department proudly congratulates G. Gopika, a 3rd-year Automobile Engineering student, for securing a grant of ₹10.1 Lakhs from MSME Idea Hackathon 3.0 for her innovative project of Automatic billing machine in grocery shop. This prestigious funding recognizes her exceptional creativity, technical expertise, and entrepreneurial spirit in developing groundbreaking solutions in the automotive sector. Her achievement is a testament to her dedication and problem-solving skills, bringing pride to our institution. We celebrate her success and look forward to witnessing her future contributions to the industry.",
-            "date": "2024-03-14"
-            },
-            {
+            "image_content": "Our department proudly congratulates G. Gopika, a 3rd-year Automobile Engineering student, for securing a grant of ₹10.1 Lakhs from MSME Idea Hackathon 3.0 for her innovative project of Automatic billing machine in grocery shop. This prestigious funding recognizes her exceptional creativity, technical expertise, and entrepreneurial spirit in developing groundbreaking solutions in the automotive sector. Her achievement is a testament to her dedication and problem-solving skills, bringing pride to our institution. We celebrate her success and look forward to witnessing her future contributions to the industry."
+          },
+          {
             "image_path": "/static/images/student_activities/002/12.webp",
             "event_name": "SAEISS - Electric Two-Wheeler Design Competition",
-            "image_content": "Our department is proud to announce that our students actively participated in the SAEISS - Electric Two-Wheeler Design Competition, demonstrating their innovation and technical expertise in the field of sustainable mobility. This competition provided them with a platform to design and develop an efficient electric two-wheeler, focusing on battery technology, power management, aerodynamics, and performance optimization. Their participation highlights their dedication to cutting-edge automotive advancements and reinforces our institute's commitment to fostering future engineers equipped with industry-relevant skills in electric vehicle technology.",
-            "date": "2024-02-17"
-            }
+            "image_content": "Our department is proud to announce that our students actively participated in the SAEISS - Electric Two-Wheeler Design Competition, demonstrating their innovation and technical expertise in the field of sustainable mobility. This competition provided them with a platform to design and develop an efficient electric two-wheeler, focusing on battery technology, power management, aerodynamics, and performance optimization. Their participation highlights their dedication to cutting-edge automotive advancements and reinforces our institute's commitment to fostering future engineers equipped with industry-relevant skills in electric vehicle technology."
+          }
         ]
-    }
+      }
     ]
   },
   {
@@ -695,8 +679,7 @@
     "data": [
       {
         "category": "banner_name_and_image",
-        "content": 
-        [
+        "content": [
           {
             "banner_image_path": "/static/images/department_data/auto.webp",
             "name": "Automobile Engieering (AUTO)",
@@ -706,56 +689,55 @@
       },
       {
         "category": "infrastructure_images",
-        "content": 
-        [
-            {
+        "content": [
+          {
             "image_path": "/static/images/infrastructure/002/1.webp",
             "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-1"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/2.webp",
             "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-2"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/3.webp",
             "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-3"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/4.webp",
             "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-4"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/5.webp",
             "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/6.webp",
             "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/7.webp",
             "image_name": "VEHICLE TESTING LABORATORY-1"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/8.webp",
             "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/9.webp",
             "image_name": "ENGINE PERFOMANCE & EMISSION TESTIGN LABORATORY"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/10.webp",
             "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/11.webp",
             "image_name": "VEHICLE TESTING LABORATORY-2"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/002/12.webp",
             "image_name": "VEHICLE TESTING LABORATORY-3"
-            }
+          }
         ]
       }
     ]
@@ -765,8 +747,7 @@
     "data": [
       {
         "category": "banner_name_and_image",
-        "content": 
-        [
+        "content": [
           {
             "banner_image_path": "/static/images/department_data/auto.webp",
             "name": "Automobile Engieering (AUTO)",
@@ -778,82 +759,70 @@
         "category": "mous_details",
         "content": [
           {
-    
-        "ORGANISATION_NAME": "Sify Technologies Limited",
-        "MONTH_AND_YEAR": "09.08.2024",
-        "VALIDITY": "Till date"
-    },
-    {
-       
-        "ORGANISATION_NAME": "Hexaware Technologies Limited",
-        "MONTH_AND_YEAR": "12.08.2024",
-        "VALIDITY": "Till date"
-    },
-    {
-        "ORGANISATION_NAME": "Movate Technologies Private Limited",
-        "MONTH_AND_YEAR": "04.11.2024",
-        "VALIDITY": "Till date"
-    },
-    {
-       
-        "ORGANISATION_NAME": "Akash Industries",
-        "MONTH_AND_YEAR": "23.11.2022",
-        "VALIDITY": "3 Years"
-    },
-    {
-        
-        "ORGANISATION_NAME": "V Ramakrishna Polytechnic College",
-        "MONTH_AND_YEAR": "06.09.2022",
-        "VALIDITY": "5 Years"
-    },
-    {
-        
-        "ORGANISATION_NAME": "E-Way Electric",
-        "MONTH_AND_YEAR": "31.05.2022",
-        "VALIDITY": "Till date"
-    },
-    {
-        
-        "ORGANISATION_NAME": "Kathir Sudhir Automation India Pvt. Ltd",
-        "MONTH_AND_YEAR": "24.05.2022",
-        "VALIDITY": "Till date"
-    },
-    {
-        
-        "ORGANISATION_NAME": "Sunbam Technologies",
-        "MONTH_AND_YEAR": "02.04.2022",
-        "VALIDITY": "Till date"
-    },
-    {
-       
-        "ORGANISATION_NAME": "TATA ELXSI Limited",
-        "MONTH_AND_YEAR": "23.02.2022",
-        "VALIDITY": "1 Year"
-    },
-    {
-       
-        "ORGANISATION_NAME": "Diaganol CADD",
-        "MONTH_AND_YEAR": "23.10.2019",
-        "VALIDITY": "Till date"
-    },
-    {
-       
-        "ORGANISATION_NAME": "Preethi Kitchen Appliances Pvt. Ltd.",
-        "MONTH_AND_YEAR": "09.01.2019",
-        "VALIDITY": "3 Years"
-    },
-    {
-        
-        "ORGANISATION_NAME": "Tamilnadu Dr. J. Jayalalitha Fisheries University",
-        "MONTH_AND_YEAR": "24.12.2018",
-        "VALIDITY": "3 Years"
-    },
-    {
-       
-        "ORGANISATION_NAME": "ProCAE",
-        "MONTH_AND_YEAR": "01.02.2018",
-        "VALIDITY": "3 Years"
-    }
+            "organisation_name": "Sify Technologies Limited",
+            "month_and_year": "09.08.2024",
+            "validity": "Till date"
+          },
+          {
+            "organisation_name": "Hexaware Technologies Limited",
+            "month_and_year": "12.08.2024",
+            "validity": "Till date"
+          },
+          {
+            "organisation_name": "Movate Technologies Private Limited",
+            "month_and_year": "04.11.2024",
+            "validity": "Till date"
+          },
+          {
+            "organisation_name": "Akash Industries",
+            "month_and_year": "23.11.2022",
+            "validity": "3 Years"
+          },
+          {
+            "organisation_name": "V Ramakrishna Polytechnic College",
+            "month_and_year": "06.09.2022",
+            "validity": "5 Years"
+          },
+          {
+            "organisation_name": "E-Way Electric",
+            "month_and_year": "31.05.2022",
+            "validity": "Till date"
+          },
+          {
+            "organisation_name": "Kathir Sudhir Automation India Pvt. Ltd",
+            "month_and_year": "24.05.2022",
+            "validity": "Till date"
+          },
+          {
+            "organisation_name": "Sunbam Technologies",
+            "month_and_year": "02.04.2022",
+            "validity": "Till date"
+          },
+          {
+            "organisation_name": "TATA ELXSI Limited",
+            "month_and_year": "23.02.2022",
+            "validity": "1 Year"
+          },
+          {
+            "organisation_name": "Diaganol CADD",
+            "month_and_year": "23.10.2019",
+            "validity": "Till date"
+          },
+          {
+            "organisation_name": "Preethi Kitchen Appliances Pvt. Ltd.",
+            "month_and_year": "09.01.2019",
+            "validity": "3 Years"
+          },
+          {
+            "organisation_name": "Tamilnadu Dr. J. Jayalalitha Fisheries University",
+            "month_and_year": "24.12.2018",
+            "validity": "3 Years"
+          },
+          {
+            "organisation_name": "ProCAE",
+            "month_and_year": "01.02.2018",
+            "validity": "3 Years"
+          }
         ]
       }
     ]
