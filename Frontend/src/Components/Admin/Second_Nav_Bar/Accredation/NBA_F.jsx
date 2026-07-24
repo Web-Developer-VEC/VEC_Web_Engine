@@ -753,7 +753,7 @@ const NBA_F = ({ data }) => {
                   <th className="text-left px-4 py-2 text-text">S.No</th>
                   <th className="text-left px-4 py-2 text-text">Programs</th>
                   <th className="text-left px-4 py-2 text-text">
-                    Validity Years
+                    validity Years
                   </th>
                   {editMode && (
                     <th className="text-left px-4 py-2 text-text">Select</th>
@@ -1001,10 +1001,10 @@ const NBA_F = ({ data }) => {
                         {/* Action */}
                         <td
                           className={`py-2 ${change.action === "Added"
-                              ? "text-green-600"
-                              : change.action === "Deleted"
-                                ? "text-red-600"
-                                : "text-blue-600"
+                            ? "text-green-600"
+                            : change.action === "Deleted"
+                              ? "text-red-600"
+                              : "text-blue-600"
                             }`}
                         >
                           {change.action}
