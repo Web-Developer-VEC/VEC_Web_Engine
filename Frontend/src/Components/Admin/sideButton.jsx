@@ -56,7 +56,6 @@ export const buildPayload = (draft, live) => ({
   },
 });
 
-console.log("admin Request", buildPayload)
 const AdminSideButton = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
@@ -163,8 +162,6 @@ const AdminSideButton = () => {
     setShowAdminPanel(false);
     toast.info('Changes discarded');
   };
-  console.log("Draft Buttons:", draftButtons);
-  console.log("Live Buttons:", liveButtons);
   // -------------------- Submit request to backend / approval dashboard --------------------
   const handleFinalRequest = async () => {
     if (!hasDraftChanges) return;
@@ -387,9 +384,6 @@ const AdminSideButton = () => {
           </div>
         </div>
       )}
-
-     
-      <ToastContainer position="bottom-right" autoClose={2200} />
     </>
   );
 };
