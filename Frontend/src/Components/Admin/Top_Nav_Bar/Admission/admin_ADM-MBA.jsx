@@ -522,7 +522,6 @@ const AdminMBA = ({ theme, toggle }) => {
     setDeletedRows([]);
     setIsEditing(false);
 
-    toast.info("Edits cancelled — restored last saved values.");
   };
 
   const handleSave = () => {
@@ -597,7 +596,6 @@ const AdminMBA = ({ theme, toggle }) => {
     setIsEditing(false);
     setIsSaved(true);
 
-    toast.success("Changes saved locally. Submit for approval when ready.");
   };
 
   const handleCheckboxChange = (index, checked) => {
@@ -674,7 +672,6 @@ const AdminMBA = ({ theme, toggle }) => {
         setMgmtPreviewUrl(null);
       }
 
-      toast.info("All changes discarded");
   };
 
   const handleUndoChange = (idx) => {
@@ -768,7 +765,6 @@ const AdminMBA = ({ theme, toggle }) => {
     }
 
     setChangeList((prev) => prev.filter((_, i) => i !== idx));
-    toast.info("Change reverted to last saved data.");
   };
 
   const handleFinalRequest = async () => {
@@ -938,7 +934,6 @@ const AdminMBA = ({ theme, toggle }) => {
 
       await sendRequest(payloads, files);
 
-      toast.success("MBA Admission request submitted successfully!");
       setShowPopup(false);
       setIsSaved(false);
       setChangeList([]);

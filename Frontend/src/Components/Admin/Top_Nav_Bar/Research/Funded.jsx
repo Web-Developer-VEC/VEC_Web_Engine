@@ -140,7 +140,6 @@ export default function AdminFunded({ theme, toggle }) {
         },
       });
 
-      toast.success("Entry updated (session)");
     } else {
       const newEntry = { year: newYear, pdf_path: pdfValue };
       setFunded((prev) => [...(prev || []), newEntry]);
@@ -155,7 +154,6 @@ export default function AdminFunded({ theme, toggle }) {
         },
       });
 
-      //toast.success("Entry added (session)");
     }
 
     setNewYear("");
@@ -414,7 +412,6 @@ export default function AdminFunded({ theme, toggle }) {
       if (result) {
         console.log("FINAL REQUEST SUBMITTED", { payload, funded });
 
-        //toast.success("Final request submitted");
 
         setShowRequestModal(false);
         setAllChanges([]);
@@ -468,7 +465,6 @@ export default function AdminFunded({ theme, toggle }) {
       return prev.filter((_, i) => i !== idx); // remove from log
     });
 
-    toast.info("Change reverted");
   };
 
 

@@ -677,7 +677,6 @@ const AdminUgAdmission = ({ theme, toggle }) => {
     setEditableLateralRows(lateralRowsReset);
 
     setIsEditing(false);
-    toast.info("Editing cancelled.");
   };
 
   const handleSave = () => {
@@ -745,7 +744,6 @@ const AdminUgAdmission = ({ theme, toggle }) => {
     collectChangeList();
     setIsEditing(false);
     setIsSaved(true);
-    toast.success("Changes saved locally. Submit for approval when ready.");
   };
 
   const startEditing = () => {
@@ -878,7 +876,6 @@ const AdminUgAdmission = ({ theme, toggle }) => {
 
     setIsEditing(false);
     setIsSaved(false);
-    toast.info("Editing cancelled. Data reverted to original.");
   };
 
   const handleUndoChange = (idx) => {
@@ -1143,7 +1140,6 @@ const AdminUgAdmission = ({ theme, toggle }) => {
     }
 
     setChangeList((prev) => prev.filter((_, i) => i !== idx));
-    toast.info("Change reverted.");
   };
 
   const buildPdfPath = (file) => `/static/images/admission_team/${file.name}`;
@@ -1341,7 +1337,6 @@ const AdminUgAdmission = ({ theme, toggle }) => {
       setShowPopup(false);
       setChangeList([]);
 
-      toast.success("Request submitted. Changes are pending approval.");
     } catch (err) {
       console.error(err);
       toast.error("Failed to submit UG Admission request");

@@ -395,7 +395,6 @@ const AdminADMteam = ({ theme, toggle }) => {
     setShowRequestButtons(true);
     setTeamCardEdit(false);
 
-    toast.success("Changes saved locally.");
   };
 
   const handleDiscard = () => {
@@ -410,7 +409,6 @@ const AdminADMteam = ({ theme, toggle }) => {
     // committedRef resets to originalData as well
     committedRef.current = deepClone(originalData);
 
-    toast.info("All changes discarded, back to original data.");
   };
 
   const handleRequestConfirm = async () => {
@@ -478,7 +476,6 @@ const AdminADMteam = ({ theme, toggle }) => {
 
       await sendRequest(requests, files);
 
-      toast.success("Request submitted successfully!");
 
       // Update originalData to the committed state (since admin will review)
       setOriginalData(deepClone(committedRef.current || admissionteamData));

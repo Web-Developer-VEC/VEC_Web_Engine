@@ -280,7 +280,6 @@ const AdminME = ({ theme, toggle }) => {
     setEditChangeListSnapshot(null);
     setEditSelectedRowsSnapshot(null);
 
-    toast.info("All changes discarded and original data restored.");
   };
   const handleAddNewRow = () => {
     const newRow = {
@@ -324,7 +323,6 @@ const AdminME = ({ theme, toggle }) => {
 
     setShowDeleteModal(false);
 
-    toast.info("Selected rows deleted. They will be removed on final request.");
   };
 
   // ✅ Delete row
@@ -417,7 +415,6 @@ const AdminME = ({ theme, toggle }) => {
     }
 
     setpgData(updated);
-    // toast.info(`${label} reverted`);
   };
 
   const handleFinalRequestConfirm = async () => {
@@ -433,7 +430,7 @@ const AdminME = ({ theme, toggle }) => {
     const yearChanged = originalYear !== currentYear;
 
     if (!intakeChanged && !yearChanged) {
-      // toast.warn("No changes to submit");
+      toast.warn("No changes to submit");
       return;
     }
 
@@ -469,7 +466,6 @@ const AdminME = ({ theme, toggle }) => {
     try {
       await sendRequest([payload]); // send as array if your API expects array
 
-      toast.success("request submitted successfully!");
 
       setOriginalData(JSON.parse(JSON.stringify(pgData)));
       setChangeList([]);
