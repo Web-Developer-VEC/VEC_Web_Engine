@@ -4,30 +4,29 @@ import './pedagogy.css';
 const Pedagogy = ({ data }) => {
   const [activeYear, setActiveYear] = useState(null);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-
+  
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
-
+  
   const pedagogyCategory = data.find(
     (item) => item.category === "Pedagogy Initiatives"
   );
   const pedagogyContent = pedagogyCategory ? pedagogyCategory.content : [];
-
+  
   const handleYearClick = (year) => {
     setActiveYear(activeYear === year ? null : year); // toggle active year
   };
-
+  
   const handlePdfClick = (pdfPath) => {
     if (pdfPath) {
       window.open(UrlParser(pdfPath), "_blank");
     }
   };
-
+  
   // ✅ These two lines were missing:
   const activeContent =
-    pedagogyContent.find((item) => item.year === activeYear)?.content || [];
-  const isOdd = activeContent.length % 2 === 1;
+  pedagogyContent.find((item) => item.year === activeYear)?.content || [];
 
   return (
     <>
@@ -65,7 +64,7 @@ const Pedagogy = ({ data }) => {
                     onClick={() => handlePdfClick(pdfItem.pdf_path)}
                     className="w-[300px] pdgbtn  h-[70px] py-2 px-5  rounded-md bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition-all text-center flex items-center justify-center text-sm"
                   >
-                    {pdfItem.name}
+                    {pdfItem?.name}
                   </button>
                 </div>
               ))}

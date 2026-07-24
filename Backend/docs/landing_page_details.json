@@ -231,13 +231,13 @@
   {
     "type": "announcements",
     "data": [
-       {
+      {
         "unique_id": "announcement_13",
         "announcement_name": "Circular- Reschedule - SEE May 2026 - 28-05-2026 to 05-06-2026",
         "pdf_path": "/static/pdfs/announcements/Rescheduled Date_SEE May 2026_28-05-2026 to 05-06-2026.pdf",
         "date": "2026-03-17",
         "status": "active"
-      } ,
+      },
       {
         "unique_id": "announcement_1",
         "announcement_name": "SEE May 2026 - Updated Exam Timetable for B.E.B.Tech. 2023-2027 & 2024-2028 batch with I year courses",
@@ -322,7 +322,6 @@
         "date": "2025-07-28",
         "status": "active"
       }
-   
     ]
   },
   {
@@ -721,7 +720,18 @@
     "data": [
       {
         "type": "image",
-        "image_path": "/static/images/newscard/schlorship.png"
+        "image_path": "/static/images/newscard/schlorship.png",
+        "active": "False",
+        "title": "Priyan"
+      }
+    ]
+  },
+  {
+    "type": "side_buttons",
+    "data": [
+      {
+        "apply_button": true,
+        "enquire_button": true
       }
     ]
   }
