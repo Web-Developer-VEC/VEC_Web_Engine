@@ -207,62 +207,54 @@ const VisionMission = ({ data }) => {
   // Helper: detect changes in object arrays (PEO, PO, PSO)
 
   const detectObjectArrayChanges = (original, current, category) => {
-  const changes = [];
+    const changes = [];
 
-  // Detect deleted items
-  original.forEach((oldItem) => {
-    const exists = current.find(
-      (item) => item.header === oldItem.header
-    );
+    const maxLen = Math.max(original.length, current.length);
 
-    if (!exists) {
-      changes.push({
-        action: "delete",
-        category,
-        field: "object",
-        value: oldItem,
-      });
+    for (let i = 0; i < maxLen; i++) {
+
+      // Added
+      if (i >= original.length) {
+        changes.push({
+          action: "insert",
+          category,
+          field: "object",
+          index: i,
+          value: current[i],
+        });
+        continue;
+      }
+
+      // Deleted
+      if (i >= current.length) {
+        changes.push({
+          action: "delete",
+          category,
+          field: "object",
+          index: i,
+          value: original[i],
+        });
+        continue;
+      }
+
+      // Updated
+      if (
+        original[i].header !== current[i].header ||
+        original[i].content !== current[i].content
+      ) {
+        changes.push({
+          action: "update",
+          category,
+          field: "object",
+          index: i,
+          oldValue: original[i],
+          value: current[i],
+        });
+      }
     }
-  });
 
-  // Detect inserted items
-  current.forEach((newItem) => {
-    const exists = original.find(
-      (item) => item.header === newItem.header
-    );
-
-    if (!exists) {
-      changes.push({
-        action: "insert",
-        category,
-        field: "object",
-        value: newItem,
-      });
-    }
-  });
-
-  // Detect updated items
-  current.forEach((newItem) => {
-    const oldItem = original.find(
-      (item) => item.header === newItem.header
-    );
-
-    if (
-      oldItem &&
-      oldItem.content !== newItem.content
-    ) {
-      changes.push({
-        action: "update",
-        category,
-        field: "object",
-        oldValue: oldItem,
-        value: newItem,
-      });
-    }
-  });
-
-  return changes;
-};
+    return changes;
+  };
 
   if (!data)
     return (

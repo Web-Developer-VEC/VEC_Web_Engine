@@ -876,7 +876,6 @@ const AdminUgAdmission = ({ theme, toggle }) => {
 
     setIsEditing(false);
     setIsSaved(false);
-    toast.info("Editing cancelled. Data reverted to original.");
   };
 
   const handleUndoChange = (idx) => {
@@ -1347,7 +1346,6 @@ if (hasLateralChange) {
       setShowPopup(false);
       setChangeList([]);
 
-      toast.success("Request submitted. Changes are pending approval.");
     } catch (err) {
       console.error(err);
       toast.error("Failed to submit UG Admission request");
