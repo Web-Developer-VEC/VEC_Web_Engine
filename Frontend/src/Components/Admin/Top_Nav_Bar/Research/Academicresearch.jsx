@@ -119,7 +119,6 @@ export default function AdminConsultancy({ theme, toggle }) {
         },
       });
 
-      toast.success("Entry updated (session)");
     } else {
       const newEntry = { year: newYear, pdf_path: pdfValue };
       setAcadamicRes((prev) => [...(prev || []), newEntry]);
@@ -134,7 +133,6 @@ export default function AdminConsultancy({ theme, toggle }) {
         },
       });
 
-      //toast.success("Entry added (session)");
     }
 
     setNewYear("");
@@ -290,7 +288,6 @@ export default function AdminConsultancy({ theme, toggle }) {
     setIsEditing(false);
     setIsContentEditable(true);
     setSelectedToDelete(new Set());
-    toast.info("Session changes discarded.");
   };
 
   const handleDiscardAll = () => {
@@ -302,7 +299,6 @@ export default function AdminConsultancy({ theme, toggle }) {
     setIsSavedOnce(false);
     setIsContentEditable(true);
     setIsDoneClicked(false);
-    toast.success("All changes discarded and reset.");
   };
 
   const handleRequest = () => {
@@ -398,7 +394,6 @@ export default function AdminConsultancy({ theme, toggle }) {
       if (result) {
         console.log("FINAL REQUEST SUBMITTED", { payload, acadamicRes });
 
-        //toast.success("Final request submitted");
 
         setShowRequestModal(false);
         setAllChanges([]);
@@ -455,7 +450,6 @@ export default function AdminConsultancy({ theme, toggle }) {
       return prev.filter((_, i) => i !== idx); // remove from log
     });
 
-    toast.info("Change reverted");
   };
 
 
@@ -491,7 +485,6 @@ export default function AdminConsultancy({ theme, toggle }) {
     // emulate sending request (we keep the same behavior as BookChapter finalization)
     setIsContentEditable(true);
     setIsDoneClicked(false);
-    toast.success("Request sent (session)"); // small feedback
   };
 
   // -------------------- Render --------------------
