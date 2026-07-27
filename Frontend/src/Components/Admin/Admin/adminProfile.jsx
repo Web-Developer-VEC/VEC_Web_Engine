@@ -43,7 +43,7 @@ const routeDictionary = {
   "/policies": "Policies",
   "/Funded": "Funded Projects",
   "/Book_Chapter": "Book Chapters",
-  "/Accredation": "Accreditation",
+  "/Accreditation": "Accreditation",
   "/iqac": "IQAC",
   "/iic": "IIC",
   "/ecell": "E-Cell",
