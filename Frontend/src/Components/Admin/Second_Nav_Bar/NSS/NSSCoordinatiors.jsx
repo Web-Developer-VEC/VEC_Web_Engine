@@ -179,12 +179,10 @@ const Coordinators = ({ data }) => {
     if (pendingFaculty || (pendingStudents && pendingStudents.length > 0)) {
       setFaculty(deepCopy(pendingFaculty || committedFaculty));
       setStudents(deepCopy((pendingStudents && pendingStudents.length > 0) ? pendingStudents : committedStudents));
-      toast.info("Cancelled edits. Draft preserved!");
       setIsSaved(true);
     } else {
       setFaculty(deepCopy(committedFaculty));
       setStudents(deepCopy(committedStudents));
-      toast.info("Cancelled. Reverted to original data!");
       setIsSaved(false);
     }
 
@@ -217,9 +215,9 @@ const Coordinators = ({ data }) => {
       if (!student?.designation?.trim()) {
         newErrors[`studentDesignation_${index}`] = "Required";
       }
-      if (!student?.image_path) {
-        newErrors[`studentImage_${index}`] = "Image required";
-      }
+      // if (!student?.image_path) {
+      //   newErrors[`studentImage_${index}`] = "Image required";
+      // }
     });
 
     setErrors(newErrors);
@@ -249,7 +247,6 @@ const Coordinators = ({ data }) => {
     setSelectAll(false);
     setPreviewImg(null);
     setPreviewImgs({});
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
@@ -436,7 +433,7 @@ const Coordinators = ({ data }) => {
         setShowRequestModal(false);
         setIsEditing(false);
         setIsDirty(false);
-        
+
       } else {
         toast.error("Final request failed. Check console for details.");
       }
@@ -681,15 +678,65 @@ const Coordinators = ({ data }) => {
               <div key={index} className="dark:bg-text shadow-md rounded-xl p-4 flex flex-col items-center text-center relative">
                 {isEditing && <input type="checkbox" checked={member.selected || false} onChange={() => handleItemSelect(index)} className="absolute top-2 right-2 h-4 w-4 cursor-pointer" />}
 
+                {/* {member?.image_path && (
+                  <div className="relative w-24 h-24 mb-3">
+                    <img
+                      src={
+                        previewImgs[index]
+                          ? previewImgs[index]
+                          : parseUrl(member.image_path)
+                      }
+                      alt={member?.name || "Student"}
+                      className="w-24 h-24 border rounded object-cover"
+                    />
+
+                    {previewImgs[index] && (
+                      <button
+                        onClick={() => window.open(previewImgs[index], "_blank")}
+                        className="absolute top-1 right-1 bg-white p-1 rounded-full shadow text-green-600 hover:text-green-800"
+                      >
+                        <FaEye size={14} />
+                      </button>
+                    )}
+                  </div>
+                )}
+
+                {isEditing && member?.image_path && (
+                  <div className="mb-3">
+                    <label className="cursor-pointer px-2 py-1 bg-yellow-400 rounded hover:bg-yellow-500 text-sm">
+                      Replace
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => handleStudentPreviewChange(index, e.target.files?.[0])}
+                      />
+                    </label>
+                  </div>
+                )} */}
                 <div className="relative w-24 h-24 mb-3">
-                  <img
-                    src={previewImgs[index] ? previewImgs[index] : member?.image_path ? parseUrl(member.image_path) : "/placeholder-image.jpg"}
-                    alt={member?.name || "Student"}
-                    className="w-24 h-24 border rounded object-cover"
-                  />
+
+                  {member?.image_path ? (
+                    <img
+                      src={
+                        previewImgs[index]
+                          ? previewImgs[index]
+                          : parseUrl(member.image_path)
+                      }
+                      alt={member?.name || "Student"}
+                      className="w-24 h-24 border rounded object-cover"
+                    />
+                  ) : (
+                    <div className="w-24 h-24 border rounded bg-gray-100 flex items-center justify-center text-gray-400">
+                      No Image
+                    </div>
+                  )}
 
                   {previewImgs[index] && (
-                    <button onClick={() => window.open(previewImgs[index], "_blank")} className="absolute top-1 right-1 bg-white p-1 rounded-full shadow text-green-600 hover:text-green-800">
+                    <button
+                      onClick={() => window.open(previewImgs[index], "_blank")}
+                      className="absolute top-1 right-1 bg-white p-1 rounded-full shadow"
+                    >
                       <FaEye size={14} />
                     </button>
                   )}
@@ -697,10 +744,24 @@ const Coordinators = ({ data }) => {
 
                 {isEditing && (
                   <div className="mb-3">
-                    <label className="cursor-pointer px-2 py-1 bg-yellow-400 rounded hover:bg-yellow-500 text-sm">
+                    <label className="cursor-pointer px-3 py-1 bg-yellow-400 rounded hover:bg-yellow-500 text-sm">
                       {member?.image_path ? "Replace" : "Upload"}
-                      <input type="file" accept="image/*" className="hidden" onChange={(e) => handleStudentPreviewChange(index, e.target.files?.[0])} />
+
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) =>
+                          handleStudentPreviewChange(index, e.target.files?.[0])
+                        }
+                      />
                     </label>
+
+                    {errors[`studentImage_${index}`] && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors[`studentImage_${index}`]}
+                      </p>
+                    )}
                   </div>
                 )}
 
@@ -765,7 +826,13 @@ const Coordinators = ({ data }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
             {students.map((student, index) => (
               <div key={index} className="dark:bg-text shadow-md rounded-xl p-4 flex flex-col items-center text-center">
-                <img src={student?.image_path ? parseUrl(student.image_path) : "/placeholder-image.jpg"} alt={student?.name || "Student"} className="w-24 h-24 border rounded object-cover mb-3" />
+                {student?.image_path && (
+                  <img
+                    src={parseUrl(student.image_path)}
+                    alt={student?.name || "Student"}
+                    className="w-24 h-24 border rounded object-cover mb-3"
+                  />
+                )}
                 <h3 className="text-lg font-semibold">{student?.name}</h3>
                 <p className="text-sm text-brwn dark:text-drka">{student?.designation}</p>
               </div>

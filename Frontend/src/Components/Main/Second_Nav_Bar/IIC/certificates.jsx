@@ -1,6 +1,5 @@
 import { useState } from "react";
 import LoadComp from "../../LoadComp";
-import { div } from "framer-motion/m";
 
 export default function IicFacCertificate({data}) {
     const [selectedAction, setSelectedAction] = useState(null)

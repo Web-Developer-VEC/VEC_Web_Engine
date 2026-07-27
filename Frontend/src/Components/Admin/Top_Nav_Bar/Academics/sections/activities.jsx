@@ -14,7 +14,7 @@ import {
   faUser,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { Eye, Pencil, Trash2, X,Send } from "lucide-react";
+import { Eye, Pencil, Trash2, X, Send } from "lucide-react";
 import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -188,27 +188,81 @@ const Activities = ({ data }) => {
           JSON.stringify(editedYear.activities_tile);
 
         if (hasChanges) {
-          payload.push({
-            collectionName,
-            collection_type: "activities",
-            action: "update",
-            title: "update in department_activities",
-            category: "department_activities",
-            original_data: {
-              year: originalYear.year,
-              activities_tile: (originalYear.activities_tile || []).map((act) => ({
-                name: act.name,
-                pdf_path: act.pdf_path
-              }))
-            },
-            meta_data: {
+          const changedActivities = [];
+          const originalChangedActivities = [];
+
+          (editedYear.activities_tile || []).forEach((editedAct) => {
+            const originalAct = (originalYear.activities_tile || []).find(
+              (act) => act.name === editedAct.name
+            );
+
+            const newPdfPath = getPdfPath({
+              ...editedAct,
               year: editedYear.year,
-              activities_tile: (editedYear.activities_tile || []).map((act) => ({
-                name: act.name,
-                pdf_path: getPdfPath({ ...act, year: editedYear.year })
-              }))
+            });
+
+            const oldPdfPath = originalAct?.pdf_path || "";
+
+            // Only include changed PDFs
+            if (newPdfPath !== oldPdfPath) {
+
+              const action =
+                oldPdfPath === "" && newPdfPath !== ""
+                  ? "insert"
+                  : "update";
+
+              payload.push({
+                collectionName,
+                collection_type: "activities",
+                action,
+                title: `${action} in department_activities`,
+                category: "department_activities",
+
+                original_data:
+                  action === "insert"
+                    ? null
+                    : {
+                      year: originalYear.year,
+                      activities_tile: [
+                        {
+                          name: originalAct.name,
+                          pdf_path: oldPdfPath,
+                        },
+                      ],
+                    },
+
+                meta_data: {
+                  year: editedYear.year,
+                  activities_tile: [
+                    {
+                      name: editedAct.name,
+                      pdf_path: newPdfPath,
+                    },
+                  ],
+                },
+              });
             }
           });
+
+          if (changedActivities.length > 0) {
+            payload.push({
+              collectionName,
+              collection_type: "activities",
+              action: "update",
+              title: "update in department_activities",
+              category: "department_activities",
+
+              original_data: {
+                year: originalYear.year,
+                activities_tile: originalChangedActivities,
+              },
+
+              meta_data: {
+                year: editedYear.year,
+                activities_tile: changedActivities,
+              },
+            });
+          }
         }
       }
     });
@@ -318,11 +372,10 @@ const Activities = ({ data }) => {
           <div key={year} className="relative">
             <button
               onClick={() => setSelectedYear(year)}
-              className={`relative px-4 py-2 rounded deptevent-year-button ${
-                selectedYear === year
-                  ? "bg-accn text-prim"
-                  : "bg-[#fdcc03] text-text dark:bg-drks"
-              }`}
+              className={`relative px-4 py-2 rounded deptevent-year-button ${selectedYear === year
+                ? "bg-accn text-prim"
+                : "bg-[#fdcc03] text-text dark:bg-drks"
+                }`}
             >
               {year}
 
@@ -606,17 +659,17 @@ const Activitiestile = ({
         prev.map((yearItem) =>
           yearItem.year === selectedYear
             ? {
-                ...yearItem,
-                activities_tile: yearItem.activities_tile.map((act) =>
-                  act.name === itemName
-                    ? { 
-                        ...act, 
-                        pdf_path: URL.createObjectURL(file),
-                        _file: file 
-                      }
-                    : act
-                ),
-              }
+              ...yearItem,
+              activities_tile: yearItem.activities_tile.map((act) =>
+                act.name === itemName
+                  ? {
+                    ...act,
+                    pdf_path: URL.createObjectURL(file),
+                    _file: file
+                  }
+                  : act
+              ),
+            }
             : yearItem
         )
       );
@@ -640,11 +693,11 @@ const Activitiestile = ({
       prev.map((yearItem) =>
         yearItem.year === selectedYear
           ? {
-              ...yearItem,
-              activities_tile: yearItem.activities_tile.map((act) =>
-                act.name === itemName ? { ...act, pdf_path: "" } : act
-              ),
-            }
+            ...yearItem,
+            activities_tile: yearItem.activities_tile.map((act) =>
+              act.name === itemName ? { ...act, pdf_path: "" } : act
+            ),
+          }
           : yearItem
       )
     );
@@ -666,58 +719,60 @@ const Activitiestile = ({
         <div className="deptevent-details">
           <div className="deptevent-year-actions">
             {Array.isArray(data) &&
-              data?.map((item, index) => (
-                <div
-                  key={index}
-                  className="deptevent-action-button flex items-center gap-2"
-                  onClick={() => !isEditing && handlePdfOpen(item?.pdf_path)}
-                >
-                  <FontAwesomeIcon
-                    icon={actionIcons[item?.name] || faFileAlt}
-                    style={{ marginRight: "10px" }}
-                  />
-                  <span
-                    className="cursor-pointer"
+              data
+                .filter((item) => isEditing || item?.pdf_path)
+                .map((item, index) => (
+                  <div
+                    key={index}
+                    className="deptevent-action-button flex items-center gap-2"
                     onClick={() => !isEditing && handlePdfOpen(item?.pdf_path)}
                   >
-                    {item?.name}
-                  </span>
+                    <FontAwesomeIcon
+                      icon={actionIcons[item?.name] || faFileAlt}
+                      style={{ marginRight: "10px" }}
+                    />
+                    <span
+                      className="cursor-pointer"
+                      onClick={() => !isEditing && handlePdfOpen(item?.pdf_path)}
+                    >
+                      {item?.name}
+                    </span>
 
-                  {isEditing && (
-                    <div className="flex gap-2 ml-4">
-                      {/* Upload PDF */}
-                      <label className="cursor-pointer bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-3 py-1 rounded transition">
-                        {item?.pdf_path ? "Replace PDF" : "Upload PDF"}
-                        <input
-                          type="file"
-                          accept="application/pdf"
-                          onChange={(e) => handlePdfChange(e, item?.name)}
-                          hidden
-                        />
-                      </label>
+                    {isEditing && (
+                      <div className="flex gap-2 ml-4">
+                        {/* Upload PDF */}
+                        <label className="cursor-pointer bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim px-3 py-1 rounded transition">
+                          {item?.pdf_path ? "Replace PDF" : "Upload PDF"}
+                          <input
+                            type="file"
+                            accept="application/pdf"
+                            onChange={(e) => handlePdfChange(e, item?.name)}
+                            hidden
+                          />
+                        </label>
 
-                      {/* Eye Button */}
-                      {item?.pdf_path && (
-                        <>
-                          <button
-                            className="px-2 py-1 rounded text-blue-300"
-                            onClick={() => handlePdfOpen(item?.pdf_path)}
-                          >
-                            <Eye />
-                          </button>
-                          {/* Remove PDF Button */}
-                          <button
-                            className="px-2 py-1 rounded text-red-500"
-                            onClick={() => handleRemovePdf(item?.name)}
-                          >
-                            <Trash2 size={16} />
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
+                        {/* Eye Button */}
+                        {item?.pdf_path && (
+                          <>
+                            <button
+                              className="px-2 py-1 rounded text-blue-300"
+                              onClick={() => handlePdfOpen(item?.pdf_path)}
+                            >
+                              <Eye />
+                            </button>
+                            {/* Remove PDF Button */}
+                            <button
+                              className="px-2 py-1 rounded text-red-500"
+                              onClick={() => handleRemovePdf(item?.name)}
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
           </div>
         </div>
       </div>

@@ -6,7 +6,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "about_the_department_image_path": "/static/images/department_data/eie.webp",
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
@@ -135,7 +134,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
           }
@@ -150,7 +148,10 @@
             "department_name": "Electronics & Instrumentation Engineering (EIE)",
             "unique_id": "VEC-008-01-130",
             "pdf_path": "/static/pdfs/faculty_profile/008/VEC-008-01-191.pdf",
-            "qualification": ["M.E.", "Ph.D"],
+            "qualification": [
+              "M.E.",
+              "Ph.D"
+            ],
             "hod_message": [
               "People relying on yesterdays idea have no chance of survival in todays competitive environment where change is at the speed of thought. The pace of change requires continuous improvement and constant learning. Keeping this in mind, we train our students to be fully prepared for the challenges of the future."
             ],
@@ -174,7 +175,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
           }
@@ -330,7 +330,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
           }
@@ -338,55 +337,55 @@
       },
       {
         "category": "curriculum",
-        "content":[
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
               {
-                "heading":"Curriculum & Syllabus",
-                "syllabus":[
-                {
-                  "year": "R - 2023",
-                  "docs":[
-                    {
-                    "name":"I Semester",
-                      "pdf_path": ""
+                "year": "R - 2023",
+                "docs": [
+                  {
+                    "name": "I Semester",
+                    "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 1.pdf"
                   },
-                    {
-                    "name":"II Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "II Semester",
+                    "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 2.pdf"
                   },
-                    {
-                    "name":"III Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "III Semester",
+                    "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 3.pdf"
                   },
-                    {
-                    "name":"IV Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "IV Semester",
+                    "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 4.pdf"
                   },
-                    {
-                    "name":"V Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "V Semester",
+                    "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 5.pdf"
                   },
-                    {
-                    "name":"VI Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VI Semester",
+                    "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 6.pdf"
                   },
-                    {
-                    "name":"VII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 7.pdf"
                   },
-                    {
-                    "name":"VIII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VIII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - SEM 8.pdf"
                   },
-                    {
-                    "name":"Elective Courses",
-                      "pdf_path": ""
+                  {
+                    "name": "Elective Courses",
+                    "pdf_path": "/static/pdfs/curriculum/008/B.E. EIE (R2023) WITH TW & SDG - ELECTIVE COURSES.pdf"
                   }
                 ]
-                },
-                {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/008/reg_21.pdf"
-                }
+              },
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/008/reg_21.pdf"
+              }
             ]
           }
         ]
@@ -400,7 +399,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
           }
@@ -415,7 +413,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
           }
@@ -451,7 +448,7 @@
                 "name": "Symposium",
                 "pdf_path": "/static/pdfs/dept_activities/008/2024-2025/Symposium.pdf"
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -462,7 +459,7 @@
             ]
           },
           {
-            "year":"2023 - 2024",
+            "year": "2023 - 2024",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
@@ -488,7 +485,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -499,7 +496,7 @@
             ]
           },
           {
-            "year":"2022 - 2023",
+            "year": "2022 - 2023",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
@@ -525,7 +522,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -533,10 +530,10 @@
                 "name": "Valued Added Course",
                 "pdf_path": "/static/pdfs/dept_activities/008/2022-2023/Add-On Course.pdf"
               }
-      ]
+            ]
           },
           {
-            "year":"2020 - 2021",
+            "year": "2020 - 2021",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
@@ -562,7 +559,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -570,7 +567,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
+            ]
           }
         ]
       }
@@ -630,7 +627,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
           }
@@ -646,74 +642,62 @@
           {
             "image_path": "/static/images/student_activities/008/1.webp",
             "event_name": "EDII's Hackathon-2024  ",
-            "image_content": "Priya V, Anushaa J and Sivapriya B of Final year Electronics and Instrumentation Engineering students  have won 1st Runner up Position in EDII's Hackathon-2024  and received the Cash Prize of Rs. 25,000  from Honourable MSME Minister, Mr. Anbarasan at Anna University",
-            "date": ""
+            "image_content": "Priya V, Anushaa J and Sivapriya B of Final year Electronics and Instrumentation Engineering students  have won 1st Runner up Position in EDII's Hackathon-2024  and received the Cash Prize of Rs. 25,000  from Honourable MSME Minister, Mr. Anbarasan at Anna University"
           },
           {
             "image_path": "/static/images/student_activities/008/2.webp",
             "event_name": "NATIONAL ENTREPRENEURSHIP CONCLAVE 2.0",
-            "image_content": "DEEPIKA D AND SHIVA RANJANI PASUPATHY OF III YEAR SECURE 41ST POSITION (TOP 50) OUT OF 170 TEAMS AND WON CASH AWARD OF RS. 5,000/- AT  NATIONAL ENTREPRENEURSHIP CONCLAVE 2.0BY LEAD COLLEGE OF MANAGEMENT, DHONI, PALAKKAD, KERALA",
-            "date": ""
+            "image_content": "DEEPIKA D AND SHIVA RANJANI PASUPATHY OF III YEAR SECURE 41ST POSITION (TOP 50) OUT OF 170 TEAMS AND WON CASH AWARD OF RS. 5,000/- AT  NATIONAL ENTREPRENEURSHIP CONCLAVE 2.0BY LEAD COLLEGE OF MANAGEMENT, DHONI, PALAKKAD, KERALA"
           },
           {
             "image_path": "/static/images/student_activities/008/3.webp",
             "event_name": "Computational Intelligence and Industry 5.0",
-            "image_content": "Anushaa J, Chandrika Devi V, Priya V  of III YR EIE presented a paper in International Conference on “Computational Intelligence and Industry 5.0” conducted by Velammal Institute of Technology in the title “Integrated Non-Invasive Continuous Blood Glucose, SPO2 and BPM Monitoring” and won best paper Award",
-            "date": ""
+            "image_content": "Anushaa J, Chandrika Devi V, Priya V  of III YR EIE presented a paper in International Conference on “Computational Intelligence and Industry 5.0” conducted by Velammal Institute of Technology in the title “Integrated Non-Invasive Continuous Blood Glucose, SPO2 and BPM Monitoring” and won best paper Award"
           },
           {
             "image_path": "/static/images/student_activities/008/4.webp",
             "event_name": "Zone -I Tournament ",
-            "image_content": "KARTHIKEYAN R and RUPAK S R  of II YEAR EIE are in  Kho Kho men Team who won Zone -I Tournament held at Prathyusha Engineering college, Thiruvallur",
-            "date": ""
+            "image_content": "KARTHIKEYAN R and RUPAK S R  of II YEAR EIE are in  Kho Kho men Team who won Zone -I Tournament held at Prathyusha Engineering college, Thiruvallur"
           },
           {
             "image_path": "/static/images/student_activities/008/5.webp",
             "event_name": "Paper Presentation",
-            "image_content": "DINESH KUMAR J, PRIYA V, PRATHEEP S of III YR EIE won First Prize with cash award of Rs. 1500/- in paper presentation held at Madras Institute of Technology ",
-            "date": "2024-03-16"
+            "image_content": "DINESH KUMAR J, PRIYA V, PRATHEEP S of III YR EIE won First Prize with cash award of Rs. 1500/- in paper presentation held at Madras Institute of Technology "
           },
           {
             "image_path": "/static/images/student_activities/008/6.webp",
             "event_name": "Innomasters'24 Business Model Event ",
-            "image_content": "DEEPIKA D AND SHIVA RANJANI PASUPATHY OF III YEAR SECURE won 1st prize with cash award of Rs 25,000  in the Innomasters'24 Business Model Event conducted by vel tech University, Avadi",
-            "date": ""
+            "image_content": "DEEPIKA D AND SHIVA RANJANI PASUPATHY OF III YEAR SECURE won 1st prize with cash award of Rs 25,000  in the Innomasters'24 Business Model Event conducted by vel tech University, Avadi"
           },
           {
             "image_path": "/static/images/student_activities/008/7.webp",
             "event_name": "MODEL PRESENTATION ",
-            "image_content": "PRIYA V, MALINI R, ANUSAHAA J OF III YEAR WON FIRST PRIZE WITH CASH AWARD OF RS. 25,000/-   IN MODEL PRESENTATION CONDUCTED BY GITAM, DEEMED UNIVERSITY, VISAKHAPATNAM ",
-            "date": "2023-11-04"
+            "image_content": "PRIYA V, MALINI R, ANUSAHAA J OF III YEAR WON FIRST PRIZE WITH CASH AWARD OF RS. 25,000/-   IN MODEL PRESENTATION CONDUCTED BY GITAM, DEEMED UNIVERSITY, VISAKHAPATNAM "
           },
           {
             "image_path": "/static/images/student_activities/008/8.webp",
             "event_name": "STARTUP SHOWCASE ",
-            "image_content": "PRIYA V AND MALINI R OF III YEAR WON FIRST PRIZE WITH CASH AWARD OF RS. 25,000/-   IN STARTUP SHOWCASE CONDUCTED BY GITAM, DEEMED UNIVERSITY, VISAKHAPATNAM ",
-            "date": "2023-11-04"
+            "image_content": "PRIYA V AND MALINI R OF III YEAR WON FIRST PRIZE WITH CASH AWARD OF RS. 25,000/-   IN STARTUP SHOWCASE CONDUCTED BY GITAM, DEEMED UNIVERSITY, VISAKHAPATNAM "
           },
           {
             "image_path": "/static/images/student_activities/008/9.webp",
             "event_name": "PAPER PRESENTATION ",
-            "image_content": "CHANDRIKA DEVI V AND PRIYA V OF III YEAR WON SECOND PRIZE WITH CASH AWARD OF RS. 2,000/-   IN PAPER PRESENTATION CONDUCTED BY ST. JOSEPH'S INSTITUTE OF TECHNOLOGY ",
-            "date": "2023--08-05"
+            "image_content": "CHANDRIKA DEVI V AND PRIYA V OF III YEAR WON SECOND PRIZE WITH CASH AWARD OF RS. 2,000/-   IN PAPER PRESENTATION CONDUCTED BY ST. JOSEPH'S INSTITUTE OF TECHNOLOGY "
           },
           {
             "image_path": "/static/images/student_activities/008/10.webp",
             "event_name": "ZONALS FOOTBALL MATCH ",
-            "image_content": "ENITH AUSTIN OF III YR WON ANNA UNIVERSITY ZONALS FOOTBALL MATCH AT VEL TECH HIGH TECH, AVADI ",
-            "date": "2023-10-11"
+            "image_content": "ENITH AUSTIN OF III YR WON ANNA UNIVERSITY ZONALS FOOTBALL MATCH AT VEL TECH HIGH TECH, AVADI "
           },
           {
             "image_path": "/static/images/student_activities/008/11.webp",
             "event_name": "INTERZONAL TAEKWONDO TOURNAMENT ",
-            "image_content": "RUPAK OF II YR WON GOLD MEDAL IN INTERZONAL TAEKWONDO TOURNAMENT AND GOT SELECTED TO NATIONALS ",
-            "date": ""
+            "image_content": "RUPAK OF II YR WON GOLD MEDAL IN INTERZONAL TAEKWONDO TOURNAMENT AND GOT SELECTED TO NATIONALS "
           },
           {
             "image_path": "/static/images/student_activities/008/12.webp",
             "event_name": "Indian International Science Festival IISF-2021",
-            "image_content": "Mr. S. PraveenKumar of Final year EIE Student won 2nd prize in the event Indian International Science Festival IISF-2021, held at Goa",
-            "date": "2021-12-12"
+            "image_content": "Mr. S. PraveenKumar of Final year EIE Student won 2nd prize in the event Indian International Science Festival IISF-2021, held at Goa"
           }
         ]
       }
@@ -726,7 +710,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
           }
@@ -774,7 +757,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
           }
@@ -784,20 +766,19 @@
         "category": "mous_details",
         "content": [
           {
-            "ORGANISATION_NAME": "SREE TECHNOLOGIES",
-            "MONTH_AND_YEAR": "",
-            "VALIDITY": "Life Time"
+            "organisation_name": "SREE TECHNOLOGIES",
+            "month_and_year": "",
+            "validity": "Life Time"
           },
           {
-            "ORGANISATION_NAME": "ENSOLT PRIVATE LIMITED",
-            "MONTH_AND_YEAR": "",
-            "VALIDITY": "Life Time"
+            "organisation_name": "ENSOLT PRIVATE LIMITED",
+            "month_and_year": "",
+            "validity": "Life Time"
           },
           {
-            "ORGANISATION_NAME": "YASHIKA INDUSTRIES",
-            "MONTH_AND_YEAR": "",
-            "VALIDITY": "Life Time"
-
+            "organisation_name": "YASHIKA INDUSTRIES",
+            "month_and_year": "",
+            "validity": "Life Time"
           }
         ]
       }
@@ -810,7 +791,6 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            
             "name": "Electronics & Instrumentation Engineering (EIE)",
             "dept_id": "008"
           }

@@ -14,9 +14,10 @@
       },
       {
         "category": "about_the_department",
-        "content": 
-        [
-          "Civil Engineering, the Mother of all Engineering Disciplines, its Sons and Daughters, the Young Civil Engineers are the Nation Builders for sustaining Civilization anywhere in the World and Universe.Starting from 2007, Department of Civil Engineering joined in contributing towards nation building through our Graduate Civil Engineers.","The B.E. Civil Engineering program of VEC is continuously accredited by NBA since 2015. So far 32 graduates from the Department have been placed in State and Central Government jobs (IRS, IOCL, Revenue, Police, PWD, Highways, Water Resources, Buildings, CMDA, Local Administration...) and also in many other countries like UK, USA, Canada, Singapore, Dubai, Australia, etc. in various roles and positions.","To achieve this, the Department is equipped with sophisticated laboratories and field oriented teaching and training. About 85% of students are placed in Core & IT companies (45+ Core Companies & 20+ IT companies). Around 200+ Students opted for higher studies in India & Foreign Universities through GATE, GRE & GMAT. Currently under Autonomous mode, the curriculum is further enriched to facilitate student community to reach greater heights and zeniths."
+        "content": [
+          "Civil Engineering, the Mother of all Engineering Disciplines, its Sons and Daughters, the Young Civil Engineers are the Nation Builders for sustaining Civilization anywhere in the World and Universe.Starting from 2007, Department of Civil Engineering joined in contributing towards nation building through our Graduate Civil Engineers.",
+          "The B.E. Civil Engineering program of VEC is continuously accredited by NBA since 2015. So far 32 graduates from the Department have been placed in State and Central Government jobs (IRS, IOCL, Revenue, Police, PWD, Highways, Water Resources, Buildings, CMDA, Local Administration...) and also in many other countries like UK, USA, Canada, Singapore, Dubai, Australia, etc. in various roles and positions.",
+          "To achieve this, the Department is equipped with sophisticated laboratories and field oriented teaching and training. About 85% of students are placed in Core & IT companies (45+ Core Companies & 20+ IT companies). Around 200+ Students opted for higher studies in India & Foreign Universities through GATE, GRE & GMAT. Currently under Autonomous mode, the curriculum is further enriched to facilitate student community to reach greater heights and zeniths."
         ]
       },
       {
@@ -27,35 +28,33 @@
       },
       {
         "category": "department_mission",
-        "content":[
-            "To transform the students into industry ready civil engineering graduates.",
-            "To inculcate a spirit of learning for pursuing higher studies with global outreach.",
-            "To promote research in civil engineering to achieve sustainability.",
-            "To facilitate conducive environment for entrepreneurship development.",
-            "To provide industry and society based solutions through innovation and creativity"
+        "content": [
+          "To transform the students into industry ready civil engineering graduates.",
+          "To inculcate a spirit of learning for pursuing higher studies with global outreach.",
+          "To promote research in civil engineering to achieve sustainability.",
+          "To facilitate conducive environment for entrepreneurship development.",
+          "To provide industry and society based solutions through innovation and creativity"
         ]
       },
       {
         "category": "programme_educational_objectives",
-        "content": 
-        [
-            {
-                "header": "PEO 1",
-                "content":"Will be able to achieve greater heights in higher studies/research/profession."
-            },
-            {
-                "header": "PEO 2",
-                "content":"Will have knowledge to provide feasible solutions for real world civil engineering projects."
-            },
-            {
-                "header": "PEO 3",
-                "content":"Will have a passion for start-ups,entrepreneurship and ability to work in team/individual setup."
-            },
-            {
-                "header": "PEO 4",
-                "content":"Will progress in lifelong learning with the consideration of human and ethical values for the betterment of society."
-            }
-
+        "content": [
+          {
+            "header": "PEO 1",
+            "content": "Will be able to achieve greater heights in higher studies/research/profession."
+          },
+          {
+            "header": "PEO 2",
+            "content": "Will have knowledge to provide feasible solutions for real world civil engineering projects."
+          },
+          {
+            "header": "PEO 3",
+            "content": "Will have a passion for start-ups,entrepreneurship and ability to work in team/individual setup."
+          },
+          {
+            "header": "PEO 4",
+            "content": "Will progress in lifelong learning with the consideration of human and ethical values for the betterment of society."
+          }
         ]
       },
       {
@@ -141,28 +140,30 @@
       },
       {
         "category": "hod_details",
-        "content": 
-        [
-           {
-            "department_id":"004",
+        "content": [
+          {
+            "department_id": "004",
             "name": "Dr. JEBAMALAR A",
             "department_name": "Civil Engineering (CIVIL)",
             "unique_id": "VEC-004-01-145",
-            
-            "pdf_path":"/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf",
-            "qualification": ["M.E.", "Ph.D"],
-            "hod_message": ["Civil Engineering, the Mother of all Engineering Disciplines, also bears the prestige of being in the forefront with advanced applications in all domains based on technologies like Drones,  AI, AR and VR,  3 D Printing,  IoT and with special  emphasis  on   Sustainability and the 17 SDG Goals as envisaged by UN. The BE  Civil Engineering Graduates from VEC  are trained with skills and technical know-how  to stay on par with global peers  in application of concepts and tools with utmost  responsibility towards Environment and the Society."],
+            "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf",
+            "qualification": [
+              "M.E.",
+              "Ph.D"
+            ],
+            "hod_message": [
+              "Civil Engineering, the Mother of all Engineering Disciplines, also bears the prestige of being in the forefront with advanced applications in all domains based on technologies like Drones,  AI, AR and VR,  3 D Printing,  IoT and with special  emphasis  on   Sustainability and the 17 SDG Goals as envisaged by UN. The BE  Civil Engineering Graduates from VEC  are trained with skills and technical know-how  to stay on par with global peers  in application of concepts and tools with utmost  responsibility towards Environment and the Society."
+            ],
             "image_path": "/static/images/profile_photos/004/VEC-004-01-145.webp",
             "designation": "Professor & Head, Dept of Civil Engineering",
-            "Social_media_links": 
-            {
+            "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
-              "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
+              "googlescholar": "https://scholar.google.com/citations?user=zMX3IjQAAAAJ&hl=en&oi=ao",
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
-              "orchidprofile":"",
-              "researchgate":"",
+              "orchidprofile": "https://orcid.org/0009-0004-5955-1306",
+              "researchgate": "https://www.researchgate.net/profile/Jebamalar-Abraham-2?ev=hdr_xprf",
               "publonprofile": "",
-              "sciprofiles":""
+              "sciprofiles": ""
             }
           }
         ]
@@ -190,141 +191,133 @@
       },
       {
         "category": "head_of_department",
-        "members": [ {
+        "members": [
+          {
             "name": "Dr. JEBAMALAR A",
             "designation": "Professor & Head",
             "unique_id": "VEC-004-01-145",
-            "socialmedia_links": 
-                {
-                    "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
-                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=zMX3IjQAAAAJ",
-                    "orchidprofile":"",
-                    "researchgate":"",
-                    "publonprofile": "",
-                    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400"
-                },
-          
-            "image_path":"/static/images/profile_photos/004/VEC-004-01-145.webp",
-            "pdf_path":"/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf"
-          }]
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/jebamalar-abraham-986a35203/",
+              "googlescholar": "https://scholar.google.com/citations?user=zMX3IjQAAAAJ&hl=en&oi=ao",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58322199400",
+              "orchidprofile": "https://orcid.org/0009-0004-5955-1306",
+              "researchgate": "https://www.researchgate.net/profile/Jebamalar-Abraham-2?ev=hdr_xprf",
+              "publonprofile": "",
+              "sciprofiles": ""
+            },
+            "image_path": "/static/images/profile_photos/004/VEC-004-01-145.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-01-145.pdf"
+          }
+        ]
       },
       {
         "category": "teaching_staff",
-        "members": 
-        [
-          
-            {
-                "name": "Dr. REVATHEE T",
-                "designation": "Associate Professor",
-                "unique_id": "VEC-004-03-082",
-                "socialmedia_links": 
-                {
-                    "linkedin": "https://www.linkedin.com/in/dr-revathee-thothathri-86129057/",
-                    "googlescholar": "https://scholar.google.com/citations?hl=en?authuser%3D&authuser=1&user=4iGLe88AAAAJ",
-                    "researchgate": "https://www.researchgate.net/profile/Revathee-Thothathri?ev=hdr_xprf",
-                    "orchidprofile": "https://orcid.org/0009-0005-4891-8229",
-                    "publonprofile": "",
-                    "scopus": ""
-                },
-                "image_path": "/static/images/profile_photos/004/VEC-004-03-082.webp",
-                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-03-082.pdf"
+        "members": [
+          {
+            "name": "Dr. REVATHEE T",
+            "designation": "Associate Professor",
+            "unique_id": "VEC-004-03-082",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/dr-revathee-thothathri-86129057/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en?authuser%3D&authuser=1&user=4iGLe88AAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Revathee-Thothathri?ev=hdr_xprf",
+              "orchidprofile": "https://orcid.org/0009-0005-4891-8229",
+              "publonprofile": "",
+              "scopus": ""
             },
-            {
-                "name": "Mr. RAJHARASEHWARAN T A",
-                "designation": "Assistant Professor",
-                "unique_id": "VEC-004-04-066",
-                "socialmedia_links": 
-                {
-                    "linkedin": "https://www.linkedin.com/in/rajha-rajeswaran-t-a-5649744b/",
-                    "googlescholar": "https://scholar.google.com/citations?hl=en&user=z1BuZYcAAAAJ",
-                    "researchgate": "https://www.researchgate.net/profile/Rajha-Rajeswaran-Rajha",
-                    "orchidprofile": "",
-                    "publonprofile": "",
-                    "scopus": ""
-                },
-                "image_path": "/static/images/profile_photos/004/VEC-004-04-066.webp",
-                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-066.pdf"
+            "image_path": "/static/images/profile_photos/004/VEC-004-03-082.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-03-082.pdf"
+          },
+          {
+            "name": "Mr. RAJHA RAJESWARAN  T A",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-004-04-066",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/rajha-rajeswaran-t-a-5649744b/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=z1BuZYcAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Rajha-Rajeswaran-Rajha",
+              "orchidprofile": "https://orcid.org/0009-0000 7864-7435",
+              "publonprofile": "",
+              "scopus": ""
             },
-            {
-                "name": "Mr. RAJENDHIRAN K",
-                "designation": "Assistant Professor",
-                "unique_id": "VEC-004-04-061",
-                "socialmedia_links": 
-                {
-                    "linkedin": "https://www.linkedin.com/in/rajendhiran-krishnamurthy-a7a1181ba",
-                    "googlescholar": "",
-                    "researchgate": "https://www.researchgate.net/profile/Krajendhiran-Arul",
-                    "orchidprofile": "",
-                    "publonprofile": "",
-                    "scopus": ""
-                },
-                "image_path": "/static/images/profile_photos/004/VEC-004-04-061.webp",
-                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-061.pdf"
+            "image_path": "/static/images/profile_photos/004/VEC-004-04-066.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-066.pdf"
+          },
+          {
+            "name": "Mr. RAJENDHIRAN K",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-004-04-061",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/rajendhiran-krishnamurthy-a7a1181ba",
+              "googlescholar": "",
+              "researchgate": "https://www.researchgate.net/profile/Krajendhiran-Arul",
+              "orchidprofile": "https://orcid.org/0009-0006-4139-2292",
+              "publonprofile": "",
+              "scopus": ""
             },
-            {
-                "name": "Mrs. FRIEDA F S",
-                "designation": "Assistant Professor",
-                "unique_id": "VEC-004-04-601",
-                "socialmedia_links": 
-                {
-                    "linkedin": "",
-                    "googlescholar": "",
-                    "researchgate": "",
-                    "orchidprofile": "",
-                    "publonprofile": "",
-                    "scopus": ""
-                },
-                "image_path": "/static/images/profile_photos/004/VEC-004-04-601.webp",
-                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-601.pdf"
+            "image_path": "/static/images/profile_photos/004/VEC-004-04-061.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-061.pdf"
+          },
+          {
+            "name": "Mrs. PRAVEENA A",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-004-04-602",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/praveena-a-433a78412/",
+              "googlescholar": "https://scholar.google.com/citations?view_op=list_works&hl=id&user=qgfgWuQAAAAJ",
+              "researchgate": "https://www.researchgate.net/scientific-contributions/Praveena-Anbazhagan-2335714319",
+              "orchidprofile": "https://orcid.org/0009-0009-5222-3963",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59426638900"
             },
-            {
-                "name": "Mrs. PRAVEENA A",
-                "designation": "Assistant Professor",
-                "unique_id": "VEC-004-04-602",
-                "socialmedia_links": 
-                {
-                    "linkedin": "",
-                    "googlescholar": "",
-                    "researchgate": "",
-                    "orchidprofile": "",
-                    "publonprofile": "",
-                    "scopus": ""
-                },
-                "image_path": "/static/images/profile_photos/004/VEC-004-04-602.webp",
-                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-602.pdf"
+            "image_path": "/static/images/profile_photos/004/VEC-004-04-602.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-602.pdf"
+          },
+          {
+            "name": "Mr. SELVAPRASANTH P",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-004-04-603",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/selvaprasanth-p-29541875/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=eHl1IqQAAAAJ",
+              "researchgate": "http://researchgate.net/profile/P-Selvaprasanth?ev=hdr_xprf",
+              "orchidprofile": "https://orcid.org/0000-0003-4545-4789",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58182711500"
             },
-            {
-                "name": "Mr. SELVAPRASANTH P",
-                "designation": "Assistant Professor",
-                "unique_id": "VEC-004-04-603",
-                "socialmedia_links": 
-                {
-                    "linkedin": "",
-                    "googlescholar": "",
-                    "researchgate": "",
-                    "orchidprofile": "",
-                    "publonprofile": "",
-                    "scopus": ""
-                },
-                "image_path": "/static/images/profile_photos/004/VEC-004-04-603.webp",
-                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-603.pdf"
+            "image_path": "/static/images/profile_photos/004/VEC-004-04-603.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-603.pdf"
+          },
+          {
+            "name": "Mrs. SUREKHA A",
+            "designation": "Teaching Assistant",
+            "unique_id": "VEC-004-04-100",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
             },
-            {
-                "name": "Mrs. SUREKHA A",
-                "designation": "Teaching Assistant",
-                "unique_id": "VEC-004-04-100",
-                "socialmedia_links": 
-                {
-                    "linkedin": "",
-                    "googlescholar": "",
-                    "researchgate": "",
-                    "orchidprofile": "",
-                    "publonprofile": "",
-                    "scopus": ""
-                },
-                "image_path": "/static/images/profile_photos/004/VEC-004-04-100.webp",
-                "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-100.pdf"
-            }
+            "image_path": "/static/images/profile_photos/004/VEC-004-04-100.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/004/VEC-004-04-100.pdf"
+          },
+          {
+            "name": "Mrs. ILAKKIYA E",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-004-04-100",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/ilakkiya-elangovan-26a11767",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=4sJAO_8AAAAJ",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0001-1012-9428",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/004/VEC-004-04-106.webp",
+            "pdf_path": ""
+          }
         ]
       },
       {
@@ -346,96 +339,101 @@
         ]
       },
       {
-         "category": "curriculum",
-        "content":[
+        "category": "curriculum",
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
               {
-                "heading":"Curriculum & Syllabus",
-                "syllabus":[
-                {
-                  "year": "R - 2023",
-                  "docs":[
-                    {
-                    "name":"I Semester",
-                      "pdf_path": ""
+                "year": "R - 2023",
+                "docs": [
+                  {
+                    "name": "I Semester",
+                    "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 1.pdf"
                   },
-                    {
-                    "name":"II Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "II Semester",
+                    "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 2.pdf"
                   },
-                    {
-                    "name":"III Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "III Semester",
+                    "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 3.pdf"
                   },
-                    {
-                    "name":"IV Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "IV Semester",
+                    "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 4.pdf"
                   },
-                    {
-                    "name":"V Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "V Semester",
+                    "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 5.pdf"
                   },
-                    {
-                    "name":"VI Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VI Semester",
+                    "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 6.pdf"
                   },
-                    {
-                    "name":"VII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 7.pdf"
                   },
-                    {
-                    "name":"VIII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VIII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/004/B.E.CIVIL (R2023) WITH TW & SDG - SEM 8.pdf"
                   },
-                    {
-                    "name":"Elective Courses",
-                      "pdf_path": ""
+                  {
+                    "name": "Elective Courses",
+                    "pdf_path": "/static/pdfs/curriculum/004/B.E. CIVIL (R2023) ELECTIVE COURSES WITH TW & SDG.pdf"
                   }
                 ]
-                },
-                {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/004/reg_21.pdf"
-                }
-                   ]
+              },
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/004/reg_21.pdf"
               }
             ]
+          }
+        ]
       }
     ]
   },
   {
     "type": "newsletter",
-    "data": 
-    [
+    "data": [
       {
         "category": "banner_name_and_image",
         "content": [
           {
-            "name":"Civil Engineering (CIVIL)",
+            "name": "Civil Engineering (CIVIL)",
             "dept_id": "004"
           }
         ]
       },
       {
-        "category":"newsletter",
-        "content":
-        [
-        {
-           "year": "2020",
-           "pdf_path":["/static/pdfs/newsletter/004/2020.pdf"]
-        },
-        {
-            "year":"2021",
-            "pdf_path":["/static/pdfs/newsletter/004/2021.pdf"]
-        },
-        {
-
-            "year":"2022",
-            "pdf_path":["/static/pdfs/newsletter/004/2022.pdf"]
-        },
-        {
-            "year":"2023",
-            "pdf_path":["/static/pdfs/newsletter/004/2023.pdf"]
-        }
+        "category": "newsletter",
+        "content": [
+          {
+            "year": "2020",
+            "pdf_path": [
+              "/static/pdfs/newsletter/004/2020.pdf"
+            ]
+          },
+          {
+            "year": "2021",
+            "pdf_path": [
+              "/static/pdfs/newsletter/004/2021.pdf"
+            ]
+          },
+          {
+            "year": "2022",
+            "pdf_path": [
+              "/static/pdfs/newsletter/004/2022.pdf"
+            ]
+          },
+          {
+            "year": "2023",
+            "pdf_path": [
+              "/static/pdfs/newsletter/004/2023.pdf"
+            ]
+          }
         ]
       }
     ]
@@ -455,9 +453,9 @@
       {
         "category": "department_activities",
         "content": [
-         {
-                "year":"2023 - 2024",
-                "activities_tile": [
+          {
+            "year": "2023 - 2024",
+            "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -482,7 +480,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -490,12 +488,11 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
-             
-            },
-            {
-              "year": "2022 - 2023",
-              "activities_tile": [
+            ]
+          },
+          {
+            "year": "2022 - 2023",
+            "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -520,7 +517,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -528,8 +525,8 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
-            }
+            ]
+          }
         ]
       }
     ]
@@ -555,12 +552,10 @@
   },
   {
     "type": "student_achievements",
-    "data": 
-    [
+    "data": [
       {
         "category": "banner_name_and_image",
-        "content": 
-        [
+        "content": [
           {
             "banner_image_path": "/static/images/department_data/civil.webp",
             "name": "Civil Engineering (CIVIL)",
@@ -574,34 +569,29 @@
       },
       {
         "category": "student_achievements_details",
-        "images": 
-        [
-            {
-            "image_path": "/static/images/student_activities/004/1.webp", 
-            "event_name": "Anna University   Civilization - 2024 - Overall Championship ", 
-            "image_content": "VEC Civil Engineering Department won the Overall Championship of Civilization - a national level technical symposium conducted by College of Engineering, Guindy, Anna University consecutively for 7 years.", 
-            "date": "2024"
-            },
-            {
-            "image_path": "/static/images/student_activities/004/2.webp", 
-            "event_name": "ANNA UNIVERSITY   CIVILIZATION - 2022 - OVERALL CHAMPIONSHIP (Students Won Anna University Civilization Overall Championship Trophy for the last 7 consecutive years)", 
-            "image_content": "Our Students were awarded 4 funded projects through IEDC for innovative project and products", 
-            "date": "2022"
-            },
-            {
-            "image_path": "/static/images/student_activities/004/3.webp", 
-            "event_name": "Overall Trophy in Inter-collegiate symposium conducted by Dayanand Sagar College of Engineering and Technology,Bengaluru,2022 ", 
-            "image_content": "Our Students were awarded 5 Final Year funded projects by TNSCST for modern project works", 
-            "date": "2022"
-            },
-            {
-            "image_path": "/static/images/student_activities/004/4.webp", 
-            "event_name": "First Prize in BAI Oratorical Competition 2021", 
-            "image_content": "Our Students have been winning prizes every year since 2016 in the BAI - builders’ Association of India Oratory Competition.", 
-            "date": "2021"
-            }
+        "images": [
+          {
+            "image_path": "/static/images/student_activities/004/1.webp",
+            "event_name": "Anna University   Civilization - 2024 - Overall Championship ",
+            "image_content": "VEC Civil Engineering Department won the Overall Championship of Civilization - a national level technical symposium conducted by College of Engineering, Guindy, Anna University consecutively for 7 years."
+          },
+          {
+            "image_path": "/static/images/student_activities/004/2.webp",
+            "event_name": "ANNA UNIVERSITY   CIVILIZATION - 2022 - OVERALL CHAMPIONSHIP (Students Won Anna University Civilization Overall Championship Trophy for the last 7 consecutive years)",
+            "image_content": "Our Students were awarded 4 funded projects through IEDC for innovative project and products"
+          },
+          {
+            "image_path": "/static/images/student_activities/004/3.webp",
+            "event_name": "Overall Trophy in Inter-collegiate symposium conducted by Dayanand Sagar College of Engineering and Technology,Bengaluru,2022 ",
+            "image_content": "Our Students were awarded 5 Final Year funded projects by TNSCST for modern project works"
+          },
+          {
+            "image_path": "/static/images/student_activities/004/4.webp",
+            "event_name": "First Prize in BAI Oratorical Competition 2021",
+            "image_content": "Our Students have been winning prizes every year since 2016 in the BAI - builders’ Association of India Oratory Competition."
+          }
         ]
-    }
+      }
     ]
   },
   {
@@ -609,8 +599,7 @@
     "data": [
       {
         "category": "banner_name_and_image",
-        "content": 
-        [
+        "content": [
           {
             "banner_image_path": "/static/images/department_data/civil.webp",
             "name": "Civil Engineering (CIVIL)",
@@ -620,32 +609,31 @@
       },
       {
         "category": "infrastructure_images",
-        "content": 
-        [
-            {
-            "image_path": "/static/images/infrastructure/004/1.webp", 
+        "content": [
+          {
+            "image_path": "/static/images/infrastructure/004/1.webp",
             "image_name": "STRENGTH OF MATERIALS LABORATORY"
-            },
-            {
-            "image_path": "/static/images/infrastructure/004/2.webp", 
+          },
+          {
+            "image_path": "/static/images/infrastructure/004/2.webp",
             "image_name": "FLUID MECHANICS AND HYDRAULIC MACHINERY LABORATORY"
-            },
-            {
-            "image_path": "/static/images/infrastructure/004/3.webp", 
+          },
+          {
+            "image_path": "/static/images/infrastructure/004/3.webp",
             "image_name": "SOIL MECHANICS LABORATORY"
-            },
-            {
-            "image_path": "/static/images/infrastructure/004/4.webp", 
+          },
+          {
+            "image_path": "/static/images/infrastructure/004/4.webp",
             "image_name": "CONCRETE AND HIGHWAY ENGINEERING LABORATORY"
-            },
-            {
-            "image_path": "/static/images/infrastructure/004/5.webp", 
+          },
+          {
+            "image_path": "/static/images/infrastructure/004/5.webp",
             "image_name": "SURVEYING LABORATORY"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/004/6.webp",
             "image_name": "ENVIRONMENTAL ENGINEERING LABORATORY"
-            }
+          }
         ]
       }
     ]
@@ -655,8 +643,7 @@
     "data": [
       {
         "category": "banner_name_and_image",
-        "content": 
-        [
+        "content": [
           {
             "banner_image_path": "/static/images/department_data/civil.webp",
             "name": "Civil Engineering (CIVIL)",
@@ -666,25 +653,23 @@
       },
       {
         "category": "mous_details",
-        "content":
-            [
-                {             
-                    "ORGANISATION_NAME": "ETA Geospatial Solutions",
-                    "MONTH_AND_YEAR": "18-12-2024 to 17-12-2029",
-                    "VALIDITY": "5 years"
-                },
-                {
-                    "ORGANISATION_NAME": "GBL Ganesan Builders PVT.Limited",
-                    "MONTH_AND_YEAR": "05-04-2023 to 04-04-2026",
-                    "VALIDITY": "3 years"
-                },
-                {
-                    "ORGANISATION_NAME": "CMTI Construction Management Training Institute",
-                    "MONTH_AND_YEAR": "15-04-2021 to 14-04-2026",
-                    "VALIDITY": "5 years"
-                }
-
-            ]
+        "content": [
+          {
+            "organisation_name": "ETA Geospatial Solutions",
+            "month_and_year": "18-12-2024 to 17-12-2029",
+            "validity": "5 years"
+          },
+          {
+            "organisation_name": "GBL Ganesan Builders PVT.Limited",
+            "month_and_year": "05-04-2023 to 04-04-2026",
+            "validity": "3 years"
+          },
+          {
+            "organisation_name": "CMTI Construction Management Training Institute",
+            "month_and_year": "15-04-2021 to 14-04-2026",
+            "validity": "5 years"
+          }
+        ]
       }
     ]
   },

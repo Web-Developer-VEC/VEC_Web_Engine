@@ -257,7 +257,6 @@
         "title": "insertion of gallery images",
         "category": "25-26 FIRST MEETING",
         "meta_data": {
-            "category": "25-26 FIRST MEETING",
             "image_path": [
                 "/static/images/iqac/24-25_first_meeting/1.webp",
                 "/static/images/iqac/24-25_first_meeting/2.webp"
@@ -289,14 +288,7 @@
         "collection_type": "gallery",
         "action": "delete",
         "title": "deletion of gallery images",
-        "category": "24-25 FIRST MEETING",
-        "meta_data": {
-            "image_path": [
-                "/static/images/iqac/24-25_second_meeting/1.webp",
-                "/static/images/iqac/24-25_second_meeting/2.webp"
-            ]
-        },
-        "original_data": null
+        "category": "24-25 FIRST MEETING"        
     },
      {
         "collectionName": "iqac",

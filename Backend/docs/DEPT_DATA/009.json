@@ -139,7 +139,10 @@
             "department_name": "Electronics and Communication Engineering (ECE)",
             "unique_id": "VEC-009-01-090",
             "pdf_path": "",
-            "qualification": ["M.E.","Ph.D"],
+            "qualification": [
+              "M.E.",
+              "Ph.D"
+            ],
             "hod_message": [
               "Department of ECE at Velammal Engineering College has proved its excellence in the field of Teaching, Research, placement and Student Activities since its establishment from 1995 onwards. Creative engineers solve practical problems to find out a solution for a societal problem. Also to crack society’s utmost challenges, country desires ECE engineers with entrepreneurial state of mind who can apply curiosity and creativity to the technical skillets in order to come up with truly novel ideas. Students in our department are trained with relevant practice through labs and projects for building the problem-solving skills, keeping industry requirements in view."
             ],
@@ -182,7 +185,7 @@
             "designation": "Professor & Head",
             "unique_id": "VEC-009-01-102",
             "socialmedia_links": {
-              "linkedin": "", 
+              "linkedin": "",
               "googlescholar": "https://scholar.google.com/citations?user=CXHND6AAAAAJ&hl=en",
               "researchgate": "https://www.researchgate.net/profile/Mary-Joans",
               "orchidprofile": "https://orcid.org/0009-0008-2908-5438",
@@ -256,21 +259,6 @@
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-03-012.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-03-012.pdf"
-          },
-          {
-            "name": "Dr. PONNRAJAKUMARI M",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-009-04-021",
-            "socialmedia_links": {
-              "linkedin": "http://www.linkedin.com/in/ponnrajakumari-m-137331204/",
-              "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=yc195xQAAAAJ",
-              "researchgate": "https://www.researchgate.net/profile/Ponnrajakumari-Mahalingam",
-              "orchidprofile": "https://orcid.org/0000-0002-7090-8191",
-              "publonprofile": "",
-              "scopus": ""
-            },
-            "image_path": "/static/images/profile_photos/009/VEC-009-04-021.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-021.pdf"
           },
           {
             "name": "Dr. LAVANYA K",
@@ -631,6 +619,66 @@
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-655.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-655.pdf"
+          },
+          {
+            "name": "Dr. HIMAYAVARDHINI J",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-800",
+            "socialmedia_links": {
+              "linkedin": "www.linkedin.com/in/himayavardhini-j-47b70020b/",
+              "googlescholar": "https://scholar.google.com/citations?user=xf2VLcwAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0006-1965-6706",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-800.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-800.pdf"
+          },
+          {
+            "name": "Mrs. PRABHAVATHY M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-900",
+            "socialmedia_links": {
+              "linkedin": "www.linkedin.com/in/prabhavathy-mahalingam-7b39257b",
+              "googlescholar": "https://scholar.google.com/citations?user=3v9ZEREAAAAJ&amp;hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0000-0002-9164-0366",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-900.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-900.pdf"
+          },
+          {
+            "name": "Mrs. ARCHANA M",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-200",
+            "socialmedia_links": {
+              "linkedin": "www.linkedin.com/in/archana-mohan-30553b79/",
+              "googlescholar": "https://scholar.google.com/citations?user=7x9kJJEAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0001-2332-1590",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-200.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-200.pdf"
+          },
+          {
+            "name": "Mrs. JAISAKTHI R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-009-04-205",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/009/VEC-009-04-205.webp",
+            "pdf_path": ""
           }
         ]
       },
@@ -668,7 +716,7 @@
             "pdf_path": ""
           },
           {
-            "name": "Mrs. RAJESWARI T",
+            "name": "Mrs. SELVAPRIYA R",
             "designation": "Lab Instructor",
             "unique_id": "VEC-009-05-006",
             "socialmedia_links": {
@@ -700,55 +748,55 @@
       },
       {
         "category": "curriculum",
-        "content":[
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
               {
-                "heading":"Curriculum & Syllabus",
-                "syllabus":[
-                {
-                  "year": "R - 2023",
-                  "docs":[
-                    {
-                    "name":"I Semester",
-                      "pdf_path": ""
+                "year": "R - 2023",
+                "docs": [
+                  {
+                    "name": "I Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM I WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"II Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "II Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM II WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"III Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "III Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM III WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"IV Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "IV Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM IV WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"V Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "V Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM V WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"VI Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VI Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM VI WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"VII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM VII WITH TW & SDG .pdf"
                   },
-                    {
-                    "name":"VIII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VIII Semester",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) SEM VIII WITH TW & SDG.pdf"
                   },
-                    {
-                    "name":"Elective Courses",
-                      "pdf_path": ""
+                  {
+                    "name": "Elective Courses",
+                    "pdf_path": "/static/pdfs/curriculum/009/B.E. ECE (R2023) PROFESSIONAL ELECTIVE OPEN ELCTIVE AND MANDATORY COURSE WITH TW & SDG .pdf"
                   }
                 ]
-                },
-                {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/009/reg_21.pdf"
-                }
+              },
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/009/reg_21.pdf"
+              }
             ]
           }
         ]
@@ -771,20 +819,28 @@
         "category": "newsletter",
         "content": [
           {
-            "year":"2025" ,
-            "pdf_path":[ "/static/pdfs/newsletter/009/2025.pdf" ]
+            "year": "2025",
+            "pdf_path": [
+              "/static/pdfs/newsletter/009/2025.pdf"
+            ]
           },
           {
-            "year":"2024" ,
-            "pdf_path":[ "/static/pdfs/newsletter/009/2024.pdf" ]
+            "year": "2024",
+            "pdf_path": [
+              "/static/pdfs/newsletter/009/2024.pdf"
+            ]
           },
           {
-            "year":"2023" ,
-            "pdf_path":[ "/static/pdfs/newsletter/009/2023.pdf" ]
+            "year": "2023",
+            "pdf_path": [
+              "/static/pdfs/newsletter/009/2023.pdf"
+            ]
           },
           {
-            "year":"2022" ,
-            "pdf_path":[ "/static/pdfs/newsletter/009/2022.pdf" ]
+            "year": "2022",
+            "pdf_path": [
+              "/static/pdfs/newsletter/009/2022.pdf"
+            ]
           }
         ]
       }
@@ -832,7 +888,7 @@
                 "name": "Symposium",
                 "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Symposium.pdf"
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": "/static/pdfs/dept_activities/009/2024-2025/Conference.pdf"
               },
@@ -843,7 +899,7 @@
             ]
           },
           {
-            "year":"2023 - 2024",
+            "year": "2023 - 2024",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
@@ -869,7 +925,7 @@
                 "name": "Symposium",
                 "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Symposium.pdf"
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Conference.pdf"
               },
@@ -878,13 +934,13 @@
                 "pdf_path": "/static/pdfs/dept_activities/009/2023-2024/Value Added Course.pdf"
               }
             ]
-           },
+          },
           {
             "year": "2022 - 2023",
             "activities_tile": [
               {
                 "name": "Guest Lecture",
-                "pdf_path":"/static/pdfs/dept_activities/009/2022-2023/Guest Lecture.pdf"
+                "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Guest Lecture.pdf"
               },
               {
                 "name": "Seminar",
@@ -906,7 +962,7 @@
                 "name": "Symposium",
                 "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Symposium.pdf"
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": "/static/pdfs/dept_activities/009/2022-2023/Conference.pdf"
               },
@@ -936,7 +992,7 @@
       {
         "category": "Pedagogy Initiatives",
         "content": [
-                    {
+          {
             "year": "2024 - 2025",
             "content": [
               {
@@ -989,80 +1045,67 @@
           {
             "image_path": "/static/images/student_activities/009/1.webp",
             "event_name": "RAISEathon",
-            "image_content": "Raj Kisan ,Santhosh M, Vijay A, Shalini Agnes Mary A  won 1st place and a cash prize of 300000lakhs in RAISEathon",
-            "date": ""
+            "image_content": "Raj Kisan ,Santhosh M, Vijay A, Shalini Agnes Mary A  won 1st place and a cash prize of 300000lakhs in RAISEathon"
           },
           {
             "image_path": "/static/images/student_activities/009/2.webp",
             "event_name": "omega 24",
-            "image_content": "Raj Kisan  Santhosh M Monisha  Vijay A Shalini Agnes Mary A won First place  in hackathon and second price in paper presentation in Hindustan College omega 24 Symposium",
-            "date": ""
+            "image_content": "Raj Kisan  Santhosh M Monisha  Vijay A Shalini Agnes Mary A won First place  in hackathon and second price in paper presentation in Hindustan College omega 24 Symposium"
           },
           {
             "image_path": "/static/images/student_activities/009/3.webp",
             "event_name": "Essay competition",
-            "image_content": "Saravana kumar won 3rd place in Essay competition conducted by Govt of India",
-            "date": ""
+            "image_content": "Saravana kumar won 3rd place in Essay competition conducted by Govt of India"
           },
           {
             "image_path": "/static/images/student_activities/009/4.webp",
             "event_name": " paper presentation",
-            "image_content": "Anshul , Dinesh Kumar , Santhosh S , Yeswanth Bala  won  2nd place in paper presentation held at DR.MGR University.",
-            "date": ""
+            "image_content": "Anshul , Dinesh Kumar , Santhosh S , Yeswanth Bala  won  2nd place in paper presentation held at DR.MGR University."
           },
           {
             "image_path": "/static/images/student_activities/009/5.webp",
             "event_name": " paper presentation",
-            "image_content": "Jeevath , Praveen ,Sivaram, Elumalai won  2nd place in paper presentation held at sri sairam Institute of Technology.",
-            "date": ""
+            "image_content": "Jeevath , Praveen ,Sivaram, Elumalai won  2nd place in paper presentation held at sri sairam Institute of Technology."
           },
           {
             "image_path": "/static/images/student_activities/009/6.webp",
             "event_name": "Paper Presentation",
-            "image_content": " Lincy J.M ,Vijaythri  won 3rd place in paper presentation held at DR.MGR University",
-            "date": ""
+            "image_content": " Lincy J.M ,Vijaythri  won 3rd place in paper presentation held at DR.MGR University"
           },
           {
             "image_path": "/static/images/student_activities/009/7.webp",
             "event_name": "Clue crackers",
-            "image_content": "Jerin S, Arvind Krishnan K,Siva Ram.P  won 3rd Clue crackers event held at St.Joseph Institute of technology.",
-            "date": "YYYY-MM-DD"
+            "image_content": "Jerin S, Arvind Krishnan K,Siva Ram.P  won 3rd Clue crackers event held at St.Joseph Institute of technology."
           },
           {
             "image_path": "/static/images/student_activities/009/8.webp",
             "event_name": "the 34th DAE All India Essay Contest ",
-            "image_content": "Mr.R.SARAVANAKUMAR, B.E.ECE, II-YEAR (2nd from left) is the only student participated from Tamilnadu and won III- Prize. He received a cash award of Rs.15,000/- with Free Travel, Boarding and Accommodation Allowances for his essay on “Nuclear Power-Secured Energy Source towards Atmanirbhar Bharat” at the 34th DAE All India Essay Contest on “Nuclear Science and Technology” during the Celebration of 75 Years of Independence, organized by the Department of Atomic Energy, Government of India, from 26.10.2022 to 31.10.2022 at Mumbai. ",
-            "date": "2022-10-26"
+            "image_content": "Mr.R.SARAVANAKUMAR, B.E.ECE, II-YEAR (2nd from left) is the only student participated from Tamilnadu and won III- Prize. He received a cash award of Rs.15,000/- with Free Travel, Boarding and Accommodation Allowances for his essay on “Nuclear Power-Secured Energy Source towards Atmanirbhar Bharat” at the 34th DAE All India Essay Contest on “Nuclear Science and Technology” during the Celebration of 75 Years of Independence, organized by the Department of Atomic Energy, Government of India, from 26.10.2022 to 31.10.2022 at Mumbai. "
           },
           {
             "image_path": "/static/images/student_activities/009/9.webp",
             "event_name": "KLA Hackathon ",
-            "image_content": "Ms.Shreenidhi. G (2nd Prize) (2nd from left) and Naveena. R (special mention) (1st from left) of III year ECE students Won 2 awards in KLA Hackathon 2023 and received cash prize of Rs 20,000 totally.",
-            "date": "YYYY-MM-DD"
+            "image_content": "Ms.Shreenidhi. G (2nd Prize) (2nd from left) and Naveena. R (special mention) (1st from left) of III year ECE students Won 2 awards in KLA Hackathon 2023 and received cash prize of Rs 20,000 totally."
           },
           {
             "image_path": "/static/images/student_activities/009/10.webp",
             "event_name": "Mobile Kiosk for Fish vending",
-            "image_content": "Mr. Yokesh J – (2022-23) ( 6th from left) received the Certificate of Merit from Shri Jatindra Nath Swain, I.A.S., Secretary, Department of Fisheries, Ministry of  Fisheries, Animal Husbandry & Dairying, Government of Indiaunder the category  “National Design Challenge on Innovative design of Mobile Kiosk for Fish vending” conducted by CII. Felicitation ceremony was held on 27.10.2022 at   Gulmohar Hall,  Habitat Centre, Delhi.",
-            "date": "2022-10-27"
+            "image_content": "Mr. Yokesh J – (2022-23) ( 6th from left) received the Certificate of Merit from Shri Jatindra Nath Swain, I.A.S., Secretary, Department of Fisheries, Ministry of  Fisheries, Animal Husbandry & Dairying, Government of Indiaunder the category  “National Design Challenge on Innovative design of Mobile Kiosk for Fish vending” conducted by CII. Felicitation ceremony was held on 27.10.2022 at   Gulmohar Hall,  Habitat Centre, Delhi."
           },
           {
             "image_path": "/static/images/student_activities/009/11.webp",
             "event_name": "Accenture Innovation Challenge ",
-            "image_content": "Faheem Jina, Yokesh and Harini  of our  IV year ECE students won the Finals in  Accenture Innovation Challenge Competition 2021 and each received Apple iMac worth of Rs 2.5 lakhs",
-            "date": "YYYY-MM-DD"
+            "image_content": "Faheem Jina, Yokesh and Harini  of our  IV year ECE students won the Finals in  Accenture Innovation Challenge Competition 2021 and each received Apple iMac worth of Rs 2.5 lakhs"
           },
           {
             "image_path": "/static/images/student_activities/009/12.webp",
             "event_name": "National Hackathon",
-            "image_content": "ECE Dept students have received Finalist Medals and Certificates in the KAVACH-2023.  National Hackathon organized by MoE's Innovation Cell, Govt. of India",
-            "date": "YYYY-MM-DD"
+            "image_content": "ECE Dept students have received Finalist Medals and Certificates in the KAVACH-2023.  National Hackathon organized by MoE's Innovation Cell, Govt. of India"
           },
           {
             "image_path": "/static/images/student_activities/009/13.webp",
             "event_name": "Smart India Hackathon",
-            "image_content": "Present ECE III Yr Students Sowmya and Bowman team participated in Smart India Hackathon grand finale held at Andhra Pradesh in 2022",
-            "date": "YYYY-MM-DD"
+            "image_content": "Present ECE III Yr Students Sowmya and Bowman team participated in Smart India Hackathon grand finale held at Andhra Pradesh in 2022"
           }
         ]
       }
@@ -1131,54 +1174,54 @@
         "category": "mous_details",
         "content": [
           {
-            "ORGANISATION_NAME": "UNIQUE Technologies",
-            "MONTH_AND_YEAR": "16.07.2021",
-            "VALIDITY": "2 years "
+            "organisation_name": "UNIQUE Technologies",
+            "month_and_year": "16.07.2021",
+            "validity": "2 years "
           },
           {
-            "ORGANISATION_NAME": "PANTECH ELEARNING",
-            "MONTH_AND_YEAR": "29.07.2021",
-            "VALIDITY": "Till date"
+            "organisation_name": "PANTECH ELEARNING",
+            "month_and_year": "29.07.2021",
+            "validity": "Till date"
           },
           {
-            "ORGANISATION_NAME": "LEMA LABS TECHNOLOGIES PVT LTD, THARAMANI, CHENNAI-600113",
-            "MONTH_AND_YEAR": "04.09.2021",
-            "VALIDITY": "Till date"
+            "organisation_name": "LEMA LABS TECHNOLOGIES PVT LTD, THARAMANI, CHENNAI-600113",
+            "month_and_year": "04.09.2021",
+            "validity": "Till date"
           },
           {
-            "ORGANISATION_NAME": "AIDELTECZ, PERUNGUDI, CHENNAI-600096",
-            "MONTH_AND_YEAR": "09.10.2021",
-            "VALIDITY": "Till date"
+            "organisation_name": "AIDELTECZ, PERUNGUDI, CHENNAI-600096",
+            "month_and_year": "09.10.2021",
+            "validity": "Till date"
           },
           {
-            "ORGANISATION_NAME": "STEAM TROOPS Innovation Labs Pvt Ltd, West CIT Nagar, Porur, Chennai -600116",
-            "MONTH_AND_YEAR": "05.09.2023",
-            "VALIDITY": "Till date"
+            "organisation_name": "STEAM TROOPS Innovation Labs Pvt Ltd, West CIT Nagar, Porur, Chennai -600116",
+            "month_and_year": "05.09.2023",
+            "validity": "Till date"
           },
           {
-            "ORGANISATION_NAME": "RETECH Solutions Pvt Ltd, No.31, Alagesan Street, West Tambaram, Chennai",
-            "MONTH_AND_YEAR": "29.09.2023",
-            "VALIDITY": "Till date"
+            "organisation_name": "RETECH Solutions Pvt Ltd, No.31, Alagesan Street, West Tambaram, Chennai",
+            "month_and_year": "29.09.2023",
+            "validity": "Till date"
           },
           {
-            "ORGANISATION_NAME": "ABE Semiconductor Designs, Level 5, North Block, Thamarai Tech Park, Thiru Vika Industrial Estate, Guindy, Chennai",
-            "MONTH_AND_YEAR": "13.03.2024",
-            "VALIDITY": "Till date"
+            "organisation_name": "ABE Semiconductor Designs, Level 5, North Block, Thamarai Tech Park, Thiru Vika Industrial Estate, Guindy, Chennai",
+            "month_and_year": "13.03.2024",
+            "validity": "Till date"
           },
           {
-            "ORGANISATION_NAME": "Axis Global Institute of Industrial Training, Ekkattuthangal, Chennai – 600 032",
-            "MONTH_AND_YEAR": "10.07.2024",
-            "VALIDITY": "Till date"
+            "organisation_name": "Axis Global Institute of Industrial Training, Ekkattuthangal, Chennai – 600 032",
+            "month_and_year": "10.07.2024",
+            "validity": "Till date"
           },
           {
-            "ORGANISATION_NAME": "FIIT Formacion Pvt Ltd, No.8, 1st Floor, Kamajar Nagar Main Road, Avadi, Chennai-71",
-            "MONTH_AND_YEAR": "27.09.2024",
-            "VALIDITY": "Till date"
+            "organisation_name": "FIIT Formacion Pvt Ltd, No.8, 1st Floor, Kamajar Nagar Main Road, Avadi, Chennai-71",
+            "month_and_year": "27.09.2024",
+            "validity": "Till date"
           },
           {
-            "ORGANISATION_NAME": "Airports Authority of India, Chennai International Airport, Chennai - 600 027",
-            "MONTH_AND_YEAR": "05.11.2024",
-            "VALIDITY": "Till date"
+            "organisation_name": "Airports Authority of India, Chennai International Airport, Chennai - 600 027",
+            "month_and_year": "05.11.2024",
+            "validity": "Till date"
           }
         ]
       }

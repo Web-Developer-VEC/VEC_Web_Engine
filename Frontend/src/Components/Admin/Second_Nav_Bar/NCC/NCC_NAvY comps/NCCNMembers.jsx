@@ -100,9 +100,9 @@ function NCCNMembers({ data }) {
 
       const coordinatorNormalized = coordinator
         ? {
-            ...coordinator,
-            image_path: normalizeIncomingImagePath(coordinator.image_path)
-          }
+          ...coordinator,
+          image_path: normalizeIncomingImagePath(coordinator.image_path)
+        }
         : null;
 
       const studentsWithIds = students.map((s, i) => ({
@@ -182,10 +182,10 @@ function NCCNMembers({ data }) {
       prev.map((s, i) =>
         i === index
           ? {
-              ...s,
-              image_file: file,
-              image_path: `/static/images/ncc/ncc_navy/${file.name}`
-            }
+            ...s,
+            image_file: file,
+            image_path: `/static/images/ncc/ncc_navy/${file.name}`
+          }
           : s
       )
     );
@@ -306,7 +306,7 @@ function NCCNMembers({ data }) {
     setIsDirty(false);
     setSelectedItems([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
+    // toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -377,21 +377,35 @@ function NCCNMembers({ data }) {
         collectionName: "ncc_navy",
         collection_type: "team",
         action,
-        category: isStudent ? "student_coordinators" : "faculty_coordinators",
+        category: isStudent ? "student_coordinatores" : "faculty_coordinatores",
         title:
           action === "insert"
             ? isStudent
               ? "Add Student Coordinator"
               : "Add Faculty Coordinator"
             : action === "update"
-            ? isStudent
-              ? "Update Student Coordinator"
-              : "Update Faculty Coordinator"
-            : isStudent
-            ? "Delete Student Coordinator"
-            : "Delete Faculty Coordinator",
-        ...(original_data ? { original_data: cleanImageFields(original_data) } : {}),
-        ...(meta_data ? { meta_data: cleanImageFields(meta_data) } : {})
+              ? isStudent
+                ? "Update Student Coordinator"
+                : "Update Faculty Coordinator"
+              : isStudent
+                ? "Delete Student Coordinator"
+                : "Delete Faculty Coordinator",
+
+        ...(original_data
+          ? {
+            original_data: isStudent
+              ? cleanStudentFields(original_data)
+              : cleanImageFields(original_data),
+          }
+          : {}),
+
+        ...(meta_data
+          ? {
+            meta_data: isStudent
+              ? cleanStudentFields(meta_data)
+              : cleanImageFields(meta_data),
+          }
+          : {})
       };
     });
   };
@@ -414,7 +428,7 @@ function NCCNMembers({ data }) {
 
     try {
       await sendRequest(payload, files);
-      toast.success("Request sent successfully!");
+      //toast.success("Request sent successfully!");
 
       // update committed state so UI shows approved paths (we assume server will store the same path pattern)
       setCommittedCoor(deepCopy(pendingCoor || coor));
@@ -568,7 +582,6 @@ function NCCNMembers({ data }) {
 
     return changes;
   };
-
   const cleanImageFields = (obj) => {
     if (!obj) return obj;
 
@@ -577,8 +590,24 @@ function NCCNMembers({ data }) {
     delete cleaned.image_file;
 
     if (cleaned.image_path?.startsWith("blob:")) {
-      cleaned.image_path = undefined;
+      delete cleaned.image_path;
     }
+
+    if (!cleaned.image_path || cleaned.image_path.trim() === "") {
+      delete cleaned.image_path;
+    }
+
+    return cleaned;
+  };
+
+  // Student payload should NEVER contain image_path
+  const cleanStudentFields = (obj) => {
+    if (!obj) return obj;
+
+    const cleaned = { ...obj };
+
+    delete cleaned.image_file;
+    delete cleaned.image_path;
 
     return cleaned;
   };
@@ -627,8 +656,8 @@ function NCCNMembers({ data }) {
                     previewImgs.coor
                       ? previewImgs.coor
                       : coor?.image_path
-                      ? UrlParser(coor.image_path)
-                      : "/placeholder-image.jpg"
+                        ? UrlParser(coor.image_path)
+                        : "/placeholder-image.jpg"
                   }
                   alt={coor?.name || "Coordinator"}
                   className={styles.coordinatorImage}
@@ -788,8 +817,8 @@ function NCCNMembers({ data }) {
                   previewImgs.coor
                     ? previewImgs.coor
                     : coor?.image_path
-                    ? UrlParser(coor.image_path)
-                    : "/placeholder-image.jpg"
+                      ? UrlParser(coor.image_path)
+                      : "/placeholder-image.jpg"
                 }
                 alt={coor?.name || "Coordinator"}
                 className={styles.coordinatorImage}

@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./IQAC.css";
 import Banner from "../../Banner";
 import axios from "axios";
 import SideNav from "../SideNav";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
-import { Send, Pencil, X, Trash2, Plus } from 'lucide-react';
-import { ToastContainer } from "react-toastify";
+import { Send, Pencil, X, Trash2, Plus } from "lucide-react";
+import { ToastContainer,toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import IqaMet from "./mom";
 import IqaAud from "./acadamicaudit";
@@ -15,7 +15,6 @@ import IqaQar from "./agar";
 import IqaMem from "./member";
 import IqaGal from "./gallery";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
-
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -29,25 +28,29 @@ const UrlParser = (path) => {
     return path.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
 
-const AdminIQAC = ({ toggle , theme }) => {
-    const [iqacData, setIqacData] = useState(null);
-    const [isLoading, setLoading] = useState(true);
-    const [iqa, setIqa] = useState("Objectives");
-    const navigate = useNavigate();
-    const navData = {
-        "Objectives": <IqaObj/>,
-        "Coordinator": <IqaCor/>,
-        "Members": <IqaMem iqacData={iqacData}/>,
-        "Minutes of Meetings": <IqaMet iqacData={iqacData}/>,
-        "Academic and Administrative Audit": <IqaAud iqacData={iqacData}/>,
-        "Gallery": <IqaGal iqacData={iqacData}/>,
-        "Strategic Development Plan": <IqaOne title={"Strategic Development Plan"}/>,
-        "Best Practices": <IqaPra iqacData={iqacData}/>,
-        "Institutional Distinctiveness": <IqaOne title={"Institutional Distinctiveness"}/>,
-        "Code of Ethics": <IqaOne title={"Code of Ethics"}/>,
-        "AQAR": <IqaQar iqacData={iqacData}/>,
-        "ISO Certificate": <IqaOne title={"ISO Certificate"}/>,
-    };
+const AdminIQAC = ({ toggle, theme }) => {
+  const [iqacData, setIqacData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [iqa, setIqa] = useState("Objectives");
+  const navigate = useNavigate();
+  const navData = {
+    Objectives: <IqaObj />,
+    Coordinator: <IqaCor />,
+    Members: <IqaMem iqacData={iqacData} />,
+    "Minutes of Meetings": <IqaMet iqacData={iqacData} />,
+    "Academic and Administrative Audit": <IqaAud iqacData={iqacData} />,
+    Gallery: <IqaGal iqacData={iqacData} />,
+    "Strategic Development Plan": (
+      <IqaOne title={"Strategic Development Plan"} />
+    ),
+    "Best Practices": <IqaPra iqacData={iqacData} />,
+    "Institutional Distinctiveness": (
+      <IqaOne title={"Institutional Distinctiveness"} />
+    ),
+    "Code of Ethics": <IqaOne title={"Code of Ethics"} />,
+    AQAR: <IqaQar iqacData={iqacData} />,
+    "ISO Certificate": <IqaOne title={"ISO Certificate"} />,
+  };
 
     useEffect(() => {
 
@@ -85,8 +88,8 @@ const AdminIQAC = ({ toggle , theme }) => {
             }
         };
 
-        fetchData();
-    }, [iqa]);
+    fetchData();
+  }, [iqa]);
 
     // Render Objectives content
     function IqaObj () {
@@ -97,35 +100,35 @@ const AdminIQAC = ({ toggle , theme }) => {
         const [changes, setChanges] = useState({ about: null, objectives: [] });
         const { sendRequest, loading, error } = useAdminRequest();
 
-        if (!iqacData) {
-            return (
-                <div className="flex justify-center items-center min-h-screen">
-                    <LoadComp />
-                </div>
-            );
-        }
+    if (!iqacData) {
+      return (
+        <div className="flex justify-center items-center min-h-screen">
+          <LoadComp />
+        </div>
+      );
+    }
 
-        const handleAboutChange = (e) => {
-            setEditedData({ ...editedData, about: e.target.value });
-        };
+    const handleAboutChange = (e) => {
+      setEditedData({ ...editedData, about: e.target.value });
+    };
 
-        const handleObjectiveChange = (index, value) => {
-            const newObjectives = [...editedData.objectives];
-            newObjectives[index] = value;
-            setEditedData({ ...editedData, objectives: newObjectives });
-        };
+    const handleObjectiveChange = (index, value) => {
+      const newObjectives = [...editedData.objectives];
+      newObjectives[index] = value;
+      setEditedData({ ...editedData, objectives: newObjectives });
+    };
 
-        const handleAddObjective = () => {
-            setEditedData({
-                ...editedData,
-                objectives: [...editedData.objectives, ""]
-            });
-        };
+    const handleAddObjective = () => {
+      setEditedData({
+        ...editedData,
+        objectives: [...editedData.objectives, ""],
+      });
+    };
 
-        const handleDeleteObjective = (index) => {
-            const newObjectives = editedData.objectives.filter((_, i) => i !== index);
-            setEditedData({ ...editedData, objectives: newObjectives });
-        };
+    const handleDeleteObjective = (index) => {
+      const newObjectives = editedData.objectives.filter((_, i) => i !== index);
+      setEditedData({ ...editedData, objectives: newObjectives });
+    };
 
         const handleSave = () => {
             // Compare original with edited and collect changes with proper action types
@@ -195,16 +198,16 @@ const AdminIQAC = ({ toggle , theme }) => {
                 }
             });
 
-            // Sort changes by index for better display
-            objectiveChanges.sort((a, b) => a.index - b.index);
+      // Sort changes by index for better display
+      objectiveChanges.sort((a, b) => a.index - b.index);
 
-            setSavedData(editedData);
-            setChanges({
-                about: aboutChange,
-                objectives: objectiveChanges
-            });
-            setIsEditing(false);
-        };
+      setSavedData(editedData);
+      setChanges({
+        about: aboutChange,
+        objectives: objectiveChanges,
+      });
+      setIsEditing(false);
+    };
 
         // Helper function to calculate similarity between two strings
         const calculateSimilarity = (str1, str2) => {
@@ -237,23 +240,24 @@ const AdminIQAC = ({ toggle , theme }) => {
             return (maxLength - distance) / maxLength;
         };
 
-        const handleCancel = () => {
-            setEditedData(savedData);
-            setIsEditing(false);
-            setChanges({ about: null, objectives: [] });
-        };
+    const handleCancel = () => {
+      setEditedData(savedData);
+      setIsEditing(false);
+      setChanges({ about: null, objectives: [] });
+    };
 
-        const handleDiscard = () => {
-            setSavedData(iqacData);
-            setEditedData(iqacData);
-            setChanges({ about: null, objectives: [] });
-        };
+    const handleDiscard = () => {
+      setSavedData(iqacData);
+      setEditedData(iqacData);
+      setChanges({ about: null, objectives: [] });
+      //toast.info("Changes discarded.");
+    };
 
-        const handleUndoAbout = () => {
-            setSavedData(prev => ({ ...prev, about: iqacData.about }));
-            setEditedData(prev => ({ ...prev, about: iqacData.about }));
-            setChanges(prev => ({ ...prev, about: null }));
-        };
+    const handleUndoAbout = () => {
+      setSavedData((prev) => ({ ...prev, about: iqacData.about }));
+      setEditedData((prev) => ({ ...prev, about: iqacData.about }));
+      setChanges((prev) => ({ ...prev, about: null }));
+    };
 
         const handleUndoObjective = (changeIndex) => {
             // Remove this specific change
@@ -293,36 +297,40 @@ const AdminIQAC = ({ toggle , theme }) => {
             }));
         };
 
-        const handleRequestConfirm = async () => {
-            if (!changes.about && changes.objectives.length === 0) return;
+    const handleRequestConfirm = async () => {
+      if (!changes.about && changes.objectives.length === 0) return;
 
-            const payload = [{
-                collectionName: "iqac",
-                collection_type: "objectives",
-                action: "update",
-                title: "updation of iqac objectives",
-                meta_data: {
-                    about: savedData.about,
-                    objectives: savedData.objectives,
-                    changes_summary: {
-                        about: changes.about,
-                        objectives: changes.objectives
-                    }
-                },
-                original_data: {
-                    about: iqacData.about,
-                    objectives: iqacData.objectives
-                }
-            }];
+      const payload = [
+        {
+          collectionName: "iqac",
+          collection_type: "objectives",
+          action: "update",
+          title: "updation of iqac objectives",
+          meta_data: {
+            about: savedData.about,
+            objectives: savedData.objectives,
+            changes_summary: {
+              about: changes.about,
+              objectives: changes.objectives,
+            },
+          },
+          original_data: {
+            about: iqacData.about,
+            objectives: iqacData.objectives,
+          },
+        },
+      ];
 
-            const result = await sendRequest(payload, null);
+      const result = await sendRequest(payload, null);
+     
 
-            if (result) {
-                setShowRequestModal(false);
-                setChanges({ about: null, objectives: [] });
-                setIsEditing(false);
-            }
-        };
+      if (result) {
+        setShowRequestModal(false);
+        setChanges({ about: null, objectives: [] });
+        setIsEditing(false);
+        //toast.success("The request is summitted successfully")
+      }
+    };
 
         const getActionDisplay = (action) => {
             switch(action) {
@@ -333,117 +341,134 @@ const AdminIQAC = ({ toggle , theme }) => {
             }
         };
 
-        return (
-            <>
-                <div className="objectives-container relative">
-                    {/* Edit Button */}
-                    {!isEditing && (
-                        <button
-                            onClick={() => setIsEditing(true)}
-                            className="absolute top-4 right-8 bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt z-10"
-                        >
-                            Edit
-                        </button>
-                    )}
+    return (
+      <>
+        <div className="objectives-container relative">
+          {/* Edit Button */}
+          {!isEditing && (
+            <button
+              onClick={() => setIsEditing(true)}
+              className="absolute top-4 right-8 bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt z-10"
+            >
+              Edit
+            </button>
+          )}
 
-                    {/* About IQAC Card */}
-                    <div className="objectives-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
-                        <h3 className="objectives-heading text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">About IQAC</h3>
-                        {isEditing ? (
-                            <textarea
-                                value={editedData.about}
-                                onChange={handleAboutChange}
-                                className="w-full px-3 py-2 border rounded min-h-[150px] text-text dark:text-drkt dark:bg-gray-800"
-                            />
-                        ) : (
-                            <p className="objectives-text text-text dark:text-drkt">{savedData?.about}</p>
-                        )}
-                    </div>
+          {/* About IQAC Card */}
+          <div className="objectives-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
+            <h3 className="objectives-heading text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">
+              About IQAC
+            </h3>
+            {isEditing ? (
+              <textarea
+                value={editedData.about}
+                onChange={handleAboutChange}
+                className="w-full px-3 py-2 border rounded min-h-[150px] text-text dark:text-drkt dark:bg-gray-800"
+              />
+            ) : (
+              <p className="objectives-text text-text dark:text-drkt">
+                {savedData?.about}
+              </p>
+            )}
+          </div>
 
-                    {/* Objectives Card */}
-                    <div className="objectives-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
-                        <h3 className="objectives-heading text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">IQAC Objectives</h3>
-                        {isEditing ? (
-                            <div className="space-y-3">
-                                {editedData.objectives?.map((objective, index) => (
-                                    <div key={index} className="flex gap-2 items-start">
-                                        <span className="text-text dark:text-drkt mt-2">{index + 1}.</span>
-                                        <textarea
-                                            value={objective}
-                                            onChange={(e) => handleObjectiveChange(index, e.target.value)}
-                                            className="flex-1 px-3 py-2 border rounded min-h-[80px] text-text dark:text-drkt dark:bg-gray-800"
-                                        />
-                                        <button
-                                            onClick={() => handleDeleteObjective(index)}
-                                            className="mt-2 text-red-500 hover:text-red-700"
-                                        >
-                                            <Trash2 size={18} />
-                                        </button>
-                                    </div>
-                                ))}
-                                <button
-                                    onClick={handleAddObjective}
-                                    className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-[#800000] hover:text-drkt rounded"
-                                >
-                                    <Plus size={16} /> Add Objective
-                                </button>
-                            </div>
-                        ) : (
-                            <ul className="objectives-list">
-                                {savedData?.objectives?.map((objective, index) => (
-                                    <li key={index} className="objectives-item text-text dark:text-drkt">{objective}</li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                </div>
+          {/* Objectives Card */}
+          <div className="objectives-card dark:bg-drkb border-l-4 border-secd dark:border-drks">
+            <h3 className="objectives-heading text-brwn dark:text-drkt border-b-2 border-secd dark:border-drks pb-1">
+              IQAC Objectives
+            </h3>
+            {isEditing ? (
+              <div className="space-y-3">
+                {editedData.objectives?.map((objective, index) => (
+                  <div key={index} className="flex gap-2 items-start">
+                    <span className="text-text dark:text-drkt mt-2">
+                      {index + 1}.
+                    </span>
+                    <textarea
+                      value={objective}
+                      onChange={(e) =>
+                        handleObjectiveChange(index, e.target.value)
+                      }
+                      className="flex-1 px-3 py-2 border rounded min-h-[80px] text-text dark:text-drkt dark:bg-gray-800"
+                    />
+                    <button
+                      onClick={() => handleDeleteObjective(index)}
+                      className="mt-2 text-red-500 hover:text-red-700"
+                    >
+                      <Trash2 size={18} />
+                    </button>
+                  </div>
+                ))}
+                <button
+                  onClick={handleAddObjective}
+                  className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-[#800000] hover:text-drkt rounded"
+                >
+                  <Plus size={16} /> Add Objective
+                </button>
+              </div>
+            ) : (
+              <ul className="objectives-list">
+                {savedData?.objectives?.map((objective, index) => (
+                  <li
+                    key={index}
+                    className="objectives-item text-text dark:text-drkt"
+                  >
+                    {objective}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
 
-                {/* Save + Cancel Buttons */}
-                {isEditing && (
-                    <div className="flex justify-end gap-2 mt-3 mr-4">
-                        <button
-                            onClick={handleCancel}
-                            className="px-4 py-2 bg-gray-400 text-white rounded"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            onClick={handleSave}
-                            className="px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
-                        >
-                            Save
-                        </button>
-                    </div>
-                )}
+        {/* Save + Cancel Buttons */}
+        {isEditing && (
+          <div className="flex justify-end gap-2 mt-3 mr-4">
+            <button
+              onClick={handleCancel}
+              className="px-4 py-2 bg-gray-400 text-white rounded"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleSave}
+              className="px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
+            >
+              Save
+            </button>
+          </div>
+        )}
 
-                {/* Discard + Request Buttons */}
-                {!isEditing && (changes.about || changes.objectives.length > 0) && (
-                    <div className="flex justify-end gap-2 mt-4 mr-5">
-                        <button
-                            onClick={handleDiscard}
-                            className="px-4 py-2 bg-gray-400 text-white rounded"
-                        >
-                            Discard Changes
-                        </button>
-                        <button
-                            onClick={() => setShowRequestModal(true)}
-                            className="px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
-                        >
-                            Request
-                        </button>
-                    </div>
-                )}
+        {/* Discard + Request Buttons */}
+        {!isEditing && (changes.about || changes.objectives.length > 0) && (
+          <div className="flex justify-end gap-2 mt-4 mr-5">
+            <button
+              onClick={handleDiscard}
+              className="px-4 py-2 bg-gray-400 text-white rounded"
+            >
+              Discard Changes
+            </button>
+            <button
+              onClick={() => setShowRequestModal(true)}
+              className="px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
+            >
+              Request
+            </button>
+          </div>
+        )}
 
-                <ToastContainer position="bottom-right" autoClose={3000} />
 
-                {/* Request Modal */}
-                {showRequestModal && (
-                    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
-                        <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px] max-h-[90vh] overflow-y-auto">
-                            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">Final Request for the Changes</h2>
-                            <p className="text-sm text-red-500 mb-4">
-                                Note: Your changes will stay pending until approved by the superior admin.
-                            </p>
+        {/* Request Modal */}
+        {showRequestModal && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
+            <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[600px] max-h-[90vh] overflow-y-auto">
+              <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
+                Final Request for the Changes
+              </h2>
+              <p className="text-sm text-red-500 mb-4">
+                Note: Your changes will stay pending until approved by the
+                superior admin.
+              </p>
 
                             <div className="max-h-[300px] overflow-y-auto mb-4">
                                 <table className="w-full text-left text-text dark:text-drkt border-collapse">
@@ -561,28 +586,28 @@ const AdminIQAC = ({ toggle , theme }) => {
         const [changes, setChanges] = useState({});
         const { sendRequest, loading, error } = useAdminRequest();
 
-        if (!iqacData) {
-            return (
-                <div className="flex justify-center items-center min-h-screen">
-                    <LoadComp />
-                </div>
-            );
-        }
+    if (!iqacData) {
+      return (
+        <div className="flex justify-center items-center min-h-screen">
+          <LoadComp />
+        </div>
+      );
+    }
 
-        const handleChange = (e) => {
-            setEditedData({ ...editedData, [e.target.name]: e.target.value });
-        };
+    const handleChange = (e) => {
+      setEditedData({ ...editedData, [e.target.name]: e.target.value });
+    };
 
-        const handleFileUpload = (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const fileURL = URL.createObjectURL(file);
-                setUploadedFile({ file, fileURL });
-            }
-        };
+    const handleFileUpload = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const fileURL = URL.createObjectURL(file);
+        setUploadedFile({ file, fileURL });
+      }
+    };
 
-        const handleSave = () => {
-            setSavedData(editedData);
+    const handleSave = () => {
+      setSavedData(editedData);
 
             // Compare original with edited and collect changes
             const diff = {};
@@ -607,23 +632,23 @@ const AdminIQAC = ({ toggle , theme }) => {
                 };
             }
 
-            setChanges(diff);
-            setIsEditing(false);
-        };
+      setChanges(diff);
+      setIsEditing(false);
+    };
 
-        const handleCancel = () => {
-            setEditedData(savedData);
-            setUploadedFile(null);
-            setIsEditing(false);
-            setChanges({});
-        };
+    const handleCancel = () => {
+      setEditedData(savedData);
+      setUploadedFile(null);
+      setIsEditing(false);
+      setChanges({});
+    };
 
-        const handleDiscard = () => {
-            setSavedData(iqacData);
-            setEditedData(iqacData);
-            setUploadedFile(null);
-            setChanges({});
-        };
+    const handleDiscard = () => {
+      setSavedData(iqacData);
+      setEditedData(iqacData);
+      setUploadedFile(null);
+      setChanges({});
+    };
 
         const handleUndo = (field) => {
             // Create a copy of changes without the undone field
@@ -649,11 +674,11 @@ const AdminIQAC = ({ toggle , theme }) => {
             setChanges(newChanges);
         };
 
-        const handleRequestConfirm = async () => {
-            if (Object.keys(changes).length === 0) return;
+    const handleRequestConfirm = async () => {
+      if (Object.keys(changes).length === 0) return;
 
-            // old data from DB
-            const originalData = iqacData;
+      // old data from DB
+      const originalData = iqacData;
 
             // new data from edits
             const metaData = {
@@ -676,142 +701,165 @@ const AdminIQAC = ({ toggle , theme }) => {
                 },
             ];            
 
-            const result = await sendRequest(payload, uploadedFile?.file);
+      const result = await sendRequest(payload, uploadedFile?.file);
 
-            if (result) {
-                setShowRequestModal(false);
-                setUploadedFile(null);
-                setChanges({});
-                setIsEditing(false);
-            }
-        };
+      if (result) {
+        setShowRequestModal(false);
+        setUploadedFile(null);
+        setChanges({});
+        setIsEditing(false);
+      }
+    };
 
-        return (
-            <div className="coordinator-container flex-wrap">
-                <h2 className="text-[24px] text-center text-accn dark:text-drkt my-4 basis-full">
-                    IQAC Coordinator
-                </h2>
+    return (
+      <div className="coordinator-container flex-wrap">
+        <h2 className="text-[24px] text-center text-accn dark:text-drkt my-4 basis-full">
+          IQAC Coordinator
+        </h2>
 
-                <div className="coordinator-card relative">
-                    {/* Edit Button */}
-                    {!isEditing && (
-                        <button
-                            onClick={() => {
-                                setEditedData(savedData);
-                                setIsEditing(true);
-                            }}
-                            className="absolute top-2 right-2 bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt"
-                        >
-                            Edit
-                        </button>
-                    )}
+        <div className="coordinator-card relative">
+          {/* Edit Button */}
+          {!isEditing && (
+            <button
+              onClick={() => {
+                setEditedData(savedData);
+                setIsEditing(true);
+              }}
+              className="absolute top-2 right-2 bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt"
+            >
+              Edit
+            </button>
+          )}
 
-                    {/* Image */}
-                    <div className="admin-coordinator-image-container">
-                        {isEditing ? (
-                            <>
-                                {uploadedFile ? (
-                                    <img src={uploadedFile.fileURL} alt="preview" className="coordinator-image mt-2" />
-                                ) : (
-                                    <img
-                                        src={UrlParser(editedData.image_path) || "/placeholder.svg"}
-                                        alt={editedData.name}
-                                        className="coordinator-image mt-2"
-                                    />
-                                )}
-                                <label className="block w-fit cursor-pointer bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt m-auto mt-2">
-                                    Replace Image
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={handleFileUpload}
-                                        className="hidden"
-                                    />
-                                </label>
-                            </>
-                        ) : (
-                            <img
-                                src={uploadedFile ? uploadedFile.fileURL : UrlParser(savedData.image_path)}
-                                alt={savedData.name}
-                                className="coordinator-image"
-                            />
-                        )}
-                    </div>
-
-                    {/* Details */}
-                    <div className="coordinator-details w-full">
-                        {isEditing ? (
-                            <>
-                                {["name", "designation", "role", "email", "phone"].map((field) => (
-                                    <input
-                                        key={field}
-                                        type={field === "email" ? "email" : "text"}
-                                        name={field}
-                                        value={editedData[field] || ""}
-                                        onChange={handleChange}
-                                        className="border px-2 py-1 rounded w-full mb-2"
-                                        placeholder={field}
-                                    />
-                                ))}
-                            </>
-                        ) : (
-                            <>
-                                <h3 className="coordinator-name">{savedData.name}</h3>
-                                <p><span className="font-semibold">Designation:</span> {savedData.designation}</p>
-                                <p><span className="font-semibold">Role:</span> {savedData.role}</p>
-                                <p><span className="font-semibold">Email:</span> {savedData.email}</p>
-                                <p><span className="font-semibold">Phone:</span> {savedData.phone}</p>
-                            </>
-                        )}
-                    </div>
-                </div>
-
-                {/* Save + Cancel */}
-                {isEditing && (
-                    <div className="flex gap-2 mt-3 justify-center">
-                        <button
-                            onClick={handleCancel}
-                            className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            onClick={handleSave}
-                            className="px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
-                        >
-                            Save
-                        </button>
-                    </div>
+          {/* Image */}
+          <div className="admin-coordinator-image-container">
+            {isEditing ? (
+              <>
+                {uploadedFile ? (
+                  <img
+                    src={uploadedFile.fileURL}
+                    alt="preview"
+                    className="coordinator-image mt-2"
+                  />
+                ) : (
+                  <img
+                    src={UrlParser(editedData.image_path) || "/placeholder.svg"}
+                    alt={editedData.name}
+                    className="coordinator-image mt-2"
+                  />
                 )}
+                <label className="block w-fit cursor-pointer bg-secd text-text px-3 py-1 rounded hover:bg-[#800000] hover:text-drkt m-auto mt-2">
+                  Replace Image
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                    className="hidden"
+                  />
+                </label>
+              </>
+            ) : (
+              <img
+                src={
+                  uploadedFile
+                    ? uploadedFile.fileURL
+                    : UrlParser(savedData.image_path)
+                }
+                alt={savedData.name}
+                className="coordinator-image"
+              />
+            )}
+          </div>
 
-                {/* Discard + Request */}
-                {!isEditing && Object.keys(changes).length > 0 && (
-                    <div className="flex justify-center gap-2 mt-4">
-                        <button
-                            onClick={handleDiscard}
-                            className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
-                        >
-                            Discard Changes
-                        </button>
-                        <button
-                            onClick={() => setShowRequestModal(true)}
-                            className="px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
-                        >
-                            Request
-                        </button>
-                    </div>
+          {/* Details */}
+          <div className="coordinator-details w-full">
+            {isEditing ? (
+              <>
+                {["name", "designation", "role", "email", "phone"].map(
+                  (field) => (
+                    <input
+                      key={field}
+                      type={field === "email" ? "email" : "text"}
+                      name={field}
+                      value={editedData[field] || ""}
+                      onChange={handleChange}
+                      className="border px-2 py-1 rounded w-full mb-2"
+                      placeholder={field}
+                    />
+                  ),
                 )}
+              </>
+            ) : (
+              <>
+                <h3 className="coordinator-name">{savedData.name}</h3>
+                <p>
+                  <span className="font-semibold">Designation:</span>{" "}
+                  {savedData.designation}
+                </p>
+                <p>
+                  <span className="font-semibold">Role:</span> {savedData.role}
+                </p>
+                <p>
+                  <span className="font-semibold">Email:</span>{" "}
+                  {savedData.email}
+                </p>
+                <p>
+                  <span className="font-semibold">Phone:</span>{" "}
+                  {savedData.phone}
+                </p>
+              </>
+            )}
+          </div>
+        </div>
 
-                <ToastContainer position="bottom-right" autoClose={3000} />
+        {/* Save + Cancel */}
+        {isEditing && (
+          <div className="flex gap-2 mt-3 justify-center">
+            <button
+              onClick={handleCancel}
+              className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleSave}
+              className="px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
+            >
+              Save
+            </button>
+          </div>
+        )}
 
-                {/* Request Modal */}
-                {showRequestModal && (
-                    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
-                        <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[530px] max-h-[90vh] overflow-y-auto">
-                            <h2 className="text-xl font-bold mb-4">Final Request for the Changes</h2>
-                            <p className="text-sm text-red-500 mb-4">
-                                Note: Your changes will stay pending until approved by the superior admin.
-                            </p>
+        {/* Discard + Request */}
+        {!isEditing && Object.keys(changes).length > 0 && (
+          <div className="flex justify-center gap-2 mt-4">
+            <button
+              onClick={handleDiscard}
+              className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
+            >
+              Discard Changes
+            </button>
+            <button
+              onClick={() => setShowRequestModal(true)}
+              className="px-4 py-2 bg-secd text-text rounded hover:bg-[#800000] hover:text-drkt"
+            >
+              Request
+            </button>
+          </div>
+        )}
+
+
+        {/* Request Modal */}
+        {showRequestModal && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
+            <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[530px] max-h-[90vh] overflow-y-auto">
+              <h2 className="text-xl font-bold mb-4">
+                Final Request for the Changes
+              </h2>
+              <p className="text-sm text-red-500 mb-4">
+                Note: Your changes will stay pending until approved by the
+                superior admin.
+              </p>
 
                             <div className="max-h-[200px] overflow-y-auto mb-4">
                                 <table className="w-full text-left">
@@ -857,28 +905,28 @@ const AdminIQAC = ({ toggle , theme }) => {
                                 </table>
                             </div>
 
-                            <div className="flex justify-end gap-2 border-t pt-4">
-                                <button
-                                    onClick={() => setShowRequestModal(false)}
-                                    className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : "hover:bg-gray-500"}`}
-                                    disabled={loading}
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    onClick={handleRequestConfirm}
-                                    className={`px-4 py-2 rounded bg-secd text-text ${loading ? "cursor-progress opacity-50" : "hover:bg-[#800000] hover:text-drkt"}`}
-                                    disabled={Object.keys(changes).length === 0 || loading}
-                                >
-                                    {loading ? "Processing..." : "Final Request"}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                )}
+              <div className="flex justify-end gap-2 border-t pt-4">
+                <button
+                  onClick={() => setShowRequestModal(false)}
+                  className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : "hover:bg-gray-500"}`}
+                  disabled={loading}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleRequestConfirm}
+                  className={`px-4 py-2 rounded bg-secd text-text ${loading ? "cursor-progress opacity-50" : "hover:bg-[#800000] hover:text-drkt"}`}
+                  disabled={Object.keys(changes).length === 0 || loading}
+                >
+                  {loading ? "Processing..." : "Final Request"}
+                </button>
+              </div>
             </div>
-        );
-    }
+          </div>
+        )}
+      </div>
+    );
+  }
 
     // Component for sections with single PDF and replace functionality like Strategic Plan, Institutional Distinctiveness, Code of Ethics, ISO Certificate
     function IqaOne({title}) {
@@ -895,19 +943,20 @@ const AdminIQAC = ({ toggle , theme }) => {
             }
         };
 
-        const typeMap = {
-            "Code of Ethics": "code_of_ethics",
-            "Strategic Development Plan": "strategic_plan",
-            "Institutional Distinctiveness": "institutional_distinctiveness",
-            "ISO Certificate": "iso_certificate"
-        }
+    const typeMap = {
+      "Code of Ethics": "code_of_ethics",
+      "Strategic Development Plan": "strategic_plan",
+      "Institutional Distinctiveness": "institutional_distinctiveness",
+      "ISO Certificate": "iso_certificate",
+    };
 
-        const handleRequestConfirm = async () => {
-            if (!uploadedFile) return;
+    const handleRequestConfirm = async () => {
+      if (!uploadedFile) return;
 
-            // const oldPath = iqacData?.[0]?.paths;
-            const oldPath = Array.isArray(iqacData) && iqacData[0]?.pdf_path;
-            const newPath = `/static/pdfs/iqac/${uploadedFile.file.name}`;
+      const oldPath = Array.isArray(iqacData) && iqacData[0]?.pdf_path;
+      const newPath = `/static/pdfs/iqac/${uploadedFile.file.name}`;
+      const oldYears = Array.isArray(iqacData) && iqacData[0]?.years;
+console.log(iqacData);
 
             const payload = [
             {
@@ -926,7 +975,8 @@ const AdminIQAC = ({ toggle , theme }) => {
             console.log(payload);
             
 
-            const result = await sendRequest(payload, uploadedFile.file);
+      const result = await sendRequest(payload, uploadedFile.file);
+      toast.success("Request submitted successfully")
 
             if (result) {
                 setShowRequestModal(false);
@@ -1074,18 +1124,18 @@ const AdminIQAC = ({ toggle , theme }) => {
     
     const [isOnline, setIsOnline] = useState(navigator.onLine);
 
-    useEffect(() => {
-        const handleOnline = () => setIsOnline(true);
-        const handleOffline = () => setIsOnline(false);
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
 
-        window.addEventListener("online", handleOnline);
-        window.addEventListener("offline", handleOffline);
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
 
-        return () => {
-            window.removeEventListener("online", handleOnline);
-            window.removeEventListener("offline", handleOffline);
-        };
-    }, []);
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
 
     if (!isOnline) {
         return (

@@ -1,10 +1,11 @@
 import { Github, Linkedin, Twitter, Mail, ExternalLink, Globe2Icon } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Banner from "../../../Banner"
 import SideNav from "../../SideNav"
 import axios from "axios"
 import EnquiryWeb from "./enquiryWeb"
 import { useNavigate } from "react-router";
+import { useLocation } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -45,25 +46,71 @@ const SocialIcon = ({ type, url }) => {
 
 const StaffCard = ({ member }) => {
   return (
-    <div className="bg-prim dark:bg-drkp rounded-2xl shadow-md p-4 md:flex justify-between w-[80vw] md:w-[40vw] lg:w-[30vw] items-center text-center border border-gray-100 dark:border-gray-700 ">
-      <div className="w-28 h-28 md:w-32 md:h-32 mb-4 ml-[30%] md:ml-0 lg:ml-0">
+    <div className="
+      bg-prim dark:bg-drkp
+      rounded-2xl
+      shadow-md
+      border border-gray-100 dark:border-gray-700
+      p-6
+      flex
+      flex-col
+      md:flex-row
+      items-center
+      gap-6
+      w-full
+      max-w-2xl
+    ">
+      <div className="w-28 h-28 md:w-32 md:h-32 flex-shrink-0">
         <img
           src={UrlParser(member?.image)}
           alt={member?.name}
-          className="w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow"
+          className="w-full h-full object-cover rounded-full border-4 border-white shadow"
         />
       </div>
-      <div className="w-full md:w-[15vw]">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-blue-300">{member?.name}</h3>
-        <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">{member?.club_designation}</p>
+
+      <div className="flex-1 text-center md:text-left">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-blue-300">
+          {member?.name}
+        </h3>
+
+        <p className="text-blue-600 dark:text-blue-400 font-medium mt-2">
+          {member?.club_designation}
+        </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-const ProfileCard = ({ member }) => {
+const ProfileCard = ({ member, cardRef, spotlight, dimmed, selectedMember }) => {
+  const active = spotlight === member.name;
+  const selected =
+    selectedMember?.toLowerCase() ===
+    member.name.toLowerCase();
   return (
-    <div className="group relative bg-prine dark:bg-[#1c1f26] rounded-2xl shadow-lg dark:shadow-md hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700 h-full">
+    // <div className="group relative bg-prine dark:bg-[#1c1f26] rounded-2xl  shadow-lg dark:shadow-md hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700 h-full">
+    <div
+      ref={cardRef}
+      className={`
+        group
+        relative
+        rounded-2xl
+        transition-all
+        duration-500
+        overflow-hidden
+        shadow-lg
+        scroll-mt-24
+
+        ${dimmed ? "opacity-50" : "opacity-100"}
+
+        ${selected ? "border border-blue-400" : "border border-transparent"}
+
+        ${active
+            ? "scale-[1.05] ring-2 ring-blue-500 shadow-[0_0_35px_rgba(59,130,246,.55)]"
+            : ""}
+
+        bg-prine dark:bg-[#1c1f26]
+        `}
+    >
       <div className="flex flex-col justify-between h-full p-6 space-y-4">
         {/* Top: Image and Info */}
         <div className="flex flex-col items-center space-y-4">
@@ -85,10 +132,6 @@ const ProfileCard = ({ member }) => {
               {member?.name}
             </h3>
             <p  className=" font-medium text-[16px] text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block" >{member?.club_designation}</p>
-           
-            {/* <p className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block">
-              {member?.year}
-            </p> */}
             <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium"> {member?.year}  </p>
             <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium"> {member?.department} </p>
           </div>
@@ -105,7 +148,9 @@ const ProfileCard = ({ member }) => {
   )
 }
 
-function WebUI({ title, data }) {
+function WebUI({ title, data, selectedMember }) {
+  const cardRefs = useRef({});
+  const [spotlight, setSpotlight] = useState(null);
 
   let des, members, staff
   if (data) {
@@ -113,6 +158,38 @@ function WebUI({ title, data }) {
     members = data[1]?.content
     staff = data[2]?.content
   }
+
+  useEffect(() => {
+    if (!members || !selectedMember) return;
+
+    const member = members.find(
+      (m) =>
+        m.name.trim().toLowerCase() ===
+        selectedMember.trim().toLowerCase()
+    );
+
+    if (!member) return;
+
+    const el = cardRefs.current[member.name];
+
+    if (!el) return;
+
+    setTimeout(() => {
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+
+      // Wait until scrolling finishes
+      setTimeout(() => {
+        setSpotlight(member.name);
+
+        setTimeout(() => {
+          setSpotlight(null);
+        }, 5000);
+      }, 700);
+    }, 300);
+  }, [members, selectedMember]);
 
   return (
     <div className="bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 min-h-screen">
@@ -126,8 +203,8 @@ function WebUI({ title, data }) {
       {/* Team Grid */}
       {/* Staff Cards Section */}
       {staff && staff.length > 0 && (
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
+        <div className="max-w-7xl mx-auto px-4 pb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {staff.map((member, index) => (
               <div
                 key={index}
@@ -155,7 +232,16 @@ function WebUI({ title, data }) {
                 animationFillMode: "both",
               }}
             >
-              <ProfileCard member={member} />
+              <ProfileCard 
+                member={member} 
+                cardRef={(el) => (cardRefs.current[member.name] = el)}
+                spotlight={spotlight}
+                dimmed={
+                    spotlight &&
+                    spotlight !== member.name
+                }
+                selectedMember={selectedMember}
+              />
             </div>
           ))}
         </div>
@@ -193,13 +279,29 @@ function WebUI({ title, data }) {
 
 export default function Webteam({ toggle, theme }) {
   const [webtab, setWebtab] = useState("Pilot")
+  const [selectedMember, setSelectedMember] = useState("")
   const [webdata, setWebData] = useState(null)
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get("tab");
+    const member = params.get("member");
+
+    if (tab == "copilot") {
+      setWebtab("Co-Pilot");
+    } else {
+      setWebtab("Pilot");
+    }
+
+    setSelectedMember(member || "");
+  }, [location.search]);
 
   const navData = {
     "Enquiry Now": <EnquiryWeb />,
-    "Pilot": <WebUI title={"Pilot"} data={webdata} />,
-    "Co-Pilot": <WebUI title={"Co Pilot"} data={webdata} />,
+    "Pilot": <WebUI title={"Pilot"} data={webdata} selectedMember={selectedMember} />,
+    "Co-Pilot": <WebUI title={"Co Pilot"} data={webdata} selectedMember={selectedMember} />,
   }
 
   useEffect(() => {

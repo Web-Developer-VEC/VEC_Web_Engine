@@ -103,7 +103,7 @@ export default function OtherFacilities({ theme, toggle }) {
         toggle={toggle}
         theme={theme}
         backgroundImage="./Banners/Others.webp"
-        headerText="OTHER FACILITES"
+        headerText="OTHER FACILITIES"
         subHeaderText="Fostering excellence in social service and community well-being."
       />
       <div className="facilities-container bg-prim dark:bg-drkp">

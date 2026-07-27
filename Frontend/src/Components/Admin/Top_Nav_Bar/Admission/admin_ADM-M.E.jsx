@@ -42,6 +42,9 @@ const AdminME = ({ theme, toggle }) => {
   const [editSnapshot, setEditSnapshot] = useState(null);
   const [editChangeListSnapshot, setEditChangeListSnapshot] = useState(null);
   const [editSelectedRowsSnapshot, setEditSelectedRowsSnapshot] = useState(null);
+  const hasUnsavedChanges =
+  editSnapshot &&
+  JSON.stringify(pgData) !== JSON.stringify(editSnapshot);
   // ---------------------------------------
 
   const buildPgAdmissionPayloadConfirm = ({
@@ -280,7 +283,6 @@ const AdminME = ({ theme, toggle }) => {
     setEditChangeListSnapshot(null);
     setEditSelectedRowsSnapshot(null);
 
-    toast.info("All changes discarded and original data restored.");
   };
   const handleAddNewRow = () => {
     const newRow = {
@@ -324,7 +326,6 @@ const AdminME = ({ theme, toggle }) => {
 
     setShowDeleteModal(false);
 
-    toast.info("Selected rows deleted. They will be removed on final request.");
   };
 
   // ✅ Delete row
@@ -417,7 +418,6 @@ const AdminME = ({ theme, toggle }) => {
     }
 
     setpgData(updated);
-    // toast.info(`${label} reverted`);
   };
 
   const handleFinalRequestConfirm = async () => {
@@ -433,7 +433,7 @@ const AdminME = ({ theme, toggle }) => {
     const yearChanged = originalYear !== currentYear;
 
     if (!intakeChanged && !yearChanged) {
-      // toast.warn("No changes to submit");
+      toast.warn("No changes to submit");
       return;
     }
 
@@ -469,7 +469,6 @@ const AdminME = ({ theme, toggle }) => {
     try {
       await sendRequest([payload]); // send as array if your API expects array
 
-      toast.success("request submitted successfully!");
 
       setOriginalData(JSON.parse(JSON.stringify(pgData)));
       setChangeList([]);
@@ -528,7 +527,7 @@ const AdminME = ({ theme, toggle }) => {
 
   const handleSaveClick = () => {
     if (!pgData.year || pgData.year.trim() === "") {
-      // toast.error("Please fill in the year field.");
+      toast.error("Please fill in the year field.");
       return;
     }
 
@@ -755,6 +754,7 @@ const AdminME = ({ theme, toggle }) => {
               >
                 Cancel
               </button>
+               {hasUnsavedChanges && (
               <button
                 onClick={() => {
                   handleSaveClick();
@@ -763,6 +763,7 @@ const AdminME = ({ theme, toggle }) => {
               >
                 Save
               </button>
+                 )}
             </div>
           )}
 

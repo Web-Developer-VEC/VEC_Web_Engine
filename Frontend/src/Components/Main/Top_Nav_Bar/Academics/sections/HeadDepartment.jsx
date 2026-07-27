@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import styles from '../HeadDepartment.module.css';
-import { FaBook, FaLinkedin } from 'react-icons/fa';
+import { FaBook, FaLinkedin, FaOrcid } from 'react-icons/fa';
+import { FaGoogleScholar, FaResearchgate } from "react-icons/fa6";
 import { SiPublons } from "react-icons/si";
-import { FaGoogleScholar } from "react-icons/fa6";
-import { FaOrcid } from "react-icons/fa";
-import { FaResearchgate } from "react-icons/fa6";
 import LoadComp from "../../../LoadComp";
+import styles from '../HeadDepartment.module.css';
 
 
 const HeadDepartment = ({ data }) => {
@@ -23,7 +20,7 @@ const HeadDepartment = ({ data }) => {
     Qualification = [hod_details?.[0]?.qualification],
     designation = hod_details?.[0]?.designation,
     Hod_message = hod_details?.[0]?.hod_message,
-    Image = hod_details?.[0]?.hod_image, // Provide a default path if needed
+    Image = hod_details?.[0]?.image_path, // Provide a default path if needed
     Social_media_links = hod_details?.[0]?.Social_media_links || {},
     resume = hod_details?.[0]?.pdf_path
   } = hod_details || {};

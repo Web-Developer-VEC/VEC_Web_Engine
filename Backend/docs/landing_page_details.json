@@ -232,86 +232,93 @@
     "type": "announcements",
     "data": [
       {
+        "unique_id": "announcement_13",
+        "announcement_name": "Circular- Reschedule - SEE May 2026 - 28-05-2026 to 05-06-2026",
+        "pdf_path": "/static/pdfs/announcements/Rescheduled Date_SEE May 2026_28-05-2026 to 05-06-2026.pdf",
+        "date": "2026-03-17",
+        "status": "active"
+      },
+      {
         "unique_id": "announcement_1",
+        "announcement_name": "SEE May 2026 - Updated Exam Timetable for B.E.B.Tech. 2023-2027 & 2024-2028 batch with I year courses",
+        "pdf_path": "/static/pdfs/announcements/SEE May 2026 - Updated Exam Timetable for B.E.B.Tech. 2023-2027 & 2024-2028 batch with I year courses.pdf",
+        "date": "2026-03-17",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_11",
+        "announcement_name": "SEE MAY 2026 - Exam Timetable for B.E.B.Tech. 2025-2029 batch (R2023A)",
+        "pdf_path": "/static/pdfs/announcements/SEE MAY 2026 - Exam Timetable for B.E.B.Tech. 2025-2029 batch (R2023A).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_12",
+        "announcement_name": "SEE May 2026 - Exam Timetable for MBA  M.E. 2025-2027 batch (R2023A) & 2024-2026 batch (R2023)",
+        "pdf_path": "/static/pdfs/announcements/SEE May 2026 - Exam Timetable for MBA  M.E. 2025-2027 batch (R2023A) & 2024-2026 batch (R2023).pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_9",
+        "announcement_name": "Circular_Revaluation (For Photocopy)_SEE May 2026 (8th Sem.)",
+        "pdf_path": "/static/pdfs/announcements/Circular_Revaluation (For Photocopy)_SEE May 2026.pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_10",
+        "announcement_name": "Circular_Revaluation (After Photocopy)_SEE May 2026 (8th Sem.)",
+        "pdf_path": "/static/pdfs/announcements/Circular_Revaluation (After Photocopy)_SEE May 2026.pdf",
+        "date": "2025-07-28",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_2",
+        "announcement_name": "REIVSED SEE Timetable April 2026 For batches 2019-2023 & 2020-2024",
+        "pdf_path": "/static/pdfs/announcements/REIVSED_SEE Timetable_April 2026_For batches_2019-2023 & 2020-2024.pdf",
+        "date": "2026-03-17",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_3",
+        "announcement_name": "REIVSED SEE Timetable April 2026 For batches 2021-2025 & 2022-2026",
+        "pdf_path": "/static/pdfs/announcements/REVISED_SEE Timetable_April 2026_For batches_2021-2025 & 2022-2026.pdf",
+        "date": "2026-03-17",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_4",
+        "announcement_name": "Exam fee circular_Even Sem. 2025-2026",
+        "pdf_path": "/static/pdfs/announcements/Exam fee circular_Even Sem. 2025-2026.pdf",
+        "date": "2026-03-11",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_5",
         "announcement_name": "Circular - Review after Revaluation - SEE Nov. 2025 (For Higher Sem.)",
         "pdf_path": "/static/pdfs/announcements/Circular_Review after Revaluation_SEE NOV. 2025 (Higher Sem.).pdf",
         "date": "2026-02-26",
         "status": "active"
       },
       {
-        "unique_id": "announcement_2",
+        "unique_id": "announcement_6",
         "announcement_name": "Circular - Revaluation (Photocopy) - SEE Nov. 2025 (For I Sem. (R) & II Sem. (Arr.))",
         "pdf_path": "/static/pdfs/announcements/Circular_Photocopy_Revaluation_SEE NOV. 2025 (I SEM.(R2023)).pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_3",
+        "unique_id": "announcement_7",
         "announcement_name": "Circular - Revaluation (Photocopy) - SEE Nov. 2025 ",
         "pdf_path": "/static/pdfs/announcements/Revaluation (Photocopy)_SEE Nov. 2025_06-01-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
       },
       {
-        "unique_id": "announcement_4",
+        "unique_id": "announcement_8",
         "announcement_name": "B.E./B.Tech./M.E./MBA - Exam Schedule - SEE Nov. 2025 (R2023) [I Sem. (Regular & II Sem. (Arr.)]",
         "pdf_path": "/static/pdfs/announcements/B.E.B.Tech.-Exam Schedule-SEE Nov. 2025 (R2023) [I Sem. (Regular & II Sem. (Arr.)].pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_5",
-        "announcement_name": "Notification 1 - B.E./B.Tech.-Rescheduled date-SEE Nov.2025 - R2019 & R2019A (Batches : 2019-23, 2020-24, 2021-25, 2022-26)",
-        "pdf_path": "/static/pdfs/announcements/Rescheduled date_08-11-2025 to 28th Oct. & 13th Nov. 2025.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_6",
-        "announcement_name": "Notification 2 - MBA - Rescheduled date - SEE - Nov. 2025 (R2023) For batch 2024-2026",
-        "pdf_path": "/static/pdfs/announcements/Rescheduled date_8th, 10th Dec. to 29th, 31st Dec. 2025 - MBA.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_7",
-        "announcement_name": "Notification 3 - MBA - Rescheduled date - SEE - Nov. 2025 (R2023) For batch 2024-2026",
-        "pdf_path": "/static/pdfs/announcements/MBA_Rescheduled date_29-12-2025 to 30-12-2025-1.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_8",
-        "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028",
-        "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2023) - For batches 2023-2027 & 2024-2028) - updated (1).pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_9",
-        "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026",
-        "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019.) - For batches 2021-2025 & 2022-2026.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_11",
-        "announcement_name": "B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019) - For batches 2019-2023 & 2020-2024",
-        "pdf_path": "/static/pdfs/announcements/B.E._B.Tech.-Exam Schedule_SEE - Nov. 2025 (R2019) - For batches 2019-2023 & 2020-2024.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_12",
-        "announcement_name": "M.E.(CSE) -Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026",
-        "pdf_path": "/static/pdfs/announcements/M.E.(CSE) -Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_13",
-        "announcement_name": "MBA-Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026",
-        "pdf_path": "/static/pdfs/announcements/MBA-Exam Schedule_SEE - Nov. 2025 (R2023) - For batch 2024-2026.pdf",
         "date": "2025-07-28",
         "status": "active"
       }
@@ -661,6 +668,50 @@
         "image_path": "/static/images/events/cognebula.jpeg",
         "link": "https://cognebula.com/",
         "status": "True"
+      },
+      {
+        "start_date": "04 MAR",
+        "end_date": "04 MAR, 2026",
+        "date": "04-03-2026",
+        "title": "NCAIBIA’26",
+        "department": "Artificial Intelligence & Data Science",
+        "content": "3rd NATIONAL CONFERENCE",
+        "image_path": "/static/images/events/NCAIBIA'26 (1).pdf",
+        "link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "17 MAR",
+        "end_date": "17 MAR, 2026",
+        "date": "17-03-2026",
+        "title": "ICECT 2026",
+        "department": "Computer Science & Engineering",
+        "content": "International Conference on Emerging Computing Technologies - AI, IOT, Cloud, Quantum Computing & Beyond",
+        "image_path": "/static/images/events/updatedbrochure.pdf",
+        "link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "30 MAR",
+        "end_date": "30 MAR, 2026",
+        "date": "30-03-2026",
+        "title": "NCCET 2026",
+        "department": "Electronics & Instrumentation Engineering",
+        "content": "NATIONAL CONFERENCE ON CONVERGING ENGINEERING TECHNOLOGIES",
+        "image_path": "/static/images/events/EIE - CONFERENCE  BROCHURE.pdf",
+        "link": "",
+        "status": "True"
+      },
+      {
+        "start_date": "28 MAR",
+        "end_date": "28 MAR, 2026",
+        "date": "28-03-2026",
+        "title": "AIMS 2K26",
+        "department": "Mechanical Engineering",
+        "content": "National Conference on Advancements in Mechanical Sciences",
+        "image_path": "/static/images/events/MECH CONF.jpeg",
+        "link": "",
+        "status": "True"
       }
     ]
   },
@@ -669,7 +720,7 @@
     "data": [
       {
         "type": "image",
-        "image_path": "/static/images/newscard/Priyan.jpg",
+        "image_path": "/static/images/newscard/schlorship.png",
         "active": "False",
         "title": "Priyan"
       }

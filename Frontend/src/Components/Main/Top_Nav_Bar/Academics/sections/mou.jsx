@@ -7,7 +7,7 @@ const MOU = ({ data }) => {
   return (
     <div className="mou-page">
       {mous_details?.length > 0 ? (
-        <>       
+        <>
           <div className="mou-header">
             <h1 className="text-accn dark:text-drkt font-bold">Memorandum of Understanding (MOU)</h1>
           </div>
@@ -28,10 +28,10 @@ const MOU = ({ data }) => {
                   {mous_details?.map((detail, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>{detail?.ORGANISATION_NAME}</td>
-                      <td>{detail?.MONTH_AND_YEAR}</td>
-                      {detail?.VALIDITY ? (
-                        <td>{detail?.VALIDITY}</td>
+                      <td>{detail?.organisation_name}</td>
+                      <td>{detail?.month_and_year}</td>
+                      {detail?.validity ? (
+                        <td>{detail?.validity}</td>
                       ) : (
                         <td className="text-center">-</td>
                       )}
