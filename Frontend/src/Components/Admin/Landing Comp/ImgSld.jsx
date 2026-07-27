@@ -126,7 +126,7 @@ const mergeSessionIntoAllNotif = (allChanges, sessionChanges) => {
     return updated;
 };
 
-const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
+const ImgSld = ({ load, toggle, theme, lst, ph, email, pageDetails }) => {
     const videoRef = useRef(null);
     const { sendRequest, loading: sendingNotifRequest } = useAdminRequest();
 
@@ -175,13 +175,19 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
 
     const notifOriginalRef = useRef([]);   // last approved/fetched baseline
     const notifSavedDataRef = useRef([]);  // last locally-saved (pre-approval) state
+    const pageDetailsOriginalRef = useRef(null);
 
+    useEffect(() => {
+        if (Array.isArray(pageDetails) && pageDetails.length > 0) {
+            pageDetailsOriginalRef.current = structuredClone(pageDetails[0]);
+        }
+    }, [pageDetails]);
     // EFFECT HOOKS
     useEffect(() => {
         initialDataRef.current = { phone: ph, email: email, notifications: lst || [] };
         setEditableData(initialDataRef.current);
 
-        
+
         const uidList = ensureNotifUids(lst || []);
         notifOriginalRef.current = structuredClone(uidList);
         notifSavedDataRef.current = structuredClone(uidList);
@@ -270,7 +276,7 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
         setEditableData(initialDataRef.current);
     };
 
-  
+
     const handleDiscardChanges = () => {
         setEditableData(initialDataRef.current);
         handleDiscardNotifChanges();
@@ -355,18 +361,71 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
 
         return payload;
     };
-    
-   
-    const handleConfirmRequest = async () => {
-        const payload = buildNotifPayload();
-         
-        if (payload.length > 0) {
-            const result = await sendRequest(payload, []);
-            if (!result) return; // keep the popup open so the user can retry on failure
+    const buildPageDetailsPayload = () => {
+
+        if (!pageDetailsOriginalRef.current) return [];
+
+        const original = structuredClone(pageDetailsOriginalRef.current);
+
+        if (
+            original.phone_number === editableData.phone &&
+            original.email === editableData.email
+        ) {
+            return [];
         }
 
-        
+        return [
+            {
+                collectionName: "landing_page_details",
+                collection_type: "page_details",
+                action: "update",
+                title: "update in page_details",
+
+                original_data: original,
+
+                meta_data: {
+                    ...original,
+                    phone_number: editableData.phone,
+                    email: editableData.email,
+                },
+            },
+        ];
+    };
+
+    const handleConfirmRequest = async () => {
+
+        const notifPayload = buildNotifPayload();
+        const pageDetailsPayload = buildPageDetailsPayload();
+
+        const finalPayload = [
+            ...notifPayload,
+            ...pageDetailsPayload,
+        ];
+
+        if (finalPayload.length === 0) {
+            setConfirmPopup(false);
+            return;
+        }
+
+        console.log("Sending Payload:", finalPayload);
+
+        const result = await sendRequest(finalPayload, []);
+
+        if (!result) return;
+
         notifOriginalRef.current = structuredClone(notifSavedDataRef.current);
+
+        if (pageDetailsOriginalRef.current) {
+            pageDetailsOriginalRef.current = {
+                ...pageDetailsOriginalRef.current,
+                phone_number: editableData.phone,
+                email: editableData.email,
+            };
+        }
+
+        initialDataRef.current.phone = editableData.phone;
+        initialDataRef.current.email = editableData.email;
+
         setNotifAllChanges([]);
         setNotifSessionChanges([]);
 
@@ -396,7 +455,7 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
     };
 
     const closeNotifModal = () => {
-        
+
         setNotifSessionChanges([]);
         setNotifModalOpen(false);
     };
@@ -480,7 +539,7 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
         setModalSelectAll(false);
     };
 
-   
+
     const handleModalSave = () => {
         if (notifSessionChanges.length === 0) {
             setNotifModalOpen(false);
