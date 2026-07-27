@@ -15,30 +15,43 @@ const VisionMission = ({ data }) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
+  const generateUid = () => {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2);
+  };
+
+  const attachUid = (items) => {
+    return items.map(item => ({
+      ...item,
+      _uid: item._uid || generateUid(),
+    }));
+  };
+
   // Department mapping
   const deptMap = {
     "001": "AIDS_001",
-    "002": "MECH_002",
-    "003": "ECE_003",
+    "002": "AUTO_002",
+    "003": "CHEMISTRY_003",
     "004": "CIVIL_004",
     "005": "CSE_005",
-    "006": "EEE_006",
-    "007": "CHEM_007",
-    "008": "AUTO_008",
-    "009": "AERO_009",
-    "010": "PROD_010",
-    "011": "BIO_011",
-    "012": "TEXTILE_012",
-    "013": "APPAREL_013",
-    "014": "CIVIL_INFRA_014",
-    "015": "FOOD_015",
-    "016": "BIOTECH_016",
-    "017": "AGRI_017",
+    "006": "CSECS_006",
+    "007": "EEE_007",
+    "008": "EIE_008",
+    "009": "ECE_009",
+    "010": "ENGLISH_010",
+    "011": "IT_011",
+    "012": "MATHS_012",
+    "013": "MECH_013",
+    "014": "TAMIL_014",
+    "015": "PHYSICS_015",
+    "016": "MECSE_016",
+    "017": "MBA_017",
     "018": "PS_018"
   };
 
   // Extract deptId from data
-  const deptId = data?.find((item) => item.category === "banner")?.deptId || "005";
+  const deptId = data?.find((item) => item.category === 'banner_name_and_image')?.content[0]?.dept_id;
+
+
   const collectionName = deptMap[deptId] || "CSE_005";
 
   const [isEditing, setIsEditing] = useState(false);
@@ -53,14 +66,20 @@ const VisionMission = ({ data }) => {
       mission:
         data?.find((item) => item.category === "department_mission")?.content ||
         [],
-      peo:
+      peo: attachUid(
         data?.find((item) => item.category === "programme_educational_objectives")
-          ?.content || [],
-      po:
-        data?.find((item) => item.category === "program_outcomes")?.content || [],
-      pso:
+          ?.content || []
+      ),
+
+      po: attachUid(
+        data?.find((item) => item.category === "program_outcomes")
+          ?.content || []
+      ),
+
+      pso: attachUid(
         data?.find((item) => item.category === "program_specific_outcomes")
-          ?.content || [],
+          ?.content || []
+      ),
       banner:
         data?.find((item) => item.category === "banner_name_and_image")
           ?.content || [],
@@ -207,62 +226,61 @@ const VisionMission = ({ data }) => {
   // Helper: detect changes in object arrays (PEO, PO, PSO)
 
   const detectObjectArrayChanges = (original, current, category) => {
-  const changes = [];
-
-  // Detect deleted items
-  original.forEach((oldItem) => {
-    const exists = current.find(
-      (item) => item.header === oldItem.header
+    const changes = [];
+    const originalMap = new Map(
+      original.map(item => [item._uid, item])
     );
 
-    if (!exists) {
-      changes.push({
-        action: "delete",
-        category,
-        field: "object",
-        value: oldItem,
-      });
-    }
-  });
-
-  // Detect inserted items
-  current.forEach((newItem) => {
-    const exists = original.find(
-      (item) => item.header === newItem.header
+    const currentMap = new Map(
+      current.map(item => [item._uid, item])
     );
 
-    if (!exists) {
-      changes.push({
-        action: "insert",
-        category,
-        field: "object",
-        value: newItem,
-      });
-    }
-  });
+    // INSERTS
+    current.forEach(item => {
+      if (!originalMap.has(item._uid)) {
+        changes.push({
+          action: "insert",
+          category,
+          field: "object",
+          value: item,
+        });
+      }
+    });
 
-  // Detect updated items
-  current.forEach((newItem) => {
-    const oldItem = original.find(
-      (item) => item.header === newItem.header
-    );
+    current.forEach(item => {
+      const oldItem = originalMap.get(item._uid);
 
-    if (
-      oldItem &&
-      oldItem.content !== newItem.content
-    ) {
-      changes.push({
-        action: "update",
-        category,
-        field: "object",
-        oldValue: oldItem,
-        value: newItem,
-      });
-    }
-  });
+      if (
+        oldItem &&
+        (
+          oldItem.header !== item.header ||
+          oldItem.content !== item.content
+        )
+      ) {
+        changes.push({
+          action: "update",
+          category,
+          field: "object",
+          value: item,
+          oldValue: oldItem,
+        });
+      }
+    });
 
-  return changes;
-};
+    // DELETES
+    original.forEach(item => {
+      if (!currentMap.has(item._uid)) {
+        changes.push({
+          action: "delete",
+          category,
+          field: "object",
+          value: item,
+        });
+      }
+    });
+
+    return changes;
+  };
 
   if (!data)
     return (
@@ -289,6 +307,8 @@ const VisionMission = ({ data }) => {
     setChanges([]);
   };
 
+  console.log("FORM DATA");
+console.log(formData.pso);
   const handleSave = () => {
     setSavedData(JSON.parse(JSON.stringify(formData))); // Save snapshot
     setIsEditing(false);
@@ -570,7 +590,7 @@ const VisionMission = ({ data }) => {
               {formData.vision?.length > 0 && (
                 <ul className="text-text dark:text-drkt list-none">
                   {formData.vision.map((item, index) => (
-                    <li key={index} className="flex items-center gap-2">
+                    <li key={item._uid} className="flex items-center gap-2">
                       {isEditing ? (
                         <>
                           <input
@@ -579,7 +599,11 @@ const VisionMission = ({ data }) => {
                             onChange={(e) => {
                               const updated = [...formData.vision];
                               updated[index] = e.target.value;
-                              setFormData({ ...formData, vision: updated });
+
+                              setFormData({
+                                ...formData,
+                                vision: updated,
+                              });
                             }}
                           />
                           <button
@@ -629,7 +653,7 @@ const VisionMission = ({ data }) => {
               </div>
               <ul className="list-none text-text dark:text-drkt">
                 {formData.mission?.map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
+                  <li key={item._uid} className="flex items-center gap-2">
                     {isEditing ? (
                       <>
                         <input
@@ -694,7 +718,7 @@ const VisionMission = ({ data }) => {
                 {formData[type].map((item, index) => (
                   <div
                     className="POE accordion-item-cir bg-prim dark:bg-drkb border-l-4 border-secd dark:border-drks rounded-lg relative"
-                    key={index}
+                    key={item._uid}
                   >
                     <div className="flex-1 p-2">
                       <h2 className="accordion-header text-left pt-4">
@@ -703,9 +727,17 @@ const VisionMission = ({ data }) => {
                             className="w-full border p-1 rounded mb-2"
                             value={item?.header}
                             onChange={(e) => {
-                              const updated = [...formData[type]];
-                              updated[index].header = e.target.value;
-                              setFormData({ ...formData, [type]: updated });
+                              setFormData(prev => ({
+                                ...prev,
+                                [type]: prev[type].map((item, i) =>
+                                  i === index
+                                    ? {
+                                      ...item,
+                                      header: e.target.value,
+                                    }
+                                    : item
+                                ),
+                              }));
                             }}
                           />
                         ) : (
@@ -718,9 +750,17 @@ const VisionMission = ({ data }) => {
                             className="w-full border p-1 rounded"
                             value={item?.content}
                             onChange={(e) => {
-                              const updated = [...formData[type]];
-                              updated[index].content = e.target.value;
-                              setFormData({ ...formData, [type]: updated });
+                              setFormData(prev => ({
+                                ...prev,
+                                [type]: prev[type].map((item, i) =>
+                                  i === index
+                                    ? {
+                                      ...item,
+                                      content: e.target.value,
+                                    }
+                                    : item
+                                ),
+                              }));
                             }}
                           />
                         ) : (
@@ -744,7 +784,14 @@ const VisionMission = ({ data }) => {
                     onClick={() =>
                       setFormData((prev) => ({
                         ...prev,
-                        [type]: [...prev[type], { header: "", content: "" }],
+                        [type]: [
+                          ...prev[type],
+                          {
+                            _uid: generateUid(),
+                            header: "",
+                            content: "",
+                          },
+                        ],
                       }))
                     }
                   >
@@ -972,13 +1019,12 @@ const VisionMission = ({ data }) => {
               <button
                 className="px-4 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-800 transition"
                 onClick={() => {
-                  setFormData((prev) => {
-                    const updated = { ...prev };
-                    updated[deleteTarget.type] = prev[deleteTarget.type].filter(
+                  setFormData(prev => ({
+                    ...prev,
+                    [deleteTarget.type]: prev[deleteTarget.type].filter(
                       (_, idx) => idx !== deleteTarget.index
-                    );
-                    return updated;
-                  });
+                    ),
+                  }));
                   setDeleteTarget(null);
                   setShowItemDeleteModal(false);
                 }}
