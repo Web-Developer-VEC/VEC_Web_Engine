@@ -661,7 +661,6 @@ const AdminMBA = ({ theme, toggle }) => {
       setMgmtPreviewUrl(null);
     }
 
-    toast.info("All changes discarded");
   };
 
   const handleUndoChange = (idx) => {
@@ -889,7 +888,6 @@ const AdminMBA = ({ theme, toggle }) => {
 
       await sendRequest(payloads, files);
 
-      toast.success("MBA Admission request submitted successfully!");
       setShowPopup(false);
       setIsSaved(false);
       setChangeList([]);

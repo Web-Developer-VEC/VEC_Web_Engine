@@ -138,7 +138,6 @@ export default function AdminBookChapter({ theme, toggle }) {
         },
       });
 
-      toast.success("Entry updated (session)");
     } else {
       const newEntry = { year: newYear, pdf_path: pdfValue };
       setBookChapter((prev) => [...(prev || []), newEntry]);
@@ -153,7 +152,6 @@ export default function AdminBookChapter({ theme, toggle }) {
         },
       });
 
-     // toast.success("Entry added (session)");
     }
 
     setNewYear("");
@@ -412,7 +410,6 @@ export default function AdminBookChapter({ theme, toggle }) {
       if (result) {
         console.log("FINAL REQUEST SUBMITTED", { payload, bookChapter });
 
-       // toast.success("Final request submitted");
 
         setShowRequestModal(false);
         setAllChanges([]);
@@ -466,7 +463,6 @@ export default function AdminBookChapter({ theme, toggle }) {
       return prev.filter((_, i) => i !== idx); // remove from log
     });
 
-    toast.info("Change reverted");
   };
 
   const handleViewNewPdf = () => {

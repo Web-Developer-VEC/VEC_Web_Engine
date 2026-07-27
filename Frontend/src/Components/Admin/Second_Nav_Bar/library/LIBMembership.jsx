@@ -8,13 +8,7 @@ const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
 const LIBMembership = ({ data }) => {
   const members =
-    data.find((sec) => sec.category === "Member Details")?.content || [];
-  const books =
-    data.find((sec) => sec.category === "no_of_books")?.content || [];
-  const cds =
-    data.find((sec) => sec.category === "periodical_back_volumes_cd")
-      ?.content || [];
-
+    data.find((sec) => sec.category === "Membership details")?.content || [];
   const [rows, setRows] = useState([]);
   const [committedRows, setCommittedRows] = useState([]);
   const [pendingRows, setPendingRows] = useState(null);
@@ -25,13 +19,15 @@ const LIBMembership = ({ data }) => {
   const [isDirty, setIsDirty] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
-
+  
   useEffect(() => {
-    const merged = members.map((m, idx) => ({
-      id: crypto.randomUUID(), // ⭐ IMPORTANT
-      member: m || "",
-      book: books[idx] || "",
-      cd: cds[idx] || "",
+    
+    const merged = members.map((item) => ({
+
+      id: crypto.randomUUID(),
+      member: item.member_details || "",
+      book: item.no_of_books || "",
+      cd: item.periodical_back_volumes_cd || "",
       checked: false,
     }));
 
@@ -41,7 +37,7 @@ const LIBMembership = ({ data }) => {
     setIsEditing(false);
     setIsDirty(false);
     setIsSaved(false);
-  }, [data]);
+  }, [members]);
 
   const handleStartEdit = () => {
     // Load pendingRows if exist; otherwise, load committedRows
@@ -98,7 +94,7 @@ const LIBMembership = ({ data }) => {
         collection_type: "membership_details",
         action: "insert",
         title: "Insert member types",
-        category: "Member Details",
+        category: "Membership details",
         meta_data: {
           content: newData, // full updated array
         },
@@ -112,7 +108,7 @@ const LIBMembership = ({ data }) => {
         collection_type: "membership_details",
         action: "update",
         title: "Update member types",
-        category: "Member Details",
+        category: "Membership details",
         meta_data: {
           content: newData, // updated list
         },
@@ -129,8 +125,10 @@ const LIBMembership = ({ data }) => {
         collection_type: "membership_details",
         action: "delete",
         title: "Delete member types",
-        category: "Member Details",
-        meta_data: {},
+        category: "Membership details",
+        meta_data: {
+          content: newData ?? [],
+        },
       };
     }
 
@@ -138,48 +136,89 @@ const LIBMembership = ({ data }) => {
   };
 
   const getMembershipChanges = (originalRows, currentRows) => {
-    // fallback for nulls
     originalRows = originalRows || [];
     currentRows = currentRows || [];
 
-    // compare by serialised row objects (member/book/cd)
-    const origJson = JSON.stringify(
-      originalRows.map(({ member, book, cd }) => ({ member, book, cd })),
-    );
-    const currJson = JSON.stringify(
-      currentRows.map(({ member, book, cd }) => ({ member, book, cd })),
+    const normalize = (row) => ({
+      member_details: row.member,
+      no_of_books: Number(row.book),
+      periodical_back_volumes_cd: Number(row.cd),
+    });
+
+
+    // Added rows
+    const addedRows = currentRows.filter(
+      (current) =>
+        !originalRows.some(
+          (original) => original.id === current.id
+        )
     );
 
-    // nothing changed
-    if (origJson === currJson) return [];
 
-    // determine action type
-    if (originalRows.length === 0 && currentRows.length > 0) {
-      return [
-        {
-          action: "Added",
-          newData: currentRows.map(({ member, book, cd }) => ({ member, book, cd })),
-        },
-      ];
+    // Deleted rows
+    const deletedRows = originalRows.filter(
+      (original) =>
+        !currentRows.some(
+          (current) => current.id === original.id
+        )
+    );
+
+
+    // Edited rows
+    const editedRows = currentRows.filter(
+      (current) => {
+        const old = originalRows.find(
+          (o) => o.id === current.id
+        );
+
+        return (
+          old &&
+          (
+            old.member !== current.member ||
+            old.book !== current.book ||
+            old.cd !== current.cd
+          )
+        );
+      }
+    );
+
+
+    const changes = [];
+
+
+    if (addedRows.length > 0) {
+      changes.push({
+        action: "Added",
+        newData: addedRows.map(normalize)
+      });
     }
 
-    if (currentRows.length === 0 && originalRows.length > 0) {
-      return [
-        {
-          action: "Deleted",
-          oldData: originalRows.map(({ member, book, cd }) => ({ member, book, cd })),
-        },
-      ];
-    }
 
-    // in all other cases where content differs, treat as update
-    return [
-      {
+    if (editedRows.length > 0) {
+      changes.push({
         action: "Edited",
-        newData: currentRows.map(({ member, book, cd }) => ({ member, book, cd })),
-        oldData: originalRows.map(({ member, book, cd }) => ({ member, book, cd })),
-      },
-    ];
+        newData: editedRows.map(normalize),
+        oldData: editedRows.map(row => {
+          const old = originalRows.find(
+            o => o.id === row.id
+          );
+          return normalize(old);
+        })
+      });
+    }
+
+
+    if (deletedRows.length > 0) {
+      changes.push({
+        action: "Deleted",
+        newData: deletedRows.map((row) => ({
+          member_details: row.member,
+        })),
+      });
+    }
+
+
+    return changes;
   };
 
   const handleCancel = () => {
@@ -276,6 +315,8 @@ const LIBMembership = ({ data }) => {
     }
   };
   const getChanges = () => {
+
+
     if (!pendingRows) return [];
 
     const changes = [];
@@ -287,11 +328,6 @@ const LIBMembership = ({ data }) => {
     const pendingMap = new Map(
       pendingRows.map((row, index) => [row.id, { row, index }]),
     );
-
-    console.log("Pending",pendingMap);
-    console.log("Comitted Map", committedMap);
-    
-    
 
     // 🔴 Deleted
     committedMap.forEach(({ row, index }, id) => {
@@ -322,15 +358,25 @@ const LIBMembership = ({ data }) => {
       if (committedMap.has(id)) {
         const { row: oldRow } = committedMap.get(id);
 
-        if (
-          oldRow.member !== newRow.member ||
-          oldRow.book !== newRow.book ||
-          oldRow.cd !== newRow.cd
-        ) {
+        const fields = [];
+
+        if (oldRow.member !== newRow.member) {
+          fields.push(`Member: ${oldRow.member} → ${newRow.member}`);
+        }
+
+        if (oldRow.book !== newRow.book) {
+          fields.push(`Books: ${oldRow.book} → ${newRow.book}`);
+        }
+
+        if (oldRow.cd !== newRow.cd) {
+          fields.push(`CD: ${oldRow.cd} → ${newRow.cd}`);
+        }
+
+        if (fields.length > 0) {
           changes.push({
             action: "Edited",
             section: "Membership Details",
-            changes: `${oldRow.member || "Unnamed"} → ${newRow.member || "Unnamed"}`,
+            changes: fields.join(", "),
             rowIndex: index,
           });
         }
@@ -340,10 +386,16 @@ const LIBMembership = ({ data }) => {
     return changes;
   };
 
-  const changes = getChanges();
 
-  console.log(changes);
-  
+  let changes = [];
+
+
+  try {
+    changes = getChanges();
+    console.log("Changes:", changes);
+  } catch (err) {
+    console.error("getChanges() failed:", err);
+  }
 
   const hasChecked = rows.some((r) => r.checked);
 
@@ -389,7 +441,7 @@ const LIBMembership = ({ data }) => {
               </thead>
               <tbody>
                 {rows.map((row, idx) => (
-                  <tr key={idx}>
+                  <tr key={row.id}>
                     <td className="border p-2">{idx + 1}</td>
                     <td className="border p-2">
                       {isEditing ? (
@@ -485,7 +537,7 @@ const LIBMembership = ({ data }) => {
                   onClick={handleSave}
                   className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
                 >
-                  <Save size={18} /> Save
+                  Save
                 </button>
               )}
             </div>
