@@ -119,7 +119,6 @@ export default function IqaMet({ iqacData }) {
 
   const handleSave = () => {
     setEditMode(false);
-    toast.success("Changes saved. Submit request for approval.");
   };
 
   const handleCancel = () => {
@@ -136,7 +135,6 @@ export default function IqaMet({ iqacData }) {
     setUploadedFiles({});
     setHasChanges(false);
     setChangesLog([]);
-    toast.info("Changes discarded.");
   };
 
   const buildPayload = (changesLog, editableData, originalData) => {
@@ -224,7 +222,6 @@ export default function IqaMet({ iqacData }) {
 
   const handleUndoChange = (id) => {
     setChangesLog((prev) => prev.filter((c) => c.id !== id));
-    toast.info("Change removed from request list.");
   };
 
   return (
@@ -392,9 +389,9 @@ export default function IqaMet({ iqacData }) {
                   {selectedRows.length > 0 && (
                     <button
                       onClick={() => setShowDeleteConfirm(true)}
-                      className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                      className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
                     >
-                      <Trash2 size={16} /> Delete Selected
+                       Delete Selected
                     </button>
                   )}
                 </div>
@@ -407,14 +404,14 @@ export default function IqaMet({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleCancel}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
               >
                 Cancel
               </button>
               {hasChanges && (
                 <button
                   onClick={handleSave}
-                  className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded"
+                  className="fflex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
                 >
                   Save
                 </button>
@@ -426,13 +423,13 @@ export default function IqaMet({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleDiscard}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
               >
                 Discard Changes
               </button>
               <button
                 onClick={() => setShowRequestModal(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-[10px]"
+                className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
               >
                 <Send size={16} /> Request
               </button>
@@ -491,7 +488,7 @@ export default function IqaMet({ iqacData }) {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
+                    className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
                 disabled={loading}
               >
                 Cancel
@@ -523,13 +520,13 @@ export default function IqaMet({ iqacData }) {
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setShowDeleteConfirm(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
               >
                 Cancel
               </button>
               <button
                 onClick={handleDeleteSelected}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
               >
                 Delete
               </button>
