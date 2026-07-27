@@ -933,7 +933,7 @@ export default function AdminOtherFacilities({ theme, toggle }) {
         toggle={toggle}
         theme={theme}
         backgroundImage="./Banners/Others.webp"
-        headerText="OTHER FACILITES"
+        headerText="OTHER FACILITIES"
         subHeaderText="Fostering excellence in social service and community well-being."
       />
       <ToastContainer position="bottom-right" autoClose={3000} />
