@@ -46,18 +46,24 @@ export default function AdminRankHonder() {
   const [newYearInput, setNewYearInput] = useState("");
 
   const navigate = useNavigate();
-  const { sendRequest, loading: requestLoading, error: requestError } = useAdminRequest();
+  const {
+    sendRequest,
+    loading: requestLoading,
+    error: requestError,
+  } = useAdminRequest();
 
   const BASE_URL = process.env.REACT_APP_BASE_URL || "";
-  
-  
-  const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
+
+  const UrlParser = (path) =>
+    path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 
   // convert incoming API structure into flat list with stable ids
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post("/api/main-backend/exam", { type: "rankholder" });
+        const response = await axios.post("/api/main-backend/exam", {
+          type: "rankholder",
+        });
         const data = response.data?.data || [];
         setRankholderRaw(data);
 
@@ -65,7 +71,9 @@ export default function AdminRankHonder() {
         data.forEach((cat) => {
           const content = Array.isArray(cat.content) ? cat.content : [];
           content.forEach((pdf, idx) => {
-            const stableId = pdf.id ? `${pdf.id}-${idx}` : makeUid(`rh-${cat.category}-${idx}`);
+            const stableId = pdf.id
+              ? `${pdf.id}-${idx}`
+              : makeUid(`rh-${cat.category}-${idx}`);
             flattened.push({
               id: stableId,
               category: cat.category,
@@ -82,7 +90,9 @@ export default function AdminRankHonder() {
       } catch (error) {
         console.error("Error Fetching Rankholder data:", error);
         if (error.response?.data?.status === 429) {
-          navigate("/ratelimit", { state: { msg: error.response.data.message } });
+          navigate("/ratelimit", {
+            state: { msg: error.response.data.message },
+          });
         } else {
           toast.error("Failed to fetch rankholder data");
         }
@@ -106,7 +116,6 @@ export default function AdminRankHonder() {
     return pdfPath.split("/").pop() || "";
   };
 
-
   const collectFiles = () => {
     const files = [];
     if (!pendingData) return files;
@@ -118,127 +127,162 @@ export default function AdminRankHonder() {
     return files;
   };
 
-const buildRankHolderPayload = () => {
+  const buildRankHolderPayload = () => {
+    const sourceData = pendingData || tempData; // 🔥 FIX
 
-  const sourceData = pendingData || tempData;  // 🔥 FIX
+    if (!sourceData) return { payload: [], files: [] };
 
-  if (!sourceData) return { payload: [], files: [] };
+    const payload = [];
+    const files = [];
 
-  const payload = [];
-  const files = [];
+    const oMap = new Map(originalData.map((i) => [i.id, i]));
+    const pMap = new Map(sourceData.map((i) => [i.id, i]));
 
-  const oMap = new Map(originalData.map(i => [i.id, i]));
-  const pMap = new Map(sourceData.map(i => [i.id, i]));
+    // ------------------ INSERT + UPDATE ------------------
+    for (const [id, newItem] of pMap.entries()) {
+      const oldItem = oMap.get(id);
 
-  // ------------------ INSERT + UPDATE ------------------
-  for (const [id, newItem] of pMap.entries()) {
-    const oldItem = oMap.get(id);
+      // derive the filename to send in payload (do NOT use blob)
+      const fileName =
+        newItem._file instanceof File ? newItem._file.name : newItem.pdf_path;
 
-    // derive the filename to send in payload (do NOT use blob)
-    const fileName = newItem._file instanceof File ? newItem._file.name : newItem.pdf_path;
+      // if there's a real File attached, collect it for upload
+      if (newItem._file instanceof File) {
+        files.push(newItem._file);
+      }
 
-    // if there's a real File attached, collect it for upload
-    if (newItem._file instanceof File) {
-      files.push(newItem._file);
+      // 🔹 INSERT
+      if (!oldItem) {
+        payload.push({
+          collectionName: "exams",
+          collection_type: "rankholder",
+          action: "insert",
+          title: "insert",
+          category: newItem.category,
+          meta_data: {
+            name: newItem.name,
+            pdf_path: fileName || "",
+          },
+        });
+        continue;
+      }
+
+      // 🔹 UPDATE (name/category changed or file updated)
+      // 🔹 UPDATE
+      if (
+        oldItem.name !== newItem.name ||
+        oldItem.category !== newItem.category ||
+        newItem._file instanceof File || // 🔥 THIS IS THE REAL FILE CHECK
+        oldItem.pdf_path !== newItem.pdf_path
+      ) {
+        payload.push({
+          collectionName: "exams",
+          collection_type: "rankholder",
+          action: "update",
+          title: "update",
+          category: newItem.category,
+          meta_data: {
+            name: newItem.name,
+            pdf_path:
+              newItem._file instanceof File
+                ? newItem._file.name
+                : newItem.pdf_path,
+          },
+          original_data: {
+            name: oldItem.name,
+            pdf_path: oldItem.pdf_path,
+          },
+        });
+      }
     }
 
-    // 🔹 INSERT
-    if (!oldItem) {
-      payload.push({
-        collectionName: "exams",
-        collection_type: "rankholder",
-        action: "insert",
-        title: "insert",
-        category: newItem.category,
-        meta_data: {
-          name: newItem.name,
-          pdf_path: fileName || ""
+    // ------------------ DELETE ------------------
+
+    // Group deleted PDFs by category
+    const deletedByCategory = {};
+
+    for (const [id, oldItem] of oMap.entries()) {
+      if (!pMap.has(id)) {
+        if (!deletedByCategory[oldItem.category]) {
+          deletedByCategory[oldItem.category] = [];
         }
-      });
-      continue;
+
+        deletedByCategory[oldItem.category].push(oldItem);
+      }
     }
 
-    // 🔹 UPDATE (name/category changed or file updated)
-// 🔹 UPDATE
-if (
-  oldItem.name !== newItem.name ||
-  oldItem.category !== newItem.category ||
-  newItem._file instanceof File ||   // 🔥 THIS IS THE REAL FILE CHECK
-  oldItem.pdf_path !== newItem.pdf_path
-) {
-  payload.push({
-    collectionName: "exams",
-    collection_type: "rankholder",
-    action: "update",
-    title: "update",
-    category: newItem.category,
-    meta_data: {
-      name: newItem.name,
-      pdf_path: newItem._file instanceof File
-        ? newItem._file.name
-        : newItem.pdf_path
-    },
-    original_data: {
-      name: oldItem.name,
-      pdf_path: oldItem.pdf_path
-    }
-  });
-}
-  }
+    // Build payloads
+    Object.keys(deletedByCategory).forEach((category) => {
+      const deletedItems = deletedByCategory[category];
 
-  // ------------------ DELETE ------------------
-  for (const [id, oldItem] of oMap.entries()) {
-    if (!pMap.has(id)) {
-      payload.push({
-        collectionName: "exams",
-        collection_type: "rankholder",
-        action: "delete",
-        title: "delete",
-        category: oldItem.category,
-        meta_data: {
-          name: oldItem.name,
-          pdf_path: oldItem.pdf_path
-        }
-      });
-    }
-  }
+      const totalOriginal = originalData.filter(
+        (item) => item.category === category,
+      ).length;
 
-  return { payload, files };
-};
+      // Entire year deleted
+      if (deletedItems.length === totalOriginal) {
+        payload.push({
+          collectionName: "exams",
+          collection_type: "rankholder",
+          action: "delete",
+          title: "delete",
+          category,
+          meta_data: {},
+        });
+      } else {
+        // Individual PDF deletion
+        deletedItems.forEach((item) => {
+          payload.push({
+            collectionName: "exams",
+            collection_type: "rankholder",
+            action: "delete",
+            title: "delete",
+            category,
+            meta_data: {
+              name: item.name,
+              pdf_path: item.pdf_path,
+            },
+          });
+        });
+      }
+    });
+
+    return { payload, files };
+  };
   // Submit request: send payload + files as FormData
-const handleRequestConfirm = async () => {
-  try {
-    setIsSubmitting(true);
+  const handleRequestConfirm = async () => {
+    try {
+      setIsSubmitting(true);
 
-    // buildRankHolderPayload now returns an object
-    const { payload, files } = buildRankHolderPayload();
+      // buildRankHolderPayload now returns an object
+      const { payload, files } = buildRankHolderPayload();
 
-    console.log("Payload:", payload);
-    console.log("Files:", files);
+      console.log("Payload:", payload);
+      console.log("Files:", files);
 
-    if (!payload || payload.length === 0) {
-      toast.error("No changes to submit!");
+      if (!payload || payload.length === 0) {
+        toast.error("No changes to submit!");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // keep your required signature
+      await sendRequest(payload, files);
+
+      // update local state after success
+      setOriginalData(deepCopy(pendingData));
+      setTempData(deepCopyWithFiles(pendingData));
+      setPendingData(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+      setChanges([]);
+    } catch (err) {
+      console.error(err);
+      toast.error("Request Failed!");
+    } finally {
       setIsSubmitting(false);
-      return;
     }
-
-    // keep your required signature
-    await sendRequest(payload, files);
-
-    // update local state after success
-    setOriginalData(deepCopy(pendingData));
-    setTempData(deepCopyWithFiles(pendingData));
-    setPendingData(null);
-    setIsSaved(false);
-    setShowRequestModal(false);
-    setChanges([]);
-  } catch (err) {
-    console.error(err);
-    toast.error("Request Failed!");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
   // change detection relative to originalData (for modal)
   const getChanges = () => {
@@ -256,21 +300,22 @@ const handleRequestConfirm = async () => {
           section: "RankHolder",
           changes: `${newItem.category} - ${newItem.name}`,
           rowId: id,
-          isCategoryDelete: false
+          isCategoryDelete: false,
         });
       } else if (
-  oldItem.name !== newItem.name ||
-  oldItem.category !== newItem.category ||
-  newItem._file !== undefined ||        // ⭐ NEW PDF uploaded
-  newItem.isUpdated === true ||         // ⭐ Existing PDF updated
-  (!newItem.pdf_path?.startsWith("blob:") && oldItem.pdf_path !== newItem.pdf_path)
-) {
+        oldItem.name !== newItem.name ||
+        oldItem.category !== newItem.category ||
+        newItem._file !== undefined || // ⭐ NEW PDF uploaded
+        newItem.isUpdated === true || // ⭐ Existing PDF updated
+        (!newItem.pdf_path?.startsWith("blob:") &&
+          oldItem.pdf_path !== newItem.pdf_path)
+      ) {
         out.push({
           action: "Edited",
           section: "RankHolder",
           changes: `${newItem.category} - ${newItem.name}`,
           rowId: id,
-          isCategoryDelete: false
+          isCategoryDelete: false,
         });
       }
     }
@@ -279,13 +324,16 @@ const handleRequestConfirm = async () => {
     const deletedByCategory = {};
     for (const [id, oldItem] of oMap.entries()) {
       if (!pMap.has(id)) {
-        if (!deletedByCategory[oldItem.category]) deletedByCategory[oldItem.category] = [];
+        if (!deletedByCategory[oldItem.category])
+          deletedByCategory[oldItem.category] = [];
         deletedByCategory[oldItem.category].push(oldItem);
       }
     }
 
     for (const cat in deletedByCategory) {
-      const totalOriginal = originalData.filter((it) => it.category === cat).length;
+      const totalOriginal = originalData.filter(
+        (it) => it.category === cat,
+      ).length;
       const deletedCount = deletedByCategory[cat].length;
       if (deletedCount === totalOriginal) {
         out.push({
@@ -293,7 +341,7 @@ const handleRequestConfirm = async () => {
           section: "RankHolder",
           changes: cat,
           rowId: cat, // use category name as rowId for full-category delete
-          isCategoryDelete: true
+          isCategoryDelete: true,
         });
       } else {
         deletedByCategory[cat].forEach((item) => {
@@ -302,7 +350,7 @@ const handleRequestConfirm = async () => {
             section: "RankHolder",
             changes: `${item.category} - ${item.name}`,
             rowId: item.id,
-            isCategoryDelete: false
+            isCategoryDelete: false,
           });
         });
       }
@@ -321,7 +369,9 @@ const handleRequestConfirm = async () => {
       const restoreItems = originalData.filter((it) => it.category === rowId);
       // avoid duplicates: only add those not present
       const existingIds = new Set(newPending.map((p) => p.id));
-      const toAdd = restoreItems.filter((r) => !existingIds.has(r.id)).map((r) => deepCopy(r));
+      const toAdd = restoreItems
+        .filter((r) => !existingIds.has(r.id))
+        .map((r) => deepCopy(r));
       newPending = [...newPending, ...toAdd];
       toast.info(`Restored deleted category ${rowId}`);
     } else {
@@ -337,7 +387,9 @@ const handleRequestConfirm = async () => {
         newPending.push(deepCopy(oldItem));
         toast.info("Restored deleted item.");
       } else if (wasEdited) {
-        newPending = newPending.map((item) => (item.id === rowId ? deepCopy(oldItem) : item));
+        newPending = newPending.map((item) =>
+          item.id === rowId ? deepCopy(oldItem) : item,
+        );
         toast.info("Reverted edited item.");
       } else {
         return; // nothing to do
@@ -388,37 +440,35 @@ const handleRequestConfirm = async () => {
     setIsSaved(!!pendingData);
   };
 
-const handleSaveAsDraft = () => {
+  const handleSaveAsDraft = () => {
+    // 🚨 VALIDATION
+    const invalid = tempData.find(
+      (x) => !x.name?.trim() || !x.pdf_path?.trim(),
+    );
 
-  // 🚨 VALIDATION
-  const invalid = tempData.find(
-    x => !x.name?.trim() || !x.pdf_path?.trim()
-  );
+    if (invalid) {
+      toast.error("Enter Course Name and Upload PDF before saving!");
+      return;
+    }
 
-  if (invalid) {
-    toast.error("Enter Course Name and Upload PDF before saving!");
-    return;
-  }
+    // Remove flags before saving
+    const cleaned = tempData.map((it) => ({
+      ...it,
+      isNew: false,
+      isUpdated: false,
+    }));
 
-  // Remove flags before saving
-  const cleaned = tempData.map(it => ({
-    ...it,
-    isNew: false,
-    isUpdated: false
-  }));
+    setPendingData(deepCopyWithFiles(cleaned));
+    setTempData(cleaned);
 
-  setPendingData(deepCopyWithFiles(cleaned));
-  setTempData(cleaned);
+    setIsSaved(true);
+    setIsEditing(false);
+    setIsDirty(false);
+    setSelectedCategories(new Set());
+    setSelectedPdfs(new Set());
 
-  setIsSaved(true);
-  setIsEditing(false);
-  setIsDirty(false);
-  setSelectedCategories(new Set());
-  setSelectedPdfs(new Set());
-
-
-  setChanges(getChanges());
-};
+    setChanges(getChanges());
+  };
 
   const handleDiscardDraft = () => {
     setTempData(deepCopy(originalData));
@@ -430,44 +480,43 @@ const handleSaveAsDraft = () => {
     toast.info("Changes discarded!");
   };
 
-const handleFileChange = (id, file) => {
-  const blob = URL.createObjectURL(file);
+  const handleFileChange = (id, file) => {
+    const blob = URL.createObjectURL(file);
 
-  setTempData(prev =>
-    prev.map(it =>
-      it.id === id
-        ? {
-            ...it,
-            pdf_path: blob,   // only for preview
-            _file: file,      // 🔥 actual file to send
-            isUpdated: true
-          }
-        : it
-    )
-  );
+    setTempData((prev) =>
+      prev.map((it) =>
+        it.id === id
+          ? {
+              ...it,
+              pdf_path: blob, // only for preview
+              _file: file, // 🔥 actual file to send
+              isUpdated: true,
+            }
+          : it,
+      ),
+    );
 
-  setIsDirty(true);
-};
-const handleAddPdf = (category) => {
+    setIsDirty(true);
+  };
+  const handleAddPdf = (category) => {
+    const yearItems = tempData.filter((it) => it.category === category);
 
-  const yearItems = tempData.filter(it => it.category === category);
+    if (yearItems.length >= 2) {
+      toast.error(`Year ${category} already has 2 PDFs!`);
+      return;
+    }
 
-  if (yearItems.length >= 2) {
-    toast.error(`Year ${category} already has 2 PDFs!`);
-    return;
-  }
+    const newItem = {
+      id: makeUid(`rh-${category}-${yearItems.length}`),
+      category,
+      name: "",
+      pdf_path: "",
+      isNew: true, // ⭐ VERY IMPORTANT
+    };
 
-const newItem = {
-  id: makeUid(`rh-${category}-${yearItems.length}`),
-  category,
-  name: "",
-  pdf_path: "",
-  isNew: true   // ⭐ VERY IMPORTANT
-};
-
-  setTempData(prev => [...prev, newItem]);
-  setIsDirty(true);
-};
+    setTempData((prev) => [...prev, newItem]);
+    setIsDirty(true);
+  };
 
   const toggleSelectCategory = (category) => {
     setSelectedCategories((prev) => {
@@ -478,7 +527,9 @@ const newItem = {
         nxt.add(category);
         // deselect all pdfs of this category
         const nxtPdfs = new Set(selectedPdfs);
-        (groupedByCategory[category] || []).forEach((pdf) => nxtPdfs.delete(pdf.id));
+        (groupedByCategory[category] || []).forEach((pdf) =>
+          nxtPdfs.delete(pdf.id),
+        );
         setSelectedPdfs(nxtPdfs);
         setActiveCategory(null);
       }
@@ -518,10 +569,18 @@ const newItem = {
 
   const confirmDelete = () => {
     if (deleteType === "category") {
-      setTempData((prev) => prev.filter((it) => !selectedCategories.has(it.category)));
+      setTempData((prev) =>
+        prev.filter((it) => !selectedCategories.has(it.category)),
+      );
       setActiveCategory((a) => {
         if (selectedCategories.has(a)) {
-          const remainingCats = [...new Set(tempData.filter((i) => !selectedCategories.has(i.category)).map((i) => i.category))];
+          const remainingCats = [
+            ...new Set(
+              tempData
+                .filter((i) => !selectedCategories.has(i.category))
+                .map((i) => i.category),
+            ),
+          ];
           return remainingCats.length > 0 ? remainingCats[0] : null;
         }
         return a;
@@ -536,34 +595,32 @@ const newItem = {
   };
 
   const handleAddYear = () => {
-  if (!newYearInput.trim()) {
-    toast.error("Enter year to add.");
-    return;
-  }
+    if (!newYearInput.trim()) {
+      toast.error("Enter year to add.");
+      return;
+    }
 
-  const year = newYearInput.trim();
+    const year = newYearInput.trim();
 
-  if (categories.includes(year)) {
-    toast.error(`Year ${year} already exists!`);
-    return;
-  }
+    if (categories.includes(year)) {
+      toast.error(`Year ${year} already exists!`);
+      return;
+    }
 
-const newItem = {
-  id: makeUid(`rh-${year}-0`),
-  category: year,
-  name: "",
-  pdf_path: "",
-  isNew: true   // ⭐
-};
+    const newItem = {
+      id: makeUid(`rh-${year}-0`),
+      category: year,
+      name: "",
+      pdf_path: "",
+      isNew: true, // ⭐
+    };
 
-  setTempData(prev => [...prev, newItem]);
-  setActiveCategory(year);
-  setIsDirty(true);
-  setAddingYear(false);
-  setNewYearInput("");
-};
-
-
+    setTempData((prev) => [...prev, newItem]);
+    setActiveCategory(year);
+    setIsDirty(true);
+    setAddingYear(false);
+    setNewYearInput("");
+  };
 
   // Keep changes in sync when pendingData changes
   useEffect(() => {
@@ -587,11 +644,16 @@ const newItem = {
     <div className="p-6 mt-4 pb-10 w-full min-h-[100vh]">
       <ToastContainer position="bottom-right" autoClose={2000} />
       <div className="relative mb-6 w-full">
-        <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">Rank list UG & PG</h2>
+        <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">
+          Rank list UG & PG
+        </h2>
 
         {!isEditing && (
           <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
-            <button onClick={handleEdit} className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition">
+            <button
+              onClick={handleEdit}
+              className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition"
+            >
               <Pencil size={18} /> Edit
             </button>
           </div>
@@ -617,7 +679,9 @@ const newItem = {
                 <input
                   type="checkbox"
                   checked={selectedCategories.has(cat)}
-                  disabled={(groupedByCategory[cat] || []).some((p) => selectedPdfs.has(p.id))}
+                  disabled={(groupedByCategory[cat] || []).some((p) =>
+                    selectedPdfs.has(p.id),
+                  )}
                   onChange={(e) => {
                     e.stopPropagation();
                     const nxt = new Set(selectedCategories);
@@ -625,7 +689,9 @@ const newItem = {
                     else {
                       nxt.add(cat);
                       const nxtPdfs = new Set(selectedPdfs);
-                      (groupedByCategory[cat] || []).forEach((pdf) => nxtPdfs.delete(pdf.id));
+                      (groupedByCategory[cat] || []).forEach((pdf) =>
+                        nxtPdfs.delete(pdf.id),
+                      );
                       setSelectedPdfs(nxtPdfs);
                       setActiveCategory(null);
                     }
@@ -639,40 +705,40 @@ const newItem = {
           </div>
         ))}
         {isEditing && !addingYear && (
-  <button
-    onClick={() => setAddingYear(true)}
-    className="flex items-center justify-center gap-2 px-4 py-3 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition"
-  >
-    <Plus size={18}/> Add Year
-  </button>
-)}
+          <button
+            onClick={() => setAddingYear(true)}
+            className="flex items-center justify-center gap-2 px-4 py-3 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim transition"
+          >
+            <Plus size={18} /> Add Year
+          </button>
+        )}
 
-{isEditing && addingYear && (
-  <div className="flex items-center gap-2">
-    <input
-      type="text"
-      value={newYearInput}
-      onChange={(e) => setNewYearInput(e.target.value)}
-      placeholder="Enter Year"
-      className="px-2 py-1 border rounded"
-    />
-    <button
-      onClick={handleAddYear}
-      className="bg-[#fdcc03] px-3 py-1 rounded"
-    >
-      Add
-    </button>
-    <button
-      onClick={()=>{
-        setAddingYear(false);
-        setNewYearInput("");
-      }}
-      className="bg-gray-400 text-white px-3 py-1 rounded"
-    >
-      Cancel
-    </button>
-  </div>
-)}
+        {isEditing && addingYear && (
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              value={newYearInput}
+              onChange={(e) => setNewYearInput(e.target.value)}
+              placeholder="Enter Year"
+              className="px-2 py-1 border rounded"
+            />
+            <button
+              onClick={handleAddYear}
+              className="bg-[#fdcc03] px-3 py-1 rounded"
+            >
+              Add
+            </button>
+            <button
+              onClick={() => {
+                setAddingYear(false);
+                setNewYearInput("");
+              }}
+              className="bg-gray-400 text-white px-3 py-1 rounded"
+            >
+              Cancel
+            </button>
+          </div>
+        )}
 
         {/* Add Category button - optional (not adding UI to create new category name here) */}
       </div>
@@ -680,29 +746,33 @@ const newItem = {
       {/* Show PDFs for selected category */}
       {activeCategory && groupedByCategory[activeCategory] && (
         <div className="relative border p-8 mt-6 w-[94%] mx-auto bg-prim dark:bg-drkp shadow-lg rounded-lg">
-          <h3 className="text-xl font-bold mb-4 text-center">{activeCategory}</h3>
+          <h3 className="text-xl font-bold mb-4 text-center">
+            {activeCategory}
+          </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {groupedByCategory[activeCategory].map((pdf) => (
               <div key={pdf.id} className="relative">
                 <div className="flex justify-between items-center mb-2">
-{pdf.isNew && isEditing ? (
-  <input
-    type="text"
-    placeholder="Enter Course Name (Ex: MBA)"
-    value={pdf.name}
-    onChange={(e) =>
-      setTempData(prev =>
-        prev.map(it =>
-          it.id === pdf.id ? { ...it, name: e.target.value } : it
-        )
-      )
-    }
-    className="border px-2 py-1 rounded w-full"
-  />
-) : (
-  <h4 className="font-semibold">{pdf.name}</h4>
-)}
+                  {pdf.isNew && isEditing ? (
+                    <input
+                      type="text"
+                      placeholder="Enter Course Name (Ex: MBA)"
+                      value={pdf.name}
+                      onChange={(e) =>
+                        setTempData((prev) =>
+                          prev.map((it) =>
+                            it.id === pdf.id
+                              ? { ...it, name: e.target.value }
+                              : it,
+                          ),
+                        )
+                      }
+                      className="border px-2 py-1 rounded w-full"
+                    />
+                  ) : (
+                    <h4 className="font-semibold">{pdf.name}</h4>
+                  )}
                   {isEditing && (
                     <input
                       type="checkbox"
@@ -732,7 +802,11 @@ const newItem = {
 
                 {pdf.pdf_path ? (
                   <embed
-                    src={pdf.pdf_path.startsWith("blob:") ? pdf.pdf_path : UrlParser(pdf.pdf_path)}
+                    src={
+                      pdf.pdf_path.startsWith("blob:")
+                        ? pdf.pdf_path
+                        : UrlParser(pdf.pdf_path)
+                    }
                     type="application/pdf"
                     width="100%"
                     height="500px"
@@ -747,15 +821,15 @@ const newItem = {
             ))}
 
             {/* Add PDF card */}
-{isEditing && groupedByCategory[activeCategory].length < 2 && (
-  <div
-    className="border-2 border-dashed rounded-lg h-[500px] flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100"
-    onClick={() => handleAddPdf(activeCategory)}
-  >
-    <Plus size={48} className="text-gray-400 mb-2" />
-    <span className="text-gray-500">Add PDF</span>
-  </div>
-)}
+            {isEditing && groupedByCategory[activeCategory].length < 2 && (
+              <div
+                className="border-2 border-dashed rounded-lg h-[500px] flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100"
+                onClick={() => handleAddPdf(activeCategory)}
+              >
+                <Plus size={48} className="text-gray-400 mb-2" />
+                <span className="text-gray-500">Add PDF</span>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -764,13 +838,21 @@ const newItem = {
       {isEditing && (
         <div className="flex justify-center gap-4 mt-6">
           {selectedCategories.size > 0 && (
-            <button onClick={() => openDeleteModal("category")} className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600">
-              <Trash2 size={18} /> Delete {selectedCategories.size} Category{selectedCategories.size > 1 ? "s" : ""}
+            <button
+              onClick={() => openDeleteModal("category")}
+              className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600"
+            >
+              <Trash2 size={18} /> Delete {selectedCategories.size} Category
+              {selectedCategories.size > 1 ? "s" : ""}
             </button>
           )}
           {selectedPdfs.size > 0 && (
-            <button onClick={() => openDeleteModal("pdf")} className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600">
-              <Trash2 size={18} /> Delete {selectedPdfs.size} PDF{selectedPdfs.size > 1 ? "s" : ""}
+            <button
+              onClick={() => openDeleteModal("pdf")}
+              className="px-4 py-2 flex items-center gap-2 bg-red-500 text-prim rounded hover:bg-red-600"
+            >
+              <Trash2 size={18} /> Delete {selectedPdfs.size} PDF
+              {selectedPdfs.size > 1 ? "s" : ""}
             </button>
           )}
         </div>
@@ -779,9 +861,17 @@ const newItem = {
       {/* Save / Cancel (when editing) */}
       {isEditing && (
         <div className="flex justify-end gap-3 mt-6">
-          <button onClick={handleCancel} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition">Cancel</button>
+          <button
+            onClick={handleCancel}
+            className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition"
+          >
+            Cancel
+          </button>
           {isDirty && (
-            <button onClick={handleSaveAsDraft} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition">
+            <button
+              onClick={handleSaveAsDraft}
+              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition"
+            >
               Save
             </button>
           )}
@@ -791,9 +881,20 @@ const newItem = {
       {/* Saved draft actions */}
       {isSaved && (
         <div className="flex justify-end gap-3 mt-6">
-          <button onClick={handleDiscardDraft} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition">Discard Changes</button>
+          <button
+            onClick={handleDiscardDraft}
+            className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-600 transition"
+          >
+            Discard Changes
+          </button>
           {changes.length > 0 && (
-            <button onClick={() => { setShowRequestModal(true); setChanges(getChanges()); }} className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition">
+            <button
+              onClick={() => {
+                setShowRequestModal(true);
+                setChanges(getChanges());
+              }}
+              className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim transition"
+            >
               <Send size={18} /> Request
             </button>
           )}
@@ -804,8 +905,13 @@ const newItem = {
       {showRequestModal && (
         <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
           <div className="bg-prim p-6 rounded-xl w-[700px] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">Final Request</h2>
-            <p className="text-sm text-red-500 mb-4">Note: Your changes will stay pending until approved by the superior admin.</p>
+            <h2 className="text-xl font-bold mb-4 text-gray-800">
+              Final Request
+            </h2>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the
+              superior admin.
+            </p>
 
             {changes.length > 0 ? (
               <table className="w-full text-center text-sm border">
@@ -825,7 +931,9 @@ const newItem = {
                       <td className="border p-2">{ch.changes}</td>
                       <td className="border p-2">
                         <button
-                          onClick={() => revertChange(ch.rowId, ch.isCategoryDelete)}
+                          onClick={() =>
+                            revertChange(ch.rowId, ch.isCategoryDelete)
+                          }
                           className="p-1 rounded hover:bg-gray-100"
                           title="Revert this change"
                         >
@@ -841,9 +949,18 @@ const newItem = {
             )}
 
             <div className="flex justify-end gap-2 mt-6">
-              <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500">Cancel</button>
+              <button
+                onClick={() => setShowRequestModal(false)}
+                className="px-4 py-2 rounded bg-gray-400 text-prim hover:bg-gray-500"
+              >
+                Cancel
+              </button>
               {changes.length > 0 && (
-                <button onClick={handleRequestConfirm} disabled={isSubmitting} className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim disabled:opacity-50 disabled:cursor-not-allowed transition">
+                <button
+                  onClick={handleRequestConfirm}
+                  disabled={isSubmitting}
+                  className="px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim disabled:opacity-50 disabled:cursor-not-allowed transition"
+                >
                   {isSubmitting ? "Processing..." : "Confirm Request"}
                 </button>
               )}
@@ -856,17 +973,37 @@ const newItem = {
       {showDeleteModal && (
         <div className="fixed inset-0 bg-text/50 flex items-center justify-center z-50">
           <div className="bg-prim p-6 rounded-lg shadow-lg border w-[90%] max-w-md">
-            <h3 className="text-lg font-semibold mb-4 text-gray-800">Confirm Delete</h3>
+            <h3 className="text-lg font-semibold mb-4 text-gray-800">
+              Confirm Delete
+            </h3>
             <p className="text-gray-600 mb-6">
               Are you sure you want to delete{" "}
-              {deleteType === "category" ? selectedCategories.size : selectedPdfs.size}{" "}
+              {deleteType === "category"
+                ? selectedCategories.size
+                : selectedPdfs.size}{" "}
               {deleteType === "category" ? "category" : "PDF"}
-              {deleteType === "category" ? (selectedCategories.size > 1 ? "s" : "") : (selectedPdfs.size > 1 ? "s" : "")}
+              {deleteType === "category"
+                ? selectedCategories.size > 1
+                  ? "s"
+                  : ""
+                : selectedPdfs.size > 1
+                  ? "s"
+                  : ""}
               ?
             </p>
             <div className="flex justify-end gap-3">
-              <button onClick={() => setShowDeleteModal(false)} className="px-4 py-2 bg-gray-400 rounded-lg hover:bg-gray-600 transition">Cancel</button>
-              <button onClick={confirmDelete} className="px-4 py-2 bg-red-600 text-prim rounded-lg hover:bg-red-700 transition">Delete</button>
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="px-4 py-2 bg-gray-400 rounded-lg hover:bg-gray-600 transition"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="px-4 py-2 bg-red-600 text-prim rounded-lg hover:bg-red-700 transition"
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>

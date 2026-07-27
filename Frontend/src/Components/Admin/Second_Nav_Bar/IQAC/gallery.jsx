@@ -38,6 +38,7 @@ export default function IqaGal({ iqacData, onRefresh }) {
   // Popups/state
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [changes, setChanges] = useState([]);
+  const [pendingFiles, setPendingFiles] = useState([]);
   const [deleteConfirm, setDeleteConfirm] = useState(null); // { type, category, path? }
   const [addPopup, setAddPopup] = useState(false);
   const [newCategory, setNewCategory] = useState("");
@@ -49,8 +50,9 @@ export default function IqaGal({ iqacData, onRefresh }) {
   // Re-hydrate when props change (this is why your UI snaps back to "original")
   useEffect(() => {
     if (!iqacData) return;
-    const normalized = Array.isArray(iqacData) ? iqacData : [iqacData];
-    const cloned = deepClone(normalized);
+    const normalized = (Array.isArray(iqacData) ? iqacData : [iqacData]).filter(
+      (item) => item?.category
+    ); const cloned = deepClone(normalized);
 
     setGalleryData(cloned);
     setSavedData(cloned);
@@ -96,6 +98,8 @@ export default function IqaGal({ iqacData, onRefresh }) {
   const hasPendingApprovalChanges = useMemo(() => {
     return JSON.stringify(savedData) !== JSON.stringify(originalData);
   }, [savedData, originalData]);
+
+
 
   // Delete (only affects galleryData, i.e. edit buffer)
   const handleDelete = () => {
@@ -165,15 +169,26 @@ export default function IqaGal({ iqacData, onRefresh }) {
 
   // Save edits locally (still not sent for approval)
   const handleSave = () => {
-    const { payload } = buildPayload(galleryData, originalData);
+    const { payload, files } = buildPayload(galleryData, originalData);
 
-    setChanges(payload);
-    console.log(galleryData);
+
+    setChanges((prev) => [...prev, ...payload]);
+    setPendingFiles((prev) => [...prev, ...files]);
+
     setSavedData(deepClone(galleryData));
-    console.log(deepClone(galleryData));
     setIsEditing(false);
   };
+  const handleUndoChange = (change, index) => {
+    setChanges((prev) => {
+      const updated = prev.filter((_, i) => i !== index);
 
+      if (updated.length === 0) {
+        setConfirmPopup(false);
+      }
+
+      return updated;
+    });
+  };
   // Cancel edit session
   const handleCancel = () => {
     setGalleryData(deepClone(savedData));
@@ -192,128 +207,138 @@ export default function IqaGal({ iqacData, onRefresh }) {
     const payload = [];
     const files = [];
 
-    const savedByCategory = new Map(saved.map((item) => [item.category, item]));
+    const savedByCategory = new Map(
+      saved.map((item) => [item.category, item])
+    );
 
-    // Deletions: category or individual image deletions (server paths only)
+    // ---------- DELETE / UPDATE ----------
     originals.forEach((orig) => {
       const savedItem = savedByCategory.get(orig.category);
 
+      // Delete category
       if (!savedItem) {
         payload.push({
           collectionName: "iqac",
           collection_type: "gallery",
           action: "delete",
-          title: "deletion of gallery images",
+          title: "deletion of gallery category",
           category: orig.category,
-          meta_data: { image_path: orig.image_path || [] },
-          original_data: null,
+          meta_data: {},
+          original_data: {
+            image_path: orig.image_path || [],
+          },
         });
         return;
       }
 
+      // Delete images
       const deletedImages = (orig.image_path || []).filter(
-        (path) => !(savedItem.image_path || []).includes(path)
+        (img) => !(savedItem.image_path || []).includes(img)
       );
 
-      if (deletedImages.length > 0) {
+      if (deletedImages.length) {
         payload.push({
           collectionName: "iqac",
           collection_type: "gallery",
-          action: "delete_category",
-          title: "deletion of gallery category",
+          action: "update",
+          title: "updation of gallery images",
           category: orig.category,
           meta_data: {
+            image_path: deletedImages,
+          },
+          original_data: {
             image_path: orig.image_path || [],
           },
-          original_data: null,
         });
       }
     });
 
-    // Insertions/Updates: send file names, attach real File objects
+    // ---------- INSERT ----------
     saved.forEach((savedItem) => {
-      const originalItem = originals.find((o) => o.category === savedItem.category);
+      const originalItem = originals.find(
+        (o) => o.category === savedItem.category
+      );
 
-      // new category
+      // New category
       if (!originalItem) {
-        const newCatFiles = savedItem._files || [];
-        if (newCatFiles.length) {
+        const categoryFiles = savedItem._files || [];
+
+        if (categoryFiles.length) {
           payload.push({
             collectionName: "iqac",
             collection_type: "gallery",
             action: "insert",
             title: "insertion of gallery images",
             category: savedItem.category,
-            meta_data: { image_path: newCatFiles.map((f) => f.name) },
+            meta_data: {
+              category: savedItem.category,
+              image_path: categoryFiles.map((f) => f.name),
+            },
             original_data: null,
           });
-          files.push(...newCatFiles);
+
+          files.push(...categoryFiles);
         }
+
         return;
       }
 
-      // new images in existing category
       const newFiles = savedItem._newFiles || [];
+
       if (newFiles.length) {
         payload.push({
           collectionName: "iqac",
           collection_type: "gallery",
-          action: "update",
-          title: "updation of gallery images",
+          action: "insert",
+          title: "insertion of gallery images",
           category: savedItem.category,
-          meta_data: { image_path: newFiles.map((f) => f.name) },
-          original_data: { image_path: originalItem.image_path || [] },
+          meta_data: {
+            image_path: newFiles.map((f) => f.name),
+          },
+          original_data: {
+            image_path: originalItem.image_path || [],
+          },
         });
+
         files.push(...newFiles);
       }
     });
 
-
-    return { payload, files };
+    return {
+      payload,
+      files,
+    };
   };
 
   // Send final request
   const handleConfirmRequest = async () => {
     try {
-      const { payload, files } = buildPayload(savedData, originalData);
-   
+      const payload = changes;
+      const files = pendingFiles;
 
       if (payload.length === 0) {
-        console.log("No payload generated");
         toast.info("No changes found.");
         return;
       }
 
-      console.log("Calling sendRequest...");
 
       const response = await sendRequest(payload, files);
-      console.log("Response from sendRequest:", response);
-      console.log("Response:", response);
-
 
       if (response) {
-        console.log("SUCCESS");
-
-        // toast.success("Request submitted successfully.");
-
-        // Reset the baseline
         const updatedData = deepClone(savedData);
 
         setOriginalData(updatedData);
         setSavedData(updatedData);
 
-        setConfirmPopup(false);
         setChanges([]);
+        setPendingFiles([]);
 
-
-        // if (typeof onRefresh === "function") {
-        //   await onRefresh();
-        // }
+        setConfirmPopup(false);
       } else {
         toast.error("sendRequest returned null");
       }
     } catch (err) {
-      console.error("handleConfirmRequest Error:", err);
+      console.error(err);
       toast.error(err?.message || "Request failed");
     }
   };
@@ -368,7 +393,7 @@ export default function IqaGal({ iqacData, onRefresh }) {
           </div>
 
           {/* Images */}
-          <div className="columns-xs mb-12 relative">
+          <div className="columns-xs mb-12">
             {selectedItem?.image_path?.map((imagePath, index) => (
               <div key={`${imagePath}-${index}`} className="relative inline-block m-2">
                 <img
@@ -396,8 +421,23 @@ export default function IqaGal({ iqacData, onRefresh }) {
 
             {/* Add new images (for specific category) */}
             {selectedCategory !== "OVERALL" && isEditing && (
-              <label className="m-2 w-40 h-40 border-2 border-dashed border-gray-400 flex items-center justify-center cursor-pointer rounded-lg">
-                <Plus size={32} />
+              <label
+                className="relative inline-flex flex-col items-center justify-center w-[200px] h-[200px] m-2 rounded-xl border-2 border-dashed border-gray-300 bg-white shadow-sm cursor-pointer transition-all duration-300 hover:border-[#830000] hover:shadow-xl hover:-translate-y-1"
+              >
+                <>
+                  <div className="text-6xl text-[#830000] font-light leading-none">
+                    +
+                  </div>
+
+                  <div className="mt-3 text-base font-semibold text-gray-700">
+                    Add Images
+                  </div>
+
+                  <div className="text-xs text-gray-400 mt-1">
+                    Click to upload
+                  </div>
+                </>
+
                 <input
                   type="file"
                   accept="image/*"
@@ -409,7 +449,6 @@ export default function IqaGal({ iqacData, onRefresh }) {
                 />
               </label>
             )}
-
             {/* Add new category (only in OVERALL) */}
             {selectedCategory === "OVERALL" && isEditing && (
               <label
@@ -426,7 +465,7 @@ export default function IqaGal({ iqacData, onRefresh }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleCancel}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
               >
                 Cancel
               </button>
@@ -445,7 +484,7 @@ export default function IqaGal({ iqacData, onRefresh }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleDiscard}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
               >
                 Discard Changes
               </button>
@@ -484,13 +523,13 @@ export default function IqaGal({ iqacData, onRefresh }) {
             <div className="flex justify-center gap-2">
               <button
                 onClick={() => setDeleteConfirm(null)}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
               >
                 Cancel
               </button>
               <button
                 onClick={handleDelete}
-                className="px-4 py-2 bg-red-600 text-white rounded"
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
               >
                 Delete
               </button>
@@ -576,7 +615,7 @@ export default function IqaGal({ iqacData, onRefresh }) {
                   setNewCategory("");
                   setNewFiles([]);
                 }}
-                className="px-5 py-2.5 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition-colors font-medium"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
               >
                 Cancel
               </button>
@@ -614,6 +653,8 @@ export default function IqaGal({ iqacData, onRefresh }) {
                     <th className="text-left py-2">Action</th>
                     <th className="text-left py-2">Category</th>
                     <th className="text-left py-2">Images</th>
+                    <th className="text-center py-2">Undo</th>
+
                   </tr>
                 </thead>
 
@@ -622,16 +663,25 @@ export default function IqaGal({ iqacData, onRefresh }) {
                     <tr key={index} className="border-b">
                       <td className="py-2">
                         {change.action === "insert"
-                          ? "➕ Added"
+                          ? " Added"
                           : change.action === "update"
-                            ? "✏ Updated"
-                            : "🗑 Deleted"}
+                            ? " Updated"
+                            : " Deleted"}
                       </td>
 
                       <td>{change.category}</td>
 
                       <td>
-                        {change.meta_data?.image_path?.length || 0} image(s)
+                        {change.action === "delete"
+                          ? `${change.original_data?.image_path?.length || 0} image(s)`
+                          : `${change.meta_data?.image_path?.length || 0} image(s)`}
+                      </td>
+                      <td className="text-center">
+                        <button
+                          onClick={() => handleUndoChange(change, index)} className="text-red-500 hover:text-red-700 text-xl font-bold"
+                        >
+                          ✕
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -642,7 +692,7 @@ export default function IqaGal({ iqacData, onRefresh }) {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setConfirmPopup(false)}
-                className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""
+                className={`px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500 ${loading ? "cursor-not-allowed" : ""
                   }`}
                 disabled={loading}
               >
