@@ -44,12 +44,21 @@ if (singleDocTypes.includes(collection_type)) {
       if (!original_data) {
         return { success: false, error: "original_data is required for multi-doc updates" };
       }
+      
+     const updatedData = doc.data.map((item) => {
+  const match = Object.keys(original_data).every(
+    key => item[key] === original_data[key]
+  );
 
-      const updatedData = doc.data.map((item) =>
-        JSON.stringify(item) === JSON.stringify(original_data)
-          ? { ...item, ...meta_data }
-          : item
-      );
+  
+
+  return match
+    ? {
+        ...item,
+        ...meta_data,
+      }
+    : item;
+});
 
       await mainCollection.updateOne(
         { type: collection_type },
@@ -104,6 +113,11 @@ if (singleDocTypes.includes(collection_type)) {
       return index !== -1 ? newPaths[index] : img;
     })
   };
+const updatedData = doc.data.map((item) => {
+  const match = JSON.stringify(item) === JSON.stringify(original_data);
+  return match ? { ...item, ...meta_data } : item;
+});
+
 
 
   // Update in MongoDB
