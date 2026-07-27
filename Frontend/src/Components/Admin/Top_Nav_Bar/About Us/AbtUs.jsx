@@ -8,19 +8,27 @@ import "./AbtUs.css";
 import { useNavigate } from "react-router";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 import { toast, ToastContainer } from "react-toastify";
-import { Pencil} from "lucide-react";
+import { Pencil } from "lucide-react";
 
 const AdminAbtUs = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const navigate = useNavigate();
 
-  const [loading, setLoading] = useState({ img1: true, img2: true, img3: true });
+  const [loading, setLoading] = useState({
+    img1: true,
+    img2: true,
+    img3: true,
+  });
   const [abtUsData, setAbtUsData] = useState(null);
   const [editMode, setEditMode] = useState(false);
 
   // Editable fields
   const [editedContent, setEditedContent] = useState("");
-  const [editedImages, setEditedImages] = useState({ 0: null, 1: null, 2: null }); // File replacements only
+  const [editedImages, setEditedImages] = useState({
+    0: null,
+    1: null,
+    2: null,
+  }); // File replacements only
   const [pdfLinks, setPdfLinks] = useState([]); // objects {name,url,file?}
 
   // Change tracking
@@ -54,7 +62,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
     "We stand for innovation, with our diverse community of scholars and engineers dedicated to making a positive impact at local, national, and global levels.";
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
+  const UrlParser = (path) =>
+    path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 
   const { sendRequest, loading: reqLoading } = useAdminRequest();
 
@@ -105,7 +114,11 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
   // NEW: Normalize/convert content between backend array <-> UI string
   const contentArrayToString = (content) => {
-    if (Array.isArray(content)) return content.filter((x) => x != null).map(String).join("\n");
+    if (Array.isArray(content))
+      return content
+        .filter((x) => x != null)
+        .map(String)
+        .join("\n");
     if (content == null) return "";
     return String(content);
   };
@@ -128,7 +141,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
   };
 
   const normalizePdfLinksFromBackend = (data) => {
-    const pdfSource = data?.about_us_pdf || data?.links || data?.about_us || data?.pdfs || [];
+    const pdfSource =
+      data?.about_us_pdf || data?.links || data?.about_us || data?.pdfs || [];
     let initialPdfLinks = [];
 
     if (Array.isArray(pdfSource) && pdfSource.length > 0) {
@@ -172,7 +186,9 @@ const AdminAbtUs = ({ theme, toggle }) => {
     return {
       content: contentArrayToString(abtUsData?.content),
       images: { 0: null, 1: null, 2: null },
-      pdfLinks: normalizePdfLinksFromBackend(abtUsData || {}).map((p) => ({ ...p })),
+      pdfLinks: normalizePdfLinksFromBackend(abtUsData || {}).map((p) => ({
+        ...p,
+      })),
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [abtUsData]);
@@ -188,7 +204,13 @@ const AdminAbtUs = ({ theme, toggle }) => {
   // -------------------- PDF modal --------------------
   const openPdfModal = (index = null) => {
     if (index === null) {
-      setShowPdfModal({ open: true, index: null, name: "", file: null, error: "" });
+      setShowPdfModal({
+        open: true,
+        index: null,
+        name: "",
+        file: null,
+        error: "",
+      });
     } else {
       const item = pdfLinks[index] || { name: "", url: "", file: null };
 
@@ -196,14 +218,20 @@ const AdminAbtUs = ({ theme, toggle }) => {
         open: true,
         index,
         name: item.name || "",
-        file: item.file || null,   // ✅ keep replaced file
+        file: item.file || null, // ✅ keep replaced file
         error: "",
       });
     }
   };
 
   const closePdfModal = () =>
-    setShowPdfModal({ open: false, index: null, name: "", file: null, error: "" });
+    setShowPdfModal({
+      open: false,
+      index: null,
+      name: "",
+      file: null,
+      error: "",
+    });
 
   const savePdfModal = () => {
     const { index, name, file } = showPdfModal;
@@ -222,7 +250,9 @@ const AdminAbtUs = ({ theme, toggle }) => {
       setPdfLinks((prev) => [...prev, { name, url: "", file }]);
     } else {
       setPdfLinks((prev) =>
-        prev.map((pdf, i) => (i === index ? { ...pdf, name, file: file || pdf.file || null } : pdf))
+        prev.map((pdf, i) =>
+          i === index ? { ...pdf, name, file: file || pdf.file || null } : pdf,
+        ),
       );
     }
 
@@ -245,14 +275,20 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
   // selection delete
   const toggleSelectPdf = (pdfName) => {
-    setSelectedPdfNames((prev) => (prev.includes(pdfName) ? prev.filter((name) => name !== pdfName) : [...prev, pdfName]));
+    setSelectedPdfNames((prev) =>
+      prev.includes(pdfName)
+        ? prev.filter((name) => name !== pdfName)
+        : [...prev, pdfName],
+    );
   };
 
   const handleDeleteSelected = () => setShowDeleteConfirm(true);
 
   const confirmDeleteSelected = () => {
     // Filter by name instead of index to avoid index-shifting issues
-    setPdfLinks((prev) => prev.filter((pdf) => !selectedPdfNames.includes(pdf.name)));
+    setPdfLinks((prev) =>
+      prev.filter((pdf) => !selectedPdfNames.includes(pdf.name)),
+    );
 
     setSelectedPdfNames([]);
     setChanged(true);
@@ -286,7 +322,10 @@ const AdminAbtUs = ({ theme, toggle }) => {
           action: "update",
           section: `About VEC Image ${i + 1}`,
           changes: "Image replaced",
-          applyUndo: (curr) => ({ ...curr, images: { ...curr.images, [i]: null } }),
+          applyUndo: (curr) => ({
+            ...curr,
+            images: { ...curr.images, [i]: null },
+          }),
         });
       }
     });
@@ -298,68 +337,63 @@ const AdminAbtUs = ({ theme, toggle }) => {
     const currPdfs = Array.isArray(current.pdfLinks) ? current.pdfLinks : [];
 
     // Create maps by name for comparison
-    const baseMap = new Map(basePdfs.map((p) => [p.name, p]));
-    const currMap = new Map(currPdfs.map((p) => [p.name, p]));
+    const maxLength = Math.max(basePdfs.length, currPdfs.length);
 
-    // Get all unique PDF names from both baseline and current
-    const allPdfNames = new Set([...baseMap.keys(), ...currMap.keys()]);
-
-    allPdfNames.forEach((pdfName) => {
-      const b = baseMap.get(pdfName) || null;
-      const c = currMap.get(pdfName) || null;
+    for (let i = 0; i < maxLength; i++) {
+      const b = basePdfs[i] || null;
+      const c = currPdfs[i] || null;
 
       if (!b && c) {
-        // INSERT: new PDF added (only in current)
         rows.push({
-          key: `pdf-add-${pdfName}`,
+          key: `pdf-add-${i}`,
           action: "insert",
           section: "PDF Document",
           changes: c.name || "New Document",
           applyUndo: (curr) => {
             const next = deepClone(curr);
-            next.pdfLinks = (next.pdfLinks || []).filter((p) => p.name !== pdfName);
+            next.pdfLinks.splice(i, 1);
             return next;
           },
         });
       } else if (b && !c) {
-        // DELETE: PDF removed (only in baseline)
         rows.push({
-          key: `pdf-del-${pdfName}`,
+          key: `pdf-del-${i}`,
           action: "delete",
           section: "PDF Document",
           changes: b.name || "Document",
           applyUndo: (curr) => {
             const next = deepClone(curr);
-            const arr = Array.isArray(next.pdfLinks) ? [...next.pdfLinks] : [];
-            arr.push(deepClone(b)); // Restore deleted PDF to end of array
-            next.pdfLinks = arr;
+            next.pdfLinks.splice(i, 0, deepClone(b));
             return next;
           },
         });
       } else if (b && c) {
-        // UPDATE: PDF exists in both but content may have changed
         if (pdfIdentity(b) !== pdfIdentity(c)) {
           rows.push({
-            key: `pdf-upd-${pdfName}`,
+            key: `pdf-upd-${i}`,
             action: "update",
             section: "PDF Document",
             changes: c.name,
             applyUndo: (curr) => {
               const next = deepClone(curr);
-              const arr = Array.isArray(next.pdfLinks) ? [...next.pdfLinks] : [];
-              const idx = arr.findIndex((p) => p.name === pdfName);
-              if (idx >= 0) arr[idx] = deepClone(b);
-              next.pdfLinks = arr;
+              next.pdfLinks[i] = deepClone(b);
               return next;
             },
           });
         }
       }
-    })
+    }
 
     return rows;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pendingBaselineSnapshot, baselineFromBackend, postSaveSnapshot, editedContent, editedImages, pdfLinks]);
+  }, [
+    pendingBaselineSnapshot,
+    baselineFromBackend,
+    postSaveSnapshot,
+    editedContent,
+    editedImages,
+    pdfLinks,
+  ]);
 
   // NEW: when request modal has no changes, return to original page state
   const resetPendingUiState = () => {
@@ -384,7 +418,11 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
     setEditedContent(updated.content || "");
     setEditedImages({ ...(updated.images || { 0: null, 1: null, 2: null }) });
-    setPdfLinks(Array.isArray(updated.pdfLinks) ? updated.pdfLinks.map((p) => ({ ...p })) : []);
+    setPdfLinks(
+      Array.isArray(updated.pdfLinks)
+        ? updated.pdfLinks.map((p) => ({ ...p }))
+        : [],
+    );
 
     setPostSaveSnapshot(deepClone(updated));
     setSavedChanges(true);
@@ -394,7 +432,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
   // -------------------- backend request build/send --------------------
   const buildBackendRepresentation = (oldData, newSnapshot) => {
     const oldImagePaths = oldData?.image_path || [];
-    const oldPdfArray = oldData?.about_us_pdf || oldData?.links || oldData?.pdfs || [];
+    const oldPdfArray =
+      oldData?.about_us_pdf || oldData?.links || oldData?.pdfs || [];
 
     const newImagePaths = [];
     for (let i = 0; i < 3; i++) {
@@ -410,7 +449,10 @@ const AdminAbtUs = ({ theme, toggle }) => {
     const newPdfArray = (newSnapshot?.pdfLinks || []).map((pdf) => {
       if (pdf?.file instanceof File) {
         const safeName = makeSafeFileName(pdf.file);
-        return { name: pdf.name || "", pdf_path: `/static/pdfs/about_vec/${safeName}` };
+        return {
+          name: pdf.name || "",
+          pdf_path: `/static/pdfs/about_vec/${safeName}`,
+        };
       }
       return { name: pdf.name || "", pdf_path: pdf.url || "" };
     });
@@ -418,7 +460,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
     const originalPdfArrayNormalized = [];
     if (Array.isArray(oldPdfArray)) {
       oldPdfArray.forEach((item) => {
-        if (typeof item === "string") originalPdfArrayNormalized.push({ name: "", pdf_path: item });
+        if (typeof item === "string")
+          originalPdfArrayNormalized.push({ name: "", pdf_path: item });
         else if (item && typeof item === "object") {
           originalPdfArrayNormalized.push({
             name: item.name || "",
@@ -435,7 +478,9 @@ const AdminAbtUs = ({ theme, toggle }) => {
         about_us_pdf: newPdfArray,
       },
       oldBackend: {
-        content: Array.isArray(oldData?.content) ? oldData.content : contentStringToArray(oldData?.content || ""),
+        content: Array.isArray(oldData?.content)
+          ? oldData.content
+          : contentStringToArray(oldData?.content || ""),
         image_path: oldImagePaths,
         about_us_pdf: originalPdfArrayNormalized,
       },
@@ -443,12 +488,18 @@ const AdminAbtUs = ({ theme, toggle }) => {
   };
 
   const buildEntriesAndFiles = (oldData, newSnapshot) => {
-    const { newBackend, oldBackend } = buildBackendRepresentation(oldData, newSnapshot);
+    const { newBackend, oldBackend } = buildBackendRepresentation(
+      oldData,
+      newSnapshot,
+    );
     const entries = [];
     const filesToSend = [];
 
     // 1. Handle content changes
-    if (JSON.stringify(oldBackend.content || []) !== JSON.stringify(newBackend.content || [])) {
+    if (
+      JSON.stringify(oldBackend.content || []) !==
+      JSON.stringify(newBackend.content || [])
+    ) {
       entries.push({
         collectionName: "about_us",
         collection_type: "about_vec",
@@ -478,7 +529,10 @@ const AdminAbtUs = ({ theme, toggle }) => {
           action: "update",
           title: `Update Image ${i + 1}`,
           category: "image_path",
-          meta_data: { index: i, image_path: `/static/images/about_vec/${safeName}` },
+          meta_data: {
+            index: i,
+            image_path: `/static/images/about_vec/${safeName}`,
+          },
           original_data: { index: i, image_path: oldPath },
         });
       }
@@ -498,7 +552,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
     allPdfNames.forEach((pdfName) => {
       const oldItem = oldPdfMap.get(pdfName) || null;
       const newItem = newPdfMap.get(pdfName) || null;
-      const snapPdf = (newSnapshot.pdfLinks || []).find((p) => p.name === pdfName) || null;
+      const snapPdf =
+        (newSnapshot.pdfLinks || []).find((p) => p.name === pdfName) || null;
 
       if (oldItem && !newItem) {
         // PDF was deleted
@@ -508,7 +563,10 @@ const AdminAbtUs = ({ theme, toggle }) => {
           action: "delete",
           title: `Delete PDF: ${oldItem.name}`,
           category: "about_us_pdf",
-          meta_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" },
+          meta_data: {
+            name: oldItem.name || "",
+            pdf_path: oldItem.pdf_path || "",
+          },
           original_data: null,
         });
       } else if (!oldItem && newItem) {
@@ -519,19 +577,25 @@ const AdminAbtUs = ({ theme, toggle }) => {
           action: "insert",
           title: `Add PDF: ${newItem.name}`,
           category: "about_us_pdf",
-          meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
+          meta_data: {
+            name: newItem.name || "",
+            pdf_path: newItem.pdf_path || "",
+          },
           original_data: null,
         });
 
         if (snapPdf?.file instanceof File) {
           const safeName = makeSafeFileName(snapPdf.file);
-          const renamed = new File([snapPdf.file], safeName, { type: snapPdf.file.type });
+          const renamed = new File([snapPdf.file], safeName, {
+            type: snapPdf.file.type,
+          });
           filesToSend.push(renamed);
         }
       } else if (oldItem && newItem) {
         // PDF was updated
         const nameChanged = (oldItem.name || "") !== (newItem.name || "");
-        const pathChanged = (oldItem.pdf_path || "") !== (newItem.pdf_path || "");
+        const pathChanged =
+          (oldItem.pdf_path || "") !== (newItem.pdf_path || "");
         const fileUploaded = snapPdf?.file instanceof File;
 
         if (nameChanged || pathChanged || fileUploaded) {
@@ -541,13 +605,21 @@ const AdminAbtUs = ({ theme, toggle }) => {
             action: "update",
             title: `Update PDF: ${newItem.name}`,
             category: "about_us_pdf",
-            meta_data: { name: newItem.name || "", pdf_path: newItem.pdf_path || "" },
-            original_data: { name: oldItem.name || "", pdf_path: oldItem.pdf_path || "" },
+            meta_data: {
+              name: newItem.name || "",
+              pdf_path: newItem.pdf_path || "",
+            },
+            original_data: {
+              name: oldItem.name || "",
+              pdf_path: oldItem.pdf_path || "",
+            },
           });
 
           if (fileUploaded) {
             const safeName = makeSafeFileName(snapPdf.file);
-            const renamed = new File([snapPdf.file], safeName, { type: snapPdf.file.type });
+            const renamed = new File([snapPdf.file], safeName, {
+              type: snapPdf.file.type,
+            });
             filesToSend.push(renamed);
           }
         }
@@ -561,7 +633,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
   };
 
   const syncUiWithBackendAfterRequest = (updatedBackend) => {
-
     // convert backend content to textarea string
     const contentStr = contentArrayToString(updatedBackend?.content);
 
@@ -599,7 +670,10 @@ const AdminAbtUs = ({ theme, toggle }) => {
     }
 
     try {
-      const result = await sendRequest(entries, filesToSend.length ? filesToSend : null);
+      const result = await sendRequest(
+        entries,
+        filesToSend.length ? filesToSend : null,
+      );
 
       if (result?.success) {
         const { newBackend } = buildBackendRepresentation(oldData, newSnapshot);
@@ -616,7 +690,12 @@ const AdminAbtUs = ({ theme, toggle }) => {
       } else {
         if (result?.status === 429 || result?.data?.status === 429) {
           navigate("/ratelimit", {
-            state: { msg: result?.message || result?.data?.message || "Rate limit exceeded" },
+            state: {
+              msg:
+                result?.message ||
+                result?.data?.message ||
+                "Rate limit exceeded",
+            },
           });
           return;
         }
@@ -632,7 +711,9 @@ const AdminAbtUs = ({ theme, toggle }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responce = await axios.post("/api/main-backend/about_us", { type: "about_vec" });
+        const responce = await axios.post("/api/main-backend/about_us", {
+          type: "about_vec",
+        });
         const data = responce.data.data;
 
         setAbtUsData(data);
@@ -649,7 +730,9 @@ const AdminAbtUs = ({ theme, toggle }) => {
         setSavedChanges(false);
       } catch (error) {
         if (error.response?.data?.status === 429) {
-          navigate("/ratelimit", { state: { msg: error.response.data.message } });
+          navigate("/ratelimit", {
+            state: { msg: error.response.data.message },
+          });
         } else {
           console.error(error);
         }
@@ -689,7 +772,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
       setPdfLinks(
         Array.isArray(editSessionSnapshot.pdfLinks)
           ? editSessionSnapshot.pdfLinks.map((p) => ({ ...p }))
-          : []
+          : [],
       );
     }
 
@@ -720,7 +803,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
     setPdfLinks(
       Array.isArray(pendingBaselineSnapshot.pdfLinks)
         ? pendingBaselineSnapshot.pdfLinks.map((p) => ({ ...p }))
-        : []
+        : [],
     );
 
     // Reset request state
@@ -762,30 +845,34 @@ const AdminAbtUs = ({ theme, toggle }) => {
               >
                 <Pencil size={20} /> Edit
               </button>
-
             )}
           </div>
 
           <div className="flex m-8">
             <div className="flex relative w-full max-h-[100vh]">
               <div className="relative grow p-4 font-[Poppins] mt-14 basis-3/4 z-10 bg-[#ffffffa] backdrop-blur-[16px] lg:bg-none lg:backdrop-blur-0 rounded-xl">
-                <p className="text-[32px] text-center font-[Poppins]">{secTtl}</p>
+                <p className="text-[32px] text-center font-[Poppins]">
+                  {secTtl}
+                </p>
                 <p className="text-[24px] font-bold text-accn dark:text-drkt text-center font-[Poppins]">
                   {secSub}
                 </p>
-                <p className="text-[16px] text-center mt-4 text-justify font-[Poppins]">{secCnt}</p>
+                <p className="text-[16px] text-center mt-4 text-justify font-[Poppins]">
+                  {secCnt}
+                </p>
               </div>
 
               <div className="absolute lg:relative w-[110vw] h-[40vh] left-[-16vw] top-[20%] lg:left-0 lg:top-10 md:opacity-0 opacity-30 lg:opacity-100">
                 {[0, 1, 2].map((i) => (
                   <div
                     key={i}
-                    className={`absolute ${i === 0
-                      ? "w-[40%] h-[60%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]"
-                      : i === 1
-                        ? "w-[40%] h-[90%] left-[15%] top-[10%] rounded-bl-[3rem]"
-                        : "w-[25%] h-[40%] left-[40%] top-[45%] rounded-tl-[3rem] rounded-br-[3rem]"
-                      } border-[2vmin] border-white overflow-hidden`}
+                    className={`absolute ${
+                      i === 0
+                        ? "w-[40%] h-[60%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]"
+                        : i === 1
+                          ? "w-[40%] h-[90%] left-[15%] top-[10%] rounded-bl-[3rem]"
+                          : "w-[25%] h-[40%] left-[40%] top-[45%] rounded-tl-[3rem] rounded-br-[3rem]"
+                    } border-[2vmin] border-white overflow-hidden`}
                   >
                     {loading[`img${i + 1}`] && (
                       <div className="absolute inset-0 flex justify-center items-center">
@@ -794,15 +881,21 @@ const AdminAbtUs = ({ theme, toggle }) => {
                     )}
 
                     <img
-                      className={`absolute w-full h-full object-cover transition-opacity duration-500 ${loading[`img${i + 1}`] ? "opacity-0" : "opacity-100"
-                        }`}
+                      className={`absolute w-full h-full object-cover transition-opacity duration-500 ${
+                        loading[`img${i + 1}`] ? "opacity-0" : "opacity-100"
+                      }`}
                       src={
                         editedImages[i]
                           ? URL.createObjectURL(editedImages[i])
                           : UrlParser(abtUsData?.image_path?.[i])
                       }
                       alt={`Banner Image${i}`}
-                      onLoad={() => setLoading((prev) => ({ ...prev, [`img${i + 1}`]: false }))}
+                      onLoad={() =>
+                        setLoading((prev) => ({
+                          ...prev,
+                          [`img${i + 1}`]: false,
+                        }))
+                      }
                     />
 
                     {/* {editMode && (
@@ -860,12 +953,14 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 const isSelected = selectedPdfNames.includes(pdf.name);
 
                 return (
-                  // pdf conrtainer 
+                  // pdf conrtainer
                   <div
                     key={index}
-                    className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition ${editMode ? "scale-110" : ""
-                      } ${editMode ? "cursor-pointer" : "cursor-pointer"} ${editMode && isSelected ? "ring-2 ring-red-500" : ""
-                      }`}
+                    className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition ${
+                      editMode ? "scale-110" : ""
+                    } ${editMode ? "cursor-pointer" : "cursor-pointer"} ${
+                      editMode && isSelected ? "ring-2 ring-red-500" : ""
+                    }`}
                     // IMPORTANT: Only allow opening edit modal when not in "multi-select" mode
                     onClick={
                       editMode && !hasSelection
@@ -901,7 +996,10 @@ const AdminAbtUs = ({ theme, toggle }) => {
                           if (pdf.file instanceof File) {
                             const blobUrl = URL.createObjectURL(pdf.file);
                             window.open(blobUrl, "_blank");
-                            setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+                            setTimeout(
+                              () => URL.revokeObjectURL(blobUrl),
+                              5000,
+                            );
                           } else if (pdf.url) {
                             window.open(UrlParser(pdf.url), "_blank");
                           }
@@ -924,7 +1022,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
               {/* AISHE link */}
               <div
                 className="relative cursor-pointer md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-[#000000] hover:bg-[#800000] transition"
-
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "white";
                 }}
@@ -1000,13 +1097,17 @@ const AdminAbtUs = ({ theme, toggle }) => {
       {showPdfModal.open && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded shadow-lg w-96 flex flex-col items-center">
-            <h2 className="text-lg font-bold mb-4">{showPdfModal.index === null ? "Add PDF" : "Edit PDF"}</h2>
+            <h2 className="text-lg font-bold mb-4">
+              {showPdfModal.index === null ? "Add PDF" : "Edit PDF"}
+            </h2>
 
             <input
               type="text"
               placeholder="Name"
               value={showPdfModal.name}
-              onChange={(e) => setShowPdfModal((s) => ({ ...s, name: e.target.value }))}
+              onChange={(e) =>
+                setShowPdfModal((s) => ({ ...s, name: e.target.value }))
+              }
               className="w-full border p-2 mb-4 rounded"
             />
 
@@ -1017,19 +1118,33 @@ const AdminAbtUs = ({ theme, toggle }) => {
                   type="file"
                   accept="application/pdf"
                   className="hidden"
-                  onChange={(e) => setShowPdfModal((s) => ({ ...s, file: e.target.files?.[0] || null }))}
+                  onChange={(e) =>
+                    setShowPdfModal((s) => ({
+                      ...s,
+                      file: e.target.files?.[0] || null,
+                    }))
+                  }
                 />
               </label>
 
-              <button title="Preview PDF" className="p-1 text-blue-400" onClick={openModalPdfInNewTab}>
+              <button
+                title="Preview PDF"
+                className="p-1 text-blue-400"
+                onClick={openModalPdfInNewTab}
+              >
                 <Eye size={20} />
               </button>
             </div>
 
-            {showPdfModal.error && <p className="text-red-600 text-sm mb-2">{showPdfModal.error}</p>}
+            {showPdfModal.error && (
+              <p className="text-red-600 text-sm mb-2">{showPdfModal.error}</p>
+            )}
 
             <div className="flex justify-end gap-3 w-full">
-              <button onClick={closePdfModal} className="px-3 py-1 bg-gray-400 hover:bg-gray-600 text-white rounded transition">
+              <button
+                onClick={closePdfModal}
+                className="px-3 py-1 bg-gray-400 hover:bg-gray-600 text-white rounded transition"
+              >
                 Cancel
               </button>
               <button
@@ -1038,15 +1153,15 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 style={{ color: "black" }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "#800000";
-                    e.currentTarget.style.color = "white";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "#fdcc03";
-                    e.currentTarget.style.color = "black";
-                  }}
-                >
-                  Save
-                </button>
+                  e.currentTarget.style.color = "white";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#fdcc03";
+                  e.currentTarget.style.color = "black";
+                }}
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>
@@ -1056,10 +1171,13 @@ const AdminAbtUs = ({ theme, toggle }) => {
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[650px]">
-            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">Final Request for the Changes</h2>
+            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
+              Final Request for the Changes
+            </h2>
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior admin. Once approved, they will be applied
-              automatically to the live site.
+              Note: Your changes will stay pending until approved by the
+              superior admin. Once approved, they will be applied automatically
+              to the live site.
             </p>
 
             <div className="max-h-[200px] overflow-y-auto mb-4">
@@ -1076,9 +1194,15 @@ const AdminAbtUs = ({ theme, toggle }) => {
                   {requestRows.map((r) => (
                     <tr key={r.key}>
                       <td className="border border-gray-700 py-2 px-3">
-                        {r.action === "insert" && <span className="text-green-600">+ Added</span>}
-                        {r.action === "update" && <span className="text-blue-600">✎ Edited</span>}
-                        {r.action === "delete" && <span className="text-red-600">– Deleted</span>}
+                        {r.action === "insert" && (
+                          <span className="text-green-600">+ Added</span>
+                        )}
+                        {r.action === "update" && (
+                          <span className="text-blue-600">✎ Edited</span>
+                        )}
+                        {r.action === "delete" && (
+                          <span className="text-red-600">– Deleted</span>
+                        )}
                       </td>
 
                       <td className="border border-gray-700 py-2 px-3">
@@ -1133,7 +1257,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
           <div className="bg-white p-6 rounded shadow-lg w-[380px]">
             <h3 className="text-lg font-bold mb-2">Delete selected PDFs?</h3>
             <p className="text-sm text-gray-600 mb-4">
-              This will remove {selectedPdfNames.length} item(s) from the list (pending until Request).
+              This will remove {selectedPdfNames.length} item(s) from the list
+              (pending until Request).
             </p>
             <div className="flex justify-end gap-2">
               <button
@@ -1146,7 +1271,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 className="px-4 py-2 rounded bg-red-600 text-white"
                 onClick={confirmDeleteSelected}
               >
-                Delete 
+                Delete
               </button>
             </div>
           </div>
