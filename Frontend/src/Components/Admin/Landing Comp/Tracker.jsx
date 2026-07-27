@@ -3,6 +3,7 @@ import { Save, ArrowDown, Pencil } from 'lucide-react';
 import Lottie from 'react-lottie-player';
 import './Tracker.css';
 import { set } from 'date-fns';
+import { useAdminRequest } from "../../hooks/useAdminRequest";
 
 const StatsGrid = ({ data }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -38,13 +39,13 @@ const StatsGrid = ({ data }) => {
     students: 0,
     placement: 0,
   });
-
+  const { sendRequest, loading } = useAdminRequest();
   useEffect(() => {
     if (data && data.length > 0) {
       const newValues = {
         teachers: parseInt(data[0]?.Active_Learners) || 0,
         phdHolders: parseInt(
-          data[0]?.Highest_Salary_Offered?.replace(' INR', '')
+          data[0]?.Highest_Salary_Offered?.replace(' LPA', '')
         ) || 0,
         students:
           parseInt(data[0]?.Hiring_Partners?.replace('+', '')) || 0,
@@ -132,10 +133,37 @@ const StatsGrid = ({ data }) => {
     setConfirmPopup(true);
   };
 
-  const handleConfirmRequest = () => {
-    // send request to backend if needed
-    setConfirmPopup(false);
-    setOriginalValues(editedValues); // now original = approved
+  const handleConfirmRequest = async () => {
+    const payload = {
+      collectionName: "landing_page_details",
+      collection_type: "banner",
+      action: "update",
+      title: "update in banner",
+
+      original_data: {
+        Active_Learners: String(originalValues.teachers),
+        Highest_Salary_Offered: `${originalValues.phdHolders} LPA`,
+        Hiring_Partners: `${originalValues.students}+`,
+        Average_Salary_Hike: `${originalValues.placement}%`,
+      },
+
+      meta_data: {
+        Active_Learners: String(editedValues.teachers),
+        Highest_Salary_Offered: `${editedValues.phdHolders} LPA`,
+        Hiring_Partners: `${editedValues.students}+`,
+        Average_Salary_Hike: `${editedValues.placement}%`,
+      }
+    };
+
+    
+
+    const result = await sendRequest([payload], []);
+
+    if (result) {
+      setConfirmPopup(false);
+      setRequest(false);
+      setOriginalValues(editedValues);
+    }
   };
 
   const handleInputChange = (key, value) => {
@@ -161,7 +189,7 @@ const StatsGrid = ({ data }) => {
       return (
         <h2 className="stat-number">
           {editedValues[key]}
-          {key === 'phdHolders' ? ' INR' : ''}
+          {key === 'phdHolders' ? ' LPA' : ''}
           {key === 'students' ? '+' : ''}
           {key === 'placement' ? '%' : ''}
         </h2>
@@ -317,14 +345,14 @@ const StatsGrid = ({ data }) => {
                           </td>
                           <td className="py-1">
                             {originalValues[key]}
-                            {key === 'phdHolders' ? ' INR' : ''}
+                            {key === 'phdHolders' ? ' LPA' : ''}
                             {key === 'students' ? '+' : ''}
                             {key === 'placement' ? '%' : ''}
                           </td>
                           <td className="py-1 flex items-center">
                             <ArrowDown size={16} className="mx-1" />
                             {editedValues[key]}
-                            {key === 'phdHolders' ? ' INR' : ''}
+                            {key === 'phdHolders' ? ' LPA' : ''}
                             {key === 'students' ? '+' : ''}
                             {key === 'placement' ? '%' : ''}
                           </td>
@@ -344,9 +372,9 @@ const StatsGrid = ({ data }) => {
               </button>
               <button
                 onClick={handleConfirmRequest}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
-              >
-                Final Request
+                disabled={loading}
+                className='btn-final'>
+                {loading ? "Sending..." : "Final Request"}
               </button>
             </div>
           </div>

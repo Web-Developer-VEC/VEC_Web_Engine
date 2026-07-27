@@ -25,7 +25,7 @@ const StatsGrid = ({ data }) => {
         if (data && data.length > 0) {
             setTargetValues({
                 teachers: parseInt(data[0]?.Active_Learners),
-                phdHolders: parseInt(data[0]?.Highest_Salary_Offered?.replace(' INR', '')),
+                phdHolders: parseInt(data[0]?.Highest_Salary_Offered?.replace(' LPA', '')),
                 students: parseInt(data[0]?.Hiring_Partners?.replace('+', '')),
                 placement: parseInt(data[0]?.Average_Salary_Hike?.replace('%', '')),
             });
@@ -97,7 +97,7 @@ const StatsGrid = ({ data }) => {
                             play
                             style={{width: 140, height:192}}
                         />
-                        <h2 className="stat-number">{counters.phdHolders} INR</h2>
+                        <h2 className="stat-number">{counters.phdHolders} LPA</h2>
                         <p className="stat-label">Highest Salary Offered (LPA)</p>
                     </div>
                     <div className="basis-full lg:hidden"></div>
