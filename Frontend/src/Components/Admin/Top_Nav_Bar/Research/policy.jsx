@@ -134,7 +134,6 @@ export default function AdminPolicies({ theme, toggle }) {
         },
       });
 
-      toast.success("Policy edited (session)");
     } else {
       // Adding new
       const newEntry = { name: newName, pdf_path: pdfValue };
@@ -147,7 +146,6 @@ export default function AdminPolicies({ theme, toggle }) {
         changes: { name: { old: null, new: newName }, pdf_path: { old: null, new: pdfValue } },
       });
 
-      toast.success("Policy added (session)");
     }
 
     // reset popup
@@ -303,7 +301,6 @@ export default function AdminPolicies({ theme, toggle }) {
     setSessionChanges([]);
     setIsEditing(false);
     setSelectedToDelete(new Set());
-    toast.info("Session changes discarded.");
   };
 
   const handleDiscardAll = () => {
@@ -313,7 +310,6 @@ export default function AdminPolicies({ theme, toggle }) {
     setAllChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
-    toast.success("All changes discarded and reset.");
   };
 
   const handleRequest = () => {
@@ -409,7 +405,6 @@ export default function AdminPolicies({ theme, toggle }) {
       if (result) {
         console.log("FINAL REQUEST SUBMITTED", { payload });
 
-        //toast.success("Final request submitted");
 
         setShowRequestModal(false);
         setAllChanges([]);
@@ -467,7 +462,6 @@ export default function AdminPolicies({ theme, toggle }) {
       return prev.filter((_, i) => i !== idx);
     });
 
-    toast.info("Change reverted");
   };
 
 

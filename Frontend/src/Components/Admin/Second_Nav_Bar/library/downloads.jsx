@@ -21,7 +21,10 @@ const LIBDownloads = ({ data }) => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   useEffect(() => {
-    const copy = deepCopy(ebooks);
+    const copy = deepCopy(ebooks).map(row => ({
+      ...row,
+      id: crypto.randomUUID(),
+    }));
     setCommittedRows(copy);
     setRows(deepCopy(copy));
     setPendingRows(null);
@@ -32,16 +35,25 @@ const LIBDownloads = ({ data }) => {
   }, [data]);
 
   const handleStartEdit = () => {
-    setRows(deepCopy(committedRows));
+    setRows(deepCopy(pendingRows || committedRows));
     setIsEditing(true);
     setIsDirty(false);
     setIsSaved(false);
   };
 
-  const handleChange = (e, idx, field) => {
-    const updated = rows.map((r, i) =>
-      i === idx ? { ...r, [field]: e.target.value } : r,
-    );
+  const handleChange = (e, visibleIndex, field) => {
+    const actualIndex = rows.reduce((arr, row, index) => {
+      if (!row.__deleted) arr.push(index);
+      return arr;
+    }, [])[visibleIndex];
+
+    const updated = [...rows];
+
+    updated[actualIndex] = {
+      ...updated[actualIndex],
+      [field]: e.target.value,
+    };
+
     setRows(updated);
     setIsDirty(true);
   };
@@ -49,18 +61,31 @@ const LIBDownloads = ({ data }) => {
   const handleAddRow = () => {
     setRows((prev) => [
       ...prev.map((r) => ({ ...r })),
-      { name: "", url: "" },
+      {
+        id: crypto.randomUUID(),
+        name: "",
+        url: "",
+        __isNew: true,
+      },
     ]);
+
     setIsDirty(true);
   };
 
-  const toggleCheckbox = (idx) => {
-    if (checkedRows.includes(idx)) {
-      setCheckedRows(checkedRows.filter((i) => i !== idx));
+  const toggleCheckbox = (visibleIndex) => {
+    const visibleRows = rows
+      .map((row, index) => ({ row, index }))
+      .filter(({ row }) => !row.__deleted);
+
+    const actualIndex = visibleRows[visibleIndex].index;
+
+    if (checkedRows.includes(actualIndex)) {
+      setCheckedRows(checkedRows.filter((i) => i !== actualIndex));
     } else {
-      setCheckedRows([...checkedRows, idx]);
+      setCheckedRows([...checkedRows, actualIndex]);
     }
   };
+
   const buildEbookSourcePayload = ({ action, newData, oldData }) => {
     // INSERT
     if (action === "Added") {
@@ -113,6 +138,7 @@ const LIBDownloads = ({ data }) => {
         title: "Delete ebook source",
         meta_data: {
           name: oldData?.name || newData?.name,
+          url: oldData?.url || newData?.url,
         },
       };
     }
@@ -147,7 +173,29 @@ const LIBDownloads = ({ data }) => {
   };
 
   const handleSave = () => {
-    const pending = deepCopy(rows);
+
+    const invalidRow = rows.find(
+      row =>
+        !row.__deleted &&
+        (
+          (row.name.trim() === "" && row.url.trim() !== "") ||
+          (row.name.trim() !== "" && row.url.trim() === "")
+        )
+    );
+
+    if (invalidRow) {
+      toast.error("Please fill both E-Book Source and Link.");
+      return;
+    }
+
+    const cleanedRows = rows.filter(row =>
+      row.__deleted ||
+      (row.name.trim() !== "" && row.url.trim() !== "")
+    );
+
+    const pending = deepCopy(cleanedRows);
+
+    setRows(cleanedRows);
     setPendingRows(pending);
     setIsSaved(true);
     setIsEditing(false);
@@ -189,9 +237,14 @@ const LIBDownloads = ({ data }) => {
     try {
       await sendRequest(payload);
 
-      setCommittedRows(deepCopy(pendingRows));
-      setRows(deepCopy(pendingRows));
+      const cleanedRows = pendingRows.filter(row => !row.__deleted);
+
+      setCommittedRows(deepCopy(cleanedRows));
+      setRows(deepCopy(cleanedRows));
       setPendingRows(null);
+      setIsSaved(false);
+      setShowRequestModal(false);
+      setCheckedRows([]);
       setIsSaved(false);
       setShowRequestModal(false);
     } catch (error) {
@@ -199,14 +252,17 @@ const LIBDownloads = ({ data }) => {
     }
   };
 
-  const revertChange = (rowIndex) => {
+  const revertChange = (change) => {
+    const rowIndex = change.rowIndex;
     if (!pendingRows) return;
 
-    const reverted = deepCopy(pendingRows);
-
+    let reverted = deepCopy(pendingRows);
     if (!committedRows[rowIndex] && reverted[rowIndex]) {
+      // Remove the newly added row completely
       reverted.splice(rowIndex, 1);
-    } else if (committedRows[rowIndex] && !reverted[rowIndex]) {
+    }
+
+    else if (committedRows[rowIndex] && !reverted[rowIndex]) {
       reverted.splice(rowIndex, 0, deepCopy(committedRows[rowIndex]));
     } else if (committedRows[rowIndex] && reverted[rowIndex]) {
       reverted[rowIndex] = deepCopy(committedRows[rowIndex]);
@@ -215,18 +271,39 @@ const LIBDownloads = ({ data }) => {
     setPendingRows(reverted);
     setRows(deepCopy(reverted));
 
-    const hasDiff =
-      reverted.length !== committedRows.length ||
-      reverted.some((r, i) => {
-        const c = committedRows[i] || {};
-        return r.name !== c.name || r.url !== c.url;
-      });
+    // Check whether any changes still exist
+    const tempChanges = [];
+    const maxLen = Math.max(committedRows.length, reverted.length);
 
-    if (!hasDiff) {
+    for (let i = 0; i < maxLen; i++) {
+      const oldRow = committedRows[i];
+      const newRow = reverted[i];
+
+      if (oldRow && newRow?.__deleted) {
+        tempChanges.push(true);
+      } else if (!oldRow && newRow) {
+        tempChanges.push(true);
+      } else if (
+        oldRow &&
+        newRow &&
+        (oldRow.name !== newRow.name || oldRow.url !== newRow.url)
+      ) {
+        tempChanges.push(true);
+      }
+    }
+
+    if (tempChanges.length === 0) {
       setPendingRows(null);
       setIsSaved(false);
       setShowRequestModal(false);
     }
+  };
+
+  const getVisibleRowNumber = (index, includeDeleted = false) => {
+    return pendingRows
+      .slice(0, index + 1)
+      .filter(row => includeDeleted || !row.__deleted)
+      .length;
   };
 
   const getChanges = () => {
@@ -242,23 +319,26 @@ const LIBDownloads = ({ data }) => {
         changes.push({
           action: "Deleted",
           section: "E-Books Websites",
-          changes: `Row ${i + 1}`,
+          changes: `Row ${getVisibleRowNumber(i, true)}`,
           rowIndex: i,
+          rowId: newRow?.id || oldRow?.id,
         });
-      } else if (!oldRow && newRow) {
+      } else if (!oldRow && newRow && !newRow.__deleted) { 
         changes.push({
           action: "Added",
           section: "E-Books Websites",
-          changes: `Row ${i + 1}`,
+          changes: `Row ${getVisibleRowNumber(i)}`,
           rowIndex: i,
+          rowId: newRow?.id || oldRow?.id,
         });
       } else if (oldRow && newRow) {
         if (oldRow.name !== newRow.name || oldRow.url !== newRow.url) {
           changes.push({
             action: "Edited",
             section: "E-Books Websites",
-            changes: `Row ${i + 1}`,
+            changes: `Row ${getVisibleRowNumber(i)}`,
             rowIndex: i,
+            rowId: newRow?.id || oldRow?.id,
           });
         }
       }
@@ -289,7 +369,7 @@ const LIBDownloads = ({ data }) => {
             {!isEditing && (
               <button
                 onClick={handleStartEdit}
-               className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200"
+                className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200"
               >
                 <Pencil size={18} />
                 Edit
@@ -347,7 +427,11 @@ const LIBDownloads = ({ data }) => {
                         <td className="border p-2">
                           <input
                             type="checkbox"
-                            checked={checkedRows.includes(idx)}
+                            checked={checkedRows.includes(
+                              rows
+                                .map((row, index) => ({ row, index }))
+                                .filter(({ row }) => !row.__deleted)[idx].index
+                            )}
                             onChange={() => toggleCheckbox(idx)}
                           />
                         </td>
@@ -397,9 +481,9 @@ const LIBDownloads = ({ data }) => {
               {isDirty && (
                 <button
                   onClick={handleSave}
-                   className="flex items-center bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white px-3 py-2 rounded-lg transition duration-200"
+                  className="flex items-center bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white px-3 py-2 rounded-lg transition duration-200"
                 >
-                   Save
+                  Save
                 </button>
               )}
             </div>
@@ -468,7 +552,7 @@ const LIBDownloads = ({ data }) => {
 
                           <td className="border p-2 text-center">
                             <button
-                              onClick={() => revertChange(ch.rowIndex)}
+                              onClick={() => revertChange(ch)}
                               className="inline-flex items-center justify-center p-1 rounded hover:bg-gray-100"
                               title="Revert this change"
                             >
@@ -486,7 +570,7 @@ const LIBDownloads = ({ data }) => {
                 <div className="flex justify-end gap-2 mt-6">
                   <button
                     onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+                    className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
                   >
                     Cancel
                   </button>
@@ -518,7 +602,7 @@ const LIBDownloads = ({ data }) => {
                 <div className="flex justify-end gap-3">
                   <button
                     onClick={() => setShowDeleteConfirm(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+                    className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
                   >
                     Cancel
                   </button>

@@ -136,7 +136,12 @@ async function insertData(tempDoc, mainCollection) {
     // Gallery insertion
     // Gallery insertion
     if (collection_type === "gallery") {
-      const categories = Array.isArray(meta_data) ? meta_data : [meta_data];
+      const categories = (Array.isArray(meta_data) ? meta_data : [meta_data]).map(
+        (item) => ({
+          ...item,
+          category, // use the top-level category
+        })
+      );
 
       if (doc) {
         for (const newCategory of categories) {
@@ -159,8 +164,15 @@ async function insertData(tempDoc, mainCollection) {
 
             if (imagesToInsert.length > 0) {
               await mainCollection.updateOne(
-                { type: collection_type, "data.category": newCategory.category },
-                { $push: { "data.$.image_path": { $each: imagesToInsert } } }
+                {
+                  type: collection_type,
+                  "data.category": newCategory.category,
+                },
+                {
+                  $push: {
+                    "data.$.image_path": { $each: imagesToInsert },
+                  },
+                }
               );
             }
           } else {

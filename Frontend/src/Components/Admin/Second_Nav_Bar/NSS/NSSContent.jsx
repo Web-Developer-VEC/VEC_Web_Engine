@@ -86,10 +86,8 @@ const NSSContent = ({ data }) => {
   const handleCancel = () => {
     if (pendingContent) {
       setContent(deepCopy(pendingContent));
-      toast.info("Cancelled edits. Draft preserved!");
     } else {
       setContent(deepCopy(committedContent));
-      toast.info("Cancelled. Reverted to original data!");
     }
 
     setIsEditing(false);
@@ -118,7 +116,6 @@ const NSSContent = ({ data }) => {
     setIsSaved(true);
     setIsEditing(false);
     setIsDirty(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -126,7 +123,6 @@ const NSSContent = ({ data }) => {
     setPendingContent(null);
     setIsSaved(false);
     setIsDirty(false);
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
@@ -178,7 +174,6 @@ const payload = [];
         setPendingContent(null);
         setIsSaved(false);
         setShowRequestModal(false);
-        toast.success("Final request submitted!");
       } else {
         toast.error("Request failed. Check console for details.");
       }

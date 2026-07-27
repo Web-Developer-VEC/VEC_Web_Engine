@@ -140,7 +140,6 @@ savedDataRef.current = structuredClone(data);
         },
       });
 
-      toast.success("Entry updated (session)");
     } else {
       const newEntry = { year: newYear, pdf_path: pdfValue };
       setJournal((prev) => [...(prev || []), newEntry]);
@@ -155,7 +154,6 @@ savedDataRef.current = structuredClone(data);
         },
       });
 
-      //toast.success("Entry added (session)");
     }
 
     setNewYear("");
@@ -326,7 +324,6 @@ savedDataRef.current = structuredClone(originalRef.current);
     setAllChanges([]);
     setIsEditing(false);
     setIsSavedOnce(false);
-    toast.success("All changes discarded and reset.");
   };
 
   const handleRequest = () => {
@@ -439,7 +436,6 @@ if (entry.pdf_path.new instanceof File) {
       const result = await sendRequest(payload, filesToUpload);
 
       if (result) {
-        // toast.success("Final request submitted successfully");
 
         setShowRequestModal(false);
         setAllChanges([]);
@@ -492,7 +488,6 @@ savedDataRef.current = structuredClone(journal);
       return prev.filter((_, i) => i !== idx); // remove from log
     });
 
-    toast.info("Change reverted");
   };
 
 
