@@ -146,7 +146,7 @@ const Announcements1 = ({ anno, spc }) => {
             unique_id: "", announcement_name: "", pdf_path: "", 
             date: new Date().toISOString().split('T')[0], status: "active", file: null 
         });
-        setFilesToUpload([]);
+        //setFilesToUpload([]);
         // Only set hasPendingRequests to true if there are actual changes from original
         if (JSON.stringify(originalContent) !== JSON.stringify(editedContent)) {
             setHasPendingRequests(true);
@@ -252,7 +252,7 @@ const Announcements1 = ({ anno, spc }) => {
                 });
             }
         });
-
+        
         // Send request with files
         if (payload.length > 0) {
             const result = await sendRequest(payload, filesToUpload);
@@ -260,8 +260,8 @@ const Announcements1 = ({ anno, spc }) => {
                 setOriginalContent(JSON.parse(JSON.stringify(pendingRequests)));
                 setHasPendingRequests(false);
                 setConfirmPopup(false);
-                toast.success("Request submitted successfully");
-            }
+                //toast.success("Request submitted successfully");
+            } 
         }
     };
 
@@ -273,6 +273,7 @@ const Announcements1 = ({ anno, spc }) => {
         updatedSpc[0].list_of_links = updatedLinks;
         setEditedContent({ ...editedContent, spc: updatedSpc });
         setLinkReplacementIndex(null);
+        
     };
 
     const handleAnnouncementChange = (index, field, value) => {

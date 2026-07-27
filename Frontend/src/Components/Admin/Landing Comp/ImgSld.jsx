@@ -3,9 +3,132 @@ import React, { useEffect, useRef, useState } from 'react';
 import College from '../../Assets/Hell.png';
 import Toggle from "../Toggle";
 import { ArrowDown, Pencil, Plus, Trash2 } from 'lucide-react';
+import { useAdminRequest } from "../../hooks/useAdminRequest";
+
+
+
+const NOTIF_SECTION = "Notification";
+
+let notifUidCounter = 0;
+const generateNotifUid = () => `notif_${Date.now()}_${notifUidCounter++}`;
+
+
+const ensureNotifUid = (item) => {
+    if (!item) return item;
+    if (item.id) return item;
+    return { ...item, id: generateNotifUid() };
+};
+const ensureNotifUids = (list) => (list || []).map(ensureNotifUid);
+
+const keyForNotif = (notice, fallbackIdx) =>
+    notice?.id || `new-${fallbackIdx}`;
+
+const findByKeyNotif = (list, key) =>
+    (list || []).find((item, idx) => keyForNotif(item, idx) === key);
+
+const snapshotOfNotif = (item) => {
+    if (!item) return null;
+    return {
+        id: item.id ?? "",
+        header: item.header ?? "",
+        message: item.message ?? "",
+        status: item.status ?? "active",
+    };
+};
+
+const findChangeIndexNotif = (list, action, key) =>
+    list.findIndex((c) => c.action === action && c.section === NOTIF_SECTION && c.key === key);
+
+const applyFieldChangeNotif = (prev, key, field, oldValue, newValue) => {
+    const addIdx = findChangeIndexNotif(prev, "add", key);
+    if (addIdx !== -1) {
+        const updated = [...prev];
+        updated[addIdx] = {
+            ...updated[addIdx],
+            changes: { ...updated[addIdx].changes, [field]: { old: null, new: newValue } },
+        };
+        return updated;
+    }
+
+    const editIdx = findChangeIndexNotif(prev, "edit", key);
+    if (editIdx !== -1) {
+        const updated = [...prev];
+        const preservedOld = updated[editIdx].changes[field]?.old ?? oldValue;
+        updated[editIdx] = {
+            ...updated[editIdx],
+            changes: { ...updated[editIdx].changes, [field]: { old: preservedOld, new: newValue } },
+        };
+        return updated;
+    }
+
+    return [
+        ...prev,
+        {
+            action: "edit",
+            section: NOTIF_SECTION,
+            key,
+            changes: { [field]: { old: oldValue, new: newValue } },
+        },
+    ];
+};
+
+const applyRemovalNotif = (prev, key, item) => {
+    const addIdx = findChangeIndexNotif(prev, "add", key);
+    if (addIdx !== -1) {
+        const updated = [...prev];
+        updated.splice(addIdx, 1);
+        return updated;
+    }
+
+    const withoutEdits = prev.filter(
+        (c) => !(c.action === "edit" && c.section === NOTIF_SECTION && c.key === key)
+    );
+    return [
+        ...withoutEdits,
+        { action: "delete", section: NOTIF_SECTION, key, changes: { deleted: item } },
+    ];
+};
+
+const mergeSessionIntoAllNotif = (allChanges, sessionChanges) => {
+    const updated = [...allChanges];
+
+    for (const change of sessionChanges) {
+        const existingIndex = updated.findIndex(
+            (c) => c.key === change.key && c.section === change.section
+        );
+
+        if (existingIndex === -1) {
+            updated.push(change);
+            continue;
+        }
+
+        const existing = updated[existingIndex];
+
+        if (existing.action === "add" && change.action === "delete") {
+            // Added then deleted within the same pending request: cancels out.
+            updated.splice(existingIndex, 1);
+            continue;
+        }
+
+        if (existing.action === "delete" && change.action === "add") {
+            updated[existingIndex] = { action: "edit", section: change.section, key: change.key, changes: change.changes };
+            continue;
+        }
+
+        if (existing.action === change.action || (existing.action === "add" && change.action === "edit")) {
+            updated[existingIndex] = { ...existing, changes: { ...existing.changes, ...change.changes } };
+            continue;
+        }
+
+        updated.push(change);
+    }
+
+    return updated;
+};
 
 const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
     const videoRef = useRef(null);
+    const { sendRequest, loading: sendingNotifRequest } = useAdminRequest();
 
     // Debounce
     const debounce = (func, wait = 100) => {
@@ -47,10 +170,21 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
         return shuffled.slice(0, 7);
     };
 
+    const [notifSessionChanges, setNotifSessionChanges] = useState([]);
+    const [notifAllChanges, setNotifAllChanges] = useState([]);
+
+    const notifOriginalRef = useRef([]);   // last approved/fetched baseline
+    const notifSavedDataRef = useRef([]);  // last locally-saved (pre-approval) state
+
     // EFFECT HOOKS
     useEffect(() => {
         initialDataRef.current = { phone: ph, email: email, notifications: lst || [] };
         setEditableData(initialDataRef.current);
+
+        
+        const uidList = ensureNotifUids(lst || []);
+        notifOriginalRef.current = structuredClone(uidList);
+        notifSavedDataRef.current = structuredClone(uidList);
     }, [ph, email, lst]);
 
     useEffect(() => {
@@ -109,6 +243,16 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
         };
     }, []);
 
+    // ---------- Notification discard (also used by the shared Discard button) ----------
+    const handleDiscardNotifChanges = () => {
+        const base = structuredClone(notifOriginalRef.current);
+        notifSavedDataRef.current = base;
+        setEditableData((prev) => ({ ...prev, notifications: base }));
+        setDisplayItems(base.slice(0, 7));
+        setNotifAllChanges([]);
+        setNotifSessionChanges([]);
+    };
+
     // EDITING HANDLERS
     const handleEditClick = () => {
         setIsEditing(true);
@@ -126,20 +270,106 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
         setEditableData(initialDataRef.current);
     };
 
+  
     const handleDiscardChanges = () => {
         setEditableData(initialDataRef.current);
+        handleDiscardNotifChanges();
         setFinalizing(false);
     };
 
-    // ---------- Request Popup ----------
     const [confirmPopup, setConfirmPopup] = useState(false);
 
     const handleRequest = () => {
         setConfirmPopup(true);
     };
 
-    const handleConfirmRequest = () => {
-        alert("Final request submitted!");
+    // ---------- Notification approval: payload ----------
+    const buildNotifPayload = () => {
+        const payload = [];
+
+        notifAllChanges.forEach((change) => {
+            const c = change.changes || {};
+
+            if (change.action === "add") {
+                payload.push({
+                    collectionName: "landing_page_details",
+                    collection_type: "notifications",
+                    action: "insert",
+                    title: "insert in notifications",
+                    meta_data: {
+                        id: change.key,
+                        header: c.header?.new ?? "",
+                        message: c.message?.new ?? "",
+                        status: "active",
+                    },
+                });
+                return;
+            }
+
+            if (change.action === "edit") {
+                const current =
+                    findByKeyNotif(notifOriginalRef.current, change.key) ||
+                    findByKeyNotif(notifSavedDataRef.current, change.key);
+
+                const base = snapshotOfNotif(current) || {
+                    id: change.key,
+                    header: c.header?.old ?? "",
+                    message: c.message?.old ?? "",
+                    status: "active",
+                };
+
+                payload.push({
+                    collectionName: "landing_page_details",
+                    collection_type: "notifications",
+                    action: "update",
+                    title: "update in notifications",
+                    original_data: base,
+                    meta_data: {
+                        id: base.id || change.key,
+                        header: c.header ? c.header.new : base.header,
+                        message: c.message ? c.message.new : base.message,
+                        status: base.status ?? "active",
+                    },
+                });
+                return;
+            }
+
+            if (change.action === "delete") {
+                const deletedItem =
+                    c.deleted ||
+                    findByKeyNotif(notifOriginalRef.current, change.key) ||
+                    findByKeyNotif(notifSavedDataRef.current, change.key);
+
+                const snap = snapshotOfNotif(deletedItem);
+                if (!snap) return;
+
+                payload.push({
+                    collectionName: "landing_page_details",
+                    collection_type: "notifications",
+                    action: "delete",
+                    title: "delete in notifications",
+                    meta_data: snap,
+                });
+            }
+        });
+
+        return payload;
+    };
+    
+   
+    const handleConfirmRequest = async () => {
+        const payload = buildNotifPayload();
+         
+        if (payload.length > 0) {
+            const result = await sendRequest(payload, []);
+            if (!result) return; // keep the popup open so the user can retry on failure
+        }
+
+        
+        notifOriginalRef.current = structuredClone(notifSavedDataRef.current);
+        setNotifAllChanges([]);
+        setNotifSessionChanges([]);
+
         setConfirmPopup(false);
         setFinalizing(false);
     };
@@ -149,17 +379,16 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
     const [modalNotifications, setModalNotifications] = useState([]);
     const [modalSelected, setModalSelected] = useState({});
     const [modalSelectAll, setModalSelectAll] = useState(false);
-    const [modalChanged, setModalChanged] = useState(false);
 
-    useEffect(() => {
-        setModalChanged(
-            JSON.stringify(modalNotifications) !== JSON.stringify(editableData.notifications)
-        );
-    }, [modalNotifications, editableData.notifications]);
+    // Whether the current modal session has anything worth saving.
+    const modalChanged = notifSessionChanges.length > 0;
 
     const openNotifModal = (e) => {
         e?.stopPropagation();
-        const copy = (editableData.notifications || []).map(n => ({ ...n }));
+        const base = notifSavedDataRef.current.length
+            ? notifSavedDataRef.current
+            : ensureNotifUids(editableData.notifications || []);
+        const copy = structuredClone(base);
         setModalNotifications(copy);
         setModalSelected({});
         setModalSelectAll(false);
@@ -167,13 +396,21 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
     };
 
     const closeNotifModal = () => {
+        
+        setNotifSessionChanges([]);
         setNotifModalOpen(false);
     };
 
     const handleModalFieldChange = (idx, field, value) => {
+        const oldEntry = modalNotifications[idx];
+        const oldValue = oldEntry?.[field];
+        const key = keyForNotif(oldEntry, idx);
+
         const arr = [...modalNotifications];
         arr[idx] = { ...arr[idx], [field]: value };
         setModalNotifications(arr);
+
+        setNotifSessionChanges((prev) => applyFieldChangeNotif(prev, key, field, oldValue, value));
     };
 
     const handleModalToggleSelect = (id) => {
@@ -201,23 +438,69 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
     };
 
     const handleModalAddNewRow = () => {
-        const newRow = { id: `new-${Date.now()}`, header: '', message: '' };
-        setModalNotifications(prev => [...prev, newRow]);
+        const newId = generateNotifUid();
+        const newRow = { id: newId, header: '', message: '', status: 'active' };
+        const next = [...modalNotifications, newRow];
+        const key = keyForNotif(newRow, next.length - 1);
+
+        setModalNotifications(next);
+
+        setNotifSessionChanges((prev) => [
+            ...prev,
+            {
+                action: "add",
+                section: NOTIF_SECTION,
+                key,
+                changes: {
+                    header: { old: null, new: newRow.header },
+                    message: { old: null, new: newRow.message },
+                },
+            },
+        ]);
     };
 
     const handleModalDeleteSelected = () => {
         if (Object.keys(modalSelected).length === 0) return;
-        const remaining = modalNotifications.filter(n => !modalSelected[n.id]);
+
+        const remaining = [];
+        let sessionAcc = notifSessionChanges;
+
+        modalNotifications.forEach((n, idx) => {
+            if (modalSelected[n.id]) {
+                const key = keyForNotif(n, idx);
+                sessionAcc = applyRemovalNotif(sessionAcc, key, n);
+            } else {
+                remaining.push(n);
+            }
+        });
+
+        setNotifSessionChanges(sessionAcc);
         setModalNotifications(remaining);
         setModalSelected({});
         setModalSelectAll(false);
     };
 
+   
     const handleModalSave = () => {
-        setEditableData(prev => ({ ...prev, notifications: modalNotifications }));
-        setDisplayItems(modalNotifications.slice(0, 7));
+        if (notifSessionChanges.length === 0) {
+            setNotifModalOpen(false);
+            return;
+        }
+
+        setNotifAllChanges((prev) => mergeSessionIntoAllNotif(prev, notifSessionChanges));
+
+        const committed = modalNotifications;
+        notifSavedDataRef.current = structuredClone(committed);
+
+        setEditableData((prev) => ({ ...prev, notifications: committed }));
+        setDisplayItems(committed.slice(0, 7));
         setCurrentNotifIndex(0);
+
+        setNotifSessionChanges([]);
         setNotifModalOpen(false);
+
+        setIsEditing(false);
+        setFinalizing(true);
     };
 
     // ---------- Delete Confirmation ----------
@@ -462,7 +745,7 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
                 </div>
             )}
 
-            {/* ---------- Confirm Request Popup ---------- */}
+            {/* ---------- Confirm Request Popup (phone/email + notifications) ---------- */}
             {confirmPopup && (
                 <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
                     <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[450px]">
@@ -483,9 +766,10 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email }) => {
                             </button>
                             <button
                                 onClick={handleConfirmRequest}
+                                disabled={sendingNotifRequest}
                                 className="px-4 py-2 rounded bg-secd text-text hover:bg-brwn"
                             >
-                                Confirm
+                                {sendingNotifRequest ? "Sending..." : "Confirm"}
                             </button>
                         </div>
                     </div>

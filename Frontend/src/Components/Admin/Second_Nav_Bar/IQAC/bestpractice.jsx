@@ -18,13 +18,16 @@ export default function IqaPra({ iqacData }) {
   const { sendRequest, loading, error } = useAdminRequest();
   const [pendingData, setPendingData] = useState(null);
 
-
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
     if (typeof path !== "string") return "";
     if (!path) return "";
-    return path.startsWith("http") ? path : path.startsWith("blob") ? path : `${BASE_URL}${path}`;
+    return path.startsWith("http")
+      ? path
+      : path.startsWith("blob")
+        ? path
+        : `${BASE_URL}${path}`;
   };
 
   // Helper function to deep clone data
@@ -59,7 +62,8 @@ export default function IqaPra({ iqacData }) {
         const updated = [...prev];
         updated[existingIndex] = {
           ...updated[existingIndex],
-          action: updated[existingIndex].action === "Insert" ? "Insert" : action,
+          action:
+            updated[existingIndex].action === "Insert" ? "Insert" : action,
           title: rowTitle,
           row,
         };
@@ -82,7 +86,7 @@ export default function IqaPra({ iqacData }) {
   // Toggle select row
   const toggleRowSelection = (index) => {
     setSelectedRows((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
   };
 
@@ -123,9 +127,7 @@ export default function IqaPra({ iqacData }) {
 
   // Delete selected rows
   const handleDeleteSelected = () => {
-    const deletedRows = editableData.filter((_, i) =>
-      selectedRows.includes(i)
-    );
+    const deletedRows = editableData.filter((_, i) => selectedRows.includes(i));
     deletedRows.forEach((row, i) => {
       logChange("Delete", i, row);
     });
@@ -155,7 +157,9 @@ export default function IqaPra({ iqacData }) {
 
   const handleDeleteTitle = (rowIndex, titleIndex) => {
     const newData = [...editableData];
-    newData[rowIndex].title = newData[rowIndex].title.filter((_, i) => i !== titleIndex);
+    newData[rowIndex].title = newData[rowIndex].title.filter(
+      (_, i) => i !== titleIndex,
+    );
     setEditableData(newData);
     setHasChanges(true);
     logChange("Edit", rowIndex, newData[rowIndex]);
@@ -163,81 +167,84 @@ export default function IqaPra({ iqacData }) {
 
   // Save changes
   const handleSave = () => {
-    setPendingData(deepClone(editableData)); // save draft
+    const snapshot = deepClone(editableData);
+    setPendingData(snapshot);
+    setChangesLog(computeChangesLog(originalData, snapshot));
     setIsEditMode(false);
     setHasChanges(false);
   };
 
   // Cancel edit mode
   const handleCancel = () => {
-    if (pendingData) {
-      setEditableData(deepClone(pendingData));
+    const dataToRestore = pendingData || originalData;
 
-      // 🔥 Recalculate changesLog properly
+    setEditableData(deepClone(dataToRestore));
+    setUploadedFiles({});
+    setSelectedRows([]);
+    setHasChanges(false);
+    setIsEditMode(false);
+
+    if (pendingData) {
       const recalculated = buildPayload(originalData, pendingData, {}).payload;
 
       setChangesLog(
         recalculated.map((item, index) => ({
           id: Date.now() + index,
           action: item.action,
-          section: "IQAC",
-          title: item.meta_data?.year || "AQAR",
-        }))
+          section: "Best Practices",
+          title:
+            item.meta_data?.year || item.original_data?.year || "Untitled Year",
+          meta_data: item.meta_data,
+          original_data: item.original_data,
+        })),
       );
+    } else {
+      setChangesLog([]);
     }
   };
 
   // Discard changes
   const handleDiscardChanges = () => {
-    
-    setEditableData(deepClone(originalData));  // revert to server state
+    setEditableData(deepClone(originalData)); // revert to server state
     setUploadedFiles({});
     setHasChanges(false);
     setChangesLog([]);
     setPendingData(null);
     toast.info("Changes discarded.");
-    
   };
 
   const handleUndoChange = (id) => {
     const change = changesLog.find((c) => c.id === id);
     if (!change) return;
 
+    const targetId = change.rowId;
     let newData = [...editableData];
 
-    if (change.action === "Edit") {
-      // revert to original row
-      const originalRow = originalData.find(
-        (row) => row._id === change.row._id
-      );
-
-      if (originalRow) {
-        newData = newData.map((row) =>
-          row._id === change.row._id ? { ...originalRow } : row
+    if (change.action === "update") {
+      const orig = originalData.find((r) => r._id === targetId);
+      if (orig)
+        newData = newData.map((r) =>
+          r._id === targetId ? deepClone([orig])[0] : r,
         );
+    }
+
+    if (change.action === "insert") {
+      newData = newData.filter((r) => r._id !== targetId);
+    }
+
+    if (change.action === "delete") {
+      const orig = originalData.find((r) => r._id === targetId);
+      if (orig && !newData.some((r) => r._id === targetId)) {
+        newData.splice(change.rowIndex, 0, deepClone([orig])[0]);
       }
     }
 
-    if (change.action === "Insert") {
-      // remove inserted row
-      newData = newData.filter(
-        (row) => row._id !== change.row._id
-      );
-    }
-
-    if (change.action === "Delete") {
-      // restore deleted row at original position
-      newData.splice(change.rowIndex, 0, change.row);
-    }
+    const updatedChanges = computeChangesLog(originalData, newData);
 
     setEditableData(newData);
-    setPendingData(newData);
-
-    // remove only this change
-    setChangesLog((prev) => prev.filter((c) => c.id !== id));
-
+    setPendingData(deepClone(newData));
+    setChangesLog(updatedChanges);
   };
-
 
   const buildPayload = (originalData, editableData, uploadedFiles) => {
     const payload = [];
@@ -248,29 +255,51 @@ export default function IqaPra({ iqacData }) {
       const match = editableData.find((ed) => ed._id === orig._id);
 
       if (!match) {
-        // Deletion
-        const { _id, _isNew, ...cleanData } = orig;
+        const { _isNew, ...cleanData } = orig;
+
         payload.push({
           collectionName: "iqac",
           collection_type: "best_practices",
           action: "delete",
           title: "deletion of best practices",
-          category: "Best Practices",
-          meta_data: { ...cleanData },
+
+          meta_data: {
+            _id: cleanData._id,
+            year: cleanData.year,
+            title: Array.isArray(cleanData.title)
+              ? [...cleanData.title]
+              : cleanData.title,
+            pdf_path: cleanData.pdf_path,
+          },
+
           original_data: null,
         });
       } else if (JSON.stringify(match) !== JSON.stringify(orig)) {
         // Update
-        const { _id, _isNew, ...cleanMatch } = match;
-        const { _id: origId, _isNew: origIsNew, ...cleanOrig } = orig;
+        const { _isNew, ...cleanMatch } = match;
+        const { _isNew: origIsNew, ...cleanOrig } = orig;
         payload.push({
           collectionName: "iqac",
           collection_type: "best_practices",
           action: "update",
           title: "updation of best practices",
-          category: "Best Practices",
-          meta_data: { ...cleanMatch },
-          original_data: { ...cleanOrig },
+
+          meta_data: {
+            _id: cleanOrig._id,
+            year: cleanMatch.year,
+            title: Array.isArray(cleanMatch.title)
+              ? [...cleanMatch.title]
+              : cleanMatch.title,
+            pdf_path: cleanMatch.pdf_path,
+          },
+
+          original_data: {
+            year: cleanOrig.year,
+            title: Array.isArray(cleanOrig.title)
+              ? [...cleanOrig.title]
+              : cleanOrig.title,
+            pdf_path: cleanOrig.pdf_path,
+          },
         });
       }
     });
@@ -278,14 +307,21 @@ export default function IqaPra({ iqacData }) {
     // Insertions
     editableData.forEach((ed) => {
       if (ed._isNew) {
-        const { _id, _isNew, ...cleanData } = ed;
+        const { _isNew, ...cleanData } = ed;
         payload.push({
           collectionName: "iqac",
           collection_type: "best_practices",
           action: "insert",
           title: "insertion of best practices",
           category: "Best Practices",
-          meta_data: { ...cleanData },
+          meta_data: {
+            _id: cleanData._id,
+            year: cleanData.year,
+            title: Array.isArray(cleanData.title)
+              ? [...cleanData.title]
+              : cleanData.title,
+            pdf_path: cleanData.pdf_path,
+          },
           original_data: null,
         });
       }
@@ -298,26 +334,85 @@ export default function IqaPra({ iqacData }) {
 
     return { payload, files };
   };
+  const computeChangesLog = (orig, edited) => {
+    const { payload } = buildPayload(orig, edited, {});
+    return payload.map((item, index) => ({
+      id: Date.now() + index,
+      rowId: item.meta_data?._id ?? item.original_data?._id,
+      rowIndex: originalData.findIndex(
+        (r) => r._id === (item.meta_data?._id ?? item.original_data?._id),
+      ),
+      action: item.action,
+      section: "Best Practices",
+      title:
+        item.meta_data?.year || item.original_data?.year || "Untitled Year",
+      meta_data: item.meta_data,
+      original_data: item.original_data,
+    }));
+  };
 
   const handleRequestConfirm = async () => {
+    if (editableData.some((row) => !row.pdf_path)) {
+      toast.error(
+        "Please upload a PDF for every row before sending the request.",
+      );
+      return;
+    }
+    const latestData = pendingData || editableData;
     const { payload, files } = buildPayload(
       originalData,
-      editableData,
-      uploadedFiles
+      latestData,
+      uploadedFiles,
     );
-    toast.success("The request is summitted successfully")
+    if (payload.length === 0) {
+      toast.info("No changes to submit.");
+      setShowRequestModal(false);
+      return;
+    }
+    // Remove frontend-only _id before sending to backend
+    const payloadToSend = payload.map((item) => ({
+      ...item,
+      meta_data: item.meta_data
+        ? (() => {
+            const { _id, ...rest } = item.meta_data;
+            return rest;
+          })()
+        : null,
+      original_data: item.original_data
+        ? (() => {
+            const { _id, ...rest } = item.original_data;
+            return rest;
+          })()
+        : null,
+    }));
+
     console.log("Final request payload:", payload);
     console.log("Files to upload:", files);
+    console.log("ORIGINAL");
 
-    const response = await sendRequest(payload, files);
+    //console.log("SENDING TO BACKEND:", payloadToSend);
+
+    const response = await sendRequest(payloadToSend, files);
     if (response) {
+      toast.success("The request is summitted successfully");
+      const updatedData = deepClone(pendingData || editableData);
+      // Close the popup
       setShowRequestModal(false);
-      setHasChanges(false);
-      setOriginalData(deepClone(pendingData || editableData));
-      setEditableData(deepClone(pendingData || editableData));
+
+      // Return to normal view
+      setIsEditMode(false);
+
+      // Treat current data as the new baseline
+      setOriginalData(updatedData);
+      setEditableData(updatedData);
+
+      // Clear all temporary state
       setPendingData(null);
       setChangesLog([]);
       setUploadedFiles({});
+      setSelectedRows([]);
+      setDeleteConfirm(false);
+      setHasChanges(false);
     }
   };
 
@@ -375,15 +470,26 @@ export default function IqaPra({ iqacData }) {
                         <td className="px-2 py-2">
                           <div className="flex flex-col gap-2">
                             {item.title?.map((t, tIndex) => (
-                              <div key={tIndex} className="flex items-center gap-2">
+                              <div
+                                key={tIndex}
+                                className="flex items-center gap-2"
+                              >
                                 <input
                                   type="text"
                                   value={t}
-                                  onChange={(e) => handleTitleChange(index, tIndex, e.target.value)}
+                                  onChange={(e) =>
+                                    handleTitleChange(
+                                      index,
+                                      tIndex,
+                                      e.target.value,
+                                    )
+                                  }
                                   className="w-[250px] px-2 py-1 border rounded"
                                 />
                                 <button
-                                  onClick={() => handleDeleteTitle(index, tIndex)}
+                                  onClick={() =>
+                                    handleDeleteTitle(index, tIndex)
+                                  }
                                   className="text-red-500 hover:text-red-700"
                                   title="Delete Title"
                                 >
@@ -580,26 +686,35 @@ export default function IqaPra({ iqacData }) {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="4" className="text-center py-2 text-gray-500">
+                      <td
+                        colSpan="4"
+                        className="text-center py-2 text-gray-500"
+                      >
                         No changes detected
                       </td>
                     </tr>
                   )}
                 </tbody>
               </table>
-            </div> 
+            </div>
             <div className="flex justify-end gap-2">
               <button
+                disabled={loading}
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className={`px-4 py-2 rounded text-white ${
+                  loading ? "bg-gray-300 cursor-not-allowed" : "bg-gray-400"
+                }`}
               >
                 Cancel
               </button>
               <button
+                disabled={loading}
                 onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+                className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${
+                  loading ? "cursor-progress opacity-70" : "hover:bg-[#800000]"
+                }`}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>
@@ -610,7 +725,9 @@ export default function IqaPra({ iqacData }) {
       {deleteConfirm && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[350px]">
-            <h2 className="text-lg font-bold mb-4 text-center">Confirm Delete</h2>
+            <h2 className="text-lg font-bold mb-4 text-center">
+              Confirm Delete
+            </h2>
             <p className="text-sm mb-4 text-center">
               Are you sure you want to delete the selected rows?
             </p>
