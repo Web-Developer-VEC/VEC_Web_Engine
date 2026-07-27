@@ -28,7 +28,7 @@ const Activities = ({ data }) => {
     if (years.length > 0) {
       setSelectedYear(years[0]);
     }
-  }, []);
+  }, [years]);
 
   const selectedYearData = departmentActivities.find(
     (item) => item.year === selectedYear
