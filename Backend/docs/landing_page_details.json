@@ -184,6 +184,18 @@
     "type": "announcements",
     "data": [
        {
+        "unique_id": "announcement_14",
+        "announcement_name": "Circular_Revaluation (For Photocopy)_SEE May 2026-R2023, R2023A, R2019 & R2019A",
+        "pdf_path": "/static/pdfs/announcements/Revaluation_Photocopy_R2019,R2019A, R2023 &R2023A.pdf",
+        "date": "2026-07-28",
+        "status": "active"
+      } ,{
+        "unique_id": "announcement_15",
+        "announcement_name": "Circular_Revaluation (After Photocopy)_SEE May 2026-R2023, R2023A, R2019 & R2019A",
+        "pdf_path": "/static/pdfs/announcements/Revaluation_After Photocopy_R2019,R2019A, R2023 &R2023A.pdf",
+        "date": "2026-07-28",
+        "status": "active"
+      } ,{
         "unique_id": "announcement_13",
         "announcement_name": "Circular- Reschedule - SEE May 2026 - 28-05-2026 to 05-06-2026",
         "pdf_path": "/static/pdfs/announcements/Rescheduled Date_SEE May 2026_28-05-2026 to 05-06-2026.pdf",
@@ -671,10 +683,7 @@
   {
     "type": "news_card",
     "data": [
-      {
-        "type": "image",
-        "image_path": "/static/images/newscard/schlorship.png"
-      }
+     
     ]
   }
 ]
