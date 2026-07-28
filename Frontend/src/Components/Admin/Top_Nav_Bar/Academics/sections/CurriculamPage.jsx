@@ -59,16 +59,19 @@ const CurriculumPage = ({ data, deptId }) => {
   const [selectedYears, setSelectedYears] = useState(new Set());
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const toggleSelectYear = (sectionIndex, itemIndex) => {
-    const key = `${sectionIndex}-${itemIndex}`;
+  const toggleSelectYear = (sectionIndex, itemKey) => {
+    const key = `${sectionIndex}-${itemKey}`;
+
     setSelectedYears((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(key)) {
-        newSet.delete(key);
+      const next = new Set(prev);
+
+      if (next.has(key)) {
+        next.delete(key);
       } else {
-        newSet.add(key);
+        next.add(key);
       }
-      return newSet;
+
+      return next;
     });
   };
 
@@ -85,6 +88,7 @@ const CurriculumPage = ({ data, deptId }) => {
     isDoc: false,
     isCurriculum: false,
     deletePdf: false,
+    confirmDeletePdf: false
   });
 
   const fileInputRef = useRef(null);
@@ -236,7 +240,6 @@ const CurriculumPage = ({ data, deptId }) => {
 
     setPendingData(rebuiltData);
     setTempData(deepCopy(rebuiltData));
-    toast.info("Change discarded successfully");
   };
 
   const handleSave = () => {
@@ -266,16 +269,13 @@ const CurriculumPage = ({ data, deptId }) => {
     setIsSaved(true);
     setIsEditing(false);
     setIsDirty(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleCancel = () => {
     if (pendingData) {
       setTempData(deepCopy(pendingData));
-      toast.info("Cancelled changes. Draft preserved!");
     } else {
       setTempData(deepCopy(originalData));
-      toast.info("Cancelled changes. Reverted to original!");
     }
     setIsEditing(false);
     setIsSaved(!!pendingData);
@@ -284,24 +284,44 @@ const CurriculumPage = ({ data, deptId }) => {
   };
 
   const confirmDeleteYears = () => {
-    setTempData((prev) => {
-      const updatedData = prev.map((section, sectionIndex) => {
-        const filteredSyllabus = section.syllabus.filter((_, itemIndex) => {
-          const key = `${sectionIndex}-${itemIndex}`;
-          return !selectedYears.has(key);
-        });
+    setTempData(prev => {
+
+      const updated = prev.map((section, sectionIndex) => {
+
+        const syllabus = section.syllabus
+          .map((item, itemIndex) => {
+
+            // delete whole year
+            if (selectedYears.has(`${sectionIndex}-${itemIndex}`)) {
+              return null;
+            }
+
+            // delete selected semesters
+            const docs = (item.docs || []).filter((doc, docIndex) => {
+              return !selectedYears.has(
+                `${sectionIndex}-${itemIndex}-${docIndex}`
+              );
+            });
+
+            return {
+              ...item,
+              docs,
+            };
+          })
+          .filter(Boolean);
+
         return {
           ...section,
-          syllabus: filteredSyllabus,
+          syllabus,
         };
       });
-      return updatedData;
+
+      return updated;
     });
 
     setSelectedYears(new Set());
     setShowDeleteModal(false);
     setIsDirty(true);
-    toast.success("Selected year(s) deleted successfully");
   };
 
   const handleDiscard = () => {
@@ -417,7 +437,6 @@ const CurriculumPage = ({ data, deptId }) => {
       return newData;
     });
     setIsDirty(true);
-    toast.success("Item deleted");
   };
 
   const handleDeleteDoc = (sectionIndex, itemIndex, docIndex) => {
@@ -429,7 +448,6 @@ const CurriculumPage = ({ data, deptId }) => {
       return newData;
     });
     setIsDirty(true);
-    toast.success("Document deleted");
   };
 
   // File handlers
@@ -456,7 +474,6 @@ const CurriculumPage = ({ data, deptId }) => {
       deletePdf: true,
     }));
 
-    toast.success("PDF removed");
   };
 
   const handlePopupView = () => {
@@ -548,7 +565,6 @@ const CurriculumPage = ({ data, deptId }) => {
 
       setIsDirty(true);
       setShowPopup(false);
-      toast.success("Curriculum year added successfully!");
       return;
     }
 
@@ -955,7 +971,6 @@ const CurriculumPage = ({ data, deptId }) => {
       setIsDirty(false);
       setShowRequestModal(false);
 
-      // toast.success("Changes request sent successfully!");
 
       console.log("Backend response:", response);
     } catch (err) {
@@ -1154,33 +1169,67 @@ const CurriculumPage = ({ data, deptId }) => {
 
                           <div className="overflow-hidden w-[90%] mx-auto mt-4">
                             <div className="grid grid-cols-3 gap-6 text-center">
-                              {docs.map((doc, docIndex) => (
-                                <button
-                                  key={docIndex}
-                                  onClick={() => {
-                                    if (isEditing) {
-                                      handleEditDoc(
-                                        sectionIndex,
-                                        itemIndex,
-                                        docIndex,
-                                        !hasDocs,
-                                      );
-                                    } else {
-                                      handleViewWithFile(doc); // ✅ PASS FULL OBJECT
-                                    }
-                                  }}
-                                  className={`px-4 py-2 rounded flex items-center justify-center gap-2 
-          ${hasDocs
-                                      ? "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                                      : "bg-secd hover:bg-brwn text-text hover:text-prim cursor-pointer"
-                                    }`}
-                                >
-                                  {doc.isView && (
-                                    <FontAwesomeIcon icon={faEye} />
-                                  )}
-                                  {doc.name}
-                                </button>
-                              ))}
+                              {docs.map((doc, docIndex) => {
+                                const docKey = `${sectionIndex}-${itemIndex}-${docIndex}`;
+
+                                return (
+                                  <div
+                                    key={docIndex}
+                                    className="relative"
+                                  >
+                                    <button
+                                      onClick={() => {
+                                        if (isEditing) {
+                                          handleEditDoc(sectionIndex, itemIndex, docIndex, !hasDocs);
+                                        } else {
+                                          handleViewWithFile(doc);
+                                        }
+                                      }}
+                                      className={`w-full px-4 py-3 rounded flex items-center justify-center
+      ${hasDocs
+                                          ? "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                                          : "bg-secd hover:bg-brwn text-text hover:text-prim"
+                                        }`}
+                                    >
+                                      {doc.isView && (
+                                        <FontAwesomeIcon icon={faEye} className="mr-2" />
+                                      )}
+
+                                      {doc.name}
+                                    </button>
+
+                                    {isEditing && (
+                                      <div className="absolute top-2 right-2 flex items-center gap-2">
+                                        <button
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleEditDoc(sectionIndex, itemIndex, docIndex, !hasDocs);
+                                          }}
+                                          className="text-gray-700 hover:text-blue-600"
+                                          title="Edit"
+                                        >
+                                          <Pencil size={15} />
+                                        </button>
+
+                                        <input
+                                          type="checkbox"
+                                          className="w-4 h-4"
+                                          checked={selectedYears.has(
+                                            `${sectionIndex}-${itemIndex}-${docIndex}`
+                                          )}
+                                          onChange={(e) => {
+                                            e.stopPropagation();
+                                            toggleSelectYear(
+                                              sectionIndex,
+                                              `${itemIndex}-${docIndex}`
+                                            );
+                                          }}
+                                        />
+                                      </div>
+                                    )}
+                                  </div>
+                                )
+                              })}
                             </div>
 
                             {/* Move button here, outside of docs grid */}
@@ -1414,14 +1463,14 @@ const CurriculumPage = ({ data, deptId }) => {
                   {(popupData.file || popupData.pdf_path) && (
                     <button
                       type="button"
-                      onClick={handleDeletePdf}
-                      className="p-2 rounded hover:bg-gray-100 transition-colors duration-200"
-                      title="Delete PDF"
+                      onClick={() =>
+                        setPopupData(prev => ({
+                          ...prev,
+                          confirmDeletePdf: true,
+                        }))
+                      }
+                      className="p-2 rounded hover:bg-gray-100"
                     >
-                      <Trash2
-                        size={22}
-                        className="text-red-500"
-                      />
                     </button>
                   )}
 
