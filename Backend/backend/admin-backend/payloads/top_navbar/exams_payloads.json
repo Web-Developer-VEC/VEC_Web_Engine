@@ -211,5 +211,13 @@
       "name": "B.E / B.Tech",
       "pdf_path": "/static/pdfs/rank_holder/REVISED_Rank List_B.E._B.Tech._2021-2025 batch.pdf"
     }
+  },
+  {
+    "collectionName": "exams",
+    "collection_type": "rankholder",
+    "action": "delete",
+    "title": "delete",
+    "category": "2024-2025",
+    "meta_data": {}
   }
 ]

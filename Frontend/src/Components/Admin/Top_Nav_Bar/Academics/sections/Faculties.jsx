@@ -56,7 +56,7 @@ export default function Faculties({ data }) {
     const hod_from_data = data?.find((i) => i.category === "head_of_department")?.members || [];
     const teaching_from_data = data?.find((i) => i.category === "teaching_staff")?.members || [];
     const non_teaching_from_data = data?.find((i) => i.category === "non_teaching_staff")?.members || [];
-    const pdf_path = data?.find((i) => i.category === "faculty_pdf_path")?.content?.[0] || "";
+    const pdf_path = data?.find((i) => i.category === "faculty_pdf_path")?.pdf_path?.[0] || "";
 
     const init = {
       hod: hod_from_data?.[0] ?? null,
