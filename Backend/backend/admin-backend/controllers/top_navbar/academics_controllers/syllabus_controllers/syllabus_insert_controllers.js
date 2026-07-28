@@ -37,7 +37,6 @@ async function insertData(tempDoc, mainCollection) {
 
   /* ---------------- DUPLICATE CHECK ---------------- */
   if (name) {
-    console.log(yearData);
 
     const yeardocs = yearData.docs || [];
     
