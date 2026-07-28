@@ -1,4 +1,4 @@
-import React, {forwardRef} from "react";//+
+import React, { forwardRef } from "react";//+
 import "./Footer.css"; // Add your custom CSS for styling
 import insta from '../../Assets/insta-logo.png';
 import linkedin from '../../Assets/linkedin-logo.png';
@@ -11,6 +11,7 @@ const Footer = forwardRef((props, ref) => {
     const color = (props.theme === "light") ? "rgb(253,204,3)" : "rgb(255, 87, 34)";
     const data = props.data;
     const navigate = useNavigate();
+    
     return (
         <footer id="footer" className="lg:flex flex-wrap footer font-popp
             bg-[linear-gradient(111deg,theme(colors.secd)_0%,theme(colors.secd)_3%,theme(colors.text)_3%,theme(colors.text)_90%,theme(colors.secd)_90%,theme(colors.secd)_100%)]
@@ -19,39 +20,39 @@ const Footer = forwardRef((props, ref) => {
             <div className="contact-details basis-1/4 ml-4">
                 <div className="block md:flex lg:block justify-around">
                     <div className="mt-4">
-                        <h3 className="text-secd dark:text-drks font-bold" style={{padding: "0 20px", margintop: "5px"}}>Contact
+                        <h3 className="text-secd dark:text-drks font-bold" style={{ padding: "0 20px", margintop: "5px" }}>Contact
                             Address</h3>
-                        <p style={{marginTop: "-2%", fontSize: "17px", color: "white"}}>{data?.address[0]}<br></br>{data?.address[1]}<br></br>{data?.address[2]}<br></br>{data?.address[3]}</p>
+                        <p style={{ marginTop: "-2%", fontSize: "17px", color: "white" }}>{data?.address[0]}<br></br>{data?.address[1]}<br></br>{data?.address[2]}<br></br>{data?.address[3]}</p>
                     </div>
                     <div>
-                        <p style={{marginTop: "27px"}}>
+                        <p style={{ marginTop: "27px" }}>
                             Contact: <a className="text-secd dark:text-drks hover:text-prim font-bold" href={`tel:${data?.phone_number}`}
-                                        style={{textDecoration: "none"}}>{data?.phone_number}</a>
+                                style={{ textDecoration: "none" }}>{data?.phone_number}</a>
                         </p>
                         <p>
                             Student Affair: <a href={`tel:${data?.student_affairs_contact}`} className="text-secd dark:text-drks hover:text-prim font-bold"
-                                    style={{textDecoration: "none"}}>{data?.student_affairs_contact  }</a>
+                                style={{ textDecoration: "none" }}>{data?.student_affairs_contact}</a>
                         </p>
                         <p>For Admissions: <a href={`tel:${data?.addmission_contact[0]}`} className="text-secd dark:text-drks hover:text-prim font-bold"
-                                            style={{textDecoration: "none"}}>{data?.addmission_contact[0]}</a> , <a
-                            href={`tel:${data?.addmission_contact[1]}`} className="text-secd dark:text-drks hover:text-prim font-bold" style={{textDecoration: "none"}}>
-                            {data?.addmission_contact[1]}</a>
+                            style={{ textDecoration: "none" }}>{data?.addmission_contact[0]}</a> , <a
+                                href={`tel:${data?.addmission_contact[1]}`} className="text-secd dark:text-drks hover:text-prim font-bold" style={{ textDecoration: "none" }}>
+                                {data?.addmission_contact[1]}</a>
                         </p>
                         <div>
                             <a href="/Term_and_Conditions" target="_blank" rel="noopener noreferrer" className="text-secd dark:text-drks ml-5">Privacy, Terms and Conditions</a>
                         </div>
                         <div className="logo-container my-2">
                             <a href={data?.instagram} target="_blank" rel="noopener noreferrer">
-                                <img src={insta} alt="Insta"/>
+                                <img src={insta} alt="Insta" />
                             </a>
                             <a href={data?.linkedin} target="_blank" rel="noopener noreferrer">
-                                <img src={linkedin} alt="LinkedIn"/>
+                                <img src={linkedin} alt="LinkedIn" />
                             </a>
                             <a href={data?.twitter} target="_blank" rel="noopener noreferrer">
-                                <img src={x} alt="Twitter"/>
+                                <img src={x} alt="Twitter" />
                             </a>
                             <a href={data?.facebook} target="_blank" rel="noopener noreferrer">
-                                <img src={facebook} alt="Facebook"/>
+                                <img src={facebook} alt="Facebook" />
                             </a>
                         </div>
                     </div>
@@ -59,13 +60,13 @@ const Footer = forwardRef((props, ref) => {
             </div>
             <div className=" footer-map basis-1/3 md:h-[20vh] lg:h-[45vh] mt-10">
                 <iframe className="px-3 w-full h-full"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1757.9530530830932!2d80.19081618175407!3d13.149609328912868!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5264a10c856599%3A0xac3348f41097ba7f!2sVelammal%20Engineering%20College!5e1!3m2!1sen!2sin!4v1723700873764!5m2!1sen!2sin"
-                        width="400"
-                        height="260"
-                        style={{border: 0}}
-                        allowFullScreen=""
-                        loading="lazy"
-                        title="Google Maps"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1757.9530530830932!2d80.19081618175407!3d13.149609328912868!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5264a10c856599%3A0xac3348f41097ba7f!2sVelammal%20Engineering%20College!5e1!3m2!1sen!2sin!4v1723700873764!5m2!1sen!2sin"
+                    width="400"
+                    height="260"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    title="Google Maps"
                 ></iframe>
             </div>
             <div className="quick-links basis-1/3 px-4 mt-4">
@@ -109,12 +110,12 @@ const Footer = forwardRef((props, ref) => {
                             <li><a href="/grievances">Grievances</a></li>
                             <li><a href="/admin_auth">Login</a></li>
                             <li><a href="/careers">Careers</a></li>
-                        </ul>   
+                        </ul>
                     </div>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center w-full">
-                <p className="text-center"><a href="/webteam"  rel="noopener noreferrer" className="text-secd dark:text-drks ml-5 text-center text-md mt-4 font-medium m-auto cursor-pointer">© WebOps VEC</a>,  Velammal Engineering College, Chennai</p>
+                <p className="text-center"><a href="/webteam" rel="noopener noreferrer" className="text-secd dark:text-drks ml-5 text-center text-md mt-4 font-medium m-auto cursor-pointer">© WebOps VEC</a>,  Velammal Engineering College, Chennai</p>
             </div>
         </footer>
     );

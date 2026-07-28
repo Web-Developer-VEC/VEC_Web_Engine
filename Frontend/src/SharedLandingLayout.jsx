@@ -25,7 +25,7 @@ const SharedLandingLayout = ({ components, theme, load, toggle, pageData, isOnli
     const specialAnnouncements = pageData?.find((item) => item.type === "special_announcements")?.data || [];
     const events = pageData?.find((item) => item.type === "events")?.data || [];
     const newscard = pageData?.find((item) => item.type === "news_card")?.data || [];
-
+    console.log("pageDetails", pageDetails);
     if (!isOnline) {
         return (
             <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -41,6 +41,7 @@ const SharedLandingLayout = ({ components, theme, load, toggle, pageData, isOnli
                 lst={notifications}
                 ph={pageDetails[0]?.phone_number}
                 email={pageDetails[0]?.email}
+                pageDetails={pageDetails}
             />
             <div className='w-max max-w-[100vw] h-fit absolute z-50'>
                 <div className='pt-2 pb-[2vmax] bg-prim dark:bg-drkp'>

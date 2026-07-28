@@ -11,7 +11,22 @@ import { useAdminRequest } from "../../hooks/useAdminRequest"; // <-- adjust pat
 const AdminFooter = forwardRef((props, ref) => {
   const data = props.data;
   const navigate = useNavigate();
+  const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
 
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+
+        document.body.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
   const { sendRequest, loading: requestLoading } = useAdminRequest();
 
   // UI state
@@ -360,13 +375,13 @@ const AdminFooter = forwardRef((props, ref) => {
                 Profile
               </h4>
               <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1 text-left">
-                <li><Link to="/abt-us">About Us</Link></li>
-                <li><Link to="/abt-yr">AISHE</Link></li>
-                <li><Link to="/Accredation" state={{ section: "NBA" }}>NBA</Link></li>
-                <li><Link to="/Accredation" state={{ section: "NAAC" }}>NAAC</Link></li>
-                <li><Link to="/Accredation" state={{ section: "NIRF" }}>NIRF</Link></li>
-                <li><Link to="/Accredation" state={{ section: "QS Rating" }}>QS Rating</Link></li>
-                <li><Link to="/iic">IIC</Link></li>
+                <li><Link to="/abt-us" onClick={scrollToTop} >About Us</Link></li>
+                <li><Link to="/abt-yr" onClick={scrollToTop} >AISHE</Link></li>
+                <li><Link to="/Accreditation" onClick={scrollToTop} state={{ section: "NBA" }}>NBA</Link></li>
+                <li><Link to="/Accreditation" onClick={scrollToTop} state={{ section: "NAAC" }}>NAAC</Link></li>
+                <li><Link to="/Accreditation" onClick={scrollToTop} state={{ section: "NIRF" }}>NIRF</Link></li>
+                <li><Link to="/Accreditation" onClick={scrollToTop} state={{ section: "QS Rating" }}>QS Rating</Link></li>
+                <li><Link to="/iic" onClick={scrollToTop} >IIC</Link></li>
               </ul>
             </div>
 
