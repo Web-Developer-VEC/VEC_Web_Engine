@@ -111,10 +111,8 @@ const handleStartEdit = () => {
   const handleCancel = () => {
     if (pendingItems) {
       setItems(deepCopy(pendingItems));
-      toast.info("Cancelled edits. Draft preserved!");
     } else {
       setItems(deepCopy(committedItems));
-      toast.info("Cancelled. Reverted to original data!");
     }
 
     setIsEditing(false);
@@ -140,7 +138,6 @@ const handleStartEdit = () => {
     setIsDirty(false);
     setSelectedItems([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -150,7 +147,6 @@ const handleStartEdit = () => {
     setIsDirty(false);
     setSelectedItems([]);
     setSelectAll(false);
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
