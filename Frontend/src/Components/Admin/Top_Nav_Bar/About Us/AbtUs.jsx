@@ -412,6 +412,18 @@ const AdminAbtUs = ({ theme, toggle }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showRequestModal, requestRows.length]);
 
+  useEffect(() => {
+    document.body.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    document.documentElement.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   const undoRow = (row) => {
     const current = postSaveSnapshot || getCurrentSnapshot();
     const updated = row.applyUndo ? row.applyUndo(deepClone(current)) : current;
@@ -866,13 +878,12 @@ const AdminAbtUs = ({ theme, toggle }) => {
                 {[0, 1, 2].map((i) => (
                   <div
                     key={i}
-                    className={`absolute ${
-                      i === 0
+                    className={`absolute ${i === 0
                         ? "w-[40%] h-[60%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]"
                         : i === 1
                           ? "w-[40%] h-[90%] left-[15%] top-[10%] rounded-bl-[3rem]"
                           : "w-[25%] h-[40%] left-[40%] top-[45%] rounded-tl-[3rem] rounded-br-[3rem]"
-                    } border-[2vmin] border-white overflow-hidden`}
+                      } border-[2vmin] border-white overflow-hidden`}
                   >
                     {loading[`img${i + 1}`] && (
                       <div className="absolute inset-0 flex justify-center items-center">
@@ -881,9 +892,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
                     )}
 
                     <img
-                      className={`absolute w-full h-full object-cover transition-opacity duration-500 ${
-                        loading[`img${i + 1}`] ? "opacity-0" : "opacity-100"
-                      }`}
+                      className={`absolute w-full h-full object-cover transition-opacity duration-500 ${loading[`img${i + 1}`] ? "opacity-0" : "opacity-100"
+                        }`}
                       src={
                         editedImages[i]
                           ? URL.createObjectURL(editedImages[i])
@@ -956,11 +966,9 @@ const AdminAbtUs = ({ theme, toggle }) => {
                   // pdf conrtainer
                   <div
                     key={index}
-                    className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition ${
-                      editMode ? "scale-110" : ""
-                    } ${editMode ? "cursor-pointer" : "cursor-pointer"} ${
-                      editMode && isSelected ? "ring-2 ring-red-500" : ""
-                    }`}
+                    className={`relative md:px-1 md:py-1 md:text-[16px] flex items-center justify-center px-3 py-3 rounded-xl bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition ${editMode ? "scale-110" : ""
+                      } ${editMode ? "cursor-pointer" : "cursor-pointer"} ${editMode && isSelected ? "ring-2 ring-red-500" : ""
+                      }`}
                     // IMPORTANT: Only allow opening edit modal when not in "multi-select" mode
                     onClick={
                       editMode && !hasSelection
