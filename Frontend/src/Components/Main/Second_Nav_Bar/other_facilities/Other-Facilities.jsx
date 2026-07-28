@@ -18,27 +18,32 @@ export default function OtherFacilities({ theme, toggle }) {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
-  const getSafe = (value, index) => {
-    return Array.isArray(value) ? value[index] || value[0] : value;
-  };
-
   const currentFacility = otherFacilities?.find(
     (facility) => facility?.category === activeTab
   );
 
+  // All image paths for the active category (content is an array of {name, description, image_path})
+  const images =
+    currentFacility?.content?.map((item) => item?.image_path).filter(Boolean) || [];
+
+  // Only the first content item usually carries name/description;
+  // subsequent ones (extra images) have them blank, so fall back to the first.
+  const currentName =
+    currentFacility?.content?.[imageIndex]?.name ||
+    currentFacility?.content?.[0]?.name ||
+    "";
+  const currentDescription =
+    currentFacility?.content?.[imageIndex]?.description ||
+    currentFacility?.content?.[0]?.description ||
+    "";
+
   const nextImage = () => {
-    if (!currentFacility) return;
-    const images = Array.isArray(currentFacility.image_path)
-      ? currentFacility.image_path
-      : [currentFacility.image_path];
+    if (!images.length) return;
     setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const prevImage = () => {
-    if (!currentFacility) return;
-    const images = Array.isArray(currentFacility.image_path)
-      ? currentFacility.image_path
-      : [currentFacility.image_path];
+    if (!images.length) return;
     setImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
@@ -48,14 +53,18 @@ export default function OtherFacilities({ theme, toggle }) {
         const response = await axios.post("/api/main-backend/other_facilities", {
           type: "other_facilities",
         });
-        const data = response.data.data;
-        setOtherFacilities(data);
-        setActiveTab(data[0]?.category || null);
+
+        // Response shape: [{ type: "other_facilities", data: [ {category, content: [...]}, ... ] }]
+        const payload = response.data;
+        const data = Array.isArray(payload) ? payload[0]?.data : payload?.data;
+
+        setOtherFacilities(data || []);
+        setActiveTab(data?.[0]?.category || null);
       } catch (error) {
         console.error("Error fetching Other facilities", error);
-        if (error.response.data.status === 429) {
-          navigate('/ratelimit', { state: { msg: error.response.data.message}})
-        }
+        if (error?.response?.data?.status === 429) {
+          navigate("/ratelimit", { state: { msg: error.response.data.message } });
+        }
       }
     };
     fetchData();
@@ -74,16 +83,13 @@ export default function OtherFacilities({ theme, toggle }) {
     };
   }, []);
 
-
   if (!isOnline) {
-
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
         <LoadComp txt={"You are offline"} />
       </div>
     );
   }
-
 
   if (!otherFacilities || !currentFacility) {
     return (
@@ -92,10 +98,6 @@ export default function OtherFacilities({ theme, toggle }) {
       </div>
     );
   }
-
-  const images = Array.isArray(currentFacility.image_path)
-    ? currentFacility.image_path
-    : [currentFacility.image_path];
 
   return (
     <>
@@ -125,13 +127,13 @@ export default function OtherFacilities({ theme, toggle }) {
           ))}
         </div>
 
-
         {/* Content Section */}
         <div className="content-container">
           <h2 className="current-facility text-brwn dark:text-drkt">
-            {getSafe(currentFacility.name, imageIndex)}
+            {currentName}
           </h2>
-          <p>{getSafe(currentFacility.description, imageIndex)}</p>
+          <p>{currentDescription}</p>
+
           {/* Image Carousel */}
           <div className="carousel">
             {images.length > 1 && (
@@ -139,11 +141,13 @@ export default function OtherFacilities({ theme, toggle }) {
                 ❮
               </button>
             )}
-            <img
-              src={UrlParser(images[imageIndex])}
-              alt={activeTab}
-              className="carousel-img"
-            />
+            {images.length > 0 && (
+              <img
+                src={UrlParser(images[imageIndex])}
+                alt={activeTab}
+                className="carousel-img"
+              />
+            )}
             {images.length > 1 && (
               <button className="next" onClick={nextImage}>
                 ❯
@@ -152,7 +156,6 @@ export default function OtherFacilities({ theme, toggle }) {
           </div>
         </div>
       </div>
-
     </>
   );
 }
