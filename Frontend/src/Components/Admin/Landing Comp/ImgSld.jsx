@@ -188,6 +188,7 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email, pageDetails }) => {
         setEditableData(initialDataRef.current);
 
 
+        
         const uidList = ensureNotifUids(lst || []);
         notifOriginalRef.current = structuredClone(uidList);
         notifSavedDataRef.current = structuredClone(uidList);
@@ -275,7 +276,6 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email, pageDetails }) => {
         setFinalizing(false);
         setEditableData(initialDataRef.current);
     };
-
 
     const handleDiscardChanges = () => {
         setEditableData(initialDataRef.current);
@@ -455,7 +455,6 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email, pageDetails }) => {
     };
 
     const closeNotifModal = () => {
-
         setNotifSessionChanges([]);
         setNotifModalOpen(false);
     };
@@ -538,7 +537,6 @@ const ImgSld = ({ load, toggle, theme, lst, ph, email, pageDetails }) => {
         setModalSelected({});
         setModalSelectAll(false);
     };
-
 
     const handleModalSave = () => {
         if (notifSessionChanges.length === 0) {

@@ -22,7 +22,7 @@ const routeDictionary = {
   "/clg-org": "College Organization",
   "/departments": "Departments",
   "/programs": "Programs",
-  "/acadamic_cal": "Academic Calendar",
+  "/academic_cal": "Academic Calendar",
   "/dept/:deptID": "Department Details",
   "/facultyprofile/:uid": "Faculty Profile",
   "/ug": "Undergraduate Programs",
