@@ -38,7 +38,6 @@ async function deleteData(tempDoc, mainCollection) {
 
       doc.data[catIndex].members = doc.data[catIndex].members.filter(
         (m) => {
-          console.log("War ", m);
 
           return !Object.keys(meta_data).every((k) => {
             console.log(m[k]," => ",meta_data[k]);

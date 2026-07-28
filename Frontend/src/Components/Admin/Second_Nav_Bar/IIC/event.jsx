@@ -455,7 +455,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
           <h2 className="text-4xl text-brwn dark:text-drkt font-bold">{title}</h2>
           {!isEditing && (
             <div className="absolute right-0">
-              <button onClick={handleStartEdit} className="btn-edit">
+              <button onClick={handleStartEdit} className="flex ml-auto mr-8 items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim my-4">
                 <Pencil size={18} /> Edit
               </button>
             </div>
