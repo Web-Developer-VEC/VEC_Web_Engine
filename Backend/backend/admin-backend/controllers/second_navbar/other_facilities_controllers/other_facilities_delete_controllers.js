@@ -20,7 +20,6 @@ async function deleteData(tempDoc, mainCollection) {
     const categoryDoc = existingDoc.data.find(
       item => item.category === category
     );
-    console.log("✅✅",categoryDoc);
     
     if (!categoryDoc) {
       return {
