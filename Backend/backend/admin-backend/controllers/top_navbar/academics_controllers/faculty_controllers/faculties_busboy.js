@@ -88,8 +88,7 @@ async function facultyHandler(fileStream, docs, req, cb, filename, mimetype) {
 
     let baseFolder;
     let finalFilename;
-    
-    let basefilename = doc.meta_data.members.unique_id.toUpperCase().trim();
+
 
     if (category === "faculty_pdf_path") {
       baseFolder = "static/pdfs/faculty_list/";
@@ -139,6 +138,8 @@ async function facultyHandler(fileStream, docs, req, cb, filename, mimetype) {
       } else if (isImage) {
         doc.meta_data.members.image_path = `/${s3Key}`;
       }
+    } else if (category === "faculty_pdf_path") {
+      doc.meta_data.pdf_path[0] = `/${s3Key}`;
     }
     if (!req.uploadedFiles) {
       req.uploadedFiles = [];

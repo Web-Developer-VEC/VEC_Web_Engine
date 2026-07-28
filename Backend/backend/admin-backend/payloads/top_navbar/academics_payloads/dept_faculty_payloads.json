@@ -47,12 +47,12 @@
     "title": "Update faculty_pdf_path",
     "category": "faculty_pdf_path",
     "meta_data": {
-      "content": [
+      "pdf_path": [
         "/static/pdfs/faculty_list/001.pdf"
       ]
     },
     "original_data": {
-      "content": [
+      "pdf_path": [
         "/static/pdfs/faculty_list/001.pdf"
       ]
     }
