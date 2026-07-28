@@ -144,7 +144,7 @@
              "pdf_path":"/static/pdfs/faculty_profile/002/VEC-002-01-567.pdf",
             "qualification": ["M.E.", "Ph.D"],
             "hod_message": ["Our department was established to provide well qualified industry ready engineers in the field of Automobile Engineering. The Department has a team of highly qualified, experienced and dedicated faculty members in diversified streams to cater for all-round development of students. Indian automotive industry is growing at a very fast rate with newer designs of automobiles and change in technologies. This will be a way for moulding our students for a bright future."],
-            "hod_image": "/static/images/hods/auto.webp",
+            "image_path": "/static/images/hods/auto.webp",
             "designation": "Professor & Head, Dept of Automobile Engineering",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/dr-s-baskara-sethupathy-272b2235?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ",

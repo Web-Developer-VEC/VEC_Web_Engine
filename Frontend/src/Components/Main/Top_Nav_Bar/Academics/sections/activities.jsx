@@ -22,7 +22,16 @@ const Activities = ({ data }) => {
     (item) => item.category === "department_activities"
   )?.content || [];
 
-  const years = departmentActivities.map((item) => item.year);
+  const sortedDepartmentActivities = [...departmentActivities].sort((a, b) => {
+    const getStartYear = (year) => {
+      const match = year.match(/\d{4}/);
+      return match ? parseInt(match[0], 10) : 0;
+    };
+
+    return getStartYear(b.year) - getStartYear(a.year);
+  });
+
+  const years = sortedDepartmentActivities.map(item => item.year);
 
   useEffect(() => {
     if (years.length > 0) {
@@ -64,11 +73,10 @@ const Activities = ({ data }) => {
           <button
             key={year}
             onClick={() => setSelectedYear(year)}
-            className={`px-4 py-2 rounded deptevent-year-button ${
-              selectedYear === year
+            className={`px-4 py-2 rounded deptevent-year-button ${selectedYear === year
                 ? "bg-accn text-prim"
                 : "bg-secd text-text dark:bg-drks"
-            }`}
+              }`}
           >
             {year}
           </button>
@@ -78,7 +86,7 @@ const Activities = ({ data }) => {
       {/* Activities Tile card Section */}
       {activitiesTileArray?.length > 0 && (
         <Activitiestile data={activitiesTileArray} />
-      )} 
+      )}
 
       {/* 🔹 Activities Display */}
       <div className="activities-container">

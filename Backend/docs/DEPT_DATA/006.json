@@ -148,7 +148,7 @@
             "hod_message": [
               "It is my privilege to lead a dedicated team that works tirelessly to provide cutting-edge education and hands-on experience in the field of Cyber Security. Our curriculum focuses on key areas like network security, ethical hacking, and data protection, preparing students to tackle the challenges of a rapidly evolving digital world. With a strong emphasis on practical learning, industry collaboration, and innovation, we aim to equip our students with the skills necessary to secure the digital future."
             ],
-            "hod_image": "/static/images/hods/cyber.webp",
+            "image_path": "/static/images/hods/cyber.webp",
             "designation": "Associate Professor & Head, Dept of CSE(Cyber Security)",
             "Social_media_links": {
               "linkedin": "https://www.linkedin.com/in/rajalakshmi-srinivasan-a14927161/",
