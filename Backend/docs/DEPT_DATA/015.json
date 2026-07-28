@@ -170,7 +170,7 @@
       },
       {
         "category": "faculty_pdf_path",
-        "content": [
+        "pdf_path": [
           "/static/pdfs/faculty_list/015.pdf"
         ]
       },
