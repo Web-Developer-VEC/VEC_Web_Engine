@@ -479,6 +479,10 @@ export default function AdminApprovalPage() {
     }
 
     // Handle image/pdf paths (single strings only - arrays handled above)
+    // Special case for Student Activities description
+if (fieldName === "image_content") {
+  return <span className="text-gray-900 text-sm">{value}</span>;
+}
     if (fieldName?.toLowerCase().includes('image') && !fieldName?.toLowerCase().includes('image_name') && value && typeof value === 'string') {
       return (
         <a
