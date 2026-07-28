@@ -1,46 +1,56 @@
 async function deleteData(tempDoc, mainCollection) {
-
   try {
-
-    const { collection_type, category, meta_data } = tempDoc;
+    const {
+      collection_type,
+      category,
+      meta_data
+    } = tempDoc;
 
     const existingDoc = await mainCollection.findOne({
       type: collection_type
     });
 
-    const categoryIndex = existingDoc.data.findIndex(
-      c => c.category === category
-    );
+    if (!existingDoc) {
+      return {
+        success: false,
+        message: "Type not found"
+      };
+    }
 
-    if (categoryIndex === -1) {
+    const categoryDoc = existingDoc.data.find(
+      item => item.category === category
+    );
+    console.log("✅✅",categoryDoc);
+    
+    if (!categoryDoc) {
       return {
         success: false,
         message: "Category not found"
       };
     }
 
-    if (meta_data.delete_category) {
-
-      existingDoc.data.splice(categoryIndex, 1);
-
+    if (meta_data?.delete_category) {
+      existingDoc.data = existingDoc.data.filter(
+        item => item.category !== category
+      );
     } else {
-
-      const cat = existingDoc.data[categoryIndex];
-
-      const index = meta_data.delete_index;
-
-      cat.name.splice(index, 1);
-      cat.description.splice(index, 1);
-      cat.image_path.splice(index, 1);
-
-      if (
-        cat.name.length === 0 &&
-        cat.description.length === 0 &&
-        cat.image_path.length === 0
-      ) {
-        existingDoc.data.splice(categoryIndex, 1);
+      const isEqual = (a, b) =>
+        a.name === b.name &&
+        a.description === b.description &&
+        a.image_path === b.image_path;
+      
+      
+      categoryDoc.content = categoryDoc.content.filter(
+        dbItem =>
+          !meta_data.content.some(oldItem => isEqual(dbItem, oldItem))
+      );
+      
+      // Remove category if no content remains
+      if (categoryDoc.content.length === 0) {
+        existingDoc.data = existingDoc.data.filter(
+          item => item.category !== category
+        );
       }
-
     }
 
     await mainCollection.updateOne(
@@ -58,14 +68,11 @@ async function deleteData(tempDoc, mainCollection) {
     };
 
   } catch (err) {
-
     return {
       success: false,
       error: err.message
     };
-
   }
-
 }
 
 module.exports = { deleteData };
