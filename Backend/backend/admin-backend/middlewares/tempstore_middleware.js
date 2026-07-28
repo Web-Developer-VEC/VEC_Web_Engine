@@ -102,7 +102,7 @@ module.exports = async function storeTempMiddleware(req, res, next) {
         )
         ];
 
-        const skipImageFor = ["members", "library_services", "team",   ...(collectionName !== "sports" ? ["faculty"] : []), ...(collectionName === "ecell" ? ["gallery"] : [])]
+        const skipImageFor = ["members", "library_services", "team", ...(collectionName !== "sports" ? ["faculty"] : []), ...(collectionName === "ecell" ? ["gallery"] : [])]
         const mainCollection = maindb.collection(collectionName);
 
         const existingDoc = await mainCollection.findOne(
@@ -178,7 +178,22 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
         const notdoc = Array.isArray(existingDoc.data) ? existingDoc.data : [existingDoc.data];
 
+        // Special handling for other_facilities
+        if (collection_type === "other_facilities" && action !== "delete" &&
+          Array.isArray(meta_data.content)) {
+          const uploadedImages = (req.uploadedFiles || [])
+            .filter(f => f.mimetype?.startsWith("image/"));
 
+          meta_data.content = meta_data.content.map((item, index) => ({
+            ...item,
+            image_path: uploadedImages[index]
+              ? uploadedImages[index].location
+              : item.image_path
+          }));
+
+          // Prevent generic image_path logic
+          image_path = [];
+        }
         if (action === "update") {
 
           if (isFacultyMember) {
@@ -276,32 +291,6 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           }
         }
 
-        const indexedCollections = [
-          "other_facilities"
-        ];
-
-        if (
-          indexedCollections.includes(collection_type) &&
-          action === "update" &&
-          meta_data.update_index !== undefined
-        ) {
-          const index = meta_data.update_index;
-
-          const finalNames = [...original_data.name];
-          const finalDescriptions = [...original_data.description];
-
-          finalNames[index] = meta_data.name[0];
-          finalDescriptions[index] = meta_data.description[0];
-
-          meta_data.name = finalNames;
-          meta_data.description = finalDescriptions;
-
-          if (image_path.length) {
-            const finalImages = [...original_data.image_path];
-            finalImages[index] = image_path[0];
-            image_path = finalImages;
-          }
-        }
 
         if (collection_type === "principal" && image_path.length === 1) {
           image_path = image_path[0];
@@ -311,7 +300,6 @@ module.exports = async function storeTempMiddleware(req, res, next) {
             ? image_path[0]
             : image_path;
         }
-       
 
         return {
           collection: collectionName,

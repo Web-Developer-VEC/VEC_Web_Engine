@@ -350,7 +350,6 @@ const AdminGrievanceForm = ({ theme, toggle }) => {
 
     try {
       await sendRequest(payloads); // same hook you already use
-      toast.success("Help Desk request submitted successfully!");
       setChangeList([]);
       setShowPopup(false);
       setSavedOnce(false);
