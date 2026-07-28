@@ -22,17 +22,27 @@ const Activities = ({ data }) => {
     (item) => item.category === "department_activities"
   )?.content || [];
 
-  const years = departmentActivities.map((item) => item.year);
+  const sortedDepartmentActivities = [...departmentActivities].sort((a, b) => {
+    const getStartYear = (year) => {
+      const match = year.match(/\d{4}/);
+      return match ? parseInt(match[0], 10) : 0;
+    };
+
+    return getStartYear(b.year) - getStartYear(a.year);
+  });
+
+  const years = sortedDepartmentActivities.map(item => item.year);
+
+  const selectedYearData = sortedDepartmentActivities.find(
+    item => item.year === selectedYear
+  );
 
   useEffect(() => {
     if (years.length > 0) {
       setSelectedYear(years[0]);
     }
-  }, [years]);
+  }, []);
 
-  const selectedYearData = departmentActivities.find(
-    (item) => item.year === selectedYear
-  );
   const activitiesArray = selectedYearData?.activities || [];
   const activitiesTileArray = selectedYearData?.activities_tile || [];
 
@@ -51,6 +61,10 @@ const Activities = ({ data }) => {
     );
   }
 
+  console.log("Selected Year:", selectedYear);
+  console.log("Selected Year Data:", selectedYearData);
+  console.log("Activities Tile:", activitiesTileArray);
+
   return (
     <>
 
@@ -64,11 +78,10 @@ const Activities = ({ data }) => {
           <button
             key={year}
             onClick={() => setSelectedYear(year)}
-            className={`px-4 py-2 rounded deptevent-year-button ${
-              selectedYear === year
-                ? "bg-accn text-prim"
-                : "bg-secd text-text dark:bg-drks"
-            }`}
+            className={`px-4 py-2 rounded deptevent-year-button ${selectedYear === year
+              ? "bg-accn text-prim"
+              : "bg-secd text-text dark:bg-drks"
+              }`}
           >
             {year}
           </button>
@@ -78,7 +91,7 @@ const Activities = ({ data }) => {
       {/* Activities Tile card Section */}
       {activitiesTileArray?.length > 0 && (
         <Activitiestile data={activitiesTileArray} />
-      )} 
+      )}
 
       {/* 🔹 Activities Display */}
       <div className="activities-container">
