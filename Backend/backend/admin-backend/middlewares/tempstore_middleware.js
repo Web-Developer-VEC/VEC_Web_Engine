@@ -97,12 +97,12 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
         const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE", ...(
           ["AIDS_001", "AUTO_002", "CHEMISTRY_003", "CIVIL_004", "CSE_005", "CSECS_006", "EEE_007", "EIE_008", "ECE_009", "ENGLISH_010", "IT_011", "MATHS_012", "MECH_013", "TAMIL_014", "PHYSICS_015", "MECSE_016", "MBA_017", "PS_018"].includes(collectionName)
-            ? ["research", "activities","pedagogy","faculty"]
+            ? ["research", "activities", "pedagogy", "faculty"]
             : []
         )
         ];
 
-        const skipImageFor = ["members", "library_services", "team","faculty", ...(collectionName === "ecell" ? ["gallery"] : [])]
+        const skipImageFor = ["members", "library_services", "team",   ...(collectionName !== "sports" ? ["faculty"] : []), ...(collectionName === "ecell" ? ["gallery"] : [])]
         const mainCollection = maindb.collection(collectionName);
 
         const existingDoc = await mainCollection.findOne(
@@ -276,36 +276,42 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           }
         }
 
-const indexedCollections = [
-    "other_facilities"
-];
+        const indexedCollections = [
+          "other_facilities"
+        ];
 
-if (
-   indexedCollections.includes(collection_type) &&
-  action === "update" &&
-  meta_data.update_index !== undefined
-) {
-  const index = meta_data.update_index;
+        if (
+          indexedCollections.includes(collection_type) &&
+          action === "update" &&
+          meta_data.update_index !== undefined
+        ) {
+          const index = meta_data.update_index;
 
-  const finalNames = [...original_data.name];
-  const finalDescriptions = [...original_data.description];
+          const finalNames = [...original_data.name];
+          const finalDescriptions = [...original_data.description];
 
-  finalNames[index] = meta_data.name[0];
-  finalDescriptions[index] = meta_data.description[0];
+          finalNames[index] = meta_data.name[0];
+          finalDescriptions[index] = meta_data.description[0];
 
-  meta_data.name = finalNames;
-  meta_data.description = finalDescriptions;
+          meta_data.name = finalNames;
+          meta_data.description = finalDescriptions;
 
-  if (image_path.length) {
-    const finalImages = [...original_data.image_path];
-    finalImages[index] = image_path[0];
-    image_path = finalImages;
-  }
-}
+          if (image_path.length) {
+            const finalImages = [...original_data.image_path];
+            finalImages[index] = image_path[0];
+            image_path = finalImages;
+          }
+        }
 
         if (collection_type === "principal" && image_path.length === 1) {
-  image_path = image_path[0];
-}
+          image_path = image_path[0];
+        }
+        if (action === "update" && collection_type === "placement_team") {
+          image_path = Array.isArray(image_path)
+            ? image_path[0]
+            : image_path;
+        }
+       
 
         return {
           collection: collectionName,

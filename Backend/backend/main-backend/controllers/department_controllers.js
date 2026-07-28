@@ -50,18 +50,18 @@ function DeptMiddleware(allowedTypes, ALLOWED_DEPARTMENTS) {
 
         const staffData = await db
           .collection(collectionName)
-          .find({type:"faculty"}, { projection: { _id: 0 } })
+          .find({ type: "faculty" }, { projection: { _id: 0 } })
           .toArray();
 
         if (!staffData.length) {
           return res.status(404).json({
             message: `No faculty data found in ${collectionName}`,
           });
-        }    
+        }
         return res.status(200).json({
           department_id: deptId,
           type: "faculty",
-          data: staffData,
+          data: staffData[0].data,
         });
       }
 

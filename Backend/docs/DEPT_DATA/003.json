@@ -14,8 +14,7 @@
       },
       {
         "category": "about_the_department",
-        "content": 
-        [
+        "content": [
           "The Chemistry department is a fascinating field that combines principles from chemistry and engineering to develop innovative solutions for various industries.  Development of new materials with specific properties for applications in energy, aerospace, biomedical, and other fields.Research on sustainable energy sources, energy storage, and environmental remediation technologies.Design and optimization of chemical processes for large-scale production of chemicals, fuels, and pharmaceuticals. Development of corrosion-resistant materials and coatings for various industries."
         ]
       },
@@ -27,12 +26,12 @@
       },
       {
         "category": "department_mission",
-        "content":[
-            "Offer graduate and undergraduate programs that give students a solid grounding in engineering chemistry, encompassing critical thinking, practical skills, and theoretical understanding. ",
-            "Carry out state-of-the-art engineering chemical research with an emphasis on innovative materials, environmental remediation, and sustainable energy.",
-            "Offer knowledge and tools to help government organizations, business associates, and local communities deal with urgent chemical and environmental issues.",
-            "Encourage our staff, instructors, and students to have an innovative, entrepreneurial, and leadership mindset."
-            ]
+        "content": [
+          "Offer graduate and undergraduate programs that give students a solid grounding in engineering chemistry, encompassing critical thinking, practical skills, and theoretical understanding. ",
+          "Carry out state-of-the-art engineering chemical research with an emphasis on innovative materials, environmental remediation, and sustainable energy.",
+          "Offer knowledge and tools to help government organizations, business associates, and local communities deal with urgent chemical and environmental issues.",
+          "Encourage our staff, instructors, and students to have an innovative, entrepreneurial, and leadership mindset."
+        ]
       },
       {
         "category": "programme_educational_objectives",
@@ -111,88 +110,89 @@
       },
       {
         "category": "hod_details",
-        "content": 
-        [
-           {
-             "dept_id":"003",
-                "name": "Dr. KAVITHA K",
-                "department_name": "Chemistry",
-                "unique_id": "VEC-003-04-088",
-                
-          "pdf_path":"/static/pdfs/faculty_profile/003/VEC-003-04-088.pdf",
-                "qualification": ["M.Sc.","M.Phil.","Ph.D"],
-                "hod_message": ["As the Head of the Chemistry Department, I am thrilled to share our vision, mission, and values that drive our pursuit of excellence in education, research, and innovation. You are part of a dynamic community dedicated to solving complex chemical and environmental challenges. Our department is committed to providing a world-class education, cutting-edge research opportunities, and a supportive environment that fosters creativity, innovation, and leadership. I encourage you to explore the vast possibilities of engineering chemistry, build a strong foundation in theoretical and practical knowledge, and engage in research, internships, and industry collaborations to gain hands-on experience. Networking with peers, faculty, and industry professionals will help you forge lifelong connections, while curiosity and a proactive mindset will drive your success. With experienced faculty, state-of-the-art facilities, and extensive resources, we are here to support your academic and professional journey. Together, we can build an inclusive and vibrant community passionate about engineering chemistry and dedicated to making a positive impact on society. Welcome to the Department of Chemistry—I look forward to witnessing your achievements!"],
-                "image_path": "/static/images/profile_photos/003/VEC-003-04-088.webp",
-                "designation": "Associate Professor & Head , Dept of Chemistry",
-                "Social_media_links": 
-                 {
-                "linkedin": "https://www.linkedin.com/in/kavitha-kamalasekaran-360b5834b/",
-                "googlescholar": "https://g.co/kgs/pXiMkTe",
-                "researchgate": "https://www.researchgate.net/profile/Kamalasekaran-Kavitha",
-                "orchidprofile": "https://orcid.org/0009-0005-6227-9224",
-                "publonprofile": "",
-                "scopus": ""
-              }
-              }
-            ]
+        "content": [
+          {
+            "dept_id": "003",
+            "name": "Dr. KAVITHA K",
+            "department_name": "Chemistry",
+            "unique_id": "VEC-003-04-088",
+            "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-088.pdf",
+            "qualification": [
+              "M.Sc.",
+              "M.Phil.",
+              "Ph.D"
+            ],
+            "hod_message": [
+              "As the Head of the Chemistry Department, I am thrilled to share our vision, mission, and values that drive our pursuit of excellence in education, research, and innovation. You are part of a dynamic community dedicated to solving complex chemical and environmental challenges. Our department is committed to providing a world-class education, cutting-edge research opportunities, and a supportive environment that fosters creativity, innovation, and leadership. I encourage you to explore the vast possibilities of engineering chemistry, build a strong foundation in theoretical and practical knowledge, and engage in research, internships, and industry collaborations to gain hands-on experience. Networking with peers, faculty, and industry professionals will help you forge lifelong connections, while curiosity and a proactive mindset will drive your success. With experienced faculty, state-of-the-art facilities, and extensive resources, we are here to support your academic and professional journey. Together, we can build an inclusive and vibrant community passionate about engineering chemistry and dedicated to making a positive impact on society. Welcome to the Department of Chemistry—I look forward to witnessing your achievements!"
+            ],
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-088.webp",
+            "designation": "Associate Professor & Head , Dept of Chemistry",
+            "Social_media_links": {
+              "linkedin": "https://www.linkedin.com/in/kavitha-kamalasekaran-360b5834b/",
+              "googlescholar": "https://g.co/kgs/pXiMkTe",
+              "researchgate": "https://www.researchgate.net/profile/Kamalasekaran-Kavitha",
+              "orchidprofile": "https://orcid.org/0009-0005-6227-9224",
+              "publonprofile": "",
+              "scopus": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "faculty",
+    "data": [
+      {
+        "category": "banner_name_and_image",
+        "content": [
+          {
+            "name": "Chemistry",
+            "dept_id": "003"
           }
         ]
       },
       {
-        "type": "faculty",
-        "data": [
-          {
-            "category": "banner_name_and_image",
-            "content": [
-              {
-                "name": "Chemistry",
-                "dept_id": "003"
-              }
-            ]
-          },
-          {
-            "category": "faculty_pdf_path",
-            "content": [
-              "/static/pdfs/faculty_list/003.pdf"
-            ]
-          },
+        "category": "faculty_pdf_path",
+        "pdf_path": [
+          "/static/pdfs/faculty_list/003.pdf"
+        ]
+      },
       {
         "category": "head_of_department",
-        "members": [ {
-        "name": "Dr. KAVITHA K",
-        "designation": "Associate Professor & Head",
-        "unique_id": "VEC-003-04-088",
-        "socialmedia_links": 
+        "members": [
           {
-                "linkedin": "https://www.linkedin.com/in/kavitha-kamalasekaran-360b5834b/",
-                "googlescholar": "https://g.co/kgs/pXiMkTe",
-                "researchgate": "https://www.researchgate.net/profile/Kamalasekaran-Kavitha",
-                "orchidprofile": "https://orcid.org/0009-0005-6227-9224",
-                "publonprofile": "",
-                "scopus": ""
-              },
-          
-          "image_path": "/static/images/profile_photos/003/VEC-003-04-088.webp",
+            "name": "Dr. KAVITHA K",
+            "designation": "Associate Professor & Head",
+            "unique_id": "VEC-003-04-088",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/kavitha-kamalasekaran-360b5834b/",
+              "googlescholar": "https://g.co/kgs/pXiMkTe",
+              "researchgate": "https://www.researchgate.net/profile/Kamalasekaran-Kavitha",
+              "orchidprofile": "https://orcid.org/0009-0005-6227-9224",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/003/VEC-003-04-088.webp",
             "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-088.pdf"
-          }]
+          }
+        ]
       },
       {
         "category": "teaching_staff",
-        "members": 
-        [
+        "members": [
           {
             "name": "Mrs. RAMA NACHIAR R",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-119",
-            "socialmedia_links": 
-              {
-                "linkedin": "https://www.linkedin.com/in/rama-nachiar-8003ba241/?originalSubdomain=in",
-                "googlescholar": "",
-                "researchgate": "",
-                "orchidprofile": "",
-                "publonprofile": "",
-                "scopus": ""
-              },
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/rama-nachiar-8003ba241/?originalSubdomain=in",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-119.webp",
             "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-119.pdf"
           },
@@ -200,8 +200,7 @@
             "name": "Dr. ANITHA V",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-108",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "https://in.linkedin.com/in/anitha-vigneshwaran-6364761b0",
               "googlescholar": "https://scholar.google.com/citations?user=DcavHoIAAAAJ&hl=en",
               "researchgate": "https://www.researchgate.net/profile/Anitha-Vigneswaran-2",
@@ -216,8 +215,7 @@
             "name": "Mrs. SASIKALA S",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-104",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "",
               "googlescholar": "",
               "researchgate": "https://www.researchgate.net/profile/Sasikala-Sakkaravarthy",
@@ -232,8 +230,7 @@
             "name": "Mr. SIVARAJ C",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-142",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "https://www.linkedin.com/in/siva-raj-575a1032b/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people%3BSSJGIiJsTYiq8fjxVgZs7A%3D%3D",
               "googlescholar": "",
               "researchgate": "",
@@ -248,8 +245,7 @@
             "name": "Mr. NIRUBAN BALU T",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-143",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "https://in.linkedin.com/in/niruban-balu-270275242",
               "googlescholar": "",
               "researchgate": "",
@@ -264,8 +260,7 @@
             "name": "Dr. BALAMURUGAPANDIAN N",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-083",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "https://in.linkedin.com/in/balamurugapandian-n-999b80a7",
               "googlescholar": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://scholar.google.com/citations%3Fuser%3DQ3eloVMAAAAJ%26hl%3Den&ved=2ahUKEwj84crUsNiIAxX0yzgGHYPdHQIQFnoECBsQAQ&usg=AOvVaw2QWgTNvtazIV1qsgX6jZAh",
               "researchgate": "https://www.researchgate.net/profile/N-Balamurugapandian",
@@ -280,8 +275,7 @@
             "name": "Dr. KAVIYA M",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-079",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "",
               "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=HFXOLX4AAAAJ",
               "researchgate": "",
@@ -296,8 +290,7 @@
             "name": "Dr. MOUNICA A",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-626",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "http://linkedin.com/in/dr-mounica-arangasamy-8a00a8206",
               "googlescholar": "https://scholar.google.com/citations?hl=en&user=wqMW5o0AAAAJ",
               "researchgate": "https://www.researchgate.net/profile/Mounica-Arangasamy",
@@ -308,13 +301,11 @@
             "image_path": "/static/images/profile_photos/003/VEC-003-04-626.webp",
             "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-626.pdf"
           },
-
           {
             "name": "Dr. SIVA NANDHINI S",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-700",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "",
               "googlescholar": "",
               "researchgate": "",
@@ -325,13 +316,11 @@
             "image_path": "/static/images/profile_photos/003/VEC-003-04-700.webp",
             "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-700.pdf"
           },
-
           {
             "name": "Dr. PRIYADHARSHINI N",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-800",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "",
               "googlescholar": "",
               "researchgate": "",
@@ -342,20 +331,16 @@
             "image_path": "/static/images/profile_photos/003/VEC-003-04-800.webp",
             "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-800.pdf"
           }
-
-          
-      ]
+        ]
       },
       {
         "category": "non_teaching_staff",
-        "members": 
-        [
+        "members": [
           {
             "name": "Mr. KUMAR V",
             "designation": "Lab Instructor",
             "unique_id": "VEC-003-05-003",
-            "socialmedia_links": 
-            {
+            "socialmedia_links": {
               "linkedin": "",
               "googlescholar": "",
               "researchgate": "",
@@ -383,61 +368,60 @@
         ]
       },
       {
-         "category": "curriculum",
-        "content":[
+        "category": "curriculum",
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
               {
-                "heading":"Curriculum & Syllabus",
-                "syllabus":[
-                {
-                  "year": "R - 2023",
-                  "docs":[
-                    {
-                    "name":"I Semester",
-                      "pdf_path": ""
+                "year": "R - 2023",
+                "docs": [
+                  {
+                    "name": "I Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"II Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "II Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"III Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "III Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"IV Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "IV Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"V Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "V Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VI Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VI Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VII Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VIII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VIII Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"Elective Courses",
-                      "pdf_path": ""
+                  {
+                    "name": "Elective Courses",
+                    "pdf_path": ""
                   }
                 ]
-                },
-                {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/003/reg_21.pdf"
-                }
-              ]
+              },
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/003/reg_21.pdf"
               }
             ]
           }
-        
+        ]
+      }
     ]
   },
   {
@@ -493,12 +477,10 @@
   },
   {
     "type": "student_achievements",
-    "data": 
-    [
+    "data": [
       {
         "category": "banner_name_and_image",
-        "content": 
-        [
+        "content": [
           {
             "name": "Chemistry",
             "dept_id": "003"
@@ -512,8 +494,7 @@
     "data": [
       {
         "category": "banner_name_and_image",
-        "content": 
-        [
+        "content": [
           {
             "name": "Chemistry",
             "dept_id": "003"
@@ -522,16 +503,15 @@
       },
       {
         "category": "infrastructure_images",
-        "content": 
-        [
-            {
+        "content": [
+          {
             "image_path": "/static/images/infrastructure/003/1.webp",
             "image_name": "ENGINEERING CHEMISTRY LABORATORY"
-            },
-            {
+          },
+          {
             "image_path": "/static/images/infrastructure/003/2.webp",
             "image_name": "ELECTRO CHEMISTRY RESEARCH LABORATORY"
-            }
+          }
         ]
       }
     ]
@@ -541,8 +521,7 @@
     "data": [
       {
         "category": "banner_name_and_image",
-        "content": 
-        [
+        "content": [
           {
             "name": "Chemistry",
             "dept_id": "003"
@@ -551,7 +530,7 @@
       },
       {
         "category": "mous_details",
-        "content":[]
+        "content": []
       }
     ]
   },
