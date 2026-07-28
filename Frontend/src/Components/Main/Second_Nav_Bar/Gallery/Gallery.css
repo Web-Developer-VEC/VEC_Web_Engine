@@ -14,7 +14,32 @@
   text-transform: capitalize;
   padding: 20px;
 }
+.gallery-grid-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
 
+
+.gallery-card-details {
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 3px 12px rgba(0,0,0,.15);
+    transition: .3s;
+}
+
+.gallery-card-details:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-image-details {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
 
 .gallery-grid1 {
   display: grid;
@@ -78,10 +103,28 @@
     /* margin: 0.5rem auto 0; */
 
 }
-.gallery-gri{
-      display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
+.gallery-gri {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .gallery-gri {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-gri {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-gri {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 ::-webkit-scrollbar {
     display: none;
@@ -197,15 +240,16 @@
   overflow: hidden;
   text-align: center;
   position: relative; /* For play button positioning */
-  height: 325px;
+  height: 220px;
 }
 
 .gallery-item img,
 .video-wrapper iframe {
-  width:100%;
-  height: 300px; /* Adjust as needed */
+  width: 100%;
+  height: 220px;
   display: block;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .video-wrapper {
