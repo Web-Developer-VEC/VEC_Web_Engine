@@ -30,11 +30,7 @@ async function updateData(tempDoc, mainCollection) {
 
     // Faculty List PDF
     if (category === "faculty_pdf_path") {
-
-      data[sectionIndex].content = {
-        ...(data[sectionIndex].content || {}),
-        ...(meta_data || {})
-      };
+      data[sectionIndex].pdf_path = meta_data.pdf_path || [];
 
       await mainCollection.updateOne(
         { type: collection_type },

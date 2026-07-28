@@ -25,25 +25,31 @@ async function updateData(tempDoc, mainCollection) {
           {
             arrayFilters: [
               { "cat.category": "student_achievements_details" },
-              { "cont": original_data } 
+              { "cont": original_data }
             ]
           }
         );
 
         return {
-          success:true, 
+          success: true,
           message: `The data is updated successfully in the ${collection_type}`
         };
-      } else if(category === "student_achievements_content"){
+      } else if (category === "student_achievements_content") {
 
-        const new_data = Array.isArray(meta_data)?meta_data:[meta_data];
+        const new_data = Array.isArray(meta_data)
+          ? meta_data
+          : Object.values(meta_data);
 
         await mainCollection.updateOne(
-          {type:collection_type,"data.category":"student_achievements_content"},
-          {$set:{"data.$.content":new_data}}
+          { type: collection_type, "data.category": "student_achievements_content" },
+          {
+            $set: {
+              "data.$.content": new_data
+            }
+          }
         );
         return {
-          success:true, 
+          success: true,
           message: `The data is updated successfully in the ${collection_type}`
         };
       }
