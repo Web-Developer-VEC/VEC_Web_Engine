@@ -1,6 +1,6 @@
 // IicFacnir.jsx
 import React, { useState, useEffect } from "react";
-import { Pencil, Save, Send, X } from "lucide-react";
+import { Pencil, Save, Send, Trash2 } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadComp from "../../LoadComp";
@@ -14,7 +14,8 @@ export default function IicFacnir({ data }) {
   const [pending, setPending] = useState(null); // saved draft
   const [editing, setEditing] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
-
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]);
   const { sendRequest, loading } = useAdminRequest();
 
   // mapping from UI heading to backend category key
@@ -93,6 +94,30 @@ export default function IicFacnir({ data }) {
     });
   };
 
+  const toggleSelection = (id) => {
+
+    setSelectedItems(prev =>
+      prev.includes(id)
+        ? prev.filter(item => item !== id)
+        : [...prev, id]
+    );
+
+  };
+
+  const deleteSelected = () => {
+    setRows(prev =>
+      prev.map(section => ({
+        ...section,
+        content: section.content.filter(
+          item => !selectedItems.includes(item.id)
+        )
+      }))
+    );
+
+    setSelectedItems([]);
+    setShowDeleteModal(false);
+  };
+
   const handleAddItem = (sectionIndex) => {
     setRows((prev) => {
       const updated = deepCopy(prev);
@@ -118,10 +143,28 @@ export default function IicFacnir({ data }) {
   };
 
   const handleSave = () => {
-    // basic validation: ensure counts are present (do not block if zeros allowed)
-    // Here we treat empty string as allowed (you can change to require numeric)
-    setPending(deepCopy(rows));
+
+    const cleanedRows = rows.map(section => ({
+
+      ...section,
+
+      content: section.content.filter(item =>
+
+        String(item.name).trim() !== "" ||
+        String(item.count).trim() !== ""
+
+      )
+
+    }));
+
+    setRows(deepCopy(cleanedRows));
+
+    setPending(deepCopy(cleanedRows));
+
+    setSelectedItems([]);
+
     setEditing(false);
+
   };
 
   const handleCancel = () => {
@@ -132,13 +175,17 @@ export default function IicFacnir({ data }) {
       // revert to original
       setRows(deepCopy(original));
     }
+
+    setSelectedItems([]);   // <-- Clear all selected checkboxes
+    setShowDeleteModal(false);
     setEditing(false);
   };
 
   const handleDiscard = () => {
-    // clear draft and revert working copy to original
     setPending(null);
     setRows(deepCopy(original));
+    setShowDeleteModal(false);
+    setSelectedItems([]);   // <-- Clear selected checkboxes
   };
 
   const handleRequest = () => {
@@ -187,47 +234,76 @@ export default function IicFacnir({ data }) {
       if (!origSection || !pendSection) continue;
 
       // iterate items: assume same item order / id positions; if different length handle accordingly
-      const maxItems = Math.max(origSection.content.length, pendSection.content.length);
-      for (let iIdx = 0; iIdx < maxItems; iIdx++) {
-        const origItem = origSection.content[iIdx];
-        const pendItem = pendSection.content[iIdx];
+      const origMap = new Map(
+        origSection.content.map(item => [item.id, item])
+      );
 
-        if (!origItem && pendItem) {
-          changes.push({
-            action: "Added",
-            section: pendSection.heading,
-            sIdx,
-            iIdx,
-            name: pendItem.name,
-            oldValue: null,
-            newValue: pendItem.count,
-          });
-          continue;
-        }
-        if (origItem && !pendItem) {
+      const pendMap = new Map(
+        pendSection.content.map(item => [item.id, item])
+      );
+
+      // Deleted
+      for (const [id, oldItem] of origMap) {
+
+        if (!pendMap.has(id)) {
+
           changes.push({
             action: "Deleted",
             section: origSection.heading,
             sIdx,
-            iIdx,
-            name: origItem.name,
-            oldValue: origItem.count,
-            newValue: null,
+            id,
+            name: oldItem.name,
+            oldValue: oldItem.count,
+            newValue: null
           });
-          continue;
+
         }
-        // both exist -> check count change
-        if (origItem && pendItem && String(origItem.count) !== String(pendItem.count)) {
+
+      }
+
+      // Added
+      for (const [id, newItem] of pendMap) {
+
+        if (!origMap.has(id)) {
+
+          changes.push({
+            action: "Added",
+            section: pendSection.heading,
+            sIdx,
+            id,
+            name: newItem.name,
+            oldValue: null,
+            newValue: newItem.count
+          });
+
+        }
+
+      }
+
+      // Edited
+      for (const [id, newItem] of pendMap) {
+
+        if (!origMap.has(id)) continue;
+
+        const oldItem = origMap.get(id);
+
+        if (
+          oldItem.name !== newItem.name ||
+          String(oldItem.count) !== String(newItem.count)
+        ) {
+
           changes.push({
             action: "Edited",
-            section: origSection.heading,
+            section: pendSection.heading,
             sIdx,
-            iIdx,
-            name: origItem.name,
-            oldValue: origItem.count,
-            newValue: pendItem.count,
+            id,
+            name: newItem.name,
+            oldValue: oldItem.count,
+            newValue: newItem.count
           });
+
         }
+
       }
     }
 
@@ -255,19 +331,49 @@ export default function IicFacnir({ data }) {
         }
       }
     } else {
-      // item-level revert
+
+      const pendingSection = updated[change.sIdx];
+      const originalSection = original[change.sIdx];
+
+      if (!pendingSection || !originalSection) return;
+
       if (change.action === "Edited") {
-        updated[change.sIdx].content[change.iIdx].count = change.oldValue;
-      } else if (change.action === "Added") {
-        // remove added item
-        updated[change.sIdx].content.splice(change.iIdx, 1);
-      } else if (change.action === "Deleted") {
-        // re-insert original item (find from original)
-        const origItem = original[change.sIdx]?.content?.[change.iIdx];
-        if (origItem) {
-          updated[change.sIdx].content.splice(change.iIdx, 0, deepCopy(origItem));
+
+        const pendingItem = pendingSection.content.find(
+          item => item.id === change.id
+        );
+
+        const originalItem = originalSection.content.find(
+          item => item.id === change.id
+        );
+
+        if (pendingItem && originalItem) {
+          pendingItem.name = originalItem.name;
+          pendingItem.count = originalItem.count;
         }
+
       }
+
+      else if (change.action === "Added") {
+
+        pendingSection.content = pendingSection.content.filter(
+          item => item.id !== change.id
+        );
+
+      }
+
+      else if (change.action === "Deleted") {
+
+        const originalItem = originalSection.content.find(
+          item => item.id === change.id
+        );
+
+        if (originalItem) {
+          pendingSection.content.push(deepCopy(originalItem));
+        }
+
+      }
+
     }
 
     setPending(updated);
@@ -329,37 +435,18 @@ export default function IicFacnir({ data }) {
       }
       // Compare every item individually
 
-      const maxLength = Math.max(
-        origSec.content.length,
-        pendSec.content.length
+      const oldMap = new Map(
+        origSec.content.map(item => [item.id, item])
       );
 
-      for (let i = 0; i < maxLength; i++) {
+      const newMap = new Map(
+        pendSec.content.map(item => [item.id, item])
+      );
 
-        const oldItem = origSec.content[i];
-        const newItem = pendSec.content[i];
+      // Deleted
+      for (const [id, oldItem] of oldMap) {
 
-        // Added
-        if (!oldItem && newItem) {
-
-          payload.push({
-            collectionName: "iic",
-            collection_type: "yukti",
-            action: "insert",
-            title: `Insert yukti ${category}`,
-            category,
-
-            meta_data: {
-              name: newItem.name,
-              count: newItem.count
-            }
-          });
-
-          continue;
-        }
-
-        // Deleted
-        if (oldItem && !newItem) {
+        if (!newMap.has(id)) {
 
           payload.push({
             collectionName: "iic",
@@ -374,10 +461,39 @@ export default function IicFacnir({ data }) {
             }
           });
 
-          continue;
         }
 
-        // Updated
+      }
+
+      // Added
+      for (const [id, newItem] of newMap) {
+
+        if (!oldMap.has(id)) {
+
+          payload.push({
+            collectionName: "iic",
+            collection_type: "yukti",
+            action: "insert",
+            title: `Insert yukti ${category}`,
+            category,
+
+            meta_data: {
+              name: newItem.name,
+              count: newItem.count
+            }
+          });
+
+        }
+
+      }
+
+      // Updated
+      for (const [id, newItem] of newMap) {
+
+        if (!oldMap.has(id)) continue;
+
+        const oldItem = oldMap.get(id);
+
         if (
           oldItem.name !== newItem.name ||
           String(oldItem.count) !== String(newItem.count)
@@ -400,7 +516,9 @@ export default function IicFacnir({ data }) {
               count: oldItem.count
             }
           });
+
         }
+
       }
     }
 
@@ -424,8 +542,11 @@ export default function IicFacnir({ data }) {
         setOriginal(deepCopy(pending));
         setRows(deepCopy(pending));
         setPending(null);
-        setShowRequestModal(false);
+
         setEditing(false);
+        setSelectedItems([]);      // <-- Add this
+
+        setShowRequestModal(false);
       } else {
         const msg = (result && (result.message || result.error)) || "Request failed. Check console for details.";
         console.error("Yukti request failed:", result);
@@ -440,14 +561,13 @@ export default function IicFacnir({ data }) {
   const renderNIRContent = () => (
     <div className="nir-container">
       <div className="relative mb-6 w-full">
-        {/* Title centered */}
-        <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center">
+
+        <h2 className="text-4xl text-brwn dark:text-drkt font-bold text-center pr-32">
           Yukti National Innovation Repository (NIR)
         </h2>
 
-        {/* Edit button on right */}
         {!editing && (
-          <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+          <div className="absolute right-0 top-2 md:top-1/2 md:-translate-y-1/2">
             <button
               onClick={handleEdit}
               className="flex items-center gap-2 px-4 py-2 bg-secd dark:bg-drks text-text dark:text-prim rounded hover:bg-accn hover:text-prim dark:hover:bg-brwn"
@@ -456,11 +576,15 @@ export default function IicFacnir({ data }) {
             </button>
           </div>
         )}
+
       </div>
 
       {/* Sections */}
       {rows.map((section, sIdx) => (
-        <div key={sIdx} className="nir-section mb-6">
+        <div
+          key={sIdx}
+          className="nir-section mb-8 w-full max-w-[1250px] mx-auto"
+        >
           <div className="flex justify-between items-center mb-4">
             <h3 className="nir-heading text-xl font-semibold">
               {section.heading}
@@ -474,31 +598,36 @@ export default function IicFacnir({ data }) {
                 + Add
               </button>
             )}
+
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center">
             {section.content.map((item, iIdx) => (
               <div
                 key={item.id}
-                className="relative bg-[#FDCC03] rounded-xl shadow-lg w-full max-w-[380px] mx-auto p-4 min-h-[90px] flex items-center"
+                className="relative bg-[#FDCC03] rounded-xl shadow-lg w-full max-w-[450px] mx-auto p-5 min-h-[100px] overflow-hidden"
               >
                 {editing && (
-                  <button
-                    onClick={() => handleDeleteItem(sIdx, iIdx)}
-                    className="absolute top-2 right-2 w-7 h-7 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-700"
-                  >
-                    ✕
-                  </button>
+                  <div className="absolute top-3 right-3">
+
+                    <input
+                      type="checkbox"
+                      checked={selectedItems.includes(item.id)}
+                      onChange={() => toggleSelection(item.id)}
+                      className="w-5 h-5 cursor-pointer"
+                    />
+
+                  </div>
                 )}
                 {editing ? (
                   <>
-                    <div className="flex items-center w-full gap-3">
+                    <div className="flex items-center w-full gap-4">
 
                       <input
                         type="text"
                         value={item.name}
                         onChange={(e) => handleNameChange(sIdx, iIdx, e.target.value)}
                         placeholder="Title"
-                        className="flex-1min-w-0 border rounded-lg px-3 py-2 bg-white"
+                        className="flex-1 min-w-0 border rounded-lg px-3 py-2 bg-white"
                       />
 
                       <input
@@ -506,7 +635,7 @@ export default function IicFacnir({ data }) {
                         value={item.count}
                         onChange={(e) => handleCountChange(sIdx, iIdx, e.target.value)}
                         placeholder="Count"
-                        className="w-28 border rounded-lg px-3 py-2 text-center bg-white shrink-0"
+                        className="w-24 border rounded-lg px-3 py-2 text-center bg-white"
                       />
 
                     </div>
@@ -521,6 +650,18 @@ export default function IicFacnir({ data }) {
           </div>
         </div>
       ))}
+
+      {editing && selectedItems.length > 0 && (
+        <div className="delete-selected-container">
+          <button
+            onClick={() => setShowDeleteModal(true)}
+            className="delete-selected-btn"
+          >
+            <Trash2 size={20} />
+            Delete Selected ({selectedItems.length})
+          </button>
+        </div>
+      )}
 
       <div className="w-full">
         {/* Edit mode (Cancel + Save) */}
@@ -575,6 +716,54 @@ export default function IicFacnir({ data }) {
           {renderNIRContent()}
         </div>
 
+        {/* Delete Confirmation Modal */}
+        {showDeleteModal && (
+          <div className="fixed inset-0 bg-text/50 flex items-center justify-center z-[1000]">
+
+            <div className="bg-white rounded-xl shadow-lg w-[560px]">
+
+              {/* Header */}
+              <div className="px-8 pt-8">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  Confirm Delete
+                </h2>
+              </div>
+
+              {/* Message */}
+              <div className="px-8 pt-8">
+                <p className="text-gray-600 text-lg">
+                  Are you sure you want to delete{" "}
+                  <span className="font-semibold">
+                    {selectedItems.length}
+                  </span>{" "}
+                  selected row{selectedItems.length > 1 ? "s" : ""}?
+                </p>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex justify-end gap-4 px-8 py-8">
+
+                <button
+                  onClick={() => setShowDeleteModal(false)}
+                  className="w-[130px] h-[52px] rounded-xl bg-gray-300 hover:bg-gray-400 text-gray-900 font-semibold"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  onClick={deleteSelected}
+                  className="w-[130px] h-[52px] rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold"
+                >
+                  Delete
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+        )}
+
         {/* Final Request Modal */}
         {showRequestModal && (
           <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
@@ -610,7 +799,7 @@ export default function IicFacnir({ data }) {
                             className="p-1 rounded hover:bg-gray-100"
                             title="Revert this change"
                           >
-                            <X size={16} className="text-red-500" />
+                            <Trash2 size={16} className="text-red-500" />
                           </button>
                         </td>
                       </tr>

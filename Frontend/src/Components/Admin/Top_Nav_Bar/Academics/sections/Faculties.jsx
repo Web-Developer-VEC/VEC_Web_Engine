@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./Faculties.module.css";
 import ImageCard from "./ImageCard";
 import LoadComp from "../../../LoadComp";
-import {Pencil, Send, Trash2, X } from "lucide-react";
+import { Pencil, Send, Trash2, X, Eye } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAdminRequest } from "../../../../hooks/useAdminRequest";
 
 /**
  * Faculties component (final)
@@ -17,8 +18,22 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 export default function Faculties({ data }) {
+  const { sendRequest, loading } = useAdminRequest();
   const [isEditing, setIsEditing] = useState(false);
   const [isSavedOnce, setIsSavedOnce] = useState(false);
+
+  const cloneFaculty = (faculty) => {
+    if (!faculty) return faculty;
+
+    return {
+      ...faculty,
+      socialmedia_links: faculty.socialmedia_links
+        ? { ...faculty.socialmedia_links }
+        : {},
+      image: faculty.image,
+      pdf: faculty.pdf,
+    };
+  };
 
   // data sections
   const [hod, setHod] = useState(null);
@@ -44,6 +59,37 @@ export default function Faculties({ data }) {
   const originalRef = useRef({ hod: null, teaching: [], nonTeaching: [], faculty_pdf_path: "" });
   const savedDataRef = useRef({ hod: null, teaching: [], nonTeaching: [], faculty_pdf_path: "" });
 
+
+  const deptMap = {
+    "001": "AIDS_001",
+    "002": "AUTO_002",
+    "003": "CHEMISTRY_003",
+    "004": "CIVIL_004",
+    "005": "CSE_005",
+    "006": "CSECS_006",
+    "007": "EEE_007",
+    "008": "EIE_008",
+    "009": "ECE_009",
+    "010": "ENGLISH_010",
+    "011": "IT_011",
+    "012": "MATHS_012",
+    "013": "MECH_013",
+    "014": "TAMIL_014",
+    "015": "PHYSICS_015",
+    "016": "MECSE_016",
+    "017": "MBA_017",
+    "018": "PS_018"
+  };
+
+  const deptId =
+    data?.find((i) => i.category === "banner_name_and_image")
+      ?.content?.[0]?.dept_id;
+
+  const collectionName = deptMap[deptId] || "";
+
+
+
+
   // helper to get id
   const getId = (f) => {
     if (!f) return undefined;
@@ -56,17 +102,33 @@ export default function Faculties({ data }) {
     const hod_from_data = data?.find((i) => i.category === "head_of_department")?.members || [];
     const teaching_from_data = data?.find((i) => i.category === "teaching_staff")?.members || [];
     const non_teaching_from_data = data?.find((i) => i.category === "non_teaching_staff")?.members || [];
-    const pdf_path = data?.find((i) => i.category === "faculty_pdf_path")?.pdf_path?.[0] || "";
-
+    const faculty_pdf_path =
+      data?.find((item) => item.category === "faculty_pdf_path")
+        ?.pdf_path?.[0] ?? "";
     const init = {
       hod: hod_from_data?.[0] ?? null,
-      teaching: Array.isArray(teaching_from_data) ? teaching_from_data.slice() : [],
-      nonTeaching: Array.isArray(non_teaching_from_data) ? non_teaching_from_data.slice() : [],
-      faculty_pdf_path: pdf_path,
+      teaching: Array.isArray(teaching_from_data)
+        ? teaching_from_data.slice()
+        : [],
+      nonTeaching: Array.isArray(non_teaching_from_data)
+        ? non_teaching_from_data.slice()
+        : [],
+      faculty_pdf_path,
     };
 
-    originalRef.current = JSON.parse(JSON.stringify(init));
-    savedDataRef.current = JSON.parse(JSON.stringify(init));
+    originalRef.current = {
+      hod: cloneFaculty(init.hod),
+      teaching: init.teaching.map(cloneFaculty),
+      nonTeaching: init.nonTeaching.map(cloneFaculty),
+      faculty_pdf_path: init.faculty_pdf_path,
+    };
+
+    savedDataRef.current = {
+      hod: cloneFaculty(init.hod),
+      teaching: init.teaching.map(cloneFaculty),
+      nonTeaching: init.nonTeaching.map(cloneFaculty),
+      faculty_pdf_path: init.faculty_pdf_path,
+    };
 
     setHod(init.hod);
     setTeachingStaff(init.teaching);
@@ -106,7 +168,6 @@ export default function Faculties({ data }) {
     setSessionChanges([]);
     setIsEditing(false);
     setSelectedIds(new Set());
-    toast.info("Session changes discarded. Previous saves preserved.");
   };
 
   // validate required fields in current local state (used for Save)
@@ -140,15 +201,15 @@ export default function Faculties({ data }) {
   // save session
   const handleSave = () => {
     if (sessionChanges.length === 0) {
-      toast.info("No changes to save.");
       return;
     }
     if (!validateCurrentRequired()) return;
 
     savedDataRef.current = {
-      hod: JSON.parse(JSON.stringify(hod)),
-      teaching: JSON.parse(JSON.stringify(teachingStaff)),
-      nonTeaching: JSON.parse(JSON.stringify(nonTeachingStaff)),
+      hod: cloneFaculty(hod),
+
+      teaching: teachingStaff.map(cloneFaculty),
+      nonTeaching: nonTeachingStaff.map(cloneFaculty),
       faculty_pdf_path: facultyPdfPath,
     };
     setAllChanges((prev) => [...prev, ...sessionChanges]);
@@ -156,7 +217,6 @@ export default function Faculties({ data }) {
     setIsSavedOnce(true);
     setIsEditing(false);
     setSelectedIds(new Set());
-    toast.success("Changes saved. You can now Request or Edit again.");
   };
 
   // discard all saved -> restore originalRef
@@ -172,13 +232,11 @@ export default function Faculties({ data }) {
     setIsSavedOnce(false);
     setIsEditing(false);
     setSelectedIds(new Set());
-    toast.info("All changes discarded and data reset.");
   };
 
   // request
   const handleRequest = () => {
     if (allChanges.length === 0) {
-      toast.info("No changes to request.");
       return;
     }
     // validate saved data (final request should use saved state)
@@ -209,17 +267,71 @@ export default function Faculties({ data }) {
   };
 
   // final request confirm
-  const handleFinalRequestConfirm = () => {
-    // submit (replace with real API integration)
-    console.log("FINAL REQUEST SUBMITTED:", { allChanges, savedDataRef: savedDataRef.current });
-    toast.success("Final request submitted");
+  const handleFinalRequestConfirm = async () => {
+
+
+    const payload = generatePayload();
+    const files = [];
+   
+    const cleanedPayload = payload.map((doc) => {
+      const copy = structuredClone(doc);
+
+      if (copy.meta_data?.members) {
+        delete copy.meta_data.members.image;
+        delete copy.meta_data.members.pdf;
+      }
+
+      return copy;
+    });
+
+    if (payload.length === 0) {
+      toast.info("No changes found");
+      return;
+    }
+    // HOD
+    if (savedDataRef.current.hod?.image instanceof File) {
+      files.push(savedDataRef.current.hod.image);
+    }
+
+
+    // Teaching
+    savedDataRef.current.teaching.forEach(f => {
+      if (f.image instanceof File) files.push(f.image);
+    });
+
+    // Non Teaching
+    savedDataRef.current.nonTeaching.forEach(f => {
+      if (f.image instanceof File) files.push(f.image);
+    });
+    // Faculty List PDF
+    if (facultyPdfPath instanceof File) {
+      files.push(facultyPdfPath);
+    }
+
+    if (files[0]) {
+      console.log("Name:", files[0].name);
+      console.log("Type:", files[0].type);
+      console.log("Size:", files[0].size);
+    }
+
+    const result = await sendRequest(cleanedPayload, files);
+
+
+    if (!result?.success) return;
+
     setShowRequestModal(false);
     setAllChanges([]);
     setSessionChanges([]);
     setIsSavedOnce(false);
     setIsEditing(false);
     setSelectedIds(new Set());
-    originalRef.current = JSON.parse(JSON.stringify(savedDataRef.current));
+
+    originalRef.current = {
+      hod: cloneFaculty(savedDataRef.current.hod),
+      teaching: savedDataRef.current.teaching.map(cloneFaculty),
+      nonTeaching: savedDataRef.current.nonTeaching.map(cloneFaculty),
+      faculty_pdf_path: savedDataRef.current.faculty_pdf_path,
+    };
   };
 
   // add new faculty (append)
@@ -255,11 +367,16 @@ export default function Faculties({ data }) {
     // apply change
     if (field === "socialmedia_links") {
       targetArr[idIndex] = { ...targetArr[idIndex], socialmedia_links: { ...(targetArr[idIndex].socialmedia_links || {}), ...(value || {}) } };
-    } else if (field === "image_path") {
-      // set image_path
-      targetArr[idIndex] = { ...targetArr[idIndex], image_path: value };
+    } else if (field === "image") {
+      targetArr[idIndex] = {
+        ...targetArr[idIndex],
+        image: value,
+      };
     } else {
-      targetArr[idIndex] = { ...targetArr[idIndex], [field]: value };
+      targetArr[idIndex] = {
+        ...targetArr[idIndex],
+        [field]: value,
+      };
     }
 
     if (group === "teaching") setTeachingStaff(targetArr);
@@ -284,33 +401,232 @@ export default function Faculties({ data }) {
     });
   };
   const handleUndoChange = (idx) => {
-  setAllChanges((prev) => {
-    const copy = [...prev];
-    if (idx >= 0 && idx < copy.length) copy.splice(idx, 1);
-    return copy;
-  });
-  toast.info("Change removed from request");
-};
-
-  // handle HOD changes
-  const handleHodChange = (field, value) => {
-    const oldVal = (savedDataRef.current.hod && (savedDataRef.current.hod[field] ?? undefined));
-    setHod((prev) => ({ ...(prev || {}), [field]: value }));
-    setSessionChanges((prev) => {
+    setAllChanges((prev) => {
       const copy = [...prev];
-      const existingIdx = copy.findIndex((c) => c.section === "hod" && c.action !== "delete");
-      if (existingIdx >= 0) {
-        const existing = copy[existingIdx];
-        const action = existing.action === "add" ? "add" : "edit";
-        const existingChanges = existing.changes ? { ...existing.changes } : {};
-        existingChanges[field] = { old: oldVal, new: value };
-        copy[existingIdx] = { ...existing, action, changes: existingChanges };
-      } else {
-        copy.push({ section: "hod", index: 0, action: savedDataRef.current.hod ? "edit" : "add", changes: { [field]: { old: oldVal, new: value } } });
-      }
+      if (idx >= 0 && idx < copy.length) copy.splice(idx, 1);
       return copy;
     });
   };
+
+  const generatePayload = () => {
+    const payload = [];
+
+    const categoryMap = {
+      hod: "head_of_department",
+      teaching: "teaching_staff",
+      nonTeaching: "non_teaching_staff",
+      meta: "faculty_pdf_path",
+    };
+
+    const titleMap = {
+      hod: "HOD",
+      teaching: "Staff",
+      nonTeaching: "Non Teaching Staff",
+      meta: "Faculty PDF",
+    };
+
+    const actionMap = {
+      add: "insert",
+      edit: "update",
+      delete: "delete",
+    };
+
+    const getCurrentData = (section, index) => {
+      switch (section) {
+        case "hod":
+          return savedDataRef.current.hod;
+        case "teaching":
+          return savedDataRef.current.teaching[index];
+        case "nonTeaching":
+          return savedDataRef.current.nonTeaching[index];
+        default:
+          return null;
+      }
+    };
+
+    const getOriginalData = (section, index) => {
+      switch (section) {
+        case "hod":
+          return originalRef.current.hod;
+        case "teaching":
+          return originalRef.current.teaching[index];
+        case "nonTeaching":
+          return originalRef.current.nonTeaching[index];
+        default:
+          return null;
+      }
+    };
+
+    allChanges.forEach((change) => {
+      const action = actionMap[change.action];
+
+      const currentData =
+        change.section === "meta"
+          ? facultyPdfPath
+          : action === "delete"
+            ? change.deletedItem
+            : getCurrentData(change.section, change.index);
+
+      const originalData =
+        change.section === "meta"
+          ? originalRef.current.faculty_pdf_path
+          : getOriginalData(change.section, change.index);
+
+      if (change.section !== "meta" && !currentData && action !== "delete") return;
+
+      let members = null;
+      let originalMembers = null;
+
+      if (change.section !== "meta") {
+        // ---------------- CURRENT ----------------
+        members = { ...currentData };
+        if (currentData.image instanceof File) {
+          members.image_path = `/static/images/profile_photos/${deptId}/${currentData.image.name}`;
+        }
+
+        // New image upload pannirundha filename mattum anuppu
+        if (members.image instanceof File) {
+          members.image = members.image.name;
+        } else {
+          delete members.image;
+        }
+
+        // New pdf upload pannirundha filename mattum anuppu
+        if (members.pdf instanceof File) {
+          members.pdf = members.pdf.name;
+        } else {
+          delete members.pdf;
+        }
+
+        // File object JSON-ku pogadhu.
+        // So filename mattum docs-la anuppu.
+        if (members.image instanceof File) {
+          members.image = members.image.name;
+        } else {
+          delete members.image;
+        }
+
+        if (members.pdf instanceof File) {
+          members.pdf = members.pdf.name;
+        } else {
+          delete members.pdf;
+        }
+
+        // ---------------- ORIGINAL ----------------
+        originalMembers = originalData
+          ? { ...originalData }
+          : {};
+
+        delete originalMembers.image;
+        delete originalMembers.pdf;
+
+      }
+
+      payload.push({
+        collectionName,
+
+        collection_type: "faculty",
+
+        action,
+
+        title: `${action} ${titleMap[change.section]}`,
+
+        category: categoryMap[change.section],
+
+        meta_data:
+          change.section === "meta"
+            ? {
+              pdf_path: [
+                facultyPdfPath instanceof File
+                  ? `/static/pdfs/faculty_list/${facultyPdfPath.name}`
+                  : facultyPdfPath,
+              ],
+
+            }
+            : {
+              members,
+            },
+        original_data:
+          action === "insert"
+            ? {}
+            : change.section === "meta"
+              ? {
+                pdf_path: [originalRef.current.faculty_pdf_path],
+              }
+              : {
+                members: originalMembers,
+              },
+      });
+    });
+
+
+    return payload;
+  };
+  // handle HOD changes
+  const handleHodChange = (field, value) => {
+    const oldVal = savedDataRef.current.hod?.[field];
+
+    setHod((prev) => {
+      if (field === "image") {
+        return {
+          ...(prev || {}),
+          image: value,
+        };
+      }
+
+      if (field === "socialmedia_links") {
+        return {
+          ...(prev || {}),
+          socialmedia_links: {
+            ...(prev?.socialmedia_links || {}),
+            ...(value || {}),
+          },
+        };
+      }
+
+      return {
+        ...(prev || {}),
+        [field]: value,
+      };
+    });
+
+    setSessionChanges((prev) => {
+      const copy = [...prev];
+
+      const existingIdx = copy.findIndex(
+        (c) => c.section === "hod" && c.action !== "delete"
+      );
+
+      if (existingIdx >= 0) {
+        copy[existingIdx] = {
+          ...copy[existingIdx],
+          action: copy[existingIdx].action === "add" ? "add" : "edit",
+          changes: {
+            ...(copy[existingIdx].changes || {}),
+            [field]: {
+              old: oldVal,
+              new: value,
+            },
+          },
+        };
+      } else {
+        copy.push({
+          section: "hod",
+          index: 0,
+          action: savedDataRef.current.hod ? "edit" : "add",
+          changes: {
+            [field]: {
+              old: oldVal,
+              new: value,
+            },
+          },
+        });
+      }
+
+      return copy;
+    });
+  };
+
 
   // open delete confirm (section + uid) - used for single-delete if parent triggers it
   const openDeleteConfirm = (section, uid) => {
@@ -354,17 +670,28 @@ export default function Faculties({ data }) {
 
   // Replace faculty PDF
   const handleFacultyPdfReplace = (e) => {
-    const file = e.target.files && e.target.files[0];
+    const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      const dataUrl = ev.target.result;
-      const old = facultyPdfPath;
-      setFacultyPdfPath(dataUrl);
-      pushSessionChange({ section: "meta", index: 0, action: "edit", changes: { faculty_pdf_path: { old, new: dataUrl } } });
-    };
-    reader.readAsDataURL(file);
+
+    setFacultyPdfPath(file);
+
+    setSessionChanges((prev) => [
+      ...prev,
+      {
+        section: "meta",
+        action: "edit",
+        changes: {
+          faculty_pdf_path: {
+            old: savedDataRef.current.faculty_pdf_path,
+            new: file,
+          },
+        },
+      },
+    ]);
+
+    toast.success("Faculty PDF replaced.");
   };
+
 
   // URL parser
   const UrlParser = (path) => {
@@ -451,7 +778,6 @@ export default function Faculties({ data }) {
     setSelectedIds(new Set());
     setMultiDeletePreview([]);
     setMultiDeleteConfirmOpen(false);
-    toast.success("Selected faculty deleted in this session.");
   };
 
   const cancelMultiDelete = () => {
@@ -475,7 +801,7 @@ export default function Faculties({ data }) {
         {!isEditing && (
           <div className="flex justify-end pr-8">
             <button className="flex ml-auto mr-8 items-center bg-secd px-3 py-2 rounded text-text hover:bg-brwn hover:text-prim my-4" onClick={startEdit}>
-              <Pencil  className="mr-2" /> Edit
+              <Pencil className="mr-2" /> Edit
             </button>
           </div>
         )}
@@ -486,7 +812,7 @@ export default function Faculties({ data }) {
             <ImageCard
               key={hod?.unique_id ?? "hod"}
               name={hod?.name}
-              photo={hod?.image_path}
+              photo={hod?.image || hod?.image_path}
               Designation={hod?.designation}
               Scholar={hod?.socialmedia_links?.googlescholar}
               Research={hod?.socialmedia_links?.researchgate}
@@ -505,13 +831,24 @@ export default function Faculties({ data }) {
             {/* Faculty List + Replace */}
             <div className="absolute bottom-[10px] top-[28%] -right-[10%] xl:top-[50%] xl:left-[70%] transform -translate-x-1/2 -translate-y-1/2">
               <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                <button className="hover:bg-secd bg-accn hover:text-text text-prim px-2 py-2 rounded-md" onClick={() => {
-                  if (facultyPdfPath && facultyPdfPath.trim() !== "") {
-                    const url = UrlParser(facultyPdfPath);
-                    if (url) window.open(url, "_blank", "noopener,noreferrer");
-                  }
-                }}>
-                  Faculty List
+                <button
+                  className="hover:bg-secd bg-accn hover:text-text text-prim px-3 py-2 rounded-md flex items-center justify-center gap-2 whitespace-nowrap"
+                  onClick={() => {
+                    if (!facultyPdfPath) return;
+
+                    if (facultyPdfPath instanceof File) {
+                      window.open(URL.createObjectURL(facultyPdfPath), "_blank");
+                      return;
+                    }
+
+                    if (typeof facultyPdfPath === "string" && facultyPdfPath.trim() !== "") {
+                      const url = UrlParser(facultyPdfPath);
+                      if (url) window.open(url, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                >
+                  <Eye size={18} className="w-4 h-4 flex-shrink-0" />
+                  <span>Faculty List</span>
                 </button>
 
                 {isEditing && (
@@ -531,7 +868,7 @@ export default function Faculties({ data }) {
               <ImageCard
                 key={getId(faculty) ?? index}
                 name={faculty?.name}
-                photo={faculty?.image_path}
+                photo={faculty?.image || faculty?.image_path}
                 Designation={faculty?.designation}
                 Scholar={faculty?.socialmedia_links?.googlescholar}
                 Research={faculty?.socialmedia_links?.researchgate}
@@ -566,7 +903,7 @@ export default function Faculties({ data }) {
               <ImageCard
                 key={getId(faculty) ?? index}
                 name={faculty?.name}
-                photo={faculty?.image_path}
+                photo={faculty?.image || faculty?.image_path}
                 Designation={faculty?.designation}
                 Scholar={faculty?.socialmedia_links?.googlescholar}
                 Research={faculty?.socialmedia_links?.researchgate}
@@ -599,10 +936,10 @@ export default function Faculties({ data }) {
           {isEditing && selectedIds && selectedIds.size > 0 && (
             <button
               onClick={openMultiDeleteConfirm}
-              className="bg-red-500 bottom-0 text-prim flex rounded flex-row m-auto px-3 py-2 items-center gap-2"
+              className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
               title="Delete selected faculty"
             >
-              <Trash2 /> Delete Selected ({selectedIds.size})
+              Delete Selected ({selectedIds.size})
             </button>
           )}
         </div>
@@ -611,7 +948,7 @@ export default function Faculties({ data }) {
         <div className="flex flex-row gap-2 mr-8 justify-end my-4">
           {isEditing ? (
             <>
-              <button className="bg-gray-500 px-3 py-2 rounded text-prim" onClick={handleCancelSession}>Cancel</button>
+              <button className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500" onClick={handleCancelSession}>Cancel</button>
               {/* Save visible only when sessionChanges exist */}
               {sessionChanges.length > 0 && (
                 <button className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg" onClick={handleSave}>Save</button>
@@ -621,11 +958,12 @@ export default function Faculties({ data }) {
             isSavedOnce && (
               <>
                 <button className="bg-red-500 px-3 py-2 rounded text-prim" onClick={handleDiscardAll}>Discard All</button>
-                <button className="bg-secd hover:bg-brwn  px-3 py-2 flex flex-row rounded text-text" onClick={handleRequest}><Send className="mr-2" /> Request</button>
+                <button className="flex items-center gap-2 px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim" onClick={handleRequest}><Send className="mr-2" /> Request</button>
               </>
             )
           )}
         </div>
+        
       </div>
 
       {/* Multi-delete confirmation modal */}
@@ -648,7 +986,7 @@ export default function Faculties({ data }) {
             </div>
 
             <div className="flex justify-end gap-3 mt-4">
-              <button onClick={cancelMultiDelete} className="px-4 py-2 rounded bg-gray-400 text-white">Cancel</button>
+              <button onClick={cancelMultiDelete} className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500">Cancel</button>
               <button onClick={confirmMultiDelete} className="px-4 py-2 rounded bg-red-600 text-white">Delete Selected</button>
             </div>
           </div>
@@ -657,90 +995,98 @@ export default function Faculties({ data }) {
 
       {/* Request modal */}
       {showRequestModal && (
-  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
-    <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
-      <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
+          <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-semibold mb-2 text-center">Request</h2>
 
-      <p className="text-sm text-red-500 mb-4 text-center">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved they will go live.
-      </p>
+            <p className="text-sm text-red-500 mb-4 text-center">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved they will go live.
+            </p>
 
-      <div className="max-h-[320px] overflow-y-auto mb-4">
-        <table className="w-full text-sm text-left border">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="py-2 px-3 border">Action</th>
-              <th className="py-2 px-3 border">Section</th>
-              <th className="py-2 px-3 border">Changes</th>
-              <th className="py-2 px-3 border">Undo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allChanges.length === 0 ? (
-              <tr>
-                <td colSpan={4} className="text-center py-4">No changes to submit</td>
-              </tr>
-            ) : (
-              allChanges.map((change, idx) => (
-                <tr key={idx} className="even:bg-white odd:bg-gray-50">
-                  <td className="py-2 px-3 border text-center">
-                    {change.action === "edit" ? (
-                      <span className="text-blue-600">✎ Edited</span>
-                    ) : change.action === "add" ? (
-                      <span className="text-green-600">+ Added</span>
-                    ) : (
-                      <span className="text-red-600">🗑 Deleted</span>
-                    )}
-                  </td>
+            <div className="max-h-[320px] overflow-y-auto mb-4">
+              <table className="w-full text-sm text-left border">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="py-2 px-3 border">Action</th>
+                    <th className="py-2 px-3 border">Section</th>
+                    <th className="py-2 px-3 border">Changes</th>
+                    <th className="py-2 px-3 border">Undo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {allChanges.length === 0 ? (
+                    <tr>
+                      <td colSpan={4} className="text-center py-4">No changes to submit</td>
+                    </tr>
+                  ) : (
+                    allChanges.map((change, idx) => (
+                      <tr key={idx} className="even:bg-white odd:bg-gray-50">
+                        <td className="py-2 px-3 border text-center">
+                          {change.action === "edit" ? (
+                            <span className="text-blue-600">✎ Edited</span>
+                          ) : change.action === "add" ? (
+                            <span className="text-green-600">+ Added</span>
+                          ) : (
+                            <span className="text-red-600">🗑 Deleted</span>
+                          )}
+                        </td>
 
-                  <td className="py-2 px-3 border text-center">{change.section}</td>
+                        <td className="py-2 px-3 border text-center">{change.section}</td>
 
-                  <td className="py-2 px-3 border text-[13px]">
-                    {change.action === "delete" ? (
-                      // if the push included deletedItem, try to show name
-                      <div>{change.deletedItem?.name ?? "Item deleted"}</div>
-                    ) : (change.changes && Object.keys(change.changes).length > 0) ? (
-                      // list fields where old !== new
-                      <div>
-                        {Object.keys(change.changes)
-                          .filter((f) => {
-                            const c = change.changes[f];
-                            // handle nested or missing old/new gracefully
-                            return !(c?.old === c?.new);
-                          })
-                          .join(", ") || "Changed"}
-                      </div>
-                    ) : change.action === "add" ? (
-                      <div>Added item</div>
-                    ) : (
-                      <div>Changed</div>
-                    )}
-                  </td>
+                        <td className="py-2 px-3 border text-[13px]">
+                          {change.action === "delete" ? (
+                            // if the push included deletedItem, try to show name
+                            <div>{change.deletedItem?.name ?? "Item deleted"}</div>
+                          ) : (change.changes && Object.keys(change.changes).length > 0) ? (
+                            // list fields where old !== new
+                            <div>
+                              {Object.keys(change.changes)
+                                .filter((f) => {
+                                  const c = change.changes[f];
+                                  // handle nested or missing old/new gracefully
+                                  return !(c?.old === c?.new);
+                                })
+                                .join(", ") || "Changed"}
+                            </div>
+                          ) : change.action === "add" ? (
+                            <div>Added item</div>
+                          ) : (
+                            <div>Changed</div>
+                          )}
+                        </td>
 
-                  <td className="py-2 px-3 border text-center">
-                    <button className="text-red-500" onClick={() => handleUndoChange(idx)} title="Remove from request">
-                      <X />
-                    </button>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+                        <td className="py-2 px-3 border text-center">
+                          <button className="text-red-500" onClick={() => handleUndoChange(idx)} title="Remove from request">
+                            <X />
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
 
-      <div className="flex justify-end gap-3">
-        <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-prim">
-          Cancel
-        </button>
-        <button onClick={handleFinalRequestConfirm} className="px-4 py-2 rounded bg-secd text-black hover:bg-brwn hover:text-prim">
-          Final Request
-        </button>
-      </div>
-    </div>
+            <div className="flex justify-end gap-3">
+              <button onClick={() => setShowRequestModal(false)} className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500">
+                Cancel
+              </button>
+              <button
+                onClick={handleFinalRequestConfirm}
+                disabled={loading}
+                className={`flex items-center gap-2 px-4 py-2 rounded transition
+    ${loading
+                    ? "bg-gray-400 cursor-not-allowed text-white"
+                    : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  }`}
+              >
+                {loading ? "Processing..." : "Final Request"}
+              </button>
+            </div>
+          </div>
 
-  </div>
-)}
+        </div>
+      )}
 
       {/* Delete confirmation (single) */}
       {deleteConfirmOpen && (
@@ -749,7 +1095,7 @@ export default function Faculties({ data }) {
             <h3 className="text-lg font-semibold mb-2">Confirm Delete</h3>
             <p className="text-sm mb-4">Are you sure you want to delete this faculty from current session?</p>
             <div className="flex justify-center gap-4">
-              <button className="px-4 py-2 rounded bg-gray-400 text-white" onClick={cancelDelete}>Cancel</button>
+              <button className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500" onClick={cancelDelete}>Cancel</button>
               <button className="px-4 py-2 rounded bg-red-600 text-white" onClick={confirmDelete}>Delete</button>
             </div>
           </div>
