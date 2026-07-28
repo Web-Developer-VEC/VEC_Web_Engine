@@ -233,7 +233,7 @@ const App = () => {
 
                                 {/*  conditional routes  */}
                                 <Route path="/vec-connect/*" element={<Navigate to="/" replace />} />
-                                <Route path="/Accredation" element={<Navigate to="/" replace />} />
+                                <Route path="/Accreditation" element={<Navigate to="/" replace />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />

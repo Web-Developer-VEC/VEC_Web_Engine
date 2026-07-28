@@ -159,7 +159,7 @@ const AdminAishe = ({ toggle, theme }) => {
     setPendingBaselineSnapshot(null);
     setConfirmPopup(false);
   };
-
+  
   // --------------------- Build request payload + files ---------------------
   const buildAisheRequestPayload = (baseline, current) => {
     const baseArr = Array.isArray(baseline) ? baseline : [];
@@ -367,6 +367,18 @@ const AdminAishe = ({ toggle, theme }) => {
     fetchData();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [navigate]);
+  
+  useEffect(() => {
+  document.body.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  document.documentElement.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}, []);
 
   // Fetch default buttons
   useEffect(() => {
