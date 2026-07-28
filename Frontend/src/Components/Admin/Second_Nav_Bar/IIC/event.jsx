@@ -31,7 +31,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
         number_of_participants: event.number_of_participants || "",
         selected: false
       }));
-      
+
       const copy = deepCopy(formattedData);
       setCommittedRows(copy);
       setRows(deepCopy(copy));
@@ -63,17 +63,32 @@ export default function IicFacEvent({ title, data, collectionType }) {
   };
 
   const handleChange = (e, idx, field) => {
-    const value = field === "number_of_participants" ? e.target.value : capitalizeWords(e.target.value);
-    const updated = rows.map((r, i) => (i === idx ? { ...r, [field]: value } : r));
+    const value =
+      field === "number_of_participants"
+        ? e.target.value
+        : capitalizeWords(e.target.value);
+
+    console.log("Changing:", {
+      row: idx + 1,
+      field,
+      value,
+    });
+
+    const updated = rows.map((r, i) =>
+      i === idx ? { ...r, [field]: value } : r
+    );
+
+    console.log("Updated Row:", updated[idx]);
+
     setRows(updated);
     setIsDirty(true);
   };
 
   const handleAddRow = () => {
-    setRows((prev) => [...prev.map((r) => ({ ...r })), { 
-      id: Date.now(), 
-      name_of_the_program: "", 
-      date: "", 
+    setRows((prev) => [...prev.map((r) => ({ ...r })), {
+      id: Date.now(),
+      name_of_the_program: "",
+      date: "",
       number_of_participants: "",
       selected: false
     }]);
@@ -81,7 +96,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
   };
 
   const handleRowSelect = (index) => {
-    const updatedRows = rows.map((row, i) => 
+    const updatedRows = rows.map((row, i) =>
       i === index ? { ...row, selected: !row.selected } : row
     );
     setRows(updatedRows);
@@ -124,17 +139,42 @@ export default function IicFacEvent({ title, data, collectionType }) {
   };
 
   const handleSave = () => {
-    const invalidRow = rows.find(row =>
-      !row.name_of_the_program?.trim() || 
-      !row.date?.trim() || 
-      row.number_of_participants === undefined || 
-      row.number_of_participants === null || 
-      row.number_of_participants === ""
-    );
+    console.log("========== SAVE CLICKED ==========");
+    console.log("All Rows:", rows);
+
+    let invalidRow = null;
+    let invalidIndex = -1;
+
+    rows.forEach((row, index) => {
+      console.log(`Row ${index + 1}:`, row);
+
+      console.log("Program:", `"${row.name_of_the_program}"`);
+      console.log("Date:", `"${row.date}"`);
+      console.log("Participants:", `"${row.number_of_participants}"`);
+
+      if (
+        !row.name_of_the_program?.trim() ||
+        !row.date?.trim() ||
+        row.number_of_participants === undefined ||
+        row.number_of_participants === null ||
+        row.number_of_participants === ""
+      ) {
+        invalidRow = row;
+        invalidIndex = index;
+      }
+    });
+
     if (invalidRow) {
-      toast.error("Please fill all fields before saving!");
+      console.log("❌ Invalid Row Found");
+      console.log("Row Number:", invalidIndex + 1);
+      console.log(invalidRow);
+
+      toast.error(`Row ${invalidIndex + 1}: Please fill all fields before saving!`);
       return;
     }
+
+    console.log("✅ All rows are valid.");
+
     const pending = deepCopy(rows);
     setPendingRows(pending);
     setIsSaved(true);
@@ -152,7 +192,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
     setSelectedRows([]);
     setSelectAll(false);
   };
-  
+
 
   const handleRequest = () => {
     setShowRequestModal(true);
@@ -160,7 +200,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
 
   const buildPayload = () => {
     if (!pendingRows) return [];
-    
+
     const payload = [];
     const committedMap = new Map(committedRows.map(r => [r.id, r]));
     const pendingMap = new Map(pendingRows.map(r => [r.id, r]));
@@ -233,17 +273,17 @@ export default function IicFacEvent({ title, data, collectionType }) {
 
   const handleFinalRequestConfirm = async () => {
     if (!pendingRows) return;
-    
+
     const payload = buildPayload();
-    
+
     if (payload.length === 0) {
       return;
     }
 
     console.log("Submitting payload:", payload);
-    
+
     const result = await sendRequest(payload, []);
-    
+
     if (result) {
       // Update committed rows with pending rows
       setCommittedRows(deepCopy(pendingRows));
@@ -251,7 +291,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
       setPendingRows(null);
       setIsSaved(false);
       setShowRequestModal(false);
-    } 
+    }
   };
 
   const getChanges = () => {
@@ -320,8 +360,8 @@ export default function IicFacEvent({ title, data, collectionType }) {
       updatedPending.some(r => {
         const c = committedMap.get(r.id);
         return !c || r.name_of_the_program !== c.name_of_the_program ||
-               r.date !== c.date ||
-               r.number_of_participants !== c.number_of_participants;
+          r.date !== c.date ||
+          r.number_of_participants !== c.number_of_participants;
       });
     if (!hasDiff) {
       setPendingRows(null);
@@ -413,7 +453,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
         {/* Header */}
         <div className="relative flex items-center justify-center mb-4">
           <h2 className="text-4xl text-brwn dark:text-drkt font-bold">{title}</h2>
-          {!isEditing  && (
+          {!isEditing && (
             <div className="absolute right-0">
               <button onClick={handleStartEdit} className="btn-edit">
                 <Pencil size={18} /> Edit
@@ -483,7 +523,7 @@ export default function IicFacEvent({ title, data, collectionType }) {
                           type="number"
                           min="0"
                           className="cell-input number-input"
-                          value={event.number_of_participants}
+                          value={event.number_of_participants ?? ""}
                           onChange={(e) => handleChange(e, i, "number_of_participants")}
                         />
                       ) : (
@@ -611,8 +651,8 @@ export default function IicFacEvent({ title, data, collectionType }) {
                 <p className="text-gray-600">No changes detected.</p>
               )}
               <div className="flex justify-end gap-2 mt-6">
-                <button 
-                  onClick={() => setShowRequestModal(false)} 
+                <button
+                  onClick={() => setShowRequestModal(false)}
                   className="px-4 py-2 rounded bg-gray-400 text-prim"
                   disabled={requestLoading}
                 >
