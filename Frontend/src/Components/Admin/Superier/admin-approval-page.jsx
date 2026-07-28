@@ -14,19 +14,19 @@ export default function AdminApprovalPage() {
 
   const [request, setrequest] = useState(null)
   const [loading, setLoading] = useState(false)
+
+  const [isReverted, setIsReverted] = useState(false); //revert
+  const [showRevertPopup, setShowRevertPopup] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
+  const isPastDecision =
+    location?.state?.request?.isPastDecision ||
+    location?.state?.isPastDecision;
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) => (path?.startsWith("http") ? path : `${BASE_URL}${path}`);
 
-  useEffect(() => {
-    setrequest(location?.state?.request)
-    // Scroll to top whenever location changes
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  }, [location?.state]);
 
   const [itemApprovals, setItemApprovals] = useState([])
 
@@ -37,13 +37,13 @@ export default function AdminApprovalPage() {
     }))
   }
 
-  // ✅ Lookup approval status for collection + id
+  //  Lookup approval status for collection + id
   const getApprovalStatus = (collection, id) => {
     return itemApprovals.find(
       (item) => item.collectionName === collection && item.id === id
     )?.status;
   };
-  
+
   const handleItemApproval = (collection, id, approved, type) => {
     setItemApprovals((prev) => {
       const existing = prev.find((item) => item.collectionName === collection && item.id === id)
@@ -235,30 +235,34 @@ export default function AdminApprovalPage() {
     }
   };
 
-  const button = (item) => (
-    <>
-      <button
-        onClick={() => handleItemApproval(request?.collection, item?._id?.toString(), true, item?.type)}
-        className={`p-3 rounded-xl ${
-          getApprovalStatus(request?.collection, item?._id?.toString()) === "approved"
+  const button = (item) => {
+
+    if (isPastDecision) return null;
+
+
+    return (
+      <>
+        <button
+          onClick={() => handleItemApproval(request?.collection, item?._id?.toString(), true, item?.type)}
+          className={`p-3 rounded-xl ${getApprovalStatus(request?.collection, item?._id?.toString()) === "approved"
             ? "bg-green-600 text-white"
             : "bg-white"
-        }`}
-      >
-        <Check className="w-5 h-5" />
-      </button>
-      <button
-        onClick={() => handleItemApproval(request?.collection, item?._id?.toString(), false, item?.type)}
-        className={`p-3 rounded-xl ${
-          getApprovalStatus(request?.collection, item?._id?.toString()) === "rejected"
+            }`}
+        >
+          <Check className="w-5 h-5" />
+        </button>
+        <button
+          onClick={() => handleItemApproval(request?.collection, item?._id?.toString(), false, item?.type)}
+          className={`p-3 rounded-xl ${getApprovalStatus(request?.collection, item?._id?.toString()) === "rejected"
             ? "bg-red-600 text-white"
             : "bg-white"
-        }`}
-      >
-        <X className="w-5 h-5" />
-      </button>
-    </>
-  );
+            }`}
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </>
+    );
+  };
 
   const getFieldIcon = (fieldName) => {
     const field = fieldName?.toLowerCase()
@@ -274,6 +278,48 @@ export default function AdminApprovalPage() {
     if (field?.includes("phone")) return <Phone className="w-4 h-4 text-gray-500" />
     return null
   }
+  useEffect(() => {
+    const req = location?.state?.request;
+
+    if (!req) return;
+
+    console.log("PAST REQUEST DATA", req);
+
+    // If it is a past request, convert it into the format
+    // expected by AdminApprovalPage
+    if (req.isPastDecision) {
+      const formattedRequest = {
+        ...req,
+        data: {
+          insert: [],
+          update: [],
+          delete: [],
+        },
+      };
+
+      if (req.action === "insert") {
+        formattedRequest.data.insert = [req.data];
+      } else if (req.action === "update") {
+        formattedRequest.data.update = [req.data];
+      } else if (req.action === "delete") {
+        formattedRequest.data.delete = [req.data];
+      }
+
+
+      setrequest(formattedRequest);
+    } else {
+      // Normal pending approval request
+      setrequest(req);
+    }
+
+    // Scroll to top
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [location.state]);
+
 
   const formatFieldName = (fieldName) => {
     if (fieldName === "image_path") return "Images"
@@ -310,11 +356,11 @@ export default function AdminApprovalPage() {
         return (
           <div className="flex flex-wrap gap-2">
             {value.map((img, idx) => (
-              <a 
+              <a
                 key={idx}
-                href={UrlParser(img)} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+                href={UrlParser(img)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors text-sm font-medium"
               >
                 <Image className="w-4 h-4" />
@@ -329,11 +375,11 @@ export default function AdminApprovalPage() {
         return (
           <div className="flex flex-wrap gap-2">
             {value.map((pdf, idx) => (
-              <a 
+              <a
                 key={idx}
-                href={UrlParser(pdf)} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+                href={UrlParser(pdf)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3 py-2 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
               >
                 <FileText className="w-4 h-4" />
@@ -348,13 +394,12 @@ export default function AdminApprovalPage() {
       if (typeof value[0] !== 'object') {
         // Check if it's a long text array (like paragraphs)
         const hasLongText = value.some(item => String(item).length > 100)
-        
         if (hasLongText) {
           // Render as stacked paragraphs
           return (
             <div className="space-y-3">
               {value.map((item, idx) => (
-                <div key={idx} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <div key={idx} className="bg-gray-50 rounded-lg p-3 border border-gray-200">
                   <div className="text-xs font-semibold text-gray-500 mb-2">Paragraph {idx + 1}</div>
                   <p className="text-gray-900 text-sm leading-relaxed whitespace-pre-wrap">{item}</p>
                 </div>
@@ -376,19 +421,33 @@ export default function AdminApprovalPage() {
       }
 
       // Array of objects - render each object
+      // Array of objects
       return (
-        <div className={`space-y-3 ${depth > 0 ? 'mt-2' : ''}`}>
+        <div className="space-y-4">
           {value.map((item, idx) => (
-            <div key={idx} className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
-              <div className="text-xs font-bold text-gray-600 mb-3 flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs font-bold">
-                  {idx + 1}
+            <div
+              key={idx}
+              className="bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden p-2 min-h-[260px]"
+            >
+
+              {/* Header */}
+              <div className="flex items-center justify-between px-3 py-2 bg-blue-50 border-b">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">
+                    {idx + 1}
+                  </div>
+
+                  <span className="font-semibold text-gray-700">
+                    Record {idx + 1}
+                  </span>
                 </div>
-                Item {idx + 1}
               </div>
-              <div className="pl-2">
-                {renderValue(item, '', depth + 1)}
+
+              {/* Body */}
+              <div className="p-4">
+                {renderValue(item, "", depth + 1)}
               </div>
+
             </div>
           ))}
         </div>
@@ -400,14 +459,19 @@ export default function AdminApprovalPage() {
       return (
         <div className={`space-y-3 ${depth > 0 ? 'bg-white/50 rounded-lg p-3 border border-gray-200' : ''}`}>
           {Object.entries(value).map(([key, val]) => (
-            <div key={key} className="flex flex-col sm:flex-row sm:items-start gap-2">
-              <div className="flex items-center gap-2 min-w-[160px] sm:min-w-[200px]">
+            <div className="grid grid-cols-[180px_1fr] gap-4 py-3 border-b border-gray-100 last:border-b-0">
+
+              <div className="flex items-center gap-2 font-semibold text-gray-700">
                 {getFieldIcon(key)}
-                <span className="text-gray-700 font-semibold text-sm">{formatFieldName(key)}:</span>
+                <span className="break-words">
+                  {formatFieldName(key)}
+                </span>
               </div>
-              <div className="flex-1 min-w-0">
+
+              <div className="min-w-0 overflow-hidden break-words">
                 {renderValue(val, key, depth + 1)}
               </div>
+
             </div>
           ))}
         </div>
@@ -417,10 +481,10 @@ export default function AdminApprovalPage() {
     // Handle image/pdf paths (single strings only - arrays handled above)
     if (fieldName?.toLowerCase().includes('image') && !fieldName?.toLowerCase().includes('image_name') && value && typeof value === 'string') {
       return (
-        <a 
-          href={UrlParser(value)} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={UrlParser(value)}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-3 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors text-sm font-medium"
         >
           <Image className="w-4 h-4" />
@@ -431,10 +495,10 @@ export default function AdminApprovalPage() {
 
     if (fieldName?.toLowerCase().includes('pdf') && value && typeof value === 'string') {
       return (
-        <a 
-          href={UrlParser(value)} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={UrlParser(value)}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-3 py-2 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
         >
           <FileText className="w-4 h-4" />
@@ -454,12 +518,11 @@ export default function AdminApprovalPage() {
         // If URL parsing fails, truncate the string
         displayText = value.length > 40 ? value.substring(0, 37) + '...' : value;
       }
-      
       return (
-        <a 
-          href={UrlParser(value)} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={UrlParser(value)}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-3 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium group max-w-full"
           title={value}
         >
@@ -518,7 +581,7 @@ export default function AdminApprovalPage() {
     }
 
     return (
-      <div className="space-y-3">
+      <div className="space-y-3 modification-view">
         {renderValue(meta_data)}
       </div>
     )
@@ -532,15 +595,16 @@ export default function AdminApprovalPage() {
     let original_data = data?.original_data;
 
     return (
-      <div className="space-y-3">
+      <div className="space-y-3 modification-view">
         {renderValue(original_data)}
       </div>
     )
   }
 
-  const renderAddItems = (data) => (
+  const renderAddItems = (items) => (
     <div className="space-y-3">
-      {data?.data?.insert?.map((item, index) => (
+
+      {items?.map((item, index) => (
         <div
           key={index}
           className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200/50 shadow-sm"
@@ -548,7 +612,10 @@ export default function AdminApprovalPage() {
           <div className="flex justify-between items-start">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-2">
-                <span className="text-gray-600 font-semibold">{item?.title?.replaceAll("_", " ").toUpperCase()}</span>
+                <span className="text-gray-600 font-semibold">
+                  {item?.title?.replaceAll("_", " ").toUpperCase()}
+                  {isReverted && " (REVERTED)"}
+                </span>
                 <span className="text-gray-400">•</span>
                 <Calendar size={16} />
                 {formatDate(item?.createdAt)}
@@ -563,7 +630,7 @@ export default function AdminApprovalPage() {
               {renderDataFields(item)}
             </div>
             <div className="flex gap-3 ml-6">
-              {button(item)}
+              {!isPastDecision && button(item)}
             </div>
           </div>
         </div>
@@ -580,27 +647,30 @@ export default function AdminApprovalPage() {
         >
           <div className="flex flex-col gap-4">
             {/* Header with title and buttons */}
-            <div className="flex justify-between items-start">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-gray-800 font-bold text-lg">{item?.title?.replaceAll("_", " ").toUpperCase()}</span>
-                  <span className="text-gray-400">•</span>
+            <div className="flex justify-between items-start gap-6">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-base font-semibold text-gray-800 break-words">
+                    {isReverted
+                      ? `REVERT ${item?.title?.replaceAll("_", " ").toUpperCase()}`
+                      : item?.title?.replaceAll("_", " ").toUpperCase()}
+                  </span>                  <span className="text-gray-400">•</span>
                   <Calendar size={16} />
-                  <span className="text-gray-600 text-sm">{formatDate(item?.createdAt)}</span>
+                  <span className="text-xs text-gray-500">{formatDate(item?.createdAt)}</span>
                 </div>
                 {item?.category && (
-                  <span className="inline-flex px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">
-                    {item?.category?.replaceAll("_", " ").toUpperCase()}
+                  <span className="inline-flex mt-2 px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">
+                    {item?.category.replaceAll("_", " ").toUpperCase()}
                   </span>
                 )}
               </div>
-              <div className="flex gap-3 ml-4">
-                {button(item)}
+              <div className="flex gap-2 flex-shrink-0">
+                {!isPastDecision && button(item)}
               </div>
             </div>
 
             {/* Data comparison */}
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 items-stretch">
               {/* Original Data */}
               <div className="bg-white/70 rounded-xl p-5 border-2 border-red-200 shadow-sm">
                 <div className="flex items-center gap-2 mb-4 pb-3 border-b-2 border-red-200">
@@ -612,8 +682,10 @@ export default function AdminApprovalPage() {
                     <div className="text-xs text-red-600">Before changes</div>
                   </div>
                 </div>
-                <div className="max-h-[600px] overflow-y-auto custom-scrollbar">
-                  {renderDataFieldsOriginal(item)}
+                <div className="max-h-[600px] overflow-y-auto custom-scrollbar modification-view">
+                  {isReverted
+                    ? renderDataFieldsMeta(item)
+                    : renderDataFieldsOriginal(item)}
                 </div>
               </div>
 
@@ -628,8 +700,10 @@ export default function AdminApprovalPage() {
                     <div className="text-xs text-green-600">Proposed changes</div>
                   </div>
                 </div>
-                <div className="max-h-[600px] overflow-y-auto custom-scrollbar">
-                  {renderDataFieldsMeta(item)}
+                <div className="max-h-[600px] overflow-y-auto custom-scrollbar modification-view">
+                  {isReverted
+                    ? renderDataFieldsOriginal(item)
+                    : renderDataFieldsMeta(item)}
                 </div>
               </div>
             </div>
@@ -639,9 +713,9 @@ export default function AdminApprovalPage() {
     </div>
   )
 
-  const renderDeleteItems = (data) => (
+  const renderDeleteItems = (items) => (
     <div className="space-y-3">
-      {data?.data?.delete.map((item, index) => (
+      {items.map((item, index) => (
         <div
           key={index}
           className="bg-gradient-to-r from-red-50 to-rose-50 rounded-xl p-6 border border-red-200/50 shadow-sm"
@@ -649,7 +723,11 @@ export default function AdminApprovalPage() {
           <div className="flex justify-between items-start">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-2">
-                <span className="text-gray-600 font-semibold">{item?.title?.replaceAll("_", " ").toUpperCase()}</span>
+                <span className="text-gray-600 font-semibold">
+                  {isReverted
+                    ? `REVERT ${item?.title?.replaceAll("_", " ").toUpperCase()}`
+                    : item?.title?.replaceAll("_", " ").toUpperCase()}
+                </span>                
                 <span className="text-gray-400">•</span>
                 <Calendar size={16} />
                 {formatDate(item?.createdAt)}
@@ -664,7 +742,7 @@ export default function AdminApprovalPage() {
               {renderDataFields(item)}
             </div>
             <div className="flex gap-3 ml-6">
-              {button(item)}
+              {!isPastDecision && button(item)}
             </div>
           </div>
         </div>
@@ -687,6 +765,22 @@ export default function AdminApprovalPage() {
     }
   }
 
+  const insertItems = isReverted
+    ? request?.data?.delete || []
+    : request?.data?.insert || [];
+
+  const deleteItems = isReverted
+    ? request?.data?.insert || []
+    : request?.data?.delete || [];
+
+
+  const handleConfirmRevert = () => {
+    setIsReverted(true);
+    setShowRevertPopup(false);
+  };
+
+
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-green-50 mt-4">
       <style>{`
@@ -704,8 +798,22 @@ export default function AdminApprovalPage() {
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #94a3b8;
         }
+
+        /* Only Modifications page */
+
+.modification-view .grid{
+    grid-template-columns: 90px minmax(0,1fr) !important;
+}
+
+.modification-view .grid > div:first-child{
+    min-width:90px;
+    max-width:90px;
+}
+
+.modification-view .grid > div:last-child{
+    width:100%;
+}
       `}</style>
-      
       <div className="bg-[#046f54] shadow-xl">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center justify-start gap-4">
@@ -716,8 +824,17 @@ export default function AdminApprovalPage() {
               <ArrowLeft className="w-6 h-6 text-white" />
             </button>
             <div>
-              <h1 className="text-3xl font-bold text-white mb-2">Content Approval Dashboard</h1>
-              <p className="text-emerald-100">Review and approve content changes</p>
+              <h1 className="text-3xl font-bold text-white mb-2">
+                {isPastDecision
+                  ? "Past Decision Details"
+                  : "Content Approval Dashboard"}
+              </h1>
+
+              <p className="text-emerald-100">
+                {isPastDecision
+                  ? "View completed administrative action"
+                  : "Review and approve content changes"}
+              </p>
             </div>
           </div>
         </div>
@@ -725,26 +842,39 @@ export default function AdminApprovalPage() {
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-4 mb-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <User className="w-4 h-4" />
-              <span>
-                Requested by <strong className="text-text">{request?.admin?.name}</strong>
-              </span>
-            </div>
-            <div className="flex flex-col items-center justify-center gap-3">
-              {request?.collection && (
-                <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20">
-                  {request?.collection?.replace("_", " ").toUpperCase()}
-                </span>
-              )}
-            </div>
+          <div className="flex items-center gap-2">
+            <User className="w-4 h-4" />
+            <span>
+              Requested by <strong className="text-text">{request?.admin?.name}</strong>
+            </span>
           </div>
+
+
+
+          {isPastDecision && (
+            <div className="flex items-center gap-3">
+              <span
+                className={`px-4 py-2 rounded-full text-sm font-medium ${request?.status === "approved"
+                  ? "bg-green-100 text-green-700"
+                  : "bg-red-100 text-red-700"
+                  }`}
+              >
+                {request?.status?.toUpperCase()}
+              </span>
+
+              {/* <button
+                onClick={() => setShowRevertPopup(true)}
+                className="px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 to-rose-600 text-white text-sm font-medium hover:from-red-600 hover:to-rose-700 transition-all duration-200 shadow-md"
+              >
+                Revert
+              </button> */}
+            </div>
+          )}
         </div>
 
         <div className="space-y-6">
           {/* Additions Section */}
-          {request?.data?.insert && request?.data?.insert?.length > 0 && (
+          {insertItems.length > 0 && (
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden">
               <button
                 onClick={() => toggleSection("add")}
@@ -755,13 +885,13 @@ export default function AdminApprovalPage() {
                     <Plus className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl font-bold text-foreground">New Additions</h3>
-                    <p className="text-muted-foreground">{request?.data?.insert?.length} items to be added</p>
+                    <h3 className="text-xl font-bold text-foreground">{isReverted ? "Deletions" : "New Additions"}</h3>
+                    <p className="text-muted-foreground">{insertItems.length} {isReverted ? "items to be removed" : "items to be added"}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
-                    {request?.data?.insert?.length}
+                    {insertItems.length}
                   </span>
                   {expandedSections.add ? (
                     <ChevronUp className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
@@ -772,7 +902,7 @@ export default function AdminApprovalPage() {
               </button>
               {expandedSections.add && (
                 <div className="px-6 pb-6 border-t border-border/50">
-                  <div className="space-y-4 mt-4">{renderAddItems(request)}</div>
+                  <div className="space-y-4 mt-4">{renderAddItems(insertItems)}</div>
                 </div>
               )}
             </div>
@@ -814,7 +944,7 @@ export default function AdminApprovalPage() {
           )}
 
           {/* Deletions Section */}
-          {request?.data.delete && request?.data.delete.length > 0 && (
+          {deleteItems.length > 0 && (
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden">
               <button
                 onClick={() => toggleSection("delete")}
@@ -825,13 +955,13 @@ export default function AdminApprovalPage() {
                     <Trash2 className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-xl font-bold text-foreground">Deletions</h3>
-                    <p className="text-muted-foreground">{request?.data?.delete?.length} items to be removed</p>
+                    <h3 className="text-xl font-bold text-foreground">{isReverted ? "New Additions" : "Deletions"}</h3>
+                    <p className="text-muted-foreground">{deleteItems.length} {isReverted ? "items to be added" : "items to be removed"}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">
-                    {request?.data.delete.length}
+                    {deleteItems.length}
                   </span>
                   {expandedSections.delete ? (
                     <ChevronUp className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
@@ -842,24 +972,59 @@ export default function AdminApprovalPage() {
               </button>
               {expandedSections.delete && (
                 <div className="px-6 pb-6 border-t border-border/50">
-                  <div className="space-y-4 mt-4">{renderDeleteItems(request)}</div>
+                  <div className="space-y-4 mt-4">{renderDeleteItems(deleteItems)}</div>
                 </div>
               )}
             </div>
           )}
         </div>
 
-        <div className="mt-12 text-center">
-          <button
-            onClick={handleSubmitReview}
-            className={`${(loading) ? "cursor-wait" : ""} inline-flex items-center gap-3 bg-secd text-text hover:bg-brwn hover:text-prim px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-200 border border-white/20`}
-            disabled={loading || itemApprovals.length == 0}
-          >
-            <Check className="w-6 h-6" />
-            Submit Review Decision
-          </button>
-        </div>
+        {!isPastDecision && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={handleSubmitReview}
+              className={`${loading ? "cursor-wait" : ""} inline-flex items-center gap-3 bg-secd text-text hover:bg-brwn hover:text-prim px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-200 border border-white/20`}
+              disabled={loading || itemApprovals.length === 0}
+            >
+              <Check className="w-6 h-6" />
+              Submit Review Decision
+            </button>
+          </div>
+        )}
       </div>
+      {showRevertPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6">
+
+            <h2 className="text-2xl font-bold text-gray-800 mb-3">
+              Revert Decision?
+            </h2>
+
+            <p className="text-gray-600 mb-6">
+              Are you sure you want to revert this decision?
+              <br />
+              This action will restore the previous state.
+            </p>
+
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setShowRevertPopup(false)}
+                className="px-5 py-2 rounded-xl border border-gray-300 hover:bg-gray-100"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleConfirmRevert}
+                className="px-5 py-2 rounded-xl bg-red-600 text-white hover:bg-red-700"
+              >
+                Revert
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
       <ToastContainer position="bottom-right" autoClose={3000} />
     </div>
   )
