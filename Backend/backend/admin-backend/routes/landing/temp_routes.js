@@ -10,8 +10,8 @@ const tempstoreBusboy = require("../../middlewares/busboy_parser");
 router.post(
     '/temp',
     authMiddleware,
-    checkRoleByCollection(),  
     tempstoreBusboy,
+    checkRoleByCollection(),
     storeTempMiddleware
 );
 
