@@ -46,23 +46,23 @@
             "image_path": "/static/images/other_facilities/Health Centre/HC 1.webp"
           },
           {
-            "name": "",
-            "description": "",
-            "image_path": "/static/images/other_facilities/Health Centre/HC 3.webp"
+            "name": "On-Campus Medical Facility",
+            "description": "Velammal Engineering College provides a full-time medical facility with a qualified doctor and nurse available to attend to any health emergencies. The medical center is equipped with basic necessary equipment, and an ambulance service is on standby to handle emergencies and ensure the well-being of students and staff.",
+           "image_path": "/static/images/other_facilities/Health Centre/HC 3.webp"
           },
           {
-            "name": "",
-            "description": "",
+           "name": "On-Campus Medical Facility",
+            "description": "Velammal Engineering College provides a full-time medical facility with a qualified doctor and nurse available to attend to any health emergencies. The medical center is equipped with basic necessary equipment, and an ambulance service is on standby to handle emergencies and ensure the well-being of students and staff.",
             "image_path": "/static/images/other_facilities/Health Centre/HC 4.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "On-Campus Medical Facility",
+            "description": "Velammal Engineering College provides a full-time medical facility with a qualified doctor and nurse available to attend to any health emergencies. The medical center is equipped with basic necessary equipment, and an ambulance service is on standby to handle emergencies and ensure the well-being of students and staff.",
             "image_path": "/static/images/other_facilities/Health Centre/HC 5.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "On-Campus Medical Facility",
+            "description": "Velammal Engineering College provides a full-time medical facility with a qualified doctor and nurse available to attend to any health emergencies. The medical center is equipped with basic necessary equipment, and an ambulance service is on standby to handle emergencies and ensure the well-being of students and staff.",
             "image_path": "/static/images/other_facilities/Health Centre/HC 6.webp"
           }
         ]
@@ -76,8 +76,8 @@
             "image_path": "/static/images/other_facilities/Repographic Facility/RF 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Reprographic facility",
+            "description": "The college has reprographic facility available for students which functions from 8:30 AM to 6:00 PM. It is located opposite to BILL GATES BLOCK in the Velammal Engineering College.",
             "image_path": "/static/images/other_facilities/Repographic Facility/RF 3.webp"
           }
         ]
@@ -91,8 +91,8 @@
             "image_path": "/static/images/other_facilities/VE Store/VE Store 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Store",
+            "description": "A well-stocked store providing essential academic supplies, stationery, and other student requirements.",
             "image_path": "/static/images/other_facilities/VE Store/VE Store 2.webp"
           }
         ]
@@ -106,13 +106,13 @@
             "image_path": "/static/images/other_facilities/Sewage Plant/Sweage Plant 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Sewage Treatment Plant",
+            "description": "The Sewage Treatment Plant is designed for a capacity of 2,00,000 LITRES/DAYTreatment Scheme for the Existing Plant The plant operates 24x7 with regular maintenance, utilizing a three-stage treatment process: Primary Treatment: Bar screening and sedimentation in a Primary Clarifier. Secondary Treatment: Activated Sludge Process with four aeration tanks and a circular clarifier. Tertiary Treatment: Final polishing using Sand & Activated Carbon Filters for removing solids, color, and odor.Additionally, the plant includes sludge drying beds and treated water storage for efficient waste management.",
             "image_path": "/static/images/other_facilities/Sewage Plant/Sweage Plant 2.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Sewage Treatment Plant",
+            "description": "The Sewage Treatment Plant is designed for a capacity of 2,00,000 LITRES/DAYTreatment Scheme for the Existing Plant The plant operates 24x7 with regular maintenance, utilizing a three-stage treatment process: Primary Treatment: Bar screening and sedimentation in a Primary Clarifier. Secondary Treatment: Activated Sludge Process with four aeration tanks and a circular clarifier. Tertiary Treatment: Final polishing using Sand & Activated Carbon Filters for removing solids, color, and odor.Additionally, the plant includes sludge drying beds and treated water storage for efficient waste management.",
             "image_path": "/static/images/other_facilities/Sewage Plant/Sweage Plant.webp"
           }
         ]
@@ -126,8 +126,8 @@
             "image_path": "/static/images/other_facilities/RO/RO 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "RO (Reverse Osmosis)",
+            "description": "The RO plant in the campus is designed for a Capacity of 5000L/hr. The treated water is pumped using the Pneumatic pumping system and distributed for drinking purpose in the campus. Regular maintenance of the plant is done and water tested to confirm that the quality meets BIS ( IS 10500:2012) standards.",
             "image_path": "/static/images/other_facilities/RO/RO 2.webp"
           }
         ]
@@ -141,8 +141,8 @@
             "image_path": "/static/images/other_facilities/Solar Power/SP 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Solar Power",
+            "description": "Based on the various measures taken by both state and central Govt policies as a promotional measure of enhancing the installed capacity of the Solar Power plants across T.N. M/s. Velammal Educational trust established a 10 MW Solar P.N power plant at Manjalkudi Village TiruppuvanamTaluk, Sivagangai District. The plant was commissioned on 19.03.2019",
             "image_path": "/static/images/other_facilities/Solar Power/SP 2.webp"
           }
         ]
@@ -156,8 +156,8 @@
             "image_path": "/static/images/other_facilities/Student Councellor/Student Councellor.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Student Counseling Services",
+            "description": "Our college provides a full-time qualified Student Counselor to support students' academic, emotional, and personal well-being, ensuring a healthy and positive learning environment.",
             "image_path": "/static/images/other_facilities/Student Councellor/Student Councellor 2.webp"
           }
         ]
@@ -171,23 +171,23 @@
             "image_path": "/static/images/other_facilities/Transport/Bus View 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Transport",
+            "description": "Our college offers fully air-conditioned buses covering all major routes across the city, ensuring comfortable and convenient transportation for students.",
             "image_path": "/static/images/other_facilities/Transport/Bus View 2.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Transport",
+            "description": "Our college offers fully air-conditioned buses covering all major routes across the city, ensuring comfortable and convenient transportation for students.",
             "image_path": "/static/images/other_facilities/Transport/Bus View 3.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Transport",
+            "description": "Our college offers fully air-conditioned buses covering all major routes across the city, ensuring comfortable and convenient transportation for students.",
             "image_path": "/static/images/other_facilities/Transport/Bus View 4.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Transport",
+            "description": "Our college offers fully air-conditioned buses covering all major routes across the city, ensuring comfortable and convenient transportation for students.",
             "image_path": "/static/images/other_facilities/Transport/Bus View 5.webp"
           }
         ]
@@ -201,18 +201,18 @@
             "image_path": "/static/images/other_facilities/High Speed Internet Facility/Airtel 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "High-Speed Internet Facility",
+            "description": "Our college provides a 1 Gbps high-speed internet connection, ensuring seamless access to online resources, research materials, and digital learning platforms for students and faculty.",
             "image_path": "/static/images/other_facilities/High Speed Internet Facility/BSNL.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "High-Speed Internet Facility",
+            "description": "Our college provides a 1 Gbps high-speed internet connection, ensuring seamless access to online resources, research materials, and digital learning platforms for students and faculty.",
             "image_path": "/static/images/other_facilities/High Speed Internet Facility/NIA .webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "High-Speed Internet Facility",
+            "description": "Our college provides a 1 Gbps high-speed internet connection, ensuring seamless access to online resources, research materials, and digital learning platforms for students and faculty.",
             "image_path": "/static/images/other_facilities/High Speed Internet Facility/Tata.webp"
           }
         ]
@@ -246,13 +246,13 @@
             "image_path": "/static/images/other_facilities/Canteen/Canteen 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Spacious Food Canteen",
+            "description": "Our college has a well-equipped canteen with ample seating capacity to accommodate a large number of students, offering hygienic and nutritious meals in a comfortable dining environment.",
             "image_path": "/static/images/other_facilities/Canteen/Canteen 2.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Spacious Food Canteen",
+            "description": "Our college has a well-equipped canteen with ample seating capacity to accommodate a large number of students, offering hygienic and nutritious meals in a comfortable dining environment.",
             "image_path": "/static/images/other_facilities/Canteen/Canteen 3.webp"
           }
         ]
@@ -266,28 +266,28 @@
             "image_path": "/static/images/other_facilities/Fire Safety/FS 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Fire Extinguisher",
+            "description": "Velammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
             "image_path": "/static/images/other_facilities/Fire Safety/FS 2.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Fire Extinguisher",
+            "description": "Velammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
             "image_path": "/static/images/other_facilities/Fire Safety/FS 3.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Fire Extinguisher",
+            "description": "Velammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
             "image_path": "/static/images/other_facilities/Fire Safety/FS 4.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Fire Extinguisher",
+            "description": "Velammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
             "image_path": "/static/images/other_facilities/Fire Safety/FS 5.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Fire Extinguisher",
+            "description": "Velammal Engineering College has comprehensive fire safety measures, including fire extinguishers, sand buckets, and water hoses in all blocks. The water hose inlets are strategically placed on the ground floor of each block to ensure quick access during emergencies.",
             "image_path": "/static/images/other_facilities/Fire Safety/FS 6.webp"
           }
         ]
@@ -301,28 +301,28 @@
             "image_path": "/static/images/other_facilities/Power Backup/PB 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Power Backup",
+            "description": "Uninterrupted power supply with backup generators to ensure continuous academic and administrative activities.",
             "image_path": "/static/images/other_facilities/Power Backup/PB 2.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Power Backup",
+            "description": "Uninterrupted power supply with backup generators to ensure continuous academic and administrative activities.",
             "image_path": "/static/images/other_facilities/Power Backup/PB 3.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Power Backup",
+            "description": "Uninterrupted power supply with backup generators to ensure continuous academic and administrative activities.",
             "image_path": "/static/images/other_facilities/Power Backup/PB 4.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Power Backup",
+            "description": "Uninterrupted power supply with backup generators to ensure continuous academic and administrative activities.",
             "image_path": "/static/images/other_facilities/Power Backup/PB 6.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Power Backup",
+            "description": "Uninterrupted power supply with backup generators to ensure continuous academic and administrative activities.",
             "image_path": "/static/images/other_facilities/Power Backup/PB 7.webp"
           }
         ]
@@ -336,28 +336,28 @@
             "image_path": "/static/images/other_facilities/Security/CCTV 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Surveillance & Security",
+            "description": "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently. Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
             "image_path": "/static/images/other_facilities/Security/CCTV 2.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Surveillance & Security",
+            "description": "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently. Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
             "image_path": "/static/images/other_facilities/Security/CCTV 3.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Surveillance & Security",
+            "description": "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently. Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
             "image_path": "/static/images/other_facilities/Security/CCTV 4.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Surveillance & Security",
+            "description": "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently. Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
             "image_path": "/static/images/other_facilities/Security/Security Room 1.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Surveillance & Security",
+            "description": "Velammal Engineering College ensures student safety with a robust CCTV surveillance system covering the entire campus. The main administrators and chief security officers continuously monitor the feeds to prevent unauthorized access, maintain discipline, and respond to emergencies. This system helps detect suspicious activities and resolve conflicts efficiently. Additionally, the college has a dedicated security department with 24 trained personnel guarding the campus 24/7, ensuring a safe and secure environment for all.",
             "image_path": "/static/images/other_facilities/Security/Security Room 2.webp"
           }
         ]
@@ -371,13 +371,13 @@
             "image_path": "/static/images/other_facilities/Gym/fitnesscenter.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Gym Facility",
+            "description": "Our college features a modern gym with essential fitness machines and equipment, promoting a healthy and active lifestyle for students and staff.",
             "image_path": "/static/images/other_facilities/Gym/gym.webp"
           },
           {
-            "name": "",
-            "description": "",
+            "name": "Gym Facility",
+            "description": "Our college features a modern gym with essential fitness machines and equipment, promoting a healthy and active lifestyle for students and staff.",
             "image_path": "/static/images/other_facilities/Gym/ladies_hostel_gym.webp"
           }
         ]
