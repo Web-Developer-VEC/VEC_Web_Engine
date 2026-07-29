@@ -77,9 +77,7 @@ if (isUpdate && meta_data.pdf_path) {
           return cb(new Error("AISHE category required"));
         }
 
-        s3Key =
-          `temp/static/pdfs/about_vec/AISHE/${category}/` +
-          `AISHE ${category} ${meta_data.name}${ext}`;
+        s3Key = `temp/static/pdfs/about_vec/AISHE/${category}/${realpdfname}`;
       }
 
       else {
