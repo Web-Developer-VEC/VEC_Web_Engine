@@ -337,6 +337,18 @@
           "pdf_path": "/static/pdfs/rank_holder/Rank List_MBA._2023-2025 batch.pdf"
         }
       ]
+    },{
+      "category": "2025-2026",
+      "content": [
+        {
+          "name": "B.E / B.Tech",
+          "pdf_path": "/static/pdfs/rank_holder/Rank List_UG_2022-2026.pdf"
+        },
+        {
+          "name": "MBA",
+          "pdf_path": "/static/pdfs/rank_holder/Rank List_PG_2024-2026.pdf"
+        }
+      ]
     }
   ]
 }]
