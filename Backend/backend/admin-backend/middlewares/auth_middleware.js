@@ -2,7 +2,13 @@ const { getAdminDb } = require("../../main-backend/config/db");
 
 async function authMiddleware(req, res, next) {
   try {
-    const email  = req.session?.admin?.email;
+    if (!req.session?.admin) {
+      return res.status(401).json({
+        error: "Unauthenticated user request! Login again."
+      });
+    }
+    
+    const email = req.session?.admin?.email;
     if (!email) return res.status(401).json({ error: "No email provided" });
 
     const db = getAdminDb();
