@@ -5,7 +5,7 @@ import LoadComp from "../../LoadComp";
 
 export default function Gallerydetails() {
   const [modalImage, setModalImage] = useState(null);
-  const [pagetitle,setPageTitle] = useState(null)
+  const [pagetitle, setPageTitle] = useState(null);
 
   const location = useLocation();
   const [imagePaths, setImagePaths] = useState([]);
@@ -14,35 +14,36 @@ export default function Gallerydetails() {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const UrlParser = (path) => {
-      return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   useEffect(() => {
     if (location.state && location.state.imagespath) {
       setImagePaths(location.state.imagespath);
       setPageTitle(location.state.title);
-      setLinks(location.state.link)
+      setLinks(location.state.link);
     }
   }, [location.state]);
 
   // Separate videos and images
-  const videos = imagePaths.filter(path =>
-    path.includes("youtube.com") || path.includes("youtu.be")
+  const videos = imagePaths.filter(
+    (path) => path.includes("youtube.com") || path.includes("youtu.be"),
   );
 
-  const images = imagePaths.filter(path =>
-    /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(path) &&
-    !path.includes("youtube.com") &&
-    !path.includes("youtu.be")
+  const images = imagePaths.filter(
+    (path) =>
+      /\.(jpg|jpeg|png|webp|gif|bmp)$/i.test(path) &&
+      !path.includes("youtube.com") &&
+      !path.includes("youtu.be"),
   );
-  
+
   const getYouTubeEmbedUrl = (url) => {
     try {
       const urlObj = new URL(url);
-      if (urlObj.hostname === 'youtu.be') {
+      if (urlObj.hostname === "youtu.be") {
         return `https://www.youtube.com/embed/${urlObj.pathname.slice(1)}`;
-      } else if (urlObj.hostname.includes('youtube.com')) {
-        const videoId = urlObj.searchParams.get('v');
+      } else if (urlObj.hostname.includes("youtube.com")) {
+        const videoId = urlObj.searchParams.get("v");
         return `https://www.youtube.com/embed/${videoId}`;
       }
       return url;
@@ -53,19 +54,20 @@ export default function Gallerydetails() {
   };
 
   console.log(links, imagePaths, pagetitle);
-  
-  
+
   return (
     <>
-      {(links && imagePaths) ? (
+      {imagePaths.length > 0 ? (
         <div className="gallery-container">
-          <h2 className="gallery-title text-brwn dark:text-drkt">{pagetitle}</h2>
+          <h2 className="gallery-title text-brwn dark:text-drkt">
+            {pagetitle}
+          </h2>
 
           {/* Videos First */}
           <div className="gallery-videos elementor-widget-wrap">
             {links && (
               <>
-                {links?.map((item,i) => (
+                {links?.map((item, i) => (
                   <div key={i} className="gallery-item-video">
                     <div className="video-wrapper">
                       <iframe
@@ -84,32 +86,44 @@ export default function Gallerydetails() {
           </div>
 
           {/* Images Next */}
-          <div className="gallery-gri">
-            {imagePaths && (
-              <>
-                {imagePaths?.map((item,i) => (
-                  <div key={i} className="gallery-item">
-                    <img src={UrlParser(item)} alt={"Images"} onClick={() => setModalImage(UrlParser(item))} />
-                    {/* <p>{item.title}</p> */}
-                  </div>
-                ))}
-              </>
-            )}
+          <div className="gallery-grid1">
+            {images.map((item, i) => (
+              <div key={i} className="gallery-card">
+                <img
+                  src={UrlParser(item)}
+                  alt={`Gallery ${i}`}
+                  className="gallery-image"
+                  onClick={() => setModalImage(UrlParser(item))}
+                />
+              </div>
+            ))}
           </div>
 
           {/* Popup Modal */}
           {modalImage && (
             <div className="modal-overlay" onClick={() => setModalImage(null)}>
-              <span className="close-btn" onClick={() => setModalImage(null)}>&times;</span>
-              <img className="modal-image" src={modalImage} alt="Popup" onClick={(e) => e.stopPropagation()} />
+              <span className="close-btn" onClick={() => setModalImage(null)}>
+                &times;
+              </span>
+              <img
+                className="modal-image"
+                src={modalImage}
+                alt="Popup"
+                onClick={(e) => e.stopPropagation()}
+              />
             </div>
           )}
         </div>
       ) : (
-        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
+        <div
+          className={
+            "h-screen flex items-center justify-center md:mt-[15%] md:block"
+          }
+        >
           <LoadComp />
-        </div>
+                  
+        </div>
       )}
     </>
-  );  
+  );
 }

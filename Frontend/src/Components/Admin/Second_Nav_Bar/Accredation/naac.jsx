@@ -64,6 +64,18 @@ const Naac = ({ data }) => {
   }, []);
 
   useEffect(() => {
+    document.body.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    document.documentElement.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
+  useEffect(() => {
     if (Array.isArray(data)) {
       const copy = JSON.parse(JSON.stringify(data));
       setEditableData(copy);
