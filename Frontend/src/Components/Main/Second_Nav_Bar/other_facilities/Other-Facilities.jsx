@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./Other-Facilities.css";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
@@ -10,7 +10,12 @@ export default function OtherFacilities({ theme, toggle }) {
   const [imageIndex, setImageIndex] = useState(0);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [otherFacilities, setOtherFacilities] = useState(null);
+  const [imageLoading, setImageLoading] = useState(true);
   const navigate = useNavigate();
+
+  // Tracks which full URLs have already finished loading at least once,
+  // so we don't show the spinner again for images already in the browser cache.
+  const loadedUrlsRef = useRef(new Set());
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -25,6 +30,8 @@ export default function OtherFacilities({ theme, toggle }) {
   // All image paths for the active category (content is an array of {name, description, image_path})
   const images =
     currentFacility?.content?.map((item) => item?.image_path).filter(Boolean) || [];
+
+  const currentImageUrl = images.length ? UrlParser(images[imageIndex]) : null;
 
   // Only the first content item usually carries name/description;
   // subsequent ones (extra images) have them blank, so fall back to the first.
@@ -83,6 +90,53 @@ export default function OtherFacilities({ theme, toggle }) {
     };
   }, []);
 
+  // Whenever the image we're about to show changes, decide up front whether
+  // we already have it cached. If we do, skip the spinner entirely so there's
+  // no flicker; if not, show the spinner until it finishes loading.
+  useEffect(() => {
+    if (!currentImageUrl) {
+      setImageLoading(false);
+      return;
+    }
+    setImageLoading(!loadedUrlsRef.current.has(currentImageUrl));
+  }, [currentImageUrl]);
+
+  // Preload every image in the active category in the background as soon as
+  // the category is known, so switching between images the user has already
+  // "visited" in this session feels instant.
+  useEffect(() => {
+    if (!images.length) return;
+
+    images.forEach((path) => {
+      const url = UrlParser(path);
+      if (!url || loadedUrlsRef.current.has(url)) return;
+
+      const img = new Image();
+      img.onload = () => {
+        loadedUrlsRef.current.add(url);
+        // If the image that just finished preloading is the one currently
+        // shown on screen, clear its spinner right away.
+        if (url === currentImageUrl) {
+          setImageLoading(false);
+        }
+      };
+      img.src = url;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab]);
+
+  const handleImageLoaded = () => {
+    if (currentImageUrl) {
+      loadedUrlsRef.current.add(currentImageUrl);
+    }
+    setImageLoading(false);
+  };
+
+  const handleImageError = () => {
+    // Don't leave the spinner spinning forever on a broken image.
+    setImageLoading(false);
+  };
+
   if (!isOnline) {
     return (
       <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
@@ -118,6 +172,7 @@ export default function OtherFacilities({ theme, toggle }) {
                 activeTab === facility?.category ? "active-tab" : ""
               } bg-secd dark:bg-drks text-text`}
               onClick={() => {
+                if (facility?.category === activeTab) return;
                 setActiveTab(facility?.category);
                 setImageIndex(0);
               }}
@@ -135,21 +190,55 @@ export default function OtherFacilities({ theme, toggle }) {
           <p>{currentDescription}</p>
 
           {/* Image Carousel */}
-          <div className="carousel">
+          <div className="carousel" style={{ position: "relative" }}>
             {images.length > 1 && (
-              <button className="prev" onClick={prevImage}>
+              <button className="prev" onClick={prevImage} disabled={imageLoading}>
                 ❮
               </button>
             )}
+
             {images.length > 0 && (
-              <img
-                src={UrlParser(images[imageIndex])}
-                alt={activeTab}
-                className="carousel-img"
-              />
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  minHeight: 200,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {imageLoading && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      zIndex: 2,
+                    }}
+                  >
+                    <LoadComp txt={""} />
+                  </div>
+                )}
+                <img
+                  key={currentImageUrl}
+                  src={currentImageUrl}
+                  alt={activeTab}
+                  className="carousel-img"
+                  onLoad={handleImageLoaded}
+                  onError={handleImageError}
+                  style={{
+                    opacity: imageLoading ? 0 : 1,
+                    transition: "opacity 0.25s ease-in-out",
+                  }}
+                />
+              </div>
             )}
+
             {images.length > 1 && (
-              <button className="next" onClick={nextImage}>
+              <button className="next" onClick={nextImage} disabled={imageLoading}>
                 ❯
               </button>
             )}
