@@ -183,25 +183,27 @@
   {
     "type": "announcements",
     "data": [
-       {
+      {
         "unique_id": "announcement_14",
         "announcement_name": "Circular_Revaluation (For Photocopy)_SEE May 2026-R2023, R2023A, R2019 & R2019A",
         "pdf_path": "/static/pdfs/announcements/Revaluation_Photocopy_R2019,R2019A, R2023 &R2023A.pdf",
         "date": "2026-07-28",
         "status": "active"
-      } ,{
+      },
+      {
         "unique_id": "announcement_15",
         "announcement_name": "Circular_Revaluation (After Photocopy)_SEE May 2026-R2023, R2023A, R2019 & R2019A",
         "pdf_path": "/static/pdfs/announcements/Revaluation_After Photocopy_R2019,R2019A, R2023 &R2023A.pdf",
         "date": "2026-07-28",
         "status": "active"
-      } ,{
+      },
+      {
         "unique_id": "announcement_13",
         "announcement_name": "Circular- Reschedule - SEE May 2026 - 28-05-2026 to 05-06-2026",
         "pdf_path": "/static/pdfs/announcements/Rescheduled Date_SEE May 2026_28-05-2026 to 05-06-2026.pdf",
         "date": "2026-03-17",
         "status": "active"
-      } ,
+      },
       {
         "unique_id": "announcement_1",
         "announcement_name": "SEE May 2026 - Updated Exam Timetable for B.E.B.Tech. 2023-2027 & 2024-2028 batch with I year courses",
@@ -286,7 +288,6 @@
         "date": "2025-07-28",
         "status": "active"
       }
-   
     ]
   },
   {
@@ -316,374 +317,96 @@
     "type": "events",
     "data": [
       {
-        "start_date": "16 JUL",
-        "end_date": "22 JUL, 2025",
-        "date": "16-07-2025",
-        "title": "PySpark",
-        "department": "Artificial Intelligence & Data Science",
-        "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
-        "image_path": "/static/images/events/PySpark.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "18 JUL",
-        "end_date": "18 JUL, 2025",
-        "date": "18-07-2025",
-        "title": "Empowering Smart Grids: THe Innovative Role of Power Electronics",
-        "department": "Electrical & Electronics Engineering",
-        "content": "A power-packed guest lecture on Smart Grids and Power Electronics—discover how innovation is electrifying the future of energy!",
-        "image_path": "/static/images/events/Smart_Grids.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "25 JUL",
-        "end_date": "25 JUL, 2025",
-        "date": "25-07-2025",
-        "title": "Math Quiz",
-        "department": "Mathematics",
-        "content": "Celebrate excellence and test your math skills! Join us for the 2024–25 prize distribution and a fun Math Quiz for II-year students.",
-        "image_path": "/static/images/events/M_Quiz.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "25 JUL",
-        "end_date": "25 JUL, 2025",
-        "date": "25-07-2025",
-        "title": "Server-Side Scripting - Node.JS",
-        "department": "Computer Science & Engineering",
-        "content": "Level up your backend skills! Don't miss the expert talk on Server-Side Scripting with Node.js for III-year CSE students.",
-        "image_path": "/static/images/events/NodeJs.webp",
+        "start_date": "27 JUL",
+        "end_date": "27 JUL",
+        "date": "2026-07-27",
+        "title": "Seminar on Entrepreneurship: From Idea to Enterprise",
+        "department": "Department of Mechanical Engineering",
+        "content": "The Department of Mechanical Engineering, Velammal Engineering College, is organizing a seminar titled 'Entrepreneurship: From Idea to Enterprise'. The speaker is Mr. E. Balaji, CEO, Vaibhav Tech Services, Chennai. The seminar focuses on innovation, entrepreneurship, and transforming ideas into successful enterprises. The event will be held on July 27, 2026 at 10:30 AM in Visvesvaraya Block, First Floor, Velammal Engineering College.",
+        "image_path": "",
         "link": "",
         "status": "True"
       },
       {
         "start_date": "28 JUL",
-        "end_date": "28 JUL, 2025",
-        "date": "28-07-2025",
-        "title": "10 Steps to Become a Successful Entrepreneur",
-        "department": "Automobile Engineering",
-        "content": "Dreaming of your own startup? Learn 10 steps to become a successful entrepreneur with expert guidance and funding insights.",
-        "image_path": "/static/images/events/Successful_Entrepreneur.webp",
+        "end_date": "07 AUG",
+        "date": "2026-07-28",
+        "title": "Placement Readiness Program - WAISE: Skills to Career Success",
+        "department": "Department of Artificial Intelligence and Data Science",
+        "content": "The Department of Artificial Intelligence and Data Science, Velammal Engineering College, is organizing the Placement Readiness Program 'WAISE: Skills to Career Success' in collaboration with Nirmaan.org. The program features Ms. Imaya Durga A, Ms. Dhanalakshmi S, Ms. Jeevitha K, and Ms. R. Swetha as resource persons. The program will be conducted from July 28, 2026 to August 7, 2026, from 9:00 AM to 4:00 PM at the Placement Training Hall.",
+        "image_path": "",
         "link": "",
         "status": "True"
       },
       {
-        "start_date": "30 JUL",
-        "end_date": "30 JUL, 2025",
-        "date": "30-07-2025",
-        "title": "Innovation/Prototype Validation - Converting Innovation into a Start-up",
-        "department": "Electronics & Communication Engineering",
-        "content": "Got an idea? Learn how to turn it into a real business in our Innovation/Prototype to Start-up session by an ECE alumnus from Accenture.",
-        "image_path": "/static/images/events/Innovation_2_startup.webp",
+        "start_date": "28 JUL",
+        "end_date": "07 AUG",
+        "date": "2026-07-28",
+        "title": "Placement Readiness Program - WAISE: Skills to Career Success",
+        "department": "Department of Information Technology",
+        "content": "The Department of Information Technology, Velammal Engineering College, is organizing the Placement Readiness Program 'WAISE: Skills to Career Success' in collaboration with Nirmaan.org. The program features Ms. Imaya Durga A, Ms. Dhanalakshmi S, Ms. Jeevitha K, and Ms. R. Swetha as resource persons. The program will be conducted from July 28, 2026 to August 7, 2026, from 9:00 AM to 4:00 PM at the Placement Training Hall.",
+        "image_path": "",
         "link": "",
         "status": "True"
       },
       {
-        "start_date": "2 AUG",
-        "end_date": "2 AUG, 2025",
-        "date": "02-08-2025",
-        "title": "NOCTIVUS",
-        "department": "Computer Science Engineering (Cyber Security)",
-        "content": "A national symposium on Cyber Security with tech contests, fun events, and a hacking workshop.",
-        "image_path": "/static/images/events/noctivus.webp",
-        "link": "http://www.noctivus.pro/",
-        "status": "True"
-      },
-      {
-        "start_date": "09 AUG",
-        "end_date": "09 AUG, 2025",
-        "date": "09-08-2025",
-        "title": "CLOUDSCAPE",
-        "department": "Computer Science Engineering",
-        "content": "",
-        "image_path": "/static/images/events/cloudscape.webp",
+        "start_date": "28 JUL",
+        "end_date": "28 JUL",
+        "date": "2026-07-28",
+        "title": "Seminar on AI as Your Superpower: From Learning Faster to Building Products That Matter",
+        "department": "Department of CSE (Cyber Security)",
+        "content": "The Department of CSE (Cyber Security), in association with Cyventura and the Club of CSE (Cyber Security), is organizing a seminar titled 'AI as Your Superpower: From Learning Faster to Building Products That Matter'. The resource person is Mr. Surith LG, Junior AI Engineer, SEI AI. The seminar will be held on July 28, 2026 from 9:00 AM to 12:00 PM at the Mechanical Seminar Hall.",
+        "image_path": "",
         "link": "",
         "status": "True"
       },
       {
-        "start_date": "09 AUG",
-        "end_date": "09 AUG, 2025",
-        "date": "09-08-2025",
-        "title": "Mastering of Fundamentals of Application Penetration Testing",
-        "department": "Computer Science Engineering (Cyber Security)",
-        "content": "",
-        "image_path": "/static/images/events/mfapt.webp",
+        "start_date": "28 JUL",
+        "end_date": "28 JUL",
+        "date": "2026-07-28",
+        "title": "Seminar on Love the Problem, Launch the Fix",
+        "department": "Department of Mechanical Engineering",
+        "content": "The Department of Mechanical Engineering, Velammal Engineering College, is organizing a seminar titled 'Love the Problem, Launch the Fix'. The session focuses on innovation, problem solving, and entrepreneurial thinking. The speaker is Mr. Venugopal K B, Founder, COO Network. The seminar will be held on July 28, 2026 at 10:30 AM in Visvesvaraya Block, First Floor, Velammal Engineering College.",
+        "image_path": "",
         "link": "",
         "status": "True"
       },
       {
-        "start_date": "09 AUG",
-        "end_date": "09 AUG, 2025",
-        "date": "09-08-2025",
-        "title": "Debate Competition - 'Clash of Gears'",
-        "department": "Computer Science Engineering (Cyber Security)",
-        "content": "",
-        "image_path": "/static/images/events/dccog.webp",
+        "start_date": "28 JUL",
+        "end_date": "28 JUL",
+        "date": "2026-07-28",
+        "title": "AI Agents as Your Companion",
+        "department": "Department of Computer Science and Engineering",
+        "content": "The Department of Computer Science and Engineering, Velammal Engineering College, is organizing an engaging talk on 'AI Agents as Your Companion – Learn Faster, Build Smarter, Work Better'. The speaker is Mr. Dhamodharan R, Founder & Director, Staminal Technologies. The event is scheduled on July 28, 2026 from 3:00 PM to 4:00 PM.",
+        "image_path": "",
         "link": "",
         "status": "True"
       },
       {
-        "start_date": "18 AUG",
-        "end_date": "22 AUG, 2025",
-        "date": "18-08-2025",
-        "title": "Essentials of Artificial Intelligence and Machine Learning",
-        "department": "Artificial Intelligence & Data Science",
-        "content": "",
-        "image_path": "/static/images/events/eaiml.webp",
+        "start_date": "23 JUL",
+        "end_date": "23 JUL",
+        "date": "2026-07-23",
+        "title": "Seminar on Building Modern Web Applications with React.js",
+        "department": "Department of Information Technology",
+        "content": "The Department of Information Technology, Velammal Engineering College, is organizing a seminar on 'Building Modern Web Applications with React.js'. The session covers modern full-stack web development using HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB. The resource person is Mr. Siva Ganesh N, Senior Network Engineer, Movate Technologies Private Limited. The seminar will be held on July 23, 2026 (Thursday) from 9:30 AM to 11:30 AM at the Mechanical Seminar Hall.",
+        "image_path": "",
         "link": "",
         "status": "True"
       },
       {
-        "start_date": "19 AUG",
-        "end_date": "19 AUG, 2025",
-        "date": "19-08-2025",
-        "title": "3D - ANIMATION",
-        "department": "Computer Science Engineering",
-        "content": "",
-        "image_path": "/static/images/events/3D.webp",
+        "start_date": "24 JUL",
+        "end_date": "24 JUL",
+        "date": "2026-07-24",
+        "title": "Expert Session on Future Construction: Technologies and Innovation",
+        "department": "Department of Civil Engineering",
+        "content": "The Department of Civil Engineering, Velammal Engineering College, is organizing an expert session on 'Future Construction: Technologies and Innovation'. The session focuses on emerging construction technologies, innovation, Building Information Modeling (BIM), drones, smart infrastructure, and sustainable construction practices. The expert speaker is Mr. A. Thiruvikraman, Professional Service Consultant, Infinity PMC Solutions Pvt. Ltd., Chennai. The event will be held on July 24, 2026 (Friday) at 10:30 AM in the Seminar Hall, First Floor, Founder Chairman Block.",
+        "image_path": "",
         "link": "",
         "status": "True"
-      },
-      {
-        "start_date": "22 AUG",
-        "end_date": "22 AUG, 2025",
-        "date": "22-08-2025",
-        "title": "Global Opportunities and Innovation Trends in Semiconductor & Electronics Industry",
-        "department": "Electrical & Electronics Engineering",
-        "content": "",
-        "image_path": "/static/images/events/GOITSEI.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "20 AUG",
-        "end_date": "20 AUG, 2025",
-        "date": "20-08-2025",
-        "title": "DESTINY 29 – I Year Inauguration Ceremony",
-        "department": "DESTINY 29",
-        "content": "",
-        "image_path": "/static/images/events/Destiny 29 - Invitation.pdf",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "19 AUG",
-        "end_date": "19 AUG, 2025",
-        "date": "19-08-2025",
-        "title": "Career guidance - Need for skill Development",
-        "department": "Electrical & Instrumentation Engineering",
-        "content": "",
-        "image_path": "/static/images/events/CG.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "25 AUG",
-        "end_date": "25 AUG, 2025",
-        "date": "25-08-2025",
-        "title": "Smart Healthcare Revolution",
-        "department": "Electronics & Communication Engineering",
-        "content": "",
-        "image_path": "/static/images/events/SHR.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "10 SEP",
-        "end_date": "10 SEP, 2025",
-        "date": "10-09-2025",
-        "title": "Network Layer Protocol - IP and Mobile IP",
-        "department": "Electronics & Communication Engineering",
-        "content": "",
-        "image_path": "/static/images/events/NLPI.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "13 SEPT, 2025",
-        "end_date": "13 SEPT, 2025",
-        "date": "13-09-2025",
-        "title": "Digital Twin Technology",
-        "department": "Artificial Intelligence & Data Science",
-        "content": "",
-        "image_path": "/static/images/events/TWIN.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "22 SEPT, 2025",
-        "end_date": "22 SEPT, 2025",
-        "date": "22-09-2025",
-        "title": "Scalathon",
-        "department": "Computer Science & Engineering",
-        "content": "",
-        "image_path": "/static/images/events/SCALATHON.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "13 SEPT, 2025",
-        "end_date": "13 SEPT, 2025",
-        "date": "13-09-2025",
-        "title": "Building Real Time Systems using Data Structure and Java Programming",
-        "department": "Electronics & Communication Engineering",
-        "content": "",
-        "image_path": "/static/images/events/DATA STRUCTURE.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "13 SEPT, 2025",
-        "end_date": "13 SEPT, 2025",
-        "date": "13-09-2025",
-        "title": "From Idea to Device: A Hands-on Journey into IoT",
-        "department": "Artificial Intelligence and Data Science",
-        "content": "",
-        "image_path": "/static/images/events/JOURNEY.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "23 SEP",
-        "end_date": "23 SEP, 2025",
-        "date": "23-09-2025",
-        "title": "Building Management System(BMS), Direct Digital Control (DDC), Electrical Connections and Safety in RAC Systems ",
-        "department": "Mechanical Engineering",
-        "content": "",
-        "image_path": "/static/images/events/BMS.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "23 SEP",
-        "end_date": "23 SEP, 2025",
-        "date": "23-09-2025",
-        "title": "Non-Traditional Machining - Unlocking the Next Frontier in Engineering: Insights, Challenges and Opportunities from a Supply Chain Perspective",
-        "department": "Mechanical Engineering",
-        "content": "",
-        "image_path": "/static/images/events/NON-TRADITIONAL.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "23 SEP",
-        "end_date": "23 SEP, 2025",
-        "date": "23-09-2025",
-        "title": "Emerging Trends: Explainable AI, Edge AI, and Multimodal Systems",
-        "department": "Computer Science Engineering",
-        "content": "",
-        "image_path": "/static/images/events/MULTIMODAL.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "23 Sep",
-        "end_date": "23 SEP, 2025",
-        "date": "23-09-2025",
-        "title": "Mathletics",
-        "department": "Mathematics",
-        "content": "",
-        "image_path": "/static/images/events/MATHLETICS.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "24 Sep",
-        "end_date": "24 SEP, 2025",
-        "date": "24-09-2025",
-        "title": "Quality Control and Precision Measurement in Automobile Industry",
-        "department": "Automobile Engineering",
-        "content": "",
-        "image_path": "/static/images/events/QUALITY CONTROL.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "24 Sep",
-        "end_date": "24 SEP, 2025",
-        "date": "24-09-2025",
-        "title": "PROXPO 2K25",
-        "department": "Electrical & Electronics Engineering",
-        "content": "",
-        "image_path": "/static/images/events/PROXPO.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "25 Sep",
-        "end_date": "25 SEP, 2025",
-        "date": "25-09-2025",
-        "title": "Data Science and Machine Learning",
-        "department": "Computer Science & Engineering",
-        "content": "",
-        "image_path": "/static/images/events/DATA SCIENCe.webp",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "07 FEB",
-        "end_date": "07 FEB, 2026",
-        "date": "07-02-2026",
-        "title": "Cognebula'26 - National Level Technical Symposium",
-        "department": "Artificial Intelligence and Data Science",
-        "content": "Cognebula’26 features a dynamic lineup of 6 technical events, 6 non-technical events, and 1 full-day workshop, offering participants a perfect blend of technical expertise, creativity, and hands-on learning.",
-        "image_path": "/static/images/events/cognebula.jpeg",
-        "link": "https://cognebula.com/",
-        "status": "True"
-      },
-      {
-        "start_date": "04 MAR",
-        "end_date": "04 MAR, 2026",
-        "date": "04-03-2026",
-        "title": "NCAIBIA’26",
-        "department": "Artificial Intelligence & Data Science",
-        "content": "3rd NATIONAL CONFERENCE",
-        "image_path": "/static/images/events/NCAIBIA'26 (1).pdf",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "17 MAR",
-        "end_date": "17 MAR, 2026",
-        "date": "17-03-2026",
-        "title": "ICECT 2026",
-        "department": "Computer Science & Engineering",
-        "content": "International Conference on Emerging Computing Technologies - AI, IOT, Cloud, Quantum Computing & Beyond",
-        "image_path": "/static/images/events/updatedbrochure.pdf",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "30 MAR",
-        "end_date": "30 MAR, 2026",
-        "date": "30-03-2026",
-        "title": "NCCET 2026",
-        "department": "Electronics & Instrumentation Engineering",
-        "content": "NATIONAL CONFERENCE ON CONVERGING ENGINEERING TECHNOLOGIES",
-        "image_path": "/static/images/events/EIE - CONFERENCE  BROCHURE.pdf",
-        "link": "",
-        "status": "True"
-      },
-      {
-        "start_date": "28 MAR",
-        "end_date": "28 MAR, 2026",
-        "date": "28-03-2026",
-        "title": "AIMS 2K26",
-        "department": "Mechanical Engineering",
-        "content": "National Conference on Advancements in Mechanical Sciences",
-        "image_path": "/static/images/events/MECH CONF.jpeg",
-        "link": "",
-        "status": "True"
-      }
-    ]
+      }   ]
   },
   {
     "type": "news_card",
-    "data": [
-     
-    ]
+    "data": []
   }
 ]
