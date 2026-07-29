@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Pencil, ArrowDown, X } from "lucide-react";
 import { FaLink } from "react-icons/fa";
+import { useEffect }  from "react";
 import "./admin_igauge.css";
 import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
@@ -96,8 +97,18 @@ export default function IQGauge({ data }) {
   };
 
   const getChanges = () => changes;
+  
+  useEffect(() => {
+  document.body.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 
-
+  document.documentElement.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}, []);
 
   if (!data || !Array.isArray(data)) {
     return (
@@ -106,6 +117,8 @@ export default function IQGauge({ data }) {
       </div>
     );
   }
+
+  
 
   return (
     <div className="text-center py-10 dark:bg-drkp">

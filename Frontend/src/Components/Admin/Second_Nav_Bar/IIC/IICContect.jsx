@@ -104,16 +104,35 @@ const IICContact = ({ data }) => {
 
   const validateContact = (obj) => {
     if (!obj) return false;
+
     const { name, designation, phone, gmail } = obj;
-    if (!name?.toString().trim() || !designation?.toString().trim() || !phone?.toString().trim() || !gmail?.toString().trim()) {
+
+    if (
+      !name?.toString().trim() ||
+      !designation?.toString().trim() ||
+      !phone?.toString().trim() ||
+      !gmail?.toString().trim()
+    ) {
       toast.error("Please fill all fields before saving!");
       return false;
     }
+
+    // Mobile Number Validation
+    const phoneStr = phone.toString().trim();
+
+    if (!/^\d{10}$/.test(phoneStr)) {
+      toast.error("Mobile number must contain exactly 10 digits!");
+      return false;
+    }
+
+    // Email Validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!emailRegex.test(gmail)) {
       toast.error("Please enter a valid email address!");
       return false;
     }
+
     return true;
   };
 
@@ -236,7 +255,7 @@ const IICContact = ({ data }) => {
       const ok = res === true || (res && (res.success === true || res.status === "ok" || res.status === "success"));
       if (ok) {
         // commit
-        toast.success("Request sent successfully!");
+        // toast.success("Request sent successfully!");
         setOriginalData(deepCopy(modalData));
         setTempData(deepCopy(modalData));
         setPendingData(null);
