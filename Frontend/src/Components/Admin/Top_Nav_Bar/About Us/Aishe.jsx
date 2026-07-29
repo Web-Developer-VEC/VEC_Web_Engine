@@ -159,7 +159,7 @@ const AdminAishe = ({ toggle, theme }) => {
     setPendingBaselineSnapshot(null);
     setConfirmPopup(false);
   };
-  
+
   // --------------------- Build request payload + files ---------------------
   const buildAisheRequestPayload = (baseline, current) => {
     const baseArr = Array.isArray(baseline) ? baseline : [];
@@ -190,11 +190,11 @@ const AdminAishe = ({ toggle, theme }) => {
       const btns = getDefaultBtns();
       const allButtonsData = [];
       const yearContent = Array.isArray(y.content) ? y.content : [];
-      
+
       btns.forEach((btnName) => {
         const entry = yearContent.find((c) => c.name === btnName);
         const hasPdf = entryPdfIdentity(entry) !== "empty";
-        
+
         if (!hasPdf) {
           allButtonsData.push({ name: btnName, pdf_path: "" });
         } else {
@@ -202,7 +202,7 @@ const AdminAishe = ({ toggle, theme }) => {
           const pdf_path = isFile
             ? `uploads/${y.category}/${entry?.file.name}`
             : entry?.pdf_path || "";
-          
+
           allButtonsData.push({ name: btnName, pdf_path });
           if (isFile) files.push(entry.file);
         }
@@ -260,34 +260,26 @@ const AdminAishe = ({ toggle, theme }) => {
         const newId = entryPdfIdentity(newEntry);
 
         if (oldId === "empty" && newId !== "empty") {
-          // INSERT: A PDF is being uploaded for a previously empty button
-          // Send ALL default buttons with their current states
-          const btns = getDefaultBtns();
-          const allButtonsData = btns.map((btnName) => {
-            const btnEntry = newEntries.get(btnName);
-            const btnId = entryPdfIdentity(btnEntry);
-            
-            if (btnId === "empty") {
-              return { name: btnName, pdf_path: "" };
-            }
-            
-            const isFile = btnEntry?.file instanceof File;
-            const pdf_path = isFile
-              ? `uploads/${y.category}/${btnEntry?.file.name}`
-              : btnEntry?.pdf_path || "";
-            
-            if (isFile) files.push(btnEntry.file);
-            return { name: btnName, pdf_path };
-          });
+          const isFile = newEntry?.file instanceof File;
+
+          const pdf_path = isFile
+            ? `uploads/${y.category}/${newEntry.file.name}`
+            : newEntry?.pdf_path || "";
 
           docs.push({
             collectionName: "about_us",
             collection_type: "AISHE",
             action: "insert",
-            title: `Insert AISHE PDFs for ${y.category}`,
+            title: `Insert AISHE ${name} ${y.category}`,
             category: y.category,
-            meta_data: allButtonsData,
+            meta_data: {
+              name,
+              pdf_path,
+            },
           });
+
+          if (isFile) files.push(newEntry.file);
+
           return;
         }
 
@@ -352,7 +344,7 @@ const AdminAishe = ({ toggle, theme }) => {
           setAbtyear((prev) =>
             normalized.some((x) => x.category === prev)
               ? prev
-              : normalized[0].category
+              : normalized[0].category,
           );
         } else setAbtyear("");
       } catch (error) {
@@ -367,25 +359,25 @@ const AdminAishe = ({ toggle, theme }) => {
     fetchData();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [navigate]);
-  
-  useEffect(() => {
-  document.body.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
 
-  document.documentElement.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-}, []);
+  useEffect(() => {
+    document.body.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    document.documentElement.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   // Fetch default buttons
   useEffect(() => {
     const fetchDefaultButtons = async () => {
       try {
         const response = await axios.get(
-          "/api/main-backend/aishe_default_buttons"
+          "/api/main-backend/aishe_default_buttons",
         );
         setDefaultButtons(response.data?.buttons || []);
       } catch {
@@ -407,14 +399,14 @@ const AdminAishe = ({ toggle, theme }) => {
     const baseline = Array.isArray(pendingBaselineSnapshot)
       ? pendingBaselineSnapshot
       : Array.isArray(originalSnapshot)
-      ? originalSnapshot
-      : [];
+        ? originalSnapshot
+        : [];
 
     const current = Array.isArray(postSaveSnapshot)
       ? postSaveSnapshot
       : Array.isArray(aboutYearData)
-      ? aboutYearData
-      : [];
+        ? aboutYearData
+        : [];
 
     const baseMap = new Map(baseline.map((y) => [y.category, y]));
     const currMap = new Map(current.map((y) => [y.category, y]));
@@ -627,8 +619,12 @@ const AdminAishe = ({ toggle, theme }) => {
   };
 
   const confirmYearDelete = () => {
-    const idx = aboutYearData.findIndex((item) => item.category === yearToDelete);
-    const filtered = aboutYearData.filter((item) => item.category !== yearToDelete);
+    const idx = aboutYearData.findIndex(
+      (item) => item.category === yearToDelete,
+    );
+    const filtered = aboutYearData.filter(
+      (item) => item.category !== yearToDelete,
+    );
 
     setAboutYearData(filtered);
     setChanged(true);
@@ -753,14 +749,18 @@ const AdminAishe = ({ toggle, theme }) => {
   // --------- selection delete ---------
   const toggleSelectPdf = (pdfName) => {
     setSelectedPdfNames((prev) =>
-      prev.includes(pdfName) ? prev.filter((n) => n !== pdfName) : [...prev, pdfName]
+      prev.includes(pdfName)
+        ? prev.filter((n) => n !== pdfName)
+        : [...prev, pdfName],
     );
   };
 
   const openPdfDeleteConfirm = () => setShowPdfDeleteConfirm(true);
 
   const confirmPdfDelete = () => {
-    const yearIdx = aboutYearData.findIndex((item) => item.category === section);
+    const yearIdx = aboutYearData.findIndex(
+      (item) => item.category === section,
+    );
     if (yearIdx === -1) return;
 
     const btns = getDefaultBtns();
@@ -769,7 +769,8 @@ const AdminAishe = ({ toggle, theme }) => {
     if (!y?.content) y.content = [];
 
     const isDefaultFormat =
-      y.content.length === btns.length && y.content.every((c) => btns.includes(c.name));
+      y.content.length === btns.length &&
+      y.content.every((c) => btns.includes(c.name));
 
     if (isDefaultFormat) {
       // For default format: clear pdf_path and file instead of removing
@@ -800,13 +801,17 @@ const AdminAishe = ({ toggle, theme }) => {
     if (!Array.isArray(yearObj.content)) yearObj.content = [];
 
     const idx = yearObj.content.findIndex(
-      (c) => (c?.name || "").trim() === (name || "").trim()
+      (c) => (c?.name || "").trim() === (name || "").trim(),
     );
 
     if (isDefaultFormat) {
       if (idx === -1) return;
       if (mode === "empty") {
-        yearObj.content[idx] = { ...yearObj.content[idx], pdf_path: "", file: null };
+        yearObj.content[idx] = {
+          ...yearObj.content[idx],
+          pdf_path: "",
+          file: null,
+        };
       } else if (mode === "restore") {
         yearObj.content[idx] = {
           ...yearObj.content[idx],
@@ -844,11 +849,11 @@ const AdminAishe = ({ toggle, theme }) => {
     const baseline = Array.isArray(pendingBaselineSnapshot)
       ? pendingBaselineSnapshot
       : Array.isArray(originalSnapshot)
-      ? originalSnapshot
-      : [];
+        ? originalSnapshot
+        : [];
 
     const current = deepClone(
-      Array.isArray(postSaveSnapshot) ? postSaveSnapshot : aboutYearData
+      Array.isArray(postSaveSnapshot) ? postSaveSnapshot : aboutYearData,
     );
 
     const findYearIndex = (arr, year) =>
@@ -860,7 +865,7 @@ const AdminAishe = ({ toggle, theme }) => {
         .slice()
         .sort(
           (a, b) =>
-            (order.get(a.category) ?? 99999) - (order.get(b.category) ?? 99999)
+            (order.get(a.category) ?? 99999) - (order.get(b.category) ?? 99999),
         );
     };
 
@@ -874,7 +879,11 @@ const AdminAishe = ({ toggle, theme }) => {
       return;
     }
 
-    if (row.category === "Year" && row.action === "delete" && row.originalYear) {
+    if (
+      row.category === "Year" &&
+      row.action === "delete" &&
+      row.originalYear
+    ) {
       const exists = current.some((y) => y?.category === row.year);
       let next = exists ? current : [...current, deepClone(row.originalYear)];
       next = sortByBaselineOrder(next);
@@ -893,20 +902,38 @@ const AdminAishe = ({ toggle, theme }) => {
       return;
     }
 
-    if (row.category === "PDF" && row.action === "delete" && row.originalEntry) {
+    if (
+      row.category === "PDF" &&
+      row.action === "delete" &&
+      row.originalEntry
+    ) {
       const yIdx = findYearIndex(current, row.year);
       if (yIdx !== -1) {
-        restoreEntryInYear(current[yIdx], row.name, row.originalEntry, "restore");
+        restoreEntryInYear(
+          current[yIdx],
+          row.name,
+          row.originalEntry,
+          "restore",
+        );
       }
       setAboutYearData(current);
       setPostSaveSnapshot(deepClone(current));
       return;
     }
 
-    if (row.category === "PDF" && row.action === "update" && row.originalEntry) {
+    if (
+      row.category === "PDF" &&
+      row.action === "update" &&
+      row.originalEntry
+    ) {
       const yIdx = findYearIndex(current, row.year);
       if (yIdx !== -1) {
-        restoreEntryInYear(current[yIdx], row.name, row.originalEntry, "restore");
+        restoreEntryInYear(
+          current[yIdx],
+          row.name,
+          row.originalEntry,
+          "restore",
+        );
       }
       setAboutYearData(current);
       setPostSaveSnapshot(deepClone(current));
@@ -922,7 +949,6 @@ const AdminAishe = ({ toggle, theme }) => {
       const { docs, files } = buildAisheRequestPayload(baseline, current);
 
       console.log(docs, files);
-      
 
       if (!docs.length) {
         setConfirmPopup(false);
@@ -947,7 +973,9 @@ const AdminAishe = ({ toggle, theme }) => {
 
   // --------- render ---------
   const renderYearContent = (selectedYear) => {
-    const yearIdx = aboutYearData.findIndex((item) => item.category === selectedYear);
+    const yearIdx = aboutYearData.findIndex(
+      (item) => item.category === selectedYear,
+    );
     const yearData = aboutYearData[yearIdx];
 
     if (!yearData)
@@ -1033,7 +1061,10 @@ const AdminAishe = ({ toggle, theme }) => {
                 const isSelected = selectedPdfNames.includes(btnEntry.name);
 
                 return (
-                  <div key={btnEntry.name} className="relative flex items-center">
+                  <div
+                    key={btnEntry.name}
+                    className="relative flex items-center"
+                  >
                     {editMode && (
                       <input
                         type="checkbox"
@@ -1062,9 +1093,7 @@ const AdminAishe = ({ toggle, theme }) => {
                           : "",
                         color: editMode ? (hasPdf ? "#222" : "#aaa") : "",
                         border:
-                          editMode && !hasPdf
-                            ? "1px solid #ffe066"
-                            : undefined,
+                          editMode && !hasPdf ? "1px solid #ffe066" : undefined,
                         opacity: editMode && !hasPdf ? 0.7 : 1,
                         cursor: "pointer",
                       }}
@@ -1145,7 +1174,15 @@ const AdminAishe = ({ toggle, theme }) => {
       return acc;
     }, {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [aboutYearData, editMode, selectedPdfNames, changed, savedChanges, defaultButtons, hasPendingChanges]);
+  }, [
+    aboutYearData,
+    editMode,
+    selectedPdfNames,
+    changed,
+    savedChanges,
+    defaultButtons,
+    hasPendingChanges,
+  ]);
 
   const sideNavExtra = (
     <div className="flex gap-2 items-center absolute top-4 right-10 z-20">
@@ -1244,7 +1281,9 @@ const AdminAishe = ({ toggle, theme }) => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded shadow-lg w-96 flex flex-col items-center">
             <h2 className="text-lg font-bold mb-4">
-              {pdfModal.initialIdentity !== "empty" ? "Replace PDF" : "Upload PDF"}
+              {pdfModal.initialIdentity !== "empty"
+                ? "Replace PDF"
+                : "Upload PDF"}
             </h2>
 
             <input
@@ -1260,12 +1299,16 @@ const AdminAishe = ({ toggle, theme }) => {
 
             <div className="flex items-center mb-4 gap-2">
               <label className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded cursor-pointer mb-0 flex-grow flex items-center">
-                {pdfModal.initialIdentity !== "empty" ? "Replace PDF" : "Upload PDF"}
+                {pdfModal.initialIdentity !== "empty"
+                  ? "Replace PDF"
+                  : "Upload PDF"}
                 <input
                   type="file"
                   accept="application/pdf"
                   className="hidden"
-                  onChange={(e) => onPdfFileSelected(e.target.files?.[0] || null)}
+                  onChange={(e) =>
+                    onPdfFileSelected(e.target.files?.[0] || null)
+                  }
                 />
               </label>
 
@@ -1317,7 +1360,8 @@ const AdminAishe = ({ toggle, theme }) => {
           <div className="bg-white p-6 rounded shadow-lg w-96 text-center">
             <h2 className="text-lg text-brwn font-bold mb-4">Delete PDFs</h2>
             <p>
-              Are you sure you want to delete {selectedPdfNames.length} selected PDF(s)?
+              Are you sure you want to delete {selectedPdfNames.length} selected
+              PDF(s)?
             </p>
             <div className="flex justify-center gap-4 mt-4">
               <button
@@ -1373,8 +1417,8 @@ const AdminAishe = ({ toggle, theme }) => {
               Confirm Discard All Changes
             </h2>
             <p className="mb-6">
-              Are you sure you want to discard all saved changes? This will revert
-              everything to the original state.
+              Are you sure you want to discard all saved changes? This will
+              revert everything to the original state.
             </p>
             <div className="flex justify-center gap-4">
               <button
@@ -1405,9 +1449,9 @@ const AdminAishe = ({ toggle, theme }) => {
               Final Request for the Changes
             </h2>
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the superior
-              admin. Once approved, they will be applied automatically to the live
-              site.
+              Note: Your changes will stay pending until approved by the
+              superior admin. Once approved, they will be applied automatically
+              to the live site.
             </p>
 
             <div className="max-h-[200px] overflow-y-auto mb-4">
@@ -1495,4 +1539,4 @@ const AdminAishe = ({ toggle, theme }) => {
   );
 };
 
-export default AdminAishe; 
+export default AdminAishe;

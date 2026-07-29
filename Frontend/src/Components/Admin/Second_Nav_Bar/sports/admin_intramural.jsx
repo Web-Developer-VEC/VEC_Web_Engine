@@ -9,11 +9,10 @@ const Intramural = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-
   const [achievements, setAchievements] = useState([]);
   const [initialSnapshot, setInitialSnapshot] = useState([]);
   const [tempAchievements, setTempAchievements] = useState([]);
-  const { sendRequest,loading } = useAdminRequest();
+  const { sendRequest, loading } = useAdminRequest();
   const [editintra, setEditintra] = useState(false);
   const [selected, setSelected] = useState([]);
   const [isDirty, setIsDirty] = useState(false);
@@ -59,10 +58,10 @@ const Intramural = ({ data }) => {
       return {
         // Use a stable numeric id so revert math never breaks
         id: index + 1,
-        _mongoId: image._id,          // keep original DB id for payloads if needed
+        _mongoId: image._id, // keep original DB id for payloads if needed
         text: image?.title || "No Title",
-        image: serverPath,            // DB-relative path  ← NEVER overwrite this on upload
-        original_image: serverPath,   // permanent DB snapshot of image path
+        image: serverPath, // DB-relative path  ← NEVER overwrite this on upload
+        original_image: serverPath, // permanent DB snapshot of image path
         original_text: image?.title || "No Title", // permanent DB snapshot of text
         preview: makePreview(serverPath), // <img src> for display
         newFile: null,
@@ -85,10 +84,22 @@ const Intramural = ({ data }) => {
     }, 3000);
     return () => clearInterval(interval);
   }, [isHovered, achievements]);
+  useEffect(() => {
+    if (!showRequestButtons) return;
+
+    setAchievements(
+      tempAchievements.map((item) => ({
+        ...item,
+        preview: item.newFile ? item.preview : makePreview(item.image),
+      })),
+    );
+  }, [tempAchievements, showRequestButtons]);
 
   const handlePrev = () => {
     if (achievements.length === 0) return;
-    setActiveIndex((prev) => (prev - 1 + achievements.length) % achievements.length);
+    setActiveIndex(
+      (prev) => (prev - 1 + achievements.length) % achievements.length,
+    );
   };
 
   const handleNext = () => {
@@ -105,9 +116,7 @@ const Intramural = ({ data }) => {
     setIsDirty(true);
 
     setTempAchievements((prev) =>
-      prev.map((item) =>
-        item.id !== id ? item : { ...item, [field]: value }
-      )
+      prev.map((item) => (item.id !== id ? item : { ...item, [field]: value })),
     );
 
     // Skip change tracking for newly added rows (not in initialSnapshot)
@@ -119,17 +128,14 @@ const Intramural = ({ data }) => {
 
     setChanges((prev) => {
       const alreadyEdited = prev.find(
-        (c) => c.id === id && c.action === "Edited"
+        (c) => c.id === id && c.action === "Edited",
       );
 
       // Already tracking an edit for this row → nothing more to add
       if (alreadyEdited) return prev;
 
       // First edit on this row → record the full snapshot as oldValue
-      return [
-        ...prev,
-        { id, action: "Edited", oldValue: { ...snapshotRow } },
-      ];
+      return [...prev, { id, action: "Edited", oldValue: { ...snapshotRow } }];
     });
   };
 
@@ -151,11 +157,11 @@ const Intramural = ({ data }) => {
           ? item
           : {
               ...item,
-              image: serverPath,    // new DB path (used in payload)
-              preview: previewUrl,  // blob URL for <img> preview
+              image: serverPath, // new DB path (used in payload)
+              preview: previewUrl, // blob URL for <img> preview
               newFile: file,
-            }
-      )
+            },
+      ),
     );
 
     // Skip change tracking for newly added rows
@@ -167,14 +173,11 @@ const Intramural = ({ data }) => {
 
     setChanges((prev) => {
       const alreadyEdited = prev.find(
-        (c) => c.id === id && c.action === "Edited"
+        (c) => c.id === id && c.action === "Edited",
       );
       if (alreadyEdited) return prev;
 
-      return [
-        ...prev,
-        { id, action: "Edited", oldValue: { ...snapshotRow } },
-      ];
+      return [...prev, { id, action: "Edited", oldValue: { ...snapshotRow } }];
     });
   };
 
@@ -210,7 +213,7 @@ const Intramural = ({ data }) => {
     setIsDirty(true);
 
     setTempAchievements((prev) =>
-      prev.filter((item) => !selected.includes(item.id))
+      prev.filter((item) => !selected.includes(item.id)),
     );
 
     setChanges((prev) => {
@@ -219,7 +222,7 @@ const Intramural = ({ data }) => {
       selected.forEach((id) => {
         // If row was newly added → just remove its "Added" entry, no Delete needed
         const addedEntry = updated.find(
-          (c) => c.id === id && c.action === "Added"
+          (c) => c.id === id && c.action === "Added",
         );
         if (addedEntry) {
           updated = updated.filter((c) => c.id !== id);
@@ -248,7 +251,6 @@ const Intramural = ({ data }) => {
     setShowDeleteModal(false);
   };
 
- 
   const handleRevertChanges = (changeIndex) => {
     const change = changes[changeIndex];
     if (!change) return;
@@ -274,7 +276,7 @@ const Intramural = ({ data }) => {
           return {
             ...item,
             text: snap.text,
-            image: snap.original_image,       // DB path
+            image: snap.original_image, // DB path
             original_image: snap.original_image,
             original_text: snap.original_text,
             preview: makePreview(snap.original_image), // rebuild <img src>
@@ -289,7 +291,7 @@ const Intramural = ({ data }) => {
 
         // Find the original position from initialSnapshot
         const originalIndex = initialSnapshot.findIndex(
-          (o) => o.id === change.id
+          (o) => o.id === change.id,
         );
 
         // Re-insert at original position (or end if not found)
@@ -321,11 +323,17 @@ const Intramural = ({ data }) => {
     }
 
     const invalid = tempAchievements.some(
-      (item) => !item.text.trim() || !item.image
+      (item) => !item.text.trim() || !item.image,
     );
     if (invalid) {
       return;
     }
+    setAchievements(
+      tempAchievements.map((item) => ({
+        ...item,
+        preview: item.newFile ? item.preview : makePreview(item.image),
+      })),
+    );
 
     setEditintra(false);
     setShowRequestButtons(true);
@@ -442,7 +450,7 @@ const Intramural = ({ data }) => {
           buildPayload({
             action: "Added",
             newData: { title: currentItem.text, image_path: imagePath },
-          })
+          }),
         );
         if (currentItem.newFile) files.push(currentItem.newFile);
       }
@@ -464,7 +472,7 @@ const Intramural = ({ data }) => {
               title: change.oldValue.original_text,
               image_path: change.oldValue.original_image,
             },
-          })
+          }),
         );
         if (currentItem.newFile) files.push(currentItem.newFile);
       }
@@ -478,7 +486,7 @@ const Intramural = ({ data }) => {
               title: change.oldValue.original_text,
               image_path: change.oldValue.original_image,
             },
-          })
+          }),
         );
       }
     });
@@ -492,16 +500,22 @@ const Intramural = ({ data }) => {
 
     try {
       await sendRequest(payloads, files);
-     
 
       // New baseline = current temp state
       const deepCopy = JSON.parse(JSON.stringify(tempAchievements));
       const restored = deepCopy.map((item) => ({
         ...item,
-        preview: makePreview(item.image),
+        // Keep the existing preview if it is a blob URL.
+        preview:
+          item.preview && item.preview.startsWith("blob:")
+            ? item.preview
+            : makePreview(item.image),
+
         original_image: item.image,
         original_text: item.text,
-        newFile: null,
+
+        // Don't clear these until the request is actually approved.
+        newFile: item.newFile,
         isNew: false,
       }));
 
@@ -516,7 +530,6 @@ const Intramural = ({ data }) => {
       setIsDirty(false);
     } catch (err) {
       console.error("Error submitting request:", err);
-   
     }
   };
 
@@ -664,7 +677,7 @@ const Intramural = ({ data }) => {
                             setSelected((prev) =>
                               prev.includes(item.id)
                                 ? prev.filter((s) => s !== item.id)
-                                : [...prev, item.id]
+                                : [...prev, item.id],
                             )
                           }
                         />
@@ -832,7 +845,7 @@ const Intramural = ({ data }) => {
                 {changes.length > 0 ? (
                   changes.map((change, index) => {
                     const currentItem = tempAchievements.find(
-                      (i) => i.id === change.id
+                      (i) => i.id === change.id,
                     );
 
                     // Build a readable label for the "Item" column
@@ -856,15 +869,13 @@ const Intramural = ({ data }) => {
                             change.action === "Added"
                               ? "text-green-600"
                               : change.action === "Edited"
-                              ? "text-blue-600"
-                              : "text-red-600"
+                                ? "text-blue-600"
+                                : "text-red-600"
                           }`}
                         >
                           {change.action}
                         </td>
-                        <td className="border py-2">
-                          Intramural Achievements
-                        </td>
+                        <td className="border py-2">Intramural Achievements</td>
                         <td className="border py-2">
                           <span className="px-2 py-1 bg-yellow-100 text-black rounded-md">
                             {label}
