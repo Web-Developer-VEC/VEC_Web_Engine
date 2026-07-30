@@ -1,5 +1,3 @@
-"use client"
-
 import { useEffect, useState } from "react"
 import { Check, Clock, Trash2, Plus, LogOut, Mail, Phone, Shield, Calendar, Activity } from "lucide-react"
 import { useNavigate } from "react-router-dom"
