@@ -168,10 +168,10 @@ const Head = () => {
             cols: 1,
             sub: [
 
-                {hrd: false, ttl: "Journal publication ", sup: [], lnk: "/Journal"}, //Sponseredresearch
-                {hrd: false, ttl: "Books & Book Chapters", sup: [], lnk: "/Book_Chapter"} ,//Sponseredresearch
-                {hrd: false, ttl: "Funded Projects", sup: [], lnk: "/Funded"}, //Sponseredresearch
-                {hrd: false, ttl: "Consultancy", sup: [], lnk: "/Consultancy"},  //Academic
+                {hrd: false, ttl: "Journal publication ", sup: [], lnk: "/Journal"},
+                {hrd: false, ttl: "Books & Book Chapters", sup: [], lnk: "/Book_Chapter"} ,
+                {hrd: false, ttl: "Funded Projects", sup: [], lnk: "/Funded"},
+                {hrd: false, ttl: "Consultancy", sup: [], lnk: "/Consultancy"},
                 {hrd: false, ttl: "Policy", sup: [], lnk: "/policies"},
             ]
         },
@@ -296,7 +296,7 @@ const Head = () => {
                                                key={sbj.ttl} href={`${isRouteAllowed(sbj.lnk) ? sbj.lnk : "#"}`}
                                                target={sbj.openInNewTab ? '_blank' : '_self'}
                                             ><p
-                                                className={'w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts border-slate-500 border-dashed ' +
+                                                className={`w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts border-slate-500 border-dashed ${isRouteAllowed(sbj.lnk) ? "" : "cursor-not-allowed"}` +
                                                     (sbj.hrd ? 'font-bold border-b-2 text-center' : 'text-left')}>{sbj.ttl}</p>
                                             </a>
                                             {(sbj.sup.length > 0) ? (
@@ -376,7 +376,7 @@ const Head = () => {
                                                             ${location.pathname === subItem.lnk ? 'text-brwn font-semibold' : ''}`}
                                                 target='_blank'
                                             >
-                                                <p className='w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts'>{subItem.ttl}</p>
+                                                <p className='w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts'>{isRouteAllowed(subItem.ttl) ? subItem.ttl : "#"}</p>
                                             </a>
                                         ))}
                                     </div>

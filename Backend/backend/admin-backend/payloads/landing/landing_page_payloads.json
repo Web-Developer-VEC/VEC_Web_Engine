@@ -224,7 +224,7 @@
       "department": "Artificial Intelligence & Data Science",
       "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
       "image_path": "/static/images/events/PySpark.webp",
-      "website_link": "",
+      "link": "",
       "status": "True"
     }
   },
@@ -241,7 +241,7 @@
       "department": "Artificial Intelligence & Data Science",
       "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
       "image_path": "/static/images/events/PySpark.webp",
-      "website_link": "",
+      "link": "",
       "status": "True"
     },
     "meta_data": {
@@ -252,7 +252,7 @@
       "department": "Artificial Intelligence & Data Science",
       "content": "A week-long hands-on course on PySpark by an Amazon Engineer—designed to upskill students in big data processing with real-world expertise.",
       "image_path": "/static/images/events/PySpark.webp",
-      "website_link": "",
+      "link": "",
       "status": "True"
     }
   },
