@@ -112,7 +112,7 @@ export function LoginForm() {
       {/* Forgot Password Link */}
       <div className="text-right">
         <button type="button" className="text-sm text-[#fdcc03] hover:text-[#800000] transition-colors font-medium">
-          Forgot your password?
+          <a href="/forgot_password">Forgot your password?</a>
         </button>
       </div>
 
