@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import "./Aboutplacement.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
-import axios from "axios";
-import { useNavigate } from "react-router";
+import "./Aboutplacement.css";
 
 const Aboutplacement = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -30,7 +30,7 @@ const Aboutplacement = ({ theme, toggle }) => {
       }
     }
     fetchData();
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -43,7 +43,7 @@ const Aboutplacement = ({ theme, toggle }) => {
         window.removeEventListener("online", handleOnline);
         window.removeEventListener("offline", handleOffline);
     };
-}, []);
+  }, []);
 
 if (!isOnline) {
     return (

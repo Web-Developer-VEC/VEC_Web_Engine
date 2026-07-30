@@ -12,8 +12,11 @@ import { useAdminRequest } from "../../../hooks/useAdminRequest";
 export default function AdminOtherFacilities({ theme, toggle }) {
   const [activeTab, setActiveTab] = useState(null); // stable key (__origKey or category)
   const [imageIndex, setImageIndex] = useState(0);
+  const [imageLoading, setImageLoading] = useState(false);
+  const imageLoadStart = useRef(0);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [otherFacilities, setOtherFacilities] = useState(null);
+
   const { sendRequest, loading, error } = useAdminRequest();
   // editing states
   const [isEditing, setIsEditing] = useState(false);
@@ -39,6 +42,7 @@ export default function AdminOtherFacilities({ theme, toggle }) {
 
   // NEW: track whether any edit/add/delete action happened (controls Save visibility)
   const [hasEdits, setHasEdits] = useState(false);
+  const [requestSubmitted, setRequestSubmitted] = useState(false);
   // NEW: keep track of created blob URLs to revoke later
   const uploadedUrlsRef = useRef([]);
 
@@ -111,6 +115,9 @@ export default function AdminOtherFacilities({ theme, toggle }) {
 
         return {
           ...fac,
+          update_index: currentRows.findIndex(
+            (r) => r.imageFile || r.text !== "" || r.name !== "",
+          ),
           description: currentRows.map((r) => r.text),
           image_path,
           image_path_server,
@@ -136,12 +143,18 @@ export default function AdminOtherFacilities({ theme, toggle }) {
 
   const nextImage = () => {
     if (!currentFacility) return;
+
     const imgs = isEditing
       ? currentRows.map((r) => r.image).filter(Boolean)
       : Array.isArray(currentFacility.image_path)
         ? currentFacility.image_path
         : [currentFacility.image_path];
+
     if (imgs.length === 0) return;
+
+    imageLoadStart.current = Date.now();
+    setImageLoading(true);
+
     setImageIndex((prevIndex) => (prevIndex + 1) % imgs.length);
   };
   const buildOtherFacilitiesPayload = ({ action, newData, oldData }) => {
@@ -150,93 +163,169 @@ export default function AdminOtherFacilities({ theme, toggle }) {
       normalize(arr).filter(
         (p) => typeof p === "string" && !p.startsWith("blob:"),
       );
+    // Backend sends a plain scalar for single-item facilities and an array
+    // only when there's genuinely more than one item (e.g. Seminar Halls).
+    const toScalarOrArray = (val) => {
+      const arr = normalize(val);
+      if (arr.length <= 1) return arr[0] ?? "";
+      return arr;
+    };
+
+    if (action === "insert") {
+      return {
+        collectionName: "other_facilities",
+        collection_type: "other_facilities",
+        action: "insert",
+        title: "insert of other facility",
+        category: newData.category,
+
+        meta_data: {
+          content: [
+            {
+              name: newData.row.name,
+              description: newData.row.text,
+              image_path: newData.row.imageFile
+                ? buildOtherFacilityImagePath(
+                    newData.category,
+                    newData.row.imageFile.name,
+                  )
+                : newData.row.origImagePath,
+            },
+          ],
+        },
+
+        original_data: null,
+      };
+    }
 
     if (action === "add") {
       return {
         collectionName: "other_facilities",
         collection_type: "other_facilities",
         action: "insert",
-        title: "insertion of other facility",
+        title: "insert of other facility",
         category: newData.category,
+
         meta_data: {
-          name: newData.name,
-          description: normalize(newData.description),
-          image_path: cleanPaths(
-            newData?.image_path_server || newData?.image_path,
-          ),
+          content: newData.name.map((name, index) => ({
+            name,
+            description: newData.description[index],
+            image_path: newData.image_path_server[index],
+          })),
         },
+
         original_data: null,
       };
     }
+
     if (action === "edit") {
-      // ✅ FIXED — use server paths, not blob URLs
-      const newImagePaths = cleanPaths(
-        newData?.image_path_server || newData?.image_path,
-      );
-      const oldImagePaths = cleanPaths(
-        oldData?.image_path || oldData?.meta_data?.image_path,
-      );
+      if (action === "edit") {
+        const currentRows = newData.currentRows || [];
 
-      // Find deleted image paths = paths in old but NOT in new
-      const deletedImagePaths = oldImagePaths.filter(
-        (p) => !newImagePaths.includes(p),
-      );
-      const isImageDelete = deletedImagePaths.length > 0;
+        // Only rows that were actually modified
+        const updatedRows = currentRows.filter(
+          (row) => !row.isNew && row.isChanged,
+        );
 
-      return {
-        collectionName: "other_facilities",
-        collection_type: "other_facilities",
-        action: "update",
-        title: "updation of other facility",
-        category: newData?.category,
-        meta_data: isImageDelete
-          ? {
-              // ✅ Only the deleted image path
-              image_path: deletedImagePaths,
-            }
-          : {
-              // Normal edit — send full updated data
-              name: newData?.name,
-              description: normalize(newData?.description),
-              image_path: newImagePaths,
-            },
-        original_data: isImageDelete
-          ? {}
-          : {
-              name: oldData?.name,
-              description: normalize(oldData?.description),
-              image_path: oldImagePaths,
-            },
-      };
+        return updatedRows.map((row) => ({
+          collectionName: "other_facilities",
+          collection_type: "other_facilities",
+          action: "update",
+
+          title:
+            newData.category === "Seminar Halls"
+              ? "updation of seminar halls"
+              : "updation of other facility",
+
+          category: newData.category,
+
+          meta_data: {
+            content: [
+              {
+                name: row.name,
+                description: row.text,
+                image_path: row.imageFile
+                  ? buildOtherFacilityImagePath(
+                      newData.category,
+                      row.imageFile.name,
+                    )
+                  : row.origImagePath,
+              },
+            ],
+          },
+
+          original_data: {
+            content: [
+              {
+                name: normalize(oldData.name)[row.update_index],
+                description: normalize(oldData.description)[row.update_index],
+                image_path: normalize(oldData.image_path)[row.update_index],
+              },
+            ],
+          },
+        }));
+      }
     }
 
-    if (action === "delete") {
-      const normalize = (val) => (Array.isArray(val) ? val : val ? [val] : []);
-      const cleanPaths = (arr) =>
-        normalize(arr).filter(
-          (p) => typeof p === "string" && !p.startsWith("blob:"),
-        );
+    if (action === "deleteRow") {
       return {
         collectionName: "other_facilities",
         collection_type: "other_facilities",
         action: "delete",
-        title: "deletion of other facility",
-        category: oldData?.category,
-        meta_data: {},
-        original_data: null,
+        title: `delete ${newData.category} image`,
+        category: newData.category,
+
+        meta_data: {
+          content: [
+            {
+              name: newData.name ?? "",
+              description: newData.description ?? "",
+              image_path: newData.image_path,
+            },
+          ],
+        },
       };
     }
+
+    // DELETE ENTIRE CATEGORY ONLY
+    if (action === "deleteCategory") {
+      return {
+        collectionName: "other_facilities",
+        collection_type: "other_facilities",
+        action: "delete",
+        title: `delete ${oldData.category} category`,
+        category: oldData.category,
+
+        meta_data: {
+          delete_category: true,
+        },
+
+        original_data: {
+          category: oldData.category,
+          name: oldData.name,
+          description: oldData.description,
+          image_path: oldData.image_path,
+        },
+      };
+    }
+
     return null;
   };
 
   const prevImage = () => {
     if (!currentFacility) return;
+
     const imgs = isEditing
       ? currentRows.map((r) => r.image).filter(Boolean)
       : Array.isArray(currentFacility.image_path)
         ? currentFacility.image_path
         : [currentFacility.image_path];
+
     if (imgs.length === 0) return;
+
+    imageLoadStart.current = Date.now();
+    setImageLoading(true);
+
     setImageIndex((prevIndex) => (prevIndex - 1 + imgs.length) % imgs.length);
   };
 
@@ -250,13 +339,40 @@ export default function AdminOtherFacilities({ theme, toggle }) {
             type: "other_facilities",
           },
         );
-        const data = response.data.data || [];
-        // ensure each item has a stable __origKey (use category if present, else generate)
-        const normalized = data.map((f) => ({
-          ...f,
-          __origKey: f.__origKey || f.category || uid(),
+
+        const responseData = response.data.data || [];
+
+        // Backend format:
+        // [
+        //   {
+        //      type:"other_facilities",
+        //      data:[ ... ]
+        //   }
+        // ]
+
+        const facilities =
+          responseData.length > 0 && Array.isArray(responseData[0].data)
+            ? responseData[0].data
+            : responseData;
+
+        // Convert backend structure into the structure used by the frontend
+        const normalized = facilities.map((facility) => ({
+          category: facility.category,
+
+          name: facility.content.map((item) => item.name),
+
+          description: facility.content.map((item) => item.description),
+
+          image_path: facility.content.map((item) => item.image_path),
+
+          __origKey: facility.__origKey || facility.category || uid(),
         }));
+
         setOtherFacilities(normalized);
+
+        setActiveTab(
+          normalized[0]?.__origKey || normalized[0]?.category || null,
+        );
         setActiveTab(
           normalized[0]?.__origKey || normalized[0]?.category || null,
         );
@@ -300,13 +416,15 @@ export default function AdminOtherFacilities({ theme, toggle }) {
 
   // whenever activeTab changes while editing, re-init rows for that facility
   useEffect(() => {
+    setImageIndex(0);
+
+    imageLoadStart.current = Date.now();
+    setImageLoading(true);
+
     if (isEditing && currentFacility) {
       initRowsFromFacility(currentFacility);
     }
-    // reset image index when tab changes
-    setImageIndex(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeTab]);
+  }, [activeTab, currentFacility]);
 
   // change tracking helper
   const pushFacilityChange = (type, latestName, stableKey, data = {}) => {
@@ -325,24 +443,47 @@ export default function AdminOtherFacilities({ theme, toggle }) {
         return prev.filter((item) => item._key !== stableKey);
       }
 
-      const desiredType = type === "edit" && isNewFac ? "add" : type;
+      // Keep newly created facilities as "add" even if they are edited later
+      let desiredType = type;
 
-      const existingIndex = prev.findIndex(
+      const existingAction = prev.find(
         (item) =>
-          item.section === "Other-Facilities" &&
-          item.type === desiredType &&
-          item._key === stableKey,
+          item.section === "Other-Facilities" && item._key === stableKey,
       );
 
-      // ✅ FIXED - also updates `data` so latest image_path is preserved
+      if (existingAction) {
+        if (existingAction.type === "insert") {
+          desiredType = "insert";
+        } else if (existingAction.type === "add") {
+          desiredType = "add";
+        } else if (existingAction.type === "delete") {
+          desiredType = "delete";
+        }
+      } else if (type === "edit" && isNewFac) {
+        desiredType = "add";
+      }
+      const existingIndex = prev.findIndex(
+        (item) =>
+          item.section === "Other-Facilities" && item._key === stableKey,
+      );
+
       if (existingIndex !== -1) {
+        // If INSERT already exists, ignore EDIT requests
+        if (prev[existingIndex].type === "insert" && type === "edit") {
+          return prev;
+        }
+
         const updated = [...prev];
+
         updated[existingIndex] = {
           ...updated[existingIndex],
           changes: latestName,
-          data:
-            Object.keys(data).length > 0 ? data : updated[existingIndex].data,
+          data: {
+            ...updated[existingIndex].data,
+            ...data,
+          },
         };
+
         return updated;
       }
 
@@ -386,10 +527,14 @@ export default function AdminOtherFacilities({ theme, toggle }) {
     const rows = imgs.map((img, idx) => {
       return {
         id: uid(),
+        update_index: idx,
         text: descs[idx] || names[idx] || "",
-        // display existing paths through UrlParser; newly uploaded files will be blob URLs stored in `image`
+        name: names[idx] || "",
         image: img ? UrlParser(img) : null,
         origImagePath: img || null,
+
+        // NEW
+        isChanged: false,
       };
     });
 
@@ -408,7 +553,7 @@ export default function AdminOtherFacilities({ theme, toggle }) {
   }
 
   const handleStartEditing = () => {
-    // snapshot previous state (deep-ish copy)
+    setRequestSubmitted(false);
     const snapshot = JSON.parse(JSON.stringify(otherFacilities || []));
     setPrevFacilitiesSnapshot(snapshot);
 
@@ -472,7 +617,9 @@ export default function AdminOtherFacilities({ theme, toggle }) {
         return { ...f, [field]: value, __origKey: f.__origKey || stable };
       });
 
-      pushFacilityChange("edit", value, stable);
+      const existing = changeList.find((c) => c._key === stable);
+
+      pushFacilityChange(existing?.type || "edit", value, stable);
       return updated;
     });
 
@@ -489,7 +636,7 @@ export default function AdminOtherFacilities({ theme, toggle }) {
   };
 
   const handleAddNewCategory = () => {
-      if (isEditing && currentFacility) {
+    if (isEditing && currentFacility) {
       persistCurrentRowsToFacility();
     }
     const newKey = uid();
@@ -498,8 +645,10 @@ export default function AdminOtherFacilities({ theme, toggle }) {
       name: "",
       description: [""],
       image_path: [],
-      __origKey: newKey, // stable unique key
-      __isNew: true, // mark as newly added
+      image_path_server: [],
+      __newFiles: [],
+      __origKey: newKey,
+      __isNew: true,
     };
 
     setOtherFacilities((prev) => [...(prev || []), newFacility]);
@@ -507,7 +656,12 @@ export default function AdminOtherFacilities({ theme, toggle }) {
     setActiveTab(newKey);
     setIsEditing(true);
     setHasEdits(true);
-    pushFacilityChange("add", newFacility.category || "(new)", newKey);
+    pushFacilityChange(
+      "add",
+      newFacility.category || "(new)",
+      newKey,
+      newFacility,
+    );
 
     // init rows for the new facility
     setTimeout(() => initRowsFromFacility(newFacility), 0);
@@ -548,13 +702,16 @@ export default function AdminOtherFacilities({ theme, toggle }) {
       });
 
       // ✅ REPLACE WITH
+      const existing = changeList.find((c) => c._key === stableKey);
+
       pushFacilityChange("delete", fac?.category || "(deleted)", stableKey, {
+        category: fac?.category,
         name: fac?.name,
         description: fac?.description,
         image_path: fac?.image_path,
-        category: fac?.category,
+        delete_category: true,
       });
-    });
+    }); // <-- CLOSE forEach HERE
 
     setOtherFacilities((prev) => {
       const remaining = prev.filter(
@@ -569,8 +726,13 @@ export default function AdminOtherFacilities({ theme, toggle }) {
 
     setSelectedCategories([]);
     setShowDeleteCategoriesModal(false);
-    setHasEdits(true);
+
+    // Force Save button to appear
+    setTimeout(() => {
+      setHasEdits(true);
+    }, 0);
   };
+
   const handleRevertChange = (index) => {
     const change = changeList[index];
     if (!change || !prevFacilitiesSnapshot) return;
@@ -623,16 +785,133 @@ export default function AdminOtherFacilities({ theme, toggle }) {
     setHasEdits(true);
   };
 
-  // ======= Image table handlers =======
-  const handleInputChange = (rowId, field, value) => {
-    setCurrentRows((prev) =>
-      prev.map((r) => (r.id === rowId ? { ...r, [field]: value } : r)),
+  const copyPreviousName = (rowId) => {
+    setCurrentRows((prev) => {
+      const index = prev.findIndex((r) => r.id === rowId);
+
+      if (index <= 0) return prev;
+
+      const previousRow = prev[index - 1];
+
+      return prev.map((row, i) =>
+        i === index
+          ? {
+              ...row,
+              name: previousRow.name,
+              nameLocked: true,
+              isChanged: true,
+            }
+          : row,
+      );
+    });
+
+    setHasEdits(true);
+
+    const existing = changeList.find(
+      (c) => c._key === getStableKeyForCurrent(),
     );
+
     pushFacilityChange(
-      "edit",
-      currentFacility?.category || currentFacility?.name || "(edit)",
+      existing?.type || "edit",
+      currentFacility?.category || "(edit)",
       getStableKeyForCurrent(),
     );
+  };
+
+  const copyPreviousDescription = (rowId) => {
+    setCurrentRows((prev) => {
+      const index = prev.findIndex((r) => r.id === rowId);
+
+      if (index <= 0) return prev;
+
+      const previousRow = prev[index - 1];
+
+      return prev.map((row, i) =>
+        i === index
+          ? {
+              ...row,
+              text: previousRow.text,
+              textLocked: true,
+              isChanged: true,
+            }
+          : row,
+      );
+    });
+
+    setHasEdits(true);
+
+    const existing = changeList.find(
+      (c) => c._key === getStableKeyForCurrent(),
+    );
+
+    pushFacilityChange(
+      existing?.type || "edit",
+      currentFacility?.category || "(edit)",
+      getStableKeyForCurrent(),
+    );
+  };
+
+  const clearCopiedName = (rowId) => {
+    setCurrentRows((prev) =>
+      prev.map((row) =>
+        row.id === rowId
+          ? {
+              ...row,
+              name: "",
+              isChanged: true,
+            }
+          : row,
+      ),
+    );
+
+    setHasEdits(true);
+  };
+
+  const clearCopiedDescription = (rowId) => {
+    setCurrentRows((prev) =>
+      prev.map((row) =>
+        row.id === rowId
+          ? {
+              ...row,
+              text: "",
+              isChanged: true,
+            }
+          : row,
+      ),
+    );
+
+    setHasEdits(true);
+  };
+
+  const handleInputChange = (rowId, field, value) => {
+    setCurrentRows((prev) =>
+      prev.map((r) =>
+        r.id === rowId
+          ? {
+              ...r,
+              [field]: value,
+              isChanged: true,
+            }
+          : r,
+      ),
+    );
+
+    const existing = changeList.find(
+      (c) => c._key === getStableKeyForCurrent(),
+    );
+
+    // If this facility already has an INSERT request,
+    // don't create an EDIT request.
+    if (existing?.type === "insert") {
+      return;
+    }
+
+    pushFacilityChange(
+      "edit",
+      currentFacility?.category || "(edit)",
+      getStableKeyForCurrent(),
+    );
+
     setHasEdits(true);
   };
 
@@ -651,15 +930,28 @@ export default function AdminOtherFacilities({ theme, toggle }) {
         r.id === rowId
           ? {
               ...r,
-              image: blobUrl, // preview (blob)
-              imageFile: file, // actual File for upload
-              image_path: imagePath, // intended backend path (string)
-              origImagePath: null, // marks as NEW image
+              image: blobUrl,
+              imageFile: file,
+              image_path: imagePath,
+              isChanged: true,
             }
           : r,
       ),
     );
+
+    console.log("Selected File:", file);
+
+    console.log("Selected File:", file);
     setHasEdits(true);
+
+    const existing = changeList.find(
+      (c) => c._key === getStableKeyForCurrent(),
+    );
+
+    // Don't generate edit while inserting
+    if (existing?.type === "insert") {
+      return;
+    }
 
     pushFacilityChange(
       "edit",
@@ -672,16 +964,44 @@ export default function AdminOtherFacilities({ theme, toggle }) {
   const handleAddRow = () => {
     const newRow = {
       id: uid(),
+
+      name: "",
       text: "",
+
       image: null,
       origImagePath: null,
+
+      isChanged: true,
+      isNew: true,
     };
+
     setCurrentRows((prev) => [...prev, newRow]);
-    pushFacilityChange(
-      "edit",
-      currentFacility?.category || "(edit)",
-      getStableKeyForCurrent(),
-    );
+
+    const stableKey = getStableKeyForCurrent();
+
+    setChangeList((prev) => {
+      // Prevent duplicate INSERT entries for the same row
+      const exists = prev.some(
+        (item) => item.type === "insert" && item.data?.rowId === newRow.id,
+      );
+
+      if (exists) return prev;
+
+      return [
+        ...prev,
+        {
+          type: "insert",
+          section: "Other-Facilities",
+          changes: currentFacility?.category || "(insert)",
+          _key: stableKey,
+          data: {
+            category: currentFacility?.category,
+            rowId: newRow.id,
+          },
+        },
+      ];
+    });
+
     setHasEdits(true);
   };
 
@@ -692,7 +1012,6 @@ export default function AdminOtherFacilities({ theme, toggle }) {
   };
 
   const handleDeleteSelectedRows = () => {
-    // ✅ Compute remaining rows BEFORE state update
     const remainingRows = currentRows.filter(
       (r) => !selectedRows.includes(r.id),
     );
@@ -713,57 +1032,156 @@ export default function AdminOtherFacilities({ theme, toggle }) {
     });
 
     setCurrentRows(remainingRows);
+    setHasEdits(true);
 
-    // ✅ Push change with only the REMAINING image paths and descriptions
-    pushFacilityChange(
-      "edit",
-      currentFacility?.category || "(image delete)",
-      getStableKeyForCurrent(),
-      {
-        name: currentFacility?.name,
-        description: remainingRows.map((r) => r.text),
-        image_path: remainingRows
-          .map((r) => r.image_path || r.origImagePath)
-          .filter(Boolean),
-      },
-    );
+    const stableKey = getStableKeyForCurrent();
+    const isMultiNamedFacility =
+      Array.isArray(currentFacility?.name) && currentFacility.name.length > 1;
+
+    if (isMultiNamedFacility) {
+      // Each row is a distinct named item — report one name-keyed delete
+      // per row, matching the backend's "deleteRow" shape.
+      setChangeList((prev) => [
+        ...prev,
+        ...rowsToDelete
+          .filter((r) => r.name)
+          .map((r) => ({
+            type: "deleteRow",
+            section: "Other-Facilities",
+            changes: `Deleted ${r.name}`,
+            _key: `${stableKey}::${r.name}`,
+            data: {
+              category: currentFacility?.category,
+              name: r.name,
+              description: r.text,
+              image_path: r.origImagePath,
+            },
+          })),
+      ]);
+    } else {
+      // Single-item facility — treat as a normal edit. buildOtherFacilitiesPayload
+      // will diff the image paths and automatically emit an image "delete".
+      // Single-item facility – if images were deleted, always show DELETE in Request
+      setChangeList((prev) => {
+        // Remove any existing edit request for this facility
+        const filtered = prev.filter(
+          (item) => !(item._key === stableKey && item.type === "edit"),
+        );
+
+        return [
+          ...filtered,
+          {
+            type: "delete",
+            section: "Other-Facilities",
+            changes: `Deleted image from ${currentFacility?.category}`,
+            _key: stableKey,
+            data: {
+              category: currentFacility?.category,
+              name: currentFacility?.name,
+              description: currentFacility?.description,
+              image_path: selectedRows
+                .map((id) => {
+                  const row = currentRows.find((r) => r.id === id);
+                  return row?.origImagePath;
+                })
+                .filter(Boolean),
+            },
+          },
+        ];
+      });
+
+      setHasEdits(true);
+    }
 
     setSelectedRows([]);
     setShowDeleteRowsModal(false);
-    setHasEdits(true);
   };
 
   const validateCurrentFacility = () => {
-    if (!currentFacility) return false;
-
-    const toStr = (val) => {
-      if (Array.isArray(val)) return val[0] || "";
-      return String(val || "");
-    };
-
-    const categoryValid = toStr(currentFacility.category).trim().length > 0;
-    const nameValid = toStr(currentFacility.name).trim().length > 0;
-
-    if (!categoryValid || !nameValid) return false;
-
-    if (!currentRows || currentRows.length === 0) return false;
-
-    for (const r of currentRows) {
-      const imageOk = !!(r.image || r.origImagePath);
-      if (!imageOk) return false;
+    if (!currentFacility) {
+      return {
+        valid: false,
+        message: "Unable to find the selected facility.",
+      };
     }
 
-    return true;
+    if (!String(currentFacility.category || "").trim()) {
+      return {
+        valid: false,
+        message: "Please enter a category before saving.",
+      };
+    }
+
+    if (!String(currentFacility.name || "").trim()) {
+      return {
+        valid: false,
+        message: "Please enter a heading before saving.",
+      };
+    }
+
+    if (currentRows.length === 0) {
+      return {
+        valid: false,
+        message: "Please add at least one facility entry.",
+      };
+    }
+
+    for (let i = 0; i < currentRows.length; i++) {
+      const row = currentRows[i];
+      const rowNo = i + 1;
+
+      const hasName = String(row.name || "").trim();
+      const hasDescription = String(row.text || "").trim();
+      const hasImage = row.image || row.origImagePath;
+
+      if (!hasName && !hasDescription && !hasImage) {
+        return {
+          valid: false,
+          message: `Row ${rowNo} is empty. Please fill all required fields or remove the row.`,
+        };
+      }
+
+      if (!hasName) {
+        return {
+          valid: false,
+          message: `Please enter the Name for Row ${rowNo}, or "Copy Previous Name".`,
+        };
+      }
+
+      if (!hasDescription) {
+        return {
+          valid: false,
+          message: `Please enter the Description/Subheading for Row ${rowNo}.`,
+        };
+      }
+
+      if (!hasImage) {
+        return {
+          valid: false,
+          message: `Please upload an image for Row ${rowNo}.`,
+        };
+      }
+    }
+
+    return {
+      valid: true,
+      message: "",
+    };
   };
 
   const handleSave = () => {
-    if (!validateCurrentFacility()) {
-      alert("All fields are mandatory");
+    const validation = validateCurrentFacility();
+
+    if (!validation.valid) {
+      toast.error(validation.message, {
+        position: "bottom-right",
+        autoClose: 3000,
+      });
       return;
     }
 
     setOtherFacilities((prev) =>
-      prev.map((fac) => {
+      prev.map((fac, idx) => {
         const facKey = fac.__origKey || fac.category;
         if (facKey !== activeTab) return fac;
 
@@ -788,9 +1206,25 @@ export default function AdminOtherFacilities({ theme, toggle }) {
 
         return {
           ...fac,
-          image_path,
-          image_path_server,
-          description: currentRows.map((r) => r.text),
+          currentRows,
+
+          name:
+            currentRows.length === 1
+              ? currentRows[0].name
+              : currentRows.map((r) => r.name),
+
+          description:
+            currentRows.length === 1
+              ? currentRows[0].text
+              : currentRows.map((r) => r.text),
+
+          update_index: idx,
+
+          image_path: currentRows.length === 1 ? image_path[0] : image_path,
+
+          image_path_server:
+            currentRows.length === 1 ? image_path_server[0] : image_path_server,
+
           __origKey: fac.__origKey || fac.category || uid(),
           __isNew: fac.__isNew || false,
           __newFiles: newFiles,
@@ -839,31 +1273,121 @@ export default function AdminOtherFacilities({ theme, toggle }) {
   ) => {
     return changeList
       .map((change) => {
-        const newData = currentData.find((f) => f.__origKey === change._key);
+        if (change.type === "deleteRow") {
+          return buildOtherFacilitiesPayload({
+            action: "deleteRow",
+            newData: {
+              category: change.data.category,
+              name: change.data.name,
+              description: change.data.description,
+              image_path: change.data.image_path,
+            },
+          });
+        }
+        let newData;
+
+        // Find the current facility
+        newData = currentData.find(
+          (f) =>
+            change._key === f.__origKey ||
+            change._key.startsWith(`${f.__origKey}-`),
+        );
+
+        // Find previous snapshot
         const oldData =
           change.type === "delete"
-            ? change.data // ← use stored data
+            ? change.data
             : prevSnapshot?.find((f) => f.__origKey === change._key);
-        return buildOtherFacilitiesPayload({
-          action: change.type,
-          newData,
-          oldData,
-        });
+
+        // ---------------- INSERT ----------------
+        if (change.type === "insert") {
+          if (!newData || !newData.currentRows) return [];
+
+          return newData.currentRows
+            .filter((row) => row.isNew)
+            .map((row) =>
+              buildOtherFacilitiesPayload({
+                action: "insert",
+                newData: {
+                  category: newData.category,
+                  row,
+                },
+              }),
+            );
+        }
+
+        // ---------------- NEW CATEGORY ----------------
+        if (change.type === "add") {
+          if (!newData || !newData.currentRows) return [];
+
+          return [
+            buildOtherFacilitiesPayload({
+              action: "add",
+              newData: {
+                category: newData.category,
+                name: newData.currentRows.map((r) => r.name),
+                description: newData.currentRows.map((r) => r.text),
+                image_path_server: newData.currentRows.map((r) =>
+                  r.imageFile
+                    ? buildOtherFacilityImagePath(
+                        newData.category,
+                        r.imageFile.name,
+                      )
+                    : r.origImagePath,
+                ),
+              },
+            }),
+          ];
+        }
+
+        // ---------------- DELETE CATEGORY ----------------
+        // ---------------- DELETE ----------------
+        // ---------------- DELETE ----------------
+        if (change.type === "delete") {
+          // ===== Whole Facility Delete =====
+          if (change.data?.delete_category) {
+            return buildOtherFacilitiesPayload({
+              action: "deleteCategory",
+              oldData: change.data,
+            });
+          }
+
+          // ===== Single Image Delete =====
+          return (
+            Array.isArray(change.data?.image_path)
+              ? change.data.image_path
+              : [change.data?.image_path]
+          )
+            .filter(Boolean)
+            .map((imgPath) =>
+              buildOtherFacilitiesPayload({
+                action: "deleteRow",
+                newData: {
+                  category: change.data.category,
+                  name: change.data.name,
+                  description: change.data.description,
+                  image_path: imgPath,
+                },
+              }),
+            );
+        }
+
+        // ---------------- UPDATE ----------------
+        if (change.type === "edit") {
+          return buildOtherFacilitiesPayload({
+            action: "edit",
+            newData,
+            oldData,
+          });
+        }
       })
+      .flat()
       .filter(Boolean);
   };
+
   // ✅ Add this line right before the carousel img tag
 
   const safeIndex = Math.min(imageIndex, images.length - 1);
-
-  <img
-    src={resolveImageSrc(images[safeIndex])}
-    alt={currentFacility?.category || currentFacility?.name || ""}
-    className="carousel-img"
-    onError={(e) => {
-      e.currentTarget.style.display = "none";
-    }}
-  />;
   const handleFinalRequest = async () => {
     if (!changeList.length) {
       alert("No changes to submit");
@@ -878,19 +1402,65 @@ export default function AdminOtherFacilities({ theme, toggle }) {
     );
 
     // 2) Collect files (from __newFiles) — these are File objects that we must upload
-    const filesToUpload = changeList
-      .map((change) => change.data?.imageFile)
-      .filter(Boolean);
+    const filesToUpload = [];
+
+    changeList.forEach((change) => {
+      const facility = otherFacilities.find(
+        (f) =>
+          f.__origKey === change._key || f.category === change.data?.category,
+      );
+
+      if (!facility) return;
+
+      // INSERT
+      if (change.type === "insert") {
+        const row = (facility.currentRows || []).find(
+          (r) => r.id === change.data?.rowId,
+        );
+
+        if (row?.imageFile) {
+          filesToUpload.push(row.imageFile);
+        }
+      }
+
+      // ADD CATEGORY
+      if (change.type === "add") {
+        (facility.currentRows || []).forEach((row) => {
+          if (row.imageFile) {
+            filesToUpload.push(row.imageFile);
+          }
+        });
+      }
+
+      // EDIT
+      if (change.type === "edit") {
+        const rows =
+          facility.__origKey === getStableKeyForCurrent()
+            ? currentRows
+            : facility.currentRows || [];
+
+        rows.forEach((row) => {
+          if (row.imageFile instanceof File) {
+            filesToUpload.push(row.imageFile);
+          }
+        });
+      }
+    });
 
     console.log("PAYLOAD:", payload);
     console.log("FILES :", filesToUpload);
+    console.log("Uploading Files:", filesToUpload);
+
+    filesToUpload.forEach((f, i) => {
+      console.log(i, f.name, f);
+    });
 
     await sendRequest(payload, filesToUpload);
 
-    toast.success("Request submitted successfully!");
     setShowPopup(false);
     setChangeList([]);
     setPrevFacilitiesSnapshot(null);
+    setRequestSubmitted(true);
 
     // cleanup created blob urls now that everything's submitted
     uploadedUrlsRef.current.forEach((u) => {
@@ -910,9 +1480,11 @@ export default function AdminOtherFacilities({ theme, toggle }) {
 
   if (!isOnline) {
     return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-        <LoadComp txt={"You are offline"} />
-      </div>
+      <>
+        <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+          <LoadComp txt={"You are offline"} />
+        </div>
+      </>
     );
   }
 
@@ -927,6 +1499,7 @@ export default function AdminOtherFacilities({ theme, toggle }) {
     setActiveTab(otherFacilities[0].__origKey);
     return null;
   }
+
   return (
     <>
       <Banner
@@ -958,11 +1531,20 @@ export default function AdminOtherFacilities({ theme, toggle }) {
                 <button
                   className={`tab-button ${activeTab === stableKey ? "active-tab" : ""} bg-secd dark:bg-drks text-text flex items-center`}
                   onClick={() => {
-                    if (isEditing && currentFacility && stableKey !== activeTab) {
+                    if (
+                      isEditing &&
+                      currentFacility &&
+                      stableKey !== activeTab
+                    ) {
                       persistCurrentRowsToFacility();
                     }
+
+                    imageLoadStart.current = Date.now();
+                    setImageLoading(true);
+
                     setActiveTab(stableKey);
                     setImageIndex(0);
+
                     if (isEditing) initRowsFromFacility(facility);
                   }}
                 >
@@ -998,24 +1580,63 @@ export default function AdminOtherFacilities({ theme, toggle }) {
         {!isEditing && currentFacility && (
           <div className="content-container">
             <h2 className="current-facility text-brwn dark:text-drkt">
-              {getSafe(currentFacility.name, imageIndex)}
+              {Array.isArray(currentFacility?.name) &&
+              currentFacility.name.length > 1
+                ? getSafe(currentFacility.name, imageIndex)
+                : currentFacility?.category}
             </h2>
-            <p>{getSafe(currentFacility.description, imageIndex)}</p>
+            <p className="facility-description-text">
+              {getSafe(currentFacility.description, imageIndex)}
+            </p>
 
             {/* Image Carousel */}
             <div className="carousel">
               {images.length > 1 && (
-                <button className="prev" onClick={prevImage}></button>
+                <button className="prev" onClick={prevImage}>
+                  ❮
+                </button>
               )}
-              <img
-                src={resolveImageSrc(images[imageIndex])}
-                alt={currentFacility?.category || currentFacility?.name || ""}
-                className="carousel-img"
-                onError={(e) => {
-                  // optional: hide broken image or replace with placeholder
-                  e.currentTarget.style.display = "none";
+              <div
+                className="relative flex justify-center items-center"
+                style={{
+                  width: "650px",
+                  height: "400px",
+                  maxWidth: "90%",
+                  margin: "0 auto",
+                  overflow: "hidden",
+                  borderRadius: "12px",
                 }}
-              />
+              >
+                {imageLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-white z-10 rounded-lg">
+                    <LoadComp txt="Image Loading..." />
+                  </div>
+                )}
+
+                <img
+                  key={`${safeIndex}-${resolveImageSrc(images[safeIndex])}`}
+                  src={resolveImageSrc(images[safeIndex])}
+                  alt={currentFacility?.category || currentFacility?.name || ""}
+                  className="carousel-img"
+                  onLoad={() => {
+                    const elapsed = Date.now() - imageLoadStart.current;
+                    const delay = Math.max(400 - elapsed, 0);
+
+                    setTimeout(() => {
+                      setImageLoading(false);
+                    }, delay);
+                  }}
+                  onError={() => {
+                    const elapsed = Date.now() - imageLoadStart.current;
+                    const delay = Math.max(400 - elapsed, 0);
+
+                    setTimeout(() => {
+                      setImageLoading(false);
+                      setImageIndex(0);
+                    }, delay);
+                  }}
+                />
+              </div>
               {images.length > 1 && (
                 <button className="next" onClick={nextImage}>
                   ❯
@@ -1026,7 +1647,7 @@ export default function AdminOtherFacilities({ theme, toggle }) {
         )}
 
         {/* After saving (local) show Request + Discard */}
-        {!isEditing && isSaved && (
+        {!isEditing && isSaved && !requestSubmitted && (
           <div className="flex justify-end gap-3 mt-6 mb-4 mr-12">
             <button
               className="px-4 py-2 bg-gray-500 text-white rounded"
@@ -1073,7 +1694,8 @@ export default function AdminOtherFacilities({ theme, toggle }) {
                       <tr key={idx} className="border-b">
                         <td className="p-2">
                           <span style={{ textTransform: "capitalize" }}>
-                            {req.type}
+                            {" "}
+                            {req.type === "deleteRow" ? "delete" : req.type}
                           </span>
                         </td>
                         <td className="border p-2">Other-Facilities</td>
@@ -1116,27 +1738,20 @@ export default function AdminOtherFacilities({ theme, toggle }) {
           <div className="overflow-x-auto border rounded-lg shadow-md p-4 bg-white dark:bg-gray-800 mt-6 mx-6">
             {currentFacility && (
               <div className="mb-4 p-3 border rounded bg-gray-50 dark:bg-gray-900">
-                <div className="flex gap-3 items-center">
-                  {/* <div className="flex flex-col">
-                    <label className="text-sm">Button Label (category)</label>
+                <div className="flex justify-center items-start gap-24 w-full py-4">
+                  {/* Heading */}
+                  <div className="flex flex-col items-center">
+                    <label className="text-xl font-bold mb-3">
+                      Heading (name)
+                    </label>
+
                     <input
                       type="text"
-                      value={currentFacility.category}
-                      onChange={(e) =>
-                        handleCategoryFieldChange(
-                          getStableKeyForCurrent(),
-                          "category",
-                          e.target.value,
-                        )
+                      value={
+                        Array.isArray(currentFacility.name)
+                          ? currentFacility.name[0]
+                          : currentFacility.name || ""
                       }
-                      className="border p-1 rounded w-64"
-                    />
-                  </div> */}
-                  <div className=" flex flex-col">
-                    <label className="text-sm">Heading (name)</label>
-                    <input
-                      type="text"
-                      value={currentFacility.name || ""}
                       onChange={(e) =>
                         handleCategoryFieldChange(
                           getStableKeyForCurrent(),
@@ -1144,7 +1759,25 @@ export default function AdminOtherFacilities({ theme, toggle }) {
                           e.target.value,
                         )
                       }
-                      className="border p-1 rounded w-64"
+                      className="border p-2 rounded w-72 text-lg"
+                    />
+                  </div>
+
+                  {/* Category */}
+                  <div className="flex flex-col items-center">
+                    <label className="text-xl font-bold mb-3">Category</label>
+
+                    <input
+                      type="text"
+                      value={currentFacility.category || ""}
+                      onChange={(e) =>
+                        handleCategoryFieldChange(
+                          getStableKeyForCurrent(),
+                          "category",
+                          e.target.value,
+                        )
+                      }
+                      className="border p-2 rounded w-72 text-lg"
                     />
                   </div>
                 </div>
@@ -1154,44 +1787,123 @@ export default function AdminOtherFacilities({ theme, toggle }) {
             <table className="w-full border-collapse">
               <thead>
                 <tr className="bg-gray-100 dark:bg-gray-700">
-                  <th className=" border p-2">Description / Subheading</th>
-                  <th className=" border p-2">Image</th>
-                  <th className=" border p-2">Select</th>
+                  <th className="border p-2 w-64">Name</th>
+                  <th className="border p-2">Description / Subheading</th>
+                  <th className="border p-2">Image</th>
+                  <th className="border p-2">Select</th>
                 </tr>
               </thead>
               <tbody>
                 {paginatedRows.map((item) => (
                   <tr key={item.id} className="border-b">
+                    {/* Name Column */}
                     <td className="border p-2">
-                      <textarea
-                        value={item.text}
-                        onChange={(e) => {
-                          e.target.style.height = "auto";
-                          e.target.style.height = `${e.target.scrollHeight}px`;
-                          handleInputChange(item.id, "text", e.target.value);
-                        }}
-                        className="border p-2 w-full rounded overflow-hidden resize-none min-h-[80px] mb-2"
-                      />
-                    </td>
-                    <td className="  p-2 flex items-center gap-2">
-                      {item.image && (
-                        <img
-                          src={item.image}
-                          alt="preview"
-                          className="w-20 h-20 object-cover rounded"
-                        />
-                      )}
-                      <label className="bg-yellow-500 text-white px-3 py-1 rounded cursor-pointer">
-                        <span>{item.image ? "Replace" : "Upload"}</span>
+                      <div className="flex flex-col gap-2">
                         <input
-                          type="file"
-                          accept="image/*"
-                          className="hidden"
+                          type="text"
+                          value={item.name || ""}
+                          disabled={item.nameLocked}
                           onChange={(e) =>
-                            handleImageUpload(item.id, e.target.files[0])
+                            handleInputChange(item.id, "name", e.target.value)
                           }
+                          placeholder="Enter Facility Name"
+                          className={`border rounded p-2 w-full ${
+                            item.nameLocked
+                              ? "bg-gray-100 cursor-not-allowed"
+                              : ""
+                          }`}
                         />
-                      </label>
+
+                        {currentRows.findIndex((r) => r.id === item.id) > 0 && (
+                          <div className="flex flex-col items-start gap-1 mt-2 ml-1">
+                            <button
+                              type="button"
+                              onClick={() => copyPreviousName(item.id)}
+                              className="text-[11px] text-blue-600 hover:text-blue-800 text-left"
+                            >
+                              📋 Copy Previous Name
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => clearCopiedName(item.id)}
+                              className="text-[11px] text-red-600 hover:text-red-800 text-left"
+                            >
+                              ✖ Remove Copied Name
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </td>
+
+                    {/* Description */}
+                    <td className="border p-2">
+                      <div className="flex flex-col gap-2">
+                        <textarea
+                          value={item.text}
+                          disabled={item.textLocked}
+                          onChange={(e) => {
+                            const textarea = e.currentTarget;
+
+                            handleInputChange(item.id, "text", textarea.value);
+
+                            requestAnimationFrame(() => {
+                              textarea.style.height = "auto";
+                              textarea.style.height = `${textarea.scrollHeight}px`;
+                            });
+                          }}
+                          className={`border p-2 rounded w-full resize-none min-h-[80px] ${
+                            item.textLocked
+                              ? "bg-gray-100 cursor-not-allowed"
+                              : ""
+                          }`}
+                        />
+
+                        {currentRows.findIndex((r) => r.id === item.id) > 0 && (
+                          <div className="flex flex-col items-start gap-1 mt-2 ml-1">
+                            <button
+                              type="button"
+                              onClick={() => copyPreviousDescription(item.id)}
+                              className="text-[11px] text-blue-600 hover:text-blue-800 text-left"
+                            >
+                              📋 Copy Previous Description
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => clearCopiedDescription(item.id)}
+                              className="text-[11px] text-red-600 hover:text-red-800 text-left"
+                            >
+                              ✖ Remove Copied Description
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </td>
+
+                    <td className="border p-2 align-middle">
+                      <div className="flex flex-col justify-center items-center gap-2 py-1">
+                        {item.image && (
+                          <div className="w-20 h-20 md:w-24 md:h-24 overflow-hidden rounded-md border border-gray-300 bg-gray-100 flex items-center justify-center shadow-sm">
+                            <img
+                              src={item.image}
+                              alt="preview"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        )}
+                        <label className="bg-yellow-500 text-white text-xs px-2 py-1 rounded cursor-pointer">
+                          <span>{item.image ? "Replace" : "Upload"}</span>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) =>
+                              handleImageUpload(item.id, e.target.files[0])
+                            }
+                          />
+                        </label>
+                      </div>
                     </td>
                     <td className="border p-2 text-center">
                       <input
@@ -1320,12 +2032,7 @@ export default function AdminOtherFacilities({ theme, toggle }) {
             {hasEdits && (
               <button
                 onClick={handleSave}
-                disabled={!validateCurrentFacility()}
-                className={`flex items-center gap-2 px-4 py-2 ${
-                  validateCurrentFacility()
-                    ? "bg-[#FDCC03] text-black"
-                    : "bg-gray-300 text-gray-600 cursor-not-allowed"
-                } rounded-lg shadow-md hover:bg-yellow-500 transition `}
+                className="flex items-center gap-2 px-4 py-2 bg-[#FDCC03] text-black rounded-lg shadow-md hover:bg-yellow-500 transition"
               >
                 Save
               </button>
