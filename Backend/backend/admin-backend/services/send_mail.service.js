@@ -136,7 +136,7 @@ If you need assistance, please contact the WebOps Team.
 <p style="margin-top:30px; font-size:15px; color:#1e293b;">
 Best regards,<br>
 <strong style="color:#800000;">
-WebOps Team
+<a href="https://velammal.edu.in/webteam">WebOps Team</a>
 </strong><br>
 Velammal Engineering College
 </p>
