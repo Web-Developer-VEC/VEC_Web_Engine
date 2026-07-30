@@ -19,6 +19,7 @@ import useGoogleAnalytics from "./useAnalytics.js";
 // Lazy load components
 const Boot = lazy(() => import("./Components/Main/Landing Comp/BootUp"));
 const Head = lazy(() => import("./Components/Main/Landing Comp/Head.jsx"));
+const AdminHead = lazy(() => import("./Components/Admin/Landing Comp/Head.jsx"));
 const TermsandCon = lazy(() => import("./Components/Main/Landing Comp/Terms_and_Con_.jsx"));
 const Facultyprofile = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx"));
 const Alumni = lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"))
@@ -172,7 +173,7 @@ const App = () => {
                 {/* Conditionally render Head */}
                 <>
                     <Suspense fallback={<div className="h-20 bg-prim dark:bg-drkp"></div>}>
-                        <Head />
+                        {session ? <AdminHead /> : <Head />}
                     </Suspense>
                     <MainContentWrapper id="main-content" className="overflow-y-auto h-full">
                         <DynamicTitle />
