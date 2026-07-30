@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import './PlacementDetails.css';
+import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router";
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp';
-import { useNavigate } from "react-router";
+import './PlacementDetails.css';
 
 export const PlacementDetails = ({ theme, toggle }) => {
     const [showModal, setShowModal] = useState(false);
@@ -38,7 +38,7 @@ export const PlacementDetails = ({ theme, toggle }) => {
             }
         };
         fetchData();
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
