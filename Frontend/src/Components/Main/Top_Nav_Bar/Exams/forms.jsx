@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Forms.css";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
 import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
-import { useNavigate } from "react-router";
+import "./Forms.css";
 
 const Forms = ({ theme, toggle }) => {
   const studentTailRef = useRef(null);
@@ -36,8 +36,8 @@ const Forms = ({ theme, toggle }) => {
         const data = response?.data?.data;
 
         if (data) {
-          const students = data?.find((item) => item.category == "student")?.content || [];
-          const faculty = data?.find((item) => item.category == "faculty")?.content || [];
+          const students = data?.find((item) => item.category === "student")?.content || [];
+          const faculty = data?.find((item) => item.category === "faculty")?.content || [];
 
           const formattedStudentResources = (students || []).map(
             (name, index) => ({
