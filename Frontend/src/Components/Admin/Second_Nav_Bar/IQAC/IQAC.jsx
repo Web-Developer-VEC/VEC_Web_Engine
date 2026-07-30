@@ -426,7 +426,7 @@ const AdminIQAC = ({ toggle, theme }) => {
           <div className="flex justify-end gap-2 mt-3 mr-4">
             <button
               onClick={handleCancel}
-              className="px-4 py-2 bg-gray-400 text-white rounded"
+              className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
             >
               Cancel
             </button>
@@ -444,7 +444,7 @@ const AdminIQAC = ({ toggle, theme }) => {
           <div className="flex justify-end gap-2 mt-4 mr-5">
             <button
               onClick={handleDiscard}
-              className="px-4 py-2 bg-gray-400 text-white rounded"
+              className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
             >
               Discard Changes
             </button>
@@ -817,7 +817,7 @@ const AdminIQAC = ({ toggle, theme }) => {
           <div className="flex gap-2 mt-3 justify-center">
             <button
               onClick={handleCancel}
-              className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500"
+              className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-600"
             >
               Cancel
             </button>
@@ -976,7 +976,6 @@ console.log(iqacData);
             
 
       const result = await sendRequest(payload, uploadedFile.file);
-      toast.success("Request submitted successfully")
 
             if (result) {
                 setShowRequestModal(false);
@@ -1099,7 +1098,7 @@ console.log(iqacData);
                                 <div className="flex justify-end gap-2">
                                 <button
                                     onClick={() => setShowRequestModal(false)}
-                                    className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : ""}`}
+                                    className={`px-4 py-2 rounded bg-gray-400 text-white ${loading ? "cursor-not-allowed" : "hover:bg-gray-600"}`}
                                     disabled={loading}
                                 >
                                     Cancel

@@ -210,7 +210,6 @@ export default function IqaPra({ iqacData }) {
     setHasChanges(false);
     setChangesLog([]);
     setPendingData(null);
-    toast.info("Changes discarded.");
   };
 
   const handleUndoChange = (id) => {
@@ -394,7 +393,6 @@ export default function IqaPra({ iqacData }) {
 
     const response = await sendRequest(payloadToSend, files);
     if (response) {
-      toast.success("The request is summitted successfully");
       const updatedData = deepClone(pendingData || editableData);
       // Close the popup
       setShowRequestModal(false);
@@ -611,7 +609,7 @@ export default function IqaPra({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleCancel}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white"
               >
                 Cancel
               </button>
@@ -630,7 +628,7 @@ export default function IqaPra({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleDiscardChanges}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white"
               >
                 Discard Changes
               </button>
@@ -701,7 +699,7 @@ export default function IqaPra({ iqacData }) {
               <button
                 disabled={loading}
                 onClick={() => setShowRequestModal(false)}
-                className={`px-4 py-2 rounded text-white ${
+                className={`px-4 py-2 rounded text-white hover:bg-gray-600 ${
                   loading ? "bg-gray-300 cursor-not-allowed" : "bg-gray-400"
                 }`}
               >
@@ -734,7 +732,7 @@ export default function IqaPra({ iqacData }) {
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setDeleteConfirm(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 bg-gray-400 text-white hover:bg-gray-600 rounded"
               >
                 Cancel
               </button>
