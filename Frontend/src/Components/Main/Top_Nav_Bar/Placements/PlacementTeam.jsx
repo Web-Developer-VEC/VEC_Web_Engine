@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import './PlacementTeam.css';
+import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router";
 import Banner from '../../Banner';
 import LoadComp from '../../LoadComp';
-import { useNavigate } from "react-router";
+import './PlacementTeam.css';
 
 
 function PersonDetail({ person, isImageLeft }) {
@@ -73,7 +73,7 @@ export const PlacementTeam = ({toggle, theme}) => {
       } 
     };
     fetchData();
-  },[]);
+  }, [navigate]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);

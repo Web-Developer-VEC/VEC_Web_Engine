@@ -11,7 +11,7 @@ export const getRouteElement = (path, session, toggle, theme) => {
   // No session → normal
   if (!session) return <NormalComp toggle={toggle} theme={theme} />;
 
-  const isAllowed = session.routes.some((allowedRoute) => {
+  const isAllowed = path === "/admin_profile" || session.routes.some((allowedRoute) => {
     const match = matchPath({ path }, allowedRoute);
     return match !== null;
   });
