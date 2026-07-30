@@ -1,22 +1,20 @@
-import React, { useRef, useState, useCallback, useEffect, lazy, Suspense } from "react";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
-import Cookies from "universal-cookie";
-import useGoogleAnalytics from "./useAnalytics.js";
-import LandingPage from "./Landing.jsx"; // Keep eager, internal parts are lazy
-import LoadComp from "./Components/Main/LoadComp.jsx";
-import SideButton from "./Components/Main/sideButton.jsx";
-import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
-import RateLimitReach from "./ratelimit.jsx";
-import Footer from "./Components/Main/Landing Comp/Footer.jsx";
-import DynamicTitle from "./Header.jsx"; // This seems to be just a title updater, keep eager
-import { routeConfig } from "./routeConfig.js";
-import { getRouteElement } from "./getRouteElement.js";
-import AdminSideButton from "./Components/Admin/sideButton.jsx";
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import styled, { createGlobalStyle } from "styled-components";
+import Cookies from "universal-cookie";
+import AdminSideButton from "./Components/Admin/sideButton.jsx";
+import Footer from "./Components/Main/Landing Comp/Footer.jsx";
+import LoadComp from "./Components/Main/LoadComp.jsx";
+import ScrollToTopButton from "./Components/Main/ScrollToTopButton.jsx";
+import SideButton from "./Components/Main/sideButton.jsx";
+import { getRouteElement } from "./getRouteElement.js";
+import DynamicTitle from "./Header.jsx"; // This seems to be just a title updater, keep eager
+import LandingPage from "./Landing.jsx"; // Keep eager, internal parts are lazy
+import RateLimitReach from "./ratelimit.jsx";
+import { routeConfig } from "./routeConfig.js";
+import useGoogleAnalytics from "./useAnalytics.js";
 
 // Lazy load components
 const Boot = lazy(() => import("./Components/Main/Landing Comp/BootUp"));
@@ -25,13 +23,6 @@ const TermsandCon = lazy(() => import("./Components/Main/Landing Comp/Terms_and_
 const Facultyprofile = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/sections/Facultyprofile.jsx"));
 const Alumni = lazy(() => import("./Components/Main/Second_Nav_Bar/Alumni/Alumni.jsx"))
 const WebTeam = lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/webteam.jsx"));
-const StudentLayout = lazy(() => import("./Components/Digital Hostel/Layouts/StudentDashboard.jsx"));
-const WardenLayout = lazy(() => import("./Components/Digital Hostel/Layouts/WardenDashboard.jsx"));
-const SuperiorLayout = lazy(() => import("./Components/Digital Hostel/Layouts/SuperiorDashboard.jsx"));
-const SecurityLayout = lazy(() => import("./Components/Digital Hostel/Layouts/SecurityDashboard.jsx"));
-const HostelLoginDigital = lazy(() => import("./Components/Digital Hostel/HostelPages/Hostel Login.jsx"));
-const HostelForgotPassword = lazy(() => import("./Components/Digital Hostel/HostelPages/ForgetPassword.jsx"));
-const HostelHeader = lazy(() => import("./Components/Digital Hostel/HostelPages/HeadHeader.jsx"));
 const NotFound = lazy(() => import("./NotFound"));
 const ErrorLogPage = lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
 const HitLogs = lazy(() => import("./Components/Developer_stuffs/AnalyticsDashboard/HitLogs"));
@@ -213,14 +204,6 @@ const App = () => {
                                 <Route path="/careers" drk element={<Career toggle={toggle} theme={theme} />} />
                                 <Route path="/webteam" drk element={<WebTeam toggle={toggle} theme={theme} />} />
                                 <Route path="/web_contact" drk element={<EnquiryWeb toggle={toggle} theme={theme} />} />
-
-                                {/* Hostel Pages */}
-                                <Route path="/hostel/student/*" element={<StudentLayout />} />
-                                <Route path="/hostel/warden/*" element={<WardenLayout />} />
-                                <Route path="/hostel/superior/*" element={<SuperiorLayout />} />
-                                <Route path="/hostel/security/*" element={<SecurityLayout />} />
-                                <Route path="/hostel/login" element={<HostelLoginDigital />} />
-                                <Route path="/hostel/forget-password" element={<HostelForgotPassword />} />
 
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
