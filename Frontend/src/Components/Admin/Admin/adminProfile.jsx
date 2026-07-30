@@ -1,5 +1,3 @@
-"use client"
-
 import { useEffect, useState } from "react"
 import { Check, Clock, Trash2, Plus, LogOut, Mail, Phone, Shield, Calendar, Activity } from "lucide-react"
 import { useNavigate } from "react-router-dom"
@@ -22,7 +20,7 @@ const routeDictionary = {
   "/clg-org": "College Organization",
   "/departments": "Departments",
   "/programs": "Programs",
-  "/acadamic_cal": "Academic Calendar",
+  "/academic_cal": "Academic Calendar",
   "/dept/:deptID": "Department Details",
   "/facultyprofile/:uid": "Faculty Profile",
   "/ug": "Undergraduate Programs",
@@ -43,7 +41,7 @@ const routeDictionary = {
   "/policies": "Policies",
   "/Funded": "Funded Projects",
   "/Book_Chapter": "Book Chapters",
-  "/Accredation": "Accreditation",
+  "/Accreditation": "Accreditation",
   "/iqac": "IQAC",
   "/iic": "IIC",
   "/ecell": "E-Cell",

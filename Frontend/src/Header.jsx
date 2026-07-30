@@ -8,7 +8,7 @@ const titleMap = {
   "/Term_and_Conditions": "Terms & Conditions - VEC",
   "/trust": "Velammal Educational Trust",
   "/handbook": "Handbook - VEC",
-  "/vm": "VEC Vision & Mission",
+  "/v_m": "VEC Vision & Mission",
   "/management": "Management VEC",
   "/principal": "Principal VEC",
   "/dean": "Dean VEC ",

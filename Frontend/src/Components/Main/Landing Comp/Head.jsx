@@ -1,20 +1,47 @@
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
+// import {useState, useEffect} from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-import Naac from '../../Assets/1723802229711.png';
-import Acrd from '../../Assets/1723802229732.png';
-import Fcbk from '../../Assets/facebook.png';
-import Inta from '../../Assets/instagram.png';
-import iquage from '../../Assets/iquage.png';
-import Lknd from '../../Assets/linkedin.png';
-import logo from '../../Assets/NEWLOGO.png';
-import Tnea from '../../Assets/TNEA-Code.png';
-import tuvindia from '../../Assets/tuvindia.jpeg';
-import Twtr from '../../Assets/twitter.png';
-import Sidebar from './SideBar';
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import Sidebar from './SideBar'
+import Nord from '../../Assets/1723802229690.png'
+import Naac from '../../Assets/1723802229711.png'
+import Acrd from '../../Assets/1723802229732.png'
+import iquage from '../../Assets/iquage.png'
+import Tnea from '../../Assets/TNEA-Code.png'
+import Inta from '../../Assets/instagram.png'
+import Fcbk from '../../Assets/facebook.png'
+import Twtr from '../../Assets/twitter.png'
+import Lknd from '../../Assets/linkedin.png'
+import logo from '../../Assets/NEWLOGO.png'
+import { Crown } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Head = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [HrHandbook, setHrHandbook] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responce = await axios.post('/api/main-backend/administration', {
+                    type: "HRHandBook"
+                })
+
+                const data = responce.data.data;
+                setHrHandbook(data);
+            }
+            catch (error) {
+                if (error.response?.data?.status === 429) {
+                    navigate('/ratelimit', { state: { msg: error.response.data.message } });
+                } else {
+                    console.error(error);
+                }
+            }
+        }
+
+        fetchData();
+    }, [])
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -25,7 +52,7 @@ const Head = () => {
     // const [scroll, setScroll] = useState(0)
     // const [hdr, setHdr] = useState("")
 
-    const nacs = [Naac, Acrd, tuvindia, iquage, Tnea]
+    const nacs = [Naac, Acrd, Nord, iquage, Tnea]
     const hdrs = [
         { ttl: "Library", lnk: "/library" },
         { ttl: "IQAC", lnk: "/iqac" },
@@ -86,8 +113,18 @@ const Head = () => {
                 { hrd: false, ttl: "Admin Office", sup: [], lnk: "/admin" },
                 { hrd: false, ttl: "Administrative Committee", sup: [], lnk: "/committee" },
                 { hrd: false, ttl: "Handbook", sup: [], lnk: "/handbook" },
-                { hrd: false, ttl: "HR Handbook", sup: [], lnk: UrlParser("/static/pdfs/handbook/HR-Handbook.pdf"), openInNewTab: true },
+                { hrd: false, ttl: "HR Handbook", sup: [], lnk: UrlParser(HrHandbook?.pdf_path[0]), openInNewTab: true },
                 { hrd: false, ttl: "Organization Chart", sup: [], lnk: "/clg-org" },
+            ],
+        },
+        {
+            main: "Academics",
+            cod: [0, 3],
+            cols: 1,
+            sub: [
+                { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
+                { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
+                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/academic_cal" },
             ],
         },
         {
@@ -103,36 +140,8 @@ const Head = () => {
             ],
         },
         {
-            main: "Academics",
-            cod: [0, 3],
-            cols: 1,
-            sub: [
-                { hrd: false, ttl: "Programmes", sup: [], lnk: "/programs" },
-                { hrd: false, ttl: "Departments", sup: [], lnk: "/departments" },
-                { hrd: false, ttl: "Academic Calendar", sup: [], lnk: "/academic_cal" },
-            ],
-        },
-
-        {
-            main: "Placement",
-            cod: [0, 4],
-            cols: 1,
-            sub: [
-                {
-                    hrd: false,
-                    ttl: "About Placement Department",
-                    sup: [],
-                    lnk: "/abtplace",
-                },
-                { hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep" },
-                { hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni" },
-                { hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team" },
-            ],
-        },
-
-        {
             main: "Exams",
-            cod: [0, 6],
+            cod: [0, 5],
             cols: 1,
             sub: [
                 { hrd: false, ttl: "Regulation", sup: [], lnk: "/reg" },
@@ -149,7 +158,6 @@ const Head = () => {
                     lnk: "https://vecchennai.directverify.in/student/#/app/request",
                     openInNewTab: true,
                 },
-                { hrd: false, ttl: "Rank List UG & PG", sup: [], lnk: "/rankholders" },
                 { hrd: false, ttl: "Downloads", sup: [], lnk: "/form" },
                 { hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe" },
             ],
@@ -160,14 +168,29 @@ const Head = () => {
             cols: 1,
             sub: [
 
-                { hrd: false, ttl: "Journal publication ", sup: [], lnk: "/Journal" }, //Sponseredresearch
-                { hrd: false, ttl: "Books & Book Chapters", sup: [], lnk: "/Book_Chapter" },//Sponseredresearch
-                { hrd: false, ttl: "Funded Projects", sup: [], lnk: "/Funded" }, //Sponseredresearch
-                { hrd: false, ttl: "Consultancy", sup: [], lnk: "/Consultancy" },  //Academic
+                { hrd: false, ttl: "Journal publication ", sup: [], lnk: "/Journal" },
+                { hrd: false, ttl: "Books & Book Chapters", sup: [], lnk: "/Book_Chapter" },
+                { hrd: false, ttl: "Funded Projects", sup: [], lnk: "/Funded" },
+                { hrd: false, ttl: "Consultancy", sup: [], lnk: "/Consultancy" },
                 { hrd: false, ttl: "Policy", sup: [], lnk: "/policies" },
             ]
         },
-
+        {
+            main: "Placement",
+            cod: [0, 4],
+            cols: 1,
+            sub: [
+                {
+                    hrd: false,
+                    ttl: "About Placement Department",
+                    sup: [],
+                    lnk: "/abtplace",
+                },
+                { hrd: false, ttl: "Placement Details", sup: [], lnk: "/place-dep" },
+                { hrd: false, ttl: "Alumni", sup: [], lnk: "/alumni" },
+                { hrd: false, ttl: "Placement Team", sup: [], lnk: "/place-team" },
+            ],
+        },
     ];
 
     function max(arr) {
@@ -207,7 +230,7 @@ const Head = () => {
                     className={'flex items-center font-popp group bg-prim dark:bg-drkts text-text dark:text-drkt' +
                         'transition-all ease-in-out duration-300 w-full h-auto ' +
                         ' h-20'}>
-                    <a href="/" className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
+                    <a href={!session || (!session?.role && session.role === "super_admin") ? "/" : "/admin_profile"} className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
                         <div className="z-10">
                             <img
                                 src={logo}
@@ -232,7 +255,7 @@ const Head = () => {
                         </div>
                     </a>
                     <div className="items-stretch relative h-max my-auto pb-2 group-[.hide]:-mt-2
-                         ml-2 flex xl:w-[30vw] lg:w-[50vw]">
+                         ml-2 flex xl:w-[25vw] lg:w-[50vw]">
                         {nacs.map((nac, i) => (
                             <div className="duration-200 self-center ease-linear ml-0 lg:ml-8 xl:ml-2" data-carousel-item="" key={i}>
                                 <img src={nac} className="block mt-2 h-full w-[5vmax] lg:w-[400px] xl:w-[7vmax] p-1" alt="naac"
@@ -240,7 +263,7 @@ const Head = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='xl:flex flex-nowrap hidden ml-[10px] right-0 justify-end grow text-[clamp(1rem,1.125rem+1vw,1.15rem)]
+                    <div className='xl:flex flex-nowrap hidden ml-[70px] right-0 justify-end grow text-[clamp(1rem,1.125rem+1vw,1.15rem)]
                     max-w-[63.5%]
                         w-fit h-max gap-x-4 gap-y-0 duration-300 ease-in-out transition'>
                         {navs.map((nvt, ind) => (
@@ -264,7 +287,8 @@ const Head = () => {
                                     style={{ gridTemplateColumns: `repeat(${nvt.cols}, minmax(0, 1fr))` }}>
                                     {griddy(nvt.sub, nvt.cod).map((sbj, i, { length }) => (
                                         <div className='group/sub relative w-full bg-prim dark:bg-drkts first:rounded-lg last:rounded-b-lg' key={i}>
-                                            <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
+                                            <a className={`no-underline inline-block ${(i === 0) ? 'rounded-t-lg' : ''} ${isRouteAllowed(sbj.lnk) ? "" : "cursor-not-allowed"}
+                                                     bg-[length:200%_100%] bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
                                                     ${(i === length - 1) ? 'rounded-b-lg' : ''} bg-gradient-to-l from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% border-slate-700
                                                     w-full group-hover/nav:translate-x-0 duration-[150ms] ease-in transition-all z-[500]` +
                                                 (sbj.hrd || sbj.ttl === "" ? '' : ' hover:bg-[position:-100%_100%]')}
@@ -272,7 +296,7 @@ const Head = () => {
                                                 key={sbj.ttl} href={`${isRouteAllowed(sbj.lnk) ? sbj.lnk : "#"}`}
                                                 target={sbj.openInNewTab ? '_blank' : '_self'}
                                             ><p
-                                                className={'w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts border-slate-500 border-dashed ' +
+                                                className={`w-full my-2 align-middle text-nowrap text-text dark:text-drkt dark:hover:text-drkts border-slate-500 border-dashed ${isRouteAllowed(sbj.lnk) ? "" : "cursor-not-allowed"}` +
                                                     (sbj.hrd ? 'font-bold border-b-2 text-center' : 'text-left')}>{sbj.ttl}</p>
                                             </a>
                                             {(sbj.sup.length > 0) ? (
@@ -281,6 +305,7 @@ const Head = () => {
                                                         outline-offset-2 duration-500 ease-in transiton-[ht] rounded-xl'>
                                                     {sbj.sup.map((spj, i, { length }) => (
                                                         <a className={`no-underline inline-block bg-[length:200%_100%] 
+                                                            ${isRouteAllowed(spj.lnk) ? "" : "cursor-not-allowed"}
                                                             bg-[position:0%_100%] text-slate-950 -translate-x-[-40vw] px-2
                                                             ${(i !== length - 1) ? '' : ''} bg-gradient-to-l 
                                                             from-secd dark:from-drks from-0% via-secd dark:via-drks via-50% to-white to-50% 
@@ -329,9 +354,9 @@ const Head = () => {
                             <div key={index} className='group/nav relative transition-all rounded-xl'>
                                 <button className={`mt-1 h-fit md:block hidden relative overflow-hidden pb-1 transition-all`}>
                                     {hdr.ttl}
-                                    {/* Underline animation */}
+                                    {/* Animated underline */}
                                     <span className={`absolute bottom-0 left-0 h-[2px] bg-brwn transition-all duration-300 
-                                                    ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
+                                                        ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}>
                                     </span>
                                 </button>
                                 <div className={`grid grid-flow-row content-center rounded-lg outline 
@@ -342,7 +367,7 @@ const Head = () => {
                                     {hdr.sub.map((subItem, i) => (
                                         <a
                                             key={i}
-                                            href={subItem.lnk}
+                                            href={isRouteAllowed(subItem.lnk) ? subItem.lnk : "#"}
                                             className={`no-underline inline-block bg-[length:200%_100%] 
                                                             ${isRouteAllowed(subItem.lnk) ? "" : "cursor-not-allowed"}
                                                             bg-[position:0%_100%] text-slate-950 -translate-x-[50vw] px-2
@@ -360,19 +385,21 @@ const Head = () => {
                     })}
 
                     {/* Payment Button */}
-                    <button
-                        onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
-                        className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white dark:text-drkts px-2">
-                        Fees Payment
-                    </button>
-                    <button
-                        className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-prim dark:text-drkts px-2">
-                        {session && session?.role === "super_admin" && (
-                            <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer no-underline'>
+                    {/* {!session && ( */}
+                        <button
+                            onClick={() => window.open("https://easycollege.in/vecengg/college/webpayindex.aspx", "_blank")}
+                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-white dark:text-drkts px-2">
+                            Fees Payment
+                        </button>
+                    {/* )} */}
+                    {session && session?.role === "super_admin" && (
+                        <button
+                            className="truncate mt-1 h-fit md:block hidden rounded-full bg-brwn text-prim dark:text-drkts px-2">
+                            <a href="/admin_dash" className='text-prim dark:text-drkts cursor-pointer'>
                                 Admin
                             </a>
-                        )}
-                    </button>
+                        </button>
+                    )}
 
                     {/* Social Icons */}
                     <div className="flex group items-center justify-end grow gap-3">
@@ -388,11 +415,11 @@ const Head = () => {
                 </div>
                 <div
                     className='block xl:hidden h-fit overflow-y-hidden'>
-                    <Sidebar navs={navs} Sz="tny p-0" />
-                </div>
+                    <Sidebar navs={navs} Sz="tny p-0" /></div>
             </nav>
         </>
     )
 }
+
 
 export default Head;

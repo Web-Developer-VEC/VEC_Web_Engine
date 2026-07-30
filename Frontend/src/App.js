@@ -30,7 +30,7 @@ const WardenLayout = lazy(() => import("./Components/Digital Hostel/Layouts/Ward
 const SuperiorLayout = lazy(() => import("./Components/Digital Hostel/Layouts/SuperiorDashboard.jsx"));
 const SecurityLayout = lazy(() => import("./Components/Digital Hostel/Layouts/SecurityDashboard.jsx"));
 const HostelLoginDigital = lazy(() => import("./Components/Digital Hostel/HostelPages/Hostel Login.jsx"));
-const ForgotPassword = lazy(() => import("./Components/Digital Hostel/HostelPages/ForgetPassword.jsx"));
+const HostelForgotPassword = lazy(() => import("./Components/Digital Hostel/HostelPages/ForgetPassword.jsx"));
 const HostelHeader = lazy(() => import("./Components/Digital Hostel/HostelPages/HeadHeader.jsx"));
 const NotFound = lazy(() => import("./NotFound"));
 const ErrorLogPage = lazy(() => import("./Components/Developer_stuffs/errorlog/errorlog.jsx"));
@@ -38,6 +38,7 @@ const HitLogs = lazy(() => import("./Components/Developer_stuffs/AnalyticsDashbo
 const EnquiryWeb = lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web Team/enquiryWeb.jsx"));
 const AuthPage = lazy(() => import("./Components/Admin/Auth/auth.jsx"));
 const Career = lazy(() => import("./Components/Main/Landing Comp/career.jsx"));
+const ForgotPassword = lazy(() => import("./Components/Admin/Auth/ForgotPassword.jsx"))
 
 /* General Forms */
 const AppraisalReport = React.lazy(() => import("./Components/Main/Forms/Appraisal/Appraisal Download/AppraisalReport.jsx"));
@@ -219,12 +220,13 @@ const App = () => {
                                 <Route path="/hostel/superior/*" element={<SuperiorLayout />} />
                                 <Route path="/hostel/security/*" element={<SecurityLayout />} />
                                 <Route path="/hostel/login" element={<HostelLoginDigital />} />
-                                <Route path="/hostel/forget-password" element={<ForgotPassword />} />
+                                <Route path="/hostel/forget-password" element={<HostelForgotPassword />} />
 
                                 {/* Developer Stuffs */}
                                 <Route path="/errorlog" element={<ErrorLogPage />} />
                                 <Route path="/hit_logs" element={<HitLogs />} />
                                 <Route path="/admin_auth" drk element={<AuthPage toggle={toggle} theme={theme} />} />
+                                <Route path="/forgot_password" drk element={<ForgotPassword toggle={toggle} theme={theme} />} />
                                 <Route path="/alumni" drk element={<Alumni toggle={toggle} theme={theme} />} />
                                 <Route path="/Term_and_Conditions" drk element={<TermsandCon toggle={toggle} theme={theme} />} />
                                 {/*  General Forms  */}
@@ -233,7 +235,7 @@ const App = () => {
 
                                 {/*  conditional routes  */}
                                 <Route path="/vec-connect/*" element={<Navigate to="/" replace />} />
-                                <Route path="/Accredation" element={<Navigate to="/" replace />} />
+                                <Route path="/Accreditation" element={<Navigate to="/" replace />} />
 
                                 {/*  404 - Page not found  */}
                                 <Route path="*" element={<NotFound />} />

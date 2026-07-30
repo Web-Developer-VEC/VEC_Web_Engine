@@ -11,7 +11,7 @@ router.post(
     '/temp',
     authMiddleware,
     tempstoreBusboy,
-    // checkRoleByCollection(),  
+    checkRoleByCollection(),  
     storeTempMiddleware
 );
 

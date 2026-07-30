@@ -9,9 +9,9 @@
 
 .stats-grid-container {
   display: flex;
-  justify-content: center; /* Center the grid horizontally */
-  align-items: top; /* Center the grid vertically */
-  width: 100%; /* Full width */
+  justify-content: center; 
+  align-items: top; 
+  width: 100%; 
 }
 
 .stats-grid {
@@ -27,31 +27,31 @@
 .stat-item {
   text-align: center;
   padding: 0 2vmax 2vmax 0;
-  flex: 1; /* Allow equal space for each item */
+  flex: 1;
   justify-content: center;
-  margin: 10px 0; /* Margin for vertical spacing */
+  margin: 10px 0; 
 }
 
 .stat-item .icon {
   margin: auto;
-  font-size: 1.8vmax; /* Maximize icon size */
-  margin-bottom: 15px; /* Space between icon and number */
+  font-size: 1.8vmax; 
+  margin-bottom: 15px; 
 }
 
 .stat-number {
-  font-size: 2rem; /* Increase number size */
-  margin: 10px 0; /* Space between number and label */
+  font-size: 2rem; 
+  margin: 10px 0; 
 }
 
 .stat-label {
-  font-size: 1.2rem; /* Adjust label size */
-  margin-top: 5px; /* Space above the label */
+  font-size: 1.2rem; 
+  margin-top: 5px; 
 }
 
 .section-title {
-  font-size: 24px; /* Adjust the size as needed */
+  font-size: 24px; 
   margin-bottom: 20px; 
-  text-align: center; /* Center align the title */
+  text-align: center; 
   font-weight: bold;
 }
 
@@ -65,4 +65,7 @@
 
 .stat-input:focus {
     border-bottom: 2px solid #3b82f6;
+}
+.btn-final{
+  background-color:#800000;
 }
