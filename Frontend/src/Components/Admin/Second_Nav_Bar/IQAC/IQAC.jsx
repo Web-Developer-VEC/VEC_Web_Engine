@@ -978,6 +978,7 @@ console.log(iqacData);
       const result = await sendRequest(payload, uploadedFile.file);
 
             if (result) {
+              toast.success("Request submitted successfully");
                 setShowRequestModal(false);
                 setUploadedFile(null);
                 setIsEditing(false);
@@ -1045,7 +1046,6 @@ console.log(iqacData);
                         height="600px"
                     />
 
-                    <ToastContainer position="bottom-right" autoClose={3000} />
 
                     {/* Request Confirmation Modal */}
                     {showRequestModal && (
@@ -1145,6 +1145,7 @@ console.log(iqacData);
     }
     return (
         <>
+            <ToastContainer position="bottom-right" autoClose={3000} />
             <Banner
                 toggle={toggle} theme={theme}
                 backgroundImage="./Banners/IQAC_Banner.webp"
