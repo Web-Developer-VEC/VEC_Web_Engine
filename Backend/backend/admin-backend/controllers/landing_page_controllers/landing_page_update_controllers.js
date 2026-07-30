@@ -6,7 +6,7 @@ async function updateData(tempDoc, mainCollection) {
       throw new Error("Type, meta_data, and original_data required");
     }
 
-    const singleObjectTypes = ["page_details","banner", "special_announcements","side_buttons"]
+    const singleObjectTypes = ["page_details", "banner", "special_announcements", "side_buttons"]
 
     const multipleObjectTypes = ["notifications", "announcements", "events", "department_banner", "popup", "admission", "news_card"];
 
@@ -18,43 +18,55 @@ async function updateData(tempDoc, mainCollection) {
 
       const keys = Object.keys(original_data);
 
-      const updateQuery = {};
-      keys.forEach(key => {
-        updateQuery[`data.$[elem].${key}`] = meta_data[key];
+      const ignoreFields = ["created_at", "updated_at"];
+
+      const arrayFilter = {};
+
+      Object.entries(original_data).forEach(([key, value]) => {
+        if (!ignoreFields.includes(key)) {
+          arrayFilter[`elem.${key}`] = value;
+        }
       });
-      // Update the document in DB
+
+      const updateQuery = {};
+
+      Object.entries(meta_data).forEach(([key, value]) => {
+        updateQuery[`data.$[elem].${key}`] = value;
+      });
+
       await mainCollection.updateOne(
         { type: collection_type },
-        { $set: updateQuery},
-        {arrayFilters:[{"elem":original_data}]}
+        { $set: updateQuery },
+        {
+          arrayFilters: [arrayFilter]
+        }
       );
-
       return {
         success: true,
         message: `${collection_type} updated successfully`,
       };
     }
 
-    if(singleObjectTypes.includes(collection_type)){
+    if (singleObjectTypes.includes(collection_type)) {
 
       const doc = await mainCollection.findOne({ type: collection_type });
 
-         if (!doc) {
-                throw new Error("Document with the specified collection_type not found");
-            }
-
-            
-            const new_data = Array.isArray(meta_data)?meta_data:[meta_data];
-
-            await mainCollection.updateOne(
-                { type: collection_type },
-                { $set: { data: new_data } }
-            );
-
-            return { message: `Data updated successfully into ${collection_type}`};
+      if (!doc) {
+        throw new Error("Document with the specified collection_type not found");
+      }
 
 
-       }
+      const new_data = Array.isArray(meta_data) ? meta_data : [meta_data];
+
+      await mainCollection.updateOne(
+        { type: collection_type },
+        { $set: { data: new_data } }
+      );
+
+      return { message: `Data updated successfully into ${collection_type}` };
+
+
+    }
 
     // ---------- FALLBACK ----------
     throw new Error("Invalid collection type");

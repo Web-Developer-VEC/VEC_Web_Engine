@@ -19,7 +19,7 @@ const Faculties = ({ data }) => {
   const hod_details = data?.find((item) => item.category === "head_of_department")?.members || [];
   const teaching_staff_details = data?.find((item) => item.category === "teaching_staff")?.members || [];
   const non_teaching_staff_details = data?.find((item) => item.category === "non_teaching_staff")?.members || [];
-  const faculty_pdf_path = data?.find((item) => item.category === "faculty_pdf_path")?.content[0] || "";
+  const faculty_pdf_path = data?.find((item) => item.category === "faculty_pdf_path")?.pdf_path[0] || "";
 
   return (
     <div className={styles.app + " p-0 md:p-12"}>

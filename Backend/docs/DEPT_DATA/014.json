@@ -15,22 +15,24 @@
       {
         "category": "about_the_department",
         "content": [
-          "தமிழர்களின் வளமான பண்பாடு, கலை, கலாச்சாரம், இலக்கியம், அறிவியல் சிந்தனைகள், பொறியியல் தொழில்நுட்பத் தகவல்கள் முதலானவற்றை மாணவர்கள் கற்கும் நோக்கில் ‘தமிழர் மரபு’ மற்றும் தமிழர் தொழில்நுட்பம்’ ஆகிய இரண்டு தனித்துவமான பாடங்களைக் கற்பிப்பதனை நோக்கமாகக் கொண்டு 2023 ஆம் ஆண்டு முதல் தமிழ்த்துறை இயங்கிவருகிறது."," மேலும் இத்துறை, மாணவர்கள் மொழி, ஆளுமைத்திறன், புதுமை படைத்தல், வாழ்வியல் அறநெறி மற்றும் பண்பாட்டு மாண்புகளைப் பெற்று, சமூகத்தோடு கூடி வாழ வழிகாட்டுகிறது."
+          "தமிழர்களின் வளமான பண்பாடு, கலை, கலாச்சாரம், இலக்கியம், அறிவியல் சிந்தனைகள், பொறியியல் தொழில்நுட்பத் தகவல்கள் முதலானவற்றை மாணவர்கள் கற்கும் நோக்கில் ‘தமிழர் மரபு’ மற்றும் தமிழர் தொழில்நுட்பம்’ ஆகிய இரண்டு தனித்துவமான பாடங்களைக் கற்பிப்பதனை நோக்கமாகக் கொண்டு 2023 ஆம் ஆண்டு முதல் தமிழ்த்துறை இயங்கிவருகிறது.",
+          " மேலும் இத்துறை, மாணவர்கள் மொழி, ஆளுமைத்திறன், புதுமை படைத்தல், வாழ்வியல் அறநெறி மற்றும் பண்பாட்டு மாண்புகளைப் பெற்று, சமூகத்தோடு கூடி வாழ வழிகாட்டுகிறது."
         ]
       },
       {
         "category": "department_vision",
         "content": [
-         "தமிழரின் பண்பாட்டு விழுமியங்களைக் கற்று வாழ்நாள் முழுவதும் பயன்படுத்துதல். பொறியியல் துறைகளில் தமிழரின் அறிவியல் மற்றும் தொழில்நுட்பச் சிந்தனைகளை ஆய்ந்து மரபார்ந்த புத்தாக்கங்களைப் படைத்தல் ஆகிய இரு இலக்குகளைத் தமிழ்த்துறை தொலைநோக்காகக் கொண்டுள்ளது."
+          "தமிழரின் பண்பாட்டு விழுமியங்களைக் கற்று வாழ்நாள் முழுவதும் பயன்படுத்துதல். பொறியியல் துறைகளில் தமிழரின் அறிவியல் மற்றும் தொழில்நுட்பச் சிந்தனைகளை ஆய்ந்து மரபார்ந்த புத்தாக்கங்களைப் படைத்தல் ஆகிய இரு இலக்குகளைத் தமிழ்த்துறை தொலைநோக்காகக் கொண்டுள்ளது."
         ]
       },
       {
         "category": "department_mission",
         "content": [
-            "தமிழரின் வளமான பாரம்பரிய பண்பாட்டுக் கூறுகளைத் தெரிந்து கொள்ளச் செய்தல்.",
-            "பொறியியல் தொழில்நுட்பக் கூறுகளை அறிந்து கொள்ளச் செய்தல்.",
-            "மொழித்திறன் மற்றும் படைப்பாற்றலை வளர்த்தல்.",
-           "சமூகத்திற்குப் பயனளிக்கும் வகையில் ஒழுக்கமும் ஆளுமைத்திறனும் உடையவர்களாக உருவாக்குதல்." ]
+          "தமிழரின் வளமான பாரம்பரிய பண்பாட்டுக் கூறுகளைத் தெரிந்து கொள்ளச் செய்தல்.",
+          "பொறியியல் தொழில்நுட்பக் கூறுகளை அறிந்து கொள்ளச் செய்தல்.",
+          "மொழித்திறன் மற்றும் படைப்பாற்றலை வளர்த்தல்.",
+          "சமூகத்திற்குப் பயனளிக்கும் வகையில் ஒழுக்கமும் ஆளுமைத்திறனும் உடையவர்களாக உருவாக்குதல்."
+        ]
       },
       {
         "category": "programme_educational_objectives",
@@ -49,15 +51,15 @@
           },
           {
             "header": "PO 3: Design/development of solutions",
-            "content":   "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
+            "content": "Design solutions for complex engineering problems and design system components or processes that meet the specified needs with appropriate consideration for public health and safety, and cultural, societal, and environmental considerations."
           },
           {
             "header": "PO 4: Conduct investigations of complex problems",
-            "content":  "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
+            "content": "Use research-based knowledge and research methods including design of experiments, analysis and interpretation of data, and synthesis of the information to provide valid conclusions."
           },
           {
             "header": "PO 5: Modern tool usage",
-            "content":  "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
+            "content": "Create, select, and apply appropriate techniques, resources, and modern engineering and AI and Data Science tools, including prediction and modelling to complex engineering activities, with an understanding of the limitations."
           },
           {
             "header": "PO 6: The engineer and society",
@@ -73,7 +75,7 @@
           },
           {
             "header": "PO 9: Individual and team work",
-            "content":  "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
+            "content": "Function effectively as an individual, and as a member or leader in diverse teams, and in multidisciplinary settings."
           },
           {
             "header": "PO 10: Communication",
@@ -115,9 +117,16 @@
             "name": "திரு. முத்தையா மு.மு",
             "department_name": "தமிழ்த்துறை",
             "unique_id": "VEC-014-01-180",
-            "pdf_path":"/static/pdfs/faculty_profile/014/VEC-014-01-180.pdf",
-            "qualification": ["M.A.", "M.Phil"],
-            "hod_message": ["இன்றைய நவீன தொழில்நுட்ப உலகில் அருந்தமிழ், அறிவியல் தமிழாய், கணினித்தமிழாய் காலமாற்றத்திற்கேற்ப தன்னைப் புதுப்பித்து என்றும் கன்னித்தமிழாய்த் திகழ்கிறது. செம்மொழித் தமிழின் வளமான இலக்கண இலக்கியங்களில், இல்லாதன இல்லை எனும்படி பல்துறை சார்ந்த கருத்துகளைப் பண்டைத் தமிழர்கள் பொதிந்து வைத்துள்ளனர்."," அத்தரவுகள் யாவும் நவீன பொறியியல் துறைகளில் புத்தாக்கம் படைக்கத் துணைபுரிவனவாகும். ஒரு நிறுவனம் அல்லது சமூகத்தின் உயர்வு என்பது எத்தனை பேர் உள்ளார்கள் என்பதைவிட எத்தகு திறனுடையவராக உள்ளார்கள் என்பதைப் பொறுத்தே அமைகிறது ஆகவே மாணவர்கள் ஒழுக்கநெறியும், பல்திறனும் பெற்று அறவழியில் செயலாற்றி சமூகத்தில் சிறந்து விளங்க தமிழின் பண்பாட்டு விழுமியங்கள் பெரும்பங்காற்றும். போட்டித் தேர்வுகளுக்கும், ஊடகம், மொழிபெயர்ப்பு, கலைச்சொல்லாக்கம், தொல்லியல் என விரியும் தமிழின் பல்துறைகளிலும் பணிவாய்ப்புகள் பெறவும் தமிழைக் கற்பது பேருதவி புரியும் என்பது உறுதி.","நம் முன்னோரின் அடிபற்றி புதுமைகள் படைப்போம்!"],
+            "pdf_path": "/static/pdfs/faculty_profile/014/VEC-014-01-180.pdf",
+            "qualification": [
+              "M.A.",
+              "M.Phil"
+            ],
+            "hod_message": [
+              "இன்றைய நவீன தொழில்நுட்ப உலகில் அருந்தமிழ், அறிவியல் தமிழாய், கணினித்தமிழாய் காலமாற்றத்திற்கேற்ப தன்னைப் புதுப்பித்து என்றும் கன்னித்தமிழாய்த் திகழ்கிறது. செம்மொழித் தமிழின் வளமான இலக்கண இலக்கியங்களில், இல்லாதன இல்லை எனும்படி பல்துறை சார்ந்த கருத்துகளைப் பண்டைத் தமிழர்கள் பொதிந்து வைத்துள்ளனர்.",
+              " அத்தரவுகள் யாவும் நவீன பொறியியல் துறைகளில் புத்தாக்கம் படைக்கத் துணைபுரிவனவாகும். ஒரு நிறுவனம் அல்லது சமூகத்தின் உயர்வு என்பது எத்தனை பேர் உள்ளார்கள் என்பதைவிட எத்தகு திறனுடையவராக உள்ளார்கள் என்பதைப் பொறுத்தே அமைகிறது ஆகவே மாணவர்கள் ஒழுக்கநெறியும், பல்திறனும் பெற்று அறவழியில் செயலாற்றி சமூகத்தில் சிறந்து விளங்க தமிழின் பண்பாட்டு விழுமியங்கள் பெரும்பங்காற்றும். போட்டித் தேர்வுகளுக்கும், ஊடகம், மொழிபெயர்ப்பு, கலைச்சொல்லாக்கம், தொல்லியல் என விரியும் தமிழின் பல்துறைகளிலும் பணிவாய்ப்புகள் பெறவும் தமிழைக் கற்பது பேருதவி புரியும் என்பது உறுதி.",
+              "நம் முன்னோரின் அடிபற்றி புதுமைகள் படைப்போம்!"
+            ],
             "image_path": "/static/images/hods/tamil.webp",
             "designation": "உதவிப்பேராசிரியர் மற்றும் தமிழ்த்துறைத் தலைவர்",
             "Social_media_links": {
@@ -140,112 +149,112 @@
         "category": "banner_name_and_image",
         "content": [
           {
-            "name":"தமிழ்த்துறை",
+            "name": "தமிழ்த்துறை",
             "dept_id": "014"
           }
         ]
       },
       {
         "category": "faculty_pdf_path",
-        "content": [
-
+        "pdf_path": [
           "/static/pdfs/faculty_list/014.pdf"
-
         ]
       },
       {
         "category": "head_of_department",
-        "members": [{
-             "name": "திரு. முத்தையா மு.மு",
+        "members": [
+          {
+            "name": "திரு. முத்தையா மு.மு",
             "designation": "உதவிப்பேராசிரியர் மற்றும் தமிழ்த்துறைத் தலைவர்",
             "unique_id": "VEC-014-01-180",
-            "socialmedia_links":{
+            "socialmedia_links": {
               "linkedin": "https://www.linkedin.com/in/muthiah-m-m-190398355/",
               "googlescholar": "",
-              "researchgate":"",
+              "researchgate": "",
               "orchidprofile": "",
               "publonprofile": "",
               "scopus": ""
             },
-            "image_path":"/static/images/profile_photos/014/VEC-014-01-180.webp",
-            "pdf_path":"/static/pdfs/faculty_profile/014/VEC-014-01-180.pdf"
+            "image_path": "/static/images/profile_photos/014/VEC-014-01-180.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/014/VEC-014-01-180.pdf"
           }
         ]
       },
       {
         "category": "teaching_staff",
         "members": []
-        },
+      },
       {
         "category": "non_teaching_staff",
         "members": []
       }
-      
     ]
   },
-   {
+  {
     "type": "curriculum_and_syllabus",
     "data": [
       {
         "category": "banner_name_and_image",
         "content": [
           {
-           "name": "தமிழ்த்துறை",
+            "name": "தமிழ்த்துறை",
             "dept_id": "014"
           }
         ]
       },
       {
-         "category": "curriculum",
-        "content":[
+        "category": "curriculum",
+        "content": [
+          {
+            "heading": "Curriculum & Syllabus",
+            "syllabus": [
               {
-                "heading":"Curriculum & Syllabus",
-                "syllabus":[
-                {
-                  "year": "R - 2023",
-                  "docs":[
-                    {
-                    "name":"I Semester",
-                      "pdf_path": ""
+                "year": "R - 2023",
+                "docs": [
+                  {
+                    "name": "I Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"II Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "II Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"III Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "III Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"IV Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "IV Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"V Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "V Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VI Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VI Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VII Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"VIII Semester",
-                      "pdf_path": ""
+                  {
+                    "name": "VIII Semester",
+                    "pdf_path": ""
                   },
-                    {
-                    "name":"Elective Courses",
-                      "pdf_path": ""
+                  {
+                    "name": "Elective Courses",
+                    "pdf_path": ""
                   }
                 ]
-                },
-                {
-                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
-                    "pdf_path":"/static/pdfs/curriculum/014/reg_21.pdf"
-                }]}
+              },
+              {
+                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+                "pdf_path": "/static/pdfs/curriculum/014/reg_21.pdf"
+              }
+            ]
+          }
         ]
       }
     ]
@@ -305,7 +314,7 @@
                 "name": "Symposium",
                 "pdf_path": ""
               },
-               {
+              {
                 "name": "Conference",
                 "pdf_path": ""
               },
@@ -313,10 +322,11 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-      ]
+            ]
           }
         ]
-      }]
+      }
+    ]
   },
   {
     "type": "pedagogy",
@@ -398,7 +408,7 @@
         "category": "banner_name_and_image",
         "content": [
           {
-           "name": "தமிழ்த்துறை",
+            "name": "தமிழ்த்துறை",
             "dept_id": "014"
           }
         ]
