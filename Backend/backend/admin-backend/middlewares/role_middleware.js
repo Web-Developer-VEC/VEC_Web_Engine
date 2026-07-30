@@ -1,4 +1,5 @@
 const roleAccessMap = require("../models/role_access_models");
+const jwt = require("jsonwebtoken");
 
 function checkRoleByCollection() {
   return (req, res, next) => {
@@ -41,6 +42,7 @@ function checkRoleByCollection() {
       }
 
       if (!allowedRoles.includes(admin.role)) {
+        console.log(`Failed : ${allowedRoles} - ${JSON.stringify(admin, null, 2)}`);
         return res.status(403).json({
           error: `Access Denied: Your role (${admin.role}) is not allowed to make changes in ${collectionName}`,
         });
@@ -53,16 +55,29 @@ function checkRoleByCollection() {
 
 function checkRole(allowedRoles) {
   return (req, res, next) => {
-    const admin = req.session?.admin;
-    if (!admin) {
+    const authHeader = req.headers.authorization;
+    if (!authHeader?.startsWith("Bearer ")) {
       return res.status(401).json({ error: "Unauthorized" });
     }
 
-    if (!allowedRoles.includes(admin.role)) {
-      return res.status(403).json({ error: "Access Denied: Your role is not allowed to make changes in this page" });
-    }
+    const token = authHeader.split(" ")[1];
 
-    next();
+    try {
+      const admin = jwt.verify(token, process.env.JWT_SECRET);
+
+      req.admin = admin;
+
+
+      if (!allowedRoles.includes(admin.role)) {
+        return res.status(403).json({
+          error: "Access Denied",
+        });
+      }
+
+      next();
+    } catch (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
   };
 }
 
