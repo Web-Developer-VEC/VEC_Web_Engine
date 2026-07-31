@@ -28,58 +28,41 @@ async function getTempRequests(req, res) {
         byAdmin[adminKey].push(doc);
       });
 
-      for (const adminKey of Object.keys(byAdmin)) {
-        const adminDocs = byAdmin[adminKey];
-
-        // group by action (within this admin's requests)
-        const groupedRequests = { insert: [], update: [], delete: [] };
-
-        adminDocs.forEach((doc) => {
-          const action = doc.action?.toLowerCase();
-          if (action && groupedRequests[action]) {
-            let filteredData = {};
-
-            // filter fields by action
-            if (action === "insert") {
-              filteredData = {
-                _id: doc._id,
-                status: doc.status,
-                meta_data: doc.meta_data,
-                category: doc.category,
-                collection: doc.collection,
-                type: doc.collection_type,
-                createdAt: doc.createdAt,
-                title: doc.title,
-                admin:doc.admin
-              };
-            } else if (action === "update") {
-              filteredData = {
-                _id: doc._id,
-                status: doc.status,
-                original_data: doc.original_data,
-                meta_data: doc.meta_data,
-                category: doc.category,
-                collection: doc.collection,
-                type: doc.collection_type,
-                createdAt: doc.createdAt,
-                title: doc.title,
-                admin:doc.admin
-              };
-            } else if (action === "delete") {
-              filteredData = {
-                _id: doc._id,
-                status: doc.status,
-                meta_data: doc.meta_data,
-                category: doc.category,
-                collection: doc.collection,
-                type: doc.collection_type,
-                createdAt: doc.createdAt,
-                title: doc.title,
-                admin:doc.admin
-              };
-            }
-
-            groupedRequests[action].push(filteredData);
+          // filter fields by action
+          if (action === "insert") {
+            filteredData = {
+              _id: doc._id,
+              status: doc.status,
+              meta_data: doc.meta_data,
+              category: doc.category,
+              collection: doc.collection,
+              type: doc.collection_type,
+              createdAt: doc.createdAt,
+              title: doc.title
+            };
+          } else if (action === "update") {
+            filteredData = {
+              _id: doc._id,
+              status: doc.status,
+              original_data: doc.original_data,
+              meta_data: doc.meta_data,
+              category: doc.category,
+              collection: doc.collection,
+              type: doc.collection_type,
+              createdAt: doc.createdAt,
+              title: doc.title
+            };
+          } else if (action === "delete") {
+            filteredData = {
+              _id: doc._id,
+              status: doc.status,
+              meta_data: doc.meta_data,
+              category: doc.category,
+              collection: doc.collection,
+              type: doc.collection_type,
+              createdAt: doc.createdAt,
+              title: doc.title
+            };
           }
         });
 
@@ -158,8 +141,7 @@ async function getTempRequestAdmin(req, res) {
         }
 
         let filteredData = {
-          title: doc.title,
-          admin:doc.admin
+          title: doc.title
         };
 
         groupedRequests[key].items.push(filteredData);
