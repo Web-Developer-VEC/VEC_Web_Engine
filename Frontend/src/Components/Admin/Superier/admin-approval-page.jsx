@@ -133,18 +133,12 @@ export default function AdminApprovalPage() {
           acc[item.type].push(item);
           return acc;
         }, {});
-
         const token = sessionStorage.getItem("token");
 
         const responses = await Promise.all(
           Object.entries(grouped).map(([type, approvals]) => {
             const endpoint = `${type.toLowerCase().replaceAll("_", "")}admin`;
-            console.log("Token:", token, endpoint);
-
-            return axios.post(
-              `/api/admin-backend/${endpoint}`,
-              approvals,
-              {
+            return axios.post(`/api/admin-backend/${endpoint}`, approvals, {
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },
@@ -163,12 +157,12 @@ export default function AdminApprovalPage() {
         const token = sessionStorage.getItem("token");
 
         const response = await axios.post(`/api/admin-backend/${endpoint}`, itemApprovals,
-          {
+        {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
-        responsePayloads = [response?.data];
+          responsePayloads = [response?.data];
       }
 
       // Aggregate results from all endpoint responses
@@ -498,9 +492,9 @@ export default function AdminApprovalPage() {
 
     // Handle image/pdf paths (single strings only - arrays handled above)
     // Special case for Student Activities description
-    if (fieldName === "image_content") {
-      return <span className="text-gray-900 text-sm">{value}</span>;
-    }
+if (fieldName === "image_content") {
+  return <span className="text-gray-900 text-sm">{value}</span>;
+}
     if (fieldName?.toLowerCase().includes('image') && !fieldName?.toLowerCase().includes('image_name') && value && typeof value === 'string') {
       return (
         <a
@@ -641,6 +635,8 @@ export default function AdminApprovalPage() {
                 <span className="text-gray-400">•</span>
                 <Calendar size={16} />
                 {formatDate(item?.createdAt)}
+                <span className="text-gray-400">•</span>
+                <span className="text-xs text-gray-500">Requested by: {item?.admin?.name || "Unknown"}</span>
               </div>
               {item?.category && (
                 <div className="flex items-center gap-2">
@@ -679,6 +675,8 @@ export default function AdminApprovalPage() {
                   </span>                  <span className="text-gray-400">•</span>
                   <Calendar size={16} />
                   <span className="text-xs text-gray-500">{formatDate(item?.createdAt)}</span>
+                  <span className="text-gray-400">•</span>
+                  <span className="text-xs text-gray-500">Requested by: {item?.admin?.name || "Unknown"}</span>
                 </div>
                 {item?.category && (
                   <span className="inline-flex mt-2 px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">
@@ -749,10 +747,13 @@ export default function AdminApprovalPage() {
                   {isReverted
                     ? `REVERT ${item?.title?.replaceAll("_", " ").toUpperCase()}`
                     : item?.title?.replaceAll("_", " ").toUpperCase()}
-                </span>
+                </span>                
                 <span className="text-gray-400">•</span>
                 <Calendar size={16} />
                 {formatDate(item?.createdAt)}
+                <span className="text-gray-400">•</span>
+                <span className="text-xs text-gray-500">Requested by: {item?.admin?.name || "Unknown"}</span>
+
               </div>
               {item?.category && (
                 <div className="flex items-center gap-2">

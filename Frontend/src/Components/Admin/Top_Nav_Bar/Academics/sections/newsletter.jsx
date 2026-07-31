@@ -61,8 +61,10 @@ export default function Newsletter({ data }) {
   };
 
   // Extract deptId from data/banner
-  const deptId = data?.find((item) => item.category === "banner")?.deptId || "005";
-  const collectionName = deptMap[deptId] || "CSE_005";
+const deptId = data
+  ?.find((item) => item.category === "banner_name_and_image")
+  ?.content?.[0]?.dept_id;
+  const collectionName = deptMap[deptId] ;
 
   // UI / state
   const [activeYear, setActiveYear] = useState(null);
@@ -235,7 +237,6 @@ export default function Newsletter({ data }) {
       setIsSubmitting(true);
       const payload = buildPayload();
       const files = collectFiles();
-
       const result = await sendRequest(payload, files.length > 0 ? files : null);
 
       if (result.success) {

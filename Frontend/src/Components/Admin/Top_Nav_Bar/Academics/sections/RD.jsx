@@ -20,7 +20,6 @@ import "react-toastify/dist/ReactToastify.css";
 const Research = ({ data }) => {
   const [originalData, setOriginalData] = useState([]);
   const [departmentResearch, setDepartmentResearch] = useState([]);
-  const [deptId, setDeptId] = useState("");
   const [alreadyRequested, setAlreadyRequested] = useState([]);
   const [years, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState("");
@@ -76,17 +75,21 @@ const Research = ({ data }) => {
     "Sponsored Research",
     "Conference",
   ];
+    const deptId = data?.find((item) => item.category === 'banner_name_and_image')?.content[0]?.dept_id;
+
 
   // Load initial data
   useEffect(() => {
     const depResearch =
-      data?.find((item) => item.category === "department_research")?.content ||
-      [];
+      data?.find((item) => item.category === "department_research")?.content || [];
+      console.log("depResearch",depResearch);
+      
 
-    const bannerData = data?.find((item) => item.category === "banner_name_and_image")?.content?.[0];
-    if (bannerData?.dept_id) {
-      setDeptId(bannerData.dept_id);
-    }
+    const bannerData = data?.find((item) => item.category === "banner_name_and_image")?.content?.[0]?.dept_id;
+    
+    console.log("bannerData",bannerData);
+    console.log(data.map((item) => item.category));
+    
 
     setOriginalData(depResearch);
     console.log("Original Data:", depResearch);
@@ -440,13 +443,7 @@ const Research = ({ data }) => {
     setChangesLog([]);
   };
 
-  if (!departmentResearch.length && years.length === 0) {
-    return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-        <LoadComp txt="" />
-      </div>
-    );
-  }
+ 
 
   return (
     <>

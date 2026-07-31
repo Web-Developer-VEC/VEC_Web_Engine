@@ -356,6 +356,7 @@ if (currentView === "past-requests") {
                             {request.collection.replaceAll("_", " ").toUpperCase()}
                           </h4>
                           <p className="text-muted-foreground text-sm capitalize">{request.action} operation</p>
+                          <p className="text-muted-foreground text-sm">Requested by: {request.admin?.name || "Unknown"}</p>
                         </div>
                       </div>
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity">
@@ -402,7 +403,7 @@ if (currentView === "past-requests") {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {pastDecisions.map((decision) => (
+                  {pastDecisions.slice(0,5).map((decision) => (
                     <div
                       key={decision.id}
                       className="group flex items-center gap-4 p-6 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:shadow-lg hover:border-primary/20 cursor-pointer transition-all duration-300"
@@ -430,7 +431,7 @@ if (currentView === "past-requests") {
                             {decision.title}
                           </h4>
                           <div className="flex items-center gap-2 mt-1">
-                            <span className="text-muted-foreground text-sm">By: {decision.admin}</span>
+                            <span className="text-muted-foreground text-sm">By: {decision.admin?.name || "Unknown"}</span>
                             <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
                             <span className="text-muted-foreground text-sm">
                               {new Date(decision.createdAt).toLocaleString("en-IN", {
@@ -441,7 +442,8 @@ if (currentView === "past-requests") {
                                 minute: "2-digit",
                                 hour12: true,
                               })}
-                            </span>                          </div>
+                            </span>                          
+                          </div>
                         </div>
                       </div>
                       <div
