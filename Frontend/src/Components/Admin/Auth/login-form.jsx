@@ -33,13 +33,11 @@ export function LoginForm() {
       if (!res.ok) {
         throw new Error(data.message || "Login failed")
       }
-
-      localStorage.setItem("token", data.token)
-
+      sessionStorage.setItem("token", data.token);
       sessionStorage.setItem("userSession", JSON.stringify(data.admin));
 
       const redirectPath = data.admin.role === "super_admin" ? "/admin_dash" : "/admin_profile";
-      
+
       setTimeout(() => {
         navigate(redirectPath);
       }, 1000);
@@ -47,7 +45,7 @@ export function LoginForm() {
       setSuccess("Login successful! Redirecting...")
     } catch (err) {
       setError(err.message)
-      console.error("Error login",err);
+      console.error("Error login", err);
     } finally {
       setLoading(false)
     }
