@@ -149,7 +149,6 @@ const AdminDepartmentPage = ({ theme, toggle }) => {
       try {
         const response = await axios.get(`/api/main-backend/${deptID}/sidebar`);
         const validSections = response.data.content
-          .filter((section) => section.hascontent)
           .map((section) => section.id);
 
         setAvailableSections(validSections);

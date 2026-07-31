@@ -493,7 +493,7 @@ const AdminAboutplacement = ({ theme, toggle }) => {
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30">
             <button
               onClick={() => setShowMultiDeleteConfirm(true)}
-              className="px-4 py-2 rounded bg-red-600 text-white flex items-center gap-2"
+              className="px-4 py-2 rounded bg-red-500 text-white flex items-center gap-2"
             >
               <Trash2 size={16} /> Delete ({selectedItems.length})
             </button>
@@ -504,7 +504,7 @@ const AdminAboutplacement = ({ theme, toggle }) => {
           {editMode && (
             <button
               onClick={cancelEdit}
-              className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+              className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-500 text-white hover:bg-gray-500"
             >
               Cancel
             </button>
@@ -523,7 +523,7 @@ const AdminAboutplacement = ({ theme, toggle }) => {
             <>
               <button
                 onClick={discardAllPending}
-                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-500 text-white hover:bg-gray-500"
               >
                 Discard Changes
               </button>
@@ -548,7 +548,7 @@ const AdminAboutplacement = ({ theme, toggle }) => {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowMultiDeleteConfirm(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-500 text-white"
               >
                 Cancel
               </button>
@@ -613,7 +613,7 @@ const AdminAboutplacement = ({ theme, toggle }) => {
             <div className="flex justify-end gap-2 mt-6">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-prim"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-500 text-prim"
               >
                 Cancel
               </button>

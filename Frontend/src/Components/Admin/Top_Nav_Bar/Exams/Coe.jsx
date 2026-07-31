@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Pencil, Send, X, Plus } from "lucide-react";
+import LoadComp from "../../LoadComp";
 import { useAdminRequest } from "../../../hooks/useAdminRequest"; // <-- adjust path if needed
 
 // NOTE: memberKey based on name/position/image_path causes "delete + insert" when you edit those fields,
@@ -149,6 +150,7 @@ const buildCoePayloadAndFiles = (originalSections, currentSections) => {
 const AdminCoe = ({ toggle, theme }) => {
   const [coeData, setCoeData] = useState(null);
   const [originalData, setOriginalData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [isEditing, setIsEditing] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
@@ -172,26 +174,42 @@ const AdminCoe = ({ toggle, theme }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+
+      // Record the start time
+      const startTime = Date.now();
+
       try {
         const response = await axios.post("/api/main-backend/exam", {
           type: "COE",
         });
-        const data = response.data.data;
 
-        // IMPORTANT: assign stable client_id keys once, so edits don't look like deletes
+        const data = response.data.data;
         const withIds = ensureClientIds(data);
 
         setCoeData(withIds);
         setOriginalData(deepClone(withIds));
       } catch (error) {
         console.error("Error fetching coe data", error);
+
         if (error.response?.data?.status === 429) {
           navigate("/ratelimit", {
             state: { msg: error.response.data.message },
           });
+        } else {
+          toast.error("Failed to fetch COE data");
         }
+      } finally {
+        // Ensure loader stays visible for at least 1 second
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(1000 - elapsed, 0);
+
+        setTimeout(() => {
+          setLoading(false);
+        }, remaining);
       }
     };
+
     fetchData();
   }, [navigate]);
 
@@ -461,6 +479,23 @@ const AdminCoe = ({ toggle, theme }) => {
     setChanges([]);
     setHasChanges(false);
   };
+  if (loading || requestLoading) {
+    return (
+      <>
+        <Banner
+          toggle={toggle}
+          theme={theme}
+          backgroundImage="./Banners/examsbanner.webp"
+          headerText="office of controller of examinations"
+          subHeaderText="COE"
+        />
+
+        <div className="min-h-[70vh] flex items-center justify-center bg-prim dark:bg-drkp">
+          <LoadComp />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
