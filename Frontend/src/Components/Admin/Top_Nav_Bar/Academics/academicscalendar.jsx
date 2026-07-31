@@ -4,7 +4,7 @@ import Banner from "../../Banner";
 import LoadComp from "../../LoadComp";
 import "../../Second_Nav_Bar/Accredation/nirf.css";
 import { Pencil, Plus, Eye, Save, Trash2, Send } from "lucide-react";
-import { toast,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminAcadamiccal = ({ toggle, theme }) => {
@@ -17,7 +17,12 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [changes, setChanges] = useState([]);
-  const { sendRequest, loading, error } = useAdminRequest();
+  const {
+    sendRequest,
+    loading,
+    error,
+    loading: reqLoading,
+  } = useAdminRequest();
 
   // ✅ For deletion
   const [selected, setSelected] = useState([]);
@@ -248,13 +253,9 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
       }
 
       // ---------- UPDATE ----------
-      if (
-        orig.year !== item.year ||
-        item.oddFile ||
-        item.evenFile ||
-        item.oddRemoved ||
-        item.evenRemoved
-      ) {
+
+      // Year update
+      if (orig.year !== item.year) {
         payload.push({
           collectionName: "academics",
           collection_type: "academic_calendar",
@@ -262,11 +263,64 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
           title: "update academic calendar",
           meta_data: {
             year: item.year,
-            pdf_path: newPdfPaths,
           },
           original_data: {
             year: orig.year,
             pdf_path: orig.pdf_path || [],
+          },
+        });
+      }
+
+      // Odd PDF update
+      if (item.oddFile || item.oddRemoved) {
+        payload.push({
+          collectionName: "academics",
+          collection_type: "academic_calendar",
+          action: "update",
+          title: "update academic calendar",
+          meta_data: {
+            year: item.year,
+            type: "odd", // <-- Added
+            pdf_path: [
+              item.oddRemoved
+                ? ""
+                : `/static/pdfs/academic_calendar/${item.oddFile.name}`,
+            ],
+          },
+          original_data: {
+            year: orig.year,
+            pdf_path: [
+              item.oddRemoved
+                ? ""
+                : `/static/pdfs/academic_calendar/${item.oddFile.name}`,
+            ], // <-- No changes
+          },
+        });
+      }
+
+      // Even PDF update
+      if (item.evenFile || item.evenRemoved) {
+        payload.push({
+          collectionName: "academics",
+          collection_type: "academic_calendar",
+          action: "update",
+          title: "update academic calendar",
+          meta_data: {
+            year: item.year,
+            type: "even", // <-- Added
+            pdf_path: [
+              item.evenRemoved
+                ? ""
+                : `/static/pdfs/academic_calendar/${item.evenFile.name}`,
+            ],
+          },
+          original_data: {
+            year: orig.year,
+            pdf_path: [
+              item.evenRemoved
+                ? ""
+                : `/static/pdfs/academic_calendar/${item.evenFile.name}`,
+            ], // <-- No changes
           },
         });
       }
@@ -305,12 +359,9 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
     }
     console.log("payload", payload);
     console.log("Files", files);
-    
 
     try {
       await sendRequest(payload, files);
-
-      toast.success("Request sent successfully!");
       setShowRequestModal(false);
 
       setChanges([]);
@@ -342,7 +393,6 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
 
     setIsEditing(true);
     setIsSaved(false);
-
   };
 
   return (
@@ -663,7 +713,6 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
               onClick={handleGlobalSave}
               className="flex items-center gap-2 px-3  mr-4 py-2 bg-[#fdcc03] text-text rounded-lg shadow hover:bg-[#800000] transition hover:text-prim"
             >
-              
               <span>Save</span>
             </button>
           )}
@@ -869,9 +918,14 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
               </button>
               <button
                 onClick={handleRequestConfirm}
-                className="px-4 py-2 bg-[#fdcc03] text-text rounded-lg hover:bg-[#800000] hover:text-prim transition"
+                disabled={reqLoading}
+                className={`px-4 py-2 rounded-lg transition ${
+                  reqLoading
+                    ? "bg-gray-400 text-white cursor-not-allowed"
+                    : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                }`}
               >
-                Confirm Request
+                {reqLoading ? "Processing..." : "Confirm Request"}
               </button>
             </div>
           </div>

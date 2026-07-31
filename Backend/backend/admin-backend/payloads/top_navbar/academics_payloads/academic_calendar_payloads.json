@@ -14,6 +14,7 @@
   "title": "update academic calendar",
   "meta_data": {
     "year": "Academic Year 2025-2026",
+    "type":"odd",
     "pdf_path": []
   },
   "original_data": {
