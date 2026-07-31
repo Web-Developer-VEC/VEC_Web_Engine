@@ -88,7 +88,8 @@ const role_routes = {
   exam: [
     "/rankholders",
     "/form",
-    "/coe"
+    "/coe",
+    "/reg",
   ],
   about_us: [
     "/abt-us",

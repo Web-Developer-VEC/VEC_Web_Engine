@@ -149,8 +149,8 @@ export default function AdminProfilePage() {
       try {
         const response = await axios.get("/api/admin-backend/adminrequest")
         const requests = Array.isArray(response.data)
-          ? response.data
-          : response.data?.requests || []
+          ? response.data[0].requests
+          : []
         setPendingRequests(requests)
       } catch (error) {
         console.error("Error fetching the Admin pending request", error)
