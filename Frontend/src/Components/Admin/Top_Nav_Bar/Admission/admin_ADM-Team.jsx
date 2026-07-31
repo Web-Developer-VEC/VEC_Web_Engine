@@ -532,7 +532,7 @@ const AdminADMteam = ({ theme, toggle }) => {
           <LoadComp txt="" />
         </div>
       ) : (
-        <div className="regulation-container flex flex-col items-center">
+        <div className="regulation-container flex flex-col items-center pb-16">
           <div className="flex justify-center gap-6 mb-6 flex-wrap">
             {firstTwoCards.map((member, index) => (
               <TeamCard
@@ -640,7 +640,7 @@ const AdminADMteam = ({ theme, toggle }) => {
                 Cancel
               </button>
               {hasUnsavedChanges && (
-                <button className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-lg" onClick={handleSave}>
+                <button className="flex items-center gap-2 px-4 py-2 bg-secd text-text rounded-lg shadow-md hover:bg-brwn hover:text-prim transition" onClick={handleSave}>
                   Save
                 </button>
               )}
@@ -659,10 +659,10 @@ const AdminADMteam = ({ theme, toggle }) => {
 
           {showRequestButtons && (
             <div className="flex justify-end w-full gap-3 mt-4 mr-12 mb-12">
-              <button className="px-4 py-2 bg-gray-300 rounded-md" onClick={handleDiscard}>
+              <button className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600" onClick={handleDiscard}>
                 Discard changes
               </button>
-              <button className="px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded flex items-center gap-2" onClick={() => setShowRequestModal(true)}>
+              <button className="px-4 py-2 bg-secd text-text rounded flex items-center gap-2 hover:bg-brwn hover:text-prim transition" onClick={() => setShowRequestModal(true)}>
                 Request
               </button>
             </div>

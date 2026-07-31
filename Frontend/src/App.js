@@ -15,6 +15,7 @@ import LandingPage from "./Landing.jsx"; // Keep eager, internal parts are lazy
 import RateLimitReach from "./ratelimit.jsx";
 import { routeConfig } from "./routeConfig.js";
 import useGoogleAnalytics from "./useAnalytics.js";
+import useIsMobile from "./Components/hooks/useIsMobile.jsx"
 
 // Lazy load components
 const Boot = lazy(() => import("./Components/Main/Landing Comp/BootUp"));
@@ -31,6 +32,7 @@ const EnquiryWeb = lazy(() => import("./Components/Main/Second_Nav_Bar/Club/web 
 const AuthPage = lazy(() => import("./Components/Admin/Auth/auth.jsx"));
 const Career = lazy(() => import("./Components/Main/Landing Comp/career.jsx"));
 const ForgotPassword = lazy(() => import("./Components/Admin/Auth/ForgotPassword.jsx"))
+const MobileBlocked = lazy(() => import("./Components/Admin/MobileBlocked.jsx"))
 
 /* General Forms */
 const AppraisalReport = React.lazy(() => import("./Components/Main/Forms/Appraisal/Appraisal Download/AppraisalReport.jsx"));
@@ -63,7 +65,7 @@ const AppContainer = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-`;
+    `;
 
 const MainContentWrapper = styled.div`
 flex: 1;
@@ -79,6 +81,7 @@ const App = () => {
     const footer = landingData?.find((item) => item.type === "page_details")?.data || [];
     const footerRef = useRef(null);
     const navigate = useNavigate();
+    const isMobile = useIsMobile();
     useGoogleAnalytics();
 
     useEffect(() => {
@@ -160,6 +163,7 @@ const App = () => {
 
     const session = JSON.parse(sessionStorage.getItem("userSession"));
     const isFooter = currentPath === "/";
+
     return (
         <>
             <GlobalStyle />
@@ -196,8 +200,15 @@ const App = () => {
                                         <Route
                                             key={path}
                                             path={path}
-                                            drk
-                                            element={getRouteElement(path, session, toggle, theme)}
+                                            element={
+                                                session &&
+                                                session.routes.includes(path) &&
+                                                isMobile ? (
+                                                    <MobileBlocked />
+                                                ) : (
+                                                    getRouteElement(path, session, toggle, theme)
+                                                )
+                                            }
                                         />
                                     ))}
                             
