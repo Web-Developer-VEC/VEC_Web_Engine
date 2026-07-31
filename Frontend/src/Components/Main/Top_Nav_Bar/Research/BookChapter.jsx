@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Academicresearch.css";
+import "./Consultancy.css";
 import Banner from "../../Banner";
 import "./BookChapter.css";
 import axios from "axios";
