@@ -16,48 +16,48 @@ const HeadDepartment = ({ data }) => {
   const { sendRequest, loading: requestLoading } = useAdminRequest();
 
   const UrlParser = (path) => {
-  console.log("UrlParser received:", path, typeof path);
+    console.log("UrlParser received:", path, typeof path);
 
-  if (!path) return "";
+    if (!path) return "";
 
-  if (Array.isArray(path)) {
-    path = path[0];
-  }
+    if (Array.isArray(path)) {
+      path = path[0];
+    }
 
-  if (typeof path !== "string") {
-    console.log("INVALID PATH:", path);
-    return "";
-  }
+    if (typeof path !== "string") {
+      console.log("INVALID PATH:", path);
+      return "";
+    }
 
-  if (path.startsWith("blob:")) return path;
-  if (path.startsWith("http")) return path;
+    if (path.startsWith("blob:")) return path;
+    if (path.startsWith("http")) return path;
 
-  if (BASE_URL && path.startsWith("/")) {
-    return `${BASE_URL}${path}`;
-  }
+    if (BASE_URL && path.startsWith("/")) {
+      return `${BASE_URL}${path}`;
+    }
 
-  return path;
-};
+    return path;
+  };
 
   // Department mapping
   const deptMap = {
     "001": "AIDS_001",
-    "002": "MECH_002",
-    "003": "ECE_003",
+    "002": "AUTO_002",
+    "003": "CHEMISTRY_003",
     "004": "CIVIL_004",
     "005": "CSE_005",
-    "006": "EEE_006",
-    "007": "CHEM_007",
-    "008": "AUTO_008",
-    "009": "AERO_009",
-    "010": "PROD_010",
-    "011": "BIO_011",
-    "012": "TEXTILE_012",
-    "013": "APPAREL_013",
-    "014": "CIVIL_INFRA_014",
-    "015": "FOOD_015",
-    "016": "BIOTECH_016",
-    "017": "AGRI_017",
+    "006": "CSECS_006",
+    "007": "EEE_007",
+    "008": "EIE_008",
+    "009": "ECE_009",
+    "010": "ENGLISH_010",
+    "011": "IT_011",
+    "012": "MATHS_012",
+    "013": "MECH_013",
+    "014": "TAMIL_014",
+    "015": "PHYSICS_015",
+    "016": "MECSE_016",
+    "017": "MBA_017",
     "018": "PS_018"
   };
 
@@ -233,11 +233,17 @@ const HeadDepartment = ({ data }) => {
   };
 
   const handleRequest = () => setShowRequestModal(true);
+  if (!data) {
+    return (
+      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
+        <LoadComp />
+      </div>
+    );
+  }
 
   return (
     <>
       <ToastContainer position="bottom-right" autoClose={3000} />
-      {formData.Hod_message ? (
         <div className={styles.messageContent + " text-text dark:text-drkt relative"}>
 
           {/* Top Edit button always visible if global save clicked */}
@@ -285,10 +291,10 @@ const HeadDepartment = ({ data }) => {
           <div className={`${styles.imageColumn} mb-24`}>
             {formData.Image ? (
               <img
-  src={UrlParser(formData.Image)}
-  alt="Head of Department"
-  className={styles.hodImage}
-/>
+                src={UrlParser(formData.Image)}
+                alt="Head of Department"
+                className={styles.hodImage}
+              />
             ) : (<p>No image available</p>)}
 
             {/* Upload button */}
@@ -572,12 +578,6 @@ const HeadDepartment = ({ data }) => {
             </div>
           )}
         </div>
-      ) : (
-        <div className={"h-screen flex items-center justify-center md:mt-[15%] md:block"}>
-          <LoadComp />
-        </div>
-      )}
-
     </>
   );
 };

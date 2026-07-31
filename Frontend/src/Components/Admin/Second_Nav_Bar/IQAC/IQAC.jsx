@@ -250,7 +250,6 @@ const AdminIQAC = ({ toggle, theme }) => {
       setSavedData(iqacData);
       setEditedData(iqacData);
       setChanges({ about: null, objectives: [] });
-      //toast.info("Changes discarded.");
     };
 
     const handleUndoAbout = () => {
@@ -328,7 +327,6 @@ const AdminIQAC = ({ toggle, theme }) => {
         setShowRequestModal(false);
         setChanges({ about: null, objectives: [] });
         setIsEditing(false);
-        //toast.success("The request is summitted successfully")
       }
     };
 
