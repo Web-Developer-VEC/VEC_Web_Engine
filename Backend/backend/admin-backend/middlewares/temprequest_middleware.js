@@ -18,15 +18,13 @@ async function getTempRequests(req, res) {
         .toArray();
 
       if (pendingRequests.length === 0) continue; // skip empty
+      // group by action
+      const groupedRequests = { insert: [], update: [], delete: [] };
 
-      // group pending docs by the admin who requested them,
-      // so requests from different admins don't get merged into one card
-      const byAdmin = {};
       pendingRequests.forEach((doc) => {
-        const adminKey = doc.admin?.id || doc.admin?.name || "unknown";
-        if (!byAdmin[adminKey]) byAdmin[adminKey] = [];
-        byAdmin[adminKey].push(doc);
-      });
+        const action = doc.action?.toLowerCase();
+        if (action && groupedRequests[action]) {
+          let filteredData = {};
 
           // filter fields by action
           if (action === "insert") {
@@ -64,29 +62,37 @@ async function getTempRequests(req, res) {
               title: doc.title
             };
           }
-        });
 
-        // build response per admin per collection
-        const data = {};
-        const actions = [];
-
-        Object.entries(groupedRequests).forEach(([key, value]) => {
-          if (value.length > 0) {
-            data[key] = value;
-            actions.push(key);
-          }
-        });
-
-        const admin_details = adminDocs[0]?.admin || null;
-
-        if (actions.length > 0) {
-          results.push({
-            collection: collectionName,
-            action: actions,
-            admin: admin_details,
-            data,
-          });
+          groupedRequests[action].push(filteredData);
         }
+      });
+
+      // build response per collection
+      const data = {};
+      const actions = [];
+
+      Object.entries(groupedRequests).forEach(([key, value]) => {
+        if (value.length > 0) {
+          data[key] = value;
+          actions.push(key);
+        }
+      });
+
+      // Extract admin (same for all actions in this collection)
+      const details =
+        (data.insert && data.insert[0]) ||
+        (data.update && data.update[0]) ||
+        (data.delete && data.delete[0]);
+
+      const admin_details = pendingRequests[0]?.admin || null;
+
+      if (actions.length > 0) {
+        results.push({
+          collection: collectionName,
+          action: actions,
+          admin: admin_details,
+          data,
+        });
       }
     }
 
