@@ -45,8 +45,7 @@ async function updateData(tempDoc, mainCollection) {
       return incoming;
     });
 
-    let finalPdfPaths = [...existingPdfPaths];
-
+    
     if (type !== undefined) {
       if (type === "odd") {
         finalPdfPaths[0] = meta_data.pdf_path?.[0] ?? existingPdfPaths[0];
