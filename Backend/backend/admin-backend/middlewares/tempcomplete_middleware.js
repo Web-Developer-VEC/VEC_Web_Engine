@@ -51,25 +51,11 @@ async function getTempCompleted(req, res) {
 
       if (completedRequests.length === 0) continue;
 
-      // 📌 Bucket by (admin + actual day) so requests from different admins,
-      // or from the same admin on different days, never get merged together.
-      const buckets = {};
+      const groupedRequests = { insert: [], update: [], delete: [] };
 
       completedRequests.forEach((doc) => {
         const action = doc.action?.toLowerCase();
-        if (!action || !["insert", "update", "delete"].includes(action)) return;
-
-        const adminKey = doc.admin?.id || doc.admin?.name || "unknown";
-        const dateKey = formatDate(roundToDate(doc.updatedAt));
-        const bucketKey = `${adminKey}||${dateKey}`;
-
-        if (!buckets[bucketKey]) {
-          buckets[bucketKey] = {
-            admin: doc.admin || null,
-            dateKey,
-            groupedRequests: { insert: [], update: [], delete: [] },
-          };
-        }
+        if (!action || !groupedRequests[action]) return;
 
         const filteredData = {
           status: doc.status,
@@ -79,26 +65,32 @@ async function getTempCompleted(req, res) {
           collection: doc.collection,
           type: doc.collection_type,
           createdAt: doc.createdAt,
-          admin: doc.admin || null, // full admin object (id, name, role) — not just role
+          admin: doc.admin || null,
           title: doc.title,
           updatedAt: doc.updatedAt,
         };
 
-        buckets[bucketKey].groupedRequests[action].push(filteredData);
+        groupedRequests[action].push(filteredData);
       });
 
-      for (const { admin, dateKey, groupedRequests } of Object.values(buckets)) {
-        const data = {};
-        const actions = [];
+      const data = {};
+      const actions = [];
 
-        Object.entries(groupedRequests).forEach(([key, value]) => {
-          if (value.length > 0) {
-            data[key] = value;
-            actions.push(key);
-          }
-        });
+      Object.entries(groupedRequests).forEach(([key, value]) => {
+        if (value.length > 0) {
+          data[key] = value;
+          actions.push(key);
+        }
+      });
 
-        if (actions.length === 0) continue;
+      if (actions.length > 0) {
+        // pick date from first doc in this collection
+        const anyDoc =
+          (data.insert && data.insert[0]) ||
+          (data.update && data.update[0]) ||
+          (data.delete && data.delete[0]);
+
+        const dateKey = formatDate(roundToDate(anyDoc.updatedAt));
 
         if (!dateGroups[dateKey]) {
           dateGroups[dateKey] = [];
@@ -107,7 +99,7 @@ async function getTempCompleted(req, res) {
         dateGroups[dateKey].push({
           collection: collectionName,
           action: actions,
-          admin, // accurate now: this group only ever contains one admin's docs
+          admin: anyDoc?.admin || null,
           data,
         });
       }
