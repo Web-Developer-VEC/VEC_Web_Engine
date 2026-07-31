@@ -134,7 +134,7 @@ export default function AdminApprovalPage() {
           return acc;
         }, {});
 
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
 
         const responses = await Promise.all(
           Object.entries(grouped).map(([type, approvals]) => {
@@ -160,7 +160,7 @@ export default function AdminApprovalPage() {
         // ====================================
         const endpoint = endpointMap[request.collection];
         if (!endpoint) throw new Error("Unknown collection endpoint");
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
 
         const response = await axios.post(`/api/admin-backend/${endpoint}`, itemApprovals,
           {
