@@ -8,6 +8,7 @@ async function updateData(tempDoc, mainCollection) {
 
     const newYear = meta_data.year;
     const origYear = original_data.year;
+    const type = meta_data.type;
 
     if (!newYear || !origYear) {
       throw new Error("year is required");
@@ -23,19 +24,29 @@ async function updateData(tempDoc, mainCollection) {
     }
 
     const existingPdfPaths = existingDoc.data[0].pdf_path || ["", ""];
-    const incomingPdfPaths = meta_data.pdf_path || [];
+    let finalPdfPaths = [...existingPdfPaths];
 
-    const finalPdfPaths = [0, 1].map(index => {
-      const incoming = incomingPdfPaths[index];
-      const existing = existingPdfPaths[index] || "";
+    if (type !== undefined) {
+      if (type === "odd") {
+        finalPdfPaths[0] = meta_data.pdf_path?.[0] ?? existingPdfPaths[0];
+      }
+      else if (type === "even") {
+        finalPdfPaths[1] = meta_data.pdf_path?.[0] ?? existingPdfPaths[1];
+      }
+    }
+    else {
+      const incomingPdfPaths = meta_data.pdf_path || [];
 
-      if (incoming === undefined) return existing;
+      finalPdfPaths = [0, 1].map(index => {
+        const incoming = incomingPdfPaths[index];
+        const existing = existingPdfPaths[index] || "";
 
-      if (incoming === "") return "";
+        if (incoming === undefined) return existing;
+        if (incoming === "") return "";
 
-      return incoming;
-    });
-
+        return incoming;
+      });
+    }
     const result = await mainCollection.updateOne(
       {
         type: "academic_calendar",
