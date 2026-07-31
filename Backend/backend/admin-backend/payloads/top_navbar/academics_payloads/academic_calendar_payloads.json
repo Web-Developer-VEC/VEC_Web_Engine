@@ -7,7 +7,8 @@
     "year": "Academic Year 2026-2027",
     "pdf_path": []
   }
-},{
+},
+{
   "collectionName": "academics",
   "collection_type": "academic_calendar",
   "action": "update",
@@ -23,7 +24,8 @@
       "/static/pdfs/Academic Year 2026-2027/VELAMMAL_BUS_ROUTES 2024 - 25.pdf"
     ]
   }
-},{
+},
+{
   "collectionName": "academics",
   "collection_type": "academic_calendar",
   "action": "delete",
