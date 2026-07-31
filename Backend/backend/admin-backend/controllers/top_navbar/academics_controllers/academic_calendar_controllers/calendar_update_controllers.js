@@ -23,8 +23,17 @@ async function updateData(tempDoc, mainCollection) {
     }
 
     const existingPdfPaths = existingDoc.data[0].pdf_path || ["", ""];
-    const incomingPdfPaths = meta_data.pdf_path || [];
 
+    let incomingPdfPaths;
+
+    if (Array.isArray(meta_data.pdf_path)) {
+      incomingPdfPaths = meta_data.pdf_path;
+    } else if (typeof meta_data.pdf_path === "string") {
+      // Update only the first PDF by default
+      incomingPdfPaths = [meta_data.pdf_path, undefined];
+    } else {
+      incomingPdfPaths = [];
+    }
     const finalPdfPaths = [0, 1].map(index => {
       const incoming = incomingPdfPaths[index];
       const existing = existingPdfPaths[index] || "";
