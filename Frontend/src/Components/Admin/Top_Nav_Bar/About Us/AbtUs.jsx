@@ -151,6 +151,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
         (pdfSource[0].name || pdfSource[0].pdf_path || pdfSource[0].url)
       ) {
         initialPdfLinks = pdfSource.map((item, idx) => ({
+          id: item.pdf_path || `pdf-${idx}`,
           name: item.name || `Document ${idx + 1}`,
           url: item.pdf_path || item.pdf || item.url || "",
           file: null,
@@ -247,11 +248,25 @@ const AdminAbtUs = ({ theme, toggle }) => {
     }
 
     if (index === null) {
-      setPdfLinks((prev) => [...prev, { name, url: "", file }]);
+      setPdfLinks((prev) => [
+        ...prev,
+        {
+          id: `new-${Date.now()}-${Math.random()}`,
+          name,
+          url: "",
+          file,
+        },
+      ]);
     } else {
       setPdfLinks((prev) =>
         prev.map((pdf, i) =>
-          i === index ? { ...pdf, name, file: file || pdf.file || null } : pdf,
+          i === index
+            ? {
+              ...pdf,
+              name,
+              file: file || pdf.file || null,
+            }
+            : pdf,
         ),
       );
     }
@@ -333,58 +348,67 @@ const AdminAbtUs = ({ theme, toggle }) => {
     // pdfs - by NAME (not by index, to avoid index-shifting issues)
     // When you delete a PDF, remaining PDFs' indices shift, breaking index-based comparisons
     // Solution: Use PDF name as unique identifier for comparison
-    const basePdfs = Array.isArray(baseline.pdfLinks) ? baseline.pdfLinks : [];
-    const currPdfs = Array.isArray(current.pdfLinks) ? current.pdfLinks : [];
+    const basePdfs = baseline.pdfLinks || [];
+    const currPdfs = current.pdfLinks || [];
 
-    // Create maps by name for comparison
-    const maxLength = Math.max(basePdfs.length, currPdfs.length);
+    // INSERT / UPDATE
+    currPdfs.forEach((currPdf, index) => {
+      const oldPdf = basePdfs.find(p => p.id === currPdf.id);
 
-    for (let i = 0; i < maxLength; i++) {
-      const b = basePdfs[i] || null;
-      const c = currPdfs[i] || null;
-
-      if (!b && c) {
+      if (!oldPdf) {
         rows.push({
-          key: `pdf-add-${i}`,
+          key: `insert-${currPdf.id}`,
           action: "insert",
           section: "PDF Document",
-          changes: c.name || "New Document",
-          applyUndo: (curr) => {
+          changes: currPdf.name,
+          applyUndo: curr => {
             const next = deepClone(curr);
-            next.pdfLinks.splice(i, 1);
+            next.pdfLinks = next.pdfLinks.filter(p => p.id !== currPdf.id);
             return next;
-          },
+          }
         });
-      } else if (b && !c) {
+        return;
+      }
+
+      if (
+        oldPdf.name !== currPdf.name ||
+        currPdf.file instanceof File
+      ) {
         rows.push({
-          key: `pdf-del-${i}`,
+          key: `update-${currPdf.id}`,
+          action: "update",
+          section: "PDF Document",
+          changes: currPdf.name,
+          applyUndo: curr => {
+            const next = deepClone(curr);
+            const idx = next.pdfLinks.findIndex(p => p.id === currPdf.id);
+            if (idx !== -1)
+              next.pdfLinks[idx] = deepClone(oldPdf);
+            return next;
+          }
+        });
+      }
+    });
+
+    // DELETE
+    basePdfs.forEach(oldPdf => {
+      if (!currPdfs.some(p => p.id === oldPdf.id)) {
+        rows.push({
+          key: `delete-${oldPdf.id}`,
           action: "delete",
           section: "PDF Document",
-          changes: b.name || "Document",
-          applyUndo: (curr) => {
+          changes: oldPdf.name,
+          applyUndo: curr => {
             const next = deepClone(curr);
-            next.pdfLinks.splice(i, 0, deepClone(b));
+            next.pdfLinks.push(deepClone(oldPdf));
             return next;
-          },
+          }
         });
-      } else if (b && c) {
-        if (pdfIdentity(b) !== pdfIdentity(c)) {
-          rows.push({
-            key: `pdf-upd-${i}`,
-            action: "update",
-            section: "PDF Document",
-            changes: c.name,
-            applyUndo: (curr) => {
-              const next = deepClone(curr);
-              next.pdfLinks[i] = deepClone(b);
-              return next;
-            },
-          });
-        }
       }
-    }
+    });
 
     return rows;
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     pendingBaselineSnapshot,
@@ -551,92 +575,98 @@ const AdminAbtUs = ({ theme, toggle }) => {
     }
 
     // 3. Handle PDF changes - use NAME-based comparison (not index-based)
+    // 3. Handle PDF changes (INDEX-BASED)
     const oldPdfList = oldBackend.about_us_pdf || [];
     const newPdfList = newBackend.about_us_pdf || [];
 
-    // Create maps by name for comparison (same as requestRows)
-    const oldPdfMap = new Map(oldPdfList.map((p) => [p.name, p]));
-    const newPdfMap = new Map(newPdfList.map((p) => [p.name, p]));
+    newSnapshot.pdfLinks.forEach((snapPdf, index) => {
 
-    // Get all unique PDF names
-    const allPdfNames = new Set([...oldPdfMap.keys(), ...newPdfMap.keys()]);
+      const oldPdf = oldData.about_us_pdf.find(
+        p =>
+          (p.pdf_path || "") === (snapPdf.id || "")
+      );
 
-    allPdfNames.forEach((pdfName) => {
-      const oldItem = oldPdfMap.get(pdfName) || null;
-      const newItem = newPdfMap.get(pdfName) || null;
-      const snapPdf =
-        (newSnapshot.pdfLinks || []).find((p) => p.name === pdfName) || null;
+      const newBackendPdf = newPdfList[index];
 
-      if (oldItem && !newItem) {
-        // PDF was deleted
-        entries.push({
-          collectionName: "about_us",
-          collection_type: "about_vec",
-          action: "delete",
-          title: `Delete PDF: ${oldItem.name}`,
-          category: "about_us_pdf",
-          meta_data: {
-            name: oldItem.name || "",
-            pdf_path: oldItem.pdf_path || "",
-          },
-          original_data: null,
-        });
-      } else if (!oldItem && newItem) {
-        // New PDF was added
+      if (!oldPdf) {
+
         entries.push({
           collectionName: "about_us",
           collection_type: "about_vec",
           action: "insert",
-          title: `Add PDF: ${newItem.name}`,
+          title: `Add PDF: ${newBackendPdf.name}`,
           category: "about_us_pdf",
-          meta_data: {
-            name: newItem.name || "",
-            pdf_path: newItem.pdf_path || "",
-          },
+          meta_data: newBackendPdf,
           original_data: null,
         });
 
-        if (snapPdf?.file instanceof File) {
-          const safeName = makeSafeFileName(snapPdf.file);
-          const renamed = new File([snapPdf.file], safeName, {
-            type: snapPdf.file.type,
-          });
-          filesToSend.push(renamed);
+        if (snapPdf.file instanceof File) {
+
+          filesToSend.push(
+            new File(
+              [snapPdf.file],
+              makeSafeFileName(snapPdf.file),
+              {
+                type: snapPdf.file.type,
+              }
+            )
+          );
         }
-      } else if (oldItem && newItem) {
-        // PDF was updated
-        const nameChanged = (oldItem.name || "") !== (newItem.name || "");
-        const pathChanged =
-          (oldItem.pdf_path || "") !== (newItem.pdf_path || "");
-        const fileUploaded = snapPdf?.file instanceof File;
 
-        if (nameChanged || pathChanged || fileUploaded) {
-          entries.push({
-            collectionName: "about_us",
-            collection_type: "about_vec",
-            action: "update",
-            title: `Update PDF: ${newItem.name}`,
-            category: "about_us_pdf",
-            meta_data: {
-              name: newItem.name || "",
-              pdf_path: newItem.pdf_path || "",
-            },
-            original_data: {
-              name: oldItem.name || "",
-              pdf_path: oldItem.pdf_path || "",
-            },
-          });
+        return;
+      }
 
-          if (fileUploaded) {
-            const safeName = makeSafeFileName(snapPdf.file);
-            const renamed = new File([snapPdf.file], safeName, {
-              type: snapPdf.file.type,
-            });
-            filesToSend.push(renamed);
-          }
+      if (
+        oldPdf.name !== newBackendPdf.name ||
+        snapPdf.file instanceof File
+      ) {
+
+        entries.push({
+          collectionName: "about_us",
+          collection_type: "about_vec",
+          action: "update",
+          title: `Update PDF: ${newBackendPdf.name}`,
+          category: "about_us_pdf",
+          meta_data: newBackendPdf,
+          original_data: oldPdf,
+        });
+
+        if (snapPdf.file instanceof File) {
+
+          filesToSend.push(
+            new File(
+              [snapPdf.file],
+              makeSafeFileName(snapPdf.file),
+              {
+                type: snapPdf.file.type,
+              }
+            )
+          );
         }
       }
     });
+    // DELETE PDFs
+    oldPdfList.forEach((oldPdf) => {
+      const stillExists = newSnapshot.pdfLinks.some(
+        (pdf) => pdf.id === oldPdf.pdf_path
+      );
+
+      if (!stillExists) {
+        entries.push({
+          collectionName: "about_us",
+          collection_type: "about_vec",
+          action: "delete",
+          title: `Delete PDF: ${oldPdf.name}`,
+          category: "about_us_pdf",
+          meta_data: {
+            name: oldPdf.name,
+            pdf_path: oldPdf.pdf_path,
+          },
+          original_data: null,
+        });
+      }
+    });
+
     console.log("Entries:", entries);
     console.log("Files:", filesToSend);
     console.log("=== END DEBUG ===");
@@ -824,7 +854,6 @@ const AdminAbtUs = ({ theme, toggle }) => {
     setPostSaveSnapshot(null);
     setPendingBaselineSnapshot(null);
 
-    toast.success("Changes discarded successfully");
   };
 
   // -------------------- render --------------------
@@ -853,9 +882,8 @@ const AdminAbtUs = ({ theme, toggle }) => {
             {!editMode && (
               <button
                 onClick={handleEditClick}
-                className="absolute top-4 right-12 bg-[#fdcc03] hover:bg-[#800000] hover:text-white font-semibold text-[#000000] px-3 py-2 rounded flex items-center gap-2 transition"
-              >
-                <Pencil size={20} /> Edit
+                className="absolute top-0px right-[5px] mt-[5px] flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim z-20"              >
+                <Pencil size={18} /> Edit
               </button>
             )}
           </div>
@@ -879,10 +907,10 @@ const AdminAbtUs = ({ theme, toggle }) => {
                   <div
                     key={i}
                     className={`absolute ${i === 0
-                        ? "w-[40%] h-[60%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]"
-                        : i === 1
-                          ? "w-[40%] h-[90%] left-[15%] top-[10%] rounded-bl-[3rem]"
-                          : "w-[25%] h-[40%] left-[40%] top-[45%] rounded-tl-[3rem] rounded-br-[3rem]"
+                      ? "w-[40%] h-[60%] right-[15%] rounded-tl-[3rem] rounded-br-[3rem]"
+                      : i === 1
+                        ? "w-[40%] h-[90%] left-[15%] top-[10%] rounded-bl-[3rem]"
+                        : "w-[25%] h-[40%] left-[40%] top-[45%] rounded-tl-[3rem] rounded-br-[3rem]"
                       } border-[2vmin] border-white overflow-hidden`}
                   >
                     {loading[`img${i + 1}`] && (
@@ -1120,7 +1148,7 @@ const AdminAbtUs = ({ theme, toggle }) => {
             />
 
             <div className="flex items-center gap-2 mb-4">
-              <label className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded cursor-pointer">
+              <label className="bg-[#fdcc03] hover:bg-[#800000] hover:text-white text-text px-4 py-2 rounded flex items-center gap-2 shadow-lg transition">
                 {showPdfModal.index === null ? "Upload PDF" : "Replace PDF"}
                 <input
                   type="file"
@@ -1177,19 +1205,18 @@ const AdminAbtUs = ({ theme, toggle }) => {
 
       {/* Request Modal */}
       {showRequestModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]">
-          <div className="bg-drkt dark:bg-drkp p-6 rounded-xl w-[650px]">
-            <h2 className="text-xl font-bold mb-4 dark:text-drkt text-text">
-              Final Request for the Changes
+        <div className="fixed inset-0 bg-text/70 flex items-center justify-center z-[1000]">
+          <div className="bg-prim p-6 rounded-xl w-[40%] max-h-[80vh] overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-gray-800">
+              Final Request
             </h2>
             <p className="text-sm text-red-500 mb-4">
-              Note: Your changes will stay pending until approved by the
-              superior admin. Once approved, they will be applied automatically
-              to the live site.
+              Your changes will stay pending until approved by the superior
+              admin. Once approved they will go live.
             </p>
 
-            <div className="max-h-[200px] overflow-y-auto mb-4">
-              <table className="w-full border border-gray-300 text-left text-text dark:text-drkt">
+            {requestRows.length > 0 ? (
+              <table className="w-full text-center text-sm border">
                 <thead className="bg-gray-200">
                   <tr>
                     <th className="border p-2">Action</th>
@@ -1199,61 +1226,48 @@ const AdminAbtUs = ({ theme, toggle }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {requestRows.map((r) => (
-                    <tr key={r.key}>
-                      <td className="border border-gray-700 py-2 px-3">
-                        {r.action === "insert" && (
-                          <span className="text-green-600">+ Added</span>
-                        )}
-                        {r.action === "update" && (
-                          <span className="text-blue-600">✎ Edited</span>
-                        )}
-                        {r.action === "delete" && (
-                          <span className="text-red-600">– Deleted</span>
-                        )}
+                  {requestRows.map((row) => (
+                    <tr key={row.key}>
+                      <td className="border p-2 text-blue-600">{row.action}</td>
+                      <td className="border p-2">{row.section}</td>
+                      <td className="border p-2 text-center align-middle whitespace-pre-wrap">
+                        <p className="m-0">{row.changes}</p>
                       </td>
-
-                      <td className="border border-gray-700 py-2 px-3">
-                        {r.section}
-                      </td>
-
-                      <td className="border border-gray-700 py-2 px-3">
-                        {r.changes}
-                      </td>
-
-                      <td className="border border-gray-700 py-2 px-3">
+                      <td className="border p-2">
                         <button
-                          type="button"
-                          onClick={() => undoRow(r)}
-                          disabled={reqLoading}
-                          title="Undo this change"
-                          className="p-1 rounded hover:bg-red-100"
+                          onClick={() => undoRow(row)}
+                          className="p-1 rounded hover:bg-gray-100"
+                          title="Revert this change"
                         >
-                          <X className="text-red-600" />
+                          <X size={16} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-            </div>
+            ) : (
+              <p className="text-gray-600">No changes detected.</p>
+            )}
 
-            <div className="flex justify-end gap-2">
+            <div className="flex justify-end gap-2 mt-6">
+
               <button
-                onClick={confirmRequest}
-                className="px-4 py-2 rounded bg-[#fdcc03] transition"
-                style={{ color: "black" }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#800000";
-                  e.currentTarget.style.color = "white";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#fdcc03";
-                  e.currentTarget.style.color = "black";
-                }}
+                onClick={() => setShowRequestModal(false)}
+                className="bg-gray-400 hover:bg-gray-600 text-white px-4 py-2 rounded flex items-center gap-2 shadow-lg transition"
               >
-                {reqLoading ? "Processing..." : "Final Request"}
+                Cancel
               </button>
+              {requestRows.length > 0 && (
+                <button
+                  onClick={confirmRequest}
+                  disabled={reqLoading}
+                  className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${reqLoading ? "cursor-progress" : "hover:bg-[#800000]"
+                    }`}
+                >
+                  {reqLoading ? "Processing..." : "Final Request"}
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -1270,13 +1284,13 @@ const AdminAbtUs = ({ theme, toggle }) => {
             </p>
             <div className="flex justify-end gap-2">
               <button
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="bg-gray-400 hover:bg-gray-600 text-white px-4 py-2 rounded flex items-center gap-2 shadow-lg transition"
                 onClick={() => setShowDeleteConfirm(false)}
               >
                 Cancel
               </button>
               <button
-                className="px-4 py-2 rounded bg-red-600 text-white"
+                className="bg-red-600 hover:bg-red-500 text-white px-6 py-2 rounded flex items-center gap-2 shadow-lg"
                 onClick={confirmDeleteSelected}
               >
                 Delete

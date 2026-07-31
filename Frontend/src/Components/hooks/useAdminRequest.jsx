@@ -1,8 +1,7 @@
-import { useState, useRef } from "react";
+import axios from "axios";
+import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../api/api";
-import axios from "axios";
-import { m } from "framer-motion";
 
 /* -------------------------------- helpers -------------------------------- */
 
@@ -99,7 +98,7 @@ export function useAdminRequest() {
           });
         }
 
-        const data = await api.post(
+        await api.post(
           "/admin-backend/temp",
           formData,
           {

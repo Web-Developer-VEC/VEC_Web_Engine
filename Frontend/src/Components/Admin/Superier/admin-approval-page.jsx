@@ -134,10 +134,22 @@ export default function AdminApprovalPage() {
           return acc;
         }, {});
 
+        const token = sessionStorage.getItem("token");
+
         const responses = await Promise.all(
           Object.entries(grouped).map(([type, approvals]) => {
             const endpoint = `${type.toLowerCase().replaceAll("_", "")}admin`;
-            return axios.post(`/api/admin-backend/${endpoint}`, approvals);
+            console.log("Token:", token, endpoint);
+
+            return axios.post(
+              `/api/admin-backend/${endpoint}`,
+              approvals,
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
           })
         );
 
@@ -148,8 +160,14 @@ export default function AdminApprovalPage() {
         // ====================================
         const endpoint = endpointMap[request.collection];
         if (!endpoint) throw new Error("Unknown collection endpoint");
+        const token = sessionStorage.getItem("token");
 
-        const response = await axios.post(`/api/admin-backend/${endpoint}`, itemApprovals);
+        const response = await axios.post(`/api/admin-backend/${endpoint}`, itemApprovals,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
         responsePayloads = [response?.data];
       }
 
@@ -480,9 +498,9 @@ export default function AdminApprovalPage() {
 
     // Handle image/pdf paths (single strings only - arrays handled above)
     // Special case for Student Activities description
-if (fieldName === "image_content") {
-  return <span className="text-gray-900 text-sm">{value}</span>;
-}
+    if (fieldName === "image_content") {
+      return <span className="text-gray-900 text-sm">{value}</span>;
+    }
     if (fieldName?.toLowerCase().includes('image') && !fieldName?.toLowerCase().includes('image_name') && value && typeof value === 'string') {
       return (
         <a
@@ -731,7 +749,7 @@ if (fieldName === "image_content") {
                   {isReverted
                     ? `REVERT ${item?.title?.replaceAll("_", " ").toUpperCase()}`
                     : item?.title?.replaceAll("_", " ").toUpperCase()}
-                </span>                
+                </span>
                 <span className="text-gray-400">•</span>
                 <Calendar size={16} />
                 {formatDate(item?.createdAt)}

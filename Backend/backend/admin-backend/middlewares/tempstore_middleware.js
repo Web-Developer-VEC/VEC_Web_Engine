@@ -296,9 +296,12 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           image_path = image_path[0];
         }
         if (action === "update" && collection_type === "placement_team") {
-          image_path = Array.isArray(image_path)
-            ? image_path[0]
-            : image_path;
+          if (Array.isArray(image_path)) {
+            image_path =
+              image_path.length > 0
+                ? image_path[0]
+                : original_data?.image_path;
+          }
         }
 
         return {

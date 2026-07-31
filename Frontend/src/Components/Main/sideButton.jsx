@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import './sideButton.css';
-import { FaArrowUp } from 'react-icons/fa';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './sideButton.css';
 
 const SideButton = () => {  // Changed from sideButton to SideButton
   const [showPopup, setShowPopup] = useState(false);
@@ -37,7 +36,7 @@ const SideButton = () => {  // Changed from sideButton to SideButton
         setSideButtons(responce.data.data[0] || {});
 
       } catch (error) {
-        console.error("Error fetching thhe landing page Data", error);
+        console.error("Error fetching the landing page Data", error);
         if (error.response && error.response.data.status === 429) {
           navigate('/ratelimit', { state: { msg: error.response.data.message } })
         }
@@ -45,10 +44,7 @@ const SideButton = () => {  // Changed from sideButton to SideButton
     }
 
     fetchData();
-  }, []);
-
-  console.log("Side button data", sideButtons);
-  
+  }, [navigate]);
 
   return (
     <>
