@@ -108,7 +108,9 @@ const Footer = forwardRef((props, ref) => {
                             <li><a href="https://vecchennai.org/stafflogin/login.php?done=/stafflogin/" target="_blank">Faculty Login</a></li>
                             <li><a href="https://easycollege.in/vecengg/college/webpayindex.aspx" target="_blank">Fees Payment</a></li>
                             <li><a href="/grievances">Grievances</a></li>
-                            <li><a href="/admin_auth">Login</a></li>
+                            <li className="hidden md:block">
+                                <a href="/admin_auth">Login</a>
+                            </li>
                             <li><a href="/careers">Careers</a></li>
                         </ul>
                     </div>
