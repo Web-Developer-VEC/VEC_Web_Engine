@@ -727,18 +727,34 @@ async function updateFile(tempDoc, tempCollection) {
       );
 
       meta[key] = isArray ? updatedPaths : updatedPaths[0];
-
       if (
         tempDoc.collection_type === "academic_calendar" &&
         key === "pdf_path"
       ) {
 
-        const originalPaths = tempDoc.original_data?.pdf_path || ["", ""];
-        const currentPaths = meta[key] || [];
+        const originalPaths = Array.isArray(original.pdf_path)
+          ? [...original.pdf_path]
+          : ["", ""];
 
-        meta[key] = [
-          currentPaths[0] !== undefined ? currentPaths[0] : originalPaths[0] || "",
-          currentPaths[1] !== undefined ? currentPaths[1] : originalPaths[1] || ""
+        let currentPaths;
+
+        if (Array.isArray(meta.pdf_path)) {
+          currentPaths = meta.pdf_path;
+        } else if (typeof meta.pdf_path === "string") {
+          // uploaded one PDF
+          currentPaths = [meta.pdf_path, undefined];
+        } else {
+          currentPaths = [];
+        }
+
+        meta.pdf_path = [
+          currentPaths[0] !== undefined
+            ? currentPaths[0]
+            : originalPaths[0],
+
+          currentPaths[1] !== undefined
+            ? currentPaths[1]
+            : originalPaths[1],
         ];
       }
     }

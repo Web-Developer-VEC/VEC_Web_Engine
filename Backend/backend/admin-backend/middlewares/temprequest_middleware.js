@@ -18,92 +18,81 @@ async function getTempRequests(req, res) {
         .toArray();
 
       if (pendingRequests.length === 0) continue; // skip empty
+      // group by action
+      const groupedRequests = { insert: [], update: [], delete: [] };
 
-      // group pending docs by the admin who requested them,
-      // so requests from different admins don't get merged into one card
-      const byAdmin = {};
       pendingRequests.forEach((doc) => {
-        const adminKey = doc.admin?.id || doc.admin?.name || "unknown";
-        if (!byAdmin[adminKey]) byAdmin[adminKey] = [];
-        byAdmin[adminKey].push(doc);
+        const action = doc.action?.toLowerCase();
+        if (action && groupedRequests[action]) {
+          let filteredData = {};
+
+          // filter fields by action
+          if (action === "insert") {
+            filteredData = {
+              _id: doc._id,
+              status: doc.status,
+              meta_data: doc.meta_data,
+              category: doc.category,
+              collection: doc.collection,
+              type: doc.collection_type,
+              createdAt: doc.createdAt,
+              title: doc.title
+            };
+          } else if (action === "update") {
+            filteredData = {
+              _id: doc._id,
+              status: doc.status,
+              original_data: doc.original_data,
+              meta_data: doc.meta_data,
+              category: doc.category,
+              collection: doc.collection,
+              type: doc.collection_type,
+              createdAt: doc.createdAt,
+              title: doc.title
+            };
+          } else if (action === "delete") {
+            filteredData = {
+              _id: doc._id,
+              status: doc.status,
+              meta_data: doc.meta_data,
+              category: doc.category,
+              collection: doc.collection,
+              type: doc.collection_type,
+              createdAt: doc.createdAt,
+              title: doc.title
+            };
+          }
+
+          groupedRequests[action].push(filteredData);
+        }
       });
 
-      for (const adminKey of Object.keys(byAdmin)) {
-        const adminDocs = byAdmin[adminKey];
+      // build response per collection
+      const data = {};
+      const actions = [];
 
-        // group by action (within this admin's requests)
-        const groupedRequests = { insert: [], update: [], delete: [] };
-
-        adminDocs.forEach((doc) => {
-          const action = doc.action?.toLowerCase();
-          if (action && groupedRequests[action]) {
-            let filteredData = {};
-
-            // filter fields by action
-            if (action === "insert") {
-              filteredData = {
-                _id: doc._id,
-                status: doc.status,
-                meta_data: doc.meta_data,
-                category: doc.category,
-                collection: doc.collection,
-                type: doc.collection_type,
-                createdAt: doc.createdAt,
-                title: doc.title,
-                admin:doc.admin
-              };
-            } else if (action === "update") {
-              filteredData = {
-                _id: doc._id,
-                status: doc.status,
-                original_data: doc.original_data,
-                meta_data: doc.meta_data,
-                category: doc.category,
-                collection: doc.collection,
-                type: doc.collection_type,
-                createdAt: doc.createdAt,
-                title: doc.title,
-                admin:doc.admin
-              };
-            } else if (action === "delete") {
-              filteredData = {
-                _id: doc._id,
-                status: doc.status,
-                meta_data: doc.meta_data,
-                category: doc.category,
-                collection: doc.collection,
-                type: doc.collection_type,
-                createdAt: doc.createdAt,
-                title: doc.title,
-                admin:doc.admin
-              };
-            }
-
-            groupedRequests[action].push(filteredData);
-          }
-        });
-
-        // build response per admin per collection
-        const data = {};
-        const actions = [];
-
-        Object.entries(groupedRequests).forEach(([key, value]) => {
-          if (value.length > 0) {
-            data[key] = value;
-            actions.push(key);
-          }
-        });
-
-        const admin_details = adminDocs[0]?.admin || null;
-
-        if (actions.length > 0) {
-          results.push({
-            collection: collectionName,
-            action: actions,
-            admin: admin_details,
-            data,
-          });
+      Object.entries(groupedRequests).forEach(([key, value]) => {
+        if (value.length > 0) {
+          data[key] = value;
+          actions.push(key);
         }
+      });
+
+      // Extract admin (same for all actions in this collection)
+      const details =
+        (data.insert && data.insert[0]) ||
+        (data.update && data.update[0]) ||
+        (data.delete && data.delete[0]);
+
+      const admin_details = pendingRequests[0]?.admin || null;
+
+      if (actions.length > 0) {
+        results.push({
+          collection: collectionName,
+          action: actions,
+          admin: admin_details,
+          data,
+        });
       }
     }
 
@@ -158,8 +147,7 @@ async function getTempRequestAdmin(req, res) {
         }
 
         let filteredData = {
-          title: doc.title,
-          admin:doc.admin
+          title: doc.title
         };
 
         groupedRequests[key].items.push(filteredData);
