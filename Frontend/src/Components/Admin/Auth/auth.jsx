@@ -28,7 +28,7 @@ export default function AuthPage() {
           <div className="flex mb-6 bg-slate-100 rounded-lg p-1">
             <button
               variant={isLogin ? "default" : "ghost"}
-              className={`flex-1 transition-all duration-300 p-2 ${
+              className={`flex-1 rounded-2xl transition-all duration-300 p-2 ${
                 isLogin
                   ? "bg-[#fdcc03] text-black shadow-md"
                   : "text-slate-600 hover:text-slate-800 hover:bg-[#800000] hover:text-white focus:bg-[#800000] focus:text-white"
