@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import "./Academicresearch.css";
+import "./Consultancy.css";
 import "./Funded.css";
 import Banner from "../../Banner";
 import axios from "axios";
+import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
 import { FaUserEdit } from "react-icons/fa";
 import { Eye, Pencil, Plus, Send, Trash2, X } from "lucide-react";
@@ -14,6 +15,8 @@ import { useAdminRequest } from "../../../hooks/useAdminRequest";
 export default function AdminFunded({ theme, toggle }) {
   const [funded, setFunded] = useState([]);
   const navigate = useNavigate();
+  const [isLoading, setLoading] = useState(true);
+
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const UrlParser = (path) => {
@@ -57,20 +60,30 @@ export default function AdminFunded({ theme, toggle }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
+
         const response = await axios.post("/api/main-backend/research", {
           type: "Funded Projects",
         });
+
         const data = response.data?.data || [];
+
         setFunded(data);
         originalRef.current = structuredClone(data);
         savedDataRef.current = structuredClone(data);
       } catch (error) {
         console.error("Error fetching Funded data", error);
+
         if (error.response?.data?.status === 429) {
-          navigate("/ratelimit", { state: { msg: error.response.data.message } });
+          navigate("/ratelimit", {
+            state: { msg: error.response.data.message },
+          });
         }
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchData();
   }, [navigate]);
 
@@ -494,7 +507,11 @@ export default function AdminFunded({ theme, toggle }) {
         headerText="Academic Research"
         subHeaderText="Enrich Your Knowledge"
       />
-
+      {isLoading ? (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={"Loading Funded Projects..."} />
+        </div>
+      ) : (
       <div className="mt-10">
         {!isEditing && (
           <button
@@ -821,7 +838,7 @@ export default function AdminFunded({ theme, toggle }) {
 
                     handleFinalRequestConfirm();
                   }}
-                  className="px-4 py-2 rounded bg-secd text-black hover:bg-brwn hover:text-prim"
+                  className="px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim"
                 >
                   Final Request
                 </button>
@@ -830,7 +847,7 @@ export default function AdminFunded({ theme, toggle }) {
           </div>
         )}
       </div>
-
+      )}
       <ToastContainer position="bottom-right" autoClose={2200} />
     </>
   );
