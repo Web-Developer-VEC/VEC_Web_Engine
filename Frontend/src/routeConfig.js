@@ -13,8 +13,8 @@ const AdminIQAC = lazy(() => import("./Components/Admin/Second_Nav_Bar/IQAC/IQAC
 const IQAC = lazy(() => import("./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx"));
 const NotFound = lazy(() => import("./NotFound"));
 const AdminApprovalPage = lazy(() => import("./Components/Admin/Superier/admin-approval-page.jsx"));
-const Consultancy = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
-const AdminConsultancy = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/Academicresearch.jsx"));
+const Consultancy = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Consultancy.jsx"));
+const AdminConsultancy = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/Consultancy.jsx"));
 const Journal = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Journal_publica.jsx"));
 const AdminJournal = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/Journal_publica.jsx"));
 const Policies = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/policy.jsx"));
