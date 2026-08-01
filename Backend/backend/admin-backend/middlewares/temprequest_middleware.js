@@ -37,7 +37,7 @@ async function getTempRequests(req, res) {
               type: doc.collection_type,
               createdAt: doc.createdAt,
               title: doc.title,
-              admin:doc.admin
+              admin: doc.admin
             };
           } else if (action === "update") {
             filteredData = {
@@ -50,7 +50,7 @@ async function getTempRequests(req, res) {
               type: doc.collection_type,
               createdAt: doc.createdAt,
               title: doc.title,
-              admin:doc.admin
+              admin: doc.admin
             };
           } else if (action === "delete") {
             filteredData = {
@@ -62,7 +62,7 @@ async function getTempRequests(req, res) {
               type: doc.collection_type,
               createdAt: doc.createdAt,
               title: doc.title,
-              admin:doc.admin
+              admin: doc.admin
             };
           }
 
@@ -150,8 +150,7 @@ async function getTempRequestAdmin(req, res) {
         }
 
         let filteredData = {
-          title: doc.title,
-          admin:doc.admin
+          title: doc.title
         };
 
         groupedRequests[key].items.push(filteredData);

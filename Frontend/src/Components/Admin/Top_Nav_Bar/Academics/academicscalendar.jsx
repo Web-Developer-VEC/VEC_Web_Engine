@@ -5,6 +5,7 @@ import LoadComp from "../../LoadComp";
 import "../../Second_Nav_Bar/Accredation/nirf.css";
 import { Pencil, Plus, Eye, Save, Trash2, Send } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminAcadamiccal = ({ toggle, theme }) => {
@@ -17,6 +18,12 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [changes, setChanges] = useState([]);
+  const {
+    sendRequest,
+    loading,
+    error,
+    loading: reqLoading,
+  } = useAdminRequest();
   const {
     sendRequest,
     loading,
@@ -253,6 +260,9 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
       }
 
       // ---------- UPDATE ----------
+
+      // Year update
+      if (orig.year !== item.year) {
 
       // Year update
       if (orig.year !== item.year) {
@@ -656,7 +666,7 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
                       ...editedData,
                       {
                         __uid: `${Date.now()}_${Math.random()}`,
-                        year: "New Year",
+                        year: "Academic Year 20-20",
                         pdf_path: ["", ""],
                         oddFile: null,
                         evenFile: null,

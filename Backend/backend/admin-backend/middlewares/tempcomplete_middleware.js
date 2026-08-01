@@ -65,7 +65,7 @@ async function getTempCompleted(req, res) {
           collection: doc.collection,
           type: doc.collection_type,
           createdAt: doc.createdAt,
-          admin: doc.admin?.role || null,
+          admin: doc.admin || null,
           title: doc.title,
           updatedAt: doc.updatedAt,
         };
