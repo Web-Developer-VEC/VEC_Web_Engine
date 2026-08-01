@@ -366,31 +366,43 @@ export default function IqaGal({ iqacData, onRefresh }) {
           </div>
 
           {/* Category Buttons */}
-          <div className="flex flex-wrap gap-2 justify-center mb-4">
-            {categories.map((category) => (
-              <div key={category} className="flex items-center gap-1">
-                <button
-                  className={`px-4 py-1 text-lg font-semibold rounded-lg transition-colors duration-300 ${selectedCategory === category
-                    ? "bg-accn text-white"
-                    : "bg-secd dark:bg-drks"
-                    }`}
-                  type="button"
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  {category}
-                </button>
-                {category !== "OVERALL" && isEditing && (
-                  <button
-                    type="button"
-                    onClick={() => setDeleteConfirm({ type: "category", category })}
-                    className="p-1 bg-red-500 text-white rounded hover:bg-red-600"
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
+<div className="flex flex-wrap items-center gap-2 justify-center mb-4">
+  {categories.map((category) => (
+    <div key={category} className="flex items-center gap-1">
+      <button
+        className={`px-4 py-1 text-lg font-semibold rounded-lg transition-colors duration-300 ${
+          selectedCategory === category
+            ? "bg-accn text-white"
+            : "bg-secd dark:bg-drks"
+        }`}
+        type="button"
+        onClick={() => setSelectedCategory(category)}
+      >
+        {category}
+      </button>
+
+      {category !== "OVERALL" && isEditing && (
+        <button
+          type="button"
+          onClick={() => setDeleteConfirm({ type: "category", category })}
+          className="p-1 bg-red-500 text-white rounded hover:bg-red-600"
+        >
+          <Trash2 size={16} />
+        </button>
+      )}
+    </div>
+  ))}
+
+  {/* Add Category Button */}
+  {isEditing && (
+    <button
+      onClick={() => setAddPopup(true)}
+      className="flex items-center gap-1 px-3 py-1 bg-secd text-text hover:bg-brwn hover:text-prim rounded"
+    >
+      <Plus size={20} />
+    </button>
+  )}
+</div>
 
           {/* Images */}
           <div className="columns-xs mb-12">
@@ -450,14 +462,7 @@ export default function IqaGal({ iqacData, onRefresh }) {
               </label>
             )}
             {/* Add new category (only in OVERALL) */}
-            {selectedCategory === "OVERALL" && isEditing && (
-              <label
-                className="m-2 w-40 h-40 border-2 border-dashed border-gray-400 flex items-center justify-center cursor-pointer rounded-lg"
-                onClick={() => setAddPopup(true)}
-              >
-                <Plus size={32} />
-              </label>
-            )}
+          
           </div>
 
           {/* Save + Cancel Buttons */}
