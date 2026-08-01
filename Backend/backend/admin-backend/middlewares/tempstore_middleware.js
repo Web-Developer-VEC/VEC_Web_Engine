@@ -1,4 +1,5 @@
 const { getAdminDb, getDb } = require("../../main-backend/config/db");
+const path = require("path");
 
 module.exports = async function storeTempMiddleware(req, res, next) {
   try {
@@ -122,41 +123,35 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
           // SPECIAL HANDLING ONLY FOR academic_calendar
           if (collection_type === "academic_calendar") {
-
-            const originalPaths = original_data?.pdf_path || ["", ""];
-            const incomingPaths = meta_data?.pdf_path || ["", ""];
             const uploadedFiles = (req.uploadedFiles || [])
               .filter(f => f.mimetype === "application/pdf");
+            if (action === "insert") {
+              pdf_path = meta_data.pdf_path.map((originalPath) => {
+                const fileName = path.basename(originalPath);
 
-            const finalPdfPaths = [originalPaths[0] || "", originalPaths[1] || ""];
-
-            for (let i = 0; i < 2; i++) {
-
-              const incoming = incomingPaths[i];
-              const original = originalPaths[i] || "";
-
-              if (incoming === undefined) {
-                finalPdfPaths[i] = original;
-              }
-              else if (incoming === "") {
-                finalPdfPaths[i] = "";
-              }
-              else if (incoming === original) {
-                finalPdfPaths[i] = original;
-              }
-              else {
-                const filename = incoming.split("/").pop();
-
-                const uploaded = uploadedFiles.find(f =>
-                  f.location.endsWith(filename)
+                const uploaded = uploadedFiles.find(
+                  (f) => path.basename(f.location) === fileName
                 );
 
-                finalPdfPaths[i] = uploaded ? uploaded.location : incoming;
+                return uploaded ? uploaded.location : originalPath;
+              });
+            } else if (action === "update" && meta_data?.type) {
+              // odd/even calendar (single PDF)
+              if (uploadedFiles.length > 0) {
+                pdf_path = uploadedFiles[0].location;
+              } else {
+                pdf_path = original_data?.pdf_path || "";
               }
+            } else {
+              // existing academic calendar (multiple PDFs)
+              const originalPaths = original_data?.pdf_path || [];
+              const incomingPaths = meta_data?.pdf_path || [];
+
+              pdf_path = originalPaths.map((path, index) => {
+                const uploaded = uploadedFiles[index];
+                return uploaded ? uploaded.location : path;
+              });
             }
-
-            pdf_path = finalPdfPaths;
-
           } else {
 
             // DEFAULT logic for all other collection types (unchanged)

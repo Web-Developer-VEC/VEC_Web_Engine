@@ -93,7 +93,7 @@ async function getTempRequests(req, res) {
         results.push({
           collection: collectionName,
           action: actions,
-          
+          admin: admin_details,
           data,
         });
       }
