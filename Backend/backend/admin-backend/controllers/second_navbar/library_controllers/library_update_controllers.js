@@ -34,7 +34,7 @@ async function updateData(tempDoc, mainCollection) {
         { $set: { data: [meta_data] } }
       );
       return {
-        success: true, 
+        success: true,
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };
@@ -67,45 +67,54 @@ async function updateData(tempDoc, mainCollection) {
 
       // Case B: Array of objects
       // Case B: Array of objects
-else if (Array.isArray(content) && typeof content[0] === "object") {
-  if (!original_data) throw new Error("original_data required");
-
-  const uniqueKeys = {
-    membership_details: "member_details",
-    Collection: "title",
-    library_services: "title",
-    library_resources: "title",
-  };
-
-  const key = uniqueKeys[collection_type];
-
-  if (!key) throw new Error("No unique key configured");
-
-  const originalItem = Array.isArray(original_data.content)
-    ? original_data.content[0]
-    : original_data;
-
-  const newItem = Array.isArray(meta_data.content)
-    ? meta_data.content[0]
-    : meta_data;
-
-  const updatedContent = content.map((item) => {
-    if (item[key] === originalItem[key]) {
-      return newItem;
-    }
-    return item;
-  });
-
-  await mainCollection.updateOne(
-    { type: collection_type, "data.category": category },
-    {
-      $set: {
-        "data.$.content": updatedContent,
-      },
-    }
-  );
-}
       // Case C: Single object → overwrite
+      // Case B: Array of objects
+      else if (Array.isArray(content) && typeof content[0] === "object") {
+
+        const uniqueKeys = {
+          membership_details: "member_details",
+          Collection: "title",
+          library_services: "title",
+          library_resources: "title",
+        };
+
+        const key = uniqueKeys[collection_type];
+
+        if (!key) {
+          throw new Error(`No unique key configured for '${collection_type}'`);
+        }
+
+        const updates = Array.isArray(meta_data.content)
+          ? meta_data.content
+          : [meta_data];
+
+        const updateMap = new Map(
+          updates.map(item => [item[key], item])
+        );
+
+        const updatedContent = content.map(item => {
+          const updated = updateMap.get(item[key]);
+
+          return updated
+            ? {
+              ...item,
+              ...updated
+            }
+            : item;
+        });
+
+        await mainCollection.updateOne(
+          {
+            type: collection_type,
+            "data.category": category,
+          },
+          {
+            $set: {
+              "data.$.content": updatedContent,
+            },
+          }
+        );
+      }
       else {
         await mainCollection.updateOne(
           { type: collection_type },
@@ -115,7 +124,7 @@ else if (Array.isArray(content) && typeof content[0] === "object") {
       }
 
       return {
-        success: true, 
+        success: true,
         message: `Updated successfully in ${collection_type} - category ${category}`,
         data: meta_data,
       };
@@ -151,7 +160,7 @@ else if (Array.isArray(content) && typeof content[0] === "object") {
       );
 
       return {
-        success: true, 
+        success: true,
         message: `Updated successfully for ${collection_type}`,
         data: meta_data,
       };
