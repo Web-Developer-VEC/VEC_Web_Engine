@@ -60,7 +60,7 @@ async function accreditations_and_rankingHandler(fileStream, docs, req, cb, file
         break;
 
       case "qs_rating":
-        s3Key = `static/pdfs/qs rating/${realFilename}`;
+        s3Key = `temp/static/pdfs/qs rating/${realFilename}`;
         break;
 
       default:

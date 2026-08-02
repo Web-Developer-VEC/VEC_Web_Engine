@@ -23,13 +23,13 @@ def insert_library_sections():
 
     print("library sections inserted successfully.")
 
-def insert_sidebar_details():
-    collection= db['sidebar']
-    with open ("/root/VEC_Web_Engine/Backend/docs/sidebar.json","r",encoding="utf-8") as file:
-        documents= json.load(file)
-        collection.insert_many(documents)
-    print("Sidebar documents inserted successfully\n")
+# def insert_sidebar_details():
+#     collection= db['sidebar']
+#     with open ("/root/VEC_Web_Engine/Backend/docs/sidebar.json","r",encoding="utf-8") as file:
+#         documents= json.load(file)
+#         collection.insert_many(documents)
+#     print("Sidebar documents inserted successfully\n")
 
 
 insert_library_sections()
-insert_sidebar_details()
+# insert_sidebar_details()
