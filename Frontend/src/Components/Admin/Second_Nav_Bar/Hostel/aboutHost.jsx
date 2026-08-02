@@ -234,7 +234,6 @@ export default function AboutHostel({ hostelData, theme, toggle }) {
       );
 
       if (result) {
-        toast.success("Request submitted successfully!");
         setShowRequestModal(false);
         setChangesSaved(false);
         setChangeLog([]);
