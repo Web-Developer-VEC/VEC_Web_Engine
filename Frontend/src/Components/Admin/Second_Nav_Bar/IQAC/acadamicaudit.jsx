@@ -171,7 +171,6 @@ export default function IqaAud({ iqacData }) {
   const handleSave = () => {
     setIsEditMode(false);
     // Don't update originalData here - keep it for comparison in buildPayload
-    toast.success("Changes saved. You can now request approval or discard.");
   };
 
   const handleCancel = () => {
@@ -187,7 +186,6 @@ export default function IqaAud({ iqacData }) {
     setSelectedRows([]);
     setHasChanges(false);
     setChangesLog([]);
-    toast.info("All changes discarded.");
   };
 
   // FIXED buildPayload
@@ -464,7 +462,7 @@ export default function IqaAud({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleCancel}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white"
               >
                 Cancel
               </button>
@@ -483,7 +481,7 @@ export default function IqaAud({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleDiscardChanges}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white"
               >
                 Discard Changes
               </button>
@@ -557,7 +555,7 @@ export default function IqaAud({ iqacData }) {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white"
               >
                 Cancel
               </button>
@@ -585,7 +583,7 @@ export default function IqaAud({ iqacData }) {
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setDeleteConfirm(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
               >
                 Cancel
               </button>
