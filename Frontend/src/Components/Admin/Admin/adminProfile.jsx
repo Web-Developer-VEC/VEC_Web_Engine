@@ -31,6 +31,7 @@ const routeDictionary = {
   "/reg": "Registrar",
   "/Syllabus": "Syllabus",
   "/form": "Forms",
+  "/rankholders": "Rankholders",
   "/Academic": "Academic Info",
   "/coe": "Controller of Exams",
   "/abtplace": "About Placement",
