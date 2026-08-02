@@ -9,6 +9,6 @@ const limiter = createRateLimiter({ max: 2500, windowMs: 10 * 60 * 1000 });
 const router = express.Router();
 // Define department routes
 router.post('/department', limiter, xss,hitTracker,  DeptMiddleware(allowedtypes,ALLOWED_DEPARTMENTS));
-router.get('/:deptId/sidebar' ,limiter, xss,hitTracker,  getsidebar);
+router.get('/:dept/sidebar' ,limiter, xss,hitTracker,  getsidebar);
 
 module.exports = router;

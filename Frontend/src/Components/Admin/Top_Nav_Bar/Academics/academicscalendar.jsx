@@ -292,7 +292,7 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
             pdf_path: [
               item.oddRemoved
                 ? ""
-                : `/static/pdfs/academic_calendar/${item.oddFile.name}`,
+                : orig.pdf_path[0]
             ], // <-- No changes
           },
         });
@@ -319,7 +319,7 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
             pdf_path: [
               item.evenRemoved
                 ? ""
-                : `/static/pdfs/academic_calendar/${item.evenFile.name}`,
+                : orig.pdf_path[1]
             ], // <-- No changes
           },
         });
@@ -656,7 +656,7 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
                       ...editedData,
                       {
                         __uid: `${Date.now()}_${Math.random()}`,
-                        year: "New Year",
+                        year: "Academic Year 20-20",
                         pdf_path: ["", ""],
                         oddFile: null,
                         evenFile: null,
@@ -919,11 +919,10 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
               <button
                 onClick={handleRequestConfirm}
                 disabled={reqLoading}
-                className={`px-4 py-2 rounded-lg transition ${
-                  reqLoading
-                    ? "bg-gray-400 text-white cursor-not-allowed"
-                    : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                }`}
+                className={`px-4 py-2 rounded-lg transition ${reqLoading
+                  ? "bg-gray-400 text-white cursor-not-allowed"
+                  : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  }`}
               >
                 {reqLoading ? "Processing..." : "Confirm Request"}
               </button>
