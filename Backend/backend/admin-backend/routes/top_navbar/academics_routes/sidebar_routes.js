@@ -6,7 +6,7 @@ const {handleTempAction} = require('../../../middlewares/action_handle_middlewar
 
 const {handleTempApproval} = require('../../../middlewares/approve_middleware');
 
-const { updateData } = require('../../../controllers/top_navbar/academics_controllers/sideBarController');
+const { updateData } = require('../../../controllers/top_navbar/academics_controllers/sidebar_controller');
 const { checkRole } = require('../../../middlewares/role_middleware');
 
 

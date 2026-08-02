@@ -1,4 +1,4 @@
-const { updateDepartmentSidebar } = require("../controllers/top_navbar/academics_controllers/sideBarController");
+const { updateDepartmentSidebar } = require("../controllers/top_navbar/academics_controllers/sidebar_controller");
 const { insertFile, updateFile, deleteFile, updateOriginalData, revertInsertFile, revertUpdateFile, revertDeleteFile } = require("./file_handle_middleware");
 
 function handleTempAction(insertData, updateData, deleteData) {
