@@ -62,12 +62,12 @@ def insert_department_data_sections():
         except Exception as e:
             print(f"Unexpected error processing {file_path}: {e}")
 
-def insert_sidebar_details():
-    collection= db['sidebar']
-    with open ("../docs/sidebar.json","r",encoding="utf-8") as file:
-        documents= json.load(file)
-        collection.insert_many(documents)
-    print("Sidebar documents inserted successfully\n")
+# def insert_sidebar_details():
+#     collection= db['sidebar']
+#     with open ("../docs/sidebar.json","r",encoding="utf-8") as file:
+#         documents= json.load(file)
+#         collection.insert_many(documents)
+#     print("Sidebar documents inserted successfully\n")
 
 def insert_iic_sections():
     collection = db["iic"]
@@ -273,7 +273,7 @@ insert_accreditations_and_ranking_sections()
 insert_iqac_sections()
 insert_placement_sections()
 insert_exams_sections()
-insert_sidebar_details()
+# insert_sidebar_details()
 insert_iic_sections()
 insert_admissions_sections()
 

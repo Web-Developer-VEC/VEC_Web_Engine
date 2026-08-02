@@ -472,7 +472,7 @@ export default function IicFacPolicy({ data }) {
                         {isEditing && (
                             <div className="mb-4 text-center">
                                 <label className="bg-[#fdcc03] text-text px-3 py-2 rounded cursor-pointer hover:bg-[#800000] hover:text-prim">
-                                    Change Policy PDF
+                                    {activePdf?.pdf_path? "Change Policy PDF":"Upload Policy PDF"}
                                     <input
                                         type="file"
                                         accept="application/pdf"

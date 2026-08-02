@@ -52,6 +52,22 @@
         ]
       }
   },
+    {
+    "collectionName": "accreditations_and_ranking",
+    "collection_type": "nba",
+    "action": "insert",
+    "title": "insert in new nba",
+    "meta_data": {
+      "id": 1,
+      "department": "New",
+      "pdfs": [
+        {
+          "name": "santho",
+          "pdf_path": "/static/pdfs/nba/Velammal Engg. College25_7_2018_17_43_48 CIVIL &EEE.pdf"
+        }
+      ]
+    }
+  },
   {
     "collectionName":"accreditations_and_ranking",
     "collection_type":"nba",
@@ -93,6 +109,15 @@
           }
         ]
       }
+  },{
+    "collectionName":"accreditations_and_ranking",
+    "collection_type":"nba",
+    "action":"delete",
+    "title":"delete in nba",
+    "meta_data":{
+        "id": 1,
+        "department": "B.E. Civil Engineering"
+      }
   },
   {
     "collectionName":"accreditations_and_ranking",
@@ -100,6 +125,21 @@
     "action":"insert",
     "title":"insert in nirf",
     "category":"NIRF 2020",
+    "meta_data":{
+        "year": "2020",
+        "content": [
+          {
+            "name": "dinesh",
+            "pdf_path": "/static/pdfs/nirf/NIRF-2020.pdf"
+          }
+        ]
+      }
+  },  {
+    "collectionName":"accreditations_and_ranking",
+    "collection_type":"nirf",
+    "action":"insert",
+    "title":"insert in new nirf",
+    "category":"NIRF 3020",
     "meta_data":{
         "year": "2020",
         "content": [
@@ -119,9 +159,9 @@
     "original_data":{
         "year": "2020",
         "content": [
-          {
-            "name": "dinesh",
-            "pdf_path": "/static/pdfs/nirf/NIRF-2020.pdf"
+          {            
+          "name": "dinesh",
+          "pdf_path": "/static/pdfs/nirf/doc.pdf"
           }
         ]
       },
@@ -146,9 +186,19 @@
         "content": [
           {
             "name": "hari",
-            "pdf_path": "/static/pdfs/nirf/NIRF-2020.pdf"
+            "pdf_path": "/static/pdfs/nirf/doc.pdf"
           }
         ]
+      }
+  },
+  {
+    "collectionName":"accreditations_and_ranking",
+    "collection_type":"nirf",
+    "action":"delete",
+    "title":"delete cat in nirf",
+    "category":"NIRF 2020",
+    "meta_data":{
+       
       }
   },
   {

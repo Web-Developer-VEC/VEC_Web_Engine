@@ -834,5 +834,54 @@
         ]
       }
     ]
+  },
+  {
+    "type": "sidebar",
+    "content": [
+      {
+        "id": "Vision&Mission",
+        "hascontent": true
+      },
+      {
+        "id": "HeadDepartment",
+        "hascontent": true
+      },
+      {
+        "id": "Faculties",
+        "hascontent": true
+      },
+      {
+        "id": "Syllabus",
+        "hascontent": true
+      },
+      {
+        "id": "NewsLetter",
+        "hascontent": false
+      },
+      {
+        "id": "Activities",
+        "hascontent": false
+      },
+      {
+        "id": "Pedagogy",
+        "hascontent": false
+      },
+      {
+        "id": "StudentAchievments",
+        "hascontent": true
+      },
+      {
+        "id": "Infrastructure",
+        "hascontent": false
+      },
+      {
+        "id": "Mous",
+        "hascontent": true
+      },
+      {
+        "id": "Research",
+        "hascontent": false
+      }
+    ]
   }
 ]
