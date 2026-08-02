@@ -484,7 +484,7 @@ export default function IicFacCertificate({ data }) {
                     {isEditing && (
                         <div className="mb-4 text-center">
                             <label className="bg-[#fdcc03] text-text px-3 py-2 rounded cursor-pointer hover:bg-[#800000] hover:text-prim">
-                                Change Certificate
+                                {activePdf?.pdf_path? "Change Certificate":"Upload Certificate"}
                                 <input
                                     type="file"
                                     accept="image/*"

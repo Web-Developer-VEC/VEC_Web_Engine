@@ -161,7 +161,6 @@ export default function IqaQar({ iqacData }) {
     setHasChanges(false);
     setChangesLog([]);
     setPendingData(null);
-    toast.info("Changes discarded.");
   };
 
   const buildPayload = (originalData, editableData, uploadedFiles) => {
@@ -280,7 +279,6 @@ export default function IqaQar({ iqacData }) {
 
     const response = await sendRequest(payloadToSend, files);
     if (response) {
-      toast.success("Request submitted successfully!");
       setShowRequestModal(false);
       setHasChanges(false);
       setOriginalData(deepClone(pendingData || editableData));
@@ -475,7 +473,7 @@ export default function IqaQar({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleCancel}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
               >
                 Cancel
               </button>
@@ -494,7 +492,7 @@ export default function IqaQar({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleDiscard}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
               >
                 Discard Changes
               </button>
@@ -560,7 +558,7 @@ export default function IqaQar({ iqacData }) {
               <button
                 disabled={loading}
                 onClick={() => setShowRequestModal(false)}
-                className={`px-4 py-2 rounded text-white ${
+                className={`px-4 py-2 rounded text-white hover:bg-gray-600 ${
                   loading ? "bg-gray-300 cursor-not-allowed" : "bg-gray-400"
                 }`}
               >
@@ -595,7 +593,7 @@ export default function IqaQar({ iqacData }) {
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setShowDeleteConfirm(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
               >
                 Cancel
               </button>
