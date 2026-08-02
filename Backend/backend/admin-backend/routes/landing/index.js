@@ -49,6 +49,7 @@ const syllabusadmin = require("../top_navbar/academics_routes/syllabus_routes")
 const deptresearchadmin = require('../top_navbar/academics_routes/research_routes')
 const visionmissionadmin = require('../top_navbar/academics_routes/vision_mission_routes')
 const facultyadmin = require('../top_navbar/academics_routes/faculty_routes')
+const sidebaradmin = require('../top_navbar/academics_routes/sidebar')
 
 //Action routes 
 router.use('',tempstore);
@@ -97,6 +98,7 @@ router.use('',syllabusadmin)
 router.use('',deptresearchadmin)
 router.use('',facultyadmin)
 router.use('',visionmissionadmin)
+router.use('',sidebaradmin)
 
 
 module.exports = router;
