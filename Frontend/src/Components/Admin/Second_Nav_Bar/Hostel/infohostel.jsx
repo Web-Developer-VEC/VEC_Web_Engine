@@ -398,7 +398,7 @@ const handleFinalRequestConfirm = async () => {
 
   await sendRequest(payloads, null); // no files
 
-  toast.success("Request submitted successfully!");
+  
 
   setShowRequestModal(false);
   setRequestSent(true);
