@@ -472,28 +472,32 @@ export default function AdminApprovalPage() {
     }
 
     // Handle objects
-    if (typeof value === 'object') {
-      return (
-        <div className={`space-y-3 ${depth > 0 ? 'bg-white/50 rounded-lg p-3 border border-gray-200' : ''}`}>
-          {Object.entries(value).map(([key, val]) => (
-            <div className="grid grid-cols-[180px_1fr] gap-4 py-3 border-b border-gray-100 last:border-b-0">
+if (typeof value === "object") {
+  return (
+    <div
+      className={`space-y-3 ${depth > 0 ? 'bg-white/50 rounded-lg p-3 border border-gray-200' : ""
+      }`}
+    >
+      {Object.entries(value).map(([key, val]) => (
+        <div
+          key={key}
+          className="approval-field-row"
+        >
+          {/* Label */}
+          <div className="approval-field-label">
+            {getFieldIcon(key)}
+            <span>{formatFieldName(key)}</span>
+          </div>
 
-              <div className="flex items-center gap-2 font-semibold text-gray-700">
-                {getFieldIcon(key)}
-                <span className="break-words">
-                  {formatFieldName(key)}
-                </span>
-              </div>
-
-              <div className="min-w-0 overflow-hidden break-words">
-                {renderValue(val, key, depth + 1)}
-              </div>
-
-            </div>
-          ))}
+          {/* Value */}
+          <div className="approval-field-value">
+            {renderValue(val, key, depth + 1)}
+          </div>
         </div>
-      )
-    }
+      ))}
+    </div>
+  );
+}
 
     // Handle image/pdf paths (single strings only - arrays handled above)
     // Special case for Student Activities description
