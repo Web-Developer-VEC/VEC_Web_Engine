@@ -73,6 +73,7 @@ function tempstoreBusboy(req, res, next) {
         (err) => {
           if (err) {
             console.error("Handler error:", err.message);
+            file.resume();
             resolve({
               success:false,error : err.message});
           } else {
