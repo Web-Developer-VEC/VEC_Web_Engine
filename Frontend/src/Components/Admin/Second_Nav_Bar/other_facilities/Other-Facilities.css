@@ -114,12 +114,44 @@
   transition: background-color 0.3s;
 }
 
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 56px;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(128, 0, 0, 0.8);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+
+  font-size: 30px;
+  font-weight: bold;
+
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
 .prev {
-  left: 550px;
+  left: -28px;      /* Gap from left side of image */
 }
 
 .next {
-  right: 550px;
+  right: -28px;     /* Gap from right side of image */
+}
+
+.prev:hover,
+.next:hover {
+  background: #800000;
+  transform: translateY(-50%) scale(1.08);
 }
 
 .prev:hover,
