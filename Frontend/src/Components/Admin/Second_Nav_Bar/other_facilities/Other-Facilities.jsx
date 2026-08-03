@@ -1590,7 +1590,15 @@ export default function AdminOtherFacilities({ theme, toggle }) {
             </p>
 
             {/* Image Carousel */}
-            <div className="carousel">
+            <div
+              className="carousel"
+              style={{
+                position: "relative",
+                width: "fit-content",
+                maxWidth: "90%",
+                margin: "20px auto 0",
+              }}
+            >
               {images.length > 1 && (
                 <button className="prev" onClick={prevImage}>
                   ❮
@@ -1603,7 +1611,7 @@ export default function AdminOtherFacilities({ theme, toggle }) {
                   height: "400px",
                   maxWidth: "90%",
                   margin: "0 auto",
-                  overflow: "hidden",
+                  overflow: "visible", // Allow buttons outside image
                   borderRadius: "12px",
                 }}
               >
