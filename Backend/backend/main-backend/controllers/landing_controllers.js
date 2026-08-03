@@ -2,9 +2,11 @@ const { getDb } = require('../config/db');
 const logError = require('../middlewares/logerror');
 const ALLOWED_TYPES = require('../models/landing/landing_models');
 
-function parseEventDate(dateStr) {
-  const [day, month, year] = dateStr.split('-');
-  return new Date(`${year}-${month}-${day}`);
+function formatShortDate(date) {
+  return new Date(date).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short"
+  }).toUpperCase();
 }
 
 async function getLandingpageData(req, res) {
@@ -23,42 +25,56 @@ async function getLandingpageData(req, res) {
     // Grouped type (like landing_data)
     if (ALLOWED_TYPES[type]) {
       const sections = ALLOWED_TYPES[type];
-      const promises = sections.map(async (section) => {
-        if (section === 'events') {
+      const results = [];
+
+      for (const section of sections) {
+        if (section === "events") {
           const document = await collection.findOne(
-            { type: 'events' },
+            { type: "events" },
             { projection: { _id: 0, type: 1, data: 1 } }
           );
 
-          if (!document || !Array.isArray(document.data)) return null;
+          if (!document || !Array.isArray(document.data)) continue;
 
-          const now = new Date();
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+
           const validEvents = document.data.filter(e => e.status === "True");
 
           const futureEvents = validEvents
-            .filter(e => parseEventDate(e.date) >= now)
-            .sort((a, b) => parseEventDate(a.date) - parseEventDate(b.date));
+            .filter(e => {
+              const end = new Date(e.end_date);
+              end.setHours(23, 59, 59, 999);
+              return end >= today;
+            })
+            .sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
 
           let selectedEvents = [...futureEvents];
 
-          if (selectedEvents.length < 7) {
+          if (selectedEvents.length < 8) {
             const pastEvents = validEvents
-              .filter(e => parseEventDate(e.date) < now)
-              .sort((a, b) => parseEventDate(b.date) - parseEventDate(a.date));
-            const needed = 7 - selectedEvents.length;
-            selectedEvents = selectedEvents.concat(pastEvents.slice(0, needed));
+              .filter(e => {
+                const end = new Date(e.end_date);
+                end.setHours(23, 59, 59, 999);
+                return end < today;
+              })
+              .sort((a, b) => new Date(b.start_date) - new Date(a.start_date));
+
+            selectedEvents.push(...pastEvents.slice(0, 8 - selectedEvents.length));
           }
 
-          return { type: 'events', data: selectedEvents };
+          results.push({
+            type: "events",
+            data: selectedEvents
+          });
         } else {
-          return await collection.findOne(
+          const doc = await collection.findOne(
             { type: section },
             { projection: { _id: 0, type: 1, data: 1 } }
           );
+          if (doc) results.push(doc);
         }
-      });
-
-      const results = (await Promise.all(promises)).filter(item => item !== null);
+      }
 
       return res.status(200).json({ type, data: results });
     }
@@ -76,24 +92,37 @@ async function getLandingpageData(req, res) {
 
       // Handle individual "events" logic too
       if (type === 'events' && Array.isArray(document.data)) {
-        const now = new Date();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
         const validEvents = document.data.filter(e => e.status === "True");
 
         const futureEvents = validEvents
-          .filter(e => parseEventDate(e.date) >= now)
-          .sort((a, b) => parseEventDate(a.date) - parseEventDate(b.date));
+          .filter(e => {
+            const end = new Date(e.end_date);
+            end.setHours(23, 59, 59, 999);
+            return end >= today;
+          })
+          .sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
 
         let selectedEvents = [...futureEvents];
 
         if (selectedEvents.length < 7) {
           const pastEvents = validEvents
-            .filter(e => parseEventDate(e.date) < now)
-            .sort((a, b) => parseEventDate(b.date) - parseEventDate(a.date));
-          const needed = 7 - selectedEvents.length;
-          selectedEvents = selectedEvents.concat(pastEvents.slice(0, needed));
+            .filter(e => {
+              const end = new Date(e.end_date);
+              end.setHours(23, 59, 59, 999);
+              return end < today;
+            })
+            .sort((a, b) => new Date(b.start_date) - new Date(a.start_date));
+
+          selectedEvents.push(...pastEvents.slice(0, 7 - selectedEvents.length));
         }
 
-        return res.status(200).json({ type: 'events', data: selectedEvents });
+        return res.status(200).json({
+          type: "events",
+          data: selectedEvents
+        });
       }
 
       return res.status(200).json(document);
