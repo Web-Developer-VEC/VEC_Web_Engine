@@ -8,8 +8,10 @@ const deepCopy = (v) => JSON.parse(JSON.stringify(v));
 
 const LIBMembership = ({ data }) => {
   const members =
-    data.find((sec) => sec.category === "Membership details")?.content || [];
+    data.find((sec) => sec.category === "Member details")?.content || [];
+   
   const [rows, setRows] = useState([]);
+  
   const [committedRows, setCommittedRows] = useState([]);
   const [pendingRows, setPendingRows] = useState(null);
   const { sendRequest, loading, error } = useAdminRequest();
@@ -21,23 +23,33 @@ const LIBMembership = ({ data }) => {
   const [showRequestModal, setShowRequestModal] = useState(false);
   
   useEffect(() => {
-    
-    const merged = members.map((item) => ({
+  if (!data) return;
 
-      id: crypto.randomUUID(),
-      member: item.member_details || "",
-      book: item.no_of_books || "",
-      cd: item.periodical_back_volumes_cd || "",
-      checked: false,
-    }));
+  const memberDetails =
+    data.find(sec => sec.category === "Member Details")?.content || [];
 
-    setCommittedRows(deepCopy(merged));
-    setRows(deepCopy(merged));
-    setPendingRows(null);
-    setIsEditing(false);
-    setIsDirty(false);
-    setIsSaved(false);
-  }, [members]);
+  const books =
+    data.find(sec => sec.category === "no_of_books")?.content || [];
+
+  const cds =
+    data.find(sec => sec.category === "periodical_back_volumes_cd")?.content || [];
+
+  const merged = memberDetails.map((member, index) => ({
+    id: crypto.randomUUID(),
+    member,
+    book: books[index] || "",
+    cd: cds[index] || "",
+    checked: false,
+  }));
+
+  setCommittedRows(deepCopy(merged));
+  setRows(deepCopy(merged));
+  setPendingRows(null);
+  setIsEditing(false);
+  setIsDirty(false);
+  setIsSaved(false);
+
+}, [data]);
 
   const handleStartEdit = () => {
     // Load pendingRows if exist; otherwise, load committedRows
@@ -94,7 +106,7 @@ const LIBMembership = ({ data }) => {
         collection_type: "membership_details",
         action: "insert",
         title: "Insert member types",
-        category: "Membership details",
+        category: "Member details",
         meta_data: {
           content: newData, // full updated array
         },
@@ -108,7 +120,7 @@ const LIBMembership = ({ data }) => {
         collection_type: "membership_details",
         action: "update",
         title: "Update member types",
-        category: "Membership details",
+        category: "Member details",
         meta_data: {
           content: newData, // updated list
         },
@@ -125,9 +137,9 @@ const LIBMembership = ({ data }) => {
         collection_type: "membership_details",
         action: "delete",
         title: "Delete member types",
-        category: "Membership details",
+        category: "Member details",
         meta_data: {
-          content: newData ?? [],
+          content: newData,
         },
       };
     }
@@ -210,11 +222,9 @@ const LIBMembership = ({ data }) => {
 
     if (deletedRows.length > 0) {
       changes.push({
-        action: "Deleted",
-        newData: deletedRows.map((row) => ({
-          member_details: row.member,
-        })),
-      });
+  action: "Deleted",
+  newData: deletedRows.map(normalize), // remaining rows after deletion
+});
     }
 
 
@@ -282,38 +292,44 @@ const LIBMembership = ({ data }) => {
 
     await sendRequest(payload);
 
-    setShowRequestModal(false);
+// After successful request
+setCommittedRows(deepCopy(pendingRows));
+setRows(deepCopy(pendingRows));
+
+setPendingRows(null);
+setIsSaved(false);
+setShowRequestModal(false);
   };
 
-  const revertChange = (rowIndex) => {
-    if (!pendingRows) return;
+const revertChange = (change) => {
+  if (!pendingRows) return;
 
-    const reverted = deepCopy(pendingRows);
+  let reverted = deepCopy(pendingRows);
 
-    if (!committedRows[rowIndex] && reverted[rowIndex]) {
-      reverted.splice(rowIndex, 1);
-    } else if (committedRows[rowIndex] && !reverted[rowIndex]) {
-      reverted.splice(rowIndex, 0, deepCopy(committedRows[rowIndex]));
-    } else if (committedRows[rowIndex] && reverted[rowIndex]) {
-      reverted[rowIndex] = deepCopy(committedRows[rowIndex]);
+  if (change.action === "Deleted") {
+    const originalRow = committedRows.find(r => r.id === change.rowId);
+
+    if (originalRow) {
+      reverted.splice(change.originalIndex, 0, deepCopy(originalRow));
     }
+  }
 
-    setPendingRows(reverted);
-    setRows(deepCopy(reverted));
+  else if (change.action === "Added") {
+    reverted = reverted.filter(r => r.id !== change.rowId);
+  }
 
-    const hasDiff =
-      reverted.length !== committedRows.length ||
-      reverted.some((r, i) => {
-        const c = committedRows[i] || {};
-        return r.member !== c.member || r.book !== c.book || r.cd !== c.cd;
-      });
+  else if (change.action === "Edited") {
+    const idx = reverted.findIndex(r => r.id === change.rowId);
+    const originalRow = committedRows.find(r => r.id === change.rowId);
 
-    if (!hasDiff) {
-      setPendingRows(null);
-      setIsSaved(false);
-      setShowRequestModal(false);
+    if (idx !== -1 && originalRow) {
+      reverted[idx] = deepCopy(originalRow);
     }
-  };
+  }
+
+  setPendingRows(reverted);
+  setRows(deepCopy(reverted));
+};
   const getChanges = () => {
 
 
@@ -336,7 +352,8 @@ const LIBMembership = ({ data }) => {
           action: "Deleted",
           section: "Membership Details",
           changes: `${row.member || "Unnamed"} (Books: ${row.book}, CD: ${row.cd})`,
-          rowIndex: index,
+          rowId: row.id,
+originalIndex: index,
         });
       }
     });
@@ -409,7 +426,7 @@ const LIBMembership = ({ data }) => {
 
   return (
     <div className="block overflow-x-auto px-4 sm:px-8 py-10 font-[Poppins] relative">
-      {rows.length > 0 && (
+    
         <>
           {/* Header */}
           <div className="flex justify-between items-center mb-6">
@@ -592,7 +609,7 @@ const LIBMembership = ({ data }) => {
                           <td className="border p-2">{ch.changes}</td>
                           <td className="border p-2">
                             <button
-                              onClick={() => revertChange(ch.rowIndex)}
+                              onClick={() => revertChange(ch)}
                               className="p-1 rounded hover:bg-gray-100"
                               title="Undo change"
                             >
@@ -659,7 +676,7 @@ const LIBMembership = ({ data }) => {
 
           <ToastContainer position="bottom-right" autoClose={2000} />
         </>
-      )}
+      
     </div>
   );
 };
