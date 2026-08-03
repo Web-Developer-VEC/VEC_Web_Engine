@@ -413,13 +413,15 @@ const NIRF = ({ data }) => {
         let updated = [...prev];
 
         // 1️⃣ Remove any previous Edited entries for same item
-        updated = updated.filter(
-          (c) =>
-            !(
-              c.yearId === year.__id &&
-              (c.docIndex === docIndex || c.tempId === deletedDoc?._tempId)
-            ),
-        );
+// Keep previous DELETE logs so multiple deletions appear in the popup.
+updated = updated.filter(
+  (c) =>
+    !(
+      c.action === "Edited" &&
+      c.yearId === year.__id &&
+      (c.docIndex === docIndex || c.tempId === deletedDoc?._tempId)
+    )
+);
 
         // 2️⃣ If this was newly Added and now deleted → remove completely
         const wasAdded = prev.find(
