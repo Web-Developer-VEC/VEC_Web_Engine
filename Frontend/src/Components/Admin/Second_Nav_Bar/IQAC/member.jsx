@@ -77,21 +77,42 @@ function IqaMem({ iqacData }) {
       originalData[groupIdx].members[memberIdx]
     );
 
-
     updated[groupIdx].members[memberIdx][field] = value;
 
     setData(updated);
 
-    trackChange(
-      "updated",
-      groupIdx,
-      memberIdx,
-      cloneDeep(updated[groupIdx].members[memberIdx]),
-      cloneDeep(
-        originalData?.[groupIdx]?.members?.[memberIdx] ?? null
-      )
+    const existingAddedIndex = changes.findIndex(
+      c =>
+        c.action === "added" &&
+        c.groupIdx === groupIdx &&
+        c.memberIdx === memberIdx
     );
 
+    if (existingAddedIndex !== -1) {
+      setChanges(prev =>
+        prev.map((c, idx) =>
+          idx === existingAddedIndex
+            ? {
+              ...c,
+              memberName: updated[groupIdx].members[memberIdx].name,
+              newData: cloneDeep(updated[groupIdx].members[memberIdx]),
+            }
+            : c
+        )
+      );
+
+      setHasChanges(true);
+    } else {
+      trackChange(
+        "updated",
+        groupIdx,
+        memberIdx,
+        cloneDeep(updated[groupIdx].members[memberIdx]),
+        cloneDeep(
+          originalData?.[groupIdx]?.members?.[memberIdx] ?? null
+        )
+      );
+    }
   };
 
   const handleAddMember = (groupIdx) => {
@@ -148,44 +169,99 @@ function IqaMem({ iqacData }) {
   };
 
   const handleRequest = () => {
+
+    for (const change of changes) {
+
+      // Ignore deleted members
+      if (change.action === "deleted") continue;
+
+      const member = change.newData;
+
+      if (!member.name?.trim()) {
+        toast.error("Please enter the member name.");
+        return;
+      }
+
+      if (!member.designation?.trim()) {
+        toast.error("Please enter the designation.");
+        return;
+      }
+
+      if (!member.role?.trim()) {
+        toast.error("Please enter the role.");
+        return;
+      }
+    }
+
     setConfirmPopup(true);
   };
 
   const buildPayload = () => {
-    return changes.map((change) => {
-      let actionType = "";
-      let title = "";
-      let meta_data = null;
-      let original_data = null;
+    return changes
+      .filter((change) => {
+        if (change.action !== "added") return true;
 
-      if (change.action === "added") {
-        actionType = "insert";
-        title = `insertion of iqac ${change.category.toLowerCase()} member`;
-        meta_data = change.newData;
-      } else if (change.action === "updated") {
-        actionType = "update";
-        title = `updation of iqac ${change.category.toLowerCase()} member`;
-        meta_data = change.newData;
-        original_data = change.oldData;
-      } else if (change.action === "deleted") {
-        actionType = "delete";
-        title = `deletion of iqac ${change.category.toLowerCase()} member`;
-        meta_data = change.newData;
-      }
+        const member = change.newData;
 
-      return {
-        collectionName: "iqac",
-        collection_type: "members",
-        action: actionType,
-        title,
-        category: change.category,
-        meta_data: meta_data,
-        original_data: original_data,
-      };
-    });
+        return (
+          member.name.trim() !== "" ||
+          member.designation.trim() !== "" ||
+          member.role.trim() !== ""
+        );
+      })
+      .map((change) => {
+        let actionType = "";
+        let title = "";
+        let meta_data = null;
+        let original_data = null;
+
+        if (change.action === "added") {
+          actionType = "insert";
+          title = `insertion of iqac ${change.category.toLowerCase()} member`;
+          meta_data = change.newData;
+        } else if (change.action === "updated") {
+          actionType = "update";
+          title = `updation of iqac ${change.category.toLowerCase()} member`;
+          meta_data = change.newData;
+          original_data = change.oldData;
+        } else if (change.action === "deleted") {
+          actionType = "delete";
+          title = `deletion of iqac ${change.category.toLowerCase()} member`;
+          meta_data = change.newData;
+        }
+
+        return {
+          collectionName: "iqac",
+          collection_type: "members",
+          action: actionType,
+          title,
+          category: change.category,
+          meta_data,
+          original_data,
+        };
+      });
   };
 
   const handleConfirmRequest = async () => {
+
+    for (const change of changes) {
+
+      if (change.action === "deleted") continue;
+
+      const member = change.newData;
+
+      // Only reject if ALL fields are empty
+      const isCompletelyEmpty =
+        !member?.name?.trim() &&
+        !member?.designation?.trim() &&
+        !member?.role?.trim();
+
+      if (isCompletelyEmpty) {
+        toast.error("Please fill at least one field.");
+        return;
+      }
+    }
+
     if (changes.length === 0) return;
 
     const payload = buildPayload();
@@ -199,7 +275,6 @@ function IqaMem({ iqacData }) {
       setShowRequest(false);
       setHasChanges(false);
       setIsEditing(false);
-      // toast.success("Request sent successfully!");
     }
   };
 
