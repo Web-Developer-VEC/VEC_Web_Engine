@@ -42,21 +42,26 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  /* margin-top: 40px; */
   width: 100%;
-  margin: 20px auto 0;
+  margin: 60px auto 0;
 }
 
 .carousel-content {
   position: relative;
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
 }
 
 .carousel-img {
-  width: 100%;
-  height: 100%;
+  display: block;
+  max-width: 100%;
+  max-height: 500px;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,.2);
 }
 
 /* Overlay for Text on Image */
@@ -140,12 +145,54 @@
   transition: all 0.3s ease;
 }
 
-.prev {
-  left: -28px;      /* Gap from left side of image */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin: 20px auto 0;
+
+  z-index: 1;          /* Keep carousel below navbar */
 }
 
+.prev,
 .next {
-  right: -28px;     /* Gap from right side of image */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 2;          /* Above image but below navbar */
+
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  background: rgba(128,0,0,.8);
+  color: #fff;
+  font-size: 30px;
+
+  transition: .3s;
+}
+
+.prev{
+    left:-70px;
+}
+
+.next{
+    right:-70px;
+}
+
+.prev:hover,
+.next:hover{
+    background:#800000;
 }
 
 .prev:hover,

@@ -24,12 +24,13 @@ export default function OtherFacilities({ theme, toggle }) {
   };
 
   const currentFacility = otherFacilities?.find(
-    (facility) => facility?.category === activeTab
+    (facility) => facility?.category === activeTab,
   );
 
   // All image paths for the active category (content is an array of {name, description, image_path})
   const images =
-    currentFacility?.content?.map((item) => item?.image_path).filter(Boolean) || [];
+    currentFacility?.content?.map((item) => item?.image_path).filter(Boolean) ||
+    [];
 
   const currentImageUrl = images.length ? UrlParser(images[imageIndex]) : null;
 
@@ -46,20 +47,33 @@ export default function OtherFacilities({ theme, toggle }) {
 
   const nextImage = () => {
     if (!images.length) return;
-    setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+
+    setImageLoading(true);
+
+    setImageIndex((prevIndex) => {
+      return (prevIndex + 1) % images.length;
+    });
   };
 
   const prevImage = () => {
     if (!images.length) return;
-    setImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+
+    setImageLoading(true);
+
+    setImageIndex((prevIndex) => {
+      return (prevIndex - 1 + images.length) % images.length;
+    });
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post("/api/main-backend/other_facilities", {
-          type: "other_facilities",
-        });
+        const response = await axios.post(
+          "/api/main-backend/other_facilities",
+          {
+            type: "other_facilities",
+          },
+        );
 
         // Response shape: [{ type: "other_facilities", data: [ {category, content: [...]}, ... ] }]
         const payload = response.data;
@@ -70,7 +84,9 @@ export default function OtherFacilities({ theme, toggle }) {
       } catch (error) {
         console.error("Error fetching Other facilities", error);
         if (error?.response?.data?.status === 429) {
-          navigate("/ratelimit", { state: { msg: error.response.data.message } });
+          navigate("/ratelimit", {
+            state: { msg: error.response.data.message },
+          });
         }
       }
     };
@@ -190,59 +206,44 @@ export default function OtherFacilities({ theme, toggle }) {
           <p>{currentDescription}</p>
 
           {/* Image Carousel */}
-          <div className="carousel" style={{ position: "relative" }}>
-            {images.length > 1 && (
-              <button className="prev" onClick={prevImage} disabled={imageLoading}>
-                ❮
-              </button>
-            )}
+          {/* Image Carousel */}
+          {/* Image Carousel */}
+<div className="carousel">
+  {images.length > 1 && (
+    <button className="prev" onClick={prevImage}>
+      ❮
+    </button>
+  )}
 
-            {images.length > 0 && (
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  minHeight: 200,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                {imageLoading && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      zIndex: 2,
-                    }}
-                  >
-                    <LoadComp txt={""} />
-                  </div>
-                )}
-                <img
-                  key={currentImageUrl}
-                  src={currentImageUrl}
-                  alt={activeTab}
-                  className="carousel-img"
-                  onLoad={handleImageLoaded}
-                  onError={handleImageError}
-                  style={{
-                    opacity: imageLoading ? 0 : 1,
-                    transition: "opacity 0.25s ease-in-out",
-                  }}
-                />
-              </div>
-            )}
+  {images.length > 0 && (
+    <div className="image-wrapper">
+      {imageLoading && (
+        <div className="image-loader">
+          <LoadComp txt={""} />
+        </div>
+      )}
 
-            {images.length > 1 && (
-              <button className="next" onClick={nextImage} disabled={imageLoading}>
-                ❯
-              </button>
-            )}
-          </div>
+      <img
+        key={currentImageUrl}
+        src={currentImageUrl}
+        alt={activeTab}
+        className="carousel-img"
+        onLoad={handleImageLoaded}
+        onError={handleImageError}
+        style={{
+          opacity: imageLoading ? 0 : 1,
+          transition: "opacity 0.25s ease-in-out",
+        }}
+      />
+    </div>
+  )}
+
+  {images.length > 1 && (
+    <button className="next" onClick={nextImage}>
+      ❯
+    </button>
+  )}
+</div>
         </div>
       </div>
     </>
