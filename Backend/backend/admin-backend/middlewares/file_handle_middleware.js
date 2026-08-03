@@ -662,6 +662,39 @@ async function updateFile(tempDoc, tempCollection) {
         meta.activities_tile = updatedActivities;
         continue;
       }
+      if (
+        (tempDoc.collection_type === "nba" && key === "pdfs") ||
+        (tempDoc.collection_type === "nirf" && key === "content")
+      ) {
+        const updatedPdfs = await Promise.all(
+          value.map(async (pdf) => {
+            if (!pdf.pdf_path) return pdf;
+
+            const srcKey = await normalizeKey(
+              pdf.pdf_path.replace(/^\//, "")
+            );
+
+            if (srcKey.startsWith("temp/static/")) {
+              const destKey = srcKey.replace(
+                /^temp\/static\//,
+                "static/"
+              );
+
+              await moveFile(srcKey, destKey);
+
+              return {
+                ...pdf,
+                pdf_path: `/${destKey}`,
+              };
+            }
+
+            return pdf;
+          })
+        );
+
+        meta.pdfs = updatedPdfs;
+        continue;
+      }
       // Case 1: direct pdf_path
       if (key !== "pdf_path" && key !== "image_path") {
         continue;

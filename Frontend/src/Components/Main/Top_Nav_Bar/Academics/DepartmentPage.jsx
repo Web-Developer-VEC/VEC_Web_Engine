@@ -37,6 +37,27 @@ const DepartmentPage = ({ theme, toggle }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const banner_details = sectionData?.find((item) => item.category === "banner_name_and_image")?.content || [];
 
+   const deptidmap = {
+        "001":  "AIDS_001",
+        "002":  "AUTO_002",
+        "003":  "CHEMISTRY_003",
+        "004":  "CIVIL_004",
+        "005":  "CSE_005",
+        "006":  "CSECS_006",
+        "007":  "EEE_007",
+        "008":  "EIE_008",
+        "009":  "ECE_009",
+        "010":  "ENGLISH_010",
+        "011":  "IT_011",
+        "012":  "MATHS_012",
+        "013":  "MECH_013",
+        "014":  "TAMIL_014",
+        "015":  "PHYSICS_015",
+        "016":  "MECSE_016",
+        "017":  "MBA_017",
+        "018":  "PS_018"
+  }
+  
   useEffect(() => {
       const handleOnline = () => setIsOnline(true);
       const handleOffline = () => setIsOnline(false);
@@ -92,26 +113,7 @@ const DepartmentPage = ({ theme, toggle }) => {
         "Event Organizer": "eventorg"
       }
 
-      const deptidmap = {
-        "001":  "AIDS_001",
-        "002":  "AUTO_002",
-        "003":  "CHEMISTRY_003",
-        "004":  "CIVIL_004",
-        "005":  "CSE_005",
-        "006":  "CSECS_006",
-        "007":  "EEE_007",
-        "008":  "EIE_008",
-        "009":  "ECE_009",
-        "010":  "ENGLISH_010",
-        "011":  "IT_011",
-        "012":  "MATHS_012",
-        "013":  "MECH_013",
-        "014":  "TAMIL_014",
-        "015":  "PHYSICS_015",
-        "016":  "MECSE_016",
-        "017":  "MBA_017",
-        "018":  "PS_018"
-      }
+     
       try {
         setLoading(true);
         setError(null);
@@ -147,7 +149,7 @@ const DepartmentPage = ({ theme, toggle }) => {
   useEffect(() => {
     const fetchSections = async () => {
       try {
-        const response = await axios.get(`/api/main-backend/${deptID}/sidebar`);
+        const response = await axios.get(`/api/main-backend/${deptidmap[deptID]}/sidebar`);
         const validSections = response.data.content
           .filter((section) => section.hascontent)
           .map((section) => section.id);
