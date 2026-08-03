@@ -88,7 +88,8 @@ const role_routes = {
   exam: [
     "/rankholders",
     "/form",
-    "/coe"
+    "/coe",
+    "/reg",
   ],
   about_us: [
     "/abt-us",
@@ -148,8 +149,8 @@ const role_routes = {
   ecell: ["/ecell"],
   ncc_navy: ["/nccnavy"],
   ncc_army: ["/nccarmy"],
-  nss: ["/NSS"],
-  yrc: ["/YRC"],
+  nss: ["/NSS","/NCC"],
+  yrc: ["/YRC","/NCC"],
   incubation: ["/incubation"],
   iqac: ["/iqac"],
   accreditations_and_ranking: ["/Accreditation"],

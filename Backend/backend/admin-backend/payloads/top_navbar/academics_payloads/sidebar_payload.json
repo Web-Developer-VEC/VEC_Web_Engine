@@ -1,0 +1,54 @@
+[
+    {
+        "collectionName": "CSE_005",
+        "collection_type": "sidebar",
+        "action": "update",
+        "title": "update department sidebar",
+        "meta_data": {
+            "content": [
+                {
+                    "id": "StudentAchievments",
+                    "hascontent": false
+                }
+            ]
+        },
+        "original_data": {
+            "content": [
+                {
+                    "id": "StudentAchievments",
+                    "hascontent": true
+                }
+            ]
+        }
+    },
+    {
+        "collectionName": "CSE_005",
+        "collection_type": "sidebar",
+        "action": "update",
+        "title": "update department sidebar",
+        "meta_data": {
+            "content": [
+                {
+                    "id": "Research",
+                    "hascontent": false
+                },
+                {
+                    "id": "NewsLetter",
+                    "hascontent": false
+                }
+            ]
+        },
+        "original_data": {
+            "content": [
+                {
+                    "id": "Research",
+                    "hascontent": true
+                },
+                {
+                    "id": "NewsLetter",
+                    "hascontent": true
+                }
+            ]
+        }
+    }
+]

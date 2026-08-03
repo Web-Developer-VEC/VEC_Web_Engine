@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import "./Academicresearch.css";
+import "./Consultancy.css";
 import "./Journal_publica.css";
 import Banner from "../../Banner";
+import LoadComp from "../../LoadComp";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { Eye, Pencil, Plus, Send, Trash2, X } from "lucide-react";
@@ -12,21 +13,22 @@ import { useAdminRequest } from "../../../hooks/useAdminRequest";
 export default function AdminJournal({ theme, toggle }) {
   const [journal, setJournal] = useState([]);
   const navigate = useNavigate();
+  const [isLoading, setLoading] = useState(true);
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-const UrlParser = (path) => {
-  if (!path) return "";
+  const UrlParser = (path) => {
+    if (!path) return "";
 
-  if (path instanceof File) {
-    return URL.createObjectURL(path);
-  }
+    if (path instanceof File) {
+      return URL.createObjectURL(path);
+    }
 
-  if (typeof path === "string") {
-    return path.startsWith("http") ? path : `${BASE_URL}${path}`;
-  }
+    if (typeof path === "string") {
+      return path.startsWith("http") ? path : `${BASE_URL}${path}`;
+    }
 
-  return "";
-};
+    return "";
+  };
 
   // States
   const [isEditing, setIsEditing] = useState(false);
@@ -55,18 +57,21 @@ const UrlParser = (path) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const res = await axios.post("/api/main-backend/research", {
           type: "Journal Publication",
         });
         const data = res.data?.data || [];
         setJournal(data);
-originalRef.current = structuredClone(data);
-savedDataRef.current = structuredClone(data);
+        originalRef.current = structuredClone(data);
+        savedDataRef.current = structuredClone(data);
       } catch (err) {
         console.error(err);
         if (err.response?.data?.status === 429) {
           navigate("/ratelimit", { state: { msg: err.response.data.message } });
         }
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -318,8 +323,8 @@ savedDataRef.current = structuredClone(data);
   };
 
   const handleDiscardAll = () => {
-setJournal(structuredClone(originalRef.current));
-savedDataRef.current = structuredClone(originalRef.current);
+    setJournal(structuredClone(originalRef.current));
+    savedDataRef.current = structuredClone(originalRef.current);
     setSessionChanges([]);
     setAllChanges([]);
     setIsEditing(false);
@@ -346,18 +351,18 @@ savedDataRef.current = structuredClone(originalRef.current);
     for (const change of allChanges) {
 
       // ---------------- INSERT ----------------
-if (change.action === "add") {
-  const entry = change.changes;
-  const year = entry.year.new;
+      if (change.action === "add") {
+        const entry = change.changes;
+        const year = entry.year.new;
 
-  let pdfName = "";
-if (entry.pdf_path.new instanceof File) {
-  pdfName = entry.pdf_path.new.name;
+        let pdfName = "";
+        if (entry.pdf_path.new instanceof File) {
+          pdfName = entry.pdf_path.new.name;
 
-  filesToUpload.push(entry.pdf_path.new);
-} else {
-  pdfName = entry.pdf_path.new;
-}
+          filesToUpload.push(entry.pdf_path.new);
+        } else {
+          pdfName = entry.pdf_path.new;
+        }
 
         payload.push({
           collectionName: "research",
@@ -384,13 +389,13 @@ if (entry.pdf_path.new instanceof File) {
         const oldPdf = entry.pdf_path.old;
         let newPdfName = "";
 
-if (entry.pdf_path.new instanceof File) {
-  newPdfName = entry.pdf_path.new.name;
+        if (entry.pdf_path.new instanceof File) {
+          newPdfName = entry.pdf_path.new.name;
 
-  filesToUpload.push(entry.pdf_path.new);
-} else {
-  newPdfName = entry.pdf_path.new;
-}
+          filesToUpload.push(entry.pdf_path.new);
+        } else {
+          newPdfName = entry.pdf_path.new;
+        }
 
         payload.push({
           collectionName: "research",
@@ -431,8 +436,8 @@ if (entry.pdf_path.new instanceof File) {
     }
 
     try {
-      console.log("filesToUpload",filesToUpload);
-      
+      console.log("filesToUpload", filesToUpload);
+
       const result = await sendRequest(payload, filesToUpload);
 
       if (result) {
@@ -442,8 +447,8 @@ if (entry.pdf_path.new instanceof File) {
         setSessionChanges([]);
         setIsEditing(false);
         setIsSavedOnce(false);
-originalRef.current = structuredClone(journal);
-savedDataRef.current = structuredClone(journal);
+        originalRef.current = structuredClone(journal);
+        savedDataRef.current = structuredClone(journal);
       }
     } catch (err) {
       toast.error("Request submission failed");
@@ -525,350 +530,354 @@ savedDataRef.current = structuredClone(journal);
         headerText="Academic Research"
         subHeaderText="Enrich Your Knowledge"
       />
+      {isLoading ? (
+        <div className="h-screen flex items-center justify-center md:mt-[10%] md:block">
+          <LoadComp txt={"Loading Journals..."} />
+        </div>
+      ) : (
+        <div className="mt-10">
+          {!isEditing && (
+            <button
+              className="flex items-center bg-secd px-3 py-2 z-40 rounded text-text ml-auto mr-20 my-4"
+              onClick={() => setIsEditing(true)}
+            >
+              <Pencil className="mr-2" /> Edit
+            </button>
+          )}
 
-      <div className="mt-10">
-        {!isEditing && (
-          <button
-            className="flex items-center bg-secd px-3 py-2 z-40 rounded text-text ml-auto mr-20 my-4"
-            onClick={() => setIsEditing(true)}
-          >
-            <Pencil className="mr-2" /> Edit
-          </button>
-        )}
+          <h1 className="research-academicresearch-title text-4xl text-brwn dark:text-drkt dark:border-drks">
+            Journal Publications
+          </h1>
 
-        <h1 className="research-academicresearch-title text-4xl text-brwn dark:text-drkt dark:border-drks">
-          Journal Publications
-        </h1>
-
-        {/* VIEW MODE */}
-        {!isEditing && (
-          <div className="course-selection-container p-12">
-            {journal.map((course, i) => (
-              <div
-                key={i}
-                className="px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
-                onClick={() => handlePdfClick(course)}
-              >
-                {course.year}
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* EDIT MODE */}
-        {isEditing && (
-          <div className="course-selection-container p-12">
-            {journal.map((course, index) => (
-              <div className="flex items-center gap-2 px-2 py-2" key={index}>
+          {/* VIEW MODE */}
+          {!isEditing && (
+            <div className="course-selection-container p-12">
+              {journal.map((course, i) => (
                 <div
-                  className="relative px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
-                  onClick={() => handleEditButton(index)}
+                  key={i}
+                  className="px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
+                  onClick={() => handlePdfClick(course)}
                 >
                   {course.year}
-                  <input
-                    type="checkbox"
-                    checked={selectedToDelete.has(index)}
-                    onClick={(e) => e.stopPropagation()}
-                    onChange={() => toggleSelectToDelete(index)}
-                    className="absolute top-2 right-2"
-                  />
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          )}
 
-            <button
-              className="px-4 h-14 mt-2 py-2 bg-secd hover:bg-brwn text-text hover:text-prim rounded-xl flex flex-row items-center"
-              onClick={handleAddNewButton}
-            >
-              <Plus /> Add new
-            </button>
-
-          </div>
-        )}
-
-
-        {selectedToDelete.size > 0 && (
-          <div className="flex justify-center mt-4">
-            <button
-              className="px-4 py-2 bg-red-500 text-white rounded flex items-center"
-              onClick={openDeleteConfirmMultiple}
-            >
-              <Trash2 className="mr-2" size={16} /> Delete Selected
-            </button>
-          </div>
-        )}
-
-        {/* FOOTER ACTIONS */}
-        <div className="flex flex-row justify-end gap-4 mr-12 mb-8">
+          {/* EDIT MODE */}
           {isEditing && (
-            <>
-              <button
-                className="bg-gray-500 px-3 py-2 rounded text-prim"
-                onClick={handleCancelSession}
-              >
-                Cancel
-              </button>
-              {sessionChanges.length > 0 && (
-                <button
-                  className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
-                  onClick={handleSaveSession}
-                >
-                  Save
-                </button>
-              )}
-            </>
-          )}
-
-          {!isEditing && isSavedOnce && (
-            <>
-              <button
-                className="bg-gray-500 px-3 py-2 rounded text-prim"
-                onClick={handleDiscardAll}
-              >
-                Discard All
-              </button>
-              <button
-                className="bg-secd text-text px-3 py-2 flex flex-row rounded hover:bg-brwn hover:text-prim"
-                onClick={handleRequest}
-              >
-                <Send className="mr-2" /> Request
-              </button>
-            </>
-          )}
-        </div>
-
-        {/* Add/Edit Popup */}
-        {showPopup && selectedToDelete.size === 0 && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-96">
-              <h2 className="text-lg font-semibold mb-4 text-center">
-                {editIndex !== null
-                  ? "Edit Journal Publication"
-                  : "Add New Journal Publication"}
-              </h2>
-
-              <input
-                type="text"
-                maxLength={9}
-                placeholder="Enter Year (e.g., 2024-2027)"
-                value={newYear}
-                onChange={(e) => setNewYear(e.target.value)}
-                className="w-full mb-3 p-2 border rounded"
-              />
-
-              <div className="flex flex-row gap-4 items-center justify-evenly">
-                <div className="my-2 flex flex-row justify-center">
-                  <input
-                    id="pdf-upload"
-                    type="file"
-                    accept="application/pdf"
-                    className="hidden"
-                    onChange={(e) => {
-                      const file = e.target.files[0];
-                      if (file) setNewPdf(file);
-                    }}
-                  />
-                  <label
-                    htmlFor="pdf-upload"
-                    className="cursor-pointer bg-secd hover:bg-brwn px-2 py-2 text-text hover:text-prim rounded inline-block"
+            <div className="course-selection-container p-12">
+              {journal.map((course, index) => (
+                <div className="flex items-center gap-2 px-2 py-2" key={index}>
+                  <div
+                    className="relative px-4 py-3 font-semibold text-center rounded-xl bg-secd hover:bg-accn hover:text-prim dark:hover:bg-brwn cursor-pointer"
+                    onClick={() => handleEditButton(index)}
                   >
-                    {newPdf ? "Replace File" : "Upload File"}
-                  </label>
+                    {course.year}
+                    <input
+                      type="checkbox"
+                      checked={selectedToDelete.has(index)}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={() => toggleSelectToDelete(index)}
+                      className="absolute top-2 right-2"
+                    />
+                  </div>
+                </div>
+              ))}
+
+              <button
+                className="px-4 h-14 mt-2 py-2 bg-secd hover:bg-brwn text-text hover:text-prim rounded-xl flex flex-row items-center"
+                onClick={handleAddNewButton}
+              >
+                <Plus /> Add new
+              </button>
+
+            </div>
+          )}
+
+
+          {selectedToDelete.size > 0 && (
+            <div className="flex justify-center mt-4">
+              <button
+                className="px-4 py-2 bg-red-500 text-white rounded flex items-center"
+                onClick={openDeleteConfirmMultiple}
+              >
+                <Trash2 className="mr-2" size={16} /> Delete Selected
+              </button>
+            </div>
+          )}
+
+          {/* FOOTER ACTIONS */}
+          <div className="flex flex-row justify-end gap-4 mr-12 mb-8">
+            {isEditing && (
+              <>
+                <button
+                  className="bg-gray-500 px-3 py-2 rounded text-prim"
+                  onClick={handleCancelSession}
+                >
+                  Cancel
+                </button>
+                {sessionChanges.length > 0 && (
+                  <button
+                    className="bg-secd hover:bg-brwn text-text hover:text-prim px-3 py-2 rounded-lg"
+                    onClick={handleSaveSession}
+                  >
+                    Save
+                  </button>
+                )}
+              </>
+            )}
+
+            {!isEditing && isSavedOnce && (
+              <>
+                <button
+                  className="bg-gray-500 px-3 py-2 rounded text-prim"
+                  onClick={handleDiscardAll}
+                >
+                  Discard All
+                </button>
+                <button
+                  className="bg-secd text-text px-3 py-2 flex flex-row rounded hover:bg-brwn hover:text-prim"
+                  onClick={handleRequest}
+                >
+                  <Send className="mr-2" /> Request
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Add/Edit Popup */}
+          {showPopup && selectedToDelete.size === 0 && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[2147483647]">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg w-96">
+                <h2 className="text-lg font-semibold mb-4 text-center">
+                  {editIndex !== null
+                    ? "Edit Journal Publication"
+                    : "Add New Journal Publication"}
+                </h2>
+
+                <input
+                  type="text"
+                  maxLength={9}
+                  placeholder="Enter Year (e.g., 2024-2027)"
+                  value={newYear}
+                  onChange={(e) => setNewYear(e.target.value)}
+                  className="w-full mb-3 p-2 border rounded"
+                />
+
+                <div className="flex flex-row gap-4 items-center justify-evenly">
+                  <div className="my-2 flex flex-row justify-center">
+                    <input
+                      id="pdf-upload"
+                      type="file"
+                      accept="application/pdf"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (file) setNewPdf(file);
+                      }}
+                    />
+                    <label
+                      htmlFor="pdf-upload"
+                      className="cursor-pointer bg-secd hover:bg-brwn px-2 py-2 text-text hover:text-prim rounded inline-block"
+                    >
+                      {newPdf ? "Replace File" : "Upload File"}
+                    </label>
+                  </div>
+
+                  {newPdf && (
+                    <p className="text-xs  text-center mt-1">
+                      <Eye
+                        size={28}
+                        className="cursor-pointer text-gray-500"
+                        onClick={handleViewNewPdf}
+                        cla
+                      />
+                    </p>
+                  )}
                 </div>
 
-                {newPdf && (
-                  <p className="text-xs  text-center mt-1">
-                    <Eye
-                      size={28}
-                      className="cursor-pointer text-gray-500"
-                      onClick={handleViewNewPdf}
-                      cla
-                    />
-                  </p>
-                )}
-              </div>
-
-              <div className="flex flex-row gap-2 justify-end ml-auto mt-4">
-                <button
-                  className="bg-gray-400 hover:bg-gray-500 text-prim px-2 py-2 rounded"
-                  onClick={handleCancelPopup}
-                >
-                  Cancel
-                </button>
-                <button
-                  className="bg-secd hover:bg-brwn text-text hover:text-prim px-2 py-2 rounded"
-                  onClick={handleSavePopup}
-                >
-                  Save
-                </button>
+                <div className="flex flex-row gap-2 justify-end ml-auto mt-4">
+                  <button
+                    className="bg-gray-400 hover:bg-gray-500 text-prim px-2 py-2 rounded"
+                    onClick={handleCancelPopup}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="bg-secd hover:bg-brwn text-text hover:text-prim px-2 py-2 rounded"
+                    onClick={handleSavePopup}
+                  >
+                    Save
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* DELETE CONFIRM */}
-        {deleteConfirmOpen && (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1100]">
-            <div className="bg-white rounded-xl w-[380px] p-6 shadow-lg text-center">
-              <h3 className="text-lg font-semibold mb-2">Confirm Delete</h3>
-              <p className="text-sm mb-4">Are you sure you want to delete?</p>
-              <div className="flex justify-center gap-4">
-                <button
-                  className="px-4 py-2 rounded bg-gray-400 text-white"
-                  onClick={cancelDelete}
-                >
-                  Cancel
-                </button>
-                <button
-                  className="px-4 py-2 rounded bg-red-600 text-white"
-                  onClick={confirmDelete}
-                >
-                  Delete
-                </button>
+          {/* DELETE CONFIRM */}
+          {deleteConfirmOpen && (
+            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1100]">
+              <div className="bg-white rounded-xl w-[380px] p-6 shadow-lg text-center">
+                <h3 className="text-lg font-semibold mb-2">Confirm Delete</h3>
+                <p className="text-sm mb-4">Are you sure you want to delete?</p>
+                <div className="flex justify-center gap-4">
+                  <button
+                    className="px-4 py-2 rounded bg-gray-400 text-white"
+                    onClick={cancelDelete}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="px-4 py-2 rounded bg-red-600 text-white"
+                    onClick={confirmDelete}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* REQUEST MODAL */}
-        {showRequestModal && (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
-            <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
-              <h2 className="text-xl font-semibold mb-2 text-center">
-                Request
-              </h2>
-              <p className="text-sm text-red-500 mb-4 text-center">
-                Note: Your changes will stay pending until approved by the
-                superior admin. Once approved will go live.
-              </p>
+          {/* REQUEST MODAL */}
+          {showRequestModal && (
+            <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
+              <div className="bg-white p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
+                <h2 className="text-xl font-semibold mb-2 text-center">
+                  Request
+                </h2>
+                <p className="text-sm text-red-500 mb-4 text-center">
+                  Note: Your changes will stay pending until approved by the
+                  superior admin. Once approved will go live.
+                </p>
 
-              <div className="max-h-[320px] overflow-y-auto mb-4">
-                <table className="w-full text-sm text-left border">
-                  <thead className="bg-gray-100">
-                    <tr>
-                      <th className="py-2 px-3 border">Action</th>
-                      <th className="py-2 px-3 border">Section</th>
-                      <th className="py-2 px-3 border">Changes</th>
-                      <th className="py-2 px-3 border">Undo</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {allChanges.length === 0 ? (
+                <div className="max-h-[320px] overflow-y-auto mb-4">
+                  <table className="w-full text-sm text-left border">
+                    <thead className="bg-gray-100">
                       <tr>
-                        <td colSpan={5} className="text-center py-4">
-                          No changes to submit
-                        </td>
+                        <th className="py-2 px-3 border">Action</th>
+                        <th className="py-2 px-3 border">Section</th>
+                        <th className="py-2 px-3 border">Changes</th>
+                        <th className="py-2 px-3 border">Undo</th>
                       </tr>
-                    ) : (
-                      allChanges.map((change, idx) => (
-                        <tr
-                          key={idx}
-                          className="even:bg-white odd:bg-gray-50"
-                        >
-                          <td className="py-2 px-3 border text-center">
-                            {change.action === "edit" ? (
-                              <span className="text-blue-600">✎ Edited</span>
-                            ) : change.action === "add" ? (
-                              <span className="text-green-600">+ Added</span>
-                            ) : (
-                              <span className="text-red-600">🗑 Deleted</span>
-                            )}
-                          </td>
-                          <td className="py-2 px-3 border text-center">
-                            {change.section}
-                          </td>
-                          <td className="py-2 px-3 border text-[13px] text-center">
-                            <div>
-                              {/* DELETE */}
-                              {change.action === "delete" && (
-                                <span>
-                                  {change.changes?.deleted?.year}
-                                  {/* {change.changes?.deleted?.pdf_path instanceof File
-                                    ? change.changes.deleted.pdf_path.name
-                                    : change.changes?.deleted?.pdf_path} */}
-                                </span>
-                              )}
-
-                              {/* EDIT */}
-                              {change.action === "edit" && (() => {
-                                const changes = change.changes || {};
-                                const yearChanged = changes.year?.old !== changes.year?.new;
-                                const pdfChanged = changes.pdf_path?.old !== changes.pdf_path?.new;
-
-                                if (pdfChanged && !yearChanged) {
-                                  return <div>{changes.year.old}-PDF updated</div>;
-                                }
-
-                                if (yearChanged && !pdfChanged) {
-                                  return <div>{changes.year.old} → {changes.year.new}</div>;
-                                }
-
-                                if (yearChanged && pdfChanged) {
-                                  return (
-                                    <>
-                                      <div>{changes.year.old} → {changes.year.new}</div>
-                                      <div>PDF updated</div>
-                                    </>
-                                  );
-                                }
-
-                                return null;
-                              })()}
-
-                              {/* ADD */}
-                              {change.action === "add" && (
-                                <span>
-                                  {change.changes?.year?.new}
-                                  {change.changes?.pdf_path?.new && (
-                                    ` (${change.changes.pdf_path.new instanceof File
-                                      ? change.changes.pdf_path.new.name
-                                      : change.changes.pdf_path.new
-                                    })`
-                                  )}
-                                </span>
-                              )}
-                            </div>
-                          </td>
-                          <td className="py-2 px-3 border text-center">
-                            <button
-                              className="text-red-500"
-                              onClick={() => handleUndoChange(idx)}
-                            >
-                              <X />
-                            </button>
+                    </thead>
+                    <tbody>
+                      {allChanges.length === 0 ? (
+                        <tr>
+                          <td colSpan={5} className="text-center py-4">
+                            No changes to submit
                           </td>
                         </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
-              </div>
+                      ) : (
+                        allChanges.map((change, idx) => (
+                          <tr
+                            key={idx}
+                            className="even:bg-white odd:bg-gray-50"
+                          >
+                            <td className="py-2 px-3 border text-center">
+                              {change.action === "edit" ? (
+                                <span className="text-blue-600">✎ Edited</span>
+                              ) : change.action === "add" ? (
+                                <span className="text-green-600">+ Added</span>
+                              ) : (
+                                <span className="text-red-600">🗑 Deleted</span>
+                              )}
+                            </td>
+                            <td className="py-2 px-3 border text-center">
+                              {change.section}
+                            </td>
+                            <td className="py-2 px-3 border text-[13px] text-center">
+                              <div>
+                                {/* DELETE */}
+                                {change.action === "delete" && (
+                                  <span>
+                                    {change.changes?.deleted?.year}
+                                    {/* {change.changes?.deleted?.pdf_path instanceof File
+                                    ? change.changes.deleted.pdf_path.name
+                                    : change.changes?.deleted?.pdf_path} */}
+                                  </span>
+                                )}
 
-              <div className="flex justify-end gap-3">
-                <button
-                  onClick={() => setShowRequestModal(false)}
-                  className="px-4 py-2 rounded bg-gray-400 text-prim"
-                >
-                  Cancel
-                </button>
-<button
-  onClick={(e) => {
-    const btn = e.currentTarget;
-    btn.disabled = true;
-    btn.innerText = "Loading...";
+                                {/* EDIT */}
+                                {change.action === "edit" && (() => {
+                                  const changes = change.changes || {};
+                                  const yearChanged = changes.year?.old !== changes.year?.new;
+                                  const pdfChanged = changes.pdf_path?.old !== changes.pdf_path?.new;
 
-    handleFinalRequestConfirm();
-  }}
-  className="px-4 py-2 rounded bg-secd text-black hover:bg-brwn hover:text-prim"
->
-  Final Request
-</button>
+                                  if (pdfChanged && !yearChanged) {
+                                    return <div>{changes.year.old}-PDF updated</div>;
+                                  }
+
+                                  if (yearChanged && !pdfChanged) {
+                                    return <div>{changes.year.old} → {changes.year.new}</div>;
+                                  }
+
+                                  if (yearChanged && pdfChanged) {
+                                    return (
+                                      <>
+                                        <div>{changes.year.old} → {changes.year.new}</div>
+                                        <div>PDF updated</div>
+                                      </>
+                                    );
+                                  }
+
+                                  return null;
+                                })()}
+
+                                {/* ADD */}
+                                {change.action === "add" && (
+                                  <span>
+                                    {change.changes?.year?.new}
+                                    {change.changes?.pdf_path?.new && (
+                                      ` (${change.changes.pdf_path.new instanceof File
+                                        ? change.changes.pdf_path.new.name
+                                        : change.changes.pdf_path.new
+                                      })`
+                                    )}
+                                  </span>
+                                )}
+                              </div>
+                            </td>
+                            <td className="py-2 px-3 border text-center">
+                              <button
+                                className="text-red-500"
+                                onClick={() => handleUndoChange(idx)}
+                              >
+                                <X />
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="flex justify-end gap-3">
+                  <button
+                    onClick={() => setShowRequestModal(false)}
+                    className="px-4 py-2 rounded bg-gray-400 text-prim"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      const btn = e.currentTarget;
+                      btn.disabled = true;
+                      btn.innerText = "Loading...";
+
+                      handleFinalRequestConfirm();
+                    }}
+                    className="px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim"
+                  >
+                    Final Request
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
-
+          )}
+        </div>
+      )}
       <ToastContainer position="bottom-right" autoClose={2200} />
     </>
   );

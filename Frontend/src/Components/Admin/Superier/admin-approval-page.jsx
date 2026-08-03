@@ -139,7 +139,6 @@ export default function AdminApprovalPage() {
         const responses = await Promise.all(
           Object.entries(grouped).map(([type, approvals]) => {
             const endpoint = `${type.toLowerCase().replaceAll("_", "")}admin`;
-            console.log("Token:", token, endpoint);
 
             return axios.post(
               `/api/admin-backend/${endpoint}`,
