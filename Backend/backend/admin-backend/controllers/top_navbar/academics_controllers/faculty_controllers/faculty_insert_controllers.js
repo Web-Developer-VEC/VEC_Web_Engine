@@ -14,6 +14,9 @@ async function insertData(tempDoc, mainCollection) {
         if (!allowedCategories.includes(category)) {
             throw new Error(`Insert is not supported for category: ${category}`);
         }
+        let tem = await mainCollection.findOne({ type: collection_type })
+
+        console.log("😂😂", collection_type, category, tem);
 
         const result = await mainCollection.updateOne(
             {
