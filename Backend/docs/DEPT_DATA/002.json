@@ -332,60 +332,60 @@
         ]
       },
       {
-        "category": "curriculum",
-        "content": [
-          {
-            "heading": "Curriculum & Syllabus",
-            "syllabus": [
+         "category": "curriculum",
+        "content":[
               {
-                "year": "R - 2023",
-                "docs": [
-                  {
-                    "name": "I Semester",
-                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 1.pdf"
+                "heading":"Curriculum & Syllabus",
+                "syllabus":[
+                {
+                  "year": "R - 2023",
+                  "docs":[
+                    {
+                    "name":"I Semester",
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 1.pdf"
                   },
-                  {
-                    "name": "II Semester",
-                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 2.pdf"
+                    {
+                    "name":"II Semester",
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 2.pdf"
                   },
-                  {
-                    "name": "III Semester",
-                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 3.pdf"
+                    {
+                    "name":"III Semester",
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 3.pdf"
                   },
-                  {
-                    "name": "IV Semester",
-                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 4.pdf"
+                    {
+                    "name":"IV Semester",
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 4.pdf"
                   },
-                  {
-                    "name": "V Semester",
-                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 5.pdf"
+                    {
+                    "name":"V Semester",
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 5.pdf"
                   },
-                  {
-                    "name": "VI Semester",
-                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 6.pdf"
+                    {
+                    "name":"VI Semester",
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 6.pdf"
                   },
-                  {
-                    "name": "VII Semester",
-                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 7.pdf"
+                    {
+                    "name":"VII Semester",
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 7.pdf"
                   },
-                  {
-                    "name": "VIII Semester",
-                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 8.pdf"
+                    {
+                    "name":"VIII Semester",
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) WITH TW & SDG - SEM 8.pdf"
                   },
-                  {
-                    "name": "Elective Courses",
-                    "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) ELECTIVE COURSES WITH TW & SDG.pdf"
+                    {
+                    "name":"Elective Courses",
+                      "pdf_path": "/static/pdfs/curriculum/002/B.E AME (R2023) ELECTIVE COURSES WITH TW & SDG.pdf"
                   }
                 ]
-              },
-              {
-                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
-                "pdf_path": "/static/pdfs/curriculum/002/reg_21.pdf"
+                },
+                {
+                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
+                    "pdf_path":"/static/pdfs/curriculum/002/reg_21.pdf"
+                }
+              ]
               }
             ]
           }
-        ]
-      }
     ]
   },
   {
@@ -454,11 +454,11 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-            ]
-          },
-          {
-            "year": "2023 - 2024",
-            "activities_tile": [
+      ]
+        },
+        {
+           "year":"2023 - 2024",
+           "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -491,11 +491,11 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-            ]
-          },
-          {
-            "year": "2022 - 2023",
-            "activities_tile": [
+      ]
+        },
+        {
+           "year":"2022 - 2023",
+           "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -528,11 +528,11 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-            ]
-          },
-          {
-            "year": "2021 - 2022",
-            "activities_tile": [
+      ]
+        },
+        {
+          "year":"2021 - 2022", 
+          "activities_tile": [
               {
                 "name": "Guest Lecture",
                 "pdf_path": ""
@@ -565,8 +565,9 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-            ]
-          }
+      ]
+        }
+
         ]
       }
     ]
@@ -693,51 +694,51 @@
           {
             "image_path": "/static/images/infrastructure/002/1.webp",
             "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-1"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/2.webp",
             "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-2"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/3.webp",
             "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-3"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/4.webp",
             "image_name": "AUTOMOTIVE COMPONENTS LABORATORY-4"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/5.webp",
             "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/6.webp",
             "image_name": "AUTOMATIVE FUELS & LUBRICANTS LABORATORY"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/7.webp",
             "image_name": "VEHICLE TESTING LABORATORY-1"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/8.webp",
             "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/9.webp",
             "image_name": "ENGINE PERFOMANCE & EMISSION TESTIGN LABORATORY"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/10.webp",
             "image_name": "ENGINE PERFORMANCE & EMISSION TESTING LABORATORY"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/11.webp",
             "image_name": "VEHICLE TESTING LABORATORY-2"
-          },
-          {
+            },
+            {
             "image_path": "/static/images/infrastructure/002/12.webp",
             "image_name": "VEHICLE TESTING LABORATORY-3"
-          }
+            }
         ]
       }
     ]

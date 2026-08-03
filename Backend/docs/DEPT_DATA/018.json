@@ -463,71 +463,71 @@
         ]
       },
       {
-        "category": "curriculum",
-        "content": [
-          {
-            "heading": "Curriculum & Syllabus - UG",
-            "syllabus": [
+         "category": "curriculum",
+        "content":[
               {
-                "year": "R - 2023",
-                "docs": [
-                  {
-                    "name": "I Semester",
-                    "pdf_path": ""
+                "heading":"Curriculum & Syllabus - UG",
+                "syllabus":[
+                {
+                  "year": "R - 2023",
+                  "docs":[
+                    {
+                    "name":"I Semester",
+                      "pdf_path": ""
                   },
-                  {
-                    "name": "II Semester",
-                    "pdf_path": ""
+                    {
+                    "name":"II Semester",
+                      "pdf_path": ""
                   },
-                  {
-                    "name": "III Semester",
-                    "pdf_path": ""
+                    {
+                    "name":"III Semester",
+                      "pdf_path": ""
                   },
-                  {
-                    "name": "IV Semester",
-                    "pdf_path": ""
+                    {
+                    "name":"IV Semester",
+                      "pdf_path": ""
                   },
-                  {
-                    "name": "V Semester",
-                    "pdf_path": ""
+                    {
+                    "name":"V Semester",
+                      "pdf_path": ""
                   },
-                  {
-                    "name": "VI Semester",
-                    "pdf_path": ""
+                    {
+                    "name":"VI Semester",
+                      "pdf_path": ""
                   },
-                  {
-                    "name": "VII Semester",
-                    "pdf_path": ""
+                    {
+                    "name":"VII Semester",
+                      "pdf_path": ""
                   },
-                  {
-                    "name": "VIII Semester",
-                    "pdf_path": ""
+                    {
+                    "name":"VIII Semester",
+                      "pdf_path": ""
                   },
-                  {
-                    "name": "Elective Courses",
-                    "pdf_path": ""
+                    {
+                    "name":"Elective Courses",
+                      "pdf_path": ""
                   }
                 ]
-              },
-              {
-                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
-                "pdf_path": "/static/pdfs/curriculum/018/reg_21.pdf"
-              }
-            ]
-          },
-          {
-            "heading": "curriculum & syllabus - PG",
-            "syllabus": [
-              {
-                "year": "R - 2019 A (Students admitted during 2021 and 2022)",
-                "pdf_path": "/static/pdfs/curriculum/007/pg_reg_21.pdf"
-              },
-              {
-                "year": "R - 2023",
-                "pdf_path": "/static/pdfs/curriculum/007/pg_reg_23.pdf"
-              }
-            ]
-          }
+                },
+                {
+                    "year":"R - 2019 A (Students admitted during 2021 and 2022)",
+                    "pdf_path":"/static/pdfs/curriculum/018/reg_21.pdf"
+                }
+          ]
+        },
+        {
+          "heading": "curriculum & syllabus - PG",
+          "syllabus": [
+            {
+              "year": "R - 2019 A (Students admitted during 2021 and 2022)",
+              "pdf_path": "/static/pdfs/curriculum/007/pg_reg_21.pdf"
+            },
+            {
+              "year": "R - 2023",
+              "pdf_path": "/static/pdfs/curriculum/007/pg_reg_23.pdf"
+            }
+          ]
+        }
         ]
       }
     ]
@@ -615,8 +615,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-            ]
-          },
+      ]},
           {
             "year": "2023",
             "activities_tile": [
@@ -652,7 +651,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-            ]
+      ]
           },
           {
             "year": "2022",
@@ -689,7 +688,7 @@
                 "name": "Valued Added Course",
                 "pdf_path": ""
               }
-            ]
+      ]
           }
         ]
       }
