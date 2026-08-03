@@ -2,13 +2,13 @@ async function updateData(tempDoc, mainCollection) {
 
   try {
     if (!tempDoc || typeof tempDoc !== "object") throw new Error("Invalid tempDoc format.");
-    
+
     const { collection_type, meta_data, category, original_data } = tempDoc;
 
     if (!collection_type || !meta_data || !original_data) throw new Error("Type and meta_data and original_data required");
 
     // Allowed types
-    const update = ["principal","HRHandBook","organization_chart"]
+    const update = ["principal", "HRHandBook", "organization_chart"]
 
     // Find the document for the given collection_type
     let doc = await mainCollection.findOne({ type: collection_type });
@@ -18,11 +18,11 @@ async function updateData(tempDoc, mainCollection) {
     // Block HRHandBook and organization_chart insert
     if (update.includes(collection_type)) {
       await mainCollection.updateOne(
-        {type:collection_type},
-        {$set:{data:meta_data}}
+        { type: collection_type },
+        { $set: { data: meta_data } }
       );
 
-      return{success:true, message:`The data is updated in the ${collection_type}`}
+      return { success: true, message: `The data is updated in the ${collection_type}` }
     }
 
 
@@ -37,36 +37,54 @@ async function updateData(tempDoc, mainCollection) {
         throw new Error(`meta_data.name required to append to '${collection_type}'.`);
       }
       const categoryExists = doc.data.find((c) => c.category === category);
-      if (categoryExists){
+      if (categoryExists) {
         await mainCollection.updateOne(
-          {type:collection_type, "data.category": category},
-          {$set:{"data.$[elem].members.$[con]":meta_data}},
-          {arrayFilters:[{"elem.category":category},{"con.name":original_data.name}]}
+          { type: collection_type, "data.category": category },
+          { $set: { "data.$[elem].members.$[con]": meta_data } },
+          { arrayFilters: [{ "elem.category": category }, { "con.name": original_data.name }] }
         )
       }
       return { success: true, message: `${collection_type} entry updated successfully` };
     }
 
-   if(collection_type === "admin_office"  || collection_type === "committee"){
+    if (collection_type === "admin_office" || collection_type === "committee") {
 
-    await mainCollection.updateOne(
-      {type:collection_type},
-      {$set:{"data.$[elem]":meta_data}},
-      {arrayFilters:[{"elem.name":original_data.name}]}
-    );
+      await mainCollection.updateOne(
+        { type: collection_type },
+        { $set: { "data.$[elem]": meta_data } },
+        { arrayFilters: [{ "elem.name": original_data.name }] }
+      );
 
-    return{success:true, message:`The data is updated into the ${collection_type}`}
-   }
-   else if(collection_type === "HandBook" ){
+      return { success: true, message: `The data is updated into the ${collection_type}` }
+    }
+    else if (collection_type === "HandBook") {
+      const existing = doc.data.find(
+        item => item.year === original_data.year
+      );
 
-    await mainCollection.updateOne(
-      {type:collection_type},
-      {$set:{"data.$[elem]":meta_data}},
-      {arrayFilters:[{"elem.year":original_data.year}]}
-    );
+      if (!existing) {
+        throw new Error("HandBook entry not found");
+      }
 
-    return{success:true, message:`The data is updated into the ${collection_type}`}
-   }
+      const updated = {
+        ...existing,
+        ...meta_data
+      };
+
+      await mainCollection.updateOne(
+        { type: collection_type },
+        {
+          $set: {
+            "data.$[elem]": updated
+          }
+        },
+        {
+          arrayFilters: [{ "elem.year": original_data.year }]
+        }
+      );
+
+      return { success: true, message: `The data is updated into the ${collection_type}` }
+    }
 
     throw new Error("Invalid collection type logic branch reached.");
   } catch (error) {
