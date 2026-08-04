@@ -5,9 +5,7 @@ import LoadComp from "../../LoadComp";
 import "../../Second_Nav_Bar/Accredation/nirf.css";
 import { Pencil, Plus, Eye, Save, Trash2, Send } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify";
-import { toast, ToastContainer } from "react-toastify";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
-
 const AdminAcadamiccal = ({ toggle, theme }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [academicCal, setAcademicData] = useState(null);
@@ -18,12 +16,6 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
   const [isSaved, setIsSaved] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [changes, setChanges] = useState([]);
-  const {
-    sendRequest,
-    loading,
-    error,
-    loading: reqLoading,
-  } = useAdminRequest();
   const {
     sendRequest,
     loading,
@@ -263,9 +255,6 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
 
       // Year update
       if (orig.year !== item.year) {
-
-      // Year update
-      if (orig.year !== item.year) {
         payload.push({
           collectionName: "academics",
           collection_type: "academic_calendar",
@@ -302,7 +291,7 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
             pdf_path: [
               item.oddRemoved
                 ? ""
-                : `/static/pdfs/academic_calendar/${item.oddFile.name}`,
+                : orig.pdf_path[0]
             ], // <-- No changes
           },
         });
@@ -329,7 +318,7 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
             pdf_path: [
               item.evenRemoved
                 ? ""
-                : `/static/pdfs/academic_calendar/${item.evenFile.name}`,
+                : orig.pdf_path[1]
             ], // <-- No changes
           },
         });
@@ -929,11 +918,10 @@ const AdminAcadamiccal = ({ toggle, theme }) => {
               <button
                 onClick={handleRequestConfirm}
                 disabled={reqLoading}
-                className={`px-4 py-2 rounded-lg transition ${
-                  reqLoading
-                    ? "bg-gray-400 text-white cursor-not-allowed"
-                    : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
-                }`}
+                className={`px-4 py-2 rounded-lg transition ${reqLoading
+                  ? "bg-gray-400 text-white cursor-not-allowed"
+                  : "bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim"
+                  }`}
               >
                 {reqLoading ? "Processing..." : "Confirm Request"}
               </button>
