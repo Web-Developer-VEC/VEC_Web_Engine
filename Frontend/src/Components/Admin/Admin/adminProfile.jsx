@@ -1,9 +1,7 @@
-"use client"
-
-import { useEffect, useState } from "react"
-import { Check, Clock, Trash2, Plus, LogOut, Mail, Phone, Shield, Calendar, Activity } from "lucide-react"
-import { useNavigate } from "react-router-dom"
-import axios from "axios"
+import axios from "axios";
+import { Activity, Calendar, Check, Clock, LogOut, Mail, Phone, Plus, Shield, Trash2 } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Dictionary to map routes → human-readable labels
 const routeDictionary = {
@@ -22,7 +20,7 @@ const routeDictionary = {
   "/clg-org": "College Organization",
   "/departments": "Departments",
   "/programs": "Programs",
-  "/acadamic_cal": "Academic Calendar",
+  "/academic_cal": "Academic Calendar",
   "/dept/:deptID": "Department Details",
   "/facultyprofile/:uid": "Faculty Profile",
   "/ug": "Undergraduate Programs",
@@ -33,6 +31,7 @@ const routeDictionary = {
   "/reg": "Registrar",
   "/Syllabus": "Syllabus",
   "/form": "Forms",
+  "/rankholders": "Rankholders",
   "/Academic": "Academic Info",
   "/coe": "Controller of Exams",
   "/abtplace": "About Placement",
@@ -43,7 +42,7 @@ const routeDictionary = {
   "/policies": "Policies",
   "/Funded": "Funded Projects",
   "/Book_Chapter": "Book Chapters",
-  "/Accredation": "Accreditation",
+  "/Accreditation": "Accreditation",
   "/iqac": "IQAC",
   "/iic": "IIC",
   "/ecell": "E-Cell",
@@ -126,34 +125,46 @@ const getActionBadgeColor = (action) => {
   }
 }
 
-export default function AdminProfilePage() {
-  // Get user session from sessionStorage
-  const userSession = JSON.parse(sessionStorage.getItem("userSession") || "{}");
-  const navigate = useNavigate();
+const safeParseSession = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem("userSession") || "{}")
+  } catch {
+    return {}
+  }
+}
 
-  const [pendingRequests, setPendingRequests] = useState([]);
+export default function AdminProfilePage() {
+  const navigate = useNavigate()
+  const userSession = safeParseSession()
+  const [pendingRequests, setPendingRequests] = useState([])
+
+  const allowedRoutes = useMemo(() => {
+    if (!Array.isArray(userSession?.routes)) return []
+    return userSession.routes.filter(
+      (route) => route !== "/admin_profile" && route !== "/gallery_details"
+    )
+  }, [userSession])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responce = await axios.get('/api/admin-backend/adminrequest');
-
-        console.log("Responce",responce.data);
-        setPendingRequests(responce.data)
+        const response = await axios.get("/api/admin-backend/adminrequest")
+        const requests = Array.isArray(response.data)
+          ? response.data[0].requests
+          : []
+        setPendingRequests(requests)
       } catch (error) {
-        console.error("Error fetching the Admin pending request",error);
+        console.error("Error fetching the Admin pending request", error)
+        setPendingRequests([])
       }
     }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   const handleLogout = () => {
     sessionStorage.removeItem("userSession")
-    // Add your logout logic here
-    setTimeout(() => {
-      navigate("/");
-    }, 500);
+    navigate("/", { replace: true })
   }
 
   return (
@@ -179,11 +190,15 @@ export default function AdminProfilePage() {
             <div className="flex items-center space-x-6">
               <div className="hidden sm:flex items-center space-x-4">
                 <div className="text-right">
-                  <p className="text-sm font-semibold text-gray-900">{userSession?.name}</p>
-                  <p className="text-xs text-gray-500 capitalize font-medium">{userSession?.role?.replace("-", " ")}</p>
+                  <p className="text-sm font-semibold text-gray-900">{userSession?.name || "Admin"}</p>
+                  <p className="text-xs text-gray-500 capitalize font-medium">
+                    {(userSession?.role || "admin").replace("-", " ")}
+                  </p>
                 </div>
                 <div className="w-12 h-12 bg-blue-800 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white/50">
-                  <span className="text-white font-bold text-lg">{userSession?.name?.charAt(0) || "A"}</span>
+                  <span className="text-white font-bold text-lg">
+                    {userSession?.name?.charAt(0) || "A"}
+                  </span>
                 </div>
               </div>
               <button
@@ -205,17 +220,18 @@ export default function AdminProfilePage() {
           <div className="backdrop-blur-xl bg-gradient-to-r from-white/90 to-blue-50/90 rounded-3xl border border-white/20 shadow-xl p-8">
             <div className="flex items-center space-x-6 mb-6">
               <div className="w-20 h-20 bg-blue-800 rounded-3xl flex items-center justify-center shadow-2xl">
-                <span className="text-white font-bold text-2xl">{userSession?.name?.charAt(0) || "A"}</span>
+                <span className="text-white font-bold text-2xl">
+                  {userSession?.name?.charAt(0) || "A"}
+                </span>
               </div>
               <div className="flex-1">
                 <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-2">
-                  {userSession?.name}
+                  {userSession?.name || "Admin"}
                 </h2>
                 <div className="flex items-center space-x-3">
                   <span className="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-sm font-semibold rounded-full border border-blue-200 capitalize">
-                    {userSession?.role?.replace("-", " ")}
+                    {(userSession?.role || "admin").replace("-", " ")}
                   </span>
-                  {/* <span className="text-gray-600 font-medium">Administrator</span> */}
                 </div>
               </div>
             </div>
@@ -227,7 +243,7 @@ export default function AdminProfilePage() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Email</p>
-                  <p className="text-sm font-semibold text-gray-900">{userSession?.email}</p>
+                  <p className="text-sm font-semibold text-gray-900">{userSession?.email || "-"}</p>
                 </div>
               </div>
 
@@ -237,7 +253,7 @@ export default function AdminProfilePage() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Phone</p>
-                  <p className="text-sm font-semibold text-gray-900">{userSession?.phone_no}</p>
+                  <p className="text-sm font-semibold text-gray-900">{userSession?.phone_no || "-"}</p>
                 </div>
               </div>
 
@@ -247,8 +263,7 @@ export default function AdminProfilePage() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Access</p>
-                  <p className="text-sm font-semibold text-gray-900">{userSession.routes
-                    .filter((route) => route !== "/admin_profile" && route !== "/gallery_details")?.length || 0} Routes</p>
+                  <p className="text-sm font-semibold text-gray-900">{allowedRoutes.length} Routes</p>
                 </div>
               </div>
             </div>
@@ -266,17 +281,17 @@ export default function AdminProfilePage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">Pending Requests</h3>
-                    <p className="text-sm text-gray-500">{pendingRequests?.requests?.length || 0} requests awaiting approval</p>
+                    <p className="text-sm text-gray-500">{pendingRequests.length} requests awaiting approval</p>
                   </div>
                 </div>
                 <div className="px-3 py-1 bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 text-sm font-bold rounded-full border border-orange-200">
-                  {pendingRequests?.requests?.length || 0}
+                  {pendingRequests.length}
                 </div>
               </div>
             </div>
 
             <div className="p-6">
-              {pendingRequests?.requests?.length === 0 || pendingRequests?.length === 0 ? (
+              {pendingRequests.length === 0 ? (
                 <div className="text-center py-12">
                   <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="w-8 h-8 text-white" />
@@ -286,7 +301,7 @@ export default function AdminProfilePage() {
                 </div>
               ) : (
                 <div className="space-y-4 overflow-y-auto max-h-96">
-                  {pendingRequests?.requests?.map((request, idx) => (
+                  {pendingRequests.map((request, idx) => (
                     <div
                       key={idx}
                       className="group p-5 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all duration-300 hover:-translate-y-1"
@@ -300,7 +315,7 @@ export default function AdminProfilePage() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between mb-2">
                             <h4 className="text-base font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                              {request?.data?.[0]?.title}
+                              {request?.data?.[0]?.title || "Untitled request"}
                             </h4>
                             <span
                               className={`px-2 py-1 text-xs font-semibold rounded-full border capitalize ${getActionBadgeColor(request.action)}`}
@@ -310,7 +325,7 @@ export default function AdminProfilePage() {
                           </div>
                           <div className="flex items-center text-xs text-gray-500">
                             <Calendar className="w-3 h-3 mr-2" />
-                            <span className="font-medium">{request.time}</span>
+                            <span className="font-medium">{request.time || "-"}</span>
                           </div>
                         </div>
                       </div>
@@ -335,14 +350,13 @@ export default function AdminProfilePage() {
                   </div>
                 </div>
                 <div className="px-3 py-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 text-sm font-bold rounded-full border border-green-200">
-                  {userSession.routes
-                    .filter((route) => route !== "/admin_profile" && route !== "/gallery_details")?.length || 0}
+                  {allowedRoutes.length}
                 </div>
               </div>
             </div>
 
             <div className="p-6">
-              {!userSession?.routes || userSession.routes.length === 0 ? (
+              {allowedRoutes.length === 0 ? (
                 <div className="text-center py-12">
                   <div className="w-16 h-16 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Shield className="w-8 h-8 text-white" />
@@ -352,29 +366,28 @@ export default function AdminProfilePage() {
                 </div>
               ) : (
                 <div className="space-y-3 overflow-y-auto max-h-96">
-                  {userSession.routes
-                    .filter((route) => route !== "/admin_profile" && route !== "/gallery_details")
-                    .map((route, index) => (
-                      <div
-                        key={index}
-                        className="group p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:shadow-lg hover:border-green-200 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 transition-all duration-300 hover:-translate-y-1"
-                      >
-                        <div className="flex items-center justify-between">
-                          <a
-                            href={route}
-                            className="flex items-center space-x-4 text-gray-700 hover:text-green-700 transition-colors flex-1 cursor-pointer no-underline"
-                          >
-                            <div className="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full group-hover:scale-125 transition-transform"></div>
-                            <span className="font-semibold group-hover:text-green-700">
-                              {routeDictionary[route] || route}
-                            </span>
-                          </a>
-                          <div className="w-8 h-8 bg-gradient-to-r from-green-100 to-emerald-100 group-hover:from-green-200 group-hover:to-emerald-200 rounded-full flex items-center justify-center transition-all duration-300">
-                            <Check className="w-4 h-4 text-green-600" />
-                          </div>
+                  {allowedRoutes.map((route, index) => (
+                    <div
+                      key={index}
+                      className="group p-4 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:shadow-lg hover:border-green-200 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <div className="flex items-center justify-between">
+                        <button
+                          type="button"
+                          onClick={() => navigate(route)}
+                          className="flex items-center space-x-4 text-gray-700 hover:text-green-700 transition-colors flex-1 cursor-pointer text-left"
+                        >
+                          <div className="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full group-hover:scale-125 transition-transform"></div>
+                          <span className="font-semibold group-hover:text-green-700">
+                            {routeDictionary[route] || route}
+                          </span>
+                        </button>
+                        <div className="w-8 h-8 bg-gradient-to-r from-green-100 to-emerald-100 group-hover:from-green-200 group-hover:to-emerald-200 rounded-full flex items-center justify-center transition-all duration-300">
+                          <Check className="w-4 h-4 text-green-600" />
                         </div>
                       </div>
-                    ))}
+                    </div>
+                  ))}
                 </div>
               )}
             </div>

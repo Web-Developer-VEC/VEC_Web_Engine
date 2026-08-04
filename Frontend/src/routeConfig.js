@@ -13,8 +13,8 @@ const AdminIQAC = lazy(() => import("./Components/Admin/Second_Nav_Bar/IQAC/IQAC
 const IQAC = lazy(() => import("./Components/Main/Second_Nav_Bar/IQAC/IQAC.jsx"));
 const NotFound = lazy(() => import("./NotFound"));
 const AdminApprovalPage = lazy(() => import("./Components/Admin/Superier/admin-approval-page.jsx"));
-const Consultancy = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Academicresearch.jsx"));
-const AdminConsultancy = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/Academicresearch.jsx"));
+const Consultancy = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Consultancy.jsx"));
+const AdminConsultancy = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/Consultancy.jsx"));
 const Journal = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/Journal_publica.jsx"));
 const AdminJournal = lazy(() => import("./Components/Admin/Top_Nav_Bar/Research/Journal_publica.jsx"));
 const Policies = lazy(() => import("./Components/Main/Top_Nav_Bar/Research/policy.jsx"));
@@ -86,10 +86,10 @@ const AdminNCC_ARMY = lazy(() => import("./Components/Admin/Second_Nav_Bar/NCC/N
 const YRC = lazy(() => import("./Components/Main/Second_Nav_Bar/yrc/YRC.jsx"));
 const AdminYrc = lazy(() => import("./Components/Admin/Second_Nav_Bar/yrc/YRC.jsx"));
 const AdminProfilePage = lazy(() => import("./Components/Admin/Admin/adminProfile.jsx"));
-const Acadamiccal = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx"));
-const AdminAcadamiccal = lazy(() => import("./Components/Admin/Top_Nav_Bar/Academics/academicscalendar.jsx"));
-const Accredation = lazy(() => import("./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx"));
-const AdminAccredation = lazy(() => import("./Components/Admin/Second_Nav_Bar/Accredation/Accredation.jsx"));
+const Academic_cal = lazy(() => import("./Components/Main/Top_Nav_Bar/Academics/academicscalendar.jsx"));
+const AdminAcademic_cal = lazy(() => import("./Components/Admin/Top_Nav_Bar/Academics/academicscalendar.jsx"));
+const Accreditation = lazy(() => import("./Components/Main/Second_Nav_Bar/Accredation/Accredation.jsx"));
+const AdminAccreditation = lazy(() => import("./Components/Admin/Second_Nav_Bar/Accredation/Accredation.jsx"));
 const Iic = lazy(() => import("./Components/Main/Second_Nav_Bar/IIC/iic.jsx"));
 const AdminIic = lazy(() => import("./Components/Admin/Second_Nav_Bar/IIC/iic.jsx"));
 const Incub = lazy(() => import("./Components/Main/Second_Nav_Bar/Incubation/InCub.jsx"));
@@ -135,7 +135,7 @@ export const routeConfig = {
   "/dept/:deptID": { normal: DepartmentPage, admin: DepartmentRoute },
   "/departments": { normal: AcademicDepartments, admin: AdminAcademicDepartments },
   "/programs": { normal: Programmes, admin: AdminProgrammes },
-  "/academic_cal": { normal: Acadamiccal, admin: AdminAcadamiccal },
+  "/academic_cal": { normal: Academic_cal, admin: AdminAcademic_cal },
 
   // Admission Routes
   "/ug": { normal: UgAdmission, admin: AdminUgAdmission },
@@ -171,7 +171,7 @@ export const routeConfig = {
   "/iqac": { normal: IQAC, admin: AdminIQAC },
   '/incubation': { normal: Incub, admin: AdminIncub },
   "/ecell": { normal: Ecell, admin: AdminEcell },
-  "/Accreditation": { normal: Accredation, admin: AdminAccredation },
+  "/Accreditation": { normal: Accreditation, admin: AdminAccreditation },
   "/iic": { normal: Iic, admin: AdminIic },
   "/NSS": { normal: NSS, admin: AdminNSS },
   "/NCC": { normal: NCCMAIN, admin: AdminNCCMAIN },

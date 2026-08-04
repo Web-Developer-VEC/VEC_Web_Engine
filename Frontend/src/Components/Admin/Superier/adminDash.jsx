@@ -15,30 +15,9 @@ export default function AdminDashboard() {
   const adminDetails = JSON.parse(sessionStorage.getItem("userSession"))
   const navigate = useNavigate()
   const location = useLocation()
+  const [pastDecisions, setPastDecisions] = useState([])
 
-  const [pastDecisions, setPastDecisions] = useState([
-    {
-      id: 1,
-      title: "Insert new product",
-      author: "Admin A",
-      timestamp: "2025-09-01 10:30 AM",
-      status: "approved",
-    },
-    {
-      id: 2,
-      title: "Delete user account",
-      author: "Admin B",
-      timestamp: "2025-09-02 2:15 PM",
-      status: "rejected",
-    },
-    {
-      id: 3,
-      title: "Update order status",
-      author: "Admin C",
-      timestamp: "2025-09-05 4:45 PM",
-      status: "approved",
-    },
-  ])
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +33,113 @@ export default function AdminDashboard() {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    const fetchCompletedRequests = async () => {
+      try {
+        const response = await axios.get(
+          "/api/admin-backend/completed"
+        );
+        const formattedRequests = [];
+
+        response.data.forEach((dateGroup) => {
+          dateGroup.collections.forEach((collection) => {
+
+
+            // UPDATE REQUESTS
+
+            collection.data.update?.forEach((item) => {
+
+              formattedRequests.push({
+
+                id: crypto.randomUUID(),
+                date: dateGroup.date,
+                collection: collection.collection,
+                action: "update",
+                isPastDecision: true,
+                status: item.status,
+                title: item.title,
+                type: item.type,
+                category: item.category,
+                admin: item.admin,
+                createdAt: item.createdAt,
+                updatedAt: item.updatedAt,
+                data: item
+              });
+
+            });
+
+
+
+            // DELETE REQUESTS
+
+            collection.data.delete?.forEach((item) => {
+
+              formattedRequests.push({
+
+                id: crypto.randomUUID(),
+                date: dateGroup.date,
+                collection: collection.collection,
+                action: "delete",
+                isPastDecision: true,
+                status: item.status,
+                title: item.title,
+                type: item.type,
+                category: item.category,
+                admin: item.admin,
+                createdAt: item.createdAt,
+                updatedAt: item.updatedAt,
+                data: item
+              });
+
+            });
+
+            //insert
+
+            collection.data.insert?.forEach((item) => {
+
+              formattedRequests.push({
+
+                id: crypto.randomUUID(),
+                date: dateGroup.date,
+                collection: collection.collection,
+                action: "insert",
+                isPastDecision: true,
+                status: item.status,
+                title: item.title,
+                type: item.type,
+                category: item.category,
+                admin: item.admin,
+                createdAt: item.createdAt,
+                updatedAt: item.updatedAt,
+                data: item
+              });
+
+            });
+
+
+
+          });
+
+
+        });
+
+
+
+        // Latest request first
+        formattedRequests.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+
+        setPastDecisions(formattedRequests);
+      }
+      catch (error) {
+        console.log("Error fetching completed:", error);
+      }
+
+    }
+    fetchCompletedRequests();
+  }, []);
+
   // ✅ Handle approval success - remove approved request from list
   useEffect(() => {
     if (location?.state?.approvalSuccess && location?.state?.approvedRequestId) {
@@ -67,20 +153,21 @@ export default function AdminDashboard() {
   }, [location?.state?.approvalSuccess, location?.state?.approvedRequestId, navigate, location.pathname])
 
   useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (!event.target.closest(".profile-container")) {
-      setShowProfilePopup(false)
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".profile-container")) {
+        setShowProfilePopup(false)
+      }
     }
-  }
 
-  document.addEventListener("click", handleClickOutside)
-  return () => document.removeEventListener("click", handleClickOutside)
-}, [])
+    document.addEventListener("click", handleClickOutside)
+    return () => document.removeEventListener("click", handleClickOutside)
+  }, [])
 
   const handleRequestClick = (request) => {
     navigate("/admin_approval", {
       state: {
         request: request,
+        isPastDecision: currentView === "past-requests"  || false,
       },
     })
   }
@@ -101,9 +188,15 @@ export default function AdminDashboard() {
     setCurrentView("dashboard")
   }
 
-  if (currentView === "past-requests") {
-    return <PastRequestsPage onBack={handleBackToDashboard} onRequestClick={handleRequestClick} />
-  }
+if (currentView === "past-requests") {
+  return (
+    <PastRequestsPage
+      onBack={handleBackToDashboard}
+      onRequestClick={handleRequestClick}
+      pastRequests={pastDecisions}
+    />
+  )
+}
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50">
@@ -263,6 +356,7 @@ export default function AdminDashboard() {
                             {request.collection.replaceAll("_", " ").toUpperCase()}
                           </h4>
                           <p className="text-muted-foreground text-sm capitalize">{request.action} operation</p>
+                          <p className="text-muted-foreground text-sm">Requested by: {request.admin?.name || "Unknown"}</p>
                         </div>
                       </div>
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity">
@@ -309,10 +403,11 @@ export default function AdminDashboard() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {pastDecisions.map((decision) => (
+                  {pastDecisions.slice(0,5).map((decision) => (
                     <div
                       key={decision.id}
                       className="group flex items-center gap-4 p-6 bg-gradient-to-r from-gray-50 to-white rounded-2xl border border-gray-100 hover:shadow-lg hover:border-primary/20 cursor-pointer transition-all duration-300"
+                      onClick={() => handleRequestClick(decision)}
                     >
                       <div className="flex-shrink-0">
                         {decision.status === "approved" ? (
@@ -327,26 +422,33 @@ export default function AdminDashboard() {
                       </div>
                       <div className="flex-1">
                         <div
-                          className={`border-l-4 pl-4 ${
-                            decision.status === "approved"
+                          className={`border-l-4 pl-4 ${decision.status === "approved"
                               ? "border-emerald-500 bg-gradient-to-r from-emerald-50/50 to-transparent"
                               : "border-red-500 bg-gradient-to-r from-red-50/50 to-transparent"
-                          } py-2 rounded-r-lg`}
+                            } py-2 rounded-r-lg`}
                         >
                           <h4 className="font-semibold text-foreground text-lg group-hover:text-primary transition-colors">
                             {decision.title}
                           </h4>
                           <div className="flex items-center gap-2 mt-1">
-                            <span className="text-muted-foreground text-sm">By: {decision.author}</span>
+                            <span className="text-muted-foreground text-sm">By: {decision.admin?.name || "Unknown"}</span>
                             <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
-                            <span className="text-muted-foreground text-sm">{decision.timestamp}</span>
+                            <span className="text-muted-foreground text-sm">
+                              {new Date(decision.createdAt).toLocaleString("en-IN", {
+                                day: "2-digit",
+                                month: "short",
+                                year: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                hour12: true,
+                              })}
+                            </span>                          
                           </div>
                         </div>
                       </div>
                       <div
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          decision.status === "approved" ? "bg-emerald-100 text-emerald-700" : "bg-red-100 text-red-700"
-                        }`}
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${decision.status === "approved" ? "bg-emerald-100 text-emerald-700" : "bg-red-100 text-red-700"
+                          }`}
                       >
                         {decision.status}
                       </div>

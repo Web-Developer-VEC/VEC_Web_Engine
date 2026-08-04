@@ -50,13 +50,31 @@ async function insertData(tempDoc, mainCollection) {
 
       // ✅ Category exists → push into content[]
       if (existingCategory) {
-        await mainCollection.updateOne(
-          { type: "AISHE", "data.category": category },
-          { $push: { "data.$.content": meta_data } }
-        );
 
-        return { success:true, message: `Inserted AISHE item into ${category}` };
+  const result = await mainCollection.updateOne(
+    { type: "AISHE" },
+    {
+      $set: {
+        "data.$[cat].content.$[item].pdf_path": meta_data.pdf_path
       }
+    },
+    {
+      arrayFilters: [
+        { "cat.category": category },
+        { "item.name": meta_data.name }
+      ]
+    }
+  );
+
+  if (result.modifiedCount === 0) {
+    throw new Error("AISHE item not found");
+  }
+
+  return {
+    success: true,
+    message: "AISHE PDF updated successfully"
+  };
+}
 
     await mainCollection.updateOne(
       { type: "AISHE" },

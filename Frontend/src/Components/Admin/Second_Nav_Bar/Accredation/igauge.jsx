@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Pencil, ArrowDown, X } from "lucide-react";
 import { FaLink } from "react-icons/fa";
+import { useEffect }  from "react";
 import "./admin_igauge.css";
 import LoadComp from "../../LoadComp";
 import { ToastContainer, toast } from "react-toastify";
@@ -96,8 +97,18 @@ export default function IQGauge({ data }) {
   };
 
   const getChanges = () => changes;
+  
+  useEffect(() => {
+  document.body.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 
-
+  document.documentElement.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}, []);
 
   if (!data || !Array.isArray(data)) {
     return (
@@ -106,6 +117,8 @@ export default function IQGauge({ data }) {
       </div>
     );
   }
+
+  
 
   return (
     <div className="text-center py-10 dark:bg-drkp">
@@ -149,7 +162,7 @@ export default function IQGauge({ data }) {
                   setUploadedFile(null);
                   setChanges([]);
                 }}
-                className="bg-gray-500 text-white px-4 py-2 rounded-[10px] cursor-pointer hover:bg-[#800000] hover:text-white"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
               >
                 Cancel
               </button>
@@ -268,7 +281,7 @@ export default function IQGauge({ data }) {
       <div className="flex justify-end gap-3 mt-5">
         <button
           onClick={() => setShowRequestModal(false)}
-          className="px-4 py-2 rounded-md bg-gray-400 hover:bg-gray-500 text-white transition"
+          className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-50"
         >
           Cancel
         </button>

@@ -1,4 +1,5 @@
 const { getAdminDb, getDb } = require("../../main-backend/config/db");
+const path = require("path");
 
 module.exports = async function storeTempMiddleware(req, res, next) {
   try {
@@ -97,12 +98,12 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
         const skipPdfFor = ["AISHE", "ug", "mba", "placement_details", "nirf", "nba", "regulation", "all_forms", "COE", ...(
           ["AIDS_001", "AUTO_002", "CHEMISTRY_003", "CIVIL_004", "CSE_005", "CSECS_006", "EEE_007", "EIE_008", "ECE_009", "ENGLISH_010", "IT_011", "MATHS_012", "MECH_013", "TAMIL_014", "PHYSICS_015", "MECSE_016", "MBA_017", "PS_018"].includes(collectionName)
-            ? ["research", "activities","pedagogy","faculty"]
+            ? ["research", "activities", "pedagogy", "faculty"]
             : []
         )
         ];
 
-        const skipImageFor = ["members", "library_services", "team","faculty", ...(collectionName === "ecell" ? ["gallery"] : [])]
+        const skipImageFor = ["members", "library_services", "team", ...(collectionName !== "sports" ? ["faculty"] : []), ...(collectionName === "ecell" ? ["gallery"] : [])]
         const mainCollection = maindb.collection(collectionName);
 
         const existingDoc = await mainCollection.findOne(
@@ -122,41 +123,35 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
           // SPECIAL HANDLING ONLY FOR academic_calendar
           if (collection_type === "academic_calendar") {
-
-            const originalPaths = original_data?.pdf_path || ["", ""];
-            const incomingPaths = meta_data?.pdf_path || ["", ""];
             const uploadedFiles = (req.uploadedFiles || [])
               .filter(f => f.mimetype === "application/pdf");
+            if (action === "insert") {
+              pdf_path = meta_data.pdf_path.map((originalPath) => {
+                const fileName = path.basename(originalPath);
 
-            const finalPdfPaths = [originalPaths[0] || "", originalPaths[1] || ""];
-
-            for (let i = 0; i < 2; i++) {
-
-              const incoming = incomingPaths[i];
-              const original = originalPaths[i] || "";
-
-              if (incoming === undefined) {
-                finalPdfPaths[i] = original;
-              }
-              else if (incoming === "") {
-                finalPdfPaths[i] = "";
-              }
-              else if (incoming === original) {
-                finalPdfPaths[i] = original;
-              }
-              else {
-                const filename = incoming.split("/").pop();
-
-                const uploaded = uploadedFiles.find(f =>
-                  f.location.endsWith(filename)
+                const uploaded = uploadedFiles.find(
+                  (f) => path.basename(f.location) === fileName
                 );
 
-                finalPdfPaths[i] = uploaded ? uploaded.location : incoming;
+                return uploaded ? uploaded.location : originalPath;
+              });
+            } else if (action === "update" && meta_data?.type) {
+              // odd/even calendar (single PDF)
+              if (uploadedFiles.length > 0) {
+                pdf_path = uploadedFiles[0].location;
+              } else {
+                pdf_path = original_data?.pdf_path || "";
               }
+            } else {
+              // existing academic calendar (multiple PDFs)
+              const originalPaths = original_data?.pdf_path || [];
+              const incomingPaths = meta_data?.pdf_path || [];
+
+              pdf_path = originalPaths.map((path, index) => {
+                const uploaded = uploadedFiles[index];
+                return uploaded ? uploaded.location : path;
+              });
             }
-
-            pdf_path = finalPdfPaths;
-
           } else {
 
             // DEFAULT logic for all other collection types (unchanged)
@@ -178,7 +173,22 @@ module.exports = async function storeTempMiddleware(req, res, next) {
 
         const notdoc = Array.isArray(existingDoc.data) ? existingDoc.data : [existingDoc.data];
 
+        // Special handling for other_facilities
+        if (collection_type === "other_facilities" && action !== "delete" &&
+          Array.isArray(meta_data.content)) {
+          const uploadedImages = (req.uploadedFiles || [])
+            .filter(f => f.mimetype?.startsWith("image/"));
 
+          meta_data.content = meta_data.content.map((item, index) => ({
+            ...item,
+            image_path: uploadedImages[index]
+              ? uploadedImages[index].location
+              : item.image_path
+          }));
+
+          // Prevent generic image_path logic
+          image_path = [];
+        }
         if (action === "update") {
 
           if (isFacultyMember) {
@@ -276,36 +286,18 @@ module.exports = async function storeTempMiddleware(req, res, next) {
           }
         }
 
-const indexedCollections = [
-    "other_facilities"
-];
-
-if (
-   indexedCollections.includes(collection_type) &&
-  action === "update" &&
-  meta_data.update_index !== undefined
-) {
-  const index = meta_data.update_index;
-
-  const finalNames = [...original_data.name];
-  const finalDescriptions = [...original_data.description];
-
-  finalNames[index] = meta_data.name[0];
-  finalDescriptions[index] = meta_data.description[0];
-
-  meta_data.name = finalNames;
-  meta_data.description = finalDescriptions;
-
-  if (image_path.length) {
-    const finalImages = [...original_data.image_path];
-    finalImages[index] = image_path[0];
-    image_path = finalImages;
-  }
-}
 
         if (collection_type === "principal" && image_path.length === 1) {
-  image_path = image_path[0];
-}
+          image_path = image_path[0];
+        }
+        if (action === "update" && collection_type === "placement_team") {
+          if (Array.isArray(image_path)) {
+            image_path =
+              image_path.length > 0
+                ? image_path[0]
+                : original_data?.image_path;
+          }
+        }
 
         return {
           collection: collectionName,

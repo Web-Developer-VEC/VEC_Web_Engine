@@ -58,7 +58,8 @@ export default function IqaQar({ iqacData }) {
         const updatedLogs = [...prev];
         updatedLogs[existingIndex] = {
           ...updatedLogs[existingIndex],
-          action: updatedLogs[existingIndex].action === "Insert" ? "Insert" : action,
+          action:
+            updatedLogs[existingIndex].action === "Insert" ? "Insert" : action,
           title: rowTitle,
           row,
         };
@@ -112,7 +113,7 @@ export default function IqaQar({ iqacData }) {
 
   const toggleRowSelection = (index) => {
     setSelectedRows((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
   };
 
@@ -127,38 +128,40 @@ export default function IqaQar({ iqacData }) {
   };
 
   const handleSave = () => {
-    setPendingData(deepClone(editableData)); // save draft
+    const snapshot = deepClone(editableData);
+
+    setPendingData(snapshot);
+
+    setChangesLog(computeChangesLog(originalData, snapshot));
+
     setEditMode(false);
     setHasChanges(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleCancel = () => {
-    if (pendingData) {
-  setEditableData(deepClone(pendingData));
+  if (pendingData) {
+    // Restore the last saved draft
+    setEditableData(deepClone(pendingData));
+    setChangesLog(computeChangesLog(originalData, pendingData));
+  } else {
+    // No saved draft yet, restore original server data
+    setEditableData(deepClone(originalData));
+    setChangesLog([]);
+    setHasChanges(false);
+  }
 
-  // 🔥 Recalculate changesLog properly
-  const recalculated = buildPayload(originalData, pendingData, {}).payload;
-
-  setChangesLog(
-    recalculated.map((item, index) => ({
-      id: Date.now() + index,
-      action: item.action,
-      section: "IQAC",
-      title: item.meta_data?.year || "AQAR",
-    }))
-  );
-}
-  };
-
- const handleDiscard = () => {
-  setEditableData(deepClone(originalData));  // revert to server state
   setUploadedFiles({});
-  setHasChanges(false);
-  setChangesLog([]);
-  setPendingData(null);  
-  toast.info("Changes discarded.");
+  setSelectedRows([]);
+  setEditMode(false);
 };
+
+  const handleDiscard = () => {
+    setEditableData(deepClone(originalData)); // revert to server state
+    setUploadedFiles({});
+    setHasChanges(false);
+    setChangesLog([]);
+    setPendingData(null);
+  };
 
   const buildPayload = (originalData, editableData, uploadedFiles) => {
     const payload = [];
@@ -177,7 +180,7 @@ export default function IqaQar({ iqacData }) {
           action: "delete",
           title: "deletion of AQAR",
           category: "AQAR",
-          meta_data: { ...cleanData },
+          meta_data: { _id: orig._id, ...cleanData },
           original_data: null,
         });
       } else if (JSON.stringify(match) !== JSON.stringify(orig)) {
@@ -190,8 +193,14 @@ export default function IqaQar({ iqacData }) {
           action: "update",
           title: "updation of AQAR",
           category: "AQAR",
-          meta_data: { ...cleanMatch },
-          original_data: { ...cleanOrig },
+          meta_data: {
+            _id: match._id,
+            ...cleanMatch,
+          },
+          original_data: {
+            _id: orig._id,
+            ...cleanOrig,
+          },
         });
       }
     });
@@ -206,7 +215,7 @@ export default function IqaQar({ iqacData }) {
           action: "insert",
           title: "insertion of AQAR",
           category: "AQAR",
-          meta_data: { ...cleanData },
+          meta_data: { _id: ed._id, ...cleanData },
           original_data: null,
         });
       }
@@ -219,17 +228,56 @@ export default function IqaQar({ iqacData }) {
 
     return { payload, files };
   };
+  const computeChangesLog = (originalData, editedData) => {
+    const { payload } = buildPayload(originalData, editedData, {});
+
+    return payload.map((item, index) => ({
+      id: Date.now() + index,
+      action: item.action,
+      section: "IQAC",
+      title: item.meta_data?.year || item.original_data?.year || "AQAR",
+      meta_data: item.meta_data,
+      original_data: item.original_data,
+    }));
+  };
 
   const handleRequestConfirm = async () => {
+    const missingPdf = editableData.some(
+      (row) => !row.pdf_path || row.pdf_path.trim() === "",
+    );
+
+    if (missingPdf) {
+      toast.error(
+        "Please upload a PDF for all AQAR entries before submitting.",
+      );
+      return;
+    }
+
     const { payload, files } = buildPayload(
       originalData,
-      editableData,
-      uploadedFiles
+      pendingData,
+      uploadedFiles,
     );
-    console.log("Final request payload:", payload);
+    const payloadToSend = payload.map((item) => ({
+      ...item,
+      meta_data: item.meta_data
+        ? (() => {
+            const { _id, ...rest } = item.meta_data;
+            return rest;
+          })()
+        : null,
+      original_data: item.original_data
+        ? (() => {
+            const { _id, ...rest } = item.original_data;
+            return rest;
+          })()
+        : null,
+    }));
+
+    console.log("Final request payload:", payloadToSend);
     console.log("Files to upload:", files);
 
-    const response = await sendRequest(payload, files);
+    const response = await sendRequest(payloadToSend, files);
     if (response) {
       setShowRequestModal(false);
       setHasChanges(false);
@@ -241,46 +289,46 @@ export default function IqaQar({ iqacData }) {
     }
   };
 
-const handleUndoChange = (id) => {
-  const change = changesLog.find((c) => c.id === id);
-  if (!change) return;
+  const handleUndoChange = (id) => {
+    const change = changesLog.find((c) => c.id === id);
+    if (!change) return;
 
-  let newData = [...editableData];
+    let newData = deepClone(editableData);
 
-  if (change.action === "Edit") {
-    // revert this row to original version
-    const originalRow = originalData.find(
-      (row) => row._id === change.row._id
-    );
+    if (change.action === "update") {
+      const originalRow = originalData.find(
+        (row) => row._id === change.original_data?._id,
+      );
 
-    newData = newData.map((row) =>
-      row._id === change.row._id ? { ...originalRow } : row
-    );
-  }
+      if (originalRow) {
+        newData = newData.map((row) =>
+          row._id === originalRow._id ? { ...originalRow } : row,
+        );
+      }
+    }
 
-  if (change.action === "Insert") {
-    // remove inserted row
-    newData = newData.filter(
-      (row) => row._id !== change.row._id
-    );
-  }
+    if (change.action === "insert") {
+      newData = newData.filter((row) => row._id !== change.meta_data?._id);
+    }
 
-  if (change.action === "Delete") {
-    // add back deleted row
-    newData.push(change.row);
-  }
+    if (change.action === "delete") {
+      if (change.meta_data) {
+        newData.push({
+          _id: change.meta_data._id,
+          ...change.meta_data,
+        });
+      }
+    }
 
-  setEditableData(newData);
-  setPendingData(newData);
+    setEditableData(newData);
+    setTimeout(() => {
+    setPendingData(deepClone(newData));
+}, 0);
+   
 
-  // remove only this change from log
-  setChangesLog((prev) => prev.filter((c) => c.id !== id));
-
-  toast.info("Change reverted.");
-};
-
-
-
+    // IMPORTANT
+    setChangesLog((prev) => prev.filter((c) => c.id !== id));
+  };
 
   return (
     <>
@@ -314,7 +362,9 @@ const handleUndoChange = (id) => {
                     <th className="text-center px-4 py-2">S.No</th>
                     <th className="text-center px-4 py-2">Year</th>
                     <th className="text-center px-4 py-2">PDF</th>
-                    {editMode && <th className="px-2 py-2 text-center">Select</th>}
+                    {editMode && (
+                      <th className="px-2 py-2 text-center">Select</th>
+                    )}
                   </tr>
                 </thead>
                 <tbody>
@@ -359,7 +409,8 @@ const handleUndoChange = (id) => {
                             {(uploadedFiles[index] || item.pdf_path) && (
                               <a
                                 href={
-                                  uploadedFiles[index]?.fileURL || UrlParser(item.pdf_path)
+                                  uploadedFiles[index]?.fileURL ||
+                                  UrlParser(item.pdf_path)
                                 }
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -422,7 +473,7 @@ const handleUndoChange = (id) => {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleCancel}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
               >
                 Cancel
               </button>
@@ -438,20 +489,20 @@ const handleUndoChange = (id) => {
           )}
 
           {!editMode && pendingData && (
-          <div className="flex justify-end gap-4 mb-6">
-            <button
-              onClick={handleDiscard}
-              className="px-4 py-2 bg-gray-400 text-white rounded"
-            >
-              Discard Changes
-            </button>
-            <button
-              onClick={() => setShowRequestModal(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-[10px]"
-            >
-              <Send size={16} /> Request
-            </button>
-          </div>
+            <div className="flex justify-end gap-4 mb-6">
+              <button
+                onClick={handleDiscard}
+                className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
+              >
+                Discard Changes
+              </button>
+              <button
+                onClick={() => setShowRequestModal(true)}
+                className="flex items-center gap-2 px-4 py-2 bg-secd text-text hover:bg-brwn hover:text-prim rounded-[10px]"
+              >
+                <Send size={16} /> Request
+              </button>
+            </div>
           )}
 
           <ToastContainer position="bottom-right" autoClose={3000} />
@@ -505,17 +556,23 @@ const handleUndoChange = (id) => {
 
             <div className="flex justify-end gap-2">
               <button
+                disabled={loading}
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className={`px-4 py-2 rounded text-white hover:bg-gray-600 ${
+                  loading ? "bg-gray-300 cursor-not-allowed" : "bg-gray-400"
+                }`}
               >
                 Cancel
               </button>
               {changesLog.length > 0 && (
                 <button
                   onClick={handleRequestConfirm}
-                  className="px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim"
+                  disabled={loading}
+                  className={`px-4 py-2 rounded bg-secd text-text hover:text-prim ${
+                    loading ? "cursor-progress opacity-70" : "hover:bg-brwn"
+                  }`}
                 >
-                  Confirm Request
+                  {loading ? "Processing..." : "Confirm Request"}
                 </button>
               )}
             </div>
@@ -536,7 +593,7 @@ const handleUndoChange = (id) => {
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setShowDeleteConfirm(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
               >
                 Cancel
               </button>

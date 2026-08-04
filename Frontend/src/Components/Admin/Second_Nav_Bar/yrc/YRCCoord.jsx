@@ -194,12 +194,10 @@ const handleStudentPreviewChange = (index, file) => {
     if (pendingFaculty || pendingStudents.length > 0) {
       setFaculty(deepCopy(pendingFaculty || committedFaculty));
       setStudents(deepCopy(pendingStudents.length > 0 ? pendingStudents : committedStudents));
-      toast.info("Cancelled edits. Draft preserved!");
       setIsSaved(true);
     } else {
       setFaculty(deepCopy(committedFaculty));
       setStudents(deepCopy(committedStudents));
-      toast.info("Cancelled. Reverted to original data!");
       setIsSaved(false);
     }
 
@@ -249,7 +247,6 @@ const handleStudentPreviewChange = (index, file) => {
     setIsDirty(false);
     setSelectedItems([]);
     setSelectAll(false);
-    toast.success("Changes saved as draft!");
   };
 
   const handleDiscard = () => {
@@ -262,7 +259,6 @@ const handleStudentPreviewChange = (index, file) => {
     setSelectedItems([]);
     setSelectAll(false);
     setPreviewImgs({});
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {

@@ -195,7 +195,6 @@ const Dean = ({ theme, toggle }) => {
     setIsDirty(false);
     setSelectedItems({});
     setFieldErrors({});
-    toast.success("Changes saved as draft!");
   };
 
   const handleStartEdit = () => {
@@ -358,11 +357,9 @@ const Dean = ({ theme, toggle }) => {
   const handleCancel = () => {
     if (pendingData.length > 0) {
       setDeanData(deepCopy(pendingData));
-      toast.info("Cancelled edits. Draft preserved!");
       setIsSaved(true);
     } else {
       setDeanData(deepCopy(committedData));
-      toast.info("Cancelled. Reverted to original data!");
       setIsSaved(false);
     }
 
@@ -381,7 +378,6 @@ const Dean = ({ theme, toggle }) => {
     setSelectedItems({});
     setPreviewImgs({});
     setFieldErrors({});
-    toast.info("Changes discarded!");
   };
 
   const handleRequest = () => {
@@ -838,7 +834,6 @@ const Dean = ({ theme, toggle }) => {
 
     setDeanData((prev) => [...prev, newCategory]);
     setIsDirty(true);
-    toast.success("New category added");
   };
 
   const handleCategorySelect = (categoryIndex) => {
@@ -1277,7 +1272,7 @@ const Dean = ({ theme, toggle }) => {
             <div className="flex justify-end gap-2 mt-6">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white"
               >
                 Cancel
               </button>

@@ -409,7 +409,7 @@ export default function IicFacPolicy({ data }) {
 
             {/* Policy Buttons */}
             <div className="nirf-details dark:bg-[color-mix(in_srgb,theme(colors.drkp)_95%,prim)] height">
-                <div className="nirf-year-actions flex flex-col mb-20 md:grid md:grid-cols-2 md:gap-8 md:gap-x-16 md:p-4 md:w-fit md:mx-auto">
+                <div className="nirf-year-actions flex flex-col mb-20 gap-4 md:grid md:grid-cols-2 md:gap-8 md:gap-x-16 md:p-4 md:w-fit md:mx-auto">
                     {tempData.map((item, i) => (
                         <div key={item.id} className="flex flex-col items-center relative">
                             <button
@@ -472,7 +472,7 @@ export default function IicFacPolicy({ data }) {
                         {isEditing && (
                             <div className="mb-4 text-center">
                                 <label className="bg-[#fdcc03] text-text px-3 py-2 rounded cursor-pointer hover:bg-[#800000] hover:text-prim">
-                                    Change Policy PDF
+                                    {activePdf?.pdf_path? "Change Policy PDF":"Upload Policy PDF"}
                                     <input
                                         type="file"
                                         accept="application/pdf"

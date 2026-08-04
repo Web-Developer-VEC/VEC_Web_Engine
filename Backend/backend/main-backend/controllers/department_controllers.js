@@ -50,18 +50,18 @@ function DeptMiddleware(allowedTypes, ALLOWED_DEPARTMENTS) {
 
         const staffData = await db
           .collection(collectionName)
-          .find({type:"faculty"}, { projection: { _id: 0 } })
+          .find({ type: "faculty" }, { projection: { _id: 0 } })
           .toArray();
 
         if (!staffData.length) {
           return res.status(404).json({
             message: `No faculty data found in ${collectionName}`,
           });
-        }    
+        }
         return res.status(200).json({
           department_id: deptId,
           type: "faculty",
-          data: staffData,
+          data: staffData[0].data,
         });
       }
 
@@ -116,15 +116,17 @@ function DeptMiddleware(allowedTypes, ALLOWED_DEPARTMENTS) {
 
 async function getsidebar(req, res) {
   const db = getDb();
-  const collection = db.collection("sidebar");
-  const deptid = req.params.deptId;
+  const deptCollection = db.collection(req.params.dept);
 
   try {
-    const sidebar = await collection.findOne({ dept_id: deptid });
+    const sidebar = await deptCollection.findOne(
+      { type: "sidebar" },
+      { projection: { _id: 0 } }
+    );
 
     if (!sidebar) {
       return res.status(404).json({
-        message: `No data found for deptId: ${deptid}`,
+        message: `No sidebar found for ${req.params.dept}`,
       });
     }
 

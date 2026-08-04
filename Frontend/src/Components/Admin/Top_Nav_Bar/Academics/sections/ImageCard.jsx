@@ -50,7 +50,6 @@ function ImageCard({
   const [links, setLinks] = useState(initialLinks);
   const [updatedLinks, setUpdatedLinks] = useState(initialLinks);
   const [linkEditer, setLinkEditer] = useState(false);
-  const [photoPreview, setPhotoPreview] = useState("");
 
   useEffect(() => {
     const merged = {
@@ -71,18 +70,12 @@ function ImageCard({
     onChange?.("socialmedia_links", updatedLinks, uid);
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      const dataUrl = ev.target.result;
-      setPhotoPreview(dataUrl);
-      onChange?.("image_path", dataUrl, uid);
-    };
-    reader.readAsDataURL(file);
-  };
+const handleFileChange = (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
 
+  onChange?.("image", file, uid);
+};
   return (
     <div
       className={`rounded-lg 
@@ -114,11 +107,15 @@ function ImageCard({
       )}
 
       <div>
-        <img
-          src={photoPreview || UrlParser(photo)}
-          alt={name}
-          className={firstTile ? styles.firstTileImage : styles.image}
-        />
+       <img
+    src={
+        photo instanceof File
+            ? URL.createObjectURL(photo)
+            : UrlParser(photo)
+    }
+    alt={name}
+    className={firstTile ? styles.firstTileImage : styles.image}
+/>
         {isEdit && (
           <>
             <input
@@ -210,8 +207,8 @@ function ImageCard({
           className={
             isEdit
               ? firstTile
-                ? "flex flex-col w-80 gap-4 mt-2 border-2 border-gray-400 border-dashed p-2 mt-4 rounded"
-                : "flex flex-col w-60 gap-4 mt-2 border-2 border-gray-400 border-dashed p-3 mt-4 rounded"
+                ? "flex flex-col w-80 gap-4 mt-2 border-2 border-gray-400 border-dashed p-2  rounded"
+                : "flex flex-col w-60 gap-4 mt-2 border-2 border-gray-400 border-dashed p-3  rounded"
               : firstTile
               ? "flex flex-col w-80 gap-4 mt-2"
               : "flex flex-col w-60 gap-4 mt-2"

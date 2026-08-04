@@ -150,7 +150,7 @@
       },
       {
         "category": "faculty_pdf_path",
-        "content": [
+        "pdf_path": [
           "/static/pdfs/faculty_list/010.pdf"
         ]
       },
@@ -667,6 +667,55 @@
             "dept_id": "010"
           }
         ]
+      }
+    ]
+  },
+  {
+    "type": "sidebar",
+    "content": [
+      {
+        "id": "Vision&Mission",
+        "hascontent": true
+      },
+      {
+        "id": "HeadDepartment",
+        "hascontent": true
+      },
+      {
+        "id": "Faculties",
+        "hascontent": true
+      },
+      {
+        "id": "Syllabus",
+        "hascontent": false
+      },
+      {
+        "id": "NewsLetter",
+        "hascontent": false
+      },
+      {
+        "id": "Activities",
+        "hascontent": false
+      },
+      {
+        "id": "Pedagogy",
+        "hascontent": false
+      },
+      {
+        "id": "StudentAchievments",
+        "hascontent": false
+      },
+      {
+        "id": "Infrastructure",
+        "hascontent": true
+      },
+      {
+        "id": "Mous",
+        "hascontent": false
+      },
+      {
+        "id": "Research",
+        "hascontent": false
       }
     ]
   }

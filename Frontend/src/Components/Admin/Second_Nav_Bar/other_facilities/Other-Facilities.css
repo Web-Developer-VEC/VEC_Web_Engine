@@ -42,21 +42,26 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  /* margin-top: 40px; */
   width: 100%;
-  margin: 20px auto 0;
+  margin: 60px auto 0;
 }
 
 .carousel-content {
   position: relative;
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
 }
 
 .carousel-img {
-  width: 80%;
-  /* height: 400px; */
+  display: block;
+  max-width: 100%;
+  max-height: 500px;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,.2);
 }
 
 /* Overlay for Text on Image */
@@ -108,17 +113,92 @@
   cursor: pointer;
   font-size: 24px;
   position: absolute;
+  border-radius:20px;
   top: 50%;
   transform: translateY(-50%);
   transition: background-color 0.3s;
 }
 
-.prev {
-  left: 10px;
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 56px;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(128, 0, 0, 0.8);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+
+  font-size: 30px;
+  font-weight: bold;
+
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin: 20px auto 0;
+
+  z-index: 1;          /* Keep carousel below navbar */
+}
+
+.prev,
 .next {
-  right: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 2;          /* Above image but below navbar */
+
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  background: rgba(128,0,0,.8);
+  color: #fff;
+  font-size: 30px;
+
+  transition: .3s;
+}
+
+.prev{
+    left:-70px;
+}
+
+.next{
+    right:-70px;
+}
+
+.prev:hover,
+.next:hover{
+    background:#800000;
+}
+
+.prev:hover,
+.next:hover {
+  background: #800000;
+  transform: translateY(-50%) scale(1.08);
 }
 
 .prev:hover,

@@ -19,7 +19,7 @@ async function deleteData(tempDoc, mainCollection) {
         { $pull: { data: meta_data } }
       );
 
-      return { success: true, message: "Deleted successfully" };  
+      return { success: true, message: "Deleted successfully" };
     }
 
     /* ---------------- CATEGORY BASED TYPES ---------------- */
@@ -33,8 +33,8 @@ async function deleteData(tempDoc, mainCollection) {
       collection_type === "COE"
         ? "members"
         : collection_type === "regulation"
-        ? "links"
-        : "content";
+          ? "links"
+          : "content";
 
     const categoryExists = doc.data.find(
       (item) => item.category === category
@@ -45,7 +45,24 @@ async function deleteData(tempDoc, mainCollection) {
     const deleteItems = meta_data[field] || [];
 
     /* ---------- DELETE ENTIRE CATEGORY IF ALL ITEMS MATCH ---------- */
+    const isMetaEmpty =
+      !meta_data || Object.keys(meta_data).length === 0;
 
+    if (collection_type === "rankholder" && isMetaEmpty) {
+      await mainCollection.updateOne(
+        { type: collection_type },
+        {
+          $pull: {
+            data: { category },
+          },
+        }
+      );
+
+      return {
+        success: true,
+        message: "Category deleted successfully",
+      };
+    }
     if (deleteItems.length === categoryExists[field].length) {
       await mainCollection.updateOne(
         { type: collection_type },
