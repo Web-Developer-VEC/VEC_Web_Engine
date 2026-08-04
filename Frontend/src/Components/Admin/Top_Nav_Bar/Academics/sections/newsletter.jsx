@@ -636,13 +636,7 @@ const deptId = data
       
 
       {/* Year buttons */}
-{tempData.length === 0 ? (
-  <div className="border rounded-lg p-10 bg-gray-100 text-center">
-    <p className="text-xl text-gray-500">
-      No Newsletter Content Available
-    </p>
-  </div>
-) : (
+
   <>
     {/* Year buttons */}
     <div className="flex flex-wrap justify-center gap-4 mb-6">        {Object.keys(groupedByYear)
@@ -728,7 +722,7 @@ const deptId = data
         )}
       </div>
         </>
-)}
+
 
       {/* Show newsletters for selected year */}
       {activeYear && groupedByYear[activeYear] && (

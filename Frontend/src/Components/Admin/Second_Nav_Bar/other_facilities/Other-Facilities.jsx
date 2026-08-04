@@ -1610,9 +1610,10 @@ export default function AdminOtherFacilities({ theme, toggle }) {
                   width: "650px",
                   height: "400px",
                   maxWidth: "90%",
-                  margin: "0 auto",
-                  overflow: "visible", // Allow buttons outside image
+                  margin: "40px auto 0", // <-- push image below text
+                  overflow: "hidden",
                   borderRadius: "12px",
+                  clear: "both",
                 }}
               >
                 {imageLoading && (
