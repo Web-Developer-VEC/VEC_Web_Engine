@@ -49,7 +49,7 @@ const displayNameMap = {
   "NewsLetter": "News Letters",
 };
 
-const Sidebar = ({ sections,   sidebarData, activeSection, setActiveSection, onToggleVisibility }) => {
+const Sidebar = ({sections,sidebarData,activeSection,setActiveSection,onToggleVisibility,onSave,onRequest,pendingCount,isSaved}) => { 
   console.log("Sidebar Props:", {
   sections,
   sidebarData,
@@ -77,9 +77,9 @@ const Sidebar = ({ sections,   sidebarData, activeSection, setActiveSection, onT
 <div className="flex items-center justify-between w-full">
   <div className="flex items-center gap-2">
     {iconMap[section] || "📄"}
-    <span>
-      {displayNameMap[section] || section.replace(/([A-Z])/g, " $1")}
-    </span>
+    <span className="flex-1">
+  {displayNameMap[section] || section.replace(/([A-Z])/g, " $1")}
+</span>
   </div>
 
 <span
@@ -94,6 +94,30 @@ const Sidebar = ({ sections,   sidebarData, activeSection, setActiveSection, onT
           </li>
         ))}
       </ul>
+      <div className="mt-4 px-3">
+  {!isSaved ? (
+  <button
+    onClick={onSave}
+    disabled={pendingCount === 0}
+    className={`w-full py-2 rounded-lg font-semibold transition
+      ${
+        pendingCount === 0
+          ? "bg-gray-300 cursor-not-allowed"
+          : "bg-[#fdcc03] hover:bg-[#800000] hover:text-white"
+      }`}
+  >
+    Save {pendingCount > 0 ? `(${pendingCount})` : ""}
+  </button>
+) : (
+  <button
+    onClick={onRequest}
+    className="w-full py-2 rounded-lg font-semibold bg-[#fdcc03] hover:bg-[#800000] hover:text-white"
+  >
+    Request
+  </button>
+)}
+</div>
+
     </div>
   );
 };
