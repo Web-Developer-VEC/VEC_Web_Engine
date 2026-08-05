@@ -223,7 +223,7 @@ const normalizeStartupRow = (row) => {
   };
 
   const deepEqualForRows = (a, b) => {
-  const ignoreFields = [];
+  const ignoreFields = ["s_no"];
 
   const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
 

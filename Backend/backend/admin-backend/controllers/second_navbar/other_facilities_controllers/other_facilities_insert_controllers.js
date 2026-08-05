@@ -35,6 +35,8 @@ async function insertData(tempDoc, mainCollection) {
     } else {
       existingDoc.data[categoryIndex].content.push(...meta_data.content);
     }
+    let tem = await mainCollection.findOne({ type: collection_type })
+    console.log("😂😂", collection_type, tem);
 
     await mainCollection.updateOne(
       { type: collection_type },

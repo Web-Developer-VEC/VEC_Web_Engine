@@ -156,7 +156,7 @@ const Head = () => {
         },
         {
             main: "Exams",
-            cod: [0, 5],
+            cod: [0, 6],
             cols: 1,
             sub: [
                 { hrd: false, ttl: "Regulation", sup: [], lnk: "/reg" },
@@ -173,8 +173,10 @@ const Head = () => {
                     lnk: "https://vecchennai.directverify.in/student/#/app/request",
                     openInNewTab: true,
                 },
+                {hrd: false, ttl: "Rank List UG & PG", sup: [], lnk: "/rankholders"},
                 { hrd: false, ttl: "Downloads", sup: [], lnk: "/form" },
                 { hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe" },
+                
             ],
         },
         {
@@ -216,12 +218,22 @@ const Head = () => {
     }
 
     const session = JSON.parse(sessionStorage.getItem("userSession"))
+const isRouteAllowed = (link) => {
 
-    const isRouteAllowed = (link) => {
+    if (!session?.routes) return true; // If no session routes, allow by default
 
-        if (!session?.routes) return true; // If no session routes, allow by default
-        return session.routes.includes(link);
-    };
+    if (
+        link === "/NCC" &&
+        (
+            session.routes.includes("/nccarmy") ||
+            session.routes.includes("/nccnavy")
+        )
+    ) {
+        return true;
+    }
+
+    return session.routes.includes(link);
+};
 
     return (
         <>
