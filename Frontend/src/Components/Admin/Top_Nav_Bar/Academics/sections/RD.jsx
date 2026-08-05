@@ -35,6 +35,7 @@ const Research = ({ data }) => {
 
   const [addingYear, setAddingYear] = useState(false);
   const [newYearInput, setNewYearInput] = useState("");
+  const [showResearchTiles, setShowResearchTiles] = useState(false);
   const [showDeletePdfModal, setShowDeletePdfModal] = useState(false);
   const [pdfToDelete, setPdfToDelete] = useState(null);
 
@@ -58,7 +59,7 @@ const Research = ({ data }) => {
     "015": "PHYSICS_015",
     "016": "MECSE_016",
     "017": "MBA_017",
-    "018": "PS_018"
+    "018": "PS_018",
   };
 
   const defaultResearch = [
@@ -83,7 +84,9 @@ const Research = ({ data }) => {
       data?.find((item) => item.category === "department_research")?.content ||
       [];
 
-    const bannerData = data?.find((item) => item.category === "banner_name_and_image")?.content?.[0];
+    const bannerData = data?.find(
+      (item) => item.category === "banner_name_and_image",
+    )?.content?.[0];
     if (bannerData?.dept_id) {
       setDeptId(bannerData.dept_id);
     }
@@ -95,13 +98,17 @@ const Research = ({ data }) => {
     if (depResearch.length > 0 && !selectedYear) {
       setSelectedYear(depResearch[0].year);
     }
+    if (depResearch.length > 0) {
+      setShowResearchTiles(true);
+    }
   }, [data]);
 
-  const selectedYearData =
-    departmentResearch.find((item) => item.year === selectedYear) || {
-      year: selectedYear,
-      research: [],
-    };
+  const selectedYearData = departmentResearch.find(
+    (item) => item.year === selectedYear,
+  ) || {
+    year: selectedYear,
+    research: [],
+  };
 
   const researchTileArray = selectedYearData?.research || [];
 
@@ -121,12 +128,9 @@ const Research = ({ data }) => {
         research: defaultResearch.map((name) => ({
           name,
           pdf_path: "",
-        }
-
-        )),
+        })),
       };
       console.log(newYearData);
-
 
       const updated = [...departmentResearch, newYearData]; // append
       setDepartmentResearch(updated);
@@ -135,6 +139,7 @@ const Research = ({ data }) => {
 
       setAddingYear(false);
       setNewYearInput("");
+      setShowResearchTiles(true);
       setHasChanges(true);
 
       setChangesLog((prev) => [
@@ -158,35 +163,37 @@ const Research = ({ data }) => {
     if (change.section === "Research") {
       setDepartmentResearch((prev) =>
         prev.map((yearItem) =>
-          yearItem.year === selectedYear
-            ? {
-              ...yearItem,
-              research: yearItem.research.map((r) =>
-                r.name === change.title
-                  ? { ...r, pdf_path: change.prevValue }
-                  : r
-              ),
-            }
-            : yearItem
-        )
+          yearItem.year !== change.year
+            ? yearItem
+            : {
+                ...yearItem,
+                research: yearItem.research.map((r) =>
+                  r.name.trim().toLowerCase() ===
+                  change.title.trim().toLowerCase()
+                    ? { ...change.prevValue }
+                    : r,
+                ),
+              },
+        ),
       );
     }
-
-    if (change.section === "Year") {
-      if (change.action === "Add") {
-        // Remove the year again
-        setDepartmentResearch((prev) =>
-          prev.filter((y) => y.year !== change.newValue.year)
-        );
-        setYears((prev) => prev.filter((y) => y !== change.newValue.year));
-      } else if (change.action === "Delete") {
-        // Restore deleted year
-        setDepartmentResearch((prev) => [...prev, change.prevValue]);
-        setYears((prev) => [...prev, change.prevValue.year]);
-      }
+    if (change.section === "Year" && change.action === "Delete") {
+  setDepartmentResearch((prev) => {
+    if (prev.some((y) => y.year === change.prevValue.year)) {
+      return prev;
     }
 
-    // Remove from log
+    return [...prev, change.prevValue];
+  });
+
+  setYears((prev) => {
+    if (prev.includes(change.prevValue.year)) {
+      return prev;
+    }
+
+    return [...prev, change.prevValue.year];
+  });
+}
     setChangesLog((prev) => prev.filter((c) => c.id !== id));
   };
 
@@ -215,7 +222,9 @@ const Research = ({ data }) => {
     // Check each year in current departmentResearch
     departmentResearch.forEach((currentYear) => {
       processedYears.add(currentYear.year);
-      const originalYear = originalData.find(y => y.year === currentYear.year);
+      const originalYear = originalData.find(
+        (y) => y.year === currentYear.year,
+      );
 
       if (!originalYear) {
         // NEW YEAR - Insert action
@@ -245,69 +254,67 @@ const Research = ({ data }) => {
         const updatedResearch = [];
         const deletedResearch = [];
 
-        currentYear.research
-          .filter(r => r.pdf_path || r._file)
-          .forEach((current) => {
+        currentYear.research.forEach((current, index) => {
+          console.log("Current item", index, current);
 
-            const alreadySent = alreadyRequested.some(
-              (r) =>
-                r.year === currentYear.year &&
-                r.name === current.name.trim().toLowerCase()
-            );
+          if (!current || !current.name) {
+            console.log("Invalid research object:", current);
+            return;
+          }
 
-            if (alreadySent) {
-              return; // Skip this item because it has already been requested
-            }
+          // rest of your code...
+          console.log("Current:", current);
+          console.log("Original Research:", originalResearch);
 
-            const original = originalResearch.find(
-              o =>
-                o.name.trim().toLowerCase() ===
-                current.name.trim().toLowerCase()
-            );
+          const alreadySent = alreadyRequested.some(
+            (r) =>
+              r.year === currentYear.year &&
+              r.name === current.name.trim().toLowerCase(),
+          );
 
-            // ... rest of your existing insert/update/delete logic
+          if (alreadySent) {
+            return;
+          }
 
+          const original = originalResearch.find(
+            (o) =>
+              o.name.trim().toLowerCase() === current.name.trim().toLowerCase(),
+          );
 
-            // New PDF added
-            // New PDF added
-            if (
-              (current.pdf_path || current._file) &&
-              (
-                !original ||
-                !original.pdf_path ||
-                original.pdf_path.trim() === ""
-              )
-            ) {
-              insertedResearch.push({
-                name: current.name,
-                pdf_path: getPdfPath(current, currentYear.year),
-              });
-              return;
-            }
+          // New PDF
+          if (
+            (current.pdf_path || current._file) &&
+            (!original || !original.pdf_path)
+          ) {
+            insertedResearch.push({
+              name: current.name,
+              pdf_path: getPdfPath(current, currentYear.year),
+            });
+            return;
+          }
 
-            // Existing PDF replaced
-            // Existing PDF replaced
-            if (
-              original &&
-              original.pdf_path &&
-              current.pdf_path &&
-              original.pdf_path !== getPdfPath(current, currentYear.year)
-            ) {
-              updatedResearch.push({
-                name: current.name,
-                pdf_path: getPdfPath(current, currentYear.year),
-              });
-              return;
-            }
+          // Replace PDF
+          if (
+            original &&
+            original.pdf_path &&
+            current.pdf_path &&
+            original.pdf_path !== getPdfPath(current, currentYear.year)
+          ) {
+            updatedResearch.push({
+              name: current.name,
+              pdf_path: getPdfPath(current, currentYear.year),
+            });
+            return;
+          }
 
-            // Existing PDF removed
-            if (original && !current.pdf_path) {
-              deletedResearch.push({
-                name: original.name,
-                pdf_path: original.pdf_path,
-              });
-            }
-          });
+          // Delete PDF
+          if (original && original.pdf_path && !current.pdf_path) {
+            deletedResearch.push({
+              name: original.name,
+              pdf_path: original.pdf_path,
+            });
+          }
+        });
 
         if (insertedResearch.length > 0) {
           payload.push({
@@ -338,7 +345,7 @@ const Research = ({ data }) => {
             original_data: {
               year: currentYear.year,
               research: originalResearch.filter((r) =>
-                updatedResearch.some((u) => u.name === r.name)
+                updatedResearch.some((u) => u.name === r.name),
               ),
             },
           });
@@ -369,13 +376,13 @@ const Research = ({ data }) => {
           collectionName,
           collection_type: "research",
           action: "delete",
-          delete_entire_year: true,   // <-- ADD THIS
+          delete_entire_year: true, // <-- ADD THIS
           title: `Delete Whole Research ${originalYear.year}`,
           category: "department_research",
           meta_data: {
-            year: originalYear.year
+            year: originalYear.year,
           },
-          original_data: originalYear
+          original_data: originalYear,
         });
       }
     });
@@ -385,11 +392,6 @@ const Research = ({ data }) => {
 
   const handleRequestConfirm = async () => {
     const payload = buildPayload();
-
-    if (payload.length === 0) {
-      alert("No changes to submit!");
-      return;
-    }
 
     // Collect files from departmentResearch
     const files = [];
@@ -404,7 +406,6 @@ const Research = ({ data }) => {
 
     console.log(payload, files);
 
-
     const result = await sendRequest(payload, files.length > 0 ? files : null);
 
     if (result) {
@@ -417,7 +418,7 @@ const Research = ({ data }) => {
               ...req.meta_data.research.map((r) => ({
                 year: req.meta_data.year,
                 name: r.name.trim().toLowerCase(),
-              }))
+              })),
             );
           }
         });
@@ -439,14 +440,19 @@ const Research = ({ data }) => {
     setShowSaveOptions(false);
     setChangesLog([]);
   };
+  const handleCancel = () => {
+    setDepartmentResearch(originalData.map((item) => ({ ...item })));
+    setYears(originalData.map((item) => item.year));
+    setSelectedYear(originalData[0]?.year || "");
 
-  if (!departmentResearch.length && years.length === 0) {
-    return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-        <LoadComp txt="" />
-      </div>
-    );
-  }
+    setIsEditing(false);
+    setHasChanges(false);
+    setShowSaveOptions(false);
+    setSelectedYears([]);
+    setAddingYear(false);
+    setNewYearInput("");
+    setChangesLog([]);
+  };
 
   return (
     <>
@@ -477,10 +483,11 @@ const Research = ({ data }) => {
           <div key={year} className="relative">
             <button
               onClick={() => setSelectedYear(year)}
-              className={`relative px-4 py-2 rounded RD-year-button ${selectedYear === year
-                ? "bg-accn text-prim"
-                : "bg-secd text-text dark:bg-drks"
-                }`}
+              className={`relative px-4 py-2 rounded RD-year-button ${
+                selectedYear === year
+                  ? "bg-accn text-prim"
+                  : "bg-secd text-text dark:bg-drks"
+              }`}
             >
               {year}
               {isEditing && (
@@ -500,7 +507,10 @@ const Research = ({ data }) => {
         {isEditing && !addingYear && (
           <button
             className="flex items-center gap-2 px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim"
-            onClick={() => setAddingYear(true)}
+            onClick={() => {
+              setAddingYear(true);
+              setShowResearchTiles(false);
+            }}
           >
             + New Year
           </button>
@@ -525,6 +535,9 @@ const Research = ({ data }) => {
               onClick={() => {
                 setAddingYear(false);
                 setNewYearInput("");
+                if (years.length > 0) {
+                  setShowResearchTiles(true);
+                }
               }}
               className="bg-gray-400 hover:bg-gray-500 text-white px-3 py-1 rounded transition-colors duration-200"
             >
@@ -535,17 +548,20 @@ const Research = ({ data }) => {
       </div>
 
       {/* Research Tile Section */}
-      {selectedYears.length === 0 && (
-        <ResearchTile
-          data={researchTileArray}
-          isEditing={isEditing}
-          setHasChanges={setHasChanges}
-          setChangesLog={setChangesLog}
-          departmentResearch={departmentResearch}
-          setDepartmentResearch={setDepartmentResearch}
-          selectedYear={selectedYear}
-        />
-      )}
+      {showResearchTiles &&
+        selectedYears.length === 0 &&
+        selectedYear &&
+        years.length > 0 && (
+          <ResearchTile
+            data={researchTileArray}
+            isEditing={isEditing}
+            setHasChanges={setHasChanges}
+            setChangesLog={setChangesLog}
+            departmentResearch={departmentResearch}
+            setDepartmentResearch={setDepartmentResearch}
+            selectedYear={selectedYear}
+          />
+        )}
 
       {/* Delete Years */}
       {isEditing && selectedYears.length > 0 && (
@@ -564,11 +580,7 @@ const Research = ({ data }) => {
         <div className="bottom-0 left-0 w-full p-4 flex justify-end gap-4 border-t">
           <button
             className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded transition-colors duration-200"
-            onClick={() => {
-              setIsEditing(false);
-              setHasChanges(false);
-              setSelectedYears([]);
-            }}
+            onClick={handleCancel}
           >
             Cancel
           </button>
@@ -608,7 +620,9 @@ const Research = ({ data }) => {
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[900px] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4 text-center">Request Changes</h2>
+            <h2 className="text-xl font-bold mb-4 text-center">
+              Request Changes
+            </h2>
             <p className="text-sm text-red-500 mb-4 text-center">
               Note: Changes stay pending until approved by the superior admin.
             </p>
@@ -625,7 +639,16 @@ const Research = ({ data }) => {
               <tbody>
                 {changesLog.map((c) => (
                   <tr key={c.id}>
-                    <td className="px-2 py-1 text-center">{c.action}</td>
+                    <td className="px-2 py-1 text-center">
+                      {c.action === "Remove PDF" ? (
+                        <div className="flex items-center justify-center gap-2 text-red-600">
+                          <Trash2 size={16} />
+                          Remove PDF
+                        </div>
+                      ) : (
+                        c.action
+                      )}
+                    </td>{" "}
                     <td className="px-2 py-1 text-center">{c.section}</td>
                     <td className="px-2 py-1 text-center">{c.title}</td>
                     <td className="px-2 py-1 text-center">
@@ -642,7 +665,9 @@ const Research = ({ data }) => {
             </table>
 
             {changesLog.length === 0 && (
-              <p className="text-center text-gray-500">No changes to request.</p>
+              <p className="text-center text-gray-500">
+                No changes to request.
+              </p>
             )}
 
             <div className="flex justify-end gap-2">
@@ -655,7 +680,7 @@ const Research = ({ data }) => {
               {changesLog.length > 0 && (
                 <button
                   onClick={handleRequestConfirm}
-                  className={`px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim ${loading ? 'cursor-progress' : ''}`}
+                  className={`px-4 py-2 rounded bg-secd text-text hover:bg-brwn hover:text-prim ${loading ? "cursor-progress" : ""}`}
                   disabled={loading}
                 >
                   {loading ? "Processing..." : "Confirm Request"}
@@ -688,12 +713,12 @@ const Research = ({ data }) => {
                 className="px-4 py-2 rounded bg-red-600 text-white"
                 onClick={() => {
                   const updated = departmentResearch.filter(
-                    item => !selectedYears.includes(item.year)
+                    (item) => !selectedYears.includes(item.year),
                   );
 
                   setDepartmentResearch(updated);
 
-                  const updatedYears = updated.map(item => item.year);
+                  const updatedYears = updated.map((item) => item.year);
                   setYears(updatedYears);
 
                   if (selectedYears.includes(selectedYear)) {
@@ -707,6 +732,9 @@ const Research = ({ data }) => {
                       action: "Delete",
                       section: "Year",
                       title: yr,
+                      prevValue: departmentResearch.find(
+                        (item) => item.year === yr,
+                      ),
                     })),
                   ]);
 
@@ -759,7 +787,7 @@ const ResearchTile = ({
     "Startup and Technology Transfer",
     "Book And Book Chapter",
     "Sponsored Research",
-    "Conference"
+    "Conference",
   ];
 
   const actionIcons = {
@@ -777,16 +805,18 @@ const ResearchTile = ({
   // Merge: all tiles in edit mode, only uploaded in view mode
   const mergedResearch = isEditing
     ? defaultResearch.map((name) => {
-      const existing = data?.find(
-        (r) => r.name.trim().toLowerCase() === name.trim().toLowerCase()
-      );
+        const existing = data?.find(
+          (r) => r.name.trim().toLowerCase() === name.trim().toLowerCase(),
+        );
 
-      return existing || {
-        name,
-        pdf_path: "",
-        _file: null,
-      };
-    })
+        return (
+          existing || {
+            name,
+            pdf_path: "",
+            _file: null,
+          }
+        );
+      })
     : data.filter((r) => r.pdf_path);
 
   const handlePdfOpen = (pdfPath) => {
@@ -806,10 +836,7 @@ const ResearchTile = ({
         let found = false;
 
         const updatedResearch = yearItem.research.map((r) => {
-          if (
-            r.name.trim().toLowerCase() ===
-            itemName.trim().toLowerCase()
-          ) {
+          if (r.name.trim().toLowerCase() === itemName.trim().toLowerCase()) {
             found = true;
 
             return {
@@ -834,16 +861,31 @@ const ResearchTile = ({
           ...yearItem,
           research: updatedResearch,
         };
-      })
+      }),
+    );
+
+    const currentYear = departmentResearch.find((y) => y.year === selectedYear);
+
+    const oldResearch = currentYear?.research.find(
+      (r) => r.name.trim().toLowerCase() === itemName.trim().toLowerCase(),
     );
 
     setChangesLog((prev) => [
-      ...prev,
+      ...prev.filter(
+        (log) =>
+          !(
+            log.section === "Research" &&
+            log.title === itemName &&
+            log.year === selectedYear
+          ),
+      ),
       {
         id: Date.now(),
         action: "Upload/Replace PDF",
         section: "Research",
         title: itemName,
+        year: selectedYear,
+        prevValue: oldResearch,
       },
     ]);
   };
@@ -857,42 +899,64 @@ const ResearchTile = ({
     const itemName = pdfToDelete;
 
     // Get the current item to check if it's a blob URL
-    const currentYear = departmentResearch.find(y => y.year === selectedYear);
-    const currentItem = currentYear?.research.find(r => r.name.trim().toLowerCase() ===
-      itemName.trim().toLowerCase());
+    const currentYear = departmentResearch.find((y) => y.year === selectedYear);
+    const currentItem = currentYear?.research.find(
+      (r) => r.name.trim().toLowerCase() === itemName.trim().toLowerCase(),
+    );
     const isNewUpload = currentItem?.pdf_path?.startsWith("blob:");
 
     setHasChanges(true);
+    console.log("Before Remove", departmentResearch);
 
     setDepartmentResearch((prev) =>
       prev.map((yearItem) =>
         yearItem.year === selectedYear
           ? {
-            ...yearItem,
-            research: yearItem.research.map((r) =>
-              r.name.trim().toLowerCase() ===
-                itemName.trim().toLowerCase() ? { ...r, pdf_path: "" } : r
-            ),
-          }
-          : yearItem
-      )
+              ...yearItem,
+              research: yearItem.research.map((r) =>
+                r.name.trim().toLowerCase() === itemName.trim().toLowerCase()
+                  ? { ...r, pdf_path: "" }
+                  : r,
+              ),
+            }
+          : yearItem,
+      ),
     );
-
+    setTimeout(() => {
+      console.log("After Remove", departmentResearch);
+    }, 100);
     if (isNewUpload) {
       // If it's a blob URL (newly uploaded), remove the corresponding upload log entry
       // This way: upload + immediate remove = no net change
       setChangesLog((prev) =>
-        prev.filter(log => !(log.title === itemName && log.action === "Upload/Replace PDF"))
+        prev.filter(
+          (log) =>
+            !(
+              log.action === "Upload/Replace PDF" &&
+              log.title === itemName &&
+              log.year === selectedYear
+            ),
+        ),
       );
     } else {
       // If it's an existing PDF from database, log the removal
+      const currentYear = departmentResearch.find(
+        (y) => y.year === selectedYear,
+      );
+
+      const oldResearch = currentYear?.research.find(
+        (r) => r.name.trim().toLowerCase() === itemName.trim().toLowerCase(),
+      );
+
       setChangesLog((prev) => [
         ...prev,
         {
           id: Date.now(),
-          action: "Remove PDF",
+          action: "Upload/Replace PDF",
           section: "Research",
           title: itemName,
+          year: selectedYear,
+          prevValue: oldResearch,
         },
       ]);
     }
@@ -916,11 +980,7 @@ const ResearchTile = ({
                   icon={actionIcons[item?.name] || faFileAlt}
                   style={{ marginRight: "10px" }}
                 />
-                <span
-                  className="cursor-pointer"
-                >
-                  {item?.name}
-                </span>
+                <span className="cursor-pointer">{item?.name}</span>
 
                 {isEditing && (
                   <div className="flex gap-2 ml-4 items-center">
@@ -968,7 +1028,8 @@ const ResearchTile = ({
               Confirm Delete PDF
             </h2>
             <p className="text-center mb-6">
-              Are you sure you want to remove the PDF for <span className="font-semibold">{pdfToDelete}</span>?
+              Are you sure you want to remove the PDF for{" "}
+              <span className="font-semibold">{pdfToDelete}</span>?
             </p>
             <div className="flex justify-end gap-3">
               <button

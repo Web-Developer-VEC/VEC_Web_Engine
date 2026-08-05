@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import LoadComp from "../../LoadComp";
 import { Pencil } from "lucide-react";
-//import "./Gallerydetails.css";
-
+import styles from "./Gallerydetails.module.css";
 export default function Admingallerydetails() {
   const [modalImage, setModalImage] = useState(null);
   const [pagetitle, setPageTitle] = useState(null);
@@ -73,12 +72,12 @@ export default function Admingallerydetails() {
   return (
     <>
       {links || imagePaths ? (
-        <div className="gallery-container">
-          <div className="relative mb-8">
+<div className={styles.galleryDetailsContainer}>
+            <div className="relative mb-8">
             {/* Edit Button - Top Right */}
             <div className="flex justify-end mb-4">
               <button
-                className="read-more-button bg-secd dark:bg-drks"
+                className="px-4 py-2 bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt rounded flex items-center gap-2"
                 onClick={() =>
                   navigate("/gallery", {
                     state: {
@@ -87,12 +86,12 @@ export default function Admingallerydetails() {
                   })
                 }
               >
-                Edit
+                 <Pencil /> Edit 
               </button>
             </div>
 
             {/* Heading */}
-            <h2 className="gallery-title text-brwn dark:text-drkt">
+            <h2 className={`${styles.galleryDetailsTitle} text-brwn dark:text-drkt`}>
               {pagetitle}
             </h2>
 
@@ -114,13 +113,13 @@ export default function Admingallerydetails() {
           </div>
 
           {/* Videos First */}
-          <div className="gallery-videos elementor-widget-wrap">
-            {links && (
+<div className={`${styles.galleryVideos} ${styles.elementorWidgetWrap}`}>
+              {links && (
               <>
                 {links?.map((item, i) => (
                   <div key={i} className="gallery-item-video">
-                    <div className="video-wrapper">
-                      <iframe
+<div className={styles.videoWrapper}>
+                        <iframe
                         src={getYouTubeEmbedUrl(item)}
                         title={"Videos"}
                         frameBorder="0"
@@ -136,14 +135,14 @@ export default function Admingallerydetails() {
           </div>
 
           {/* Images Next */}
-          <div className="gallery-images-container">
-            <div className="gallery-grid-details">
-              {images.map((item, i) => (
-                <div key={i} className="gallery-card-details">
+<div className={styles.galleryImagesContainer}>
+<div className={styles.galleryDetailsGrid}>
+                {images.map((item, i) => (
+                <div key={i} className={styles.galleryDetailsCard}>
                   <img
                     src={UrlParser(item)}
                     alt={`Gallery ${i}`}
-                    className="gallery-image-details"
+                    className={styles.galleryDetailsImage}
                     onClick={() => setModalImage(UrlParser(item))}
                   />
                 </div>
@@ -153,16 +152,21 @@ export default function Admingallerydetails() {
 
           {/* Popup Modal */}
           {modalImage && (
-            <div className="modal-overlay" onClick={() => setModalImage(null)}>
-              <span className="close-btn" onClick={() => setModalImage(null)}>
-                &times;
+<div
+  className={styles.modalOverlay}
+  onClick={() => setModalImage(null)}
+>
+<span
+  className={styles.closeBtn}
+  onClick={() => setModalImage(null)}
+>                &times;
               </span>
               <img
-                className="modal-image"
-                src={modalImage}
-                alt="Popup"
-                onClick={(e) => e.stopPropagation()}
-              />
+  className={styles.modalImage}
+  src={modalImage}
+  alt="Popup"
+  onClick={(e) => e.stopPropagation()}
+/>
             </div>
           )}
         </div>

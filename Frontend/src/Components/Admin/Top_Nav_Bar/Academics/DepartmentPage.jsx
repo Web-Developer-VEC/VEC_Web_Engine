@@ -17,6 +17,7 @@ import styles from "./HeadDepartment.module.css";
 import Toggle from "../../Toggle";
 import LoadComp from "../../LoadComp";
 import { useNavigate } from "react-router";
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 const AdminDepartmentPage = ({ theme, toggle }) => {
   const { deptID } = useParams();
@@ -27,9 +28,11 @@ const AdminDepartmentPage = ({ theme, toggle }) => {
   const [activeSection, setActiveSection] = useState(
     location.state?.activeSection || "Vision&Mission"
   );
-
+const { sendRequest } = useAdminRequest();
   const [availableSections, setAvailableSections] = useState([]);
   const [sectionData, setSectionData] = useState(null);
+    const [sidebarData, setSidebarData] = useState([]);
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -148,6 +151,8 @@ const AdminDepartmentPage = ({ theme, toggle }) => {
     const fetchSections = async () => {
       try {
         const response = await axios.get(`/api/main-backend/${deptidmap[deptID]}/sidebar`);
+        setSidebarData(response.data.content);
+
         const validSections = response.data.content
           .map((section) => section.id);
 
@@ -205,6 +210,7 @@ const AdminDepartmentPage = ({ theme, toggle }) => {
       <LoadComp txt={"You are offline. Please check your internet connection."}/>
     </div>
 
+
   return (
     <div className={styles.main}>
       {/* Header */}
@@ -225,10 +231,56 @@ const AdminDepartmentPage = ({ theme, toggle }) => {
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row" }}>
             {/* Sidebar */}
             <Sidebar
-              sections={availableSections}
-              activeSection={activeSection}
-              setActiveSection={handleSection}
-            />
+  sections={availableSections}
+  sidebarData={sidebarData}
+  activeSection={activeSection}
+  setActiveSection={handleSection}
+ onToggleVisibility={async (section) => {
+
+  const current = sidebarData.find(item => item.id === section);
+
+  if (!current) return;
+
+  const newValue = !current.hascontent;
+
+  // UI update
+  setSidebarData(prev =>
+    prev.map(item =>
+      item.id === section
+        ? { ...item, hascontent: newValue }
+        : item
+    )
+  );
+
+  // Request payload
+  const payload = {
+    collectionName: deptidmap[deptID],
+    collection_type: "sidebar",
+    action: "update",
+    title: "update department sidebar",
+    meta_data: {
+      content: [
+        {
+          id: section,
+          hascontent: newValue,
+        },
+      ],
+    },
+    original_data: {
+      content: [
+        {
+          id: section,
+          hascontent: current.hascontent,
+        },
+      ],
+    },
+  };
+
+  console.log(payload);
+
+  await sendRequest(payload);
+}}
+/>
             {/* Main content */}
             <div ref={contentRef} className="text-text dark:text-drkt" style={{ flex: 1, padding: "20px" }}>
               {renderSection()}

@@ -1,0 +1,114 @@
+.galleryDetailsContainer {
+  padding: 30px 20px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.galleryDetailsTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.galleryVideos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.videoWrapper {
+  width: 450px;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 250px;
+  border: none;
+}
+
+.galleryDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+  gap: 20px;
+}
+
+.galleryDetailsCard{
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+}
+
+.galleryDetailsImage {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.elementorWidgetWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.modalImage {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+@media (max-width:768px) {
+  .video-wrapper {
+    width: 100%;
+  }
+
+  .gallery-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
