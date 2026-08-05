@@ -29,9 +29,14 @@ const AdminDepartmentPage = ({ theme, toggle }) => {
     location.state?.activeSection || "Vision&Mission"
   );
 const { sendRequest } = useAdminRequest();
+const [pendingPayload, setPendingPayload] = useState(null);
+const [showRequestModal, setShowRequestModal] = useState(false);
   const [availableSections, setAvailableSections] = useState([]);
   const [sectionData, setSectionData] = useState(null);
     const [sidebarData, setSidebarData] = useState([]);
+    const [pendingChanges, setPendingChanges] = useState([]);
+    const [pendingSidebarData, setPendingSidebarData] = useState(null);
+const [isSaved, setIsSaved] = useState(false);
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -203,6 +208,72 @@ const { sendRequest } = useAdminRequest();
     }
   };
 
+  const revertChange = (sectionId) => {
+  // Remove this change from saved changes
+  setPendingSidebarData(prev =>
+    prev.filter(item => item.meta_data.content[0].id !== sectionId)
+  );
+
+  // Remove it from pending changes too
+  setPendingChanges(prev =>
+    prev.filter(item => item.meta_data.content[0].id !== sectionId)
+  );
+
+  // Restore original sidebar state
+  setSidebarData(prev =>
+    prev.map(item => {
+      if (item.id !== sectionId) return item;
+
+      const original = pendingSidebarData.find(
+        p => p.meta_data.content[0].id === sectionId
+      );
+
+      return original
+        ? {
+            ...item,
+            hascontent: original.original_data.content[0].hascontent,
+          }
+        : item;
+    })
+  );
+};
+const handleFinalRequest = async () => {
+
+  for (const payload of pendingSidebarData) {
+
+    const result = await sendRequest(payload);
+
+    if (!result?.success) {
+      return;
+    }
+
+    const change = payload.meta_data.content[0];
+
+    setSidebarData(prev =>
+      prev.map(item =>
+        item.id === change.id
+          ? {
+              ...item,
+              hascontent: change.hascontent,
+            }
+          : item
+      )
+    );
+  }
+
+setPendingChanges([]);
+setPendingSidebarData(null);
+setIsSaved(false);
+setShowRequestModal(false);
+};
+
+const handleSave = () => {
+  if (pendingChanges.length === 0) return;
+
+  setPendingSidebarData([...pendingChanges]);
+  setIsSaved(true);
+};
+
   if (!availableSections.length) return <div className={" grid grid-cols-1 place-content-center top-14 h-screen"}>
       <LoadComp txt={""}/>
     </div>
@@ -230,56 +301,66 @@ const { sendRequest } = useAdminRequest();
         
           <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row" }}>
             {/* Sidebar */}
-            <Sidebar
+           <Sidebar
   sections={availableSections}
   sidebarData={sidebarData}
   activeSection={activeSection}
   setActiveSection={handleSection}
- onToggleVisibility={async (section) => {
 
-  const current = sidebarData.find(item => item.id === section);
+isSaved={isSaved}
+onSave={handleSave}
+onRequest={() => setShowRequestModal(true)}
 
-  if (!current) return;
+  onToggleVisibility={(section) => {
+    const current = sidebarData.find(item => item.id === section);
 
-  const newValue = !current.hascontent;
+    if (!current) return;
 
-  // UI update
-  setSidebarData(prev =>
-    prev.map(item =>
-      item.id === section
-        ? { ...item, hascontent: newValue }
-        : item
-    )
+    const newValue = !current.hascontent;
+
+    const payload = {
+      collectionName: deptidmap[deptID],
+      collection_type: "sidebar",
+      action: "update",
+      title: "update department sidebar",
+      meta_data: {
+        content: [
+          {
+            id: section,
+            hascontent: newValue,
+          },
+        ],
+      },
+      original_data: {
+        content: [
+          {
+            id: section,
+            hascontent: current.hascontent,
+          },
+        ],
+      },
+    };
+
+    // Store pending changes
+    setSidebarData(prev =>
+  prev.map(item =>
+    item.id === section
+      ? {
+          ...item,
+          hascontent: newValue,
+        }
+      : item
+  )
+);
+
+setPendingChanges(prev => {
+  const others = prev.filter(
+    item => item.meta_data.content[0].id !== section
   );
 
-  // Request payload
-  const payload = {
-    collectionName: deptidmap[deptID],
-    collection_type: "sidebar",
-    action: "update",
-    title: "update department sidebar",
-    meta_data: {
-      content: [
-        {
-          id: section,
-          hascontent: newValue,
-        },
-      ],
-    },
-    original_data: {
-      content: [
-        {
-          id: section,
-          hascontent: current.hascontent,
-        },
-      ],
-    },
-  };
-
-  console.log(payload);
-
-  await sendRequest(payload);
-}}
+  return [...others, payload];
+});
+  }}
 />
             {/* Main content */}
             <div ref={contentRef} className="text-text dark:text-drkt" style={{ flex: 1, padding: "20px" }}>
@@ -288,6 +369,78 @@ const { sendRequest } = useAdminRequest();
           </div>
         </>
       )}
+      {showRequestModal && (
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1200]">
+    <div className="bg-white p-6 rounded-xl w-[500px]">
+
+      <h2 className="text-xl font-semibold text-center mb-3">
+        Request
+      </h2>
+
+      <p className="text-center text-red-500 mb-4">
+  These sidebar visibility changes will be sent for approval.
+</p>
+
+<table className="w-full border border-gray-300 text-sm mb-5">
+  <thead className="bg-gray-100">
+    <tr>
+      <th className="border p-2">Section</th>
+      <th className="border p-2">Change</th>
+      <th className="border p-2">Undo</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {pendingSidebarData.map((item, index) => {
+  const change = item.meta_data.content[0];
+
+  return (
+    <tr key={index}>
+      
+
+      <td className="border p-2">
+        {change.id}
+      </td>
+
+      <td className="border p-2">
+        {change.hascontent ? "Visible" : "Hidden"}
+      </td>
+
+      <td className="border p-2 text-center">
+        <button
+          onClick={() => revertChange(change.id)}
+          className="p-1 rounded hover:bg-gray-100"
+        >
+          ❌
+        </button>
+      </td>
+    </tr>
+  );
+})}
+  </tbody>
+</table>
+
+      <div className="flex justify-end gap-3">
+        <button
+          onClick={() => setShowRequestModal(false)}
+          className="px-4 py-2 rounded bg-gray-400 text-white"
+        >
+          Cancel
+        </button>
+
+        {pendingSidebarData?.length > 0 && (
+  <button
+    onClick={handleFinalRequest}
+    className="px-4 py-2 rounded bg-[#fdcc03] hover:bg-[#800000] hover:text-white"
+  >
+    Final Request
+  </button>
+)}
+      </div>
+
+    </div>
+  </div>
+)}
 
     </div>
   );

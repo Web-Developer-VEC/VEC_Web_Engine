@@ -344,43 +344,59 @@ const Activities = ({ data }) => {
   };
 
   const handleRequestConfirm = async () => {
-    const payload = buildPayload();
+  // Validate: Every newly added year must have at least one PDF
+  const newYears = departmentActivities.filter(
+    (year) => !originalData.some((item) => item.year === year.year)
+  );
 
-    if (payload.length === 0) {
-      alert("No changes to submit!");
+  for (const year of newYears) {
+    const hasPdf = year.activities_tile?.some(
+      (activity) => activity.pdf_path && activity.pdf_path.trim() !== ""
+    );
+
+    if (!hasPdf) {
+      toast.error(`Please upload  PDF for the year ${year.year}.`);
       return;
     }
+  }
 
-    // Collect files from departmentActivities
-    const files = [];
-    departmentActivities.forEach((yearData) => {
-      if (yearData.activities_tile) {
-        yearData.activities_tile.forEach((activity) => {
-          if (
-            activity.pdf_path &&
-            activity.pdf_path.startsWith("blob:") &&
-            activity._file
-          ) {
-            files.push(activity._file);
-          }
-        });
-      }
-    });
+  const payload = buildPayload();
 
-    console.log("Payload:", payload);
-    console.log("Files:", files);
+  if (payload.length === 0) {
+    alert("No changes to submit!");
+    return;
+  }
 
-    const result = await sendRequest(payload, files.length > 0 ? files : null);
-
-    if (result) {
-      setShowRequestModal(false);
-      setIsEditing(false);
-      setHasChanges(false);
-      setSelectedYears([]);
-      setShowSaveOptions(false);
-      setChangesLog([]);
+  // Collect files from departmentActivities
+  const files = [];
+  departmentActivities.forEach((yearData) => {
+    if (yearData.activities_tile) {
+      yearData.activities_tile.forEach((activity) => {
+        if (
+          activity.pdf_path &&
+          activity.pdf_path.startsWith("blob:") &&
+          activity._file
+        ) {
+          files.push(activity._file);
+        }
+      });
     }
-  };
+  });
+
+  console.log("Payload:", payload);
+  console.log("Files:", files);
+
+  const result = await sendRequest(payload, files.length > 0 ? files : null);
+
+  if (result) {
+    setShowRequestModal(false);
+    setIsEditing(false);
+    setHasChanges(false);
+    setSelectedYears([]);
+    setShowSaveOptions(false);
+    setChangesLog([]);
+  }
+};
 
   // Discard changes
   const handleDiscardChanges = () => {
