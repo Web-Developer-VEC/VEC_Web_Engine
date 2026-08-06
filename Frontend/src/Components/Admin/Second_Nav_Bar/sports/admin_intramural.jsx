@@ -156,11 +156,11 @@ const Intramural = ({ data }) => {
         item.id !== id
           ? item
           : {
-              ...item,
-              image: serverPath, // new DB path (used in payload)
-              preview: previewUrl, // blob URL for <img> preview
-              newFile: file,
-            },
+            ...item,
+            image: serverPath, // new DB path (used in payload)
+            preview: previewUrl, // blob URL for <img> preview
+            newFile: file,
+          },
       ),
     );
 
@@ -199,7 +199,15 @@ const Intramural = ({ data }) => {
     };
 
     setIsDirty(true);
-    setTempAchievements((prev) => [...prev, newRow]);
+    setTempAchievements((prev) => {
+      const updated = [...prev, newRow];
+
+      const lastPage = Math.ceil(updated.length / rowsPerPage);
+      setCurrentPage(lastPage);
+
+      return updated;
+    });
+
     setChanges((prev) => [
       ...prev,
       { id: newId, action: "Added", oldValue: null },
@@ -228,7 +236,7 @@ const Intramural = ({ data }) => {
           updated = updated.filter((c) => c.id !== id);
           return;
         }
-
+        
         // Remove any existing Edited entry for this row
         updated = updated.filter((c) => c.id !== id);
 
@@ -609,9 +617,8 @@ const Intramural = ({ data }) => {
                   {achievements.map((_, index) => (
                     <button
                       key={index}
-                      className={`w-2.5 h-2.5 rounded-full ${
-                        activeIndex === index ? "bg-blue-500" : "bg-gray-300"
-                      } transition-all`}
+                      className={`w-2.5 h-2.5 rounded-full ${activeIndex === index ? "bg-blue-500" : "bg-gray-300"
+                        } transition-all`}
                       onClick={() => setActiveIndex(index)}
                     />
                   ))}
@@ -692,7 +699,7 @@ const Intramural = ({ data }) => {
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage((prev) => prev - 1)}
-                  className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+                  className="px-3 text-white py-1 bg-yellow-500 rounded "
                 >
                   Prev
                 </button>
@@ -702,7 +709,7 @@ const Intramural = ({ data }) => {
                 <button
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage((prev) => prev + 1)}
-                  className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+                  className="px-3 py-1 text-white bg-yellow-500 rounded "
                 >
                   Next
                 </button>
@@ -865,13 +872,12 @@ const Intramural = ({ data }) => {
                     return (
                       <tr key={index} className="border text-center">
                         <td
-                          className={`py-2 border font-semibold ${
-                            change.action === "Added"
+                          className={`py-2 border font-semibold ${change.action === "Added"
                               ? "text-green-600"
                               : change.action === "Edited"
                                 ? "text-blue-600"
                                 : "text-red-600"
-                          }`}
+                            }`}
                         >
                           {change.action}
                         </td>

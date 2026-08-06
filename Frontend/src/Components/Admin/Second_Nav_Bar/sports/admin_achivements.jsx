@@ -1104,7 +1104,7 @@ const Achievements1 = ({ data }) => {
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage((prev) => prev - 1)}
-                  className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+                  className="px-3 text-white py-1 bg-yellow-500 rounded "
                 >
                   Prev
                 </button>
@@ -1114,7 +1114,7 @@ const Achievements1 = ({ data }) => {
                 <button
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage((prev) => prev + 1)}
-                  className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+                  className="px-3 text-white py-1 bg-yellow-500 rounded"
                 >
                   Next
                 </button>
