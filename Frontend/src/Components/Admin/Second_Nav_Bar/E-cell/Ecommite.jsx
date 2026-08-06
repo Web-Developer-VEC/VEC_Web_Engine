@@ -40,125 +40,125 @@ export default function ECellCommittee({ committee }) {
   };
 
   // Add new member
-const handleAddMember = () => {
-  const newMember = {
-    _tempId: Date.now(),   // 🔑 stable key
-    name: "",
-    affiliation: "",
+  const handleAddMember = () => {
+    const newMember = {
+      _tempId: Date.now(),   // 🔑 stable key
+      name: "",
+      affiliation: "",
+    };
+
+    setEditableData((prev) => [...prev, newMember]);
+
+    setSessionChanges((prev) => [
+      ...prev,
+      {
+        tempId: newMember._tempId,
+        action: "add",
+        data: newMember,     // ✅ store full row
+      },
+    ]);
   };
-
-  setEditableData((prev) => [...prev, newMember]);
-
-  setSessionChanges((prev) => [
-    ...prev,
-    {
-      tempId: newMember._tempId,
-      action: "add",
-      data: newMember,     // ✅ store full row
-    },
-  ]);
-};
 
 
   // Handle field change
-const handleFieldChange = (index, field, value) => {
-  const newData = [...editableData];
-  const oldVal = newData[index]?.[field];
-  newData[index] = { ...newData[index], [field]: value };
-  setEditableData(newData);
+  const handleFieldChange = (index, field, value) => {
+    const newData = [...editableData];
+    const oldVal = newData[index]?.[field];
+    newData[index] = { ...newData[index], [field]: value };
+    setEditableData(newData);
 
-  setSessionChanges((prev) => {
-    const copy = [...prev];
-    const row = newData[index];
+    setSessionChanges((prev) => {
+      const copy = [...prev];
+      const row = newData[index];
 
-    const existingIndex = copy.findIndex(
-      (c) =>
-        (c.tempId && c.tempId === row._tempId) ||
-        (c.index === index && c.action !== "delete")
-    );
+      const existingIndex = copy.findIndex(
+        (c) =>
+          (c.tempId && c.tempId === row._tempId) ||
+          (c.index === index && c.action !== "delete")
+      );
 
-    if (existingIndex >= 0) {
-      copy[existingIndex] = {
-        ...copy[existingIndex],
-        action: copy[existingIndex].action === "add" ? "add" : "edit",
-        data: row, // ✅ ALWAYS update row snapshot
-        changes: {
-          ...(copy[existingIndex].changes || {}),
-          [field]: { old: oldVal, new: value },
-        },
-      };
-    } else {
-      copy.push({
-        index,
-        action: savedDataRef.current[index] ? "edit" : "add",
-        data: row,
-        changes: { [field]: { old: oldVal, new: value } },
-      });
-    }
+      if (existingIndex >= 0) {
+        copy[existingIndex] = {
+          ...copy[existingIndex],
+          action: copy[existingIndex].action === "add" ? "add" : "edit",
+          data: row, // ✅ ALWAYS update row snapshot
+          changes: {
+            ...(copy[existingIndex].changes || {}),
+            [field]: { old: oldVal, new: value },
+          },
+        };
+      } else {
+        copy.push({
+          index,
+          action: savedDataRef.current[index] ? "edit" : "add",
+          data: row,
+          changes: { [field]: { old: oldVal, new: value } },
+        });
+      }
 
-    return copy;
-  });
-};
+      return copy;
+    });
+  };
 
 
   // Add this function inside ECellCommittee
-const handleUndoChange = (change) => {
-  let newEditableData = [...editableData];
-  let newAllChanges = [...allChanges];
+  const handleUndoChange = (change) => {
+    let newEditableData = [...editableData];
+    let newAllChanges = [...allChanges];
 
-  if (change.action === "add") {
-    // Remove newly added member
-    newEditableData = newEditableData.filter((_, idx) => idx !== change.index);
-  } else if (change.action === "edit") {
-    // Revert edited fields
-    const idx = change.index;
-    newEditableData[idx] = {
-      ...newEditableData[idx],
-      ...Object.fromEntries(
-        Object.entries(change.changes).map(([field, vals]) => [field, vals.old])
-      ),
-    };
-  } else if (change.action === "delete") {
-    // Restore deleted member
-    newEditableData.splice(change.index, 0, change.deletedItem);
-  }
+    if (change.action === "add") {
+      // Remove newly added member
+      newEditableData = newEditableData.filter((_, idx) => idx !== change.index);
+    } else if (change.action === "edit") {
+      // Revert edited fields
+      const idx = change.index;
+      newEditableData[idx] = {
+        ...newEditableData[idx],
+        ...Object.fromEntries(
+          Object.entries(change.changes).map(([field, vals]) => [field, vals.old])
+        ),
+      };
+    } else if (change.action === "delete") {
+      // Restore deleted member
+      newEditableData.splice(change.index, 0, change.deletedItem);
+    }
 
-  // Remove the undone change from allChanges
-  newAllChanges = newAllChanges.filter((c) => c !== change);
+    // Remove the undone change from allChanges
+    newAllChanges = newAllChanges.filter((c) => c !== change);
 
-  setEditableData(newEditableData);
-  setAllChanges(newAllChanges);
-};
+    setEditableData(newEditableData);
+    setAllChanges(newAllChanges);
+  };
 
 
   // Save changes
-const handleSave = () => {
-  if (sessionChanges.length === 0) {
-    toast.info("No changes to save.");
-    return;
-  }
+  const handleSave = () => {
+    if (sessionChanges.length === 0) {
+      toast.info("No changes to save.");
+      return;
+    }
 
-  // 🚫 Block save if any required field is empty
-  const hasEmptyFields = editableData.some(
-    (row) =>
-      !row.name?.trim() ||
-      !row.affiliation?.trim()
-  );
+    // 🚫 Block save if any required field is empty
+    const hasEmptyFields = editableData.some(
+      (row) =>
+        !row.name?.trim() ||
+        !row.affiliation?.trim()
+    );
 
-  if (hasEmptyFields) {
-    toast.warning("Please fill all fields before saving.");
-    return; // ⛔ STOP SAVE
-  }
+    if (hasEmptyFields) {
+      toast.warning("Please fill all fields before saving.");
+      return; // ⛔ STOP SAVE
+    }
 
-  // ✅ Save allowed
-  savedDataRef.current = JSON.parse(JSON.stringify(editableData));
-  setAllChanges((prev) => [...prev, ...sessionChanges]);
-  setSessionChanges([]);
-  setIsEditing(false);
-  setIsSavedOnce(true);
+    // ✅ Save allowed
+    savedDataRef.current = JSON.parse(JSON.stringify(editableData));
+    setAllChanges((prev) => [...prev, ...sessionChanges]);
+    setSessionChanges([]);
+    setIsEditing(false);
+    setIsSavedOnce(true);
 
-  // toast.success("Changes saved successfully.");
-};
+    // toast.success("Changes saved successfully.");
+  };
 
 
   // Cancel session
@@ -190,107 +190,118 @@ const handleSave = () => {
   };
 
   // Confirm final request
-const handleFinalRequestConfirm = async () => {
-  if (allChanges.length === 0) {
-    toast.info("No changes to submit");
-    return;
-  }
+  const handleFinalRequestConfirm = async () => {
+    if (allChanges.length === 0) {
+      toast.info("No changes to submit");
+      return;
+    }
 
-  const payload = allChanges
-    .map((change) => {
+    const payload = allChanges
+      .map((change) => {
 
-      /* ========== INSERT ========== */
-      if (change.action === "add") {
-        const row = change.data; // ✅ FIX
+        /* ========== INSERT ========== */
+        if (change.action === "add") {
+          const row = change.data; // ✅ FIX
 
-        if (!row?.name?.trim() || !row?.affiliation?.trim()) {
-          toast.warning("Empty fields found. Cannot submit request.");
-          return null;
+          if (!row?.name?.trim() || !row?.affiliation?.trim()) {
+            toast.warning("Empty fields found. Cannot submit request.");
+            return null;
+          }
+
+          return {
+            action: "insert",
+            collectionName: "ecell",
+            title: "committee",
+            collection_type: "committee",
+            meta_data: {
+              name: row.name,
+              affiliation: row.affiliation,
+            },
+          };
         }
 
-        return {
-          action: "insert",
-          collectionName: "ecell",
-          title: "coolie",
-          collection_type: "committee",
-          meta_data: {
-            name: row.name,
-            affiliation: row.affiliation,
-          },
-        };
-      }
+        /* ========== UPDATE ========== */
+        /* ========== UPDATE ========== */
+        if (change.action === "edit") {
+          const original = originalRef.current[change.index];
+          if (!original) return null;
 
-      /* ========== UPDATE ========== */
-      if (change.action === "edit") {
-        const original = originalRef.current[change.index];
-        if (!original) return null;
+          // Check whether anything actually changed
+          const hasChanges = Object.entries(change.changes || {}).some(
+            ([_, v]) => v.old !== v.new
+          );
 
-        const updatedFields = {};
-        Object.entries(change.changes || {}).forEach(([k, v]) => {
-          if (v.old !== v.new) updatedFields[k] = v.new;
-        });
+          if (!hasChanges) return null;
 
-        if (Object.keys(updatedFields).length === 0) return null;
+          // Get the complete updated member
+          const updated = editableData[change.index];
 
-        return {
-          action: "update",
-          collectionName: "ecell",
-          title: "coolie",
-          collection_type: "committee",
-          original_data: {
-            name: original.name,
-            affiliation: original.affiliation,
-          },
-          meta_data: updatedFields,
-        };
-      }
+          if (!updated) return null;
 
-      /* ========== DELETE ========== */
-      if (change.action === "delete") {
-        const member = change.deletedItem;
-        if (!member) return null;
+          return {
+            action: "update",
+            collectionName: "ecell",
+            title: "committee",
+            collection_type: "committee",
 
-        return {
-          action: "delete",
-          collectionName: "ecell",
-          title: "coolie",
-          collection_type: "committee",
-          meta_data: {
-            name: member.name,
-            affiliation: member.affiliation,
-          },
-        };
-      }
+            original_data: {
+              name: original.name,
+              affiliation: original.affiliation,
+            },
 
-      return null;
-    })
-    .filter(Boolean);
+            meta_data: {
+              name: updated.name,
+              affiliation: updated.affiliation,
+            },
+          };
+        }
 
-  if (payload.length === 0) {
-    toast.info("No valid changes to submit");
-    return;
-  }
+        /* ========== DELETE ========== */
+        if (change.action === "delete") {
+          const member = change.deletedItem;
+          if (!member) return null;
 
-  console.log("FINAL PAYLOAD:", payload);
+          return {
+            action: "delete",
+            collectionName: "ecell",
+            title: "coolie",
+            collection_type: "committee",
+            meta_data: {
+              name: member.name,
+              affiliation: member.affiliation,
+            },
+          };
+        }
 
-  try {
-    await sendRequest(payload);
+        return null;
+      })
+      .filter(Boolean);
 
-    // toast.success("Request sent for admin approval");
+    if (payload.length === 0) {
+      toast.info("No valid changes to submit");
+      return;
+    }
 
-    setShowRequestModal(false);
-    setAllChanges([]);
-    setSessionChanges([]);
-    setIsEditing(false);
-    setIsSavedOnce(false);
+    console.log("FINAL PAYLOAD:", payload);
 
-    originalRef.current = structuredClone(editableData);
-    savedDataRef.current = structuredClone(editableData);
-  } catch (err) {
-    console.error(err);
-    toast.error("Failed to submit request");
-  }
-};
+    try {
+      await sendRequest(payload);
+
+      // toast.success("Request sent for admin approval");
+
+      setShowRequestModal(false);
+      setAllChanges([]);
+      setSessionChanges([]);
+      setIsEditing(false);
+      setIsSavedOnce(false);
+
+      originalRef.current = structuredClone(editableData);
+      savedDataRef.current = structuredClone(editableData);
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to submit request");
+    }
+  };
 
 
 
@@ -308,39 +319,39 @@ const handleFinalRequestConfirm = async () => {
   };
 
   // Confirm delete
-const confirmDelete = () => {
-  let newData = [...editableData];
-  let newChanges = [...sessionChanges];
+  const confirmDelete = () => {
+    let newData = [...editableData];
+    let newChanges = [...sessionChanges];
 
-  const handleDelete = (idx) => {
-    // ❌ Remove ANY previous changes (add/edit) for this index
-    newChanges = newChanges.filter((c) => c.index !== idx);
+    const handleDelete = (idx) => {
+      // ❌ Remove ANY previous changes (add/edit) for this index
+      newChanges = newChanges.filter((c) => c.index !== idx);
 
-    // ✅ If original data exists, record delete
-    if (savedDataRef.current[idx]) {
-      newChanges.push({
-        index: idx,
-        action: "delete",
-        deletedItem: newData[idx],
-      });
+      // ✅ If original data exists, record delete
+      if (savedDataRef.current[idx]) {
+        newChanges.push({
+          index: idx,
+          action: "delete",
+          deletedItem: newData[idx],
+        });
+      }
+
+      // Remove row from UI
+      newData.splice(idx, 1);
+    };
+
+    if (indexToDelete === "multiple") {
+      [...selectedRows].sort((a, b) => b - a).forEach(handleDelete);
     }
 
-    // Remove row from UI
-    newData.splice(idx, 1);
+    setEditableData(newData);
+    setSessionChanges(newChanges);
+    setSelectedRows(new Set());
+    setDeleteConfirmOpen(false);
+    setIndexToDelete(null);
+
+    toast.success("Member deleted.");
   };
-
-  if (indexToDelete === "multiple") {
-    [...selectedRows].sort((a, b) => b - a).forEach(handleDelete);
-  }
-
-  setEditableData(newData);
-  setSessionChanges(newChanges);
-  setSelectedRows(new Set());
-  setDeleteConfirmOpen(false);
-  setIndexToDelete(null);
-
-  toast.success("Member deleted.");
-};
 
 
 
@@ -362,14 +373,14 @@ const confirmDelete = () => {
         {/* Toolbar */}
         <div className="flex justify-between items-center mb-4">
           <h1 className="title-h3">COMMITTEE MEMBERS</h1>
-         {!isEditing && (
-          <button
-            className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200"
-            onClick={() => setIsEditing(true)}
-          >
-            <Pencil className="mr-2" /> Edit
-          </button>
-        )}
+          {!isEditing && (
+            <button
+              className="flex items-center bg-[#fdcc03] px-3 py-2 rounded text-black hover:bg-[#800000] hover:!text-white transition duration-200"
+              onClick={() => setIsEditing(true)}
+            >
+              <Pencil className="mr-2" /> Edit
+            </button>
+          )}
         </div>
 
         {/* Member cards */}
@@ -449,17 +460,17 @@ const confirmDelete = () => {
               <button
                 className="bg-gray-400 hover:bg-gray-600 px-3 py-2 rounded text-white transition duration-200"
                 onClick={handleCancelSession}
-                >
+              >
                 Cancel
               </button>
-                {sessionChanges.length > 0 && (
-                  <button
-                    className="bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white px-3 py-2 rounded-lg transition duration-200"
-                    onClick={handleSave}
-                  >
-                    Save
-                  </button>
-                )}
+              {sessionChanges.length > 0 && (
+                <button
+                  className="bg-[#fdcc03] hover:bg-[#800000] text-black hover:!text-white px-3 py-2 rounded-lg transition duration-200"
+                  onClick={handleSave}
+                >
+                  Save
+                </button>
+              )}
             </>
           )}
           {!isEditing && isSavedOnce && (
@@ -488,9 +499,9 @@ const confirmDelete = () => {
             <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-drkt text-center">
               Request
             </h2>
-               <p className="text-sm text-red-500 mb-4">
-        Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
-      </p>
+            <p className="text-sm text-red-500 mb-4">
+              Note: Your changes will stay pending until approved by the superior admin. Once approved will go live.
+            </p>
 
 
             <table className="w-full text-sm text-left border">
@@ -502,44 +513,44 @@ const confirmDelete = () => {
                   <th className="py-2 px-3 border">Undo</th>
                 </tr>
               </thead>
-             <tbody>
-              {allChanges.length === 0 ? (
-                <tr>
-                  <td colSpan={4} className="text-center py-4">
-                    No changes to submit
-                  </td>
-                </tr>
-              ) : (
-                allChanges.map((change, idx) => (
-                  <tr key={idx} className="even:bg-white odd:bg-gray-50">
-                    <td className="py-2 px-3 border text-center">
-                      {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
-                      {change.action === "add" && <span className="text-green-600">+ Added</span>}
-                      {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
-                    </td>
-                    <td className="py-2 px-3 border text-center">Committee</td>
-                    <td className="py-2 px-3 border text-[13px]">
-                      {change.action === "delete"
-                        ? "Member deleted"
-                        : Object.keys(change.changes || {}).length === 0
-                        ? "Added entire member"
-                        : Object.entries(change.changes)
-                            .filter(([_, vals]) => vals.old !== vals.new)
-                            .map(([field]) => field)
-                            .join(", ")}
-                    </td>
-                    <td className="py-2 px-3 border text-center">
-                      <button
-                        className="text-red-500 font-bold"
-                        onClick={() => handleUndoChange(change)}
-                      >
-                        X
-                      </button>
+              <tbody>
+                {allChanges.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="text-center py-4">
+                      No changes to submit
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
+                ) : (
+                  allChanges.map((change, idx) => (
+                    <tr key={idx} className="even:bg-white odd:bg-gray-50">
+                      <td className="py-2 px-3 border text-center">
+                        {change.action === "edit" && <span className="text-blue-600">✎ Edited</span>}
+                        {change.action === "add" && <span className="text-green-600">+ Added</span>}
+                        {change.action === "delete" && <span className="text-red-600">🗑 Deleted</span>}
+                      </td>
+                      <td className="py-2 px-3 border text-center">Committee</td>
+                      <td className="py-2 px-3 border text-[13px]">
+                        {change.action === "delete"
+                          ? "Member deleted"
+                          : Object.keys(change.changes || {}).length === 0
+                            ? "Added entire member"
+                            : Object.entries(change.changes)
+                              .filter(([_, vals]) => vals.old !== vals.new)
+                              .map(([field]) => field)
+                              .join(", ")}
+                      </td>
+                      <td className="py-2 px-3 border text-center">
+                        <button
+                          className="text-red-500 font-bold"
+                          onClick={() => handleUndoChange(change)}
+                        >
+                          X
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
 
             </table>
 

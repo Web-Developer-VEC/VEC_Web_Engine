@@ -11,10 +11,12 @@ import {
   FaFlask,
   FaEye,
   FaNewspaper,
-  FaCalendarAlt
+  FaCalendarAlt,
+  FaEyeSlash
 } from "react-icons/fa";
 import { MdEvent } from "react-icons/md";
 import styles from "./HeadDepartment.module.css";
+
 
 const iconMap = {
   "Vision&Mission": <FaEye className={styles.icon + " text-secd dark:text-drks"} />,
@@ -47,7 +49,17 @@ const displayNameMap = {
   "NewsLetter": "News Letters",
 };
 
-const Sidebar = ({ sections, activeSection, setActiveSection }) => {
+const Sidebar = ({ sections,   sidebarData, activeSection, setActiveSection, onToggleVisibility }) => {
+  console.log("Sidebar Props:", {
+  sections,
+  sidebarData,
+  activeSection,
+});
+  const visibilityMap = {};
+
+(sidebarData || []).forEach((item) => {
+  visibilityMap[item.id] = item.hascontent;
+});
   return (
     <div className={styles.sidebar}>
       <ul>
@@ -62,8 +74,23 @@ const Sidebar = ({ sections, activeSection, setActiveSection }) => {
                 window.scrollTo({ top: 0, behavior: "smooth" }); 
               }}
             >
-              {iconMap[section] || "📄"} {displayNameMap[section] || section.replace(/([A-Z])/g, " $1")}
-            </button>
+<div className="flex items-center justify-between w-full">
+  <div className="flex items-center gap-2">
+    {iconMap[section] || "📄"}
+    <span>
+      {displayNameMap[section] || section.replace(/([A-Z])/g, " $1")}
+    </span>
+  </div>
+
+<span
+  onClick={(e) => {
+    e.stopPropagation(); 
+    onToggleVisibility(section);
+  }}
+>
+  {visibilityMap[section] ? <FaEye /> : <FaEyeSlash />}
+</span></div>            
+</button>
           </li>
         ))}
       </ul>

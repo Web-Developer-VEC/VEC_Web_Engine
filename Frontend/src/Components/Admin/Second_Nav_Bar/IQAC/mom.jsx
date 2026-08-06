@@ -88,6 +88,21 @@ export default function IqaMet({ iqacData }) {
   };
 
   const handleAddRow = () => {
+    // Check if there is any incomplete row
+    const hasIncompleteRow = editableData.some((row) => {
+      return (
+        !row.year?.trim() ||
+        !row.type?.trim() ||
+        !row.conducted_on?.trim() ||
+        !row.pdf_path?.trim()
+      );
+    });
+
+    if (hasIncompleteRow) {
+      toast.error("Please complete the existing row before adding a new one.");
+      return;
+    }
+
     const newRow = {
       _id: `${Date.now()}-${Math.random()}`,
       year: "",
@@ -95,7 +110,8 @@ export default function IqaMet({ iqacData }) {
       type: "",
       conducted_on: "",
     };
-    setEditableData([...editableData, newRow]);
+
+    setEditableData((prev) => [...prev, newRow]);
     setHasChanges(true);
     logChange("Insert", newRow._id, newRow);
   };
@@ -118,7 +134,27 @@ export default function IqaMet({ iqacData }) {
   };
 
   const handleSave = () => {
+    const validRows = editableData.filter(
+      (row) =>
+        row.year &&
+        row.type &&
+        row.conducted_on &&
+        row.pdf_path
+    );
+
+    setEditableData(validRows);
+
+    // Check if anything actually changed
+    const hasRealChanges =
+      JSON.stringify(validRows) !== JSON.stringify(originalData);
+
+    setHasChanges(hasRealChanges);
+
     setEditMode(false);
+
+    if (!hasRealChanges) {
+      setChangesLog([]);
+    }
   };
 
   const handleCancel = () => {
@@ -391,7 +427,7 @@ export default function IqaMet({ iqacData }) {
                       onClick={() => setShowDeleteConfirm(true)}
                       className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
                     >
-                       Delete Selected
+                      Delete Selected
                     </button>
                   )}
                 </div>
@@ -488,7 +524,7 @@ export default function IqaMet({ iqacData }) {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}
-                    className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
+                className="px-4 py-2 rounded bg-gray-400 text-white hover:bg-gray-500"
                 disabled={loading}
               >
                 Cancel

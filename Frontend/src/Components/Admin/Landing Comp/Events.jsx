@@ -201,20 +201,19 @@ function Carousel({ data }) {
   };
 
   // Helpers
-  const formatDateForInput = (dbDate) => {
-    if (!dbDate) return "";
+  const formatDateForInput = (date) => {
+  if (!date) return "";
 
-    const parts = dbDate.split(" ");
-    if (parts.length > 0) {
-      const parsed = new Date(parts.join(" "));
-      const yyyy = parsed.getFullYear();
-      const mm = String(parsed.getMonth() + 1).padStart(2, "0");
-      const dd = String(parsed.getDate()).padStart(2, "0");
-      return `${yyyy}-${mm}-${dd}`;
-    }
+  // Already in YYYY-MM-DD
+  if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return date;
+  }
 
-    return "";
-  };
+  const parsed = new Date(date);
+  if (isNaN(parsed)) return "";
+
+  return parsed.toISOString().split("T")[0];
+};
 
   const formatDateForDB = (inputDate, withYear = true) => {
     if (!inputDate) return "";
@@ -230,44 +229,25 @@ function Carousel({ data }) {
   };
 
   // IMPORTANT: when user selects date input we store both the display (e.g. "16 JUL") AND the ISO date (YYYY-MM-DD)
-  const handleDateChange = (id, field, value) => {
-    if (!value) return;
+ const handleDateChange = (id, field, value) => {
+  if (!value) return;
 
-    // value is already YYYY-MM-DD (safe)
-    const dateObj = new Date(value);
+  const updatedEvents = events.map((ev) =>
+    ev.id === id
+      ? {
+          ...ev,
+          [field]: value, // YYYY-MM-DD
+          date: field === "start_date" ? value : ev.date,
+        }
+      : ev
+  );
 
-    const displayDate =
-      field === "end_date"
-        ? dateObj
-            .toLocaleDateString("en-GB", {
-              day: "2-digit",
-              month: "short",
-              year: "numeric",
-            })
-            .toUpperCase()
-        : dateObj
-            .toLocaleDateString("en-GB", {
-              day: "2-digit",
-              month: "short",
-            })
-            .toUpperCase();
+  setEvents(updatedEvents);
 
-    const updatedEvents = events.map((ev) => {
-      if (ev.id !== id) return ev;
-
-      return {
-        ...ev,
-        [field]: displayDate,
-        date: field === "start_date" ? value : ev.date, // ✅ store ISO safely
-      };
-    });
-
-    setEvents(updatedEvents);
-
-    handleInputChange(id, field, displayDate, {
-      rawDateIso: field === "start_date" ? value : undefined,
-    });
-  };
+  handleInputChange(id, field, value, {
+    rawDateIso: field === "start_date" ? value : undefined,
+  });
+};
   const toggleEditMode = () => {
     if (!isEditMode) {
       setIsEditMode(true);
