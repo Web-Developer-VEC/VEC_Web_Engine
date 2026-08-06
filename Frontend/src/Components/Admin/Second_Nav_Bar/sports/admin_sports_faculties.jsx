@@ -46,8 +46,8 @@ const Sportsfaculties = ({ data: initialData }) => {
       ...item,
       id: item.id || generateId(),
     }));
-    setFacultyData(dataWithIds);
-    setOriginalData(dataWithIds);
+    setFacultyData(structuredClone(dataWithIds));
+    setOriginalData(structuredClone(dataWithIds));
   }, [initialData]);
 
   const handleSelect = (id, isChecked) => {
@@ -76,7 +76,7 @@ const Sportsfaculties = ({ data: initialData }) => {
             newChanges[existingIndex] = {
               ...newChanges[existingIndex],
               section: faculty.name || "New Faculty",
-              data: faculty
+              data: structuredClone(faculty)
             };
           }
 
@@ -110,7 +110,7 @@ const Sportsfaculties = ({ data: initialData }) => {
           type: "edited",
           section: faculty.name || "Faculty",
           fields: editedFields,
-          data: faculty
+          data: structuredClone(faculty)
         };
 
         if (existingIndex >= 0) {
@@ -188,7 +188,6 @@ const Sportsfaculties = ({ data: initialData }) => {
     }
 
     // Update last saved state
-    setOriginalData(facultyData.map(item => ({ ...item })));
 
 
     setShowRequestButtons(true);
@@ -197,7 +196,7 @@ const Sportsfaculties = ({ data: initialData }) => {
 
   const handleCancelEdit = () => {
     // Restore the last saved data
-    setFacultyData(originalData.map(item => ({ ...item })));
+    setFacultyData(structuredClone(originalData));
 
     // Reset temporary states
     setSelectedItems([]);
@@ -210,7 +209,7 @@ const Sportsfaculties = ({ data: initialData }) => {
   };
 
   const handleDiscard = () => {
-    setFacultyData([...originalData]);
+    setFacultyData(structuredClone(originalData));
     setSelectedItems([]);
     setShowRequestButtons(false);
     setChangeList([]);
@@ -232,7 +231,7 @@ const Sportsfaculties = ({ data: initialData }) => {
     setFacultyData((prev) => [...prev, newFaculty]);
     setChangeList((prev) => [
       ...prev,
-      { type: "added", section: newFaculty.name || "new Faculty", fields: {}, data: newFaculty },
+      { type: "added", section: newFaculty.name || "new Faculty", fields: {}, data: structuredClone(newFaculty)},
     ]);
   };
 
@@ -256,7 +255,7 @@ const Sportsfaculties = ({ data: initialData }) => {
     );
     setChangeList((prev) => [
       ...prev,
-      ...deletedItems.map((d) => ({ type: "deleted", section: d.name, fields: {}, data: d })),
+      ...deletedItems.map((d) => ({ type: "deleted", section: d.name, fields: {}, data: structuredClone(d)})),
     ]);
     setSelectedItems([]);
     setShowDeleteModal(false);
