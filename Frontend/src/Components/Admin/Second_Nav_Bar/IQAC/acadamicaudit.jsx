@@ -116,20 +116,53 @@ export default function IqaAud({ iqacData }) {
   const handleFileUpload = (deptIndex, yearIndex, file) => {
     if (file && file.type === "application/pdf") {
       const fileURL = URL.createObjectURL(file);
+
       setUploadedFiles((prev) => ({
         ...prev,
         [`${deptIndex}-${yearIndex}`]: { file, fileURL },
       }));
+
       const newData = [...editableData];
       const paths = [...newData[deptIndex].pdf_path];
-      paths[yearIndex] = file.name;
-      newData[deptIndex].pdf_path = paths;
+
+      // Get an existing full PDF path from this department
+      const existingFullPath = paths.find(
+        (path) =>
+          typeof path === "string" &&
+          path.includes("/") &&
+          path.endsWith(".pdf")
+      );
+
+      if (existingFullPath) {
+        // Extract directory dynamically
+        // Example:
+        // /static/pdfs/iqac/aaa/011/old.pdf
+        // becomes:
+        // /static/pdfs/iqac/aaa/011/
+        const lastSlashIndex = existingFullPath.lastIndexOf("/");
+        const directory = existingFullPath.substring(0, lastSlashIndex + 1);
+
+        // Use the same directory for the newly uploaded PDF
+        paths[yearIndex] = `${directory}${file.name}`;
+      } else {
+        // No existing path available
+        // Keep filename so backend can still receive/match the file
+        paths[yearIndex] = file.name;
+      }
+
+      newData[deptIndex] = {
+        ...newData[deptIndex],
+        pdf_path: paths,
+      };
+
       setEditableData(newData);
       setHasChanges(true);
 
       if (!newData[deptIndex]._isNew) {
         logChange("Edit", deptIndex, newData[deptIndex]);
       }
+    } else {
+      toast.error("Please upload a PDF file.");
     }
   };
 
@@ -171,7 +204,6 @@ export default function IqaAud({ iqacData }) {
   const handleSave = () => {
     setIsEditMode(false);
     // Don't update originalData here - keep it for comparison in buildPayload
-    toast.success("Changes saved. You can now request approval or discard.");
   };
 
   const handleCancel = () => {
@@ -187,7 +219,6 @@ export default function IqaAud({ iqacData }) {
     setSelectedRows([]);
     setHasChanges(false);
     setChangesLog([]);
-    toast.info("All changes discarded.");
   };
 
   // FIXED buildPayload
@@ -355,19 +386,19 @@ export default function IqaAud({ iqacData }) {
                                 </label>
                                 {(uploadedFiles[`${deptIndex}-${yearIndex}`] ||
                                   dept.pdf_path[yearIndex]) && (
-                                  <a
-                                    href={
-                                      uploadedFiles[`${deptIndex}-${yearIndex}`]
-                                        ?.fileURL ||
-                                      UrlParser(dept.pdf_path[yearIndex])
-                                    }
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-blue-600 cursor-pointer"
-                                  >
-                                    <Eye size={18} />
-                                  </a>
-                                )}
+                                    <a
+                                      href={
+                                        uploadedFiles[`${deptIndex}-${yearIndex}`]
+                                          ?.fileURL ||
+                                        UrlParser(dept.pdf_path[yearIndex])
+                                      }
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="text-blue-600 cursor-pointer"
+                                    >
+                                      <Eye size={18} />
+                                    </a>
+                                  )}
                                 <button
                                   onClick={() =>
                                     handleDeleteYear(deptIndex, yearIndex)
@@ -464,7 +495,7 @@ export default function IqaAud({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleCancel}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white"
               >
                 Cancel
               </button>
@@ -483,7 +514,7 @@ export default function IqaAud({ iqacData }) {
             <div className="flex justify-end gap-4 mb-6">
               <button
                 onClick={handleDiscardChanges}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white"
               >
                 Discard Changes
               </button>
@@ -557,15 +588,19 @@ export default function IqaAud({ iqacData }) {
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setShowRequestModal(false)}
-                className="px-4 py-2 rounded bg-gray-400 text-white"
+                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white"
               >
                 Cancel
               </button>
               <button
                 onClick={handleRequestConfirm}
-                className="px-4 py-2 rounded bg-secd dark:drks hover:bg-[#800000] text-text hover:text-drkt"
+                disabled={loading}
+                className={`px-4 py-2 rounded bg-secd dark:drks text-text hover:text-drkt ${loading
+                  ? "cursor-progress"
+                  : "hover:bg-[#800000]"
+                  }`}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>
@@ -585,7 +620,7 @@ export default function IqaAud({ iqacData }) {
             <div className="flex justify-center gap-3">
               <button
                 onClick={() => setDeleteConfirm(false)}
-                className="px-4 py-2 bg-gray-400 text-white rounded"
+                className="px-4 py-2 bg-gray-400 hover:bg-gray-600 text-white rounded"
               >
                 Cancel
               </button>

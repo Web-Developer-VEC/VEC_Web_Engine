@@ -3,7 +3,7 @@ import LoadComp from "../../LoadComp";
 import { Send, Plus, Trash2, Pencil } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAdminRequest } from "../../../hooks/useAdminRequest"; 
+import { useAdminRequest } from "../../../hooks/useAdminRequest";
 
 export default function Committe({ data }) {
   const { sendRequest, loading: requestLoading } = useAdminRequest();
@@ -114,6 +114,11 @@ export default function Committe({ data }) {
   // compute UID-based diffs between originalRef.current and current editableData
   const normalizeMember = (m) => ({
     name: m?.name ?? "",
+    affiliation:
+      m?.affiliation ??
+      m?.Affiliation ??
+      m?.Designation ??
+      "",
     image_path: m?.image_path ?? "",
     Designation: m?.Designation ?? "",
     position: m?.position ?? "",
@@ -323,7 +328,7 @@ export default function Committe({ data }) {
     setSelectedRows(new Set());
     setDeleteConfirmOpen(false);
     setIndexToDelete(null);
-    
+
   };
 
   const cancelDelete = () => {
@@ -342,7 +347,7 @@ export default function Committe({ data }) {
     setIsEditing(false);
     setIsSavedOnce(true);
 
-   
+
   };
 
   const handleCancelSession = () => {

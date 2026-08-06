@@ -946,7 +946,7 @@ const Naac = ({ data }) => {
                                   />
 
                                   {/* Upload / Replace Button */}
-                                  <label className="bg-[#fdcc03] text-white px-3 py-1 rounded cursor-pointer">
+                                  <label className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim">
                                     {item?.pdf_path ? "Replace" : "Upload"}
                                     <input
                                       type="file"

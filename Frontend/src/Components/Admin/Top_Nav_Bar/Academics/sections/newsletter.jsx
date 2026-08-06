@@ -61,8 +61,10 @@ export default function Newsletter({ data }) {
   };
 
   // Extract deptId from data/banner
-  const deptId = data?.find((item) => item.category === "banner")?.deptId || "005";
-  const collectionName = deptMap[deptId] || "CSE_005";
+const deptId = data
+  ?.find((item) => item.category === "banner_name_and_image")
+  ?.content?.[0]?.dept_id;
+  const collectionName = deptMap[deptId] ;
 
   // UI / state
   const [activeYear, setActiveYear] = useState(null);
@@ -235,7 +237,6 @@ export default function Newsletter({ data }) {
       setIsSubmitting(true);
       const payload = buildPayload();
       const files = collectFiles();
-
       const result = await sendRequest(payload, files.length > 0 ? files : null);
 
       if (result.success) {
@@ -615,6 +616,8 @@ export default function Newsletter({ data }) {
     );
   }
 
+  
+
   return (
     <div className="p-6 mt-4 pb-20">
       <ToastContainer position="bottom-right" autoClose={2000} />
@@ -630,10 +633,13 @@ export default function Newsletter({ data }) {
           </div>
         )}
       </div>
+      
 
       {/* Year buttons */}
-      <div className="flex flex-wrap justify-center gap-4 mb-6">
-        {Object.keys(groupedByYear)
+
+  <>
+    {/* Year buttons */}
+    <div className="flex flex-wrap justify-center gap-4 mb-6">        {Object.keys(groupedByYear)
           .sort((a, b) => b - a)
           .map((year) => (
             <div key={year} className="flex flex-col items-center relative">
@@ -715,6 +721,8 @@ export default function Newsletter({ data }) {
           </div>
         )}
       </div>
+        </>
+
 
       {/* Show newsletters for selected year */}
       {activeYear && groupedByYear[activeYear] && (

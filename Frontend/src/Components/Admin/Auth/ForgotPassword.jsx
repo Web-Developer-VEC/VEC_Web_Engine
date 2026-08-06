@@ -179,21 +179,36 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-[70vh] flex flex-col px-4 py-10">
       {/* Back Button */}
-      <button
-        type="button"
-        onClick={() => navigate("/")}
-        className="flex items-center gap-2 text-slate-600 hover:text-[#800000] transition-colors"
+      <div className="max-w-md w-full mx-auto mb-6">
+        <button
+          type="button"
+          onClick={() => navigate("/admin_auth")}
+          className="flex items-center gap-2 text-slate-600 hover:text-[#800000] transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Login
+        </button>
+      </div>
+      <div
+        className="
+    max-w-md
+    w-full
+    mx-auto
+    bg-white
+    rounded-2xl
+    shadow-xl
+    border
+    border-gray-200
+    p-8
+  "
       >
-        <ArrowLeft className="w-4 h-4" />
-        Back to Login
-      </button>
 
       {/* Step 1: Request OTP */}
       {step === 1 && (
-        <form onSubmit={handleRequestOTP} className="space-y-6">
-          <div className="text-center mb-6">
+        <form onSubmit={handleRequestOTP} className="space-y-8">
+          <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-slate-800 mb-2">Forgot Password?</h2>
             <p className="text-slate-600 text-sm">
               Please enter your registered email address to receive a one-time password (OTP) to reset your password.
@@ -209,7 +224,20 @@ export default function ForgotPassword() {
                 placeholder="admin@velammal.edu.com"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="pl-10 h-12 w-full border border-slate-300 rounded-lg focus:border-[#fdcc03] focus:ring-2 focus:ring-[#fdcc03]/20 transition-all"
+                className="
+pl-10
+h-12
+w-full
+rounded-xl
+border
+border-gray-300
+bg-gray-50
+focus:bg-white
+focus:border-[#fdcc03]
+focus:ring-4
+focus:ring-[#fdcc03]/20
+transition-all
+"
                 required
               />
             </div>
@@ -230,8 +258,8 @@ export default function ForgotPassword() {
 
       {/* Step 2: Enter OTP */}
       {step === 2 && (
-        <div className="space-y-6">
-          <div className="text-center mb-6">
+        <div className="space-y-8">
+          <div className="text-center mb-8">
             <div className="w-16 h-16 bg-[#fdcc03] rounded-full flex items-center justify-center mx-auto mb-4">
               <KeyRound className="w-8 h-8 text-black" />
             </div>
@@ -284,8 +312,8 @@ export default function ForgotPassword() {
 
       {/* Step 3: Reset Password */}
       {step === 3 && (
-        <form onSubmit={handleResetPassword} className="space-y-6">
-          <div className="text-center mb-6">
+        <form onSubmit={handleResetPassword} className="space-y-8">
+          <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-slate-800 mb-2">Reset Password</h2>
             <p className="text-slate-600 text-sm">Enter your new password below.</p>
           </div>
@@ -331,8 +359,8 @@ export default function ForgotPassword() {
                 }}
                 autoComplete="new-password"
                 className={`pl-10 pr-10 h-12 w-full border rounded-lg focus:ring-2 focus:ring-[#fdcc03]/20 transition-all [&::-ms-reveal]:hidden [&::-ms-clear]:hidden ${confirmPassword && !passwordMatch
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-slate-300 focus:border-[#fdcc03]"
+                  ? "border-red-500 focus:border-red-500"
+                  : "border-slate-300 focus:border-[#fdcc03]"
                   }`}
                 required
               />
@@ -368,6 +396,7 @@ export default function ForgotPassword() {
           {success && <p className="text-green-600 text-sm text-center">{success}</p>}
         </form>
       )}
+      </div>
     </div>
   )
 }

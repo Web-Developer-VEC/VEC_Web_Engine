@@ -41,23 +41,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 25px;
   position: relative;
-  /* margin-top: 40px; */
   width: 100%;
   margin: 20px auto 0;
+  z-index: 1; /* Keep carousel behind navbar */
 }
 
 .carousel-content {
   position: relative;
 }
 
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
 .carousel-img {
+    display: block;
     width: 700px;
     max-width: 100%;
     height: 450px;
     object-fit: contain;
     border-radius: 10px;
-    z-index:1;
+
+    position: relative;
+    z-index: 1;
+    margin-top: 30px;   /* Push image below the text */
 }
 /* Overlay for Text on Image */
 .overlay {
@@ -101,26 +118,27 @@
 /* Navigation Buttons */
 .prev,
 .next {
-  background: rgba(128, 0, 0, 0.7);
+  background: #a30000;
   color: white;
   border: none;
-  padding: 10px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  border-radius:15px;
-  transform: translateY(-50%);
-  transition: background-color 0.3s;
-  z-index:999;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.2s;
+  flex-shrink: 0;
+  align-self: center;
 }
 
-.prev {
-  left: 350px;
-}
-
-.next {
-  right: 350px;
+.prev:hover,
+.next:hover {
+  background: #800000;
+  transform: scale(1.08);
 }
 
 .prev:hover,

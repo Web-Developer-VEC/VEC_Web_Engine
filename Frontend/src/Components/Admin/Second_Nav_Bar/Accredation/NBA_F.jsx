@@ -368,10 +368,20 @@ const NBA_F = ({ data }) => {
     setEditableData(updated);
     setHasChanges(true);
 
-    // ✅ If this row itself is newly added → DO NOT push file-level log
-    if (row._tempId) {
-      return;
-    }
+  // ✅ Update Added row instead of creating another log
+if (row._tempId) {
+  setChangeLog((prev) =>
+    prev.map((c) =>
+      c.tempId === row._tempId && c.action === "Added"
+        ? {
+            ...c,
+            data: structuredClone(updated[rowIndex]),
+          }
+        : c
+    )
+  );
+  return;
+}
 
     // 🔵 Only push Added for existing rows
     pushChangeLog({
@@ -404,19 +414,35 @@ const NBA_F = ({ data }) => {
     setHasChanges(true);
 
     // 🚫 If row is newly added → no logging
-    if (isNewRow) return;
+    // ✅ Update Added row with uploaded file
+if (isNewRow) {
+  setChangeLog((prev) =>
+    prev.map((c) =>
+      c.tempId === row._tempId && c.action === "Added"
+        ? {
+            ...c,
+            data: structuredClone(updated[rowIndex]),
+          }
+        : c
+    )
+  );
+  return;
+}
 
     // 🚫 If pdf is newly added → update Added log only
-    if (isNewPdf) {
-      setChangeLog((prev) =>
-        prev.map((c) =>
-          c.tempId === item._tempId && c.action === "Added"
-            ? { ...c, data: { ...c.data, name: item.name } }
-            : c
-        )
-      );
-      return;
-    }
+   if (isNewPdf) {
+  setChangeLog((prev) =>
+    prev.map((c) =>
+      c.tempId === item._tempId && c.action === "Added"
+        ? {
+            ...c,
+            data: structuredClone(updated[rowIndex]),
+          }
+        : c
+    )
+  );
+  return;
+}
 
     // 🔵 Existing pdf → log Edited
     upsertEditedLog(
@@ -455,8 +481,20 @@ const NBA_F = ({ data }) => {
     setHasChanges(true);
 
     // 🚫 If row is newly added → do NOT log anything
-    if (isNewRow) return;
-
+// ✅ Update Added row with latest PDF name
+if (isNewRow) {
+  setChangeLog((prev) =>
+    prev.map((c) =>
+      c.tempId === row._tempId && c.action === "Added"
+        ? {
+            ...c,
+            data: structuredClone(updated[rowIndex]),
+          }
+        : c
+    )
+  );
+  return;
+}
     // 🚫 If pdf is newly added in existing row → update Added log only
     if (isNewPdf) {
       setChangeLog((prev) =>
@@ -534,8 +572,6 @@ const NBA_F = ({ data }) => {
     // 2️⃣ Collect PDF files
     const files = collectNbaFiles();
 
-    console.log("📦 NBA PAYLOAD:", payload);
-    console.log("📄 NBA FILES:", files);
 
     // 3️⃣ Send payload + files
     const result = await sendRequest(payload, files);
@@ -546,6 +582,8 @@ const NBA_F = ({ data }) => {
       setChangeLog([]);
       setEditMode(false);
       setHasChanges(false);
+      setChangesSaved(false);   // ✅ Hide Request/Discard buttons
+      setRequestSent(true); 
 
     }
   };
@@ -571,24 +609,47 @@ const NBA_F = ({ data }) => {
     const { action, rowIndex, data } = change;
 
     // 🟢 INSERT (New Program)
-    if (action === "Added" && change.rowAdded) {
-      const row = data;
+   // 🟢 INSERT (New Row)
+if (action === "Added" && change.rowAdded) {
+  const row = data;
 
-      return {
-        collectionName: "accreditations_and_ranking",
-        collection_type: "nba",
-        action: "insert",
-        title: "insert in nba",
-        meta_data: {
-          id: row?.id,
-          department: row?.department || "",
-          pdfs: (row?.pdfs || []).map((pdf) => ({
-            name: pdf?.name || "",
-            pdf_path: getNbaPdfPath(pdf),
-          })),
-        },
-      };
-    }
+  return {
+    collectionName: "accreditations_and_ranking",
+    collection_type: "nba",
+    action: "insert",
+    title: "insert in nba",
+    meta_data: {
+      id: row.id,
+      department: row.department,
+      pdfs: (row.pdfs || []).map(pdf => ({
+        name: pdf.name,
+        pdf_path: getNbaPdfPath(pdf),
+      })),
+    },
+  };
+}
+
+// 🟢 INSERT (New PDF in existing row)
+if (action === "Added" && !change.rowAdded) {
+  const row = editableData[rowIndex];
+
+  if (!row) return null;
+
+  return {
+    collectionName: "accreditations_and_ranking",
+    collection_type: "nba",
+    action: "insert",
+    title: "insert in nba",
+    meta_data: {
+      id: row.id,
+      department: row.department,
+      pdfs: (row.pdfs || []).map(pdf => ({
+        name: pdf.name,
+        pdf_path: getNbaPdfPath(pdf),
+      })),
+    },
+  };
+}
 
     // 🔵 UPDATE (Edit Program / PDF)
     if (action === "Edited") {
@@ -811,7 +872,7 @@ const NBA_F = ({ data }) => {
                                       }
                                       className="border p-1 rounded text-sm"
                                     />
-                                    <label className="bg-yellow-400 text-white px-3 py-1 rounded cursor-pointer">
+                                    <label className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim">
                                       {pdf?.pdf_path ? "Replace" : "Upload"}
                                       <input
                                         type="file"

@@ -156,7 +156,7 @@ const Head = () => {
         },
         {
             main: "Exams",
-            cod: [0, 5],
+            cod: [0, 6],
             cols: 1,
             sub: [
                 { hrd: false, ttl: "Regulation", sup: [], lnk: "/reg" },
@@ -173,8 +173,10 @@ const Head = () => {
                     lnk: "https://vecchennai.directverify.in/student/#/app/request",
                     openInNewTab: true,
                 },
+                {hrd: false, ttl: "Rank List UG & PG", sup: [], lnk: "/rankholders"},
                 { hrd: false, ttl: "Downloads", sup: [], lnk: "/form" },
                 { hrd: false, ttl: "Exam Team", sup: [], lnk: "/coe" },
+                
             ],
         },
         {
@@ -216,11 +218,22 @@ const Head = () => {
     }
 
     const session = JSON.parse(sessionStorage.getItem("userSession"))
+const isRouteAllowed = (link) => {
 
-    const isRouteAllowed = (link) => {
-        if (!session?.routes) return true; // If no session routes, allow by default
-        return session.routes.includes(link);
-    };
+    if (!session?.routes) return true; // If no session routes, allow by default
+
+    if (
+        link === "/NCC" &&
+        (
+            session.routes.includes("/nccarmy") ||
+            session.routes.includes("/nccnavy")
+        )
+    ) {
+        return true;
+    }
+
+    return session.routes.includes(link);
+};
 
     return (
         <>
@@ -229,7 +242,7 @@ const Head = () => {
                     className={'flex items-center font-popp group bg-prim dark:bg-drkts text-text dark:text-drkt' +
                         'transition-all ease-in-out duration-300 w-full h-auto ' +
                         ' h-20'}>
-                    <a href={!session || (!session?.role && session.role === "super_admin") ? "/" : "/admin_profile"} className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
+                    <a href={!session || (!session?.role || session.role === "super_admin") ? "/" : "/admin_profile"} className="flex flex-col items-center justify-center text-decoration-none select-none ml-4">
                         <div className="z-10">
                             <img
                                 src={logo}

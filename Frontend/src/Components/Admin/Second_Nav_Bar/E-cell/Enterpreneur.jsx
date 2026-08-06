@@ -25,7 +25,7 @@ export default function EnterpreN({ enterpreneur }) {
   const originalRef = useRef([]);
   const savedDataRef = useRef([]);
 
-  const totalItems = enterpreneur?.length || 0;
+  const totalItems = editableData.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -85,20 +85,27 @@ export default function EnterpreN({ enterpreneur }) {
   // Add row
   const handleAddRow = () => {
     const newRow = {
-      _tempId: Date.now(),   // 🔑 unique id
+      _tempId: Date.now(),
       name: "",
       year: "",
       business_name: "",
     };
 
-    setEditableData((p) => [...p, newRow]);
+    setEditableData((prev) => {
+      const updated = [...prev, newRow];
 
-    setSessionChanges((p) => [
-      ...p,
+      // Navigate to the page containing the new row
+      setCurrentPage(Math.floor((updated.length - 1) / itemsPerPage));
+
+      return updated;
+    });
+
+    setSessionChanges((prev) => [
+      ...prev,
       {
         tempId: newRow._tempId,
         action: "add",
-        data: newRow,       // ✅ STORE FULL DATA
+        data: newRow,
         changes: {},
       },
     ]);
@@ -244,24 +251,31 @@ export default function EnterpreN({ enterpreneur }) {
           const original = originalRef.current[change.index];
           if (!original) return null;
 
-          const updatedFields = {};
-          Object.entries(change.changes || {}).forEach(([k, v]) => {
-            if (v.old !== v.new) updatedFields[k] = v.new;
-          });
+          const hasChanges = Object.entries(change.changes || {}).some(
+            ([_, v]) => v.old !== v.new
+          );
 
-          if (!Object.keys(updatedFields).length) return null;
+          if (!hasChanges) return null;
+
+          const updated = editableData[change.index];
 
           return {
             action: "update",
             collectionName: "ecell",
             title: "Entrepreneur Update",
             collection_type: "enterpreneur",
+
             original_data: {
               name: original.name,
               business_name: original.business_name,
               year: original.year,
             },
-            meta_data: updatedFields,
+
+            meta_data: {
+              name: updated.name,
+              business_name: updated.business_name,
+              year: updated.year,
+            },
           };
         }
 

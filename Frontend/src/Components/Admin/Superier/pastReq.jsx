@@ -12,17 +12,6 @@ export default function PastRequestsPage({ onBack, onRequestClick,  pastRequests
   const [selectedDate, setSelectedDate] = useState("");
 
   const [selectedRequest, setSelectedRequest] = useState(null); //pastreq card
-
-
-
-
-
-
-
-
-
-
-
   const approvedCount = pastRequests.filter((req) => req.status === "approved").length
   const rejectedCount = pastRequests.filter((req) => req.status === "rejected").length
   const filteredRequests = pastRequests.filter((request) => {
@@ -34,7 +23,7 @@ export default function PastRequestsPage({ onBack, onRequestClick,  pastRequests
     request.collection?.toLowerCase().includes(search) ||
     request.category?.toLowerCase().includes(search) ||
     request.type?.toLowerCase().includes(search) ||
-    request.admin?.toLowerCase().includes(search) ||
+    request.admin?.name?.toLowerCase().includes(search) ||
     request.action?.toLowerCase().includes(search);
 
   const matchesDate =
@@ -262,7 +251,7 @@ onClick={() => onRequestClick({
                             </h4>
                             <p className="text-muted-foreground text-base mb-2">{request.collection} • {request.action}</p>
                             <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                              <span>By: {request.admin}</span>
+                              <span>By: {request.admin?.name || "Unknown"}</span>
                               <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
                               <span>{new Date(request.createdAt).toLocaleString()}</span>
                               <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>

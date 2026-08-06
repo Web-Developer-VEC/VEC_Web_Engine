@@ -662,6 +662,39 @@ async function updateFile(tempDoc, tempCollection) {
         meta.activities_tile = updatedActivities;
         continue;
       }
+      if (
+        (tempDoc.collection_type === "nba" && key === "pdfs") ||
+        (tempDoc.collection_type === "nirf" && key === "content")
+      ) {
+        const updatedPdfs = await Promise.all(
+          value.map(async (pdf) => {
+            if (!pdf.pdf_path) return pdf;
+
+            const srcKey = await normalizeKey(
+              pdf.pdf_path.replace(/^\//, "")
+            );
+
+            if (srcKey.startsWith("temp/static/")) {
+              const destKey = srcKey.replace(
+                /^temp\/static\//,
+                "static/"
+              );
+
+              await moveFile(srcKey, destKey);
+
+              return {
+                ...pdf,
+                pdf_path: `/${destKey}`,
+              };
+            }
+
+            return pdf;
+          })
+        );
+
+        meta.pdfs = updatedPdfs;
+        continue;
+      }
       // Case 1: direct pdf_path
       if (key !== "pdf_path" && key !== "image_path") {
         continue;
@@ -727,18 +760,34 @@ async function updateFile(tempDoc, tempCollection) {
       );
 
       meta[key] = isArray ? updatedPaths : updatedPaths[0];
-
       if (
         tempDoc.collection_type === "academic_calendar" &&
         key === "pdf_path"
       ) {
 
-        const originalPaths = tempDoc.original_data?.pdf_path || ["", ""];
-        const currentPaths = meta[key] || [];
+        const originalPaths = Array.isArray(original.pdf_path)
+          ? [...original.pdf_path]
+          : ["", ""];
 
-        meta[key] = [
-          currentPaths[0] !== undefined ? currentPaths[0] : originalPaths[0] || "",
-          currentPaths[1] !== undefined ? currentPaths[1] : originalPaths[1] || ""
+        let currentPaths;
+
+        if (Array.isArray(meta.pdf_path)) {
+          currentPaths = meta.pdf_path;
+        } else if (typeof meta.pdf_path === "string") {
+          // uploaded one PDF
+          currentPaths = [meta.pdf_path, undefined];
+        } else {
+          currentPaths = [];
+        }
+
+        meta.pdf_path = [
+          currentPaths[0] !== undefined
+            ? currentPaths[0]
+            : originalPaths[0],
+
+          currentPaths[1] !== undefined
+            ? currentPaths[1]
+            : originalPaths[1],
         ];
       }
     }

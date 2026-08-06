@@ -133,18 +133,13 @@ export default function AdminApprovalPage() {
           acc[item.type].push(item);
           return acc;
         }, {});
-
         const token = sessionStorage.getItem("token");
 
         const responses = await Promise.all(
           Object.entries(grouped).map(([type, approvals]) => {
             const endpoint = `${type.toLowerCase().replaceAll("_", "")}admin`;
-            console.log("Token:", token, endpoint);
 
-            return axios.post(
-              `/api/admin-backend/${endpoint}`,
-              approvals,
-              {
+            return axios.post(`/api/admin-backend/${endpoint}`, approvals, {
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },
@@ -163,12 +158,12 @@ export default function AdminApprovalPage() {
         const token = sessionStorage.getItem("token");
 
         const response = await axios.post(`/api/admin-backend/${endpoint}`, itemApprovals,
-          {
+        {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
-        responsePayloads = [response?.data];
+          responsePayloads = [response?.data];
       }
 
       // Aggregate results from all endpoint responses
@@ -473,34 +468,38 @@ export default function AdminApprovalPage() {
     }
 
     // Handle objects
-    if (typeof value === 'object') {
-      return (
-        <div className={`space-y-3 ${depth > 0 ? 'bg-white/50 rounded-lg p-3 border border-gray-200' : ''}`}>
-          {Object.entries(value).map(([key, val]) => (
-            <div className="grid grid-cols-[180px_1fr] gap-4 py-3 border-b border-gray-100 last:border-b-0">
+if (typeof value === "object") {
+  return (
+    <div
+      className={`space-y-3 ${depth > 0 ? 'bg-white/50 rounded-lg p-3 border border-gray-200' : ""
+      }`}
+    >
+      {Object.entries(value).map(([key, val]) => (
+        <div
+          key={key}
+          className="approval-field-row"
+        >
+          {/* Label */}
+          <div className="approval-field-label">
+            {getFieldIcon(key)}
+            <span>{formatFieldName(key)}</span>
+          </div>
 
-              <div className="flex items-center gap-2 font-semibold text-gray-700">
-                {getFieldIcon(key)}
-                <span className="break-words">
-                  {formatFieldName(key)}
-                </span>
-              </div>
-
-              <div className="min-w-0 overflow-hidden break-words">
-                {renderValue(val, key, depth + 1)}
-              </div>
-
-            </div>
-          ))}
+          {/* Value */}
+          <div className="approval-field-value">
+            {renderValue(val, key, depth + 1)}
+          </div>
         </div>
-      )
-    }
+      ))}
+    </div>
+  );
+}
 
     // Handle image/pdf paths (single strings only - arrays handled above)
     // Special case for Student Activities description
-    if (fieldName === "image_content") {
-      return <span className="text-gray-900 text-sm">{value}</span>;
-    }
+if (fieldName === "image_content") {
+  return <span className="text-gray-900 text-sm">{value}</span>;
+}
     if (fieldName?.toLowerCase().includes('image') && !fieldName?.toLowerCase().includes('image_name') && value && typeof value === 'string') {
       return (
         <a
@@ -641,6 +640,8 @@ export default function AdminApprovalPage() {
                 <span className="text-gray-400">•</span>
                 <Calendar size={16} />
                 {formatDate(item?.createdAt)}
+                <span className="text-gray-400">•</span>
+                <span className="text-xs text-gray-500">Requested by: {item?.admin?.name || "Unknown"}</span>
               </div>
               {item?.category && (
                 <div className="flex items-center gap-2">
@@ -679,6 +680,8 @@ export default function AdminApprovalPage() {
                   </span>                  <span className="text-gray-400">•</span>
                   <Calendar size={16} />
                   <span className="text-xs text-gray-500">{formatDate(item?.createdAt)}</span>
+                  <span className="text-gray-400">•</span>
+                  <span className="text-xs text-gray-500">Requested by: {item?.admin?.name || "Unknown"}</span>
                 </div>
                 {item?.category && (
                   <span className="inline-flex mt-2 px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">
@@ -749,10 +752,13 @@ export default function AdminApprovalPage() {
                   {isReverted
                     ? `REVERT ${item?.title?.replaceAll("_", " ").toUpperCase()}`
                     : item?.title?.replaceAll("_", " ").toUpperCase()}
-                </span>
+                </span>                
                 <span className="text-gray-400">•</span>
                 <Calendar size={16} />
                 {formatDate(item?.createdAt)}
+                <span className="text-gray-400">•</span>
+                <span className="text-xs text-gray-500">Requested by: {item?.admin?.name || "Unknown"}</span>
+
               </div>
               {item?.category && (
                 <div className="flex items-center gap-2">

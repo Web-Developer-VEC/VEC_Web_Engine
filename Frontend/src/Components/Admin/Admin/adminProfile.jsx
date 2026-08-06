@@ -31,6 +31,7 @@ const routeDictionary = {
   "/reg": "Registrar",
   "/Syllabus": "Syllabus",
   "/form": "Forms",
+  "/rankholders": "Rankholders",
   "/Academic": "Academic Info",
   "/coe": "Controller of Exams",
   "/abtplace": "About Placement",
@@ -149,8 +150,8 @@ export default function AdminProfilePage() {
       try {
         const response = await axios.get("/api/admin-backend/adminrequest")
         const requests = Array.isArray(response.data)
-          ? response.data
-          : response.data?.requests || []
+          ? response.data[0].requests
+          : []
         setPendingRequests(requests)
       } catch (error) {
         console.error("Error fetching the Admin pending request", error)
