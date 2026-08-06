@@ -6,7 +6,6 @@ import "../../Second_Nav_Bar/Accredation/nirf.css";
 import { Pencil, Plus, Eye, Save, Trash2, Send } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify";
 import { useAdminRequest } from "../../../hooks/useAdminRequest";
-
 const AdminAcadamiccal = ({ toggle, theme }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [academicCal, setAcademicData] = useState(null);

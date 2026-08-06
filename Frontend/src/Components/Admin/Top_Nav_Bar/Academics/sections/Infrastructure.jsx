@@ -324,7 +324,7 @@ const Infrastructure = ({ data }) => {
           category: "infrastructure_images",
           meta_data: {
             image_name: originalImage.image_name,
-            image_path: originalImage.image_path
+            image_path: getImagePath(originalImage)
           },
           original_data: null
         });

@@ -59,7 +59,7 @@ const Activities = ({ data }) => {
     "015": "PHYSICS_015",
     "016": "MECSE_016",
     "017": "MBA_017",
-    "018": "PS_018"
+    "018": "PS_018",
   };
 
   const defaultActivities = [
@@ -75,28 +75,33 @@ const Activities = ({ data }) => {
 
   // Load initial data
   useEffect(() => {
-    const bannerData = data?.find((item) => item.category === "banner_name_and_image")?.content?.[0];
+    const bannerData = data?.find(
+      (item) => item.category === "banner_name_and_image",
+    )?.content?.[0];
     if (bannerData?.dept_id) {
       setDeptId(bannerData.dept_id);
     }
 
     const depActs =
-      data?.find((item) => item.category === "department_activities")?.content ||
-      [];
+      data?.find((item) => item.category === "department_activities")
+        ?.content || [];
 
     setOriginalData(depActs.map((item) => JSON.parse(JSON.stringify(item)))); // deep clone backup
-    setDepartmentActivities(depActs.map((item) => JSON.parse(JSON.stringify(item)))); // deep clone working copy
+    setDepartmentActivities(
+      depActs.map((item) => JSON.parse(JSON.stringify(item))),
+    ); // deep clone working copy
     setYears(depActs.map((item) => item.year));
     if (depActs.length > 0 && !selectedYear) {
       setSelectedYear(depActs[0].year);
     }
   }, [data]);
 
-  const selectedYearData =
-    departmentActivities.find((item) => item.year === selectedYear) || {
-      year: selectedYear,
-      activities_tile: [],
-    };
+  const selectedYearData = departmentActivities.find(
+    (item) => item.year === selectedYear,
+  ) || {
+    year: selectedYear,
+    activities_tile: [],
+  };
 
   const activitiesTileArray = selectedYearData?.activities_tile || [];
 
@@ -131,13 +136,63 @@ const Activities = ({ data }) => {
 
       setChangesLog((prev) => [
         ...prev,
-        { id: Date.now(), action: "Add", section: "Year", title: newYearInput },
+        {
+          id: Date.now(),
+          action: "Add",
+          section: "Year",
+          title: newYearInput,
+          newValue: newYearData,
+        },
       ]);
     }
   };
 
   // Undo change log entry
   const handleUndoChange = (id) => {
+    const change = changesLog.find((c) => c.id === id);
+    if (!change) return;
+
+    // Undo Add Year
+    if (change.section === "Year" && change.action === "Add") {
+      setDepartmentActivities((prev) =>
+        prev.filter((y) => y.year !== change.newValue.year),
+      );
+
+      setYears((prev) => prev.filter((y) => y !== change.newValue.year));
+
+      if (selectedYear === change.newValue.year) {
+        setSelectedYear(originalData[0]?.year || "");
+      }
+    }
+
+    if (change.section === "Year" && change.action === "Delete") {
+      setDepartmentActivities((prev) => {
+        if (prev.some((y) => y.year === change.prevValue.year)) return prev;
+
+        return [...prev, change.prevValue];
+      });
+
+      setYears((prev) => {
+        if (prev.includes(change.prevValue.year)) return prev;
+
+        return [...prev, change.prevValue.year];
+      });
+    }
+    if (change.section === "Activity") {
+      setDepartmentActivities((prev) =>
+        prev.map((yearItem) =>
+          yearItem.year !== change.year
+            ? yearItem
+            : {
+                ...yearItem,
+                activities_tile: yearItem.activities_tile.map((act) =>
+                  act.name === change.title ? { ...change.prevValue } : act,
+                ),
+              },
+        ),
+      );
+    }
+
     setChangesLog((prev) => prev.filter((c) => c.id !== id));
   };
 
@@ -156,8 +211,12 @@ const Activities = ({ data }) => {
     };
 
     const processedYears = new Set();
-    const originalByYear = new Map(originalData.map((item) => [item.year, item]));
-    const editedByYear = new Map(departmentActivities.map((item) => [item.year, item]));
+    const originalByYear = new Map(
+      originalData.map((item) => [item.year, item]),
+    );
+    const editedByYear = new Map(
+      departmentActivities.map((item) => [item.year, item]),
+    );
 
     // Check each edited year
     departmentActivities.forEach((editedYear) => {
@@ -176,10 +235,10 @@ const Activities = ({ data }) => {
             year: editedYear.year,
             activities_tile: (editedYear.activities_tile || []).map((act) => ({
               name: act.name,
-              pdf_path: getPdfPath({ ...act, year: editedYear.year })
-            }))
+              pdf_path: getPdfPath({ ...act, year: editedYear.year }),
+            })),
           },
-          original_data: null
+          original_data: null,
         });
       } else {
         // EXISTING YEAR - Check if anything changed
@@ -193,7 +252,7 @@ const Activities = ({ data }) => {
 
           (editedYear.activities_tile || []).forEach((editedAct) => {
             const originalAct = (originalYear.activities_tile || []).find(
-              (act) => act.name === editedAct.name
+              (act) => act.name === editedAct.name,
             );
 
             const newPdfPath = getPdfPath({
@@ -205,11 +264,8 @@ const Activities = ({ data }) => {
 
             // Only include changed PDFs
             if (newPdfPath !== oldPdfPath) {
-
               const action =
-                oldPdfPath === "" && newPdfPath !== ""
-                  ? "insert"
-                  : "update";
+                oldPdfPath === "" && newPdfPath !== "" ? "insert" : "update";
 
               payload.push({
                 collectionName,
@@ -222,14 +278,14 @@ const Activities = ({ data }) => {
                   action === "insert"
                     ? null
                     : {
-                      year: originalYear.year,
-                      activities_tile: [
-                        {
-                          name: originalAct.name,
-                          pdf_path: oldPdfPath,
-                        },
-                      ],
-                    },
+                        year: originalYear.year,
+                        activities_tile: [
+                          {
+                            name: originalAct.name,
+                            pdf_path: oldPdfPath,
+                          },
+                        ],
+                      },
 
                 meta_data: {
                   year: editedYear.year,
@@ -269,25 +325,20 @@ const Activities = ({ data }) => {
 
     // Check for deleted years
     originalData.forEach((originalYear) => {
-      if (!editedByYear.has(originalYear.year)) {
-        // DELETED YEAR - Delete action
-        payload.push({
-          collectionName,
-          collection_type: "activities",
-          action: "delete",
-          title: "delete in department_activities",
-          category: "department_activities",
-          meta_data: {
-            year: originalYear.year,
-            activities_tile: (originalYear.activities_tile || []).map((act) => ({
-              name: act.name,
-              pdf_path: act.pdf_path
-            }))
-          },
-          original_data: null
-        });
-      }
+  if (!editedByYear.has(originalYear.year)) {
+    payload.push({
+      collectionName,
+      collection_type: "activities",
+      action: "delete",
+      title: "delete in department_activities",
+      category: "department_activities",
+      meta_data: {
+        year: originalYear.year,
+      },
+      original_data: null,
     });
+  }
+});
 
     return payload;
   };
@@ -305,7 +356,11 @@ const Activities = ({ data }) => {
     departmentActivities.forEach((yearData) => {
       if (yearData.activities_tile) {
         yearData.activities_tile.forEach((activity) => {
-          if (activity.pdf_path && activity.pdf_path.startsWith("blob:") && activity._file) {
+          if (
+            activity.pdf_path &&
+            activity.pdf_path.startsWith("blob:") &&
+            activity._file
+          ) {
             files.push(activity._file);
           }
         });
@@ -337,13 +392,7 @@ const Activities = ({ data }) => {
     setChangesLog([]);
   };
 
-  if (!departmentActivities.length && years.length === 0) {
-    return (
-      <div className="h-screen flex items-center justify-center md:mt-[15%] md:block">
-        <LoadComp txt="" />
-      </div>
-    );
-  }
+  
 
   return (
     <>
@@ -372,10 +421,11 @@ const Activities = ({ data }) => {
           <div key={year} className="relative">
             <button
               onClick={() => setSelectedYear(year)}
-              className={`relative px-4 py-2 rounded deptevent-year-button ${selectedYear === year
-                ? "bg-accn text-prim"
-                : "bg-[#fdcc03] text-text dark:bg-drks"
-                }`}
+              className={`relative px-4 py-2 rounded deptevent-year-button ${
+                selectedYear === year
+                  ? "bg-accn text-prim"
+                  : "bg-[#fdcc03] text-text dark:bg-drks"
+              }`}
             >
               {year}
 
@@ -434,7 +484,7 @@ const Activities = ({ data }) => {
       {/* Activities Tile Section */}
       {selectedYears.length === 0 && (
         <Activitiestile
-          data={activitiesTileArray}
+          yearData={selectedYearData}
           isEditing={isEditing}
           setHasChanges={setHasChanges}
           setChangesLog={setChangesLog}
@@ -505,7 +555,9 @@ const Activities = ({ data }) => {
       {showRequestModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] overflow-y-auto">
           <div className="bg-white dark:bg-drkp p-6 rounded-xl w-[600px] max-h-[80vh] overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4 text-center">Request Changes</h2>
+            <h2 className="text-xl font-bold mb-4 text-center">
+              Request Changes
+            </h2>
             <p className="text-sm text-red-500 mb-4 text-center">
               Note: Changes stay pending until approved by the superior admin.
             </p>
@@ -539,7 +591,9 @@ const Activities = ({ data }) => {
             </table>
 
             {changesLog.length === 0 && (
-              <p className="text-center text-gray-500">No changes to request.</p>
+              <p className="text-center text-gray-500">
+                No changes to request.
+              </p>
             )}
 
             <div className="flex justify-end gap-2">
@@ -553,9 +607,10 @@ const Activities = ({ data }) => {
                 <button
                   onClick={handleRequestConfirm}
                   disabled={loading}
-                  className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex items-center gap-2 transition ${loading ? 'cursor-progress' : ''}`}
+                  className={`px-4 py-2 rounded bg-[#fdcc03] text-text hover:bg-[#800000] hover:text-prim flex items-center gap-2 transition ${loading ? "cursor-progress" : ""}`}
                 >
-                  <Send size={16} /> {loading ? "Processing..." : "Confirm Request"}
+                  <Send size={16} />{" "}
+                  {loading ? "Processing..." : "Confirm Request"}
                 </button>
               )}
             </div>
@@ -586,7 +641,7 @@ const Activities = ({ data }) => {
                 onClick={() => {
                   // Remove selected years
                   const updated = departmentActivities.filter(
-                    (item) => !selectedYears.includes(item.year)
+                    (item) => !selectedYears.includes(item.year),
                   );
                   setDepartmentActivities(updated);
                   setYears(updated.map((item) => item.year));
@@ -600,6 +655,9 @@ const Activities = ({ data }) => {
                       action: "Delete",
                       section: "Year",
                       title: yr,
+                      prevValue: departmentActivities.find(
+                        (item) => item.year === yr,
+                      ),
                     })),
                   ]);
 
@@ -619,7 +677,7 @@ const Activities = ({ data }) => {
 };
 
 const Activitiestile = ({
-  data,
+  yearData,
   isEditing,
   setHasChanges,
   setChangesLog,
@@ -628,6 +686,8 @@ const Activitiestile = ({
   selectedYear,
 }) => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const activities = yearData?.activities_tile || [];
+
 
   const UrlParser = (path) => {
     return path?.startsWith("http") || path?.startsWith("blob")
@@ -654,33 +714,49 @@ const Activitiestile = ({
     const file = e.target.files[0];
     if (file) {
       setHasChanges(true);
+      const currentYear = departmentActivities.find(
+        (y) => y.year === selectedYear,
+      );
+
+      const oldActivity = currentYear?.activities_tile.find(
+        (a) => a.name === itemName,
+      );
 
       setDepartmentActivities((prev) =>
         prev.map((yearItem) =>
           yearItem.year === selectedYear
             ? {
-              ...yearItem,
-              activities_tile: yearItem.activities_tile.map((act) =>
-                act.name === itemName
-                  ? {
-                    ...act,
-                    pdf_path: URL.createObjectURL(file),
-                    _file: file
-                  }
-                  : act
-              ),
-            }
-            : yearItem
-        )
+                ...yearItem,
+                activities_tile: yearItem.activities_tile.map((act) =>
+                  act.name === itemName
+                    ? {
+                        ...act,
+                        pdf_path: URL.createObjectURL(file),
+                        _file: file,
+                      }
+                    : act,
+                ),
+              }
+            : yearItem,
+        ),
       );
 
       setChangesLog((prev) => [
-        ...prev,
+        ...prev.filter(
+          (log) =>
+            !(
+              log.section === "Activity" &&
+              log.title === itemName &&
+              log.year === selectedYear
+            ),
+        ),
         {
           id: Date.now(),
           action: "Upload/Replace PDF",
           section: "Activity",
           title: itemName,
+          year: selectedYear,
+          prevValue: oldActivity,
         },
       ]);
     }
@@ -688,38 +764,54 @@ const Activitiestile = ({
 
   const handleRemovePdf = (itemName) => {
     setHasChanges(true);
+    const currentYear = departmentActivities.find(
+      (y) => y.year === selectedYear,
+    );
+
+    const oldActivity = currentYear?.activities_tile.find(
+      (a) => a.name === itemName,
+    );
 
     setDepartmentActivities((prev) =>
       prev.map((yearItem) =>
         yearItem.year === selectedYear
           ? {
-            ...yearItem,
-            activities_tile: yearItem.activities_tile.map((act) =>
-              act.name === itemName ? { ...act, pdf_path: "" } : act
-            ),
-          }
-          : yearItem
-      )
+              ...yearItem,
+              activities_tile: yearItem.activities_tile.map((act) =>
+                act.name === itemName ? { ...act, pdf_path: "" } : act,
+              ),
+            }
+          : yearItem,
+      ),
     );
 
     setChangesLog((prev) => [
-      ...prev,
+      ...prev.filter(
+        (log) =>
+          !(
+            log.section === "Activity" &&
+            log.title === itemName &&
+            log.year === selectedYear
+          ),
+      ),
       {
         id: Date.now(),
         action: "Remove PDF",
         section: "Activity",
         title: itemName,
+        year: selectedYear,
+        prevValue: oldActivity,
       },
     ]);
   };
 
-  return data ? (
+  return yearData  ? (
     <div className="Rd-page mb-10">
       <div className="deptevent-content">
         <div className="deptevent-details">
           <div className="deptevent-year-actions">
-            {Array.isArray(data) &&
-              data
+            {Array.isArray(activities) &&
+              activities
                 .filter((item) => isEditing || item?.pdf_path)
                 .map((item, index) => (
                   <div
@@ -733,7 +825,9 @@ const Activitiestile = ({
                     />
                     <span
                       className="cursor-pointer"
-                      onClick={() => !isEditing && handlePdfOpen(item?.pdf_path)}
+                      onClick={() =>
+                        !isEditing && handlePdfOpen(item?.pdf_path)
+                      }
                     >
                       {item?.name}
                     </span>

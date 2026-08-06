@@ -872,7 +872,7 @@ if (action === "Added" && !change.rowAdded) {
                                       }
                                       className="border p-1 rounded text-sm"
                                     />
-                                    <label className="bg-yellow-400 text-white px-3 py-1 rounded cursor-pointer">
+                                    <label className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded hover:bg-[#800000] hover:text-prim">
                                       {pdf?.pdf_path ? "Replace" : "Upload"}
                                       <input
                                         type="file"

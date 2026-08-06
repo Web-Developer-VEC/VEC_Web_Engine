@@ -176,19 +176,21 @@ export default function ImageGallery({ activity }) {
 
     console.log("PDF FILES 👉", files);
     try {
-      await sendRequest(payload, files);
+      const result = await sendRequest(payload, files);
 
+      if (result?.success) {
+        // Keep popup open until success toast is shown
+        setTimeout(() => {
+          setData([...savedData]);
+          setShowChangesPopup(false);
+          setIsSaved(false);
+          setIsEditing(false);
+        }, 1800); // adjust to your toast duration
+      }
 
-      // toast.success("📩 Request sent for admin approval");
-
-      // lock state
-      setData([...savedData]);
-      setShowChangesPopup(false);
-      setIsSaved(false);
-      setIsEditing(false);
     } catch (err) {
       console.error(err);
-      // toast.error("Failed to submit request");
+      toast.error("Failed to submit request");
     }
   };
 
@@ -536,19 +538,26 @@ export default function ImageGallery({ activity }) {
 
             <div className="flex justify-end gap-2 mt-4">
               <button
-                onClick={() => {
-                  setShowChangesPopup(false);
-                  // setIsSaved(false);
-                }}
-                className="px-4 py-2 rounded bg-gray-400 hover:bg-gray-600 text-white transition duration-200"
+                onClick={() => setShowChangesPopup(false)}
+                disabled={loading}
+                className={`px-4 py-2 rounded bg-gray-400 text-white
+    ${loading
+                    ? "cursor-not-allowed opacity-60"
+                    : "hover:bg-gray-600"
+                  }`}
               >
                 Cancel
               </button>
               <button
                 onClick={handleFinalRequest}
-                className="px-4 py-2 rounded bg-[#fdcc03] text-black hover:bg-[#800000] hover:!text-white transition duration-200"
+                disabled={loading}
+                className={`px-4 py-2 rounded bg-[#fdcc03] text-black
+    ${loading
+                    ? "cursor-progress opacity-70"
+                    : "hover:bg-[#800000] hover:!text-white"
+                  }`}
               >
-                Final Request
+                {loading ? "Processing..." : "Final Request"}
               </button>
             </div>
           </div>

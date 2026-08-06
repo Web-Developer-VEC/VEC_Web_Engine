@@ -293,11 +293,11 @@ const Pedagogy = ({ data = [] }) => {
     if (pendingData) {
       // If there's a saved draft, restore it
       setTempData(deepCopy(pendingData));
-      toast.info("Cancelled edits. Draft preserved!");
+      //toast.info("Cancelled edits. Draft preserved!");
     } else {
       // Otherwise, revert to original data
       setTempData(deepCopy(originalData));
-      toast.info("Cancelled. Reverted to original data!");
+      //toast.info("Cancelled. Reverted to original data!");
     }
 
     // Reset editing state
@@ -528,10 +528,10 @@ const Pedagogy = ({ data = [] }) => {
 
     if (editIndex !== null) {
       updated[yearIndex].content[editIndex] = newItem;
-      toast.success("Pedagogy item updated!");
+      //toast.success("Pedagogy item updated!");
     } else {
       updated[yearIndex].content.push(newItem);
-      toast.success("Pedagogy item added!");
+      //toast.success("Pedagogy item added!");
     }
 
     setTempData(updated);
@@ -574,7 +574,7 @@ const Pedagogy = ({ data = [] }) => {
       setActiveYearId(null);
     }
 
-    toast.info("Selected items deleted!");
+    //toast.info("Selected items deleted!");
   };
 
   const toggleSelectItem = (yearIndex, itemIndex) => {
