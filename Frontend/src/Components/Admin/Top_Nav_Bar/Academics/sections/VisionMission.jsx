@@ -290,12 +290,13 @@ const VisionMission = ({ data }) => {
     );
 
   const handleEdit = () => {
-    setBackupData(JSON.parse(JSON.stringify(formData)));
-    setInitialData(JSON.parse(JSON.stringify(formData))); // track original
-    setSavedData(null);
-    setChanges([]);
+    if (!requestMode) {
+      setBackupData(JSON.parse(JSON.stringify(formData)));
+      setInitialData(JSON.parse(JSON.stringify(formData)));
+      setSavedData(null);
+      setChanges([]);
+    }
     setIsEditing(true);
-    setRequestMode(false);
   };
 
   const handleCancel = () => {
@@ -307,13 +308,19 @@ const VisionMission = ({ data }) => {
     setChanges([]);
   };
 
-  console.log("FORM DATA");
-console.log(formData.pso);
   const handleSave = () => {
-    setSavedData(JSON.parse(JSON.stringify(formData))); // Save snapshot
+    console.log("FORM DATA BEFORE SAVE");
+    console.log(formData.peo);
+    setSavedData(JSON.parse(JSON.stringify(formData)));
+
     setIsEditing(false);
-    setSelectedItems({ peo: [], po: [], pso: [] });
-    setRequestMode(true); // enable request/discard mode
+    setRequestMode(true);
+
+    setSelectedItems({
+      peo: [],
+      po: [],
+      pso: [],
+    });
   };
 
   const handleDiscardChanges = () => {
@@ -386,6 +393,7 @@ console.log(formData.pso);
         ["programme_educational_objectives", "program_outcomes", "program_specific_outcomes"].includes(change.category)
       ) {
         if (change.action === "insert") {
+          console.log("INSERT HEADER:", change.value.header);
           payload.push({
             collectionName,
             collection_type: "vision_and_mission",
@@ -423,6 +431,12 @@ console.log(formData.pso);
   // Send request
   const handleRequestConfirm = async () => {
     const payload = buildPayload();
+
+    console.log("SAVED DATA");
+    console.log(savedData.peo);
+
+    console.log("PAYLOAD");
+    console.log(buildPayload());
 
     if (payload.length === 0) {
       toast.info("No changes to request");
@@ -531,12 +545,12 @@ console.log(formData.pso);
 
       {/* Edit button */}
       <div className="w-full flex justify-end mb-4">
-        {!isEditing && !requestMode && (
+        {!isEditing && (
           <button
-            className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text  rounded-lg shadow-md hover:bg-[#800000] hover:text-prim "
+            className="flex items-center gap-2 px-4 py-2 bg-[#fdcc03] text-text rounded-lg shadow-md hover:bg-[#800000] hover:text-white transition"
             onClick={handleEdit}
           >
-            <Pencil size={16} className="text-current" />
+            <Pencil size={16} />
             Edit
           </button>
         )}
@@ -724,20 +738,34 @@ console.log(formData.pso);
                       <h2 className="accordion-header text-left pt-4">
                         {isEditing ? (
                           <input
-                            className="w-full border p-1 rounded mb-2"
-                            value={item?.header}
+                            value={item.header}
+                            placeholder="Enter title"
                             onChange={(e) => {
-                              setFormData(prev => ({
-                                ...prev,
-                                [type]: prev[type].map((item, i) =>
-                                  i === index
-                                    ? {
-                                      ...item,
-                                      header: e.target.value,
-                                    }
-                                    : item
-                                ),
-                              }));
+                              const value = e.target.value;
+
+                              setFormData(prev => {
+                                const updated = {
+                                  ...prev,
+                                  [type]: prev[type].map((x, i) =>
+                                    i === index
+                                      ? {
+                                        ...x,
+                                        header: value,
+                                      }
+                                      : x
+                                  ),
+                                };
+
+                                console.log("=================================");
+                                console.log("TYPE:", type);
+                                console.log("INDEX:", index);
+                                console.log("HEADER JUST TYPED:", value);
+                                console.log("LAST OBJECT:");
+                                console.log(updated[type][updated[type].length - 1]);
+                                console.log(updated[type]);
+
+                                return updated;
+                              });
                             }}
                           />
                         ) : (
@@ -925,16 +953,36 @@ console.log(formData.pso);
 
                     const getChangeDescription = (change) => {
                       if (change.field === "about") return "Content updated";
+
                       if (change.field === "text") {
-                        if (change.action === "insert") return `Added: "${change.value?.substring(0, 30)}..."`;
-                        if (change.action === "delete") return `Deleted: "${change.value?.substring(0, 30)}..."`;
-                        if (change.action === "update") return `Updated item ${change.index + 1}`;
+                        if (change.action === "insert")
+                          return `Added: "${change.value?.substring(0, 30)}..."`;
+
+                        if (change.action === "delete")
+                          return `Deleted: "${change.value?.substring(0, 30)}..."`;
+
+                        if (change.action === "update")
+                          return `Updated`;
                       }
+
                       if (change.field === "object") {
-                        if (change.action === "insert") return `Added: ${change.value?.header || "New item"}`;
-                        if (change.action === "delete") return `Deleted: ${change.value?.header || "Item"}`;
-                        if (change.action === "update") return `Updated: ${change.value?.header || `Item ${change.index + 1}`}`;
+                        const title = change.value?.header || "Untitled";
+
+                        switch (change.action) {
+                          case "insert":
+                            return `Added: ${title}`;
+
+                          case "delete":
+                            return `Deleted: ${title}`;
+
+                          case "update":
+                            return `Updated: ${title}`;
+
+                          default:
+                            return "Modified";
+                        }
                       }
+
                       return "Modified";
                     };
 
