@@ -5,11 +5,12 @@ const allowedtypes = require('../models/landing/log_models')
 async function getDatabaseLogs (req, res) {
     const db = getlogDb()
     const  type  = req.params.type; 
-    if (!allowedtypes.has(type)) {
-        return res.status(400).json({ error: 'Invalid log type' });
-    }
+    
+    // if (!allowedtypes.has(type)) {
+    //     return res.status(400).json({ error: 'Invalid log type' });
+    // }
     try {
-        const collection = db.collection(type);
+        const collection = db.collection("hitlog");
         const logs_data = await collection.find({}).toArray();
 
         if (logs_data.length === 0) {
