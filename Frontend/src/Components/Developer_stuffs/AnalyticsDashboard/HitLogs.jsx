@@ -8,7 +8,7 @@ const HitLogs = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/main-backend/logs"); 
+        const response = await axios.get("/api/main-backend/logs");
 
         const data = response.data;
 
@@ -49,6 +49,23 @@ const HitLogs = () => {
     "/api/main-backend/contact_us": "Contact Us",
     "/api/main-backend/vision_mission": "Vision & Mission",
     "/api/main-backend/gallery": "Gallery",
+    "/api/main-backend/transport": "Transport",
+    "/api/main-backend/admission": "Admission",
+    "/api/main-backend/help_desk": "Help Desk",
+    "/api/main-backend/hostel_menu": "Hostel Menu",
+    "/api/main-backend/sportsdata": "Sports Data",
+    "/api/main-backend/web_team": "Web Team",
+    "/api/main-backend/ncc_navy": "NCC Navy",
+    "/api/main-backend/ncc_army": "NCC Army",
+    "/api/main-backend/research": "Research",
+    "/api/main-backend/yrc": "Young Researchers Club",
+    "/api/main-backend/v_m/sidebar": "Vision & Mission Sidebar",
+    "/api/main-backend/get_grievance": "Get Grievance",
+    "/api/main-backend/acadamic_cal/sidebar": "Academic Calendar Sidebar",
+    "/api/main-backend/01/sidebar": "Sidebar 01",
+    "/api/main-backend/iic_applynow": "IIC Apply Now",
+    "/api/main-backend/submit_feedback": "Submit Feedback",
+    "/api/main-backend/logs": "Logs",
 
     // Sidebar Endpoints
     "/api/main-backend/001/sidebar": "Artificial Intelligence and Data Science",
@@ -56,10 +73,13 @@ const HitLogs = () => {
     "/api/main-backend/003/sidebar": "Chemistry",
     "/api/main-backend/004/sidebar": "Civil Engineering",
     "/api/main-backend/005/sidebar": "Computer Science & Engineering",
-    "/api/main-backend/006/sidebar": "Computer Science and Engineering (CYBER SECURITY)",
+    "/api/main-backend/006/sidebar":
+      "Computer Science and Engineering (CYBER SECURITY)",
     "/api/main-backend/007/sidebar": "Electrical & Electronics Engineering",
-    "/api/main-backend/008/sidebar": "Electronics & Instrumentation Engineering",
-    "/api/main-backend/009/sidebar": "Electronics and Communication Engineering",
+    "/api/main-backend/008/sidebar":
+      "Electronics & Instrumentation Engineering",
+    "/api/main-backend/009/sidebar":
+      "Electronics and Communication Engineering",
     "/api/main-backend/010/sidebar": "English",
     "/api/main-backend/011/sidebar": "Information Technology",
     "/api/main-backend/012/sidebar": "Mathematics",
@@ -69,18 +89,19 @@ const HitLogs = () => {
     "/api/main-backend/016/sidebar": "M.E. Computer Science Engineering",
     "/api/main-backend/017/sidebar": "Master of Business Administration",
     "/api/main-backend/018/sidebar": "M.E. Power Systems Engineering",
+    "/api/main-backend/exam": "Exam",
+    "/api/main-backend/other_facilities": "Other Facilities",
+    "/api/main-backend/auth/staff/login": "Staff Login",
 
     // Other
     "/main.8d42b3187757ff8e8698.hot-update.json": "Hot Update JSON",
   };
 
-  
-
   // 🔍 Search filter
   const filteredData = hitData.filter(
     (item) =>
       item.endpoint &&
-      item.endpoint.toLowerCase().includes(searchTerm.toLowerCase())
+      item.endpoint.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
@@ -104,7 +125,7 @@ const HitLogs = () => {
             key={item._id?.$oid || idx}
             className="border p-4 mb-10 rounded shadow bg-gray-50"
           >
-             <h2 className="text-lg font-semibold text-blue-700 mb-3">
+            <h2 className="text-lg font-semibold text-blue-700 mb-3">
               <span className="text-gray-800">
                 {endpointNames[item.endpoint] || item.endpoint}
               </span>
@@ -151,12 +172,20 @@ const HitLogs = () => {
                           <td className="px-4 py-2 border">
                             {stats.overall_month_count ?? 0}
                           </td>
-                          <td className="px-4 py-2 border">{stats.week1 ?? 0}</td>
-                          <td className="px-4 py-2 border">{stats.week2 ?? 0}</td>
-                          <td className="px-4 py-2 border">{stats.week3 ?? 0}</td>
-                          <td className="px-4 py-2 border">{stats.week4 ?? 0}</td>
+                          <td className="px-4 py-2 border">
+                            {stats.week1 ?? 0}
+                          </td>
+                          <td className="px-4 py-2 border">
+                            {stats.week2 ?? 0}
+                          </td>
+                          <td className="px-4 py-2 border">
+                            {stats.week3 ?? 0}
+                          </td>
+                          <td className="px-4 py-2 border">
+                            {stats.week4 ?? 0}
+                          </td>
                         </tr>
-                      )
+                      ),
                     )}
                   </tbody>
                 </table>
