@@ -16,15 +16,23 @@ async function getDatabaseLogs(req, res) {
     }
 
     const now = moment();
-
+    const year = now.format("YYYY");
     const currentMonth = now.format("MMMM");
     const previousMonth = moment().subtract(1, "month").format("MMMM");
-
     const currentWeek = Math.ceil(now.date() / 7);
 
     const enrichedLogs = logs_data.map((doc) => {
-      const monthly = doc.thisYear?.monthly || {};
-
+      const monthly = doc.years?.[year]?.monthly || {};
+      if (!monthly[currentMonth]) {
+        monthly[currentMonth] = {
+          overall_month_count: "-",
+          week1: "-",
+          week2: "-",
+          week3: "-",
+          week4: "-",
+          week5: "-",
+        };
+      }
       const currentMonthData = monthly[currentMonth] || {};
 
       return {
@@ -32,23 +40,18 @@ async function getDatabaseLogs(req, res) {
 
         currentDay: doc.currentDay || 0,
 
-        lastDay: 0,
+        lastDay: doc.lastDay || 0,
 
-        // Display current week's count
         lastWeek: currentMonthData[`week${currentWeek}`] || 0,
 
-        // Previous month's total
         lastMonth: monthly[previousMonth]?.overall_month_count || 0,
+
+        thisYear: {
+          monthly,
+        },
       };
     });
-    for (const log of enrichedLogs) {
-      console.log(`Endpoint: ${log.endpoint}`);
-      console.log(`Current Day: ${log.currentDay}`);
-      console.log(`Last Day: ${log.lastDay}`);
-      console.log(`Last Week: ${log.lastWeek}`);
-      console.log(`Last Month: ${log.lastMonth}`);
-      console.log("---------------------------");
-    }
+
     return res.status(200).json(enrichedLogs);
   } catch (error) {
     console.error("Error fetching logs:", error);

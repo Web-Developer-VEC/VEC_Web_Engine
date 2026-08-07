@@ -8,11 +8,14 @@ function shouldTrack(clientIp, endpoint) {
     if (recentHits.has(`${clientIp}-landing`)) {
       return false;
     }
+
     recentHits.set(`${clientIp}-landing`, true);
     return true;
   }
+
   return true;
 }
+
 async function hitTracker(req, res, next) {
   if (
     req.originalUrl === "/favicon.ico" ||
@@ -30,42 +33,50 @@ async function hitTracker(req, res, next) {
   const collection = db.collection("hitlog");
 
   const endpoint = req.originalUrl.split("?")[0];
+
   const now = moment();
 
+  const today = now.format("YYYY-MM-DD");
   const month = now.format("MMMM");
+  const year = now.format("YYYY");
   const week = `week${Math.ceil(now.date() / 7)}`;
-  const currentYear = now.year();
-  const today = moment().format("YYYY-MM-DD");
 
   try {
     const doc = await collection.findOne({ endpoint });
+
+    // Reset daily counter when date changes
     if (!doc || doc.currentDayDate !== today) {
       await collection.updateOne(
         { endpoint },
         {
           $set: {
+            lastDay: doc?.currentDay || 0,
             currentDay: 0,
             currentDayDate: today,
           },
         },
-        { upsert: true },
+        { upsert: true }
       );
     }
 
-    const result = await collection.findOneAndUpdate(
-      { endpoint: endpoint },
+    await collection.findOneAndUpdate(
+      { endpoint },
       {
         $inc: {
           currentDay: 1,
           overallCount: 1,
-          [`thisYear.monthly.${month}.overall_month_count`]: 1,
-          [`thisYear.monthly.${month}.${week}`]: 1,
+
+          [`years.${year}.monthly.${month}.overall_month_count`]: 1,
+          [`years.${year}.monthly.${month}.${week}`]: 1,
         },
       },
-
-      { upsert: true, returnDocument: "after" },
+      {
+        upsert: true,
+        returnDocument: "after",
+      }
     );
-    console.log(`Hit tracked for: ${endpoint}`);
+
+    console.log(`Hit tracked : ${endpoint}`);
   } catch (error) {
     console.error("Error tracking hits:", error);
   }
