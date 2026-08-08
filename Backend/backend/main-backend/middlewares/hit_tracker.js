@@ -36,47 +36,46 @@ async function hitTracker(req, res, next) {
 
   const now = moment();
 
-  const today = now.format("YYYY-MM-DD");
   const month = now.format("MMMM");
   const year = now.format("YYYY");
   const week = `week${Math.ceil(now.date() / 7)}`;
 
+  const ip = (
+    req.headers["x-forwarded-for"]?.split(",")[0] ||
+    req.socket.remoteAddress ||
+    req.ip
+  )
+    .replace("::ffff:", "")
+    .trim()
+    .replace(/\./g, "_");
+
   try {
     const doc = await collection.findOne({ endpoint });
 
-    // Reset daily counter when date changes
-    if (!doc || doc.currentDayDate !== today) {
-      await collection.updateOne(
-        { endpoint },
-        {
-          $set: {
-            lastDay: doc?.currentDay || 0,
-            currentDay: 0,
-            currentDayDate: today,
-          },
-        },
-        { upsert: true }
-      );
+    const alreadyVisited = doc?.ipCounts?.[ip];
+
+    const update = {
+      $inc: {
+        [`ipCounts.${ip}`]: 1,
+      },
+      $setOnInsert: {
+        lastDay: 0,
+        currentDayDate: now.format("YYYY-MM-DD"),
+      },
+    };
+
+    if (!alreadyVisited) {
+      update.$inc.currentDay = 1;
+      update.$inc.overallCount = 1;
+      update.$inc[`years.${year}.monthly.${month}.overall_month_count`] = 1;
+      update.$inc[`years.${year}.monthly.${month}.${week}`] = 1;
     }
 
-    await collection.findOneAndUpdate(
-      { endpoint },
-      {
-        $inc: {
-          currentDay: 1,
-          overallCount: 1,
+    await collection.updateOne({ endpoint }, update, {
+      upsert: true,
+    });
 
-          [`years.${year}.monthly.${month}.overall_month_count`]: 1,
-          [`years.${year}.monthly.${month}.${week}`]: 1,
-        },
-      },
-      {
-        upsert: true,
-        returnDocument: "after",
-      }
-    );
-
-    console.log(`Hit tracked : ${endpoint}`);
+    console.log(`Hit tracked : ${endpoint} (${ip})`);
   } catch (error) {
     console.error("Error tracking hits:", error);
   }
