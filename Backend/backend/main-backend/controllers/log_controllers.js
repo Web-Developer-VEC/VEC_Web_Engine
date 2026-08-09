@@ -64,6 +64,48 @@ async function getDatabaseLogs(req, res) {
   }
 }
 
+// Helper to format logs cleanly
+async function getEnrichedLogs() {
+  const db = getlogDb();
+  const collection = db.collection("hitlog");
+  const logs = await collection.find({}).toArray();
+
+  const now = moment();
+  const year = now.format("YYYY");
+  const currentMonth = now.format("MMMM");
+  const previousMonth = moment().subtract(1, "month").format("MMMM");
+  const currentWeek = Math.ceil(now.date() / 7);
+
+  return logs.map((doc) => {
+    const monthly = doc.years?.[year]?.monthly || {};
+    const currentMonthData = monthly[currentMonth] || {};
+
+    return {
+      ...doc,
+      currentDay: doc.currentDay || 0,
+      lastDay: doc.lastDay || 0,
+      lastWeek: currentMonthData[`week${currentWeek}`] || 0,
+      lastMonth: monthly[previousMonth]?.overall_month_count || 0,
+      thisYear: { monthly },
+    };
+  });
+}
+
+// Emits updated logs to all connected WebSocket clients
+async function broadcastLogs(req) {
+  try {
+    const io = req.app.get("io");
+    if (!io) return;
+
+    const enrichedLogs = await getEnrichedLogs();
+    
+    io.emit("logs_updated", enrichedLogs);
+  } catch (error) {
+    console.error("WebSocket broadcast error:", error);
+  }
+}
+
 module.exports = {
   getDatabaseLogs,
+  broadcastLogs
 };

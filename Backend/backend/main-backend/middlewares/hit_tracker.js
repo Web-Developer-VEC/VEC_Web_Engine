@@ -1,5 +1,6 @@
 const { getlogDb } = require("../config/db");
 const moment = require("moment");
+const { broadcastLogs } = require("../controllers/log_controllers");
 
 const recentHits = new Map();
 
@@ -75,6 +76,8 @@ async function hitTracker(req, res, next) {
       upsert: true,
     });
 
+    await broadcastLogs(req);
+    
     console.log(`Hit tracked : ${endpoint} (${ip})`);
   } catch (error) {
     console.error("Error tracking hits:", error);

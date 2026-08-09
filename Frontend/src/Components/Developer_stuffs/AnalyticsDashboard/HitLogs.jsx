@@ -1,5 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { io } from "socket.io-client";
+
+// 1. Helper component that animates from 0 ONLY on the initial load
+const AnimatedNumber = ({ value = 0, duration = 1000 }) => {
+  const [count, setCount] = useState(0);
+  const hasAnimatedRef = useRef(false);
+
+  useEffect(() => {
+    const finalValue = Number(value) || 0;
+
+    // If initial animation has already completed, update directly without re-animating from 0
+    if (hasAnimatedRef.current) {
+      setCount(finalValue);
+      return;
+    }
+
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+      // Using easeOutQuad for a smooth deceleration at the end
+      const easeProgress = 1 - (1 - progress) * (1 - progress);
+      setCount(Math.floor(easeProgress * finalValue));
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        setCount(finalValue);
+        // Mark as animated once we finish animating a loaded value
+        if (finalValue > 0) {
+          hasAnimatedRef.current = true;
+        }
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  }, [value, duration]);
+
+  return <span>{count}</span>;
+};
 
 const HitLogs = () => {
   const [hitData, setHitData] = useState([]);
@@ -21,6 +63,35 @@ const HitLogs = () => {
       }
     };
     fetchData();
+  }, []);
+
+  // 2. Real-time WebSocket connection
+  useEffect(() => {
+    // Connect directly to your Node backend port (change 5000 if your backend uses another port)
+    const socket = io("http://localhost:5000", {
+      withCredentials: true,
+      transports: ["websocket", "polling"],
+    });
+
+    socket.on("connect", () => {
+      console.log("Connected to real-time logs socket:", socket.id);
+    });
+
+    // Listen for live updates emitted by the backend
+    socket.on("logs_updated", (data) => {
+      console.log("Received logs update via WebSocket:", data);
+      if (Array.isArray(data)) {
+        setHitData(data);
+      }
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected from socket");
+    });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   const endpointNames = {
@@ -395,7 +466,7 @@ const StatCard = ({ label, value, icon, isHighlight = false }) => (
     <span
       className={`text-2xl font-bold transition-colors ${isHighlight ? "text-[#801828]" : "text-slate-800 group-hover/stat:text-[#801828]"}`}
     >
-      {value ?? 0}
+      <AnimatedNumber value={value ?? 0} duration={800} />
     </span>
   </div>
 );

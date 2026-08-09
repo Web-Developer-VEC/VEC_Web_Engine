@@ -55,6 +55,7 @@
     "sass-loader": "^16.0.4",
     "scheduler": "^0.25.0",
     "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.8.3",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "styled-components": "^6.1.14",
