@@ -7,8 +7,6 @@ const cors = require('./main-backend/middlewares/cros_security');
 const scheduleResetCounters = require('./main-backend/middlewares/schedulers/reset_hit_counters');
 const scheduleMongoHealthCheck = require('./main-backend/middlewares/schedulers/schedule_mongo_healthcheck');
 const hitTracker = require('./main-backend/middlewares/hit_tracker')
-const http = require("http");
-const { Server } = require("socket.io");
 
 dotenv.config({ quiet: true });
 
@@ -41,24 +39,6 @@ app.use('/api/main-backend', mainBackendRoutes);
 
 startHitResetCron();
 
-const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
-});
-app.set("io", io);
-
-io.on("connection", (socket) => {
-  console.log("Client connected to WebSocket:", socket.id);
-
-  socket.on("disconnect", () => {
-    console.log("Client disconnected:", socket.id);
-  });
-});
-
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
