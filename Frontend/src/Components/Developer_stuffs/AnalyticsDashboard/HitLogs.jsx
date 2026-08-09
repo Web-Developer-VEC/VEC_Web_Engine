@@ -1,10 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+const AnimatedNumber = ({ value = 0, duration = 1000 }) => {
+  const [count, setCount] = useState(0);
+  const hasAnimatedRef = useRef(false);
 
+  useEffect(() => {
+    const finalValue = Number(value) || 0;
+
+    // If initial animation has already completed, update directly without re-animating from 0
+    if (hasAnimatedRef.current) {
+      setCount(finalValue);
+      return;
+    }
+
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+      // Using easeOutQuad for a smooth deceleration at the end
+      const easeProgress = 1 - (1 - progress) * (1 - progress);
+      setCount(Math.floor(easeProgress * finalValue));
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        setCount(finalValue);
+        // Mark as animated once we finish animating a loaded value
+        if (finalValue > 0) {
+          hasAnimatedRef.current = true;
+        }
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  }, [value, duration]);
+
+  return <span>{count}</span>;
+};
 const HitLogs = () => {
   const [hitData, setHitData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -395,7 +432,7 @@ const StatCard = ({ label, value, icon, isHighlight = false }) => (
     <span
       className={`text-2xl font-bold transition-colors ${isHighlight ? "text-[#801828]" : "text-slate-800 group-hover/stat:text-[#801828]"}`}
     >
-      {value ?? 0}
+      <AnimatedNumber value={value ?? 0} duration={800} />
     </span>
   </div>
 );
