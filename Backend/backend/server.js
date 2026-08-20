@@ -15,6 +15,7 @@ const port = process.env.PORT || 5000;
 
 //Loading Main Routes
 const mainBackendRoutes = require('./main-backend/routes/landing');
+const startHitResetCron = require('./main-backend/middlewares/cron');
 
 
 app.set('trust proxy', true); // Necessary for rate limiter to work correctly
@@ -31,10 +32,12 @@ scheduleMongoHealthCheck();
 // Connect to DBs
 connectToDatabase();
 //Global Middleware to track hits for all endpoints
-// app.use(hitTracker);
+app.use(hitTracker);
 
 // Load modular routes
 app.use('/api/main-backend', mainBackendRoutes);
+
+startHitResetCron();
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

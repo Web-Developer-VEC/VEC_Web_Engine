@@ -82,6 +82,91 @@
         "title": "Mental Health Wellness",
         "date": "24th October 2024",
         "image_path": "/static/images/nss/event/mental health wellness.webp"
+      },
+      {
+        "title": "NSS Day",
+        "date": "23rd September 2025",
+        "image_path": "/static/images/nss/event/image_009.webp"
+      },
+      {
+        "title": "Lake Cleaning",
+        "date": "11th October 2025",
+        "image_path": "/static/images/nss/event/image_010.webp"
+      },
+      {
+        "title": "Cancer Awareness",
+        "date": "8th November 2025",
+        "image_path": "/static/images/nss/event/image_011.webp"
+      },
+      {
+        "title": "Ignite'25",
+        "date": "11th November 2025",
+        "image_path": "/static/images/nss/event/image_012.webp"
+      },
+      {
+        "title": "Traffic Awareness Program",
+        "date": "13th December 2025",
+        "image_path": "/static/images/nss/event/image_013.webp"
+      },
+      {
+        "title": "Anbagam",
+        "date": "27th December 2025",
+        "image_path": "/static/images/nss/event/image_014.webp"
+      },
+      {
+        "title": "Nandhavanam",
+        "date": "14th December 2025",
+        "image_path": "/static/images/nss/event/image_015.webp"
+      },
+      {
+        "title": "Republic Day",
+        "date": "26th January 2026",
+        "image_path": "/static/images/nss/event/image_017.webp"
+      },
+      {
+        "title": "Aram",
+        "date": "11th January 2026",
+        "image_path": "/static/images/nss/event/image_016.webp"
+      },
+      {
+        "title": "Walkathon",
+        "date": "14th February 2026",
+        "image_path": "/static/images/nss/event/image_018.webp"
+      },
+      {
+        "title": "Aashraya",
+        "date": "15th February 2026",
+        "image_path": "/static/images/nss/event/image_019.webp"
+      },
+      {
+        "title": "Situation Awareness Program",
+        "date": "14th February 2026",
+        "image_path": "/static/images/nss/event/image_020.webp"
+      },
+      {
+        "title": "Organ Donation Awareness",
+        "date": "21st February 2026",
+        "image_path": "/static/images/nss/event/image_021.webp"
+      },
+      {
+        "title": "Temple Cleaning",
+        "date": "21st February 2026",
+        "image_path": "/static/images/nss/event/image_023.webp"
+      },
+      {
+        "title": "Cancer Awareness",
+        "date": "28th February 2026",
+        "image_path": "/static/images/nss/event/image_024.webp"
+      },
+      {
+        "title": "Mega Blood Donation Drive",
+        "date": "5th March 2026",
+        "image_path": "/static/images/nss/event/image_025.webp"
+      },
+      {
+        "title": "Voting Awareness",
+        "date": "7th April 2026",
+        "image_path": "/static/images/nss/event/image_026.webp"
       }
     ]
   },
@@ -103,59 +188,44 @@
         "category": "student_coordinater",
         "members": [
           {
-            "name": "KAVIYASHREE S K",
-            "designation": "GCO & Mech & Auto coordinator",
+            "name": "SHARUMATHI ELAYARAJA",
+            "designation": "GCO & Mech & Auto Coordinator",
             "image_path": "/static/images/nss/2.webp"
           },
           {
-            "name": "LALITH KANNAN M",
-            "designation": "VCO & CSE coordinator",
+            "name": "ABINAV VARSAN N",
+            "designation": "EEE Coordinator",
             "image_path": "/static/images/nss/3.webp"
           },
           {
-            "name": "VINOTH M",
-            "designation": "ECE coordinator",
+            "name": "SUDHARSANA S",
+            "designation": "CIVIL, CYBER and EIE Coordinator",
             "image_path": "/static/images/nss/4.webp"
           },
           {
-            "name": "DAYANITHA S R",
-            "designation": "IT coordinator",
+            "name": "ESAKKIMUTHU S",
+            "designation": "ECE Coordinator",
             "image_path": "/static/images/nss/5.webp"
           },
           {
-            "name": "SANJAI KUMAR G",
-            "designation": "Civil, Cyber, EIE department coordinator",
+            "name": "PRAVEEN KUMAR M",
+            "designation": "CSE Coordinator",
             "image_path": "/static/images/nss/6.webp"
           },
           {
-            "name": "SUBASHINI G",
-            "designation": "EEE coordinator",
+            "name": "JANANI P I",
+            "designation": "Newsletter Team Head",
             "image_path": "/static/images/nss/7.webp"
           },
           {
-            "name": "RAHUL KUMARAN R",
-            "designation": "AI&DS coordinator",
+            "name": "DINO GIFTSON P",
+            "designation": "Posters Team Head",
             "image_path": "/static/images/nss/8.webp"
           },
           {
-            "name": "SHRAVANTH KUMAR V",
-            "designation": "Poster Team Head",
-            "image_path": "/static/images/nss/9.webp"
-          },
-          {
-            "name": "SWEDHA P S",
-            "designation": "Newsletter Team Head",
-            "image_path": "/static/images/nss/10.webp"
-          },
-          {
-            "name": "MUKESH M",
+            "name": "MONAS KUMAR J",
             "designation": "Technical Team Head",
-            "image_path": "/static/images/nss/11.webp"
-          },
-          {
-            "name": "MANOVA DANIEL J",
-            "designation": "Website & Camera Handling Team Head",
-            "image_path": "/static/images/nss/12.webp"
+            "image_path": "/static/images/nss/9.webp"
           }
         ]
       }

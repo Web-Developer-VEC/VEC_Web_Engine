@@ -1,27 +1,69 @@
-const { getlogDb } = require('../config/db')
-const logError = require('../middlewares/logerror');
-const allowedtypes = require('../models/landing/log_models')
+const { getlogDb } = require("../config/db");
+const logError = require("../middlewares/logerror");
+const moment = require("moment");
 
-async function getDatabaseLogs (req, res) {
-    const db = getlogDb()
-    const  type  = req.params.type; 
-    if (!allowedtypes.has(type)) {
-        return res.status(400).json({ error: 'Invalid log type' });
+async function getDatabaseLogs(req, res) {
+  const db = getlogDb();
+
+  try {
+    const collection = db.collection("hitlog");
+    const logs_data = await collection.find({}).toArray();
+
+    if (!logs_data.length) {
+      return res.status(404).json({
+        message: "No logs found",
+      });
     }
-    try {
-        const collection = db.collection(type);
-        const logs_data = await collection.find({}).toArray();
 
-        if (logs_data.length === 0) {
-            return res.status(404).json({ message: 'No logs found' });
-        }
+    const now = moment();
+    const year = now.format("YYYY");
+    const currentMonth = now.format("MMMM");
+    const previousMonth = moment().subtract(1, "month").format("MMMM");
+    const currentWeek = Math.ceil(now.date() / 7);
 
-        res.status(200).json(logs_data);
-    } catch (error) {
-        console.error('Error fetching logs:', error);
-        await logError(req, error, 'Error fetching logs data', 500);
-        res.status(500).json({ error: 'Error fetching logs data' });
-    }
+    const enrichedLogs = logs_data.map((doc) => {
+      const monthly = doc.years?.[year]?.monthly || {};
+      if (!monthly[currentMonth]) {
+        monthly[currentMonth] = {
+          overall_month_count: "-",
+          week1: "-",
+          week2: "-",
+          week3: "-",
+          week4: "-",
+          week5: "-",
+        };
+      }
+      const currentMonthData = monthly[currentMonth] || {};
+
+      return {
+        ...doc,
+
+        currentDay: doc.currentDay || 0,
+
+        lastDay: doc.lastDay || 0,
+
+        lastWeek: currentMonthData[`week${currentWeek}`] || 0,
+
+        lastMonth: monthly[previousMonth]?.overall_month_count || 0,
+
+        thisYear: {
+          monthly,
+        },
+      };
+    });
+
+    return res.status(200).json(enrichedLogs);
+  } catch (error) {
+    console.error("Error fetching logs:", error);
+
+    await logError(req, error, "Error fetching logs data", 500);
+
+    return res.status(500).json({
+      error: "Error fetching logs data",
+    });
+  }
 }
 
-module.exports = { getDatabaseLogs }
+module.exports = {
+  getDatabaseLogs,
+};
