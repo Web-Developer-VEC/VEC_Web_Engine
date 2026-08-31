@@ -185,6 +185,12 @@
     "data": [
       {
         "unique_id": "announcement_14",
+        "announcement_name": "FIRST YEAR B.E./B.TECH. – COMMENCEMENT OF CLASSES ON 07.09.2026",
+        "pdf_path": "",
+        "date": "2026-08-31",
+        "status": "active"
+      }, {
+        "unique_id": "announcement_14",
         "announcement_name": "Circular_Revaluation (For Photocopy)_SEE May 2026-R2023, R2023A, R2019 & R2019A",
         "pdf_path": "/static/pdfs/announcements/Revaluation_Photocopy_R2019,R2019A, R2023 &R2023A.pdf",
         "date": "2026-07-28",
