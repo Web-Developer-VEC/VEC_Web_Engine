@@ -184,114 +184,38 @@
     "type": "announcements",
     "data": [
       {
-        "unique_id": "announcement_14",
-        "announcement_name": "FIRST YEAR B.E./B.TECH. – COMMENCEMENT OF CLASSES ON 07.09.2026",
-        "pdf_path": "",
-        "date": "2026-08-31",
-        "status": "active"
-      }, {
-        "unique_id": "announcement_14",
-        "announcement_name": "Circular_Revaluation (For Photocopy)_SEE May 2026-R2023, R2023A, R2019 & R2019A",
-        "pdf_path": "/static/pdfs/announcements/Revaluation_Photocopy_R2019,R2019A, R2023 &R2023A.pdf",
-        "date": "2026-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_15",
-        "announcement_name": "Circular_Revaluation (After Photocopy)_SEE May 2026-R2023, R2023A, R2019 & R2019A",
-        "pdf_path": "/static/pdfs/announcements/Revaluation_After Photocopy_R2019,R2019A, R2023 &R2023A.pdf",
-        "date": "2026-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_13",
-        "announcement_name": "Circular- Reschedule - SEE May 2026 - 28-05-2026 to 05-06-2026",
-        "pdf_path": "/static/pdfs/announcements/Rescheduled Date_SEE May 2026_28-05-2026 to 05-06-2026.pdf",
-        "date": "2026-03-17",
-        "status": "active"
-      },
-      {
         "unique_id": "announcement_1",
-        "announcement_name": "SEE May 2026 - Updated Exam Timetable for B.E.B.Tech. 2023-2027 & 2024-2028 batch with I year courses",
-        "pdf_path": "/static/pdfs/announcements/SEE May 2026 - Updated Exam Timetable for B.E.B.Tech. 2023-2027 & 2024-2028 batch with I year courses.pdf",
-        "date": "2026-03-17",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_11",
-        "announcement_name": "SEE MAY 2026 - Exam Timetable for B.E.B.Tech. 2025-2029 batch (R2023A)",
-        "pdf_path": "/static/pdfs/announcements/SEE MAY 2026 - Exam Timetable for B.E.B.Tech. 2025-2029 batch (R2023A).pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_12",
-        "announcement_name": "SEE May 2026 - Exam Timetable for MBA  M.E. 2025-2027 batch (R2023A) & 2024-2026 batch (R2023)",
-        "pdf_path": "/static/pdfs/announcements/SEE May 2026 - Exam Timetable for MBA  M.E. 2025-2027 batch (R2023A) & 2024-2026 batch (R2023).pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_9",
-        "announcement_name": "Circular_Revaluation (For Photocopy)_SEE May 2026 (8th Sem.)",
-        "pdf_path": "/static/pdfs/announcements/Circular_Revaluation (For Photocopy)_SEE May 2026.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_10",
-        "announcement_name": "Circular_Revaluation (After Photocopy)_SEE May 2026 (8th Sem.)",
-        "pdf_path": "/static/pdfs/announcements/Circular_Revaluation (After Photocopy)_SEE May 2026.pdf",
-        "date": "2025-07-28",
+        "announcement_name": "Exam Fee Circular – IV Year B.E. / B.Tech. (2026–2027)",
+        "pdf_path": "/static/pdfs/announcements/Exam Fee_IV year_B.E._B.Tech._2026-2027.pdf",
+        "date": "2026-09-24",
         "status": "active"
       },
       {
         "unique_id": "announcement_2",
-        "announcement_name": "REIVSED SEE Timetable April 2026 For batches 2019-2023 & 2020-2024",
-        "pdf_path": "/static/pdfs/announcements/REIVSED_SEE Timetable_April 2026_For batches_2019-2023 & 2020-2024.pdf",
-        "date": "2026-03-17",
+        "announcement_name": "Exam Fee Circular – III Year B.E. / B.Tech. (2026–2027)",
+        "pdf_path": "/static/pdfs/announcements/Exam Fee_III year_B.E._B.Tech._2026-2027.pdf",
+        "date": "2026-09-24",
         "status": "active"
       },
       {
         "unique_id": "announcement_3",
-        "announcement_name": "REIVSED SEE Timetable April 2026 For batches 2021-2025 & 2022-2026",
-        "pdf_path": "/static/pdfs/announcements/REVISED_SEE Timetable_April 2026_For batches_2021-2025 & 2022-2026.pdf",
-        "date": "2026-03-17",
+        "announcement_name": "Exam Fee Circular – II Year B.E. / B.Tech. (2026–2027)",
+        "pdf_path": "/static/pdfs/announcements/Exam Fee_II year_B.E._B.Tech._2026-2027.pdf",
+        "date": "2026-09-24",
         "status": "active"
       },
       {
         "unique_id": "announcement_4",
-        "announcement_name": "Exam fee circular_Even Sem. 2025-2026",
-        "pdf_path": "/static/pdfs/announcements/Exam fee circular_Even Sem. 2025-2026.pdf",
-        "date": "2026-03-11",
+        "announcement_name": "Exam Fee Circular – III Sem. MBA (2026–2027)",
+        "pdf_path": "/static/pdfs/announcements/Exam Fee_III Sem._MBA_2026-2027.pdf",
+        "date": "2026-09-24",
         "status": "active"
       },
       {
         "unique_id": "announcement_5",
-        "announcement_name": "Circular - Review after Revaluation - SEE Nov. 2025 (For Higher Sem.)",
-        "pdf_path": "/static/pdfs/announcements/Circular_Review after Revaluation_SEE NOV. 2025 (Higher Sem.).pdf",
-        "date": "2026-02-26",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_6",
-        "announcement_name": "Circular - Revaluation (Photocopy) - SEE Nov. 2025 (For I Sem. (R) & II Sem. (Arr.))",
-        "pdf_path": "/static/pdfs/announcements/Circular_Photocopy_Revaluation_SEE NOV. 2025 (I SEM.(R2023)).pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_7",
-        "announcement_name": "Circular - Revaluation (Photocopy) - SEE Nov. 2025 ",
-        "pdf_path": "/static/pdfs/announcements/Revaluation (Photocopy)_SEE Nov. 2025_06-01-2026.pdf",
-        "date": "2025-07-28",
-        "status": "active"
-      },
-      {
-        "unique_id": "announcement_8",
-        "announcement_name": "B.E./B.Tech./M.E./MBA - Exam Schedule - SEE Nov. 2025 (R2023) [I Sem. (Regular & II Sem. (Arr.)]",
-        "pdf_path": "/static/pdfs/announcements/B.E.B.Tech.-Exam Schedule-SEE Nov. 2025 (R2023) [I Sem. (Regular & II Sem. (Arr.)].pdf",
-        "date": "2025-07-28",
+        "announcement_name": "Exam Fee Circular – III Sem. M.E. (CSE) (2026–2027)",
+        "pdf_path": "/static/pdfs/announcements/Exam Fee_III Sem._M.E.(CSE)_2026-2027.pdf",
+        "date": "2026-09-24",
         "status": "active"
       }
     ]
