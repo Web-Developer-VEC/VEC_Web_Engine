@@ -1,36 +1,42 @@
-import { Github, Linkedin, Twitter, Mail, ExternalLink, Globe2Icon } from "lucide-react"
-import { useEffect, useState, useRef } from "react"
-import Banner from "../../../Banner"
-import SideNav from "../../SideNav"
-import axios from "axios"
-import EnquiryWeb from "./enquiryWeb"
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  ExternalLink,
+  Globe2Icon,
+} from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import Banner from "../../../Banner";
+import SideNav from "../../SideNav";
+import axios from "axios";
+import EnquiryWeb from "./enquiryWeb";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const UrlParser = (path) => {
-    return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
+  return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
 };
-
 
 const SocialIcon = ({ type, url }) => {
   const getIcon = () => {
     switch (type) {
       case "github":
-        return <Github className="w-5 h-5 md:w-6 md:h-6" />
+        return <Github className="w-5 h-5 md:w-6 md:h-6" />;
       case "linkedin":
-        return <Linkedin className="w-5 h-5 md:w-6 md:h-6" />
+        return <Linkedin className="w-5 h-5 md:w-6 md:h-6" />;
       case "twitter":
-        return <Twitter className="w-5 h-5 md:w-6 md:h-6" />
+        return <Twitter className="w-5 h-5 md:w-6 md:h-6" />;
       case "email":
-        return <Mail className="w-5 h-5 md:w-6 md:h-6" />
+        return <Mail className="w-5 h-5 md:w-6 md:h-6" />;
       case "portfolio":
-        return <Globe2Icon className="w-5 h-5 md:w-6 md:h-6" />
+        return <Globe2Icon className="w-5 h-5 md:w-6 md:h-6" />;
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   return (
     <a
@@ -41,12 +47,13 @@ const SocialIcon = ({ type, url }) => {
     >
       {getIcon()}
     </a>
-  )
-}
+  );
+};
 
 const StaffCard = ({ member }) => {
   return (
-    <div className="
+    <div
+      className="
       bg-prim dark:bg-drkp
       rounded-2xl
       shadow-md
@@ -59,7 +66,8 @@ const StaffCard = ({ member }) => {
       gap-6
       w-full
       max-w-2xl
-    ">
+    "
+    >
       <div className="w-28 h-28 md:w-32 md:h-32 flex-shrink-0">
         <img
           src={UrlParser(member?.image)}
@@ -81,11 +89,15 @@ const StaffCard = ({ member }) => {
   );
 };
 
-const ProfileCard = ({ member, cardRef, spotlight, dimmed, selectedMember }) => {
+const ProfileCard = ({
+  member,
+  cardRef,
+  spotlight,
+  dimmed,
+  selectedMember,
+}) => {
   const active = spotlight === member.name;
-  const selected =
-    selectedMember?.toLowerCase() ===
-    member.name.toLowerCase();
+  const selected = selectedMember?.toLowerCase() === member.name.toLowerCase();
   return (
     // <div className="group relative bg-prine dark:bg-[#1c1f26] rounded-2xl  shadow-lg dark:shadow-md hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700 h-full">
     <div
@@ -104,9 +116,11 @@ const ProfileCard = ({ member, cardRef, spotlight, dimmed, selectedMember }) => 
 
         ${selected ? "border border-blue-400" : "border border-transparent"}
 
-        ${active
+        ${
+          active
             ? "scale-[1.05] ring-2 ring-blue-500 shadow-[0_0_35px_rgba(59,130,246,.55)]"
-            : ""}
+            : ""
+        }
 
         bg-prine dark:bg-[#1c1f26]
         `}
@@ -117,9 +131,7 @@ const ProfileCard = ({ member, cardRef, spotlight, dimmed, selectedMember }) => 
           {/* Circular Image */}
           <div className="relative w-28 h-28 md:w-32 md:h-32">
             <img
-
               src={UrlParser(member?.image)}
-
               alt={member?.name}
               className="w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-md transition-transform duration-500 group-hover:scale-105 dark:brightness-75"
             />
@@ -127,13 +139,20 @@ const ProfileCard = ({ member, cardRef, spotlight, dimmed, selectedMember }) => 
 
           {/* Member Info */}
           <div className="text-center space-y-2">
-
             <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-blue-300 group-hover:text-brwn dark:group-hover:text-blue-400 transition-colors duration-300">
               {member?.name}
             </h3>
-            <p  className=" font-medium text-[16px] text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block" >{member?.club_designation}</p>
-            <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium"> {member?.year}  </p>
-            <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium"> {member?.department} </p>
+            <p className=" font-medium text-[16px] text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full inline-block">
+              {member?.club_designation}
+            </p>
+            <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium">
+              {" "}
+              {member?.year}{" "}
+            </p>
+            <p className="text-gray-600 text-[14px] dark:text-gray-400 font-medium">
+              {" "}
+              {member?.department}{" "}
+            </p>
           </div>
         </div>
 
@@ -145,18 +164,18 @@ const ProfileCard = ({ member, cardRef, spotlight, dimmed, selectedMember }) => 
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 function WebUI({ title, data, selectedMember }) {
   const cardRefs = useRef({});
   const [spotlight, setSpotlight] = useState(null);
 
-  let des, members, staff
+  let des, members, staff;
   if (data) {
-    des = data[0]?.content
-    members = data[1]?.content
-    staff = data[2]?.content
+    des = data[0]?.content;
+    members = data[1]?.content;
+    staff = data[2]?.content;
   }
 
   useEffect(() => {
@@ -164,8 +183,7 @@ function WebUI({ title, data, selectedMember }) {
 
     const member = members.find(
       (m) =>
-        m.name.trim().toLowerCase() ===
-        selectedMember.trim().toLowerCase()
+        m.name.trim().toLowerCase() === selectedMember.trim().toLowerCase(),
     );
 
     if (!member) return;
@@ -196,7 +214,7 @@ function WebUI({ title, data, selectedMember }) {
       {/* Header Section */}
       <div className="text-center py-6 px-4">
         <h1 className="text-[28px] sm:text-[32px] font-bold text-brwn dark:text-white mt-6">
-          Meet Our Amazing {title} Batch 
+          Meet Our Amazing {title} Batch
         </h1>
       </div>
 
@@ -232,14 +250,11 @@ function WebUI({ title, data, selectedMember }) {
                 animationFillMode: "both",
               }}
             >
-              <ProfileCard 
-                member={member} 
+              <ProfileCard
+                member={member}
                 cardRef={(el) => (cardRefs.current[member.name] = el)}
                 spotlight={spotlight}
-                dimmed={
-                    spotlight &&
-                    spotlight !== member.name
-                }
+                dimmed={spotlight && spotlight !== member.name}
                 selectedMember={selectedMember}
               />
             </div>
@@ -274,13 +289,13 @@ function WebUI({ title, data, selectedMember }) {
         }
       `}</style>
     </div>
-  )
+  );
 }
 
 export default function Webteam({ toggle, theme }) {
-  const [webtab, setWebtab] = useState("Pilot")
-  const [selectedMember, setSelectedMember] = useState("")
-  const [webdata, setWebData] = useState(null)
+  const [webtab, setWebtab] = useState("Pilot");
+  const [selectedMember, setSelectedMember] = useState("");
+  const [webdata, setWebData] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -290,7 +305,7 @@ export default function Webteam({ toggle, theme }) {
     const member = params.get("member");
 
     if (tab == "copilot") {
-      setWebtab("Co-Pilot");
+      setWebtab("Co-Pilot 1.0");
     } else {
       setWebtab("Pilot");
     }
@@ -300,31 +315,49 @@ export default function Webteam({ toggle, theme }) {
 
   const navData = {
     "Enquiry Now": <EnquiryWeb />,
-    "Pilot": <WebUI title={"Pilot"} data={webdata} selectedMember={selectedMember} />,
-    "Co-Pilot": <WebUI title={"Co Pilot"} data={webdata} selectedMember={selectedMember} />,
-  }
+    Pilot: (
+      <WebUI title={"Pilot"} data={webdata} selectedMember={selectedMember} />
+    ),
+    "Co-Pilot 1.0": (
+      <WebUI
+        title={"Co Pilot"}
+        data={webdata}
+        selectedMember={selectedMember}
+      />
+    ),
+    "Co-Pilot 2.0": (
+      <WebUI
+        title={"Co-Pilot 2.0"}
+        data={webdata}
+        selectedMember={selectedMember}
+      />
+    ),
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       const typeMap = {
         Pilot: "pilot",
-        "Co-Pilot": "copilot",
-      }
+        "Co-Pilot 1.0": "copilot",
+        "Co-Pilot 2.0": "copilot_2.0",
+      };
       try {
         const response = await axios.post("/api/main-backend/web_team", {
           type: typeMap[webtab],
-        })
-        const data = response.data.data
-        setWebData(data)
+        });
+        const data = response.data.data;
+        setWebData(data);
       } catch (error) {
         console.error("Error fetching Web Team data", error);
-         if (error.response.data.status === 429) {
-            navigate('/ratelimit', { state: { msg: error.response.data.message}})
-            } 
+        if (error.response.data.status === 429) {
+          navigate("/ratelimit", {
+            state: { msg: error.response.data.message },
+          });
+        }
       }
-    }
-    fetchData()
-  }, [webtab])
+    };
+    fetchData();
+  }, [webtab]);
 
   return (
     <>
@@ -339,6 +372,5 @@ export default function Webteam({ toggle, theme }) {
         <SideNav sts={webtab} setSts={setWebtab} navData={navData} cls={""} />
       </div>
     </>
-
-  )
+  );
 }

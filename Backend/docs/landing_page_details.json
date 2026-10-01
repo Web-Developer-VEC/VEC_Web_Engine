@@ -217,6 +217,13 @@
         "pdf_path": "/static/pdfs/announcements/Exam Fee_III Sem._M.E.(CSE)_2026-2027.pdf",
         "date": "2026-09-24",
         "status": "active"
+      },
+      {
+        "unique_id": "announcement_6",
+        "announcement_name": "Exam Fee_Arrear_R2019, R2019A (For batches 2019-23 to 2022-26)",
+        "pdf_path": "/static/pdfs/announcements/Exam Fee_Arrear_R2019, R2019A (For batches 2019-23 to 2022-26).pdf",
+        "date": "2026-09-24",
+        "status": "active"
       }
     ]
   },

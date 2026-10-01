@@ -521,5 +521,165 @@
         "category": "staff"
       }
     ]
-  }
+  },
+  {
+  "type": "copilot_2.0",
+  "data": [
+    {
+      "category": "team_descripition",
+      "content": {
+        "message": "We are the Co-Pilot Batch of the Velammal Engineering College Web Development Team—handpicked, mentored, and guided by the founding Pilot Batch. Tasked with carrying forward the digital legacy, we ensure the website stays updated, optimized, and scalable. While the foundation was laid by our seniors, we’ve taken charge of feature enhancements, content management, performance improvements, and bug fixes using the same professional tech stack—MERN, GitHub, and AWS. Bridging the present with the future, we’re not just maintaining the system—we're evolving it."
+      }
+    },
+    {
+      "category": "members",
+      "content": [
+        {
+          "name": "PRIYA DHARSAN T",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Team Lead , Backend Lead Developer , Cloud Lead Developer",
+          "image": "/static/images/web_team/copilot_2.0_batch/PRIYA DHARSAN T.webp",
+          "social": {
+            "github": "https://github.com/priyadharsant",
+            "linkedin": "https://www.linkedin.com/in/priya-dharsan-t-2b5810327",
+            "portfolio": "https://www.priyan.online",
+            "email": "priyadharsant4@gmail.com"
+          }
+        },
+        {
+          "name": "VIGNESH S",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Frontend Lead Developer, Integration Engineer",
+          "image": "/static/images/web_team/copilot_2.0_batch/VIGNESH S.webp",
+          "social": {
+            "github": "https://github.com/vickyvignesh141",
+            "linkedin": "https://www.linkedin.com/in/vignesh-s-27b54a33b/",
+            "portfolio": "",
+            "email": "svickyvignesh141@gmail.com"
+          }
+        },  {
+          "name": "NITHYANANTHAM M",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Backend Developer, Integration Engineer",
+          "image": "/static/images/web_team/copilot_2.0_batch/NITHYANANTHAM M.webp",
+          "social": {
+            "github": "http://github.com/Nithy1102",
+            "linkedin": "https://www.linkedin.com/in/nithy-anantham-96353b328",
+            "portfolio": "",
+            "email": "anantham1102@gmail.com"
+          }
+        },
+        {
+          "name": "HEMAND KUMAAR U",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Cloud Engineer , Backend Developer",
+          "image": "/static/images/web_team/copilot_2.0_batch/HEMAND KUMAAR U.webp",
+          "social": {
+            "github": "https://github.com/hemandkumaar-u",
+            "linkedin": "https://www.linkedin.com/in/hemand-kumaar-u-5416ab353?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+            "portfolio": "",
+            "email": "u.hemandkumaar@gmail.com"
+          }
+        },
+        {
+          "name": "MOHAMMED AKSEER VP",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Frontend Developer , UI designer",
+          "image": "/static/images/web_team/copilot_2.0_batch/MOHAMMAD AKSEER VP.webp",
+          "social": {
+            "github": "https://github.com/shehmeerkawish-hash",
+            "linkedin": "https://www.linkedin.com/in/mohammed-akseer-vp-946b04353/",
+            "portfolio": "https://github.com/shehmeerkawish-hash/akseer-portfolio",
+            "email": "shehmeerkawish@gmail.com"
+          }
+        },
+        {
+          "name": "BARATHRAM B",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Frontend Developer , UI Designer",
+          "image": "/static/images/web_team/copilot_2.0_batch/BARATHRAM B.webp",
+          "social": {
+            "github": "https://github.com/Barathram-B",
+            "linkedin": "http://www.linkedin.com/in/barathramb2006",
+            "portfolio": "",
+            "email": "barathram0206@gmail.com"
+          }
+        },
+        {
+          "name": "HARISH M",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Frontend Developer , QA Tester",
+          "image": "/static/images/web_team/copilot_2.0_batch/HARISH M.webp",
+          "social": {
+            "github": "",
+            "linkedin": "",
+            "portfolio": "",
+            "email": ""
+          }
+        },
+        {
+          "name": "JASIM SAAD P A",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Frontend Developer , Integration Engineer",
+          "image": "/static/images/web_team/copilot_2.0_batch/JASIM SAAD PA.webp",
+          "social": {
+            "github": "https://github.com/Jasim-Saad-P-A",
+            "linkedin": "https://www.linkedin.com/in/jasim-saad-6b2830327",
+            "portfolio": "",
+            "email": "jasim860p@gmail.com"
+          }
+        },
+        {
+          "name": "MANOJ KUMAR A",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Frontend Developer , UI Designer",
+          "image": "/static/images/web_team/copilot_2.0_batch/MANOJ KUMAR A.webp",
+          "social": {
+            "github": "https://github.com/amanojkumar07",
+            "linkedin": "https://www.linkedin.com/in/manoj-kumar-a-626084344/",
+            "portfolio": "",
+            "email": "amanojkumar991@gmail.com"
+          }
+        },
+        {
+          "name": "AKASH MK",
+          "year": "Batch 2024  - 2028",
+          "department": "AI",
+          "club_designation": "Frontend Developer , QA Tester",
+          "image": "/static/images/web_team/copilot_2.0_batch/AKASH MK.webp",
+          "social": {
+            "github": "https://github.com/AKASHMK04",
+            "linkedin": "https://www.linkedin.com/in/akash-ak-02baa1353?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+            "portfolio": "",
+            "email": "ashdow04@gmail.com"
+          }
+        }
+      ]
+    },
+    {
+      "content": [
+        {
+          "name": "MR RAJAGOPALAN B",
+          "image": "/static/images/web_team/rajagopalan.webp",
+          "club_designation": "AVP Product Development"
+        },
+        {
+          "name": "DR. VISU P",
+          "image": "/static/images/web_team/visu.webp",
+          "club_designation": "Professor & Head, Dept of Artificial Intelligence and Data Science"
+        }
+      ],
+      "category": "staff"
+    }
+  ]
+}
 ]

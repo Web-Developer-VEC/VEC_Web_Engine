@@ -64,6 +64,7 @@ import {
     FaUserAstronaut,
     FaClipboardList,
     FaEnvelopeOpenText, 
+    FaUserShield
 } from "react-icons/fa";
 import { ArrowBigLeft, BrainCircuit, CalendarClock, Shell, Trophy, UserCog } from "lucide-react";
 import { FingerPrintIcon } from "@heroicons/react/24/solid";
@@ -294,8 +295,10 @@ const SideNav = ({sts, setSts, navData, cls, backButton=false}) => {
                 return <FaEnvelopeOpenText className={sty}/>
             case "Pilot":
                 return <UserCog className={sty}/>
-            case "Co-Pilot":
+            case "Co-Pilot 1.0":
                 return <FaUserGear className={sty}/>
+            case "Co-Pilot 2.0":
+                return <FaUserShield className={sty}/>
             default:
                 return <FaThLarge className={sty}/>;
         }
