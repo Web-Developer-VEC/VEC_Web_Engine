@@ -181,22 +181,6 @@
         "members": 
         [
           {
-            "name": "Mrs. RAMA NACHIAR R",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-003-04-119",
-            "socialmedia_links": 
-              {
-                "linkedin": "https://www.linkedin.com/in/rama-nachiar-8003ba241/?originalSubdomain=in",
-                "googlescholar": "",
-                "researchgate": "",
-                "orchidprofile": "",
-                "publonprofile": "",
-                "scopus": ""
-              },
-            "image_path": "/static/images/profile_photos/003/VEC-003-04-119.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-119.pdf"
-          },
-          {
             "name": "Dr. ANITHA V",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-108",
@@ -213,22 +197,6 @@
             "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-108.pdf"
           },
           {
-            "name": "Mrs. SASIKALA S",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-003-04-104",
-            "socialmedia_links": 
-            {
-              "linkedin": "",
-              "googlescholar": "",
-              "researchgate": "https://www.researchgate.net/profile/Sasikala-Sakkaravarthy",
-              "orchidprofile": "",
-              "publonprofile": "",
-              "scopus": ""
-            },
-            "image_path": "/static/images/profile_photos/003/VEC-003-04-104.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-104.pdf"
-          },
-          {
             "name": "Mr. SIVARAJ C",
             "designation": "Assistant Professor",
             "unique_id": "VEC-003-04-142",
@@ -243,22 +211,6 @@
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-142.webp",
             "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-142.pdf"
-          },
-          {
-            "name": "Mr. NIRUBAN BALU T",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-003-04-143",
-            "socialmedia_links": 
-            {
-              "linkedin": "https://in.linkedin.com/in/niruban-balu-270275242",
-              "googlescholar": "",
-              "researchgate": "",
-              "orchidprofile": "",
-              "publonprofile": "",
-              "scopus": ""
-            },
-            "image_path": "/static/images/profile_photos/003/VEC-003-04-143.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-143.pdf"
           },
           {
             "name": "Dr. BALAMURUGAPANDIAN N",
@@ -324,26 +276,7 @@
             },
             "image_path": "/static/images/profile_photos/003/VEC-003-04-700.webp",
             "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-700.pdf"
-          },
-
-          {
-            "name": "Dr. PRIYADHARSHINI N",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-003-04-800",
-            "socialmedia_links": 
-            {
-              "linkedin": "",
-              "googlescholar": "",
-              "researchgate": "",
-              "orchidprofile": "",
-              "publonprofile": "",
-              "scopus": ""
-            },
-            "image_path": "/static/images/profile_photos/003/VEC-003-04-800.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/003/VEC-003-04-800.pdf"
           }
-
-          
       ]
       },
       {

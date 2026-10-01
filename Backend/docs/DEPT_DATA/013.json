@@ -262,21 +262,6 @@
 
               },
               
-          {
-      "name": "Mr. FRANK GLADSON T S",
-      "designation": "Assistant Professor",
-      "unique_id": "VEC-013-04-028",
-      "socialmedia_links": {
-        "linkedin": "",
-        "googlescholar": "https://scholar.google.com/citations?hl=en&pli=1&authuser=1&user=4vvKUoYAAAAJ",
-        "researchgate": "https://www.researchgate.net/profile/Frank-Gladson",
-        "orchidprofile": "https://orcid.org/0000-0001-9460-3686",
-        "publonprofile": "",
-        "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57191980691"
-      },
-      "image_path": "/static/images/profile_photos/013/VEC-013-04-028.webp",
-      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-028.pdf"
-    },
     {
       "name": "Mr. CHEZHIAN R",
       "designation": "Assistant Professor",
@@ -383,21 +368,6 @@
       "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-204.pdf"
     },
     {
-      "name": "Mr. JOHN LEONARD A",
-      "designation": "Assistant Professor",
-      "unique_id": "VEC-013-04-680",
-      "socialmedia_links": {
-        "linkedin": "",
-        "googlescholar": "",
-        "researchgate": "",
-        "orchidprofile": "",
-        "publonprofile": "",
-        "scopus": ""
-      },
-      "image_path": "/static/images/profile_photos/013/VEC-013-04-680.webp",
-      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-680.pdf"
-    },
-    {
       "name": "Dr. SIVASANKAR D",
       "designation": "Assistant Professor",
       "unique_id": "VEC-013-04-084",
@@ -441,7 +411,25 @@
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-04-003.webp",
       "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-003.pdf"
-    }]
+    },
+  {
+    
+      "name": "Ms. JENEFER ASHA JEYARANI M",
+      "designation": "Assistant Professor",
+      "unique_id": "VEC-013-04-703",
+      "socialmedia_links": {
+        "linkedin": "",
+        "googlescholar": "",
+        "researchgate": "",
+        "orchidprofile": "",
+        "publonprofile": "",
+        "scopus": ""
+      },
+      "image_path": "/static/images/profile_photos/013/VEC-013-04-703.webp",
+      "pdf_path": "/static/pdfs/faculty_profile/013/VEC-013-04-703.pdf"
+    
+  }
+  ]
       },
       {
         "category": "non_teaching_staff",
@@ -458,21 +446,6 @@
         "scopus": ""
       },
       "image_path": "/static/images/profile_photos/013/VEC-013-05-012.webp",
-      "pdf_path": ""
-    },
-    {
-      "name": "Mr. CHANDRAMOULLI P",
-      "designation": "Lab Instructor",
-      "unique_id": "VEC-013-05-013",
-      "socialmedia_links": {
-        "linkedin": "",
-        "googlescholar": "",
-        "researchgate": "",
-        "orchidprofile": "",
-        "publonprofile": "",
-        "scopus": ""
-      },
-      "image_path": "/static/images/profile_photos/013/VEC-013-05-013.webp",
       "pdf_path": ""
     },
     {

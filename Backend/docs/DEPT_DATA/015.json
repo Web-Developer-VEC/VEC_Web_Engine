@@ -213,36 +213,6 @@
         "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-03-193.pdf"
       },
       {
-        "name": "Mrs. HAMSAVALLI G",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-015-04-091",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/hamsavalli-g-322069204?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/015/VEC-015-04-091.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-091.pdf"
-      },
-      {
-        "name": "Mr. MOSES ISAIAH V G",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-015-04-192",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/moses-isaiah-47b68332a/",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=2&user=S-bt3OoAAAAJ",
-          "researchgate": "https://www.researchgate.net/profile/Moses-V-G-Isaiah?ev=hdr_xprf",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/015/VEC-015-04-192.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-192.pdf"
-      },
-      {
         "name": "Dr. REVATHY T A",
         "designation": "Assistant Professor",
         "unique_id": "VEC-015-04-527",
@@ -334,21 +304,6 @@
         "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-100.pdf"
       },
 
-       {
-        "name": "Dr. ARUN K J",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-015-04-400",
-        "socialmedia_links": {
-          "linkedin": "www.linkedin.com/in/dr-arun-k-j-1501a2232",
-          "googlescholar": "https://scholar.google.com/citations?user=ioJzla8AAAAJ&hl=en",
-          "researchgate": "",
-          "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0000-9565-2578",
-          "publonprofile": "https://www.webofscience.com/wos/author/record/PLS-1751-2026",
-          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55816833000 "
-        },
-        "image_path": "/static/images/profile_photos/015/VEC-015-04-400.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-400.pdf"
-      },
 
       {
         "name": "Dr. HEMALATHA K",
@@ -364,6 +319,37 @@
         },
         "image_path": "/static/images/profile_photos/015/VEC-015-04-300.webp",
         "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-300.pdf"
+      },
+      {        
+        "name": "Dr. PENILA SAMINY P",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-780",
+        "socialmedia_links": {
+          "linkedin": "https://www.linkedin.com/in/penila-saminy-p-b6bb9b34a/?isSelfProfile=false",
+          "googlescholar": "https://scholar.google.com/citations?user=p9mfeqUAAAAJ&hl=en&oi=ao",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/my-orcid?orcid=0009-0002-5037-6906",
+          "publonprofile": "",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58979248200"
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-780.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-780.pdf"
+      },
+      {
+                
+        "name": "Dr. ARUL ANNE ELDEN A",
+        "designation": "Assistant Professor",
+        "unique_id": "VEC-015-04-790",
+        "socialmedia_links": {
+          "linkedin": "",
+          "googlescholar": "https://scholar.google.com/citations?user=pb--zDIAAAAJ&hl=en",
+          "researchgate": "",
+          "orchidprofile": "https://orcid.org/0009-0007-8827-5330",
+          "publonprofile": "",
+          "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57659002100"
+        },
+        "image_path": "/static/images/profile_photos/015/VEC-015-04-790.webp",
+        "pdf_path": "/static/pdfs/faculty_profile/015/VEC-015-04-790.pdf"
       }
     ]
   },

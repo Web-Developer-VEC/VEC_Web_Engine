@@ -306,7 +306,12 @@ export default function Webteam({ toggle, theme }) {
 
     if (tab == "copilot") {
       setWebtab("Co-Pilot 1.0");
-    } else {
+    }
+    else if(tab=="copilot2"){
+      setWebtab("Co-Pilot 2.0");
+      
+    }
+     else {
       setWebtab("Pilot");
     }
 

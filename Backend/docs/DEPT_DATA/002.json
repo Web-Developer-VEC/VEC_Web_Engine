@@ -248,21 +248,6 @@
     "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-155.pdf"
   },
   {
-    "name": "Mr. YUVARAJ M",
-    "designation": "Assistant Professor",
-    "unique_id": "VEC-002-04-160",
-    "socialmedia_links": {
-      "linkedin": "https://www.linkedin.com/in/yuvaraj-maruthu-pandian-81796943/",
-      "googlescholar": "https://scholar.google.co.in/citations?user=ad1pYeEAAAAJ&hl=en",
-      "researchgate": "https://www.researchgate.net/profile/Yuvaraj_m",
-      "orchidprofile": "https://orcid.org/0000-0003-2986-5369?lang=en",
-      "publonprofile": "https://www.webofscience.com/wos/author/record/AEE-7608-2022",
-      "scopus": ""
-    },
-    "image_path": "/static/images/profile_photos/002/VEC-002-04-160.webp",
-    "pdf_path": "/static/pdfs/faculty_profile/002/VEC-002-04-160.pdf"
-  },
-  {
     "name": "Mr. DINESHBABU D",
     "designation": "Assistant Professor",
     "unique_id": "VEC-002-04-010",
