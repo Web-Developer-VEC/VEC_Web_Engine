@@ -349,6 +349,23 @@
             },
             "image_path": "/static/images/profile_photos/017/VEC-017-04-707.webp",
             "pdf_path": "/static/pdfs/faculty_profile/017/VEC-017-04-707.pdf"
+          },
+          {
+            
+            "name": "Mr. ARUN RAMASAMY A",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-017-04-919",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/017/VEC-017-04-919.webp",
+            "pdf_path": "/static/pdfs/faculty_profile/017/VEC-017-04-919.pdf"
+          
           }
         ]
       },

@@ -693,6 +693,66 @@
             "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-001.pdf"
           },
           {
+            "name": "Mrs. THAMIZHARASI A",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-005-04-917",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/005/VEC-005-04-917.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mrs. POORANI PRAKASH",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-005-04-915",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/005/VEC-005-04-915.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mrs. CHITRA J",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-005-04-914",
+            "socialmedia_links": {
+              "linkedin": "https://www.linkedin.com/in/chitra-j-479a8b388/",
+              "googlescholar": "https://scholar.google.com/citations?user=ipfS2wIAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/005/VEC-005-04-914.webp",
+            "pdf_path": ""
+          },
+          {
+            "name": "Mrs. LIBIYA SHALJAT ROSE P.R",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-005-04-916",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "",
+              "researchgate": "",
+              "orchidprofile": "",
+              "publonprofile": "",
+              "scopus": ""
+            },
+            "image_path": "/static/images/profile_photos/005/VEC-005-04-916.webp",
+            "pdf_path": ""
+          },
+          {
             "name": "Mrs. GAYATHRI D",
             "designation": "Assistant Professor",
             "unique_id": "VEC-005-04-006",
