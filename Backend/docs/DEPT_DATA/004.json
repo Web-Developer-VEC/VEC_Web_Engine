@@ -330,7 +330,40 @@
       },
       {
         "category": "non_teaching_staff",
-        "members": []
+        "members": [
+          {
+                "name": "Mrs. ASHWINI M",
+                "designation": "Lab Instructor",
+                "unique_id": "VEC-004-04-560",
+                "socialmedia_links": 
+                {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-560.webp",
+                "pdf_path": ""
+            },
+            {
+                "name": "Mrs. VIMALA N",
+                "designation": "Lab Instructor",
+                "unique_id": "VEC-004-04-580",
+                "socialmedia_links": 
+                {
+                    "linkedin": "",
+                    "googlescholar": "",
+                    "researchgate": "",
+                    "orchidprofile": "",
+                    "publonprofile": "",
+                    "scopus": ""
+                },
+                "image_path": "/static/images/profile_photos/004/VEC-004-04-580.webp",
+                "pdf_path": ""
+            }
+        ]
       }
     ]
   },
