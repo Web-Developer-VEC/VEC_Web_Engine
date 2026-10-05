@@ -113,6 +113,52 @@
         "year": "2025-2026",
         "content": [
           {
+            "category": "zonal_table",
+            "year": "2025-2026",
+            "content": [
+              {
+                "game": "Badminton (M)",
+                "position": "Runner"
+              },
+              {
+                "game": "Volleyball (W)",
+                "position": "Winner"
+              },
+              {
+                "game": "Badminton (W)",
+                "position": "Third"
+              },
+              {
+                "game": "Hockey (M)",
+                "position": "Runner"
+              },
+              {
+                "game": "Chess (M&W)",
+                "position": "Third"
+              },
+              {
+                "game": "Kho-Kho (M)",
+                "position": "Winner"
+              },
+              {
+                "game": "Table Tennis (W)",
+                "position": "Winner"
+              },
+              {
+                "game": "Ball Badminton (W)",
+                "position": "Third"
+              },
+              {
+                "game": "Table Tennis (M)",
+                "position": "Winner"
+              },
+              {
+                "game": "Basketball (W)",
+                "position": "Runner"
+              }
+            ]
+          },
+          {
             "category": "zone_winner",
             "content": [
               {
