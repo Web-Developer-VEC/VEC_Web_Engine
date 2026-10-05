@@ -110,394 +110,419 @@
     "type": "achivements",
     "data": [
       {
-        "category": "zonal_table",
+        "year": "2025-2026",
+        "content": [
+          {
+            "category": "zone_winner",
+            "content": [
+              {
+                "title": "Anna University Zonal Our College Chess Men teams Secure Third position Match held at Sriram Engg College on 1.09.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_1.webp"
+              },
+              {
+                "title": "Anna University Zonal Our College Chess Women teams Secure Third position Match held at Sriram Engg College on 1.09.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_2.webp"
+              },
+              {
+                "title": "Anna University Zonal our College Badminton Men team Secure Runner Up position Match held at Velammal Engg College on 8.09.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_3.webp"
+              },
+              {
+                "title": "Anna University Zonal our College Badminton Women team Secure Third Position Match held at Velammal Engg College on 9.09.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_4.webp"
+              },
+              {
+                "title": "Anna University Zonal Our College Basketball Women team Secure Runner Match held at Vel Tech Multi Tech Engg College on 12.09.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_5.webp"
+              },
+              {
+                "title": "Anna University Zonal our College Volleyball Women team Secure Winner Position Match held at Prathyusha Engg College on 14.10.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_6.webp"
+              },
+              {
+                "title": "Anna University Zonal our College Table Tennis Women Winners Match held at Prathyusha Engg College on 11.10.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_7.webp"
+              },
+              {
+                "title": "Anna University Zonal our College Table Tennis Men Winners Match held at Prathyusha Engg College on 11.10.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_8.webp"
+              },
+              {
+                "title": "Anna University Zonal our College Ball badminton Women team got Third Position Match held at SA Engg College on 31.10.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_9.webp"
+              },
+              {
+                "title": "Anna University Zonal our College Hockey Men team Secure Runner Up position Match held at St.Peters Engg College on 31.19.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_10.webp"
+              },
+              {
+                "title": "Anna University Zonal our College Kho Kho Men team got Winner Position Match held at GRT Engg College on 8.11.2025",
+                "image_path": "/static/images/sports/zonal/zonal_w_2026_11.webp"
+              }
+            ]
+          },
+          {
+            "category": "interzonal_achievements",
+            "content": [
+              {
+                "title": "Anna University Inter Zone Boxing Tournament Our College Student T.Keerthana Lakshmi of III year Civil Secure Gold Medal and also selected for the All India Inter University competition Match held at  Govt College of Engg, Bargur on 9.11.25.",
+                "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_1.webp"
+              },
+              {
+                "title": "Our College student S R Rupak of IV year EIE won the consecutive gold medals for three years in the Anna University Inter Zone Taekwondo tournament and also selected for the All India Inter University competition. Match held at Kongunadu College of Engineering Thottiam on 10.01.26.",
+                "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_2.webp"
+              },
+              {
+                "title": "Our College student S.Prasad of II year MECH won the  gold medal in the Anna University Inter Zone Karate tournament and also selected for the All India Inter University competition.Match held at Christian college of Engg &Tech Oddanchatram on 6.2.2026.",
+                "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_3.webp"
+              },
+              {
+                "title": "Our College student C.Thiyagarajan of III year CSE Representing All India Inter University Softball tournament match held at Sant Gadge Baba Amaravati University Amravati on 1 to 10 Feb 26.",
+                "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_4.webp"
+              },
+              {
+                "title": "Our College student G.Ajith of III year AI&DS Representing All India Inter University Taekwondo tournament match held at DAV University Jalandhar on 16 to 20 March2026.",
+                "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_5.webp"
+              },
+              {
+                "title": "Our College student K.Dhiyaneshwar of IV year AI Won the Silver medal in Anna University Inter Zone Power Lifting competition held at Indian Institute of Handloom Tech Salem on 17.04.2026",
+                "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_6.webp"
+              },
+              {
+                "title": "Our College student Abishek Paul Joshua of III year CSE Cyber Security Won the Silver medal in Anna University Inter Zone Power Lifting competition held at Indian Institute of Handloom Tech Salem on 17.04.2026",
+                "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_7.webp"
+              }
+            ]
+          },
+          {
+            "category": "others",
+            "content": [
+              {
+                "title": "Our College student S.R.Rubak of IV year EIE Won the Gold medal in Chennai District Taekwondo Championship held at ICF Chennai on 28.06.2025",
+                "image_path": "/static/images/sports/others/Chennai_District_Taekwondo_Championship.webp"
+              },
+              {
+                "title": "Our College student J.Thirumurugan of II year AUTO Won the Gold medal in State level Boxing Championship held at Chennai on 26.06.2025",
+                "image_path": "/static/images/sports/others/State_level_Boxing_Championship.webp"
+              },
+              {
+                "title": "Our College student K.Dhiyaneshwar of IV year AI Won the Silver medal in District level Bench press competition held at Chennai on 24.05.2025",
+                "image_path": "/static/images/sports/others/District_level_Bench_press_competition.webp"
+              },
+              {
+                "title": "Our College student J.Aakash of IV year AI Won the Gold medal in Straight Bird challenge competition held at Pudukkottai on 09.07.2025",
+                "image_path": "/static/images/sports/others/Straight_Bird_challenge_competition.webp"
+              },
+              {
+                "title": "Our College student S.R.Rubak of IV year EIE Won the Gold medal in YMCA Buck Taekwondo Tournament held at YMCA Chennai on 22.07.2025",
+                "image_path": "/static/images/sports/others/YMCA_Buck_Taekwondo_Tournament.webp"
+              },
+              {
+                "title": "Our College student S.R.Rubak of IV year EIE Won the Silver medal in Tamilnadu State Championship Taekwondo Tournament held at SRM University Chennai on 17.08.2025",
+                "image_path": "/static/images/sports/others/Tamilnadu_State_Championship_Taekwondo_Tournament.webp"
+              },
+              {
+                "title": "Our College student Aakash Jagan of AI IV secure 6 Gold 8 silver 2 Bronze medals in Tamilnadu State championship Shot Gun Shooting competition held Royal Sports Club Pudukkottai on 7.08.25 to 28.08.25. ",
+                "image_path": "/static/images/sports/others/Tamilnadu State championship Shot Gun Shooting competition.webp"
+              },
+              {
+                "title": "  Our College student K.Dhiyaneshwar of IV year AI secured gold in junior 93 kg and silver in senior 93 kg category for State Classic Power Lifting Championship held at Coimbatore on 27 & 28 Sep 2025.",
+                "image_path": "/static/images/sports/others/State Classic Power Lifting Championship.webp"
+              },
+              {
+                "title": "Anna University Represents 2024-25  (S.R.Rubak of IV year EIE Taekwondo) (Nithish Kumar III year IT Softball) (T.Keethana Lakshmi III year Civil Boxing)",
+                "image_path": "/static/images/sports/others/Anna University Represents 2024-25.webp"
+              },
+              {
+                "title": "TAMILNADU ASHTEDU MARDANI AKHADA FEDERATION OF INDIA Conducted by The Indian Traditional Cultural Yogic Folk Martial Arts Akhada Games Federation of India (SGFI) on 4th, 5th Oct 2025. Our College Student of Mythreyan I year CSE got Mardanikala-1st place, Spear balancing- 1st place.",
+                "image_path": "/static/images/sports/others/Yogic Folk Martial Arts Akhada Games Federation of India .webp"
+              },
+              {
+                "title": "Nationals Tennikoit championship Our College student M.Sallai Hari Krishnan of I year AI&DS got team championship gold medal",
+                "image_path": "/static/images/sports/others/Nationals Tennikoit championship.webp"
+              },
+              {
+                "title": "Individual’s doubles silver medal Match held at Uttar Pradesh on 8.10.2025 to 12.10.2025",
+                "image_path": "/static/images/sports/others/Individual’s doubles silver medal Match.webp"
+              },
+              {
+                "title": "Our College Student of Mythreyan I st year CSE got 1st position in general category 2nd position in overall championship for International Yoga competition held at Mahabalipuram Chennai on 11&12 Oct 2025. ",
+                "image_path": "/static/images/sports/others/overall championship for International Yoga competition.webp"
+              },
+              {
+                "title": "Our College Student Mr. Prasad of B.E Mech lI year won the Silver medal in Thiruvallur District level Karate men Tournament held at Thiruvallur on 09/11/2025.",
+                "image_path": "/static/images/sports/others/Thiruvallur District level Karate men Tournament.webp"
+              },
+              {
+                "title": "Our College student S.R.Rubak of IV year EIE won Gold medal at Tamil Nadu state level Taekwondo championship held at Salam on 30.11.2025",
+                "image_path": "/static/images/sports/others/Tamil Nadu state level Taekwondo championship.webp"
+              },
+              {
+                "title": "Our College student K.Dhiyaneshwar of IV year AI secured 3rd place in state equipped bench press competition held at OMR Thoraipakkam on 6.12.25.",
+                "image_path": "/static/images/sports/others/state equipped bench press competition.webp"
+              },
+              {
+                "title": "Our College student Abishek Paul Joshua of III year CSE Cyber Security won the gold medal in the sub junior category Asian championship at NewDelhi on 20.2.26",
+                "image_path": "/static/images/sports/others/sub junior category Asian championship.webp"
+              },
+              {
+                "title": "Our College Kho Kho team got Runner up position in T Trophy conducted by College of Engineering Guindy, Anna University Chennai on 28.2.2026.",
+                "image_path": "/static/images/sports/others/T Trophy conducted by College of Engineering Guindy.webp"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "year": "2024-2025",
         "content": [
           {
-            "game": "Badminton(M)",
-            "position": "Winner"
+            "category": "zonal_table",
+            "year": "2024-2025",
+            "content": [
+              {
+                "game": "Badminton(M)",
+                "position": "Winner"
+              },
+              {
+                "game": "Badminton(W)",
+                "position": "Runner"
+              },
+              {
+                "game": "Chess(M)",
+                "position": "Winner"
+              },
+              {
+                "game": "Table Tennis(W)",
+                "position": "Winner"
+              },
+              {
+                "game": "Table Tennis(M)",
+                "position": "Winner"
+              },
+              {
+                "game": "Basketball(M)",
+                "position": "Runner"
+              },
+              {
+                "game": "Basketball(W)",
+                "position": "Runner"
+              },
+              {
+                "game": "HOCKEY(M)",
+                "position": "Third"
+              },
+              {
+                "game": "Kho-Kho(M)",
+                "position": "Runner"
+              },
+              {
+                "game": "FootBall(M)",
+                "position": "Third"
+              },
+              {
+                "game": "Kabaddi(M)",
+                "position": "Winner"
+              },
+              {
+                "game": "Volleyball(M)",
+                "position": "Third"
+              }
+            ]
           },
           {
-            "game": "Badminton(W)",
-            "position": "Runner"
+            "category": "zone_winner",
+            "content": [
+              {
+                "title": "Anna University Zonal Badminton (M) Third Place Match held at VEC",
+                "image_path": "/static/images/sports/zonal/zonal_badminton_m_3.webp"
+              },
+              {
+                "title": "Anna University Zonal Badminton (W) Runner Match held at VEC",
+                "image_path": "/static/images/sports/zonal/zonal_badminton_w_2.webp"
+              },
+              {
+                "title": "Anna University Zonal Chess (M) Winner Match held at AMS Engg College",
+                "image_path": "/static/images/sports/zonal/zonal_chess_m_1.webp"
+              },
+              {
+                "title": "Anna University Zonal Table Tennis (W) Winner Match held at SAEC",
+                "image_path": "/static/images/sports/zonal/zonal_tabletennis_w_1.webp"
+              },
+              {
+                "title": "Anna University Zonal Table Tennis (M) Winner Match held at SAEC",
+                "image_path": "/static/images/sports/zonal/zonal_tabletennis_m_1.webp"
+              },
+              {
+                "title": "Anna University Zonal Basketball (M) Runner Match held at RMKEC",
+                "image_path": "/static/images/sports/zonal/zonal_basketball_m_2.webp"
+              },
+              {
+                "title": "Anna University Zonal Basketball (W) Runner Match held at RMKEC",
+                "image_path": "/static/images/sports/zonal/zonal_basketball_w_2.webp"
+              },
+              {
+                "title": "Anna University Zonal Hockey (M) Third Place Match held at VEC",
+                "image_path": "/static/images/sports/zonal/zonal_hockey_m_3.webp"
+              },
+              {
+                "title": "Anna University Zonal Kho Kho (M) Runner Match held at PRATHYUSHA",
+                "image_path": "/static/images/sports/zonal/zonal_khokho_m_2.webp"
+              },
+              {
+                "title": "Anna University Zonal Football (M) Third Place Match held at VIT",
+                "image_path": "/static/images/sports/zonal/zonal_football_m_3.webp"
+              },
+              {
+                "title": "Anna University Zonal Kabaddi (M) Winner Match held at VEC",
+                "image_path": "/static/images/sports/zonal/zonal_kabaddi_m_1.webp"
+              },
+              {
+                "title": "Anna University Zonal Volleyball (M) Third Place Match held at RMKEC",
+                "image_path": "/static/images/sports/zonal/zonal_volleyball_m_3.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL CHESS MEN AND WOMEN WINNER MATCH HELD AT SRIRAM ENGG COLLEGE ON 22.09.23",
+                "image_path": "/static/images/sports/zonal/zonal_chess_m&w_1_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL TABLE TENNIS MEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 26.09.23",
+                "image_path": "/static/images/sports/zonal/zonal_tabletennis_m_2_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL BADMINTON WOMEN RUNNER MATCH HELD AT VEC ENGG COLLEGE ON 04.10.23",
+                "image_path": "/static/images/sports/zonal/zonal_badminton__w_2_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL HOCKEY MEN WINNER MATCH HELD AT GRT ENGG COLLEGE ON 12.10.23",
+                "image_path": "/static/images/sports/zonal/zonal_hockey_m_1_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL FOOTBALL MEN WINNER MATCH HELD AT VEL TECH ENGG COLLEGE ON 11.10.23",
+                "image_path": "/static/images/sports/zonal/zonal_football_m_1_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL VOLLEYBALL MEN THIRD MATCH HELD AT PRATHYUSHA ENGG COLLEGE ON 27&28.10.23",
+                "image_path": "/static/images/sports/zonal/zonal_volleyball_m_3_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL CRICKET MEN THIRD MATCH HELD AT VEL TECH ENGG COLLEGE",
+                "image_path": "/static/images/sports/zonal/zonal_cricket_m_3_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL BASKETBALL WOMEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 02.11.23",
+                "image_path": "/static/images/sports/zonal/zonal_basketball_w_2_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL BALLBADMINTON WOMEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 07.11.23",
+                "image_path": "/static/images/sports/zonal/zonal_ballbadminton_w_2_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL ATHLETICS WOMEN OVERALL RUNNER MATCH HELD AT GRT ENGG COLLEGE ON 24, 25.11.23",
+                "image_path": "/static/images/sports/zonal/zonal_athletics_overall_2_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL HANDBALL MEN RUNNER MATCH HELD AT ST.PETERS ENGG COLLEGE AVADI ON 11.03.2024",
+                "image_path": "/static/images/sports/zonal/zonal_handball_m_2_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL KHO KHO MEN WINNER MATCH HELD AT PRATHYUSHA ENGG COLLEGE ON 16.03.24",
+                "image_path": "/static/images/sports/zonal/zonal_khokho_m_1_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL BADMINTON MEN RUNNER – VELAMMAL ENGG COLLEGE MATCH HELD ON 08.09.25.",
+                "image_path": "/static/images/sports/zonal/zonal_badminton_m_3_23.webp"
+              },
+              {
+                "title": "ANNA UNIVERSITY ZONAL BADMINTON WOMEN THIRD PLACE – VELAMMAL ENGG COLLEGE MATCH HELD ON 09.09.25.",
+                "image_path": "/static/images/sports/zonal/zonal_badminton_w_2_23.webp"
+              }
+            ]
           },
           {
-            "game": "Chess(M)",
-            "position": "Winner"
+            "category": "interzonal_achievements",
+            "content": [
+              {
+                "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secured a Gold medal and qualified to represent Anna University in the All India Inter-University Boxing Tournament to be held at Chandigarh University, Mohali.",
+                "image_path": "/static/images/sports/interzonal/interzonal_boxing_w_1_23.webp"
+              },
+              {
+                "title": "Congratulations to our students J. Nitish Kumar of 1st year B.TECH IT and R. Rohit Valavan of 1st Year CSE for participating in the All India Inter-University Championship held at Bangalore University from 13/05/24 to 18/05/24.",
+                "image_path": "/static/images/sports/interzonal/interzonal_softball_m_23.webp"
+              },
+              {
+                "title": "Our college student S.R.Rupak of BE.EIE II year secured gold medals in three events of Anna university Inter Zonal Taekwondo tournament held at Govt.College of Engineering Bargur on 21.10.23",
+                "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1_23.webp"
+              },
+              {
+                "title": "Our college student G.Ajith of B.Tech.AI&DS I year secured Gold medal in Individual event of Anna University Inter Zonal Taekwondo tournament held at Govt.College of Engineering Bargur on 21.10.23.",
+                "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1_ajith.webp"
+              },
+              {
+                "title": "Our Velammal Engg College Dept of MECH IV YR Student Mr.G.Yashwanth Kumar secured Gold medal in Anna University Inter Zone Best Physique men Tournament held @ Paavai Engineering College, Namakkal on 22/12/24",
+                "image_path": "/static/images/sports/interzonal/interzonal_bestphysique_m_1.webp"
+              },
+              {
+                "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of II year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Guru Kashi University Bathinda.",
+                "image_path": "/static/images/sports/interzonal/interzonal_boxing_w_1.webp"
+              },
+              {
+                "title": "Our Velammal Engg College Dept of AI&DS III YR Student Mr.Diyaneshwar won Silver medal under 93kg men Anna University Inter Zone Powerlifting Tournament held @ Paavai Engineering College, Namakkal.",
+                "image_path": "/static/images/sports/interzonal/interzonal_powerlifting_m_2.webp"
+              },
+              {
+                "title": "Our College students S.R.Rupak of III year EIE Secure Gold Medal in inter zone Competition and qualified for represent Anna University All India Inter University Taekwondo tournament.",
+                "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1.webp"
+              }
+            ]
           },
           {
-            "game": "Table Tennis(W)",
-            "position": "Winner"
+            "category": "others",
+            "content": [
+              {
+                "title": "Our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold in BFI talent Hunt Boxing tournament held at Bangalore.",
+                "image_path": "/static/images/sports/others/others_bfi_talenthunt_1.webp"
+              },
+              {
+                "title": "Mr.Vijeya Venkatathri (Fencing) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
+                "image_path": "/static/images/sports/others/others_fencing_m.webp"
+              },
+              {
+                "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
+                "image_path": "/static/images/sports/others/others_kheloindia_boxing_w_3_23.webp"
+              },
+              {
+                "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
+                "image_path": "/static/images/sports/others/others_kumite_m_2_23.webp"
+              },
+              {
+                "title": "Miss.Sathyapriya (Taekwondo) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
+                "image_path": "/static/images/sports/others/others_taekwondo_w.webp"
+              },
+              {
+                "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
+                "image_path": "/static/images/sports/others/others_teakwondo_overall_m_23.webp"
+              },
+              {
+                "title": "Our College Student G.Yashwanth Kumar of IV Mech secure Silver medal in Jr.Mr.Tamilnadu competition held at Rajalakshmi Engg College and got selected for Jr.India competition going to participate Chhattisgarh. And also he selected to Anna University team for Participate All India Best Physiqe competition held at Kerala.",
+                "image_path": "/static/images/sports/others/others_Jr_Mr_Tamilnadu.webp"
+              }
+            ]
           },
           {
-            "game": "Table Tennis(M)",
-            "position": "Winner"
-          },
-          {
-            "game": "Basketball(M)",
-            "position": "Runner"
-          },
-          {
-            "game": "Basketball(W)",
-            "position": "Runner"
-          },
-          {
-            "game": "HOCKEY(M)",
-            "position": "Third"
-          },
-          {
-            "game": "Kho-Kho(M)",
-            "position": "Runner"
-          },
-          {
-            "game": "FootBall(M)",
-            "position": "Third"
-          },
-          {
-            "game": "Kabaddi(M)",
-            "position": "Winner"
-          },
-          {
-            "game": "Volleyball(M)",
-            "position": "Third"
+            "category": "coordinator",
+            "content": {
+              "zone": "1",
+              "year": "2024-25",
+              "image_path": [
+                "/static/images/sports/coordinates/coordinates_1.webp",
+                "/static/images/sports/coordinates/coordinates_2.webp",
+                "/static/images/sports/coordinates/coordinates_3.webp",
+                "/static/images/sports/coordinates/coordinates_4.webp"
+              ]
+            }
           }
         ]
-      },
-      {
-        "category": "zone_winner",
-        "content": [
-          {
-            "title": "Anna University Zonal Badminton (M) Third Place Match held at VEC",
-            "image_path": "/static/images/sports/zonal/zonal_badminton_m_3.webp"
-          },
-          {
-            "title": "Anna University Zonal Badminton (W) Runner Match held at VEC",
-            "image_path": "/static/images/sports/zonal/zonal_badminton_w_2.webp"
-          },
-          {
-            "title": "Anna University Zonal Chess (M) Winner Match held at AMS Engg College",
-            "image_path": "/static/images/sports/zonal/zonal_chess_m_1.webp"
-          },
-          {
-            "title": "Anna University Zonal Table Tennis (W) Winner Match held at SAEC",
-            "image_path": "/static/images/sports/zonal/zonal_tabletennis_w_1.webp"
-          },
-          {
-            "title": "Anna University Zonal Table Tennis (M) Winner Match held at SAEC",
-            "image_path": "/static/images/sports/zonal/zonal_tabletennis_m_1.webp"
-          },
-          {
-            "title": "Anna University Zonal Basketball (M) Runner Match held at RMKEC",
-            "image_path": "/static/images/sports/zonal/zonal_basketball_m_2.webp"
-          },
-          {
-            "title": "Anna University Zonal Basketball (W) Runner Match held at RMKEC",
-            "image_path": "/static/images/sports/zonal/zonal_basketball_w_2.webp"
-          },
-          {
-            "title": "Anna University Zonal Hockey (M) Third Place Match held at VEC",
-            "image_path": "/static/images/sports/zonal/zonal_hockey_m_3.webp"
-          },
-          {
-            "title": "Anna University Zonal Kho Kho (M) Runner Match held at PRATHYUSHA",
-            "image_path": "/static/images/sports/zonal/zonal_khokho_m_2.webp"
-          },
-          {
-            "title": "Anna University Zonal Football (M) Third Place Match held at VIT",
-            "image_path": "/static/images/sports/zonal/zonal_football_m_3.webp"
-          },
-          {
-            "title": "Anna University Zonal Kabaddi (M) Winner Match held at VEC",
-            "image_path": "/static/images/sports/zonal/zonal_kabaddi_m_1.webp"
-          },
-          {
-            "title": "Anna University Zonal Volleyball (M) Third Place Match held at RMKEC",
-            "image_path": "/static/images/sports/zonal/zonal_volleyball_m_3.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL CHESS MEN AND WOMEN WINNER MATCH HELD AT SRIRAM ENGG COLLEGE ON 22.09.23",
-            "image_path": "/static/images/sports/zonal/zonal_chess_m&w_1_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL TABLE TENNIS MEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 26.09.23",
-            "image_path": "/static/images/sports/zonal/zonal_tabletennis_m_2_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL BADMINTON WOMEN RUNNER MATCH HELD AT VEC ENGG COLLEGE ON 04.10.23",
-            "image_path": "/static/images/sports/zonal/zonal_badminton__w_2_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL HOCKEY MEN WINNER MATCH HELD AT GRT ENGG COLLEGE ON 12.10.23",
-            "image_path": "/static/images/sports/zonal/zonal_hockey_m_1_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL FOOTBALL MEN WINNER MATCH HELD AT VEL TECH ENGG COLLEGE ON 11.10.23",
-            "image_path": "/static/images/sports/zonal/zonal_football_m_1_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL VOLLEYBALL MEN THIRD MATCH HELD AT PRATHYUSHA ENGG COLLEGE ON 27&28.10.23",
-            "image_path": "/static/images/sports/zonal/zonal_volleyball_m_3_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL CRICKET MEN THIRD MATCH HELD AT VEL TECH ENGG COLLEGE",
-            "image_path": "/static/images/sports/zonal/zonal_cricket_m_3_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL BASKETBALL WOMEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 02.11.23",
-            "image_path": "/static/images/sports/zonal/zonal_basketball_w_2_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL BALLBADMINTON WOMEN RUNNER MATCH HELD AT SA ENGG COLLEGE ON 07.11.23",
-            "image_path": "/static/images/sports/zonal/zonal_ballbadminton_w_2_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL ATHLETICS WOMEN OVERALL RUNNER MATCH HELD AT GRT ENGG COLLEGE ON 24, 25.11.23",
-            "image_path": "/static/images/sports/zonal/zonal_athletics_overall_2_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL HANDBALL MEN RUNNER MATCH HELD AT ST.PETERS ENGG COLLEGE AVADI ON 11.03.2024",
-            "image_path": "/static/images/sports/zonal/zonal_handball_m_2_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL KHO KHO MEN WINNER MATCH HELD AT PRATHYUSHA ENGG COLLEGE ON 16.03.24",
-            "image_path": "/static/images/sports/zonal/zonal_khokho_m_1_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL BADMINTON MEN RUNNER – VELAMMAL ENGG COLLEGE MATCH HELD ON 08.09.25.",
-            "image_path": "/static/images/sports/zonal/zonal_badminton_m_3_23.webp"
-          },
-          {
-            "title": "ANNA UNIVERSITY ZONAL BADMINTON WOMEN THIRD PLACE – VELAMMAL ENGG COLLEGE MATCH HELD ON 09.09.25.",
-            "image_path": "/static/images/sports/zonal/zonal_badminton_w_2_23.webp"
-          },
-          {
-            "title": "Anna University Zonal Our College Chess Men teams Secure Third position Match held at Sriram Engg College on 1.09.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_1.webp"
-          },
-          {
-            "title": "Anna University Zonal Our College Chess Women teams Secure Third position Match held at Sriram Engg College on 1.09.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_2.webp"
-          },
-          {
-            "title": "Anna University Zonal our College Badminton Men team Secure Runner Up position Match held at Velammal Engg College on 8.09.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_3.webp"
-          },
-          {
-            "title": "Anna University Zonal our College Badminton Women team Secure Third Position Match held at Velammal Engg College on 9.09.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_4.webp"
-          },
-          {
-            "title": "Anna University Zonal Our College Basketball Women team Secure Runner Match held at Vel Tech Multi Tech Engg College on 12.09.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_5.webp"
-          },
-          {
-            "title": "Anna University Zonal our College Volleyball Women team Secure Winner Position Match held at Prathyusha Engg College on 14.10.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_6.webp"
-          },
-          {
-            "title": "Anna University Zonal our College Table Tennis Women Winners Match held at Prathyusha Engg College on 11.10.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_7.webp"
-          },
-          {
-            "title": "Anna University Zonal our College Table Tennis Men Winners Match held at Prathyusha Engg College on 11.10.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_8.webp"
-          },
-          {
-            "title": "Anna University Zonal our College Ball badminton Women team got Third Position Match held at SA Engg College on 31.10.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_9.webp"
-          },
-          {
-            "title": "Anna University Zonal our College Hockey Men team Secure Runner Up position Match held at St.Peters Engg College on 31.19.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_10.webp"
-          },
-          {
-            "title": "Anna University Zonal our College Kho Kho Men team got Winner Position Match held at GRT Engg College on 8.11.2025",
-            "image_path": "/static/images/sports/zonal/zonal_w_2026_11.webp"
-          }
-        ]
-      },
-      {
-        "category": "interzonal_achievements",
-        "content": [
-          {
-            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secured a Gold medal and qualified to represent Anna University in the All India Inter-University Boxing Tournament to be held at Chandigarh University, Mohali.",
-            "image_path": "/static/images/sports/interzonal/interzonal_boxing_w_1_23.webp"
-          },
-          {
-            "title": "Congratulations to our students J. Nitish Kumar of 1st year B.TECH IT and R. Rohit Valavan of 1st Year CSE for participating in the All India Inter-University Championship held at Bangalore University from 13/05/24 to 18/05/24.",
-            "image_path": "/static/images/sports/interzonal/interzonal_softball_m_23.webp"
-          },
-          {
-            "title": "Our college student S.R.Rupak of BE.EIE II year secured gold medals in three events of Anna university Inter Zonal Taekwondo tournament held at Govt.College of Engineering Bargur on 21.10.23",
-            "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1_23.webp"
-          },
-          {
-            "title": "Our college student G.Ajith of B.Tech.AI&DS I year secured Gold medal in Individual event of Anna University Inter Zonal Taekwondo tournament held at Govt.College of Engineering Bargur on 21.10.23.",
-            "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1_ajith.webp"
-          },
-          {
-            "title": "Our Velammal Engg College Dept of MECH IV YR Student Mr.G.Yashwanth Kumar secured Gold medal in Anna University Inter Zone Best Physique men Tournament held @ Paavai Engineering College, Namakkal on 22/12/24",
-            "image_path": "/static/images/sports/interzonal/interzonal_bestphysique_m_1.webp"
-          },
-          {
-            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of II year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Guru Kashi University Bathinda.",
-            "image_path": "/static/images/sports/interzonal/interzonal_boxing_w_1.webp"
-          },
-          {
-            "title": "Our Velammal Engg College Dept of AI&DS III YR Student Mr.Diyaneshwar won Silver medal under 93kg men Anna University Inter Zone Powerlifting Tournament held @ Paavai Engineering College, Namakkal.",
-            "image_path": "/static/images/sports/interzonal/interzonal_powerlifting_m_2.webp"
-          },
-          {
-            "title": "Our College students S.R.Rupak of III year EIE Secure Gold Medal in inter zone Competition and qualified for represent Anna University All India Inter University Taekwondo tournament.",
-            "image_path": "/static/images/sports/interzonal/interzonal_taekwondo_m_1.webp"
-          },
-          {
-            "title": "Anna University Inter Zone Boxing Tournament Our College Student T.Keerthana Lakshmi of III year Civil Secure Gold Medal and also selected for the All India Inter University competition Match held at  Govt College of Engg, Bargur on 9.11.25.",
-            "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_1.webp"
-          },
-          {
-            "title": "Our College student S R Rupak of IV year EIE won the consecutive gold medals for three years in the Anna University Inter Zone Taekwondo tournament and also selected for the All India Inter University competition. Match held at Kongunadu College of Engineering Thottiam on 10.01.26.",
-            "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_2.webp"
-          },
-          {
-            "title": "Our College student S.Prasad of II year MECH won the  gold medal in the Anna University Inter Zone Karate tournament and also selected for the All India Inter University competition.Match held at Christian college of Engg &Tech Oddanchatram on 6.2.2026.",
-            "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_3.webp"
-          },
-          {
-            "title": "Our College student C.Thiyagarajan of III year CSE Representing All India Inter University Softball tournament match held at Sant Gadge Baba Amaravati University Amravati on 1 to 10 Feb 26.",
-            "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_4.webp"
-          },
-          {
-            "title": "Our College student G.Ajith of III year AI&DS Representing All India Inter University Taekwondo tournament match held at DAV University Jalandhar on 16 to 20 March2026.",
-            "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_5.webp"
-          },
-          {
-            "title": "Our College student K.Dhiyaneshwar of IV year AI Won the Silver medal in Anna University Inter Zone Power Lifting competition held at Indian Institute of Handloom Tech Salem on 17.04.2026",
-            "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_6.webp"
-          },
-          {
-            "title": "Our College student Abishek Paul Joshua of III year CSE Cyber Security Won the Silver medal in Anna University Inter Zone Power Lifting competition held at Indian Institute of Handloom Tech Salem on 17.04.2026",
-            "image_path": "/static/images/sports/interzonal/inter_zonal_w_2026_7.webp"
-          }
-        ]
-      },
-      {
-        "category": "others",
-        "content": [
-          {
-            "title": "Our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold in BFI talent Hunt Boxing tournament held at Bangalore.",
-            "image_path": "/static/images/sports/others/others_bfi_talenthunt_1.webp"
-          },
-          {
-            "title": "Mr.Vijeya Venkatathri (Fencing) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
-            "image_path": "/static/images/sports/others/others_fencing_m.webp"
-          },
-          {
-            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
-            "image_path": "/static/images/sports/others/others_kheloindia_boxing_w_3_23.webp"
-          },
-          {
-            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
-            "image_path": "/static/images/sports/others/others_kumite_m_2_23.webp"
-          },
-          {
-            "title": "Miss.Sathyapriya (Taekwondo) of our passed out students received Best sports men award of our Honourable sports Minister Thiru.Udhaya Nithi Stalin.",
-            "image_path": "/static/images/sports/others/others_taekwondo_w.webp"
-          },
-          {
-            "title": "Anna University Inter zone Boxing competition our college student Miss T. Keerthana Lakshmi of I year Civil secure Gold medal and qualified for represent Anna University all India inter university boxing tournament to be held Chandigarh University Mohali and Qualified for KHELO INDIA UNIVERSITY GAMES 2024.",
-            "image_path": "/static/images/sports/others/others_teakwondo_overall_m_23.webp"
-          },
-          {
-            "title": "Our College Student G.Yashwanth Kumar of IV Mech secure Silver medal in Jr.Mr.Tamilnadu competition held at Rajalakshmi Engg College and got selected for Jr.India competition going to participate Chhattisgarh. And also he selected to Anna University team for Participate All India Best Physiqe competition held at Kerala.",
-            "image_path": "/static/images/sports/others/others_Jr_Mr_Tamilnadu.webp"
-          },
-          {
-            "title": "Our College student S.R.Rubak of IV year EIE Won the Gold medal in Chennai District Taekwondo Championship held at ICF Chennai on 28.06.2025",
-            "image_path": "/static/images/sports/others/Chennai_District_Taekwondo_Championship.webp"
-          },
-          {
-            "title": "Our College student J.Thirumurugan of II year AUTO Won the Gold medal in State level Boxing Championship held at Chennai on 26.06.2025",
-            "image_path": "/static/images/sports/others/State_level_Boxing_Championship.webp"
-          },
-          {
-            "title": "Our College student K.Dhiyaneshwar of IV year AI Won the Silver medal in District level Bench press competition held at Chennai on 24.05.2025",
-            "image_path": "/static/images/sports/others/District_level_Bench_press_competition.webp"
-          },
-          {
-            "title": "Our College student J.Aakash of IV year AI Won the Gold medal in Straight Bird challenge competition held at Pudukkottai on 09.07.2025",
-            "image_path": "/static/images/sports/others/Straight_Bird_challenge_competition.webp"
-          },
-          {
-            "title": "Our College student S.R.Rubak of IV year EIE Won the Gold medal in YMCA Buck Taekwondo Tournament held at YMCA Chennai on 22.07.2025",
-            "image_path": "/static/images/sports/others/YMCA_Buck_Taekwondo_Tournament.webp"
-          },
-          {
-            "title": "Our College student S.R.Rubak of IV year EIE Won the Silver medal in Tamilnadu State Championship Taekwondo Tournament held at SRM University Chennai on 17.08.2025",
-            "image_path": "/static/images/sports/others/Tamilnadu_State_Championship_Taekwondo_Tournament.webp"
-          },
-          {
-            "title": "Our College student Aakash Jagan of AI IV secure 6 Gold 8 silver 2 Bronze medals in Tamilnadu State championship Shot Gun Shooting competition held Royal Sports Club Pudukkottai on 7.08.25 to 28.08.25. ",
-            "image_path": "/static/images/sports/others/Tamilnadu State championship Shot Gun Shooting competition.webp"
-          },
-          {
-            "title": "  Our College student K.Dhiyaneshwar of IV year AI secured gold in junior 93 kg and silver in senior 93 kg category for State Classic Power Lifting Championship held at Coimbatore on 27 & 28 Sep 2025.",
-            "image_path": "/static/images/sports/others/State Classic Power Lifting Championship.webp"
-          },
-          {
-            "title": "Anna University Represents 2024-25  (S.R.Rubak of IV year EIE Taekwondo) (Nithish Kumar III year IT Softball) (T.Keethana Lakshmi III year Civil Boxing)",
-            "image_path": "/static/images/sports/others/Anna University Represents 2024-25.webp"
-          },
-          {
-            "title": "TAMILNADU ASHTEDU MARDANI AKHADA FEDERATION OF INDIA Conducted by The Indian Traditional Cultural Yogic Folk Martial Arts Akhada Games Federation of India (SGFI) on 4th, 5th Oct 2025. Our College Student of Mythreyan I year CSE got Mardanikala-1st place, Spear balancing- 1st place.",
-            "image_path": "/static/images/sports/others/Yogic Folk Martial Arts Akhada Games Federation of India .webp"
-          },
-          {
-            "title": "Nationals Tennikoit championship Our College student M.Sallai Hari Krishnan of I year AI&DS got team championship gold medal",
-            "image_path": "/static/images/sports/others/Nationals Tennikoit championship.webp"
-          },
-          {
-            "title": "Individual’s doubles silver medal Match held at Uttar Pradesh on 8.10.2025 to 12.10.2025",
-            "image_path": "/static/images/sports/others/Individual’s doubles silver medal Match.webp"
-          },
-          {
-            "title": "Our College Student of Mythreyan I st year CSE got 1st position in general category 2nd position in overall championship for International Yoga competition held at Mahabalipuram Chennai on 11&12 Oct 2025. ",
-            "image_path": "/static/images/sports/others/overall championship for International Yoga competition.webp"
-          },
-          {
-            "title": "Our College Student Mr. Prasad of B.E Mech lI year won the Silver medal in Thiruvallur District level Karate men Tournament held at Thiruvallur on 09/11/2025.",
-            "image_path": "/static/images/sports/others/Thiruvallur District level Karate men Tournament.webp"
-          },
-          {
-            "title": "Our College student S.R.Rubak of IV year EIE won Gold medal at Tamil Nadu state level Taekwondo championship held at Salam on 30.11.2025",
-            "image_path": "/static/images/sports/others/Tamil Nadu state level Taekwondo championship.webp"
-          },
-          {
-            "title": "Our College student K.Dhiyaneshwar of IV year AI secured 3rd place in state equipped bench press competition held at OMR Thoraipakkam on 6.12.25.",
-            "image_path": "/static/images/sports/others/state equipped bench press competition.webp"
-          },
-          {
-            "title": "Our College student Abishek Paul Joshua of III year CSE Cyber Security won the gold medal in the sub junior category Asian championship at NewDelhi on 20.2.26",
-            "image_path": "/static/images/sports/others/sub junior category Asian championship.webp"
-          },
-          {
-            "title": "Our College Kho Kho team got Runner up position in T Trophy conducted by College of Engineering Guindy, Anna University Chennai on 28.2.2026.",
-            "image_path": "/static/images/sports/others/T Trophy conducted by College of Engineering Guindy.webp"
-          }
-        ]
-      },
-      {
-        "category": "coordinator",
-        "content": {
-          "zone": "1",
-          "year": "2024-25",
-          "image_path": [
-            "/static/images/sports/coordinates/coordinates_1.webp",
-            "/static/images/sports/coordinates/coordinates_2.webp",
-            "/static/images/sports/coordinates/coordinates_3.webp",
-            "/static/images/sports/coordinates/coordinates_4.webp"
-          ]
-        }
       }
     ]
   },
