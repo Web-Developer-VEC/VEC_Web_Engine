@@ -126,8 +126,8 @@
             "image_path": "/static/images/hods/math.webp",
             "designation": "Professor & Head, Dept of Mathematics",
             "Social_media_links": {
-              "linkedin": "https://www.linkedin.com/in/rajeswaran-subramani-03b61349/",
-              "googlescholar": "https://scholar.google.com/citations?user=hLT4dVIAAAAJ&amp;hl=en&amp;oi=sra",
+              "linkedin": "https://www.linkedin.com/in/rajeswaran-subramani-03b61349/?originalSubdomain=in",
+              "googlescholar": "https://scholar.google.com/citations?user=hLT4dVIAAAAJ&hl=en&oi=sra",
               "researchgate": "https://www.researchgate.net/profile/Rajeswaran-Subramani",
               "scopus": "https://www.scopus.com/authid/detail.uri?authorId=56049208900",
               "orchidprofile": "https://orcid.org/0009-0006-3944-6212"
@@ -215,11 +215,11 @@
             "image_path": "/static/images/profile_photos/012/VEC-012-04-651.webp",
             "socialmedia_links": {
               "linkedin": "",
-              "googlescholar": "",
+              "googlescholar": "https://scholar.google.com/citations?user=xrXcNBUAAAAJ&hl=en",
               "researchgate": "",
-              "orchidprofile": "",
+              "orchidprofile": "https://orcid.org/0009-0003-0480-9149",
               "publonprofile": "",
-              "scopus": ""
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59179224300"
             },
             "unique_id": "VEC-012-04-651",
             "pdf_path": ""
@@ -320,7 +320,7 @@
             "unique_id": "VEC-012-04-051",
             "socialmedia_links": {
               "linkedin": "https://www.linkedin.com/in/hema-c-a3a1571b6/",
-              "googlescholar": "https://scholar.google.com/citations?hl=en&user=-29Nis4AAAAJ",
+              "googlescholar": "https://scholar.google.com/citations?user=-29Nis4AAAAJ&hl=en",
               "researchgate": "",
               "orchidprofile": "",
               "publonprofile": "",
@@ -334,8 +334,8 @@
             "designation": "Assistant Professor",
             "unique_id": "VEC-012-04-071",
             "socialmedia_links": {
-              "linkedin": "https://www.linkedin.com/in/dr-v-kuppulakshmi-prasath-368697257/",
-              "googlescholar": "https://scholar.google.com/citations?user=8fqfzNIAAAAJ&hl=en",
+              "linkedin": "https://www.linkedin.com/in/dr-v-kuppulakshmi-prasath-68697257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&authuser=1&user=8fqfzNIAAAAJ",
               "researchgate": "https://www.researchgate.net/profile/Kuppulakshmi-Vadivelu",
               "orchidprofile": "https://orcid.org/0000-0003-1429-5068",
               "publonprofile": "https://www.webofscience.com/wos/author/record/AFN-3298-2022",
@@ -352,9 +352,9 @@
               "linkedin": "https://www.linkedin.com/in/iswarya-manickam-814970371/",
               "googlescholar": "https://scholar.google.com/citations?user=lIcQEhoAAAAJ&hl=en",
               "researchgate": "https://www.researchgate.net/profile/Iswarya-Manickam",
-              "orchidprofile": "https://orcid.org/0000-0002-1420-8094",
-              "publonprofile": "",
-              "scopus": ""
+              "orchidprofile": "https://orcid.org/0000-0002-1420-809",
+              "publonprofile": "https://www.webofscience.com/wos/author/record/QIV-0331-2026",
+              "scopus": "https://www.scopus.com/pages/feedback/author/review-profile?authorIds=57218872882"
             },
             "image_path": "/static/images/profile_photos/012/VEC-012-04-653.webp",
             "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-653.pdf"
@@ -365,11 +365,11 @@
             "unique_id": "VEC-012-04-046",
             "socialmedia_links": {
               "linkedin": "https://www.linkedin.com/in/antony-gnana-aravind-a-35b1a720b",
-              "googlescholar": "https://scholar.google.com/citations?user=KJpD3jsAAAAJ&hl=en&oi=sra",
+              "googlescholar": "https://scholar.google.com/citations?user=KJpD3jsAAAAJ&hl=en&oi=ao",
               "researchgate": "https://www.researchgate.net/profile/A-Antony-Aravind/research",
               "orchidprofile": "https://orcid.org/0000-0003-3827-494X",
               "publonprofile": "",
-              "scopus": ""
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=58889852200"
             },
             "image_path": "/static/images/profile_photos/012/VEC-012-04-046.webp",
             "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-046.pdf"
@@ -439,12 +439,12 @@
             "designation": "Assistant Professor",
             "image_path": "/static/images/profile_photos/012/VEC-012-04-878.webp",
             "socialmedia_links": {
-              "linkedin": "",
+              "linkedin": "https://www.linkedin.com/in/dr-s-deepika",
               "googlescholar": "https://scholar.google.com/citations?user=D1ZlX24AAAAJ&hl=en",
-              "researchgate": "",
+              "researchgate": "https://www.researchgate.net/profile/Deepika-S-12/research",
               "orchidprofile": "https://orcid.org/0000-0003-3660-1249",
-              "publonprofile": "",
-              "scopus": ""
+              "publonprofile": "https://www.webofscience.com/wos/my/settings/profile",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59631213500"
             },
             "unique_id": "VEC-012-04-878",
             "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-878.pdf"
