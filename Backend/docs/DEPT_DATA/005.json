@@ -243,21 +243,6 @@
   {
     "category": "teaching_staff",
     "members": [
-            {
-        "name": "Dr. JEYABALARAJA V",
-        "designation": "Professor",
-        "unique_id": "VEC-005-02-199",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/dr-v-jeyabalaraja-cse-professor-078105355/",
-          "googlescholar": "https://scholar.google.com/citations?hl=en&user=NOk_B-wAAAAJ",
-          "researchgate": "https://www.researchgate.net/profile/Jeyapal-Raja?ev=prf_overview",
-          "orchidprofile": "https://orcid.org/0009-0007-7096-7822",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-02-199.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-02-199.pdf"
-      },
       {
         "name": "Dr. GUNASUNDARI S",
         "designation": "Professor",
@@ -735,23 +720,6 @@
       
       
       {
-        "name": "Mrs. VEDAVALLI P",
-        "designation": "Assistant Professor",
-        "unique_id": "VEC-005-04-005",
-        "socialmedia_links": {
-          "linkedin": "https://www.linkedin.com/in/veda-valli-b82a3977/",
-          "googlescholar": "",
-          "researchgate": "",
-          "orchidprofile": "",
-          "publonprofile": "",
-          "scopus": ""
-        },
-        "image_path": "/static/images/profile_photos/005/VEC-005-04-005.webp",
-        "pdf_path": "/static/pdfs/faculty_profile/005/VEC-005-04-005.pdf"
-      },
-      
-      
-      {
         "name": "Mrs. RENUGA G",
         "designation": "Assistant Professor",
         "unique_id": "VEC-005-04-001",
@@ -817,7 +785,7 @@
         "pdf_path": ""
       },
       {
-        "name": "Ms. SWETHA K R",
+        "name": "Ms. SUNDARI G",
         "designation": "Lab Instructor",
         "unique_id": "VEC-005-05-022",
         "socialmedia_links": {
