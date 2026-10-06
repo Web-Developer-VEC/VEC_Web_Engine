@@ -17,15 +17,15 @@ import LoadComp from "../../../LoadComp";
 const Activitiestile = ({ data }) => {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  
+
   const UrlParser = (path) => {
     return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
   };
 
   const actionIcons = {
-    "Guest Lecture": faChalkboardTeacher, 
+    "Guest Lecture": faChalkboardTeacher,
     "Seminar": faUser,
-    "Workshop": faTools,  
+    "Workshop": faTools,
     "Industrial Visit/ In-Plant Training": faIndustry,
     "Symposium": faComments,
     "Conference": faHandshake,
@@ -42,19 +42,26 @@ const Activitiestile = ({ data }) => {
       <div className="deptevent-content">
         <div className="deptevent-details">
           <div className="deptevent-year-actions">
-            {Array.isArray(data) && data?.map((item, index) => (
-              <div
-                key={index}
-                className="deptevent-action-button"
-                onClick={() => handlePdfOpen(item?.pdf_path)}
-              >
-                <FontAwesomeIcon
-                  icon={actionIcons[item?.name] || faFileAlt}
-                  style={{ marginRight: "10px" }}
-                />
-                {item?.name}
-              </div>
-            ))}
+            {Array.isArray(data) &&
+              data
+                .filter(
+                  (item) =>
+                    item?.pdf_path &&
+                    item.pdf_path.trim() !== ""
+                )
+                .map((item, index) => (
+                  <div
+                    key={index}
+                    className="deptevent-action-button"
+                    onClick={() => handlePdfOpen(item.pdf_path)}
+                  >
+                    <FontAwesomeIcon
+                      icon={actionIcons[item.name] || faFileAlt}
+                      style={{ marginRight: "10px" }}
+                    />
+                    {item.name}
+                  </div>
+                ))}
           </div>
         </div>
       </div>

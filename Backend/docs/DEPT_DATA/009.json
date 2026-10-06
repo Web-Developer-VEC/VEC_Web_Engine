@@ -146,7 +146,7 @@
             "hod_message": [
               "Department of ECE at Velammal Engineering College has proved its excellence in the field of Teaching, Research, placement and Student Activities since its establishment from 1995 onwards. Creative engineers solve practical problems to find out a solution for a societal problem. Also to crack society’s utmost challenges, country desires ECE engineers with entrepreneurial state of mind who can apply curiosity and creativity to the technical skillets in order to come up with truly novel ideas. Students in our department are trained with relevant practice through labs and projects for building the problem-solving skills, keeping industry requirements in view."
             ],
-            "hod_image": "/static/images/hods/ece.webp",
+            "image_path": "/static/images/hods/ece.webp",
             "designation": "Professor & Head, Dept of Electronics and Communication Engineering (ECE)",
             "Social_media_links": {
               "googlescholar": "https://scholar.google.com/citations?user=CXHND6AAAAAJ&hl=en",
@@ -490,12 +490,12 @@
             "designation": "Assistant Professor",
             "unique_id": "VEC-009-04-015",
             "socialmedia_links": {
-              "linkedin": "https://www.linkedin.com/in/nandhini-m-8838b3129",
-              "googlescholar": "https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=ALUCkoVGmdzJc5l1Vus0FIw_pVKAkTlgAfdY--_5n-NpK1AJWAclNmmYp88ZW_5-rK9TfBS5UXM9f6N9K7ig93anRx5d&user=mbV23owAAAAJ",
+              "linkedin": "https://www.linkedin.com/in/nandhini-m-8838b3129/",
+              "googlescholar": "https://scholar.google.com/citations?user=mbV23owAAAAJ&hl=en",
               "researchgate": "",
-              "orchidprofile": "",
+              "orchidprofile": "https://orcid.org/0009-0001-6708-0872",
               "publonprofile": "",
-              "scopus": ""
+              "scopus": "https://www.scopus.com/pages/search/authors?searchId=60baec15-7532-4e42-a576-bdd958a73b9c"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-015.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-015.pdf"
@@ -520,12 +520,12 @@
             "designation": "Assistant Professor",
             "unique_id": "VEC-009-04-653",
             "socialmedia_links": {
-              "linkedin": "",
-              "googlescholar": "",
+              "linkedin": "https://www.linkedin.com/in/suganthi-amudhan-8521aa378",
+              "googlescholar": "https://scholar.google.com/citations?user=eE7XL9EAAAAJ&hl=en",
               "researchgate": "",
-              "orchidprofile": "",
+              "orchidprofile": "https://orcid.org/0000-0001-9578-6218",
               "publonprofile": "",
-              "scopus": ""
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=0022db7e-557c-4b83-9872-4368298ad27a"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-653.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-653.pdf"
@@ -535,12 +535,12 @@
             "designation": "Assistant Professor",
             "unique_id": "VEC-009-04-657",
             "socialmedia_links": {
-              "linkedin": "",
-              "googlescholar": "",
-              "researchgate": "",
-              "orchidprofile": "",
+              "linkedin": "https://in.linkedin.com/in/vinodhini-bharath-562398440",
+              "googlescholar": "https://scholar.google.com/citations?user=VTvBGWcAAAAJ&hl=en",
+              "researchgate": "https://www.researchgate.net/profile/Vinodhini-Rajasekaran",
+              "orchidprofile": "https://orcid.org/0000-0001-5675-0415",
               "publonprofile": "",
-              "scopus": ""
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57217918977"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-657.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-657.pdf"
@@ -550,8 +550,8 @@
             "designation": "Assistant Professor",
             "unique_id": "VEC-009-04-658",
             "socialmedia_links": {
-              "linkedin": "",
-              "googlescholar": "",
+              "linkedin": "linkedin.com/in/ramya-t-a53b8143b",
+              "googlescholar": "https://scholar.google.com/citations?view_op=new_articles&hl=en&imq=Ramya+Thiruvengadam&authuser=3#",
               "researchgate": "",
               "orchidprofile": "",
               "publonprofile": "",
@@ -565,12 +565,12 @@
             "designation": "Assistant Professor",
             "unique_id": "VEC-009-04-659",
             "socialmedia_links": {
-              "linkedin": "",
-              "googlescholar": "",
-              "researchgate": "",
-              "orchidprofile": "",
+              "linkedin": "https://www.linkedin.com/in/manimegalai-m-2a7237360/",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=G2nnrHoAAAAJ",
+              "researchgate": "https://www.researchgate.net/profile/Mani-Megalai-13?ev=hdr_xprf",
+              "orchidprofile": "0000-0001-9783-6274",
               "publonprofile": "",
-              "scopus": ""
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=55662728800"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-659.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-659.pdf"
@@ -580,12 +580,12 @@
             "designation": "Assistant Professor",
             "unique_id": "VEC-009-04-654",
             "socialmedia_links": {
-              "linkedin": "",
-              "googlescholar": "",
+              "linkedin": "https://www.linkedin.com/in/arul-thilakavathi-69863b8b/?isSelfProfile=true",
+              "googlescholar": "https://ieeexplore.ieee.org/abstract/document/11479037",
               "researchgate": "",
-              "orchidprofile": "",
+              "orchidprofile": "https://orcid.org/0009-0007-2534-6218",
               "publonprofile": "",
-              "scopus": ""
+              "scopus": "https://id.elsevier.com/settings/redirect?code=KF-iidexWUEEvY9l7o3WhaUaeuFtK6BYCaoCVe_J"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-654.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-654.pdf"
@@ -595,8 +595,8 @@
             "designation": "Assistant Professor",
             "unique_id": "VEC-009-04-656",
             "socialmedia_links": {
-              "linkedin": "",
-              "googlescholar": "",
+              "linkedin": "linkedin.com/in/susanna-peter-047390440",
+              "googlescholar": "https://scholar.google.com/citations?hl=en&user=ubZgPB0AAAAJ",
               "researchgate": "",
               "orchidprofile": "",
               "publonprofile": "",
@@ -610,8 +610,8 @@
             "designation": "Assistant Professor",
             "unique_id": "VEC-009-04-655",
             "socialmedia_links": {
-              "linkedin": "",
-              "googlescholar": "",
+              "linkedin": "linkedin.com/in/praveena-v-324b7643b",
+              "googlescholar": "https://scholar.google.com/citations?user=d-4y1R8AAAAJ&hl=en",
               "researchgate": "",
               "orchidprofile": "",
               "publonprofile": "",
@@ -661,7 +661,7 @@
               "researchgate": "",
               "orchidprofile": "https://orcid.org/0009-0001-2332-1590",
               "publonprofile": "",
-              "scopus": ""
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59308797700"
             },
             "image_path": "/static/images/profile_photos/009/VEC-009-04-200.webp",
             "pdf_path": "/static/pdfs/faculty_profile/009/VEC-009-04-200.pdf"
@@ -672,7 +672,7 @@
             "unique_id": "VEC-009-04-205",
             "socialmedia_links": {
               "linkedin": "",
-              "googlescholar": "",
+              "googlescholar": "https://scholar.google.com/citations?user=DiRP0CEAAAAJ&hl=en",
               "researchgate": "",
               "orchidprofile": "",
               "publonprofile": "",

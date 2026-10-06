@@ -1,13 +1,23 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import {ChevronLeft, ChevronRight} from "lucide-react";
-import {animate, motion, useAnimationFrame, useMotionValue, useTransform} from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { animate, motion, useAnimationFrame, useMotionValue, useTransform } from "framer-motion";
 import "./Events.css";
 
-function EventBox({event, onMouseEnter, onMouseLeave}) {
+function EventBox({ event, onMouseEnter, onMouseLeave }) {
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+    const formatShortDate = (date) => {
+        if (!date) return "";
+
+        const d = new Date(date);
+
+        return d.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short"
+        }).toUpperCase();
+    };
     const UrlParser = (path) => {
         return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
     };
@@ -15,19 +25,19 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
     return (
         <motion.div
             className="caro-item text-lg"
-            whileHover={{scale: 1.1, zIndex: 10}}
-            transition={{duration: 0.3, ease: "easeOut"}}
+            whileHover={{ scale: 1.1, zIndex: 10 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             onHoverStart={onMouseEnter}
             onHoverEnd={onMouseLeave}
         >
             <motion.div
                 className="event-box bg-secd dark:bg-drks text-prim"
-                whileHover={{boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.15)"}}
+                whileHover={{ boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.15)" }}
             >
                 <div className="event-header">
                     <div className="event-date">
                         <div className="circle bg-accn text-prim dark:text-drkt
-                            border-8 border-prim dark:border-drkp">{event.start_date}</div>
+                            border-8 border-prim dark:border-drkp"> {formatShortDate(event.start_date)}</div>
                     </div>
                     <div className="event-name line-clamp-2 text-2xl">{event.title}</div>
                 </div>
@@ -36,7 +46,7 @@ function EventBox({event, onMouseEnter, onMouseLeave}) {
                     <div className="event-row description text-md/2 line-clamp-2">{event.content}</div>
                     <div className="event-footer">
                         <div className="event-row text-accn duration font-semibold">
-                            <i className="fas fa-calendar-alt"></i> {event.start_date + " - " + event.end_date}
+                            <i className="fas fa-calendar-alt"></i>  {formatShortDate(event.start_date) + " - " + formatShortDate(event.end_date)}
                         </div>
                         <div className="event-row links">
                             {event.image_path && (
@@ -68,7 +78,7 @@ function Carousel({ data }) {
     const SCROLL_INTERVAL = 16;
 
     // Duplicate events to ensure smooth looping
-    const duplicatedEvents = [...data, ...data, ...data,...data,...data,...data,...data,...data,...data,...data];
+    const duplicatedEvents = [...data, ...data, ...data, ...data, ...data, ...data, ...data, ...data, ...data, ...data];
     const TOTAL_WIDTH = duplicatedEvents.length * CARD_WIDTH;
 
     const wrappedX = useTransform(x, (value) => {
@@ -111,14 +121,14 @@ function Carousel({ data }) {
                 <motion.button
                     className="nav-button-ann"
                     onClick={() => x.set(x.get() - CARD_WIDTH)}
-                    whileHover={{scale: 1.1}}
-                    whileTap={{scale: 0.9}}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                 >
-                    <ChevronLeft className="nav-icon"/>
+                    <ChevronLeft className="nav-icon" />
                 </motion.button>
             </div>
             <div className="caro-container font-popp">
-                <motion.div className="caro-content md:gap-8 text-xl" style={{x: wrappedX}}>
+                <motion.div className="caro-content md:gap-8 text-xl" style={{ x: wrappedX }}>
                     {duplicatedEvents.map((event, index) => (
                         <div draggable={true} onClick={handleHoverStart} onMouseLeave={handleHoverEnd} key={index}>
                             <EventBox
@@ -134,10 +144,10 @@ function Carousel({ data }) {
                 <motion.button
                     className="nav-button-ann"
                     onClick={() => x.set(x.get() + CARD_WIDTH)}
-                    whileHover={{scale: 1.1}}
-                    whileTap={{scale: 0.9}}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                 >
-                    <ChevronRight className="nav-icon"/>
+                    <ChevronRight className="nav-icon" />
                 </motion.button>
             </div>
         </div>
