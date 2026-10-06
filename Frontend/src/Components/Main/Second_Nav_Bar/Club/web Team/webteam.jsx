@@ -198,8 +198,7 @@ function WebUI({ title, data, selectedMember,shuffleKey }) {
 
   // Co-Pilot 2.0
   if (title === "Co-Pilot 2.0") {
-    console.log("COPILOT 2 MEMBERS:", members);
-    console.log("COPILOT 2 MEMBERS:", members);
+    
     // First 4 cards stay fixed
     const fixedMembers = members.slice(0, 2);
 
