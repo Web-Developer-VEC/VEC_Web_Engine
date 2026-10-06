@@ -3,7 +3,6 @@ import {
   Linkedin,
   Twitter,
   Mail,
-  ExternalLink,
   Globe2Icon,
 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
