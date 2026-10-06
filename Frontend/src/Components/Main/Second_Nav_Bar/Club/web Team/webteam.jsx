@@ -199,13 +199,11 @@ function WebUI({ title, data, selectedMember,shuffleKey }) {
 
   // Co-Pilot 2.0
   if (title === "Co-Pilot 2.0") {
-    console.log("COPILOT 2 MEMBERS:", members);
-    console.log("COPILOT 2 MEMBERS:", members);
     // First 4 cards stay fixed
     const fixedMembers = members.slice(0, 2);
 
     // 5th card onwards
-    const remainingMembers = [...members.slice(4)];
+    const remainingMembers = [...members.slice(2)];
 
     // Shuffle remaining cards
     for (let i = remainingMembers.length - 1; i > 0; i--) {
