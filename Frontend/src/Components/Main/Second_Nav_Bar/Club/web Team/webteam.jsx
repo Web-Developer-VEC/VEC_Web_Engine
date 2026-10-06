@@ -167,9 +167,10 @@ const ProfileCard = ({
   );
 };
 
-function WebUI({ title, data, selectedMember }) {
+function WebUI({ title, data, selectedMember,shuffleKey }) {
   const cardRefs = useRef({});
   const [spotlight, setSpotlight] = useState(null);
+  const [displayMembers, setDisplayMembers] = useState([]);
 
   let des, members, staff;
   if (data) {
@@ -179,9 +180,54 @@ function WebUI({ title, data, selectedMember }) {
   }
 
   useEffect(() => {
-    if (!members || !selectedMember) return;
+  if (!members) {
+    setDisplayMembers([]);
+    return;
+  }
 
-    const member = members.find(
+  // Pilot → original order
+  if (title === "Pilot") {
+    setDisplayMembers(members);
+    return;
+  }
+
+  // Co-Pilot 1.0 → original order
+  if (title === "Co Pilot") {
+    setDisplayMembers(members);
+    return;
+  }
+
+  // Co-Pilot 2.0
+  if (title === "Co-Pilot 2.0") {
+    console.log("COPILOT 2 MEMBERS:", members);
+    console.log("COPILOT 2 MEMBERS:", members);
+    // First 4 cards stay fixed
+    const fixedMembers = members.slice(0, 2);
+
+    // 5th card onwards
+    const remainingMembers = [...members.slice(4)];
+
+    // Shuffle remaining cards
+    for (let i = remainingMembers.length - 1; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+
+      [remainingMembers[i], remainingMembers[randomIndex]] = [
+        remainingMembers[randomIndex],
+        remainingMembers[i],
+      ];
+    }
+
+    setDisplayMembers([
+      ...fixedMembers,
+      ...remainingMembers,
+    ]);
+  }
+}, [members, title, shuffleKey]);
+
+  useEffect(() => {
+    if (!displayMembers.length || !selectedMember) return; 
+
+    const member = displayMembers.find(
       (m) =>
         m.name.trim().toLowerCase() === selectedMember.trim().toLowerCase(),
     );
@@ -207,7 +253,7 @@ function WebUI({ title, data, selectedMember }) {
         }, 5000);
       }, 700);
     }, 300);
-  }, [members, selectedMember]);
+  }, [displayMembers, selectedMember]);
 
   return (
     <div className="bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 min-h-screen">
@@ -241,7 +287,7 @@ function WebUI({ title, data, selectedMember }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {members?.map((member, index) => (
+          {displayMembers?.map((member, index) => (
             <div
               key={index}
               className="animate-fade-in-up"
@@ -296,8 +342,17 @@ export default function Webteam({ toggle, theme }) {
   const [webtab, setWebtab] = useState("Pilot");
   const [selectedMember, setSelectedMember] = useState("");
   const [webdata, setWebData] = useState(null);
+  const [shuffleKey, setShuffleKey] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handleTabChange = (tab) => {
+  setWebtab(tab);
+
+  if (tab === "Co-Pilot 2.0") {
+    setShuffleKey((prev) => prev + 1);
+  }
+};
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -335,6 +390,7 @@ export default function Webteam({ toggle, theme }) {
         title={"Co-Pilot 2.0"}
         data={webdata}
         selectedMember={selectedMember}
+        shuffleKey={shuffleKey}
       />
     ),
   };
@@ -374,7 +430,7 @@ export default function Webteam({ toggle, theme }) {
         subHeaderText="Meet Our Team"
       />
       <div>
-        <SideNav sts={webtab} setSts={setWebtab} navData={navData} cls={""} />
+        <SideNav sts={webtab} setSts={handleTabChange} navData={navData} cls={""} />
       </div>
     </>
   );
