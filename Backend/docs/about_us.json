@@ -27,6 +27,10 @@
         {
           "name": "Mandatory Disclosures",
           "pdf_path": "/uploads/2022/02/VEC-Mandatory_Disclosure-2025-2026.pdf"
+        },
+        {
+          "name": "Faculty List 2026 - 27",
+          "pdf_path": "/uploads/2026/07/Faculty_List_2026-2027.pdf"
         }
       ]
     }
@@ -44,7 +48,11 @@
           "Shri. M.V.M. VELMURUGAN",
           "Shri. V. KARTHIK MUTHURAMALINGAM"
         ],
-        "designation": ["Chairman", "Chief Executive Officer", "Deputy CEO"],
+        "designation": [
+          "Chairman",
+          "Chief Executive Officer",
+          "Deputy CEO"
+        ],
         "image_path": [
           "/static/images/trust/muthuramalingam1.webp",
           "/static/images/trust/velmurugan1.webp",
@@ -61,7 +69,13 @@
     "type": "vision_and_mission",
     "data": {
       "vision": "To educate the student community through theory and practice, preparing them to contribute to society and lead in emerging technologies on a global scale, with human values upheld by our dedicated team.",
-      "mission": ["Provide world-class education in engineering, technology, and management.","Foster research, creativity, and innovation among students and faculty.","Develop leadership, intrapreneurship, and entrepreneurial skills.","Nurture teamwork, collaboration, and professional ethics.","Ensure stakeholder satisfaction through academic excellence, industry engagement, and community service"],
+      "mission": [
+        "Provide world-class education in engineering, technology, and management.",
+        "Foster research, creativity, and innovation among students and faculty.",
+        "Develop leadership, intrapreneurship, and entrepreneurial skills.",
+        "Nurture teamwork, collaboration, and professional ethics.",
+        "Ensure stakeholder satisfaction through academic excellence, industry engagement, and community service"
+      ],
       "image_path": "/static/images/visionandmission/VM.webp"
     }
   },
@@ -79,7 +93,11 @@
         "/static/images/trust/velmurugan2.webp",
         "/static/images/trust/deptyceo2.webp"
       ],
-      "designation": ["Chairman", "Chief Executive Officer", "Deputy CEO"],
+      "designation": [
+        "Chairman",
+        "Chief Executive Officer",
+        "Deputy CEO"
+      ],
       "name": [
         "Shri. M.V. MUTHURAMALINGAM",
         "Shri. M.V.M. VELMURUGAN",
