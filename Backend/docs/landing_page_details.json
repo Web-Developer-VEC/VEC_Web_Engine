@@ -185,41 +185,55 @@
     "data": [
       {
         "unique_id": "announcement_1",
+        "announcement_name": "SEE Nov. 2026 - Timetable (R2023) - 2023-2027 & 2024-2028 batches",
+        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_Batches (2023-2027 & 2024-2028).pdf",
+        "date": "2026-09-24",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_2",
+        "announcement_name": "SEE Nov. 2026 - Timetable (R2023A) - 2025-2029 batch",
+        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_Batches (2025-2029 Batch).pdf",
+        "date": "2026-09-24",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_3",
         "announcement_name": "Exam Fee Circular – IV Year B.E. / B.Tech. (2026–2027)",
         "pdf_path": "/static/pdfs/announcements/Exam Fee_IV year_B.E._B.Tech._2026-2027.pdf",
         "date": "2026-09-24",
         "status": "active"
       },
       {
-        "unique_id": "announcement_2",
+        "unique_id": "announcement_4",
         "announcement_name": "Exam Fee Circular – III Year B.E. / B.Tech. (2026–2027)",
         "pdf_path": "/static/pdfs/announcements/Exam Fee_III year_B.E._B.Tech._2026-2027.pdf",
         "date": "2026-09-24",
         "status": "active"
       },
       {
-        "unique_id": "announcement_3",
+        "unique_id": "announcement_5",
         "announcement_name": "Exam Fee Circular – II Year B.E. / B.Tech. (2026–2027)",
         "pdf_path": "/static/pdfs/announcements/Exam Fee_II year_B.E._B.Tech._2026-2027.pdf",
         "date": "2026-09-24",
         "status": "active"
       },
       {
-        "unique_id": "announcement_4",
+        "unique_id": "announcement_6",
         "announcement_name": "Exam Fee Circular – III Sem. MBA (2026–2027)",
         "pdf_path": "/static/pdfs/announcements/Exam Fee_III Sem._MBA_2026-2027.pdf",
         "date": "2026-09-24",
         "status": "active"
       },
       {
-        "unique_id": "announcement_5",
+        "unique_id": "announcement_7",
         "announcement_name": "Exam Fee Circular – III Sem. M.E. (CSE) (2026–2027)",
         "pdf_path": "/static/pdfs/announcements/Exam Fee_III Sem._M.E.(CSE)_2026-2027.pdf",
         "date": "2026-09-24",
         "status": "active"
       },
       {
-        "unique_id": "announcement_6",
+        "unique_id": "announcement_8",
         "announcement_name": "Exam Fee_Arrear_R2019, R2019A (For batches 2019-23 to 2022-26)",
         "pdf_path": "/static/pdfs/announcements/Exam Fee_Arrear_R2019, R2019A (For batches 2019-23 to 2022-26).pdf",
         "date": "2026-09-24",
