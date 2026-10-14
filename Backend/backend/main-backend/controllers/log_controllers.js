@@ -15,6 +15,29 @@ async function getDatabaseLogs(req, res) {
       });
     }
 
+    const cumulativeUniqueVisits = logs_data.reduce((total, doc) => {
+      const years = doc.years || {};
+
+      return (
+        total +
+        Object.values(years).reduce((yearTotal, yearData) => {
+          const months = yearData?.monthly || {};
+
+          return (
+            yearTotal +
+            Object.values(months).reduce((monthTotal, monthData) => {
+              const weeklyVisits = [1, 2, 3, 4, 5].reduce((weekTotal, week) => {
+                const count = Number(monthData?.[`week${week}`]);
+                return weekTotal + (Number.isFinite(count) ? count : 0);
+              }, 0);
+
+              return monthTotal + weeklyVisits;
+            }, 0)
+          );
+        }, 0)
+      );
+    }, 0);
+
     const now = moment();
     const year = now.format("YYYY");
     const currentMonth = now.format("MMMM");
@@ -52,7 +75,10 @@ async function getDatabaseLogs(req, res) {
       };
     });
 
-    return res.status(200).json(enrichedLogs);
+    return res.status(200).json({
+      logs: enrichedLogs,
+      cumulativeUniqueVisits,
+    });
   } catch (error) {
     console.error("Error fetching logs:", error);
 

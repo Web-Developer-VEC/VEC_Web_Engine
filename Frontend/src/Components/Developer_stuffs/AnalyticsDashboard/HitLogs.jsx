@@ -41,23 +41,42 @@ const AnimatedNumber = ({ value = 0, duration = 1000 }) => {
 };
 const HitLogs = () => {
   const [hitData, setHitData] = useState([]);
+  const [cumulativeUniqueVisits, setCumulativeUniqueVisits] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
+    let timeoutId;
+    let isActive = true;
+
     const fetchData = async () => {
       try {
         const response = await axios.get("/api/main-backend/logs");
         const data = response.data;
-        if (Array.isArray(data)) {
-          setHitData(data);
+        if (Array.isArray(data.logs)) {
+          if (isActive) {
+            setHitData(data.logs);
+            setCumulativeUniqueVisits(
+              Number(data.cumulativeUniqueVisits) || 0,
+            );
+          }
         } else {
           console.error("Unexpected data format:", data);
-          setHitData([]);
+          if (isActive) {
+            setHitData([]);
+            setCumulativeUniqueVisits(0);
+          }
         }
       } catch (error) {
         console.error("Error fetching hit log data:", error);
+      } finally {
+        if (isActive) timeoutId = setTimeout(fetchData, 60_000);
       }
     };
     fetchData();
+
+    return () => {
+      isActive = false;
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const endpointNames = {
@@ -134,6 +153,23 @@ const HitLogs = () => {
     return endpoint.includes(query) || endpointName.includes(query);
   });
 
+  const totalRequestCount = hitData.reduce(
+    (total, item) => total + (Number(item.totalRequestCount) || 0),
+    0,
+  );
+  const todayRequestCount = hitData.reduce(
+    (total, item) =>
+      total +
+      Object.values(item.ipCounts || {}).reduce(
+        (count, ipCount) => count + (Number(ipCount) || 0),
+        0,
+      ),
+    0,
+  );
+  const todayUniqueIpCount = new Set(
+    hitData.flatMap((item) => Object.keys(item.ipCounts || {})),
+  ).size;
+
   const getWeekValue = (monthName, weekNum, value) => {
     const now = new Date();
     const currentMonthIndex = now.getMonth();
@@ -201,6 +237,57 @@ const HitLogs = () => {
             />
           </div>
         </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+  {[
+    {
+      label: "Total Count",
+      value: totalRequestCount,
+      icon: "M3 3v18h18 M18 17V9 M13 17V5 M8 17v-3",
+    },
+    {
+      label: "Today Total",
+      value: todayRequestCount,
+      icon: "M12 8v4l3 3 M21 12a9 9 0 11-18 0 9 9 0 0118 0",
+    },
+    {
+      label: "Today Unique",
+      value: todayUniqueIpCount,
+      icon: "M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1116 0z M12 10a2 2 0 100-4 2 2 0 000 4",
+    },
+  ].map((card) => (
+    <div
+      key={card.label}
+      className="rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-[0_1px_6px_-2px_rgba(0,0,0,0.05)] transition-colors duration-200 hover:border-[#801828]/30"
+    >
+      <div className="flex items-center gap-2.5">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#801828]/10 text-[#801828]">
+          <svg
+            className="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.75"
+              d={card.icon}
+            />
+          </svg>
+        </span>
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+          {card.label}
+        </p>
+      </div>
+
+      <p className="mt-2.5 text-2xl font-bold tracking-tight text-slate-800">
+        <AnimatedNumber value={card.value} duration={800} />
+      </p>
+    </div>
+  ))}
+</div>
 
         {/* Data Cards */}
         {filteredData.length === 0 ? (

@@ -184,6 +184,20 @@
     "type": "announcements",
     "data": [
       {
+        "unique_id": "announcement_7",
+        "announcement_name": "SEE Nov. 2026 - Timetable (R2023) - 2023-2027 & 2024-2028 batches",
+        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_Batches (2023-2027 & 2024-2028).pdf",
+        "date": "2026-09-24",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_8",
+        "announcement_name": "SEE Nov. 2026 - Timetable (R2023A) - 2025-2029 batch",
+        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_Batches (2025-2029 Batch).pdf",
+        "date": "2026-09-24",
+        "status": "active"
+      },
+      {
         "unique_id": "announcement_1",
         "announcement_name": "SEE Nov. 2026 - Timetable (R2023) - 2023-2027 & 2024-2028 batches",
         "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_Batches (2023-2027 & 2024-2028).pdf",

@@ -2190,6 +2190,10 @@
     "type": "certificate",
     "data": [
       {
+        "year": "2024-2025",
+        "image_path": "/static/images/iic/certificate/4.pdf"
+      },
+      {
         "year": "2023-2024",
         "image_path": "/static/images/iic/certificate/1.webp"
       },

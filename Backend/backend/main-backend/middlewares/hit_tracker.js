@@ -57,6 +57,7 @@ async function hitTracker(req, res, next) {
     const update = {
       $inc: {
         [`ipCounts.${ip}`]: 1,
+        totalRequestCount: 1,
       },
       $setOnInsert: {
         lastDay: 0,
