@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import LoadComp from "../../Main/LoadComp";
 const AnimatedNumber = ({ value = 0, duration = 1000 }) => {
   const [count, setCount] = useState(0);
   const hasAnimatedRef = useRef(false);
@@ -42,6 +43,7 @@ const AnimatedNumber = ({ value = 0, duration = 1000 }) => {
 const HitLogs = () => {
   const [hitData, setHitData] = useState([]);
   const [cumulativeUniqueVisits, setCumulativeUniqueVisits] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
     let timeoutId;
@@ -68,7 +70,10 @@ const HitLogs = () => {
       } catch (error) {
         console.error("Error fetching hit log data:", error);
       } finally {
-        if (isActive) timeoutId = setTimeout(fetchData, 60_000);
+        if (isActive) {
+          setIsLoading(false);
+          timeoutId = setTimeout(fetchData, 60_000);
+        }
       }
     };
     fetchData();
@@ -238,6 +243,43 @@ const HitLogs = () => {
           </div>
         </div>
 
+        {isLoading ? (
+          <div role="status" aria-live="polite" className="space-y-6">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {[0, 1, 2].map((card) => (
+                <div
+                  key={card}
+                  className="rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm"
+                  aria-hidden="true"
+                >
+                  <div className="h-3 w-24 animate-pulse rounded bg-slate-200" />
+                  <div className="mt-4 h-7 w-20 animate-pulse rounded bg-slate-100" />
+                </div>
+              ))}
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <div className="flex items-center gap-3 border-b border-slate-200 bg-slate-50 px-6 py-4">
+                <div className="h-5 w-5 animate-pulse rounded bg-slate-200" />
+                <div className="h-4 w-32 animate-pulse rounded bg-slate-200" />
+              </div>
+              <div
+                className="grid grid-cols-2 gap-4 border-b border-slate-100 px-6 py-5 md:grid-cols-5"
+                aria-hidden="true"
+              >
+                {[0, 1, 2, 3, 4].map((stat) => (
+                  <div key={stat}>
+                    <div className="h-3 w-16 animate-pulse rounded bg-slate-200" />
+                    <div className="mt-2 h-5 w-10 animate-pulse rounded bg-slate-100" />
+                  </div>
+                ))}
+              </div>
+              <div className="flex min-h-48 items-center justify-center">
+                <LoadComp txt="Loading hit logs..." />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
   {[
     {
@@ -502,6 +544,8 @@ const HitLogs = () => {
               </div>
             ))}
           </div>
+        )}
+          </>
         )}
       </div>
     </div>

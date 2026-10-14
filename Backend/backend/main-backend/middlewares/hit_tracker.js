@@ -29,10 +29,9 @@ async function hitTracker(req, res, next) {
     return next();
   }
 
+  const endpoint = req.originalUrl.split("?")[0];
   const db = getlogDb();
   const collection = db.collection("hitlog");
-
-  const endpoint = req.originalUrl.split("?")[0];
 
   const now = moment();
 
@@ -51,21 +50,36 @@ async function hitTracker(req, res, next) {
 
   try {
     const doc = await collection.findOne({ endpoint });
+    const isLogsEndpoint = endpoint === "/api/main-backend/logs";
+    const alreadyCountedLogsEndpointIp = doc?.uniqueIpCounts?.[ip];
 
     const alreadyVisited = doc?.ipCounts?.[ip];
 
     const update = {
-      $inc: {
-        [`ipCounts.${ip}`]: 1,
-        totalRequestCount: 1,
-      },
       $setOnInsert: {
         lastDay: 0,
         currentDayDate: now.format("YYYY-MM-DD"),
       },
     };
 
+    if (isLogsEndpoint) {
+      update.$set = { [`ipCounts.${ip}`]: 1 };
+    } else {
+      update.$inc = { [`ipCounts.${ip}`]: 1 };
+    }
+
+    if (!isLogsEndpoint || !alreadyCountedLogsEndpointIp) {
+      update.$inc = update.$inc || {};
+      update.$inc.totalRequestCount = 1;
+    }
+
+    if (isLogsEndpoint && !alreadyCountedLogsEndpointIp) {
+      update.$set = update.$set || {};
+      update.$set[`uniqueIpCounts.${ip}`] = true;
+    }
+
     if (!alreadyVisited) {
+      update.$inc = update.$inc || {};
       update.$inc.currentDay = 1;
       update.$inc.overallCount = 1;
       update.$inc[`years.${year}.monthly.${month}.overall_month_count`] = 1;
