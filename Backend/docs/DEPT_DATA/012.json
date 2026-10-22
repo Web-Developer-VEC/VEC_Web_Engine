@@ -210,21 +210,6 @@
             "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-115.pdf"
           },
           {
-            "name": "Dr. SHANMUGAPRIYAN S",
-            "designation": "Assistant Professor",
-            "image_path": "/static/images/profile_photos/012/VEC-012-04-651.webp",
-            "socialmedia_links": {
-              "linkedin": "",
-              "googlescholar": "https://scholar.google.com/citations?user=xrXcNBUAAAAJ&hl=en",
-              "researchgate": "",
-              "orchidprofile": "https://orcid.org/0009-0003-0480-9149",
-              "publonprofile": "",
-              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59179224300"
-            },
-            "unique_id": "VEC-012-04-651",
-            "pdf_path": ""
-          },
-          {
             "name": "Mr. BALU M S",
             "designation": "Assistant Professor",
             "image_path": "/static/images/profile_photos/012/VEC-012-04-037.webp",
@@ -270,21 +255,6 @@
             "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-048.pdf"
           },
           {
-            "name": "Mr. GOPIKRISHNAN S",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-012-04-043",
-            "socialmedia_links": {
-              "linkedin": "https://www.linkedin.com/in/gopi-krishnan-93b36265/",
-              "googlescholar": "",
-              "researchgate": "https://www.researchgate.net/profile/Gopi-Krishnan-Saravanan?ev=prf_overview",
-              "orchidprofile": "",
-              "publonprofile": "",
-              "scopus": ""
-            },
-            "image_path": "/static/images/profile_photos/012/VEC-012-04-043.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-043.pdf"
-          },
-          {
             "name": "Mr. JANARDHANAN K",
             "designation": "Assistant Professor",
             "unique_id": "VEC-012-04-062",
@@ -298,21 +268,6 @@
             },
             "image_path": "/static/images/profile_photos/012/VEC-012-04-062.webp",
             "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-062.pdf"
-          },
-          {
-            "name": "Mr. VENKATESAN J",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-012-04-042",
-            "socialmedia_links": {
-              "linkedin": "",
-              "googlescholar": "",
-              "researchgate": "",
-              "orchidprofile": "",
-              "publonprofile": "",
-              "scopus": ""
-            },
-            "image_path": "/static/images/profile_photos/012/VEC-012-04-042.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-042.pdf"
           },
           {
             "name": "Ms. HEMA C",
@@ -331,7 +286,7 @@
           },
           {
             "name": "Dr. KUPPULAKSHMI V",
-            "designation": "Assistant Professor",
+            "designation": "Associate Professor",
             "unique_id": "VEC-012-04-071",
             "socialmedia_links": {
               "linkedin": "https://www.linkedin.com/in/dr-v-kuppulakshmi-prasath-68697257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -373,21 +328,6 @@
             },
             "image_path": "/static/images/profile_photos/012/VEC-012-04-046.webp",
             "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-046.pdf"
-          },
-          {
-            "name": "Mrs. JERLIN SHEEBA D",
-            "designation": "Assistant Professor",
-            "unique_id": "VEC-012-04-045",
-            "socialmedia_links": {
-              "linkedin": "https://www.linkedin.com/in/jerlin-sheeba-02237532b",
-              "googlescholar": "",
-              "researchgate": "",
-              "orchidprofile": "",
-              "publonprofile": "",
-              "scopus": ""
-            },
-            "image_path": "/static/images/profile_photos/012/VEC-012-04-045.webp",
-            "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-045.pdf"
           },
           {
             "name": "Mr. MUTHUVEL S",
@@ -448,6 +388,21 @@
             },
             "unique_id": "VEC-012-04-878",
             "pdf_path": "/static/pdfs/faculty_profile/012/VEC-012-04-878.pdf"
+          },
+          {
+            "name": "Dr. SENBAGARAJA P.",
+            "designation": "Assistant Professor",
+            "unique_id": "VEC-012-04-778",
+            "socialmedia_links": {
+              "linkedin": "",
+              "googlescholar": "https://scholar.google.com/citations?user=xrXcNBUAAAAJ&hl=en",
+              "researchgate": "",
+              "orchidprofile": "https://orcid.org/0009-0003-0480-9149",
+              "publonprofile": "",
+              "scopus": "https://www.scopus.com/authid/detail.uri?authorId=59179224300"
+            },
+            "image_path": "/static/images/profile_photos/012/VEC-012-04-778.webp",
+            "pdf_path": ""
           }
         ]
       },

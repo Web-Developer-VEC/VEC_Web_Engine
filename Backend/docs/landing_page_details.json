@@ -184,16 +184,30 @@
     "type": "announcements",
     "data": [
       {
-        "unique_id": "announcement_7",
-        "announcement_name": "SEE Nov. 2026 - Timetable (R2023) - 2023-2027 & 2024-2028 batches",
-        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_Batches (2023-2027 & 2024-2028).pdf",
-        "date": "2026-09-24",
+        "unique_id": "announcement_10",
+        "announcement_name": "Exam Time Table_SEE Nov. 2026_MBA_2025-2027 batch",
+        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_MBA_2025-2027 batch.pdf",
+        "date": "2026-10-21",
         "status": "active"
       },
       {
-        "unique_id": "announcement_8",
-        "announcement_name": "SEE Nov. 2026 - Timetable (R2023A) - 2025-2029 batch",
-        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_Batches (2025-2029 Batch).pdf",
+        "unique_id": "announcement_11",
+        "announcement_name": "Exam Time Table_SEE Nov. 2026_Batches (2020-2024 Batch)",
+        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_Batches (2020-2024 Batch).pdf",
+        "date": "2026-10-21",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_12",
+        "announcement_name": "Exam Time Table_SEE Nov. 2026_Batches (2021-2025 & 2022-2026 batches)",
+        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_Batches (2021-2025 & 2022-2026 batches).pdf",
+        "date": "2026-10-21",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_9",
+        "announcement_name": "Exam Time Table_SEE Nov. 2026_M.E.(CSE)_2025-2027 batch",
+        "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_M.E.(CSE)_2025-2027 batch.pdf",
         "date": "2026-09-24",
         "status": "active"
       },

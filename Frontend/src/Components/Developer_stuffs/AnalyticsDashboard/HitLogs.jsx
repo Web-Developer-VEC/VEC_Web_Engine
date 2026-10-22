@@ -42,7 +42,6 @@ const AnimatedNumber = ({ value = 0, duration = 1000 }) => {
 };
 const HitLogs = () => {
   const [hitData, setHitData] = useState([]);
-  const [cumulativeUniqueVisits, setCumulativeUniqueVisits] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
@@ -56,15 +55,11 @@ const HitLogs = () => {
         if (Array.isArray(data.logs)) {
           if (isActive) {
             setHitData(data.logs);
-            setCumulativeUniqueVisits(
-              Number(data.cumulativeUniqueVisits) || 0,
-            );
           }
         } else {
           console.error("Unexpected data format:", data);
           if (isActive) {
             setHitData([]);
-            setCumulativeUniqueVisits(0);
           }
         }
       } catch (error) {
@@ -158,17 +153,28 @@ const HitLogs = () => {
     return endpoint.includes(query) || endpointName.includes(query);
   });
 
-  const totalRequestCount = hitData.reduce(
-    (total, item) => total + (Number(item.totalRequestCount) || 0),
-    0,
-  );
+  const totalRequestCount = hitData.reduce((total, item) => {
+    const years = Object.values(item.years || {});
+    const weeklyCount = years.reduce((yearTotal, yearData) => {
+      const months = Object.values(yearData?.monthly || {});
+      return (
+        yearTotal +
+        months.reduce(
+          (monthTotal, monthData) =>
+            monthTotal +
+            [1, 2, 3, 4, 5].reduce((weekTotal, week) => {
+              const count = Number(monthData?.[`week${week}`]);
+              return weekTotal + (Number.isFinite(count) ? count : 0);
+            }, 0),
+          0,
+        )
+      );
+    }, 0);
+
+    return total + weeklyCount;
+  }, 0);
   const todayRequestCount = hitData.reduce(
-    (total, item) =>
-      total +
-      Object.values(item.ipCounts || {}).reduce(
-        (count, ipCount) => count + (Number(ipCount) || 0),
-        0,
-      ),
+    (total, item) => total + (Number(item.currentDay) || 0),
     0,
   );
   const todayUniqueIpCount = new Set(
