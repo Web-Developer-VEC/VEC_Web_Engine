@@ -184,6 +184,20 @@
     "type": "announcements",
     "data": [
       {
+        "unique_id": "announcement_13",
+        "announcement_name": "Format_Attendance Shortage_Between 65% to 75%",
+        "pdf_path": "/static/pdfs/announcements/Format_Attendance Shortage_Between 65% to 75%.pdf",
+        "date": "2026-10-27",
+        "status": "active"
+      },
+      {
+        "unique_id": "announcement_14",
+        "announcement_name": "Format_Attendance Shortage_For Less than 65%",
+        "pdf_path": "/static/pdfs/announcements/Format_Attendance Shortage_For Less than 65%.pdf",
+        "date": "2026-10-27",
+        "status": "active"
+      },
+      {
         "unique_id": "announcement_10",
         "announcement_name": "Exam Time Table_SEE Nov. 2026_MBA_2025-2027 batch",
         "pdf_path": "/static/pdfs/announcements/Exam Time Table_SEE Nov. 2026_MBA_2025-2027 batch.pdf",

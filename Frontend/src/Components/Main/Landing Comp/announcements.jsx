@@ -12,18 +12,17 @@ const Announcements1 = ({ anno, spc }) => {
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     
-    const [editedContent, setEditedContent] = useState({ spc: [], anno: [] });
-    const [originalContent, setOriginalContent] = useState({ spc: [], anno: [] });
-    
-
     const UrlParser = (path) => {
         return path?.startsWith("http") ? path : `${BASE_URL}${path}`;
     };
 
+    const ITEMS_PER_PAGE = 4;
+    const PAGE_SIZE = ITEMS_PER_PAGE * 2;
+
     useEffect(() => {
-            setOriginalContent({ spc: spc || [], anno: anno || [] });
-            setEditedContent({ spc: spc || [], anno: anno || [] });
-        }, [spc, anno])
+        setCurrentIndex(0);
+        setFlipped(false);
+    }, [anno.length]);
 
     // Auto-flip and index update
     useEffect(() => {
@@ -33,13 +32,18 @@ const Announcements1 = ({ anno, spc }) => {
         if (!hovered) {
             // Flip every 6s
             flipInterval = setInterval(() => {
-                setFlipped((prev) => !prev);
+                setFlipped((prev) => {
+                    if (!prev && anno.length > ITEMS_PER_PAGE && currentIndex + ITEMS_PER_PAGE >= anno.length) {
+                        return false;
+                    }
+                    return !prev;
+                });
             }, 6000);
 
             // After showing both sides (12s), go to next 8 items
             indexUpdateInterval = setInterval(() => {
                 setCurrentIndex((prev) => {
-                    const nextIndex = prev + 8;
+                    const nextIndex = prev + PAGE_SIZE;
                     return nextIndex >= anno.length ? 0 : nextIndex;
                 });
             }, 12000);
@@ -49,25 +53,27 @@ const Announcements1 = ({ anno, spc }) => {
             clearInterval(flipInterval);
             clearInterval(indexUpdateInterval);
         };
-    }, [hovered, anno?.length]);
+    }, [hovered, anno.length, currentIndex]);
 
-    const ITEMS_PER_PAGE = 4;
-    const PAGE_SIZE = ITEMS_PER_PAGE * 2;
     const handleManualFlip = (direction) => {
-        setCurrentIndex((prev) => {
-            const maxIndex =
-                Math.ceil(editedContent.anno.length / PAGE_SIZE) * PAGE_SIZE - PAGE_SIZE;
-            if (direction === "next") {
-                return prev >= maxIndex ? 0 : prev + PAGE_SIZE;
-            }
+        const chunkCount = Math.ceil(anno.length / ITEMS_PER_PAGE);
+        if (chunkCount === 0) {
+            return;
+        }
 
-            if (direction === "prev") {
-                return prev <= 0 ? maxIndex : prev - PAGE_SIZE;
-            }
+        if (chunkCount === 1) {
+            setFlipped((prev) => !prev);
+            return;
+        }
 
-            return prev;
-        });
-        setFlipped(f => !f);
+        const currentChunkStart = currentIndex + (flipped ? ITEMS_PER_PAGE : 0);
+        const currentChunkIndex = Math.floor(currentChunkStart / ITEMS_PER_PAGE);
+        const offset = direction === "next" ? 1 : -1;
+        const nextChunkIndex = (currentChunkIndex + offset + chunkCount) % chunkCount;
+        const nextChunkStart = nextChunkIndex * ITEMS_PER_PAGE;
+
+        setCurrentIndex(Math.floor(nextChunkStart / PAGE_SIZE) * PAGE_SIZE);
+        setFlipped(nextChunkStart % PAGE_SIZE >= ITEMS_PER_PAGE);
     };
 
     const getItems = (arr, start, count) => {
@@ -75,13 +81,13 @@ const Announcements1 = ({ anno, spc }) => {
         return arr.slice(start, start + count);
     };
         
-    const frontItems = anno.length <= 4 
-        ? anno 
-        : getItems(anno, currentIndex, 4);
+    const frontItems = anno.length <= ITEMS_PER_PAGE
+        ? anno
+        : getItems(anno, currentIndex, ITEMS_PER_PAGE);
 
-    const backItems = anno.length <= 4 
-        ? anno 
-        : getItems(anno, currentIndex + 4, 4);
+    const backItems = anno.length <= ITEMS_PER_PAGE
+        ? anno
+        : getItems(anno, currentIndex + ITEMS_PER_PAGE, ITEMS_PER_PAGE);
 
 
     return (
@@ -124,7 +130,11 @@ const Announcements1 = ({ anno, spc }) => {
                             <div className="card-front overflow-y-auto">
                                 <h2 className="card-title">Announcements</h2>
                                 <div className="announcements-content">
-                                    {frontItems?.map((item, i) => (
+                                    {frontItems.length === 0 ? (
+                                        <p className="announcement-item">
+                                            {anno.length === 0 ? "No announcements available." : "No announcements on this page."}
+                                        </p>
+                                    ) : frontItems.map((item, i) => (
                                         <p key={i} className="announcement-item">
                                             <a
                                                 href={UrlParser(item?.pdf_path || item?.link)}
@@ -148,7 +158,11 @@ const Announcements1 = ({ anno, spc }) => {
                             <div className="card-back overflow-y-auto">
                                 <h2 className="card-title">Announcements</h2>
                                 <div className="announcements-content">
-                                    {backItems?.map((item, i) => (
+                                    {backItems.length === 0 ? (
+                                        <p className="announcement-item">
+                                            {anno.length === 0 ? "No announcements available." : "No announcements on this page."}
+                                        </p>
+                                    ) : backItems.map((item, i) => (
                                         <p key={i} className="announcement-item">
                                             <a
                                                 href={UrlParser(item?.pdf_path || item?.link)}
