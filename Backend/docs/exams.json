@@ -273,6 +273,14 @@
       "category": "faculty",
       "content": [
         {
+          "name":"Format_Attendance Shortage_Between 65% to 75%",
+          "pdf_path": "/static/pdfs/announcements/Format_Attendance Shortage_Between 65% to 75%.pdf",
+        },
+        {
+          "name": "Format_Attendance Shortage_For Less than 65%",
+        "pdf_path": "/static/pdfs/announcements/Format_Attendance Shortage_For Less than 65%.pdf"
+        },
+        {
           "name": "SEE_QP_Feedback_R2023",
           "pdf_path": "/static/pdfs/all_forms/SEE_QP_Feedback_R2023.pdf"
         },
